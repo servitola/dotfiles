@@ -1,5 +1,5 @@
 {
-  "title": "CAPS_LOCK to Hyper, Hyper + w/a/s/d navigation and others.",
+  "title": "servitola: CAPS_LOCK to Hyper, Hyper + w/a/s/d navigation and others.",
   "rules": [
     {
       "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL)",
@@ -12,7 +12,11 @@
           "to": [
             {
               "key_code": "left_shift",
-              "modifiers": ["left_command", "left_control", "left_option"]
+              "modifiers": [
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
             }
           ],
           "to_if_alone": [
@@ -27,7 +31,12 @@
           "from": {
             "key_code": "comma",
             "modifiers": {
-              "mandatory": ["command", "shift", "option", "control"]
+              "mandatory": [
+                "command",
+                "shift",
+                "option",
+                "control"
+              ]
             }
           },
           "to": [],
@@ -38,7 +47,12 @@
           "from": {
             "key_code": "period",
             "modifiers": {
-              "mandatory": ["command", "shift", "option", "control"]
+              "mandatory": [
+                "command",
+                "shift",
+                "option",
+                "control"
+              ]
             }
           },
           "to": [],
@@ -49,7 +63,12 @@
             "description": "Avoid starting sysdiagnose with the built-in macOS shortcut cmd+shift+option+ctrl+/",
             "key_code": "slash",
             "modifiers": {
-              "mandatory": ["command", "shift", "option", "control"]
+              "mandatory": [
+                "command",
+                "shift",
+                "option",
+                "control"
+              ]
             }
           },
           "to": [],
@@ -64,8 +83,12 @@
           "from": {
             "key_code": "left_shift",
             "modifiers": {
-              "mandatory": ["right_shift"],
-              "optional": ["caps_lock"]
+              "mandatory": [
+                "right_shift"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
             }
           },
           "to": [
@@ -84,8 +107,12 @@
           "from": {
             "key_code": "right_shift",
             "modifiers": {
-              "mandatory": ["left_shift"],
-              "optional": ["caps_lock"]
+              "mandatory": [
+                "left_shift"
+              ],
+              "optional": [
+                "caps_lock"
+              ]
             }
           },
           "to": [
@@ -116,7 +143,9 @@
           "from": {
             "key_code": "q",
             "modifiers": {
-              "mandatory": ["command"]
+              "mandatory": [
+                "command"
+              ]
             }
           },
           "to": [
@@ -131,7 +160,9 @@
           "from": {
             "key_code": "q",
             "modifiers": {
-              "mandatory": ["command"]
+              "mandatory": [
+                "command"
+              ]
             }
           },
           "to": [
@@ -193,58 +224,58 @@
             }
           ]
         },
-{
-        "type": "basic",
-        "from": {
-          "key_code": "[",
-          "modifiers": {
-            "mandatory": [
-              "left_shift",
-              "left_command",
-              "left_control",
-              "left_option"
-            ]
-          }
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "[",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "rewind"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "touchcursor_extended_mode",
+              "value": 1
+            }
+          ]
         },
-        "to": [
-          {
-            "key_code": "rewind"
-          }
-        ],
-        "conditions": [
-          {
-            "type": "variable_if",
-            "name": "touchcursor_extended_mode",
-            "value": 1
-          }
-        ]
-      },
-{
-      "type": "basic",
-      "from": {
-        "key_code": "]",
-        "modifiers": {
-          "mandatory": [
-            "left_shift",
-            "left_command",
-            "left_control",
-            "left_option"
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "]",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "fastforward"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "touchcursor_extended_mode",
+              "value": 1
+            }
           ]
         }
-      },
-      "to": [
-        {
-          "key_code": "fastforward"
-        }
-      ],
-      "conditions": [
-        {
-          "type": "variable_if",
-          "name": "touchcursor_extended_mode",
-          "value": 1
-        }
-      ]
-    }
       ]
     },
     {
@@ -263,7 +294,11 @@
           "to": [
             {
               "key_code": "left_shift",
-              "modifiers": ["left_control", "left_option", "left_command"]
+              "modifiers": [
+                "left_control",
+                "left_option",
+                "left_command"
+              ]
             }
           ]
         }
@@ -379,7 +414,9 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": ["left_command"]
+              "modifiers": [
+                "left_command"
+              ]
             }
           ],
           "type": "basic"
@@ -542,7 +579,9 @@
           "to": [
             {
               "key_code": "right_arrow",
-              "modifiers": ["left_command"]
+              "modifiers": [
+                "left_command"
+              ]
             }
           ],
           "type": "basic"
@@ -1149,6 +1188,163 @@
             }
           ],
           "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hyper Application (held down hyper+g to Fn)",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "f",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'finder'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "h",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Safari'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'iTerm'"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "r",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -b com.jetbrains.rider"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "t",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -b ru.keepcoder.telegram"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "y",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -b ru.yandex.desktop.yandex-browser"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "g",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -b com.DanPristupov.Fork"
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "n",
+            "modifiers": {
+              "mandatory": [
+                "left_shift",
+                "left_command",
+                "left_control",
+                "left_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Visual Studio Code'"
+            }
+          ]
         }
       ]
     }
