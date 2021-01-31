@@ -1,4 +1,4 @@
-local hyper = {"left_command","left_control", "left_option", "left_shift"}
+local hyper = {"left_command", "left_control", "left_option", "left_shift"}
 
 hs.loadSpoon("WindowsManager")
 hs.window.animationDuration = 0.08
@@ -10,62 +10,62 @@ spoon.WindowsManager:bindWindowsHotkeys({
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "t"},
+    chord = {hyper, "t"},
     appname = "Telegram"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "r"},
+    chord = {hyper, "r"},
     appname = "Rider"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "y"},
+    chord = {hyper, "y"},
     appname = "Yandex"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "f"},
+    chord = {hyper, "f"},
     appname = "Finder"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "g"},
+    chord = {hyper, "g"},
     appname = "Fork"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "j"},
+    chord = {hyper, "j"},
     appname = "Safari"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "c"},
+    chord = {hyper, "c"},
     appname = "iTerm"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "n"},
+    chord = {hyper, "n"},
     appname = "Visual Studio Code"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "x"},
+    chord = {hyper, "x"},
     appname = "XCode"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "p"},
+    chord = {hyper, "p"},
     appname = "Spotify"
 })
 
 spoon.WindowsManager:bindHotkey({
-    chord = { hyper, "o"},
+    chord = {hyper, "o"},
     appname = "TeamViewer"
 })
 
 hs.hotkey.bind(hyper, 'space', function()
-    hs.spotify.playpause()    
+    hs.spotify.playpause()
 end)
 
 hs.hotkey.bind(hyper, '[', function()
