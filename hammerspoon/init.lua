@@ -53,3 +53,25 @@ spoon.WindowsManager:bindHotkey({
     chord = { hyper, "x"},
     appname = "XCode"
 })
+
+spoon.WindowsManager:bindHotkey({
+    chord = { hyper, "p"},
+    appname = "Spotify"
+})
+
+spoon.WindowsManager:bindHotkey({
+    chord = { hyper, "o"},
+    appname = "TeamViewer"
+})
+
+hs.hotkey.bind(hyper, 'space', function()
+    hs.spotify.playpause()    
+end)
+
+hs.hotkey.bind(hyper, '[', function()
+    hs.spotify.previous()
+end)
+
+hs.hotkey.bind(hyper, ']', function()
+    hs.spotify.next()
+end)
