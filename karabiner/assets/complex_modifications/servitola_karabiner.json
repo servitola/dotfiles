@@ -2,7 +2,7 @@
   "title": "servitola: CAPS_LOCK to Hyper, Hyper + w/a/s/d navigation and others.",
   "rules": [
     {
-      "description": "CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL)",
+      "description": "servitola: CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL)",
       "manipulators": [
         {
           "from": {
@@ -1192,159 +1192,27 @@
       ]
     },
     {
-      "description": "Hyper Application (held down hyper+g to Fn)",
+      "description": "Ctrl+W to Option+backspace",
       "manipulators": [
         {
-          "type": "basic",
+          "description": "Delete backward as if you're in a terminal",
           "from": {
-            "key_code": "f",
+            "key_code": "w",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_control"
               ]
             }
           },
           "to": [
             {
-              "shell_command": "open -a 'finder'"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "h",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
+              "key_code": "delete_or_backspace",
+              "modifiers": [
                 "left_option"
               ]
             }
-          },
-          "to": [
-            {
-              "shell_command": "open -a 'Safari'"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "c",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -a 'iTerm'"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -b com.jetbrains.rider"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "t",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -b ru.keepcoder.telegram"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "y",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -b ru.yandex.desktop.yandex-browser"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "g",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -b com.DanPristupov.Fork"
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "n",
-            "modifiers": {
-              "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "shell_command": "open -a 'Visual Studio Code'"
-            }
-          ]
+          ],
+          "type": "basic"
         }
       ]
     }
