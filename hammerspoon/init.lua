@@ -49,5 +49,7 @@ spoon.WindowsManager:bindHotkey({
     appname = "Visual Studio Code"
 })
 
-
-
+spoon.WindowsManager:bindHotkey({
+    chord = { hyper, "x"},
+    appname = "XCode"
+})
