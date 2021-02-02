@@ -1,8 +1,8 @@
 {
-  "title": "servitola: CAPS_LOCK to Hyper, Hyper + w/a/s/d navigation and others.",
+  "title": "servitola: personal rules",
   "rules": [
     {
-      "description": "servitola: CAPS_LOCK to HYPER (SHIFT+COMMAND+OPTION+CONTROL)",
+      "description": "CAPS_LOCK to HYPER RIGHT (SHIFT+COMMAND+OPTION+CONTROL)",
       "manipulators": [
         {
           "from": {
