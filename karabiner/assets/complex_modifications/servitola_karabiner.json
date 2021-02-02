@@ -1292,10 +1292,10 @@
             "key_code": "o",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -1311,10 +1311,10 @@
             "key_code": "k",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -1330,10 +1330,10 @@
             "key_code": "l",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -1349,10 +1349,10 @@
             "key_code": "semicolon",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -1368,10 +1368,10 @@
             "key_code": ".",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -1390,10 +1390,10 @@
             "key_code": ",",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
