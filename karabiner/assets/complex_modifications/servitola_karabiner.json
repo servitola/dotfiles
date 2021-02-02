@@ -11,11 +11,11 @@
           },
           "to": [
             {
-              "key_code": "left_shift",
+              "key_code": "right_shift",
               "modifiers": [
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           ],
@@ -328,10 +328,10 @@
             "key_code": "w",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -344,13 +344,36 @@
         },
         {
           "from": {
+            "key_code": "w",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "up_arrow",
+              "modifiers": [
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "a",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -363,13 +386,34 @@
         },
         {
           "from": {
+            "key_code": "a",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "s",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
@@ -382,19 +426,65 @@
         },
         {
           "from": {
+            "key_code": "s",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "down_arrow",
+              "modifiers":[
+                "left_command"
+              ]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
             "key_code": "d",
             "modifiers": {
               "mandatory": [
-                "left_shift",
-                "left_command",
-                "left_control",
-                "left_option"
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
               ]
             }
           },
           "to": [
             {
               "key_code": "right_arrow"
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "d",
+            "modifiers": {
+              "mandatory": [
+                "left_command",
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers":[
+                "left_command"
+              ]
             }
           ],
           "type": "basic"
