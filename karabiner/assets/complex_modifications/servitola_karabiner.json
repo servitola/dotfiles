@@ -267,7 +267,7 @@
       ]
     },
     {
-      "description": "Cmd + M as Punto",
+      "description": "Cmd + M as PuntoSwitcher",
       "manipulators": [
         {
           "type": "basic",
