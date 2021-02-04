@@ -12,6 +12,7 @@ brew "baobab"
 brew "cask"
 brew "docker"
 brew "geoip"
+brew "git"
 brew "git-standup"
 brew "htop"
 brew "mas"
@@ -48,8 +49,30 @@ cask "whatsapp"
 cask "workflowy"
 cask "yt-music"
 cask "zoom"
-mas "Boop", id: 1518425043
+mas "AdBlock", id: 1402042596
+mas "Amphetamine", id: 937984704
+mas "Apple Configurator 2", id: 1037126344
+mas "Be Focused", id: 973134470
+mas "Bear", id: 1091189122
+mas "Day One", id: 1055511498
+mas "Developer", id: 640199958
 mas "Elmedia Video Player", id: 1044549675
+mas "feedly", id: 865500966
+mas "Fotor Photo Editor", id: 503039729
+mas "GarageBand", id: 682658836
+mas "Ghostery Lite", id: 1436953057
+mas "Grammarly for Safari", id: 1462114288
+mas "HiSuite", id: 1232508288
 mas "Keyboard Pilot", id: 402670023
+mas "Kindle", id: 405399194
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Pages", id: 409201541
+mas "Reeder", id: 1449412482
+mas "Shazam", id: 897118787
+mas "Simple Antnotes", id: 846599902
+mas "Tayasui Sketches", id: 1178074963
 mas "Telegram", id: 747648890
+mas "The Unarchiver", id: 425424353
+mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
+mas "XMind", id: 1327661892
