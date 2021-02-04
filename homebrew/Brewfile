@@ -11,7 +11,11 @@ brew "librsvg"
 brew "baobab"
 brew "cask"
 brew "docker"
+brew "geoip"
 brew "git-standup"
+brew "htop"
+brew "mas"
+brew "midnight-commander"
 brew "node"
 brew "tldr"
 brew "zsh"
@@ -44,3 +48,8 @@ cask "whatsapp"
 cask "workflowy"
 cask "yt-music"
 cask "zoom"
+mas "Boop", id: 1518425043
+mas "Elmedia Video Player", id: 1044549675
+mas "Keyboard Pilot", id: 402670023
+mas "Telegram", id: 747648890
+mas "Xcode", id: 497799835
