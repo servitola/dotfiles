@@ -1,12 +1,13 @@
-local hyper = {"left_command", "left_control", "left_option", "left_shift"}
+local hyper = {"right_command", "right_control", "right_option", "right_shift"}
+local hyperAndShift = {"left_shift", "right_command", "right_control", "right_option", "right_shift"}
 
 hs.loadSpoon("WindowsManager")
 hs.window.animationDuration = 0.08
 spoon.WindowsManager:bindWindowsHotkeys({
-    up = {{"ctrl", "alt"}, "up"},
-    right = {{"ctrl", "alt"}, "right"},
-    down = {{"ctrl", "alt"}, "down"},
-    left = {{"ctrl", "alt"}, "left"}
+    up = {{"left_control", "left_option"}, "up"},
+    right = {{"left_control", "left_option"}, "right"},
+    down = {{"left_control", "left_option"}, "down"},
+    left = {{"left_control", "left_option"}, "left"}
 })
 
 spoon.WindowsManager:bindHotkey({
