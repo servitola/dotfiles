@@ -33,8 +33,13 @@ export EDITOR='nano'
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a'
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 hash -d ct=~/projects/cTraderDev
+hash -d d=~/Desktop
+hash -d n=~/Downloads
+
+
 
 plugins=(
   git
@@ -73,3 +78,18 @@ if [ -f ~/.aliases ]; then
 fi
 
 export PATH="/usr/local/sbin:$PATH"
+
+# History
+SAVEHIST=10000
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt NO_HIST_BEEP
+setopt SHARE_HISTORY
+setopt RM_STAR_WAIT
+setopt NO_CLOBBER
