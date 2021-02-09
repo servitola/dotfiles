@@ -33,8 +33,22 @@ export EDITOR='nano'
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a'
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a; sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent''
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+
+# Lock the screen (when going AFK)
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
+alias path='echo -e ${PATH//:/\\n}'
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en0"
+alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+
+
 hash -d ct=~/projects/cTraderDev
 hash -d d=~/Desktop
 hash -d n=~/Downloads
