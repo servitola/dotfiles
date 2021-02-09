@@ -1,0 +1,18 @@
+[user]
+	name = servitola
+	email = servitola@gmail.com
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	lg = log --pretty=format:'[%h] [%ad] %s'
+	graph = log --pretty=format:'%h %Cgreen %an: %Creset %s' --graph
+	w = whatchanged
+	diffc = diff --cached
+	last = log -1 HEAD
+	unstage = reset HEAD --
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
