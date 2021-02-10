@@ -57,17 +57,17 @@ spoon.WindowsManager:bindHotkey({
 
 spoon.WindowsManager:bindHotkey({
     chord = {hyper, "p"},
-    appname = "Spotify"
+    appname = "Music"
 })
 
 hs.hotkey.bind(hyper, 'space', function()
-    hs.spotify.playpause()
+    hs.itunes.playpause()
 end)
 
 hs.hotkey.bind(hyper, '[', function()
-    hs.spotify.previous()
+    hs.itunes.previous()
 end)
 
 hs.hotkey.bind(hyper, ']', function()
-    hs.spotify.next()
+    hs.itunes.next()
 end)
