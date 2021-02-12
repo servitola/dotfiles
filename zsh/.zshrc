@@ -33,7 +33,7 @@ export EDITOR='nano'
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
-alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a; sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo rm -rfv /private/var/log/asl/*.asl; sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent''
+alias brewup='brew update; brew upgrade; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a;'
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 # Lock the screen (when going AFK)
