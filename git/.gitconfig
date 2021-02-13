@@ -7,6 +7,7 @@
 	b = branch -vv
 	c = !git add -A && git commit -m
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+	f = fetch --all
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 	m = merge
 	s = status -s
@@ -17,8 +18,7 @@
 	ca = commit -a
 	cm = commit --amend
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state.
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-	fa = fetch --all
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"	
 	ff = merge --ff-only
 	ci = commit
 	di = diff
@@ -28,7 +28,7 @@
 	cp = cherry-pick
 	sh = show
 	sm = status -s
-	ps = push
+	ps = !git f && git push -v
 	pl = pull
 	rbi = rebase -i
 	cob = checkout -b
