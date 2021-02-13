@@ -37,6 +37,8 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
+alias mkdir='mkdir -p'
+
 # Shortcuts
 alias g="git"
 alias l="ls -lF ${colorflag}"
