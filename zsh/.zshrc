@@ -30,11 +30,37 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nano'
 
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+# Shortcuts
+alias g="git"
+alias l="ls -lF ${colorflag}"
+# Always use color output for `ls`
+alias ls="command ls ${colorflag}"
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+# Always enable colored `grep` output
+# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
-alias brewup='brew update; brew cu --all; brew cleanup; brew doctor; omz update; tldr --update; echo "› sudo softwareupdate -i -a"; sudo softwareupdate -i -a;'
+alias brewup=' sudo softwareupdate -i -a; brew update; brew cu --all; brew cleanup; brew doctor; omz update; tldr --update;'
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+
+# Show active network interfaces
+alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
+
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -52,6 +78,10 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 hash -d ct=~/projects/cTraderDev
 hash -d d=~/Desktop
 hash -d n=~/Downloads
+
+# alias dl="cd ~/Downloads"
+# alias dt="cd ~/Desktop"
+# alias p="cd ~/projects"
 
 
 
