@@ -27,14 +27,28 @@
 	rb = rebase
 	cp = cherry-pick
 	sh = show
+	#test
 	sm = status -s
 	ps = !git f && git push -v
-	pl = pull
+	pl = !git sphph && git pull origin master --rebase && git remote prune origin && git submodule update --init --recursive && git splpl
+	splpl = !git stash list | grep ": autostash" | tr -dc '0-9' | xargs git stash apply
+	sphph = !git stash save autostash
 	rbi = rebase -i
 	cob = checkout -b
 	rup = remote update
 	rsh = git reset --hard
 	last = log -n 1
+
+	# Find commits by source code
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+
+	# Find commits by commit message
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+
+# List contributors with number of commits
+	contributors = shortlog --summary --numbered
+
 	
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
