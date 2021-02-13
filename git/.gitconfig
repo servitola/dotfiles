@@ -8,7 +8,8 @@
 	c = !git add -A && git commit -m
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 	f = fetch --all
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	l = log -n 25 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	
 	m = merge
 	s = status -s
 	t = tag
