@@ -2,24 +2,41 @@
 	name = servitola
 	email = servitola@gmail.com
 [alias]
-	st = status
-	ci = commit
-	br = branch
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits.
-	l = log --pretty=oneline -n 20 --graph --abbrev-commit
-	graph = l
-	w = whatchanged
-
-	# View the current working tree status using the short format.
-	s = status -s
-
-	# Show the diff between the latest commit and the current state.
+	a = add
+	b = branch -vv
+	c = commit
+	d = diff
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-
+	l = log --pretty=oneline -n 20 --graph --abbrev-commit
+	m = merge
+	s = status -s
+	t = tag
+	w = whatchanged
+	bd = branch -d
+	bD = branch -D
+	ca = commit -a
+	cm = commit --amend
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state.
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-
+	fa = fetch --all
+	ff = merge --ff-only
+	ci = commit
+	di = diff
+	st = status
+	co = checkout
+	rb = rebase
+	cp = cherry-pick
+	sh = show
+	sm = status -s
+	ps = push
+	pl = pull
+	rbi = rebase -i
+	cob = checkout -b
+	rup = remote update
+	rsh = git reset --hard
+	last = log -n 1
+	
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
@@ -37,7 +54,6 @@
 	diffc = diff --cached
 	last = log -1 HEAD
 	unstage = reset HEAD --
-
 
 [color "branch"]
 
