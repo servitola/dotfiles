@@ -5,7 +5,7 @@
 
 	a = add
 	b = branch -vv
-	c = commit
+	c = !git add -A && git commit -m
 	d = diff
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit

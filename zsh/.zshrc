@@ -57,7 +57,7 @@ alias egrep='egrep --color=auto'
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
-alias brewup=' sudo softwareupdate -i -a; brew update; brew cu --all; brew cleanup; brew doctor; omz update; tldr --update;'
+alias brewup=' sudo softwareupdate -i -a; brew upgrade; brew cu --all; mas upgrade; brew cleanup; brew doctor; omz update; tldr --update;'
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 # Show active network interfaces
