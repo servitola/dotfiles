@@ -6,45 +6,37 @@ obj.GRID = {
     h = 7
 }
 
-function obj:setWindow(x, y, height, width)
-    if hs.window.focusedWindow() then
-        local win = hs.window.frontmostWindow()
-        local id = win:id()
-        local screen = win:screen()
+function obj:setWindow(x, y, height, width, win)
 
-        cell = hs.grid.get(win, screen)
-
-        cell.x = x
-        cell.y = y
-        cell.h = height
-        cell.w = width
-
---        os.execute("sleep 1")
-
-        -- cell.x = x
-        -- cell.y = y
-        -- cell.h = height
-        -- cell.w = width
-
-        -- if cell['y'] ~= 0 and cell['y'] + cell['h'] ~= self.GRID['h'] then
-        --     cell['h'] = self.GRID['h']
-        --     cell['y'] = 0
-        -- end
-
-        -- if cell['x'] ~= 0 and cell['x'] + cell['w'] ~= self.GRID['w'] then
-        --     cell['w'] = self.GRID['w']
-        --     cell['x'] = 0
-        -- end
-
-        hs.grid.set(win, cell, screen)
+    if win == null then
+        win = hs.window.frontmostWindow()
     end
+
+    local screen = win:screen()
+
+    cell = hs.grid.get(win, screen)
+    cell.x = x
+    cell.y = y
+    cell.h = height
+    cell.w = width
+
+    hs.grid.set(win, cell, screen)
 end
 
 function obj:bindWindowsHotkeys(mapping)
     hs.inspect(mapping)
 
     hs.hotkey.bind(mapping.down[1], mapping.down[2], function()
-        self:setWindow(4, 5, 2, 2)
+
+        local wins = hs.window.visibleWindows()
+        for _, win in ipairs(wins) do
+            local name = win:title()
+            if name == 'Telegram' then
+                self:setWindow(4, 0, 5, 2, win)
+            else
+                self:setWindow(0, 0, 7, 4, win)
+            end
+        end
     end)
 
     hs.hotkey.bind(mapping.right[1], mapping.right[2], function()
@@ -79,11 +71,6 @@ function obj:bindHotkey(mapping)
     hs.hotkey.bind(mapping.chord[1], mapping.chord[2], function()
         self:openApp(mapping.appname)
     end)
-
-    -- hs.hotkey.bind(mapping.chord[0], mapping.chord[1], function()
-    --     self:openApp(mapping.appname)
-    -- end)
-
 end
 
 function obj:init()
