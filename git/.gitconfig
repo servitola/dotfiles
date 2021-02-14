@@ -49,7 +49,7 @@
 	fm = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
 
-# List contributors with number of commits
+	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
 	# Switch to a branch, creating it if necessary.
