@@ -36,7 +36,7 @@
 	rbi = rebase -i
 	cob = checkout -b
 	rup = remote update
-	rsh = git reset --hard
+	rsh = !git reset --hard
 	last = log -n 1
 	undo = !git reset HEAD~1 --mixed
 
