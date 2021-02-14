@@ -1,99 +1,9 @@
 [user]
 	name = servitola
 	email = servitola@gmail.com
-[alias]
-
-	a = add
-	b = branch -vv
-	c = !git add -A && git commit --verbose -m 
-	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
-	f = fetch --all
-	l = log -n 25 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	m = merge
-	s = status -s
-	t = tag
-	w = whatchanged
-	bd = branch -d
-	bD = branch -D
-	ca = commit -a
-	cm = commit --amend
-	# `git di $number` shows the diff between the state `$number` revisions ago and the current state.
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"	
-	ff = merge --ff-only
-	ci = commit
-	di = diff
-	st = status
-	co = checkout
-	rb = rebase
-	cp = cherry-pick
-	sh = show
-	#test
-	sm = status -s
-	ps = !git f && git push -v
-	push = ps
-	pl = !git sphph && git pull origin master --rebase && git remote prune origin && git submodule update --init --recursive && git splpl
-	pull = pl
-	splpl = !git stash list | grep ": autostash" | tr -dc '0-9' | xargs git stash apply
-	sphph = !git stash save autostash
-	rbi = rebase -i
-	cob = checkout -b
-	rup = remote update
-	rsh = !git reset --hard
-	last = log -n 1
-	undo = !git reset HEAD~1 --mixed
-
-	# Find commits by source code
-	fc = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
-
-	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
-
-	# Switch to a branch, creating it if necessary.
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
-
-	# Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch --all
-	remotes = remote --verbose
-
-	# List aliases.
-	alias=!git config -l | grep ^alias | cut -c 7- | sort
-
-	# Show the user email for the current repository.
-	whoami = config user.email
-
-	diffc = diff --cached
-	last = log -1 HEAD
-	unstage = reset HEAD --
-
-[color "branch"]
-
-	current = yellow reverse
-	local = yellow
-	remote = green
-
-[color "diff"]
-
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
-
-[color "status"]
-
-	added = yellow
-	changed = green
-	untracked = cyan
-
+	
 [branch]
-
-	# Show most recently changed branches first.
-	sort = -committerdate
-
+	sort = -committerdate # Show most recently changed branches first.
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -102,5 +12,10 @@
 	required = true
 
 [init]
+	defaultBranch = dev
 
-	defaultBranch = Development
+[include]
+    path = .gitconfig_aliases
+
+[include]
+    path = .gitconfig_colors
