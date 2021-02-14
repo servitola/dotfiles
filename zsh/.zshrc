@@ -1,6 +1,7 @@
 # BASH FIX
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="/Users/servitola/.oh-my-zsh"
+export TERM="xterm-256color"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
@@ -84,7 +85,6 @@ hash -d n=~/Downloads
 # alias dl="cd ~/Downloads"
 # alias dt="cd ~/Desktop"
 # alias p="cd ~/projects"
-
 
 
 plugins=(
