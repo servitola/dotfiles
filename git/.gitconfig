@@ -30,7 +30,9 @@
 	#test
 	sm = status -s
 	ps = !git f && git push -v
+	push = ps
 	pl = !git sphph && git pull origin master --rebase && git remote prune origin && git submodule update --init --recursive && git splpl
+	pull = pl
 	splpl = !git stash list | grep ": autostash" | tr -dc '0-9' | xargs git stash apply
 	sphph = !git stash save autostash
 	rbi = rebase -i
