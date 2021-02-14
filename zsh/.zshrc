@@ -119,8 +119,8 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=’red’
 
-if [ -f ~/.aliases ]; then
-        . ~/.aliases
+if [ -f ~/.zsh_aliases ]; then
+        . ~/.zsh_aliases
 fi
 
 export PATH="/usr/local/sbin:$PATH"
