@@ -1,3 +1,7 @@
+hash -d ct=~/projects/cTraderDev
+hash -d d=~/Desktop
+hash -d n=~/Downloads
+
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -8,10 +12,10 @@ alias -- -="cd -"
 alias mkdir='mkdir -p'
 
 alias d=~d
-alias go_to_downloads = d
+alias go_to_downloads=d
 alias g="git"
-alias n=~n
-alias ct=~ct
+alias n=cd ~n
+alias ct=cd ~ct
 alias l="ls -lF ${colorflag}"
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
@@ -36,7 +40,7 @@ brew cleanup;
 brew doctor; 
 omz update; 
 tldr --update;'
-alias upgrade_all = up
+alias upgrade_all=up
 
 alias re=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias reload=re
@@ -56,6 +60,3 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-hash -d ct=~/projects/cTraderDev
-hash -d d=~/Desktop
-hash -d n=~/Downloads
