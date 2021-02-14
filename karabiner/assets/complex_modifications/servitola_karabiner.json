@@ -495,25 +495,6 @@
             }
           ],
           "type": "basic"
-        },
-        {
-          "from": {
-            "key_code": "s",
-            "modifiers": {
-              "mandatory": [
-                "right_shift",
-                "right_command",
-                "right_control",
-                "right_option"
-              ]
-            }
-          },
-          "to": [
-            {
-              "key_code": "down_arrow"
-            }
-          ],
-          "type": "basic"
         }
       ]
     },
@@ -555,7 +536,7 @@
           "to": [
             {
               "key_code": "f1",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -595,7 +576,7 @@
           "to": [
             {
               "key_code": "f2",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -635,7 +616,7 @@
           "to": [
             {
               "key_code": "f3",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -675,7 +656,7 @@
           "to": [
             {
               "key_code": "f4",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -715,7 +696,7 @@
           "to": [
             {
               "key_code": "f5",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -755,7 +736,7 @@
           "to": [
             {
               "key_code": "f6",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -795,7 +776,7 @@
           "to": [
             {
               "key_code": "f7",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -835,7 +816,7 @@
           "to": [
             {
               "key_code": "f8",
-              "modifiers": [ "left_command"]
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
@@ -978,6 +959,51 @@
             {
               "key_code": "left_arrow",
               "modifiers": ["left_control"]
+            }
+          ],
+          "type": "basic"
+        }
+      ]
+    },
+    {
+      "description": "Hyper + c x - home and end",
+      "manipulators": [
+        {
+          "from": {
+            "key_code": "c",
+            "modifiers": {
+              "mandatory": [
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_arrow",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "type": "basic"
+        },
+        {
+          "from": {
+            "key_code": "x",
+            "modifiers": {
+              "mandatory": [
+                "right_shift",
+                "right_command",
+                "right_control",
+                "right_option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "left_arrow",
+              "modifiers": ["left_command"]
             }
           ],
           "type": "basic"
