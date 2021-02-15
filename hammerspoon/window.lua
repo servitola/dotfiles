@@ -52,26 +52,7 @@ function obj:bindWindowsHotkeys(mapping)
     end)
 end
 
-function obj:openApp(name)
-    local app = hs.application.get(name)
-    if app then
-        if app:isFrontmost() then
-            app:hide()
-        else
-            app:mainWindow():focus()
-        end
-    else
-        hs.application.launchOrFocus(name)
-    end
-end
 
-function obj:bindHotkey(mapping)
-    hs.inspect(mapping)
-
-    hs.hotkey.bind(mapping.chord[1], mapping.chord[2], function()
-        self:openApp(mapping.appname)
-    end)
-end
 
 function obj:init()
     hs.grid.setGrid(obj.GRID.w .. 'x' .. obj.GRID.h)
