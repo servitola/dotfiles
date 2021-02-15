@@ -13,7 +13,6 @@ local hyperAndShift = {
 spoon.window:bindHotkey({ chord = {hyper, "t"}, appname = "Telegram"})
 spoon.window:bindHotkey({ chord = {hyper, "r"}, appname = "Rider"})
 spoon.window:bindHotkey({ chord = {hyper, "y"}, appname = "Yandex"})
-spoon.window:bindHotkey({ chord = {hyper, "f"}, appname = "Alfred"})
 spoon.window:bindHotkey({ chord = {hyper, "g"}, appname = "Fork"})
 spoon.window:bindHotkey({ chord = {hyper, "j"}, appname = "Safari"})
 spoon.window:bindHotkey({ chord = {hyper, "v"}, appname = "iTerm"})
