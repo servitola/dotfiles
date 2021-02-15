@@ -54,7 +54,7 @@ hs.hotkey.bind(hyper, "j", function() openApp("Safari") end)
 -- X home
 -- C end
 hs.hotkey.bind(hyper, "v", function() openApp("iTerm") end)
--- B ???
+hs.hotkey.bind(hyper, "b", function() openApp("Ableton") end)
 hs.hotkey.bind(hyper, "n", function() openApp("Visual Studio Code") end)
 hs.hotkey.bind(hyper, "m", function() openApp("YouTube") end)
 -- , ???
