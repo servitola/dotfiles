@@ -52,8 +52,6 @@ function obj:bindWindowsHotkeys(mapping)
     end)
 end
 
-
-
 function obj:init()
     hs.grid.setGrid(obj.GRID.w .. 'x' .. obj.GRID.h)
     hs.grid.MARGINX = 0
