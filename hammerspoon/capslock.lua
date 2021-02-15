@@ -39,6 +39,7 @@ hs.hotkey.bind(hyper, ']', function() hs.itunes.next() end)
 -- \ ???
 -- Enter ???
 -- A arrow-left
+hs.hotkey.bind(hyperAndShift, "a", function() openApp("Android Studio") end)
 -- S arrow-bottom
 -- D arrow-right
 -- F Alfred
