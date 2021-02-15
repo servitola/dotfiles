@@ -8,4 +8,4 @@ spoon.window:bindWindowsHotkeys({
     left = {{"left_control", "left_option"}, "left"}
 })
 
-require "hotkeys";
+require "capslock";
