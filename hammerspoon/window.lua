@@ -56,6 +56,7 @@ function obj:init()
     hs.grid.setGrid(obj.GRID.w .. 'x' .. obj.GRID.h)
     hs.grid.MARGINX = 0
     hs.grid.MARGINY = 0
+    animationDuration = 0.08
 end
 
 return obj

@@ -1,11 +1,6 @@
--- hs.loadSpoon("window")
--- hs.window.animationDuration = 0.08
+require "constants";
 
--- local hyper = {
---     "right_command", 
---     "right_control", 
---     "right_option", 
---     "right_shift"}
+hs.loadSpoon("window")
 
 -- spoon.window:bindWindowsHotkeys({
 --     up = {hyper, "up"},
@@ -14,14 +9,14 @@
 --     left = {hyper, "left"}
 -- })
 
--- spoon.window:bindWindowsHotkeys({
---     up = {{"left_control", "left_option"}, "up"},
---     right = {{"left_control", "left_option"}, "right"},
---     down = {{"left_control", "left_option"}, "down"},
---     left = {{"left_control", "left_option"}, "left"}
--- })
+spoon.window:bindWindowsHotkeys({
+    up = {{"left_control", "left_option"}, "up"},
+    right = {{"left_control", "left_option"}, "right"},
+    down = {{"left_control", "left_option"}, "down"},
+    left = {{"left_control", "left_option"}, "left"}
+})
 
--- require "capslock";
+require "capslock";
 
 -- --data = hs.json.read("../data/data.json")
 
