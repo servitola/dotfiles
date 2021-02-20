@@ -9,6 +9,6 @@ HIST_STAMPS="dd-mm-yyyy"
 source $ZSH/oh-my-zsh.sh
 source ~/plugins.zshrc
 source ~/aliases.zshrc
-export PATH="/usr/local/sbin:$PATH"
+#export PATH="/usr/local/sbin:$PATH"
 source ~/history_settings.zshrc
 source ~/.p10k.zsh

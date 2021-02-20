@@ -40,6 +40,7 @@ mas upgrade;
 brew cleanup; 
 brew doctor; 
 omz update; 
+git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 tldr --update;'
 alias upgrade_all=up
 
