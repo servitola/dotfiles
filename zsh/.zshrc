@@ -1,8 +1,15 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # BASH FIX
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH="/Users/servitola/.oh-my-zsh"
 export TERM="xterm-256color"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 eval $(thefuck --alias)
 export UPDATE_ZSH_DAYS=7
 COMPLETION_WAITING_DOTS="true"
@@ -61,3 +68,6 @@ setopt NO_HIST_BEEP
 setopt SHARE_HISTORY
 setopt RM_STAR_WAIT
 setopt NO_CLOBBER
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
