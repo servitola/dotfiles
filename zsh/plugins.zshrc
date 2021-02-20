@@ -15,4 +15,7 @@ plugins=(
   zsh-autosuggestions
   z
   sudo
+  Colored-man-pages
 )
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
