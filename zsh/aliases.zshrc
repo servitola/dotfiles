@@ -31,6 +31,7 @@ alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias python=python3
 alias up='
+sudo -v
 sudo softwareupdate -i -a;
 brew update; 
 brew upgrade; 

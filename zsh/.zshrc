@@ -43,7 +43,7 @@ source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=’red’
 
-source ~/.zsh_aliases
+source ~/aliases.zshrc
 
 export PATH="/usr/local/sbin:$PATH"
 
