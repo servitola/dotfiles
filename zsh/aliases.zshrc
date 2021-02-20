@@ -35,12 +35,12 @@ sudo -v
 sudo softwareupdate -i -a;
 brew update; 
 brew upgrade; 
-brew cu --all; 
+brew cu --all -y -q; 
 mas upgrade; 
 brew cleanup; 
 brew doctor; 
 omz update; 
-git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
+g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 tldr --update;'
 alias upgrade_all=up
 
