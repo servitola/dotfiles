@@ -39,7 +39,7 @@ brew cu --all -y -q;
 mas upgrade; 
 brew cleanup; 
 brew doctor; 
-omz update; 
+omz update;
 g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 tldr --update;'
 alias upgrade_all=up
