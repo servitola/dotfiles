@@ -1,0 +1,16 @@
+plugins=(
+  git
+  bundler
+  dotenv
+  osx
+  rake
+  rbenv
+  adb
+  brew
+  cask
+  common-aliases
+  npm
+  pip
+  python
+  zsh-autosuggestions
+)
