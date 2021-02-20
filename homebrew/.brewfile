@@ -16,6 +16,7 @@ brew "geoip"
 brew "git"
 brew "git-standup"
 brew "htop"
+brew "jq"
 brew "mas"
 brew "midnight-commander"
 brew "node"
@@ -25,7 +26,9 @@ brew "thefuck"
 brew "tmux"
 brew "zsh"
 brew "zsh-syntax-highlighting"
+brew "yqrashawn/goku/goku"
 cask "airdroid"
+cask "bettertouchtool"
 cask "bitbar"
 cask "choosy"
 cask "docker"
@@ -82,6 +85,5 @@ mas "Simple Antnotes", id: 846599902
 mas "Tayasui Sketches", id: 1178074963
 mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
-mas "WhatsApp", id: 1147396723
 mas "Xcode", id: 497799835
 mas "XMind", id: 1327661892
