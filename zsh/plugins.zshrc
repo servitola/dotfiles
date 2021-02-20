@@ -13,4 +13,6 @@ plugins=(
   pip
   python
   zsh-autosuggestions
+  z
+  sudo
 )
