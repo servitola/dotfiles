@@ -9,7 +9,7 @@
 -- 8 F8
 -- 9 F9
 -- 0 F10
-hs.hotkey.bind(hyper, "-", function() openApp("Te") end)
+hs.hotkey.bind(hyper, "-", function() openApp("Team Viewer") end)
 -- = F12
 -- delete F13
 -- Q page-up
