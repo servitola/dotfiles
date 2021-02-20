@@ -11,8 +11,4 @@ export PATH="/usr/local/sbin:$PATH"
 
 export TERM="xterm-256color"
 export EDITOR='nano'
-export ZSH="/Users/servitola/.oh-my-zsh"    
-
-eval $(thefuck --alias)
-
-source $ZSH/oh-my-zsh.sh
+export ZSH="/Users/servitola/.oh-my-zsh"
