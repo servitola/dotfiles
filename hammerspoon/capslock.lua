@@ -1,15 +1,3 @@
-local hyper = {
-    "right_command", 
-    "right_control", 
-    "right_option", 
-    "right_shift"}
-local hyperAndShift = {
-    "left_shift", 
-    "right_command", 
-    "right_control", 
-    "right_option", 
-    "right_shift"}
-
 -- \ ???
 -- 1 F1
 -- 2 F2
@@ -21,7 +9,7 @@ local hyperAndShift = {
 -- 8 F8
 -- 9 F9
 -- 0 F10
--- - F11
+hs.hotkey.bind(hyper, "-", function() openApp("Te") end)
 -- = F12
 -- delete F13
 -- Q page-up
@@ -39,7 +27,7 @@ hs.hotkey.bind(hyper, ']', function() hs.itunes.next() end)
 -- \ ???
 -- Enter ???
 -- A arrow-left
-hs.hotkey.bind(hyperAndShift, "a", function() openApp("Android Studio") end)
+--hs.hotkey.bind(hyperAndShift, "a", function() openApp("Android Studio") end)
 -- S arrow-bottom
 -- D arrow-right
 -- F Alfred

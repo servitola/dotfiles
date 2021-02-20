@@ -1,22 +1,16 @@
 require "constants";
+require "capslock";
 
 hs.loadSpoon("window")
 
--- spoon.window:bindWindowsHotkeys({
---     up = {hyper, "up"},
---     right = {hyper, "right"},
---     down = {hyper, "down"},
---     left = {hyper, "left"}
--- })
-
 spoon.window:bindWindowsHotkeys({
-    up = {{"left_control", "left_option"}, "up"},
-    right = {{"left_control", "left_option"}, "right"},
-    down = {{"left_control", "left_option"}, "down"},
-    left = {{"left_control", "left_option"}, "left"}
+    up = {"right_option", "up"},
+    right = {"right_option", "right"},
+    down = {"right_option", "down"},
+    left = {"right_option", "left"}
 })
 
-require "capslock";
+-- 
 
 -- --data = hs.json.read("../data/data.json")
 
