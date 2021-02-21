@@ -33,6 +33,7 @@ alias python=python3
 alias up='
 sudo -v
 sudo softwareupdate -i -a;
+xcode-select --install
 brew update; 
 brew upgrade; 
 brew cu --all -y -q; 
@@ -64,3 +65,29 @@ alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[
 
 alias mkdir='mkdir -p'
 alias mkidr='mkdir -p'
+
+alias ctrader=cd ~/projects/cTraderDev
+
+alias dotfiles='
+cd ~/projects/pc-scripts/
+brew bundle dump --force --file=./homebrew/.brewfile
+g c "in progress"
+g ps
+'
+
+alias ctrader='
+cd ~/projects/cTraderDev
+
+'
+
+alias pip=pip3
+
+# EXA aliases
+alias ls='exa'                                                         # ls
+alias l='exa -lbF --git'                                               # list, size, type, git
+alias ll='exa -lbGF --git'                                             # long list
+alias llm='exa -lbGF --git --sort=modified'                            # long list, modified date sort
+alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
+alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
+alias lS='exa -1'			                                                  # one column, just names
+alias lt='exa --tree --level=2'  

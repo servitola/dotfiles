@@ -16,6 +16,7 @@ hs.hotkey.bind(hyper, "-", function() openApp("Team Viewer") end)
 -- W arrow-up
 -- E page-down
 hs.hotkey.bind(hyper, "r", function() openApp("Rider") end)
+hs.hotkey.bind(ctrlAndAlt, "r", function() openApp("Android Studio") end)
 hs.hotkey.bind(hyper, "t", function() openApp("Telegram") end)
 hs.hotkey.bind(hyper, "y", function() openApp("Yandex") end)
 hs.hotkey.bind(hyper, "u", function() openApp("Folx") end)
