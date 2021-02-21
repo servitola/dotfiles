@@ -9,8 +9,8 @@ obj.GRID = {
 obj.right_side_app_titles = {'Telegram'}
 
 function obj:setWindow(x, y, height, width, window)
-
     if window == null then
+        
         window = hs.window.frontmostWindow()
     end
 
@@ -23,6 +23,23 @@ function obj:setWindow(x, y, height, width, window)
     cell.w = width
 
     hs.grid.set(window, cell, screen)
+end
+
+function obj:moveWindow(x, y, window)
+    if window == null then
+        return 
+    end
+
+    local screen = window:screen()
+
+    cell = hs.grid.get(window, screen)
+    cell.x = x
+    cell.y = y
+
+    --hs.grid.set(window, cell, screen)
+    --window:focus()
+    --window:moveOneScreenNorth()
+    --hs.gridhs.window:move([, ensureInScreenBounds][, duration]) --> hs.window object
 end
 
 function obj:bindWindowsHotkeys(mapping)
@@ -94,6 +111,8 @@ function obj:set_all_windows_positions()
             self:setWindow(4, 0, 5, 2, window)
         elseif app_title == "Yandex" and window_id ~= yandex_main_window_id then
             self:setWindow(4, 5, 2, 2, window)
+        elseif app_title == "qemu-system-x86_64" then
+            --self:moveWindow(4, 0, window)
         else
             cell = hs.grid.get(window, window:screen())
             if cell.x == 0 and cell.y == 0 and cell.h == 7 and cell.w == 6 then
@@ -109,18 +128,18 @@ function obj:set_all_windows_positions()
 end
 
 function logWindow(window)    
-    -- local logger = hs.logger.new("window", 'verbose')
-    -- local app = window:application()
-    -- logger.d(" ")
-    -- logger.d("App Title: ")
-    -- logger.d(app:title())
-    -- logger.d("Bundle Id:")
-    -- logger.d(app:bundleID())
-    -- logger.d("Win Title:")
-    -- logger.d(window:title())
-    -- logger.d("Win Id:")
-    -- logger.d(window:id())
-    -- logger.d(" ")
+    local logger = hs.logger.new("window", 'verbose')
+    local app = window:application()
+    logger.d(" ")
+    logger.d("App Title: ")
+    logger.d(app:title())
+    logger.d("Bundle Id:")
+    logger.d(app:bundleID())
+    logger.d("Win Title:")
+    logger.d(window:title())
+    logger.d("Win Id:")
+    logger.d(window:id())
+    logger.d(" ")
 end
 
 return obj

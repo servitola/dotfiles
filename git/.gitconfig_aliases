@@ -50,3 +50,52 @@
 	undo = !git reset HEAD~1 --mixed
 	unstage = reset HEAD --
 	whoami = config user.email
+
+	# show what I did today
+    day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
+
+	# show the committers in the last 100 commits, sorted by who has commited the most
+    review = "!git log --no-merges --pretty=%an | head -n 100 | sort | uniq -c | sort -nr"
+
+	# order files by number of commits, ascending
+    # Written by Corey Haines
+    # Scriptified by Gary Bernhardt
+    # Show churn for a time range:
+    #   $ git churn --since='1 month ago'
+    churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
+
+# show all deleted files in the repo
+    deleted = "!git log --diff-filter=D --summary | grep delete"
+
+	 cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
+
+	 # rebase the current branch with changes from upstream remote
+    update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
+
+	# clean up all 
+    forget = "!git fetch -p origin && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
+
+	 # show the most recently touched branches
+    recent = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/heads | sed -e 's-refs/heads/--' | less -XFR"
+    latest = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/remotes | sed -e 's-refs/remotes/origin/--' | less -XFR"
+
+
+# grep commands
+
+    # 'diff grep'
+    dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"
+    # diff grep changes between two commits
+    dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -"
+    # 'checkout grep'
+    cg = "!sh -c 'git ls-files -m | grep $1 | xargs git checkout ' -"
+    # add grep
+    ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --all' -"
+    # add all
+    aa = !git ls-files -d | xargs git rm && git ls-files -m -o --exclude-standard | xargs git add
+    # remove grep - Remove found files that are NOT under version control
+    rg = "!sh -c 'git ls-files --others --exclude-standard | grep $1 | xargs rm' -"
+
+    # Kaleidoscope commands
+    dkal = difftool -y -t Kaleidoscope
+    mkal = mergetool -y -t Kaleidoscope
+    remotes = remote -v
