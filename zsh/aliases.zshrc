@@ -1,6 +1,6 @@
-hash -d ct=~/projects/cTraderDev
-hash -d d=~/Desktop
-hash -d n=~/Downloads
+hash -d cTrader=~/projects/cTraderDev
+hash -d Desktop=~/Desktop
+hash -d Downloads=~/Downloads
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -11,11 +11,11 @@ alias -- -="cd -"
 
 alias mkdir='mkdir -p'
 
-alias d=~d
+#alias d=~d
 alias go_to_downloads=d
 alias g="git"
-alias n=cd ~n
-alias ct=cd ~ct
+#alias n=cd ~n
+#alias ct=cd ~ct
 alias l="ls -lF ${colorflag}"
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
