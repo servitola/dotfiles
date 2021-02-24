@@ -52,6 +52,11 @@ hs.hotkey.bind(hyper, "m", function() openApp("YouTube") end)
 hs.hotkey.bind(hyper, 'space', function() hs.itunes.playpause() end)
 
 function openApp(name)
+    local logger = hs.logger.new("capslock", 'verbose')
+    logger.d()
+    logger.d('Open App:')
+    logger.d(name)
+
     local app = hs.application.get(name)
     if app then
         if app:isFrontmost() then
