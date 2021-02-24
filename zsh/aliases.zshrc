@@ -12,7 +12,7 @@ alias -- -="cd -"
 alias mkdir='mkdir -p'
 
 #alias d=~d
-alias go_to_downloads=d
+#alias go_to_downloads=d
 alias g="git"
 #alias n=cd ~n
 #alias ct=cd ~ct
@@ -41,9 +41,8 @@ mas upgrade;
 brew cleanup; 
 brew doctor; 
 omz update;
-g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 tldr --update;'
-alias upgrade_all=up
+#g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 alias re=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 alias reload=re
