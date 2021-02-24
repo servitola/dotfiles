@@ -8,38 +8,46 @@ obj.GRID = {
 
 obj.right_side_app_titles = {'Telegram'}
 
+function obj:moveWindow(x, y, window)
+    if window == null then
+        return
+    end
+
+    local screen = window:screen()
+
+    cell = hs.grid.get(window, screen)
+    cell.x = x
+    cell.y = y
+end
+
 function obj:setWindow(x, y, height, width, window)
     if window == null then
-        
         window = hs.window.frontmostWindow()
     end
 
-    local screen = window:screen()
+    local window_screen = window:screen()
+    local cres = window_screen:fullFrame()
 
-    cell = hs.grid.get(window, screen)
-    cell.x = x
-    cell.y = y
-    cell.h = height
-    cell.w = width
+    local stepw = cres.w/6
+    local steph = cres.h/7
+    
+    local frame = window:frame()
 
-    hs.grid.set(window, cell, screen)
-end
-
-function obj:moveWindow(x, y, window)
-    if window == null then
-        return 
+    if height == null then
+        height = frame.h / steph
     end
 
-    local screen = window:screen()
+    if width == null then
+        width = frame.w / stepw
+    end
 
-    cell = hs.grid.get(window, screen)
-    cell.x = x
-    cell.y = y
+    window:setFrame({
+        x = x * stepw,
+        y = y * steph,
+        w = width * stepw,
+        h = height * steph
+    })
 
-    --hs.grid.set(window, cell, screen)
-    --window:focus()
-    --window:moveOneScreenNorth()
-    --hs.gridhs.window:move([, ensureInScreenBounds][, duration]) --> hs.window object
 end
 
 function obj:bindWindowsHotkeys(mapping)
@@ -112,6 +120,7 @@ function obj:set_all_windows_positions()
         elseif app_title == "Yandex" and window_id ~= yandex_main_window_id then
             self:setWindow(4, 5, 2, 2, window)
         elseif app_title == "qemu-system-x86_64" then
+            --self:setWindow(4, 0, null, null, window)
             --self:moveWindow(4, 0, window)
         else
             cell = hs.grid.get(window, window:screen())
@@ -119,7 +128,7 @@ function obj:set_all_windows_positions()
                 local active_window = hs.window.frontmostWindow()
                 if active_window == window then
                     self:setWindow(0, 0, 7, 4, window)
-                end    
+                end
             else
                 self:setWindow(0, 0, 7, 4, window)
             end
@@ -127,7 +136,7 @@ function obj:set_all_windows_positions()
     end
 end
 
-function logWindow(window)    
+function logWindow(window)
     local logger = hs.logger.new("window", 'verbose')
     local app = window:application()
     logger.d(" ")
