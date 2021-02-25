@@ -52,10 +52,10 @@ for _, v in pairs(hspoon_list) do
 end
 
 spoon.Windows:bindWindowsHotkeys({
-    up = {{"left_control", "left_option"}, "up"},
-    right = {{"left_control", "left_option"}, "right"},
-    down = {{"left_control", "left_option"}, "down"},
-    left = {{"left_control", "left_option"}, "left"}
+    up = {ctrlAndAlt, "up"},
+    right = {ctrlAndAlt, "right"},
+    down = {ctrlAndAlt, "down"},
+    left = {ctrlAndAlt, "left"}
 })
 
 spoon.HotKeys:setup(app_list)

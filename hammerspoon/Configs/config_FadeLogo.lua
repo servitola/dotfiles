@@ -1,4 +1,4 @@
-    spoon.SpoonInstall:andUse("FadeLogo", {
+spoon.SpoonInstall:andUse("FadeLogo", {
     config = {
         default_run = 1.0
     },
