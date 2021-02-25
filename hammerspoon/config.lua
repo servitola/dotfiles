@@ -102,6 +102,9 @@ apps_list = {
         {supported=true, key="n", specific_function="cmd.n"},
         {supported=true, key="d", specific_function="cmd.d"},
         {supported=true, key="o", specific_function="cmd.o"}
+    }},
+    { modifier="shift_shift", search={
+        { app_name="Telegram"}
     }}
  }
 
