@@ -20,30 +20,9 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
 })
 
 local wm = hs.webview.windowMasks
-spoon.SpoonInstall:andUse("PopupTranslateSelection", {
-    config = {
-        popup_style = wm.utility | wm.HUD | wm.titled | wm.closable | wm.resizable
-    },
-    hotkeys = {
-        translate_to_ru = {hyper, "="}
-        --    translate_to_de = { hyper, "d" },
-        --    translate_to_es = { hyper, "s" },
-        --    translate_de_en = { shift_hyper, "e" },
-        --    translate_en_de = { shift_hyper, "d" },
-    }
-})
 
+require "Configs/PopupTranslateSelection";
 require "Configs/config_DeepLTranslate";
-
-spoon.SpoonInstall:andUse("DeepLTranslate", {
-    disable = true,
-    config = {
-        popup_style = wm.utility | wm.HUD | wm.titled | wm.closable | wm.resizable
-    },
-    hotkeys = {
-        translate = {hyper, "i"}
-    }
-})
 
 -- ModalMgr Spoon must be loaded explicitly, because this repository heavily relies upon it.
 hs.loadSpoon("ModalMgr")
@@ -54,9 +33,7 @@ for _, v in pairs(hspoon_list) do
 end
 
 local logger = hs.logger.new("window", 'verbose')
-    logger.d(" ")
-    logger.d("INITING: ")
-    
+logger.d(" ")
 
 for _, row in pairs(apps_list) do
     modifier = hyper
@@ -70,32 +47,17 @@ for _, row in pairs(apps_list) do
             spoon.HotKeys:bindOpenApp(modifier, chord_row.key, chord_row.app_name)
         elseif chord_row.specific_function then
             if chord_row.specific_function == "window.left" then
-                logger.d("left")
-                logger.d(modifier)
-                logger.d(chord_row.key)
                 spoon.Windows:bindWindowLeft(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.right" then
-                logger.d("right")
-                logger.d(modifier)
-                logger.d(chord_row.key)
                 spoon.Windows:bindWindowRight(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.fullscreen" then
-                logger.d("full")
-                logger.d(modifier)
-                logger.d(chord_row.key)
                 spoon.Windows:bindWindowFullScreen(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.set_all_to_default" then
-                logger.d("def")
-                logger.d(modifier)
-                logger.d(chord_row.key)
                 spoon.Windows:bindAllWindowsToDefault(modifier, chord_row.key)
             end
         end
     end
 end
-
---spoon.HotKeys:setup(hyper, apps_list.caps_lock)
---spoon.HotKeys:setup(hyperAndShift, apps_list.caps_lock_shift)
 
 spoon.ModalMgr.supervisor:bind(hswhints_keys[1], hswhints_keys[2], 'Show Window Hints', function()
     spoon.ModalMgr:deactivateAll()
