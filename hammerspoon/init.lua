@@ -1,16 +1,104 @@
 require "constants";
 require "config";
 
-hs.hotkey.alertDuration = 0
-hs.hints.showTitleThresh = 0
-hs.window.animationDuration = 0
+hs.loadSpoon("SpoonInstall")
 
-require 'capslock';
+spoon.SpoonInstall.repos.zzspoons = {
+  url = "https://github.com/zzamboni/zzSpoons",
+  desc = "zzamboni's spoon repository",
+}
 
-hsreload_keys = hsreload_keys or {{"cmd", "shift", "ctrl"}, "R"}
-if string.len(hsreload_keys[2]) > 0 then
-    hs.hotkey.bind(hsreload_keys[1], hsreload_keys[2], "Reload Configuration", function() hs.reload() end)
-end
+spoon.SpoonInstall.use_syncinstall = true
+Install=spoon.SpoonInstall
+
+Install:andUse("URLDispatcher",
+               {
+                 config = {
+                   url_patterns = {
+                     { ".*spotwa.*",     Safari },
+                     { ".*ctrader.*",    Safari },
+                   },
+                   url_redir_decoders = {
+--                     { "Fix macOS double-encoding weirdness",
+--                       "%%25(%x%x)",   -- This is %xx encoded, the % gets converted to %25
+--                       "%%%1", true },
+                     { "Fix broken Preview anchor URLs",
+                       "%%23", "#", false, "Preview" },
+                   },
+                   default_handler = Yandex
+                 },
+                 start = true,
+                 -- loglevel = 'debug'
+               }
+)
+
+Install:andUse("HeadphoneAutoPause",
+               {
+                 start = true
+               }
+)
+
+Install:andUse("WiFiTransitions",
+               {
+                 config = {
+                   actions = {
+                     -- { -- Test action just to see the SSID transitions
+                     --    fn = function(_, _, prev_ssid, new_ssid)
+                     --       hs.notify.show("SSID change",
+                     --          string.format("From '%s' to '%s'",
+                     --          prev_ssid, new_ssid), "")
+                     --    end
+                     -- },
+                     { -- Enable proxy config when joining corp network
+                       to = "corpnet01",
+                       fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
+                             hs.fnutils.partial(reconfigAdiumProxy, true),
+                             hs.fnutils.partial(forceKillProcess, "Dropbox"),
+                             hs.fnutils.partial(stopApp, "Evernote"),
+                       }
+                     },
+                     { -- Disable proxy config when leaving corp network
+                       from = "corpnet01",
+                       fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
+                             hs.fnutils.partial(reconfigAdiumProxy, false),
+                             hs.fnutils.partial(startApp, "Dropbox"),
+                       }
+                     },
+                   }
+                 },
+                 start = true,
+               }
+)
+
+local wm=hs.webview.windowMasks
+Install:andUse("PopupTranslateSelection",
+               {
+                 config = {
+                   popup_style = wm.utility|wm.HUD|wm.titled|
+                     wm.closable|wm.resizable,
+                 },
+                 hotkeys = {
+                   translate_to_en = { hyper, "m" },
+                --    translate_to_de = { hyper, "d" },
+                --    translate_to_es = { hyper, "s" },
+                --    translate_de_en = { shift_hyper, "e" },
+                --    translate_en_de = { shift_hyper, "d" },
+                 }
+               }
+)
+
+Install:andUse("DeepLTranslate",
+               {
+                 disable = true,
+                 config = {
+                   popup_style = wm.utility|wm.HUD|wm.titled|
+                     wm.closable|wm.resizable,
+                 },
+                 hotkeys = {
+                   translate = { hyper, "i" },
+                 }
+               }
+)
 
 -- ModalMgr Spoon must be loaded explicitly, because this repository heavily relies upon it.
 hs.loadSpoon("ModalMgr")
@@ -27,6 +115,8 @@ spoon.Windows:bindWindowsHotkeys({
     left = {{"left_control", "left_option"}, "left"}
 })
 
+spoon.HotKeys:setup(app_list)
+
 spoon.ModalMgr.supervisor:bind(hswhints_keys[1], hswhints_keys[2], 'Show Window Hints', function()
     spoon.ModalMgr:deactivateAll()
     hs.hints.windowHints()
@@ -39,7 +129,7 @@ local cmodal = spoon.ModalMgr.modal_list["appM"]
 cmodal:bind('', 'escape', 'Deactivate appM', function() spoon.ModalMgr:deactivate({"appM"}) end)
 cmodal:bind('', 'Q', 'Deactivate appM', function() spoon.ModalMgr:deactivate({"appM"}) end)
 cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
-for _, v in ipairs(hsapp_list) do
+for _, v in ipairs(app_list) do
     if v.id then
         local located_name = hs.application.nameForBundleID(v.id)
         if located_name then
@@ -175,29 +265,12 @@ if spoon.CountDown then
 end
 
 ----------------------------------------------------------------------------------------------------
--- cheatsheetM modal environment (Because KSheet Spoon is NOT loaded, cheatsheetM will NOT be activated)
-if spoon.KSheet then
-    spoon.ModalMgr:new("cheatsheetM")
-    local cmodal = spoon.ModalMgr.modal_list["cheatsheetM"]
-    cmodal:bind('', 'escape', 'Deactivate cheatsheetM', function()
-        spoon.KSheet:hide()
-        spoon.ModalMgr:deactivate({"cheatsheetM"})
-    end)
-    cmodal:bind('', 'Q', 'Deactivate cheatsheetM', function()
-        spoon.KSheet:hide()
-        spoon.ModalMgr:deactivate({"cheatsheetM"})
-    end)
-
-    -- Register cheatsheetM with modal supervisor
-    hscheats_keys = hscheats_keys or {"alt", "l"}
-    if string.len(hscheats_keys[2]) > 0 then
-        spoon.ModalMgr.supervisor:bind(hscheats_keys[1], hscheats_keys[2], "Enter cheatsheetM Environment", function()
-            spoon.KSheet:show()
-            spoon.ModalMgr:deactivateAll()
-            spoon.ModalMgr:activate({"cheatsheetM"})
-        end)
-    end
-end
+-- cheatsheetM modal environment
+-- Install:andUse("KSheet", {
+--     hotkeys = {
+--       toggle = { hyper, "'" }
+--     }
+-- })
 
 ----------------------------------------------------------------------------------------------------
 -- Register AClock
@@ -225,13 +298,13 @@ if string.len(hstype_keys[2]) > 0 then
     end)
 end
 
-----------------------------------------------------------------------------------------------------
--- Register Hammerspoon console
-hsconsole_keys = hsconsole_keys or {"alt", "Z"}
-if string.len(hsconsole_keys[2]) > 0 then
-    spoon.ModalMgr.supervisor:bind(hsconsole_keys[1], hsconsole_keys[2], "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
-end
-
-----------------------------------------------------------------------------------------------------
--- Finally we initialize ModalMgr supervisor
 spoon.ModalMgr.supervisor:enter()
+
+Install:andUse("FadeLogo",
+    {
+        config = {
+        default_run = 1.0,
+        },
+        start = true
+    }
+)
