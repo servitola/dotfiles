@@ -19,6 +19,8 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
     start = true
 })
 
+spoon.SpoonInstall:andUse("KSheet")
+
 local wm = hs.webview.windowMasks
 
 require "Configs/PopupTranslateSelection";
@@ -31,6 +33,8 @@ hs.loadSpoon("ModalMgr")
 for _, v in pairs(hspoon_list) do
     hs.loadSpoon(v)
 end
+
+ksheet = false
 
 local logger = hs.logger.new("window", 'verbose')
 logger.d(" ")
@@ -54,6 +58,20 @@ for _, row in pairs(apps_list) do
                 spoon.Windows:bindWindowFullScreen(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.set_all_to_default" then
                 spoon.Windows:bindAllWindowsToDefault(modifier, chord_row.key)
+            elseif chord_row.specific_function == "info.show_shortcuts" then                
+                hs.hotkey.bind(modifier, chord_row.key, function()
+                    if ksheet then
+                        spoon.KSheet:hide()
+                    else
+                        spoon.KSheet:show()
+                    end
+                        
+                    ksheet = not ksheet
+                end)
+                hs.hotkey.bind('', 'escape', function()                    
+                    spoon.KSheet:hide()                        
+                    ksheet = false
+                end)
             end
         end
     end
@@ -220,11 +238,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 -- cheatsheetM modal environment
--- spoon.SpoonInstall:andUse("KSheet", {
---     hotkeys = {
---       toggle = { hyper, "'" }
---     }
--- })
+
 
 ----------------------------------------------------------------------------------------------------
 -- Register AClock
