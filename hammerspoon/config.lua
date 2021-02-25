@@ -89,7 +89,8 @@ apps_list = {
         {supported=true, key="left", specific_function="window.left"},
         {supported=true, key="right", specific_function="window.right"},
         {supported=true, key="up", specific_function="window.fullscreen"},
-        {supported=true, key="down", specific_function="window.set_all_to_default"}
+        {supported=true, key="down", specific_function="window.set_all_to_default"},
+        {supported=true, key="i", specific_function="info.show_shortcuts"}
     }},
     { modifier="cmd_win", chords={
         {supported=true, key="q", specific_function="cmd.q", taps="2", hint="close app on double cmd+q"},
@@ -183,7 +184,7 @@ apps_list2 = {
     {key="t", caps_lock={ app_name="Telegram"}},
     {key="y", caps_lock={ app_name="Yandex"}, alt="ѣ"},
     {key="u", caps_lock={ app_name="Folx"}, alt="ѵ"},
-    {key="i", caps_lock={ inner_function="Get info"}},
+    {key="i", caps_lock={ inner_function="Get info"}, ctrl_alt={}},
     {key="o", caps_lock="up", alt="ѳ"},
     {key="p", caps_lock={ app_name="Music"}},
     {key="[", caps_lock="next_track"},
