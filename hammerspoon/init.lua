@@ -1,104 +1,47 @@
 require "constants";
 require "config";
+require "config_SpoonInstall";
+require "config_UrlDispatcher";
+require "config_HeadphoneAutoPause";
 
-hs.loadSpoon("SpoonInstall")
+spoon.SpoonInstall:andUse("WiFiTransitions", {
+    config = {
+        actions = {{ -- Enable proxy config when joining corp network
+            to = "corpnet01",
+            fn = {hs.fnutils.partial(reconfigSpotifyProxy, true), hs.fnutils.partial(reconfigAdiumProxy, true),
+                  hs.fnutils.partial(forceKillProcess, "Dropbox"), hs.fnutils.partial(stopApp, "Evernote")}
+        }, { -- Disable proxy config when leaving corp network
+            from = "corpnet01",
+            fn = {hs.fnutils.partial(reconfigSpotifyProxy, false), hs.fnutils.partial(reconfigAdiumProxy, false),
+                  hs.fnutils.partial(startApp, "Dropbox")}
+        }}
+    },
+    start = true
+})
 
-spoon.SpoonInstall.repos.zzspoons = {
-  url = "https://github.com/zzamboni/zzSpoons",
-  desc = "zzamboni's spoon repository",
-}
+local wm = hs.webview.windowMasks
+spoon.SpoonInstall:andUse("PopupTranslateSelection", {
+    config = {
+        popup_style = wm.utility | wm.HUD | wm.titled | wm.closable | wm.resizable
+    },
+    hotkeys = {
+        translate_to_en = {hyper, "="}
+        --    translate_to_de = { hyper, "d" },
+        --    translate_to_es = { hyper, "s" },
+        --    translate_de_en = { shift_hyper, "e" },
+        --    translate_en_de = { shift_hyper, "d" },
+    }
+})
 
-spoon.SpoonInstall.use_syncinstall = true
-Install=spoon.SpoonInstall
-
-Install:andUse("URLDispatcher",
-               {
-                 config = {
-                   url_patterns = {
-                     { ".*spotwa.*",     Safari },
-                     { ".*ctrader.*",    Safari },
-                   },
-                   url_redir_decoders = {
---                     { "Fix macOS double-encoding weirdness",
---                       "%%25(%x%x)",   -- This is %xx encoded, the % gets converted to %25
---                       "%%%1", true },
-                     { "Fix broken Preview anchor URLs",
-                       "%%23", "#", false, "Preview" },
-                   },
-                   default_handler = Yandex
-                 },
-                 start = true,
-                 -- loglevel = 'debug'
-               }
-)
-
-Install:andUse("HeadphoneAutoPause",
-               {
-                 start = true
-               }
-)
-
-Install:andUse("WiFiTransitions",
-               {
-                 config = {
-                   actions = {
-                     -- { -- Test action just to see the SSID transitions
-                     --    fn = function(_, _, prev_ssid, new_ssid)
-                     --       hs.notify.show("SSID change",
-                     --          string.format("From '%s' to '%s'",
-                     --          prev_ssid, new_ssid), "")
-                     --    end
-                     -- },
-                     { -- Enable proxy config when joining corp network
-                       to = "corpnet01",
-                       fn = {hs.fnutils.partial(reconfigSpotifyProxy, true),
-                             hs.fnutils.partial(reconfigAdiumProxy, true),
-                             hs.fnutils.partial(forceKillProcess, "Dropbox"),
-                             hs.fnutils.partial(stopApp, "Evernote"),
-                       }
-                     },
-                     { -- Disable proxy config when leaving corp network
-                       from = "corpnet01",
-                       fn = {hs.fnutils.partial(reconfigSpotifyProxy, false),
-                             hs.fnutils.partial(reconfigAdiumProxy, false),
-                             hs.fnutils.partial(startApp, "Dropbox"),
-                       }
-                     },
-                   }
-                 },
-                 start = true,
-               }
-)
-
-local wm=hs.webview.windowMasks
-Install:andUse("PopupTranslateSelection",
-               {
-                 config = {
-                   popup_style = wm.utility|wm.HUD|wm.titled|
-                     wm.closable|wm.resizable,
-                 },
-                 hotkeys = {
-                   translate_to_en = { hyper, "m" },
-                --    translate_to_de = { hyper, "d" },
-                --    translate_to_es = { hyper, "s" },
-                --    translate_de_en = { shift_hyper, "e" },
-                --    translate_en_de = { shift_hyper, "d" },
-                 }
-               }
-)
-
-Install:andUse("DeepLTranslate",
-               {
-                 disable = true,
-                 config = {
-                   popup_style = wm.utility|wm.HUD|wm.titled|
-                     wm.closable|wm.resizable,
-                 },
-                 hotkeys = {
-                   translate = { hyper, "i" },
-                 }
-               }
-)
+spoon.SpoonInstall:andUse("DeepLTranslate", {
+    disable = true,
+    config = {
+        popup_style = wm.utility | wm.HUD | wm.titled | wm.closable | wm.resizable
+    },
+    hotkeys = {
+        translate = {hyper, "i"}
+    }
+})
 
 -- ModalMgr Spoon must be loaded explicitly, because this repository heavily relies upon it.
 hs.loadSpoon("ModalMgr")
@@ -126,9 +69,15 @@ end)
 -- appM modal environment
 spoon.ModalMgr:new("appM")
 local cmodal = spoon.ModalMgr.modal_list["appM"]
-cmodal:bind('', 'escape', 'Deactivate appM', function() spoon.ModalMgr:deactivate({"appM"}) end)
-cmodal:bind('', 'Q', 'Deactivate appM', function() spoon.ModalMgr:deactivate({"appM"}) end)
-cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
+cmodal:bind('', 'escape', 'Deactivate appM', function()
+    spoon.ModalMgr:deactivate({"appM"})
+end)
+cmodal:bind('', 'Q', 'Deactivate appM', function()
+    spoon.ModalMgr:deactivate({"appM"})
+end)
+cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
+    spoon.ModalMgr:toggleCheatsheet()
+end)
 for _, v in ipairs(app_list) do
     if v.id then
         local located_name = hs.application.nameForBundleID(v.id)
@@ -231,9 +180,15 @@ end
 if spoon.CountDown then
     spoon.ModalMgr:new("countdownM")
     local cmodal = spoon.ModalMgr.modal_list["countdownM"]
-    cmodal:bind('', 'escape', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
-    cmodal:bind('', 'Q', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
-    cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
+    cmodal:bind('', 'escape', 'Deactivate countdownM', function()
+        spoon.ModalMgr:deactivate({"countdownM"})
+    end)
+    cmodal:bind('', 'Q', 'Deactivate countdownM', function()
+        spoon.ModalMgr:deactivate({"countdownM"})
+    end)
+    cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
+        spoon.ModalMgr:toggleCheatsheet()
+    end)
     cmodal:bind('', '0', '5 Minutes Countdown', function()
         spoon.CountDown:startFor(5)
         spoon.ModalMgr:deactivate({"countdownM"})
@@ -266,7 +221,7 @@ end
 
 ----------------------------------------------------------------------------------------------------
 -- cheatsheetM modal environment
--- Install:andUse("KSheet", {
+-- spoon.SpoonInstall:andUse("KSheet", {
 --     hotkeys = {
 --       toggle = { hyper, "'" }
 --     }
@@ -277,7 +232,9 @@ end
 if spoon.AClock then
     hsaclock_keys = hsaclock_keys or {"alt", "T"}
     if string.len(hsaclock_keys[2]) > 0 then
-        spoon.ModalMgr.supervisor:bind(hsaclock_keys[1], hsaclock_keys[2], "Toggle Floating Clock", function() spoon.AClock:toggleShow() end)
+        spoon.ModalMgr.supervisor:bind(hsaclock_keys[1], hsaclock_keys[2], "Toggle Floating Clock", function()
+            spoon.AClock:toggleShow()
+        end)
     end
 end
 
@@ -290,21 +247,19 @@ if string.len(hstype_keys[2]) > 0 then
         local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
         if #safari_running > 0 then
             local stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
-            if stat then hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")") end
+            if stat then
+                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
+            end
         elseif #chrome_running > 0 then
-            local stat, data = hs.applescript('tell application "Google Chrome" to get {URL, title} of active tab of window 1')
-            if stat then hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")") end
+            local stat, data = hs.applescript(
+                                   'tell application "Google Chrome" to get {URL, title} of active tab of window 1')
+            if stat then
+                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
+            end
         end
     end)
 end
 
 spoon.ModalMgr.supervisor:enter()
 
-Install:andUse("FadeLogo",
-    {
-        config = {
-        default_run = 1.0,
-        },
-        start = true
-    }
-)
+require "config_FadeLogo";
