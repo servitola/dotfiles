@@ -24,16 +24,6 @@ hspoon_list = {
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
 -- app_list = {
---     {key = 'r', name = 'Rider'},
---     {key = 't', name = 'Telegram'},
---     {key = 'y', name = 'Yandex'},
---     {key = 'u', name = 'Folx'},
---     {key = 'p', name = 'Music'},
---     {key = 'g', name = 'Fork'},
---     {key = 'h', name = 'Finder'},
---     {key = 'j', name = 'Safari'},
---     {key = 'v', name = 'iTerm'},
---     {key = 'n', name = 'Visual Studio Code'}
 --     -- {key = 'b', id = 'com.apple.ActivityMonitor'},
 --     -- {key = '.', id = 'com.apple.systempreferences'},
 -- }
@@ -92,7 +82,7 @@ apps_list = {
         {supported=false, key="k", map="mouse_left" },
         {supported=false, key="l", map="mouse_down" },
         {supported=false, key=";", map="mouse_right" }
-    }}, 
+    }},
     { modifier="ctrl_alt", chords={
         {supported=true, key="left", specific_function="window.left"},
         {supported=true, key="right", specific_function="window.right"},
