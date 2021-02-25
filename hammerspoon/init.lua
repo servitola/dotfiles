@@ -51,14 +51,49 @@ for _, v in pairs(hspoon_list) do
     hs.loadSpoon(v)
 end
 
-spoon.Windows:bindWindowsHotkeys({
-    up = {ctrlAndAlt, "up"},
-    right = {ctrlAndAlt, "right"},
-    down = {ctrlAndAlt, "down"},
-    left = {ctrlAndAlt, "left"}
-})
+local logger = hs.logger.new("window", 'verbose')
+    logger.d(" ")
+    logger.d("INITING: ")
+    
 
-spoon.HotKeys:setup(app_list)
+for _, row in pairs(apps_list) do
+    modifier = hyper
+
+    if row.modifier == "ctrl_alt" then
+        modifier = ctrlAndAlt
+    end
+
+    for _, chord_row in pairs(row.chords) do
+        if chord_row.app_name then
+            spoon.HotKeys:bindOpenApp(modifier, chord_row.key, chord_row.app_name)
+        elseif chord_row.specific_function then
+            if chord_row.specific_function == "window.left" then
+                logger.d("left")
+                logger.d(modifier)
+                logger.d(chord_row.key)
+                spoon.Windows:bindWindowLeft(modifier, chord_row.key)
+            elseif chord_row.specific_function == "window.right" then
+                logger.d("right")
+                logger.d(modifier)
+                logger.d(chord_row.key)
+                spoon.Windows:bindWindowRight(modifier, chord_row.key)
+            elseif chord_row.specific_function == "window.fullscreen" then
+                logger.d("full")
+                logger.d(modifier)
+                logger.d(chord_row.key)
+                spoon.Windows:bindWindowFullScreen(modifier, chord_row.key)
+            elseif chord_row.specific_function == "window.set_all_to_default" then
+                logger.d("def")
+                logger.d(modifier)
+                logger.d(chord_row.key)
+                spoon.Windows:bindAllWindowsToDefault(modifier, chord_row.key)
+            end
+        end
+    end
+end
+
+--spoon.HotKeys:setup(hyper, apps_list.caps_lock)
+--spoon.HotKeys:setup(hyperAndShift, apps_list.caps_lock_shift)
 
 spoon.ModalMgr.supervisor:bind(hswhints_keys[1], hswhints_keys[2], 'Show Window Hints', function()
     spoon.ModalMgr:deactivateAll()
@@ -78,32 +113,32 @@ end)
 cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
     spoon.ModalMgr:toggleCheatsheet()
 end)
-for _, v in ipairs(app_list) do
-    if v.id then
-        local located_name = hs.application.nameForBundleID(v.id)
-        if located_name then
-            cmodal:bind('', v.key, located_name, function()
-                hs.application.launchOrFocusByBundleID(v.id)
-                spoon.ModalMgr:deactivate({"appM"})
-            end)
-        end
-    elseif v.name then
-        cmodal:bind('', v.key, v.name, function()
-            hs.application.launchOrFocus(v.name)
-            spoon.ModalMgr:deactivate({"appM"})
-        end)
-    end
-end
+-- for _, shortcut_info in ipairs(apps_list.caps_lock) do
+--     if shortcut_info.id then
+--         local located_name = hs.application.nameForBundleID(v.id)
+--         if located_name then
+--             cmodal:bind('', v.key, located_name, function()
+--                 hs.application.launchOrFocusByBundleID(v.id)
+--                 spoon.ModalMgr:deactivate({"appM"})
+--             end)
+--         end
+--     elseif shortcut_info.app_name then
+--         cmodal:bind('', shortcut_info.key, shortcut_info.app_name, function()
+--             hs.application.launchOrFocus(v.app_name)
+--             spoon.ModalMgr:deactivate({"appM"})
+--         end)
+--     end
+-- end
 
 -- Then we register some keybindings with modal supervisor
-hsappM_keys = hsappM_keys or {"alt", "A"}
-if string.len(hsappM_keys[2]) > 0 then
-    spoon.ModalMgr.supervisor:bind(hsappM_keys[1], hsappM_keys[2], "Enter AppM Environment", function()
-        spoon.ModalMgr:deactivateAll()
-        -- Show the keybindings cheatsheet once appM is activated
-        spoon.ModalMgr:activate({"appM"}, "#FFBD2E", true)
-    end)
-end
+-- hsappM_keys = hsappM_keys or {"alt", "A"}
+-- if string.len(hsappM_keys[2]) > 0 then
+--     spoon.ModalMgr.supervisor:bind(hsappM_keys[1], hsappM_keys[2], "Enter AppM Environment", function()
+--         spoon.ModalMgr:deactivateAll()
+--         -- Show the keybindings cheatsheet once appM is activated
+--         spoon.ModalMgr:activate({"appM"}, "#FFBD2E", true)
+--     end)
+-- end
 
 ----------------------------------------------------------------------------------------------------
 -- clipshowM modal environment

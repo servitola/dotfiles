@@ -50,23 +50,27 @@ function obj:setWindow(x, y, height, width, window)
 
 end
 
-function obj:bindWindowsHotkeys(mapping)
-    hs.inspect(mapping)
-
-    hs.hotkey.bind(mapping.down[1], mapping.down[2], function()
-        self:set_all_windows_positions()
-    end)
-
-    hs.hotkey.bind(mapping.right[1], mapping.right[2], function()
-        self:setWindow(4, 0, 5, 2)
-    end)
-
-    hs.hotkey.bind(mapping.left[1], mapping.left[2], function()
+function obj:bindWindowLeft(modifier, key)
+    hs.hotkey.bind(modifier, key, function()
         self:setWindow(0, 0, 7, 4)
     end)
+end
 
-    hs.hotkey.bind(mapping.up[1], mapping.up[2], function()
+function obj:bindWindowRight(modifier, key)
+    hs.hotkey.bind(modifier, key, function()
+        self:setWindow(4, 0, 5, 2)
+    end)
+end
+
+function obj:bindWindowFullScreen(modifier, key)
+    hs.hotkey.bind(modifier, key, function()
         self:setWindow(0, 0, 7, 6)
+    end)
+end
+
+function obj:bindAllWindowsToDefault(modifier, key)
+    hs.hotkey.bind(modifier, key, function()
+        self:set_all_windows_positions()
     end)
 end
 

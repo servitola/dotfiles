@@ -25,32 +25,28 @@ function obj:openApp(name)
     end
 end
 
-function obj:setup(app_list)
-     for _, app in ipairs(app_list) do
-        hs.hotkey.bind(hyper, app.key, function()
-            obj:openApp(app.name)
-        end)
+function obj:setup(modifier, app_list)
+     for _, shortcut_info in ipairs(app_list) do
+        if shortcut_info.app_name then
+            hs.hotkey.bind(modifier, shortcut_info.key, function()
+                obj:openApp(shortcut_info.app_name)
+            end)
+        end
      end
 end
 
+function obj:bindOpenApp(modifier, key, app_name)
+    hs.hotkey.bind(modifier, key, function()
+        obj:openApp(app_name)
+    end)
+end
+
 function obj:init()
-    hs.hotkey.bind(hyper, "-", function()
-        obj:openApp("Team Viewer")
-    end)
-    hs.hotkey.bind(ctrlAndAlt, "r", function()
-        obj:openApp("Android Studio")
-    end)
     hs.hotkey.bind(hyper, '[', function()
         hs.itunes.previous()
     end)
     hs.hotkey.bind(hyper, ']', function()
         hs.itunes.next()
-    end)
-    hs.hotkey.bind(hyper, "b", function()
-        obj:openApp("Ableton")
-    end)
-    hs.hotkey.bind(hyper, "m", function()
-        obj:openApp("YouTube")
     end)
     hs.hotkey.bind(hyper, 'space', function()
         hs.itunes.playpause()
