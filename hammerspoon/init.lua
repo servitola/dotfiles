@@ -1,8 +1,8 @@
-require "constants";
+require "Configs/constants";
 require "config";
-require "config_SpoonInstall";
-require "config_UrlDispatcher";
-require "config_HeadphoneAutoPause";
+require "Configs/config_SpoonInstall";
+require "Configs/config_UrlDispatcher";
+require "Configs/config_HeadphoneAutoPause";
 
 spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
@@ -262,4 +262,4 @@ end
 
 spoon.ModalMgr.supervisor:enter()
 
-require "config_FadeLogo";
+require "Configs/config_FadeLogo";
