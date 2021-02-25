@@ -19,27 +19,27 @@ hspoon_list = {
     --"KSheet",
     --"SpeedMenu",
     "TimeFlow",
-    --"UnsplashZ",
+    "UnsplashZ",
 }   
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
-app_list = {
-    {key = 'r', name = 'Rider'},
-    {key = 't', name = 'Telegram'},
-    {key = 'y', name = 'Yandex'},
-    {key = 'u', name = 'Folx'},
-    {key = 'p', name = 'Music'},
-    {key = 'g', name = 'Fork'},
-    {key = 'h', name = 'Finder'},
-    {key = 'j', name = 'Safari'},
-    {key = 'v', name = 'iTerm'},
-    {key = 'n', name = 'Visual Studio Code'}
-    -- {key = 'b', id = 'com.apple.ActivityMonitor'},
-    -- {key = '.', id = 'com.apple.systempreferences'},
-}
+-- app_list = {
+--     {key = 'r', name = 'Rider'},
+--     {key = 't', name = 'Telegram'},
+--     {key = 'y', name = 'Yandex'},
+--     {key = 'u', name = 'Folx'},
+--     {key = 'p', name = 'Music'},
+--     {key = 'g', name = 'Fork'},
+--     {key = 'h', name = 'Finder'},
+--     {key = 'j', name = 'Safari'},
+--     {key = 'v', name = 'iTerm'},
+--     {key = 'n', name = 'Visual Studio Code'}
+--     -- {key = 'b', id = 'com.apple.ActivityMonitor'},
+--     -- {key = '.', id = 'com.apple.systempreferences'},
+-- }
 
-app_list2 = {
-    caps_lock={
+apps_list = {
+    { modifier="caps_lock", chords={
         {supported=true, key="1", map="F1" },
         {supported=true, key="2", map="F2" },
         {supported=true, key="3", map="F3" },
@@ -50,7 +50,7 @@ app_list2 = {
         {supported=true, key="8", map="F8" },
         {supported=true, key="9", map="F9" },
         {supported=true, key="0", map="F10" },
-        {supported=false, key="-", app_name="TeamViewer" },
+        {supported=true, key="-", app_name="TeamViewer" },
         {supported=true, key="q", map="page_up" },
         {supported=true, key="w", map="up_arrow" },
         {supported=true, key="e", map="page_down" },  
@@ -65,7 +65,7 @@ app_list2 = {
         {supported=true, key="a", map="left_arrow" },
         {supported=true, key="s", map="bottom_arrow"},
         {supported=true, key="d", map="right_arrow" },
-        {supported=true, key="f", app_name="Alfred", app_nameWin="keypirinha", hint="Find"},
+        -- set in app settings {supported=true, key="f", app_name="Alfred", app_nameWin="keypirinha", hint="Find"},
         {supported=true, key="g", app_name="Fork", hint="Git"},
         {supported=true, key="h", app_name="Finder", app_nameWin="File Explorer", hint="Hub" },
         {supported=true, key="j", app_name="Safari", hint="Job" },
@@ -80,26 +80,26 @@ app_list2 = {
         {supported=true, key="n", app_name="Visual Studio Code" },
         {supported=false, key="m", app_name="YouTube", hint="movies"},
         {supported=true, key="space", map="play_track" }
-       },
-    caps_lock_shift={
+    }}, 
+    { modifier="caps_lock_shift", chords={
         {supported=false, key="i", map="mouse_right_button" },
         {supported=false, key="o", map="mouse_up" },
         {supported=false, key="p", map="mouse_left_button" },
-        {supported=false, key="a", app_name="Android Studio" },
-        {supported=false, key="s", app_name="Simulator" },
-        {supported=false, key="d", app_name="Android Emulator", hint="droid" },
-        {supported=false, key="j", app_name="Zoom", hint="Job" },
+        --{supported=false, key="a", app_name="Android Studio" },
+        --{supported=false, key="s", app_name="Simulator" },
+        --{supported=false, key="d", app_name="Android Emulator", hint="droid" },
+        --{supported=false, key="j", app_name="Zoom", hint="Job" },
         {supported=false, key="k", map="mouse_left" },
         {supported=false, key="l", map="mouse_down" },
         {supported=false, key=";", map="mouse_right" }
-    },
-    ctrl_alt={
-        {supported=true, key="left_arrow", specific_function="window.left"},
-        {supported=true, key="right_arrow", specific_function="window.right"},
-        {supported=true, key="up_arrow", specific_function="window.fullscreen"},
-        {supported=true, key="bottom_arrow", specific_function="window.set_all_to_default"}
-    },
-    cmd_win={
+    }}, 
+    { modifier="ctrl_alt", chords={
+        {supported=true, key="left", specific_function="window.left"},
+        {supported=true, key="right", specific_function="window.right"},
+        {supported=true, key="up", specific_function="window.fullscreen"},
+        {supported=true, key="down", specific_function="window.set_all_to_default"}
+    }},
+    { modifier="cmd_win", chords={
         {supported=true, key="q", specific_function="cmd.q", taps="2", hint="close app on double cmd+q"},
         {supported=true, key="w", specific_function="cmd.w"},
         {supported=true, key="t", specific_function="cmd.t"},
@@ -112,7 +112,7 @@ app_list2 = {
         {supported=true, key="n", specific_function="cmd.n"},
         {supported=true, key="d", specific_function="cmd.d"},
         {supported=true, key="o", specific_function="cmd.o"}
-    }
+    }}
  }
 
 
@@ -137,9 +137,6 @@ hsappM_keys = {"alt", "A"}
 -- clipshowM environment keybinding: System clipboard reader
 hsclipsM_keys = {"alt", "C"}
 
--- Toggle the display of aria2 frontend
-hsaria2_keys = {"", ""} --{"alt", "D"}
-
 -- Launch Hammerspoon Search
 hsearch_keys = {"alt", "G"}
 
@@ -147,7 +144,7 @@ hsearch_keys = {"alt", "G"}
 hsman_keys = {"alt", "H"}
 
 -- countdownM environment keybinding: Visual countdown
-hscountdM_keys = {"alt", "I"}
+hscountdM_keys = {"alt", "p"}
 
 -- Lock computer's screen
 hslock_keys = {"alt", "L"}
