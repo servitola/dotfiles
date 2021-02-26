@@ -7,9 +7,10 @@ require "Configs/config_HeadphoneAutoPause";
 spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
         actions = {{ -- Enable proxy config when joining corp network
-            to = "corpnet01",
-            fn = {hs.fnutils.partial(reconfigSpotifyProxy, true), hs.fnutils.partial(reconfigAdiumProxy, true),
-                  hs.fnutils.partial(forceKillProcess, "Dropbox"), hs.fnutils.partial(stopApp, "Evernote")}
+            to = "AlphaNet-aarMgM",
+            fn = {
+                 hs.notify.show("test","test2", "test3")
+            }
         }, { -- Disable proxy config when leaving corp network
             from = "corpnet01",
             fn = {hs.fnutils.partial(reconfigSpotifyProxy, false), hs.fnutils.partial(reconfigAdiumProxy, false),
@@ -67,10 +68,6 @@ for _, row in pairs(apps_list) do
                     end
                         
                     ksheet = not ksheet
-                end)
-                hs.hotkey.bind('', 'escape', function()                    
-                    spoon.KSheet:hide()                        
-                    ksheet = false
                 end)
             end
         end
@@ -232,21 +229,6 @@ if spoon.CountDown then
             spoon.ModalMgr:deactivateAll()
             -- Show the keybindings cheatsheet once countdownM is activated
             spoon.ModalMgr:activate({"countdownM"}, "#FF6347", true)
-        end)
-    end
-end
-
-----------------------------------------------------------------------------------------------------
--- cheatsheetM modal environment
-
-
-----------------------------------------------------------------------------------------------------
--- Register AClock
-if spoon.AClock then
-    hsaclock_keys = hsaclock_keys or {"alt", "T"}
-    if string.len(hsaclock_keys[2]) > 0 then
-        spoon.ModalMgr.supervisor:bind(hsaclock_keys[1], hsaclock_keys[2], "Toggle Floating Clock", function()
-            spoon.AClock:toggleShow()
         end)
     end
 end

@@ -8,3 +8,13 @@ end
 -- if string.len(hsconsole_keys[2]) > 0 then
 --     spoon.ModalMgr.supervisor:bind(hsconsole_keys[1], hsconsole_keys[2], "Toggle Hammerspoon Console", function() hs.toggleConsole() end)
 -- end
+
+-- Register AClock
+if spoon.AClock then
+    hsaclock_keys = hsaclock_keys or {"alt", "T"}
+    if string.len(hsaclock_keys[2]) > 0 then
+        spoon.ModalMgr.supervisor:bind(hsaclock_keys[1], hsaclock_keys[2], "Toggle Floating Clock", function()
+            spoon.AClock:toggleShow()
+        end)
+    end
+end
