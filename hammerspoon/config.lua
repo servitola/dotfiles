@@ -117,17 +117,11 @@ apps_list = {
 -- Modal supervisor keybinding, which can be used to temporarily disable ALL modal environments.
 hsupervisor_keys = {{"cmd", "shift", "ctrl"}, "Q"}
 
--- Reload Hammerspoon configuration
-hsreload_keys = {{"cmd", "shift", "ctrl"}, "R"}
-
 -- Toggle help panel of this configuration.
 hshelp_keys = {{"alt", "shift"}, "/"}
 
 ----------------------------------------------------------------------------------------------------
 -- Those keybindings below could be disabled by setting to {"", ""} or {{}, ""}
-
--- Window hints keybinding: Focuse to any window you want
-hswhints_keys = {"alt", "tab"}
 
 -- appM environment keybinding: Application Launcher
 hsappM_keys = {"alt", "A"}
@@ -143,9 +137,6 @@ hsman_keys = {"alt", "H"}
 
 -- countdownM environment keybinding: Visual countdown
 hscountdM_keys = {"alt", "p"}
-
--- Lock computer's screen
-hslock_keys = {"alt", "L"}
 
 -- resizeM environment keybinding: Windows manipulation
 hsresizeM_keys = {"alt", "R"}

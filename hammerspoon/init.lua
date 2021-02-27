@@ -8,12 +8,10 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
         actions = {{ -- Enable proxy config when joining corp network
             to = "AlphaNet-aarMgM",
-            fn = {
-                
-                --hs.notify.show("test", "test2", "test3")
-                hs.notify.new({title="Hammerspoon launch", informativeText="Boss, at your service"}):send()
-            
-            }
+            fn = {hs.notify.new({
+                title = "Hammerspoon launch",
+                informativeText = "Boss, at your service"
+            }):send()}
         }, { -- Disable proxy config when leaving corp network
             from = "corpnet01",
             fn = {hs.fnutils.partial(reconfigSpotifyProxy, false), hs.fnutils.partial(reconfigAdiumProxy, false),
@@ -30,7 +28,6 @@ local wm = hs.webview.windowMasks
 require "Configs/PopupTranslateSelection";
 require "Configs/config_DeepLTranslate";
 
--- ModalMgr Spoon must be loaded explicitly, because this repository heavily relies upon it.
 hs.loadSpoon("ModalMgr")
 
 -- Load those Spoons
@@ -39,19 +36,6 @@ for _, v in pairs(hspoon_list) do
 end
 
 ksheet = false
-
-function changeVolume(diff)
-    return function()
-        local current = hs.audiodevice.defaultOutputDevice():volume()
-        local new = math.min(100, math.max(0, math.floor(current + diff)))
-        if new > 0 then
-            hs.audiodevice.defaultOutputDevice():setMuted(false)
-        end
-        hs.alert.closeAll(0.0)
-        hs.alert.show("Volume " .. new .. "%", {}, 0.5)
-        hs.audiodevice.defaultOutputDevice():setVolume(new)
-    end
-end
 
 local logger = hs.logger.new("window", 'verbose')
 logger.d(" ")
@@ -97,11 +81,6 @@ for _, row in pairs(apps_list) do
     end
 end
 
-spoon.ModalMgr.supervisor:bind(hswhints_keys[1], hswhints_keys[2], 'Show Window Hints', function()
-    spoon.ModalMgr:deactivateAll()
-    hs.hints.windowHints()
-end)
-
 ----------------------------------------------------------------------------------------------------
 -- appM modal environment
 spoon.ModalMgr:new("appM")
@@ -115,22 +94,6 @@ end)
 cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
     spoon.ModalMgr:toggleCheatsheet()
 end)
--- for _, shortcut_info in ipairs(apps_list.caps_lock) do
---     if shortcut_info.id then
---         local located_name = hs.application.nameForBundleID(v.id)
---         if located_name then
---             cmodal:bind('', v.key, located_name, function()
---                 hs.application.launchOrFocusByBundleID(v.id)
---                 spoon.ModalMgr:deactivate({"appM"})
---             end)
---         end
---     elseif shortcut_info.app_name then
---         cmodal:bind('', shortcut_info.key, shortcut_info.app_name, function()
---             hs.application.launchOrFocus(v.app_name)
---             spoon.ModalMgr:deactivate({"appM"})
---         end)
---     end
--- end
 
 -- Then we register some keybindings with modal supervisor
 -- hsappM_keys = hsappM_keys or {"alt", "A"}
@@ -168,11 +131,6 @@ if spoon.ClipShow then
     end)
     cmodal:bind('', 'S', 'Search with Bing', function()
         spoon.ClipShow:openInBrowserWithRef("https://www.bing.com/search?q=")
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'M', 'Open in MacVim', function()
-        spoon.ClipShow:openWithCommand("/usr/local/bin/mvim")
         spoon.ClipShow:toggleShow()
         spoon.ModalMgr:deactivate({"clipshowM"})
     end)
@@ -257,32 +215,13 @@ if spoon.CountDown then
 end
 
 ----------------------------------------------------------------------------------------------------
--- Register browser tab typist: Type URL of current tab of running browser in markdown format. i.e. [title](link)
-hstype_keys = hstype_keys or {"alt", "V"}
-if string.len(hstype_keys[2]) > 0 then
-    spoon.ModalMgr.supervisor:bind(hstype_keys[1], hstype_keys[2], "Type Browser Link", function()
-        local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
-        local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
-        if #safari_running > 0 then
-            local stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
-            if stat then
-                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
-            end
-        elseif #chrome_running > 0 then
-            local stat, data = hs.applescript(
-                                   'tell application "Google Chrome" to get {URL, title} of active tab of window 1')
-            if stat then
-                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
-            end
-        end
-    end)
-end
+
 
 spoon.ModalMgr.supervisor:enter()
 
 function reloadConfig(paths)
     doReload = false
-    for _,file in pairs(paths) do
+    for _, file in pairs(paths) do
         if file:sub(-4) == ".lua" then
             print("A lua config file changed, reload")
             doReload = true
@@ -299,21 +238,20 @@ end
 configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 configFileWatcher:start()
 
-
 function changeVolume(diff)
     return function()
-      local current = hs.audiodevice.defaultOutputDevice():volume()
-      local new = math.min(100, math.max(0, math.floor(current + diff)))
-      if new > 0 then
-        hs.audiodevice.defaultOutputDevice():setMuted(false)
-      end
-      hs.alert.closeAll(0.0)
-      hs.alert.show("Volume " .. new .. "%", {}, 0.5)
-      hs.audiodevice.defaultOutputDevice():setVolume(new)
+        local current = hs.audiodevice.defaultOutputDevice():volume()
+        local new = math.min(100, math.max(0, math.floor(current + diff)))
+        if new > 0 then
+            hs.audiodevice.defaultOutputDevice():setMuted(false)
+        end
+        hs.alert.closeAll(0.0)
+        hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+        hs.audiodevice.defaultOutputDevice():setVolume(new)
     end
-  end
-  
-  --hs.hotkey.bind({'cmd'}, 'Down', changeVolume(-3))
-  --hs.hotkey.bind({'cmd'}, 'Up', changeVolume(3))
+end
+
+-- hs.hotkey.bind({'cmd'}, 'Down', changeVolume(-3))
+-- hs.hotkey.bind({'cmd'}, 'Up', changeVolume(3))
 
 require "Configs/config_FadeLogo";
