@@ -63,13 +63,13 @@ for _, row in pairs(apps_list) do
             spoon.HotKeys:bindOpenApp(modifier, chord_row.key, chord_row.app_name)
         elseif chord_row.specific_function then
             if chord_row.specific_function == "window.left" then
-                spoon.Windows:bindWindowLeft(modifier, chord_row.key)
+                spoon.Windows:bind_window_left(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.right" then
-                spoon.Windows:bindWindowRight(modifier, chord_row.key)
+                spoon.Windows:bind_window_right(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.fullscreen" then
-                spoon.Windows:bindWindowFullScreen(modifier, chord_row.key)
+                spoon.Windows:bind_window_fullscreen(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.set_all_to_default" then
-                spoon.Windows:bindAllWindowsToDefault(modifier, chord_row.key)
+                spoon.Windows:bind_all_windows_to_default(modifier, chord_row.key)
             elseif chord_row.specific_function == "info.show_shortcuts" then
                 hs.hotkey.bind(modifier, chord_row.key, function()
                     if ksheet then
