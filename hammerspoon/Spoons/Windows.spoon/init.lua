@@ -1,43 +1,25 @@
 local obj = {}
 obj.__index = obj
-
 obj.vertical_line = 0.71
 obj.horizontal_line = 0.73
-
-obj.GRID = {
-    width = 6,
-    height = 10
-}
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
 bottom_side_app_titles = {'Elmedia Player' }
 
-function move_window(x, y, window)
-    if window == null then
-        return
-    end
-
-    local screen = window:screen()
-
-    cell = hs.grid.get(window, screen)
-    cell.x = x
-    cell.y = y
+function obj:bind_window_left(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_left)
 end
 
-function set_window(x, y, width, height, window)
-    if window == null then
-        window = hs.window.frontmostWindow()
-    end
+function obj:bind_window_right(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_right)
+end
 
-    local screen_size = window:screen():fullFrame()
+function obj:bind_window_fullscreen(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_fullscreen)
+end
 
-    window:setFrame({
-        x = screen_size.w * x,
-        y = screen_size.h * y,
-        w = screen_size.w * width,
-        h = screen_size.h * height
-    })
-
+function obj:bind_all_windows_to_default(modifier, key)
+    hs.hotkey.bind(modifier, key, set_all_windows_positions)
 end
 
 function set_window_left(window)
@@ -64,28 +46,6 @@ end
 
 function set_window_fullscreen(window)
     set_window(0, 0, 1, 1, window)
-end
-
-function obj:bind_window_left(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_left)
-end
-
-function obj:bind_window_right(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_right)
-end
-
-function obj:bind_window_fullscreen(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_fullscreen)
-end
-
-function obj:bind_all_windows_to_default(modifier, key)
-    hs.hotkey.bind(modifier, key, set_all_windows_positions)
-end
-
-function obj:init()
-    hs.grid.setGrid(obj.GRID.width .. 'x' .. obj.GRID.height)
-    hs.grid.MARGINX = 0
-    hs.grid.MARGINY = 0
 end
 
 function set_all_windows_positions()
@@ -118,6 +78,22 @@ function set_all_windows_positions()
             end
         end
     end
+end
+
+function set_window(x, y, width, height, window)
+    if window == null then
+        window = hs.window.frontmostWindow()
+    end
+
+    local screen_size = window:screen():fullFrame()
+
+    window:setFrame({
+        x = screen_size.w * x,
+        y = screen_size.h * y,
+        w = screen_size.w * width,
+        h = screen_size.h * height
+    })
+
 end
 
 function log_window(window)
