@@ -8,7 +8,12 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
         actions = {{ -- Enable proxy config when joining corp network
             to = "AlphaNet-aarMgM",
-            fn = {hs.notify.show("test", "test2", "test3")}
+            fn = {
+                
+                --hs.notify.show("test", "test2", "test3")
+                hs.notify.new({title="Hammerspoon launch", informativeText="Boss, at your service"}):send()
+            
+            }
         }, { -- Disable proxy config when leaving corp network
             from = "corpnet01",
             fn = {hs.fnutils.partial(reconfigSpotifyProxy, false), hs.fnutils.partial(reconfigAdiumProxy, false),
@@ -80,12 +85,12 @@ for _, row in pairs(apps_list) do
 
                     ksheet = not ksheet
                 end)
-            -- elseif chord_row.specific_function == "volume_up" then
-            --     logger.d(" up")
-            --     hs.hotkey.bind(modifier, chord_row.key, changeVolume(3))
-            -- elseif chord_row.specific_function == "volume_down" then
-            --     logger.d(" down")
-            --     hs.hotkey.bind(modifier, '/', changeVolume(-3))
+                -- elseif chord_row.specific_function == "volume_up" then
+                --     logger.d(" up")
+                --     hs.hotkey.bind(modifier, chord_row.key, changeVolume(3))
+                -- elseif chord_row.specific_function == "volume_down" then
+                --     logger.d(" down")
+                --     hs.hotkey.bind(modifier, '/', changeVolume(-3))
             end
 
         end
@@ -274,5 +279,41 @@ if string.len(hstype_keys[2]) > 0 then
 end
 
 spoon.ModalMgr.supervisor:enter()
+
+function reloadConfig(paths)
+    doReload = false
+    for _,file in pairs(paths) do
+        if file:sub(-4) == ".lua" then
+            print("A lua config file changed, reload")
+            doReload = true
+        end
+    end
+    if not doReload then
+        print("No lua file changed, skipping reload test")
+        return
+    end
+
+    hs.reload()
+end
+
+configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
+configFileWatcher:start()
+
+
+function changeVolume(diff)
+    return function()
+      local current = hs.audiodevice.defaultOutputDevice():volume()
+      local new = math.min(100, math.max(0, math.floor(current + diff)))
+      if new > 0 then
+        hs.audiodevice.defaultOutputDevice():setMuted(false)
+      end
+      hs.alert.closeAll(0.0)
+      hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+      hs.audiodevice.defaultOutputDevice():setVolume(new)
+    end
+  end
+  
+  --hs.hotkey.bind({'cmd'}, 'Down', changeVolume(-3))
+  --hs.hotkey.bind({'cmd'}, 'Up', changeVolume(3))
 
 require "Configs/config_FadeLogo";
