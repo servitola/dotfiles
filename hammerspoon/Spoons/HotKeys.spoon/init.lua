@@ -34,40 +34,40 @@ function obj:openApp(name)
     elseif hs.application.frontmostApplication() ~= app then
       app:activate()
     else
-        if name == "Finder" then
-            logger.d("Finder")
-            local windows = app:allWindows()
-            if windows then
-                if table.getn(windows) ~= 0 then
-                    logger.d("with windows")
-                    app:hide()
-                end
-            else
-                logger.d("without windows")
-                hs.eventtap.keyStroke({'cmd'}, 'n')
-            end
-        else
-            logger.d("regular hide")
+        -- if name == "Finder" then
+        --     logger.d("Finder")
+        --     local windows = app:allWindows()
+        --     if windows then
+        --         if table.getn(windows) ~= 0 then
+        --             logger.d("with windows")
+        --             app:hide()
+        --         end
+        --     else
+        --         logger.d("without windows")
+        --         hs.eventtap.keyStroke({'cmd'}, 'n')
+        --     end
+        -- else
+        --     logger.d("regular hide")
             app:hide()
-        end
+        --end
     end
 
-    if name == "Finder" then
-        logger.d("Finder 2")
-        local windows = app:allWindows()
-        if windows ~= nil then
-            if table.getn(windows) ~= 0 then
-                logger.d("with windows 2")
-                --app:hide()
-            end
-        else
-            logger.d("without windows 2")
-            hs.eventtap.keyStroke({'cmd'}, 'n')
-        end
-    else
-        logger.d("regular hide 2")
-        --app:hide()
-    end
+    -- if name == "Finder" then
+    --     logger.d("Finder 2")
+    --     local windows = app:allWindows()
+    --     if windows ~= nil then
+    --         if table.getn(windows) ~= 0 then
+    --             logger.d("with windows 2")
+    --             --app:hide()
+    --         end
+    --     else
+    --         logger.d("without windows 2")
+    --         hs.eventtap.keyStroke({'cmd'}, 'n')
+    --     end
+    -- else
+    --     logger.d("regular hide 2")
+    --     --app:hide()
+    -- end
   end
 
 function obj:setup(modifier, app_list)

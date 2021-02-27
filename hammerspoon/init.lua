@@ -8,9 +8,7 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
         actions = {{ -- Enable proxy config when joining corp network
             to = "AlphaNet-aarMgM",
-            fn = {
-                 hs.notify.show("test","test2", "test3")
-            }
+            fn = {hs.notify.show("test", "test2", "test3")}
         }, { -- Disable proxy config when leaving corp network
             from = "corpnet01",
             fn = {hs.fnutils.partial(reconfigSpotifyProxy, false), hs.fnutils.partial(reconfigAdiumProxy, false),
@@ -37,6 +35,19 @@ end
 
 ksheet = false
 
+function changeVolume(diff)
+    return function()
+        local current = hs.audiodevice.defaultOutputDevice():volume()
+        local new = math.min(100, math.max(0, math.floor(current + diff)))
+        if new > 0 then
+            hs.audiodevice.defaultOutputDevice():setMuted(false)
+        end
+        hs.alert.closeAll(0.0)
+        hs.alert.show("Volume " .. new .. "%", {}, 0.5)
+        hs.audiodevice.defaultOutputDevice():setVolume(new)
+    end
+end
+
 local logger = hs.logger.new("window", 'verbose')
 logger.d(" ")
 
@@ -59,17 +70,24 @@ for _, row in pairs(apps_list) do
                 spoon.Windows:bindWindowFullScreen(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.set_all_to_default" then
                 spoon.Windows:bindAllWindowsToDefault(modifier, chord_row.key)
-            elseif chord_row.specific_function == "info.show_shortcuts" then                
+            elseif chord_row.specific_function == "info.show_shortcuts" then
                 hs.hotkey.bind(modifier, chord_row.key, function()
                     if ksheet then
                         spoon.KSheet:hide()
                     else
                         spoon.KSheet:show()
                     end
-                        
+
                     ksheet = not ksheet
                 end)
+            -- elseif chord_row.specific_function == "volume_up" then
+            --     logger.d(" up")
+            --     hs.hotkey.bind(modifier, chord_row.key, changeVolume(3))
+            -- elseif chord_row.specific_function == "volume_down" then
+            --     logger.d(" down")
+            --     hs.hotkey.bind(modifier, '/', changeVolume(-3))
             end
+
         end
     end
 end

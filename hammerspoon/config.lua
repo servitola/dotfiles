@@ -64,6 +64,7 @@ apps_list = {
         -- {supported=true, key="k", map="left_arrow" },
         -- {supported=true, key="l", map="bottom_arrow"},
         -- {supported=true, key=";", map="right_arrow" },
+        {supported=true, key="'", specific_function="volume_up" },
         {supported=true, key="z", app_name="Punto Switcher" },
         -- {supported=true, key="x", map="home" },
         -- {supported=true, key="c", map="end" },
@@ -71,6 +72,7 @@ apps_list = {
         {supported=false, key="b", app_name="Ableton", hint="blues" },
         {supported=true, key="n", app_name="Visual Studio Code" },
         {supported=false, key="m", app_name="YouTube", hint="movies"},
+        {supported=false, key="/", specific_function="volume_down"},
         -- {supported=true, key="space", map="play_track" }
     }}, 
     { modifier="caps_lock_shift", chords={
