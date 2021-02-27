@@ -10,6 +10,7 @@ obj.GRID = {
 }
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
+bottom_side_app_titles = {'Elmedia Player' }
 
 function move_window(x, y, window)
     if window == null then
@@ -44,7 +45,17 @@ function set_window_left(window)
 end
 
 function set_window_right(window)
-    set_window(obj.vertical_line, 0, 1 - obj.vertical_line, obj.horizontal_line - 0.022, window)
+    if window == null then
+        window = hs.window.frontmostWindow()
+    end
+
+    local app_title = window:application():title()    
+
+    if hs.fnutils.contains(bottom_side_app_titles, app_title) then
+        set_window_bottom(window)
+    else
+        set_window(obj.vertical_line, 0, 1 - obj.vertical_line, obj.horizontal_line - 0.022, window)
+    end
 end
 
 function set_window_bottom(window)
