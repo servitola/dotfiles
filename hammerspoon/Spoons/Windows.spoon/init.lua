@@ -9,7 +9,7 @@ obj.GRID = {
     height = 10
 }
 
-right_side_app_titles = {'Telegram'}
+right_side_app_titles = {'Telegram', 'Hammerspoon'}
 
 function moveWindow(x, y, window)
     if window == null then
@@ -116,7 +116,7 @@ function set_all_windows_positions()
 
         logWindow(window)
 
-        if hs.fnutils.contains(right_side_app_titles, window_title) then
+        if hs.fnutils.contains(right_side_app_titles, app_title) then
             setWindowRight(window)
         elseif app_title == "Yandex" and window_id ~= yandex_main_window_id then
             setWindowBottom(window)
