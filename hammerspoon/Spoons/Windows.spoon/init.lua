@@ -2,9 +2,10 @@ local obj = {}
 obj.__index = obj
 obj.vertical_line = 0.71
 obj.horizontal_line = 0.73
+obj.margin = 0.001
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
-bottom_side_app_titles = {'Elmedia Player' }
+bottom_side_app_titles = {'Elmedia Player'}
 
 function obj:bind_window_left(modifier, key)
     hs.hotkey.bind(modifier, key, set_window_left)
@@ -31,17 +32,17 @@ function set_window_right(window)
         window = hs.window.frontmostWindow()
     end
 
-    local app_title = window:application():title()    
+    local app_title = window:application():title()
 
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
     else
-        set_window(obj.vertical_line, 0, 1 - obj.vertical_line, obj.horizontal_line - 0.022, window)
+        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line - obj.margin, obj.horizontal_line - 0.022, window)
     end
 end
 
 function set_window_bottom(window)
-    set_window(obj.vertical_line, obj.horizontal_line, 1 - obj.vertical_line, 1 - obj.horizontal_line, window)
+    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line - obj.margin, 1 - obj.horizontal_line, window)
 end
 
 function set_window_fullscreen(window)
@@ -52,31 +53,49 @@ function set_all_windows_positions()
     local wins = hs.window.visibleWindows()
 
     for _, window in ipairs(wins) do
-        local app = window:application()
         local window_title = window:title()
-        local app_title = app:title()
-        local window_id = window:id()
+        local app_title = window:application():title()
 
         log_window(window)
 
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
-        elseif app_title == "Yandex" and window_title ~= "Untitled" and window_title ~= "YouTube" then
+        elseif is_yandex_external_video(app_title, window_title) then
             set_window_bottom(window)
         elseif app_title == "qemu-system-x86_64" then
-            --setWindow(4, 0, null, null, window)
-            --moveWindow(4, 0, window)
+            -- do nothing
         else
-            cell = hs.grid.get(window, window:screen())
-            if cell.x == 0 and cell.y == 0 and cell.h == obj.GRID.height and cell.w == obj.GRID.width then
-                local active_window = hs.window.frontmostWindow()
-                if active_window == window then
+            if is_full_screen(window) then
+                if window == hs.window.frontmostWindow() then
                     set_window_left(window)
                 end
             else
                 set_window_left(window)
             end
         end
+    end
+end
+
+function is_yandex_external_video(app_title, window_title)
+    if app_title == "Yandex" and window_title ~= "Untitled" and window_title ~= "YouTube" then
+        return true
+    else
+        return false
+    end
+end
+
+function is_full_screen(window)
+    local window_frame = window:frame()
+    local screen_size = window:screen():fullFrame()
+
+    if window_frame.x == 0
+    and window_frame.y >= screen_size.y - 30 
+    and window_frame.h >= screen_size.h - 30 
+    and window_frame.w == screen_size.w
+    then
+        return true
+    else
+         return false
     end
 end
 
@@ -93,7 +112,6 @@ function set_window(x, y, width, height, window)
         w = screen_size.w * width,
         h = screen_size.h * height
     })
-
 end
 
 function log_window(window)
