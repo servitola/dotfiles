@@ -88,35 +88,8 @@ function obj:init()
     hs.grid.MARGINY = 0
 end
 
-function get_Yandex_main_window_id()
-    local wins = hs.window.visibleWindows()
-    local yandex_main_window_id = nil
-    for _, window in ipairs(wins) do
-        local app = window:application()
-        local window_title = window:title()
-        local app_title = app:title()
-        local window_id = window:id()
-
-        if app_title == "Yandex" then
-            if yandex_main_window_id == nil then
-                yandex_main_window_id = window_id
-            else
-                if yandex_main_window_id > window_id then
-                    yandex_main_window_id = window_id
-                end
-            end
-        end
-    end
-    local logger = hs.logger.new("window", 'verbose')
-    logger.d(yandex_main_window_id)
-
-    return yandex_main_window_id
-end
-
 function set_all_windows_positions()
     local wins = hs.window.visibleWindows()
-
-    local yandex_main_window_id = get_Yandex_main_window_id()
 
     for _, window in ipairs(wins) do
         local app = window:application()
@@ -128,7 +101,7 @@ function set_all_windows_positions()
 
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
-        elseif app_title == "Yandex" and window_id ~= yandex_main_window_id then
+        elseif app_title == "Yandex" and window_title ~= "Untitled" and window_title ~= "YouTube" then
             set_window_bottom(window)
         elseif app_title == "qemu-system-x86_64" then
             --setWindow(4, 0, null, null, window)
