@@ -18,3 +18,24 @@ if spoon.AClock then
         end)
     end
 end
+
+-- Register browser tab typist: Type URL of current tab of running browser in markdown format. i.e. [title](link)
+hstype_keys = hstype_keys or {"alt", "V"}
+if string.len(hstype_keys[2]) > 0 then
+    spoon.ModalMgr.supervisor:bind(hstype_keys[1], hstype_keys[2], "Type Browser Link", function()
+        local safari_running = hs.application.applicationsForBundleID("com.apple.Safari")
+        local chrome_running = hs.application.applicationsForBundleID("com.google.Chrome")
+        if #safari_running > 0 then
+            local stat, data = hs.applescript('tell application "Safari" to get {URL, name} of current tab of window 1')
+            if stat then
+                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
+            end
+        elseif #chrome_running > 0 then
+            local stat, data = hs.applescript(
+                                   'tell application "Google Chrome" to get {URL, title} of active tab of window 1')
+            if stat then
+                hs.eventtap.keyStrokes("[" .. data[2] .. "](" .. data[1] .. ")")
+            end
+        end
+    end)
+end
