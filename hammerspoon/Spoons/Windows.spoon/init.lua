@@ -11,7 +11,7 @@ obj.GRID = {
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
 
-function moveWindow(x, y, window)
+function move_window(x, y, window)
     if window == null then
         return
     end
@@ -23,12 +23,11 @@ function moveWindow(x, y, window)
     cell.y = y
 end
 
-function setWindow(x, y, width, height, window)
+function set_window(x, y, width, height, window)
     if window == null then
         window = hs.window.frontmostWindow()
     end
 
-    local window_screen = window:screen()
     local screen_size = window:screen():fullFrame()
 
     window:setFrame({
@@ -40,35 +39,35 @@ function setWindow(x, y, width, height, window)
 
 end
 
-function setWindowLeft(window)
-    setWindow(0, 0, obj.vertical_line, 1, window)
+function set_window_left(window)
+    set_window(0, 0, obj.vertical_line, 1, window)
 end
 
-function setWindowRight(window)
-    setWindow(obj.vertical_line, 0, 1 - obj.vertical_line, obj.horizontal_line - 0.022, window)
+function set_window_right(window)
+    set_window(obj.vertical_line, 0, 1 - obj.vertical_line, obj.horizontal_line - 0.022, window)
 end
 
-function setWindowBottom(window)
-    setWindow(obj.vertical_line, obj.horizontal_line, 1 - obj.vertical_line, 1 - obj.horizontal_line, window)
+function set_window_bottom(window)
+    set_window(obj.vertical_line, obj.horizontal_line, 1 - obj.vertical_line, 1 - obj.horizontal_line, window)
 end
 
-function setWindowFullScreen(window)
-    setWindow(0, 0, 1, 1, window)
+function set_window_fullscreen(window)
+    set_window(0, 0, 1, 1, window)
 end
 
-function obj:bindWindowLeft(modifier, key)
-    hs.hotkey.bind(modifier, key, setWindowLeft)
+function obj:bind_window_left(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_left)
 end
 
-function obj:bindWindowRight(modifier, key)
-    hs.hotkey.bind(modifier, key, setWindowRight)
+function obj:bind_window_right(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_right)
 end
 
-function obj:bindWindowFullScreen(modifier, key)
-    hs.hotkey.bind(modifier, key, setWindowFullScreen)
+function obj:bind_window_fullscreen(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_fullscreen)
 end
 
-function obj:bindAllWindowsToDefault(modifier, key)
+function obj:bind_all_windows_to_default(modifier, key)
     hs.hotkey.bind(modifier, key, set_all_windows_positions)
 end
 
@@ -78,7 +77,7 @@ function obj:init()
     hs.grid.MARGINY = 0
 end
 
-function getYandexMainWindowId()
+function get_Yandex_main_window_id()
     local wins = hs.window.visibleWindows()
     local yandex_main_window_id = nil
     for _, window in ipairs(wins) do
@@ -106,7 +105,7 @@ end
 function set_all_windows_positions()
     local wins = hs.window.visibleWindows()
 
-    local yandex_main_window_id = getYandexMainWindowId()
+    local yandex_main_window_id = get_Yandex_main_window_id()
 
     for _, window in ipairs(wins) do
         local app = window:application()
@@ -114,12 +113,12 @@ function set_all_windows_positions()
         local app_title = app:title()
         local window_id = window:id()
 
-        logWindow(window)
+        log_window(window)
 
         if hs.fnutils.contains(right_side_app_titles, app_title) then
-            setWindowRight(window)
+            set_window_right(window)
         elseif app_title == "Yandex" and window_id ~= yandex_main_window_id then
-            setWindowBottom(window)
+            set_window_bottom(window)
         elseif app_title == "qemu-system-x86_64" then
             --setWindow(4, 0, null, null, window)
             --moveWindow(4, 0, window)
@@ -128,16 +127,16 @@ function set_all_windows_positions()
             if cell.x == 0 and cell.y == 0 and cell.h == obj.GRID.height and cell.w == obj.GRID.width then
                 local active_window = hs.window.frontmostWindow()
                 if active_window == window then
-                    setWindowLeft(window)
+                    set_window_left(window)
                 end
             else
-                setWindowLeft(window)
+                set_window_left(window)
             end
         end
     end
 end
 
-function logWindow(window)
+function log_window(window)
     local logger = hs.logger.new("window", 'verbose')
     local app = window:application()
     logger.d(" ")
