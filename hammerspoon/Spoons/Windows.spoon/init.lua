@@ -62,6 +62,8 @@ function set_all_windows_positions()
             set_window_right(window)
         elseif is_yandex_external_video(app_title, window_title) then
             set_window_bottom(window)
+        elseif is_music_mini_player(app_title, window_title) then
+            set_window_bottom(window)
         elseif app_title == "qemu-system-x86_64" then
             -- do nothing
         else
@@ -73,6 +75,14 @@ function set_all_windows_positions()
                 set_window_left(window)
             end
         end
+    end
+end
+
+function is_music_mini_player(app_title, window_title)
+    if app_title == "Music" and window_title == "Mini Player" then
+        return true
+    else
+        return false
     end
 end
 
@@ -109,8 +119,8 @@ function set_window(x, y, width, height, window)
     window:setFrame({
         x = screen_size.w * x,
         y = screen_size.h * y,
-        w = screen_size.w * width,
-        h = screen_size.h * height
+        h = screen_size.h * height,
+        w = screen_size.w * width
     })
 end
 
