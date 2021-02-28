@@ -8,7 +8,8 @@ spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
         actions = {{ -- Enable proxy config when joining corp network
             to = "AlphaNet-aarMgM",
-            fn = {hs.notify.new({
+            fn = {
+                hs.notify.new({
                 title = "Hammerspoon launch",
                 informativeText = "Boss, at your service"
             }):send()}
@@ -213,9 +214,6 @@ if spoon.CountDown then
         end)
     end
 end
-
-----------------------------------------------------------------------------------------------------
-
 
 spoon.ModalMgr.supervisor:enter()
 
