@@ -92,7 +92,8 @@ apps_list = {
         {supported=true, key="right", specific_function="window.right"},
         {supported=true, key="up", specific_function="window.fullscreen"},
         {supported=true, key="down", specific_function="window.set_all_to_default"},
-        {supported=true, key="i", specific_function="info.show_shortcuts"}
+        {supported=true, key="i", specific_function="info.show_shortcuts"},
+        {supported=true, key="s", specific_function="android.show_all"}
     }},
     { modifier="cmd_win", chords={
         {supported=true, key="q", specific_function="cmd.q", taps="2", hint="close app on double cmd+q"},

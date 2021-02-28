@@ -88,9 +88,7 @@ function set_all_windows_positions()
         local app_title = window:application():title()
     
         if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
-            local logger = hs.logger.new("window", 'verbose')
             local app = window:application()
-            logger.d(" MOVING ")
 
             local screen_size = window:screen():fullFrame()
             local window_frame = window:frame()
