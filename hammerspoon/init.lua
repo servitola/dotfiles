@@ -60,6 +60,17 @@ for _, row in pairs(apps_list) do
                 spoon.Windows:bind_window_fullscreen(modifier, chord_row.key)
             elseif chord_row.specific_function == "window.set_all_to_default" then
                 spoon.Windows:bind_all_windows_to_default(modifier, chord_row.key)
+            elseif chord_row.specific_function == "android.show_all" then
+                hs.hotkey.bind(modifier, chord_row.key, function()
+                    local wins = hs.window.visibleWindows()
+                    for _, window in ipairs(wins) do
+                        local window_title = window:title()
+                        local app_title = window:application():title()
+                        if app_title == "qemu-system-x86_64" or string.find(window_title, "Android Emulator") then
+                            window:focus()
+                        end
+                    end
+                end)
             elseif chord_row.specific_function == "info.show_shortcuts" then
                 hs.hotkey.bind(modifier, chord_row.key, function()
                     if ksheet then
