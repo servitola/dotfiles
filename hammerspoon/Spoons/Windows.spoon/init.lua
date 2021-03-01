@@ -3,6 +3,8 @@ obj.__index = obj
 obj.vertical_line = 0.71
 obj.horizontal_line = 0.73
 obj.margin = 0.001
+obj.right_block_vertical_margin = 0.022 -- at main display
+--obj.right_block_vertical_margin = 0.044
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
 bottom_side_app_titles = {'Elmedia Player'}
@@ -37,14 +39,14 @@ function set_window_right(window)
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
     else
-        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line - obj.margin, obj.horizontal_line - 0.022,
+        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line, obj.horizontal_line - obj.right_block_vertical_margin,
             window)
     end
 end
 
 function set_window_bottom(window)
-    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line - obj.margin,
-        1 - obj.horizontal_line, window)
+    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line + obj.right_block_vertical_margin,
+        1, window)
 end
 
 function set_window_fullscreen(window)
@@ -64,7 +66,7 @@ function set_all_windows_positions()
 
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
-        elseif is_yandex_external_video(app_title, window_title) then
+        elseif is_yandex_external_video(window) then
              set_window_bottom(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
@@ -124,8 +126,23 @@ function is_music_mini_player(app_title, window_title)
     end
 end
 
-function is_yandex_external_video(app_title, window_title)
-    if app_title == "Yandex" and window_title ~= "Untitled" and window_title ~= "YouTube" then
+function is_yandex_external_video(window)
+    if window:application():title() ~= "Yandex" then
+        return false
+    end
+
+    local wins = hs.window.visibleWindows()
+    local yandex_player_id = window:id()
+
+    for _, window2 in ipairs(wins) do
+        if window2:application():title() == "Yandex" then
+            if yandex_player_id < window2:id() then
+                yandex_player_id = window2:id()
+            end
+        end
+    end
+    
+    if window:id() == yandex_player_id then
         return true
     else
         return false
