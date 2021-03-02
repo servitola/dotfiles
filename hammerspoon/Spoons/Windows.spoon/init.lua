@@ -3,8 +3,8 @@ obj.__index = obj
 obj.vertical_line = 0.71
 obj.horizontal_line = 0.73
 obj.margin = 0.001
-obj.right_block_vertical_margin = 0.022 -- at main display
---obj.right_block_vertical_margin = 0.044
+--obj.right_block_vertical_margin = 0.022 -- at main display
+obj.right_block_vertical_margin = 0.044
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
 bottom_side_app_titles = {'Elmedia Player'}
@@ -39,14 +39,14 @@ function set_window_right(window)
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
     else
-        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line, obj.horizontal_line - obj.right_block_vertical_margin,
-            window)
+        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line,
+            obj.horizontal_line - obj.right_block_vertical_margin, window)
     end
 end
 
 function set_window_bottom(window)
-    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line + obj.right_block_vertical_margin,
-        1, window)
+    set_window(obj.vertical_line + obj.margin, obj.horizontal_line,
+        1 - obj.vertical_line, 1 - obj.horizontal_line, window)
 end
 
 function set_window_fullscreen(window)
@@ -67,7 +67,7 @@ function set_all_windows_positions()
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_yandex_external_video(window) then
-             set_window_bottom(window)
+            set_window_bottom(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
         elseif is_unresizable_window(window) then
@@ -75,7 +75,7 @@ function set_all_windows_positions()
         else
             if is_full_screen(window) then
                 if window == hs.window.frontmostWindow() then
-                     set_window_left(window)
+                    set_window_left(window)
                 end
             else
                 set_window_left(window)
@@ -88,21 +88,21 @@ function set_all_windows_positions()
     for _, window in ipairs(wins) do
         local window_title = window:title()
         local app_title = window:application():title()
-    
+
         if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
             local app = window:application()
 
             local screen_size = window:screen():fullFrame()
             local window_frame = window:frame()
             emulators_positioned = emulators_positioned + 1
-            
+
             window:setFrame({
                 x = screen_size.w - window_frame.w * emulators_positioned - 90 * emulators_positioned,
                 y = screen_size.h / 2 - window_frame.h / 2,
                 h = window_frame.h,
                 w = window_frame.w
             })
-            
+
         end
     end
 end
@@ -141,7 +141,7 @@ function is_yandex_external_video(window)
             end
         end
     end
-    
+
     if window:id() == yandex_player_id then
         return true
     else
