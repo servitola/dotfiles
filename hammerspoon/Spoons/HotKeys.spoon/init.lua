@@ -87,15 +87,15 @@ function obj:bindOpenApp(modifier, key, app_name)
 end
 
 function obj:init()
-    hs.hotkey.bind(hyper, '[', function()
-        hs.itunes.previous()
-    end)
-    hs.hotkey.bind(hyper, ']', function()
-        hs.itunes.next()
-    end)
-    hs.hotkey.bind(hyper, 'space', function()
-        hs.itunes.playpause()
-    end)
+    -- hs.hotkey.bind(hyper, '[', function()
+    --     hs.itunes.previous()
+    -- end)
+    -- hs.hotkey.bind(hyper, ']', function() 
+    --     hs.itunes.next()
+    -- end)
+    -- hs.hotkey.bind(hyper, 'space', function()
+    --     hs.itunes.playpause()
+    -- end)
 end
 
 return obj

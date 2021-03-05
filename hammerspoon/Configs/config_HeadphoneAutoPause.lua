@@ -1,3 +1,3 @@
-spoon.SpoonInstall:andUse("HeadphoneAutoPause", {
-    start = true
-})
+-- spoon.SpoonInstall:andUse("HeadphoneAutoPause", {
+--     start = true
+-- })
