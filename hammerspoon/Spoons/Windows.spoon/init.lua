@@ -3,7 +3,7 @@ obj.__index = obj
 obj.vertical_line = 0.71
 obj.horizontal_line = 0.73
 obj.margin = 0.001
---obj.right_block_vertical_margin = 0.022 -- at main display
+-- obj.right_block_vertical_margin = 0.022 -- at main display
 obj.right_block_vertical_margin = 0.044
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
@@ -45,8 +45,8 @@ function set_window_right(window)
 end
 
 function set_window_bottom(window)
-    set_window(obj.vertical_line + obj.margin, obj.horizontal_line,
-        1 - obj.vertical_line, 1 - obj.horizontal_line, window)
+    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line, 1 - obj.horizontal_line,
+        window)
 end
 
 function set_window_fullscreen(window)
@@ -85,26 +85,49 @@ function set_all_windows_positions()
 
     local emulators_positioned = 0
 
-    for _, window in ipairs(wins) do
-        local window_title = window:title()
-        local app_title = window:application():title()
+    --if emulators_number == 1 then
+        for _, window in ipairs(wins) do
+            local window_title = window:title()
+            local app_title = window:application():title()
 
-        if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
-            local app = window:application()
+            if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
+                local app = window:application()
 
-            local screen_size = window:screen():fullFrame()
-            local window_frame = window:frame()
-            emulators_positioned = emulators_positioned + 1
+                local screen_size = window:screen():fullFrame()
+                local window_frame = window:frame()
+                emulators_positioned = emulators_positioned + 1
 
-            window:setFrame({
-                x = screen_size.w - window_frame.w * emulators_positioned - 90 * emulators_positioned,
-                y = screen_size.h / 2 - window_frame.h / 2,
-                h = window_frame.h,
-                w = window_frame.w
-            })
+                window:setFrame({
+                    x = screen_size.w / 2 - window_frame.w / 2,
+                    y = screen_size.h / 2 - window_frame.h / 2,
+                    h = window_frame.h,
+                    w = window_frame.w
+                })
 
-        end
-    end
+            end
+         end
+    -- else
+    --     for _, window in ipairs(wins) do
+    --         local window_title = window:title()
+    --         local app_title = window:application():title()
+
+    --         if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
+    --             local app = window:application()
+
+    --             local screen_size = window:screen():fullFrame()
+    --             local window_frame = window:frame()
+    --             emulators_positioned = emulators_positioned + 1
+
+    --             window:setFrame({
+    --                 x = screen_size.w - window_frame.w * emulators_positioned - 90 * emulators_positioned,
+    --                 y = screen_size.h / 2 - window_frame.h / 2,
+    --                 h = window_frame.h,
+    --                 w = window_frame.w
+    --             })
+
+    --         end
+    --     end
+    -- end
 end
 
 function is_unresizable_window(window)
@@ -127,6 +150,11 @@ function is_music_mini_player(app_title, window_title)
 end
 
 function is_yandex_external_video(window)
+
+    if window:title() == "Picture in Picture" then
+        return true
+    end
+
     if window:application():title() ~= "Yandex" then
         return false
     end
