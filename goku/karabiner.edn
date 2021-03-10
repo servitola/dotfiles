@@ -1,0 +1,494 @@
+{
+    ;; !  | means mandatory
+    ;; #  | means optional
+    ;; !! | mandatory command + control + optional + shift (hyper)
+    ;; ## | optional any
+
+    ;; to understand better how modifiers work in karabiner
+    ;; karabiner definition of mandatory and optional
+    ;; https://pqrs.org/osx/karabiner/json.html#from-event-definition-modifiers
+
+    ;; C  | left_command
+    ;; T  | left_control
+    ;; O  | left_option
+    ;; S  | left_shift
+    ;; F  | fn
+    ;; Q  | right_command
+    ;; W  | right_control
+    ;; E  | right_option
+    ;; R  | right_shift
+    ;; need to prefix C T O S F with ! or #
+
+:profiles {
+    :Default {
+      :default true
+      :sim     50     ;; simultaneous_threshold_milliseconds (def: 50)
+                      ;; keys need to be pressed within this threshold to be considered simultaneous
+      :delay   500    ;; to_delayed_action_delay_milliseconds (def: 500)
+                      ;; basically it means time after which the key press is count delayed
+      :alone   180    ;; to_if_alone_timeout_milliseconds (def: 1000)
+                      ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
+      :held    1000   ;; to_if_held_down_threshold_milliseconds (def: 500)
+                      ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
+  }
+}
+
+:templates {
+  :km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
+  :open "open \"%s\""
+}
+
+:devices {
+  :apl-usb-int [{:vendor_id 1452, :product_id 635 }] ;; Apple Internal & Magic Keyboard (USB)
+  :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
+  :ap2 [{:vendor_id 1241, :product_id 41618}] ;; AnnePro2
+}
+
+:layers {
+    :hyper-mode {:key :caps_lock}
+}
+
+;; simlayers are basically "hyper" keys
+;; layers works too, but only recommended for non-typing keys like . or tab
+;; or keys like z which are used less often
+; :simlayers {
+;     :close-bracket-mode {:key :close_bracket}
+;     :open-bracket-mode  {:key :open_bracket}
+; } ;; simlayers
+
+;; main contains multiple manipulators
+:main [
+
+    ;; each manipulator has a description and multiple rules
+
+    ;;{:des "..."                               ;; -> description
+    ;; :rules[
+    ;;          [<from>  <to>  <conditions> <other options>]    ;; -> rule 1
+    ;;          [<from>  <to>  <conditions> <other options>]    ;; -> rule 2
+    ;; ]}
+    ;;
+    ;; <from> can be keywords defined in froms or keycodes without `{:not-from true}`
+    ;; <to> can be keywords defined in tos, keycodes without `{:not-to true}` or strings (shell script)
+    ;; <conditions> can be keywords defined in layers, devices, applications
+    ;; <other options> {:other {:parameters {:to_delayed_action_delay_milliseconds 100 :basic.to_if_alone_timeout_milliseconds 500 :basic.to_if_held_down_threshold_milliseconds 250}} }
+
+    ;; if simplified modifier is used in <to>, optional(#) definition will be ignored.
+
+    ;; (custom variables) & modifiers -> Advanced
+    ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
+
+    {
+      :des "[Internal Keyboard] fn -> left_control"
+      :rules [[:##fn :left_control [:apl-usb-int]]]
+    }
+
+    {
+      :des "[Windows Keyboard] windows -> left_option"
+      :rules [[:##left_command :left_option [:lingyi]]]
+    }
+
+    {
+      :des "[Windows Keyboard] left_alt -> left_command"
+      :rules [[:##left_option :left_command [:lingyi]]]
+    }
+
+    {
+      :des "[Windows Keyboard] right_alt -> right_command"
+      :rules [[:##right_option :right_command [:lingyi]]]
+    }
+
+    {
+      :des "[Capslock Enhancement] caps_lock -> escape/left_control"
+      :rules [[:##caps_lock :left_control nil {:alone :escape}]]
+    }
+
+    ;; Use hyper key to change the volume
+    {:des "Hyper + All buttons"
+     :rules [ :hyper-mode
+        [:escape [:grave_accent_and_tilde]]
+         [:1 [:f1]]
+
+         [:!S1 [:!Sf1]] 
+         [:!C1 [:!Cf1]] 
+         [:!T1 [:!Tf1]] 
+         [:!O1 [:!Of1]]
+         [:!TS1 [:!TSf1]]
+         [:!OS1 [:!OSf1]]
+         [:!CS1 [:!CSf1]]
+         [:!TC1 [:!TCf1]]
+         [:!OC1 [:!OCf1]]
+         [:!SC1 [:!SCf1]]
+         [:!CT1 [:!CTf1]]
+         [:!OT1 [:!OTf1]]
+         [:!ST1 [:!STf1]]
+         [:!CO1 [:!COf1]]
+         [:!TO1 [:!TOf1]]
+         [:!SO1 [:!SOf1]]
+
+         [:2 [:f2]]
+        [:!S2 [:!Sf2]] 
+        [:!C2 [:!Cf2]] 
+        [:!T2 [:!Tf2]] 
+        [:!O2 [:!Of2]]
+        [:!TS2 [:!TSf2]]
+        [:!OS2 [:!OSf2]]
+        [:!CS2 [:!CSf2]]
+        [:!TC2 [:!TCf2]]
+        [:!OC2 [:!OCf2]]
+        [:!SC2 [:!SCf2]]
+        [:!CT2 [:!CTf2]]
+        [:!OT2 [:!OTf2]]
+        [:!ST2 [:!STf2]]
+        [:!CO2 [:!COf2]]
+        [:!TO2 [:!TOf2]]
+        [:!SO2 [:!SOf2]]
+
+        [:3 [:f3]]
+        [:!S3 [:!Sf3]] 
+        [:!C3 [:!Cf3]] 
+        [:!T3 [:!Tf3]] 
+        [:!O3 [:!Of3]]
+        [:!TS3 [:!TSf3]]
+        [:!OS3 [:!OSf3]]
+        [:!CS3 [:!CSf3]]
+        [:!TC3 [:!TCf3]]
+        [:!OC3 [:!OCf3]]
+        [:!SC3 [:!SCf3]]
+        [:!CT3 [:!CTf3]]
+        [:!OT3 [:!OTf3]]
+        [:!ST3 [:!STf3]]
+        [:!CO3 [:!COf3]]
+        [:!TO3 [:!TOf3]]
+        [:!SO3 [:!SOf3]]
+
+        [:4 [:f4]]
+        [:!S4 [:!Sf4]] 
+        [:!C4 [:!Cf4]] 
+        [:!T4 [:!Tf4]] 
+        [:!O4 [:!Of4]]
+        [:!TS4 [:!TSf4]]
+        [:!OS4 [:!OSf4]]
+        [:!CS4 [:!CSf4]]
+        [:!TC4 [:!TCf4]]
+        [:!OC4 [:!OCf4]]
+        [:!SC4 [:!SCf4]]
+        [:!CT4 [:!CTf4]]
+        [:!OT4 [:!OTf4]]
+        [:!ST4 [:!STf4]]
+        [:!CO4 [:!COf4]]
+        [:!TO4 [:!TOf4]]
+        [:!SO4 [:!SOf4]]
+
+        [:5 [:f5]]
+        [:!S5 [:!Sf5]] 
+        [:!C5 [:!Cf5]] 
+        [:!T5 [:!Tf5]] 
+        [:!O5 [:!Of5]]
+        [:!TS5 [:!TSf5]]
+        [:!OS5 [:!OSf5]]
+        [:!CS5 [:!CSf5]]
+        [:!TC5 [:!TCf5]]
+        [:!OC5 [:!OCf5]]
+        [:!SC5 [:!SCf5]]
+        [:!CT5 [:!CTf5]]
+        [:!OT5 [:!OTf5]]
+        [:!ST5 [:!STf5]]
+        [:!CO5 [:!COf5]]
+        [:!TO5 [:!TOf5]]
+        [:!SO5 [:!SOf5]]
+
+        [:6 [:f6]]
+        [:!S6 [:!Sf6]] 
+        [:!C6 [:!Cf6]] 
+        [:!T6 [:!Tf6]] 
+        [:!O6 [:!Of6]]
+        [:!TS6 [:!TSf6]]
+        [:!OS6 [:!OSf6]]
+        [:!CS6 [:!CSf6]]
+        [:!TC6 [:!TCf6]]
+        [:!OC6 [:!OCf6]]
+        [:!SC6 [:!SCf6]]
+        [:!CT6 [:!CTf6]]
+        [:!OT6 [:!OTf6]]
+        [:!ST6 [:!STf6]]
+        [:!CO6 [:!COf6]]
+        [:!TO6 [:!TOf6]]
+        [:!SO6 [:!SOf6]]
+
+        [:q [:page_up]]
+        [:!Sq [:!Spage_up]] 
+        [:!Cq [:!Cpage_up]] 
+        [:!Tq [:!Tpage_up]] 
+        [:!Oq [:!Opage_up]]
+        [:!TSq [:!TSpage_up]]
+        [:!OSq [:!OSpage_up]]
+        [:!CSq [:!CSpage_up]]
+        [:!TCq [:!TCpage_up]]
+        [:!OCq [:!OCpage_up]]
+        [:!SCq [:!SCpage_up]]
+        [:!CTq [:!CTpage_up]]
+        [:!OTq [:!OTpage_up]]
+        [:!STq [:!STpage_up]]
+        [:!COq [:!COpage_up]]
+        [:!TOq [:!TOpage_up]]
+        [:!SOq [:!SOpage_up]]
+
+        [:w [:up_arrow]]
+        [:!Sw [:!Sup_arrow]] 
+        [:!Cw [:!Cup_arrow]] 
+        [:!Tw [:!Tup_arrow]] 
+        [:!Ow [:!Oup_arrow]]
+        [:!TSw [:!TSup_arrow]]
+        [:!OSw [:!OSup_arrow]]
+        [:!CSw [:!CSup_arrow]]
+        [:!TCw [:!TCup_arrow]]
+        [:!OCw [:!OCup_arrow]]
+        [:!SCw [:!SCup_arrow]]
+        [:!CTw [:!CTup_arrow]]
+        [:!OTw [:!OTup_arrow]]
+        [:!STw [:!STup_arrow]]
+        [:!COw [:!COup_arrow]]
+        [:!TOw [:!TOup_arrow]]
+        [:!SOw [:!SOup_arrow]]
+
+         [:e [:page_down]]
+        [:!Se [:!Spage_down]] 
+        [:!Ce [:!Cpage_down]] 
+        [:!Te [:!Tpage_down]] 
+        [:!Oe [:!Opage_down]]
+        [:!TSe [:!TSpage_down]]
+        [:!OSe [:!OSpage_down]]
+        [:!CSe [:!CSpage_down]]
+        [:!TCe [:!TCpage_down]]
+        [:!OCe [:!OCpage_down]]
+        [:!SCe [:!SCpage_down]]
+        [:!CTe [:!CTpage_down]]
+        [:!OTe [:!OTpage_down]]
+        [:!STe [:!STpage_down]]
+        [:!COe [:!COpage_down]]
+        [:!TOe [:!TOpage_down]]
+        [:!SOe [:!SOpage_down]]
+
+        [:o [:up_arrow]]
+        [:!So [:!Sup_arrow]] 
+        [:!Co [:!Cup_arrow]] 
+        [:!To [:!Tup_arrow]] 
+        [:!Oo [:!Oup_arrow]]
+        [:!TSo [:!TSup_arrow]]
+        [:!OSo [:!OSup_arrow]]
+        [:!CSo [:!CSup_arrow]]
+        [:!TCo [:!TCup_arrow]]
+        [:!OCo [:!OCup_arrow]]
+        [:!SCo [:!SCup_arrow]]
+        [:!CTo [:!CTup_arrow]]
+        [:!OTo [:!OTup_arrow]]
+        [:!STo [:!STup_arrow]]
+        [:!COo [:!COup_arrow]]
+        [:!TOo [:!TOup_arrow]]
+        [:!SOo [:!SOup_arrow]]
+
+        [:a [:left_arrow]]
+        [:!Sa [:!Sleft_arrow]] 
+        [:!Ca [:!Cleft_arrow]] 
+        [:!Ta [:!Tleft_arrow]] 
+        [:!Oa [:!Oleft_arrow]]
+        [:!TSa [:!TSleft_arrow]]
+        [:!OSa [:!OSleft_arrow]]
+        [:!CSa [:!CSleft_arrow]]
+        [:!TCa [:!TCleft_arrow]]
+        [:!OCa [:!OCleft_arrow]]
+        [:!SCa [:!SCleft_arrow]]
+        [:!CTa [:!CTleft_arrow]]
+        [:!OTa [:!OTleft_arrow]]
+        [:!STa [:!STleft_arrow]]
+        [:!COa [:!COleft_arrow]]
+        [:!TOa [:!TOleft_arrow]]
+        [:!SOa [:!SOleft_arrow]]
+
+        [:s [:down_arrow]]
+        [:!Ss [:!Sdown_arrow]] 
+        [:!Cs [:!Cdown_arrow]] 
+        [:!Ts [:!Tdown_arrow]] 
+        [:!Os [:!Odown_arrow]]
+        [:!TSs [:!TSdown_arrow]]
+        [:!OSs [:!OSdown_arrow]]
+        [:!CSs [:!CSdown_arrow]]
+        [:!TCs [:!TCdown_arrow]]
+        [:!OCs [:!OCdown_arrow]]
+        [:!SCs [:!SCdown_arrow]]
+        [:!CTs [:!CTdown_arrow]]
+        [:!OTs [:!OTdown_arrow]]
+        [:!STs [:!STdown_arrow]]
+        [:!COs [:!COdown_arrow]]
+        [:!TOs [:!TOdown_arrow]]
+        [:!SOs [:!SOdown_arrow]]
+
+        [:d [:right_arrow]]
+        [:!Sd [:!Sright_arrow]] 
+        [:!Cd [:!Cright_arrow]] 
+        [:!Td [:!Tright_arrow]] 
+        [:!Od [:!Oright_arrow]]
+        [:!TSd [:!TSright_arrow]]
+        [:!OSd [:!OSright_arrow]]
+        [:!CSd [:!CSright_arrow]]
+        [:!TCd [:!TCright_arrow]]
+        [:!OCd [:!OCright_arrow]]
+        [:!SCd [:!SCright_arrow]]
+        [:!CTd [:!CTright_arrow]]
+        [:!OTd [:!OTright_arrow]]
+        [:!STd [:!STright_arrow]]
+        [:!COd [:!COright_arrow]]
+        [:!TOd [:!TOright_arrow]]
+        [:!SOd [:!SOright_arrow]]
+
+        [:k [:left_arrow]]
+        [:!Sk [:!Sleft_arrow]] 
+        [:!Ck [:!Cleft_arrow]] 
+        [:!Tk [:!Tleft_arrow]] 
+        [:!Ok [:!Oleft_arrow]]
+        [:!TSk [:!TSleft_arrow]]
+        [:!OSk [:!OSleft_arrow]]
+        [:!CSk [:!CSleft_arrow]]
+        [:!TCk [:!TCleft_arrow]]
+        [:!OCk [:!OCleft_arrow]]
+        [:!SCk [:!SCleft_arrow]]
+        [:!CTk [:!CTleft_arrow]]
+        [:!OTk [:!OTleft_arrow]]
+        [:!STk [:!STleft_arrow]]
+        [:!COk [:!COleft_arrow]]
+        [:!TOk [:!TOleft_arrow]]
+        [:!SOk [:!SOleft_arrow]]
+
+        [:l [:down_arrow]]
+        [:!Sl [:!Sdown_arrow]] 
+        [:!Cl [:!Cdown_arrow]] 
+        [:!Tl [:!Tdown_arrow]] 
+        [:!Ol [:!Odown_arrow]]
+        [:!TSl [:!TSdown_arrow]]
+        [:!OSl [:!OSdown_arrow]]
+        [:!CSl [:!CSdown_arrow]]
+        [:!TCl [:!TCdown_arrow]]
+        [:!OCl [:!OCdown_arrow]]
+        [:!SCl [:!SCdown_arrow]]
+        [:!CTl [:!CTdown_arrow]]
+        [:!OTl [:!OTdown_arrow]]
+        [:!STl [:!STdown_arrow]]
+        [:!COl [:!COdown_arrow]]
+        [:!TOl [:!TOdown_arrow]]
+        [:!SOl [:!SOdown_arrow]]
+
+        [:semicolon [:down_arrow]]
+        [:!Ssemicolon [:!Sdown_arrow]] 
+        [:!Csemicolon [:!Cdown_arrow]] 
+        [:!Tsemicolon [:!Tdown_arrow]] 
+        [:!Osemicolon [:!Odown_arrow]]
+        [:!TSsemicolon [:!TSdown_arrow]]
+        [:!OSsemicolon [:!OSdown_arrow]]
+        [:!CSsemicolon [:!CSdown_arrow]]
+        [:!TCsemicolon [:!TCdown_arrow]]
+        [:!OCsemicolon [:!OCdown_arrow]]
+        [:!SCsemicolon [:!SCdown_arrow]]
+        [:!CTsemicolon [:!CTdown_arrow]]
+        [:!OTsemicolon [:!OTdown_arrow]]
+        [:!STsemicolon [:!STdown_arrow]]
+        [:!COsemicolon [:!COdown_arrow]]
+        [:!TOsemicolon [:!TOdown_arrow]]
+        [:!SOsemicolon [:!SOdown_arrow]]
+      ;;   ;; [:0 [:mute]]                                    ; 'v' + '0' mute volume
+      ;;   [:hyphen [:volume_decrement]]                   ; 'v' + '-' decrement volume
+      ;;   [:slash [:volume_increment]]               ; 'v' + '+' increment volume
+     ]
+    }
+
+;;     {
+;;       :des "[Space Mode] OVERALL TRIGGER"
+;;       :rules [:!qmk [:##spacebar {:set ["space-mode",1]} nil {:alone :spacebar :afterup {:set ["space-mode",0]}}]]
+;;     }
+
+;;     {
+;;       :des "[Space Mode] space+b -> Space (hold to repeat)"
+;;       :rules [
+;;         :space-mode
+;;           [:##b :spacebar]
+;;       ]
+;;     }
+
+;;     {
+;;       :des "[Space Mode] space+hjkl -> left/down/up/right"
+;;       :rules [
+;;         :space-mode
+;;           [:##h :left_arrow]
+;;           [:##j :down_arrow]
+;;           [:##k :up_arrow]
+;;           [:##l :right_arrow]
+;;       ]
+;;     }
+
+;;     {
+;;       :des "[Space Mode] Space+u to page_down, Space+i to page_up"
+;;       :rules [
+;;         :space-mode
+;;           [:##u :page_down]
+;;           [:##i :page_up]
+;;       ]
+;;     }
+
+;;     {
+;;       :des "[Space Mode] Space+y to home, Space+o to end"
+;;       :rules [
+;;         :space-mode
+;;           [:##y :home]
+;;           [:##o :end]
+;;       ]
+;;     }
+
+;;     {
+;;       :des "[Space Mode]: Space+[1-9] to F[1-9], Space+0 to F10, Space+Hyphen (-) to F11, Space+Equal Sign (=) to F12"
+;;       :rules [
+;;         :space-mode
+;;           [:##1 :f1]
+;;           [:##2 :f2]
+;;           [:##3 :f3]
+;;           [:##4 :f4]
+;;           [:##5 :f5]
+;;           [:##6 :f6]
+;;           [:##7 :f7]
+;;           [:##8 :f8]
+;;           [:##9 :f9]
+;;           [:##0 :f10]
+;;           [:##hyphen :f11]
+;;           [:##equal_sign :f12]
+;;       ]
+;;     }
+
+;;     {
+;;       :des "[Launch Mode] (l+;) TRIGGER"
+;;       :rules [[{
+;;         :sim [:l :semicolon]
+;;         :simo {
+;;           :interrupt true
+;;           :dorder :insensitive
+;;           :uorder :insensitive
+;;           :afterup {:set ["launch-mode" 0]}}}
+;;           {:set ["launch-mode" 1]}
+;;       ]]
+;;     }
+;;     {:des "[Launch Mode] -> a (Open Activity Monitor)" :rules [:launch-mode [:##a [:km "open: Activity Monitor"]]]}
+;;     {:des "[Launch Mode] -> s (Open Slack)" :rules [:launch-mode [:##s [:km "open: Slack"]]]}
+;;     {:des "[Launch Mode] -> d (Open MySQLWorkbench)" :rules [:launch-mode [:##d [:km "open: MySQLWorkbench"]]]}
+;;     {:des "[Launch Mode] -> f (Open Firefox)" :rules [:launch-mode [:##f [:km "open: Firefox"]]]}
+;;     {:des "[Launch Mode] -> g (Open Fork)" :rules [:launch-mode [:##g [:km "open: Fork"]]]}
+;;     {:des "[Launch Mode] -> h (Open Finder)" :rules [:launch-mode [:##h [:km "open: Finder"]]]}
+;;     {:des "[Launch Mode] -> j (Open Kitty)" :rules [:launch-mode [:##j [:km "open: Kitty"]]]}
+;;     {:des "[Launch Mode] -> k (Open Keyboard Maestro)" :rules [:launch-mode [:##k [:km "open: Keyboard Maestro"]]]}
+;;     {:des "[Launch Mode] -> e (Open Spark)" :rules [:launch-mode [:##e [:km "open: Spark"]]]}
+;;     {:des "[Launch Mode] -> r (Open Skype)" :rules [:launch-mode [:##r [:km "open: Skype"]]]}
+;;     {:des "[Launch Mode] -> i (Open iTerm)" :rules [:launch-mode [:##i [:km "open: iTerm"]]]}
+;;     {:des "[Launch Mode] -> z (Open Zoom)" :rules [:launch-mode [:##z [:km "open: Zoom"]]]}
+;;     {:des "[Launch Mode] -> c (Open Chrome)" :rules [:launch-mode [:##c [:km "open: Chrome"]]]}
+;;     {:des "[Launch Mode] -> v (Open VSCode)" :rules [:launch-mode [:##v [:km "open: VSCode"]]]}
+;;     {:des "[Launch Mode] -> m (Open Spotify)" :rules [:launch-mode [:##m [:km "open: Spotify"]]]}
+
+] ;; main list
+
+}
