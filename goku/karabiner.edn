@@ -55,7 +55,6 @@
 ;     :close-bracket-mode {:key :close_bracket}
 ;     :open-bracket-mode  {:key :open_bracket}
 ; } ;; simlayers
-
 ;; main contains multiple manipulators
 :main [
 
@@ -469,11 +468,30 @@
         [:!TOsemicolon [:!TOright_arrow]]
         [:!SOsemicolon [:!SOright_arrow]]
 
-        [:x [:!Cleft_arrow]],
-        [:c [:!Cright_arrow]],
+        [:x [:!Cleft_arrow]]
+        [:!Sx [:!SCleft_arrow]] 
+        [:!Cx [:!Cleft_arrow]] 
+        [:!Tx [:!TCleft_arrow]] 
+        [:!Ox [:!OCleft_arrow]]
 
-        [:comma [:!Cleft_arrow]],
-        [:period [:!Cright_arrow]],
+         [:c [:!Cright_arrow]]
+        [:!Sc [:!SCright_arrow]] 
+        [:!Cc [:!Cright_arrow]] 
+        [:!Tc [:!TCright_arrow]] 
+        [:!Oc [:!OCright_arrow]]
+
+        [:comma [:!Cleft_arrow]]
+        [:!Scomma [:!SCleft_arrow]] 
+        [:!Ccomma [:!Cleft_arrow]] 
+        [:!Tcomma [:!TCleft_arrow]] 
+        [:!Ocomma [:!OCleft_arrow]]
+
+
+         [:period [:!Cright_arrow]]
+        [:!Speriod [:!SCright_arrow]] 
+        [:!Cperiod [:!Cright_arrow]] 
+        [:!Tperiod [:!TCright_arrow]] 
+        [:!Operiod [:!OCright_arrow]]
 
       ;;   ;; [:0 [:mute]]                                    ; 'v' + '0' mute volume
          [:quote [:volume_increment]]                   ; 'v' + '-' decrement volume
