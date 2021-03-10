@@ -19,7 +19,7 @@ hspoon_list = {
     --"KSheet",
     --"SpeedMenu",
     "TimeFlow",
-    --"UnsplashZ",
+    --"UnsplashZ", 
 }   
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
@@ -50,13 +50,13 @@ apps_list = {
         {supported=true, key="y", app_name="Opera GX" },
         {supported=true, key="u", app_name="Folx", app_nameWin="uTorrent" },
         --{supported=true, key="i" },
-        {supported=true, key="o", map="up_arrow" },
+        --{supported=true, key="o", map="up_arrow" },
         {supported=true, key="p", app_name="Music", app_nameWin="iTunes", hint="Player"},
         --{supported=true, key="[", map="previous_track"},
         --{supported=true, key="]", map="next_track" },
-        {supported=true, key="a", map="left_arrow" },
-        {supported=true, key="s", map="bottom_arrow"},
-        {supported=true, key="d", map="right_arrow" },
+        --{supported=true, key="a", map="left_arrow" },
+        --{supported=true, key="s", map="bottom_arrow"},
+        --{supported=true, key="d", map="right_arrow" },
         -- set in app settings {supported=true, key="f", app_name="Alfred", app_nameWin="keypirinha", hint="Find"},
         {supported=true, key="g", app_name="Fork", hint="Git"},
         {supported=true, key="h", app_name="Finder", app_nameWin="File Explorer", hint="Hub" },
@@ -64,7 +64,7 @@ apps_list = {
         -- {supported=true, key="k", map="left_arrow" },
         -- {supported=true, key="l", map="bottom_arrow"},
         -- {supported=true, key=";", map="right_arrow" },
-        {supported=true, key="'", specific_function="volume_up" },
+        --{supported=true, key="'", specific_function="volume_up" },
         {supported=true, key="z", app_name="Punto Switcher" },
         -- {supported=true, key="x", map="home" },
         -- {supported=true, key="c", map="end" },
@@ -72,7 +72,7 @@ apps_list = {
         {supported=false, key="b", app_name="Ableton", hint="blues" },
         {supported=true, key="n", app_name="Visual Studio Code" },
         {supported=false, key="m", app_name="YouTube", hint="movies"},
-        {supported=false, key="/", specific_function="volume_down"},
+        --{supported=false, key="/", specific_function="volume_down"},
         -- {supported=true, key="space", map="play_track" }
     }}, 
     { modifier="caps_lock_shift", chords={
