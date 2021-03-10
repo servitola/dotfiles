@@ -140,6 +140,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl)
             func(url)
             return
          end
+         self.logger.df("    Wrong App ID", id)
       end
    end
    self.logger.df("No match found, opening with default handler '%s'", self.default_handler)
