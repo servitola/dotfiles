@@ -114,23 +114,6 @@
           "type" : "basic"
         } ]
       }, {
-        "description" : "[Capslock Enhancement] caps_lock -> escape/left_control",
-        "manipulators" : [ {
-          "to_if_alone" : [ {
-            "key_code" : "escape"
-          } ],
-          "from" : {
-            "key_code" : "caps_lock",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "left_control"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
         "description" : "Hyper + All buttons",
         "manipulators" : [ {
           "from" : {
@@ -5860,10 +5843,66 @@
           "type" : "basic"
         }, {
           "from" : {
-            "key_code" : "hyphen"
+            "key_code" : "x"
           },
           "to" : [ {
-            "consumer_key_code" : "volume_decrement"
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "c"
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "comma"
+          },
+          "to" : [ {
+            "key_code" : "left_arrow",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "period"
+          },
+          "to" : [ {
+            "key_code" : "right_arrow",
+            "modifiers" : [ "left_command" ]
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
+            "key_code" : "quote"
+          },
+          "to" : [ {
+            "consumer_key_code" : "volume_increment"
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",
@@ -5876,7 +5915,7 @@
             "key_code" : "slash"
           },
           "to" : [ {
-            "consumer_key_code" : "volume_increment"
+            "consumer_key_code" : "volume_decrement"
           } ],
           "conditions" : [ {
             "name" : "hyper-mode",

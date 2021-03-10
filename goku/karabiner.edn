@@ -97,10 +97,10 @@
       :rules [[:##right_option :right_command [:lingyi]]]
     }
 
-    {
-      :des "[Capslock Enhancement] caps_lock -> escape/left_control"
-      :rules [[:##caps_lock :left_control nil {:alone :escape}]]
-    }
+    ;; {
+    ;;   :des "[Capslock Enhancement] caps_lock -> escape/left_control"
+    ;;   :rules [[:##caps_lock :left_control nil {:alone :escape}]]
+    ;; }
 
     ;; Use hyper key to change the volume
     {:des "Hyper + All buttons"
@@ -468,9 +468,16 @@
         [:!COsemicolon [:!COright_arrow]]
         [:!TOsemicolon [:!TOright_arrow]]
         [:!SOsemicolon [:!SOright_arrow]]
+
+        [:x [:!Cleft_arrow]],
+        [:c [:!Cright_arrow]],
+
+        [:comma [:!Cleft_arrow]],
+        [:period [:!Cright_arrow]],
+
       ;;   ;; [:0 [:mute]]                                    ; 'v' + '0' mute volume
-         [:hyphen [:volume_decrement]]                   ; 'v' + '-' decrement volume
-         [:slash [:volume_increment]]               ; 'v' + '+' increment volume
+         [:quote [:volume_increment]]                   ; 'v' + '-' decrement volume
+         [:slash [:volume_decrement]]               ; 'v' + '+' increment volume
      ]
     }
 
