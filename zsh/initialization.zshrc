@@ -12,3 +12,7 @@ export PATH="/usr/local/sbin:$PATH"
 export TERM="xterm-256color"
 export EDITOR='nano'
 export ZSH="/Users/servitola/.oh-my-zsh"
+
+# ANDROID
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"

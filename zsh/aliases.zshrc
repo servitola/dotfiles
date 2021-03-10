@@ -34,9 +34,9 @@ alias up='
 sudo -v
 sudo softwareupdate -i -a;
 xcode-select --install
+brew cu --all -y -q; 
 brew update; 
 brew upgrade; 
-brew cu --all -y -q; 
 mas upgrade; 
 brew cleanup; 
 brew doctor; 
