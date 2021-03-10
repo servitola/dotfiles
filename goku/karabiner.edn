@@ -287,6 +287,8 @@
         [:!TO0 [:!TOf10]]
         [:!SO0 [:!SOf10]]
 
+        [:delete_or_backspace [:delete_forward]]
+
         [:q [:page_up]]
         [:!Sq [:!Spage_up]] 
         [:!Cq [:!Cpage_up]] 

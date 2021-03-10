@@ -2997,6 +2997,19 @@
           "type" : "basic"
         }, {
           "from" : {
+            "key_code" : "delete_or_backspace"
+          },
+          "to" : [ {
+            "key_code" : "delete_forward"
+          } ],
+          "conditions" : [ {
+            "name" : "hyper-mode",
+            "value" : 1,
+            "type" : "variable_if"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "q"
           },
           "to" : [ {
