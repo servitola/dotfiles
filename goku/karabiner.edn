@@ -449,26 +449,26 @@
         [:!TOl [:!TOdown_arrow]]
         [:!SOl [:!SOdown_arrow]]
 
-        [:semicolon [:down_arrow]]
-        [:!Ssemicolon [:!Sdown_arrow]] 
-        [:!Csemicolon [:!Cdown_arrow]] 
-        [:!Tsemicolon [:!Tdown_arrow]] 
-        [:!Osemicolon [:!Odown_arrow]]
-        [:!TSsemicolon [:!TSdown_arrow]]
-        [:!OSsemicolon [:!OSdown_arrow]]
-        [:!CSsemicolon [:!CSdown_arrow]]
-        [:!TCsemicolon [:!TCdown_arrow]]
-        [:!OCsemicolon [:!OCdown_arrow]]
-        [:!SCsemicolon [:!SCdown_arrow]]
-        [:!CTsemicolon [:!CTdown_arrow]]
-        [:!OTsemicolon [:!OTdown_arrow]]
-        [:!STsemicolon [:!STdown_arrow]]
-        [:!COsemicolon [:!COdown_arrow]]
-        [:!TOsemicolon [:!TOdown_arrow]]
-        [:!SOsemicolon [:!SOdown_arrow]]
+        [:semicolon [:right_arrow]]
+        [:!Ssemicolon [:!Sright_arrow]] 
+        [:!Csemicolon [:!Cright_arrow]] 
+        [:!Tsemicolon [:!Tright_arrow]] 
+        [:!Osemicolon [:!Oright_arrow]]
+        [:!TSsemicolon [:!TSright_arrow]]
+        [:!OSsemicolon [:!OSright_arrow]]
+        [:!CSsemicolon [:!CSright_arrow]]
+        [:!TCsemicolon [:!TCright_arrow]]
+        [:!OCsemicolon [:!OCright_arrow]]
+        [:!SCsemicolon [:!SCright_arrow]]
+        [:!CTsemicolon [:!CTright_arrow]]
+        [:!OTsemicolon [:!OTright_arrow]]
+        [:!STsemicolon [:!STright_arrow]]
+        [:!COsemicolon [:!COright_arrow]]
+        [:!TOsemicolon [:!TOright_arrow]]
+        [:!SOsemicolon [:!SOright_arrow]]
       ;;   ;; [:0 [:mute]]                                    ; 'v' + '0' mute volume
-      ;;   [:hyphen [:volume_decrement]]                   ; 'v' + '-' decrement volume
-      ;;   [:slash [:volume_increment]]               ; 'v' + '+' increment volume
+         [:hyphen [:volume_decrement]]                   ; 'v' + '-' decrement volume
+         [:slash [:volume_increment]]               ; 'v' + '+' increment volume
      ]
     }
 
