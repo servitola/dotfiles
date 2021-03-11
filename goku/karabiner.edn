@@ -342,6 +342,12 @@
         [:!TOe [:!TOpage_down]]
         [:!SOe [:!SOpage_down]]
 
+        [:r [:!SCTOr]]
+        [:t [:!SCTOt]]
+        [:y [:!SCTOy]]
+        [:u [:!SCTOu]]
+        [:i [:!SCTOu]]
+
         [:o [:up_arrow]]
         [:!So [:!Sup_arrow]] 
         [:!Co [:!Cup_arrow]] 
@@ -359,6 +365,8 @@
         [:!COo [:!COup_arrow]]
         [:!TOo [:!TOup_arrow]]
         [:!SOo [:!SOup_arrow]]
+
+        [:p [:!SCTOp]]
 
         [:a [:left_arrow]]
         [:!Sa [:!Sleft_arrow]] 
@@ -413,6 +421,11 @@
         [:!COd [:!COright_arrow]]
         [:!TOd [:!TOright_arrow]]
         [:!SOd [:!SOright_arrow]]
+
+         [:f [:!SCTOf]]
+         [:g [:!SCTOg]]
+         [:h [:!SCTOh]]
+         [:j [:!SCTOj]]
 
         [:k [:left_arrow]]
         [:!Sk [:!Sleft_arrow]] 
@@ -480,12 +493,16 @@
         [:!Tc [:!TCright_arrow]] 
         [:!Oc [:!OCright_arrow]]
 
-        [:comma [:!Cleft_arrow]]
+        [:v [:!SCTOv]]
+        [:b [:!SCTOb]]
+        [:n [:!SCTOn]]
+        [:m [:!SCTOm]]
+
+       [:comma [:!Cleft_arrow]]
         [:!Scomma [:!SCleft_arrow]] 
         [:!Ccomma [:!Cleft_arrow]] 
         [:!Tcomma [:!TCleft_arrow]] 
         [:!Ocomma [:!OCleft_arrow]]
-
 
          [:period [:!Cright_arrow]]
         [:!Speriod [:!SCright_arrow]] 
