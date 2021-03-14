@@ -13,6 +13,29 @@
         "basic.to_if_held_down_threshold_milliseconds" : 50
       },
       "rules" : [ {
+        "description" : "simultaneous j l press to F19",
+        "manipulators" : [ {
+          "from" : {
+            "simultaneous" : [ {
+              "key_code" : "left_shift"
+            }, {
+              "key_code" : "caps_lock"
+            }, {
+              "key_code" : "1"
+            } ],
+            "simultaneous_options" : {
+              "detect_key_down_uninterruptedly" : false,
+              "key_down_order" : "insensitive",
+              "key_up_order" : "insensitive",
+              "key_up_when" : "any"
+            }
+          },
+          "to" : [ {
+            "key_code" : "7"
+          } ],
+          "type" : "basic"
+        } ]
+      }, {
         "description" : "[Internal Keyboard] fn -> left_control",
         "manipulators" : [ {
           "from" : {
@@ -19743,63 +19766,6 @@
               } ]
             }
           }
-        } ]
-      }, {
-        "description" : "e-key shortcuts",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "caps_lock"
-          },
-          "to" : [ {
-            "key_code" : "1"
-          } ],
-          "conditions" : [ {
-            "name" : "left_shift-caps_lock-layer",
-            "value" : 1,
-            "type" : "variable_if"
-          }, {
-            "name" : "f1",
-            "value" : 1,
-            "type" : "variable_if"
-          } ],
-          "type" : "basic"
-        }, {
-          "type" : "basic",
-          "parameters" : {
-            "basic.simultaneous_threshold_milliseconds" : 250
-          },
-          "to" : [ {
-            "set_variable" : {
-              "name" : "left_shift-caps_lock-layer",
-              "value" : 1
-            }
-          }, {
-            "key_code" : "1"
-          } ],
-          "from" : {
-            "simultaneous" : [ {
-              "key_code" : "left_shift"
-            }, {
-              "key_code" : "caps_lock"
-            } ],
-            "simultaneous_options" : {
-              "detect_key_down_uninterruptedly" : true,
-              "key_down_order" : "strict",
-              "key_up_order" : "strict_inverse",
-              "key_up_when" : "any",
-              "to_after_key_up" : [ {
-                "set_variable" : {
-                  "name" : "left_shift-caps_lock-layer",
-                  "value" : 0
-                }
-              } ]
-            }
-          },
-          "conditions" : [ {
-            "name" : "f1",
-            "value" : 1,
-            "type" : "variable_if"
-          } ]
         } ]
       } ]
     },
