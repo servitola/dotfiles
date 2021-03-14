@@ -15,18 +15,18 @@
 {
  :profiles {:Default {
               :default true 
-              :sim 50 ;; keys need to be pressed within this threshold to be considered simultaneous
-              :delay 500 ;; basically it means time after which the key press is count delayed
-              :alone 180 ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
-              :held 1000 ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
+              :sim 30 ; keys need to be pressed within this threshold to be considered simultaneous
+              :delay 500 ; basically it means time after which the key press is count delayed
+              :alone 50 ; hold for .. ms to register single tap
+              :held 50 ; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
             }}
 
  :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
              :open "open \"%s\""}
 
- :devices {:apl-usb-int [{:vendor_id 1452, :product_id 635}] ;; Apple Internal & Magic Keyboard (USB)
-           :apl-bt [{:vendor_id 1452, :product_id 615}] ;; Apple Magic Keyboard (Bluetooth)
-           :ap2 [{:vendor_id 1241, :product_id 41618}] ;; AnnePro2
+ :devices {:apl-usb-int [{:vendor_id 1452, :product_id 635}] ; Apple Internal & Magic Keyboard (USB)
+           :apl-bt [{:vendor_id 1452, :product_id 615}] ; Apple Magic Keyboard (Bluetooth)
+           :ap2 [{:vendor_id 1241, :product_id 41618}] ; AnnePro2
            }
 
  :simlayers {
@@ -437,6 +437,10 @@
                  [:!TOsemicolon [:!TOright_arrow]]
                  [:!SOsemicolon [:!SOright_arrow]]
 
+                 [:quote [:volume_increment]]
+
+                 [:z [:!SCTOz]]
+
                  [:x [:!Cleft_arrow]]
                  [:!Sx [:!SCleft_arrow]]
                  [:!Cx [:!Cleft_arrow]]
@@ -467,7 +471,7 @@
                  [:!Operiod [:!OCright_arrow]]
 
       ;;   ;; [:0 [:mute]]                    
-                 [:quote [:volume_increment]]
+                
                  [:slash [:volume_decrement]]
                  [:spacebar [:play_or_pause]]
                  ]
