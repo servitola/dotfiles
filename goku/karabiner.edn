@@ -1,33 +1,25 @@
-{;; !  | means mandatory
-    ;; #  | means optional
-    ;; !! | mandatory command + control + optional + shift (hyper)
-    ;; ## | optional any
-
-    ;; to understand better how modifiers work in karabiner
-    ;; karabiner definition of mandatory and optional
-    ;; https://pqrs.org/osx/karabiner/json.html#from-event-definition-modifiers
-
-    ;; C  | left_command
-    ;; T  | left_control
-    ;; O  | left_option
-    ;; S  | left_shift
-    ;; F  | fn
-    ;; Q  | right_command
-    ;; W  | right_control
-    ;; E  | right_option
-    ;; R  | right_shift
-    ;; need to prefix C T O S F with ! or #
-
- :profiles {:Default {:default true
-                      :sim     50     ;; simultaneous_threshold_milliseconds (def: 50)
-                      ;; keys need to be pressed within this threshold to be considered simultaneous
-                      :delay   500    ;; to_delayed_action_delay_milliseconds (def: 500)
-                      ;; basically it means time after which the key press is count delayed
-                      :alone   180    ;; to_if_alone_timeout_milliseconds (def: 1000)
-                      ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
-                      :held    1000   ;; to_if_held_down_threshold_milliseconds (def: 500)
-                      ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
-                      }}
+;; !  | means mandatory
+;; #  | means optional
+;; !! | mandatory command + control + optional + shift (hyper)
+;; ## | optional any
+;; C  | left_command
+;; T  | left_control
+;; O  | left_option
+;; S  | left_shift
+;; F  | fn
+;; Q  | right_command
+;; W  | right_control
+;; E  | right_option
+;; R  | right_shift
+;; need to prefix C T O S F with ! or #
+{
+ :profiles {:Default {
+              :default true 
+              :sim 50 ;; keys need to be pressed within this threshold to be considered simultaneous
+              :delay 500 ;; basically it means time after which the key press is count delayed
+              :alone 180 ;; hold for 995s and single tap registered; hold for 1005s and seen as modifier
+              :held 1000 ;; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
+            }}
 
  :templates {:km "osascript -e 'tell application \"Keyboard Maestro Engine\" to do script \"%s\"'"
              :open "open \"%s\""}
@@ -37,54 +29,18 @@
            :ap2 [{:vendor_id 1241, :product_id 41618}] ;; AnnePro2
            }
 
- :layers {:hyper-mode {:key :caps_lock}}
+ :simlayers {
+   :caps_lock-layer {:key :caps_lock}
+   :left_shift-caps_lock-layer {:key :left_shift}
+   }
 
-;; simlayers are basically "hyper" keys
-;; layers works too, but only recommended for non-typing keys like . or tab
-;; or keys like z which are used less often
-; :simlayers {
-;     :close-bracket-mode {:key :close_bracket}
-;     :open-bracket-mode  {:key :open_bracket}
-; } ;; simlayers
-;; main contains multiple manipulators
- :main [;; each manipulator has a description and multiple rules
-
-    ;;{:des "..."                               ;; -> description
-    ;; :rules[
-    ;;          [<from>  <to>  <conditions> <other options>]    ;; -> rule 1
-    ;;          [<from>  <to>  <conditions> <other options>]    ;; -> rule 2
-    ;; ]}
-    ;;
-    ;; <from> can be keywords defined in froms or keycodes without `{:not-from true}`
-    ;; <to> can be keywords defined in tos, keycodes without `{:not-to true}` or strings (shell script)
-    ;; <conditions> can be keywords defined in layers, devices, applications
-    ;; <other options> {:other {:parameters {:to_delayed_action_delay_milliseconds 100 :basic.to_if_alone_timeout_milliseconds 500 :basic.to_if_held_down_threshold_milliseconds 250}} }
-
-    ;; if simplified modifier is used in <to>, optional(#) definition will be ignored.
-
-    ;; (custom variables) & modifiers -> Advanced
-    ;; https://github.com/yqrashawn/GokuRakuJoudo/blob/master/examples.org#custom-variable
-
+ :main [
         {:des "[Internal Keyboard] fn -> left_control"
          :rules [[:##fn :left_control [:apl-usb-int]]]}
 
-        {:des "[Windows Keyboard] windows -> left_option"
-         :rules [[:##left_command :left_option [:lingyi]]]}
+        {:des "Caps_Lock + All buttons"
+         :rules [:caps_lock-layer
 
-        {:des "[Windows Keyboard] left_alt -> left_command"
-         :rules [[:##left_option :left_command [:lingyi]]]}
-
-        {:des "[Windows Keyboard] right_alt -> right_command"
-         :rules [[:##right_option :right_command [:lingyi]]]}
-
-    ;; {
-    ;;   :des "[Capslock Enhancement] caps_lock -> escape/left_control"
-    ;;   :rules [[:##caps_lock :left_control nil {:alone :escape}]]
-    ;; }
-
-    ;; Use hyper key to change the volume
-        {:des "Hyper + All buttons"
-         :rules [:hyper-mode
                  [:escape [:grave_accent_and_tilde]]
 
                  [:1 [:f1]]
@@ -365,6 +321,9 @@
 
                  [:p [:!SCTOp]]
 
+                 [:open_bracket [:vk_consumer_next]]
+                 [:close_bracket [:vk_consumer_previous]]
+
                  [:a [:left_arrow]]
                  [:!Sa [:!Sleft_arrow]]
                  [:!Ca [:!Cleft_arrow]]
@@ -510,7 +469,49 @@
       ;;   ;; [:0 [:mute]]                    
                  [:quote [:volume_increment]]
                  [:slash [:volume_decrement]]
-                 ]}
+                 [:spacebar [:play_or_pause]]
+                 ]
+              }
+
+    ;;               {
+    ;;   ;; :des "[Space Mode] space+hjkl -> left/down/up/right"
+    ;;   ;; :rules [
+    ;;   ;;  :left_shift-caps_lock-layer:caps_lock
+    ;;   ;;     [:1 [:f1]]
+          
+    ;;   ;; ]
+    ;; }
+
+    ;; Use e-key key to launch apps or actions
+     {:des "e-key shortcuts"                             ; Hold 'e' + extra key
+      :rules [ :left_shift-caps_lock-layer
+        [:caps_lock :1 [:f1]]
+      ]
+     }
+
+    ;; {:des "Keychron K1 - microphone button becomes 'Copy picture of selected area to clipboard'"
+    ;;  :rules [ :kb-keychron-k1
+    ;;     [[:fn :spacebar] [:screen_capture_clipboard]]   ;; Silently capture selected area to clipboard
+    ;;  ]
+    ;; }
+
+              ;; {:des "Hyper + All buttons 2"
+              ;;   :rules [:left_shift-caps_lock-layer:caps_lock :1 [:!Sf1]
+                 
+              ;;     ;;[:semicolon [:colon]]
+              ;;     ;;[:caps_lock :1 [:!Sf1]]
+              ;;     ;;[:1 :caps_lock [:!Sf1]]
+              ;;     ;;[:caps_lock 2 [:!Sf2]]
+              ;;   ;;  [:caps_lock3 [:!Sf3]]
+              ;;   ;;  [:caps_lock4 [:!Sf4]]
+              ;;   ;;  [:caps_lock5 [:!Sf5]]
+              ;;   ;;  [:caps_lock6 [:!Sf6]]
+              ;;   ;;  [:caps_lock7 [:!Sf7]]
+              ;;   ;;  [:caps_lock8 [:!Sf8]]
+              ;;   ;;  [:caps_lock9 [:!Sf9]]
+              ;;   ;;  [:caps_lock0 [:!Sf10]]
+                 
+              ;;    ]}
 
 ;;     {
 ;;       :des "[Space Mode] OVERALL TRIGGER"
@@ -601,4 +602,19 @@
 ;;     {:des "[Launch Mode] -> v (Open VSCode)" :rules [:launch-mode [:##v [:km "open: VSCode"]]]}
 ;;     {:des "[Launch Mode] -> m (Open Spotify)" :rules [:launch-mode [:##m [:km "open: Spotify"]]]}
 ] ;; main list
+
+        ;; {:des "[Windows Keyboard] windows -> left_option"
+        ;;  :rules [[:##left_command :left_option [:lingyi]]]}
+
+        ;; {:des "[Windows Keyboard] left_alt -> left_command"
+        ;;  :rules [[:##left_option :left_command [:lingyi]]]}
+
+        ;; {:des "[Windows Keyboard] right_alt -> right_command"
+        ;;  :rules [[:##right_option :right_command [:lingyi]]]}
+
+    ;; {
+    ;;   :des "[Capslock Enhancement] caps_lock -> escape/left_control"
+    ;;   :rules [[:##caps_lock :left_control nil {:alone :escape}]]
+    ;; }
+
  }
