@@ -15,7 +15,7 @@
 {
  :profiles {:Default {
               :default true 
-              :sim 30 ; keys need to be pressed within this threshold to be considered simultaneous
+              :sim 80 ; keys need to be pressed within this threshold to be considered simultaneous
               :delay 500 ; basically it means time after which the key press is count delayed
               :alone 50 ; hold for .. ms to register single tap
               :held 50 ; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
@@ -35,6 +35,28 @@
    }
 
  :main [
+
+;;  {:des "Uppercase diacritic characters - '/' for acute accent and ';' for umlaut, '\\' for grave 
+;;  accent and '6' for circumflex. Example: 'slash' + ['shift' + 'a'] = Á"
+;;      :rules [
+;;        [:left_shift :caps_lock :1 ]
+;;      ;   [{:key :1 :modi :shift} [:7] [:caps_lock-layer]] 
+;;      ]
+;;  }
+
+{:sim [:left_shift :caps_lock]
+         :simo {:interrupt true
+                :dorder :strict
+                :uorder :strict_inverse}}
+
+ {:des "simultaneous j l press to F19" :rules [[[:left_shift :caps_lock :1] :7]]}
+
+;;  {:des "e-key shortcuts"                             ; Hold 'e' + extra key
+    ;;   :rules [ :left_shift-caps_lock-layer
+    ;;     [:caps_lock :1 [:f1]]
+    ;;   ]
+    ;;  }
+
         {:des "[Internal Keyboard] fn -> left_control"
          :rules [[:##fn :left_control [:apl-usb-int]]]}
 
@@ -42,6 +64,8 @@
          :rules [:caps_lock-layer
 
                  [:escape [:grave_accent_and_tilde]]
+
+
 
                  [:1 [:f1]]
                  [:!S1 [:!Sf1]]
@@ -487,11 +511,7 @@
     ;; }
 
     ;; Use e-key key to launch apps or actions
-     {:des "e-key shortcuts"                             ; Hold 'e' + extra key
-      :rules [ :left_shift-caps_lock-layer
-        [:caps_lock :1 [:f1]]
-      ]
-     }
+    
 
     ;; {:des "Keychron K1 - microphone button becomes 'Copy picture of selected area to clipboard'"
     ;;  :rules [ :kb-keychron-k1
