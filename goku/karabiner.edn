@@ -15,9 +15,9 @@
 {
  :profiles {:Default {
               :default true 
-              :sim 80 ; keys need to be pressed within this threshold to be considered simultaneous
+              :sim 2 ; keys need to be pressed within this threshold to be considered simultaneous
               :delay 500 ; basically it means time after which the key press is count delayed
-              :alone 50 ; hold for .. ms to register single tap
+              :alone 10 ; hold for .. ms to register single tap
               :held 50 ; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
             }}
 
@@ -29,7 +29,7 @@
            :ap2 [{:vendor_id 1241, :product_id 41618}] ; AnnePro2
            }
 
- :simlayers {
+ :layers {
    :caps_lock-layer {:key :caps_lock}
    :left_shift-caps_lock-layer {:key :left_shift}
    }
@@ -44,12 +44,70 @@
 ;;      ]
 ;;  }
 
-{:sim [:left_shift :caps_lock]
-         :simo {:interrupt true
-                :dorder :strict
-                :uorder :strict_inverse}}
+;; {:sim [:left_shift :caps_lock]
+;;          :simo {:interrupt true
+;;                 :dorder :strict
+;;                 :uorder :strict_inverse}}
 
- {:des "simultaneous j l press to F19" :rules [[[:left_shift :caps_lock :1] :7]]}
+;;  {:des "simultaneous j l press to F19" :rules [
+;;    :left_shift-caps_lock-layer
+;;     [:backslash :!Sbackslash]
+;;     [:1 :!S1]
+;;     [:2 :!S2]
+;;     [:3 :!S3]
+;;     [:4 :!S4]
+;;     [:5 :!S5]
+;;     [:6 :!S6]
+;;     [:7 :!S7]
+;;     [:8 :!S8]
+;;     [:9 :!S9]
+;;     [:0 :!S0]
+;;     [:hyphen :!Shyphen]
+;;     [:equal_sign :!Sequal_sign]
+;;     [:delete_or_backspace :!Sdelete_or_backspace]
+;;     [:tab :!Stab]
+;;     [:q :!Sq]
+;;     [:w :!Sw]
+;;     [:e :!Se]
+;;     [:r :!Sr]
+;;     [:t :!St]
+;;     [:y :!Sy]
+;;     [:u :!Su]
+;;     [:i :!Si]
+;;     [:o :!So]
+;;     [:p :!Sp]
+;;     [:p :!Sp]
+;;     [:open_bracket :!Sopen_bracket]
+;;     [:close_bracket :!Sclose_bracket]
+;;     [:a :!Sa]
+;;     [:s :!Ss]
+;;     [:d :!Sd]
+;;     [:f :!Sf]
+;;     [:g :!Sg]
+;;     [:h :!Sh]
+;;     [:j :!Sj]
+;;     [:k :!Sk]
+;;     [:l :!Sl]
+;;     [:semicolon :!Ssemicolon]
+;;     [:quote [:!Squote]]
+;;     [:z :!Sz]
+;;     [:x :!Sx]
+;;     [:c :!Sc]
+;;     [:v :!Sv]
+;;     [:b :!Sb]
+;;     [:n :!Sn]
+;;     [:m :!Sm]
+;;     [:m :!Sm]
+;;     [:comma [:!Scomma]]
+;;     [:period [:!Speriod]]
+;;     [:slash :!Sslash]
+    
+;;     ;;[[:caps_lock :a] :!Sleft_arrow]   
+;;     ;; [:semicolon :!Ssemicolon]
+    
+    
+;;  ]
+;;     }
 
 ;;  {:des "e-key shortcuts"                             ; Hold 'e' + extra key
     ;;   :rules [ :left_shift-caps_lock-layer
@@ -58,32 +116,34 @@
     ;;  }
 
         {:des "[Internal Keyboard] fn -> left_control"
-         :rules [[:##fn :left_control [:apl-usb-int]]]}
+         :rules [
+           [:##fn :left_control]
+           ;[:fn :left_control]
+           
+           ]}
 
         {:des "Caps_Lock + All buttons"
          :rules [:caps_lock-layer
 
                  [:escape [:grave_accent_and_tilde]]
 
-
-
-                 [:1 [:f1]]
-                 [:!S1 [:!Sf1]]
-                 [:!C1 [:!Cf1]]
-                 [:!T1 [:!Tf1]]
-                 [:!O1 [:!Of1]]
-                 [:!TS1 [:!TSf1]]
-                 [:!OS1 [:!OSf1]]
-                 [:!CS1 [:!CSf1]]
-                 [:!TC1 [:!TCf1]]
-                 [:!OC1 [:!OCf1]]
-                 [:!SC1 [:!SCf1]]
-                 [:!CT1 [:!CTf1]]
-                 [:!OT1 [:!OTf1]]
-                 [:!ST1 [:!STf1]]
-                 [:!CO1 [:!COf1]]
-                 [:!TO1 [:!TOf1]]
-                 [:!SO1 [:!SOf1]]
+                 [:1 :f1]
+                 [:!S1 :!Sf1]
+                 [:!C1 :!Cf1]
+                 [:!T1 :!Tf1]
+                 [:!O1 :!Of1]
+                 [:!TS1 :!TSf1]
+                 [:!OS1 :!OSf1]
+                 [:!CS1 :!CSf1]
+                 [:!TC1 :!TCf1]
+                 [:!OC1 :!OCf1]
+                 [:!SC1 :!SCf1]
+                 [:!CT1 :!CTf1]
+                 [:!OT1 :!OTf1]
+                 [:!ST1 :!STf1]
+                 [:!CO1 :!COf1]
+                 [:!TO1 :!TOf1]
+                 [:!SO1 :!SOf1]
 
                  [:2 [:f2]]
                  [:!S2 [:!Sf2]]
@@ -246,6 +306,9 @@
                  [:!CO0 [:!COf10]]
                  [:!TO0 [:!TOf10]]
                  [:!SO0 [:!SOf10]]
+
+                  ;; [:hyphen :!Shyphen]
+                  ;; [:equal_sign :!equal_sign]
 
                  [:delete_or_backspace [:delete_forward]]
                  [:!Sdelete_or_backspace [:!Sdelete_forward]]
