@@ -13,6 +13,7 @@ alias mkdir='mkdir -p'
 
 #alias d=~d
 #alias go_to_downloads=d
+alias c=clear
 alias g="git"
 #alias n=cd ~n
 #alias ct=cd ~ct
