@@ -1401,7 +1401,7 @@
 			<key>Normal Font</key>
 			<string>MesloLGMForPowerline-Regular 23</string>
 			<key>Open Toolbelt</key>
-			<true/>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
