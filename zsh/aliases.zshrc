@@ -37,12 +37,12 @@ sudo softwareupdate -i -a;
 xcode-select --install
 brew cu --all -y -q; 
 brew update; 
-brew upgrade; 
-mas upgrade; 
+brew upgrade;
 brew cleanup; 
 brew doctor; 
 omz update;
 tldr --update;'
+#mas upgrade; 
 #g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 alias re=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
