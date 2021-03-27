@@ -28,6 +28,17 @@
         "description" : "Hyper Layer",
         "manipulators" : [ {
           "from" : {
+            "key_code" : "escape",
+            "modifiers" : {
+              "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
+            }
+          },
+          "to" : [ {
+            "key_code" : "grave_accent_and_tilde"
+          } ],
+          "type" : "basic"
+        }, {
+          "from" : {
             "key_code" : "1",
             "modifiers" : {
               "mandatory" : [ "right_command", "right_control", "right_option", "right_shift" ]
