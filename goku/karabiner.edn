@@ -31,7 +31,7 @@
   {:des "Caps Lock to Right Hyper" :rules [[:caps_lock :!QWEright_shift]]}
 
   {:des "Hyper Layer" :rules [    
-    ;; [:escape [:grave_accent_and_tilde]]
+    [:!QWERescape [:grave_accent_and_tilde]]
 
     [:!QWER1 :f1]
     [:!QWERS1 :!Sf1]
