@@ -19,8 +19,10 @@ brew "fd"
 brew "geoip"
 brew "git"
 brew "git-standup"
+brew "gitleaks"
 brew "htop"
 brew "jq"
+brew "lynx"
 brew "mas"
 brew "midnight-commander"
 brew "neofetch"
@@ -34,12 +36,11 @@ brew "zsh"
 brew "zsh-syntax-highlighting"
 brew "jesseduffield/lazygit/lazygit"
 brew "yqrashawn/goku/goku"
+cask "adguard"
 cask "airdroid"
 cask "bettertouchtool"
 cask "bitbar"
-cask "choosy"
 cask "docker"
-cask "dotnet-sdk"
 cask "firefox"
 cask "fork"
 cask "github"
@@ -51,10 +52,10 @@ cask "macs-fan-control"
 cask "mailmate"
 cask "microsoft-auto-update"
 cask "microsoft-edge"
-cask "mono-mdk-for-visual-studio"
 cask "mtmr"
 cask "notion"
 cask "onyx"
+cask "opera-gx"
 cask "protonvpn"
 cask "rescuetime"
 cask "scroll-reverser"
@@ -64,13 +65,10 @@ cask "swiftdefaultappsprefpane"
 cask "teamviewer"
 cask "tor-browser"
 cask "transmission"
-cask "visual-studio"
 cask "vivaldi"
 cask "vlc"
-cask "whatsapp"
 cask "workflowy"
 cask "xee"
-cask "yt-music"
 cask "zoom"
 mas "AdBlock", id: 1402042596
 mas "Amphetamine", id: 937984704
@@ -88,7 +86,6 @@ mas "Ghostery Lite", id: 1436953057
 mas "Grammarly for Safari", id: 1462114288
 mas "HiSuite", id: 1232508288
 mas "Keyboard Pilot", id: 402670023
-mas "Kindle", id: 405399194
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pages", id: 409201541
 mas "Reeder", id: 1449412482
@@ -97,5 +94,6 @@ mas "Simple Antnotes", id: 846599902
 mas "Tayasui Sketches", id: 1178074963
 mas "Telegram", id: 747648890
 mas "The Unarchiver", id: 425424353
+mas "Typist", id: 415166115
 mas "Xcode", id: 497799835
 mas "XMind", id: 1327661892
