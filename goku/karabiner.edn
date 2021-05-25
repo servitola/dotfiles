@@ -314,8 +314,8 @@
 
     ;; [:p [:!SCTOp]]
 
-    [:!QWERopen_bracket [:vk_consumer_next]]
-    [:!QWERclose_bracket [:vk_consumer_previous]]
+    [:!QWERopen_bracket [:vk_consumer_previous]]
+    [:!QWERclose_bracket [:vk_consumer_next]]
 
     [:!QWERa [:left_arrow]]
     [:!QWERSa [:!Sleft_arrow]]
