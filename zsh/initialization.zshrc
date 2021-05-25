@@ -16,3 +16,6 @@ export ZSH="/Users/servitola/.oh-my-zsh"
 # ANDROID
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+
+# unknow now
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
