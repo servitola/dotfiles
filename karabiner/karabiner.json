@@ -52,18 +52,6 @@
           "from" : {
             "key_code" : "1",
             "modifiers" : {
-              "mandatory" : [ "left_shift", "right_command", "right_control", "right_option", "right_shift" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "f1",
-            "modifiers" : [ "left_shift" ]
-          } ],
-          "type" : "basic"
-        }, {
-          "from" : {
-            "key_code" : "1",
-            "modifiers" : {
               "mandatory" : [ "left_command", "right_command", "right_control", "right_option", "right_shift" ]
             }
           },
@@ -3090,7 +3078,7 @@
             }
           },
           "to" : [ {
-            "key_code" : "vk_consumer_next"
+            "key_code" : "vk_consumer_previous"
           } ],
           "type" : "basic"
         }, {
@@ -3101,7 +3089,7 @@
             }
           },
           "to" : [ {
-            "key_code" : "vk_consumer_previous"
+            "key_code" : "vk_consumer_next"
           } ],
           "type" : "basic"
         }, {
@@ -4593,20 +4581,6 @@
           },
           "to" : [ {
             "consumer_key_code" : "play_or_pause"
-          } ],
-          "type" : "basic"
-        } ]
-      }, {
-        "description" : "[Internal Keyboard] fn -> left_control",
-        "manipulators" : [ {
-          "from" : {
-            "key_code" : "fn",
-            "modifiers" : {
-              "optional" : [ "any" ]
-            }
-          },
-          "to" : [ {
-            "key_code" : "left_control"
           } ],
           "type" : "basic"
         } ]
