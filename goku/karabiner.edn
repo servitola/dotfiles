@@ -21,12 +21,20 @@
               :held 50 ; key is fired twice when 500 ms is elapsed (otherwise seen as a hold command)
             }}
 
- :devices {:apl-usb-int [{:vendor_id 1452, :product_id 635}] ; Apple Internal & Magic Keyboard (USB)
-           :apl-bt [{:vendor_id 1452, :product_id 615}] ; Apple Magic Keyboard (Bluetooth)
-           :ap2 [{:vendor_id 1241, :product_id 41618}] ; AnnePro2
-           }
+;;  :devices {:apl-usb-int [{:vendor_id 1452, :product_id 635}] ; Apple Internal & Magic Keyboard (USB)
+;;            :apl-bt [{:vendor_id 1452, :product_id 615}] ; Apple Magic Keyboard (Bluetooth)
+;;            :ap2 [{:vendor_id 1241, :product_id 41618}] ; AnnePro2
+;;            }
 
  :main [
+
+;; {:des "test" :rules [
+;;   {:sim [:left_command :caps_lock :1] :8}
+;; ]}
+   ;;{:sim [:left_shift :caps_lock]}
+        ;;  :simo {:interrupt true
+        ;;         :dorder :strict
+        ;;         :uorder :strict_inverse}}
 
   {:des "Caps Lock to Right Hyper" :rules [[:caps_lock :!QWEright_shift]]}
 
@@ -34,7 +42,38 @@
     [:!QWERescape [:grave_accent_and_tilde]]
 
     [:!QWER1 :f1]
-    [:!QWERS1 :!Sf1]
+    ;[{:key :!QWER1 :modi :shift} :7]
+    ;;[{:key :a :modi :left_shift} :9]
+    ;[:!QWER1 modi:left_shift :7]
+
+;; {
+;;           "from": {
+;;             "key_code": "w",
+;;             "modifiers": {
+;;               "mandatory": [
+;;                 "left_command",
+;;                 "right_shift",
+;;                 "right_command",
+;;                 "right_control",
+;;                 "right_option"
+;;               ]
+;;             }
+;;           },
+;;           "to": [
+;;             {
+;;               "key_code": "up_arrow",
+;;               "modifiers": ["left_command"]
+;;             }
+;;           ],
+;;           "type": "basic"
+;;         },
+;; [:!CQWER1 :1]
+;; [:!QCWER1 :2]
+;; [:!QWCER1 :3]
+;; [:!QWECR1 :4]
+;; [:!QWERC1 :5]
+
+
     [:!QWERC1 :!Cf1]
     [:!QWERT1 :!Tf1]
     [:!QWERO1 :!Of1]
@@ -469,6 +508,9 @@
     [:!QWERspacebar [:play_or_pause]]
   ]}
 
-  {:des "[Internal Keyboard] fn -> left_control" :rules [[:##fn :left_control]]}
+  ;{:des "[Internal Keyboard] fn -> left_control" :rules [[:##fn :left_control]]}
+;; {:des "test" :rules [
+;;   {:sim [:left_command :caps_lock :1] :8}
+;; ]}
 
 ]}
