@@ -4,8 +4,9 @@ hs.window.animationDuration = 0
 
 -- Specify Spoons which will be loaded
 hspoon_list = {
-    "Windows",
     "HotKeys",
+    "Windows",
+    "Griddle",
     --"AClock",
     --"BingDaily",
     --"Calendar",
@@ -19,7 +20,7 @@ hspoon_list = {
     --"KSheet",
     --"SpeedMenu",
     --"TimeFlow",
-    "UnsplashZ", 
+    "UnsplashZ"
 }   
 
 -- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
