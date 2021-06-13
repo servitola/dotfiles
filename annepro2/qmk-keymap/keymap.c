@@ -39,7 +39,7 @@ enum anne_pro_layers {
     LT(_FN1_LAYER,KC_LEFT), KC_A, KC_S, KC_D, KC_F, KC_G, KC_H, KC_J, KC_K, KC_L, KC_SCLN, KC_QUOT, KC_ENT,
     KC_LSFT, KC_Z, KC_X, KC_C, KC_V, KC_B, KC_N, KC_M, KC_COMM, KC_DOT, KC_SLSH, RSFT_T(KC_UP),
     KC_LCTL, KC_LALT, KC_LGUI, KC_SPC, KC_RALT, LT(_FN1_LAYER,KC_LEFT), LT(_FN2_LAYER,KC_DOWN), RCTL_T(KC_RGHT)
-),
+),\
 /*/---__FN1_LAYER___-------------------------------------------------------------------------------------------.
 * |  `  |  F1 |  F2 |  F3 |  F4 |  F5 |  F6 |  F7 |  F8 |  F9   |   F10   |   F11   |   F12   |      DELETE    |
 * |------------------------------------------------------------------------------------------------------------+
@@ -70,8 +70,8 @@ enum anne_pro_layers {
 * | Ctrl  |  L1   |  Alt  |                space                 |  Alt  |  FN1  |   FN2   |   Ctrl    |
 * \---------------------------------------------------------------------------------------------------*/
  [_FN2_LAYER] = KEYMAP(
-    KC_TILD, KC_TRNS, MAGIC_UNSWAP_LALT_LGUI, KC_AP_LED_ON, KC_AP_LED_OFF, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_TRNS,
-    MO(_FN2_LAYER), KC_MS_WH_UP, KC_MS_UP, KC_MS_WH_DOWN, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, HYPR(KC_P), KC_MPRV, KC_MNXT, KC_TRNS,
+    KC_GRV, KC_TRNS, MAGIC_UNSWAP_LALT_LGUI, KC_AP_LED_ON, KC_AP_LED_OFF, KC_AP_LED_NEXT_INTENSITY, KC_AP_LED_SPEED, KC_TRNS, KC_TRNS, KC_TRNS, KC_AP2_BT1, KC_AP2_BT2, KC_AP2_BT3, KC_TRNS,
+    MO(_FN2_LAYER), KC_MB2, KC_MS_UP, KC_MB1, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_UP, HYPR(KC_P), KC_MPRV, KC_MNXT, KC_TRNS,
     KC_TRNS, KC_MS_LEFT, KC_MS_DOWN, KC_MS_RIGHT, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLU, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_HOME, KC_END, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_HOME, KC_END, KC_VOLD, KC_TRNS,
     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_BTN1, MO(_FN2_LAYER), KC_BTN2
@@ -93,7 +93,7 @@ void keyboard_post_init_user(void) {
 
     // Additionally, it also chooses the first LED profile by default. Refer to the "profiles" array in main.c in
     // annepro2-shine to see the order. Replace "i" with the index of your preferred profile. (i.e the RED profile is index 0)
-    annepro2LedSetProfile(3);
+    annepro2LedSetProfile(1);
 }
 
 layer_state_t layer_state_set_user(layer_state_t layer) {
