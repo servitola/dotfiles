@@ -264,9 +264,8 @@ configFileWatcher:start()
 --         hs.audiodevice.defaultOutputDevice():setVolume(new)
 --     end
 -- end
-
 -- 
 
-
+-- spoon.HotKeys:bindOpenApp([modifier], chord_row.key, chord_row.app_name)
 
 require "Configs/config_FadeLogo";
