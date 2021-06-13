@@ -27,7 +27,7 @@ local wm = hs.webview.windowMasks
 require "Configs/PopupTranslateSelection";
 require "Configs/config_DeepLTranslate";
 
-hs.loadSpoon("ModalMgr")
+ hs.loadSpoon("ModalMgr")
 
 -- Load those Spoons
 for _, v in pairs(hspoon_list) do
@@ -93,17 +93,17 @@ end
 
 ----------------------------------------------------------------------------------------------------
 -- appM modal environment
-spoon.ModalMgr:new("appM")
-local cmodal = spoon.ModalMgr.modal_list["appM"]
-cmodal:bind('', 'escape', 'Deactivate appM', function()
-    spoon.ModalMgr:deactivate({"appM"})
-end)
-cmodal:bind('', 'Q', 'Deactivate appM', function()
-    spoon.ModalMgr:deactivate({"appM"})
-end)
-cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
-    spoon.ModalMgr:toggleCheatsheet()
-end)
+-- spoon.ModalMgr:new("appM")
+-- local cmodal = spoon.ModalMgr.modal_list["appM"]
+-- cmodal:bind('', 'escape', 'Deactivate appM', function()
+--     spoon.ModalMgr:deactivate({"appM"})
+-- end)
+-- cmodal:bind('', 'Q', 'Deactivate appM', function()
+--     spoon.ModalMgr:deactivate({"appM"})
+-- end)
+-- cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
+--     spoon.ModalMgr:toggleCheatsheet()
+-- end)
 
 -- Then we register some keybindings with modal supervisor
 -- hsappM_keys = hsappM_keys or {"alt", "A"}
@@ -114,6 +114,13 @@ end)
 --         spoon.ModalMgr:activate({"appM"}, "#FFBD2E", true)
 --     end)
 -- end
+
+---- Mouse Movement Griddle
+if spoon.Griddle then
+    spoon.Griddle:bindHotkeys({ enter = { ctrlAndAlt, "m" } })
+    print("Griddle binded its keys")
+    spoon.Griddle:start()
+end
 
 ----------------------------------------------------------------------------------------------------
 -- clipshowM modal environment
