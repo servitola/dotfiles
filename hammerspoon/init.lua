@@ -265,24 +265,7 @@ configFileWatcher:start()
 --     end
 -- end
 
--- function clickMouseLeft()
---     local clickState = hs.eventtap.event.properties.mouseEventClickState
---     local point = hs.mouse.getAbsolutePosition()
---     hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseDown, point):post()
---     -- hs.usleep(1000)
---     --hs.eventtap.event.newMouseEvent(hs.eventtap.event.types.leftMouseUp, point):post()
---     -- hs.eventtap.event.newMouseEvent(hs.eventtap.event.types["leftMouseDown"], point):setProperty(clickState, 1):post()
---     -- hs.eventtap.event.newMouseEvent(hs.eventtap.event.types["leftMouseUp"], point):setProperty(clickState, 1):post()
--- end
-
--- function clickMouseLeftTwice()
---     clickMouseLeft()
---     clickMouseLeft()
--- end
-
--- --hs.hotkey.bind(ctrlAndAlt, 'r', changeVolume(-3))
--- hs.hotkey.bind(ctrlAndAlt, 'e', function() clickMouseLeft() end) 
--- hs.hotkey.bind(ctrlAndAlt, 'q', function() clickMouseLeftTwice() end) 
+-- 
 
 
 
