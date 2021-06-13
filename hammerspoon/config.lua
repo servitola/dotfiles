@@ -47,7 +47,7 @@ apps_list = {
         --{supported=true, key="e", map="page_down" },  
         {supported=true, key="r", app_name="Rider" },
         {supported=true, key="t", app_name="Telegram", color="#2194CE", window_default_position="right" },
-        {supported=true, key="y", app_name="Opera GX" },
+        {supported=true, key="y", app_name="Yandex" },
         {supported=true, key="u", app_name="Folx", app_nameWin="uTorrent" },
         --{supported=true, key="i" },
         --{supported=true, key="o", map="up_arrow" },
