@@ -1,6 +1,6 @@
 [user]
-	name = servitola
-	email = servitola@gmail.com
+	name = vkonovalov
+	email = vkonovalov@spotware.com
 	
 [branch]
 	sort = -committerdate # Show most recently changed branches first.
@@ -22,7 +22,7 @@
 	defaultBranch = dev
 
 [include]
-    path = .gitconfig_aliases
+    path = gitconfig_aliases
 
 [include]
-    path = .gitconfig_colors
+    path = gitconfig_colors
