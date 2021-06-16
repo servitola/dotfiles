@@ -22,7 +22,7 @@
 	defaultBranch = dev
 
 [include]
-    path = .gitconfig_aliases
+    path = gitconfig_aliases
 
 [include]
-    path = .gitconfig_colors
+    path = gitconfig_colors
