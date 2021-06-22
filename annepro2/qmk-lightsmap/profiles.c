@@ -8,8 +8,8 @@
 // 0x0000F, 0xF000F, 0x50F0F};
 static const uint32_t colorPalette[] = {0xcc0000, 0xcccc00, 0x5fcc00, 0x00c7cc,
                                         0x006ecc, 0x0033ff, 0x6900cc, 0xcc00bf};
-static const uint32_t servitola_colorPalette[] = {0x00FF00, 0x0707cc, 0x00FF00, 0xffcc00,
-                                        0x00ffff, 0xFF0000, 0x6900cc, 0xcc00bf};
+static const uint32_t servitola_colorPalette[] = {0x00FF00, 0x0707cc, 0x00FF00, 0xffcc00 /*Telegram*/,
+                                        0x00ffff /*Rider*/, 0xFF0000, 0x6900cc, 0xcc00bf};
 
 uint8_t servitola_animatedPressedBuf[NUM_ROW * NUM_COLUMN] = {0};
 
@@ -33,7 +33,7 @@ void servitola(led_t *currentKeyLedColors) {
   // }
   // }
 
-   currentKeyLedColors[0].rgb = servitola_colorPalette[2]; // Esc
+  currentKeyLedColors[0].rgb = servitola_colorPalette[0]; // Esc
   currentKeyLedColors[1].rgb = servitola_colorPalette[1];
   currentKeyLedColors[2].rgb = servitola_colorPalette[1];
   currentKeyLedColors[3].rgb = servitola_colorPalette[1];
@@ -46,14 +46,14 @@ void servitola(led_t *currentKeyLedColors) {
   currentKeyLedColors[10].rgb = servitola_colorPalette[1];
   currentKeyLedColors[11].rgb = servitola_colorPalette[1];
   currentKeyLedColors[12].rgb = servitola_colorPalette[1];
-  currentKeyLedColors[13].rgb = servitola_colorPalette[1];
+  currentKeyLedColors[13].rgb = servitola_colorPalette[0];
 
   currentKeyLedColors[14].rgb = servitola_colorPalette[1];
   currentKeyLedColors[15].rgb = servitola_colorPalette[1];
   currentKeyLedColors[16].rgb = servitola_colorPalette[0]; // Up
   currentKeyLedColors[17].rgb = servitola_colorPalette[1];
-  currentKeyLedColors[18].rgb = servitola_colorPalette[3]; // Rider
-  currentKeyLedColors[19].rgb = servitola_colorPalette[4];
+  currentKeyLedColors[18].rgb = servitola_colorPalette[1]; // Rider
+  currentKeyLedColors[19].rgb = servitola_colorPalette[1];
   currentKeyLedColors[20].rgb = servitola_colorPalette[1];
   currentKeyLedColors[21].rgb = servitola_colorPalette[1];
   currentKeyLedColors[22].rgb = servitola_colorPalette[1];
@@ -92,10 +92,10 @@ void servitola(led_t *currentKeyLedColors) {
   currentKeyLedColors[53].rgb = servitola_colorPalette[1];
   currentKeyLedColors[54].rgb = servitola_colorPalette[0];
 
-  currentKeyLedColors[55].rgb = servitola_colorPalette[2];
-  currentKeyLedColors[56].rgb = servitola_colorPalette[1];
-  currentKeyLedColors[57].rgb = servitola_colorPalette[2];
-  currentKeyLedColors[58].rgb = servitola_colorPalette[1];
+  //currentKeyLedColors[55].rgb = servitola_colorPalette[2];
+  //currentKeyLedColors[56].rgb = servitola_colorPalette[1];
+  //currentKeyLedColors[57].rgb = servitola_colorPalette[2];
+  currentKeyLedColors[58].rgb = servitola_colorPalette[0];
   currentKeyLedColors[59].rgb = servitola_colorPalette[1];
   currentKeyLedColors[60].rgb = servitola_colorPalette[1];
   currentKeyLedColors[61].rgb = servitola_colorPalette[1];
@@ -103,8 +103,8 @@ void servitola(led_t *currentKeyLedColors) {
   currentKeyLedColors[63].rgb = servitola_colorPalette[1];
   currentKeyLedColors[64].rgb = servitola_colorPalette[1];
   currentKeyLedColors[65].rgb = servitola_colorPalette[1];
-  currentKeyLedColors[66].rgb = servitola_colorPalette[0];
-  currentKeyLedColors[67].rgb = servitola_colorPalette[0];
+  currentKeyLedColors[66].rgb = servitola_colorPalette[1];
+  currentKeyLedColors[67].rgb = servitola_colorPalette[1];
   currentKeyLedColors[68].rgb = servitola_colorPalette[0];
 
   setModKeysColor(currentKeyLedColors, naiveDimRGB(0x9c008f));
@@ -350,7 +350,7 @@ void lazyMark(led_t *ledColors, int8_t row, int8_t col, const led_t color) {
 
 void servitola_reactiveFadeKeypress(led_t *currentKeyLedColors, uint8_t row, uint8_t col) {
    int i = row * NUM_COLUMN + col;
-   if(i == 28)
+   if(i == 28 && false)
    {
       servitola_animatedPressedBuf[i] = 50;
 
@@ -373,8 +373,8 @@ void servitola_reactiveFadeKeypress(led_t *currentKeyLedColors, uint8_t row, uin
   currentKeyLedColors[15].rgb = servitola_colorPalette[5];
   currentKeyLedColors[16].rgb = servitola_colorPalette[6]; // Up
   currentKeyLedColors[17].rgb = servitola_colorPalette[5];
-  currentKeyLedColors[18].rgb = servitola_colorPalette[3]; // Rider
-  currentKeyLedColors[19].rgb = servitola_colorPalette[5];
+  currentKeyLedColors[18].rgb = servitola_colorPalette[5]; // Rider
+  currentKeyLedColors[19].rgb = servitola_colorPalette[5]; // Telegram
   currentKeyLedColors[20].rgb = servitola_colorPalette[5];
   currentKeyLedColors[21].rgb = servitola_colorPalette[5];
   currentKeyLedColors[22].rgb = servitola_colorPalette[5];
