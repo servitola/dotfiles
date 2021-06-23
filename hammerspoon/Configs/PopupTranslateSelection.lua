@@ -4,8 +4,9 @@ spoon.SpoonInstall:andUse("PopupTranslateSelection", {
         popup_style = wm.utility | wm.HUD | wm.titled | wm.closable | wm.resizable
     },
     hotkeys = {
-        translate_to_ru = {hyper, "="},
-        translate_to_en = {hyper, "0"},
+        translate_to_ru = {ctrlAndAlt, "r"},
+        translate_to_en = {ctrlAndAlt, "e"},
+        translate_to_el = {ctrlAndAlt, "g"},
         --    translate_to_de = { hyper, "d" },
         --    translate_to_es = { hyper, "s" },
         --    translate_de_en = { shift_hyper, "e" },
