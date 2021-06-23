@@ -1,10 +1,17 @@
 local obj = {}
 obj.__index = obj
-obj.vertical_line = 0.71
-obj.horizontal_line = 0.73
 obj.margin = 0.001
--- obj.right_block_vertical_margin = 0.022 -- at main display
+
+---Internal Monitor Sizes------------------
+-- obj.right_block_vertical_margin = 0.022
+-- obj.vertical_line = 0.71
+-- obj.horizontal_line = 0.73
+
+-- External Monitor Sizes --
+obj.vertical_line = 0.73
+obj.horizontal_line = 0.76
 obj.right_block_vertical_margin = 0.044
+-----------------------------------------
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
 bottom_side_app_titles = {'Elmedia Player'}
