@@ -9,7 +9,8 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 
-alias mkdir='mkdir -p'
+alias mkdir='mkdir -p' #create with nested folders
+alias mkidr=mkdir
 
 #alias d=~d
 #alias go_to_downloads=d
@@ -41,7 +42,10 @@ brew upgrade;
 brew cleanup; 
 brew doctor; 
 omz update;
-tldr --update;'
+tldr --update;
+cd ~/projects/pc-scripts/
+brew bundle dump --force --file=./homebrew/.brewfile
+'
 #mas upgrade; 
 #g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
@@ -63,22 +67,9 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-alias mkdir='mkdir -p'
-alias mkidr='mkdir -p'
+
 
 alias ctrader=cd ~/projects/cTraderDev
-
-alias dotfiles='
-cd ~/projects/pc-scripts/
-brew bundle dump --force --file=./homebrew/.brewfile
-g c "in progress"
-g ps
-'
-
-alias ctrader='
-cd ~/projects/cTraderDev
-
-'
 
 alias pip=pip3
 
