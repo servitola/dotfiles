@@ -18,11 +18,6 @@ alias c=clear
 alias g="git"
 #alias n=cd ~n
 #alias ct=cd ~ct
-alias l="ls -lF ${colorflag}"
-# Always use color output for `ls`
-alias ls="command ls ${colorflag}"
-# List only directories
-alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
@@ -43,8 +38,7 @@ brew cleanup;
 brew doctor; 
 omz update;
 tldr --update;
-cd ~/projects/pc-scripts/
-brew bundle dump --force --file=./homebrew/.brewfile
+brew bundle dump --force --file=~/projects/pc-scripts/homebrew/.brewfile
 '
 #mas upgrade; 
 #g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -67,8 +61,6 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-
-
 alias ctrader=cd ~/projects/cTraderDev
 
 alias pip=pip3
@@ -81,4 +73,6 @@ alias llm='exa -lbGF --git --sort=modified'                            # long li
 alias la='exa -lbhHigUmuSa --time-style=long-iso --git --color-scale'  # all list
 alias lx='exa -lbhHigUmuSa@ --time-style=long-iso --git --color-scale' # all + extended list
 alias lS='exa -1'			                                                  # one column, just names
-alias lt='exa --tree --level=2'  
+alias lt='exa --tree --level=2'
+# List only directories
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
