@@ -28,7 +28,7 @@
 
  :main [
 
-  {:des "Caps Lock to Right Hyper" :rules [[:caps_lock :!QWEright_shift] :apl-usb-int]}
+  {:des "Caps Lock to Right Hyper" :rules [[:caps_lock :!QWEright_shift] :apl-usb-int :apl-bt ]}
 
   {:des "Hyper Layer" :rules [    
     [:!QWERescape [:grave_accent_and_tilde]]
@@ -469,8 +469,9 @@
     [:!QWERspacebar [:play_or_pause]]
 
     :apl-usb-int
+    :apl-bt
   ]}
 
-  {:des "[Internal Keyboard] fn -> left_control" :rules [[:##fn :left_control] :apl-usb-int]}
+  {:des "[Internal Keyboard] fn -> left_control" :rules [[:##fn :left_control] :apl-usb-int :apl-bt]}
 
 ]}
