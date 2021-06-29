@@ -11,7 +11,7 @@ spoon.SpoonInstall:andUse("URLDispatcher", {
             {".*ctrader.*", Safari}
         },
         url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
-        default_handler = Chrome
+        default_handler = Firefox
     },
     start = true,
     --loglevel = 'debug'
