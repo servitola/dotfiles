@@ -120,7 +120,7 @@ apps_list = {
 hsupervisor_keys = {{"cmd", "shift", "ctrl"}, "Q"}
 
 -- Toggle help panel of this configuration.
-hshelp_keys = {{"alt", "shift"}, "/"}
+-- hshelp_keys = {{"alt", "shift"}, "/"}
 
 ----------------------------------------------------------------------------------------------------
 -- Those keybindings below could be disabled by setting to {"", ""} or {{}, ""}
