@@ -587,7 +587,7 @@
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
-	<integer>5</integer>
+	<integer>10</integer>
 	<key>MaxVertically</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -1399,7 +1399,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGMForPowerline-Regular 23</string>
+			<string>Menlo-Regular 11</string>
 			<key>Open Toolbelt</key>
 			<false/>
 			<key>Option Key Sends</key>
