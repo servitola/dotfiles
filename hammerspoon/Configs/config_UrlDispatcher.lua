@@ -10,8 +10,8 @@ spoon.SpoonInstall:andUse("URLDispatcher", {
             {".*spotwa.*", Safari}, 
             {".*ctrader.*", Safari}
         },
-        url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
-        default_handler = Firefox
+        --url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
+        default_handler = Safari
     },
     start = true,
     --loglevel = 'debug'
