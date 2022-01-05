@@ -371,7 +371,7 @@
     [:!QWERTOd [:!TOright_arrow]]
     [:!QWERSOd [:!SOright_arrow]]
 
-    ;; [:f [:!SCTOf]]
+    ;;[:f [:!SCTOf]]
     ;; [:g [:!SCTOg]]
     ;; [:h [:!SCTOh]]
     ;; [:j [:!SCTOj]]
