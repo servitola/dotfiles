@@ -6,8 +6,8 @@
 1. Autohotkey vs Karabiner (goku) & Hammerspoon (spoons)
 1. Images (my own avatars)
 1. Chocolatey vs Homebrew
-1. BitBar (Mac)
-1. Downie (Mac)
+1. BitBar (Mac) - deprecated
+1. Downie (Mac) - deprecated
 1. Git
 1. iTerm vs Windows Terminal both with zsh & oh-my-zsh
 
