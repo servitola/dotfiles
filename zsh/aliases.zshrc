@@ -39,6 +39,7 @@ brew doctor;
 omz update;
 tldr --update;
 brew bundle dump --force --file=~/projects/pc-scripts/homebrew/.brewfile
+npm config set fund false --global
 '
 #mas upgrade; 
 #g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
