@@ -31,6 +31,7 @@ alias up='
 sudo -v
 sudo softwareupdate -i -a;
 xcode-select --install
+rm -rf "brew --cache"
 brew cu --all -y -q; 
 brew update; 
 brew upgrade;
