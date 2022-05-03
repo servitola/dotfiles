@@ -57,11 +57,11 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-alias path='echo -e ${PATH//:/\\n}'
+alias path_display='echo -e ${PATH//:/\\n}'
 
 # Show/hide hidden files in Finder
-alias show="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+alias show_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hide_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
