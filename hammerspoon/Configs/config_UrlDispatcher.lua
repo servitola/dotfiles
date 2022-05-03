@@ -1,5 +1,6 @@
 local Zoom = "us.zoom.xos"
 local Safari = "com.apple.Safari"
+local Firefox = "org.mozilla.firefox"
 
 spoon.SpoonInstall:andUse("URLDispatcher", {
     config = {
@@ -11,7 +12,7 @@ spoon.SpoonInstall:andUse("URLDispatcher", {
             {".*ctrader.*", Safari}
         },
         --url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
-        default_handler = Safari
+        default_handler = Firefox
     },
     start = true,
     --loglevel = 'debug'
