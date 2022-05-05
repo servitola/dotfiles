@@ -5,6 +5,7 @@ eval $(thefuck --alias)
 export UPDATE_ZSH_DAYS=7
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
+ZSH_DISABLE_COMPFIX=true
 
 source $ZSH/oh-my-zsh.sh
 source ~/plugins.zshrc
