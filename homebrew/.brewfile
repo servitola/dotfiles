@@ -68,6 +68,7 @@ cask "mtmr"
 cask "notion"
 cask "onyx"
 cask "opera-gx"
+cask "outline-manager"
 cask "protonvpn"
 cask "rescuetime"
 cask "scroll-reverser"
@@ -85,7 +86,7 @@ cask "workflowy"
 cask "xee"
 cask "zoom"
 mas "Amphetamine", id: 937984704
-mas "Apple Configurator 2", id: 1037126344
+mas "Apple Configurator", id: 1037126344
 mas "Be Focused", id: 973134470
 mas "Bear", id: 1091189122
 mas "Day One", id: 1055511498
