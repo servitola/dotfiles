@@ -86,31 +86,3 @@ cask "wireshark-chmodbpf"
 cask "workflowy"
 cask "xee"
 cask "zoom"
-mas "Amphetamine", id: 937984704
-mas "Apple Configurator", id: 1037126344
-mas "Be Focused", id: 973134470
-mas "Bear", id: 1091189122
-mas "Day One", id: 1055511498
-mas "Deliveries", id: 290986013
-mas "DevCleaner", id: 1388020431
-mas "Developer", id: 640199958
-mas "Drafts", id: 1435957248
-mas "feedly", id: 865500966
-mas "Ghostery – Privacy Ad Blocker", id: 1436953057
-mas "Grammarly for Safari", id: 1462114288
-mas "HiSuite", id: 1232508288
-mas "Keyboard Pilot", id: 402670023
-mas "Microsoft Remote Desktop", id: 1295203466
-mas "OmniGraffle", id: 1142578753
-mas "Pages", id: 409201541
-mas "Reeder", id: 1449412482
-mas "RocketSim", id: 1504940162
-mas "Shazam", id: 897118787
-mas "Simple Antnotes", id: 846599902
-mas "System Designer", id: 1102494854
-mas "Tayasui Sketches", id: 1178074963
-mas "Telegram", id: 747648890
-mas "The Unarchiver", id: 425424353
-mas "Typist", id: 415166115
-mas "Xcode", id: 497799835
-mas "XMind", id: 1327661892
