@@ -249,6 +249,48 @@ function reloadConfig(paths)
     hs.reload()
 end
 
+require("hs.timer") -- Load timer module, used for timing
+
+keyDownCount = 0 -- Keypress counter, used later in the program to store the number of times the key has been pressed
+keyMultipressGapTime = 0.9 -- Max time between consecutive keypresses, used to determine when the user has stopped pressing the key
+keyMaxPressCount = 2 -- Max number of key presses
+
+function CheckKeyDownCount()
+    
+    if keyDownCount == 1 then 
+        CheckKeyDownCountTimer:stop() -- Stops keydown timer so it doesn't repeat
+    elseif keyDownCount == 2 then
+        CheckKeyDownCountTimer:stop()
+        hs.eventtap.keyStroke(hyper, "f", 0)
+    end
+    
+    keyDownCount = 0 -- Reset keypress counter
+end
+
+CheckKeyDownCountTimer = hs.timer.new(keyMultipressGapTime, CheckKeyDownCount)
+multipressBtnShortcuts = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
+
+    if event:getKeyCode() == leftCtrlKeyCode and event:rawFlags() == 256 and event:getProperty(hs.eventtap.event.properties.eventSourceUserData) == 0 then -- Check if keycode is the shortcut keycode and check if the user data byte is set to 0 (default)
+        event:setType(hs.eventtap.event.types.nullEvent)
+        
+        keyDownCount = keyDownCount + 1 
+
+        if CheckKeyDownCountTimer:running() then
+            CheckKeyDownCountTimer:stop() 
+        end
+
+        if keyDownCount < keyMaxPressCount then
+            CheckKeyDownCountTimer:start() 
+        else 
+            CheckKeyDownCount()
+        end            
+    end
+end)
+
+multipressBtnShortcuts:start() -- Starts the keydown event handler 
+
+
+
 configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 configFileWatcher:start()
 
