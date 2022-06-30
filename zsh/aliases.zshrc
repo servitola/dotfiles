@@ -45,6 +45,7 @@ setopt rm_star_silent
 rm -rf ~/Library/Caches/*
 rm -rf /Library/Caches/*
 setopt no_rm_star_silent
+reload
 '
 #mas upgrade; 
 #g pl ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
