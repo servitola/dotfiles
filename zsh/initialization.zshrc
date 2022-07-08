@@ -17,5 +17,5 @@ export ZSH="/Users/servitola/.oh-my-zsh"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
-# unknow now
+# unknow now (not used on Spotware)
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
