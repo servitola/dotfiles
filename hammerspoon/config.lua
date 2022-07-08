@@ -131,12 +131,6 @@ hsappM_keys = {"alt", "A"}
 -- clipshowM environment keybinding: System clipboard reader
 hsclipsM_keys = {"alt", "C"}
 
--- Launch Hammerspoon Search
-hsearch_keys = {"alt", "G"}
-
--- Read Hammerspoon and Spoons API manual in default browser
-hsman_keys = {"alt", "H"}
-
 -- countdownM environment keybinding: Visual countdown
 hscountdM_keys = {"alt", "p"}
 
