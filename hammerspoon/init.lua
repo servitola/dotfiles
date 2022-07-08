@@ -4,21 +4,21 @@ require "Configs/config_SpoonInstall";
 require "Configs/config_UrlDispatcher";
 require "Configs/config_HeadphoneAutoPause";
 
-spoon.SpoonInstall:andUse("WiFiTransitions", {
-    config = {
-        actions = {{ -- Enable proxy config when joining corp network
-            to = "AlphaNet-aarMgM",
-            fn = {
-                hs.notify.new({
-                title = "Hammerspoon launch",
-                informativeText = "Boss, at your service"
-            }):send()}
-        }, {
+-- spoon.SpoonInstall:andUse("WiFiTransitions", {
+--     config = {
+--         actions = {{ -- Enable proxy config when joining corp network
+--             to = "AlphaNet-aarMgM",
+--             fn = {
+--                 hs.notify.new({
+--                 title = "Hammerspoon launch",
+--                 informativeText = "Boss, at your service"
+--             }):send()}
+--         }, {
             
-        }}
-    },
-    start = true
-})
+--         }}
+--     },
+--     start = true
+-- })
 
 spoon.SpoonInstall:andUse("KSheet")
 
