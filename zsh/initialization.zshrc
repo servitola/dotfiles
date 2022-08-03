@@ -9,6 +9,10 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="/usr/local/sbin:$PATH"
 
+export PATH="/usr/local/share/dotnet/x64:$PATH"
+# Add .NET Core SDK tools
+export PATH="$PATH:/Users/vkonovalov/.dotnet/tools"
+
 export TERM="xterm-256color"
 export EDITOR='nano'
 export ZSH="/Users/servitola/.oh-my-zsh"
