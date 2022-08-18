@@ -16,4 +16,5 @@ plugins=(
   sudo
   Colored-man-pages
   ohmyzsh-full-autoupdate
+  nx-completion
 )
