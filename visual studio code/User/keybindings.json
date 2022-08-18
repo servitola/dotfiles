@@ -1,0 +1,26 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+    {
+        "key": "f1",
+        "command": "-workbench.action.showCommands"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "-cursorLineStart",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "gitlens.toggleFileBlameInDiffLeft"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "-cursorLineEnd",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+e",
+        "command": "references-view.findReferences",
+        "when": "editorHasReferenceProvider"
+    }
+]

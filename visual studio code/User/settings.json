@@ -1,0 +1,66 @@
+{
+    "python.pythonPath": "/usr/local/bin/python3",
+    "terminal.integrated.fontFamily": "Meslo LG M for Powerline",
+    "terminal.external.osxExec": "iTerm.app",
+    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "projectManager.git.baseFolders": [
+        "~/projects/"
+    ],
+    "workbench.startupEditor": "newUntitledFile",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.printWidth": 60,
+    "git.autofetch": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "log.error",
+                "settings": {
+                    "foreground": "#af1f1f",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "log.warning",
+                "settings": {
+                    "foreground": "#f4ad42",
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "logFileHighlighter.customPatterns": [
+        {
+            "pattern": ".*",
+            "background": "#ff0000"
+        }
+    ],
+    "files.associations": {
+        "*.txt": "log"
+    },
+    "files.autoGuessEncoding": true,
+    "tabnine.experimentalAutoImports": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "cSpell.userWords": [
+        "nrwl"
+    ],
+    "editor.inlineSuggest.enabled": true,
+    "settingsSync.ignoredExtensions": [
+    
+    ],
+    "settingsSync.ignoredSettings": [
+    
+    ],
+    "telemetry.telemetryLevel": "off",
+}
