@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>allowApple</key>
+	<true/>
+	<key>allowInstalled</key>
+	<false/>
+	<key>allowSimulatorApps</key>
+	<false/>
+	<key>blockList</key>
+	<string></string>
+	<key>blockMode</key>
+	<false/>
+	<key>disabled</key>
+	<false/>
+	<key>installTime</key>
+	<date>2022-07-06T20:18:34Z</date>
+	<key>noIconMode</key>
+	<true/>
+	<key>noupdateMode</key>
+	<false/>
+	<key>passiveMode</key>
+	<false/>
+	<key>useBlockList</key>
+	<integer>0</integer>
+</dict>
+</plist>
