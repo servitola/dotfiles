@@ -7,7 +7,6 @@ require "User/Configs/config_Popup_TranslateSelection";
 spoon.SpoonInstall:andUse("Windows");
 spoon.SpoonInstall:andUse("HotKeys");
 spoon.SpoonInstall:andUse("Griddle");
-spoon.SpoonInstall:andUse("FnMate");
 spoon.SpoonInstall:andUse("KSheet");
 spoon.SpoonInstall:andUse("UnsplashZ");
 require "User/register_all_shortcuts"
