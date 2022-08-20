@@ -1,8 +1,6 @@
 source ~/projects/pc-scripts/zsh/update_macbook.zshrc
 
-hash -d cTrader=~/projects/cTraderDev
-hash -d Desktop=~/Desktop
-hash -d Downloads=~/Downloads
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -14,25 +12,16 @@ alias -- -="cd -"
 alias mkdir='mkdir -p' #create with nested folders
 alias mkidr=mkdir
 
-#alias d=~d
-#alias go_to_downloads=d
 alias c=clear
-alias g="git"
-#alias n=cd ~n
-#alias ct=cd ~ct
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-alias zshconfig="nano ~/.zshrc"
-alias ohmyzsh="nano ~/.oh-my-zsh"
+
 alias python=python3
-
-
-alias re=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias reload=re
+alias pip=pip3
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -48,10 +37,6 @@ alias hide_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-alias ctrader=cd ~/projects/cTraderDev
-
-alias pip=pip3
 
 # EXA aliases
 alias ls='exa'                                                         # ls
