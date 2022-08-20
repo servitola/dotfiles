@@ -22,9 +22,9 @@
 	defaultBranch = dev
 
 [include]
-    path = gitconfig_aliases
+    path = "~/projects/pc-scripts/git/gitconfig_aliases"
 
 [include]
-    path = gitconfig_colors
+    path = "~/projects/pc-scripts/git/gitconfig_colors"
 [gui]
 	gcwarning = false
