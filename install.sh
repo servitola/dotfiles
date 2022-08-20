@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo -v
 echo 'installing'
 brew bundle dump --force --file='~/projects/pc-scripts/homebrew/.brewfile'
 #FIX ln -s ~/projects/pc-scripts/visual\ studio\ code/User ~/Library/Application\ Support/Code/User
