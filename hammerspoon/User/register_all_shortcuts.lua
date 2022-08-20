@@ -1,3 +1,5 @@
+spoon.HotKeys:bindOpenApp({"left_control", "left_shift"}, "escape", "/Applications/Activity Monitor.app")
+
 for _, row in pairs(apps_list) do
     modifier = hyper
 
@@ -43,4 +45,3 @@ for _, row in pairs(apps_list) do
     end
 end
 
-spoon.HotKeys:bindOpenApp({"left_control", "left_shift"}, "escape", "com.apple.ActivityMonitor")
