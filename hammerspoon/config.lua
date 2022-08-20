@@ -11,7 +11,7 @@ hspoon_list = {
     --"BingDaily",
     --"Calendar",
     --"CircleClock",
-    --"ClipShow",
+    "ClipShow",
     --"CountDown",
     "FnMate",
     --"HCalendar",
@@ -133,22 +133,6 @@ hsclipsM_keys = {"alt", "C"}
 
 -- countdownM environment keybinding: Visual countdown
 hscountdM_keys = {"alt", "p"}
-
--- resizeM environment keybinding: Windows manipulation
-hsresizeM_keys = {"alt", "R"}
-
--- cheatsheetM environment keybinding: Cheatsheet copycat
-hscheats_keys = {"ctrl", "S"}
-
--- Show digital clock above all windows
-hsaclock_keys = {"alt", "T"}
-
--- Type the URL and title of the frontmost web page open in Google Chrome or Safari.
-hstype_keys = {"alt", "V"}
-
--- Toggle Hammerspoon console
-hsconsole_keys = {"alt", "Z"}
-
 
 apps_list2 = {
     {key="\\"},
