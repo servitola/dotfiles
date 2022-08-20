@@ -21,9 +21,6 @@ end
 
 ksheet = false
 
-local logger = hs.logger.new("window", 'verbose')
-logger.d(" ")
-
 require "User/register_all_shortcuts"
 
 ----------------------------------------------------------------------------------------------------
@@ -60,23 +57,6 @@ end
 ----------------------------------------------------------------------------------------------------
 spoon.ModalMgr.supervisor:enter()
 
-function reloadConfig(paths)
-    doReload = false
-    for _, file in pairs(paths) do
-        if file:sub(-4) == ".lua" then
-            print("A lua config file changed, reload")
-            doReload = true
-        end
-    end
-    if not doReload then
-        print("No lua file changed, skipping reload test")
-        return
-    end
-
-    hs.reload()
-end
-
-configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
-configFileWatcher:start()
+require "User/reload_hammerspoon_on_config_change"
 
 require "User/Configs/config_FadeLogo";
