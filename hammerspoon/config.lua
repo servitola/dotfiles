@@ -8,7 +8,6 @@ hspoon_list = {
     "Windows",
     "Griddle",
     "ClipShow",
-    --"CountDown",
     "FnMate",
     --"HCalendar",
     "HSaria2",
