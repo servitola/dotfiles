@@ -7,8 +7,6 @@ hspoon_list = {
     "HotKeys",
     "Windows",
     "Griddle",
-    --"AClock",
-    --"BingDaily",
     --"Calendar",
     --"CircleClock",
     "ClipShow",
