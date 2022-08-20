@@ -1,11 +1,11 @@
 spoon.SpoonInstall:andUse("WiFiTransitions", {
     config = {
-        actions = {{ -- Enable proxy config when joining corp network
+        actions = {{
             to = "Bulat",
             fn = {
                 hs.notify.new({
                 title = "Hammerspoon launch",
-                informativeText = "Boss, at your service"
+                informativeText = "You're at home"
             }):send()}
         }, {
             
