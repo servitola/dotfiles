@@ -2,7 +2,7 @@
     "python.pythonPath": "/usr/local/bin/python3",
     "terminal.integrated.fontFamily": "Meslo LG M for Powerline",
     "terminal.external.osxExec": "iTerm.app",
-    "workbench.colorTheme": "Gruvbox Dark Medium",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "projectManager.git.baseFolders": [
@@ -44,7 +44,8 @@
     "files.autoGuessEncoding": true,
     "tabnine.experimentalAutoImports": true,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
+        "*.ipynb": "jupyter-notebook",
+        "git-rebase-todo": "gitlens.rebase"
     },
     "notebook.cellToolbarLocation": {
         "default": "right",
@@ -68,4 +69,5 @@
     "markdown.preview.fontSize": 16,
     "debug.console.fontSize": 15,
     "scm.inputFontSize": 16,
+    "gitlens.hovers.currentLine.over": "line",
 }
