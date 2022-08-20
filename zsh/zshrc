@@ -10,7 +10,6 @@ ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
 source ~/projects/pc-scripts/zsh/plugins.zshrc
 source ~/projects/pc-scripts/zsh/aliases.zshrc
-#export PATH="/usr/local/sbin:$PATH"
 source ~/projects/pc-scripts/zsh/history_settings.zshrc
 source ~/projects/pc-scripts/zsh/p10k.zsh
 
