@@ -8,11 +8,11 @@ HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
 source $ZSH/oh-my-zsh.sh
-source ~/plugins.zshrc
-source ~/aliases.zshrc
+source ~/projects/pc-scripts/zsh/plugins.zshrc
+source ~/projects/pc-scripts/zsh/aliases.zshrc
 #export PATH="/usr/local/sbin:$PATH"
-source ~/history_settings.zshrc
-source ~/.p10k.zsh
+source ~/projects/pc-scripts/zsh/history_settings.zshrc
+source ~/projects/pc-scripts/zsh/p10k.zsh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs) 
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)

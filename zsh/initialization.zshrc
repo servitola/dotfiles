@@ -21,5 +21,12 @@ export ZSH="/Users/servitola/.oh-my-zsh"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
 
-# unknow now (not used on Spotware)
+# unknow now
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+export PATH="$PATH:$NPM_PACKAGES/bin"
+# Preserve MANPATH if you already defined it somewhere in your config.
+# Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
