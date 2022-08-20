@@ -2,22 +2,6 @@ hs.hotkey.alertDuration = 0
 hs.hints.showTitleThresh = 0
 hs.window.animationDuration = 0
 
--- Specify Spoons which will be loaded
-hspoon_list = {
-    "HotKeys",
-    "Windows",
-    "Griddle",
-    "ClipShow",
-    "FnMate",
-    --"HCalendar",
-    "HSaria2",
-    --"HSearch",
-    --"KSheet",
-    --"SpeedMenu",
-    --"TimeFlow",
-    "UnsplashZ"
-}   
-
 apps_list = {
     { modifier="caps_lock", chords={
         -- {supported=true, key="1", map="F1" },

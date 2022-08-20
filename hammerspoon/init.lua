@@ -4,16 +4,17 @@ require "User/Configs/config_SpoonInstall";
 require "User/Configs/config_UrlDispatcher";
 require "User/Configs/config_HeadphoneAutoPause";
 require "User/Configs/config_WiFiTransitions";
-
-spoon.SpoonInstall:andUse("KSheet")
-
 require "User/Configs/config_Popup_TranslateSelection";
 require "User/Configs/config_DeepLTranslate";
 
--- Load those Spoons
-for _, v in pairs(hspoon_list) do
-    hs.loadSpoon(v)
-end
+spoon.SpoonInstall:andUse("DeepLTranslate");
+spoon.SpoonInstall:andUse("Windows");
+spoon.SpoonInstall:andUse("HotKeys");
+spoon.SpoonInstall:andUse("Griddle");
+spoon.SpoonInstall:andUse("FnMate");
+spoon.SpoonInstall:andUse("HSaria2");
+spoon.SpoonInstall:andUse("KSheet");
+spoon.SpoonInstall:andUse("UnsplashZ");
 
 ksheet = false
 
