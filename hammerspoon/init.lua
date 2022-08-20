@@ -4,21 +4,21 @@ require "Configs/config_SpoonInstall";
 require "Configs/config_UrlDispatcher";
 require "Configs/config_HeadphoneAutoPause";
 
--- spoon.SpoonInstall:andUse("WiFiTransitions", {
---     config = {
---         actions = {{ -- Enable proxy config when joining corp network
---             to = "AlphaNet-aarMgM",
---             fn = {
---                 hs.notify.new({
---                 title = "Hammerspoon launch",
---                 informativeText = "Boss, at your service"
---             }):send()}
---         }, {
+spoon.SpoonInstall:andUse("WiFiTransitions", {
+    config = {
+        actions = {{ -- Enable proxy config when joining corp network
+            to = "Bulat",
+            fn = {
+                hs.notify.new({
+                title = "Hammerspoon launch",
+                informativeText = "Boss, at your service"
+            }):send()}
+        }, {
             
---         }}
---     },
---     start = true
--- })
+        }}
+    },
+    start = true
+})
 
 spoon.SpoonInstall:andUse("KSheet")
 
@@ -123,114 +123,6 @@ if spoon.Griddle then
 end
 
 ----------------------------------------------------------------------------------------------------
--- clipshowM modal environment
-if spoon.ClipShow then
-    spoon.ModalMgr:new("clipshowM")
-    local cmodal = spoon.ModalMgr.modal_list["clipshowM"]
-    cmodal:bind('', 'escape', 'Deactivate clipshowM', function()
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'Q', 'Deactivate clipshowM', function()
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'N', 'Save this Session', function()
-        spoon.ClipShow:saveToSession()
-    end)
-    cmodal:bind('', 'R', 'Restore last Session', function()
-        spoon.ClipShow:restoreLastSession()
-    end)
-    cmodal:bind('', 'B', 'Open in Browser', function()
-        spoon.ClipShow:openInBrowserWithRef()
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'S', 'Search with Bing', function()
-        spoon.ClipShow:openInBrowserWithRef("https://www.bing.com/search?q=")
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'F', 'Save to Desktop', function()
-        spoon.ClipShow:saveToFile()
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'H', 'Search in Github', function()
-        spoon.ClipShow:openInBrowserWithRef("https://github.com/search?q=")
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'G', 'Search with Google', function()
-        spoon.ClipShow:openInBrowserWithRef("https://www.google.com/search?q=")
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-    cmodal:bind('', 'L', 'Open in Sublime Text', function()
-        spoon.ClipShow:openWithCommand("/usr/local/bin/subl")
-        spoon.ClipShow:toggleShow()
-        spoon.ModalMgr:deactivate({"clipshowM"})
-    end)
-
-    -- Register clipshowM with modal supervisor
-    hsclipsM_keys = hsclipsM_keys or {"alt", "C"}
-    if string.len(hsclipsM_keys[2]) > 0 then
-        spoon.ModalMgr.supervisor:bind(hsclipsM_keys[1], hsclipsM_keys[2], "Enter clipshowM Environment", function()
-            -- We need to take action upon hsclipsM_keys is pressed, since pressing another key to showing ClipShow panel is redundant.
-            spoon.ClipShow:toggleShow()
-            -- Need a little trick here. Since the content type of system clipboard may be "URL", in which case we don't need to activate clipshowM.
-            if spoon.ClipShow.canvas:isShowing() then
-                spoon.ModalMgr:deactivateAll()
-                spoon.ModalMgr:activate({"clipshowM"})
-            end
-        end)
-    end
-end
-
-----------------------------------------------------------------------------------------------------
--- countdownM modal environment
-if spoon.CountDown then
-    spoon.ModalMgr:new("countdownM")
-    local cmodal = spoon.ModalMgr.modal_list["countdownM"]
-    cmodal:bind('', 'escape', 'Deactivate countdownM', function()
-        spoon.ModalMgr:deactivate({"countdownM"})
-    end)
-    cmodal:bind('', 'Q', 'Deactivate countdownM', function()
-        spoon.ModalMgr:deactivate({"countdownM"})
-    end)
-    cmodal:bind('', 'tab', 'Toggle Cheatsheet', function()
-        spoon.ModalMgr:toggleCheatsheet()
-    end)
-    cmodal:bind('', '0', '5 Minutes Countdown', function()
-        spoon.CountDown:startFor(5)
-        spoon.ModalMgr:deactivate({"countdownM"})
-    end)
-    for i = 1, 9 do
-        cmodal:bind('', tostring(i), string.format("%s Minutes Countdown", 10 * i), function()
-            spoon.CountDown:startFor(10 * i)
-            spoon.ModalMgr:deactivate({"countdownM"})
-        end)
-    end
-    cmodal:bind('', 'return', '25 Minutes Countdown', function()
-        spoon.CountDown:startFor(25)
-        spoon.ModalMgr:deactivate({"countdownM"})
-    end)
-    cmodal:bind('', 'space', 'Pause/Resume CountDown', function()
-        spoon.CountDown:pauseOrResume()
-        spoon.ModalMgr:deactivate({"countdownM"})
-    end)
-
-    -- Register countdownM with modal supervisor
-    hscountdM_keys = hscountdM_keys or {"alt", "I"}
-    if string.len(hscountdM_keys[2]) > 0 then
-        spoon.ModalMgr.supervisor:bind(hscountdM_keys[1], hscountdM_keys[2], "Enter countdownM Environment", function()
-            spoon.ModalMgr:deactivateAll()
-            -- Show the keybindings cheatsheet once countdownM is activated
-            spoon.ModalMgr:activate({"countdownM"}, "#FF6347", true)
-        end)
-    end
-end
-
 spoon.ModalMgr.supervisor:enter()
 
 function reloadConfig(paths)
@@ -249,65 +141,7 @@ function reloadConfig(paths)
     hs.reload()
 end
 
--- require("hs.timer") -- Load timer module, used for timing
-
--- keyDownCount = 0 -- Keypress counter, used later in the program to store the number of times the key has been pressed
--- keyMultipressGapTime = 0.9 -- Max time between consecutive keypresses, used to determine when the user has stopped pressing the key
--- keyMaxPressCount = 2 -- Max number of key presses
-
--- function CheckKeyDownCount()
-    
---     if keyDownCount == 1 then 
---         CheckKeyDownCountTimer:stop() -- Stops keydown timer so it doesn't repeat
---     elseif keyDownCount == 2 then
---         CheckKeyDownCountTimer:stop()
---         hs.eventtap.keyStroke(hyper, "f", 0)
---     end
-    
---     keyDownCount = 0 -- Reset keypress counter
--- end
-
--- CheckKeyDownCountTimer = hs.timer.new(keyMultipressGapTime, CheckKeyDownCount)
--- multipressBtnShortcuts = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
-
---     if event:getKeyCode() == leftCtrlKeyCode and event:rawFlags() == 256 and event:getProperty(hs.eventtap.event.properties.eventSourceUserData) == 0 then -- Check if keycode is the shortcut keycode and check if the user data byte is set to 0 (default)
---         event:setType(hs.eventtap.event.types.nullEvent)
-        
---         keyDownCount = keyDownCount + 1 
-
---         if CheckKeyDownCountTimer:running() then
---             CheckKeyDownCountTimer:stop() 
---         end
-
---         if keyDownCount < keyMaxPressCount then
---             CheckKeyDownCountTimer:start() 
---         else 
---             CheckKeyDownCount()
---         end            
---     end
--- end)
-
--- multipressBtnShortcuts:start() -- Starts the keydown event handler 
-
-
-
 configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 configFileWatcher:start()
-
--- function changeVolume(diff)
---     return function()
---         local current = hs.audiodevice.defaultOutputDevice():volume()
---         local new = math.min(100, math.max(0, math.floor(current + diff)))
---         if new > 0 then
---             hs.audiodevice.defaultOutputDevice():setMuted(false)
---         end
---         hs.alert.closeAll(0.0)
---         hs.alert.show("Volume " .. new .. "%", {}, 0.5)
---         hs.audiodevice.defaultOutputDevice():setVolume(new)
---     end
--- end
--- 
-
--- spoon.HotKeys:bindOpenApp([modifier], chord_row.key, chord_row.app_name)
 
 require "Configs/config_FadeLogo";
