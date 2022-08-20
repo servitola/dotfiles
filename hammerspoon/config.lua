@@ -18,12 +18,6 @@ hspoon_list = {
     "UnsplashZ"
 }   
 
--- appM environment keybindings. Bundle `id` is prefered, but application `name` will be ok.
--- app_list = {
---     -- {key = 'b', id = 'com.apple.ActivityMonitor'},
---     -- {key = '.', id = 'com.apple.systempreferences'},
--- }
-
 apps_list = {
     { modifier="caps_lock", chords={
         -- {supported=true, key="1", map="F1" },
