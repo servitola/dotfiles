@@ -7,9 +7,5 @@ spoon.SpoonInstall:andUse("PopupTranslateSelection", {
         translate_to_ru = {ctrlAndAlt, "r"},
         translate_to_en = {ctrlAndAlt, "e"},
         translate_to_el = {ctrlAndAlt, "g"},
-        --    translate_to_de = { hyper, "d" },
-        --    translate_to_es = { hyper, "s" },
-        --    translate_de_en = { shift_hyper, "e" },
-        --    translate_en_de = { shift_hyper, "d" },
     }
 })
