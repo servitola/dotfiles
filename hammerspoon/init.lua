@@ -1,33 +1,18 @@
-require "Configs/constants";
+require "User/constants";
 require "config";
-require "Configs/config_SpoonInstall";
-require "Configs/config_UrlDispatcher";
-require "Configs/config_HeadphoneAutoPause";
-
-spoon.SpoonInstall:andUse("WiFiTransitions", {
-    config = {
-        actions = {{ -- Enable proxy config when joining corp network
-            to = "Bulat",
-            fn = {
-                hs.notify.new({
-                title = "Hammerspoon launch",
-                informativeText = "Boss, at your service"
-            }):send()}
-        }, {
-            
-        }}
-    },
-    start = true
-})
+require "User/Configs/config_SpoonInstall";
+require "User/Configs/config_UrlDispatcher";
+require "User/Configs/config_HeadphoneAutoPause";
+require "User/Configs/config_WiFiTransitions";
 
 spoon.SpoonInstall:andUse("KSheet")
 
 local wm = hs.webview.windowMasks
 
-require "Configs/PopupTranslateSelection";
-require "Configs/config_DeepLTranslate";
+require "User/Configs/config_Popup_TranslateSelection";
+require "User/Configs/config_DeepLTranslate";
 
- hs.loadSpoon("ModalMgr")
+hs.loadSpoon("ModalMgr")
 
 -- Load those Spoons
 for _, v in pairs(hspoon_list) do
@@ -144,4 +129,4 @@ end
 configFileWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig)
 configFileWatcher:start()
 
-require "Configs/config_FadeLogo";
+require "User/Configs/config_FadeLogo";
