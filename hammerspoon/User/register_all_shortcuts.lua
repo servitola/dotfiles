@@ -42,3 +42,5 @@ for _, row in pairs(apps_list) do
         end
     end
 end
+
+spoon.HotKeys:bindOpenApp({"left_control", "left_shift"}, "escape", "com.apple.ActivityMonitor")
