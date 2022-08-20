@@ -63,4 +63,9 @@
     
     ],
     "telemetry.telemetryLevel": "off",
+    "editor.fontSize": 17,
+    "terminal.integrated.fontSize": 16,
+    "markdown.preview.fontSize": 16,
+    "debug.console.fontSize": 15,
+    "scm.inputFontSize": 16,
 }
