@@ -92,49 +92,27 @@ function set_all_windows_positions()
 
     local emulators_positioned = 0
 
-    --if emulators_number == 1 then
-        for _, window in ipairs(wins) do
-            local window_title = window:title()
-            local app_title = window:application():title()
+    for _, window in ipairs(wins) do
+        local window_title = window:title()
+        local app_title = window:application():title()
 
-            if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
-                local app = window:application()
+        if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
+            local app = window:application()
 
-                local screen_size = window:screen():fullFrame()
-                local window_frame = window:frame()
-                emulators_positioned = emulators_positioned + 1
+            local screen_size = window:screen():fullFrame()
+            local window_frame = window:frame()
+            emulators_positioned = emulators_positioned + 1
 
-                window:setFrame({
-                    x = screen_size.w / 2 - window_frame.w / 2,
-                    y = screen_size.h / 2 - window_frame.h / 2,
-                    h = window_frame.h,
-                    w = window_frame.w
-                })
+            window:setFrame({
+                x = screen_size.w / 2 - window_frame.w / 2,
+                y = screen_size.h / 2 - window_frame.h / 2,
+                h = window_frame.h,
+                w = window_frame.w
+            })
 
-            end
-         end
-    -- else
-    --     for _, window in ipairs(wins) do
-    --         local window_title = window:title()
-    --         local app_title = window:application():title()
-
-    --         if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
-    --             local app = window:application()
-
-    --             local screen_size = window:screen():fullFrame()
-    --             local window_frame = window:frame()
-    --             emulators_positioned = emulators_positioned + 1
-
-    --             window:setFrame({
-    --                 x = screen_size.w - window_frame.w * emulators_positioned - 90 * emulators_positioned,
-    --                 y = screen_size.h / 2 - window_frame.h / 2,
-    --                 h = window_frame.h,
-    --                 w = window_frame.w
-    --             })
-
-    --         end
-    --     end
-    -- end
+        end
+        end
+    
 end
 
 function is_unresizable_window(window)
@@ -216,8 +194,8 @@ function set_window(x, y, width, height, window)
 end
 
 function log_window(window)
-    local logger = hs.logger.new("window", 'verbose')
-    local app = window:application()
+    -- local logger = hs.logger.new("window", 'verbose')
+    -- local app = window:application()
     -- logger.d(" ")
     -- logger.d("App Title: ")
     -- logger.d(app:title())

@@ -22,6 +22,7 @@ end
 ksheet = false
 
 require "User/register_all_shortcuts"
+require "User/Configs/config_Griddle_MouseMoveWithKeyboard"
 
 ----------------------------------------------------------------------------------------------------
 -- appM modal environment
@@ -48,11 +49,7 @@ require "User/register_all_shortcuts"
 -- end
 
 ---- Mouse Movement Griddle
-if spoon.Griddle then
-    spoon.Griddle:bindHotkeys({ enter = { ctrlAndAlt, "m" } })
-    print("Griddle binded its keys")
-    spoon.Griddle:start()
-end
+
 
 ----------------------------------------------------------------------------------------------------
 spoon.ModalMgr.supervisor:enter()
