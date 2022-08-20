@@ -1,5 +1,11 @@
 spoon.HotKeys:bindOpenApp({"left_control", "left_shift"}, "escape", "/Applications/Activity Monitor.app")
 
+hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
+    spoon.KSheet:hide()
+    ksheet = not ksheet
+    hideKSheetShortCut:disable();
+end)
+
 apps_list = {
     { modifier="caps_lock", chords={
         {supported=true, key="-", app_name="" },
@@ -92,6 +98,7 @@ for _, row in pairs(apps_list) do
                     if ksheet then
                         spoon.KSheet:hide()
                     else
+                        hideKSheetShortCut:enable();
                         spoon.KSheet:show()
                     end
 
