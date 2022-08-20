@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# printf 'Json reading'
-# jq 'map(.caps_lock[0].key)' ./data/data.json
-echo 'test'
+echo 'installing'
 brew bundle dump --force --file='~/projects/pc-scripts/homebrew/.brewfile'
+ln -s ~/projects/pc-scripts/visual\ studio\ code/User ~/Library/Application\ Support/Code/User
+ln -s ~/projects/pc-scripts/zsh/.zshrc ~/.zshrc
 pause
