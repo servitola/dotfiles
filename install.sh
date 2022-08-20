@@ -6,3 +6,4 @@ brew bundle dump --force --file='~/projects/pc-scripts/homebrew/.brewfile'
 ln -s ~/projects/pc-scripts/zsh/zshrc ~/.zshrc
 ln -s ~/projects/pc-scripts/git/gitconfig ~/.gitconfig
 sh "./mac setup scripts/set-defaults.sh"
+sh "./homebrew/install_homebrew.sh"
