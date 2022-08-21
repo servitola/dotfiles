@@ -15,7 +15,7 @@ apps_list = {
         { key="v", app_name="Firefox" },
         { key="b", app_name="iTerm" },
         { key="n", app_name="Visual Studio Code" },
-        --{ key="m" },
+        { key="m", app_name="Elmedia Player" },
     }}, 
     { modifier= {"left_control", "left_shift"}, chords={
         { key="escape", app_name="Activity Monitor" },
