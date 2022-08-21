@@ -2,9 +2,6 @@ source ~/projects/pc-scripts/zsh/update_macbook.zshrc
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
-alias mkdir='mkdir -p' #create with nested folders
-alias mkidr=mkdir
-
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
 alias grep='grep --color=auto'
