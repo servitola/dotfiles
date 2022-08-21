@@ -3,7 +3,7 @@ plugins=(
   git
   bundler
   dotenv
-  osx
+  macos
   rake
   rbenv
   aliases
@@ -13,8 +13,11 @@ plugins=(
   pip
   python
   zsh-autosuggestions
+  zsh-interactive-cd
+  zsh-navigation-tools
   z
   sudo
+  cask
   Colored-man-pages
   ohmyzsh-full-autoupdate
   nx-completion
