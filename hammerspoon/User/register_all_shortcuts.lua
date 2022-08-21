@@ -14,11 +14,11 @@ apps_list = {
         { key="z", specific_function="set_russian_language"},
         { key="v", app_name="Firefox" },
         { key="b", app_name="iTerm" },
-        { key="n", app_name="/Applications/Visual Studio Code.app" },
+        { key="n", app_name="Visual Studio Code" },
         --{ key="m" },
     }}, 
     { modifier= {"left_control", "left_shift"}, chords={
-        { key="escape", app_name="/Applications/Activity Monitor.app" },
+        { key="escape", app_name="Activity Monitor" },
         -- { key="i", map="mouse_right_button" },
         -- { key="o", map="mouse_up" },
         -- { key="p", map="mouse_left_button" },
@@ -49,9 +49,9 @@ for _, row in pairs(apps_list) do
     for _, chord_row in pairs(row.chords) do
         if chord_row.app_name then
             hs.hotkey.bind(row.modifier, chord_row.key, function()
-                local app = hs.application.get(name)
+                local app = hs.application.get(chord_row.app_name)
                 if not app or app:isHidden() then
-                    hs.application.launchOrFocus(name)
+                    hs.application.launchOrFocus(chord_row.app_name)
                 elseif hs.application.frontmostApplication() ~= app then
                     app:activate()
                 else
