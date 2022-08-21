@@ -1,4 +1,4 @@
 if spoon.Griddle then
-    spoon.Griddle:bindHotkeys({ enter = { ctrlAndAlt, "m" } })
+    spoon.Griddle:bindHotkeys({ enter = { {"left_control", "left_option"}, "m" } })
     spoon.Griddle:start()
 end
