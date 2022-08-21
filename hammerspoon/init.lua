@@ -1,3 +1,6 @@
+hs.console.clearConsole()
+hs.console.consoleFont({ name = 'Meslo LG M for Powerline', size = 20.0 })
+
 require "User/constants";
 require "User/Configs/config_SpoonInstall";
 
