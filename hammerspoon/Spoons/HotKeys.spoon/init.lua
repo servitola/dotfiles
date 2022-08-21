@@ -2,7 +2,7 @@ local obj = {}
 obj.__index = obj
 
 function obj:openApp(name)
-    local app = hs.application.find(name)
+    local app = hs.application.get(name)
 
     if not app or app:isHidden() then
       hs.application.launchOrFocus(name)
