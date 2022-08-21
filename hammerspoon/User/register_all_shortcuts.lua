@@ -7,7 +7,7 @@ apps_list = {
         --{ key="y", app_name="" },
         { key="u", app_name="Transmission" },
         --{ key="i" },
-        --{ key="p", app_name="Music" },
+        { key="p", app_name="Music" },
         { key="g", app_name="Fork" },
         { key="h", app_name="Finder" },
         { key="j", app_name="Safari" },
@@ -35,11 +35,14 @@ apps_list = {
         { key="down", specific_function="window.set_all_to_default"},
         { key="i", specific_function="info.show_shortcuts"},
         { key="s", specific_function="android.show_all"},
-        { key="r", app_name="Android Studio"}
+        { key="r", app_name="Android Studio"},
+        { key="a", app_name="Ableton Live 11 Suite"},
+        { key="h", app_name="Hammerspoon"},
+        { key="x", app_name="XCode"}
     }},
  }
 
- hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
+hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
     spoon.KSheet:hide()
     ksheet = not ksheet
     hideKSheetShortCut:disable();

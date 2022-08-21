@@ -6,13 +6,10 @@ require "User/Configs/config_UrlDispatcher";
 require "User/Configs/config_WiFiTransitions";
 require "User/Configs/config_Popup_TranslateSelection";
 spoon.SpoonInstall:andUse("Windows");
-spoon.SpoonInstall:andUse("Griddle");
 spoon.SpoonInstall:andUse("KSheet");
 spoon.SpoonInstall:andUse("UnsplashZ");
 require "User/register_all_shortcuts"
-require "User/Configs/config_Griddle_MouseMoveWithKeyboard"
+--require "User/Configs/config_Griddle_MouseMoveWithKeyboard"
 require "User/reload_hammerspoon_on_config_change"
-
---spoon.SpoonInstall.add
 
 spoon.SpoonInstall:andUse("FadeLogo", { start = true})
