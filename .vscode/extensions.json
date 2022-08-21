@@ -9,6 +9,7 @@
         "ms-python.vscode-pylance",
         "alefragnani.project-manager",
         "esbenp.prettier-vscode",
-        "yinfei.luahelper"
+        "yinfei.luahelper",
+        "mark-wiemer.vscode-autohotkey-plus-plus"
     ]
 }
