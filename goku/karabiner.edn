@@ -213,9 +213,6 @@
     [:!QWERTO0 [:!TOf10]]
     [:!QWERSO0 [:!SOf10]]
 
-    ;; [:hyphen :!Shyphen]
-    ;; [:equal_sign :!equal_sign]
-
     [:!QWERdelete_or_backspace [:delete_forward]]
     [:!QWERSdelete_or_backspace [:!Sdelete_forward]]
     [:!QWERCdelete_or_backspace [:!Cdelete_forward]]
@@ -288,12 +285,6 @@
     [:!QWERTOe [:!TOpage_down]]
     [:!QWERSOe [:!SOpage_down]]
 
-    ;; [:r [:!SCTOr]]
-    ;; [:t [:!SCTOt]]
-    ;; [:y [:!SCTOy]]
-    ;; [:u [:!SCTOu]]
-    ;; [:i [:!SCTOu]]
-
     [:!QWERo [:up_arrow]]
     [:!QWERSo [:!Sup_arrow]]
     [:!QWERCo [:!Cup_arrow]]
@@ -311,8 +302,6 @@
     [:!QWERCOo [:!COup_arrow]]
     [:!QWERTOo [:!TOup_arrow]]
     [:!QWERSOo [:!SOup_arrow]]
-
-    ;; [:p [:!SCTOp]]
 
     [:!QWERopen_bracket [:vk_consumer_previous]]
     [:!QWERclose_bracket [:vk_consumer_next]]
@@ -371,11 +360,6 @@
     [:!QWERTOd [:!TOright_arrow]]
     [:!QWERSOd [:!SOright_arrow]]
 
-    ;;[:f [:!SCTOf]]
-    ;; [:g [:!SCTOg]]
-    ;; [:h [:!SCTOh]]
-    ;; [:j [:!SCTOj]]
-
     [:!QWERk [:left_arrow]]
     [:!QWERSk [:!Sleft_arrow]]
     [:!QWERCk [:!Cleft_arrow]]
@@ -432,8 +416,6 @@
 
     [:!QWERquote [:volume_increment]]
 
-    ; [:z [:!SCTOz]]
-
     [:!QWERx [:!Cleft_arrow]]
     [:!QWERSx [:!SCleft_arrow]]
     [:!QWERCx [:!Cleft_arrow]]
@@ -446,11 +428,6 @@
     [:!QWERTc [:!TCright_arrow]]
     [:!QWEROc [:!OCright_arrow]]
 
-    ;; [:v [:!SCTOv]]
-    ;; [:b [:!SCTOb]]
-    ;; [:n [:!SCTOn]]
-    ;; [:m [:!SCTOm]]
-
     [:!QWERcomma [:!Cleft_arrow]]
     [:!QWERScomma [:!SCleft_arrow]]
     [:!QWERCcomma [:!Cleft_arrow]]
@@ -461,9 +438,7 @@
     [:!QWERSperiod [:!SCright_arrow]]
     [:!QWERCperiod [:!Cright_arrow]]
     [:!QWERTperiod [:!TCright_arrow]]
-    [:!QWEROperiod [:!OCright_arrow]]
-
-    ;; [:0 [:mute]]                    
+    [:!QWEROperiod [:!OCright_arrow]] 
   
     [:!QWERslash [:volume_decrement]]
     [:!QWERspacebar [:play_or_pause]]
