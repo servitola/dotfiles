@@ -48,7 +48,16 @@ end)
 for _, row in pairs(apps_list) do
     for _, chord_row in pairs(row.chords) do
         if chord_row.app_name then
-            spoon.HotKeys:bindOpenApp(row.modifier, chord_row.key, chord_row.app_name)
+            hs.hotkey.bind(row.modifier, chord_row.key, function()
+                local app = hs.application.get(name)
+                if not app or app:isHidden() then
+                    hs.application.launchOrFocus(name)
+                elseif hs.application.frontmostApplication() ~= app then
+                    app:activate()
+                else
+                    app:hide()
+                end
+            end)
         elseif chord_row.specific_function then
             if chord_row.specific_function == "window.left" then
                 spoon.Windows:bind_window_left(row.modifier, chord_row.key)
