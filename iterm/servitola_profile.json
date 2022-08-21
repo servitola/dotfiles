@@ -31,6 +31,7 @@
     "Alpha Component" : 1,
     "Green Component" : 1
   },
+  "Custom Icon Path" : "\/Users\/servitola\/projects\/pc-scripts\/images\/avatars\/avatar211x211.png",
   "Ansi 8 Color" : {
     "Red Component" : 0.49889594316482544,
     "Color Space" : "Calibrated",
@@ -45,9 +46,9 @@
     "Alpha Component" : 1,
     "Green Component" : 0.18880486488342285
   },
-  "Horizontal Spacing" : 1,
   "Rows" : 25,
   "Default Bookmark" : "No",
+  "Horizontal Spacing" : 1,
   "Right Option Key Sends" : 0,
   "Cursor Guide Color" : {
     "Red Component" : 0.17867125570774078,
@@ -65,7 +66,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.69061970710754395
   },
-  "Icon" : 1,
+  "Icon" : 0,
   "Ambiguous Double Width" : false,
   "Jobs to Ignore" : [
     "rlogin",
@@ -393,6 +394,7 @@
       "Action" : 12
     }
   },
+  "Blink Allowed" : false,
   "Window Type" : 0,
   "Initial Text" : "",
   "Blur" : false,
@@ -427,6 +429,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.11759573966264725
   },
+  "Open Toolbelt" : false,
   "Shortcut" : "",
   "Cursor Color" : {
     "Red Component" : 0.90061241388320923,
@@ -480,7 +483,7 @@
     "Green Component" : 0.55607825517654419
   },
   "Normal Font" : "MesloLGMForPowerline-Regular 23",
-  "Custom Directory" : "No",
+  "Custom Directory" : "Recycle",
   "Ansi 0 Color" : {
     "Red Component" : 0.11759927868843079,
     "Color Space" : "Calibrated",
