@@ -1,8 +1,73 @@
 hyper = {"right_command", "right_control", "right_option", "right_shift"}
 
 apps_list = {
+    { modifier=left_shift, chords={
+        --/*/-----__BASE_LAYER___-------------------------------------------------------------.
+--* |     |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  _  |  +  |           |
+--* |-----------------------------------------------------------------------------------------+
+--* | Rider  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  {  |  }  |   |    |
+--* |-----------------------------------------------------------------------------------------+
+--* |        |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  :  |  "  |              |
+--* |-----------------------------------------------------------------------------------------+
+--* |          |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  <  |  >  |  ?  |                  |
+--* |-----------------------------------------------------------------------------------------+
+--* |      |       |       |                               |       |       |       |          |
+--* \-----------------------------------------------------------------------------------------/
+        -- tab Rider -> move block left
+        -- left -> select text to the left
+        -- right -> select text to the right
+        -- up -> select text above
+        -- down -> select text below
+    }},
     { modifier=left_option, chords={
+--/*/-----__BASE_LAYER___---------------------------------------------------------------------.
+--* |     |  ¡  |  ™  |  £  |  ¢  |  ∞  |  §  |  ¶  |  •  |  ª  |  º  |  –  |   ≠  |          |
+--* |-----------------------------------------------------------------------------------------+
+--* |      |  œ  |  ∑  |  ´  |  ®  |  †  |  ¥  |  ¨  |  ˆ  |  ø  |  π  |  “  |  ‘  |  Rider   |
+--* |-----------------------------------------------------------------------------------------+
+--* |        |  å  |  ß  |  macos  |  ƒ  |  ©  |  ˙  |  ∆  |  ˚  |  ¬  |  …  |  æ  |          |
+--* |-----------------------------------------------------------------------------------------+
+--* |          |    |  ≈  |  ç  |  √  |  ∫  |  ˜  |  µ  |  ≤  |  ≥  |  ÷  |                   |
+--* |-----------------------------------------------------------------------------------------+
+--* |      |       |       |                               |       |       |       |          |
+--* \-----------------------------------------------------------------------------------------/
         -- macos d -> Show desktop
+        -- Rider | -> GitHub Copilot - show suggestion
+        
+    }},
+    { modifier=left_command, chords={
+        -- Rider 1 -> focus solution explorer
+        -- Rider 2 -> 
+        -- Rider 3 -> focus unit tests explorer
+        -- Rider 4 ->
+        -- Rider 5 ->
+        -- Rider 6 ->
+        -- Rider 7 ->
+        -- Rider 8 ->
+        -- Rider 9 ->
+        -- macos q -> close current app
+        -- Rider w -> close current tab
+        -- macos a -> select all
+        -- Rider s -> save
+        -- Rider d -> duplicate line
+        -- Rider f -> find in current file
+        -- macos z -> undo
+        -- macos x -> cut text
+        -- macos c -> copy text
+        -- macos v -> paste text
+    }},
+    { modifier={left_command, left_shift}, chords={
+        -- Rider w -> reopen closed tab
+        -- macos z -> redo
+    }},
+    { modifier=left_control, chords={
+        -- Rider w -> close all notifications
+        -- Rider e -> Find Usages
+        -- Rider r -> Run
+        -- Rider a -> Git Annotate
+        -- Rider s -> Save with format
+        -- Rider d -> Debug
+        -- Rider f -> Focus Find Window
     }},
     { modifier=hyper, chords={  
         -- karabiner escape -> tilda/ё
@@ -58,6 +123,7 @@ apps_list = {
     }}, 
     { modifier= {"left_control", "left_shift"}, chords={
         { key="escape", app_name="Activity Monitor" },
+        -- Rider g -> Git history
         -- { key="i", map="mouse_right_button" },
         -- { key="o", map="mouse_up" },
         -- { key="p", map="mouse_left_button" },
@@ -76,7 +142,8 @@ apps_list = {
         { key="s", specific_function="android.show_all"},
         { key="a", app_name="Ableton Live 11 Suite"},
         { key="h", app_name="Hammerspoon"},
-        { key="x", app_name="XCode"}
+        { key="x", app_name="XCode"},
+        -- itsical c -> Show Calendar
     }},
  }
 
