@@ -11,7 +11,7 @@ apps_list = {
         { key="g", app_name="Fork" },
         { key="h", app_name="Finder" },
         { key="j", app_name="Safari" },
-        { key="z", },
+        { key="z", specific_function="set_russian_language"},
         { key="v", app_name="Firefox" },
         { key="b", app_name="iTerm" },
         { key="n", app_name="/Applications/Visual Studio Code.app" },
@@ -79,6 +79,10 @@ for _, row in pairs(apps_list) do
                     end
 
                     ksheet = not ksheet
+                end)
+            elseif chord_row.specific_function == "set_russian_language" then
+                hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.keycodes.setLayout("Russian")
                 end)
             end
         end
