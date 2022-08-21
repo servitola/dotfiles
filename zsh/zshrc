@@ -32,6 +32,3 @@ GIT_UNTRACKED="?"
 GIT_STASHED="$"
 GIT_UNPULLED="⇣"
 GIT_UNPUSHED="⇡"
-
-bold=$(tput bold)
-normal=$(tput sgr0)
