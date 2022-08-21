@@ -82,7 +82,7 @@ for _, row in pairs(apps_list) do
                 end)
             elseif chord_row.specific_function == "set_russian_language" then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    hs.keycodes.setLayout("Russian")
+                    hs.keycodes.setLayout(hs.keycodes.layouts()[2])
                 end)
             end
         end
