@@ -1,3 +1,6 @@
+bold=$(tput bold)
+normal=$(tput sgr0)
+
 alias up='
     sudo -v
 
