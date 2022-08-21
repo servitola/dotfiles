@@ -11,6 +11,7 @@ obj.margin = 0.001
 obj.vertical_line = 0.73
 obj.horizontal_line = 0.76
 obj.right_block_vertical_margin = 0.044
+hs.window.animationDuration = 0
 -----------------------------------------
 
 right_side_app_titles = {'Telegram', 'Hammerspoon'}
