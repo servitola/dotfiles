@@ -2,12 +2,10 @@
 \
 ## <span style="color:red">Applications</span>
 1. AnnePro2 (Bluetooth Mehcanical Keyboard. Max sync between Mac and Windows) + Light scheme + QMK scheme
-1. Alfred vs Keypirinha
+1. Raycast vs Keypirinha
 1. Autohotkey vs Karabiner (goku) & Hammerspoon (spoons)
 1. Images (my own avatars)
 1. Chocolatey vs Homebrew
-1. BitBar (Mac) - deprecated
-1. Downie (Mac) - deprecated
 1. Git
 1. iTerm vs Windows Terminal both with zsh & oh-my-zsh
 
