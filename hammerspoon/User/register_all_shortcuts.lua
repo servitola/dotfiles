@@ -1,21 +1,60 @@
 hyper = {"right_command", "right_control", "right_option", "right_shift"}
 
 apps_list = {
-    { modifier=hyper, chords={    
+    { modifier=left_option, chords={
+        -- macos d -> Show desktop
+    }},
+    { modifier=hyper, chords={  
+        -- karabiner escape -> tilda/ё
+        -- karabiner 1 -> f1
+        -- karabiner 2 -> f2
+        -- karabiner 3 -> f3
+        -- karabiner 4 -> f4
+        -- karabiner 5 -> f5
+        -- karabiner 6 -> f6
+        -- karabiner 7 -> f7
+        -- karabiner 8 -> f8
+        -- karabiner 9 -> f9
+        -- karabiner 0 -> f10
+        -- karabiner - -> f11
+        -- karabiner = -> f12
+        -- karabiner backspace -> delete
+        -- FREE { key="tab", }, 
+        -- karabiner q -> page up
+        -- karabiner w -> up
+        -- karabiner e -> page down
         { key="r", app_name="Rider" },
         { key="t", app_name="Telegram", window_default_position="right" },
-        --{ key="y", app_name="" },
+        { key="y", app_name="Android Studio"},
         { key="u", app_name="Transmission" },
         --{ key="i" },
+        -- karabiner o -> up
         { key="p", app_name="Music" },
+        -- karabiner [ -> previous track
+        -- karabiner ] -> next track
+        -- FREE |
+        -- karabiner a -> left
+        -- karabiner s -> down
+        -- karabiner d -> right
+        -- RayCast f 
         { key="g", app_name="Fork" },
         { key="h", app_name="Finder" },
         { key="j", app_name="Safari" },
+        -- karabiner k -> left
+        -- karabiner l -> down
+        -- karabiner ; -> right
+        -- karabiner ' -> volume up
+        -- FREE Enter
         { key="z", specific_function="set_russian_language"},
+        -- karabiner x -> home
+        -- karabiner c -> end
         { key="v", app_name="Firefox" },
         { key="b", app_name="iTerm" },
         { key="n", app_name="Visual Studio Code" },
         { key="m", app_name="Elmedia Player" },
+        -- karabiner < -> home
+        -- karabiner > -> end
+        -- karabiner , -> volume down
     }}, 
     { modifier= {"left_control", "left_shift"}, chords={
         { key="escape", app_name="Activity Monitor" },
@@ -35,7 +74,6 @@ apps_list = {
         { key="down", specific_function="window.set_all_to_default"},
         { key="i", specific_function="info.show_shortcuts"},
         { key="s", specific_function="android.show_all"},
-        { key="b", app_name="Android Studio"},
         { key="a", app_name="Ableton Live 11 Suite"},
         { key="h", app_name="Hammerspoon"},
         { key="x", app_name="XCode"}
