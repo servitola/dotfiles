@@ -35,7 +35,7 @@ apps_list = {
         { key="down", specific_function="window.set_all_to_default"},
         { key="i", specific_function="info.show_shortcuts"},
         { key="s", specific_function="android.show_all"},
-        { key="r", app_name="Android Studio"},
+        { key="b", app_name="Android Studio"},
         { key="a", app_name="Ableton Live 11 Suite"},
         { key="h", app_name="Hammerspoon"},
         { key="x", app_name="XCode"}
