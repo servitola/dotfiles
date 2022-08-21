@@ -42,7 +42,6 @@
         "*.txt": "log"
     },
     "files.autoGuessEncoding": true,
-    "tabnine.experimentalAutoImports": true,
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook",
         "git-rebase-todo": "gitlens.rebase"
