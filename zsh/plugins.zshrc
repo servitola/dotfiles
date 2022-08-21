@@ -1,11 +1,12 @@
 plugins=(
+  adb
   git
   bundler
   dotenv
   osx
   rake
   rbenv
-  adb
+  aliases
   brew
   common-aliases
   npm
