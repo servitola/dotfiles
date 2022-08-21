@@ -3,22 +3,23 @@ plugins=(
   git
   bundler
   dotenv
+  aliases
+  common-aliases
   macos
   rake
   rbenv
-  aliases
   brew
-  common-aliases
   npm
   pip
   python
   zsh-autosuggestions
   zsh-interactive-cd
-  zsh-navigation-tools
   z
   sudo
   cask
   Colored-man-pages
   ohmyzsh-full-autoupdate
   nx-completion
+  sudo
+  dirhistory
 )
