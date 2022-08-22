@@ -11,4 +11,4 @@ require "User/Configs/config_WiFiTransitions";
 spoon.SpoonInstall:andUse("KSheet");
 spoon.SpoonInstall:andUse("UnsplashZ"); 
 spoon.SpoonInstall:andUse("ReloadConfiguration", { start = true });
-spoon.SpoonInstall:andUse("FadeLogo", { start = true})
+spoon.SpoonInstall:andUse("FadeLogo", { start = true })

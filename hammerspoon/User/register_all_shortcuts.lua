@@ -19,21 +19,22 @@ apps_list = {
         -- up -> select text above
         -- down -> select text below
     }},
-    { modifier=left_option, chords={
+    { modifier={"alt"}, chords={
         --/*/-----__ALT_LAYER___---------------------------------------------------------------------.
         --* |     |  ¡  |  ™  |  £  |  ¢  |  ∞  |  §  |  ¶  |  •  |  ª  |  º  |  –  |   ≠  |          |
         --* |-----------------------------------------------------------------------------------------+
         --* |      |  œ  |  ∑  |  ´  |  ®  |  †  |  ¥  |  ¨  |  ˆ  |  ø  |  π  |  “  |  ‘  |  Rider   |
         --* |-----------------------------------------------------------------------------------------+
-        --* | Hyper |  å  |  ß  |  macos  |  ƒ  |  ©  |  ˙  |  ∆  |  ˚  |  ¬  |  …  |  æ  |          |
+        --* | Hyper |  å  |  ß  |  macos  | macos |  ©  | ˙ |  ∆  |  ˚  |  ¬  |  …  |  æ  |          |
         --* |-----------------------------------------------------------------------------------------+
-        --* |          |    |  ≈  |  ç  |  √  |  ∫  |  ˜  |  µ  |  ≤  |  ≥  |  ÷  |                   |
+        --* |          |    |  ≈  |  ©  |  √  |  ∫  |  ˜  |  µ  |  ≤  |  ≥  |  ÷  |                   |
         --* |-----------------------------------------------------------------------------------------+
         --* |      | TO_PRESS  |       |                               |       |       |       |          |
         --* \-----------------------------------------------------------------------------------------/
         -- macos d -> Show desktop
         -- Rider | -> GitHub Copilot - show suggestion
-        
+        -- macos f -> Open LaunchPad
+        { key="c", sendKey="©" }
     }},
     { modifier=left_command, chords={
         --/*/-----__CMD_LAYER___-----------------------------------------------------------------------------.
@@ -253,7 +254,7 @@ for _, row in pairs(apps_list) do
     for _, chord_row in pairs(row.chords) do
         if chord_row.app_name then
             hs.hotkey.bind(row.modifier, chord_row.key, function()
-                local app = hs.application.get(chord_row.app_name)
+                local app = hs.application.find(chord_row.app_name)
                 if not app or app:isHidden() then
                     hs.application.launchOrFocus(chord_row.app_name)
                 elseif hs.application.frontmostApplication() ~= app then
@@ -261,6 +262,10 @@ for _, row in pairs(apps_list) do
                 else
                     app:hide()
                 end
+            end)
+        elseif chord_row.sendKey then
+            hs.hotkey.bind(row.modifier, chord_row.key, function()
+                hs.eventtap.keyStrokes(chord_row.sendKey)
             end)
         elseif chord_row.specific_function then
             if chord_row.specific_function == "window.left" then
