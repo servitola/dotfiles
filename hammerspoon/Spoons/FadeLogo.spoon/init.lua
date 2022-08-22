@@ -33,12 +33,12 @@ obj.image = hs.image.imageFromName(hs.image.systemImageNames.ApplicationIcon)
 --- FadeLogo.image_size
 --- Variable
 --- `hs.geometry` object specifying the initial size of the image to display in the center of the screen. The image object will be resizes proportionally to fit in this size. Defaults to `hs.geometry.size(w=200, h=200)`
-obj.image_size = hs.geometry.size(150, 150)
+obj.image_size = hs.geometry.size(200, 200)
 
 --- FadeLogo.image_alpha
 --- Variable
 --- Initial transparency of the image. Defaults to 1.0.
-obj.image_alpha = 0.95
+obj.image_alpha = 1.0
 
 --- FadeLogo.zoom
 --- Variable
@@ -48,17 +48,17 @@ obj.zoom = true
 --- FadeLogo.fade_in_time
 --- Variable
 --- Number of seconds over which to fade in the image. Defaults to 0.3.
-obj.fade_in_time = 0.15
+obj.fade_in_time = 0.3
 
 --- FadeLogo.fade_out_time
 --- Variable
 --- Number of seconds over which to fade out the image. Defaults to 0.5.
-obj.fade_out_time = 0.4
+obj.fade_out_time = 0.5
 
 --- FadeLogo.run_time
 --- Variable
 --- Number of seconds to leave the image on the screen when `start()` is called.
-obj.run_time = 1.5
+obj.run_time = 2.0
 
 --- FadeLogo.zoom_scale_factor
 --- Variable
