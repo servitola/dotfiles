@@ -7,11 +7,11 @@ apps_list = {
         --* |----------------------------------------------------------------------------------------+
         --* | Rider  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  {  |  }  |   |   |
         --* |----------------------------------------------------------------------------------------+
-        --* | Hyper |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  :  |  "  |             |
+        --* | Hyper |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  :  |  "  |              |
         --* |----------------------------------------------------------------------------------------+
-        --* | TO_PRESS |  X  |  C  |  V  |  B  |  N  |  M  |  <  |  >  |  ?  |                       |
+        --* | TO_PRESS |  X  |  C  |  V  |  B  |  N  |  M  |  <  |  >  |  ?  |       macos           |
         --* |----------------------------------------------------------------------------------------+
-        --* |      |       |       |                               |       |       |       |         |
+        --* |      |       |       |                               |       | macos | macos | macos   |
         --* \----------------------------------------------------------------------------------------/
         -- tab Rider -> move block left
         -- left -> select text to the left
@@ -20,50 +20,59 @@ apps_list = {
         -- down -> select text below
     }},
     { modifier={"alt"}, chords={
-        --/*/-----__ALT_LAYER___---------------------------------------------------------------------.
+        --/*/-----__ALT_LAYER___----------------------------------------------------------------------.
         --* |     |  ¡  |  ™  |  £  |  ¢  |  ∞  |  §  |  ¶  |  •  |  ª  |  º  |  –  |   ≠  |          |
         --* |-----------------------------------------------------------------------------------------+
-        --* |      |  œ  |  ∑  |  ´  |  ®  |  †  |  ¥  |  ¨  |  ˆ  |  ø  |  π  |  “  |  ‘  |  Rider   |
+        --* |     |  œ  |  ∑  |  ´  | Simulators |  †  |  ¥  |  ¨  | hotkeys |  ø  |  π  |  “  | ‘   | Rider |
         --* |-----------------------------------------------------------------------------------------+
-        --* | Hyper |  å  |  ß  |  macos  | macos |  ©  | ˙ |  ∆  |  ˚  |  ¬  |  …  |  æ  |          |
+        --* | Hyper |    |     | macos | macos |  ©  | ˙ |  ∆  |  ˚  |  ¬  |  …  |  æ  |    |
         --* |-----------------------------------------------------------------------------------------+
-        --* |          |    |  ≈  |  ©  |  √  |  ∫  |  ˜  |  µ  |  ≤  |  ≥  |  ÷  |                   |
+        --* |          |    |  ≈  |  ©  | Ableton  |  ∫  |  ˜  |  µ  |  ≤  |  ≥  |  ÷  |      macos        |
         --* |-----------------------------------------------------------------------------------------+
-        --* |      | TO_PRESS  |       |                               |       |       |       |          |
+        --* |      | TO_PRESS  |       |                               |       | macos | macos | macos|
         --* \-----------------------------------------------------------------------------------------/
+        --{ key="w", send_key={ modifier={ ""}}},
+        { key="i", specific_function="info.show_shortcuts"},
         -- macos d -> Show desktop
         -- Rider | -> GitHub Copilot - show suggestion
         -- macos f -> Open LaunchPad
-        { key="c", sendKey="©" }
+        --{ key="c", sendKey="©" },
+        { key="v", app_name="Ableton Live 11 Suite"},
+        { key="r", specific_function="android.show_all" }
+        -- macos up -> TODO:
+        -- macos left -> jump a word to the left
+        -- macps down -> TODO:
+        -- macos right -> jump a word to the right
     }},
     { modifier=left_command, chords={
-        --/*/-----__CMD_LAYER___-----------------------------------------------------------------------------.
+        --/*/-----__CMD_LAYER___---------------------------------------------------------------------------------.
         --* |     |  Rider  |  Rider  |  Rider  | Rider  |   |    |    |    |    |    |    |     |  Rider        |
         --* |----------------------------------------------------------------------------------------------------+
         --* |      |  macos  |  Rider  |  Rider  |  Rider |     |    |    |    |    |    |  Rider  |  Rider  |  Rider   |
         --* |-------------------------------------------------------------------------------------------------------+
         --* |        |  macos  |  macos  |  Rider  |  Rider  | Rider   | macos   |    |    |    |    |    |          |
-        --* |-----------------------------------------------------------------------------------------+
-        --* |          |  macos  |  macos  |  macos  |  macos  |  Rider    |    |  macos  | macos |    | Rider |                   |
-        --* |-----------------------------------------------------------------------------------------+
-        --* |      |       |       |       Rider                        |       |       |       |          |
-        --* \-----------------------------------------------------------------------------------------/
+        --* |---------------------------------------------------------------------------------------------------+
+        --* |         |  macos | macos | macos |macos | Rider |    |  macos  | macos |    | Rider |             |
+        --* |---------------------------------------------------------------------------------------------------+
+        --* |      |       |       |       Rider                        |           |  macos  |       |  macos  |
+        --* \---------------------------------------------------------------------------------------------------/
         -- Rider 1 -> focus solution explorer
         -- Rider 2 -> focus debug window
         -- Rider 3 -> focus unit tests explorer
         -- Rider 4 -> focus run window
-        -- Rider delete -> delete line
-        -- macos q -> close current app
-        -- Rider w -> close current tab
-        -- Rider e -> recent files dialog
-        -- Rider r -> replace in current file
-        -- Rider [ -> navigate back
-        -- Rider ] -> navigate forward
-        -- macos a -> select all
-        -- Rider s -> save
-        -- Rider d -> duplicate line
-        -- Rider f -> find in current file
-        -- Rider g -> git operations popup
+        -- + -> app -> Zoom in
+        -- delete -> Rider -> delete line
+        -- q -> macos -> close current app
+        -- w -> app -> close current tab
+        -- e -> Rider -> recent files dialog
+        -- r -> Rider -> replace in current file
+        -- [ -> Rider -> navigate back
+        -- ] -> Rider -> navigate forward
+        -- a -> macos -> select all
+        -- s -> app -> save
+        -- d -> Rider -> duplicate line
+        -- f -> app -> find (in current file)
+        -- g -> Rider -> git operations popup
         -- macos h -> hide current app
         -- macos z -> undo
         -- macos x -> cut text
@@ -208,13 +217,13 @@ apps_list = {
     }},
     { modifier={"left_control", "left_option"}, chords={
         --/*/-----__CONTROL_LAYER___-----------------------------------------------------------------.
-        --* |     |  Rider  |       |      |    |    |    |    |    |    |    |    |     |            |
+        --* |     |     |       |      |    |    |    |    |    |    |    |    |     |            |
         --* |-----------------------------------------------------------------------------------------+
-        --* | Rider  |  Rider |  Rider  | Rider |  Rider  |   |    |   |    |    |    |    |    |     |
+        --* |    |   |      |      |      |     |   |     |    |    |    |    |    |     |
         --* |-----------------------------------------------------------------------------------------+
-        --* |        |  Rider  |  Rider  |  Rider  |  Rider  | Rider  |    |    |    |    |    |    |   |
+        --* |        |    |  |  Rider  |  Rider  | Rider  | Hammerspoon |    |    |    |    |    |   |
         --* |-----------------------------------------------------------------------------------------+
-        --* |          |      |       |      |       |      |    |    |     |    |    |               |
+        --* |          |      | XCode |      |       |      |    |    |     |    |    |               |
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |       macos                        |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
@@ -222,9 +231,6 @@ apps_list = {
         { key="right", specific_function="window.right"},
         { key="up", specific_function="window.fullscreen"},
         { key="down", specific_function="window.set_all_to_default"},
-        { key="i", specific_function="info.show_shortcuts"},
-        { key="s", specific_function="android.show_all"},
-        { key="a", app_name="Ableton Live 11 Suite"},
         { key="h", app_name="Hammerspoon"},
         { key="x", app_name="XCode"},
         -- itsical c -> Show Calendar
