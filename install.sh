@@ -14,3 +14,5 @@ ln -s ~/projects/pc-scripts/zsh/zshrc ~/.zshrc
 ln -s ~/projects/pc-scripts/git/gitconfig ~/.gitconfig
 sh "./mac setup scripts/set-defaults.sh"
 sh "./homebrew/install_homebrew.sh"
+
+#https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac - TODO: add this to the script
