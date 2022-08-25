@@ -1,11 +1,61 @@
 hyper = {"right_command", "right_control", "right_option", "right_shift"}
 
+-- ⌘ N New Window
+-- ⌘⇧ P New Private Window
+-- ⌘ O Open File…
+-- ⌘ W Close Tab
+-- ⌘⇧ W Close Window
+-- ⌘ S Save Page As…
+-- ⌘ P Print…
+-- Edit
+-- ⌘ Z Undo
+-- ⌘⇧ Z Redo
+-- ⌘ X Cut
+-- ⌘ C Copy
+-- ⌘ V Paste
+-- ⌦ Delete
+-- ⌘ A Select All
+-- ⌘ F Find in Page…
+-- ⌘ G Find Again
+-- E Emoji & Symbols
+-- View
+-- ⌘⇧ B
+-- ⌘ B Bookmarks
+-- ⌘⇧ H History
+-- ⌘ + Zoom In
+-- ⌘ - Zoom Out
+-- ⌘ 0 Actual Size
+-- ⌘⌃ F Enter Full Screen
+-- History
+-- ⌘ Y Show All History
+-- ⌘⇧ ⌦ Clear Recent History…
+-- ⌘⇧ T Mozilla VPN: Protect Your Entire Device
+-- ⌘⇧ N Ultimate Meme Music Compilation (Find your song) - YouTube
+-- Bookmarks
+-- ⌘⇧ O Manage Bookmarks
+-- ⌘ D Bookmark Current Tab
+-- ⌘⇧ D Bookmark All Tabs…
+-- Tools
+-- ⌘ J Downloads
+-- ⌘⇧ A Add-ons and Themes
+-- ⌘⌥ I Web Developer Tools
+-- ⌘⇧ J Browser Console
+-- ⌘⌥ M Responsive Design Mode
+-- ⌘ U Page Source
+-- ⌘ I Page Info
+-- Window
+-- ⌘ M Minimize
+-- Help
+-- ⌘ ? Get Help
+
+
+
 apps_list = {
     { modifier=left_shift, chords={
         --/*/-----__SHIFT_LAYER___-------------------------------------------------------------------.
         --* |  ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  _  |  +  |          |
         --* |----------------------------------------------------------------------------------------+
-        --* | Rider  |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  {  |  }  |   |   |
+        --* |        |  Q  |  W  |  E  |  R  |  T  |  Y  |  U  |  I  |  O  |  P  |  {  |  }  |   |   |
         --* |----------------------------------------------------------------------------------------+
         --* | Hyper |  A  |  S  |  D  |  F  |  G  |  H  |  J  |  K  |  L  |  :  |  "  |              |
         --* |----------------------------------------------------------------------------------------+
@@ -32,13 +82,11 @@ apps_list = {
         --* |      | TO_PRESS  |       |                               |       | macos | macos | macos|
         --* \-----------------------------------------------------------------------------------------/
         --{ key="w", send_key={ modifier={ ""}}},
-        { key="i", specific_function="info.show_shortcuts"},
+        -- { key="i", specific_function="info.show_shortcuts"},
         -- macos d -> Show desktop
         -- Rider | -> GitHub Copilot - show suggestion
         -- macos f -> Open LaunchPad
-        --{ key="c", sendKey="©" },
-        { key="v", app_name="Ableton Live 11 Suite"},
-        { key="r", specific_function="android.show_all" }
+        -- { key="c", sendKey="©" },
         -- macos up -> TODO:
         -- macos left -> jump a word to the left
         -- macps down -> TODO:
@@ -66,6 +114,7 @@ apps_list = {
         -- w -> app -> close current tab
         -- e -> Rider -> recent files dialog
         -- r -> Rider -> replace in current file
+        -- t -> app -> new tab
         -- [ -> Rider -> navigate back
         -- ] -> Rider -> navigate forward
         -- a -> macos -> select all
@@ -73,13 +122,14 @@ apps_list = {
         -- d -> Rider -> duplicate line
         -- f -> app -> find (in current file)
         -- g -> Rider -> git operations popup
-        -- macos h -> hide current app
-        -- macos z -> undo
-        -- macos x -> cut text
-        -- macos c -> copy text
-        -- macos v -> paste text
+        -- h -> macos -> hide current app
+        -- z -> macos -> undo
+        -- x -> macos -> cut text
+        -- c -> macos -> copy text
+        -- v -> macos -> paste text
         -- Rider b -> go to declaration
-        -- macos m -> minimize window
+        -- n -> macos -> new window
+        -- m -> macos -> minimize window
         -- macos , -> show settings of current app
         -- Rider / -> comment line
         -- Rider space -> Basic code completion
@@ -171,11 +221,11 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |                               |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
-        -- Rider f -> extract field
-        -- macos h -> hide all other windows
-        -- Rider v -> extract variable
-        -- Rider n -> inline
-        -- Rider m -> extract method
+        -- f -> Rider -> extract field
+        -- h -> macos -> hide all other windows
+        -- v -> Rider -> extract variable
+        -- n -> Rider -> inline
+        -- m -> Rider -> extract method
     }},
     { modifier={"left_command", "left_control"}, chords={
         --/*/-----__CONTROL_LAYER___-----------------------------------------------------------------.
@@ -233,6 +283,13 @@ apps_list = {
         { key="down", specific_function="window.set_all_to_default"},
         { key="h", app_name="Hammerspoon"},
         { key="x", app_name="XCode"},
+        { key="i", specific_function="info.show_shortcuts"},
+-- macos d -> Show desktop
+        -- Rider | -> GitHub Copilot - show suggestion
+        -- macos f -> Open LaunchPad
+        --{ key="c", sendKey="©" },
+        { key="a", app_name="Ableton Live 11 Suite"},
+        { key="s", specific_function="android.show_all" }
         -- itsical c -> Show Calendar
     }},
     { modifier={"left_option", "left_shift"}, chords={
