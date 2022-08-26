@@ -13,6 +13,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Set Dock to the right
+defaults write com.apple.dock "orientation" -string "right"
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
