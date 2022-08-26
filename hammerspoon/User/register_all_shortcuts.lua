@@ -190,10 +190,10 @@ apps_list = {
         -- , - home
         -- . - end
         -- / - volume down
-        -- left TODO:
-        -- right TODO:
-        -- up TODO:
-        -- down TODO:
+        { key="left", specific_function="window.left"},
+        { key="right", specific_function="window.right"},
+        { key="up", specific_function="window.fullscreen"},
+        { key="down", specific_function="window.set_all_to_default"},
     }}, 
     { modifier={"left_command", "left_shift"}, chords={
         --/*/-----__CONTROL_LAYER___-----------------------------------------------------------------.
@@ -369,7 +369,7 @@ apps_list = {
         -- p - ∏
         -- [ - ”
         -- ] - ’
-        -- a - --[[  ]]
+        -- a - Å
         -- s - Í
         -- d - 
         -- f - 
