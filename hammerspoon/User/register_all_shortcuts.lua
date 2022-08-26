@@ -323,10 +323,10 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |       macos                        |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
-        { key="left", specific_function="window.left"},
-        { key="right", specific_function="window.right"},
-        { key="up", specific_function="window.fullscreen"},
-        { key="down", specific_function="window.set_all_to_default"},
+        -- { key="left", specific_function="window.left"},
+        -- { key="right", specific_function="window.right"},
+        -- { key="up", specific_function="window.fullscreen"},
+        -- { key="down", specific_function="window.set_all_to_default"},
         { key="h", app="Hammerspoon"},
         { key="x", app="XCode"},
         { key="i", specific_function="info.show_shortcuts"},
