@@ -167,7 +167,7 @@ apps_list = {
         { key="p", app="Music" },
         -- [ - previous track
         -- ] - next track
-        -- \ TODO:
+        { key="\\", app="Ableton Live 11 Suite"},
         -- a - left
         -- s - down
         -- d - right
@@ -229,9 +229,31 @@ apps_list = {
         -- y -
         -- u -
         -- i -
-        -- o - 
-        -- f - Rider - search in all files
+        -- o -
+        -- p -
+        -- [ -
+        -- ] -
+        -- \ -
+        -- a -
+        -- s -
+        -- d -
+        -- f - Rider - search in files
+        -- g -
+        -- h -
+        -- j -
+        -- k -
+        -- l -
+        -- ; -
+        -- ' - 
         -- z - macos - redo
+        -- x - 
+        -- c -
+        -- v -
+        -- b -
+        -- n -
+        -- m -
+        -- , -
+        -- . -
         -- / - Rider - comment
     }},  
     { modifier={"left_command", "alt"}, chords={
