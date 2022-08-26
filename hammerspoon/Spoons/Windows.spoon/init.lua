@@ -1,16 +1,10 @@
 local obj = {}
 obj.__index = obj
 obj.margin = 0.001
-
----Internal Monitor Sizes------------------
--- obj.right_block_vertical_margin = 0.022
--- obj.vertical_line = 0.71
--- obj.horizontal_line = 0.73
-
--- External Monitor Sizes --
 obj.vertical_line = 0.73
 obj.horizontal_line = 0.76
 obj.right_block_vertical_margin = 0.044
+
 hs.window.animationDuration = 0
 -----------------------------------------
 
@@ -112,8 +106,7 @@ function set_all_windows_positions()
             })
 
         end
-        end
-    
+    end
 end
 
 function is_unresizable_window(window)
@@ -192,21 +185,6 @@ function set_window(x, y, width, height, window)
         h = screen_size.h * height,
         w = screen_size.w * width
     })
-end
-
-function log_window(window)
-    -- local logger = hs.logger.new("window", 'verbose')
-    -- local app = window:application()
-    -- logger.d(" ")
-    -- logger.d("App Title: ")
-    -- logger.d(app:title())
-    -- logger.d("Bundle Id:")
-    -- logger.d(app:bundleID())
-    -- logger.d("Win Title:")
-    -- logger.d(window:title())
-    -- logger.d("Win Id:")
-    -- logger.d(window:id())
-    -- logger.d(" ")
 end
 
 return obj
