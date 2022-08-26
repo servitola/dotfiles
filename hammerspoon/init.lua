@@ -7,7 +7,6 @@ require "User/register_all_shortcuts"
 require "User/Configs/config_Popup_TranslateSelection";
 require "User/Configs/config_UrlDispatcher";
 require "User/Configs/config_WiFiTransitions";
---spoon.SpoonInstall:andUse("HoldToQuit", { start = true});
 spoon.SpoonInstall:andUse("KSheet");
 spoon.SpoonInstall:andUse("UnsplashZ"); 
 spoon.SpoonInstall:andUse("ReloadConfiguration", { start = true });
