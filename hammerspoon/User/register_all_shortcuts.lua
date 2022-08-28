@@ -165,7 +165,7 @@ apps_list = {
         { key="p", app="Music" },
         -- [ - previous track
         -- ] - next track
-        { key="\\", app="Ableton Live 11 Suite"},
+        --{ key="\\", app="Ableton Live 11 Suite"},
         -- a - left
         -- s - down
         -- d - right
