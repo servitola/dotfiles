@@ -64,8 +64,6 @@ function set_all_windows_positions()
         local window_title = window:title()
         local app_title = window:application():title()
 
-        log_window(window)
-
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_yandex_external_video(window) then
