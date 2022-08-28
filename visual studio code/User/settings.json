@@ -69,4 +69,11 @@
     "debug.console.fontSize": 15,
     "scm.inputFontSize": 16,
     "gitlens.hovers.currentLine.over": "line",
+    "npm.keybindingsChangedWarningShown": true,
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
 }
