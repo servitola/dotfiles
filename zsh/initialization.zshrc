@@ -12,7 +12,10 @@ export ZSH="/Users/servitola/.oh-my-zsh"
 
 # ANDROID
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin 
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # unknow now
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
@@ -23,3 +26,4 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
