@@ -38,10 +38,10 @@ end
 ---
 --- Parameters:
 ---  * None
-function obj:start()
+function obj:init()
     self.watchers = {}
     for _,dir in pairs(self.watch_paths) do
-        self.watchers[dir] = hs.pathwatcher.new(dir, hs.reload):start()
+        self.watchers[hs.configdir] = hs.pathwatcher.new(hs.configdir, hs.reload):start()
     end
     return self
 end
