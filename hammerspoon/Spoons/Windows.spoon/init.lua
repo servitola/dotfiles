@@ -1,9 +1,8 @@
 local obj = {}
-obj.__index = obj
-obj.margin = 0.001
-obj.vertical_line = 0.73
-obj.horizontal_line = 0.76
-obj.right_block_vertical_margin = 0.044
+margin = 0.001
+vertical_line = 0.73
+horizontal_line = 0.76
+right_block_vertical_margin = 0.044
 
 hs.window.animationDuration = 0
 -----------------------------------------
@@ -36,7 +35,7 @@ function obj:bind_all_windows_to_default(modifier, key)
 end
 
 function set_window_left(window)
-    set_window(0, 0, obj.vertical_line, 1, window)
+    set_window(0, 0, vertical_line, 1, window)
 end
 
 function set_window_right(window)
@@ -49,13 +48,13 @@ function set_window_right(window)
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
     else
-        set_window(obj.vertical_line + obj.margin, 0, 1 - obj.vertical_line,
-            obj.horizontal_line - obj.right_block_vertical_margin, window)
+        set_window(vertical_line + margin, 0, 1 - vertical_line,
+            horizontal_line - right_block_vertical_margin, window)
     end
 end
 
 function set_window_bottom(window)
-    set_window(obj.vertical_line + obj.margin, obj.horizontal_line, 1 - obj.vertical_line, 1 - obj.horizontal_line,
+    set_window(vertical_line + margin, horizontal_line, 1 - vertical_line, 1 - horizontal_line,
         window)
 end
 
@@ -64,12 +63,10 @@ function set_window_fullscreen(window)
 end
 
 function set_all_windows_positions()
-    local wins = hs.window.allWindows()
-
     local emulators_number = 0
     local emulators_positioned = 0
 
-    for _, window in ipairs(wins) do
+    for _, window in ipairs(hs.window.allWindows()) do
         local window_title = window:title()
         local app_title = window:application():title()
 
@@ -90,9 +87,6 @@ function set_all_windows_positions()
                 set_window_left(window)
             end
         end
-
-        local window_title = window:title()
-        local app_title = window:application():title()
 
         if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
             local app = window:application()
