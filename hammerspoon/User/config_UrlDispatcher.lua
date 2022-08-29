@@ -2,7 +2,7 @@ Zoom = "us.zoom.xos"
 Safari = "com.apple.Safari"
 Firefox = "org.mozilla.firefox"
 
-spoon.SpoonInstall:andUse("URLDispatcher", {
+hs.spoons.use("URLDispatcher", {
     config = {
         url_patterns = {
             { "https?://zoom.us/j/", Zoom },
@@ -16,5 +16,4 @@ spoon.SpoonInstall:andUse("URLDispatcher", {
         default_handler = Firefox
     },
     start = true,
-    --loglevel = 'debug'
-})
+}, true)
