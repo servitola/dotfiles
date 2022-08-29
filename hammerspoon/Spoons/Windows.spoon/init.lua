@@ -64,7 +64,7 @@ function set_window_fullscreen(window)
 end
 
 function set_all_windows_positions()
-    local wins = hs.window.visibleWindows()
+    local wins = hs.window.allWindows()
 
     local emulators_number = 0
 
