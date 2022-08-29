@@ -305,23 +305,6 @@ function obj:installSpoonFromZipURL(url)
    end
 end
 
--- Internal function to check if a Spoon/Repo combination is valid
-function obj:_is_valid_spoon(name, repo)
-   if self.repos[repo] then
-      if self.repos[repo].data then
-         if self.repos[repo].data[name] then
-            return true
-         else
-            self.logger.ef("Spoon '%s' does not exist in repository '%s'. Please check and try again.", name, repo)
-         end
-      else
-         self.logger.ef("Repository data for '%s' not available - call spoon.SpoonInstall:updateRepo('%s'), then try again.", repo, repo)
-      end
-   else
-      self.logger.ef("Invalid or unknown repository '%s'", repo)
-   end
-   return nil
-end
 
 --- SpoonInstall:andUse(name, arg)
 --- Method
