@@ -41,8 +41,10 @@ function obj:zoom_and_fade()
             size:scale(self.zoom_scale_factor)
             canvas[1].frame = {x = size.x, y = size.y, w = size.w, h = size.h }
          else
-            timer:stop()
-            timer = nil
+            if timer then
+               timer:stop()
+               timer = nil
+            end
          end
    end)
    canvas:hide(self.fade_out_time)
