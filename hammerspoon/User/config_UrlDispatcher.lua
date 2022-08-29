@@ -2,7 +2,7 @@ Zoom = "us.zoom.xos"
 Safari = "com.apple.Safari"
 Firefox = "org.mozilla.firefox"
 
-hs.spoons.use("URLDispatcher", {
+hs.loadSpoon("URLDispatcher", {
     config = {
         url_patterns = {
             { "https?://zoom.us/j/", Zoom },

@@ -1,6 +1,10 @@
+local obj={}
+obj.__index = obj
+obj.name="HotKeys"
+
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
-apps_list = {
+obj.apps_list = {
     { modifier=left_shift, chords={
         --/*/-----__SHIFT_LAYER___-------------------------------------------------------------------.
         --* |  ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  _  |  +  |          |
@@ -413,78 +417,82 @@ apps_list = {
     }},
  }
 
-hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
-    spoon.KSheet:hide()
-    ksheet = not ksheet
-    hideKSheetShortCut:disable();
-end)
+ function obj:init()
+            
+    local hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
+        spoon.KSheet:hide()
+        ksheet = not ksheet
+        hideKSheetShortCut:disable();
+    end)
 
-for _, row in pairs(apps_list) do
-    for _, chord_row in pairs(row.chords) do
-        if chord_row.app then
-            hs.hotkey.bind(row.modifier, chord_row.key, function()
-                local app = hs.application.find(chord_row.app)
-                if not app or app:isHidden() then
-                    hs.application.launchOrFocus(chord_row.app)
-                elseif hs.application.frontmostApplication() ~= app then
-                    app:activate()
-                else
-                    app:hide()
-                end
-            end)
-            if chord_row.window_default_position then
-                if chord_row.window_default_position == "right" then
-                    spoon.Windows:add_right_window_type_app(chord_row.app)
-                elseif chord_row.window_default_position == "bottom" then
-                    spoon.Windows:add_bottom_window_type_app(chord_row.app)
-                end
-            end
-        elseif chord_row.sendKey then
-            hs.hotkey.bind(row.modifier, chord_row.key, function()
-                hs.eventtap.keyStrokes(chord_row.sendKey)
-            end)
-        elseif chord_row.specific_function then
-            if chord_row.specific_function == "window.left" then
-                spoon.Windows:bind_window_left(row.modifier, chord_row.key)
-            elseif chord_row.specific_function == "window.right" then
-                spoon.Windows:bind_window_right(row.modifier, chord_row.key)
-            elseif chord_row.specific_function == "window.fullscreen" then
-                spoon.Windows:bind_window_fullscreen(row.modifier, chord_row.key)
-            elseif chord_row.specific_function == "window.set_all_to_default" then
-                spoon.Windows:bind_all_windows_to_default(row.modifier, chord_row.key)
-            elseif chord_row.specific_function == "android.show_all" then
+    for _, row in pairs(obj.apps_list) do
+        for _, chord_row in pairs(row.chords) do
+            if chord_row.app then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    for _, window in ipairs(hs.window.allWindows()) do
-                        local window_title = window:title()
-                        local app_title = window:application():title()
-                        for _, app in ipairs(chord_row.apps_list) do
-                            if app_title == app or string.find(window_title, app) then
-                                window:focus()
+                    local app = hs.application.find(chord_row.app)
+                    if not app or app:isHidden() then
+                        hs.application.launchOrFocus(chord_row.app)
+                    elseif hs.application.frontmostApplication() ~= app then
+                        app:activate()
+                    else
+                        app:hide()
+                    end
+                end)
+                if chord_row.window_default_position then
+                    if chord_row.window_default_position == "right" then
+                        spoon.Windows:add_right_window_type_app(chord_row.app)
+                    elseif chord_row.window_default_position == "bottom" then
+                        spoon.Windows:add_bottom_window_type_app(chord_row.app)
+                    end
+                end
+            elseif chord_row.sendKey then
+                hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.eventtap.keyStrokes(chord_row.sendKey)
+                end)
+            elseif chord_row.specific_function then
+                if chord_row.specific_function == "window.left" then
+                    spoon.Windows:bind_window_left(row.modifier, chord_row.key)
+                elseif chord_row.specific_function == "window.right" then
+                    spoon.Windows:bind_window_right(row.modifier, chord_row.key)
+                elseif chord_row.specific_function == "window.fullscreen" then
+                    spoon.Windows:bind_window_fullscreen(row.modifier, chord_row.key)
+                elseif chord_row.specific_function == "window.set_all_to_default" then
+                    spoon.Windows:bind_all_windows_to_default(row.modifier, chord_row.key)
+                elseif chord_row.specific_function == "android.show_all" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        for _, window in ipairs(hs.window.allWindows()) do
+                            local window_title = window:title()
+                            local app_title = window:application():title()
+                            for _, app in ipairs(chord_row.apps_list) do
+                                if app_title == app or string.find(window_title, app) then
+                                    window:focus()
+                                end
                             end
                         end
-                    end
-                end)
-            elseif chord_row.specific_function == "info.show_shortcuts" then
-                hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    if ksheet then
-                        spoon.KSheet:hide()
-                    else
-                        hideKSheetShortCut:enable();
-                        spoon.KSheet:show()
-                    end
+                    end)
+                elseif chord_row.specific_function == "info.show_shortcuts" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        if ksheet then
+                            spoon.KSheet:hide()
+                        else
+                            hideKSheetShortCut:enable();
+                            spoon.KSheet:show()
+                        end
 
-                    ksheet = not ksheet
-                end)
-            elseif chord_row.specific_function == "set_russian_language" then
-                hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    hs.keycodes.setLayout(hs.keycodes.layouts()[2])
-                end)
-            elseif chord_row.specific_function == "set_english_language" then
-                hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    hs.keycodes.setLayout("ABC")
-                end)
+                        ksheet = not ksheet
+                    end)
+                elseif chord_row.specific_function == "set_russian_language" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        hs.keycodes.setLayout(hs.keycodes.layouts()[2])
+                    end)
+                elseif chord_row.specific_function == "set_english_language" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        hs.keycodes.setLayout("ABC")
+                    end)
+                end
             end
         end
     end
 end
 
+return obj
