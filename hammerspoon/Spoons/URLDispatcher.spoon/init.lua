@@ -151,7 +151,7 @@ end
 --- URLDispatcher:start()
 --- Method
 --- Start dispatching URLs according to the rules
-function obj:start()
+function obj:init()
    if hs.urlevent.httpCallback then
       self.logger.w("An hs.urlevent.httpCallback was already set. I'm overriding it with my own but you should check if this breaks any other functionality")
    end
