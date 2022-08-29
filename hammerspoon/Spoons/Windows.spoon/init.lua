@@ -67,6 +67,7 @@ function set_all_windows_positions()
     local wins = hs.window.allWindows()
 
     local emulators_number = 0
+    local emulators_positioned = 0
 
     for _, window in ipairs(wins) do
         local window_title = window:title()
@@ -89,11 +90,7 @@ function set_all_windows_positions()
                 set_window_left(window)
             end
         end
-    end
 
-    local emulators_positioned = 0
-
-    for _, window in ipairs(wins) do
         local window_title = window:title()
         local app_title = window:application():title()
 
