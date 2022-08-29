@@ -14,6 +14,5 @@ hs.loadSpoon("URLDispatcher", {
         },
         --url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
         default_handler = Firefox
-    },
-    start = true,
+    }
 }, true)
