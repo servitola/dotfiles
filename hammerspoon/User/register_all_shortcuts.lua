@@ -1,4 +1,4 @@
-hyper = {"right_command", "right_control", "right_option", "right_shift"}
+hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
 apps_list = {
     { modifier=left_shift, chords={
@@ -153,7 +153,7 @@ apps_list = {
         -- - - F11
         -- = - F12
         -- backspace - delete
-        -- tab TODO:
+        { key="tab", specific_function="set_english_language" },
         -- q - pageUp
         -- w - up
         -- e - pagedown
@@ -335,7 +335,7 @@ apps_list = {
         -- macos f - Open LaunchPad
         --{ key="c", sendKey="©" },
         { key="a", app="Ableton Live 11 Suite"},
-        { key="s", specific_function="android.show_all" }
+        { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} }
         -- itsical c - Show Calendar
     }},
     { modifier={"left_control", "left_shift"}, chords={
@@ -454,12 +454,13 @@ for _, row in pairs(apps_list) do
                 spoon.Windows:bind_all_windows_to_default(row.modifier, chord_row.key)
             elseif chord_row.specific_function == "android.show_all" then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
-                    local wins = hs.window.visibleWindows()
-                    for _, window in ipairs(wins) do
+                    for _, window in ipairs(hs.window.allWindows()) do
                         local window_title = window:title()
                         local app_title = window:application():title()
-                        if app_title == "qemu-system-x86_64" or string.find(window_title, "Android Emulator") then
-                            window:focus()
+                        for _, app in ipairs(chord_row.apps_list) do
+                            if app_title == app or string.find(window_title, app) then
+                                window:focus()
+                            end
                         end
                     end
                 end)
@@ -477,6 +478,10 @@ for _, row in pairs(apps_list) do
             elseif chord_row.specific_function == "set_russian_language" then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
                     hs.keycodes.setLayout(hs.keycodes.layouts()[2])
+                end)
+            elseif chord_row.specific_function == "set_english_language" then
+                hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.keycodes.setLayout("ABC")
                 end)
             end
         end
