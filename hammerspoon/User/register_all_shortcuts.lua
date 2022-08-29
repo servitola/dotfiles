@@ -160,7 +160,7 @@ apps_list = {
         { key="r", app="Rider" },
         { key="t", app="Telegram", window_default_position="right" },
         { key="y", app="Android Studio"},
-        { key="u", app="Transmission" },
+        { key="u", app="Transmission", window_default_position="right" },
         -- o - up
         { key="p", app="Music" },
         -- [ - previous track
@@ -184,7 +184,7 @@ apps_list = {
         { key="v", app="Firefox" },
         { key="b", app="iTerm" },
         { key="n", app="Visual Studio Code" },
-        { key="m", app="Elmedia Player" },
+        { key="m", app="Elmedia Player", window_default_position="bottom"},
         -- , - home
         -- . - end
         -- / - volume down
@@ -433,7 +433,11 @@ for _, row in pairs(apps_list) do
                 end
             end)
             if chord_row.window_default_position then
-                spoon.Windows:add_right_window_type_app(chord_row.app)
+                if chord_row.window_default_position == "right" then
+                    spoon.Windows:add_right_window_type_app(chord_row.app)
+                elseif chord_row.window_default_position == "bottom" then
+                    spoon.Windows:add_bottom_window_type_app(chord_row.app)
+                end
             end
         elseif chord_row.sendKey then
             hs.hotkey.bind(row.modifier, chord_row.key, function()
