@@ -327,8 +327,8 @@ apps_list = {
         -- { key="right", specific_function="window.right"},
         -- { key="up", specific_function="window.fullscreen"},
         -- { key="down", specific_function="window.set_all_to_default"},
-        { key="h", app="Hammerspoon"},
-        { key="x", app="XCode"},
+        { key="h", app="Hammerspoon", window_default_position="right"},
+        { key="x", app="XCode" },
         { key="i", specific_function="info.show_shortcuts"},
         -- macos d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
@@ -432,6 +432,9 @@ for _, row in pairs(apps_list) do
                     app:hide()
                 end
             end)
+            if chord_row.window_default_position then
+                spoon.Windows:add_right_window_type_app(chord_row.app)
+            end
         elseif chord_row.sendKey then
             hs.hotkey.bind(row.modifier, chord_row.key, function()
                 hs.eventtap.keyStrokes(chord_row.sendKey)
