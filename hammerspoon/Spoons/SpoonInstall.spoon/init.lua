@@ -283,29 +283,6 @@ function obj:_installSpoonFromZipURLgetCallback(urlparts, callback, status, body
    return success
 end
 
---- SpoonInstall:asyncInstallSpoonFromZipURL(url, callback)
---- Method
---- Asynchronously download a Spoon zip file and install it.
----
---- Parameters:
----  * url - URL of the zip file to install.
----  * callback - if given, a function to call after the installation finishes (also if it fails). The function receives the following arguments:
----    * urlparts - Result of calling `hs.http.urlParts` on the URL of the Spoon zip file
----    * success - boolean indicating whether the installation was successful
----
---- Returns:
----  * `true` if the installation was correctly initiated (i.e. the URL is valid), `false` otherwise
-function obj:asyncInstallSpoonFromZipURL(url, callback)
-   local urlparts = hs.http.urlParts(url)
-   local dlfile = urlparts.lastPathComponent
-   if dlfile and dlfile ~= "" and urlparts.pathExtension == "zip" then
-      hs.http.asyncGet(url, nil, hs.fnutils.partial(self._installSpoonFromZipURLgetCallback, self, urlparts, callback))
-      return true
-   else
-      self.logger.ef("Invalid URL %s, must point to a zip file", url)
-      return nil
-   end
-end
 
 --- SpoonInstall:installSpoonFromZipURL(url)
 --- Method
@@ -346,45 +323,6 @@ function obj:_is_valid_spoon(name, repo)
    return nil
 end
 
---- SpoonInstall:asyncInstallSpoonFromRepo(name, repo, callback)
---- Method
---- Asynchronously install a Spoon from a registered repository
----
---- Parameters:
----  * name - Name of the Spoon to install.
----  * repo - Name of the repository to use. Defaults to `"default"`
----  * callback - if given, a function to call after the installation finishes (also if it fails). The function receives the following arguments:
----    * urlparts - Result of calling `hs.http.urlParts` on the URL of the Spoon zip file
----    * success - boolean indicating whether the installation was successful
----
---- Returns:
----  * `true` if the installation was correctly initiated (i.e. the repo and spoon name were correct), `false` otherwise.
-function obj:asyncInstallSpoonFromRepo(name, repo, callback)
-   if not repo then repo = 'default' end
-   if self:_is_valid_spoon(name, repo) then
-      self:asyncInstallSpoonFromZipURL(self.repos[repo].data[name].download_url, callback)
-   end
-   return nil
-end
-
---- SpoonInstall:installSpoonFromRepo(name, repo)
---- Method
---- Synchronously install a Spoon from a registered repository
----
---- Parameters:
----  * name = Name of the Spoon to install.
----  * repo - Name of the repository to use. Defaults to `"default"`
----
---- Returns:
----  * `true` if the installation was successful, `nil` otherwise.
-function obj:installSpoonFromRepo(name, repo, callback)
-   if not repo then repo = 'default' end
-   if self:_is_valid_spoon(name, repo) then
-      return self:installSpoonFromZipURL(self.repos[repo].data[name].download_url)
-   end
-   return nil
-end
-
 --- SpoonInstall:andUse(name, arg)
 --- Method
 --- Declaratively install, load and configure a Spoon
@@ -419,11 +357,8 @@ function obj:andUse(name, arg)
                   obj.logger.ef("Error installing Spoon '%s' from repo '%s'", name, repo)
                end
             end
-            if self.use_syncinstall then
-               return load_and_config(nil, self:installSpoonFromRepo(name, repo))
-            else
-               self:asyncInstallSpoonFromRepo(name, repo, load_and_config)
-            end
+            return load_and_config(nil, nil)
+         
          else
             local update_repo_and_continue = function(_, success)
                if success then
