@@ -331,6 +331,7 @@ obj.apps_list = {
         -- { key="right", specific_function="window.right"},
         -- { key="up", specific_function="window.fullscreen"},
         -- { key="down", specific_function="window.set_all_to_default"},
+        { key="tab", specific_function="translate_to_english"},
         { key="h", app="Hammerspoon", window_default_position="right"},
         { key="x", app="XCode" },
         { key="i", specific_function="info.show_shortcuts"},
@@ -339,7 +340,9 @@ obj.apps_list = {
         -- macos f - Open LaunchPad
         --{ key="c", sendKey="©" },
         { key="a", app="Ableton Live 11 Suite"},
-        { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} }
+        { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
+        { key="z", specific_function="translate_to_russian"},
+        { key="g", specific_function="translate_to_greek"},
         -- itsical c - Show Calendar
     }},
     { modifier={"left_control", "left_shift"}, chords={
@@ -489,6 +492,18 @@ obj.apps_list = {
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         hs.keycodes.setLayout("ABC")
                     end)
+                elseif chord_row.specific_function == "translate_to_russian" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_ru = {row.modifier, chord_row.key},
+                    })
+                elseif chord_row.specific_function == "translate_to_english" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_en = {row.modifier, chord_row.key},
+                    })
+                elseif chord_row.specific_function == "translate_to_greek" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_el = {row.modifier, chord_row.key},
+                    })
                 end
             end
         end
