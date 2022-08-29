@@ -12,4 +12,4 @@ hs.loadSpoon("PopupTranslateSelection", {
     }}, true)
 require "config_UrlDispatcher";
 hs.loadSpoon("KSheet")
-hs.loadSpoon("ReloadConfiguration",{ start = true }, true)
+hs.loadSpoon("ReloadConfiguration")
