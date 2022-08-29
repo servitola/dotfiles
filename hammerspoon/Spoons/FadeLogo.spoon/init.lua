@@ -45,7 +45,7 @@ function obj:zoom_and_fade()
             timer = nil
          end
    end)
-   self.canvas:hide(self.fade_out_time)
+   canvas:hide(self.fade_out_time)
 end
 
 function obj:start()
