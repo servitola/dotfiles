@@ -1,10 +1,8 @@
 local obj={}
-obj.__index = obj
-obj.name="HotKeys"
 
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
-obj.apps_list = {
+apps_list = {
     { modifier=left_shift, chords={
         --/*/-----__SHIFT_LAYER___-------------------------------------------------------------------.
         --* |  ~  |  !  |  @  |  #  |  $  |  %  |  ^  |  &  |  *  |  (  |  )  |  _  |  +  |          |
@@ -428,7 +426,7 @@ function obj:init()
         hideKSheetShortCut:disable();
     end)
 
-    for _, row in pairs(obj.apps_list) do
+    for _, row in pairs(apps_list) do
         for _, chord_row in pairs(row.chords) do
             if chord_row.app then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
