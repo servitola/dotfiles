@@ -1,6 +1,6 @@
-local Zoom = "us.zoom.xos"
-local Safari = "com.apple.Safari"
-local Firefox = "org.mozilla.firefox"
+Zoom = "us.zoom.xos"
+Safari = "com.apple.Safari"
+Firefox = "org.mozilla.firefox"
 
 spoon.SpoonInstall:andUse("URLDispatcher", {
     config = {
