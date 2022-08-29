@@ -1,5 +1,5 @@
 hs.console.clearConsole()
-hs.console.consoleFont({ name = 'Meslo LG M for Powerline', size = 20.0 })
+hs.console.consoleFont({ name = 'Meslo LG M for Powerline', size = 10.0 })
 
 hs.loadSpoon("UnsplashZ")
 hs.loadSpoon("Windows")
