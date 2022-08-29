@@ -417,10 +417,10 @@ obj.apps_list = {
         -- , - ¯
         -- . - ˘
         -- / - ¿
-    }},
- }
+    }}
+}
 
- function obj:init()
+function obj:init()
             
     local hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
         spoon.KSheet:hide()

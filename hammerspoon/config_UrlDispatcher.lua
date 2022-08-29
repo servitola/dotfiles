@@ -5,9 +5,7 @@ Firefox = "org.mozilla.firefox"
 hs.loadSpoon("URLDispatcher", {
     config = {
         url_patterns = {
-            { "https?://zoom.us/j/", Zoom },
-            { "https?://%w+.zoom.us/j/", Zoom },
-            { "https?://%w+.spotwa", Zoom },
+            { "https?://.*zoom.us/j/", Zoom },
             { ".*spotwa.*", Safari }, 
             { ".*ctrader.*", Safari },
             { "xd.adobe.com.*", Safari }
