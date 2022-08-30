@@ -190,10 +190,10 @@ apps_list = {
         -- , - home
         -- . - end
         -- / - volume down
-        { key="left", specific_function="window.left"},
-        { key="right", specific_function="window.right"},
-        { key="up", specific_function="window.fullscreen"},
-        { key="down", specific_function="window.set_all_to_default"},
+        -- left - Can't be pressed on AnnePro2
+        -- right - Can't be pressed on AnnePro2
+        -- up - Can't be pressed on AnnePro2
+        -- down - Can't be pressed on AnnePro2
     }}, 
     { modifier={"left_command", "left_shift"}, chords={
         --/*/-----__CONTROL_LAYER___-----------------------------------------------------------------.
@@ -325,10 +325,6 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |       macos                        |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
-        -- { key="left", specific_function="window.left"},
-        -- { key="right", specific_function="window.right"},
-        -- { key="up", specific_function="window.fullscreen"},
-        -- { key="down", specific_function="window.set_all_to_default"},
         { key="tab", specific_function="translate_to_english"},
         { key="h", app="Hammerspoon", window_default_position="right"},
         { key="x", app="XCode" },
@@ -342,6 +338,10 @@ apps_list = {
         { key="z", specific_function="translate_to_russian"},
         { key="g", specific_function="translate_to_greek"},
         -- itsical c - Show Calendar
+        { key="left", specific_function="window.left"},
+        { key="right", specific_function="window.right"},
+        { key="up", specific_function="window.fullscreen"},
+        { key="down", specific_function="window.set_all_to_default"},
     }},
     { modifier={"left_control", "left_shift"}, chords={
         --/*/-----__CONTROL+SHIFT_LAYER___-----------------------------------------------------------------.
