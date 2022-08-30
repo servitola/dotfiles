@@ -331,7 +331,7 @@ apps_list = {
         { key="i", specific_function="info.show_shortcuts"},
         -- macos d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
-        -- macos f - Open LaunchPad
+        { key="f", app="LaunchPad" },
         --{ key="c", sendKey="©" },
         { key="a", app="Ableton Live 11 Suite"},
         { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
