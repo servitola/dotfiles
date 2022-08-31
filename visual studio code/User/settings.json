@@ -1,6 +1,6 @@
 {
     "python.pythonPath": "/usr/local/bin/python3",
-    "terminal.integrated.fontFamily": "Meslo LG M for Powerline",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono ",
     "terminal.external.osxExec": "iTerm.app",
     "workbench.colorTheme": "Gruvbox Dark Hard",
     "editor.suggestSelection": "first",
