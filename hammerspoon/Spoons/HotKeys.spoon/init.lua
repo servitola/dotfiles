@@ -420,12 +420,18 @@ apps_list = {
     }}
 }
 
+function unsubscribe()
+    if hideKSheetShortCut then
+        hideKSheetShortCut:disable();
+   end
+end
+
 function obj:init()
             
-    local hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
+    hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
         spoon.KSheet:hide()
         ksheet = not ksheet
-        hideKSheetShortCut:disable();
+        unsubscribe()
     end)
 
     for _, row in pairs(apps_list) do
