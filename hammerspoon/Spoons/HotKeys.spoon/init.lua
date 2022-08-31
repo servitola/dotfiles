@@ -286,8 +286,10 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |                                |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
-        -- mac q - logout
-        -- mac f - toggle fullscreen of current app 
+        -- q - logout
+        -- f - toggle fullscreen of current app 
+        -- d - macos - look up the selected word
+        -- space - macos - emogies
     }},
     { modifier= {"left_control", "left_shift"}, chords={
         --/*/-----__CONTROL_LAYER___-----------------------------------------------------------------.
