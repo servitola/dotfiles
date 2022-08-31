@@ -69,21 +69,21 @@ apps_list = {
         -- + - app - Zoom in
         -- delete - Rider - delete line
         -- q - macos - close current app
-        -- w - app - close current tab
+        -- w - macos - close current tab
         -- e - Rider - recent files dialog
         -- r - Rider - replace in current file
-        -- t - app - new tab
+        -- t - macos - new tab
         -- y - app - show all history
         -- u - 
         -- i - 
-        -- o - app - open file
-        -- p - app - print
+        -- o - macos - open file
+        -- p - macos - print
         -- [ - Rider - navigate back
         -- ] - Rider - navigate forward
         -- a - macos - select all
         -- s - app - save
         -- d - Rider - duplicate line
-        -- f - app - find (in current file)
+        -- f - macos - find (in current file)
         -- g - Rider - git operations popup
         -- h - macos - hide current app
         -- j - 
@@ -268,6 +268,7 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      |       |       |                               |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
+        -- esc - macos - force quit current app
         -- f - Rider - extract field
         -- h - macos - hide all other windows
         -- v - Rider - extract variable
@@ -304,6 +305,7 @@ apps_list = {
         --* |      |       |       |       macos                        |       |       |       |     |
         --* \-----------------------------------------------------------------------------------------/
         { key="escape", app="Activity Monitor" },
+        -- q - macos - log out with dialogs
         -- p - app - open private window
         -- g - Rider - current file git history
         -- { key="i", map="mouse_right_button" },
