@@ -59,7 +59,6 @@ cask "crescendo"
 cask "etrecheckpro"
 cask "firefox"
 cask "flameshot"
-cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "fork"
 cask "github"
@@ -101,6 +100,7 @@ mas "HazeOver", id: 430798174
 mas "Keyboard Pilot", id: 402670023
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "OmniGraffle", id: 1142578753
+mas "Peek", id: 1554235898
 mas "Reeder", id: 1449412482
 mas "RocketSim", id: 1504940162
 mas "Screen Recorder Robot Lite", id: 731892898
