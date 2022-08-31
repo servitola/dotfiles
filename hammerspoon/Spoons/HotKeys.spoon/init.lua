@@ -33,10 +33,8 @@ apps_list = {
         --* |-----------------------------------------------------------------------------------------+
         --* |      | TO_PRESS  |       |                               |       | macos | macos | macos|
         --* \-----------------------------------------------------------------------------------------/
-        -- macos d - Show desktop
+        -- macos - d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
-        -- macos f - Open LaunchPad
-        -- { key="c", sendKey="©" },
         -- up 
         -- left - jump a word to the left
         -- down
