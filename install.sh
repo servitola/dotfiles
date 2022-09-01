@@ -52,7 +52,7 @@ echo 'reload terminal'
 source ~/.zshrc
 
 echo 'installing oh-my-zsh'
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo 'installing OhMyZsh-full-autoupdate.git'
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
@@ -61,4 +61,4 @@ echo 'installing nx-completion'
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo 'running update all script'
-sh "./macos/update-all.sh"
+/bin/bash "./macos/update-all.sh"
