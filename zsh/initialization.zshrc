@@ -8,7 +8,7 @@ export PATH="$PATH:/Users/vkonovalov/.dotnet/tools"
 
 export TERM="xterm-256color"
 export EDITOR='nano'
-export ZSH="/Users/servitola/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 
 # ANDROID
 export ANDROID_HOME="$HOME/Library/Android/sdk"
