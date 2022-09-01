@@ -10,7 +10,7 @@ hs.window.animationDuration = 0
 right_side_app_titles = {}
 bottom_side_app_titles = {}
 
-function obj:add_right_window_type_app(title)
+function obj:add_right_window_type_app(title)   
     table.insert(right_side_app_titles, title)
 end
 
@@ -76,7 +76,7 @@ function set_all_windows_positions()
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
-        else if not is_full_screen(window) then
+        elseif is_full_screen(window) == false then
             set_window_left(window)
         end
 
