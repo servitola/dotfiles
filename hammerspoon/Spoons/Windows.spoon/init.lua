@@ -72,23 +72,15 @@ function set_all_windows_positions()
 
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
-        elseif is_yandex_external_video(window) then
-            set_window_bottom(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
-        elseif is_unresizable_window(window) then
+        elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
-        else
-            if is_full_screen(window) then
-                if window == hs.window.frontmostWindow() then
-                    set_window_left(window)
-                end
-            else
-                set_window_left(window)
-            end
+        else if not is_full_screen(window) then
+            set_window_left(window)
         end
 
-        if app_title == "qemu-system-x86_64" and string.find(window_title, "Android Emulator") then
+        if is_android_emulator(window) then
             local app = window:application()
 
             local screen_size = window:screen():fullFrame()
@@ -101,12 +93,11 @@ function set_all_windows_positions()
                 h = window_frame.h,
                 w = window_frame.w
             })
-
         end
     end
 end
 
-function is_unresizable_window(window)
+function is_android_emulator(window)
     local window_title = window:title()
     local app_title = window:application():title()
 
@@ -119,34 +110,6 @@ end
 
 function is_music_mini_player(app_title, window_title)
     if app_title == "Music" and window_title == "Mini Player" then
-        return true
-    else
-        return false
-    end
-end
-
-function is_yandex_external_video(window)
-
-    if window:title() == "Picture in Picture" then
-        return true
-    end
-
-    if window:application():title() ~= "Yandex" then
-        return false
-    end
-
-    local wins = hs.window.visibleWindows()
-    local yandex_player_id = window:id()
-
-    for _, window2 in ipairs(wins) do
-        if window2:application():title() == "Yandex" then
-            if yandex_player_id < window2:id() then
-                yandex_player_id = window2:id()
-            end
-        end
-    end
-
-    if window:id() == yandex_player_id then
         return true
     else
         return false
@@ -170,7 +133,7 @@ function set_window(x, y, width, height, window)
         window = hs.window.frontmostWindow()
     end
 
-    if is_unresizable_window(window) then
+    if is_android_emulator(window) then
         return
     end
 
