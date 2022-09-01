@@ -6,7 +6,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 brew bundle dump --force --file='~/projects/pc-scripts/homebrew/.brewfile'
 sudo -v
-#ln -s "~/projects/pc-scripts/visual studio code/" "/Users/servitola/Library/Application Support/Code/User"
+ln -s ~/projects/dotfiles/visual\ studio\ code/User /Users/servitola/Library/Application\ Support/Code/User
 
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
