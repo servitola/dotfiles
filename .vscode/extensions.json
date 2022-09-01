@@ -10,6 +10,7 @@
         "alefragnani.project-manager",
         "esbenp.prettier-vscode",
         "yinfei.luahelper",
-        "mark-wiemer.vscode-autohotkey-plus-plus"
+        "mark-wiemer.vscode-autohotkey-plus-plus",
+        "PKief.material-icon-theme"
     ]
 }
