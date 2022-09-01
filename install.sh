@@ -10,8 +10,8 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User /Users/servitola/Library/App
 
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
-ln -s ~/projects/pc-scripts/zsh/zshrc ~/.zshrc
-ln -s ~/projects/pc-scripts/git/gitconfig ~/.gitconfig
+ln -s ~/projects/pc-scripts/zsh/.zshrc ~/.zshrc
+ln -s ~/projects/pc-scripts/git/.gitconfig ~/.gitconfig
 sh "./mac setup scripts/set-defaults.sh"
 sh "./homebrew/install_homebrew.sh"
 
