@@ -1,27 +1,37 @@
 #!/usr/bin/env bash
 sudo -v
 
+echo 'Do you use internal keyboard? (y/n)'
+read installKarabiner
+
 echo 'Check extra links for installation'
 echo 'https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac'
 
-echo 'installing'
-
 echo 'setting macos defaults'
 sh "./macos/set-defaults.sh"
+
+echo 'installing XCode'
+xcode-select --install
 
 echo 'installing homebrew'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 echo 'installing brew packages from file CHECK'
-brew bundle --file=homebrew/.brewfile
+brew bundle --file=homebrew/.brewfile --verbose
 
 echo 'installing git'
 rm -rf ~/.git
 ln -s ~/projects/pc-scripts/git/.gitconfig ~/.gitconfig
 
-echo 'installing karabiner CHECK'
-rm -rf ~/.config/karabiner
-ln -s ~/projects/pc-scripts/karabiner ~/.config/karabiner
+if [ "$installKarabiner" != "${installKarabiner#[Yy]}" ] ;then
+    echo 'installing karabiner CHECK'
+    brew install --cask karabiner
+    brew install --cask karabiner-elements
+    rm -rf ~/.config/karabiner
+    ln -s ~/projects/pc-scripts/karabiner ~/.config/karabiner
+else
+    echo 'No karabiner installed as decided'
+fi
 
 echo 'run goku'
 goku
@@ -51,4 +61,4 @@ echo 'installing nx-completion'
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo 'running update all script'
-sh "./macos/update all.sh"
+sh "./macos/update-all.sh"
