@@ -1,4 +1,7 @@
-source ~/projects/pc-scripts/zsh/update_macbook.zshrc
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+alias up=sh ~/projects/pc-scripts/macos/update_all.sh
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
