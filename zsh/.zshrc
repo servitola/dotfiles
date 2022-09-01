@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
-source $ZSH/oh-my-zsh.sh
+export ZSH="/Users/servitola/.oh-my-zsh"
 source ~/projects/pc-scripts/zsh/plugins.zshrc
 source ~/projects/pc-scripts/zsh/aliases.zshrc
 source ~/projects/pc-scripts/zsh/history_settings.zshrc
