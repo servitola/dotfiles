@@ -64,10 +64,10 @@
     ],
     "telemetry.telemetryLevel": "off",
     "editor.fontSize": 17,
-    "terminal.integrated.fontSize": 16,
-    "markdown.preview.fontSize": 16,
-    "debug.console.fontSize": 15,
-    "scm.inputFontSize": 16,
+    "terminal.integrated.fontSize": 20,
+    "markdown.preview.fontSize": 17,
+    "debug.console.fontSize": 16,
+    "scm.inputFontSize": 17,
     "gitlens.hovers.currentLine.over": "line",
     "npm.keybindingsChangedWarningShown": true,
     "github.copilot.enable": {
@@ -76,4 +76,7 @@
         "plaintext": true,
         "markdown": true
     },
+    "explorer.fileNesting.enabled": true,
+    "workbench.statusBar.visible": false,
+    "editor.wordWrap": "on",
 }
