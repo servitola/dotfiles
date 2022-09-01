@@ -79,4 +79,5 @@
     "explorer.fileNesting.enabled": true,
     "workbench.statusBar.visible": false,
     "editor.wordWrap": "on",
+    "workbench.iconTheme": "material-icon-theme",
 }
