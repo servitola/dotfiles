@@ -4,7 +4,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH="/usr/local/share/dotnet/x64:$PATH"
 # Add .NET Core SDK tools
-export PATH="$PATH:/Users/vkonovalov/.dotnet/tools"
+export PATH="$PATH:~/.dotnet/tools"
 
 export TERM="xterm-256color"
 export EDITOR='nano'
