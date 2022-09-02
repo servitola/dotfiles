@@ -2,7 +2,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-source ~/projects/dotfiles/zsh/initialization.zshrc
+source ~/projects/dotfiles/zsh/initialization.zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
 eval $(thefuck --alias)
@@ -12,9 +12,9 @@ HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
 export ZSH="~/.oh-my-zsh"
-source ~/projects/dotfiles/zsh/plugins.zshrc
-source ~/projects/dotfiles/zsh/aliases.zshrc
-source ~/projects/dotfiles/zsh/history_settings.zshrc
+source ~/projects/dotfiles/zsh/plugins.zsh
+source ~/projects/dotfiles/zsh/aliases.zsh
+source ~/projects/dotfiles/zsh/history_settings.zsh
 source ~/projects/dotfiles/zsh/p10k.zsh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs) 
