@@ -1,5 +1,5 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc"
 fi
 
 source ~/projects/dotfiles/zsh/initialization.zsh
@@ -11,7 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
-export ZSH="~/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 source ~/projects/dotfiles/zsh/plugins.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
