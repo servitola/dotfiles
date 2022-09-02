@@ -25,9 +25,6 @@ echo 'installing karabiner CHECK'
 rm -rf ~/.config/karabiner
 ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
 
-echo 'run goku'
-goku
-
 echo 'installing hammerspoon CHECK'
 rm -rf ~/.hammerspoon
 ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
