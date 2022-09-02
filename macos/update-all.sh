@@ -14,7 +14,7 @@ mas upgrade
 brew cleanup
 brew doctor 
 omz update
-brew bundle dump --force --file=~/projects/pc-scripts/homebrew/.brewfile
+brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
 echo "${bold}==> Update tldr caches ${normal}"
 tldr --update
