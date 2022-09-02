@@ -21,14 +21,14 @@ brew bundle --file=homebrew/.brewfile --verbose
 
 echo 'installing git'
 rm -rf ~/.git
-ln -s ~/projects/pc-scripts/git/.gitconfig ~/.gitconfig
+ln -s ~/projects/dotfiles/git/.gitconfig ~/.gitconfig
 
 if [ "$installKarabiner" != "${installKarabiner#[Yy]}" ] ;then
     echo 'installing karabiner CHECK'
     brew install --cask karabiner
     brew install --cask karabiner-elements
     rm -rf ~/.config/karabiner
-    ln -s ~/projects/pc-scripts/karabiner ~/.config/karabiner
+    ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
 else
     echo 'No karabiner installed as decided'
 fi
@@ -38,7 +38,7 @@ goku
 
 echo 'installing hammerspoon CHECK'
 rm -rf ~/.hammerspoon
-ln -s ~/projects/pc-scripts/hammerspoon ~/.hammerspoon
+ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo 'Visual Studio Code'
 rm -rf ~/Library/Application\ Support/Code/User
@@ -46,7 +46,7 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Suppo
 
 echo 'installing zsh'
 rm -rf ~/.zshrc
-ln -s ~/projects/pc-scripts/zsh/.zshrc ~/.zshrc
+ln -s ~/projects/dotfiles/zsh/.zshrc ~/.zshrc
 
 echo 'reload terminal'
 source ~/.zshrc

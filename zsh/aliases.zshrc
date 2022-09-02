@@ -1,7 +1,7 @@
 bold=$(tput bold)
 normal=$(tput sgr0)
 
-alias up=sh ~/projects/pc-scripts/macos/update_all.sh
+alias up=sh ~/projects/dotfiles/macos/update_all.sh
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
