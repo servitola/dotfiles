@@ -38,10 +38,10 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Suppo
 
 echo 'installing zsh'
 rm -rf ~/.zshrc
-ln -s ~/projects/dotfiles/zsh/.zsh ~/.zshrc
+ln -s ~/projects/dotfiles/zsh/main.zsh ~/.zshrc
 
 echo 'reload terminal'
-source ~/.zsh
+source ~/.zshrc
 
 echo 'installing oh-my-zsh'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
