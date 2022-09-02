@@ -38,7 +38,7 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Suppo
 
 echo 'installing zsh'
 rm -rf ~/.zshrc
-ln -s ~/projects/dotfiles/zsh/zshrc ~/.zshrc
+ln -s ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo 'reload terminal'
 source ~/.zshrc
@@ -54,3 +54,6 @@ git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-
 
 echo 'running update all script'
 /bin/bash "./macos/update-all-and-cleanup-all.sh"
+
+echo 'Install Lulu'
+open https://objective-see.org/products/lulu.html
