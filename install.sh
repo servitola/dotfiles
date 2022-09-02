@@ -38,7 +38,7 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Suppo
 
 echo 'installing zsh'
 rm -rf ~/.zshrc
-ln -s ~/projects/dotfiles/zsh/main.zsh ~/.zshrc
+ln -s ~/projects/dotfiles/zsh/zshrc ~/.zshrc
 
 echo 'reload terminal'
 source ~/.zshrc
