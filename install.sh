@@ -38,10 +38,10 @@ ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Suppo
 
 echo 'installing zsh'
 rm -rf ~/.zshrc
-ln -s ~/projects/dotfiles/zsh/.zshrc ~/.zshrc
+ln -s ~/projects/dotfiles/zsh/.zsh ~/.zshrc
 
 echo 'reload terminal'
-source ~/.zshrc
+source ~/.zsh
 
 echo 'installing oh-my-zsh'
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -53,4 +53,4 @@ echo 'installing nx-completion'
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo 'running update all script'
-/bin/bash "./macos/update-all.sh"
+/bin/bash "./macos/update-all-and-cleanup-all.sh"

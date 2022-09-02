@@ -3,7 +3,7 @@ normal=$(tput sgr0)
 
 alias up=sh ~/projects/dotfiles/macos/update-all-and-cleanup-all.sh
 
-alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias reload=". ~/.zsh && echo 'ZSH config reloaded from ~/.zsh'"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
