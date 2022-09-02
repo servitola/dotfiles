@@ -8,7 +8,7 @@ export PATH="$PATH:~/.dotnet/tools"
 
 export TERM="xterm-256color"
 export EDITOR='nano'
-export ZSH="~/.oh-my-zsh"
+export ZSH="/Users/servitola/.oh-my-zsh"
 
 # ANDROID
 export ANDROID_HOME="~/Library/Android/sdk"
@@ -24,6 +24,5 @@ NPM_PACKAGES="~/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 # Preserve MANPATH if you already defined it somewhere in your config.
 # Otherwise, fall back to `manpath` so we can inherit from `/etc/manpath`.
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
