@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 sudo -v
 
-echo 'Do you use internal keyboard? (y/n)'
-read installKarabiner
-
 echo 'Check extra links for installation'
 echo 'https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac'
 
@@ -14,24 +11,19 @@ echo 'installing XCode'
 xcode-select --install
 
 echo 'installing homebrew'
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
 
-echo 'installing brew packages from file CHECK'
+echo 'installing brew packages from file'
 brew bundle --file=homebrew/.brewfile --verbose
 
 echo 'installing git'
-rm -rf ~/.git
+rm -rf ~/.gitconfig
 ln -s ~/projects/dotfiles/git/.gitconfig ~/.gitconfig
 
-if [ "$installKarabiner" != "${installKarabiner#[Yy]}" ] ;then
-    echo 'installing karabiner CHECK'
-    brew install --cask karabiner
-    brew install --cask karabiner-elements
-    rm -rf ~/.config/karabiner
-    ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
-else
-    echo 'No karabiner installed as decided'
-fi
+echo 'installing karabiner CHECK'
+rm -rf ~/.config/karabiner
+ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo 'run goku'
 goku
