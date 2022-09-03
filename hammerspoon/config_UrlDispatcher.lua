@@ -10,7 +10,7 @@ hs.loadSpoon("URLDispatcher", {
             { ".*ctrader.*", Safari },
             { "xd.adobe.com.*", Safari }
         },
-        --url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
+        url_redir_decoders = {{"Fix broken Preview anchor URLs", "%%23", "#", false, "Preview"}},
         default_handler = Firefox
     }
 }, true)
