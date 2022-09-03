@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 sudo -v
 
-echo "${bold}==> Updating XCode tools ${normal}"
+echo "==> Updating XCode tools"
 sudo softwareupdate -i -a
 xcode-select --install
 
-echo "${bold}==> Updating all from Homebrew ${normal}"
+echo "==> Updating all from Homebrew"
 rm -rf "brew --cache"
 brew cu --all -y -q
 brew update
@@ -16,16 +16,16 @@ brew doctor
 omz update
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
-echo "${bold}==> Update tldr caches ${normal}"
+echo "==> Update tldr caches"
 tldr --update
 
 npm config set fund false --global
 
-echo "${bold}==> Flashing DNS cache ${normal}"
+echo "==> Flashing DNS cache"
 dscacheutil -flushcache
 killall -HUP mDNSResponder
 
-echo "${bold}==> Cleaning caches ${normal}"
+echo "==> Cleaning caches"
 setopt rm_star_silent
 rm -rf ~/Library/Caches/*
 rm -rf /Library/Caches/*
