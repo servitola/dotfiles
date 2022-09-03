@@ -1,7 +1,5 @@
 {
     "files.exclude": {
-        "**/.vscode": true,
-        "**/desktop.ini": true
     },
     "cSpell.words": [
         "Ableton",
