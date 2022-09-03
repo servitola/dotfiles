@@ -8,7 +8,6 @@
     "projectManager.git.baseFolders": [
         "~/projects/"
     ],
-    "workbench.startupEditor": "newUntitledFile",
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -80,4 +79,5 @@
     "workbench.statusBar.visible": false,
     "editor.wordWrap": "on",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.startupEditor": "none",
 }
