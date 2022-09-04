@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 H1='\033[0;31m==>'
 H1_END='\033[0m'
 
@@ -16,8 +16,10 @@ brew upgrade
 mas upgrade
 brew cleanup
 brew doctor 
-omz update
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
+
+echo "${H1} Updating OhMyZsh ${H1_END}"
+omz update
 
 echo "${H1} Configure NPM ${H1_END}"
 npm config set fund false --location=global
@@ -33,7 +35,7 @@ rm -rf /Library/Caches/*
 rm -rf ~/Library/Developer/Xcode/DerivedData/*
 setopt no_rm_star_silent #turn on safe mode back
 
-echo "${H1} Update tldr caches ${H1_END}"
+echo "${H1} Updating tldr caches ${H1_END}"
 tldr --update
 
 reload
