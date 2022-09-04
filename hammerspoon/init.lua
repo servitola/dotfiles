@@ -1,12 +1,11 @@
 hs.console.clearConsole()
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
 
-hs.loadSpoon("UnsplashZ")
-hs.loadSpoon("Windows")
-hs.loadSpoon("KSheet")
-hs.loadSpoon("PopupTranslateSelection")
-hs.loadSpoon("HotKeys")
+hs.loadSpoon("UnsplashZ") -- download new wallpaper
+hs.loadSpoon("Windows") -- window management
+hs.loadSpoon("KSheet") -- shortcuts cheatsheet
+hs.loadSpoon("PopupTranslateSelection") -- translate selected text
+hs.loadSpoon("HotKeys") -- all hotkeys
+require "config_UrlDispatcher"; -- open urls in different browsers
 
-require "config_UrlDispatcher";
-
-hs.pathwatcher.new(hs.configdir, hs.reload):start()
+hs.pathwatcher.new(hs.configdir, hs.reload):start() -- reload Hammerspoon config on change
