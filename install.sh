@@ -22,7 +22,7 @@ brew bundle --file=homebrew/.brewfile --verbose
 
 echo '${H1} installing git ${H1_END}'
 rm -rf ~/.gitconfig
-ln -s ~/projects/dotfiles/git/.gitconfig ~/.gitconfig
+ln -s ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
 echo '${H1} installing karabiner CHECK ${H1_END}'
 rm -rf ~/.config/karabiner
