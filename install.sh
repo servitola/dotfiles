@@ -38,7 +38,7 @@ ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo '${H1} Visual Studio Code ${H1_END}'
 rm -rf ~/Library/Application\ Support/Code/User
-ln -s ~/projects/dotfiles/visual\ studio\ code/User ~/Library/Application\ Support/Code/User
+ln -s ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
 echo '${H1} installing zsh ${H1_END}'
 rm -rf ~/.zshrc
