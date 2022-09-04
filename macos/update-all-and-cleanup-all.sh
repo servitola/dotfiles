@@ -27,11 +27,11 @@ dscacheutil -flushcache
 killall -HUP mDNSResponder
 
 echo "${H1} Cleaning caches ${H1_END}"
-setopt rm_star_silent
+setopt rm_star_silent #turn off safe mode
 rm -rf ~/Library/Caches/*
 rm -rf /Library/Caches/*
 rm -rf ~/Library/Developer/Xcode/DerivedData/*
-setopt no_rm_star_silent
+setopt no_rm_star_silent #turn on safe mode back
 
 echo "${H1} Update tldr caches ${H1_END}"
 tldr --update
