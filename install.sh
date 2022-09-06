@@ -64,6 +64,7 @@ rm -rf ~/.config/flameshot
 ln -s ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo '${H1} Install Lulu ${H1_END}'
+echo '${H1} Lulu forgets the settings when updated from homebrew ${H1_END}'
 wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
 open LuLu_2.4.2.dmg
 
