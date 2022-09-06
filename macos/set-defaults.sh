@@ -16,6 +16,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Set Dock to the right
 defaults write com.apple.dock "orientation" -string "right"
 
+# Set Dock to shot Hidden with Cmd+H Windows
+defaults write com.apple.dock showhidden -bool true
+
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
