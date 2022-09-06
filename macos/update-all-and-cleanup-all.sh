@@ -33,6 +33,12 @@ setopt rm_star_silent #turn off safe mode
 rm -rf ~/Library/Caches/*
 rm -rf /Library/Caches/*
 rm -rf ~/Library/Developer/Xcode/DerivedData/*
+echo "${H1} Cleaning DS_Store ${H1_END}"
+find . -type f -name '*.DS_Store' -ls -delete
+echo "${H1} Cleaning Trash Bin ${H1_END}"
+rm -rfv /Volumes/*/.Trashes
+rm -rfv ~/.Trash
+rm -rfv /private/var/log/asl/*.asl
 setopt no_rm_star_silent #turn on safe mode back
 
 echo "${H1} Updating tldr caches ${H1_END}"
