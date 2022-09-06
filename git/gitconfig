@@ -5,6 +5,12 @@
 [branch]
 	sort = -committerdate # Show most recently changed branches first.
 
+[core]
+  editor = code -w
+
+[credential]
+  helper = osxkeychain
+
 [diff]
     renames = copies
 
@@ -29,3 +35,12 @@
 
 [gui]
 	gcwarning = false
+
+[pull]
+  rebase = true
+
+[push]
+  # Push only current branch by default
+  default = simple
+  # Push tags by default
+  followTags = true
