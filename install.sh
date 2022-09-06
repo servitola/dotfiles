@@ -64,7 +64,8 @@ rm -rf ~/.config/flameshot
 ln -s ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo '${H1} Install Lulu ${H1_END}'
-open https://objective-see.org/products/lulu.html
+wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
+open LuLu_2.4.2.dmg
 
 echo '${H1} Sync Environment Variables from bash level to MacOS level ${H1_END}'
 echo '${H1} 1. Download the launch agent ${H1_END}'
