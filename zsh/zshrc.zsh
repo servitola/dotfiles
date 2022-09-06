@@ -32,5 +32,4 @@ GIT_UNTRACKED="?"
 GIT_STASHED="$"
 GIT_UNPULLED="⇣"
 GIT_UNPUSHED="⇡"
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
