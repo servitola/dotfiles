@@ -5,7 +5,6 @@ fi
 source ~/projects/dotfiles/zsh/initialization.zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-eval $(thefuck --alias)
 export UPDATE_ZSH_DAYS=7
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
