@@ -20,19 +20,19 @@ command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
 echo '${H1} installing brew packages from file ${H1_END}'
 brew bundle --file=homebrew/.brewfile --verbose
 
-echo '${H1} installing git ${H1_END}'
+echo '${H1} setup git ${H1_END}'
 rm -rf ~/.gitconfig
 ln -s ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
-echo '${H1} installing karabiner CHECK ${H1_END}'
+echo '${H1} setup karabiner CHECK ${H1_END}'
 rm -rf ~/.config/karabiner
 ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
 
-echo '${H1} install goku CHECK ${H1_END}'
-rm -rf ~/.goku
-ln -s ~/projects/dotfiles/goku ~/.goku
+echo '${H1} setup goku ${H1_END}'
+rm -rf ~/.config/karabiner.edn
+ln -s ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
-echo '${H1} installing hammerspoon CHECK ${H1_END}'
+echo '${H1} setup hammerspoon CHECK ${H1_END}'
 rm -rf ~/.hammerspoon
 ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
@@ -40,7 +40,7 @@ echo '${H1} Visual Studio Code ${H1_END}'
 rm -rf ~/Library/Application\ Support/Code/User
 ln -s ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
-echo '${H1} installing zsh ${H1_END}'
+echo '${H1} setup zsh ${H1_END}'
 rm -rf ~/.zshrc
 ln -s ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
@@ -58,6 +58,10 @@ git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-
 
 echo '${H1} running update all script ${H1_END}'
 /bin/bash "./macos/update-all-and-cleanup-all.sh"
+
+echo '${H1} setup flameshot ${H1_END}'
+rm -rf ~/.config/flameshot
+ln -s ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo '${H1} Install Lulu ${H1_END}'
 open https://objective-see.org/products/lulu.html
