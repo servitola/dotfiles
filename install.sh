@@ -48,7 +48,7 @@ echo '${H1} reload terminal ${H1_END}'
 source ~/.zshrc
 
 echo '${H1} installing oh-my-zsh ${H1_END}'
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo '${H1} installing OhMyZsh-full-autoupdate.git ${H1_END}'
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
@@ -57,7 +57,7 @@ echo '${H1} installing nx-completion ${H1_END}'
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo '${H1} running update all script ${H1_END}'
-/bin/bash "./macos/update-all-and-cleanup-all.sh"
+sh "./macos/update-all-and-cleanup-all.sh"
 
 echo '${H1} setup flameshot ${H1_END}'
 rm -rf ~/.config/flameshot
