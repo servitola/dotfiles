@@ -80,5 +80,5 @@
     "editor.wordWrap": "on",
     "workbench.iconTheme": "vscode-icons",
     "workbench.startupEditor": "none",
-    "workbench.layoutControl.enabled": false,
+    "workbench.layoutControl.enabled": false
 }
