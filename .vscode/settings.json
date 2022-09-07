@@ -17,5 +17,8 @@
         "teamviewer",
         "touchcursor",
         "workflowy"
-    ]
+    ],
+    "terminal.explorerKind": "external",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 15
 }
