@@ -1,15 +1,16 @@
 {
     "recommendations": [
-        "angular.ng-template", // Angular Language Service
-        "jdinhlife.gruvbox", // Gruvbox Theme
-        "eamodio.gitlens", // GitLens
-        "github.copilot", // GitHub Copilot
-        "tomoki1207.pdf", // PDF Viewer
-        "ms-python.python", // Python
-        "ms-python.vscode-pylance", // Pylance
-        "alefragnani.project-manager", // Project Manager
-        "esbenp.prettier-vscode", // Prettier
-        "yinfei.luahelper", // Lua Helper
-        "mark-wiemer.vscode-autohotkey-plus-plus" // AutoHotkey++
+        "angular.ng-template",
+        "jdinhlife.gruvbox",
+        "eamodio.gitlens",
+        "github.copilot",
+        "tomoki1207.pdf",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "alefragnani.project-manager",
+        "esbenp.prettier-vscode",
+        "yinfei.luahelper",
+        "mark-wiemer.vscode-autohotkey-plus-plus",
+        "vscode-icons-team.vscode-icons"
     ]
 }
