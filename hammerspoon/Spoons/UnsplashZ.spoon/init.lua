@@ -43,7 +43,7 @@ end
 function obj:init()
     if obj.timer == nil then
         obj.timer = hs.timer.doEvery(3*60*60, function() unsplashRequest() end)
-        obj.timer:setNextTrigger(5)
+        obj.timer:setNextTrigger(15)
     else
         obj.timer:start()
     end
