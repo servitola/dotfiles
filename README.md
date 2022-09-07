@@ -13,3 +13,11 @@
 1. NotePad++ (Windows)
 1. PowerToys (Windows)
 1. Windows Tasks (Windows)
+1. Ad Guard
+1. Flameshot
+1. Rider (JetBrains)
+1. Visual Studio Code
+
+## Installation
+1. clone this repo to ~/projects/dotfiles
+1. run `sh ./install.sh` (this will install almost everything)
