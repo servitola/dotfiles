@@ -10,12 +10,11 @@ echo "${H1} https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-ma
 echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set-defaults.sh"
 
-echo "${H1} installing XCode ${H1_END}"
-xcode-select --install
+echo "${H1} installing XCode if exists ${H1_END}"
+command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 
-echo "${H1} installing homebrew ${H1_END}"
-command -v brew >/dev/null 2>&1 || { echo >&2 "Installing Homebrew Now"; \
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"; }
+echo "${H1} installing homebrew if exists ${H1_END}"
+command -v brew >/dev/null 2>&1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "${H1} installing brew packages from file ${H1_END}"
 brew bundle --file=homebrew/.brewfile --verbose
@@ -57,7 +56,7 @@ echo "${H1} installing nx-completion ${H1_END}"
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo "${H1} running update all script ${H1_END}"
-zsh "./macos/update-all-and-cleanup-all.sh"
+sh "./macos/update-all-and-cleanup-all.sh"
 
 echo "${H1} setup flameshot ${H1_END}"
 rm -rf ~/.config/flameshot
