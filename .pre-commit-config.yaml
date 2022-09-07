@@ -19,10 +19,6 @@ repos:
     #   rev: 6.2.1
     #   hooks:
     #   -   id: beautysh
-    # - repo: https://github.com/lunarmodules/luacheck
-    #   rev: 1.0.0
-    #   hooks:
-    #   -   id: luacheck
     # - repo: https://github.com/Koihik/LuaFormatter
     #   rev: v1.3.6
     #   hooks:
@@ -35,8 +31,3 @@ repos:
     #   rev: 8.12.0
     #   hooks:
     #   -   id: gitleaks
-    # - repo: https://github.com/crate-ci/typos
-    #   rev: 1.12.3
-    #   hooks:
-    #   -   id: typos
-    #   -   id: typos-src
