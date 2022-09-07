@@ -1,7 +1,3 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc"
-fi
-
 source ~/projects/dotfiles/zsh/initialization.zsh
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
