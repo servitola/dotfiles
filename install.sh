@@ -6,6 +6,7 @@ sudo -v
 
 echo "${H1} Check extra links for installation ${H1_END}"
 echo "${H1} https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac ${H1_END}"
+open https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac
 
 echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set-defaults.sh"
@@ -47,7 +48,7 @@ echo "${H1} reload terminal ${H1_END}"
 source ~/.zshrc
 
 echo "${H1} installing oh-my-zsh ${H1_END}"
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+[[ -d ~/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "${H1} installing OhMyZsh-full-autoupdate.git ${H1_END}"
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
@@ -67,8 +68,8 @@ echo "${H1} Lulu forgets the settings when updated from homebrew ${H1_END}"
 wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
 open LuLu_2.4.2.dmg
 
-echo "${H1} Sync Environment Variables from bash level to MacOS level ${H1_END}"
-echo "${H1} 1. Download the launch agent ${H1_END}"
-curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.plist -o ~/Library/LaunchAgents/osx-env-sync.plist
-echo "${H1} 2. Download the shell script ${H1_END}"
-curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.sh -o ~/projects/dotfiles/macos/.osx-env-sync.sh
+# echo "${H1} Sync Environment Variables from bash level to MacOS level ${H1_END}"
+# echo "${H1} 1. Download the launch agent ${H1_END}"
+# curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.plist -o ~/Library/LaunchAgents/osx-env-sync.plist
+# echo "${H1} 2. Download the shell script ${H1_END}"
+# curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.sh -o ~/projects/dotfiles/macos/.osx-env-sync.sh
