@@ -4,6 +4,8 @@ H1_END='\033[0m'
 
 sudo -v
 
+source ~/projects/dotfiles/zsh/aliases.zsh
+
 echo "${H1} Updating XCode tools ${H1_END}"
 sudo softwareupdate -i -a
 xcode-select --install
