@@ -1,7 +1,7 @@
 [alias]
-	
+
 	b = branch -vv
-	c = !git add -A && git commit --verbose -m 
+	c = !git add -A && git commit --verbose -m
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 	f = fetch --all
 	l = log -n 25 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -72,7 +72,7 @@
 	# rebase the current branch with changes from upstream remote
     update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
 
-	# clean up all 
+	# clean up all
     forget = "!git fetch -p origin && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
 
 	# show the most recently touched branches

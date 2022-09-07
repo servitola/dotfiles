@@ -56,10 +56,10 @@
     ],
     "editor.inlineSuggest.enabled": true,
     "settingsSync.ignoredExtensions": [
-    
+
     ],
     "settingsSync.ignoredSettings": [
-    
+
     ],
     "telemetry.telemetryLevel": "off",
     "editor.fontSize": 17,

@@ -1,7 +1,7 @@
 [user]
 	name = servitola
 	email = servitola@gmail.com
-	
+
 [branch]
 	sort = -committerdate # Show most recently changed branches first.
 

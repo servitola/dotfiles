@@ -14,7 +14,7 @@
 ;; need to prefix C T O S F with ! or #
 {
  :profiles {:Default {
-              :default true 
+              :default true
               :sim 2 ; keys need to be pressed within this threshold to be considered simultaneous
               :delay 500 ; basically it means time after which the key press is count delayed
               :alone 10 ; hold for .. ms to register single tap
@@ -30,7 +30,7 @@
 
   {:des "Caps Lock to Right Hyper" :rules [[:caps_lock :!QWEright_shift] :apl-usb-int :apl-bt ]}
 
-  {:des "Hyper Layer" :rules [    
+  {:des "Hyper Layer" :rules [
     [:!QWERescape [:grave_accent_and_tilde]]
 
     [:!QWER1 :f1]
@@ -438,8 +438,8 @@
     [:!QWERSperiod [:!SCright_arrow]]
     [:!QWERCperiod [:!Cright_arrow]]
     [:!QWERTperiod [:!TCright_arrow]]
-    [:!QWEROperiod [:!OCright_arrow]] 
-  
+    [:!QWEROperiod [:!OCright_arrow]]
+
     [:!QWERslash [:volume_decrement]]
     [:!QWERspacebar [:play_or_pause]]
 
