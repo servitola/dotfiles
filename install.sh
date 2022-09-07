@@ -24,7 +24,7 @@ echo "${H1} setup git ${H1_END}"
 rm -rf ~/.gitconfig
 ln -s ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
-echo "${H1} setup karabiner CHECK ${H1_END}"
+echo "${H1} setup karabiner ${H1_END}"
 rm -rf ~/.config/karabiner
 ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
 
@@ -32,7 +32,7 @@ echo "${H1} setup goku ${H1_END}"
 rm -rf ~/.config/karabiner.edn
 ln -s ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
-echo "${H1} setup hammerspoon CHECK ${H1_END}"
+echo "${H1} setup hammerspoon ${H1_END}"
 rm -rf ~/.hammerspoon
 ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
