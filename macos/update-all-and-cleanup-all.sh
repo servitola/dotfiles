@@ -10,6 +10,7 @@ xcode-select --install
 
 echo "${H1} Updating all from Homebrew ${H1_END}"
 rm -rf "brew --cache"
+brew tap --repair
 brew cu --all -y -q
 brew update
 brew upgrade
