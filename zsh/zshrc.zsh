@@ -10,7 +10,7 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/projects/dotfiles/zsh/plugins.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
@@ -31,4 +31,6 @@ GIT_UNTRACKED="?"
 GIT_STASHED="$"
 GIT_UNPULLED="⇣"
 GIT_UNPUSHED="⇡"
+
+# initiliaze fzf - general-purpose command-line fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
