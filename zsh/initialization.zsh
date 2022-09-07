@@ -11,7 +11,7 @@ export ZSH=/Users/servitola/.oh-my-zsh
 
 # ANDROID
 export ANDROID_HOME="~/Library/Android/sdk"
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin 
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools

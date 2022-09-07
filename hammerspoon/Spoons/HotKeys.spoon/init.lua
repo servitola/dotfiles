@@ -35,7 +35,7 @@ apps_list = {
         -- \---------------------------------------------------------------------------------------/
         -- macos - d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
-        -- up 
+        -- up
         -- left - jump a word to the left
         -- down
         -- right - jump a word to the right
@@ -57,7 +57,7 @@ apps_list = {
         -- 2 - Rider - focus debug window
         -- 3 - Rider - focus unit tests explorer
         -- 4 - Rider - focus build window
-        -- 5 - 
+        -- 5 -
         -- 6 -
         -- 7 -
         -- 8 -
@@ -72,8 +72,8 @@ apps_list = {
         -- r - Rider - replace in current file
         -- t - macos - new tab
         -- y - app - show all history
-        -- u - 
-        -- i - 
+        -- u -
+        -- i -
         -- o - macos - open file
         -- p - macos - print
         -- [ - Rider - navigate back
@@ -84,10 +84,10 @@ apps_list = {
         -- f - macos - find (in current file)
         -- g - Rider - git operations popup
         -- h - macos - hide current app
-        -- j - 
+        -- j -
         -- k -
         -- l -
-        -- ; - 
+        -- ; -
         -- ' -
         -- z - macos - undo
         -- x - macos - cut text
@@ -126,7 +126,7 @@ apps_list = {
         -- g - Rider - Fofus Git Window
         -- space - macos - change language
     }},
-    { modifier=hyper, chords={  
+    { modifier=hyper, chords={
         -- /------__HYPER_LAYER___-----------------------------------------------------------------------------------------\
         -- |    |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7   | F8   | F9 |  F10   | F11    |  F12  | backspace    |
         -- |---------------------------------------------------------------------------------------------------------------+
@@ -191,7 +191,7 @@ apps_list = {
         -- right - Can't be pressed on AnnePro2
         -- up - Can't be pressed on AnnePro2
         -- down - Can't be pressed on AnnePro2
-    }}, 
+    }},
     { modifier={"left_command", "left_shift"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
         -- |     |       |       |      |    |    |    |    |    |    |    |    |     |   Rider      |
@@ -205,7 +205,7 @@ apps_list = {
         -- |      |       |       |       macos                        |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
         -- ` -
-        -- 1 - 
+        -- 1 -
         -- 2 -
         -- 3 -
         -- 4 -
@@ -241,9 +241,9 @@ apps_list = {
         -- k -
         -- l -
         -- ; -
-        -- ' - 
+        -- ' -
         -- z - macos - redo
-        -- x - 
+        -- x -
         -- c -
         -- v -
         -- b -
@@ -252,7 +252,7 @@ apps_list = {
         -- , -
         -- . -
         -- / - Rider - comment
-    }},  
+    }},
     { modifier={"left_command", "alt"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
         -- |     |     |       |      |    |    |    |    |    |    |    |    |     |            |
@@ -285,7 +285,7 @@ apps_list = {
         -- |      |       |       |                                |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
         -- q - logout
-        -- f - toggle fullscreen of current app 
+        -- f - toggle fullscreen of current app
         -- d - macos - look up the selected word
         -- space - macos - emogies
     }},
@@ -357,7 +357,7 @@ apps_list = {
         -- |-----------------------------------------------------------------------------------------+
         -- |      |       |       |                               |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
-        
+
     }},
     { modifier={"alt", "left_shift"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
@@ -391,15 +391,15 @@ apps_list = {
         -- t - ˇ
         -- y - Á
         -- u - ¨
-        -- i - 
+        -- i -
         -- o - Ø
         -- p - ∏
         -- [ - ”
         -- ] - ’
         -- a - Å
         -- s - Í
-        -- d - 
-        -- f - 
+        -- d -
+        -- f -
         -- g - ˝
         -- h - Ó
         -- j - Ô
@@ -427,7 +427,7 @@ function unsubscribe()
 end
 
 function obj:init()
-            
+
     hideKSheetShortCut = hs.hotkey.new({}, "escape", function()
         spoon.KSheet:hide()
         ksheet = not ksheet

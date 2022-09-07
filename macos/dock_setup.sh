@@ -9,7 +9,7 @@ echo_title_update "Dock"
 dockutil --no-restart --remove all
 
 dockApps=(
-  
+
   )
 
 for i in "${dockApps[@]}"
