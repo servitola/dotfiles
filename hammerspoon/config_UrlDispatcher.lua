@@ -6,7 +6,7 @@ hs.loadSpoon("URLDispatcher", {
     config = {
         url_patterns = {
             { "https?://.*zoom.us/j/", Zoom },
-            { ".*spotwa.*", Safari }, 
+            { ".*spotwa.*", Safari },
             { ".*ctrader.*", Safari },
             { "xd.adobe.com.*", Safari }
         },

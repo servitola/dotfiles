@@ -20,7 +20,7 @@ exit 1
 
 SET REMOTE_CONTAINERS_PATH=
 
-@REM Check the remote-containers-path file 
+@REM Check the remote-containers-path file
 @REM This is a cache (and enables Remote-Containers development)
 IF NOT exist "%~dp0remote-containers-path%" goto fail_remote_container_path
 set /p REMOTE_CONTAINERS_PATH=<"%~dp0remote-containers-path%"

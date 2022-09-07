@@ -121,7 +121,7 @@ void blue(led_t *currentKeyLedColors) {
 /* Color bleed test pattern */
 void colorBleed(led_t *currentKeyLedColors) {
   for (uint16_t c = 0; c < NUM_COLUMN; ++c) {
-    for (uint16_t r = 0; r < NUM_ROW; ++r) {  
+    for (uint16_t r = 0; r < NUM_ROW; ++r) {
       const uint16_t i = c + NUM_COLUMN * r;
       if (c == 0) {
         if (r <= 3)
@@ -432,11 +432,11 @@ void servitola_reactiveFadeKeypress(led_t *currentKeyLedColors, uint8_t row, uin
    {
      servitola(currentKeyLedColors);
    }
-  
+
 }
 
 void servitola_reactiveFadeInit(led_t *currentKeyLedColors) {
- 
+
 }
 
 int8_t rowBlink = -1;

@@ -18,7 +18,7 @@ brew update
 brew upgrade
 mas upgrade
 brew cleanup
-brew doctor 
+brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
 echo "${H1} Updating OhMyZsh ${H1_END}"
