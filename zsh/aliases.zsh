@@ -1,6 +1,3 @@
-bold=$(tput bold)
-normal=$(tput sgr0)
-
 alias up='zsh ~/projects/dotfiles/macos/update-all-and-cleanup-all.sh'
 
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
