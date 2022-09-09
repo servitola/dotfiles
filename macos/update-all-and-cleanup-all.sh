@@ -8,7 +8,7 @@ source ~/projects/dotfiles/zsh/aliases.zsh
 
 echo "${H1} Updating XCode tools ${H1_END}"
 sudo softwareupdate -i -a
-xcode-select --install
+command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 
 echo "${H1} Updating all from Homebrew ${H1_END}"
 rm -rf "brew --cache"
