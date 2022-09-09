@@ -12,6 +12,7 @@ echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set-defaults.sh"
 
 echo "${H1} installing XCode if exists ${H1_END}"
+softwareupdate -i -a
 command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 
 echo "${H1} installing homebrew if exists ${H1_END}"
