@@ -1,5 +1,5 @@
 export TERM="xterm-256color"
-export EDITOR='nano'
+export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
 # BASH
