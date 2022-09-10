@@ -1,9 +1,8 @@
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc"
-fi
+
 
 export TERM="xterm-256color"
 export EDITOR='nano'
+export ZSH=~/.oh-my-zsh
 
 # BASH
 export PATH=$PATH:~/bin
@@ -13,7 +12,7 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/usr/local/share/dotnet/x64
 export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
-export ZSH=~/.oh-my-zsh
+
 
 # ANDROID
 export ANDROID_HOME=~/Library/Android/sdk
@@ -27,4 +26,4 @@ NPM_PACKAGES="~/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-export PATH=$PATH:/Library/Java/JavaVirtualMachines/microsoft-11.jdk
+#export PATH=$PATH:/Library/Java/JavaVirtualMachines/microsoft-11.jdk
