@@ -1,5 +1,3 @@
-
-
 export TERM="xterm-256color"
 export EDITOR='nano'
 export ZSH=~/.oh-my-zsh
@@ -9,12 +7,13 @@ export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 
+# DOTNET
 export PATH=$PATH:/usr/local/share/dotnet/x64
 export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
-
 # ANDROID
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
@@ -26,4 +25,3 @@ NPM_PACKAGES="~/.npm-packages"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-#export PATH=$PATH:/Library/Java/JavaVirtualMachines/microsoft-11.jdk
