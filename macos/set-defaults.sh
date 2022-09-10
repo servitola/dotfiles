@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo -v
+
 # close any open System Preferences panes, to prevent them from overriding
 osascript -e 'tell application "System Preferences" to quit'
 
@@ -116,8 +118,8 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Add Language Layouts: en, ru, el
-sudo -u $user defaults delete com.apple.HIToolbox AppleEnabledInputSources
-sudo -u $user defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
+defaults delete com.apple.HIToolbox AppleEnabledInputSources
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 			<key>InputSourceKind</key>
 			<string>Keyboard Layout</string>
 			<key>KeyboardLayout ID</key>
@@ -125,7 +127,7 @@ sudo -u $user defaults write com.apple.HIToolbox AppleEnabledInputSources -array
 			<key>KeyboardLayout Name</key>
 			<string>ABC</string>
 		</dict>'
-sudo -u $user defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 			<key>InputSourceKind</key>
 			<string>Keyboard Layout</string>
 			<key>KeyboardLayout ID</key>
@@ -133,7 +135,7 @@ sudo -u $user defaults write com.apple.HIToolbox AppleEnabledInputSources -array
 			<key>KeyboardLayout Name</key>
 			<string>RussianWin</string>
 		</dict>'
-sudo -u $user defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 			<key>InputSourceKind</key>
 			<string>Keyboard Layout</string>
 			<key>KeyboardLayout ID</key>
