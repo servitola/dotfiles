@@ -3,7 +3,6 @@ duti -s com.microsoft.VSCode .json all
 duti -s com.microsoft.VSCode .md all
 duti -s com.microsoft.VSCode .sh all
 duti -s com.microsoft.VSCode .css all
-duti -s com.microsoft.VSCode .html all
 duti -s com.microsoft.VSCode .scss all
 duti -s com.microsoft.VSCode .ts all
 duti -s com.microsoft.VSCode .tsx all
@@ -37,3 +36,37 @@ duti -s com.microsoft.VSCode .mdx all
 duti -s com.microsoft.VSCode .txt all
 duti -s com.microsoft.VSCode .log all
 duti -s com.microsoft.VSCode .csv all
+
+duti -s org.videolan.vlc .mov all
+duti -s org.videolan.vlc .mp4 all
+duti -s org.videolan.vlc .avi all
+duti -s org.videolan.vlc .mkv all
+duti -s org.videolan.vlc .webm all
+duti -s org.videolan.vlc .flv all
+duti -s org.videolan.vlc .mpg all
+duti -s org.videolan.vlc .mpeg all
+duti -s org.videolan.vlc .wmv all
+duti -s org.videolan.vlc .mp3 all
+duti -s org.videolan.vlc .m4a all
+duti -s org.videolan.vlc .wav all
+duti -s org.videolan.vlc .flac all
+duti -s org.videolan.vlc .ogg all
+duti -s org.videolan.vlc .ogv all
+duti -s org.videolan.vlc .ogm all
+duti -s org.videolan.vlc .opus all
+duti -s org.videolan.vlc .mka all
+duti -s org.videolan.vlc .mks all
+duti -s org.videolan.vlc .m4v all
+
+duti -s com.apple.Preview .jpg all
+duti -s com.apple.Preview .jpeg all
+duti -s com.apple.Preview .png all
+duti -s com.apple.Preview .gif all
+duti -s com.apple.Preview .bmp all
+duti -s com.apple.Preview .tiff all
+duti -s com.apple.Preview .tif all
+
+duti -s com.jetbrains.rider .sln all
+
+duti -s com.ableton.AbletonLive11 .als all
+duti -s com.ableton.AbletonLive11 .alp all
