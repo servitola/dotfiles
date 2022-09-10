@@ -76,8 +76,14 @@ function set_all_windows_positions()
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
-        elseif is_full_screen(window) == false then
-            set_window_left(window)
+        else
+            if is_full_screen(window) then
+                if window == hs.window.frontmostWindow() then
+                    set_window_left(window)
+                end
+            else
+                set_window_left(window)
+            end
         end
 
         if is_android_emulator(window) then
