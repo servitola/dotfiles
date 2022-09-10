@@ -69,11 +69,16 @@ echo "${H1} Lulu forgets the settings when updated from homebrew ${H1_END}"
 wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
 open LuLu_2.4.2.dmg
 
-# echo "${H1} Sync Environment Variables from bash level to MacOS level ${H1_END}"
-# echo "${H1} 1. Download the launch agent ${H1_END}"
-# curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.plist -o ~/Library/LaunchAgents/osx-env-sync.plist
-# echo "${H1} 2. Download the shell script ${H1_END}"
-# curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.sh -o ~/projects/dotfiles/macos/.osx-env-sync.sh
-
 echo "${H1} Set default applications ${H1_END}"
 sh "./macos/set_default_apps.sh"
+
+cp ~/projects/dotfiles/macos/osx-env-sync.plist ~/Library/LaunchAgents/osx-env-sync.plist
+chmod +x ~/projects/dotfiles/macos/.osx-env-sync.sh
+launchctl unload ~/Library/LaunchAgents/osx-env-sync.plist
+launchctl load ~/Library/LaunchAgents/osx-env-sync.plist
+echo "Environment variables reloaded. Now relaunch your GUI apps to make them aware."
+echo "For command line apps, launch a new Terminal session."
+
+grep "^export" $HOME/.zshrc | while IFS=' =' read ignoreexport envvar ignorevalue; do
+  launchctl setenv ${envvar} ${!envvar}
+done
