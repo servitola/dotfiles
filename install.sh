@@ -74,3 +74,6 @@ open LuLu_2.4.2.dmg
 # curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.plist -o ~/Library/LaunchAgents/osx-env-sync.plist
 # echo "${H1} 2. Download the shell script ${H1_END}"
 # curl https://raw.githubusercontent.com/ersiner/osx-env-sync/master/osx-env-sync.sh -o ~/projects/dotfiles/macos/.osx-env-sync.sh
+
+echo "${H1} Set default applications ${H1_END}"
+sh "./macos/set_default_apps.sh"
