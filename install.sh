@@ -74,7 +74,7 @@ sh "./macos/set_default_apps.sh"
 
 echo "${H1} Sync environment variables with root ${H1_END}"
 cp ~/projects/dotfiles/macos/osx-env-sync.plist ~/Library/LaunchAgents/osx-env-sync.plist
-chmod +x ~/projects/dotfiles/macos/.osx-env-sync.sh
+chmod +x ~/projects/dotfiles/macos/osx-env-sync.sh
 launchctl unload ~/Library/LaunchAgents/osx-env-sync.plist
 launchctl load ~/Library/LaunchAgents/osx-env-sync.plist
 sh ./macos/osx-env-sync.sh
