@@ -16,6 +16,7 @@ export PATH=$PATH:/usr/local/opt/sqlite/bin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
+export ANDROID_SDK=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator

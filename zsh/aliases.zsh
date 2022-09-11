@@ -1,9 +1,17 @@
 alias up='zsh ~/projects/dotfiles/macos/update-all-and-cleanup-all.sh'
 
+alias android_deep_link='function _(){ adb shell am start -a android.intent.action.VIEW -d "$1" }; _'
+alias android_run_emulator='emulator -avd $(emulator -list-avds| head -1) &'
+alias android_paste_to_emulator='adb shell input text "${1}"'
+
+
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias h=history
+alias mkdir="mkdir -pv"
 
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
+alias search=grep
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -25,6 +33,8 @@ alias hide_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ports='netstat -vanp tcp'
+alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 
 # EXA aliases
 alias ls='exa'                                                         # ls
