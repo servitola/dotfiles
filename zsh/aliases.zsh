@@ -1,5 +1,9 @@
+# ZSH
 alias up='zsh ~/projects/dotfiles/macos/update-all-and-cleanup-all.sh'
+alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias h=history
 
+# ANDROID ADB
 alias android_deep_link='function _(){ adb shell am start -a android.intent.action.VIEW -d "$1" }; _'
 alias android_run_emulator='emulator -avd $(emulator -list-avds| head -1) &'
 alias android_paste_to_emulator='adb shell input text "${1}"'
@@ -7,9 +11,9 @@ alias android_uninstall_app='adb shell pm uninstall --user 0 com.dev.ct.dev'
 alias android_uninstall_app_leave_data='adb shell pm uninstall -k --user 0 com.dev.ct.dev'
 alias android_clean_data_for_app='adb shell pm clear –user 0 com.dev.ct.dev'
 alias android_list_real_devices='adb usb'
+alias android_download_dev_db='adb pull /sdcard/test.txt ~/projects/com.dev.ct.dev.mementoes.db'
+alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sdcard/test.txt'
 
-alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias h=history
 alias mkdir="mkdir -pv"
 
 # Always enable colored `grep` output
