@@ -1,23 +1,22 @@
-# servitola mac and windows dotfiles with AnnePro2 mechanical keyboard set (mac and windows keyboard in sync)
-\
-## <span style="color:red">Applications</span>
-1. AnnePro2 (Bluetooth Mehcanical Keyboard. Max sync between Mac and Windows) + Light scheme + QMK scheme
-1. Raycast vs Keypirinha
-1. Autohotkey vs Karabiner (goku) & Hammerspoon (spoons)
-1. Images (my own avatars)
-1. Chocolatey vs Homebrew
-1. Git
-1. iTerm vs Windows Terminal both with zsh & oh-my-zsh
+# servitola dotfiles
 
-1. Mac Scripts (Mac Defaults)
-1. NotePad++ (Windows)
-1. PowerToys (Windows)
-1. Windows Tasks (Windows)
-1. Ad Guard
-1. Flameshot
-1. Rider (JetBrains)
-1. Visual Studio Code
+![Screenshot of my shell prompt](https://i.imgur.com/g53KRJx.png)
+## Installation & Details:
+* [Karabiner](https://karabiner-elements.pqrs.org/) mimics my [AnnePro2](https://www.annepro.net/) layout. [Hammerspoon](hammerspoon.org/) does the rest. I don't need Karabiner on a mac without my keyboard
+* You must download zip with this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path
+* I use [VSCode](https://code.visualstudio.com/) to maintain the dotfiles
+* Use `~/projects/dotfiles/hammerspoon/Spoons/Hotkeys.spoon/init.lua` to adjust almost all hotkeys
+* Run
+```bash
+sh ./install.sh
+```
+ to install everything. Check the script to see what it does
+* Replace my name and email in `gitconfig` with yours please
+* Set CapsLock to do nothing in settings
+* Set screenshot shortcuts to another shortcuts (even if they are turned off) for [Flameshot](https://flameshot.org/) could take them
 
-## Installation
-1. clone this repo to ~/projects/dotfiles
-1. run `sh ./install.sh` (this will install almost everything)
+
+
+## Extra
+* [JetBrains Rider](https://www.jetbrains.com/rider/) settings
+* Windows legacy dotfiles
