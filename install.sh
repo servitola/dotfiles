@@ -72,9 +72,9 @@ open LuLu_2.4.2.dmg
 echo "${H1} Set default applications ${H1_END}"
 sh "./macos/set_default_apps.sh"
 
-echo "${H1} Sync environment variables with root ${H1_END}"
-cp ~/projects/dotfiles/macos/osx-env-sync.plist ~/Library/LaunchAgents/osx-env-sync.plist
-chmod +x ~/projects/dotfiles/macos/osx-env-sync.sh
-launchctl unload ~/Library/LaunchAgents/osx-env-sync.plist
-launchctl load ~/Library/LaunchAgents/osx-env-sync.plist
-sh ./macos/osx-env-sync.sh
+# echo "${H1} Sync environment variables with root ${H1_END}"
+# cp ~/projects/dotfiles/macos/osx-env-sync.plist ~/Library/LaunchAgents/osx-env-sync.plist
+# chmod +x ~/projects/dotfiles/macos/osx-env-sync.sh
+# launchctl unload ~/Library/LaunchAgents/osx-env-sync.plist
+# launchctl load ~/Library/LaunchAgents/osx-env-sync.plist
+# sh ./macos/osx-env-sync.sh
