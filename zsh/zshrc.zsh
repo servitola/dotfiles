@@ -2,8 +2,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc" 
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zshrc"
 fi
 
-source ~/projects/dotfiles/zsh/exports.zsh
-
 ZSH_THEME="powerlevel10k/powerlevel10k"
 export UPDATE_ZSH_DAYS=7
 COMPLETION_WAITING_DOTS="true"
@@ -11,6 +9,7 @@ HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
 source ~/.oh-my-zsh/oh-my-zsh.sh
+source ~/projects/dotfiles/zsh/exports.zsh
 source ~/projects/dotfiles/zsh/plugins.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
@@ -24,7 +23,6 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbo
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND=’red’
 
-TOUCHBAR_GIT_ENABLED=true
 GIT_UNCOMMITTED="+"
 GIT_UNSTAGED="!"
 GIT_UNTRACKED="?"
