@@ -25,7 +25,6 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NPM
-NPM_PACKAGES="~/.npm-packages"
+export NPM_PACKAGES=~/.npm-packages
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
-
