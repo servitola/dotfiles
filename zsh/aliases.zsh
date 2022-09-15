@@ -16,7 +16,7 @@ alias android_download_dev_db='adb pull /sdcard/test.txt ~/projects/com.dev.ct.d
 alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sdcard/test.txt'
 
 # iOS
-alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
+alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 
 alias mkdir="mkdir -pv"
 
