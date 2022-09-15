@@ -14,7 +14,16 @@ defaults write com.apple.Siri StatusMenuVisible -int 0
 defaults write com.apple.Siri UserHasDeclinedEnable -int 1
 
 # Disable the “Are you sure you want to open this application?” dialog
+sudo spctl --master-disable
 defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Disable the “Are you sure you want to open this application?” dialog
+defaults write com.apple.LaunchServices LSQuarantine -bool false
+
+# Turn Off .dmg Verify
+defaults write com.apple.frameworks.diskimages skip-verify -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
+defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
