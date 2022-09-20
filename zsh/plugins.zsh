@@ -5,7 +5,7 @@ plugins=(
   dotenv
   aliases
   common-aliases
-  macos
+  macos # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/macos
   rake
   rbenv
   brew
@@ -22,4 +22,5 @@ plugins=(
   nx-completion
   sudo
   dirhistory
+  last-working-dir
 )

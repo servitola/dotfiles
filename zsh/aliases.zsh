@@ -36,10 +36,6 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias path_display='echo -e ${PATH//:/\\n}'
 
-# Show/hide hidden files in Finder
-alias show_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
-alias hide_hidden_files="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
-
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
