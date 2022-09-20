@@ -14,6 +14,7 @@ source ~/projects/dotfiles/zsh/plugins.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
 source ~/projects/dotfiles/zsh/p10k.zsh
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
