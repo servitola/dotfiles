@@ -32,5 +32,14 @@ GIT_STASHED="$"
 GIT_UNPULLED="⇣"
 GIT_UNPUSHED="⇡"
 
+# initialize zsh-navigation-tools
+autoload znt-history-widget
+zle -N znt-history-widget
+bindkey "^H" znt-history-widget
+zle -N znt-cd-widget
+bindkey "^B" znt-cd-widget
+zle -N znt-kill-widget
+bindkey "^Y" znt-kill-widget
+
 # initiliaze fzf - general-purpose command-line fuzzy finder
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
