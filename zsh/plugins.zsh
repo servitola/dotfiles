@@ -12,7 +12,6 @@ plugins=(
   npm
   pip
   python
-  zsh-autosuggestions
   zsh-interactive-cd
   z
   sudo
