@@ -13,7 +13,7 @@ command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 echo "${H1} Updating all from Homebrew ${H1_END}"
 rm -rf "brew --cache"
 brew tap --repair
-brew cu --all -y -q
+brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
 mas upgrade
