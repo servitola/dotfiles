@@ -6,7 +6,7 @@ export ZSH=~/.oh-my-zsh
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport
+export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 
 # DOTNET
 export PATH=$PATH:/usr/local/share/dotnet/x64
