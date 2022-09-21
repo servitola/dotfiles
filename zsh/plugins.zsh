@@ -16,4 +16,5 @@ plugins=(
   last-working-dir # automatically jumps into last used working directory
   zsh-navigation-tools # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools
   ohmyzsh-full-autoupdate  # updates oh-my-zsh plugins
+  web-search # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search
 )
