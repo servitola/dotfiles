@@ -53,6 +53,9 @@ echo "${H1} installing powerlevel10k theme to terminal ${H1_END}"
 echo "${H1} installing nx-completion plugin to terminal ${H1_END}"
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
+echo "${H1} installing OhMyZsh-full-autoupdate to terminal ${H1_END}"
+git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
+
 echo "${H1} running update all script ${H1_END}"
 sh "./macos/update-all-and-cleanup-all.sh"
 
