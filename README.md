@@ -1,6 +1,6 @@
 # servitola dotfiles
 
-![Screenshot of my shell prompt](https://i.imgur.com/g53KRJx.png)
+![Screenshot of my shell prompt](https://i.imgur.com/8dgnsIb.jpg)
 ## Installation & Details:
 * [Karabiner](https://karabiner-elements.pqrs.org/) mimics my [AnnePro2](https://www.annepro.net/) layout. [Hammerspoon](hammerspoon.org/) does the rest. I don't need Karabiner on a mac without my keyboard
 * You must download zip with this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path
