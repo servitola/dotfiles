@@ -37,20 +37,23 @@ echo "${H1} Visual Studio Code ${H1_END}"
 rm -rf ~/Library/Application\ Support/Code/User
 ln -s ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
-echo "${H1} setup zsh ${H1_END}"
+echo "${H1} Setup zsh and terminal stuff${H1_END}"
 rm -rf ~/.zshrc
 ln -s ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo "${H1} reload terminal ${H1_END}"
 source ~/.zshrc
 
-echo "${H1} installing oh-my-zsh ${H1_END}"
+echo "${H1} installing oh-my-zsh to terminal ${H1_END}"
 [[ -d ~/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "${H1} installing OhMyZsh-full-autoupdate.git ${H1_END}"
+echo "${H1} installing powerlevel10k theme to terminal ${H1_END}"
+[[ -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+echo "${H1} installing OhMyZsh-full-autoupdate to terminal ${H1_END}"
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 
-echo "${H1} installing nx-completion ${H1_END}"
+echo "${H1} installing nx-completion plugin to terminal ${H1_END}"
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
 echo "${H1} running update all script ${H1_END}"
