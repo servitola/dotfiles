@@ -50,9 +50,6 @@ echo "${H1} installing oh-my-zsh to terminal ${H1_END}"
 echo "${H1} installing powerlevel10k theme to terminal ${H1_END}"
 [[ -d ~/.oh-my-zsh/custom/themes/powerlevel10k ]] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-echo "${H1} installing OhMyZsh-full-autoupdate to terminal ${H1_END}"
-git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
-
 echo "${H1} installing nx-completion plugin to terminal ${H1_END}"
 git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
 
