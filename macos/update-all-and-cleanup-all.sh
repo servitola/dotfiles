@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/bin/zsh
 H1='\033[0;31m==>'
 H1_END='\033[0m'
 
