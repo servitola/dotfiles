@@ -8,13 +8,14 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="dd-mm-yyyy"
 ZSH_DISABLE_COMPFIX=true
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/projects/dotfiles/zsh/exports.zsh
 source ~/projects/dotfiles/zsh/plugins.zsh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
 source ~/projects/dotfiles/zsh/p10k.zsh
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
