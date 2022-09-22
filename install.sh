@@ -18,6 +18,9 @@ command -v brew >/dev/null 2>&1 || /usr/bin/ruby -e "$(curl -fsSL https://raw.gi
 echo "${H1} installing brew packages listed in homebrew/.brewfile ${H1_END}"
 brew bundle --file=homebrew/.brewfile --verbose
 
+echo "${H1} install fzf ${H1_END}"
+/usr/local/opt/fzf/install
+
 echo "${H1} setup git symlinks ${H1_END}"
 rm -rf ~/.gitconfig
 ln -s ~/projects/dotfiles/git/gitconfig ~/.gitconfig
