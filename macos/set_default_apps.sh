@@ -36,6 +36,7 @@ duti -s com.microsoft.VSCode .mdx all
 duti -s com.microsoft.VSCode .txt all
 duti -s com.microsoft.VSCode .log all
 duti -s com.microsoft.VSCode .csv all
+duti -s com.microsoft.VSCode .cake all
 
 duti -s org.videolan.vlc .mov all
 duti -s org.videolan.vlc .mp4 all
