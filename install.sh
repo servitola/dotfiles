@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/bin/zsh
 H1='\033[0;31m===>'
 H1_END='\033[0m'
 
@@ -6,6 +6,7 @@ sudo -v
 
 echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set-defaults.sh"
+sh "./macos/dock_setup.sh"
 
 echo "${H1} installing XCode if exists ${H1_END}"
 softwareupdate -i -a
@@ -67,6 +68,10 @@ echo "${H1} Install Lulu ${H1_END}"
 echo "${H1} Lulu forgets the settings when updated from homebrew ${H1_END}"
 wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
 open LuLu_2.4.2.dmg
+
+echo "${H1} Install DockUtil since homebrew has version 2 still ${H1_END}"
+wget https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+open dockutil-3.0.2.pkg
 
 echo "${H1} Set default applications ${H1_END}"
 sh "./macos/set_default_apps.sh"
