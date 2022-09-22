@@ -10,8 +10,15 @@ source ~/.oh-my-zsh/oh-my-zsh.sh
 source ~/projects/dotfiles/zsh/aliases.zsh
 source ~/projects/dotfiles/zsh/history_settings.zsh
 source ~/projects/dotfiles/zsh/p10k.zsh
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.fzf.zsh
+
+if [[ $(uname -m) == 'arm64' ]]; then
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
 
 # initialize zsh-navigation-tools
 autoload znt-history-widget
@@ -21,6 +28,3 @@ zle -N znt-cd-widget
 bindkey "^B" znt-cd-widget
 zle -N znt-kill-widget
 bindkey "^Y" znt-kill-widget
-
-# initiliaze fzf - general-purpose command-line fuzzy finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
