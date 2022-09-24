@@ -8,6 +8,10 @@ echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set-defaults.sh"
 sh "./macos/dock_setup.sh"
 
+echo "${H1} setup hosts file ${H1_END}"
+rm -rf /etc/hosts
+ln -s ~/projects/dotfiles/macos/hosts /etc/hosts
+
 echo "${H1} installing XCode if needed ${H1_END}"
 softwareupdate -i -a
 command -v xcode-select >/dev/null 2>&1 || xcode-select --install
