@@ -60,6 +60,10 @@ git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-
 echo "${H1} cloning OhMyZsh-full-autoupdate to oh-my-zsh plugins ${H1_END}"
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 
+echo "${H1} setup midnight commander symlink ${H1_END}"
+rm -rf ~/.config/mc
+ln -s ~/projects/dotfiles/midnight\ commander ~/.config/mc
+
 echo "${H1} running usual update all script ${H1_END}"
 sh "./macos/update-all-and-cleanup-all.sh"
 
