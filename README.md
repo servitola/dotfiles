@@ -23,6 +23,7 @@ Next:
 
 ## Features
 * The easiest Window management: ctrl + alt + arrow keys
+![Video of my window management](https://i.imgur.com/crdP0bi.gif)
 * Great setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme
 * Autoupdate **Everything** with 'up' command. Run it from Terminal. It cleans cache folders also
 * KeyboardPilot alternative: Switch to preferred language on any App focused with the short script. I use English everywhere except for Telegram. Check `hammerspoon/set_language_on_app_focused.lua` for details
