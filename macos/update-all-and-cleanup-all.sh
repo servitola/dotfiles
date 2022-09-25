@@ -22,7 +22,7 @@ brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
 echo "${H1} Updating OhMyZsh ${H1_END}"
-omz update
+zsh -ic "omz update"
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 echo "${H1} Configure NPM ${H1_END}"
