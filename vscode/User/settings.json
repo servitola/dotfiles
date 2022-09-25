@@ -153,5 +153,8 @@
     },
     "security.workspace.trust.untrustedFiles": "newWindow",
     "vsicons.dontShowNewVersionMessage": true,
-    "editor.accessibilitySupport": "off"
+    "editor.accessibilitySupport": "off",
+    "[yaml]": {
+      "editor.defaultFormatter": "redhat.vscode-yaml"
+    }
 }
