@@ -37,21 +37,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 echo "Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
 
-echo "Set Dock to the right"
-defaults write com.apple.dock "orientation" -string "right"
-
-echo "Dim hidden apps"
-defaults write com.apple.dock showhidden -bool true
-
-echo "Minimize windows into their application’s icon"
-defaults write com.apple.dock minimize-to-application -bool true
-
-echo "Don’t automatically rearrange Spaces based on most recent use"
-defaults write com.apple.dock mru-spaces -bool false
-
-echo "Don’t show recent applications in Dock"
-defaults write com.apple.dock show-recents -bool false
-
 echo "Always open everything in Finder's list view. This is important."
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
 
@@ -87,16 +72,12 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
   OpenWith -bool true \
   Privileges -bool true
 
-
 ###############################################################################
 echo "Activity Monitor"                                                       #
 ###############################################################################
 
 echo "Show the main window when launching Activity Monitor"
 defaults write com.apple.ActivityMonitor OpenMainWindow -bool true
-
-echo "Visualize CPU usage in the Activity Monitor Dock icon"
-defaults write com.apple.ActivityMonitor IconType -int 5
 
 echo "Show all processes in Activity Monitor"
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
