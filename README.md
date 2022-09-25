@@ -1,5 +1,7 @@
 # servitola dotfiles
 
+![Hyper Key Layout](https://i.imgur.com/Ljh17BC.png)
+
 ![Screenshot of my shell prompt](https://i.imgur.com/8dgnsIb.jpg)
 ## Installation & Details:
 * [Karabiner](https://karabiner-elements.pqrs.org/) mimics my [AnnePro2](https://www.annepro.net/) layout. [Hammerspoon](hammerspoon.org/) does the rest. So [Karabiner](https://karabiner-elements.pqrs.org/) + [Hammerspoon](hammerspoon.org/) is for Macbook and [Hammerspoon](hammerspoon.org/) only is for macmini with [AnnePro2](https://www.annepro.net/)
