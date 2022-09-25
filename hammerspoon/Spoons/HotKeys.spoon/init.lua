@@ -492,11 +492,11 @@ function obj:init()
                     end)
                 elseif chord_row.specific_function == "set_russian_language" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
-                        hs.keycodes.setLayout("Russian – PC")
+                        hs.keycodes.setLayout("Russian - Ilya Birman Typography")
                     end)
                 elseif chord_row.specific_function == "set_english_language" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
-                        hs.keycodes.setLayout("ABC")
+                        hs.keycodes.setLayout("English - Ilya Birman Typography")
                     end)
                 elseif chord_row.specific_function == "translate_to_russian" then
                     spoon.PopupTranslateSelection:bindHotkeys({

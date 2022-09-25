@@ -84,6 +84,10 @@ echo "${H1} Install DockUtil since homebrew has version 2 still ${H1_END}"
 wget https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
 open dockutil-3.0.2.pkg
 
+echo "${H1} Install Birman's keyboard Layout ${H1_END}"
+wget https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.8-mac.dmg
+open ilya-birman-typolayout-3.8-mac.dmg
+
 echo "${H1} Set default applications for different file extensions ${H1_END}"
 sh "./macos/set_default_apps.sh"
 

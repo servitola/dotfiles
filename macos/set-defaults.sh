@@ -120,24 +120,8 @@ echo "Enable full keyboard access for all controls"
 echo "(e.g. enable Tab in modal dialogs)"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Add Language Layouts: en, ru, el"
+echo "Add Language Layout: greek (el)"
 defaults delete com.apple.HIToolbox AppleEnabledInputSources
-defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
-			<key>InputSourceKind</key>
-			<string>Keyboard Layout</string>
-			<key>KeyboardLayout ID</key>
-			<integer>252</integer>
-			<key>KeyboardLayout Name</key>
-			<string>ABC</string>
-		</dict>'
-defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
-			<key>InputSourceKind</key>
-			<string>Keyboard Layout</string>
-			<key>KeyboardLayout ID</key>
-			<integer>19458</integer>
-			<key>KeyboardLayout Name</key>
-			<string>RussianWin</string>
-		</dict>'
 defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 			<key>InputSourceKind</key>
 			<string>Keyboard Layout</string>
