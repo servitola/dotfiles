@@ -1,2 +1,16 @@
 .DS_Store
 karabiner/automatic_backups/
+
+vscode/User/workspaceStorage
+vscode/User/History
+vscode/User/globalStorage/redhat.vscode-yaml/schemas_cache
+vscode/User/globalStorage/vscode.json-language-features/json-schema-cache
+vscode/User/globalStorage/vscode-redhat-telemetry/redhat.optin.json
+vscode/User/globalStorage/state.vscdb.backup
+vscode/User/globalStorage/state.vscdb
+vscode/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin/remote-containers-path
+vscode/User/globalStorage/storage.json
+vscode/User/sync/tasks/lastSynctasks.json
+vscode/User/sync/globalState/*.json
+vscode/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin/vscode-machine-id
+vscode/User/globalStorage/alefragnani.project-manager/projects_cache_git.json
