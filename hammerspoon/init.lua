@@ -1,6 +1,6 @@
 hs.console.clearConsole()
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
-hs.keycodes.setLayout("ABC")
+hs.keycodes.setLayout("English - Ilya Birman Typography")
 
 hs.loadSpoon("UnsplashZ") -- download new wallpaper
 hs.loadSpoon("Windows") -- window management
