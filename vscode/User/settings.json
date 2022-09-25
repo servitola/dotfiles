@@ -152,5 +152,6 @@
       "FIG_NEW_SESSION": "1"
     },
     "security.workspace.trust.untrustedFiles": "newWindow",
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.accessibilitySupport": "off"
 }
