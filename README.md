@@ -1,6 +1,6 @@
 # servitola dotfiles
 
-![Hyper Key Layout](https://i.imgur.com/Ljh17BC.png)
+![Hyper Key Layout](https://i.imgur.com/4RAIU84.jpg)
 
 ![Screenshot of my shell prompt](https://i.imgur.com/8dgnsIb.jpg)
 ## Installation & Details:
