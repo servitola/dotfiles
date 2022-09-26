@@ -130,7 +130,7 @@ apps_list = {
         -- /------__HYPER_LAYER___-----------------------------------------------------------------------------------------\
         -- |    |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7   | F8   | F9 |  F10   | F11    |  F12  | backspace    |
         -- |---------------------------------------------------------------------------------------------------------------+
-        -- |   | pageup | up | pagedown | Rider | Telegram | DroidStudio | Torrent |  | up | Music | prtrack | nxttrack |  |
+        -- | toEn  | pageup | up | pagedown | Rider | Telegram | DroidStudio | Torrent |  | up | Music | prtrack | nxttrack |  |
         -- |---------------------------------------------------------------------------------------------------------------+
         -- | TO_PRESS | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |      |
         -- |--------------------------------------------------------------------------------------------------------------+
