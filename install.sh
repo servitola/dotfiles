@@ -6,7 +6,6 @@ sudo -v
 
 echo "${H1} setting macos defaults ${H1_END}"
 sh "./macos/set_defaults.sh"
-sh "./macos/dock_setup.sh"
 
 echo "${H1} setup hosts file ${H1_END}"
 rm -rf /etc/hosts
@@ -94,3 +93,6 @@ sh "./macos/set_default_apps.sh"
 echo "${H1} Check extra links for installation ${H1_END}"
 echo "${H1} https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac ${H1_END}"
 open https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac
+
+echo "${H1} Run dock setup. Run once again when dockutil is installed please ${H1_END}"
+sh "./macos/dock_setup.sh"
