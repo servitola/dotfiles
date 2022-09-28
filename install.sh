@@ -5,7 +5,7 @@ H1_END='\033[0m'
 sudo -v
 
 echo "${H1} setting macos defaults ${H1_END}"
-sh "./macos/set-defaults.sh"
+sh "./macos/set_defaults.sh"
 sh "./macos/dock_setup.sh"
 
 echo "${H1} setup hosts file ${H1_END}"
@@ -69,7 +69,7 @@ rm -rf ~/.config/mc
 ln -s ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "${H1} running usual update all script ${H1_END}"
-sh "./macos/update-all-and-cleanup-all.sh"
+sh "./macos/update_all_and_cleanup_all.sh"
 
 echo "${H1} setup flameshot symlinks ${H1_END}"
 rm -rf ~/.config/flameshot
