@@ -28,6 +28,8 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 * A: Almost all shortcuts are easy to use and setup with: `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 
 ![Hyper Key Layout](https://i.imgur.com/4RAIU84.jpg)
+
+![Alt Key Layout](https://i.imgur.com/BrmN8rk.jpg)
 #
 * Q: I want to control my <ins>environment variables</ins> (Exports)
 * A: Look at `zsh/exports.zsh`
