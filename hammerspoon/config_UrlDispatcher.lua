@@ -3,7 +3,7 @@ Safari = "com.apple.Safari"
 Firefox = "org.mozilla.firefox"
 urlDispatcherSpoon = hs.loadSpoon("URLDispatcher")
 
-urlDispatcherSpoon.default_handler = "org.mozilla.firefox"
+urlDispatcherSpoon.default_handler = Firefox
 
 urlDispatcherSpoon.url_patterns = {
     { "https?://.*zoom.us/j/", Zoom },
