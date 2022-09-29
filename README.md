@@ -27,7 +27,11 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 * Q: I want to <ins>understand</ins> all the <ins>shortcuts</ins> I can use on macos and + with this repository
 * A: Almost all shortcuts are easy to use and setup with: `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 
+###      Caps Lock + key layout:
+
 ![Hyper Key Layout](https://i.imgur.com/4RAIU84.jpg)
+
+###      Alt + key & Alt + Shift + key layout:
 
 ![Alt Key Layout](https://i.imgur.com/BrmN8rk.jpg)
 #
