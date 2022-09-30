@@ -107,6 +107,14 @@ defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 			<key>InputSourceKind</key>
 			<string>Keyboard Layout</string>
 			<key>KeyboardLayout ID</key>
+			<integer>252</integer>
+			<key>KeyboardLayout Name</key>
+			<string>ABC</string>
+		</dict>'
+defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
+			<key>InputSourceKind</key>
+			<string>Keyboard Layout</string>
+			<key>KeyboardLayout ID</key>
 			<integer>-18944</integer>
 			<key>KeyboardLayout Name</key>
 			<string>Greek</string>
