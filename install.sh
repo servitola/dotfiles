@@ -19,9 +19,6 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.github
 echo "installing brew packages listed in homebrew/.brewfile"
 brew bundle --file=homebrew/.brewfile --verbose
 
-echo "install fzf"
-/usr/local/opt/fzf/install
-
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
@@ -66,15 +63,15 @@ ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo "install Lulu from downloaded package"
 echo "Lulu forgets the settings when updated from homebrew"
-wget https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
+curl -O https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
 open LuLu_2.4.2.dmg
 
 echo "install DockUtil since homebrew has version 2 still"
-wget https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
+curl -O https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
 open dockutil-3.0.2.pkg
 
 echo "install Birman's keyboard Layout"
-wget https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.8-mac.dmg
+curl -O https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.8-mac.dmg
 open ilya-birman-typolayout-3.8-mac.dmg
 
 echo "set default applications for different file extensions"
