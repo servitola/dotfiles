@@ -27,6 +27,8 @@ git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 echo "${H1} Configure NPM ${H1_END}"
 npm config set fund false --location=global
+npm install npm -g
+npm update -g
 
 echo "${H1} Flashing DNS cache ${H1_END}"
 dscacheutil -flushcache
