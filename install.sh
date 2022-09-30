@@ -7,10 +7,10 @@ echo "setting macos defaults"
 sh "./macos/set_defaults.sh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
-ln -sfv ~/projects/dotfiles/macos/hosts /etc/hosts
+ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "installing XCode if needed"
-softwareupdate -i -a
+softwareupdate -i -a --verbose
 command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 
 echo "installing homebrew if needed"
@@ -23,22 +23,22 @@ echo "install fzf"
 /usr/local/opt/fzf/install
 
 echo "setup git symlinks"
-ln -sfv ~/projects/dotfiles/git/gitconfig ~/.gitconfig
+ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
 echo "setup karabiner symlinks"
-ln -sfv ~/projects/dotfiles/karabiner ~/.config/karabiner
+ln -sfvh ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo "setup goku symlinks"
-ln -sfv ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
+ln -sfvh ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
 echo "setup hammerspoon symlinks"
-ln -sfv ~/projects/dotfiles/hammerspoon ~/.hammerspoon
+ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo "setup Visual Studio Code symlinks"
-ln -sfv ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
+ln -sfvh ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
 echo "Setup zsh and terminal stuff symlinks"
-ln -sfv ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
+ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo "reload terminal"
 source ~/.zshrc
@@ -56,13 +56,13 @@ echo "cloning OhMyZsh-full-autoupdate to oh-my-zsh plugins"
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 
 echo "setup midnight commander symlink"
-ln -sfv ~/projects/dotfiles/midnight\ commander ~/.config/mc
+ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "running usual update all script"
 sh "./macos/update_all_and_cleanup_all.sh"
 
 echo "setup flameshot symlinks"
-ln -sfv ~/projects/dotfiles/flameshot ~/.config/flameshot
+ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo "install Lulu from downloaded package"
 echo "Lulu forgets the settings when updated from homebrew"
