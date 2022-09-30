@@ -6,7 +6,7 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 * Q: I want <ins>all the file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
 * A: Look at `macos/set_default_apps.sh`. You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
 #
-* Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> turn on <ins>everywhere automatically</ins> except my messenger (I use Telegram)
+* Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> turn on <ins>everywhere automatically</ins> except my messenger (I use [Telegram](https://telegram.org/))
 * A: This solution of layout switching hell work perfectly. Look at `hammerspoon/set_language_on_app_focused`. [Set your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for that: **Keyboard Pilot** but it conflicts with Ilya's layouts
 #
 * Q: I want to <ins>manipulate my windows</ins> from my keyboard and I want only 4 or less easy positions
