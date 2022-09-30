@@ -18,7 +18,6 @@ command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 echo "${H1} installing homebrew if needed ${H1_END}"
 command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-
 echo "${H1} installing brew packages listed in homebrew/.brewfile ${H1_END}"
 brew bundle --file=homebrew/.brewfile --verbose
 
