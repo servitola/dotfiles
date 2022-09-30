@@ -55,6 +55,12 @@ Just type `baobab` in Terminal/iTerm2
 #
 * Q: But <ins>where to download</ins> at first?
 * A: You must clone or download zip with this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path
+```
+mkdir ~/projects
+cd ~/projects
+git clone https::github.com/servitola/dotfiles.git
+```
+install command tools will be asked to install - agree
 #
 * Q: What is the best way to <ins>maintain this project</ins>?
 * A: I use [VSCode](https://code.visualstudio.com/). On open the project's folder it will suggest all the needed plugins to install
