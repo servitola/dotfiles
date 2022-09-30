@@ -7,8 +7,7 @@ echo "setting macos defaults"
 sh "./macos/set_defaults.sh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
-rm -rf /etc/hosts
-ln -s ~/projects/dotfiles/macos/hosts /etc/hosts
+ln -sfv ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "installing XCode if needed"
 softwareupdate -i -a
@@ -24,28 +23,22 @@ echo "install fzf"
 /usr/local/opt/fzf/install
 
 echo "setup git symlinks"
-rm -rf ~/.gitconfig
-ln -s ~/projects/dotfiles/git/gitconfig ~/.gitconfig
+ln -sfv ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
 echo "setup karabiner symlinks"
-rm -rf ~/.config/karabiner
-ln -s ~/projects/dotfiles/karabiner ~/.config/karabiner
+ln -sfv ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo "setup goku symlinks"
-rm -rf ~/.config/karabiner.edn
-ln -s ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
+ln -sfv ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
 echo "setup hammerspoon symlinks"
-rm -rf ~/.hammerspoon
-ln -s ~/projects/dotfiles/hammerspoon ~/.hammerspoon
+ln -sfv ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo "setup Visual Studio Code symlinks"
-rm -rf ~/Library/Application\ Support/Code/User
-ln -s ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
+ln -sfv ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
 echo "Setup zsh and terminal stuff symlinks"
-rm -rf ~/.zshrc
-ln -s ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
+ln -sfv ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo "reload terminal"
 source ~/.zshrc
@@ -63,15 +56,13 @@ echo "cloning OhMyZsh-full-autoupdate to oh-my-zsh plugins"
 git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
 
 echo "setup midnight commander symlink"
-rm -rf ~/.config/mc
-ln -s ~/projects/dotfiles/midnight\ commander ~/.config/mc
+ln -sfv ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "running usual update all script"
 sh "./macos/update_all_and_cleanup_all.sh"
 
 echo "setup flameshot symlinks"
-rm -rf ~/.config/flameshot
-ln -s ~/projects/dotfiles/flameshot ~/.config/flameshot
+ln -sfv ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo "install Lulu from downloaded package"
 echo "Lulu forgets the settings when updated from homebrew"
