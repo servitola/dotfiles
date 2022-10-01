@@ -4,10 +4,10 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 ## Problems solved FAQ
 
 * Q: I want <ins>all the file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
-* A: Look at `macos/set_default_apps.sh`. You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
+* A: Look at [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh). You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
 #
 * Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> turn on <ins>everywhere automatically</ins> except my messenger (I use [Telegram](https://telegram.org/))
-* A: This solution of layout switching hell work perfectly. Look at `hammerspoon/set_language_on_app_focused`. [Set your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for that: **Keyboard Pilot** but it conflicts with Ilya's layouts
+* A: This solution of layout switching hell work perfectly. Look at [Hammerspoon script which sets language on application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for that: **Keyboard Pilot** but it conflicts with Ilya's layouts
 #
 * Q: I want to <ins>manipulate my windows</ins> from my keyboard and I want only 4 or less easy positions
 * A: The easiest Window management: `ctrl + alt + arrow keys`
@@ -35,7 +35,7 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 ![Hyper Key Layout](https://i.imgur.com/37uyo3Z.jpg)
 #
 * Q: I want to control my <ins>environment variables</ins> (Exports)
-* A: Look at `zsh/exports.zsh`
+* A: Look at [Zsh exports.zsh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.zsh)
 #
 * Q: I want to have a <ins>firewall</ins> - <ins>free and easy</ins> to use
 * A: I use [LuLu](https://objective-see.org/products/lulu.html). Sadly but this repository will download the package only. And you have to install it manually. I will fix it later
@@ -51,7 +51,7 @@ I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 1
 Just type `baobab` in Terminal/iTerm2
 #
 * Q: How to <ins>install</ins> this repository?
-* A: run ```sh ./install.sh``` in Terminal
+* A: run ```cd ~/projects/dotfiles chmod +x install.sh ./install.sh``` in Terminal
 #
 * Q: But <ins>where to download</ins> at first?
 * A: You must clone or download zip with this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path
@@ -67,12 +67,12 @@ install command tools will be asked to install - agree
 #
 * Q: What <ins>important</ins> to do after?
 * A: Do next:
-* Replace my name and email in `git/gitconfig` with yours please
+* Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours please
 * Set CapsLock to do nothing in macos settings
 * Set screenshot shortcuts to another shortcuts (even if they are turned off) for [Flameshot](https://flameshot.org/) could take them
 #
 * Q: I want to understand what this repository installs exactly
-* A: check the ```install.sh``` script . It installs all the programs (with homebrew mostly), creates symlinks, does the rest
+* A: check the [Install.sh](https://github.com/servitola/dotfiles/blob/master/install.sh) script . It installs all the programs (with homebrew mostly), creates symlinks, does the rest
 #
 ## Extra
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
