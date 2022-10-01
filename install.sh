@@ -19,6 +19,16 @@ command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.github
 echo "installing brew packages listed in homebrew/.brewfile"
 brew bundle --file=homebrew/.brewfile --verbose
 
+echo Make ZSH the default shell environment
+if grep -q "zsh" /etc/shells
+then
+    echo "ZSH shell already in allowed shells"
+else
+    chsh -s $(which zsh)
+    echo "Setup zsh and terminal stuff symlinks"
+    ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
+fi
+
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
@@ -33,9 +43,6 @@ ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo "setup Visual Studio Code symlinks"
 ln -sfvh ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
-
-echo "Setup zsh and terminal stuff symlinks"
-ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo "reload terminal"
 source ~/.zshrc
