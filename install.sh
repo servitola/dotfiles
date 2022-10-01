@@ -1,8 +1,6 @@
 #!/bin/zsh
 source zsh/functions.sh
 
-sudo -v
-
 echo "setting macos defaults"
 sh "./macos/set_defaults.sh"
 
