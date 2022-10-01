@@ -1,5 +1,5 @@
 #!/bin/zsh
-source macos/bash_helper_functions.sh
+source zsh/functions.sh
 
 sudo -v
 
