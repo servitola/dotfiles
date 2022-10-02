@@ -1,7 +1,7 @@
 #!/bin/zsh
 sudo -v
 
-source zsh/functions.zsh
+source ~/projects/dotfiles/zsh/functions.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 
 echo "Updating XCode tools"
