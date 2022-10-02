@@ -20,3 +20,6 @@ then
     sudo xcodebuild -license
     print_result $? 'Agree with the XCode Command Line Tools licence'
 fi
+
+echo "setup xcode symlinks"
+ln -sfvh ~/projects/dotfiles/xcode/KeyBindings ~/Library/Developer/Xcode/UserData/KeyBindings
