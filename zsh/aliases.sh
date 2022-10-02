@@ -27,11 +27,6 @@ alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sd
 # iOS
 alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
