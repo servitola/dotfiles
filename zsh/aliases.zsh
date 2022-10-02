@@ -1,9 +1,16 @@
 # ZSH
-alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
+alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.zsh'
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+
 alias cat=bat
 alias rm=trash
-alias wget="curl -O"
+alias mkdir="mkdir -pv"
+alias grep='grep --color=auto'
+alias search=grep
+alias python=python3
+alias pip=pip3
+alias wifi=airport
+alias ls=exa
 
 # ANDROID ADB
 alias android_deep_link='f() { adb shell am start -a android.intent.action.VIEW -d "$1" }; f'
@@ -20,17 +27,10 @@ alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sd
 # iOS
 alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 
-alias mkdir="mkdir -pv"
-
 # Always enable colored `grep` output
 # Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias search=grep
-alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
-
-alias python=python3
-alias pip=pip3
 
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
@@ -46,8 +46,7 @@ alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 alias wifi=airport
 
-# EXA aliases
-alias ls='exa'                                                         # ls
+# EXA aliases                                                       # ls
 alias l='exa -lbF --git'                                               # list, size, type, git
 alias ll='exa -lbGF --git'                                             # long list
 alias llm='exa -lbGF --git --sort=modified'                            # long list, modified date sort
