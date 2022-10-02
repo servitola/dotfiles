@@ -7,7 +7,7 @@ echo "setup hosts file (perhaps you need to do it manually later)"
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 source "macos/install_xcode.sh"
-source "homebrew/install_homebrew.sh"
+source "homebrew/install.sh"
 source "homebrew/install_all_homebrew_packages.sh"
 
 echo Make ZSH the default shell environment
@@ -72,7 +72,7 @@ echo "https://www.mrfdev.com/enhancer-for-youtube"
 open https://www.mrfdev.com/enhancer-for-youtube
 
 echo "run dock setup. Run once again when dockutil is installed please!"
-sh "macos/dock_setup.sh"
+source "macos/dock_setup.sh"
 
 echo "installing trash-cli to replace rm with trash"
 npm install --global trash-cli
