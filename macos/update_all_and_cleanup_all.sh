@@ -39,6 +39,7 @@ setopt rm_star_silent #turn off safe mode
 rm -rfv ~/Library/Caches/*
 rm -rfv /Library/Caches/*
 rm -rfv ~/Library/Developer/Xcode/DerivedData/*
+rm -rfv ~/.local/share/NuGet/v3-cache/*
 echo "Cleaning DS_Store"
 find . -type f -name '*.DS_Store' -ls -delete
 echo "Cleaning Trash Bin"
