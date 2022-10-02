@@ -1,6 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/zsh
+source "zsh/functions.zsh"
 
 sudo -v
+echo "Setting macos defaults"
 
 echo "Close any open System Preferences panes, to prevent them from overriding"
 osascript -e 'tell application "System Preferences" to quit'

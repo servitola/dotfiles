@@ -1,47 +1,14 @@
 #!/bin/zsh
-source zsh/functions.zsh
-
-echo "setting macos defaults"
-sh "./macos/set_defaults.sh"
+source "zsh/functions.zsh"
+source "zsh/exports.zsh"
+source "macos/set_defaults.zsh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
-echo "installing XCode if needed"
-if ! xcode-select --print-path &> /dev/null; then
-    xcode-select --install &> /dev/null
-
-    # Wait until the XCode Command Line Tools are installed
-    until xcode-select --print-path &> /dev/null; do
-        sleep 5
-    done
-
-    print_result $? 'Install XCode Command Line Tools'
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Point the `xcode-select` developer directory to
-    # the appropriate directory from within `Xcode.app`
-    # https://github.com/alrra/dotfiles/issues/13
-
-    sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
-    print_result $? 'Make "xcode-select" developer directory point to Xcode'
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-    # Prompt user to agree to the terms of the Xcode license
-    # https://github.com/alrra/dotfiles/issues/10
-
-    sudo xcodebuild -license
-    print_result $? 'Agree with the XCode Command Line Tools licence'
-
-fi
-
-echo "installing homebrew if needed"
-command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-echo "installing brew packages listed in homebrew/.brewfile"
-brew bundle --file=homebrew/.brewfile --verbose
+source "macos/install_xcode.zsh"
+source "homebrew/install_homebrew.zsh"
+source "homebrew/install_all_homebrew_packages.zsh"
 
 echo Make ZSH the default shell environment
 chsh -s $(which zsh)
@@ -55,16 +22,13 @@ echo "setup karabiner symlinks"
 ln -sfvh ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo "setup goku symlinks"
-ln -sfvh ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
+ln -sfvh ~/projects/dotfiles/karabiner.edn ~/.config/karabiner.edn
 
 echo "setup hammerspoon symlinks"
 ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo "setup Visual Studio Code symlinks"
 ln -sfvh ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
-
-echo "reload terminal"
-source ~/.zshrc
 
 echo "installing oh-my-zsh to terminal if needed"
 [[ -d ~/.oh-my-zsh ]] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -98,7 +62,7 @@ curl -O https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-
 open ilya-birman-typolayout-3.8-mac.dmg
 
 echo "set default applications for different file extensions"
-sh "./macos/set_default_apps.sh"
+source "macos/set_default_apps.sh"
 
 echo "check extra links for installation"
 echo "https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac"
@@ -108,7 +72,7 @@ echo "https://www.mrfdev.com/enhancer-for-youtube"
 open https://www.mrfdev.com/enhancer-for-youtube
 
 echo "run dock setup. Run once again when dockutil is installed please!"
-sh "./macos/dock_setup.sh"
+sh "macos/dock_setup.sh"
 
 echo "installing trash-cli to replace rm with trash"
 npm install --global trash-cli

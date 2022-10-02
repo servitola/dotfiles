@@ -27,6 +27,8 @@ echo "Configure NPM"
 npm config set fund false --location=global
 npm install npm --location=global
 npm update --location=global
+mkd /usr/local/Cellar/node/node_global
+npm config set prefix '/usr/local/Cellar/node/node_global'
 
 echo "Flashing DNS cache"
 dscacheutil -flushcache
