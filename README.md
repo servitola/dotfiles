@@ -66,7 +66,7 @@ git clone https::github.com/servitola/dotfiles.git
 install command tools will be asked to install - agree
 #
 * Q: What is the best way to <ins>maintain this project</ins>?
-* A: I use [VSCode](https://code.visualstudio.com/). On open the project's folder it will suggest all the needed plugins to install
+* A: I use [VSCode](https://code.visualstudio.com/). On open the project's folder it will suggest all the needed plugins to install. Also I use [PreCommit](https://pre-commit.com/) to check my commits don't have extra spaces and secrets
 #
 * Q: What <ins>important</ins> to do after?
 * A: Do next:
