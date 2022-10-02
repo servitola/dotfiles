@@ -1,19 +1,19 @@
 #!/bin/zsh
-source "zsh/functions.zsh"
-source "zsh/exports.zsh"
-source "macos/set_defaults.zsh"
+source "zsh/functions.sh"
+source "zsh/exports.sh"
+source "macos/set_defaults.sh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
-source "macos/install_xcode.zsh"
-source "homebrew/install_homebrew.zsh"
-source "homebrew/install_all_homebrew_packages.zsh"
+source "macos/install_xcode.sh"
+source "homebrew/install_homebrew.sh"
+source "homebrew/install_all_homebrew_packages.sh"
 
 echo Make ZSH the default shell environment
 chsh -s $(which zsh)
 echo "Setup zsh and terminal stuff symlinks"
-ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
+ln -sfvh ~/projects/dotfiles/zsh/zshrc.sh ~/.shrc
 
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig

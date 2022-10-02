@@ -1,7 +1,7 @@
 # History
 SAVEHIST=10000
 HISTSIZE=10000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.sh_history
 setopt APPEND_HISTORY
 setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY
