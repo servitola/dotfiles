@@ -9,11 +9,7 @@ ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "installing XCode if needed"
 if ! xcode-select --print-path &> /dev/null; then
-
-    # Prompt user to install the XCode Command Line Tools
     xcode-select --install &> /dev/null
-
-    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Wait until the XCode Command Line Tools are installed
     until xcode-select --print-path &> /dev/null; do
@@ -108,8 +104,17 @@ echo "check extra links for installation"
 echo "https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac"
 open https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac
 
+echo "https://www.mrfdev.com/enhancer-for-youtube"
+open https://www.mrfdev.com/enhancer-for-youtube
+
 echo "run dock setup. Run once again when dockutil is installed please!"
 sh "./macos/dock_setup.sh"
 
+echo "installing trash-cli to replace rm with trash"
 npm install --global trash-cli
+
+echo "installing nanorc"
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+
+mkd /usr/local/Cellar/node/node_global
+npm config set prefix '/usr/local/Cellar/node/node_global'
