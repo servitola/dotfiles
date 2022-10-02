@@ -1,15 +1,15 @@
 #!/bin/zsh
+
 source "zsh/functions.sh"
 source "zsh/exports.sh"
 source "macos/set_defaults.sh"
-
-echo "setup hosts file (perhaps you need to do it manually later)"
-ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
-
 source "xcode/install.sh"
 source "homebrew/install.sh"
 source "homebrew/install_all_homebrew_packages.sh"
 source "zsh/setup_zsh.sh"
+
+echo "setup hosts file (perhaps you need to do it manually later)"
+ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
