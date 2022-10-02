@@ -1,7 +1,9 @@
 # ZSH
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
-alias cat='bat'
+alias cat=bat
+alias rm=trash
+alias wget="curl -O"
 
 # ANDROID ADB
 alias android_deep_link='f() { adb shell am start -a android.intent.action.VIEW -d "$1" }; f'
