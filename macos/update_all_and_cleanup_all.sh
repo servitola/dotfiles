@@ -1,7 +1,7 @@
 #!/bin/zsh
 sudo -v
 
-source zsh/functions.sh
+source zsh/functions.zsh
 source ~/projects/dotfiles/zsh/aliases.zsh
 
 echo "Updating XCode tools"
@@ -34,15 +34,18 @@ killall -HUP mDNSResponder
 
 echo "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
-rm -rf ~/Library/Caches/*
-rm -rf /Library/Caches/*
-rm -rf ~/Library/Developer/Xcode/DerivedData/*
+rm -rfv ~/Library/Caches/*
+rm -rfv /Library/Caches/*
+rm -rfv ~/Library/Developer/Xcode/DerivedData/*
 echo "Cleaning DS_Store"
 find . -type f -name '*.DS_Store' -ls -delete
 echo "Cleaning Trash Bin"
 rm -rfv /Volumes/*/.Trashes
 rm -rfv ~/.Trash
 rm -rfv /private/var/log/asl/*.asl
+rm -rfv /Volumes/*/.Trashes; \
+rm -rfv ~/.Trash/*; \
+rm -v /private/var/vm/sleepimage; \
 setopt no_rm_star_silent #turn on safe mode back
 
 echo "Updating tldr caches"

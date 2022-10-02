@@ -1,5 +1,5 @@
 #!/bin/zsh
-source zsh/functions.sh
+source zsh/functions.zsh
 
 echo "setting macos defaults"
 sh "./macos/set_defaults.sh"
