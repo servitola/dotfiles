@@ -6,7 +6,7 @@ source "macos/set_defaults.sh"
 echo "setup hosts file (perhaps you need to do it manually later)"
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
-source "macos/install_xcode.sh"
+source "xcode/install.sh"
 source "homebrew/install.sh"
 source "homebrew/install_all_homebrew_packages.sh"
 source "zsh/setup_zsh.sh"
