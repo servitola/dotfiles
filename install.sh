@@ -8,8 +8,38 @@ echo "setup hosts file (perhaps you need to do it manually later)"
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "installing XCode if needed"
-softwareupdate -i -a --verbose
-command -v xcode-select >/dev/null 2>&1 || xcode-select --install
+if ! xcode-select --print-path &> /dev/null; then
+
+    # Prompt user to install the XCode Command Line Tools
+    xcode-select --install &> /dev/null
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Wait until the XCode Command Line Tools are installed
+    until xcode-select --print-path &> /dev/null; do
+        sleep 5
+    done
+
+    print_result $? 'Install XCode Command Line Tools'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Point the `xcode-select` developer directory to
+    # the appropriate directory from within `Xcode.app`
+    # https://github.com/alrra/dotfiles/issues/13
+
+    sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer
+    print_result $? 'Make "xcode-select" developer directory point to Xcode'
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Prompt user to agree to the terms of the Xcode license
+    # https://github.com/alrra/dotfiles/issues/10
+
+    sudo xcodebuild -license
+    print_result $? 'Agree with the XCode Command Line Tools licence'
+
+fi
 
 echo "installing homebrew if needed"
 command -v brew >/dev/null 2>&1 || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
