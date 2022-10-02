@@ -39,7 +39,7 @@ I will be glad if you will find any issues and report them.
 ![Hyper Key Layout](https://i.imgur.com/37uyo3Z.jpg)
 #
 * Q: I want to control my <ins>environment variables</ins> (Exports)
-* A: Look at [Zsh exports.zsh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.zsh)
+* A: Look at [Zsh exports.sh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.sh)
 #
 * Q: I want to have a <ins>firewall</ins> - <ins>free and easy</ins> to use
 * A: I use [LuLu](https://objective-see.org/products/lulu.html). Sadly but this repository will download the package only. And you have to install it manually. I will fix it later
