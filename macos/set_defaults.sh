@@ -17,10 +17,28 @@ echo "Disable the “Are you sure you want to open this application?” dialog"
 sudo spctl --master-disable
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-echo "Turn Off .dmg Verify"
+echo Disable Notification Center and remove the menu bar icon
+launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+
+echo "Turn off .dmg verification"
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
+
+echo "Enable snap-to-grid for icons on the desktop and in other icon views"
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
+echo "Increase grid spacing for icons on the desktop and in other icon views"
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100" ~/Library/Preferences/com.apple.finder.plist
+
+echo "Increase the size of icons on the desktop and in other icon views"
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:iconSize 100" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 100" ~/Library/Preferences/com.apple.finder.plist
+/usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:iconSize 100" ~/Library/Preferences/com.apple.finder.plist
 
 echo "Save to disk (not to iCloud) by default"
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
@@ -129,3 +147,57 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 echo "Remove useless icons from Safari’s bookmarks bar"
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
+
+###############################################################################
+echo "Transmission.app"                                                       #
+###############################################################################
+
+echo "Use `~/Documents/Torrents` to store incomplete downloads"
+defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
+defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Documents/Torrents"
+
+echo "Use `~/Downloads` to store completed downloads"
+defaults write org.m0k.transmission DownloadLocationConstant -bool true
+
+echo "Don’t prompt for confirmation before downloading"
+defaults write org.m0k.transmission DownloadAsk -bool false
+defaults write org.m0k.transmission MagnetOpenAsk -bool false
+
+echo "Don’t prompt for confirmation before removing non-downloading active transfers"
+defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+
+echo "Trash original torrent files"
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+echo "Hide the donate message"
+defaults write org.m0k.transmission WarningDonate -bool false
+echo "Hide the legal disclaimer"
+defaults write org.m0k.transmission WarningLegal -bool false
+
+echo "IP block list."
+echo "Source: https://giuliomac.wordpress.com/2014/02/19/best-blocklist-for-transmission/"
+defaults write org.m0k.transmission BlocklistNew -bool true
+defaults write org.m0k.transmission BlocklistURL -string "http://john.bitsurge.net/public/biglist.p2p.gz"
+defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
+
+echo "Randomize port on launch"
+defaults write org.m0k.transmission RandomPort -bool true
+
+###############################################################################
+echo "Mac App Store"                                                          #
+###############################################################################
+
+echo "Enable the WebKit Developer Tools in the Mac App Store"
+defaults write com.apple.appstore WebKitDeveloperExtras -bool true
+
+echo "Enable Debug Menu in the Mac App Store"
+defaults write com.apple.appstore ShowDebugMenu -bool true
+
+echo "Do notd ownload newly available updates in background"
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int 0
+
+echo "Do not install System data files & security updates"
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 0
+
+echo "Do not automatically download apps purchased on other Macs"
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 0
