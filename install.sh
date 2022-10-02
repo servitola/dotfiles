@@ -13,7 +13,7 @@ source "homebrew/install_all_homebrew_packages.sh"
 echo Make ZSH the default shell environment
 chsh -s $(which zsh)
 echo "Setup zsh and terminal stuff symlinks"
-ln -sfvh ~/projects/dotfiles/zsh/zshrc.sh ~/.shrc
+ln -sfvh ~/projects/dotfiles/zsh/zshrc.sh ~/.zshrc
 
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
