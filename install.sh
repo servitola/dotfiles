@@ -48,14 +48,9 @@ echo "installing brew packages listed in homebrew/.brewfile"
 brew bundle --file=homebrew/.brewfile --verbose
 
 echo Make ZSH the default shell environment
-if grep -q "zsh" /etc/shells
-then
-    echo "ZSH shell already in allowed shells"
-else
-    chsh -s $(which zsh)
-    echo "Setup zsh and terminal stuff symlinks"
-    ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
-fi
+chsh -s $(which zsh)
+echo "Setup zsh and terminal stuff symlinks"
+ln -sfvh ~/projects/dotfiles/zsh/zshrc.zsh ~/.zshrc
 
 echo "setup git symlinks"
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
