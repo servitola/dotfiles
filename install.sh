@@ -85,9 +85,6 @@ git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~
 echo "setup midnight commander symlink"
 ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
-echo "running usual update all script"
-sh "./macos/update_all_and_cleanup_all.sh"
-
 echo "setup flameshot symlinks"
 ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
 
