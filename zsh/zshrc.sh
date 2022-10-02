@@ -13,11 +13,11 @@ source ~/projects/dotfiles/zsh/history_settings.sh
 source ~/projects/dotfiles/zsh/p10k.sh
 
 if [[ $(uname -m) == 'arm64' ]]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.sh
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 else
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.sh
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.sh
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
 # source ~/projects/dotfiles/zsh/functions.sh
