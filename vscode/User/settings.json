@@ -156,5 +156,6 @@
     "editor.accessibilitySupport": "off",
     "[yaml]": {
       "editor.defaultFormatter": "redhat.vscode-yaml"
-    }
+    },
+    "redhat.telemetry.enabled": false
 }
