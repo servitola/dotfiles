@@ -2,8 +2,9 @@
 This is my answer to the question: «How to live with your MacOS?»
 I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 16 intel since 21.01.2020. I try to sync every single property could be synced.
 
-CAUTION: I use this config and it works perfectly but the installation was not inspected on a new machine.
-And I'm sure it won't work perfectly! I will be glad if you will find any issues and report them.
+## CAUTION: I use this config and it works but the installation was not debugged on a new machine.
+## And I'm sure it won't work perfectly!
+I will be glad if you will find any issues and report them.
 ## Problems solved FAQ
 
 * Q: I want <ins>all the file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
@@ -66,7 +67,7 @@ git clone https::github.com/servitola/dotfiles.git
 install command tools will be asked to install - agree
 #
 * Q: What is the best way to <ins>maintain this project</ins>?
-* A: I use [VSCode](https://code.visualstudio.com/). On open the project's folder it will suggest all the needed plugins to install. Also I use [PreCommit](https://pre-commit.com/) to check my commits don't have extra spaces and secrets
+* A: I use [VSCode](https://code.visualstudio.com/). On open the project's folder you will be suggested all the necessary plugins to install. As for git I use [PreCommit](https://pre-commit.com/) to check that my commits don't have extra spaces and secrets
 #
 * Q: What <ins>important</ins> to do after?
 * A: Do next:
