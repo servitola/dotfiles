@@ -1,4 +1,5 @@
 #!/bin/zsh
+
 tty_escape() { printf "\033[%sm" "$1"; }
 tty_mkbold() { tty_escape "1;$1"; }
 tty_underline="$(tty_escape "4;39")"
@@ -20,4 +21,8 @@ shell_join() {
     printf " "
     printf "%s" "${arg// /\ }"
   done
+}
+
+function mkd() {
+    mkdir -p "$@" && cd "$_";
 }
