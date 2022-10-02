@@ -1,7 +1,8 @@
 # ZSH
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
-alias reload=". ~/.shrc && echo 'ZSH config reloaded from ~/.shrc'"
+alias reload=". ~/.zsshrc && echo 'ZSH config reloaded from ~/.zsshrc'"
 
+alias re=reload
 alias cat=bat
 alias rm=trash
 alias mkdir="mkdir -pv"
@@ -11,6 +12,7 @@ alias python=python3
 alias pip=pip3
 alias wifi=airport
 alias ls=exa
+alias wifi=airport
 
 # ANDROID ADB
 alias android_deep_link='f() { adb shell am start -a android.intent.action.VIEW -d "$1" }; f'
@@ -37,9 +39,9 @@ alias path_display='echo -e ${PATH//:/\\n}'
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias wifis="wifi -s"
 alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
-alias wifi=airport
 
 # EXA aliases                                                       # ls
 alias l='exa -lbF --git'                                               # list, size, type, git
