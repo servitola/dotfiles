@@ -113,3 +113,5 @@ open https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac
 
 echo "run dock setup. Run once again when dockutil is installed please!"
 sh "./macos/dock_setup.sh"
+
+npm install --global trash-cli
