@@ -115,3 +115,4 @@ echo "run dock setup. Run once again when dockutil is installed please!"
 sh "./macos/dock_setup.sh"
 
 npm install --global trash-cli
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
