@@ -1,6 +1,9 @@
 # servitola dotfiles
 This is my answer to the question: «How to live with your MacOS?»
 I use this config and adjust it on 2 of my macoses: macmini m1 and macbook pro 16 intel since 21.01.2020. I try to sync every single property could be synced.
+
+CAUTION: I use this config and it works perfectly but the installation was not inspected on a new machine.
+And I'm sure it won't work perfectly! I will be glad if you will find any issues and report them.
 ## Problems solved FAQ
 
 * Q: I want <ins>all the file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
