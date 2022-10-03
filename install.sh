@@ -18,7 +18,7 @@ echo "setup karabiner symlinks"
 ln -sfvh ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo "setup goku symlinks"
-ln -sfvh ~/projects/dotfiles/karabiner.edn ~/.config/karabiner.edn
+ln -sfvh ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
 echo "setup hammerspoon symlinks"
 ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
