@@ -9,8 +9,10 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 
 # DOTNET
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT
+export PATH=$PATH:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/share/dotnet/x64
-export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
 # JAVA & ANDROID
