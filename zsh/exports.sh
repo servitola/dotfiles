@@ -8,6 +8,9 @@ export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 
+# HOMEBREW
+export PATH=$PATH:/opt/homebrew/bin/brew
+
 # DOTNET
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT
