@@ -10,7 +10,7 @@ source ~/.oh-my-zsh/oh-my-zsh.sh
 
 source ~/projects/dotfiles/zsh/aliases.sh
 source ~/projects/dotfiles/zsh/history_settings.sh
-source ~/projects/dotfiles/zsh/p10k.sh
+source ~/projects/dotfiles/zsh/p10k.zsh
 
 if [[ $(uname -m) == 'arm64' ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
