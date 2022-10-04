@@ -2,17 +2,17 @@ export TERM="xterm-256color"
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
-# BASH
+# Bash
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 
-# HOMEBREW
+# HomeBrew
 export PATH=$PATH:/opt/homebrew/bin/brew # M1
 export PATH=$PATH:/usr/local/Homebrew/bin/brew # Intel
 
-# DOTNET
+# DotNet
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
@@ -20,7 +20,10 @@ export PATH=$PATH:/usr/local/share/dotnet
 export PATH=$PATH:/usr/local/share/dotnet/x64
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
-# JAVA & ANDROID for Xamarin
+# JetBrains
+export PATH="$PATH:~/Library/Application Support/JetBrains/Toolbox/scripts"
+
+# Java & Android for Xamarin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
