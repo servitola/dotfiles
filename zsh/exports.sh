@@ -9,16 +9,18 @@ export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 
 # HOMEBREW
-export PATH=$PATH:/opt/homebrew/bin/brew
+export PATH=$PATH:/opt/homebrew/bin/brew # M1
+export PATH=$PATH:/usr/local/Homebrew/bin/brew # Intel
 
 # DOTNET
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
+export PATH=$PATH:/usr/local/share/dotnet
 export PATH=$PATH:/usr/local/share/dotnet/x64
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
-# JAVA & ANDROID
+# JAVA & ANDROID for Xamarin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
