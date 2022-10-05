@@ -3,7 +3,9 @@
 echo Make ZSH the default shell environment
 chsh -s $(which zsh)
 echo "Setup zsh and terminal stuff symlinks"
+rm -rf ~/.zshrc
 ln -sfvh ~/projects/dotfiles/zsh/zshrc.sh ~/.zshrc
+rm -rf ~/.zprofile
 ln -sfvh ~/projects/dotfiles/zsh/zprofile.sh ~/.zprofile
 
 echo "installing oh-my-zsh to terminal if needed"

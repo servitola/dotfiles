@@ -9,27 +9,35 @@ source "homebrew/install_all_homebrew_packages.sh"
 source "zsh/setup_zsh.sh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
+rm -rf /etc/hosts
 ln -sfvh ~/projects/dotfiles/macos/hosts /etc/hosts
 
 echo "setup git symlinks"
+rm -rf ~/.gitconfig
 ln -sfvh ~/projects/dotfiles/git/gitconfig ~/.gitconfig
 
 echo "setup karabiner symlinks"
+rm -rf ~/.config/karabiner
 ln -sfvh ~/projects/dotfiles/karabiner ~/.config/karabiner
 
 echo "setup goku symlinks"
+rm -rf ~/.config/karabiner.edn
 ln -sfvh ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 
 echo "setup hammerspoon symlinks"
+rm -rf ~/.hammerspoon
 ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
 
 echo "setup Visual Studio Code symlinks"
+rm -rf ~/Library/Application\ Support/Code/User
 ln -sfvh ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
 echo "setup midnight commander symlink"
+rm -rf ~/.config/mc
 ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "setup flameshot symlinks"
+rm -rf ~/.config/flameshot
 ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
 
 echo "install Lulu from downloaded package"
