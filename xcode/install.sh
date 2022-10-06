@@ -22,4 +22,5 @@ then
 fi
 
 echo "setup xcode symlinks"
+rm -rf ~/Library/Developer/Xcode/UserData/KeyBindings
 ln -sfvh ~/projects/dotfiles/xcode/KeyBindings ~/Library/Developer/Xcode/UserData/KeyBindings
