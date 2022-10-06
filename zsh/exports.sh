@@ -4,6 +4,8 @@ export ZSH=~/.oh-my-zsh
 
 # Bash
 export PATH=$PATH:~/bin
+export PATH=$PATH:/usr/bin
+export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
