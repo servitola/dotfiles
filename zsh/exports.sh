@@ -4,6 +4,7 @@ export ZSH=~/.oh-my-zsh
 export PATH=""
 
 # Bash
+export PATH=$PATH:/bin
 export PATH=$PATH:~/bin
 export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/sbin
