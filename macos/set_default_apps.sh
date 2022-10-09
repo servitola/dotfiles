@@ -1,4 +1,7 @@
 #!/bin/zsh
+echo 'Check the link for MacOS types identifiers:'
+echo 'https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html'
+
 
 duti -s com.microsoft.VSCode public.json all
 duti -s com.microsoft.VSCode public.plain-text all
@@ -88,6 +91,9 @@ duti -s com.microsoft.VSCode .zsh all
 duti -s com.microsoft.VSCode .zshrc all
 
 
+duti -s org.videolan.vlc public.audio all
+duti -s org.videolan.vlc public.movie all
+duti -s org.videolan.vlc public.mpeg4 all
 
 duti -s org.videolan.vlc .3gp all
 duti -s org.videolan.vlc .avi all
@@ -112,6 +118,8 @@ duti -s org.videolan.vlc .webm all
 duti -s org.videolan.vlc .wmv all
 
 
+
+duti -s org.videolan.vlc public.image all
 
 duti -s com.apple.Preview .bmp all
 duti -s com.apple.Preview .gif all
