@@ -12,6 +12,7 @@ duti -s com.microsoft.VSCode public.text all
 duti -s com.microsoft.VSCode public.unix-executable all
 
 duti -s com.microsoft.VSCode .asc all
+duti -s com.microsoft.VSCode .applescript all
 duti -s com.microsoft.VSCode .bashrc all
 duti -s com.microsoft.VSCode .bat all
 duti -s com.microsoft.VSCode .bib all
