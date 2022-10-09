@@ -1,4 +1,4 @@
-export TERM="xterm-256color"
+export TERM='xterm-256color'
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 export PATH=""
@@ -25,7 +25,7 @@ export PATH=$PATH:/usr/local/share/dotnet/x64
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
 # JetBrains
-export PATH="$PATH:~/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android for Xamarin
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
