@@ -7,8 +7,11 @@ echo "Setting macos defaults"
 echo "Close any open System Preferences panes, to prevent them from overriding"
 osascript -e 'tell application "System Preferences" to quit'
 
+echo "Show the ~/Library folder."
+chflags nohidden ~/Library
+
 echo "Disable the sound effects on boot"
-sudo nvram SystemAudioVolume=" "
+nvram SystemAudioVolume=" "
 
 echo "Disable Siri and remove the menu bar icon"
 launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/null
@@ -16,13 +19,8 @@ defaults write com.apple.Siri StatusMenuVisible -int 0
 defaults write com.apple.Siri UserHasDeclinedEnable -int 1
 
 echo "Disable the “Are you sure you want to open this application?” dialog"
-sudo spctl --master-disable
+spctl --master-disable
 defaults write com.apple.LaunchServices LSQuarantine -bool false
-
-echo Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
-echo "Turn off .dmg verification"
 defaults write com.apple.frameworks.diskimages skip-verify -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
@@ -51,17 +49,11 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow LoginwindowText  
 echo "Set highlight color to green"
 defaults write NSGlobalDomain AppleHighlightColor -string "0.764700 0.976500 0.568600"
 
-echo "Disable the “Are you sure you want to open this application?” dialog"
-defaults write com.apple.LaunchServices LSQuarantine -bool false
-
 echo "Disable shadow in screenshots"
 defaults write com.apple.screencapture disable-shadow -bool true
 
 echo "Always open everything in Finder's list view. This is important."
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
-
-echo "Show the ~/Library folder."
-chflags nohidden ~/Library
 
 ###############################################################################
 echo "Finder"                                                                 #
@@ -195,7 +187,7 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 echo "Enable Debug Menu in the Mac App Store"
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
-echo "Do notd ownload newly available updates in background"
+echo "Do not download newly available updates in background"
 defaults write com.apple.SoftwareUpdate AutomaticDownload -int 0
 
 echo "Do not install System data files & security updates"
