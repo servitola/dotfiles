@@ -4,7 +4,7 @@ alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
 
 alias re=reload
 alias cat=bat
-alias rm=trash
+#alias rm=trash
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 alias search=grep
