@@ -1,15 +1,25 @@
 #!/bin/zsh
+
+source "$HOME/projects/dotfiles/zsh/functions.sh"
+
 echo 'Check the link for MacOS types identifiers:'
 echo 'https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html'
 
 
+duti -s com.microsoft.VSCode com.netscape.javascript-source all
+duti -s com.microsoft.VSCode net.daringfireball.markdown all
+duti -s com.microsoft.VSCode public.css all
 duti -s com.microsoft.VSCode public.json all
+duti -s com.microsoft.VSCode public.php-script all
 duti -s com.microsoft.VSCode public.plain-text all
 duti -s com.microsoft.VSCode public.python-script all
+duti -s com.microsoft.VSCode public.ruby-script all
 duti -s com.microsoft.VSCode public.shell-script all
 duti -s com.microsoft.VSCode public.source-code all
 duti -s com.microsoft.VSCode public.text all
 duti -s com.microsoft.VSCode public.unix-executable all
+duti -s com.microsoft.VSCode public.xml all
+
 
 duti -s com.microsoft.VSCode .asc all
 duti -s com.microsoft.VSCode .applescript all
@@ -94,7 +104,6 @@ duti -s com.microsoft.VSCode .zshrc all
 
 duti -s org.videolan.vlc public.audio all
 duti -s org.videolan.vlc public.movie all
-duti -s org.videolan.vlc public.mpeg4 all
 
 duti -s org.videolan.vlc .3gp all
 duti -s org.videolan.vlc .avi all
@@ -120,7 +129,7 @@ duti -s org.videolan.vlc .wmv all
 
 
 
-duti -s org.videolan.vlc public.image all
+duti -s com.apple.Preview public.image all
 
 duti -s com.apple.Preview .bmp all
 duti -s com.apple.Preview .gif all
