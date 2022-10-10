@@ -5,7 +5,7 @@ source "zsh/exports.sh"
 source "macos/set_defaults.sh"
 source "xcode/install.sh"
 source "homebrew/install.sh"
-source "homebrew/install_all_homebrew_packages.sh"
+source "homebrew/install_minimum_homebrew_packages.sh"
 source "zsh/setup_zsh.sh"
 
 echo "setup hosts file (perhaps you need to do it manually later)"
