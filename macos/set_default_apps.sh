@@ -5,7 +5,6 @@ source "$HOME/projects/dotfiles/zsh/functions.sh"
 echo 'Check the link for MacOS types identifiers:'
 echo 'https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html'
 
-
 duti -s com.microsoft.VSCode com.netscape.javascript-source all
 duti -s com.microsoft.VSCode net.daringfireball.markdown all
 duti -s com.microsoft.VSCode public.css all
