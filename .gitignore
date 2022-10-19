@@ -14,3 +14,5 @@ vscode/User/sync/tasks/lastSynctasks.json
 vscode/User/sync/globalState/*.json
 vscode/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin/vscode-machine-id
 vscode/User/globalStorage/alefragnani.project-manager/projects_cache_git.json
+vscode/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin/devcontainer.cmd
+vscode/User/globalStorage/ms-vscode-remote.remote-containers/cli-bin/devcontainer
