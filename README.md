@@ -78,6 +78,10 @@ install command tools will be asked to install - agree
 * Q: I want to understand what this repository installs exactly
 * A: check the [Install.sh](https://github.com/servitola/dotfiles/blob/master/install.sh) script . It installs all the programs (with homebrew mostly), creates symlinks, does the rest
 #
+* Q: How to log in Hammerspoon to Hammespoon's console faster?
+* A: in hammespoon's lua file write down:
+```print "log message"```
+#
 ## Extra
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
 * AnnePro2 Qmk config with light scheme
