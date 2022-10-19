@@ -3,7 +3,6 @@ local obj = {}
 margin = 0.005
 animation_duration = 0.1
 vertical_line = 0.74
-right_block_vertical_margin = 0.044
 horizontal_line = 0.7
 
 -----------------------------------------
@@ -11,8 +10,8 @@ horizontal_line = 0.7
 spacing = margin * 2
 leftX = margin
 topY = margin
-rightX = 1 - margin
-bottomY = 1 - margin
+rightX = 1 - margin / 2
+bottomY = 1 - margin * 2
 
 right_side_app_titles = {}
 bottom_side_app_titles = {}
@@ -56,7 +55,7 @@ function set_window_right(window)
         set_window_bottom(window)
     else
         set_window(vertical_line, topY, rightX - vertical_line,
-            horizontal_line - right_block_vertical_margin, window)
+            horizontal_line - margin, window)
     end
 end
 
