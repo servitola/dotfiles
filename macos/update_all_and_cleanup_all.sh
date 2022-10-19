@@ -48,7 +48,6 @@ rm -rfv ~/.Trash
 rm -rfv /private/var/log/asl/*.asl
 rm -rfv /Volumes/*/.Trashes; \
 rm -rfv ~/.Trash/*; \
-rm -v /private/var/vm/sleepimage; \
 setopt no_rm_star_silent #turn on safe mode back
 
 echo "Updating tldr caches"
