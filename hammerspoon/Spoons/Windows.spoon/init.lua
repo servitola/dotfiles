@@ -1,10 +1,16 @@
 local obj = {}
-margin = 0.001
-vertical_line = 0.73
-horizontal_line = 0.76
-right_block_vertical_margin = 0.044
 
-hs.window.animationDuration = 0
+leftX = 0.005
+topY = 0.005
+spacing = 0.01
+rightX = 0.995
+bottomY = 0.99
+
+vertical_line = 0.74
+right_block_vertical_margin = 0.044
+horizontal_line = 0.7
+
+hs.window.animationDuration = 0.1
 -----------------------------------------
 
 right_side_app_titles = {}
@@ -35,7 +41,7 @@ function obj:bind_all_windows_to_default(modifier, key)
 end
 
 function set_window_left(window)
-    set_window(0, 0, vertical_line, 1, window)
+    set_window(leftX, topY, vertical_line - spacing, bottomY - topY, window)
 end
 
 function set_window_right(window)
@@ -48,18 +54,18 @@ function set_window_right(window)
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
     else
-        set_window(vertical_line + margin, 0, 1 - vertical_line,
+        set_window(vertical_line, topY, rightX - vertical_line,
             horizontal_line - right_block_vertical_margin, window)
     end
 end
 
 function set_window_bottom(window)
-    set_window(vertical_line + margin, horizontal_line, 1 - vertical_line, 1 - horizontal_line,
+    set_window(vertical_line, horizontal_line, rightX - vertical_line, rightY - horizontal_line,
         window)
 end
 
 function set_window_fullscreen(window)
-    set_window(0, 0, 1, 1, window)
+    set_window(leftX, topY, rightX - leftX, bottomY - topY, window)
 end
 
 function set_all_windows_positions()
@@ -143,14 +149,7 @@ function set_window(x, y, width, height, window)
         return
     end
 
-    local screen_size = window:screen():fullFrame()
-
-    window:setFrame({
-        x = screen_size.w * x,
-        y = screen_size.h * y,
-        h = screen_size.h * height,
-        w = screen_size.w * width
-    })
+    window:moveToUnit({x, y, width, height}, 0.1)
 end
 
 return obj
