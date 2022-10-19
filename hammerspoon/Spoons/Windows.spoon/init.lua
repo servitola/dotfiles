@@ -1,17 +1,18 @@
 local obj = {}
 
-leftX = 0.005
-topY = 0.005
-spacing = 0.01
-rightX = 0.995
-bottomY = 0.99
-
+margin = 0.005
+animation_duration = 0.1
 vertical_line = 0.74
 right_block_vertical_margin = 0.044
 horizontal_line = 0.7
 
-hs.window.animationDuration = 0.1
 -----------------------------------------
+
+spacing = margin * 2
+leftX = margin
+topY = margin
+rightX = 1 - margin
+bottomY = 1 - margin
 
 right_side_app_titles = {}
 bottom_side_app_titles = {}
@@ -149,7 +150,7 @@ function set_window(x, y, width, height, window)
         return
     end
 
-    window:moveToUnit({x, y, width, height}, 0.1)
+    window:moveToUnit({x, y, width, height}, animation_duration)
 end
 
 return obj
