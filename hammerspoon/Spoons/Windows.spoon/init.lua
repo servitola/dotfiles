@@ -2,16 +2,16 @@ local obj = {}
 
 margin = 0.005
 animation_duration = 0.1
-vertical_line = 0.74
-horizontal_line = 0.7
+horizontal_line = 0.70
+vertical_line = 0.73
 
 -----------------------------------------
 
 spacing = margin * 2
 leftX = margin
 topY = margin
-rightX = 1 - margin / 2
-bottomY = 1 - margin * 2
+rightX = 1 - margin / 1.5
+bottomY = 1 - margin * 1.5
 
 right_side_app_titles = {}
 bottom_side_app_titles = {}
@@ -60,8 +60,12 @@ function set_window_right(window)
 end
 
 function set_window_bottom(window)
-    set_window(vertical_line, horizontal_line, rightX - vertical_line, rightY - horizontal_line,
-        window)
+    set_window(
+      vertical_line,
+      horizontal_line + spacing,
+      rightX - vertical_line,
+      1 - horizontal_line,
+      window)
 end
 
 function set_window_fullscreen(window)
@@ -79,6 +83,8 @@ function set_all_windows_positions()
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) then
+            set_window_bottom(window)
+        elseif is_firefox_video_player(app_title, window_title) then
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
@@ -126,6 +132,14 @@ function is_music_mini_player(app_title, window_title)
     else
         return false
     end
+end
+
+function is_firefox_video_player(app_title, window_title)
+  if app_title == "Firefox" and window_title == "Picture-in-Picture" then
+      return true
+  else
+      return false
+  end
 end
 
 function is_full_screen(window)
