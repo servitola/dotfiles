@@ -14,6 +14,7 @@
       "vscode-icons-team.vscode-icons",
       "virgilsisoe.hammerspoon-snippets",
       "idleberg.applescript",
-      "WallabyJs.quokka-vscode"
+      "wallabyjs.quokka-vscode",
+      "ms-dotnettools.csharp"
     ]
 }
