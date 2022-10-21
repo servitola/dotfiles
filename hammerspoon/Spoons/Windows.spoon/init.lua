@@ -132,8 +132,8 @@ function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
 
-    if window_frame.x == 0 and window_frame.y >= screen_size.y - 30 and window_frame.h >= screen_size.h - 30 and
-        window_frame.w == screen_size.w then
+    if window_frame.h >= screen_size.h - margin * 5 and
+        window_frame.w >= screen_size.w - margin * 5 then
         return true
     else
         return false
