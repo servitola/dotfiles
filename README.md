@@ -66,7 +66,7 @@ Just type `baobab` in Terminal/iTerm2
 #
 * Q: But <ins>where to download</ins> at first?
 * A: You must clone or download zip with this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path
-```
+```bash
 mkdir ~/projects
 cd ~/projects
 git clone https::github.com/servitola/dotfiles.git
