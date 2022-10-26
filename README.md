@@ -50,6 +50,9 @@ I will be glad if you will find any issues and report them.
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp)
 #
+* Q: I want to <ins>hide comments</ins> and <ins>speed up video</ins> on <ins>YouTube</ins>:
+* A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
+#
 * Q: I want to find out what takes the space on my hard drive
 * A: I use [baobab](https://wiki.gnome.org/action/show/Apps/DiskUsageAnalyzer?action=show&redirect=Apps%2FBaobab)
 Just type `baobab` in Terminal/iTerm2
