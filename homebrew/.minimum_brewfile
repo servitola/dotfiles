@@ -31,3 +31,6 @@ cask "telegram"
 cask "visual-studio-code"
 cask "vlc"
 cask "zoom"
+mas "Amphetamine", id: 937984704
+mas "HazeOver", id: 430798174
+mas "Peek", id: 1554235898
