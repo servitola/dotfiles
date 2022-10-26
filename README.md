@@ -48,7 +48,11 @@ I will be glad if you will find any issues and report them.
 * A: I use [FlameShot](https://flameshot.org/). It is installed with all the programs with homebrew here
 #
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
-* A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp)
+* A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use **yt-dlp** command with any link from . For example:
+```
+yt-dlp https://www.youtube.com/watch?v=QhROKjpuLMM
+yt-dlp https://www.youtube.com/user/ButKorn/videos
+```
 #
 * Q: I want to <ins>hide comments</ins> and <ins>speed up video</ins> on <ins>YouTube</ins>:
 * A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
