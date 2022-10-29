@@ -7,6 +7,7 @@ vertical_line = 0.73
 
 -----------------------------------------
 
+top_bar_height = 25
 spacing = margin * 2
 leftX = margin
 topY = margin
@@ -38,6 +39,10 @@ end
 
 function obj:bind_all_windows_to_default(modifier, key)
     hs.hotkey.bind(modifier, key, set_all_windows_positions)
+end
+
+function obj:set_all_windows_positions()
+    set_all_windows_positions()
 end
 
 function set_window_left(window)
@@ -146,8 +151,8 @@ function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
 
-    if window_frame.h >= screen_size.h - margin * 5 and
-        window_frame.w >= screen_size.w - margin * 5 then
+    if math.floor(window_frame.h) == math.floor(screen_size.h * bottomY - screen_size.h * topY - top_bar_height)
+        and math.floor(window_frame.w) == math.floor(screen_size.w * rightX - screen_size.w * leftX) then
         return true
     else
         return false
