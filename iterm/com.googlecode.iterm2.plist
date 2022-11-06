@@ -838,7 +838,7 @@
 				<real>0.7928692102432251</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.4985763770946558</real>
+			<real>0.49997848289600316</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
@@ -846,7 +846,7 @@
 			<key>Blur</key>
 			<true/>
 			<key>Blur Radius</key>
-			<real>19.768974856112862</real>
+			<real>64</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1469,7 +1469,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.080000000000000002</real>
+			<real>0.24754147793384354</real>
 			<key>Unlimited Scrollback</key>
 			<true/>
 			<key>Use Bold Font</key>
