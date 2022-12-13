@@ -39,7 +39,7 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NPM
-export NODE_PATH=/usr/local/Cellar/node/node_global
+export NODE_PATH=~/.npm-global/bin
 export NPM_PACKAGES=~/.npm-packages
 export PATH="$PATH:$NODE_PATH/bin"
 export PATH="$PATH:$NPM_PACKAGES/bin"

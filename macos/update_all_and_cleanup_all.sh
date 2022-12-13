@@ -25,10 +25,10 @@ git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 echo "Configure NPM"
 npm config set fund false --location=global
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
 npm install npm --location=global
 npm update --location=global
-mkd /usr/local/Cellar/node/node_global
-npm config set prefix '/usr/local/Cellar/node/node_global'
 
 echo "Flashing DNS cache"
 dscacheutil -flushcache
