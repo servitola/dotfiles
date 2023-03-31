@@ -57,6 +57,9 @@ yt-dlp https://www.youtube.com/user/ButKorn/videos
 * Q: I want to <ins>hide comments</ins> and <ins>speed up video</ins> on <ins>YouTube</ins>:
 * A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
 #
+* Q: I want to have multi buffer and don't go between the windows multiple times. Exactly I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once. 
+* A: I use [maccy](https://maccy.app/). It is installed with all the programs with homebrew here
+#
 * Q: I want to find out what takes the space on my hard drive
 * A: I use [baobab](https://wiki.gnome.org/action/show/Apps/DiskUsageAnalyzer?action=show&redirect=Apps%2FBaobab)
 Just type `baobab` in Terminal/iTerm2
