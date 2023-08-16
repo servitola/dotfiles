@@ -64,7 +64,6 @@ cask "firefox"
 cask "flameshot"
 cask "font-jetbrains-mono-nerd-font"
 cask "fork"
-cask "github"
 cask "google-chrome"
 cask "hammerspoon"
 cask "iterm2"
@@ -83,6 +82,7 @@ cask "workflowy"
 cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "DjVu Reader", id: 733144595
 mas "Grammarly for Safari", id: 1462114288
 mas "HazeOver", id: 430798174
 mas "Peek", id: 1554235898
