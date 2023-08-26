@@ -18,7 +18,8 @@ export PATH=$PATH:/opt/homebrew/bin # M1
 export PATH=$PATH:/usr/local/Homebrew/bin # Intel
 
 # DotNet
-export DOTNET_ROOT=$HOME/.dotnet
+#export DOTNET_ROOT=$HOME/.dotnet
+export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
