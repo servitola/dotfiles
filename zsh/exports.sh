@@ -3,6 +3,11 @@ export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 export PATH=""
 
+# HomeBrew
+export PATH=$PATH:/opt/homebrew/bin # M1
+export PATH=$PATH:/opt/homebrew/sbin
+export PATH=$PATH:/usr/local/Homebrew/bin # Intel
+
 # Bash
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
@@ -12,10 +17,6 @@ export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
-
-# HomeBrew
-export PATH=$PATH:/opt/homebrew/bin # M1
-export PATH=$PATH:/usr/local/Homebrew/bin # Intel
 
 # DotNet
 #export DOTNET_ROOT=$HOME/.dotnet
