@@ -144,7 +144,6 @@
         "markdown": true
     },
     "explorer.fileNesting.enabled": true,
-    "workbench.statusBar.visible": false,
     "editor.wordWrap": "on",
     "workbench.iconTheme": "vscode-icons",
     "workbench.layoutControl.enabled": false,
