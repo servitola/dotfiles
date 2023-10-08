@@ -73,6 +73,10 @@ source "macos/dock_setup.sh"
 echo "installing trash-cli to replace rm with trash"
 npm install --global trash-cli
 
+echo "installing vsce to publish vscode extensions"
+npm install --global vsce
+npm install --global typescript
+
 echo "installing nanorc"
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
