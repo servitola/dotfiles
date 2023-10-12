@@ -82,3 +82,4 @@ curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 
 mkd /usr/local/Cellar/node/node_global
 npm config set prefix '/usr/local/Cellar/node/node_global'
+sudo chown -R $(whoami) /usr/local/Cellar
