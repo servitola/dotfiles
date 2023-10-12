@@ -121,7 +121,8 @@
     "bracket-pair-colorizer-2.depreciation-notice": false,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "cSpell.userWords": [
-        "nrwl"
+      "nrwl",
+      "omnisharp"
     ],
     "editor.inlineSuggest.enabled": true,
     "settingsSync.ignoredExtensions": [
