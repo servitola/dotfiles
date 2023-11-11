@@ -23,6 +23,10 @@ echo "Updating OhMyZsh"
 zsh -ic "omz update"
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
+echo "Update dotnet tools"
+dotnet tool update -g dotnet-dsrouter --add-source=https://aka.ms/dotnet-tools/index.json
+dotnet tool update -g dotnet-trace
+
 echo "Configure NPM"
 npm config set fund false --location=global
 mkdir ~/.npm-global
