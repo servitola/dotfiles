@@ -42,8 +42,8 @@ echo "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
 rm -rfv ~/Library/Caches/*
 rm -rfv /Library/Caches/*
-rm -rfv ~/Library/Logs/**/*.log
-rm -rfv ~/Library/Logs/**/*.log.0
+find ~/Library/Logs -type f -name '*.log' -ls -delete
+find ~/Library/Logs -type f -name '*.log.0' -ls -delete
 rm -rfv ~/Library/Developer/Xcode/DerivedData/*
 rm -rfv ~/.local/share/NuGet/v3-cache/*
 echo "Cleaning DS_Store"
