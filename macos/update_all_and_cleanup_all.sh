@@ -59,4 +59,7 @@ setopt no_rm_star_silent #turn on safe mode back
 echo "Updating tldr caches"
 tldr --update
 
+echo "checking android sdk licenses"
+sdkmanager --licenses --verbose
+
 reload
