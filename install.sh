@@ -32,10 +32,6 @@ echo "setup Visual Studio Code symlinks"
 rm -rf ~/Library/Application\ Support/Code/User
 ln -sfvh ~/projects/dotfiles/vscode/User ~/Library/Application\ Support/Code/User
 
-echo "setup Android SDK"
-rm -rf ~/Library/Android/sdk
-ln -sfvh /Users/servitola/Library/Developer/Xamarin/android-sdk-macosx ~/Library/Android/sdk
-
 echo "setup midnight commander symlink"
 rm -rf ~/.config/mc
 ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
