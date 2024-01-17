@@ -19,10 +19,6 @@ brew cleanup
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
-echo "Updating OhMyZsh"
-zsh -ic "omz update"
-git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
-
 echo "Update dotnet tools"
 dotnet tool update -g dotnet-dsrouter --add-source=https://aka.ms/dotnet-tools/index.json
 dotnet tool update -g dotnet-trace
@@ -62,5 +58,11 @@ tldr --update
 
 echo "checking android sdk licenses"
 sdkmanager --licenses --verbose
+
+reload
+
+echo "Updating OhMyZsh"
+zsh -ic "omz update"
+git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 reload
