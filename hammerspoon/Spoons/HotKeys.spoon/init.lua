@@ -134,7 +134,7 @@ apps_list = {
         -- |---------------------------------------------------------------------------------------------------------------+
         -- | TO_PRESS | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |      |
         -- |--------------------------------------------------------------------------------------------------------------+
-        -- |      |  toRus  |  home   | end  |  Firefox | iTerm2  | VSCode | ElMedia  | home | end |  volume_down  |      |
+        -- |      |  toRus  |  home   | end  |  Yandex | iTerm2  | VSCode | ElMedia  | home | end |  volume_down  |      |
         -- |--------------------------------------------------------------------------------------------------------------+
         -- |     |      |       |         play/stop                |       |       |       |                              |
         -- \--------------------------------------------------------------------------------------------------------------/
@@ -180,7 +180,7 @@ apps_list = {
         { key="z", specific_function="set_russian_language"},
         -- x - home
         -- c - end
-        { key="v", app="Firefox" },
+        { key="v", app="Yandex" },
         { key="b", app="iTerm" },
         { key="n", app="Visual Studio Code" },
         { key="m", app="Elmedia Player", window_default_position="bottom"},
