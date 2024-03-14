@@ -1,9 +1,9 @@
 Zoom = "us.zoom.xos"
 Safari = "com.apple.Safari"
-Firefox = "org.mozilla.firefox"
+Yandex = "ru.yandex.desktop.yandex-browser"
 urlDispatcherSpoon = hs.loadSpoon("URLDispatcher")
 
-urlDispatcherSpoon.default_handler = Firefox
+urlDispatcherSpoon.default_handler = Yandex
 
 urlDispatcherSpoon.url_patterns = {
     { "https?://.*zoom.us/j/", Zoom },
