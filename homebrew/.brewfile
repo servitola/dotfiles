@@ -97,7 +97,6 @@ cask "iterm2"
 cask "itsycal"
 cask "jasper"
 cask "jetbrains-toolbox"
-cask "kdiff3"
 cask "karabiner-elements"
 cask "maccy"
 cask "notion"
@@ -126,7 +125,6 @@ cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Day One", id: 1055511498
-mas "Deliveries", id: 290986013
 mas "Developer", id: 640199958
 mas "DjVu Reader", id: 733144595
 mas "feedly", id: 865500966
