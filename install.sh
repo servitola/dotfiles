@@ -56,10 +56,6 @@ open ilya-birman-typolayout-3.8-mac.dmg
 echo "set default applications for different file extensions"
 source "macos/set_default_apps.sh"
 
-echo "check extra links for installation"
-echo "https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac"
-open https://ioshacker.com/how-to/use-touch-id-for-sudo-in-terminal-on-mac
-
 echo "https://www.mrfdev.com/enhancer-for-youtube"
 open https://www.mrfdev.com/enhancer-for-youtube
 
