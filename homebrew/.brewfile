@@ -88,7 +88,6 @@ cask "firefox"
 cask "flameshot"
 cask "font-jetbrains-mono-nerd-font"
 cask "fork"
-cask "github"
 cask "google-chrome"
 cask "guitar-pro"
 cask "hammerspoon"
@@ -103,7 +102,6 @@ cask "notion"
 cask "maccy"
 cask "objectivesharpie"
 cask "obs"
-cask "obsidian"
 cask "onyx"
 cask "opera"
 cask "postman"
@@ -133,6 +131,7 @@ mas "Gifski", id: 1351639930
 mas "Grammarly for Safari", id: 1462114288
 mas "HazeOver", id: 430798174
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixave", id: 924891282
 mas "Reeder", id: 1449412482
