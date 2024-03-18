@@ -27,6 +27,7 @@ ln -sfvh ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
 echo "setup hammerspoon symlinks"
 rm -rf ~/.hammerspoon
 ln -sfvh ~/projects/dotfiles/hammerspoon ~/.hammerspoon
+open /Applications/Hammerspoon.app
 
 echo "setup Visual Studio Code symlinks"
 rm -rf ~/Library/Application\ Support/Code/User
@@ -50,8 +51,8 @@ curl -O https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3
 open dockutil-3.0.2.pkg
 
 echo "install Birman's keyboard Layout"
-curl -O https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.8-mac.dmg
-open ilya-birman-typolayout-3.8-mac.dmg
+curl -O https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.9-mac.zip
+open ilya-birman-typolayout-3.9-mac.zip
 
 echo "set default applications for different file extensions"
 source "macos/set_default_apps.sh"
