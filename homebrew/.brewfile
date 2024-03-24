@@ -5,6 +5,7 @@ tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
+tap "homebrew/services"
 tap "jesseduffield/lazygit"
 tap "microsoft/git"
 tap "osx-cross/arm"
@@ -82,6 +83,7 @@ cask "battle-net"
 cask "binance"
 cask "crescendo"
 cask "cursor"
+cask "cyberghost-vpn"
 cask "devcleaner"
 cask "etrecheckpro"
 cask "firefox"
@@ -97,10 +99,7 @@ cask "itsycal"
 cask "jasper"
 cask "jetbrains-toolbox"
 cask "karabiner-elements"
-cask "maccy"
 cask "notion"
-cask "maccy"
-cask "objectivesharpie"
 cask "obs"
 cask "onyx"
 cask "opera"
@@ -129,6 +128,7 @@ mas "GarageBand", id: 682658836
 mas "Gifski", id: 1351639930
 mas "Grammarly for Safari", id: 1462114288
 mas "HazeOver", id: 430798174
+mas "Keynote", id: 409183694
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
@@ -138,6 +138,7 @@ mas "RocketSim", id: 1504940162
 mas "Shareful", id: 1522267256
 mas "Shazam", id: 897118787
 mas "Simple Antnotes", id: 846599902
+mas "Stage Plot Maker", id: 1506457515
 mas "System Designer", id: 1102494854
 mas "Telegram Lite", id: 946399090
 mas "The Unarchiver", id: 425424353
