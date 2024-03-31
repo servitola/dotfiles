@@ -492,7 +492,7 @@ function obj:init()
                     end)
                 elseif chord_row.specific_function == "set_russian_language" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
-                        hs.keycodes.setLayout("Russian - Ilya Birman Typography")
+                        hs.keycodes.setLayout("Russian – Ilya Birman Typography")
                     end)
                 elseif chord_row.specific_function == "set_english_language" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
