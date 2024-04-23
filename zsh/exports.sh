@@ -31,8 +31,11 @@ export PATH=$PATH:/usr/local/opt/sqlite/bin
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android for Xamarin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
+
+export DOCKER_HOST=unix:///$HOME/.colima/docker.sock
 
 export ANDROID_SDK=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
