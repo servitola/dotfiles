@@ -6,6 +6,7 @@ export PATH=""
 # HomeBrew
 export PATH=$PATH:/opt/homebrew/bin # M1
 export PATH=$PATH:/opt/homebrew/sbin
+export PATH=$PATH:/opt/homebrew/opt/ruby/bin #Ruby
 export PATH=$PATH:/usr/local/Homebrew/bin # Intel
 
 # Bash
