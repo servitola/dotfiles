@@ -27,6 +27,7 @@ echo "Configure NPM"
 npm config set fund false --location=global
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
+sudo chown -R "/Users/servitola/.npm"
 npm install npm --location=global
 npm update --location=global
 
