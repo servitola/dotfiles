@@ -1,5 +1,10 @@
 # init powerlevel10k theme with its Instant Prompt feature
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc"
 fi
