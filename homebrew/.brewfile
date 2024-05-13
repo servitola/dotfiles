@@ -16,6 +16,7 @@ tap "yqrashawn/goku"
 brew "pango"
 brew "librsvg"
 brew "node"
+brew "appium", link: false
 brew "gtk4"
 brew "libadwaita"
 brew "baobab"
