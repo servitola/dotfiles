@@ -158,7 +158,7 @@ apps_list = {
         -- e - pagedown
         { key="r", app="Rider" },
         { key="t", app="Telegram", window_default_position="right" },
-        -- y — don't use
+        { key="y", app="Android Studio" },
         { key="u", app="Transmission", window_default_position="right" },
         -- o - up
         { key="p", app="Music" },
