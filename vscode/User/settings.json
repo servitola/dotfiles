@@ -157,5 +157,6 @@
     "[yaml]": {
       "editor.defaultFormatter": "redhat.vscode-yaml"
     },
-    "redhat.telemetry.enabled": false
+    "redhat.telemetry.enabled": false,
+    "github.copilot.editor.enableAutoCompletions": true
 }
