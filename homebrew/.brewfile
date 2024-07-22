@@ -155,6 +155,7 @@ mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 vscode "alefragnani.project-manager"
 vscode "angular.ng-template"
+vscode "dotjoshjohnson.xml"
 vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
