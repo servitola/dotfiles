@@ -10,6 +10,7 @@ export PATH=$PATH:/opt/homebrew/opt/ruby/bin #Ruby
 export PATH=$PATH:/usr/local/Homebrew/bin # Intel
 
 # Bash
+export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/bin
 export PATH=$PATH:/usr/local/sbin
 export PATH=$PATH:/bin
