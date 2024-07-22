@@ -9,6 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc" ]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc"
 fi
 
+. /opt/homebrew/etc/profile.d/z.sh
 source ~/projects/dotfiles/zsh/exports.sh
 source ~/projects/dotfiles/zsh/plugins.sh
 source ~/.oh-my-zsh/oh-my-zsh.sh
