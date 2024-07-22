@@ -43,6 +43,7 @@ echo "Clearing Logs from ~/Library/Logs"
 find ~/Library/Logs -type f -name '*.log' -ls -delete
 find ~/Library/Logs -type f -name '*.log.0' -ls -delete
 rm -rfv ~/Library/Developer/Xcode/DerivedData/*
+rm -rfv /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs/*
 rm -rfv ~/.local/share/NuGet/v3-cache/*
 echo "Cleaning .DS_Store files"
 find . -type f -name '*.DS_Store' -ls -delete
