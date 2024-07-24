@@ -913,6 +913,8 @@
 			<string>Recycle</string>
 			<key>Custom Icon Path</key>
 			<string>/Users/servitola/projects/dotfiles/images/avatars/avatar211x211.png</string>
+			<key>Custom Locale</key>
+			<string>en_US.UTF-8</string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -1454,6 +1456,8 @@
 			<true/>
 			<key>Session Close Undo Timeout</key>
 			<integer>6</integer>
+			<key>Set Local Environment Vars</key>
+			<integer>2</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
