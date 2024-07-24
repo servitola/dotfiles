@@ -44,6 +44,13 @@ export DOCKER_HOST=unix:///$HOME/.colima/docker.sock
 
 export ANDROID_SDK=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/14.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/13.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/12.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/11.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/10.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/9.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/8.0/bin
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/7.0/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/build-tools/33.0.3
