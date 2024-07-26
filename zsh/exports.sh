@@ -25,6 +25,7 @@ export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimula
 export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
+export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 export PATH=$PATH:/usr/local/share/dotnet
 
@@ -32,7 +33,7 @@ export PATH=$PATH:/usr/local/share/dotnet
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android for Xamarin
-#export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
