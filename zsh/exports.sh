@@ -19,6 +19,7 @@ export PATH=$PATH:/usr/bin
 export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
+export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
 
 # DotNet
 export DOTNET_ROOT=/usr/local/share/dotnet
