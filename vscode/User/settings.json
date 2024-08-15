@@ -159,5 +159,8 @@
     },
     "redhat.telemetry.enabled": false,
     "github.copilot.editor.enableAutoCompletions": true,
-    "editor.largeFileOptimizations": false
+    "editor.largeFileOptimizations": false,
+    "[xml]": {
+      "editor.defaultFormatter": "redhat.vscode-xml"
+    }
 }
