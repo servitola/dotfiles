@@ -99,30 +99,30 @@ duti -s com.microsoft.VSCode .zsh all
 duti -s com.microsoft.VSCode .zshrc all
 
 
-duti -s org.videolan.vlc public.audio all
-duti -s org.videolan.vlc public.movie all
+duti -s com.colliderli.iina public.audio all
+duti -s com.colliderli.iina public.movie all
 
-duti -s org.videolan.vlc .3gp all
-duti -s org.videolan.vlc .avi all
-duti -s org.videolan.vlc .flac all
-duti -s org.videolan.vlc .flv all
-duti -s org.videolan.vlc .m4a all
-duti -s org.videolan.vlc .m4v all
-duti -s org.videolan.vlc .mka all
-duti -s org.videolan.vlc .mkv all
-duti -s org.videolan.vlc .mks all
-duti -s org.videolan.vlc .mov all
-duti -s org.videolan.vlc .mp3 all
-duti -s org.videolan.vlc .mpeg all
-duti -s org.videolan.vlc .mpg all
-duti -s org.videolan.vlc .mp4 all
-duti -s org.videolan.vlc .ogg all
-duti -s org.videolan.vlc .ogm all
-duti -s org.videolan.vlc .ogv all
-duti -s org.videolan.vlc .opus all
-duti -s org.videolan.vlc .wav all
-duti -s org.videolan.vlc .webm all
-duti -s org.videolan.vlc .wmv all
+duti -s com.colliderli.iina .3gp all
+duti -s com.colliderli.iina .avi all
+duti -s com.colliderli.iina .flac all
+duti -s com.colliderli.iina .flv all
+duti -s com.colliderli.iina .m4a all
+duti -s com.colliderli.iina .m4v all
+duti -s com.colliderli.iina .mka all
+duti -s com.colliderli.iina .mkv all
+duti -s com.colliderli.iina .mks all
+duti -s com.colliderli.iina .mov all
+duti -s com.colliderli.iina .mp3 all
+duti -s com.colliderli.iina .mpeg all
+duti -s com.colliderli.iina .mpg all
+duti -s com.colliderli.iina .mp4 all
+duti -s com.colliderli.iina .ogg all
+duti -s com.colliderli.iina .ogm all
+duti -s com.colliderli.iina .ogv all
+duti -s com.colliderli.iina .opus all
+duti -s com.colliderli.iina .wav all
+duti -s com.colliderli.iina .webm all
+duti -s com.colliderli.iina .wmv all
 
 
 duti -s com.apple.Preview public.image all
