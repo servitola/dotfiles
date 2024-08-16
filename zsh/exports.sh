@@ -25,7 +25,7 @@ export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimula
 export DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
-export PATH=$PATH:~/.dotnet/tools
+#export PATH=$PATH:~/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 export PATH=$PATH:/usr/local/share/dotnet
 
@@ -33,7 +33,7 @@ export PATH=$PATH:/usr/local/share/dotnet
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android for Xamarin
-# export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
+#export JAVA_HOME=/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home
 export PATH=$PATH:$JAVA_HOME
 
@@ -42,10 +42,13 @@ export DOCKER_HOST=unix:///$HOME/.colima/docker.sock
 export ANDROID_SDK=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/13.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/9.0/bin
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/7.0/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/build-tools/34.0.0
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
+# export PATH=$PATH:$ANDROID_HOME/tools
+# export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NPM
