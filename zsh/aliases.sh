@@ -11,7 +11,7 @@ alias search=grep
 alias python=python3
 alias pip=pip3
 alias wifi=airport
-alias ls=exa
+alias ls=eza
 alias wifi=airport
 
 # ANDROID ADB
