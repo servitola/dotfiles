@@ -1,5 +1,4 @@
 plugins=(
-  adb # autocomplete
   git # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
   dotenv # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv
   aliases # run 'acs' to see all aliases
