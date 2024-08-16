@@ -1,6 +1,6 @@
 # ZSH
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
-alias reload=". ~/.zshrc && echo 'ZSH config reloaded from ~/.zshrc'"
+alias reload="exec zsh"
 
 alias re=reload
 alias cat=bat
