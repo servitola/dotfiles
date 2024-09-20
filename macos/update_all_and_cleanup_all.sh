@@ -4,9 +4,9 @@ sudo -v
 source ~/projects/dotfiles/zsh/functions.sh
 source ~/projects/dotfiles/zsh/aliases.sh
 
-echo "Updating XCode tools"
-sudo softwareupdate -i -a
-command -v xcode-select >/dev/null 2>&1 || xcode-select --install
+# echo "Updating XCode tools"
+# sudo softwareupdate -i -a
+# command -v xcode-select >/dev/null 2>&1 || xcode-select --install
 
 echo "Updating all from Homebrew"
 rm -rf "brew --cache"
