@@ -18,6 +18,9 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/nu
 defaults write com.apple.Siri StatusMenuVisible -int 0
 defaults write com.apple.Siri UserHasDeclinedEnable -int 1
 
+echo "Use Fs buttons as Fs buttons BUT it's for the Karabiner keyboard setup where we set media keys work properly"
+defaults write -g com.apple.keyboard.fnState -bool false
+
 echo "Disable the “Are you sure you want to open this application?” dialog"
 spctl --master-disable
 defaults write com.apple.LaunchServices LSQuarantine -bool false
