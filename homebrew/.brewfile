@@ -11,6 +11,7 @@ tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "qmk/qmk"
 tap "wix/brew"
+tap "xcodesorg/made"
 tap "yqrashawn/goku"
 brew "pango"
 brew "librsvg"
@@ -72,6 +73,7 @@ brew "tmux"
 brew "tree"
 brew "wget"
 brew "wireshark"
+brew "xcodes"
 brew "yt-dlp"
 brew "z"
 brew "zsh"
@@ -138,6 +140,7 @@ cask "vlc"
 cask "vmware-fusion"
 cask "wireshark-chmodbpf"
 cask "workflowy"
+cask "xcodes"
 cask "yandex"
 cask "zoom"
 mas "Amphetamine", id: 937984704
@@ -151,7 +154,6 @@ mas "Gifski", id: 1351639930
 mas "Grammarly for Safari", id: 1462114288
 mas "HazeOver", id: 430798174
 mas "Keynote", id: 409183694
-mas "Microsoft Remote Desktop", id: 1295203466
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixave", id: 924891282
