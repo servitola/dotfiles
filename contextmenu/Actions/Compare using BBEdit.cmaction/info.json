@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Compare using BBEdit",
+  "type" : "shell",
+  "uuid" : "F13CCE18-BFE2-43E5-B391-36CE7226F508"
+}

@@ -1,0 +1,13 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : false,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "type" : "shell",
+  "name" : "Copy path",
+  "uuid" : "6497E4DA-92C1-45BB-ADF9-8DE9E0C36370"
+}

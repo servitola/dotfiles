@@ -1,0 +1,14 @@
+{
+  "path" : "/usr/bin/osascript",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Hide Path Extensions",
+  "type" : "shell",
+  "uuid" : "76454A22-0D89-4C6A-9467-F6474795C38D"
+}
