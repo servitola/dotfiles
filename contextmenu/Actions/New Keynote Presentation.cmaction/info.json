@@ -1,0 +1,11 @@
+{
+  "path" : "document.key",
+  "options" : {
+    "prefix" : "document",
+    "suffix" : "key"
+  },
+  "icon" : "icon.icns",
+  "name" : "New Keynote Presentation",
+  "type" : "file",
+  "uuid" : "B99BAFBB-82CE-47B3-BA43-8360E6E7A11F"
+}

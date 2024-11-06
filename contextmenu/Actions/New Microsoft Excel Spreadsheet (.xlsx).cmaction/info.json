@@ -1,0 +1,13 @@
+{
+  "path" : "document.xlsx",
+  "options" : {
+    "executable" : false,
+    "prefix" : "document",
+    "suffix" : "xlsx",
+    "hideExtension" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "New Microsoft Excel Spreadsheet (.xlsx)",
+  "type" : "file",
+  "uuid" : "9EBC4D31-0A7E-4CE0-9B65-D97B1CD446FC"
+}

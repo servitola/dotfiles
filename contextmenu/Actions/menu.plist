@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Compare using BBEdit</string>
+		<key>path</key>
+		<string>Compare using BBEdit.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compare using DiffMerge</string>
+		<key>path</key>
+		<string>Compare using DiffMerge.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Compare using FileMerge</string>
+		<key>path</key>
+		<string>Compare using FileMerge.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Compare using Kaleidoscope</string>
+		<key>path</key>
+		<string>Compare using Kaleidoscope.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Compare</string>
+		<key>path</key>
+		<string>Compare.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Copy content</string>
+		<key>path</key>
+		<string>Copy content-2.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Copy path</string>
+		<key>path</key>
+		<string>Copy path-2.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Edit with Emacs</string>
+		<key>path</key>
+		<string>Edit with Emacs.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Edit with Vim</string>
+		<key>path</key>
+		<string>Edit with Vim.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Hide Path Extensions</string>
+		<key>path</key>
+		<string>Hide Path Extensions.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Lock Screen</string>
+		<key>path</key>
+		<string>Lock Screen.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>isGroup</key>
+		<true/>
+		<key>name</key>
+		<string>New File</string>
+		<key>path</key>
+		<string>New File (group).cmaction</string>
+		<key>subitems</key>
+		<array>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Pages Document</string>
+				<key>path</key>
+				<string>New Pages Document.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Numbers Spreadsheet</string>
+				<key>path</key>
+				<string>New Numbers Spreadsheet.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Keynote Presentation</string>
+				<key>path</key>
+				<string>New Keynote Presentation.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Microsoft Word Document (.docx)</string>
+				<key>path</key>
+				<string>New Microsoft Word Document (.docx).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Microsoft Excel Spreadsheet (.xlsx)</string>
+				<key>path</key>
+				<string>New Microsoft Excel Spreadsheet (.xlsx).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Microsoft PowerPoint Document (.pptx)</string>
+				<key>path</key>
+				<string>New Microsoft PowerPoint Document (.pptx).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New WPS Writer Document</string>
+				<key>path</key>
+				<string>New WPS Writer Document.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New WPS Spreadsheet Document</string>
+				<key>path</key>
+				<string>New WPS Spreadsheet Document.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New WPS Presentation Document</string>
+				<key>path</key>
+				<string>New WPS Presentation Document.cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Rich Text File (RTF)</string>
+				<key>path</key>
+				<string>New Rich Text File (RTF).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<false/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Rich Text File with Attachments (RTFD)</string>
+				<key>path</key>
+				<string>New Rich Text File with Attachments (RTFD).cmaction</string>
+			</dict>
+			<dict>
+				<key>enabled</key>
+				<true/>
+				<key>icon</key>
+				<string>icon.icns</string>
+				<key>name</key>
+				<string>New Shell Script</string>
+				<key>path</key>
+				<string>New Shell Script.cmaction</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Terminal Tab Here</string>
+		<key>path</key>
+		<string>Terminal Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New iTerm2 Window Here</string>
+		<key>path</key>
+		<string>New iTerm2 Window Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New Terminal Tab Here</string>
+		<key>path</key>
+		<string>New Terminal Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>New Terminal Window Here</string>
+		<key>path</key>
+		<string>New Terminal Window Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>name</key>
+		<string>Open new Calculator</string>
+		<key>path</key>
+		<string>Open new Calculator.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Open in VSCode</string>
+		<key>path</key>
+		<string>Open in VSCode.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>New Plain Text File</string>
+		<key>path</key>
+		<string>New Plain Text File.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Permanently Delete</string>
+		<key>path</key>
+		<string>Permanently Delete.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Put Display to Sleep</string>
+		<key>path</key>
+		<string>Put Display to Sleep.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<false/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Show Path Extensions</string>
+		<key>path</key>
+		<string>Show Path Extensions.cmaction</string>
+	</dict>
+</array>
+</plist>

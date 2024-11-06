@@ -1,0 +1,10 @@
+{
+  "path" : "/bin/sh",
+  "options" : {
+    "acceptDirs" : true,
+    "noSandbox" : true
+  },
+  "type" : "shell",
+  "name" : "New Terminal Tab Here",
+  "uuid" : "E9E58E5C-A0D9-4B12-A494-D9B8644B9FFC"
+}
