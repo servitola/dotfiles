@@ -1,0 +1,1 @@
+pmset displaysleepnow
