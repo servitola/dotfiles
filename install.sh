@@ -77,19 +77,12 @@ mkd /usr/local/Cellar/node/node_global
 npm config set prefix '/usr/local/Cellar/node/node_global'
 sudo chown -R $(whoami) /usr/local/Cellar
 
-if [ -d "$HOME/Library/Group Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions" ]; then
-  echo "installing Finder Context Menu"
-
-  rm -rf "~/Library/Group Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions"
-  ln -sfvh "$HOME/projects/dotfiles/contextmenu/Actions" "$HOME/Library/Group Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions"
-
-  scripts_dir=~/Library/Application\ Scripts/net.langui.ContextMenuHelper
-  mkdir -p "$scripts_dir"
-  script_content=$'#!/bin/sh\npkill -nf ScriptMonitor\nexec "$@"'
-  helper_path="$scripts_dir/contextmenu.sh"
-  echo "$script_content" > "$helper_path"
-  chmod +x "$helper_path"
-
-else
-  echo "Context Menu Application isn't installed"
-fi
+echo "installing Finder Context Menu"
+rm -rf ~/Library/Groudp\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
+ln -sfvh ~/projects/dotfiles/contextmenu/Actions ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
+scripts_dir=~/Library/Application\ Scripts/net.langui.ContextMenuHelper
+mkdir -p "$scripts_dir"
+script_content=$'#!/bin/sh\npkill -nf ScriptMonitor\nexec "$@"'
+helper_path="$scripts_dir/contextmenu.sh"
+echo "$script_content" > "$helper_path"
+chmod +x "$helper_path"
