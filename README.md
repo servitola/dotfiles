@@ -25,7 +25,7 @@ I will be glad if you will find any issues and report them.
 * Q: I want to <ins>update all</ins> my applications at once
 * A: Autoupdate **Everything** with `up` command. Run `up` from Terminal. It cleans a lot of cache folders also. I have 120 applications and feel no pressure
 #
-* Q: I want my <ins>work web links</ins> be opened <ins>in Safari</ins> and the other stuff in another browser
+* Q: I want my <ins>work web links</ins> be opened <ins>in Safari</ins> and the <ins>other stuff</ins> in <ins>another browser</ins>
 * A: Look at `hammerspoon/config_UrlDispatcher.sh`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`
 #
 * Q: I want to <ins>understand</ins> all the <ins>shortcuts</ins> I can use on macos and + with this repository
@@ -47,6 +47,15 @@ I will be glad if you will find any issues and report them.
 * Q: I want to <ins>draw any lines</ins> on my <ins>screenshots</ins>. I do screenshots for work
 * A: I use [FlameShot](https://flameshot.org/). It is installed with all the programs with homebrew here
 #
+* Q: I use <ins>external audiocard</ins> and I want to control it's <ins>volume standard way</ins> and use Equilizer depends on device
+* A: I use [eqmac](https://eqmac.app/). It is installed with all the programs with homebrew here
+#
+* Q: I use Spotlight. But it's not that powerful as I want. I want to calculate numbers, use AI, search Google
+* A: I use [raycast](https://www.raycast.com/). It is installed with all the programs with homebrew here
+#
+* Q: I have an Android phone. How to send a file to my MacOS?
+* A: Surely you can use your Telegram Saved Messages but I also use [NearDrop Plus](https://github.com/XRayAdamo/NearDrop) to receive files as AirDrop. Also it can open links automatically so your guests can open their links easily
+#
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use **yt-dlp** command with any link from . For example:
 ```
@@ -57,7 +66,7 @@ yt-dlp https://www.youtube.com/user/ButKorn/videos
 * Q: I want to <ins>hide comments</ins> and <ins>speed up video</ins> on <ins>YouTube</ins>:
 * A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
 #
-* Q: I want to have multi buffer and don't go between the windows multiple times. Exactly I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once. 
+* Q: I want to have multi buffer and don't go between the windows multiple times. Exactly I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once.
 * A: I use [maccy](https://maccy.app/). It is installed with all the programs with homebrew here
 #
 * Q: I want to find out what takes the space on my hard drive
