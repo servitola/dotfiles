@@ -53,3 +53,5 @@ alias lS='eza -1'			                                                  # one colu
 alias lt='eza --tree --level=2'
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+source ~/projects/dotfiles/zsh/spotware_aliases.sh
