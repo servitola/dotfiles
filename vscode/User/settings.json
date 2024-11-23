@@ -162,5 +162,6 @@
     "editor.largeFileOptimizations": false,
     "[xml]": {
       "editor.defaultFormatter": "redhat.vscode-xml"
-    }
+    },
+    "editor.unicodeHighlight.nonBasicASCII": false
 }
