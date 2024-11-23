@@ -19,7 +19,7 @@ brew "librsvg"
 brew "openjdk"
 brew "allure"
 brew "node"
-brew "appium", link: false
+brew "appium"
 brew "boost"
 brew "gtk4"
 brew "libadwaita"
