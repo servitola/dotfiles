@@ -20,7 +20,6 @@ brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 
 echo "Update dotnet tools"
-dotnet tool update -g dotnet-dsrouter --add-source=https://aka.ms/dotnet-tools/index.json
 dotnet tool update -g dotnet-trace
 
 echo "Configure NPM"
