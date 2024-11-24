@@ -351,7 +351,7 @@ apps_list = {
         -- macos d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
         { key="f", app="LaunchPad" },
-        { key="a", app="Ableton Live 11 Suite"},
+        { key="a", app="Ableton Live 12 Suite"},
         { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
         { key="z", specific_function="translate_to_russian"},
         { key="g", specific_function="translate_to_greek"},
