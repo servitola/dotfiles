@@ -139,5 +139,5 @@ duti -s com.apple.Preview .tiff all
 duti -s com.jetbrains.rider .sln all
 
 
-duti -s com.ableton.AbletonLive11 .alp all
-duti -s com.ableton.AbletonLive11 .als all
+duti -s com.ableton.AbletonLive12 .alp all
+duti -s com.ableton.AbletonLive12 .als all
