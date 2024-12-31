@@ -1,6 +1,9 @@
 # init powerlevel10k theme with its Instant Prompt feature
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+# set homebrew autoupdate each 24 hours
+HOMEBREW_AUTO_UPDATE_SECS="86400"
+
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
