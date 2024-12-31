@@ -165,5 +165,7 @@
     },
     "editor.unicodeHighlight.nonBasicASCII": false,
     "maui.configuration.androidSdkPreferredPath": "/Users/servitola/Library/Android/sdk",
-    "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home"
+    "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/microsoft-11.jdk/Contents/Home",
+    "avprobe.ffmpegPath": "/opt/homebrew/bin/ffmpeg",
+    "avprobe.ffprobePath": "/opt/homebrew/bin/ffprobe"
 }
