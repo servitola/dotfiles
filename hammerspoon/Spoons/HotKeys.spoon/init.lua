@@ -217,7 +217,7 @@ apps_list = {
         -- w - up
         -- e - pagedown
         { key="r", app="Rider" },
-        { key="t", app="Telegram", window_default_position="right" },
+        { key="t", app="AyuGram", window_default_position="right" },
         -- { key="y", app="" },
         { key="u", app="Transmission", window_default_position="right" },
         -- o - up
