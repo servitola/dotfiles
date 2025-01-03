@@ -227,7 +227,7 @@ apps_list = {
         -- a - left
         -- s - down
         -- d - right
-        -- f - RayCast
+        { key="f", app="Finder" },
         { key="g", app="Fork" },
         { key="h", app="Finder" },
         { key="j", app="Safari" },
