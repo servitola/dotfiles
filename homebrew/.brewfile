@@ -160,6 +160,9 @@ mas "Grammarly for Safari", id: 1462114288
 mas "HazeOver", id: 430798174
 mas "Keynote", id: 409183694
 mas "LottieFiles", id: 1531085233
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft Word", id: 462054704
+mas "MsgFiler", id: 6478043112
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixave", id: 924891282
@@ -174,6 +177,7 @@ mas "System Designer", id: 1102494854
 mas "Telegram Lite", id: 946399090
 mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
+mas "The WereCleaner", id: 6478448519
 mas "Transporter", id: 1450874784
 vscode "alefragnani.project-manager"
 vscode "angular.ng-template"
