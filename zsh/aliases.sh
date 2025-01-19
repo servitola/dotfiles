@@ -13,6 +13,8 @@ alias pip=pip3
 alias wifi=airport
 alias ls=eza
 alias wifi=airport
+# -i \"2:2\"
+alias rec="ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422  -f avfoundation -i \"2\" -preset ultrafast -c:a pcm_s16le -probesize 100M \"output_$(date +%Y%m%d_%H%M%S).mp4\""
 
 # ANDROID ADB
 alias android_deep_link='f() { adb shell am start -a android.intent.action.VIEW -d "$1" }; f'
