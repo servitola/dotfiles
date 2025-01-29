@@ -22,14 +22,6 @@ brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
 echo "Update dotnet tools"
 dotnet tool update -g dotnet-trace
 
-echo "Configure NPM"
-npm config set fund false --location=global
-mkdir ~/.npm-global
-npm config set prefix '~/.npm-global'
-# sudo chown -R "/Users/servitola/.npm"
-# npm install npm --location=global
-npm update --location=global
-
 echo "Flashing DNS cache"
 dscacheutil -flushcache
 killall -HUP mDNSResponder

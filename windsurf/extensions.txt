@@ -1,0 +1,62 @@
+# AI Development
+ms-toolsai.jupyter
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+
+# .NET Development
+ms-dotnettools.csharp
+ms-dotnettools.vscode-dotnet-runtime
+ms-dotnettools.csdevkit
+ms-dotnettools.dotnet-interactive-vscode
+ms-dotnettools.vscodeintellicode-csharp
+formulahendry.dotnet-test-explorer
+
+# Mobile Development
+ms-vscode.xaml
+ms-vscode.xamarin-ios
+ms-vscode.xamarin-android
+msjsdiag.vscode-react-native
+
+# Docker & DevOps
+ms-azuretools.vscode-docker
+ms-kubernetes-tools.vscode-kubernetes-tools
+ms-vscode-remote.remote-containers
+
+# Git & Source Control
+eamodio.gitlens
+mhutchie.git-graph
+github.vscode-pull-request-github
+
+# UI/UX & Testing
+ms-vscode.test-adapter-converter
+hbenl.vscode-test-explorer
+ms-playwright.playwright
+ms-vscode.ui-testing
+
+# General Development
+redhat.vscode-yaml
+redhat.vscode-xml
+ms-vscode.powershell
+ms-azuretools.vscode-bicep
+ms-vscode-remote.remote-ssh
+ms-vscode-remote.remote-ssh-edit
+ms-vscode.remote-explorer
+ms-vscode.remote-server
+ms-vsliveshare.vsliveshare
+streetsidesoftware.code-spell-checker
+visualstudioexptteam.vscodeintellicode
+vscode-icons-team.vscode-icons
+ms-vscode.hexeditor
+ms-vscode.references-view
+ms-vscode.makefile-tools
+ms-vscode.cmake-tools
+ms-vscode.cpptools
+ms-vscode.cpptools-extension-pack
+
+# Formatting & Linting
+esbenp.prettier-vscode
+dbaeumer.vscode-eslint
+editorconfig.editorconfig
+davidanson.vscode-markdownlint

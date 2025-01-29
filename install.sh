@@ -37,28 +37,17 @@ echo "setup midnight commander symlink"
 rm -rf ~/.config/mc
 ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
+echo "setup windsurf main prompt symlink"
+rm -rf ~/.windsurfrules
+ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/.windsurfrules
+ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/ai2_workspace/.windsurfrules
+
 echo "setup flameshot symlinks"
 rm -rf ~/.config/flameshot
 ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
 
-echo "install Lulu from downloaded package"
-echo "Lulu forgets the settings when updated from homebrew"
-curl -O https://github.com/objective-see/LuLu/releases/download/v2.4.2/LuLu_2.4.2.dmg
-open LuLu_2.4.2.dmg
-
-echo "install DockUtil since homebrew has version 2 still"
-curl -O https://github.com/kcrawford/dockutil/releases/download/3.0.2/dockutil-3.0.2.pkg
-open dockutil-3.0.2.pkg
-
-echo "install Birman's keyboard Layout"
-curl -O https://ilyabirman.ru/typography-layout/download/ilya-birman-typolayout-3.9-mac.zip
-open ilya-birman-typolayout-3.9-mac.zip
-
 echo "set default applications for different file extensions"
 source "macos/set_default_apps.sh"
-
-echo "https://www.mrfdev.com/enhancer-for-youtube"
-open https://www.mrfdev.com/enhancer-for-youtube
 
 echo "run dock setup. Run once again when dockutil is installed please!"
 source "macos/dock_setup.sh"
@@ -71,14 +60,15 @@ npm install --global vsce
 npm install --global typescript
 
 echo "installing nanorc"
-curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
-
-mkd /usr/local/Cellar/node/node_global
-npm config set prefix '/usr/local/Cellar/node/node_global'
-sudo chown -R $(whoami) /usr/local/Cellar
+mkdir -p ~/.nano/syntax
+cd ~/.nano
+curl -O https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh
+chmod +x install.sh
+./install.sh
+cd -
 
 echo "installing Finder Context Menu"
-rm -rf ~/Library/Groudp\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
+rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
 ln -sfvh ~/projects/dotfiles/contextmenu/Actions ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
 scripts_dir=~/Library/Application\ Scripts/net.langui.ContextMenuHelper
 mkdir -p "$scripts_dir"
