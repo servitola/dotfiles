@@ -1,0 +1,218 @@
+[
+  // Navigation
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+backspace",
+    "command": "workbench.action.navigateToLastEditLocation"
+  },
+  {
+    "key": "ctrl+g",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "workbench.action.findInFiles",
+    "when": "!searchInputBoxFocus"
+  },
+
+  // Code Editing
+  {
+    "key": "ctrl+/",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus"
+  },
+  {
+    "key": "ctrl+space",
+    "command": "editor.action.triggerSuggest",
+    "when": "editorHasCompletionItemProvider && textInputFocus"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "gitlens.toggleFileBlame",
+    "when": "editorTextFocus && config.gitlens.keymap == 'alternate'"
+  },
+  {
+    "key": "alt+cmd+m",
+    "command": "editor.action.extractMethod",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+v",
+    "command": "editor.action.extractVariable",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "editor.action.extractField",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+n",
+    "command": "editor.action.inlineValue",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
+  },
+
+  // Find & Replace
+  {
+    "key": "ctrl+e",
+    "command": "references-view.findReferences",
+    "when": "editorHasReferenceProvider"
+  },
+  {
+    "key": "shift+cmd+f",
+    "command": "workbench.action.findInFiles"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "workbench.action.replaceInFiles"
+  },
+
+  // Debug & Run
+  {
+    "key": "ctrl+r",
+    "command": "workbench.action.debug.run",
+    "when": "debuggersAvailable"
+  },
+  {
+    "key": "ctrl+d",
+    "command": "workbench.action.debug.start",
+    "when": "debuggersAvailable"
+  },
+  {
+    "key": "ctrl+q",
+    "command": "workbench.action.debug.stop",
+    "when": "inDebugMode"
+  },
+
+  // Window Management
+  {
+    "key": "shift+cmd+w",
+    "command": "workbench.action.closeWindow"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "notifications.clearAll"
+  },
+
+  // Recent Locations
+  {
+    "key": "shift+cmd+e",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+  },
+
+  // Override Methods
+  {
+    "key": "ctrl+o",
+    "command": "editor.action.sourceAction",
+    "args": {
+      "kind": "source.overrideMethods",
+      "apply": "first"
+    }
+  },
+
+  // Git
+  {
+    "key": "ctrl+k",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+
+  // Terminal
+  {
+    "key": "cmd+`",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+
+  // Quick Documentation
+  {
+    "key": "ctrl+q",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus"
+  },
+
+  // File Operations
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "alt+cmd+c",
+    "command": "copyFilePath",
+    "when": "!editorFocus"
+  },
+  {
+    "key": "alt+cmd+v",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+
+  // Test Runner Commands
+  {
+    "key": "ctrl+u ctrl+l",
+    "command": "testing.showExplorer",
+    "when": "!testing.isTestFile"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "testing.runCurrentFile",
+    "when": "editorTextFocus && testing.hasTests"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "testing.debugCurrentFile",
+    "when": "editorTextFocus && testing.hasTests"
+  },
+  {
+    "key": "ctrl+r ctrl+t",
+    "command": "testing.reRunLastRun",
+    "when": "testing.hasAnyResults"
+  },
+  {
+    "key": "ctrl+r ctrl+f",
+    "command": "testing.reRunFailedTests",
+    "when": "testing.hasFailedTests"
+  },
+  {
+    "key": "ctrl+t ctrl+a",
+    "command": "testing.runAll"
+  },
+  {
+    "key": "ctrl+t ctrl+f",
+    "command": "testing.runFailedTests",
+    "when": "testing.hasFailedTests"
+  },
+  {
+    "key": "ctrl+t ctrl+c",
+    "command": "testing.cancelRun",
+    "when": "testing.isRunning"
+  },
+  {
+    "key": "ctrl+t ctrl+r",
+    "command": "dotnet.test.runTestsInContext",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+t ctrl+d",
+    "command": "dotnet.test.debugTestsInContext",
+    "when": "editorTextFocus"
+  }
+]

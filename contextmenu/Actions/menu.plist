@@ -281,9 +281,9 @@
 		<key>icon</key>
 		<string>icon.icns</string>
 		<key>name</key>
-		<string>Open in VSCode</string>
+		<string>Open in Windsurf</string>
 		<key>path</key>
-		<string>Open in VSCode.cmaction</string>
+		<string>Open in Windsurf.cmaction</string>
 	</dict>
 	<dict>
 		<key>enabled</key>

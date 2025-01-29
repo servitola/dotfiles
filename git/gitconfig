@@ -6,7 +6,7 @@
 	sort = -committerdate # Show most recently changed branches first.
 
 [core]
-  editor = code -w
+	editor = windsurf -w
 
 [credential]
   helper = osxkeychain
@@ -27,20 +27,20 @@
 [init]
 	defaultBranch = dev
 
-[include]
-    path = "~/projects/dotfiles/git/aliases.gitconfig"
-
-[include]
-    path = "~/projects/dotfiles/git/colors.gitconfig"
 
 [gui]
 	gcwarning = false
 
 [pull]
-  rebase = true
+  	rebase = true
 
 [push]
-  # Push only current branch by default
-  default = simple
-  # Push tags by default
-  followTags = true
+	default = simple
+  	followTags = true
+
+[rebase]
+	autoStash = true
+
+[include]
+	path = "~/projects/dotfiles/git/aliases.gitconfig"
+	path = "~/projects/dotfiles/git/colors.gitconfig"

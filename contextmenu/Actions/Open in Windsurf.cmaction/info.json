@@ -1,0 +1,7 @@
+{
+  "enabled" : true,
+  "icon" : "icon.icns",
+  "name" : "Open in Windsurf",
+  "path" : "main.sh",
+  "type" : "action"
+}
