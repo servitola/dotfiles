@@ -193,7 +193,7 @@ apps_list = {
         -- |-------------------------------------------------------------------------------------------------------------+
         -- | TO_PRESS | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |     |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- |      |  toRus  |  home   | end  |  Yandex | iTerm2  | VSCode | ElMedia  | home | end |  volume_down  |      |
+        -- |      |  toRus  |  home   | end  |  Yandex | iTerm2  | Windsurf | ElMedia  | home | end |  volume_down  |    |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- |     |      |       |         play/stop                |       |       |       |                             |
         -- \-------------------------------------------------------------------------------------------------------------/
@@ -212,7 +212,7 @@ apps_list = {
         -- = - F12
         -- backspace - delete
         -- alt + backspace — maccy delete row
-        { key="tab", specific_function="set_english_language" },
+        -- { key="tab", specific_function="set_english_language" },
         -- q - pageUp
         -- w - up
         -- e - pagedown
@@ -229,7 +229,7 @@ apps_list = {
         -- d - right
         { key="f", app="Finder" },
         { key="g", app="Fork" },
-        { key="h", app="Finder" },
+        -- h —
         { key="j", app="Safari" },
         -- k - left
         -- l - down
@@ -241,7 +241,7 @@ apps_list = {
         -- c - end
         { key="v", app="Yandex" },
         { key="b", app="iTerm" },
-        { key="n", app="Visual Studio Code" },
+        { key="n", app="Windsurf" },
         { key="m", app="Elmedia Player", window_default_position="bottom"},
         -- , - home
         -- . - end
