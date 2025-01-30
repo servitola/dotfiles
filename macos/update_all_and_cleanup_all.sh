@@ -62,4 +62,6 @@ echo "Updating OhMyZsh"
 zsh -ic "omz update"
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
+purge
+
 reload
