@@ -198,3 +198,27 @@ defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int 0
 
 echo "Do not automatically download apps purchased on other Macs"
 defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 0
+
+###############################################################################
+echo "System Services and Memory Optimization"                                #
+###############################################################################
+
+echo "Disable Siri completely"
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+defaults write com.apple.Siri StatusMenuVisible -bool false
+defaults write com.apple.Siri UserHasDeclinedEnable -bool true
+launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/null
+
+echo "Disable automatic software updates"
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool false
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownload -bool false
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticallyInstallMacOSUpdates -bool false
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall -bool false
+sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool false
+
+echo "Disable Natural Language services"
+launchctl unload -w /System/Library/LaunchAgents/com.apple.naturallanguaged.plist 2> /dev/null
+defaults write com.apple.assistant.support "Assistant Enabled" -bool false
+defaults write com.apple.Siri VoiceTriggerEnabled -bool false
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMIntroMessagePresented -bool true
+defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs ActiveInputAudioDeviceUID -string ""
