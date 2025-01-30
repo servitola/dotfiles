@@ -1,0 +1,18 @@
+-Xms2048m
+-Xmx12288m
+-XX:ReservedCodeCacheSize=2048m
+-XX:+UseG1GC
+-XX:SoftRefLRUPolicyMSPerMB=50
+-XX:CICompilerCount=2
+-XX:+HeapDumpOnOutOfMemoryError
+-XX:-OmitStackTraceInFastThrow
+-ea
+-Dsun.io.useCanonCaches=false
+-Djdk.http.auth.tunneling.disabledSchemes=""
+-Djdk.attach.allowAttachSelf=true
+-Djdk.module.illegalAccess.silent=true
+-Dkotlinx.coroutines.debug=off
+-XX:+UseCompressedOops
+-Dide.managed.by.toolbox=/Applications/JetBrains Toolbox.app/Contents/MacOS/jetbrains-toolbox
+-Dtoolbox.notification.token=51285a43-ad63-4c5f-99bf-c17e01574698
+-Dtoolbox.notification.portFile=/Users/servitola/Library/Caches/JetBrains/Toolbox/ports/e95a0164-774b-41d5-b7cc-b35f27dfaad2.port
