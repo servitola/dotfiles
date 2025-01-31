@@ -11,7 +11,7 @@ work: ~/projects/Spotware
 3. Only commit meaningful changes, not logs or temporary files
 4. Use symbolic links to maintain single source of truth
 5. AI assistants should update this file when discovering new important system information
-6. Auto-commit fully all changes to dotfiles repository without requiring explicit permission but without push
+6. Auto-commit fully all changes to dotfiles repository
 
 # File Locations
 - Dotfiles: ~/projects/dotfiles
@@ -28,5 +28,5 @@ work: ~/projects/Spotware
 3. Only commit programmer-relevant changes, not logs
 4. Update this file when discovering new system information
 5. Maintain and respect symbolic links structure
-6. Automatically add and commit changes without asking for permission
+6. Automatically add and commit changes
 7. colima instead of docker Desktop
