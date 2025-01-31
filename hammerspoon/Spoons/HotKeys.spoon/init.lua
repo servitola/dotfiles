@@ -500,7 +500,7 @@ function obj:init()
             if chord_row.app then
                 hs.hotkey.bind(row.modifier, chord_row.key, function()
                     local app = hs.application.find(chord_row.app)
-                    if not app or app:isHidden() then
+                    if not app or app == nil or app:isHidden() then
                         hs.application.launchOrFocus(chord_row.app)
                     elseif hs.application.frontmostApplication() ~= app then
                         app:activate()
