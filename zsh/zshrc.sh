@@ -39,3 +39,7 @@ fi
 # bindkey "^B" znt-cd-widget
 # zle -N znt-kill-widget
 # bindkey "^Y" znt-kill-widget
+
+# Added by Windsurf
+export PATH="/Users/servitola/.codeium/windsurf/bin:$PATH"
+
