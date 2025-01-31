@@ -3,7 +3,7 @@
 	email = servitola@gmail.com
 
 [branch]
-	sort = -committerdate # Show most recently changed branches first.
+	sort = -committerdate
 
 [core]
 	editor = windsurf -w
@@ -26,7 +26,6 @@
 
 [init]
 	defaultBranch = dev
-
 
 [gui]
 	gcwarning = false
