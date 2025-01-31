@@ -39,8 +39,8 @@ ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "setup windsurf main prompt symlink"
 rm -rf ~/.windsurfrules
-ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/.windsurfrules
-ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/ai2_workspace/.windsurfrules
+ln -sfvh ~/projects/dotfiles/windsurf/windsurfrules ~/.windsurfrules
+ln -sfvh ~/projects/dotfiles/windsurf/windsurfrules ~/ai2_workspace/.windsurfrules
 
 echo "setup windsurf user settings symlinks"
 mkdir -p ~/Library/Application\ Support/Windsurf/User
