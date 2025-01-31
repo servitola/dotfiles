@@ -39,8 +39,10 @@ ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "setup windsurf main prompt symlink"
 rm -rf ~/.windsurfrules
+rm -rf ~/.codeium/windsurf/memories/global_rules.md
 ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/.windsurfrules
 ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/ai2_workspace/.windsurfrules
+ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
 echo "setup flameshot symlinks"
 rm -rf ~/.config/flameshot
