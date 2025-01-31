@@ -39,10 +39,15 @@ ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 echo "setup windsurf main prompt symlink"
 rm -rf ~/.windsurfrules
-rm -rf ~/.codeium/windsurf/memories/global_rules.md
 ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/.windsurfrules
 ln -sfvh ~/projects/dotfiles/windsurf/.windsurfrules ~/ai2_workspace/.windsurfrules
-ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
+
+echo "setup windsurf user settings symlinks"
+mkdir -p ~/Library/Application\ Support/Windsurf/User
+rm -f ~/Library/Application\ Support/Windsurf/User/settings.json
+rm -f ~/Library/Application\ Support/Windsurf/User/keybindings.json
+ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
+ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
 
 echo "setup flameshot symlinks"
 rm -rf ~/.config/flameshot
@@ -64,14 +69,6 @@ npm install --global trash-cli
 echo "installing vsce to publish vscode extensions"
 npm install --global vsce
 npm install --global typescript
-
-echo "installing nanorc"
-mkdir -p ~/.nano/syntax
-cd ~/.nano
-curl -O https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh
-chmod +x install.sh
-./install.sh
-cd -
 
 echo "installing Finder Context Menu"
 rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
