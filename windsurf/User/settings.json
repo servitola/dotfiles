@@ -367,7 +367,11 @@
         "top",
         "df",
         "cp",
-        "cat"
+        "cat",
+        "grep",
+        "curl",
+        "docker-compose",
+        "sleep"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
