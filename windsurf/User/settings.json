@@ -377,5 +377,6 @@
     "windsurf.autoOpenEditedFiles": false,
     "cmake.showOptionsMovedNotification": false,
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.location": "bottom"
+    "workbench.activityBar.location": "bottom",
+    "extensions.ignoreRecommendations": true
 }
