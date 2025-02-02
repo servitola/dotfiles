@@ -61,6 +61,10 @@ echo "setup LINQPad symlinks"
 rm -rf ~/LINQPad
 ln -sfvh ~/projects/dotfiles/LINQPad ~/LINQPad
 
+echo "setup Appium symlinks"
+rm -rf ~/.appium
+ln -sfvh ~/projects/dotfiles/appium/.appium ~/.appium
+
 echo "set default applications for different file extensions"
 source "macos/set_default_apps.sh"
 

@@ -22,3 +22,6 @@ vscode/User/globalStorage/github.copilot-chat
 vscode/User/globalStorage/ms-dotnettools.csdevkit
 vscode/User/globalStorage/redhat.vscode-xml
 vscode/User/globalStorage/ms-python.python/
+
+# Appium
+appium/.appium/node_modules/
