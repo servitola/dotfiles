@@ -57,6 +57,10 @@ echo "setup Rider vmoptions symlink"
 rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 
+echo "setup LINQPad symlinks"
+rm -rf ~/LINQPad
+ln -sfvh ~/projects/dotfiles/LINQPad ~/LINQPad
+
 echo "set default applications for different file extensions"
 source "macos/set_default_apps.sh"
 
