@@ -37,17 +37,17 @@ echo "setup midnight commander symlink"
 rm -rf ~/.config/mc
 ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
-echo "setup windsurf main prompt symlink"
-rm -rf ~/.windsurfrules
-ln -sfvh ~/projects/dotfiles/windsurf/windsurfrules ~/.windsurfrules
-ln -sfvh ~/projects/dotfiles/windsurf/windsurfrules ~/ai2_workspace/.windsurfrules
-
 echo "setup windsurf user settings symlinks"
 mkdir -p ~/Library/Application\ Support/Windsurf/User
+
 rm -f ~/Library/Application\ Support/Windsurf/User/settings.json
-rm -f ~/Library/Application\ Support/Windsurf/User/keybindings.json
 ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
+
+rm -f ~/Library/Application\ Support/Windsurf/User/keybindings.json
 ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
+
+rm -f ~/.codeium/windsurf/memories/global_rules.md
+ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
 echo "setup flameshot symlinks"
 rm -rf ~/.config/flameshot
