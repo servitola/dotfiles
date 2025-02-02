@@ -1,13 +1,16 @@
 {
     // Editor appearance
     "editor.fontFamily": "JetBrains Mono",
-    "editor.fontSize": 20,
+    "editor.fontSize": 15,
     "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
     "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": false,
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [100, 120],
+    "editor.rulers": [
+        100,
+        120
+    ],
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.semanticHighlighting.enabled": true,
@@ -29,7 +32,6 @@
         "source.fixAll": "explicit",
         "source.organizeImports": "explicit"
     },
-
     // Workbench settings
     "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.iconTheme": "vscode-icons",
@@ -43,28 +45,27 @@
     "workbench.tree.renderIndentGuides": "always",
     "workbench.list.automaticKeyboardNavigation": true,
     "workbench.startupEditor": "none",
-    "workbench.fontSize": 25,
+    "workbench.fontSize": 15,
     "workbench.sideBar.fontSize": 25,
     "workbench.explorer.fontSize": 25,
-
     // Explorer settings
-    "list.fontSize": 25,
-    "workbench.tree.fontSize": 25,
-    "tree.fontSize": 25,
-    "window.sideBar.fontSize": 25,
-    "sideBar.fontSize": 25,
-    "explorer.fontSize": 25,
-
+    "list.fontSize": 15,
+    "workbench.tree.fontSize": 15,
+    "tree.fontSize": 15,
+    "window.sideBar.fontSize": 15,
+    "sideBar.fontSize": 15,
+    "explorer.fontSize": 15,
     // Terminal settings
     "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.integrated.fontSize": 25,
+    "terminal.integrated.fontSize": 15,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.shellArgs.osx": ["-l"],
+    "terminal.integrated.shellArgs.osx": [
+        "-l"
+    ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-
     // File settings
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
@@ -93,9 +94,30 @@
         "**/x86/": true
     },
     "files.exclude": {
+        ".cache": true,
         ".gitconfig": true,
         ".hammerspoon": true,
+        ".zsh_sessions": true,
+        ".swiftpm": true,
+        ".lldb": true,
+        ".nano": true,
+        ".npm": true,
+        ".skiko": true,
+        ".nanorc": true,
+        ".npmrc": true,
+        ".wget-hsts": true,
+        ".zcompdump*": true,
+        "LINQPad": true,
+        ".matplotlib": true,
+        "Public": true,
+        "Movies": true,
+        ".IdentityService": true,
+        "Applications": true,
+        ".nuget": true,
+        ".oh-my-zsh": true,
+        ".ServiceHub": true,
         ".Trash": true,
+        ".yandex": true,
         ".zprofile": true,
         ".zshrc": true,
         "**/.DS_Store": true,
@@ -111,7 +133,6 @@
         "**/Pods/": true,
         "**/Thumbs.db": true
     },
-
     // Search settings
     "search.exclude": {
         "**/.git": true,
@@ -125,25 +146,21 @@
     "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
     "search.useIgnoreFiles": true,
-
     // Testing settings
     "testing.automaticallyOpenPeekView": "never",
     "testing.followRunningTest": true,
     "testing.gutterEnabled": true,
     "testing.openTesting": "neverOpen",
-
     // Debug settings
     "debug.toolBarLocation": "docked",
     "debug.inlineValues": true,
     "debug.console.fontSize": 25,
     "debug.console.fontFamily": "JetBrains Mono",
-
     // Other settings
     "breadcrumbs.enabled": true,
     "telemetry.telemetryLevel": "off",
     "update.mode": "none",
     "security.workspace.trust.enabled": false,
-
     // Git Graph settings for visualization
     "git-graph.repository.commits.showSignatureStatus": true,
     "git-graph.repository.commits.showSignatureStatusTooltip": true,
@@ -151,7 +168,6 @@
     "git-graph.repository.onLoad.scrollToHead": true,
     "git-graph.repository.statusBar.enabled": true,
     "git-graph.repository.commits.mute.commitsThatAreNotAncestorsOfHead": true,
-
     // General Git settings
     "git.enableSmartCommit": true,
     "git.autofetch": true,
@@ -164,10 +180,12 @@
         "publish": true,
         "sync": true
     },
-
     // Editor settings for Git decorations
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [
+        80,
+        120
+    ],
     "editor.renderLineHighlight": "all",
     "editor.occurrencesHighlight": "singleFile",
     "editor.showFoldingControls": "always",
@@ -176,13 +194,11 @@
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "explorer.decorations.badges": true,
     "explorer.decorations.colors": true,
-
     // Diff settings
     "diffEditor.ignoreTrimWhitespace": false,
     "diffEditor.renderSideBySide": true,
     "diffEditor.maxComputationTime": 0,
     "diffEditor.renderIndicators": true,
-
     "windsurf.cascadeCommandsAllowList": [
         "git",
         "dotnet",
@@ -214,7 +230,8 @@
     "workbench.activityBar.location": "bottom",
     "extensions.ignoreRecommendations": true,
     "vsicons.presets.hideExplorerArrows": true,
-
-  "window.zoomLevel": 1.4,
-
+    "window.zoomLevel": 3,
+    "workbench.editorAssociations": {
+        "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+    }
 }
