@@ -1,13 +1,13 @@
 {
     // Editor appearance
     "editor.fontFamily": "JetBrains Mono",
-    "editor.fontSize": 25,
+    "editor.fontSize": 20,
     "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
     "editor.minimap.enabled": true,
     "editor.minimap.renderCharacters": false,
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [80, 120],
+    "editor.rulers": [100, 120],
     "editor.bracketPairColorization.enabled": true,
     "editor.guides.bracketPairs": true,
     "editor.semanticHighlighting.enabled": true,
@@ -43,10 +43,21 @@
     "workbench.tree.renderIndentGuides": "always",
     "workbench.list.automaticKeyboardNavigation": true,
     "workbench.startupEditor": "none",
+    "workbench.fontSize": 25,
+    "workbench.sideBar.fontSize": 25,
+    "workbench.explorer.fontSize": 25,
+
+    // Explorer settings
+    "list.fontSize": 25,
+    "workbench.tree.fontSize": 25,
+    "tree.fontSize": 25,
+    "window.sideBar.fontSize": 25,
+    "sideBar.fontSize": 25,
+    "explorer.fontSize": 25,
 
     // Terminal settings
     "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.integrated.fontSize": 13,
+    "terminal.integrated.fontSize": 25,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.shell.osx": "/bin/zsh",
@@ -61,129 +72,59 @@
     "files.insertFinalNewline": true,
     "files.trimFinalNewlines": true,
     "files.watcherExclude": {
+        "**/.cache/": true,
         "**/.git/objects/**": true,
         "**/.git/subtree-cache/**": true,
-        "**/env/**": true,
-        "**/venv/**": true,
         "**/.hg/store/**": true,
-        "**/[Bb]in/": true,
-        "**/[Oo]bj/": true,
-        "**/[Dd]ebug/": true,
-        "**/[Rr]elease/": true,
-        "**/x64/": true,
-        "**/x86/": true,
-        "**/node_modules/**": true,
         "**/.idea/**": true,
-        "**/[Tt]emp/": true,
         "**/.nuget/": true,
-        "**/cache/": true,
-        "**/.cache/": true,
+        "**/[Bb]in/": true,
+        "**/[Dd]ebug/": true,
+        "**/[Oo]bj/": true,
+        "**/[Rr]elease/": true,
+        "**/[Tt]emp/": true,
         "**/*.log": true,
+        "**/cache/": true,
         "**/DerivedData/": true,
+        "**/env/**": true,
+        "**/node_modules/**": true,
+        "**/venv/**": true,
+        "**/x64/": true,
+        "**/x86/": true
     },
     "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
+        ".gitconfig": true,
+        ".hammerspoon": true,
+        ".Trash": true,
+        ".zprofile": true,
+        ".zshrc": true,
         "**/.DS_Store": true,
-        "**/Thumbs.db": true,
-        "**/node_modules": true,
-        "**/bin": true,
-        "**/obj": true,
+        "**/.git": true,
+        "**/.hg": true,
+        "**/.svn": true,
         "**/*.pdb": true,
         "**/*.suo": true,
+        "**/bin": true,
+        "**/CVS": true,
+        "**/node_modules": true,
+        "**/obj": true,
         "**/Pods/": true,
+        "**/Thumbs.db": true
     },
 
     // Search settings
     "search.exclude": {
+        "**/.git": true,
         "**/bin": true,
-        "**/obj": true,
-        "**/node_modules": true,
         "**/bower_components": true,
         "**/env": true,
-        "**/venv": true,
-        "**/bin": true,
+        "**/node_modules": true,
         "**/obj": true,
-        "**/.git": true,
+        "**/venv": true
     },
     "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
     "search.useIgnoreFiles": true,
-
-    // Git settings (previously configured)
-    "gitlens.codeLens.enabled": true,
-    "gitlens.currentLine.enabled": true,
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.blame.highlight.enabled": true,
-    "gitlens.statusBar.enabled": true,
-    "gitlens.hovers.enabled": true,
-    "gitlens.blame.format": "${author|10} ${agoOrDate|14-} ${message|50?}",
-    "gitlens.defaultDateFormat": "YYYY-MM-DD HH:mm",
-    "gitlens.blame.heatmap.enabled": true,
-    "gitlens.blame.avatars": true,
-    "gitlens.blame.compact": false,
-    "gitlens.blame.toggleMode": "window",
-    "gitlens.blame.highlight.locations": ["gutter", "line", "overview"],
-    "gitlens.codeLens.authors.enabled": true,
-    "gitlens.codeLens.recentChange.enabled": true,
-    "gitlens.menus": {
-        "editor": {
-            "blame": true,
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "editorGroup": {
-            "blame": true,
-            "compare": true
-        },
-        "editorTab": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "explorer": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        }
-    },
-
-    // Language-specific settings
-    "[csharp]": {
-        "editor.defaultFormatter": "ms-dotnettools.csharp",
-        "editor.formatOnType": true,
-        "editor.formatOnSave": true
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[xml]": {
-        "editor.defaultFormatter": "redhat.vscode-xml",
-        "editor.formatOnSave": true
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml",
-        "editor.formatOnSave": true
-    },
-    "[markdown]": {
-        "editor.defaultFormatter": "davidanson.vscode-markdownlint",
-        "editor.formatOnSave": true
-    },
 
     // Testing settings
     "testing.automaticallyOpenPeekView": "never",
@@ -194,7 +135,7 @@
     // Debug settings
     "debug.toolBarLocation": "docked",
     "debug.inlineValues": true,
-    "debug.console.fontSize": 13,
+    "debug.console.fontSize": 25,
     "debug.console.fontFamily": "JetBrains Mono",
 
     // Other settings
@@ -202,56 +143,6 @@
     "telemetry.telemetryLevel": "off",
     "update.mode": "none",
     "security.workspace.trust.enabled": false,
-
-    // Git Lens settings for rich annotations
-    "gitlens.codeLens.enabled": true,
-    "gitlens.currentLine.enabled": true,
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.blame.highlight.enabled": true,
-    "gitlens.statusBar.enabled": true,
-    "gitlens.hovers.enabled": true,
-    "gitlens.blame.format": "${author|10} ${agoOrDate|14-} ${message|50?}",
-    "gitlens.defaultDateFormat": "YYYY-MM-DD HH:mm",
-    "gitlens.blame.heatmap.enabled": true,
-    "gitlens.blame.avatars": true,
-    "gitlens.blame.compact": false,
-    "gitlens.blame.toggleMode": "window",
-    "gitlens.blame.highlight.locations": ["gutter", "line", "overview"],
-    "gitlens.codeLens.authors.enabled": true,
-    "gitlens.codeLens.recentChange.enabled": true,
-    "gitlens.menus": {
-        "editor": {
-            "blame": true,
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "editorGroup": {
-            "blame": true,
-            "compare": true
-        },
-        "editorTab": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        },
-        "explorer": {
-            "clipboard": true,
-            "compare": true,
-            "history": true,
-            "remote": true
-        }
-    },
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false
-    },
 
     // Git Graph settings for visualization
     "git-graph.repository.commits.showSignatureStatus": true,
@@ -292,62 +183,6 @@
     "diffEditor.maxComputationTime": 0,
     "diffEditor.renderIndicators": true,
 
-    // Testing Configuration
-    "dotnet-test-explorer.testProjectPath": "**/*Tests.@(csproj|vbproj|fsproj)",
-    "dotnet-test-explorer.autoWatch": true,
-    "dotnet-test-explorer.testArguments": "/p:CollectCoverage=true",
-    "dotnet-test-explorer.showCodeLens": true,
-    "dotnet-test-explorer.codeLensFailed": "",
-    "dotnet-test-explorer.codeLensPassed": "",
-    "dotnet-test-explorer.codeLensSkipped": "",
-
-    // .NET Test Settings
-    "dotnet.unitTests.autoGenerateBindings": true,
-    "dotnet.unitTests.rerunFailedTests": true,
-    "dotnet.unitTests.runInParallel": true,
-    "dotnet.unitTests.logPanel": true,
-
-    // Test Explorer UI
-    "testing.automaticallyOpenPeekView": "never",
-    "testing.followRunningTest": true,
-    "testing.gutterEnabled": true,
-    "testing.openTesting": "openOnTestFailure",
-    "testing.defaultGutterClickAction": "debug",
-    "testing.showAllMessages": true,
-
-    // NUnit Specific Settings
-    "nunit.testProjectPath": "",
-    "nunit.enableTestAdapter": true,
-    "nunit.shadowCopy": true,
-    "nunit.displayTestTime": true,
-    "nunit.testOutputLevel": "Normal",
-    "nunit.testDiscoveryMode": "FullScan",
-    "nunit.testDiscoveryRegex": ".*Tests\\.dll$",
-
-    // Test Runner Keybindings Context
-    "testing.runAllTestsInFile.whenContext": "hasTests && !isRunning && !hasFailingTests",
-    "testing.debugAllFailedTests.whenContext": "hasFailingTests && !isRunning",
-    "testing.reRunFailedTests.whenContext": "hasFailingTests && !isRunning",
-    "testing.showMostRecentOutput.whenContext": "hasTests && isRunning",
-    "git.openRepositoryInParentFolders": "always",
-    "vs-kubernetes": {
-        "vscode-kubernetes.minikube-path-mac": "/Users/servitola/.vs-kubernetes/tools/minikube/darwin-arm64/minikube",
-        "vscode-kubernetes.helm-path-mac": "/Users/servitola/.vs-kubernetes/tools/helm/darwin-arm64/helm"
-    },
-    "windsurf.autocompleteSpeed": "fast",
-    // Windsurf AI settings
-    "windsurf.ai.notifications.sound.enabled": true,
-    "windsurf.ai.notifications.sound.suggestionsApproval": "Purr",
-
-    // NUnit Specific Settings
-    "nunit.testProjectPath": "",
-    "nunit.enableTestAdapter": true,
-    "nunit.shadowCopy": true,
-    "nunit.displayTestTime": true,
-    "nunit.testOutputLevel": "Normal",
-    "nunit.testDiscoveryMode": "FullScan",
-    "nunit.testDiscoveryRegex": ".*Tests\\.dll$",
-    "nunit.testAdapterPath": "/Users/servitola/.vscode/extensions/josefpihrt.vscode-nunit-test-adapter/adapter/NUnit3.TestAdapter.dll",
     "windsurf.cascadeCommandsAllowList": [
         "git",
         "dotnet",
@@ -375,8 +210,11 @@
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
-    "cmake.showOptionsMovedNotification": false,
     "workbench.statusBar.visible": false,
     "workbench.activityBar.location": "bottom",
-    "extensions.ignoreRecommendations": true
+    "extensions.ignoreRecommendations": true,
+    "vsicons.presets.hideExplorerArrows": true,
+
+  "window.zoomLevel": 1.4,
+
 }
