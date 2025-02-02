@@ -214,5 +214,14 @@
     "key": "ctrl+t ctrl+d",
     "command": "dotnet.test.debugTestsInContext",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+k e",
+    "command": "-workbench.files.action.focusOpenEditorsView",
+    "when": "workbench.explorer.openEditorsView.active"
+  },
+  {
+    "key": "ctrl+cmd+e",
+    "command": "workbench.explorer.fileView.focus"
   }
 ]
