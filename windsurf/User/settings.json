@@ -226,7 +226,9 @@
         "grep",
         "curl",
         "docker-compose",
-        "sleep"
+        "sleep",
+        "appium",
+        "pwd"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
@@ -237,5 +239,6 @@
     "window.zoomLevel": 3,
     "workbench.editorAssociations": {
         "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
-    }
+    },
+    "vscode-office.editorTheme": "Github Dark"
 }
