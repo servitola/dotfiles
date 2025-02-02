@@ -229,14 +229,15 @@ apps_list = {
         -- d - right
         { key="f", app="Finder" },
         { key="g", app="Fork" },
-        -- h —
-        { key="j", app="Safari" },
+        { key="h", app="Safari" },
+        -- j —
         -- k - left
         -- l - down
         -- ; - right
         -- ' - volume up
         -- return
-        { key="z", specific_function="set_russian_language"},
+        { key="z", app="Windsurf" },
+        -- { key="z", specific_function="set_russian_language"},
         -- x - home
         -- c - end
         { key="v", app="Yandex" },
