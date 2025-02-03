@@ -43,8 +43,8 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 
 # File Locations
 
-- Work: ~/projects/Spotware/cTrader
-- Work for UITests: ~/projects/Spotware/cTrader/UITests
+- Work: ~/projects/Spotware/cTraderDev
+- Work for UITests: ~/projects/Spotware/cTraderDev/UITests
 - Dotfiles: ~/projects/dotfiles
 - Homebrew Config: ~/projects/dotfiles/homebrew/.brewfile
 - Windsurf Rules: ~/projects/dotfiles/windsurf/.windsurfrules
