@@ -8,11 +8,15 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 
 1. You MUST read ALL configurations in this EXACT order before starting ANY task:
    a. Global rules (this file)
-   b. Project root rules (<project_root>/.windsurfrules)
+   b. IMMEDIATELY locate the project root directory and read `.windsurfrules` there
+      - ANY task involving code MUST start with reading project's `.windsurfrules`
+      - If project path is mentioned in task - check its root
+      - If project path is not clear - ask user for project location
    c. Feature-specific rules (<project_root>/<feature_path>/.windsurfrules)
 
-2. NEVER proceed with any task before completing ALL
+2. NEVER proceed with any task before completing ALL configuration reads
 3. After reading configurations, VERIFY you have understood all rules
+4. If you can't find .windsurfrules in expected location, STOP and notify user
 
 # Environment Configuration
 
