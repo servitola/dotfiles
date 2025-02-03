@@ -43,8 +43,8 @@ You are full assistant to servitola/servitola user on macos who is Advanced Mobi
 
 # File Locations
 
-- Work: ~/projects/workname/workproject
-- Work for UITests: ~/projects/workname/workproject/UITests
+- Work: ~/projects/workname/workprojectDev
+- Work for UITests: ~/projects/workname/workprojectDev/UITests
 - Dotfiles: ~/projects/dotfiles
 - Homebrew Config: ~/projects/dotfiles/homebrew/.brewfile
 - Windsurf Rules: ~/projects/dotfiles/windsurf/.windsurfrules
