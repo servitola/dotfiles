@@ -47,7 +47,7 @@
   {
     "key": "ctrl+a",
     "command": "gitlens.toggleFileBlame",
-    "when": "editorTextFocus && config.gitlens.keymap == 'alternate'"
+    "when": "editorTextFocus"
   },
   {
     "key": "alt+cmd+m",
@@ -223,5 +223,150 @@
   {
     "key": "ctrl+cmd+e",
     "command": "workbench.explorer.fileView.focus"
+  },
+  {
+    "key": "cmd+1",
+    "command": "-workbench.action.focusFirstEditorGroup"
+  },
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+2",
+    "command": "-workbench.action.focusSecondEditorGroup"
+  },
+  {
+    "key": "cmd+3",
+    "command": "-workbench.action.focusThirdEditorGroup"
+  },
+
+  // Enhanced Navigation
+  {
+    "key": "alt+cmd+l",
+    "command": "editor.action.formatDocument",
+    "when": "editorHasDocumentFormattingProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "cmd+[",
+    "command": "workbench.action.navigateBack"
+  },
+  {
+    "key": "cmd+]",
+    "command": "workbench.action.navigateForward"
+  },
+
+  // Rider-style Code Actions
+  {
+    "key": "alt+enter",
+    "command": "editor.action.quickFix",
+    "when": "editorHasCodeActionsProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+f6",
+    "command": "editor.action.rename",
+    "when": "editorHasRenameProvider && editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+a",
+    "command": "workbench.action.showCommands"
+  },
+
+  // Rider-style Find & Navigate
+  {
+    "key": "cmd+shift+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!searchInputBoxFocus"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.quickOpen",
+    "when": "!searchInputBoxFocus"
+  },
+  {
+    "key": "cmd+shift+o",
+    "command": "workbench.action.gotoSymbol"
+  },
+  {
+    "key": "cmd+shift+t",
+    "command": "workbench.action.showAllSymbols"
+  },
+
+  // Rider-style Debug
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "f7",
+    "command": "editor.action.goToNextReference",
+    "when": "editorHasReferenceProvider && editorTextFocus"
+  },
+  {
+    "key": "shift+f7",
+    "command": "editor.action.goToPreviousReference",
+    "when": "editorHasReferenceProvider && editorTextFocus"
+  },
+
+  // Solution Explorer
+  {
+    "key": "cmd+1",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+4",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.view.extension.test"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "-workbench.view.scm",
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+  },
+  {
+    "key": "ctrl+shift+g",
+    "command": "gitlens.showFileHistoryInView"
+  },
+
+  // Mobile Development Keybindings
+  {
+    "key": "cmd+alt+t",
+    "command": "dotnet-test-explorer.runTest",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+alt+a",
+    "command": "dotnet-test-explorer.runAllTests",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+shift+r",
+    "command": "workbench.action.debug.restart",
+    "when": "inDebugMode"
+  },
+  {
+    "key": "cmd+shift+d",
+    "command": "workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
   }
 ]
