@@ -231,20 +231,25 @@
         "appium",
         "pwd",
         "gradlew",
-        "open"
+        "open",
+        "emulator",
+        "which",
+        "adb"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
     "workbench.statusBar.visible": false,
-    "workbench.activityBar.location": "bottom",
+    "workbench.activityBar.location": "top",
     "extensions.ignoreRecommendations": true,
     "vsicons.presets.hideExplorerArrows": true,
-    "window.zoomLevel": 3,
+    "window.zoomLevel": 2,
     "workbench.editorAssociations": {
         "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
     },
     "vscode-office.editorTheme": "Github Dark",
     "git.openRepositoryInParentFolders": "always",
     "windsurf.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
-	"windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items"
+    "windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
+    "maui.configuration.androidSdkPreferredPath": "/Users/servitola/Library/Android/sdk",
+    "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
 }
