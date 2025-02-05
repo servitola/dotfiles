@@ -229,7 +229,9 @@
         "docker-compose",
         "sleep",
         "appium",
-        "pwd"
+        "pwd",
+        "gradlew",
+        "open"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
@@ -241,5 +243,8 @@
     "workbench.editorAssociations": {
         "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
     },
-    "vscode-office.editorTheme": "Github Dark"
+    "vscode-office.editorTheme": "Github Dark",
+    "git.openRepositoryInParentFolders": "always",
+    "windsurf.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
+	"windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items"
 }
