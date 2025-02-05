@@ -66,8 +66,6 @@
     ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
-    // File settings
-    "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
@@ -251,5 +249,30 @@
     "windsurf.marketplaceExtensionGalleryServiceURL": "https://marketplace.visualstudio.com/_apis/public/gallery",
     "windsurf.marketplaceGalleryItemURL": "https://marketplace.visualstudio.com/items",
     "maui.configuration.androidSdkPreferredPath": "/Users/servitola/Library/Android/sdk",
-    "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home"
+    "maui.configuration.javaSdkPreferredPath": "/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home",
+    "csharp.semanticHighlighting.enabled": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    "dotnet.codeLens.enableReferencesCodeLens": true,
+    "dotnet.formatting.organizeImportsOnFormat": true,
+    "gitlens.ai.model": "openai:gpt-4o",
+    "csharp.semanticHighlighting.enabled": true,
+    "omnisharp.enableRoslynAnalyzers": true,
+    "omnisharp.enableEditorConfigSupport": true,
+    // Roslynator settings
+    "roslynator.analyzerSearchPaths": ["${workspaceFolder}/packages"],
+    "roslynator.codeAnalysis.enabled": true,
+    "roslynator.codeActionsEnabled": true,
+    "roslynator.diagnosticsEnabled": true,
+    // Auto-Using settings
+    "autoUsing.imports.useAmbientModules": true,
+    "autoUsing.imports.sortOnSave": true,
+    // Test Explorer settings
+    "dotnet-test-explorer.testProjectPath": "**/*UITests.csproj",
+    "dotnet-test-explorer.autoWatch": true,
+    // Thunder Client settings
+    "thunder-client.saveToWorkspace": true,
+    "thunder-client.workspaceRelativePath": "./thunder-tests",
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "files.autoSave": "afterDelay"
 }
