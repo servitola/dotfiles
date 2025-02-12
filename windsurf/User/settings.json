@@ -232,7 +232,8 @@
         "open",
         "emulator",
         "which",
-        "adb"
+        "adb",
+        "ffmpeg"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
