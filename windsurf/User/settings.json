@@ -233,7 +233,11 @@
         "emulator",
         "which",
         "adb",
-        "ffmpeg"
+        "ffmpeg",
+        "cp",
+        "chmod",
+        "killall",
+        "unzip"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
