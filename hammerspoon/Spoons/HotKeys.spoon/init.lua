@@ -241,7 +241,7 @@ apps_list = {
         { key="v", app="Yandex" },
         { key="b", app="iTerm" },
         { key="n", app="Windsurf" },
-        { key="m", app="Elmedia Player", window_default_position="bottom"},
+        { key="m", app="Iina", window_default_position="bottom"},
         -- , - home
         -- . - end
         -- / - volume down
