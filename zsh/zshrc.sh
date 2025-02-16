@@ -39,3 +39,10 @@ fi
 # bindkey "^B" znt-cd-widget
 # zle -N znt-kill-widget
 # bindkey "^Y" znt-kill-widget
+
+# Source OpenAI API key from config
+if [ -f ~/.config/openai_key ]; then
+    source ~/.config/openai_key
+else
+    echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
+fi
