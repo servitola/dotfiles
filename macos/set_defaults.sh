@@ -13,6 +13,12 @@ chflags nohidden ~/Library
 echo "Disable the sound effects on boot"
 nvram SystemAudioVolume=" "
 
+echo "Improve Bluetooth audio quality"
+defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
+
+echo "Disable automatic audio device switching"
+defaults write com.apple.audio.AudioMIDISetup "Automatic Device Switching" -bool false
+
 echo "Disable Siri and remove the menu bar icon"
 launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/null
 defaults write com.apple.Siri StatusMenuVisible -int 0
