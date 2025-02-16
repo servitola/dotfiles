@@ -406,6 +406,8 @@ apps_list = {
         { key="right", specific_function="window.right"},
         { key="up", specific_function="window.fullscreen"},
         { key="down", specific_function="window.set_all_to_default"},
+        { key="e", specific_function="audio.external"},
+        { key="m", specific_function="audio.internal"}
     }},
     { modifier={"left_control", "left_shift"}, chords={
         -- /------__CONTROL+SHIFT_LAYER___-----------------------------------------------------------\
@@ -572,6 +574,14 @@ function obj:init()
                     spoon.PopupTranslateSelection:bindHotkeys({
                         translate_to_el = {row.modifier, chord_row.key},
                     })
+                elseif chord_row.specific_function == "audio.external" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.AudioSwitcher:switchToExternal()
+                    end)
+                elseif chord_row.specific_function == "audio.internal" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.AudioSwitcher:switchToInternal()
+                    end)
                 end
             end
         end
