@@ -72,14 +72,14 @@ yt-dlp https://www.youtube.com/user/ButKorn/videos
 * A: I use [baobab](https://wiki.gnome.org/action/show/Apps/DiskUsageAnalyzer?action=show&redirect=Apps%2FBaobab). Just type `baobab` in Terminal/iTerm2.
 
 * Q: How to <ins>install</ins> this repository?
-* A: Run ```cd ~/projects/dotfiles chmod +x install.sh ./install.sh``` in Terminal.
+* A: With regular Makefile. Run ```cd ~/projects/dotfiles && make``` in Terminal.
 
 * Q: But <ins>where to download</ins> in the first place?
 * A: You must clone or download the zip file of this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path.
 ```bash
 mkdir ~/projects
 cd ~/projects
-git clone https::github.com/servitola/dotfiles.git
+git clone https://github.com/servitola/dotfiles.git
 ```
 You will be asked to install command tools - agree.
 
@@ -93,7 +93,7 @@ You will be asked to install command tools - agree.
   * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Flameshot](https://flameshot.org/) can take them.
 
 * Q: I want to understand what this repository installs exactly
-* A: Check the [Install.sh](https://github.com/servitola/dotfiles/blob/master/install.sh) script. It installs all the programs (mostly with homebrew), creates symlinks, and completes the setup.
+* A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), creates symlinks, and completes the setup.
 
 * Q: How to log in Hammerspoon to Hammerspoon's console faster?
 * A: In Hammerspoon's Lua file, write down:
