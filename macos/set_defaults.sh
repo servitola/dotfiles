@@ -136,6 +136,19 @@ defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add '<dict>
 		</dict>'
 
 ###############################################################################
+echo "Keyboard and Text Input Optimization"                                   #
+###############################################################################
+
+echo "Optimize keyboard response"
+defaults write -g InitialKeyRepeat -int 25
+defaults write -g KeyRepeat -int 6
+
+echo "Disable automatic text corrections"
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
+###############################################################################
 echo "Safari"		                                                              #
 ###############################################################################
 
