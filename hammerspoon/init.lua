@@ -8,6 +8,8 @@ hs.loadSpoon("Windows") -- window management
 hs.loadSpoon("KSheet") -- shortcuts cheatsheet
 hs.loadSpoon("PopupTranslateSelection") -- translate selected text
 hs.loadSpoon("HotKeys") -- all hotkeys
+hs.loadSpoon("AudioSwitcher") -- audio device switching
+
 require "config_UrlDispatcher"; -- open urls in different browsers
 require "set_language_on_app_focused";
 require "reload_hammerspoon_on_script_changed"
