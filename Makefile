@@ -2,7 +2,13 @@
 
 SHELL := /bin/zsh
 
-install:
+gruvbox-wallpapers:
+	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
+		echo "Cloning gruvbox-wallpapers repository..."; \
+		git clone https://github.com/servitola/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
+	fi
+
+install: gruvbox-wallpapers
 	@$(SHELL) -c 'source zsh/functions.sh'
 	@$(SHELL) -c 'source zsh/exports.sh'
 	@$(SHELL) -c 'source macos/set_defaults.sh'
@@ -65,12 +71,36 @@ install:
 	@rm -rf ~/.config/btop
 	@ln -sfvh ~/projects/dotfiles/btop/.config/btop ~/.config/btop
 
+	@echo "setup bat symlinks"
+	@rm -rf ~/.config/bat
+	@ln -sfvh ~/projects/dotfiles/bat/.config/bat ~/.config/bat
+
 	@echo "setup eza symlinks"
 	@mkdir -p ~/.config/eza
 	@rm -rf ~/.config/eza/theme.yml
 	@ln -sfvh ~/projects/dotfiles/eza/theme.yml ~/.config/eza/theme.yml
 	@rm -rf ~/.config/eza/colors.sh
 	@ln -sfvh ~/projects/dotfiles/eza/colors.sh ~/.config/eza/colors.sh
+
+	@echo "setup aichat symlinks"
+	@mkdir -p ~/Library/Application\ Support/aichat
+	@rm -rf ~/Library/Application\ Support/aichat/config.yaml
+	@ln -sfvh ~/projects/dotfiles/Library/Application\ Support/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
+
+	@echo "setup yazi symlinks"
+	@rm -rf ~/.config/yazi
+	@ln -sfvh ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
+
+	@echo "setup alt-tab symlinks"
+	@mkdir -p ~/Library/Preferences
+	@rm -f ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+	@ln -sfvh ~/projects/dotfiles/alt-tab/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+
+	@echo "setup bin directory"
+	@mkdir -p ~/.local/bin
+	@rm -rf ~/.local/bin/analyze-ui-test
+	@ln -sfvh ~/projects/dotfiles/bin/analyze-ui-test.sh ~/.local/bin/analyze-ui-test
+
 	@echo "set default applications for different file extensions"
 	@$(SHELL) -c 'source macos/set_default_apps.sh'
 
