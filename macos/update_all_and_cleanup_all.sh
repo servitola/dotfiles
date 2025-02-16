@@ -11,20 +11,16 @@ BOLD='\033[1m'
 NC='\033[0m' # No Color
 
 print_section() {
-    printf "\n${BLUE}${BOLD}=== %s ===${NC}\n" "$1"
+    printf "\n${BLUE}${BOLD}━━━ %s ━━━${NC}\n" "$1"
 }
 
 print_task() {
-    printf "${GREEN}➜ %s...${NC}\n" "$1"
+    printf "${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
 print_section "System Updates"
 
-print_task "Updating XCode tools"
-sudo softwareupdate -i -a
-command -v xcode-select >/dev/null 2>&1 || xcode-select --install
-
-print_task "Updating Homebrew packages"
+print_task "Updating Homebrew"
 rm -rf "brew --cache" >/dev/null 2>&1
 brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
@@ -44,36 +40,35 @@ print_task "Flushing DNS cache"
 dscacheutil -flushcache
 killall -HUP mDNSResponder
 
-print_task "Cleaning system caches"
+print_task "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
 rm -rf ~/Library/Caches/* >/dev/null 2>&1
 rm -rf /Library/Caches/* >/dev/null 2>&1
 
-print_task "Clearing system logs"
+print_task "Cleaning logs"
 find ~/Library/Logs -type f -name '*.log' -delete >/dev/null 2>&1
 find ~/Library/Logs -type f -name '*.log.0' -delete >/dev/null 2>&1
 rm -rf ~/Library/Developer/Xcode/DerivedData/* >/dev/null 2>&1
 rm -rf /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs/* >/dev/null 2>&1
 rm -rf ~/.local/share/NuGet/v3-cache/* >/dev/null 2>&1
 
-print_task "Cleaning .DS_Store files"
+print_task "Cleaning system files"
 find . -type f -name '*.DS_Store' -delete >/dev/null 2>&1
-print_task "Cleaning Apple-specific files"
 find . -type d -name '.AppleD*' -exec rm -rf {} \; >/dev/null 2>&1
 
-print_task "Emptying Trash"
+print_task "Cleaning Trash"
 rm -rf /Volumes/*/.Trashes >/dev/null 2>&1
 rm -rf /private/var/log/asl/*.asl >/dev/null 2>&1
 rm -rf ~/.Trash/* >/dev/null 2>&1
 
 setopt no_rm_star_silent #turn on safe mode back
 
-print_section "Additional Updates"
+print_section "Final Updates"
 
-print_task "Updating tldr cache"
+print_task "Updating TLDR cache"
 tldr --update >/dev/null || echo "Error updating tldr cache"
 
-print_task "Verifying Android SDK licenses"
+print_task "Checking Android SDK"
 sdkmanager --licenses >/dev/null || echo "Error verifying Android SDK licenses"
 
 reload
