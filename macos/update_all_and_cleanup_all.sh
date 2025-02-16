@@ -38,6 +38,7 @@ rm -rfv /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs/*
 rm -rfv ~/.local/share/NuGet/v3-cache/*
 echo "Cleaning .DS_Store files"
 find . -type f -name '*.DS_Store' -ls -delete
+find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;
 echo "Cleaning Trash Bin"
 rm -rfv /Volumes/*/.Trashes
 rm -rfv ~/.Trash
