@@ -13,6 +13,9 @@ chflags nohidden ~/Library
 echo "Disable the sound effects on boot"
 nvram SystemAudioVolume=" "
 
+echo Disable the crash reporter
+defaults write com.apple.CrashReporter DialogType -string "none"
+
 echo "Improve Bluetooth audio quality"
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
 
