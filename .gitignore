@@ -25,3 +25,4 @@ vscode/User/globalStorage/ms-python.python/
 
 # Appium
 appium/.appium/node_modules/
+.aider*
