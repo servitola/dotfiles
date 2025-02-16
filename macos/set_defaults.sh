@@ -216,12 +216,6 @@ defaults write com.apple.SoftwareUpdate ConfigDataInstall -int 0
 echo "System Services and Memory Optimization"                                #
 ###############################################################################
 
-echo "Disable Siri completely"
-defaults write com.apple.assistant.support "Assistant Enabled" -bool false
-defaults write com.apple.Siri StatusMenuVisible -bool false
-defaults write com.apple.Siri UserHasDeclinedEnable -bool true
-launchctl unload -w /System/Library/LaunchAgents/com.apple.Siri.plist 2> /dev/null
-
 echo "Disable automatic software updates"
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticCheckEnabled -bool false
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate AutomaticDownload -bool false
