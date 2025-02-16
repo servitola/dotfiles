@@ -65,6 +65,12 @@ install:
 	@rm -rf ~/.config/btop
 	@ln -sfvh ~/projects/dotfiles/btop/.config/btop ~/.config/btop
 
+	@echo "setup eza symlinks"
+	@mkdir -p ~/.config/eza
+	@rm -rf ~/.config/eza/theme.yml
+	@ln -sfvh ~/projects/dotfiles/eza/theme.yml ~/.config/eza/theme.yml
+	@rm -rf ~/.config/eza/colors.sh
+	@ln -sfvh ~/projects/dotfiles/eza/colors.sh ~/.config/eza/colors.sh
 	@echo "set default applications for different file extensions"
 	@$(SHELL) -c 'source macos/set_default_apps.sh'
 
