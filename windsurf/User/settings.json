@@ -238,7 +238,9 @@
         "chmod",
         "killall",
         "unzip",
-        "mkdir"
+        "mkdir",
+        "mv",
+        "rmdir"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
@@ -280,5 +282,9 @@
     "thunder-client.saveToWorkspace": true,
     "thunder-client.workspaceRelativePath": "./thunder-tests",
     "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "windsurf.cascadeCommandsDenyList": [
+        "git push"
+    ],
+    "windsurf.enableModelBasedAutoExecution": true
 }
