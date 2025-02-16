@@ -2,6 +2,7 @@
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias reload="exec zsh"
 
+alias c=clear
 alias code=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 alias re=reload
