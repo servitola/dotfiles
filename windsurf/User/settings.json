@@ -141,7 +141,9 @@
         "**/.git": true,
         "**/bin": true,
         "**/bower_components": true,
+        "**/com.apple.biome.BiomeStreams.BiomeLighthousePlugin/**": true,
         "**/env": true,
+        "**/Library/Caches/": true,
         "**/node_modules": true,
         "**/obj": true,
         "**/venv": true
