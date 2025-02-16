@@ -61,6 +61,10 @@ install:
 	@rm -rf ~/.appium
 	@ln -sfvh ~/projects/dotfiles/appium/.appium ~/.appium
 
+	@echo "setup btop symlinks"
+	@rm -rf ~/.config/btop
+	@ln -sfvh ~/projects/dotfiles/btop/.config/btop ~/.config/btop
+
 	@echo "set default applications for different file extensions"
 	@$(SHELL) -c 'source macos/set_default_apps.sh'
 
