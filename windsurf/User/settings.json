@@ -237,7 +237,8 @@
         "cp",
         "chmod",
         "killall",
-        "unzip"
+        "unzip",
+        "mkdir"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
