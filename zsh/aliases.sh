@@ -49,13 +49,18 @@ alias wifis="wifi -s"
 alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 
+# Load eza colors
+source ~/projects/dotfiles/eza/colors.sh
+
+# Load AI API keys
+source ~/projects/dotfiles/zsh/secrets/ai_api_keys.sh
+
+# eza aliases with custom theme
+alias ls="eza --icons --group-directories-first --color=always"
+alias ll="ls -l"
+alias la="ll -a"
+alias lt="ll --tree"
+alias l="ls"
+
 # EZA aliases                                                       # ls
-alias l='eza -lbF --git --icons'                                               # list, size, type, git
-alias ll='eza -lbGF --git --icons'                                             # long list
-alias llm='eza -lbGF --git --sort=modified --icons'                            # long list, modified date sort
-alias la='eza -lbhHigUmuSa --time-style=long-iso --git --color-scale --icons'  # all list
-alias lx='eza -lbhHigUmuSa@ --time-style=long-iso --git --color-scale --icons' # all + extended list
-alias lS='eza -1 --icons'			                                                  # one column, just names
-alias lt='eza --tree --level=2 --icons'
-# List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
