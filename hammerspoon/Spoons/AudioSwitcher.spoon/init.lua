@@ -43,4 +43,16 @@ function obj:switchToInternal()
     end
 end
 
+function obj:switchToMarshall()
+    self:listDevices()
+
+    local device = self:findAudioDevice("Marshall")
+    if device then
+        device:setDefaultOutputDevice()
+        hs.alert.show("🎧 Switched to Marshall")
+    else
+        hs.alert.show("❌ Marshall headphones not found")
+    end
+end
+
 return obj
