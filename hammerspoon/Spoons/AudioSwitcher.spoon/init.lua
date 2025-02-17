@@ -9,9 +9,9 @@ local notification = hs.loadSpoon("Notification")
 
 -- Device icons with modern style
 local deviceIcons = {
-    ["Scarlett"] = "🎛️",
-    ["MacBook Pro"] = "🖥️",
-    ["Marshall"] = "🎧"
+    ["Scarlett"] = "󰋋",  -- Nerd Font audio icon
+    ["MacBook Pro"] = "󰍹",  -- Nerd Font laptop icon
+    ["Marshall"] = "󰋋"   -- Nerd Font headphone icon
 }
 
 function obj:findAudioDevice(pattern)
@@ -68,13 +68,13 @@ function obj:switchToMarshall()
         device:setDefaultOutputDevice()
         self:showDeviceNotification(device:name())
     else
-        notification.show("❌  Marshall headphones not found")
+        notification.show("󰕾  Marshall headphones not found")
     end
 end
 
 function obj:showDeviceNotification(deviceName)
     -- Find matching icon or use default
-    local icon = "🔈"
+    local icon = "󰕾"  -- Default audio icon
     for pattern, deviceIcon in pairs(deviceIcons) do
         if string.find(deviceName:lower(), pattern:lower()) then
             icon = deviceIcon
@@ -82,7 +82,17 @@ function obj:showDeviceNotification(deviceName)
         end
     end
 
-    notification.show(string.format("%s   %s", icon, deviceName))
+    -- Show notification with icon and device name in Gruvbox colors
+    notification.show({
+        text = deviceName,
+        icon = icon,
+        textColor = {
+            red = 235/255,    -- Gruvbox light0
+            green = 219/255,
+            blue = 178/255,
+            alpha = 1.0
+        }
+    })
 end
 
 function obj:init()
