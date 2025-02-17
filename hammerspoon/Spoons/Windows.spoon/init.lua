@@ -50,7 +50,7 @@ function set_window_left(window)
 end
 
 function set_window_right(window)
-    if window == null then
+    if window == nil then
         window = hs.window.frontmostWindow()
     end
 
@@ -66,9 +66,9 @@ end
 
 function set_window_bottom(window)
     set_window(
-      vertical_line,
-      horizontal_line + spacing,
-      rightX - vertical_line,
+        vertical_line,
+        horizontal_line + spacing,
+        rightX - vertical_line,
       1 - horizontal_line,
       window)
 end
@@ -84,12 +84,14 @@ function set_all_windows_positions()
     for _, window in ipairs(hs.window.allWindows()) do
         local window_title = window:title()
         local app_title = window:application():title()
-
+        
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
         elseif is_firefox_video_player(app_title, window_title) then
+            set_window_bottom(window)
+        elseif is_yandex_video_player(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
@@ -147,6 +149,20 @@ function is_firefox_video_player(app_title, window_title)
   end
 end
 
+function is_yandex_video_player(app_title, window_title, window)
+    -- Check for Yandex video window - it's the window WITHOUT the suffix
+    if not (app_title == "Yandex" and window_title) then
+        return false
+    end
+
+    local suffix = string.char(226, 128, 148, 32, 89, 97, 110, 100, 101, 120, 194, 160, 66, 114, 111, 119, 115, 101, 114)
+    local title_end = window_title:sub(-#suffix)
+    
+    local is_video = title_end ~= suffix
+    
+    return is_video
+end
+
 function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
@@ -160,7 +176,7 @@ function is_full_screen(window)
 end
 
 function set_window(x, y, width, height, window)
-    if window == null then
+    if window == nil then
         window = hs.window.frontmostWindow()
     end
 
