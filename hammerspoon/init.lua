@@ -1,4 +1,6 @@
 hs.console.clearConsole()
+hs.console.darkMode(true)
+hs.console.alpha(0.8)
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
 hs.keycodes.setLayout("English - Ilya Birman Typography")
 hs.application.enableSpotlightForNameSearches(true)
@@ -13,3 +15,12 @@ hs.loadSpoon("AudioSwitcher") -- audio device switching
 require "config_UrlDispatcher"; -- open urls in different browsers
 require "set_language_on_app_focused";
 require "reload_hammerspoon_on_script_changed"
+
+local systemMonitor = require "system_monitor"
+systemMonitor.start()
+
+hs.timer.doAfter(1, function()
+    if systemMonitor and systemMonitor.showMemoryNotification then
+        systemMonitor.showMemoryNotification()
+    end
+end)
