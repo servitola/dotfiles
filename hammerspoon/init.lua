@@ -1,11 +1,11 @@
 hs.console.clearConsole()
 hs.console.darkMode(true)
-hs.console.alpha(0.8)
+hs.console.alpha(0.95)
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
 hs.keycodes.setLayout("English - Ilya Birman Typography")
 hs.application.enableSpotlightForNameSearches(true)
 
---hs.loadSpoon("UnsplashZ") -- download new wallpaper
+hs.loadSpoon("GruvboxWallpapers") -- set new wallpaper
 hs.loadSpoon("Windows") -- window management
 hs.loadSpoon("KSheet") -- shortcuts cheatsheet
 hs.loadSpoon("PopupTranslateSelection") -- translate selected text
