@@ -7,29 +7,144 @@ obj.author = "servitola"
 local activeNotifications = {}
 local maxNotifications = 3
 
--- Color themes
-local themes = {
-    default = {
-        background = { red = 40/255, green = 35/255, blue = 32/255, alpha = 0.95 },
-        border = { red = 250/255, green = 189/255, blue = 47/255, alpha = 0.4 },
-        text = { red = 1, green = 1, blue = 1, alpha = 1 }
-    },
-    success = {
-        background = { red = 39/255, green = 55/255, blue = 40/255, alpha = 0.95 },
-        border = { red = 82/255, green = 205/255, blue = 91/255, alpha = 0.4 },
-        text = { red = 1, green = 1, blue = 1, alpha = 1 }
-    },
-    warning = {
-        background = { red = 55/255, green = 47/255, blue = 34/255, alpha = 0.95 },
-        border = { red = 255/255, green = 179/255, blue = 0/255, alpha = 0.4 },
-        text = { red = 1, green = 1, blue = 1, alpha = 1 }
-    },
-    error = {
-        background = { red = 55/255, green = 34/255, blue = 34/255, alpha = 0.95 },
-        border = { red = 255/255, green = 89/255, blue = 89/255, alpha = 0.4 },
-        text = { red = 1, green = 1, blue = 1, alpha = 1 }
+-- Wood texture path
+local woodTexturePath = "~/projects/dotfiles/hammerspoon/lib/wood.jpg"
+
+-- Function to create rounded rectangle path
+local function createRoundedRectPath(x, y, w, h, r)
+    return {
+        type = "segments",
+        coordinates = {
+            { x = x + r, y = y },      -- Top line
+            { x = x + w - r, y = y },
+            { x = x + w, y = y + r },  -- Right line
+            { x = x + w, y = y + h - r },
+            { x = x + w - r, y = y + h }, -- Bottom line
+            { x = x + r, y = y + h },
+            { x = x, y = y + h - r },  -- Left line
+            { x = x, y = y + r },
+            { x = x + r, y = y }       -- Back to start
+        },
+        closed = true
     }
-}
+end
+
+-- Function to add wood texture
+local function addWoodTexture(canvas, theme)
+    local frame = canvas:frame()
+    local image = hs.image.imageFromPath(woodTexturePath)
+
+    if image then
+        -- Get image dimensions
+        local imageSize = image:size()
+        -- Scale factor to make the texture more detailed (showing smaller area)
+        local scaleFactor = 0.5  -- Show half the size for more detail
+
+        -- Calculate scaled dimensions
+        local scaledWidth = frame.w / scaleFactor
+        local scaledHeight = frame.h / scaleFactor
+
+        -- Calculate random position within the image, ensuring we have enough space for our scaled view
+        local maxX = math.max(0, imageSize.w - scaledWidth)
+        local maxY = math.max(0, imageSize.h - scaledHeight)
+        local x = math.random(0, maxX)
+        local y = math.random(0, maxY)
+
+        -- Create a temporary canvas for main texture
+        local tempCanvas = hs.canvas.new({ x = 0, y = 0, w = scaledWidth, h = scaledHeight })
+        tempCanvas:appendElements({
+            type = "image",
+            image = image,
+            imageAlignment = "topLeft",
+            imageScaling = "none",
+            frame = { x = -x, y = -y, w = imageSize.w, h = imageSize.h }
+        })
+
+        -- macOS style corner radius (12px)
+        local cornerRadius = 12
+
+        -- Add more refined layered shadow for depth (more layers, softer spread)
+        for i = 1, 6 do
+            local alpha = 0.04 - (i * 0.005)  -- Gradually decreasing opacity
+            local spread = i * 1.5  -- Gradually increasing spread
+            canvas:appendElements({
+                type = "rectangle",
+                action = "fill",
+                fillColor = { red = 0, green = 0, blue = 0, alpha = alpha },
+                roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+                frame = { x = spread, y = spread, w = frame.w - (spread * 2), h = frame.h - (spread * 2) }
+            })
+        end
+
+        -- Create clipping path with macOS style corners
+        canvas:appendElements({
+            type = "rectangle",
+            action = "clip",
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = 0, w = frame.w, h = frame.h }
+        })
+
+        -- Add the wood texture background
+        canvas:appendElements({
+            type = "image",
+            image = tempCanvas:imageFromCanvas(),
+            imageAlignment = "topLeft",
+            imageScaling = "scaleToFit",
+            frame = { x = 0, y = 0, w = frame.w, h = frame.h }
+        })
+
+        -- Add subtle inner shadow for depth
+        canvas:appendElements({
+            type = "rectangle",
+            action = "fill",
+            fillColor = { red = 0, green = 0, blue = 0, alpha = 0.15 },
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = 0, w = frame.w, h = 3 }  -- Top edge shadow
+        })
+
+        -- Add subtle highlight at bottom for depth
+        canvas:appendElements({
+            type = "rectangle",
+            action = "fill",
+            fillColor = { red = 1, green = 1, blue = 1, alpha = 0.07 },
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = frame.h - 3, w = frame.w, h = 3 }  -- Bottom edge highlight
+        })
+
+        -- Reset clipping
+        canvas:appendElements({
+            type = "resetClip"
+        })
+
+        -- Add refined vignette effect (more natural fade)
+        canvas:appendElements({
+            type = "rectangle",
+            action = "fill",
+            fillColor = { red = 0, green = 0, blue = 0, alpha = 0.15 },
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = 0, w = frame.w, h = frame.h }
+        })
+
+        -- Add subtle warm overlay to enhance wood texture
+        canvas:appendElements({
+            type = "rectangle",
+            action = "fill",
+            fillColor = { red = 1, green = 0.95, blue = 0.9, alpha = 0.05 },  -- Very subtle warm tint
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = 0, w = frame.w, h = frame.h }
+        })
+
+        -- Add subtle macOS-style border with refined opacity
+        canvas:appendElements({
+            type = "rectangle",
+            action = "stroke",
+            strokeColor = { red = 1, green = 1, blue = 1, alpha = 0.12 },
+            strokeWidth = 1,
+            roundedRectRadii = { xRadius = cornerRadius, yRadius = cornerRadius },
+            frame = { x = 0, y = 0, w = frame.w, h = frame.h }
+        })
+    end
+end
 
 -- Progress bar support
 local function addProgressBar(canvas, progress, theme)
@@ -51,7 +166,7 @@ local function addActionButtons(canvas, actions, theme)
         canvas:appendElements({
             type = "rectangle",
             action = "fill",
-            fillColor = { 
+            fillColor = {
                 red = theme.border.red,
                 green = theme.border.green,
                 blue = theme.border.blue,
@@ -267,17 +382,35 @@ local function showWithFade(canvas, finalX, priority)
     return notif
 end
 
+-- Add a cleanup function to force remove stale notifications
+local function cleanupStaleNotifications()
+    local currentTime = os.time()
+    local staleTimeout = 10  -- Consider notifications stale after 10 seconds
+    
+    for i = #activeNotifications, 1, -1 do
+        local notif = activeNotifications[i]
+        if notif and currentTime - notif.createdAt > staleTimeout then
+            if notif.canvas then
+                notif.canvas:delete()
+            end
+            table.remove(activeNotifications, i)
+        end
+    end
+end
+
+-- Add periodic cleanup timer
+local cleanupTimer = hs.timer.doEvery(30, cleanupStaleNotifications)  -- Check every 30 seconds
+
 function obj.show(text, options)
     -- Default options
     options = options or {}
     local width = options.width or 400
-    local height = options.height or (options.actions and 85 or 65)  -- Taller for actions
+    local height = options.height or (options.actions and 85 or 65)
     local padding = options.padding or 22
     local timeout = options.timeout or 2
     local priority = options.priority or "normal"
-    local theme = themes[options.type or "default"]
-    local progress = options.progress  -- Optional progress (0-1)
-    local actions = options.actions    -- Optional array of {text = "Button", callback = function}
+    local progress = options.progress
+    local actions = options.actions
 
     -- Get screen dimensions
     local screen = hs.screen.mainScreen()
@@ -297,6 +430,23 @@ function obj.show(text, options)
     -- Add click handler for the entire canvas
     canvas:mouseCallback(function(c, m, i, x, y)
         if m == "mouseUp" then
+            if actions then
+                local h = canvas:frame().h
+                local w = canvas:frame().w
+                if y >= h * 0.75 and y <= h * 0.9 then
+                    local buttonWidth = w * 0.9 / #actions
+                    for i, action in ipairs(actions) do
+                        local buttonX = w * 0.05 + (i-1) * buttonWidth
+                        if x >= buttonX and x <= buttonX + buttonWidth then
+                            if action.callback then
+                                action.callback()
+                            end
+                            break
+                        end
+                    end
+                end
+            end
+            -- Always try to remove notification on click
             for j, notif in ipairs(activeNotifications) do
                 if notif.canvas == c then
                     hideWithFade(notif)
@@ -306,202 +456,81 @@ function obj.show(text, options)
         end
     end)
 
-    -- Add deeper shadow
-    canvas:appendElements({
-        type = "rectangle",
-        action = "fill",
-        fillColor = {
-            red = 0,
-            green = 0,
-            blue = 0,
-            alpha = 0.3
-        },
-        roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame = { x = 3, y = 3, w = "100%", h = "100%" }
-    })
+    -- Add wood texture
+    addWoodTexture(canvas, {})
 
-    -- Add subtle noise texture
-    for i = 1, 50 do
-        local x = math.random() * 100
-        local y = math.random() * 100
-        canvas:appendElements({
-            type = "rectangle",
-            action = "fill",
-            fillColor = {
-                red = 1,
-                green = 1,
-                blue = 1,
-                alpha = math.random() * 0.03
-            },
-            frame = {
-                x = x .. "%",
-                y = y .. "%",
-                w = "1%",
-                h = "1%"
-            }
-        })
-    end
-
-    -- Add background
-    canvas:appendElements({
-        type = "rectangle",
-        action = "fill",
-        fillColor = theme.background,
-        roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame = { x = 0, y = 0, w = "100%", h = "100%" }
-    })
-
-    -- Add grain overlay
-    for i = 1, 8 do
-        canvas:appendElements({
-            type = "rectangle",
-            action = "fill",
-            fillColor = {
-                red = 1,
-                green = 1,
-                blue = 1,
-                alpha = 0.02
-            },
-            frame = {
-                x = 0,
-                y = (i * 12) .. "%",
-                w = "100%",
-                h = "3%"
-            }
-        })
-    end
-
-    -- Add border with subtle bevel effect
-    canvas:appendElements({
-        type = "rectangle",
-        action = "stroke",
-        strokeColor = {
-            red = 1,
-            green = 1,
-            blue = 1,
-            alpha = 0.1
-        },
-        strokeWidth = 1,
-        roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame = { x = 1, y = 1, w = "99%", h = "99%" }
-    })
-    canvas:appendElements({
-        type = "rectangle",
-        action = "stroke",
-        strokeColor = theme.border,
-        strokeWidth = 2,
-        roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame = { x = 0, y = 0, w = "100%", h = "100%" }
-    })
-
-    -- Add text with slight shadow for depth
+    -- Add text with premium styling
     canvas:appendElements({
         type = "text",
         text = text,
-        textColor = {
-            red = 0,
-            green = 0,
-            blue = 0,
-            alpha = 0.3
-        },
-        textFont = ".AppleSystemUIFont",
+        textColor = { red = 0.1, green = 0.1, blue = 0.1, alpha = 0.9 },
+        textFont = ".AppleSystemUIFont",  -- Medium weight for better readability
         textSize = 30,
         textAlignment = "center",
         frame = { x = 0, y = "50%", w = "100%", h = "100%" },
-        transformation = hs.canvas.matrix.translate(1, -14)
+        transformation = hs.canvas.matrix.translate(1, -16)
     })
+
+    -- Add main text with warm but bright color
     canvas:appendElements({
         type = "text",
         text = text,
-        textColor = theme.text,
-        textFont = ".AppleSystemUIFont",
+        textColor = { 
+            red = 0.98,    -- Brighter warm white
+            green = 0.96, 
+            blue = 0.92,
+            alpha = 0.98   -- More opaque for better visibility
+        },
+        textFont = ".AppleSystemUIFont",  -- Medium weight for better readability
         textSize = 30,
         textAlignment = "center",
         frame = { x = 0, y = "50%", w = "100%", h = "100%" },
-        transformation = hs.canvas.matrix.translate(0, -15)
+        transformation = hs.canvas.matrix.translate(0, -17)
     })
 
     -- Add progress bar if specified
     if progress then
-        addProgressBar(canvas, progress, theme)
+        addProgressBar(canvas, progress, {})
     end
 
     -- Add action buttons if specified
     if actions then
-        canvas = addActionButtons(canvas, actions, theme)
-        -- Update click handler to check button clicks
-        canvas:mouseCallback(function(c, m, i, x, y)
-            if m == "mouseUp" then
-                local h = canvas:frame().h
-                local w = canvas:frame().w
-                -- Check if click is in button area
-                if y >= h * 0.75 and y <= h * 0.9 then
-                    local buttonWidth = w * 0.9 / #actions
-                    for i, action in ipairs(actions) do
-                        local buttonX = w * 0.05 + (i-1) * buttonWidth
-                        if x >= buttonX and x <= buttonX + buttonWidth then
-                            if action.callback then
-                                action.callback()
-                            end
-                            return
-                        end
-                    end
-                end
-                -- If not on button, dismiss notification
-                for j, notif in ipairs(activeNotifications) do
-                    if notif.canvas == c then
-                        hideWithFade(notif)
-                        break
-                    end
+        canvas = addActionButtons(canvas, actions, {})
+    end
+
+    -- Show notification with animation
+    local notif = showWithFade(canvas, finalX, priority)
+    notif.createdAt = os.time()  -- Add timestamp for stale detection
+
+    -- Auto-hide after timeout seconds if timeout is not 0
+    if timeout > 0 then
+        -- Use hs.timer for more reliable cleanup
+        hs.timer.doAfter(timeout, function()
+            -- Check if notification still exists
+            for i, n in ipairs(activeNotifications) do
+                if n == notif then
+                    hideWithFade(notif)
+                    break
                 end
             end
         end)
     end
 
-    -- Add dismiss text if notification is persistent
-    if timeout == 0 then
-        canvas:appendElements({
-            type = "text",
-            text = "Click to dismiss",
-            textColor = {
-                red = theme.text.red,
-                green = theme.text.green,
-                blue = theme.text.blue,
-                alpha = 0.6
-            },
-            textFont = ".AppleSystemUIFont",
-            textSize = 12,
-            textAlignment = "center",
-            frame = { x = 0, y = "85%", w = "100%", h = "100%" }
-        })
-    end
-
-    -- Show notification with animation
-    local notif = showWithFade(canvas, finalX, priority)
-
-    -- Auto-hide after timeout seconds if timeout is not 0
-    if timeout > 0 then
-        hs.timer.doAfter(timeout, function()
-            hideWithFade(notif)
-        end)
-    end
+    return notif
 end
 
 function obj.success(text, options)
     options = options or {}
-    options.type = "success"
     return obj.show(text, options)
 end
 
 function obj.warning(text, options)
     options = options or {}
-    options.type = "warning"
     return obj.show(text, options)
 end
 
 function obj.error(text, options)
     options = options or {}
-    options.type = "error"
     return obj.show(text, options)
 end
 
