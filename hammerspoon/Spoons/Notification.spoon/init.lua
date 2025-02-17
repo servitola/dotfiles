@@ -5,7 +5,7 @@ obj.author = "servitola"
 
 -- Keep track of active notifications
 local activeNotifications = {}
-local maxNotifications = 5  -- Maximum number of visible notifications
+local maxNotifications = 30  -- Increased to 30 notifications
 local topPadding = 44  -- Match window corner height with dots
 
 -- Wood textures
@@ -42,6 +42,10 @@ end
 
 local function easeOutQuint(t)
     return 1 - math.pow(1 - t, 5)
+end
+
+local function easeOutCubic(t)
+    return 1 - math.pow(1 - t, 3)
 end
 
 -- Function to create rounded rectangle path
@@ -185,13 +189,31 @@ local function getNextPosition()
         end
     end
 
-    -- If no empty slots, use position 1 and shift others down
-    return 1
+    -- If no empty slots, remove oldest and use its position
+    local oldest = activeNotifications[1]
+    local oldestIdx = 1
+    for i, n in ipairs(activeNotifications) do
+        if n.createdAt < oldest.createdAt then
+            oldest = n
+            oldestIdx = i
+        end
+    end
+    hideWithFade(oldest)
+    return oldestIdx
 end
 
 -- Function to get notification vertical position
 local function getVerticalPosition(index)
-    return topPadding + ((index - 1) * 75)  -- Stack from top down with proper padding
+    local screen = hs.screen.mainScreen()
+    local frame = screen:frame()
+    local maxVisible = math.floor((frame.h - topPadding) / 75)  -- Calculate how many can fit on screen
+    
+    -- If we have more notifications than can fit, scroll them up
+    if index > maxVisible then
+        return frame.h - ((maxVisible - (index - maxVisible)) * 75)
+    end
+    
+    return topPadding + ((index - 1) * 75)  -- Normal stacking
 end
 
 -- Function to update notification positions
@@ -235,24 +257,19 @@ local function hideWithFade(notif)
     for i, n in ipairs(activeNotifications) do
         if n == notif then
             table.remove(activeNotifications, i)
-            -- Update positions of remaining notifications
-            for j, remaining in ipairs(activeNotifications) do
-                if remaining and remaining.canvas then
-                    local newY = getVerticalPosition(j)
-                    remaining.canvas:topLeft({ x = remaining.canvas:topLeft().x, y = newY })
-                end
-            end
+            updateNotificationPositions()
             break
         end
     end
     
     -- Animate slide out
     local startX = canvas:topLeft().x
-    local endX = frame.w + 50
-    local distance = endX - startX
+    local startY = canvas:topLeft().y
+    local endX = frame.w + 100
+    local endY = startY - 20
     
-    local steps = 15
-    local duration = 0.2
+    local steps = 8
+    local duration = 0.12
     local stepTime = duration / steps
     local currentStep = 0
     local fadeTimer = nil
@@ -262,78 +279,52 @@ local function hideWithFade(notif)
         local progress = currentStep / steps
         local easedProgress = easeOutQuint(progress)
         
-        if canvas then  -- Check if canvas still exists
-            local newX = startX + (distance * easedProgress)
-            canvas:topLeft({ x = newX, y = canvas:topLeft().y })
+        if canvas then
+            local newX = startX + ((endX - startX) * easedProgress)
+            local newY = startY + ((endY - startY) * easedProgress)
+            canvas:topLeft({ x = newX, y = newY })
             canvas:alpha(0.95 * (1 - progress))
             
             if currentStep >= steps then
                 fadeTimer:stop()
-                if canvas then  -- Double check before final cleanup
+                if canvas then
                     canvas:delete()
                     canvas = nil
                 end
             end
         else
-            fadeTimer:stop()  -- Stop if canvas is gone
+            fadeTimer:stop()
         end
     end)
 end
 
 -- Function to smoothly show notification
 local function showWithFade(canvas, finalX, priority)
-    local steps = 12
-    local duration = 0.15
+    local steps = 10  -- Slightly more steps for smoother animation
+    local duration = 0.15  -- Slightly longer for gentler motion
     local stepTime = duration / steps
 
     -- Get next available position
     local position = getNextPosition()
     local verticalPos = getVerticalPosition(position)
 
-    -- Create glow effect
-    local glow = hs.canvas.new({
-        x = finalX,
-        y = verticalPos,
-        w = canvas:frame().w,
-        h = canvas:frame().h
-    })
-
-    -- Add clean glow
-    glow:appendElements({
-        type = "rectangle",
-        action = "fill",
-        fillColor = {
-            red = 1,
-            green = 1,
-            blue = 1,
-            alpha = 0.12
-        },
-        roundedRectRadii = { xRadius = 12, yRadius = 12 },
-        frame = { x = "0%", y = "0%", w = "100%", h = "100%" }
-    })
-
     -- Set initial states
-    canvas:topLeft({ x = finalX, y = verticalPos })
+    canvas:topLeft({ x = finalX + 30, y = verticalPos - 5 })  -- Much smaller offset
     canvas:alpha(0)
-    glow:alpha(0)
-
-    -- Show both layers
-    glow:show()
     canvas:show()
 
     -- Single animation loop
     for i = 0, steps do
         local progress = i / steps
         local alpha = progress * 0.95
+        local easedProgress = easeOutCubic(progress)
 
         hs.timer.doAfter(i * stepTime, function()
             if canvas then
+                local x = finalX + (30 * (1 - easedProgress))  -- Gentler slide
+                local y = verticalPos - (5 * (1 - easedProgress))  -- Subtle drop
+                canvas:topLeft({ x = x, y = y })
                 canvas:alpha(alpha)
-                glow:alpha(0.12 * (1 - progress))
-
-                if i == steps then
-                    glow:delete()
-                end
             end
         end)
     end
@@ -346,31 +337,8 @@ local function showWithFade(canvas, finalX, priority)
         position = position
     }
 
-    -- If position 1 is taken, shift others down
-    if position == 1 then
-        for _, n in ipairs(activeNotifications) do
-            n.position = n.position + 1
-        end
-    end
-
     table.insert(activeNotifications, notif)
     updateNotificationPositions()
-
-    -- Remove oldest if too many
-    if #activeNotifications > maxNotifications then
-        -- Find oldest notification
-        local oldest = activeNotifications[1]
-        local oldestIdx = 1
-        for i, n in ipairs(activeNotifications) do
-            if n.createdAt < oldest.createdAt then
-                oldest = n
-                oldestIdx = i
-            end
-        end
-        table.remove(activeNotifications, oldestIdx)
-        hideWithFade(oldest)
-    end
-
     return notif
 end
 
@@ -382,9 +350,9 @@ local function cleanupStuckNotifications()
     -- First pass: mark invalid notifications
     for i = #activeNotifications, 1, -1 do
         local notif = activeNotifications[i]
-        if not notif or not notif.canvas or not notif.createdAt or (now - notif.createdAt > 5) then
+        if not notif or not notif.canvas or not notif.createdAt or (now - notif.createdAt > 3) then
             if notif and notif.canvas then
-                notif.canvas:delete()
+                hideWithFade(notif)
             end
             table.remove(activeNotifications, i)
             needsCleanup = true
@@ -393,15 +361,7 @@ local function cleanupStuckNotifications()
     
     -- Second pass: reposition remaining notifications if needed
     if needsCleanup then
-        for i, notif in ipairs(activeNotifications) do
-            if notif and notif.canvas then
-                local newY = getVerticalPosition(i)
-                notif.canvas:topLeft({
-                    x = notif.canvas:topLeft().x,
-                    y = newY
-                })
-            end
-        end
+        updateNotificationPositions()
     end
 end
 
@@ -436,10 +396,22 @@ end
 function obj.show(text, options)
     -- Default options
     options = options or {}
-    local padding = options.padding or 16  -- Reduced padding to give more room for text
+    if type(text) == "table" then
+        options = text
+        text = options.text
+    end
+    
+    local padding = options.padding or 16
     local timeout = options.timeout or 2
     local priority = options.priority or "normal"
     local source = options.source
+    local icon = options.icon
+    local textColor = options.textColor or { 
+        red = 235/255,    -- Gruvbox light0
+        green = 219/255,
+        blue = 178/255,
+        alpha = 1.0 
+    }
 
     -- Clean up stuck notifications
     cleanupStuckNotifications()
@@ -454,7 +426,7 @@ function obj.show(text, options)
     
     -- Calculate position
     local finalX = math.floor(vertical_line * frame.w)
-    local finalY = getVerticalPosition(#activeNotifications + 1)  -- Start from top
+    local finalY = getVerticalPosition(#activeNotifications + 1)
 
     -- Create canvas for notification
     local canvas = hs.canvas.new({
@@ -496,15 +468,38 @@ function obj.show(text, options)
         type = "resetClip"
     })
 
+    -- Add icon if present
+    if icon then
+        canvas:appendElements({
+            type = "text",
+            text = icon,
+            textColor = textColor,
+            textSize = math.floor(32 * 1.3),  -- Make icon 1.3x larger than text
+            textFont = ".AppleSystemUIFont",
+            textAlignment = "center",
+            frame = { 
+                x = padding, 
+                y = padding - 8, 
+                w = width * 0.3,
+                h = height - (padding * 1.5) 
+            }
+        })
+    end
+
     -- Add text
     canvas:appendElements({
         type = "text",
         text = text,
-        textColor = { white = 1.0 },
-        textSize = 32,
+        textColor = textColor,
+        textSize = math.floor(32 * 1.3),  -- Match icon size
         textFont = ".AppleSystemUIFont",
-        textAlignment = "center",
-        frame = { x = padding, y = padding - 4, w = width - (padding * 2), h = height - (padding * 1.5) }  -- Adjusted frame height and y-offset
+        textAlignment = icon and "left" or "center",
+        frame = { 
+            x = icon and (width * 0.32) or padding,  -- Slightly closer than 0.35
+            y = padding - 8,  -- Match icon's vertical position
+            w = icon and (width * 0.65 - padding) or (width - (padding * 2)), 
+            h = height - (padding * 1.5) 
+        }
     })
 
     -- Show notification with animation
