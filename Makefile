@@ -2,13 +2,9 @@
 
 SHELL := /bin/zsh
 
-gruvbox-wallpapers:
-	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
-		echo "Cloning gruvbox-wallpapers repository..."; \
-		git clone https://github.com/servitola/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
-	fi
+install:
 
-install: gruvbox-wallpapers
+
 	@$(SHELL) -c 'source zsh/functions.sh'
 	@$(SHELL) -c 'source zsh/exports.sh'
 	@$(SHELL) -c 'source macos/set_defaults.sh'
@@ -69,18 +65,15 @@ install: gruvbox-wallpapers
 
 	@echo "setup btop symlinks"
 	@rm -rf ~/.config/btop
-	@ln -sfvh ~/projects/dotfiles/btop/.config/btop ~/.config/btop
+	@ln -sfvh ~/projects/dotfiles/btop ~/.config/btop
 
 	@echo "setup bat symlinks"
 	@rm -rf ~/.config/bat
-	@ln -sfvh ~/projects/dotfiles/bat/.config/bat ~/.config/bat
+	@ln -sfvh ~/projects/dotfiles/bat ~/.config/bat
 
 	@echo "setup eza symlinks"
-	@mkdir -p ~/.config/eza
-	@rm -rf ~/.config/eza/theme.yml
-	@ln -sfvh ~/projects/dotfiles/eza/theme.yml ~/.config/eza/theme.yml
-	@rm -rf ~/.config/eza/colors.sh
-	@ln -sfvh ~/projects/dotfiles/eza/colors.sh ~/.config/eza/colors.sh
+	@rm -rf ~/.config/eza
+	@ln -sfvh ~/projects/dotfiles/eza ~/.config/eza
 
 	@echo "setup aichat symlinks"
 	@mkdir -p ~/Library/Application\ Support/aichat
@@ -120,5 +113,13 @@ install: gruvbox-wallpapers
 	@mkdir -p ~/Library/Application\ Scripts/net.langui.ContextMenuHelper
 	@echo '#!/bin/sh\npkill -nf ScriptMonitor\nexec "$$@"' > ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
 	@chmod +x ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
+
+	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
+		echo "Cloning gruvbox-wallpapers repository..."; \
+		git clone https://github.com/servitola/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
+	else \
+		echo "gruvbox-wallpapers repository already cloned."; \
+		cd $(HOME)/projects/gruvbox-wallpapers && git pull; \
+	fi
 
 	@echo "Installation complete!"
