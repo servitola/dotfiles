@@ -13,11 +13,17 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc" ]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.shrc"
 fi
 
-# Initialize zoxide (smart directory jumper)
-eval "$(zoxide init zsh)"
+# Load exports first to set up PATH
+source ~/projects/dotfiles/zsh/exports.sh
 
 # Load completion system
 autoload -Uz compinit && compinit
+
+# Load zoxide settings
+source ~/projects/dotfiles/zsh/zoxide.sh
+
+# Initialize zoxide
+eval "$(zoxide init zsh)"
 
 # Load fzf-tab (must be loaded after compinit but before other completion plugins)
 source ~/projects/dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
@@ -30,7 +36,6 @@ source ~/projects/dotfiles/zsh/fzf.sh
 # Load better completion and navigation
 source ~/projects/dotfiles/zsh/completion.sh
 
-source ~/projects/dotfiles/zsh/exports.sh
 source ~/projects/dotfiles/zsh/plugins.sh
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
