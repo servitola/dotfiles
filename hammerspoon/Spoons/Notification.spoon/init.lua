@@ -5,10 +5,22 @@ obj.author = "servitola"
 
 -- Keep track of active notifications
 local activeNotifications = {}
-local maxNotifications = 3
-
--- Wood texture path
+local maxNotifications = 5  -- Maximum number of visible notifications
+local topPadding = 45  -- Match window corner height with dots
 local woodTexturePath = "~/projects/dotfiles/hammerspoon/lib/wood.jpg"
+
+-- Easing functions
+local function easeInOutQuad(t)
+    if t < 0.5 then
+        return 2 * t * t
+    else
+        return -1 + (4 - 2 * t) * t
+    end
+end
+
+local function easeOutQuint(t)
+    return 1 - math.pow(1 - t, 5)
+end
 
 -- Function to create rounded rectangle path
 local function createRoundedRectPath(x, y, w, h, r)
@@ -189,11 +201,6 @@ local function addActionButtons(canvas, actions, theme)
     return canvas
 end
 
--- Physics-inspired easing functions
-local function easeInOutQuad(t)
-    return t < 0.5 and 2 * t * t or 1 - math.pow(-2 * t + 2, 2) / 2
-end
-
 -- Function to get next available position
 local function getNextPosition()
     -- If no notifications, use first position
@@ -219,8 +226,8 @@ local function getNextPosition()
 end
 
 -- Function to get notification vertical position
-local function getVerticalPosition(position)
-    return 60 + (position - 1) * 75  -- Stack notifications with gap
+local function getVerticalPosition(index)
+    return topPadding + ((index - 1) * 75)  -- Stack from top down with proper padding
 end
 
 -- Function to update notification positions
@@ -254,38 +261,59 @@ end
 
 -- Function to smoothly hide notification
 local function hideWithFade(notif)
-    local steps = 45
-    local duration = 0.6
-    local stepTime = duration / steps
-    local initialAlpha = notif.canvas:alpha()
-    local initialX = notif.canvas:topLeft().x
+    if not notif or not notif.canvas then return end
+    
+    local canvas = notif.canvas
     local screen = hs.screen.mainScreen()
-    local slideDistance = screen:frame().w - initialX + 100
-
-    for i = steps, 0, -1 do
-        local progress = i / steps
-        local easedProgress = easeInOutQuad(progress)
-        local alpha = math.pow(progress, 1.2) * initialAlpha
-        local xOffset = initialX + (1 - easedProgress) * slideDistance
-
-        hs.timer.doAfter((steps - i) * stepTime, function()
-            if notif.canvas then
-                notif.canvas:alpha(alpha)
-                notif.canvas:topLeft({ x = xOffset, y = notif.canvas:topLeft().y })
-                if i == 0 then
-                    notif.canvas:delete()
-                    -- Remove from active notifications
-                    for j, n in ipairs(activeNotifications) do
-                        if n == notif then
-                            table.remove(activeNotifications, j)
-                            break
-                        end
-                    end
-                    updateNotificationPositions()
+    local frame = screen:frame()
+    
+    -- Remove from active notifications first
+    for i, n in ipairs(activeNotifications) do
+        if n == notif then
+            table.remove(activeNotifications, i)
+            -- Update positions of remaining notifications
+            for j, remaining in ipairs(activeNotifications) do
+                if remaining and remaining.canvas then
+                    local newY = getVerticalPosition(j)
+                    remaining.canvas:topLeft({ x = remaining.canvas:topLeft().x, y = newY })
                 end
             end
-        end)
+            break
+        end
     end
+    
+    -- Animate slide out
+    local startX = canvas:topLeft().x
+    local endX = frame.w + 50
+    local distance = endX - startX
+    
+    local steps = 15
+    local duration = 0.2
+    local stepTime = duration / steps
+    local currentStep = 0
+    local fadeTimer = nil
+    
+    fadeTimer = hs.timer.doEvery(stepTime, function()
+        currentStep = currentStep + 1
+        local progress = currentStep / steps
+        local easedProgress = easeOutQuint(progress)
+        
+        if canvas then  -- Check if canvas still exists
+            local newX = startX + (distance * easedProgress)
+            canvas:topLeft({ x = newX, y = canvas:topLeft().y })
+            canvas:alpha(0.95 * (1 - progress))
+            
+            if currentStep >= steps then
+                fadeTimer:stop()
+                if canvas then  -- Double check before final cleanup
+                    canvas:delete()
+                    canvas = nil
+                end
+            end
+        else
+            fadeTimer:stop()  -- Stop if canvas is gone
+        end
+    end)
 end
 
 -- Function to smoothly show notification
@@ -404,57 +432,42 @@ local cleanupTimer = hs.timer.doEvery(30, cleanupStaleNotifications)  -- Check e
 function obj.show(text, options)
     -- Default options
     options = options or {}
-    local width = options.width or 400
-    local height = options.height or (options.actions and 85 or 65)
     local padding = options.padding or 22
     local timeout = options.timeout or 2
     local priority = options.priority or "normal"
-    local progress = options.progress
-    local actions = options.actions
+    local source = options.source
+
+    -- Clean up stuck notifications
+    local now = os.time()
+    for i = #activeNotifications, 1, -1 do
+        local notif = activeNotifications[i]
+        if not notif or not notif.canvas or (notif.createdAt and now - notif.createdAt > 5) then
+            if notif and notif.canvas then
+                notif.canvas:delete()
+            end
+            table.remove(activeNotifications, i)
+        end
+    end
 
     -- Get screen dimensions
     local screen = hs.screen.mainScreen()
     local frame = screen:frame()
-
+    
+    -- Calculate width to match right panel
+    local width = math.floor((rightX - vertical_line) * frame.w)
+    local height = options.height or (options.actions and 85 or 65)
+    
     -- Calculate position
-    local finalX = frame.w - width - padding
+    local finalX = math.floor(vertical_line * frame.w)
+    local finalY = getVerticalPosition(#activeNotifications + 1)  -- Start from top
 
     -- Create canvas for notification
     local canvas = hs.canvas.new({
         x = finalX,
-        y = getVerticalPosition(#activeNotifications + 1),
+        y = finalY,
         w = width,
         h = height
     })
-
-    -- Add click handler for the entire canvas
-    canvas:mouseCallback(function(c, m, i, x, y)
-        if m == "mouseUp" then
-            if actions then
-                local h = canvas:frame().h
-                local w = canvas:frame().w
-                if y >= h * 0.75 and y <= h * 0.9 then
-                    local buttonWidth = w * 0.9 / #actions
-                    for i, action in ipairs(actions) do
-                        local buttonX = w * 0.05 + (i-1) * buttonWidth
-                        if x >= buttonX and x <= buttonX + buttonWidth then
-                            if action.callback then
-                                action.callback()
-                            end
-                            break
-                        end
-                    end
-                end
-            end
-            -- Always try to remove notification on click
-            for j, notif in ipairs(activeNotifications) do
-                if notif.canvas == c then
-                    hideWithFade(notif)
-                    break
-                end
-            end
-        end
-    end)
 
     -- Add wood texture
     addWoodTexture(canvas, {})
@@ -464,7 +477,7 @@ function obj.show(text, options)
         type = "text",
         text = text,
         textColor = { red = 0.1, green = 0.1, blue = 0.1, alpha = 0.9 },
-        textFont = ".AppleSystemUIFont",  -- Medium weight for better readability
+        textFont = ".AppleSystemUIFont",
         textSize = 30,
         textAlignment = "center",
         frame = { x = 0, y = "50%", w = "100%", h = "100%" },
@@ -476,39 +489,28 @@ function obj.show(text, options)
         type = "text",
         text = text,
         textColor = { 
-            red = 0.98,    -- Brighter warm white
-            green = 0.96, 
+            red = 0.98,
+            green = 0.96,
             blue = 0.92,
-            alpha = 0.98   -- More opaque for better visibility
+            alpha = 0.98
         },
-        textFont = ".AppleSystemUIFont",  -- Medium weight for better readability
+        textFont = ".AppleSystemUIFont",
         textSize = 30,
         textAlignment = "center",
         frame = { x = 0, y = "50%", w = "100%", h = "100%" },
         transformation = hs.canvas.matrix.translate(0, -17)
     })
 
-    -- Add progress bar if specified
-    if progress then
-        addProgressBar(canvas, progress, {})
-    end
-
-    -- Add action buttons if specified
-    if actions then
-        canvas = addActionButtons(canvas, actions, {})
-    end
-
     -- Show notification with animation
     local notif = showWithFade(canvas, finalX, priority)
-    notif.createdAt = os.time()  -- Add timestamp for stale detection
-
+    notif.createdAt = os.time()  -- Add creation timestamp
+    
     -- Auto-hide after timeout seconds if timeout is not 0
     if timeout > 0 then
-        -- Use hs.timer for more reliable cleanup
         hs.timer.doAfter(timeout, function()
-            -- Check if notification still exists
+            -- Check if notification still exists and is valid
             for i, n in ipairs(activeNotifications) do
-                if n == notif then
+                if n == notif and n.canvas then
                     hideWithFade(notif)
                     break
                 end
