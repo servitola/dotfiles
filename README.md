@@ -84,7 +84,7 @@ git clone https://github.com/servitola/dotfiles.git
 You will be asked to install command tools - agree.
 
 * Q: What is the best way to <ins>maintain this project</ins>?
-* A: I use [VSCode](https://code.visualstudio.com/). When you open the project's folder, you will be suggested all the necessary plugins to install. For git, I use [PreCommit](https://pre-commit.com/) to check that my commits don't have extra spaces and secrets.
+* A: I use [Windsurf](https://codeium.com/windsurf). When you open the project's folder, you will be suggested all the necessary plugins to install. For git, I use [PreCommit](https://pre-commit.com/) to check that my commits don't have extra spaces and secrets.
 
 * Q: What is <ins>important</ins> to do next?
 * A: Next, do the following:
