@@ -7,7 +7,6 @@ plugins=(
   npm # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npm
   pip # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/pip
   python # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/python
-  z # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/z/README
   sudo # press 'esc' twice to run sudo
   Colored-man-pages # colors
   nx-completion # autocomplete
