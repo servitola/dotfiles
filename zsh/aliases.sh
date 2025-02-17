@@ -4,7 +4,7 @@ alias reload="exec zsh"
 
 alias c=clear
 alias ping=gping
-alias top=btop
+alias gtop=btop
 alias code=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 alias re=reload
