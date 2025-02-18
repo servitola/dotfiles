@@ -1,0 +1,43 @@
+{
+  "name": "YouTrackTicket",
+  "version": "1.0",
+  "author": "servitola",
+  "license": "MIT",
+  "description": "Quick YouTrack ticket creation Spoon",
+  "methods": [
+    {
+      "name": "init",
+      "doc": "Initialize the spoon",
+      "parameters": [],
+      "returns": ["The YouTrackTicket object"]
+    },
+    {
+      "name": "setYouTrackUrl",
+      "doc": "Set the YouTrack base URL",
+      "parameters": [
+        {
+          "name": "url",
+          "doc": "The base URL of your YouTrack instance (e.g., \"http://youtrack.local\")"
+        }
+      ],
+      "returns": ["The YouTrackTicket object"]
+    },
+    {
+      "name": "bindHotkeys",
+      "doc": "Binds hotkeys for YouTrackTicket",
+      "parameters": [
+        {
+          "name": "mapping",
+          "doc": "A table containing hotkey details for showing the YouTrack ticket window"
+        }
+      ],
+      "returns": ["The YouTrackTicket object"]
+    },
+    {
+      "name": "show",
+      "doc": "Shows the YouTrack ticket creation window",
+      "parameters": [],
+      "returns": []
+    }
+  ]
+}
