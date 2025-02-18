@@ -44,12 +44,6 @@ local function getMemoryPressure()
             total
         }'
     ]])
-    local debug_out = debug:read("*a")
-    debug:close()
-
-    print("Memory Stats:")
-    print(debug_out)
-    print(string.format("Memory Pressure: %.1f%%", pressure))
 
     return pressure
 end
@@ -57,7 +51,7 @@ end
 -- Function to show memory notification
 local function showMemoryNotification(pressure)
     notification.show(
-        string.format("⚠️  Memory pressure: %.1f%%", pressure),
+        string.format("⚠️  RAM pressure: %.1f%%", pressure),
         {
             backgroundColor = {
                 red = 50/255,
