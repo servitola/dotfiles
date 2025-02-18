@@ -116,7 +116,7 @@ install:
 
 	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
 		echo "Cloning gruvbox-wallpapers repository..."; \
-		git clone https://github.com/servitola/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
+		git clone https://github.com/AngelJumbo/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
 	else \
 		echo "gruvbox-wallpapers repository already cloned."; \
 		cd $(HOME)/projects/gruvbox-wallpapers && git pull; \
