@@ -187,7 +187,9 @@ apps_list = {
         -- /------__HYPER_LAYER___---------------------------------------------------------------------------------------\
         -- |    |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7  | F8   | F9 |  F10   | F11    |  F12  | backspace   |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- | toEn  | pageup | up | pagedown | Rider | Telegram |       | Torrent |  | up | Music | prtrack | nxttrack |  |
+        -- | toEn  | pageup | up | pagedown | Rider | Telegram |  YouTrack | Torrent |  | up | Music | prtrack | nxttrack |  |
+        -- |-------------------------------------------------------------------------------------------------------------+
+        -- |       |  r  |  t  |  y  |  u  |  i  |  o  |  p  |  [  |  ]  |  \  |  |  |  |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- | TO_PRESS | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |     |
         -- |-------------------------------------------------------------------------------------------------------------+
@@ -216,7 +218,8 @@ apps_list = {
         -- e - pagedown
         { key="r", app="Rider" },
         { key="t", app="AyuGram", window_default_position="right" },
-        -- { key="y", app="" },
+        { key="y", specific_function="show_youtrack" },
+        { key="j", specific_function="show_youtrack_tasks" },
         { key="u", app="Transmission", window_default_position="right" },
         -- o - up
         { key="p", app="Music" },
@@ -252,13 +255,13 @@ apps_list = {
     }},
     { modifier={"left_command", "left_shift"}, chords={
         -- /------__CONTROL_LAYER___-----------------------------------------------------------------\
-        -- |     |       |       |      |    |    |    |    |    |    |    |    |     |   Rider      |
+        -- |     |     |       |      |    |    |    |    |    |    |    |    |     |                |
         -- |-----------------------------------------------------------------------------------------+
-        -- |      |  macos |  Rider  | Rider |  Rider  | Rider |    |   |    |    |    |    |    |     |
+        -- |    |  macos |     |     |    |   |    |   |    |    |    |    |    |                    |
         -- |-----------------------------------------------------------------------------------------+
-        -- |        |      |      |      |  Rider  | Rider  |    |    |    |    |    |    |   |
+        -- |        |      |      |       | macos |      |    |    |    |    |    |    |             |
         -- |-----------------------------------------------------------------------------------------+
-        -- |          | macos |       |      |       |      |    |    |     |    | Rider  |               |
+        -- |          |      |       |      |       |      |    |    |     |    |    |               |
         -- |-----------------------------------------------------------------------------------------+
         -- |      |       |       |       macos                        |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
@@ -584,6 +587,14 @@ function obj:init()
                 elseif chord_row.specific_function == "audio.marshall" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToMarshall()
+                    end)
+                elseif chord_row.specific_function == "show_youtrack" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.YouTrackTicket:toggle()
+                    end)
+                elseif chord_row.specific_function == "show_youtrack_tasks" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.YouTrackTasks:toggle()
                     end)
                 end
             end
