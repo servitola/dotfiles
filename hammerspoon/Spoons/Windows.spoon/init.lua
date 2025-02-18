@@ -55,8 +55,11 @@ function set_window_right(window)
     end
 
     local app_title = window:application():title()
+    local window_title = window:title()
 
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
+        set_window_bottom(window)
+    elseif is_yandex_video_player(app_title, window_title, window) then
         set_window_bottom(window)
     else
         set_window(vertical_line, topY, rightX - vertical_line,
@@ -84,7 +87,7 @@ function set_all_windows_positions()
     for _, window in ipairs(hs.window.allWindows()) do
         local window_title = window:title()
         local app_title = window:application():title()
-        
+
         if hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) then
@@ -157,9 +160,9 @@ function is_yandex_video_player(app_title, window_title, window)
 
     local suffix = string.char(226, 128, 148, 32, 89, 97, 110, 100, 101, 120, 194, 160, 66, 114, 111, 119, 115, 101, 114)
     local title_end = window_title:sub(-#suffix)
-    
+
     local is_video = title_end ~= suffix
-    
+
     return is_video
 end
 
