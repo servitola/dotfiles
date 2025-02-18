@@ -96,13 +96,7 @@ function obj:showDeviceNotification(deviceName)
 end
 
 function obj:init()
-    -- Add menu bar item
-    self.menuBarItem = hs.menubar.new()
-    self.menuBarItem:setClickCallback(function()
-        self:switchAudioDevice()
-    end)
-    
-    -- Update menu bar icon
+
     local currentDevice = hs.audiodevice.defaultOutputDevice()
     if currentDevice then
         self:showDeviceNotification(currentDevice:name())
