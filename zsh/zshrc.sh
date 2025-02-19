@@ -4,15 +4,21 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Load zsh-defer plugin first
+source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
+
 # set homebrew autoupdate each 24 hours
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
 export HOMEBREW_NO_ENV_HINTS=1
+
+DISABLE_UPDATE_PROMPT=true
 
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-fi
+# Load plugins and theme configuration
+source ~/projects/dotfiles/zsh/plugins.sh
 
 # Load exports first to set up PATH
 source ~/projects/dotfiles/zsh/exports.sh
@@ -37,7 +43,6 @@ source ~/projects/dotfiles/zsh/fzf.sh
 # Load better completion and navigation
 source ~/projects/dotfiles/zsh/completion.sh
 
-source ~/projects/dotfiles/zsh/plugins.sh
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 source ~/projects/dotfiles/zsh/aliases.sh
