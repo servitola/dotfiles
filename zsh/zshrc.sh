@@ -42,7 +42,6 @@ source ~/.oh-my-zsh/oh-my-zsh.sh
 
 source ~/projects/dotfiles/zsh/aliases.sh
 source ~/projects/dotfiles/zsh/history_settings.sh
-source ~/projects/dotfiles/zsh/p10k.zsh
 
 if [[ $(uname -m) == 'arm64' ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -52,15 +51,8 @@ else
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
-# source ~/projects/dotfiles/zsh/functions.sh
-# initialize zsh-navigation-tools
-# autoload znt-history-widget
-# zle -N znt-history-widget
-# bindkey "^H" znt-history-widget
-# zle -N znt-cd-widget
-# bindkey "^B" znt-cd-widget
-# zle -N znt-kill-widget
-# bindkey "^Y" znt-kill-widget
+# Load p10k theme
+source ~/projects/dotfiles/zsh/p10k.zsh
 
 # Source OpenAI API key from config
 if [ -f ~/.config/openai_key ]; then
