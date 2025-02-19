@@ -89,7 +89,6 @@ You will be asked to install command tools - agree.
 * Q: What is <ins>important</ins> to do next?
 * A: Next, do the following:
   * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours.
-  * Set CapsLock to do nothing in macOS settings.
   * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
 
 * Q: I want to understand what this repository installs exactly
