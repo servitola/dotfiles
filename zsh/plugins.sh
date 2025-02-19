@@ -15,4 +15,11 @@ plugins=(
   zsh-navigation-tools # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools
   ohmyzsh-full-autoupdate  # updates oh-my-zsh plugins
   web-search # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/web-search
+  zoxide
+  fzf
+  z
 )
+
+# Defer loading non-critical plugins
+zsh-defer source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+zsh-defer source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
