@@ -4,7 +4,6 @@ SHELL := /bin/zsh
 
 install:
 
-
 	@$(SHELL) -c 'source zsh/functions.sh'
 	@$(SHELL) -c 'source zsh/exports.sh'
 	@$(SHELL) -c 'source macos/set_defaults.sh'
