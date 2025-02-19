@@ -44,7 +44,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: I use [LuLu](https://objective-see.org/products/lulu.html). Unfortunately, this repository only downloads the package, and you have to install it manually. I will fix it later.
 
 * Q: I want to <ins>draw lines</ins> on my <ins>screenshots</ins>. I take screenshots for work
-* A: I use [FlameShot](https://flameshot.org/). It is installed with all programs using homebrew here.
+* A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here.
 
 * Q: I use an <ins>external audiocard</ins> and I want to control its <ins>volume in a standard way</ins> and use an equalizer depending on the device
 * A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
@@ -90,7 +90,7 @@ You will be asked to install command tools - agree.
 * A: Next, do the following:
   * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours.
   * Set CapsLock to do nothing in macOS settings.
-  * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Flameshot](https://flameshot.org/) can take them.
+  * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
 
 * Q: I want to understand what this repository installs exactly
 * A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), creates symlinks, and completes the setup.

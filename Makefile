@@ -46,10 +46,6 @@ install:
 	@rm -f ~/.codeium/windsurf/memories/global_rules.md
 	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
-	@echo "setup flameshot symlinks"
-	@rm -rf ~/.config/flameshot
-	@ln -sfvh ~/projects/dotfiles/flameshot ~/.config/flameshot
-
 	@echo "setup Rider vmoptions symlink"
 	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
