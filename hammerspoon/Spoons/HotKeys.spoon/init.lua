@@ -93,6 +93,7 @@ apps_list = {
         -- left - jump a word to the left
         -- down — move line down
         -- right - jump a word to the right
+        -- tab - switch app windows with AltTab app
     }},
     { modifier=left_command, chords={
         -- /------__CMD_LAYER___-------------------------------------------------------------------------------\
@@ -185,15 +186,15 @@ apps_list = {
     }},
     { modifier=hyper, chords={
         -- /------__HYPER_LAYER___---------------------------------------------------------------------------------------\
-        -- |    |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7  | F8   | F9 |  F10   | F11    |  F12  | backspace   |
+        -- | ESC |  F1  |   F2    |  F3   | F4   | F5   | F6    | F7  | F8   | F9 |  F10   | F11    |  F12  | backspace  |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- | toEn  | pageup | up | pagedown | Rider | Telegram |  YouTrack | Torrent |  | up | Music | prtrack | nxttrack |  |
+        -- |     | pageup | up | pagedown | Rider | Telegram |  YouTrack | Torrent |  | up | Music | prtrack | nxttrack |  |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- |       |  r  |  t  |  y  |  u  |  i  |  o  |  p  |  [  |  ]  |  \  |  |  |  |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- | TO_PRESS | left | down | right | Raycast  | Fork | Finder | Safari  | left | down | right | volume_up |     |
         -- |-------------------------------------------------------------------------------------------------------------+
-        -- |      |  toRus  |  home   | end  |  Yandex | iTerm2  | Windsurf | ElMedia  | home | end |  volume_down  |    |
+        -- |      |  enter  |  home   | end  |  Yandex | iTerm2  | Windsurf | ElMedia  | home | end |  volume_down  |    |
         -- |-------------------------------------------------------------------------------------------------------------+
         -- |     |      |       |         play/stop                |       |       |       |                             |
         -- \-------------------------------------------------------------------------------------------------------------/
@@ -219,7 +220,6 @@ apps_list = {
         { key="r", app="Rider" },
         { key="t", app="AyuGram", window_default_position="right" },
         { key="y", specific_function="show_youtrack" },
-        { key="j", specific_function="show_youtrack_tasks" },
         { key="u", app="Transmission", window_default_position="right" },
         -- o - up
         { key="p", app="Music" },
@@ -231,14 +231,13 @@ apps_list = {
         { key="f", app="Finder" },
         { key="g", app="Fork" },
         { key="h", app="Safari" },
-        -- j —
+        { key="j", specific_function="show_youtrack_tasks" },
         -- k - left
         -- l - down
         -- ; - right
         -- ' - volume up
         -- return
-        { key="z", app="Windsurf" },
-        -- { key="z", specific_function="set_russian_language"},
+        -- z - enter
         -- x - home
         -- c - end
         { key="v", app="Yandex" },
