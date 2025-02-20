@@ -61,6 +61,8 @@ function set_window_right(window)
         set_window_bottom(window)
     elseif is_yandex_video_player(app_title, window_title, window) then
         set_window_bottom(window)
+    elseif is_finder_copy_dialog(app_title, window_title, window) then
+         set_window_bottom(window)
     else
         set_window(vertical_line, topY, rightX - vertical_line,
             horizontal_line - margin, window)
@@ -95,6 +97,8 @@ function set_all_windows_positions()
         elseif is_firefox_video_player(app_title, window_title) then
             set_window_bottom(window)
         elseif is_yandex_video_player(app_title, window_title, window) then
+            set_window_bottom(window)
+        elseif is_finder_copy_dialog(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
@@ -164,6 +168,19 @@ function is_yandex_video_player(app_title, window_title, window)
     local is_video = title_end ~= suffix
 
     return is_video
+end
+
+function is_finder_copy_dialog(app_title, window_title, window)
+    if app_title ~= "Finder" then
+        return false
+    end
+    local window_frame = window:frame()
+
+    local is_copy = window_title:match("^Copy") or window_title:match("^Move")
+
+    local is_small_window = window_frame.w < 600 and window_frame.h < 250
+
+    return is_copy and is_small_window
 end
 
 function is_full_screen(window)
