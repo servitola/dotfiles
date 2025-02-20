@@ -46,6 +46,7 @@ source ~/projects/dotfiles/zsh/completion.sh
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 source ~/projects/dotfiles/zsh/aliases.sh
+
 source ~/projects/dotfiles/zsh/history_settings.sh
 
 if [[ $(uname -m) == 'arm64' ]]; then
@@ -60,8 +61,8 @@ fi
 source ~/projects/dotfiles/zsh/p10k.zsh
 
 # Source OpenAI API key from config
-if [ -f ~/.config/openai_key ]; then
-    source ~/.config/openai_key
+if [ -f ~/.config/openai_key.sh ]; then
+    source ~/.config/openai_key.sh
 else
     echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
 fi
