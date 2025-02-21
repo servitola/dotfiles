@@ -400,11 +400,11 @@ apps_list = {
         { key="d", specific_function="window.right" },
         { key="f", app="LaunchPad" },
         { key="z", specific_function="translate_to_russian"},
-        { key="g", specific_function="translate_to_greek"},
+        { key="g", specific_function="browser_git"},
         { key="h", app="Hammerspoon", window_default_position="right"},
         { key="x", app="XCode" },
         -- itsical c - Show Calendar
-        { key="v", specific_function="yandex_youtube" },
+        { key="v", specific_function="browser_youtube" },
         { key="b", specific_function="audio.marshall"},
         { key="m", specific_function="audio.internal"},
         { key="left", specific_function="window.left"},
@@ -597,9 +597,13 @@ function obj:init()
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         spoon.YouTrackTasks:toggle()
                     end)
-                elseif chord_row.specific_function == "yandex_youtube" then
+                elseif chord_row.specific_function == "browser_git" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
-                        spoon.YandexYoutube:openYoutubeTab()
+                        spoon.BrowserTabOpener:openTab("github.com")
+                    end)
+                elseif chord_row.specific_function == "browser_youtube" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.BrowserTabOpener:openTab("youtube.com")
                     end)
                 end
             end

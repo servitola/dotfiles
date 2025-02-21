@@ -11,7 +11,7 @@ hs.loadSpoon("KSheet") -- shortcuts cheatsheet
 hs.loadSpoon("PopupTranslateSelection") -- translate selected text
 hs.loadSpoon("YouTrackTicket") -- YouTrack ticket creation
 hs.loadSpoon("YouTrackTasks") -- YouTrack tasks view
-hs.loadSpoon("YandexYoutube") -- YouTube tab opener
+hs.loadSpoon("BrowserTabOpener") -- YouTube tab opener
 --hs.loadSpoon("AudioSwitcher") -- audio device switching
 hs.loadSpoon("HotKeys") -- all hotkeys
 
