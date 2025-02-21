@@ -213,7 +213,7 @@ apps_list = {
         -- = - F12
         -- backspace - delete
         -- alt + backspace — maccy delete row
-        -- { key="tab", specific_function="set_english_language" },
+        -- tab
         -- q - pageUp
         -- w - up
         -- e - pagedown
@@ -391,25 +391,24 @@ apps_list = {
         -- |      |       |       |       macos                        |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
         { key="tab", specific_function="translate_to_english"},
-        { key="h", app="Hammerspoon", window_default_position="right"},
-        { key="x", app="XCode" },
+        { key="e", specific_function="audio.external"},
         { key="i", specific_function="info.show_shortcuts"},
-        -- macos d - Show desktop
         -- Rider | - GitHub Copilot - show suggestion
-        { key="f", app="LaunchPad" },
         { key="a", app="Ableton Live 12 Suite"},
         { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
-        { key="d", specific_function="yandex_youtube" },
+        { key="f", app="LaunchPad" },
         { key="z", specific_function="translate_to_russian"},
         { key="g", specific_function="translate_to_greek"},
+        { key="h", app="Hammerspoon", window_default_position="right"},
+        { key="x", app="XCode" },
         -- itsical c - Show Calendar
+        { key="v", specific_function="yandex_youtube" },
+        { key="b", specific_function="audio.marshall"},
+        { key="m", specific_function="audio.internal"},
         { key="left", specific_function="window.left"},
         { key="right", specific_function="window.right"},
         { key="up", specific_function="window.fullscreen"},
         { key="down", specific_function="window.set_all_to_default"},
-        { key="e", specific_function="audio.external"},
-        { key="m", specific_function="audio.internal"},
-        { key="b", specific_function="audio.marshall"},
     }},
     { modifier={"left_control", "left_shift"}, chords={
         -- /------__CONTROL+SHIFT_LAYER___-----------------------------------------------------------\
