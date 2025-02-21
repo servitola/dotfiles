@@ -60,10 +60,10 @@ source ~/projects/dotfiles/eza/colors.sh
 
 # eza aliases with custom theme
 alias ls="eza --icons --group-directories-first --color=always"
+alias l="ls"
 alias ll="ls -l"
 alias la="ll -a"
 alias lt="ll --tree"
-alias l="ls"
 
 # EZA aliases                                                       # ls
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
