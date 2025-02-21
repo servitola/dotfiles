@@ -41,7 +41,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: Look at [Zsh exports.sh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.sh)
 
 * Q: I want to have a <ins>firewall</ins> - <ins>free and easy</ins> to use
-* A: I use [LuLu](https://objective-see.org/products/lulu.html). Unfortunately, this repository only downloads the package, and you have to install it manually. I will fix it later.
+* A: I use [LuLu](https://objective-see.org/products/lulu.html)
 
 * Q: I want to <ins>draw lines</ins> on my <ins>screenshots</ins>. I take screenshots for work
 * A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here.
