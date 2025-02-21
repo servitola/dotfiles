@@ -391,11 +391,13 @@ apps_list = {
         -- |      |       |       |       macos                        |       |       |       |     |
         -- \-----------------------------------------------------------------------------------------/
         { key="tab", specific_function="translate_to_english"},
+        { key="w", specific_function="window.fullscreen"},
         { key="e", specific_function="audio.external"},
         { key="i", specific_function="info.show_shortcuts"},
         -- Rider | - GitHub Copilot - show suggestion
-        { key="a", app="Ableton Live 12 Suite"},
-        { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
+        { key="a", specific_function="window.left"},
+        { key="s", specific_function="window.set_all_to_default" },
+        { key="d", specific_function="window.right" },
         { key="f", app="LaunchPad" },
         { key="z", specific_function="translate_to_russian"},
         { key="g", specific_function="translate_to_greek"},
