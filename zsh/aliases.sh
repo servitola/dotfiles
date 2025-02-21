@@ -58,9 +58,6 @@ alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 # Load eza colors
 source ~/projects/dotfiles/eza/colors.sh
 
-# Load AI API keys
-source ~/projects/dotfiles/zsh/secrets/ai_api_keys.sh
-
 # eza aliases with custom theme
 alias ls="eza --icons --group-directories-first --color=always"
 alias ll="ls -l"
