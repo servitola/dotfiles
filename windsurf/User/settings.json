@@ -1,6 +1,6 @@
 {
     // Editor appearance
-    "editor.fontFamily": "JetBrains Mono",
+    "editor.fontFamily": "MesloLGS",
     "editor.fontSize": 15,
     "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
