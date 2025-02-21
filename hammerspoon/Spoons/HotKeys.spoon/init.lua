@@ -399,6 +399,7 @@ apps_list = {
         { key="f", app="LaunchPad" },
         { key="a", app="Ableton Live 12 Suite"},
         { key="s", specific_function="android.show_all", apps_list={ "Android Emulator", "qemu-system-x86_64"} },
+        { key="d", specific_function="yandex_youtube" },
         { key="z", specific_function="translate_to_russian"},
         { key="g", specific_function="translate_to_greek"},
         -- itsical c - Show Calendar
@@ -594,6 +595,10 @@ function obj:init()
                 elseif chord_row.specific_function == "show_youtrack_tasks" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         spoon.YouTrackTasks:toggle()
+                    end)
+                elseif chord_row.specific_function == "yandex_youtube" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.YandexYoutube:openYoutubeTab()
                     end)
                 end
             end
