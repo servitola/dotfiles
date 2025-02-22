@@ -15,7 +15,7 @@ rightX = 1 - margin / 1.5
 bottomY = 1 - margin * 1.5
 
 right_side_app_titles = {}
-bottom_side_app_titles = {"IINA"}
+bottom_side_app_titles = {"IINA", "Transmission"}
 
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
