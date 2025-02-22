@@ -9,10 +9,11 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 1. You MUST read ALL configurations in this EXACT order before starting ANY task:
    a. Global rules (this file)
    b. IMMEDIATELY locate the project root directory and read `.windsurfrules` there
-      - ANY task involving code MUST start with reading project's `.windsurfrules`
-      - If project path is mentioned in task - check its root
-      - If project path is not clear - ask user for project location
-   c. Feature-specific rules (<project_root>/<feature_path>/.windsurfrules)
+
+   - ANY task involving code MUST start with reading project's `.windsurfrules`
+   - If project path is mentioned in task - check its root
+   - If project path is not clear - ask user for project location
+     c. Feature-specific rules (<project_root>/<feature_path>/.windsurfrules)
 
 2. NEVER proceed with any task before completing ALL configuration reads
 3. After reading configurations, VERIFY you have understood all rules
@@ -23,7 +24,7 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 - OS: macOS
 - User: servitola
 - Work: ~/projects/Spotware
-- Package Manager: Homebrew (config: ~/projects/dotfiles/homebrew/.brewfile)
+- Package Manager: Homebrew (config: ~/projects/dotfiles/homebrew/brewfile)
 - AI Development: ~/projects/ai-workspace
 
 # Configuration Management Rules
@@ -50,6 +51,6 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 - Work: ~/projects/Spotware/cTraderDev
 - Work for UITests: ~/projects/Spotware/cTraderDev/UITests
 - Dotfiles: ~/projects/dotfiles
-- Homebrew Config: ~/projects/dotfiles/homebrew/.brewfile
+- Homebrew Config: ~/projects/dotfiles/homebrew/brewfile
 - Windsurf Rules: ~/projects/dotfiles/windsurf/.windsurfrules
   - Symlinked to: ~/.windsurfrules
