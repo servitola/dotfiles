@@ -29,7 +29,7 @@ brew upgrade
 mas upgrade
 brew cleanup
 brew doctor
-brew bundle dump --force --file=~/projects/dotfiles/homebrew/.brewfile
+brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
 print_task "Updating .NET tools"
 dotnet tool update -g dotnet-trace
