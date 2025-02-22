@@ -426,6 +426,7 @@ apps_list =
 -- │ 🟢🟢🟢  │🟢🟢🟢│      │                             │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
 { key="tab", specific_function="translate_to_english"},
+{ key="q", specific_function="audio.bt"},
 { key="w", specific_function="window.fullscreen"},
 { key="e", specific_function="audio.external"},
 { key="i", specific_function="info.show_shortcuts"},
@@ -548,6 +549,10 @@ function obj:init()
                 elseif chord_row.specific_function == "audio.marshall" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToMarshall()
+                    end)
+                elseif chord_row.specific_function == "audio.bt" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        spoon.AudioSwitcher:switchToBT()
                     end)
                 elseif chord_row.specific_function == "show_youtrack" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
