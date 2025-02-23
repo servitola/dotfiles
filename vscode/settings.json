@@ -1,0 +1,22 @@
+{
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontSize": 14,
+    "editor.lineHeight": 1.5,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [120],
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.suggestSelection": "first",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.startupEditor": "none",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "csharp.preview.improvedLaunchExperience": true,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    }
+}
