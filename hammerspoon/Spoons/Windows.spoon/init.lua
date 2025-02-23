@@ -208,7 +208,8 @@ function is_activity_monitor_small_window(app_title, window_title, window)
 end
 
 function is_activity_monitor_cpu_window(app_title, window_title)
-    return app_title == "Activity Monitor" and window_title == "CPU History"
+    return app_title == "Activity Monitor" and 
+           (window_title == "CPU History" or window_title == "GPU History")
 end
 
 function is_full_screen(window)
