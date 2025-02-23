@@ -171,27 +171,37 @@ apps_list =
 --    🌐 - Open 1st tab
 --    Fork — Focus changes window
 --    Activity Manager — Focus main window
+--    Telegram — focus 1st folder or chat
 -- 2: ℝ - focus debug window
 --    📁 - View as list
 --    🌐 - Open 2nd tab
 --    Fork — Focus All commits window
 --    Activity Manager — Open/focus CPU usage window
+--    Telegram — focus 2nd folder or chat
 -- 3: ℝ - focus unit tests explorer
 --    📁 - View in columns
 --    🌐 - Open 3rd tab
 --    Activity Manager — Open/focus CPU history window
+--    Telegram — focus 3rd folder or chat
 -- 4: ℝ - focus build window
 --    📁 - View in gallery
 --    🌐 - Open 4th tab
 --    Activity Manager - Open/focus GPU history window
+--    Telegram — focus 4th folder or chat
 -- 5: ℝ - focus problems window
 --    🌐 - Open 5th tab
+--    Telegram — focus 5th folder or chat
 -- 6: 🌐 - Open 6th tab
+--    Telegram — focus 6th folder or chat
 -- 7: 🌐 - Open 7th tab
+--    Telegram — focus 7th folder or chat
 -- 8: ℝ - focus logcat
 --    🌐 - Open 8th tab
+--    Telegram — focus 8th folder or chat
 -- 9: 🌐 - Open Last tab
+--    Telegram — focus 9th folder or chat
 -- 0: app - Reset zoom
+--    Telegram — focus Saved Messages
 -- -: app - Zoom out
 -- =: app - Zoom in
 -- ⌫: ℝ - delete line
@@ -221,6 +231,7 @@ apps_list =
 -- g: ℝ🔄 - git operations popup
 -- h:  - hide current app
 -- j: Music — Show soring options
+-- k: Telegram — Focus search
 -- l: 🌐 - Focus Url Line
 --    Music — Go to Current song
 -- ;: ℝ - run unit test
