@@ -66,3 +66,6 @@ if [ -f ~/.config/openai_key.sh ]; then
 else
     echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
