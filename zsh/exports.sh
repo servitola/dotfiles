@@ -42,7 +42,7 @@ export ANDROID_SDK=~/Library/Android/sdk
 export ANDROID_HOME=~/Library/Android/sdk
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
 export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/build-tools/35.0.0
+export PATH=$PATH:$ANDROID_HOME/build-tools/35.0.1
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # NPM
