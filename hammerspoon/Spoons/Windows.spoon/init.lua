@@ -63,8 +63,11 @@ function set_window_right(window)
         set_window_bottom(window)
     elseif is_finder_copy_dialog(app_title, window_title, window) then
          set_window_bottom(window)
-    elseif is_activity_monitor_small_window(app_title, window_title, window) then
+    elseif is_activity_monitor_small_window(app_title, window_title, window) and not is_activity_monitor_cpu_window(app_title, window_title) then
         set_window_bottom(window)
+    elseif is_activity_monitor_cpu_window(app_title, window_title) then
+        set_window(vertical_line, topY, rightX - vertical_line,
+            horizontal_line - margin, window)
     else
         set_window(vertical_line, topY, rightX - vertical_line,
             horizontal_line - margin, window)
@@ -102,6 +105,8 @@ function set_all_windows_positions()
             set_window_bottom(window)
         elseif is_finder_copy_dialog(app_title, window_title, window) then
             set_window_bottom(window)
+        elseif is_activity_monitor_cpu_window(app_title, window_title) then
+            set_window_right(window)
         elseif is_activity_monitor_small_window(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_android_emulator(window) then
@@ -200,6 +205,10 @@ function is_activity_monitor_small_window(app_title, window_title, window)
     local is_not_main = window_title ~= "Activity Monitor"
     
     return is_small_window and is_not_main
+end
+
+function is_activity_monitor_cpu_window(app_title, window_title)
+    return app_title == "Activity Monitor" and window_title == "CPU History"
 end
 
 function is_full_screen(window)
