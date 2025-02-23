@@ -46,6 +46,43 @@ function obj:set_all_windows_positions()
 end
 
 function set_window_left(window)
+    if window == nil then
+        window = hs.window.frontmostWindow()
+    end
+
+    if is_ios_simulator(window) then
+        -- Get current window size to maintain aspect ratio
+        local current = window:frame()
+        local aspect_ratio = current.h / current.w
+        
+        -- Get screen dimensions
+        local screen = window:screen()
+        local screen_frame = screen:frame()
+        
+        -- Calculate size maintaining aspect ratio
+        local target_width = screen_frame.w * 0.4
+        local target_height = target_width * aspect_ratio
+        
+        -- Ensure height doesn't exceed screen
+        if target_height > screen_frame.h * 0.7 then
+            target_height = screen_frame.h * 0.7
+            target_width = target_height / aspect_ratio
+        end
+        
+        -- Calculate left position with same vertical centering as fullscreen
+        local x = screen_frame.x + margin
+        local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
+        
+        -- Apply the frame change with animation
+        window:setFrame({
+            x = x,
+            y = y,
+            w = target_width,
+            h = target_height
+        }, animation_duration)
+        return
+    end
+
     set_window(leftX, topY, vertical_line - spacing, bottomY - topY, window)
 end
 
@@ -84,18 +121,109 @@ function set_window_bottom(window)
 end
 
 function set_window_fullscreen(window)
+    if window == nil then
+        window = hs.window.frontmostWindow()
+    end
+
+    if is_ios_simulator(window) then
+        -- Get current window size to maintain aspect ratio
+        local current = window:frame()
+        local aspect_ratio = current.h / current.w
+        
+        -- Get screen dimensions
+        local screen = window:screen()
+        local screen_frame = screen:frame()
+        
+        -- Calculate size maintaining aspect ratio
+        local target_width = screen_frame.w * 0.4
+        local target_height = target_width * aspect_ratio
+        
+        -- Ensure height doesn't exceed screen
+        if target_height > screen_frame.h * 0.7 then
+            target_height = screen_frame.h * 0.7
+            target_width = target_height / aspect_ratio
+        end
+        
+        -- Calculate center position, but move it up by 10% of screen height
+        local x = screen_frame.x + (screen_frame.w - target_width) / 2
+        local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
+        
+        -- Apply the frame change with animation
+        window:setFrame({
+            x = x,
+            y = y,
+            w = target_width,
+            h = target_height
+        }, animation_duration)
+        return
+    end
+
     set_window(leftX, topY, rightX - leftX, bottomY - topY, window)
 end
 
 function set_all_windows_positions()
-    local emulators_number = 0
-    local emulators_positioned = 0
+    print("=== All Windows List ===")
+
+    -- First check if any emulator window is already in position
+    local android_positioned = false
+    local ios_positioned = false
+
+    for _, window in ipairs(hs.window.allWindows()) do
+        if is_android_emulator(window) then
+            local screen = window:screen()
+            local screen_frame = screen:frame()
+            local frame = window:frame()
+            local expected_x = screen_frame.x + (screen_frame.w * vertical_line)
+            local expected_y = screen_frame.y + (screen_frame.h * topY)
+
+            if math.abs(frame.x - expected_x) <= 1 and math.abs(frame.y - expected_y) <= 1 then
+                print("Found Android Emulator window in correct position - will skip all android windows")
+                android_positioned = true
+            end
+        end
+    end
 
     for _, window in ipairs(hs.window.allWindows()) do
         local window_title = window:title()
         local app_title = window:application():title()
+        print(string.format("Window: '%s', App: '%s'", window_title, app_title))
 
-        if hs.fnutils.contains(right_side_app_titles, app_title) then
+        if is_android_emulator(window) then
+            if not android_positioned then
+                print("Moving Android Emulator window to right side")
+                set_window(vertical_line, topY, rightX - vertical_line, horizontal_line - margin, window)
+            end
+        elseif is_ios_simulator(window) then
+            -- Get current window size to maintain aspect ratio
+            local current = window:frame()
+            local aspect_ratio = current.h / current.w
+            
+            -- Get screen dimensions
+            local screen = window:screen()
+            local screen_frame = screen:frame()
+            
+            -- Calculate size maintaining aspect ratio
+            local target_width = screen_frame.w * 0.4
+            local target_height = target_width * aspect_ratio
+            
+            -- Ensure height doesn't exceed screen
+            if target_height > screen_frame.h * 0.7 then
+                target_height = screen_frame.h * 0.7
+                target_width = target_height / aspect_ratio
+            end
+            
+            -- Position on top right side
+            local x = screen_frame.x + screen_frame.w * vertical_line
+            local y = screen_frame.y + (screen_frame.h * topY)
+            
+            -- Apply the frame change with animation
+            window:setFrame({
+                x = x,
+                y = y,
+                w = target_width,
+                h = target_height
+            }, animation_duration)
+        elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) then
             set_window_bottom(window)
@@ -109,8 +237,6 @@ function set_all_windows_positions()
             set_window_right(window)
         elseif is_activity_monitor_small_window(app_title, window_title, window) then
             set_window_bottom(window)
-        elseif is_android_emulator(window) then
-            emulators_number = emulators_number + 1
         else
             if is_full_screen(window) then
                 if window == hs.window.frontmostWindow() then
@@ -119,21 +245,6 @@ function set_all_windows_positions()
             else
                 set_window_left(window)
             end
-        end
-
-        if is_android_emulator(window) then
-            local app = window:application()
-
-            local screen_size = window:screen():fullFrame()
-            local window_frame = window:frame()
-            emulators_positioned = emulators_positioned + 1
-
-            window:setFrame({
-                x = screen_size.w / 2 - window_frame.w / 2,
-                y = screen_size.h / 2 - window_frame.h / 2,
-                h = window_frame.h,
-                w = window_frame.w
-            })
         end
     end
 end
@@ -224,16 +335,34 @@ function is_full_screen(window)
     end
 end
 
+function is_ios_simulator(window)
+    local app_title = window:application():title()
+    return app_title == "Simulator"
+end
+
 function set_window(x, y, width, height, window)
     if window == nil then
         window = hs.window.frontmostWindow()
     end
 
-    if is_android_emulator(window) then
+    local screen = window:screen()
+    local screen_frame = screen:frame()
+
+    -- Check if it's Yandex video
+    local app_title = window:application():title()
+    local window_title = window:title()
+    if app_title == "Yandex" and string.find(window_title, "video") then
+        -- Use old method for Yandex video
+        window:moveToUnit({x, y, width, height})
         return
     end
 
-    window:moveToUnit({x, y, width, height}, animation_duration)
+    window:setFrame({
+        x = screen_frame.x + (screen_frame.w * x),
+        y = screen_frame.y + (screen_frame.h * y),
+        w = screen_frame.w * width,
+        h = screen_frame.h * height
+    }, animation_duration)
 end
 
 return obj
