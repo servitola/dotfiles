@@ -63,6 +63,8 @@ function set_window_right(window)
         set_window_bottom(window)
     elseif is_finder_copy_dialog(app_title, window_title, window) then
          set_window_bottom(window)
+    elseif is_activity_monitor_small_window(app_title, window_title, window) then
+        set_window_bottom(window)
     else
         set_window(vertical_line, topY, rightX - vertical_line,
             horizontal_line - margin, window)
@@ -99,6 +101,8 @@ function set_all_windows_positions()
         elseif is_yandex_video_player(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_finder_copy_dialog(app_title, window_title, window) then
+            set_window_bottom(window)
+        elseif is_activity_monitor_small_window(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_android_emulator(window) then
             emulators_number = emulators_number + 1
@@ -181,6 +185,21 @@ function is_finder_copy_dialog(app_title, window_title, window)
     local is_small_window = window_frame.w < 600 and window_frame.h < 250
 
     return is_copy and is_small_window
+end
+
+function is_activity_monitor_small_window(app_title, window_title, window)
+    if app_title ~= "Activity Monitor" then
+        return false
+    end
+    
+    local window_frame = window:frame()
+    -- Check if it's not the main window (main window is typically larger)
+    local is_small_window = window_frame.w < 600 and window_frame.h < 400
+    
+    -- Exclude the main process list window
+    local is_not_main = window_title ~= "Activity Monitor"
+    
+    return is_small_window and is_not_main
 end
 
 function is_full_screen(window)
