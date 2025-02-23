@@ -167,6 +167,7 @@ apps_list =
 -- swipe: changing zoom
 -- F2: ℝ - Stop
 -- F3: ℝ - Show bookmarks
+-- F5:  — Turn voiceOver on or off
 -- 1: ℝ - focus solution explorer
 --    📁 - View as icons
 --    🌐 - Open 1st tab
@@ -406,6 +407,7 @@ apps_list =
 -- │        │🟢🟢🟢│🟢🟢🟢 │                            │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
 -- esc:  - force quit current app
+-- F5:  — show accessibility controls
 -- 1: Fork — Show commit details
 -- 2: Fork — Show commit changes
 -- 3: Fork — Show commit filetree
