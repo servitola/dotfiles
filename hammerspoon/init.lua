@@ -19,11 +19,11 @@ require "config_UrlDispatcher"; -- open urls in different browsers
 require "set_language_on_app_focused";
 require "reload_hammerspoon_on_script_changed"
 
-local systemMonitor = require "system_monitor"
-systemMonitor.start()
+-- local systemMonitor = require "system_monitor"
+-- systemMonitor.start()
 
-hs.timer.doAfter(1, function()
-    if systemMonitor and systemMonitor.showMemoryNotification then
-        systemMonitor.showMemoryNotification()
-    end
-end)
+-- hs.timer.doAfter(1, function()
+--     if systemMonitor and systemMonitor.showMemoryNotification then
+--         systemMonitor.showMemoryNotification()
+--     end
+-- end)
