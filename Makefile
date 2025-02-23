@@ -46,6 +46,13 @@ install:
 	@rm -f ~/.codeium/windsurf/memories/global_rules.md
 	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
+	@echo "setup VSCode user settings symlinks"
+	@mkdir -p ~/Library/Application\ Support/Code/User
+	@rm -f ~/Library/Application\ Support/Code/User/settings.json
+	@ln -sfvh ~/projects/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+	@rm -f ~/Library/Application\ Support/Code/User/keybindings.json
+	@ln -sfvh ~/projects/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+
 	@echo "setup Rider vmoptions symlink"
 	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
