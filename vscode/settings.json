@@ -1,15 +1,17 @@
 {
     "editor.fontFamily": "JetBrainsMono Nerd Font",
-    "editor.fontSize": 14,
+    "editor.fontSize": 17,
     "editor.lineHeight": 1.5,
     "editor.renderWhitespace": "boundary",
-    "editor.rulers": [120],
+    "editor.rulers": [
+        120
+    ],
     "editor.minimap.enabled": false,
     "editor.formatOnSave": true,
     "editor.suggestSelection": "first",
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
     "workbench.startupEditor": "none",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
     "csharp.preview.improvedLaunchExperience": true,
@@ -18,5 +20,13 @@
         "plaintext": true,
         "markdown": true,
         "scminput": false
-    }
+    },
+    "dotnet-test-explorer.testProjectPath": "**/*Tests.@(csproj|vbproj|fsproj)",
+    "dotnet-test-explorer.autoWatch": true,
+    "dotnet-test-explorer.testArguments": "/p:CollectCoverage=true",
+    "dotnet-test-explorer.showCodeLens": true,
+    "dotnet-test-explorer.codeLensFailed": "❌",
+    "dotnet-test-explorer.codeLensPassed": "✅",
+    "dotnet-test-explorer.codeLensSkipped": "⚠️",
+    "window.zoomLevel": 2
 }
