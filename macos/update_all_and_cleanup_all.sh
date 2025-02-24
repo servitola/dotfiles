@@ -18,9 +18,8 @@ print_task() {
     printf "${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
-print_section "System Updates"
+print_section "Apps Updates"
 
-print_task "Updating Homebrew"
 rm -rf "brew --cache" >/dev/null 2>&1
 brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
