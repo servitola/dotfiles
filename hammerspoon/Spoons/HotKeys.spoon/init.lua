@@ -210,6 +210,7 @@ apps_list =
 -- -: app - Zoom out
 -- =: app - Zoom in
 -- ⌫: ℝ - delete line
+--     dialog — choose Delete option
 -- q:  - close current app
 -- w:  - close current tab
 -- e: ℝ - recent files dialog
@@ -232,11 +233,15 @@ apps_list =
 --    🌐 — navigate forward
 -- a: select all
 -- s: save
+--     dialog — choose Save option
 -- d: ℝ - duplicate line
 --    ℝ - debug unit test
 --    📁 - duplicate file
+--     dialog — choose Don't Save option
+--    🌐 - add page to bookmarks
 -- f: find
 -- g: ℝ🔄 - git operations popup
+--    🌐 - find or find next
 -- h:  - hide current app
 -- j: Music — Show soring options
 -- k: Telegram — Focus search
@@ -341,6 +346,7 @@ apps_list =
 -- ': volume up
 -- return: Day One
 -- z: ↩
+{ key="z", specific_function="press_return" },
 -- x: home
 -- c: end
 { key="v", app="Yandex" },
@@ -636,6 +642,10 @@ function obj:init()
                 elseif chord_row.specific_function == "browser_git" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         spoon.BrowserTabOpener:openTab("github.com")
+                    end)
+                elseif chord_row.specific_function == "press_return" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        hs.eventtap.keyStroke({}, "return")
                     end)
                 elseif chord_row.specific_function == "browser_youtube" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
