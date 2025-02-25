@@ -247,3 +247,22 @@ osascript -e 'tell application "System Events" to tell appearance preferences to
 # Enable Dark Mode for Terminal.app too
 defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+
+###############################################################################
+echo "Terminal, Finder and scrolling settings"                                #
+###############################################################################
+
+echo "Terminal settings"
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
+defaults write com.apple.Terminal "FontAntialias" -int 0
+
+echo "Finder settings"
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder ShowSidebar -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+
+echo "Scrolling settings (traditional)"
+defaults write -g com.apple.swipescrolldirection -bool false
