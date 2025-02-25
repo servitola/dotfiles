@@ -238,3 +238,13 @@ defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.Siri VoiceTriggerEnabled -bool false
 defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMIntroMessagePresented -bool true
 defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs ActiveInputAudioDeviceUID -string ""
+
+echo "Enable Dark Mode"
+# Method 1: Using defaults
+defaults write .GlobalPreferences AppleInterfaceStyle -string "Dark"
+# Method 2: Using AppleScript (more reliable)
+osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
+
+# Enable Dark Mode for Terminal.app too
+defaults write com.apple.Terminal "Default Window Settings" -string "Pro"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Pro"
