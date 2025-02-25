@@ -233,7 +233,6 @@ sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInst
 sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate CriticalUpdateInstall -bool false
 
 echo "Disable Natural Language services"
-launchctl unload -w /System/Library/LaunchAgents/com.apple.naturallanguaged.plist 2> /dev/null
 defaults write com.apple.assistant.support "Assistant Enabled" -bool false
 defaults write com.apple.Siri VoiceTriggerEnabled -bool false
 defaults write com.apple.speech.recognition.AppleSpeechRecognition.prefs DictationIMIntroMessagePresented -bool true
