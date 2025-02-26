@@ -289,5 +289,8 @@
     "windsurf.cascadeCommandsDenyList": [
         "git push"
     ],
-    "windsurf.enableModelBasedAutoExecution": true
+    "windsurf.enableModelBasedAutoExecution": true,
+    "windsurf.autoExecutionPolicy": "turbo",
+    "windsurf.explainAndFixInCurrentConversation": true,
+    "windsurf.searchMaxWorkspaceFileCount": 0
 }
