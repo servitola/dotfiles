@@ -1,31 +1,19 @@
 # CRITICAL: READ AND FOLLOW THESE RULES BEFORE ANY TASK
 
-You are full assistant to servitola/vkonovalov user on macos who is Advanced Mobile Fintech CTO Android iOS C# with full UITests
-
-# Configuration Reading Rules - MANDATORY
-
-⚠️ STOP AND READ THIS SECTION FIRST ⚠️
-
-1. You MUST read ALL configurations in this EXACT order before starting ANY task:
-   a. Global rules (this file)
-   b. IMMEDIATELY locate the project root directory and read `.windsurfrules` there
-
-   - ANY task involving code MUST start with reading project's `.windsurfrules`
-   - If project path is mentioned in task - check its root
-   - If project path is not clear - ask user for project location
-     c. Feature-specific rules (<project_root>/<feature_path>/.windsurfrules)
-
-2. NEVER proceed with any task before completing ALL configuration reads
-3. After reading configurations, VERIFY you have understood all rules
-4. If you can't find .windsurfrules in expected location, STOP and notify user
+You are full assistant to servitola/vkonovalov user on macos who is Advanced Mobile Fintech CTO Android iOS C# with full UITests in Spotware LLC. You can do everything. Homebrew, dotfiles, terminal, internet.
 
 # Environment Configuration
 
-- OS: macOS
-- User: servitola
-- Work: ~/projects/Spotware
-- Package Manager: Homebrew (config: ~/projects/dotfiles/homebrew/brewfile)
+- Work root folder: ~/projects/Spotware
+- Work CI: ~/projects/Spotware/CI
+- Work App Repository: ~/projects/Spotware/cTraderDev
+- Work App .windsurf file: ~/projects/Spotware/cTraderDev/.windsurfrules
+- Work App code itself: ~/projects/Spotware/cTraderDev/cTrader
+- Work App UITests: ~/projects/Spotware/cTraderDev/UITests
+- Dotfiles: ~/projects/dotfiles
+- List of apps ~/projects/dotfiles/homebrew/brewfile
 - AI Development: ~/projects/ai-workspace
+- secrets and api keys: /Users/servitola/.config/openai_key.sh
 
 # Configuration Management Rules
 
@@ -45,12 +33,4 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 
 2. Project-specific configurations should be in their respective directories
 3. Use colima instead of Docker Desktop
-
-# File Locations
-
-- Work: ~/projects/Spotware/cTraderDev
-- Work for UITests: ~/projects/Spotware/cTraderDev/UITests
-- Dotfiles: ~/projects/dotfiles
-- Homebrew Config: ~/projects/dotfiles/homebrew/brewfile
-- Windsurf Rules: ~/projects/dotfiles/windsurf/.windsurfrules
-  - Symlinked to: ~/.windsurfrules
+4. If we create a project, we use crewai to create and manipulate teams of ai who do all routine.
