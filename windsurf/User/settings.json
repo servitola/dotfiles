@@ -34,7 +34,7 @@
     },
     // Workbench settings
     "workbench.colorTheme": "Gruvbox Dark Hard",
-    "workbench.iconTheme": "vscode-icons",
+    "workbench.iconTheme": "Monokai Pro Icons",
     "workbench.editor.showTabs": "multiple",
     "workbench.editor.enablePreview": false,
     "workbench.editor.closeEmptyGroups": false,
