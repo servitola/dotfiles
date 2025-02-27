@@ -6,7 +6,9 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 
 - Work root folder: ~/projects/Spotware
 - Work CI: ~/projects/Spotware/CI
-- Work App Repository: ~/projects/Spotware/cTraderDev
+- Work App Repository: ~/projects/Spotware/cTraderDev and xTrader.sln there
+- Work Android app: cTrader/Mobile.Droid.cTrader/Mobile.Droid.cTrader.csproj
+- WOrk iOS app: cTrader/Mobile.Touch.cTrader/Mobile.Touch.cTrader.csproj
 - Work App .windsurf file: ~/projects/Spotware/cTraderDev/.windsurfrules
 - Work App code itself: ~/projects/Spotware/cTraderDev/cTrader
 - Work App UITests: ~/projects/Spotware/cTraderDev/UITests
@@ -14,6 +16,7 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 - List of apps ~/projects/dotfiles/homebrew/brewfile
 - AI Development: ~/projects/ai-workspace
 - secrets and api keys: /Users/servitola/.config/openai_key.sh
+- YouTrack project CTXM for issue tracking: https://yt.ctrader.com
 
 # Configuration Management Rules
 
