@@ -385,7 +385,7 @@ apps_list =
 -- c: end
 { key="v", app="Yandex" },
 { key="b", app="iTerm" },
-{ key="n", app="Windsurf" },
+{ key="n", app="Windsurf - Next" },
 { key="m", app="Iina", window_default_position="bottom"},
 -- ,: home
 -- .: end
