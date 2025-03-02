@@ -21,7 +21,7 @@ I use this configuration and adjust it on two of my Macs: Mac Studio M1Pro and M
 * A: I use [iTerm2](https://iterm2.com/) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
 
 * Q: I want to <ins>update all</ins> my applications at once
-* A: Autoupdate **Everything** with the `up` command. Run `up` from Terminal. It also cleans a lot of cache folders. I have 120 applications and feel no pressure.
+* A: Autoupdate **Everything** with the `up` command. Run `up` from Terminal. It also cleans a lot of cache folders. I have 200+ applications and feel no pressure.
 
 * Q: I want my <ins>work web links</ins> to be opened <ins>in Safari</ins> and the <ins>other stuff</ins> in <ins>another browser</ins>
 * A: Look at `hammerspoon/config_UrlDispatcher.sh`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
@@ -50,10 +50,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
 
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
-* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here.
-
-* Q: I have an Android phone. How do I send a file to my macOS?
-* A: You can use your Telegram Saved Messages, but I also use [NearDrop Plus](https://github.com/XRayAdamo/NearDrop) to receive files as AirDrop. It can also open links automatically so your guests can easily open their links.
+* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extenions
 
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use the **yt-dlp** command with any link. For example:
