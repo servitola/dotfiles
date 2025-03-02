@@ -74,6 +74,7 @@ brew "kdoctor"
 brew "kubernetes-cli"
 brew "lazydocker"
 brew "lazygit"
+brew "links"
 brew "llama.cpp"
 brew "llvm"
 brew "lynx"
@@ -202,6 +203,7 @@ mas "Grammarly for Safari", id: 1462114288
 mas "Keynote", id: 409183694
 mas "LottieFiles", id: 1531085233
 mas "MsgFiler", id: 6478043112
+mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixave", id: 924891282
