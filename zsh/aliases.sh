@@ -9,6 +9,7 @@ alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 alias re=reload
+alias rm=rm -f
 alias cat=bat
 #alias rm=trash
 alias mkdir="mkdir -pv"
