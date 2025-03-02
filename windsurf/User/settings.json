@@ -147,7 +147,7 @@
         "**/node_modules": true,
         "**/obj": true,
         "**/venv": true,
-		"**/.git": true,
+        "**/.git": true,
     },
     "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
@@ -243,7 +243,9 @@
         "unzip",
         "mkdir",
         "mv",
-        "rmdir"
+        "rmdir",
+        "xcodebuild",
+        "source"
     ],
     "windsurf.chatFontSize": "large",
     "windsurf.autoOpenEditedFiles": false,
@@ -271,7 +273,9 @@
     "omnisharp.enableRoslynAnalyzers": true,
     "omnisharp.enableEditorConfigSupport": true,
     // Roslynator settings
-    "roslynator.analyzerSearchPaths": ["${workspaceFolder}/packages"],
+    "roslynator.analyzerSearchPaths": [
+        "${workspaceFolder}/packages"
+    ],
     "roslynator.codeAnalysis.enabled": true,
     "roslynator.codeActionsEnabled": true,
     "roslynator.diagnosticsEnabled": true,
