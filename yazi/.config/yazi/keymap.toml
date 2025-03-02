@@ -1,0 +1,44 @@
+[[manager.prepend_keymap]]
+on = ["<C-d>"]
+run = "plugin diff"
+desc = "Diff the selected with the hovered file"
+
+[[manager.prepend_keymap]]
+on = ["T", "p"]
+run = "plugin --sync hide-preview"
+desc = "Hide or show preview"
+
+[[manager.prepend_keymap]]
+on = ["T", "m"]
+run = "plugin --sync max-preview"
+desc = "Maximize or restore preview"
+
+[[manager.prepend_keymap]]
+on = ["F"]
+run = "plugin smart-filter"
+desc = "Smart filter"
+
+[[manager.prepend_keymap]]
+on = ["!"]
+run = 'shell "$SHELL" --block --confirm'
+desc = "Open shell here"
+
+[[manager.prepend_keymap]]
+on = ["D"]
+run = "remove --force"
+desc = "Move the files to the trash"
+
+[[manager.prepend_keymap]]
+on   = ["c", "a"]
+run  = "plugin compress"
+desc = "Archive selected files"
+
+[[manager.prepend_keymap]]
+on = [ ">" ]
+run = ['shell "for file in "$@"; do magick "$file" -rotate 90 "${file%}"; done" --confirm', "refresh"]
+desc = "Rotate selected images clockwise"
+
+[[manager.prepend_keymap]]
+on = [ "<" ]
+run = ['shell "for file in "$@"; do magick "$file" -rotate -90 "${file%}"; done" --confirm', "refresh"]
+desc = "Rotate selected images clockwise"
