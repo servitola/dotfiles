@@ -1,0 +1,87 @@
+# Tokyo Night theme for Yazi
+
+[flavor]
+name = "tokyo-night"
+author = "BennyOe"
+
+[appearance]
+status_bar_background = "#1a1b26"
+status_bar_foreground = "#a9b1d6"
+selection_background = "#33467c"
+selection_foreground = "#c0caf5"
+
+[icons]
+"Desktop/" = "󰇄"
+"Documents/" = "󰈙"
+"Downloads/" = "󰇚"
+"Pictures/" = "󰉔"
+"Music/" = "󰝚"
+"Videos/" = "󰕧"
+"*" = "󰈔"
+
+[icons.default]
+directory = "󰉋"
+file = "󰈔"
+
+[manager]
+cwd = { fg = "#7aa2f7" }
+fg = "#7aa2f7"
+bg = "#1a1b26"
+preview_fg = "#a9b1d6"
+preview_bg = "#1a1b26"
+
+selected_fg = "#c0caf5"
+selected_bg = "#33467c"
+
+current_fg = "#7aa2f7"
+current_bg = "#1a1b26"
+
+hovered = { fg = "#c0caf5", bg = "#33467c" }
+preview_hovered = { underline = true }
+
+find_keyword = { fg = "#f7768e", bold = true }
+find_position = { fg = "#bb9af7", bg = "reset", bold = true }
+
+marker_selected = { fg = "#e0af68", bg = "#e0af68" }
+marker_copied = { fg = "#9ece6a", bg = "#9ece6a" }
+marker_cut = { fg = "#f7768e", bg = "#f7768e" }
+
+tab_active = { fg = "#7aa2f7", bg = "#1a1b26" }
+tab_inactive = { fg = "#565f89", bg = "#1a1b26" }
+tab_width = 1
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "#1a1b26", bg = "#1a1b26" }
+fg = "#7aa2f7"
+bg = "#1a1b26"
+
+[input]
+border = { fg = "#7aa2f7" }
+title = { fg = "#7aa2f7", bold = true }
+value = { fg = "#c0caf5" }
+selected = { reversed = true }
+
+[select]
+border = { fg = "#7aa2f7" }
+active = { fg = "#7aa2f7" }
+inactive = { fg = "#565f89" }
+
+[tasks]
+border = { fg = "#7aa2f7" }
+title = { fg = "#7aa2f7", bold = true }
+hovered = { underline = true }
+
+[preview]
+tab = { fg = "#7aa2f7" }
+hovered = { underline = true }
+fg = "#7aa2f7"
+bg = "#1a1b26"
+
+[which]
+mask = { bg = "#1a1b26" }
+cand = { fg = "#7aa2f7" }
+rest = { fg = "#565f89" }
+desc = { fg = "#737aa2" }
+separator = "  "
