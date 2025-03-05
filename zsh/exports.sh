@@ -20,20 +20,21 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+export PATH=$PATH:/Users/servitola/.local/bin
 
 # DotNet
 export DOTNET_ROOT=/usr/local/share/dotnet
+export USER_DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
-export PATH=$PATH:/usr/local/share/dotnet
-export PATH=$PATH:/Users/servitola/.dotnet/tools
 
 # JetBrains
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
-
+/Users/servitola/projects/Spotware/Dresses/SpotwareCN/cTraderAndroid/release-key.keystore
 # Java & Android
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-17.jdk/Contents/Home
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.14
 export PATH=$PATH:$JAVA_HOME
 
 export DOCKER_HOST=unix:///$HOME/.colima/docker.sock

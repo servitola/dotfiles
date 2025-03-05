@@ -297,5 +297,7 @@
     "windsurf.enableModelBasedAutoExecution": true,
     "windsurf.autoExecutionPolicy": "turbo",
     "windsurf.explainAndFixInCurrentConversation": true,
-    "windsurf.searchMaxWorkspaceFileCount": 0
+    "windsurf.searchMaxWorkspaceFileCount": 0,
+    "testing.automaticallyOpenTestResults": "neverOpen",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }

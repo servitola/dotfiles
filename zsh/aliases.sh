@@ -21,6 +21,10 @@ alias c=clear
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
+alias y=yarn
+alias yi="yarn install"
+alias yb="yarn build"
+
 alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
@@ -83,3 +87,5 @@ alias lt="ll --tree"
 
 # EZA aliases                                                       # ls
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+source ~/projects/dotfiles/zsh/spotware_aliases.sh
