@@ -68,3 +68,5 @@ alias lt="ll --tree"
 
 # EZA aliases                                                       # ls
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+
+source ~/projects/dotfiles/zsh/spotware_aliases.sh
