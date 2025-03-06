@@ -1,0 +1,235 @@
+apps:
+  pages:
+    - number: 1
+      items:
+        - folder: Developer Tools
+          pages:
+            - number: 1
+              items:
+                - Visual Studio Code
+                - Xcode
+                - Claude
+                - TestFlight
+                - VMware Fusion
+                - iTermAI
+                - Console
+                - Terminal
+                - DBeaver
+                - RocketSim
+                - Charles
+                - Windsurf
+                - UTM
+                - Automator
+                - Apple Configurator
+                - System Designer
+                - Fork
+                - Appium Inspector
+                - Windsurf - Next
+                - Transporter
+                - Ukelele
+                - LINQPad 8 beta
+                - LottieFiles
+                - Insomnia
+                - iTerm
+                - Developer
+                - Postman
+                - JetBrains Toolbox
+                - SF Symbols
+                - Android Studio
+                - dotTrace
+                - Rider
+                - PacketLogger
+                - Script Editor
+        - folder: Games
+          pages:
+            - number: 1
+              items:
+                - Battle.net
+                - Chess
+                - Darkest Dungeon
+                - Endless Sky
+                - Heroes of the Storm
+                - League of Legends
+                - Settlers2
+                - Steam
+                - Stray
+                - Riot Client
+                - OpenTTD
+                - CrossOver
+                - Heroes III
+                - 0 A.D.
+                - Agent
+                - Toribash
+        - folder: Utilities
+          pages:
+            - number: 1
+              items:
+                - Stickies
+                - Siri
+                - Find My
+                - System Information
+                - superwhisper
+                - MsgFiler 4
+                - Karabiner-EventViewer
+                - Notion
+                - DOSBox
+                - dosbox-x
+                - Limitless
+                - OnyX
+                - Image Playground
+                - MakeMKV
+                - coconutBattery
+                - Loom
+                - Transmission
+                - WorkFlowy
+                - Google Docs
+                - Grapher
+                - Grammarly for Safari
+                - Screen Sharing
+                - Dictionary
+                - Crescendo
+                - Macs Fan Control
+                - GIMP
+                - The Unarchiver
+                - Google Slides
+                - Google Sheets
+                - Shazam
+                - Pixave
+                - Simple Antnotes
+                - EtreCheckPro
+                - IORegistryExplorer
+                - DjVu Reader
+            - number: 2
+              items:
+                - Gifski
+                - GIPHY CAPTURE
+                - Screenshot
+                - Digital Color Meter
+                - VoiceOver Utility
+                - Print Center
+                - Disk Utility
+                - Activity Monitor
+                - Bluetooth File Exchange
+                - AirPort Utility
+                - Image Capture
+                - Tips
+                - Migration Assistant
+                - Preview
+                - Mission Control
+                - Time Machine
+                - TextEdit
+            - number: 3
+              items:
+                - CCXProcess
+                - Maps
+                - IINA
+                - VLC
+                - Photo Booth
+                - Freeform
+                - Home
+                - Pages
+                - App Store
+                - Mail
+                - Contacts
+                - Calendar
+                - Reminders
+                - Notes
+                - FaceTime
+                - Messages
+                - Photos
+                - Music
+                - Podcasts
+                - TV
+                - Voice Memos
+                - Keynote
+                - Numbers
+                - Weather
+                - Stocks
+                - Books
+                - System Settings
+                - Clock
+                - Calculator
+                - iPhone Mirroring
+                - Passwords
+                - Shortcuts
+                - QuickTime Player
+                - Font Book
+                - ColorSync Utility
+        - folder: Background Services
+          pages:
+            - number: 1
+              items:
+                - LuLu
+                - Itsycal
+                - OpenTTD
+                - Maccy
+                - Day One
+                - Karabiner-Elements
+                - NearDropPlus
+                - Raycast
+                - AirDroid
+                - Peek
+                - Amphetamine
+                - Last.fm
+                - AdGuard
+                - Shareful
+                - Google Drive
+                - eqMac
+                - AppCleaner
+                - Alfred 5
+                - Hammerspoon
+                - GlobalProtect
+                - Shottr
+                - Raycast Companion
+                - ContextMenu
+                - AlDente
+        - folder: Social
+          pages:
+            - number: 1
+              items:
+                - Telegram
+                - AyuGram
+                - Telegram Lite
+                - Skype
+                - Discord
+                - Reeder
+                - feedly
+                - Yandex
+                - Safari
+                - Arc
+                - Firefox
+                - Google Chrome
+                - Opera
+        - folder: Music
+          pages:
+            - number: 1
+              items:
+                - Guitar Rig 6
+                - Guitar Rig 7
+                - Native Access
+                - Adobe Premiere Pro 2022
+                - REAPER
+                - Focusrite Control
+                - Mixxx
+                - Guitar Pro 8
+                - Ableton Live 12 Suite
+                - Moises
+                - Addictive Drums 2
+                - StagePlotMaker
+                - OBS
+                - Logic Pro
+                - Audio MIDI Setup
+widgets:
+  pages: []
+dock_items:
+  apps:
+    - /System/Applications/Launchpad.app
+  settings:
+    autohide: true
+    largesize: null
+    magnification: false
+    minimize-to-application: true
+    mru-spaces: false
+    show-recents: false
+    tilesize: null
+desktop: {}
