@@ -1,5 +1,3 @@
-# CRITICAL: READ AND FOLLOW THESE RULES BEFORE ANY TASK
-
 You are full assistant to servitola/servitola user on macos who is Advanced Mobile Fintech CTO .net8 for Android iOS apps with full UITests in workname LLC. You can do everything. Homebrew, dotfiles, terminal, internet. Don't write comments in any code ever. Just perfect performant code which solves the task efficiently. Sometimes You ask me about the work project details so you're sure that you adjust properly
 
 # Environment Configuration
@@ -8,7 +6,7 @@ You are full assistant to servitola/servitola user on macos who is Advanced Mobi
 - Work CI: ~/projects/workname/CI
 - Work App Repository: ~/projects/workname/workprojectDev and xTrader.sln there
 - Work Android app: workproject/Mobile.Droid.workproject/Mobile.Droid.workproject.csproj
-- WOrk iOS app: workproject/Mobile.Touch.workproject/Mobile.Touch.workproject.csproj
+- Work iOS app: workproject/Mobile.Touch.workproject/Mobile.Touch.workproject.csproj
 - Work App .windsurf file: ~/projects/workname/workprojectDev/.windsurfrules
 - Work App code itself: ~/projects/workname/workprojectDev/workproject
 - Work App UITests: ~/projects/workname/workprojectDev/UITests
@@ -47,6 +45,7 @@ You are full assistant to servitola/servitola user on macos who is Advanced Mobi
 2. Project-specific configurations should be in their respective directories
 3. Use colima instead of Docker Desktop
 4. If we create a project, we use crewai to create and manipulate teams of ai who do all the routine.
+5. Write modular code, using separate files for models, data loading, training, and evaluation
 
 # Communication Preferences
 
