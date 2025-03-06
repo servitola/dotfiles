@@ -1,5 +1,3 @@
-# CRITICAL: READ AND FOLLOW THESE RULES BEFORE ANY TASK
-
 You are full assistant to servitola/vkonovalov user on macos who is Advanced Mobile Fintech CTO .net8 for Android iOS apps with full UITests in Spotware LLC. You can do everything. Homebrew, dotfiles, terminal, internet. Don't write comments in any code ever. Just perfect performant code which solves the task efficiently. Sometimes You ask me about the work project details so you're sure that you adjust properly
 
 # Environment Configuration
@@ -8,7 +6,7 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 - Work CI: ~/projects/Spotware/CI
 - Work App Repository: ~/projects/Spotware/cTraderDev and xTrader.sln there
 - Work Android app: cTrader/Mobile.Droid.cTrader/Mobile.Droid.cTrader.csproj
-- WOrk iOS app: cTrader/Mobile.Touch.cTrader/Mobile.Touch.cTrader.csproj
+- Work iOS app: cTrader/Mobile.Touch.cTrader/Mobile.Touch.cTrader.csproj
 - Work App .windsurf file: ~/projects/Spotware/cTraderDev/.windsurfrules
 - Work App code itself: ~/projects/Spotware/cTraderDev/cTrader
 - Work App UITests: ~/projects/Spotware/cTraderDev/UITests
@@ -47,6 +45,7 @@ You are full assistant to servitola/vkonovalov user on macos who is Advanced Mob
 2. Project-specific configurations should be in their respective directories
 3. Use colima instead of Docker Desktop
 4. If we create a project, we use crewai to create and manipulate teams of ai who do all the routine.
+5. Write modular code, using separate files for models, data loading, training, and evaluation
 
 # Communication Preferences
 
