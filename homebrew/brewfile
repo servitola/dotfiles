@@ -160,6 +160,7 @@ cask "itsycal"
 cask "jetbrains-toolbox"
 cask "karabiner-elements"
 cask "lastfm"
+cask "league-of-legends"
 cask "limitless"
 cask "loom"
 cask "lulu"
@@ -199,6 +200,7 @@ mas "Developer", id: 640199958
 mas "DjVu Reader", id: 733144595
 mas "feedly", id: 865500966
 mas "Gifski", id: 1351639930
+mas "GIPHY CAPTURE", id: 668208984
 mas "Grammarly for Safari", id: 1462114288
 mas "Keynote", id: 409183694
 mas "LottieFiles", id: 1531085233
