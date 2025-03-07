@@ -549,7 +549,7 @@ apps_list =
 { key="g", specific_function="browser_git"},
 { key="h", app="Hammerspoon", window_default_position="right"},
 { key="x", app="XCode" },
--- c: itsical 📅 Show Calendar
+{ key="c", app=""},
 { key="v", specific_function="browser_youtube" },
 { key="b", specific_function="audio.marshall"},
 { key="m", specific_function="audio.internal"},
@@ -571,6 +571,7 @@ apps_list =
 -- │ 🟢🟢🟢  │🟢🟢🟢│ 🟢🟢🟢│                             │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
 -- o: ℝ - Recent projects popup
+-- c: itsical 📅 Show Calendar
 }},
 { modifier={"left_shift", "alt", "left_command"}, chords={
 -- ╭—————╮__SHIFT_ALT_COMMAND_LAYER____╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
