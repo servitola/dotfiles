@@ -6,59 +6,60 @@ apps:
           pages:
             - number: 1
               items:
+                - Rider
+                - Windsurf - Next
+                - Windsurf
                 - Visual Studio Code
                 - Xcode
+                - JetBrains Toolbox
                 - Claude
-                - TestFlight
-                - VMware Fusion
-                - iTermAI
-                - Console
+                - iTerm
                 - Terminal
+                - Console
+                - TestFlight
+                - Developer
+                - Transporter
                 - DBeaver
+                - Fork
                 - RocketSim
+                - Postman
                 - Charles
-                - Windsurf
-                - UTM
-                - Automator
                 - Apple Configurator
                 - System Designer
-                - Fork
+                - UTM
+                - VMware Fusion
+                - dotTrace
                 - Appium Inspector
-                - Windsurf - Next
-                - Transporter
+                - Automator
                 - Ukelele
                 - LINQPad 8 beta
                 - LottieFiles
                 - Insomnia
-                - iTerm
-                - Developer
-                - Postman
-                - JetBrains Toolbox
                 - SF Symbols
                 - Android Studio
-                - dotTrace
-                - Rider
                 - PacketLogger
                 - Script Editor
+                - iTermAI
         - folder: Games
           pages:
             - number: 1
               items:
-                - Battle.net
-                - Chess
-                - Darkest Dungeon
-                - Endless Sky
                 - Heroes of the Storm
                 - League of Legends
                 - Settlers2
-                - Steam
                 - Stray
+                - Chess
+                - Darkest Dungeon
+                - Endless Sky
+                - 0 A.D.
+                - Steam
                 - Riot Client
                 - OpenTTD
                 - CrossOver
                 - Heroes III
-                - 0 A.D.
+                - Battle.net
                 - Agent
+                - OpenTTD
                 - Toribash
         - folder: Utilities
           pages:
@@ -161,7 +162,6 @@ apps:
               items:
                 - LuLu
                 - Itsycal
-                - OpenTTD
                 - Maccy
                 - Day One
                 - Karabiner-Elements
