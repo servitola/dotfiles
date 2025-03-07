@@ -71,6 +71,11 @@ install:
 	@rm -f ~/Library/Application\ Support/lporg/config.yml
 	@ln -sfvh ~/projects/dotfiles/lporg/config.yml ~/Library/Application\ Support/lporg/config.yml
 
+	@echo "setup iina shortcuts"
+	@mkdir -p ~/Library/Application\ Support/com.colliderli.iina/input_conf
+	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
+	@ln -sfvh ~/projects/dotfiles/iina/servitola.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
+
 	@echo "setup Rider vmoptions symlink"
 	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
