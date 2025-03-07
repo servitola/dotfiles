@@ -143,7 +143,6 @@ apps:
                 - TV
                 - Voice Memos
                 - Keynote
-                - Numbers
                 - Weather
                 - Stocks
                 - Books
@@ -181,8 +180,8 @@ apps:
                 - GlobalProtect
                 - Shottr
                 - Raycast Companion
-                - ContextMenu
                 - AlDente
+                - ContextMenu
         - folder: Social
           pages:
             - number: 1
