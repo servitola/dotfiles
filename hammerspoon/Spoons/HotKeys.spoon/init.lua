@@ -572,6 +572,8 @@ apps_list =
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
 -- o: ℝ - Recent projects popup
 -- c: itsical 📅 Show Calendar
+{ key="d", specific_function="press.delete"},
+{ key="f", specific_function="press.backspace"}
 }},
 { modifier={"left_shift", "alt", "left_command"}, chords={
 -- ╭—————╮__SHIFT_ALT_COMMAND_LAYER____╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
@@ -736,6 +738,14 @@ function obj:init()
                 elseif chord_row.specific_function == "press_return" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
                         hs.eventtap.keyStroke({}, "return")
+                    end)
+                elseif chord_row.specific_function == "press.backspace" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                      hs.eventtap.keyStroke({}, "forwarddelete")
+                    end)
+                elseif chord_row.specific_function == "press.delete" then
+                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                        hs.eventtap.keyStroke({}, "delete")
                     end)
                 elseif chord_row.specific_function == "browser_youtube" then
                     hs.hotkey.bind(row.modifier, chord_row.key, function()
