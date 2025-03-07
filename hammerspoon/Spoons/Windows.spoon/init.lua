@@ -51,29 +51,23 @@ function set_window_left(window)
     end
 
     if is_ios_simulator(window) then
-        -- Get current window size to maintain aspect ratio
         local current = window:frame()
         local aspect_ratio = current.h / current.w
-        
-        -- Get screen dimensions
+
         local screen = window:screen()
         local screen_frame = screen:frame()
-        
-        -- Calculate size maintaining aspect ratio
+
         local target_width = screen_frame.w * 0.4
         local target_height = target_width * aspect_ratio
-        
-        -- Ensure height doesn't exceed screen
+
         if target_height > screen_frame.h * 0.7 then
             target_height = screen_frame.h * 0.7
             target_width = target_height / aspect_ratio
         end
-        
-        -- Calculate left position with same vertical centering as fullscreen
+
         local x = screen_frame.x + margin
         local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
-        
-        -- Apply the frame change with animation
+
         window:setFrame({
             x = x,
             y = y,
@@ -126,29 +120,24 @@ function set_window_fullscreen(window)
     end
 
     if is_ios_simulator(window) then
-        -- Get current window size to maintain aspect ratio
+
         local current = window:frame()
         local aspect_ratio = current.h / current.w
-        
-        -- Get screen dimensions
+
         local screen = window:screen()
         local screen_frame = screen:frame()
-        
-        -- Calculate size maintaining aspect ratio
+
         local target_width = screen_frame.w * 0.4
         local target_height = target_width * aspect_ratio
-        
-        -- Ensure height doesn't exceed screen
+
         if target_height > screen_frame.h * 0.7 then
             target_height = screen_frame.h * 0.7
             target_width = target_height / aspect_ratio
         end
-        
-        -- Calculate center position, but move it up by 10% of screen height
+
         local x = screen_frame.x + (screen_frame.w - target_width) / 2
         local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
-        
-        -- Apply the frame change with animation
+
         window:setFrame({
             x = x,
             y = y,
@@ -164,7 +153,6 @@ end
 function set_all_windows_positions()
     print("=== All Windows List ===")
 
-    -- First check if any emulator window is already in position
     local android_positioned = false
     local ios_positioned = false
 
@@ -194,29 +182,23 @@ function set_all_windows_positions()
                 set_window(vertical_line, topY, rightX - vertical_line, horizontal_line - margin, window)
             end
         elseif is_ios_simulator(window) then
-            -- Get current window size to maintain aspect ratio
             local current = window:frame()
             local aspect_ratio = current.h / current.w
-            
-            -- Get screen dimensions
+
             local screen = window:screen()
             local screen_frame = screen:frame()
-            
-            -- Calculate size maintaining aspect ratio
+
             local target_width = screen_frame.w * 0.4
             local target_height = target_width * aspect_ratio
-            
-            -- Ensure height doesn't exceed screen
+
             if target_height > screen_frame.h * 0.7 then
                 target_height = screen_frame.h * 0.7
                 target_width = target_height / aspect_ratio
             end
-            
-            -- Position on top right side
+
             local x = screen_frame.x + screen_frame.w * vertical_line
             local y = screen_frame.y + (screen_frame.h * topY)
-            
-            -- Apply the frame change with animation
+
             window:setFrame({
                 x = x,
                 y = y,
@@ -277,7 +259,6 @@ function is_firefox_video_player(app_title, window_title)
 end
 
 function is_yandex_video_player(app_title, window_title, window)
-    -- Check for Yandex video window - it's the window WITHOUT the suffix
     if not (app_title == "Yandex" and window_title) then
         return false
     end
@@ -307,19 +288,16 @@ function is_activity_monitor_small_window(app_title, window_title, window)
     if app_title ~= "Activity Monitor" then
         return false
     end
-    
+
     local window_frame = window:frame()
-    -- Check if it's not the main window (main window is typically larger)
     local is_small_window = window_frame.w < 600 and window_frame.h < 400
-    
-    -- Exclude the main process list window
     local is_not_main = window_title ~= "Activity Monitor"
-    
+
     return is_small_window and is_not_main
 end
 
 function is_activity_monitor_cpu_window(app_title, window_title)
-    return app_title == "Activity Monitor" and 
+    return app_title == "Activity Monitor" and
            (window_title == "CPU History" or window_title == "GPU History")
 end
 
@@ -348,11 +326,10 @@ function set_window(x, y, width, height, window)
     local screen = window:screen()
     local screen_frame = screen:frame()
 
-    -- Check if it's Yandex video
     local app_title = window:application():title()
     local window_title = window:title()
+
     if app_title == "Yandex" and string.find(window_title, "video") then
-        -- Use old method for Yandex video
         window:moveToUnit({x, y, width, height})
         return
     end
