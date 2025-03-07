@@ -142,4 +142,6 @@ install:
 		cd $(HOME)/projects/gruvbox-wallpapers && git pull; \
 	fi
 
+	@m appearance highlightcolor grape
+
 	@echo "Installation complete!"
