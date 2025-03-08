@@ -11,8 +11,8 @@ apps:
                 - Windsurf
                 - Visual Studio Code
                 - Xcode
+                - Android Studio
                 - JetBrains Toolbox
-                - Claude
                 - iTerm
                 - Terminal
                 - Console
@@ -36,8 +36,8 @@ apps:
                 - LottieFiles
                 - Insomnia
                 - SF Symbols
-                - Android Studio
                 - PacketLogger
+                - Claude
                 - Script Editor
                 - iTermAI
         - folder: Games
