@@ -1,5 +1,5 @@
 right_side_app_titles = {}
-bottom_side_app_titles = {"IINA", "Transmission"}
+bottom_side_app_titles = { "IINA" , "Transmission" }
 
 margin = 0.005
 animation_duration = 0.1
