@@ -6,18 +6,9 @@
 local obj = {}
 obj.__index = obj
 
--- Metadata
-obj.name = "GruvboxWallpapers"
-obj.version = "1.0"
-obj.author = "servitola"
-obj.homepage = "https://github.com/servitola/dotfiles"
-obj.license = "MIT - https://opensource.org/licenses/MIT"
-
--- Configuration
 obj.wallpapers_dir = os.getenv("HOME") .. "/projects/gruvbox-wallpapers/wallpapers/irl"
 obj.current_wallpaper = nil
 
--- Get a list of all image files in the directory
 function obj:getWallpapers()
     local files = {}
     local dir = io.popen('ls "' .. self.wallpapers_dir .. '"/*.{jpg,jpeg,png,JPG,JPEG,PNG} 2>/dev/null')
@@ -30,11 +21,9 @@ function obj:getWallpapers()
     return files
 end
 
--- Set random wallpaper
 function obj:setRandomWallpaper()
     local wallpapers = self:getWallpapers()
     if #wallpapers > 0 then
-        -- Pick a random wallpaper that's different from the current one
         local new_wallpaper
         repeat
             new_wallpaper = wallpapers[math.random(#wallpapers)]
@@ -46,13 +35,8 @@ function obj:setRandomWallpaper()
 end
 
 function obj:init()
-    -- Seed random number generator
     math.randomseed(os.time())
-
-    -- Set initial wallpaper
     self:setRandomWallpaper()
-
-    -- Set up daily timer
     if self.timer then
         self.timer:stop()
     end
