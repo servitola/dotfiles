@@ -4,6 +4,7 @@ alias u=up
 alias reload="exec zsh"
 
 alias c=clear
+alias d="ddgr -x -n 3"
 alias ping=gping
 alias gtop=btop
 alias code2=windsurf
