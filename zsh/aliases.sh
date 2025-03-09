@@ -2,9 +2,11 @@
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
 alias reload="exec zsh"
-
 alias c=clear
+
+# duckduckgo search
 alias d="ddgr -x -n 3"
+
 alias ping=gping
 alias gtop=btop
 alias code2=windsurf

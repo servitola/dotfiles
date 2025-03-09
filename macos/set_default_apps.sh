@@ -4,7 +4,7 @@ source "$HOME/projects/dotfiles/zsh/functions.sh"
 echo 'Check the link for MacOS types identifiers:'
 echo 'https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html'
 
-
+echo "Setting text editor"
 duti -s com.exafunction.windsurfNext com.netscape.javascript-source all
 duti -s com.exafunction.windsurfNext net.daringfireball.markdown all
 duti -s com.exafunction.windsurfNext public.css all
@@ -98,7 +98,7 @@ duti -s com.exafunction.windsurfNext .yml all
 duti -s com.exafunction.windsurfNext .zsh all
 duti -s com.exafunction.windsurfNext .zshrc all
 
-
+echo "Setting audio/video player"
 duti -s com.colliderli.iina public.audio all
 duti -s com.colliderli.iina public.movie all
 
@@ -124,7 +124,7 @@ duti -s com.colliderli.iina .wav all
 duti -s com.colliderli.iina .webm all
 duti -s com.colliderli.iina .wmv all
 
-
+echo "Setting image preview"
 duti -s com.apple.Preview public.image all
 duti -s com.apple.Preview .bmp all
 duti -s com.apple.Preview .gif all
