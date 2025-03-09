@@ -131,10 +131,10 @@
         "**/obj": true,
         "**/Pods/": true,
         "**/Thumbs.db": true,
-        "Applications": true,
-        "LINQPad": true,
-        "Movies": true,
-        "Public": true
+        "/Applications": true,
+        "/LINQPad": true,
+        "/Movies": true,
+        "/Public": true
     },
     // Search settings
     "search.exclude": {
