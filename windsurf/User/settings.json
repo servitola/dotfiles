@@ -255,7 +255,8 @@
     "vsicons.presets.hideExplorerArrows": true,
     "window.zoomLevel": 2,
     "workbench.editorAssociations": {
-        "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+        "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default",
+        "*.md": "vscode.markdown.preview.editor"
     },
     "vscode-office.editorTheme": "Github Dark",
     "git.openRepositoryInParentFolders": "always",
