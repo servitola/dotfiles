@@ -1,15 +1,5 @@
----
---- Open first needed tab from Yandex Browser
----
-
 local obj = {}
 obj.__index = obj
-
-obj.name = "BrowserTabOpener"
-obj.version = "1.0"
-obj.author = "servitola"
-obj.homepage = "https://github.com/Hammerspoon/Spoons"
-obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 function obj:openTab(urlPattern)
     local success, urls, err = hs.osascript.applescript([[
