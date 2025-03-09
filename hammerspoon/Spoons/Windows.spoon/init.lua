@@ -2,8 +2,21 @@ local obj = {}
 
 dofile("./Spoons/Windows.spoon/config.lua")
 dofile("./Spoons/Windows.spoon/window_main_set_function.lua")
+dofile("./Spoons/Windows.spoon/small_dialog_detector.lua")
+dofile("./Spoons/Windows.spoon/get_right_panel_windows.lua")
 dofile("./Spoons/Windows.spoon/window_set_bottom_function.lua")
+dofile("./Spoons/Windows.spoon/window_set_right_function.lua")
+dofile("./Spoons/Windows.spoon/dialog_set_right_function.lua")
 dofile("./Spoons/Windows.spoon/windows_detection_functions.lua")
+dofile("./Spoons/Windows.spoon/windows_watcher.lua")
+dofile("./Spoons/Windows.spoon/adjust_right_panel_for_dialogs.lua")
+dofile("./Spoons/Windows.spoon/window_set_full_size_function.lua")
+dofile("./Spoons/Windows.spoon/restore_right_panel_windows_function.lua")
+dofile("./Spoons/Windows.spoon/window_set_to_default_place_function.lua")
+
+local active_small_dialogs = {}
+local right_panel_windows_adjusted = false
+local right_panel_windows_positions = {}
 
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
@@ -68,69 +81,11 @@ function set_window_left(window)
     set_window(leftX, topY, vertical_line - spacing, bottomY - topY, window)
 end
 
-function set_window_right(window)
-    if window == nil then
-        window = hs.window.frontmostWindow()
-    end
-
-    local app_title = window:application():title()
-    local window_title = window:title()
-
-    if hs.fnutils.contains(bottom_side_app_titles, app_title) then
-        set_window_bottom(window)
-    elseif is_yandex_video_player(app_title, window_title, window) then
-        set_window_bottom(window)
-    elseif is_finder_copy_dialog(app_title, window_title, window) then
-         set_window_bottom(window)
-    elseif is_activity_monitor_small_window(app_title, window_title, window) and not is_activity_monitor_cpu_window(app_title, window_title) then
-        set_window_bottom(window)
-    elseif is_activity_monitor_cpu_window(app_title, window_title) then
-        set_window(vertical_line, topY, rightX - vertical_line,
-            horizontal_line - margin, window)
-    else
-        set_window(vertical_line, topY, rightX - vertical_line,
-            horizontal_line - margin, window)
-    end
-end
-
-function set_window_fullscreen(window)
-    if window == nil then
-        window = hs.window.frontmostWindow()
-    end
-
-    if is_ios_simulator(window) then
-
-        local current = window:frame()
-        local aspect_ratio = current.h / current.w
-
-        local screen = window:screen()
-        local screen_frame = screen:frame()
-
-        local target_width = screen_frame.w * 0.4
-        local target_height = target_width * aspect_ratio
-
-        if target_height > screen_frame.h * 0.7 then
-            target_height = screen_frame.h * 0.7
-            target_width = target_height / aspect_ratio
-        end
-
-        local x = screen_frame.x + (screen_frame.w - target_width) / 2
-        local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
-
-        window:setFrame({
-            x = x,
-            y = y,
-            w = target_width,
-            h = target_height
-        }, animation_duration)
-        return
-    end
-
-    set_window(leftX, topY, rightX - leftX, bottomY - topY, window)
-end
-
 function set_all_windows_positions()
     print("=== All Windows List ===")
+
+    active_small_dialogs = {}
+    right_panel_windows_adjusted = false
 
     local android_positioned = false
     local ios_positioned = false
@@ -208,6 +163,11 @@ function set_all_windows_positions()
             end
         end
     end
+end
+
+function obj:init()
+    setup_window_watcher()
+    return self
 end
 
 return obj
