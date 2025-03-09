@@ -1,15 +1,41 @@
+[color]
+	ui = always
+
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+	current = green reverse
+	local = green bold
+	remote = cyan
+	upstream = magenta
 
 [color "diff"]
 	meta = yellow bold
 	frag = magenta bold # line info
 	old = red # deletions
 	new = green # additions
+	whitespace = red reverse
 
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+	added = green bold
+	changed = yellow
+	untracked = blue
+	untrackedfile = blue bold
+	unmerged = red bold
+
+[color "decorate"]
+	head = yellow bold
+	branch = green bold
+	ref = cyan
+	tag = yellow bold
+	stash = magenta bold
+
+[color "interactive"]
+	prompt = yellow bold
+	herror = red bold
+	header = cyan
+	help = yellow
+
+[color "grep"]
+	match = red bold
+	filename = magenta
+	linenumber = green
+	separator = cyan
