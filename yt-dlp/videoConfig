@@ -1,0 +1,7 @@
+-f bestvideo[height<=1080][ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best
+--embed-metadata
+--embed-subs
+--embed-thumbnail
+--no-embed-info-json
+--no-mtime
+--no-part
