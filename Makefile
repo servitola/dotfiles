@@ -71,6 +71,11 @@ install:
 	@rm -f ~/Library/Application\ Support/lporg/config.yml
 	@ln -sfvh ~/projects/dotfiles/lporg/config.yml ~/Library/Application\ Support/lporg/config.yml
 
+	@echo "setup yt-dlp"
+	@mkdir -p ~/.config/yt-dlp
+	@rm -f ~/.config/yt-dlp/config
+	@ln -sfvh ~/projects/dotfiles/yt-dlp/config ~/.config/yt-dlp/config
+
 	@echo "setup iina shortcuts"
 	@mkdir -p ~/Library/Application\ Support/com.colliderli.iina/input_conf
 	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf

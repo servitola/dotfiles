@@ -1,0 +1,3 @@
+-x
+--audio-format mp3
+-o "~/Desktop/%(title)s (%(id)s).%(ext)s"
