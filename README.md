@@ -61,9 +61,8 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 yt-dlp https://www.youtube.com/watch?v=QhROKjpuLMM
 yt-dlp https://www.youtube.com/user/ButKorn/videos
 ```
-
-* Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>:
-* A: I use [YouTube Enhancer](https://addons.mozilla.org/en-US/firefox/addon/enhancer-for-youtube/). Import my settings from [here](https://github.com/servitola/dotfiles/tree/master/youtube-enhancer)
+* Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>. And also 1000 of options. You're surely find yours:
+* A: I use [Improve YouTube](https://chromewebstore.google.com/detail/improve-youtube-%F0%9F%8E%A7-for-yo/bnomihfieiccainjcjblhegjgglakjdd). Install it and import my settings from [here](https://github.com/servitola/dotfiles/tree/master/chromium-ImprovedTube-extension)
 
 * Q: I want to have multiple buffers and not switch between windows multiple times. I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once.
 * A: I use [maccy](https://maccy.app/). It is installed with all programs using homebrew here.
