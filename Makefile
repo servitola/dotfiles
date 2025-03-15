@@ -66,11 +66,6 @@ install:
 	@rm -f ~/Library/Application\ Support/Code/User/keybindings.json
 	@ln -sfvh ~/projects/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
-	@echo "setup lporg"
-	@mkdir -p ~/Library/Application Support/lporg
-	@rm -f ~/Library/Application\ Support/lporg/config.yml
-	@ln -sfvh ~/projects/dotfiles/lporg/config.yml ~/Library/Application\ Support/lporg/config.yml
-
 	@echo "setup yt-dlp"
 	@mkdir -p ~/.config/yt-dlp
 	@rm -f ~/.config/yt-dlp/config

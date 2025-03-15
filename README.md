@@ -52,9 +52,6 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
 * A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extenions
 
-* Q: I want to be sure the <ins>icons in Launcher</ins> be saved and be ready to restore
-* A: I use [lporg](https://github.com/blacktop/lporg). The layout is saved on 'up' command usage. Load backup with ```lporg load -n -c ~/projects/dotfiles/lporg/config.yml```
-
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use the **yt-dlp** command with any link. For example:
 ```
