@@ -39,9 +39,6 @@ print_task "Flushing DNS cache"
 dscacheutil -flushcache
 killall -HUP mDNSResponder
 
-print_task "Saving Launcher layout"
-lporg save >/dev/null 2>&1
-
 print_task "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
 rm -rf ~/Library/Caches/* >/dev/null 2>&1
