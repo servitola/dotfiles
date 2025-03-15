@@ -1,17 +1,18 @@
-# ZSH
+# update all
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
+
+# reload zsh settings
 alias reload="exec zsh"
 alias c=clear
+alias re=reload
 
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
-alias ping=gping
 alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
-alias re=reload
 alias rm=rm -f
 alias cat=bat
 #alias rm=trash
