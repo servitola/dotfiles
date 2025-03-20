@@ -1,33 +1,37 @@
 local obj={}
 
---1. Main English Layer
---2. Main Russian Layer
---3. Main Greek Layer
+-- Keyboard layers described in this document:
 
---4. Shift + English Layer (⇧)
---5. Shift + Russian Layer (⇧)
---6. Shift + Greek Layer (⇧)
+-- 1. Main English Layer
+-- 2. Main Russian Layer
+-- 3. Main Greek Layer
 
---7. Alt Layer (⌥) -- Ilya Birman's layout
---8. Alt + Shift Layer (⌥⇧) -- Ilya Birman's layout
+-- 4. Shift + English Layer (⇧)
+-- 5. Shift + Russian Layer (⇧)
+-- 6. Shift + Greek Layer (⇧)
 
---9. Command Layer (⌘)
---10. Control Layer (⌃)
+-- 7. Alt Layer (⌥) -- Ilya Birman's layout
+-- 8. Alt + Shift Layer (⌥⇧) -- Ilya Birman's layout
 
---11. Hyper Layer (⌘⌃⌥⇧)
+-- 9. Command Layer (⌘)
+-- 10. Control Layer (⌃)
 
---12. Command + Shift Layer (⌘⇧)
---13. Command + Alt Layer (⌘⌥)
---14. Command + Control Layer (⌘⌃)
---15. Control + Shift Layer (⌃⇧)
---16. Control + Alt Layer (⌃⌥)
+-- 11. Hyper Layer (⌘⌃⌥⇧)
 
---17. Control + Alt + Command Layer (⌃⌥⌘)
---18. Shift + Alt + Command Layer (⇧⌥⌘)
---19. Shift + Control + Command Layer (⇧⌃⌘)
---20. Shift + Control + Alt (⇧⌃⌥)
+-- 12. Command + Shift Layer (⌘⇧)
+-- 13. Command + Alt Layer (⌘⌥)
+-- 14. Command + Control Layer (⌘⌃)
+-- 15. Control + Shift Layer (⌃⇧)
+-- 16. Control + Alt Layer (⌃⌥)
+
+-- 17. Control + Alt + Command Layer (⌃⌥⌘)
+-- 18. Shift + Alt + Command Layer (⇧⌥⌘)
+-- 19. Shift + Control + Command Layer (⇧⌃⌘)
+-- 20. Shift + Control + Alt (⇧⌃⌥)
 
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
+
+-- Icons used:
 --  -- MacOS or common
 -- 🌐 -- Browser
 -- ℝ -- Rider IDE
@@ -44,7 +48,7 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 -- ⌫ -- Backspace Key
 -- ⇥ -- Tab Key
 
-apps_list =
+layers_list =
 {
 
 -- ╭—————╮__MAIN_LAYER_EN__╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
@@ -631,10 +635,10 @@ function obj:init()
         unsubscribe()
     end)
 
-    for _, row in pairs(apps_list) do
-        for _, chord_row in pairs(row.chords) do
+    for _, layer in pairs(layers_list) do
+        for _, chord_row in pairs(layer.chords) do
             if chord_row.app then
-                hs.hotkey.bind(row.modifier, chord_row.key, function()
+                hs.hotkey.bind(layer.modifier, chord_row.key, function()
                     local app = hs.application.find(chord_row.app)
                     if not app or app == nil or app:isHidden() then
                         hs.application.launchOrFocus(chord_row.app)
@@ -652,24 +656,24 @@ function obj:init()
                     end
                 end
             elseif chord_row.sendKey then
-                hs.hotkey.bind(row.modifier, chord_row.key, function()
+                hs.hotkey.bind(layer.modifier, chord_row.key, function()
                     hs.eventtap.keyStrokes(chord_row.sendKey)
                 end)
             elseif chord_row.specific_function then
                 if chord_row.specific_function == "window.left" then
-                    spoon.Windows:bind_window_left(row.modifier, chord_row.key)
+                    spoon.Windows:bind_window_left(layer.modifier, chord_row.key)
                 elseif chord_row.specific_function == "window.right" then
-                    spoon.Windows:bind_window_right(row.modifier, chord_row.key)
+                    spoon.Windows:bind_window_right(layer.modifier, chord_row.key)
                 elseif chord_row.specific_function == "window.fullscreen" then
-                    spoon.Windows:bind_window_fullscreen(row.modifier, chord_row.key)
+                    spoon.Windows:bind_window_fullscreen(layer.modifier, chord_row.key)
                 elseif chord_row.specific_function == "window.set_all_to_default" then
-                    spoon.Windows:bind_all_windows_to_default(row.modifier, chord_row.key)
+                    spoon.Windows:bind_all_windows_to_default(layer.modifier, chord_row.key)
                 elseif chord_row.specific_function == "android.show_all" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         for _, window in ipairs(hs.window.allWindows()) do
                             local window_title = window:title()
                             local app_title = window:application():title()
-                            for _, app in ipairs(chord_row.apps_list) do
+                            for _, app in ipairs(chord_row.layers_list) do
                                 if app_title == app or string.find(window_title, app) then
                                     window:focus()
                                 end
@@ -677,7 +681,7 @@ function obj:init()
                         end
                     end)
                 elseif chord_row.specific_function == "info.show_shortcuts" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         if ksheet then
                             spoon.KSheet:hide()
                         else
@@ -688,67 +692,67 @@ function obj:init()
                         ksheet = not ksheet
                     end)
                 elseif chord_row.specific_function == "set_russian_language" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.keycodes.setLayout("Russian – Ilya Birman Typography")
                     end)
                 elseif chord_row.specific_function == "set_english_language" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.keycodes.setLayout("English - Ilya Birman Typography")
                     end)
                 elseif chord_row.specific_function == "translate_to_russian" then
                     spoon.PopupTranslateSelection:bindHotkeys({
-                        translate_to_ru = {row.modifier, chord_row.key},
+                        translate_to_ru = {layer.modifier, chord_row.key},
                     })
                 elseif chord_row.specific_function == "translate_to_english" then
                     spoon.PopupTranslateSelection:bindHotkeys({
-                        translate_to_en = {row.modifier, chord_row.key},
+                        translate_to_en = {layer.modifier, chord_row.key},
                     })
                 elseif chord_row.specific_function == "translate_to_greek" then
                     spoon.PopupTranslateSelection:bindHotkeys({
-                        translate_to_el = {row.modifier, chord_row.key},
+                        translate_to_el = {layer.modifier, chord_row.key},
                     })
                 elseif chord_row.specific_function == "audio.internal" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToInternal()
                     end)
                 elseif chord_row.specific_function == "audio.external" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToExternal()
                     end)
                 elseif chord_row.specific_function == "audio.marshall" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToMarshall()
                     end)
                 elseif chord_row.specific_function == "audio.bt" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.AudioSwitcher:switchToBT()
                     end)
                 elseif chord_row.specific_function == "show_youtrack" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.YouTrackTicket:toggle()
                     end)
                 elseif chord_row.specific_function == "show_youtrack_tasks" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.YouTrackTasks:toggle()
                     end)
                 elseif chord_row.specific_function == "browser_git" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.BrowserTabOpener:openTab("github.com")
                     end)
                 elseif chord_row.specific_function == "press_return" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.eventtap.keyStroke({}, "return")
                     end)
                 elseif chord_row.specific_function == "press.backspace" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                       hs.eventtap.keyStroke({}, "forwarddelete")
                     end)
                 elseif chord_row.specific_function == "press.delete" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.eventtap.keyStroke({}, "delete")
                     end)
                 elseif chord_row.specific_function == "browser_youtube" then
-                    hs.hotkey.bind(row.modifier, chord_row.key, function()
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.BrowserTabOpener:openTab("youtube.com")
                     end)
                 end
