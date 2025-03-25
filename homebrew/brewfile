@@ -203,6 +203,7 @@ cask "wireshark-chmodbpf"
 cask "workflowy"
 cask "xcodes"
 cask "yandex"
+cask "zoom"
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Context Menu", id: 1236813619
