@@ -4,9 +4,9 @@ alias u=up
 
 # reload zsh settings
 alias reload="exec zsh"
-alias c=clear
 alias re=reload
 
+alias c=clear
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
