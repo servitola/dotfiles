@@ -33,7 +33,7 @@ zstyle ':fzf-tab:complete:*' query-string input
 zstyle ':completion:complete:*:options' sort false
 
 # Use fzf-tab for these commands
-zstyle ':fzf-tab:complete:(cd|ls|exa|bat|cat|vim|nvim):*' fzf-preview 'ls -1 --color=always $realpath 2>/dev/null'
+zstyle ':fzf-tab:complete:(cd|ls|eza|bat|cat|vim|nvim):*' fzf-preview 'ls -1 --color=always $realpath 2>/dev/null'
 
 # Limit the number of items to display for faster response
 zstyle ':fzf-tab:*' max-lines 15
