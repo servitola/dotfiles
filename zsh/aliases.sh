@@ -6,6 +6,10 @@ alias u=up
 alias reload="exec zsh"
 alias re=reload
 
+# download you-tube
+alias y="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
+alias yta="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
+
 alias c=clear
 # duckduckgo search
 alias d="ddgr -x -n 3"
