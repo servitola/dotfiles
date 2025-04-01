@@ -544,6 +544,7 @@ layers_list =
 { key="q", specific_function="audio.bt"},
 { key="w", specific_function="window.fullscreen"},
 { key="e", specific_function="audio.external"},
+{ key="r", app="WebStorm"},
 { key="i", specific_function="info.show_shortcuts"},
 { key="a", specific_function="window.left"},
 { key="s", specific_function="window.set_all_to_default" },
