@@ -14,6 +14,10 @@ alias c=clear
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
+alias y=yarn
+alias yi="yarn install"
+alias yb="yarn build"
+
 alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
