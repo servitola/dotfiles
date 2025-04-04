@@ -58,6 +58,17 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 yt-dlp https://www.youtube.com/watch?v=QhROKjpuLMM
 yt-dlp https://www.youtube.com/user/ButKorn/videos
 ```
+* Q: I want to <ins>download a mp3</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
+* A: Same yt-dlp usage. Try my aliases in zsh to do so.
+
+Audio as .mp3:
+```
+yta https://www.youtube.com/watch?v=i6JjquwFNU4
+```
+Video as .mp4:
+```
+ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
+```
 * Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>. And also 1000 of options. You're surely find yours:
 * A: I use [Improve YouTube](https://chromewebstore.google.com/detail/improve-youtube-%F0%9F%8E%A7-for-yo/bnomihfieiccainjcjblhegjgglakjdd). Install it and import my settings from [here](https://github.com/servitola/dotfiles/tree/master/chromium-ImprovedTube-extension)
 
