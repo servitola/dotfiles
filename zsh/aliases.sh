@@ -9,6 +9,10 @@ alias re=reload
 # download you-tube
 alias y="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
 alias yta="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
+# yarn
+alias y=yarn
+alias yb="yarn build"
+alias yd="yarn dev"
 
 alias c=clear
 # duckduckgo search
