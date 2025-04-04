@@ -6,13 +6,16 @@ alias u=up
 alias reload="exec zsh"
 alias re=reload
 
-# download you-tube
-alias y="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
-alias yta="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
 # yarn
 alias y=yarn
 alias yb="yarn build"
 alias yd="yarn dev"
+
+# download from YouTube
+alias ytvideo="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
+alias ytv=ytvideo
+alias ytaudio="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
+alias yta=ytaudio
 
 alias c=clear
 # duckduckgo search
