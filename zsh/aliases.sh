@@ -8,6 +8,7 @@ alias re=reload
 
 # yarn
 alias y=yarn
+alias yi="yarn install"
 alias yb="yarn build"
 alias yd="yarn dev"
 
