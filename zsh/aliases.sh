@@ -25,6 +25,7 @@ alias d="ddgr -x -n 3"
 alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
+
 alias rm=rm -f
 alias cat=bat
 #alias rm=trash
