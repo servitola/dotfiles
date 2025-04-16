@@ -45,7 +45,8 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/build-tools/35.0.1
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 
-# NPM
+# NODE/NPM
+export PATH="$PATH:/opt/homebrew/opt/node@22/bin"
 export NODE_PATH=~/.npm-global/bin
 export NPM_PACKAGES=~/.npm-packages
 export PATH="$PATH:$NODE_PATH/bin"
