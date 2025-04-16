@@ -30,7 +30,6 @@ alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 alias rm=rm -f
 alias cat=bat
-#alias rm=trash
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
 alias search=grep
