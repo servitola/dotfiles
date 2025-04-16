@@ -114,6 +114,11 @@ install:
 	@rm -f ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 	@ln -sfvh ~/projects/dotfiles/alt-tab/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 
+	@echo "setup Fork custom commands symlink"
+	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
+	@rm -f ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
+	@ln -sfvh ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
+
 	@echo "setup bin directory"
 	@mkdir -p ~/.local/bin
 	@rm -rf ~/.local/bin/analyze-ui-test
