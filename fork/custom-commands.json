@@ -1,3 +1,15 @@
 [
-
+  {
+    "version" : 2
+  },
+  {
+    "action" : {
+      "script" : "commit_message=$(git show -s --format=%B \"$sha\")\n\nif [[ $commit_message =~ (CTXM-[0-9]+) ]]; then\n    ticket=\"${BASH_REMATCH[1]}\"\n    open \"https:\/\/yt.ctrader.com\/issue\/$ticket\"\nelse\n    echo \"No ticket number found in commit message: $commit_message\"\n    exit 1\nfi",
+      "showOutput" : false,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Open YouTrack",
+    "target" : "revision"
+  }
 ]
