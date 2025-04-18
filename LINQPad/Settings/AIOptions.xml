@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<AIOptions xmlns="http://schemas.datacontract.org/2004/07/LINQPad">
-  <AzureApiVersion></AzureApiVersion>
-  <AzureDeployment></AzureDeployment>
-  <AzureResource></AzureResource>
-  <CustomEndpoint></CustomEndpoint>
-  <CustomHeaderName></CustomHeaderName>
-</AIOptions>
