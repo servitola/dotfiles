@@ -142,10 +142,10 @@ install:
 
 	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
 		echo "Cloning gruvbox-wallpapers repository..."; \
-		git clone https://github.com/AngelJumbo/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers; \
+		git clone --depth 1 https://github.com/AngelJumbo/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers \
 	else \
 		echo "gruvbox-wallpapers repository already cloned."; \
-		cd $(HOME)/projects/gruvbox-wallpapers && git pull; \
+		cd $(HOME)/projects/gruvbox-wallpapers && git fetch --depth=1 origin && git reset --hard origin/main; \
 	fi
 
 	@m appearance highlightcolor grape
