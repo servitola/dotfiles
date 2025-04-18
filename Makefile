@@ -80,10 +80,6 @@ install:
 	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
 
-	@echo "setup LINQPad symlinks"
-	@rm -rf ~/LINQPad
-	@ln -sfvh ~/projects/dotfiles/LINQPad ~/LINQPad
-
 	@echo "setup Appium symlinks"
 	@rm -rf ~/.appium
 	@ln -sfvh ~/projects/dotfiles/appium/.appium ~/.appium
