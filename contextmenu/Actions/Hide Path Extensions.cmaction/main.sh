@@ -1,1 +1,0 @@
-tell application "Finder"	if exists Finder window 1 then		set sel to the selection		if (count of sel) is greater than 0 then			repeat with e in sel				set extension hidden of e to true			end repeat		end if	end ifend tell
