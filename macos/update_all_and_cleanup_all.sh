@@ -82,6 +82,8 @@ print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
+cd $(HOME)/projects/gruvbox-wallpapers && git fetch --depth=1 origin && git reset --hard origin/main;
+
 purge
 
 reload
