@@ -20,6 +20,7 @@ export PATH=$PATH:/usr/sbin
 export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
 export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
+export PATH=$PATH:/Users/servitola/.local/bin
 
 # DotNet
 export DOTNET_ROOT=/usr/local/share/dotnet
@@ -27,8 +28,6 @@ export USER_DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
-export PATH=$PATH:/usr/local/share/dotnet
-export PATH=$PATH:/Users/servitola/.dotnet/tools
 
 # JetBrains
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
