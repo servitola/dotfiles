@@ -43,6 +43,7 @@ alias f=fzf
 alias htop=btop
 alias t=btop
 alias b=btop
+alias grep=ggrep
 # -i \"2:2\"
 alias rec="ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422  -f avfoundation -i \"2\" -preset ultrafast -c:a pcm_s16le -probesize 100M \"output_$(date +%Y%m%d_%H%M%S).mp4\""
 
@@ -80,7 +81,7 @@ source ~/projects/dotfiles/eza/colors.sh
 
 # eza aliases with custom theme
 alias ls="eza --icons --group-directories-first --color=always"
-alias l="ls"
+alias l="eza --icons --group-directories-first --color=always"
 alias ll="ls -l"
 alias la="ll -a"
 alias lt="ll --tree"
