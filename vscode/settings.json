@@ -28,5 +28,14 @@
     "dotnet-test-explorer.codeLensFailed": "❌",
     "dotnet-test-explorer.codeLensPassed": "✅",
     "dotnet-test-explorer.codeLensSkipped": "⚠️",
-    "window.zoomLevel": 2
+    "window.zoomLevel": 2,
+    "cline.chromeExecutablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ]
 }
