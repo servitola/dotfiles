@@ -556,6 +556,7 @@ layers_list =
 { key="x", app="XCode" },
 { key="c", app=""},
 { key="v", specific_function="browser_youtube" },
+{ key="y", specific_function="youtube_stream" },
 { key="b", specific_function="audio.marshall"},
 { key="m", specific_function="audio.internal"},
 { key="left", specific_function="window.left"},
@@ -755,6 +756,10 @@ function obj:init()
                 elseif chord_row.specific_function == "browser_youtube" then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         spoon.BrowserTabOpener:openTab("youtube.com")
+                    end)
+                elseif chord_row.specific_function == "youtube_stream" then
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
+                        spoon.YouTubeStream:toggle()
                     end)
                 end
             end
