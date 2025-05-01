@@ -13,6 +13,7 @@ alias yb="yarn build"
 alias yd="yarn dev"
 alias yl="yarn lint"
 alias yc="yarn check-all"
+alias ya="yi && yb && yc"
 
 # download from YouTube
 alias ytvideo="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
