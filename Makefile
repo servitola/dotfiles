@@ -66,9 +66,15 @@ install:
 	@rm -f ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
 	@ln -sfvh ~/projects/dotfiles/iina/servitola.conf ~/Library/Application\ Support/com.colliderli.iina/input_conf/servitola.conf
 
-	@echo "setup Rider vmoptions symlink"
-	@rm -rf ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
-	@ln -sfvh ~/projects/dotfiles/jetbrains\ rider/rider.vmoptions ~/Library/Application\ Support/JetBrains/Rider2024.3/rider.vmoptions
+	@echo "Setting up Rider vmoptions symlink for all Rider installations"
+	@sh -c '\
+	for dir in "~/Library/Application Support/JetBrains"/Rider*; do \
+		if [ -d "$$dir" ]; then \
+			echo "Updating: $$dir/rider.vmoptions"; \
+			rm -rf "$$dir/rider.vmoptions"; \
+			ln -sfvh "~/projects/dotfiles/jetbrains rider/rider.vmoptions" "$$dir/rider.vmoptions"; \
+		fi; \
+	done'
 
 	@echo "setup Appium symlinks"
 	@rm -rf ~/.appium
