@@ -38,23 +38,13 @@ install:
 	@ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 	@echo "setup Windsurf user settings symlinks"
-	@mkdir -p ~/Library/Application\ Support/Windsurf/User
 	@mkdir -p ~/Library/Application\ Support/Windsurf\ -\ Next/User
-
-	@rm -f ~/Library/Application\ Support/Windsurf/User/settings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
 
 	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
 	@ln -sfvh ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
 
-	@rm -f ~/Library/Application\ Support/Windsurf/User/keybindings.json
-	@ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
-
 	@rm -f ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
 	@ln -sfvh ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
-
-	@rm -f ~/.codeium/windsurf/memories/global_rules.md
-	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
 	@rm -f ~/.codeium/windsurf-next/memories/global_rules.md
 	@ln -sfvh ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf-next/memories/global_rules.md
