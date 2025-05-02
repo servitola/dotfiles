@@ -13,7 +13,7 @@
 	sort = -committerdate
 
 [core]
-	editor = windsurf -w
+	editor = code -w
 
 [credential]
   helper = osxkeychain
