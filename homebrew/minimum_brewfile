@@ -1,7 +1,6 @@
 tap "buo/cask-upgrade"
 tap "candid82/brew"
 tap "domt4/autoupdate"
-tap "homebrew/bundle"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 brew "duti"
