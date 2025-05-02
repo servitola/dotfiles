@@ -44,7 +44,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: I use [LuLu](https://objective-see.org/products/lulu.html)
 
 * Q: I want to <ins>draw lines</ins> on my <ins>screenshots</ins>. I take screenshots for work
-* A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here.
+* A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here. Check out its [Tips & Tricks](https://shottr.cc/#section-tips/). They are really helpful.
 
 * Q: I use an <ins>external audiocard</ins> and I want to control its <ins>volume in a standard way</ins> and use an equalizer depending on the device
 * A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
