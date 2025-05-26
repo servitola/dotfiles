@@ -1,5 +1,5 @@
 -Xms2048m
--Xmx12288m
+-Xmx10000m
 -XX:ReservedCodeCacheSize=2048m
 -XX:+UseG1GC
 -XX:SoftRefLRUPolicyMSPerMB=50
