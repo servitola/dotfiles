@@ -25,6 +25,7 @@ brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
+mas list
 mas upgrade
 brew cleanup
 brew doctor
