@@ -12,10 +12,10 @@ function set_window_default(window)
         set_window_right(window)
     elseif hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
-    elseif is_android_emulator(window) then
-        set_window_right(window)
-    elseif is_ios_simulator(window) then
-        set_window_right(window)
+    -- elseif is_android_emulator(window) then
+    --     set_window_right(window)
+    -- elseif is_ios_simulator(window) then
+    --     set_window_right(window)
     elseif is_music_mini_player(app_title, window_title) then
         set_window_bottom(window)
     elseif is_firefox_video_player(app_title, window_title) then
