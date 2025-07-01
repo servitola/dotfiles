@@ -195,7 +195,7 @@ cask "vlc"
 cask "windsurf@next"
 cask "wireshark-chmodbpf"
 cask "workflowy"
-cask "xcodes"
+cask "xcodes-app"
 cask "yandex"
 cask "zoom"
 mas "Amphetamine", id: 937984704
