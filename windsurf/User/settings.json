@@ -262,5 +262,6 @@
     "windsurf.autocompleteSpeed": "fast",
     "windsurf.rememberLastModelSelection": true,
     "windsurf.openRecentConversation": true,
-    "testing.automaticallyOpenTestResults": "neverOpen"
+    "testing.automaticallyOpenTestResults": "neverOpen",
+    "vsicons.dontShowNewVersionMessage": true
 }
