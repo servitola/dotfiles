@@ -5051,6 +5051,19 @@
                             {
                                 "from": {
                                     "key_code": "z",
+                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "return_or_enter",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "z",
                                     "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
