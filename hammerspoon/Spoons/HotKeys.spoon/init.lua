@@ -367,6 +367,7 @@ layers_list =
 { key="t", app="Telegram", window_default_position="right" },
 { key="y", specific_function="show_youtrack" },
 { key="u", app="Transmission", window_default_position="right" },
+{ key="i", app="Claude" },
 -- o: up
 { key="p", app="Music" },
 -- [: previous track
