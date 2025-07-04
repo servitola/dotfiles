@@ -278,6 +278,7 @@ layers_list =
 -- h:  - hide current app
 -- j: Music — Show soring options
 -- k: Telegram — Focus search
+--    Claude Desktop — New chat
 -- l: 🌐 - Focus Url Line
 --    Music — Go to Current song
 -- ;: ℝ - run unit test
@@ -367,7 +368,7 @@ layers_list =
 { key="t", app="Telegram", window_default_position="right" },
 { key="y", specific_function="show_youtrack" },
 { key="u", app="Transmission", window_default_position="right" },
-{ key="i", app="Claude" },
+{ key="i", app="Claude", window_default_position="right" },
 -- o: up
 { key="p", app="Music" },
 -- [: previous track
