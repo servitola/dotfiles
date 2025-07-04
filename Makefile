@@ -97,18 +97,23 @@ install:
 	@rm -rf ~/Library/Application\ Support/aichat/config.yaml
 	@ln -sfvh ~/projects/dotfiles/Library/Application\ Support/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
 
+	@echo "setup Claude Desktop config symlink"
+	@mkdir -p ~/Library/Application\ Support/Claude
+	@rm -rf ~/Library/Application\ Support/Claude/claude_desktop_config.json
+	@ln -sfvh ~/projects/dotfiles/claude-desktop/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
 	@echo "setup yazi symlinks"
 	@rm -rf ~/.config/yazi
 	@ln -sfvh ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
 
 	@echo "setup alt-tab symlinks"
 	@mkdir -p ~/Library/Preferences
-	@rm -f ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
+	@rm -rf ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 	@ln -sfvh ~/projects/dotfiles/alt-tab/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
 
 	@echo "setup Fork custom commands symlink"
 	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
-	@rm -f ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
+	@rm -rf ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 	@ln -sfvh ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
 	@echo "setup bin directory"
