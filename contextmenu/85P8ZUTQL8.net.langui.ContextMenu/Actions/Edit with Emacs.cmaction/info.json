@@ -1,0 +1,11 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptFiles" : true,
+    "acceptDirs" : true,
+    "noSandbox" : true
+  },
+  "type" : "shell",
+  "name" : "Edit with Emacs",
+  "uuid" : "1729FA99-2B03-4227-B712-01E01BF26564"
+}

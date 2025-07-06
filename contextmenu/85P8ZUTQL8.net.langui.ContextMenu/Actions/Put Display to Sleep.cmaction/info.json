@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : false,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Put Display to Sleep",
+  "type" : "shell",
+  "uuid" : "2B6CA9EC-3F9D-4449-896C-87EBB401B85D"
+}
