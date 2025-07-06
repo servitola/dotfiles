@@ -1,0 +1,13 @@
+{
+  "path" : "document.rtf",
+  "options" : {
+    "executable" : false,
+    "prefix" : "document",
+    "suffix" : "rtf",
+    "hideExtension" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "New Rich Text File (RTF)",
+  "type" : "file",
+  "uuid" : "5E2EC6FE-4E2D-416F-AAAB-4E2FB459AA80"
+}
