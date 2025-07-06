@@ -1,0 +1,16 @@
+{
+  "path" : "/bin/bash",
+  "uuid" : "02DC43A1-141B-49EE-B662-0A2C0C14A910",
+  "options" : {
+    "maxFiles" : 2,
+    "acceptFiles" : true,
+    "acceptDirs" : true,
+    "noSandbox" : true,
+    "minFiles" : 2
+  },
+  "name" : "Compare using FileMerge",
+  "dependencies" : [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/opendiff"
+  ],
+  "type" : "shell"
+}

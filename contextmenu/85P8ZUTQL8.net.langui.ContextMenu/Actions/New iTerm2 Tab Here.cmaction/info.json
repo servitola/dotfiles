@@ -1,0 +1,13 @@
+{
+  "path" : "/bin/sh",
+  "uuid" : "3624C7E9-3B32-4824-8095-67CBDD544ED9",
+  "options" : {
+    "acceptDirs" : true,
+    "noSandbox" : true
+  },
+  "name" : "New iTerm2 Tab Here",
+  "dependencies" : [
+    "/Applications/iTerm.app"
+  ],
+  "type" : "shell"
+}

@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Open with Visual Studio Code",
+  "type" : "shell",
+  "uuid" : "D4DB85B4-DE62-45F6-B679-FEED9D258717"
+}

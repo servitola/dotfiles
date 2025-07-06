@@ -1,0 +1,14 @@
+{
+  "path" : "/usr/bin/osascript",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : false,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Lock Screen",
+  "type" : "shell",
+  "uuid" : "4F0933F6-C3C4-4BDF-A250-D404FC83E513"
+}
