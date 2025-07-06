@@ -134,12 +134,11 @@ install:
 	@npm install --global vsce
 	@npm install --global typescript
 
-	@echo "installing Finder Context Menu"
-	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@ln -sfvh ~/projects/dotfiles/contextmenu/Actions ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu/Actions
-	@mkdir -p ~/Library/Application\ Scripts/net.langui.ContextMenuHelper
-	@echo '#!/bin/sh\npkill -nf ScriptMonitor\nexec "$$@"' > ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
-	@chmod +x ~/Library/Application\ Scripts/net.langui.ContextMenuHelper/contextmenu.sh
+	@echo "Installing Context Menu settings..."
+	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu
+	@rm -rf ~/Library/Application\ Scripts/net.langui.ContextMenu*
+	@ln -sf ~/projects/dotfiles/contextmenu/85P8ZUTQL8.net.langui.ContextMenu ~/Library/Group\ Containers/
+	@find ~/projects/dotfiles/contextmenu -name "net.langui.ContextMenu*" -exec ln -sf {} ~/Library/Application\ Scripts/ \;
 
 	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
 		echo "Cloning gruvbox-wallpapers repository..."; \

@@ -1,0 +1,19 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptFiles" : true,
+    "confirmExecution" : false,
+    "showOutput" : false,
+    "maxFiles" : 2,
+    "acceptDirs" : true,
+    "noSandbox" : true,
+    "minFiles" : 2
+  },
+  "uuid" : "76A8E895-B033-40C5-89BA-A958A4656882",
+  "type" : "shell",
+  "dependencies" : [
+    "/usr/local/bin/ksdiff"
+  ],
+  "icon" : "icon.icns",
+  "name" : "Compare using Kaleidoscope"
+}

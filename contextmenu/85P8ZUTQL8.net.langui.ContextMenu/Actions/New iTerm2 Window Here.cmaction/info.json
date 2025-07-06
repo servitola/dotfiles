@@ -1,0 +1,13 @@
+{
+  "path" : "/bin/sh",
+  "uuid" : "B06B3A11-EEE9-413C-9C36-499D2A5213D2",
+  "options" : {
+    "acceptDirs" : true,
+    "noSandbox" : true
+  },
+  "name" : "New iTerm2 Window Here",
+  "dependencies" : [
+    "/Applications/iTerm.app"
+  ],
+  "type" : "shell"
+}
