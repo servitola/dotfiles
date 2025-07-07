@@ -11,6 +11,9 @@ source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
 export HOMEBREW_NO_ENV_HINTS=1
 
+# Disable telemetry for Claude Code
+export CLAUDE_CODE_ENABLE_TELEMETRY=0
+
 DISABLE_UPDATE_PROMPT=true
 
 export LANG=en_US.UTF-8
