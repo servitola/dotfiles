@@ -39,6 +39,12 @@
     "google-calendar": {
       "command": "/Users/servitola/projects/dotfiles/claude-desktop/google-calendar-mcp.sh",
       "args": []
+    },
+    "ableton-mcp": {
+      "command": "uvx",
+      "args": [
+        "ableton-mcp"
+      ]
     }
   }
 }
