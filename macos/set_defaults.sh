@@ -10,9 +10,6 @@ osascript -e 'tell application "System Preferences" to quit'
 echo "Show the ~/Library folder."
 chflags nohidden ~/Library
 
-echo "Disable the sound effects on boot"
-nvram SystemAudioVolume=" "
-
 echo Disable the crash reporter
 defaults write com.apple.CrashReporter DialogType -string "none"
 
