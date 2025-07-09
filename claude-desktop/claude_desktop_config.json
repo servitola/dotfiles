@@ -55,11 +55,8 @@
       "env": {}
     },
     "deepseek": {
-      "command": "node",
-      "args": [
-        "/Users/servitola/ai-setup/deepseek-mcp-server/server.js"
-      ],
-      "env": {}
+      "command": "/Users/servitola/projects/dotfiles/claude-desktop/deepseek-mcp.sh",
+      "args": []
     }
   }
 }
