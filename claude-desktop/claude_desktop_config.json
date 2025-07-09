@@ -45,6 +45,14 @@
       "args": [
         "ableton-mcp"
       ]
+    },
+    "youtrack-mcp-server": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://youtrack-mcp-server.dev.pl.spotwa.re/mcp/"
+      ],
+      "env": {}
     }
   }
 }
