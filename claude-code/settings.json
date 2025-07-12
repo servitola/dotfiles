@@ -1,0 +1,26 @@
+{
+  "cleanupPeriodDays": 60,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "WebFetch",
+      "Fetch",
+      "WebSearch",
+      "Glob",
+      "Grep",
+      "LS",
+      "MultiEdit",
+      "Task",
+      "TodoWrite"
+    ],
+    "deny": []
+  }
+}
