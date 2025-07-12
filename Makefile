@@ -102,6 +102,11 @@ install:
 	@rm -rf ~/Library/Application\ Support/Claude/claude_desktop_config.json
 	@ln -sfvh ~/projects/dotfiles/claude-desktop/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
+	@echo "setup Claude Code settings symlink"
+	@mkdir -p ~/.claude
+	@rm -rf ~/.claude/settings.json
+	@ln -sfvh ~/projects/dotfiles/claude-code/settings.json ~/.claude/settings.json
+
 	@echo "setup yazi symlinks"
 	@rm -rf ~/.config/yazi
 	@ln -sfvh ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
