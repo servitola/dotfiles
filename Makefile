@@ -135,6 +135,12 @@ install:
 	@echo "installing trash-cli to replace rm with trash"
 	@npm install --global trash-cli
 
+	@echo "installing Claude Code CLI"
+	@npm install -g @anthropic-ai/claude-code
+
+	@echo "installing Appium Server for testing"
+	@npm install -g appium
+
 	@echo "installing vsce to publish vscode extensions"
 	@npm install --global vsce
 	@npm install --global typescript
