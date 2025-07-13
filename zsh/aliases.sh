@@ -2,6 +2,9 @@
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
 
+alias a=claude
+alias claude="claude -c"
+
 # reload zsh settings
 alias reload="exec zsh"
 alias re=reload
