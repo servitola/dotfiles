@@ -7,19 +7,19 @@
   },
   "permissions": {
     "allow": [
-      "Read",
-      "Write",
-      "Edit",
       "Bash",
-      "WebFetch",
+      "Edit",
       "Fetch",
-      "WebSearch",
       "Glob",
       "Grep",
       "LS",
       "MultiEdit",
+      "Read",
       "Task",
-      "TodoWrite"
+      "TodoWrite",
+      "WebFetch",
+      "WebSearch",
+      "Write"
     ],
     "deny": []
   }
