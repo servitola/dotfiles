@@ -151,13 +151,8 @@ install:
 	@ln -sf ~/projects/dotfiles/contextmenu/85P8ZUTQL8.net.langui.ContextMenu ~/Library/Group\ Containers/
 	@find ~/projects/dotfiles/contextmenu -name "net.langui.ContextMenu*" -exec ln -sf {} ~/Library/Application\ Scripts/ \;
 
-	@if [ ! -d "$(HOME)/projects/gruvbox-wallpapers" ]; then \
-		echo "Cloning gruvbox-wallpapers repository..."; \
-		git clone --depth 1 https://github.com/AngelJumbo/gruvbox-wallpapers.git $(HOME)/projects/gruvbox-wallpapers \
-	else \
-		echo "gruvbox-wallpapers repository already cloned."; \
-		cd $(HOME)/projects/gruvbox-wallpapers && git fetch --depth=1 origin && git reset --hard origin/main; \
-	fi
+	@echo "Syncing gruvbox-wallpapers"
+	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
 
 	@m appearance highlightcolor grape
 
