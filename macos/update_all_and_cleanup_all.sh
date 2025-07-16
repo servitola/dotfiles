@@ -81,7 +81,7 @@ print_task "Updating Powerlevel10k theme"
 git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
 
 print_task "Updating Gruvbox wallpapers"
-cd ~/projects/gruvbox-wallpapers && git fetch --depth=1 origin && git reset --hard origin/main;
+~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
 
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
