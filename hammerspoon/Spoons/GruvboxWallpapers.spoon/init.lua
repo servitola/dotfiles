@@ -6,7 +6,7 @@
 local obj = {}
 obj.__index = obj
 
-obj.wallpapers_dir = os.getenv("HOME") .. "/projects/gruvbox-wallpapers/wallpapers/irl"
+obj.wallpapers_dir = os.getenv("HOME") .. "/Pictures/Wallpapers"
 obj.current_wallpaper = nil
 
 function obj:getWallpapers()
