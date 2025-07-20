@@ -4,7 +4,22 @@ TEMP_DIR="/tmp/gruvbox-temp-$$"
 
 mkdir -p "$WALLPAPERS_DIR"
 
-REMOTE_FILES=$(curl -s https://api.github.com/repos/AngelJumbo/gruvbox-wallpapers/contents/wallpapers/irl | jq -r '.[].name' | sort)
+API_RESPONSE=$(curl -s https://api.github.com/repos/AngelJumbo/gruvbox-wallpapers/contents/wallpapers/irl)
+if echo "$API_RESPONSE" | jq -e 'type == "array"' >/dev/null 2>&1; then
+    REMOTE_FILES=$(echo "$API_RESPONSE" | jq -r '.[].name' | sort)
+elif echo "$API_RESPONSE" | jq -e 'has("message")' >/dev/null 2>&1; then
+    ERROR_MSG=$(echo "$API_RESPONSE" | jq -r '.message')
+    if echo "$ERROR_MSG" | grep -q "rate limit"; then
+        echo "GitHub API rate limit reached, skipping wallpaper sync"
+        exit 0
+    else
+        echo "GitHub API error: $ERROR_MSG"
+        exit 1
+    fi
+else
+    echo "Unexpected API response format"
+    exit 1
+fi
 LOCAL_FILES=$(find "$WALLPAPERS_DIR" -type f -exec basename {} \; 2>/dev/null | sort)
 
 echo "$REMOTE_FILES" > /tmp/remote_files_$$
