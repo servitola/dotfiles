@@ -166,9 +166,13 @@ layers_list =
 -- \: Copilot Suggestion
 -- space: Music — Start Genious Shuffle
 -- ↑: move line up
+--    YouTube - skip 5sec
 -- ↓: jump a word to the left
+--    YouTube - skip 5sec backwards
 -- ←: move line down
+--    YouTube - previous chapter in current video
 -- →: jump a word to the right
+--    YouTube - next chapter in current video
 }},
 { modifier={"alt", "left_shift"}, chords={
 -- ╭—————╮_ALT_SHIFT_LAYER_╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
@@ -359,7 +363,7 @@ layers_list =
 -- =: F12
 -- ⌫: delete
 -- alt + ⌫: maccy delete row
-{ key="tab", app="Music" },
+{ key="tab", app="Claude" },
 -- q: pageUp
 -- w: up
 -- e: pagedown
@@ -645,7 +649,6 @@ local appSpecificHotkeys = {
     }
 }
 
--- Load app-specific hotkeys helper
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local appSpecificHelper = dofile(spoonPath .. "app_specific_hotkeys.lua")
 
