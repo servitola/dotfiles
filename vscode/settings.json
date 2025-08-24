@@ -37,5 +37,6 @@
         "git log",
         "git diff",
         "git show"
-    ]
+    ],
+    "terminal.external.osxExec": "iTerm.app"
 }
