@@ -427,7 +427,7 @@ layers_list =
 -- 2: Shotr - OCR from screen
 -- 3: Shotr - save screenshot of window ( native screenshot replaced)
 -- 4: Shotr - start getting screenshot ( native screenshot replaced)
--- 5:   - record video from screen
+-- 5:  - record video from screen
 -- F12: ℝ - hide all panels
 -- ⌫: ℝ - go to last edit
 -- delete: 📁 - empty trashcan
