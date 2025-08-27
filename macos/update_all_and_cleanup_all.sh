@@ -1,4 +1,6 @@
 #!/bin/zsh
+[[ ! -d "$PWD" ]] && { echo "❌ Current directory doesn't exist. Navigate to existing one, please"; return 1; }
+
 sudo -v
 
 source ~/projects/dotfiles/zsh/functions.sh
