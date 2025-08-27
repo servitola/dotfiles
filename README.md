@@ -107,7 +107,4 @@ You will be asked to install command tools - agree.
 #
 ## Extra:
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
-* AnnePro2 Qmk config with light scheme
-
-## Details:
-* [Karabiner](https://karabiner-elements.pqrs.org/) mimics my [AnnePro2](https://www.annepro.net/) layout. [Hammerspoon](hammerspoon.org/) does the rest. So, [Karabiner](https://karabiner-elements.pqrs.org/) + [Hammerspoon](hammerspoon.org/) is for Macbook, and [Hammerspoon](hammerspoon.org/) only is for Mac Studio with [AnnePro2](https://www.annepro.net/)
+* AnnePro2 ObinsKit config with light scheme
