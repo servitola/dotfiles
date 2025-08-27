@@ -549,7 +549,7 @@ layers_list =
 -- 2: ℝ — Toggle bookmark 2
 -- 3: ℝ — Toggle bookmark 3
 -- tab:  - go to previous tab
--- q:  - log out with dialogs
+-- q:   -log out with dialogs
 { key="w", specific_function="press.delete"},
 { key="e", specific_function="press.backspace"}
 -- r: ℝ — Run Unit Tests
@@ -600,7 +600,7 @@ layers_list =
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬——————┤
 -- │       │     │     │     │     │     │     │     │     │  ℝ  │     │     │     │      │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮     │
--- │        │  ⚠️  │    │ ⌫   │ del │     │     │     │     │     │     │     │     │     │
+-- │        │  ⚠️  │    │     │     │     │     │     │     │     │     │     │     │     │
 -- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴—————┴—————┤
 -- │         │     │     │     │     │     │     │     │     │     │     │                │
 -- ├————————┬┴————┬┴—————┼—————┴—————┴—————┴—————┴—————┼—————┴┬————┴————┬┴————————————————╯
@@ -609,8 +609,6 @@ layers_list =
 -- o: ℝ - Recent projects popup
 -- c: itsical 📅 Show Calendar
 -- a: ⚠️
-{ key="d", specific_function="press.delete"},
-{ key="f", specific_function="press.backspace"}
 }},
 { modifier={"left_shift", "alt", "left_command"}, chords={
 -- ╭—————╮__SHIFT_ALT_COMMAND_LAYER____╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬————————╮
@@ -652,9 +650,10 @@ layers_list =
 -- ├————————┬┴————┬┴—————┼—————┴—————┴—————┴—————┴—————┼—————┴┬————┴————┬┴————————————————╯
 -- │ 🟢🟢🟢  │🟢🟢🟢│      │                             │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
-}
 -- tab: ⚠️
-}}
+{ key="w", specific_function="press.deleteWithAlt"},
+{ key="e", specific_function="press.backspaceWithAlt"}
+}}}
 
 function unsubscribe()
     if hideKSheetShortCut then
@@ -814,9 +813,17 @@ function obj:init()
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
                       hs.eventtap.keyStroke({}, "forwarddelete")
                     end)
+                elseif chord_row.specific_function == "press.backspaceWithAlt" then
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
+                      hs.eventtap.keyStroke({"alt"}, "forwarddelete")
+                    end)
                 elseif chord_row.specific_function == "press.delete" then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.eventtap.keyStroke({}, "delete")
+                    end)
+                elseif chord_row.specific_function == "press.deleteWithAlt" then
+                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
+                        hs.eventtap.keyStroke({"alt"}, "delete")
                     end)
                 elseif chord_row.specific_function == "browser_youtube" then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
