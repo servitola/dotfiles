@@ -689,13 +689,30 @@ function obj:init()
         for _, chord_row in pairs(layer.chords) do
             if chord_row.app then
                 hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                    local app = hs.application.find(chord_row.app)
-                    if not app or app == nil or app:isHidden() then
+
+                    print("Hotkey triggered: " .. table.concat(layer.modifier, "+") .. "+" .. chord_row.key .. " for app: " .. chord_row.app)
+
+                    local found = hs.application.find(chord_row.app)
+                    local app = found
+
+                    if found and tostring(found):match("hs.window:") then
+                        app = found:application()
+                        print("Found window, getting application: " .. tostring(app))
+                    end
+
+                    if not app or (app and app.isHidden and app:isHidden()) then
+                        print("Launching/focusing app: " .. chord_row.app)
                         hs.application.launchOrFocus(chord_row.app)
                     elseif hs.application.frontmostApplication() ~= app then
-                        app:activate()
+                        print("Activating app: " .. chord_row.app)
+                        if app and app.activate then
+                            hs.application.launchOrFocus(chord_row.app)
+                        end
                     else
-                        app:hide()
+                        print("Hiding app: " .. chord_row.app)
+                        if app and app.hide then
+                            app:hide()
+                        end
                     end
                 end)
                 if chord_row.window_default_position then
