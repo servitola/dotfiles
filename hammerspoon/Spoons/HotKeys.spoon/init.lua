@@ -690,7 +690,7 @@ function obj:init()
             if chord_row.app then
                 hs.hotkey.bind(layer.modifier, chord_row.key, function()
 
-                    print("Hotkey triggered: " .. table.concat(layer.modifier, "+") .. "+" .. chord_row.key .. " for app: " .. chord_row.app)
+                    print("Hotkey triggered: " .. table.concat(layer.modifier, "+") .. "+" .. chord_row.key .. " → " .. chord_row.app)
 
                     local found = hs.application.find(chord_row.app)
                     local app = found
