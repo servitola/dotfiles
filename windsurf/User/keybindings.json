@@ -27,7 +27,6 @@
     "command": "workbench.action.findInFiles",
     "when": "!searchInputBoxFocus"
   },
-
   // Code Editing
   {
     "key": "ctrl+/",
@@ -69,7 +68,6 @@
     "command": "editor.action.inlineValue",
     "when": "editorHasCodeActionsProvider && editorTextFocus"
   },
-
   // Find & Replace
   {
     "key": "ctrl+e",
@@ -84,7 +82,6 @@
     "key": "shift+cmd+r",
     "command": "workbench.action.replaceInFiles"
   },
-
   // Debug & Run
   {
     "key": "ctrl+r",
@@ -101,7 +98,6 @@
     "command": "workbench.action.debug.stop",
     "when": "inDebugMode"
   },
-
   // Window Management
   {
     "key": "shift+cmd+w",
@@ -111,13 +107,11 @@
     "key": "ctrl+w",
     "command": "notifications.clearAll"
   },
-
   // Recent Locations
   {
     "key": "shift+cmd+e",
     "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
   },
-
   // Override Methods
   {
     "key": "ctrl+o",
@@ -127,28 +121,24 @@
       "apply": "first"
     }
   },
-
   // Git
   {
     "key": "ctrl+k",
     "command": "workbench.view.scm",
     "when": "workbench.scm.active"
   },
-
   // Terminal
   {
     "key": "cmd+`",
     "command": "workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
   },
-
   // Quick Documentation
   {
     "key": "ctrl+q",
     "command": "editor.action.showHover",
     "when": "editorTextFocus"
   },
-
   // File Operations
   {
     "key": "cmd+n",
@@ -164,7 +154,6 @@
     "command": "filesExplorer.paste",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
-
   // Test Runner Commands
   {
     "key": "ctrl+u ctrl+l",
@@ -244,7 +233,6 @@
     "key": "cmd+3",
     "command": "-workbench.action.focusThirdEditorGroup"
   },
-
   // Enhanced Navigation
   {
     "key": "alt+cmd+l",
@@ -267,7 +255,6 @@
     "key": "cmd+]",
     "command": "workbench.action.navigateForward"
   },
-
   // Rider-style Code Actions
   {
     "key": "alt+enter",
@@ -283,7 +270,6 @@
     "key": "cmd+shift+a",
     "command": "workbench.action.showCommands"
   },
-
   // Rider-style Find & Navigate
   {
     "key": "cmd+shift+p",
@@ -303,7 +289,6 @@
     "key": "cmd+shift+t",
     "command": "workbench.action.showAllSymbols"
   },
-
   // Rider-style Debug
   {
     "key": "cmd+shift+d",
@@ -319,7 +304,6 @@
     "command": "editor.action.goToPreviousReference",
     "when": "editorHasReferenceProvider && editorTextFocus"
   },
-
   // Solution Explorer
   {
     "key": "cmd+1",
@@ -347,7 +331,6 @@
     "key": "ctrl+shift+g",
     "command": "gitlens.showFileHistoryInView"
   },
-
   // Mobile Development Keybindings
   {
     "key": "cmd+alt+t",
@@ -368,5 +351,20 @@
     "key": "cmd+shift+d",
     "command": "workbench.view.debug",
     "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "alt+f12",
+    "command": "-editor.action.peekDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor"
+  },
+  {
+    "key": "alt+f12",
+    "command": "workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
+  },
+  {
+    "key": "ctrl+shift+[Backquote]",
+    "command": "-workbench.action.terminal.new",
+    "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   }
 ]
