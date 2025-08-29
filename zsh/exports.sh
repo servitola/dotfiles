@@ -28,14 +28,12 @@ export USER_DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
-export PATH=$PATH:/usr/local/share/dotnet
-export PATH=$PATH:/Users/servitola/.dotnet/tools
 
 # JetBrains
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.15
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.16
 export PATH=$PATH:$JAVA_HOME
 
 export DOCKER_HOST=unix:///$HOME/.colima/docker.sock

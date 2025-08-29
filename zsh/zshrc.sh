@@ -63,6 +63,9 @@ fi
 # Load p10k theme
 source ~/projects/dotfiles/zsh/p10k.zsh
 
+# Added by Windsurf
+export PATH="/Users/servitola/.codeium/windsurf/bin:$PATH"
+
 # Source OpenAI API key from config
 if [ -f ~/.config/openai_key.sh ]; then
     source ~/.config/openai_key.sh
