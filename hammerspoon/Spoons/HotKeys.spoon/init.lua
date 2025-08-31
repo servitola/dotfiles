@@ -549,9 +549,9 @@ layers_list =
 -- 2: ℝ — Toggle bookmark 2
 -- 3: ℝ — Toggle bookmark 3
 -- tab:  - go to previous tab
--- q:   -log out with dialogs
-{ key="w", specific_function="press.delete"},
-{ key="e", specific_function="press.backspace"}
+-- q:   - log out with dialogs
+-- w: backspace
+-- e: delete
 -- r: ℝ — Run Unit Tests
 -- p: app - open private window
 -- a:  - select line to the left
@@ -651,8 +651,8 @@ layers_list =
 -- │ 🟢🟢🟢  │🟢🟢🟢│      │                             │      │         │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————————╯
 -- tab: ⚠️
-{ key="w", specific_function="press.deleteWithAlt"},
-{ key="e", specific_function="press.backspaceWithAlt"}
+-- w: alt + backspace
+-- e: alt + delete
 }}}
 
 function unsubscribe()
@@ -808,22 +808,6 @@ function obj:init()
                 elseif chord_row.specific_function == "press_return" then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
                         hs.eventtap.keyStroke({}, "return")
-                    end)
-                elseif chord_row.specific_function == "press.backspace" then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                      hs.eventtap.keyStroke({}, "forwarddelete")
-                    end)
-                elseif chord_row.specific_function == "press.backspaceWithAlt" then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                      hs.eventtap.keyStroke({"alt"}, "forwarddelete")
-                    end)
-                elseif chord_row.specific_function == "press.delete" then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                        hs.eventtap.keyStroke({}, "delete")
-                    end)
-                elseif chord_row.specific_function == "press.deleteWithAlt" then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                        hs.eventtap.keyStroke({"alt"}, "delete")
                     end)
                 elseif chord_row.specific_function == "browser_youtube" then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
