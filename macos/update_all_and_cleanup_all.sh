@@ -5,6 +5,7 @@ sudo -v
 
 source ~/projects/dotfiles/zsh/functions.sh
 source ~/projects/dotfiles/zsh/aliases.sh
+source ~/projects/dotfiles/zsh/exports.sh
 
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
