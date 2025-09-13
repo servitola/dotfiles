@@ -538,6 +538,7 @@ layers_list =
 -- e: ℝ — Show list of tabs of current panel
 -- r: ℝ — Rerun tests
 -- a: ℝ — Show all affected files
+--    Mail — archive message
 -- f: toggle fullscreen of current app
 -- g: ℝ — Select all occurances
 -- s: 📁 — Toggle SideBar
