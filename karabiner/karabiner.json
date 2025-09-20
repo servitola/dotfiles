@@ -6220,11 +6220,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "up_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
-                                        ]
+                                        "key_code": "illumination_increment"
                                     }
                                 ],
                                 "type": "basic"
@@ -7042,11 +7038,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "up_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
-                                        ]
+                                        "key_code": "illumination_increment"
                                     }
                                 ],
                                 "type": "basic"
@@ -7902,11 +7894,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
-                                        ]
+                                        "key_code": "illumination_decrement"
                                     }
                                 ],
                                 "type": "basic"
@@ -9135,11 +9123,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "down_arrow",
-                                        "modifiers": [
-                                            "left_command",
-                                            "left_shift"
-                                        ]
+                                        "key_code": "illumination_decrement"
                                     }
                                 ],
                                 "type": "basic"
@@ -10985,6 +10969,45 @@
                         ]
                     },
                     {
+                        "description": "Brightness Control with Left Cmd + Left Shift + Arrow Keys",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "up_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "illumination_increment"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "down_arrow",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "left_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "illumination_decrement"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "[Internal Keyboard] fn -> left_control",
                         "manipulators": [
                             {
@@ -10999,91 +11022,6 @@
                                 "to": [
                                     {
                                         "shell_command": "open -a 'Yandex' --args --incognito --new-window"
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Ctrl+Shift+W/E Delete Operations",
-                        "manipulators": [
-                            {
-                                "description": "Ctrl+Shift+W -> Delete Backward",
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Ctrl+Shift+E -> Delete Forward",
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Ctrl+Shift+Alt+W -> Alt+Delete Backward",
-                                "from": {
-                                    "key_code": "w",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift",
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "description": "Ctrl+Shift+Alt+E -> Alt+Delete Forward",
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": {
-                                        "mandatory": [
-                                            "left_control",
-                                            "left_shift",
-                                            "left_option"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
                                     }
                                 ],
                                 "type": "basic"
