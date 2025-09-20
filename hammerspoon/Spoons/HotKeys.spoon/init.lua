@@ -998,12 +998,16 @@ function obj:init()
 
                     print("Hotkey triggered: " .. table.concat(layer.modifier, "+") .. "+" .. chord_row.key .. " → " .. chord_row.app)
 
-                    local found = hs.application.find(chord_row.app)
-                    local app = found
-
-                    if found and tostring(found):match("hs.window:") then
-                        app = found:application()
-                        print("Found window, getting application: " .. tostring(app))
+                    local app
+                    if chord_row.app == "Visual Studio Code" then
+                        app = hs.application.get("com.microsoft.VSCode")
+                    else
+                        local found = hs.application.find(chord_row.app)
+                        app = found
+                        if found and tostring(found):match("hs.window:") then
+                            app = found:application()
+                            print("Found window, getting application: " .. tostring(app))
+                        end
                     end
 
                     if not app or (app and app.isHidden and app:isHidden()) then
