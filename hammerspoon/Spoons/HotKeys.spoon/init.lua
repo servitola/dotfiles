@@ -421,7 +421,7 @@ layers_list =
 -- =: F12
 -- ⌫: ⌦
 -- alt + ⌫: maccy delete row
-{ key="tab", app="Claude", window_default_position="right" },
+{ key="tab", app="opcode", window_default_position="right" },
 -- q: pageUp
 -- w: up
 -- e: pagedown
