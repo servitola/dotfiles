@@ -147,12 +147,13 @@ layers_list =
 -- │        │     │      │             ␣               │      │     │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————╯
 -- ⇥: select previous element, or move text block left
--- Q: 🌐 Vim — Go Website Root
--- P: YouTube — Previous video
--- G: 🌐 Vim — Go Window Bottom
--- N: YouTube — Next video
--- <: YouTube — Speed down
--- >: YouTube — Speed up
+-- Q: 🌐 Vim — go website root
+-- P: YouTube — previous video
+-- G: 🌐 Vim — go window bottom
+-- C: 🌐 Vim — copy current URL
+-- N: YouTube — next video
+-- <: YouTube — speed down
+-- >: YouTube — speed up
 
 -- ╭—————╮__5.SHIFT_RUSSIAN______╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬——————╮
 -- │  Ё  │  !  │  "  │  №  │  ;  │  %  │  :  │  ?  │  *  │  (  │  )  │  _  │  +  │      │
