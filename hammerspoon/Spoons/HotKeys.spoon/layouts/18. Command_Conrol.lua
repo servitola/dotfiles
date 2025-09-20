@@ -2,7 +2,7 @@ return { modifier={"left_command", "left_control"}, chords={
 -- ╭—————╮__18.CMD_CONTROL_______╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————╮
 -- │     │     │     │     │     │     │     │     │     │     │     │     │     │     │
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┤
--- │       │    │     │  ℝ  │  ℝ  │     │     │     │     │     │     │     │     │   │
+-- │       │    │     │  ℝ  │  ℝ  │     │     │Music│     │     │     │     │     │   │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮  │
 -- │        │  ℝ  │    │    │    │     │     │     │     │     │     │     │     │  │
 -- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴—————┴——┤
@@ -13,6 +13,7 @@ return { modifier={"left_command", "left_control"}, chords={
 -- q: logout
 -- e: ℝ — show list of tabs of current panel
 -- r: ℝ — rerun tests
+-- u: Music — show/hide lyrics panel
 -- a: ℝ — show all affected files
 --    Mail — archive message
 -- f:  — toggle fullscreen of current app
