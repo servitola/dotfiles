@@ -1,0 +1,64 @@
+return { modifier={"left_command", "left_shift"}, chords={
+-- ╭—————╮__16.CMD_SHIFT___╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬————┬——————╮
+-- │    │  📝 │Shotr│Shotr│Shotr│    │     │     │     │     │     │     │    │   ℝ  │
+-- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬——┴—┬————┤
+-- │       │    │    │  ℝ  │  ℝ  │  ℝ  │     │     │     │     │    │     │    │  ℝ │
+-- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬———┴╮   │
+-- │        │  📁 │  📁  │ 📝📁 │ 📝ℝ │     │     │     │     │     │     │     │    │   │
+-- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴————┴———┤
+-- │ 🟢🟢🟢   │ReDO│ 📝  │ 📝📁 │     │     │ 🌐  │     │     │     │  ℝ  │             │
+-- ├————————┬┴————┬┴—————┼—————┴—————┴—————┴—————┴—————┼—————┴┬————┴┬┴—————————————╯
+-- │        │     │🟢🟢🟢 │                             │      │     │
+-- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————╯
+-- `:  — switch between windows of the current app (backward)
+{ key="1", app="Visual Studio Code" },
+-- 2: Shotr — OCR from screen
+-- 3: Shotr — save screenshot of window ( native screenshot replaced)
+-- 4: Shotr — start getting screenshot ( native screenshot replaced)
+-- 5:  — record video from screen
+-- ⌫: ℝ — go to last edit
+-- q:  — log out from account with closing of all apps
+-- w: ℝ — close other tabs
+--     — close window
+-- e: ℝ — recent locations popup
+--    🌐 — opened tabs dialog
+-- r: ℝ — replace in files
+--    📁 — go to AirDrop
+-- t:  — reopen closed tab
+--    🌐 — reopen closed tab
+--    📁 — switch tabs bar visibility
+-- u: ℝ — toggle case of text
+-- o: ℝ — go to file
+-- p: Fork — open Push dialog
+-- ↩: ℝ — complete current statement
+-- a: 📁 — go to Applications
+--    Fork — filter by active branch
+-- s: 📁 — go to Shared
+-- d: 📁 — go to Desktop
+--    Fork — revert file changes
+--    📝 — show debug callstack
+--    iTerm — split pane horizontally
+-- f: ℝ — search in files
+--    Fork — open Fetch dialog,
+--    📁 — go to Recent
+--    Telegram — focus global search
+-- g: 📁 — go to GoTo dialog
+-- h: 📁 — go to $HOME
+--    Fork — save Stash
+-- k: 📁 — go to Network
+-- l: Fork — open Pull dialog
+-- b: Fork — open Create Branch dialog
+-- z:  — redo
+-- x: 📝 — open Extensions
+--    Telegram — toggle Strikethrough for text
+-- c: 📁 — go to Computer
+--    📝 — open Terminal
+-- n: 🌐 — open new Private Window
+--    📁 — create New folder
+--    Music — create new playlist from selection
+--    Fork — clone repository
+--    Mail — check for new mail
+-- /: ℝ — comment
+--
+}
+}

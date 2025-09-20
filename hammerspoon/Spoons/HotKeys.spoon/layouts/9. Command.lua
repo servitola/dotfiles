@@ -1,0 +1,134 @@
+return { modifier="left_command", chords={
+-- ╭—————╮__9.CMD____╭—————┬—————┬—————┬—————┬——————┬—————┬—————┬—————┬—————┬—————┬———————╮
+-- │    │  🔗 │  🔗  │  🔗 │  🔗 │  🔗  │  🔗 │  🔗  │  🔗  │  🔗 │  🔗 │  🌐ℝ │ 🌐ℝ │    ℝ  │
+-- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬—————┤
+-- │      │    │  🔗 │ ℝ/T │  ℝ  │  ℝ  │    │BrHist│    │    │ 🖨️  │  ℝ🌐 │ ℝ🌐 │    │
+-- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬—————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮    │
+-- │        │  🔗 │ 🔗  │ 🔗 │  🔎  │  ℝ🔄│  ℝ  │     │    │  📝 │  ℝ  │     │     │    │
+-- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬—————┴┬————┴┬————┴┬————┴┬————┴—————┴————┤
+-- │         │    │    │    │    │  ℝ  │    │     │    │  ℝ  │  ℝ  │               │
+-- ├————————┬┴————┬┴—————┼—————┴—————┴—————┴—————┴——————┼—————┴┬————┴┬————┴———————————————╯
+-- │        │     │🟢🟢🟢 │         Raycast              │      │     │
+-- ╰————————┴—————┴——————┴——————————————————————————————┴——————┴—————╯
+-- swipe: changing zoom
+-- `:  — switch between windows of current app
+-- 1: ℝ — focus solution explorer
+--    📁 — View as icons
+--    🌐 — Open 1st tab
+--    Fork — Focus changes window
+--    Activity Manager — Focus main window
+--    Telegram — focus 1st folder or chat
+-- 2: ℝ — focus debug window
+--    📁 — View as list
+--    🌐 — Open 2nd tab
+--    Fork — Focus All commits window
+--    Activity Manager — Open/focus CPU usage window
+--    Telegram — focus 2nd folder or chat
+-- 3: ℝ — focus unit tests explorer
+--    📁 — View in columns
+--    🌐 — Open 3rd tab
+--    Activity Manager — Open/focus CPU history window
+--    Telegram — focus 3rd folder or chat
+-- 4: ℝ — focus build window
+--    📁 — View in gallery
+--    🌐 — Open 4th tab
+--    Activity Manager — Open/focus GPU history window
+--    Telegram — focus 4th folder or chat
+-- 5: ℝ — focus problems window
+--    🌐 — Open 5th tab
+--    Telegram — focus 5th folder or chat
+-- 6: 🌐 — Open 6th tab
+--    Telegram — focus 6th folder or chat
+-- 7: 🌐 — Open 7th tab
+--    Telegram — focus 7th folder or chat
+-- 8: ℝ — focus logcat (custom)
+--    🌐 — Open 8th tab
+--    Telegram — focus 8th folder or chat
+-- 9: 🌐 — Open Last tab
+--    Telegram — focus 9th folder or chat
+-- 0: 🌐 — Reset zoom
+--    Telegram — focus Saved Messages
+--    Music — Show/Hide Music window
+--    Fork — navigate to HEAD
+-- -: 🌐 — Zoom out
+--    ℝ — collapse code block
+-- =: 🌐 — Zoom in
+--    ℝ — expand code block
+-- ⌫: ℝ — delete line
+--     dialog — choose Delete option
+-- ⇥:  — switch between open windows
+-- q:  — close current app
+-- w:  — close current tab
+-- e: ℝ — recent files dialog
+--    Telegram — toggle camera
+--    📝 — find with selection
+-- r: ℝ — replace in current file
+--    🌐 — refresh page
+--    Telegram — record audio/video message
+-- t:  — new tab
+--    Telegram — toggle screen sharing
+--    Music — visualizer
+-- y: 🌐 — show all history
+-- u: Telegram — toggle underline for text
+--    Mail — toggle underline for text
+-- i: Activity Manager — Inspect process
+--    Music — show info about current song
+--    Telegram — toggle italic for text
+--    Mail — toggle italic for text
+-- o:  — open file
+--    Telegram — attach file
+-- p:  — print
+--    Fork — open Command palette search
+--    ℝ — parameter info
+-- [: ℝ — navigate back
+--    📁 — navigate back
+--    🌐 — navigate back
+-- ]: ℝ — navigate forward
+--    📁 — navigate forward
+--    🌐 — navigate forward
+-- ↩:  — aggre or apply, send message
+--    Fork — commit changes
+-- a: select all
+-- s:  — save
+--     dialog — choose Save option
+--    Fork — move file to 'staged'
+-- d: ℝ — duplicate line
+--    ℝ — debug unit test
+--    📁 — duplicate file
+--     dialog — choose Don't Save option
+--    🌐 — add page to bookmarks
+--    iTerm — split pane vertically
+-- f: find
+-- g: ℝ🔄 — git operations popup (custom)
+--    🌐 — find or find next
+-- h:  — hide current app
+-- j: Music — Show soring options
+--    📝 — toggle sidebar Visibility
+-- k: Telegram — Focus search
+--    Telegram — create link
+--    Claude Desktop — New chat
+-- l: ℝ — go to line
+--    🌐 — Focus Url Line
+--    Music — Go to Current song
+--    Telegram — lock Telegram
+-- ;: ℝ — run unit test
+-- z: undo
+-- x: cut
+-- c: copy
+-- v: paste
+-- b: ℝ — go to declaration
+--    Telegram — toggle Bold for text
+--    Mail — toggle Bold for text
+-- n:  — new window
+--    📝 — new empty file
+--    Music — new playlist
+--    ℝ — generate code
+--    Mail — start new letter
+-- m:  — minimize window
+-- ,:  —  show settings ⚙️ of current app
+-- .: ℝ — expand #region
+-- /: ℝ — comment line
+--    Music — Show/hide status bar
+-- ␣: Raycast
+}
+}
