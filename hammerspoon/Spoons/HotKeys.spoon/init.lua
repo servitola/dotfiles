@@ -734,8 +734,9 @@ layers_list =
 -- w: ⌫ (backspace)
 -- e: ⌦ (delete)
 -- r: ℝ — run Unit Tests
--- p:  — open private window
+-- ????? p:  — open private window
 -- a:  — select line to the left
+-- s: ℝ — save macros
 -- d: ℝ — debug Unit Tests
 -- g: ℝ🔄 — current file git history
 -- h: ℝ — hierarchy
@@ -769,7 +770,7 @@ layers_list =
 { key="h", app="Hammerspoon", window_default_position="right"},
 { key="z", specific_function="translate_to_russian"},
 { key="x", app="XCode" },
--- c: itsycal Calendar
+-- c: itsycal Calendar (custom in app)
 { key="v", specific_function="browser_youtube" },
 { key="left", specific_function="window.left"},
 { key="right", specific_function="window.right"},
@@ -865,7 +866,7 @@ layers_list =
 }},
 { modifier={"hyper", "left_command", "left_shift"}, chords={
 -- ╭—————╮__25.HYPER_CMD_SHIFT___╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————╮
--- │     │     │     │     │     │     │     │     │     │     │     │     │     │    │
+-- │     │     │     │     │     │     │     │     │     │     │     │     │     │    │
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┤
 -- │       │     │  ↑  │     │     │     │     │     │     │  ↑  │     │     │     │   │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮  │
@@ -876,10 +877,10 @@ layers_list =
 -- │        │     │🟢🟢🟢 │                             │      │     │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————╯
 -- + (F12): ℝ — hide all panels
--- w (↑): increase keyboard brightness
--- o (↑): increase keyboard brightness
--- s (↓): decrease keyboard brightness
--- l (↓): decrease keyboard brightness
+-- w (↑): increase keyboard brightness (karabiner)
+-- o (↑): increase keyboard brightness (karabiner)
+-- s (↓): decrease keyboard brightness (karabiner)
+-- l (↓): decrease keyboard brightness (karabiner)
 -- ⌫ (⌦ delete): 📁 — empty trashcan
 }},
 { modifier={"hyper", "left_shift", "left_control"}, chords={
