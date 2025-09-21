@@ -1,7 +1,6 @@
 local obj={}
 
 -- Hyper is Caps Lock (⇪) remapped to Hyper in Karabiner-Elements
--- Keyboard layers described in this document:
 
 local layoutFiles = {
     "1. English",
