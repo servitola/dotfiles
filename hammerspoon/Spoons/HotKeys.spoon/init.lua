@@ -82,6 +82,7 @@ end
 local appSpecificHotkeys = {
     ["Fork"] = {
         { from = {"cmd", "shift"}, key = "e", to = {"cmd", "shift"}, target_key = "l" },
+        { from = {"cmd", "shift"}, key = "r", to = {"cmd", "shift"}, target_key = "p" },
         { from = {"ctrl"}, key = "1", to = { "cmd", "option" }, target_key = "1"},
         { from = {"ctrl"}, key = "2", to = { "cmd", "option" }, target_key = "2"},
         { from = {"ctrl"}, key = "3", to = { "cmd", "option" }, target_key = "3"}
