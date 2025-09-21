@@ -59,6 +59,9 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 -- ␣ -- Space
 -- ⎋ -- Escape
 
+-- next hotkey candidate:
+-- control + y
+
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local layoutsPath = spoonPath .. "layouts/"
 
