@@ -16,6 +16,7 @@ return { modifier={"left_command", "alt"}, chords={
 -- 3: Fork — show commit filetree
 -- e: Music — show equalizer
 -- r: ℝ — resume running
+--    📝 — reveal in Finder
 -- t: Fork — hide/search toolbar
 -- u: Music — Show playing next queue
 --    🌐 — view source code
