@@ -3,15 +3,15 @@ local obj={}
 -- Hyper is Caps Lock (⇪) remapped to Hyper in Karabiner-Elements
 
 local layoutFiles = {
-    "1. English",
-    "2. Russian",
-    "3. Greek",
-    "4. English_Shift", -- ⇧
-    "5. Russian_Shift", -- ⇧
-    "6. Greek_Shift", -- ⇧
-    "7. Alt", -- ⌥ (Ilya Birman's layout)
-    "8. Alt_Shift", -- ⌥⇧ (Ilya Birman's layout)
-    "9. Command", -- ⌘
+    "01. English",
+    "02. Russian",
+    "03. Greek",
+    "04. English_Shift", -- ⇧
+    "05. Russian_Shift", -- ⇧
+    "06. Greek_Shift", -- ⇧
+    "07. Alt", -- ⌥ (Ilya Birman's layout)
+    "08. Alt_Shift", -- ⌥⇧ (Ilya Birman's layout)
+    "09. Command", -- ⌘
     "10. Control", -- ⌃
     "11. Hyper", -- ⇪
     "12. Hyper_Alt", -- ⇪ ⌥
@@ -83,13 +83,13 @@ local appSpecificHotkeys = {
     ["Fork"] = {
         { from = {"cmd", "shift"}, key = "e", to = {"cmd", "shift"}, target_key = "l" },
         { from = {"cmd", "shift"}, key = "r", to = {"cmd", "shift"}, target_key = "p" },
-        { from = {"ctrl"}, key = "1", to = { "cmd", "option" }, target_key = "1"},
-        { from = {"ctrl"}, key = "2", to = { "cmd", "option" }, target_key = "2"},
-        { from = {"ctrl"}, key = "3", to = { "cmd", "option" }, target_key = "3"}
+        { from = {"control"}, key = "1", to = {"cmd", "alt"}, target_key = "1"},
+        { from = {"control"}, key = "2", to = {"cmd", "alt"}, target_key = "2"},
+        { from = {"control"}, key = "3", to = {"cmd", "alt"}, target_key = "3"}
     },
     ["*"] = {
-        { from = {"ctrl", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
-        { from = {"ctrl", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
+        { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
+        { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
     }
 }
 
