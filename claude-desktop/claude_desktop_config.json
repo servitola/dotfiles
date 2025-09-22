@@ -1,38 +1,24 @@
 {
   "mcpServers": {
     "filesystem": {
-      "command": "npx",
+      "command": "/opt/homebrew/bin/npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-filesystem",
         "/Users/servitola/"
       ]
     },
-    "github": {
-      "command": "/Users/servitola/projects/dotfiles/claude-desktop/github-mcp.sh",
-      "args": []
-    },
-    "google-maps": {
-      "command": "/Users/servitola/projects/dotfiles/claude-desktop/google-maps-mcp.sh",
-      "args": []
-    },
     "memory": {
-      "command": "npx",
+      "command": "/opt/homebrew/bin/npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-memory"
       ]
     },
-    "docker": {
-      "command": "npx",
+    "desktop-commander": {
+      "command": "/opt/homebrew/bin/npx",
       "args": [
         "-y",
-        "mcp-server-docker"
-      ]
-    },
-    "desktop-commander": {
-      "command": "npx",
-      "args": [
         "@wonderwhy-er/desktop-commander@latest"
       ]
     },
@@ -40,23 +26,15 @@
       "command": "/Users/servitola/projects/dotfiles/claude-desktop/google-calendar-mcp.sh",
       "args": []
     },
-    "ableton-mcp": {
-      "command": "uvx",
+    "gmail": {
+      "command": "/opt/homebrew/bin/npx",
       "args": [
-        "ableton-mcp"
+        "@gongrzhe/server-gmail-autoauth-mcp"
       ]
-    },
-    "youtrack-mcp-server": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://youtrack-mcp-server.dev.pl.spotwa.re/mcp/"
-      ],
-      "env": {}
-    },
-    "deepseek": {
-      "command": "/Users/servitola/projects/dotfiles/claude-desktop/deepseek-mcp.sh",
-      "args": []
     }
+  },
+  "globalShortcut": "",
+  "preferences": {
+    "menuBarEnabled": false
   }
 }
