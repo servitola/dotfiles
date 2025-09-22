@@ -17,5 +17,6 @@
 -- N: YouTube — next video
 -- <: YouTube — speed down
 -- >: YouTube — speed up
+-- double shift: ℝ — show global search dialog
 
 return {}

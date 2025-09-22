@@ -11,6 +11,8 @@ return { modifier="left_command", chords={
 -- │        │     │🟢🟢🟢 │         Raycast              │      │     │
 -- ╰————————┴—————┴——————┴——————————————————————————————┴——————┴—————╯
 -- swipe: changing zoom
+-- 🖱 (click): ℝ — go to definition
+--             iTerm — open url in text
 -- `:  — switch between windows of current app
 -- 1: ℝ — focus solution explorer
 --    📁 — View as icons
