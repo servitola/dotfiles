@@ -6359,31 +6359,6 @@
                                     "key_code": "q",
                                     "modifiers": {
                                         "mandatory": [
-                                            "left_control",
-                                            "left_shift",
-                                            "right_command",
-                                            "right_control",
-                                            "right_option",
-                                            "right_shift"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_up",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": {
-                                        "mandatory": [
                                             "left_command",
                                             "left_option",
                                             "right_command",
