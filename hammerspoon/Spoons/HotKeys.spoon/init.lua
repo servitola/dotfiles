@@ -87,6 +87,9 @@ local appSpecificHotkeys = {
         { from = {"control"}, key = "2", to = {"cmd", "alt"}, target_key = "2"},
         { from = {"control"}, key = "3", to = {"cmd", "alt"}, target_key = "3"}
     },
+    ["Music"] = {
+        { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
+    },
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
         { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
