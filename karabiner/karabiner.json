@@ -7289,11 +7289,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "page_down",
-                                        "modifiers": [
-                                            "left_control",
-                                            "left_shift"
-                                        ]
+                                        "consumer_key_code": "play_or_pause"
                                     }
                                 ],
                                 "type": "basic"
