@@ -158,4 +158,7 @@ install:
 
 	@$(SHELL) -c 'source ableton/setup-mcp.sh'
 
+	@echo "setup n8n workflow automation with auto-startup"
+	@$(SHELL) -c 'source n8n/setup.sh'
+
 	@echo "Installation complete!"
