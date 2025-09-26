@@ -7,7 +7,7 @@ I use this configuration and adjust it on two of my Macs: Mac Studio M1Pro and M
 ## Problems solved FAQ
 
 * Q: I want <ins>all file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
-* A: Look at the [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh). You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
+* A: Look at the [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh) which uses [duti](https://github.com/moretension/duti). You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
 
 * Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> to turn on <ins>automatically everywhere</ins> except in my messenger (I use [Telegram](https://telegram.org/))
 * A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for that: **Keyboard Pilot** but it conflicts with Ilya's layouts.
