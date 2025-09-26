@@ -37,6 +37,10 @@ install:
 	@rm -rf ~/.config/mc
 	@ln -sfvh ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
+	@echo "setup Claude"
+	@rm -rf ~/.claude/CLAUDE.md
+	@ln -sfvh ~/projects/dotfiles/claude-code/CLAUDE.md ~/.claude/CLAUDE.md
+
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf\ -\ Next/User
 
