@@ -15,6 +15,6 @@ return { modifier={"hyper", "left_command", "left_shift"}, chords={
 -- o (↑): increase keyboard brightness (karabiner)
 -- s (↓): decrease keyboard brightness (karabiner)
 -- l (↓): decrease keyboard brightness (karabiner)
--- ⌫ (⌦ delete): 📁 — empty trashcan
+-- ⌫ (⌦ delete): 📁 — empty trashcan (made stable with Raycast same shortcut)
 }
 }
