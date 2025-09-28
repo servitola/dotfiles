@@ -35,7 +35,7 @@ export PATH=$PATH:/Users/servitola/.dotnet/tools
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.15
+export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.16
 export PATH=$PATH:$JAVA_HOME
 
 export DOCKER_HOST=unix:///$HOME/.colima/docker.sock
