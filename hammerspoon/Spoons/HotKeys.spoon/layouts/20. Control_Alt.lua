@@ -17,6 +17,7 @@ return { modifier={"left_control", "alt"}, chords={
 { key="tab", specific_function="translate_to_english"},
 { key="q", app="Music"},
 { key="w", specific_function="window.fullscreen"},
+{ key="e", app="Claude"},
 { key="r", app="WebStorm"},
 { key="y", specific_function="youtube_stream" },
 { key="i", specific_function="info.show_shortcuts"},
