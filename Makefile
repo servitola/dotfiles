@@ -125,10 +125,6 @@ install:
 	@rm -rf ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 	@ln -sfvh ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
-	@echo "setup bin directory"
-	@mkdir -p ~/.local/bin
-	@rm -rf ~/.local/bin/analyze-ui-test
-	@ln -sfvh ~/projects/dotfiles/bin/analyze-ui-test.sh ~/.local/bin/analyze-ui-test
 	@echo "setup Colima for containers"
 	@rm -rf ~/.colima/default/colima.yaml
 	@ln -sfvh ~/projects/dotfiles/colima/colima.yaml ~/.colima/default/colima.yaml
