@@ -1,0 +1,68 @@
+{
+  "cleanupPeriodDays": 90,
+  "model": "opus",
+  "includeCoAuthoredBy": false,
+  "autoUpdates": true,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_ERROR_REPORTING": "1", 
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_AUTOUPDATER": "0",
+    "BASH_DEFAULT_TIMEOUT_MS": "600000",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "32768",
+    "ANTHROPIC_LOG": "info",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "false",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-1-20250805",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-20250514",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-3-5-haiku-20241022"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit", 
+      "Fetch",
+      "Glob",
+      "Grep",
+      "LS",
+      "MultiEdit",
+      "Read",
+      "Task",
+      "TodoWrite",
+      "WebFetch", 
+      "WebSearch",
+      "Write"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./config/credentials.json)",
+      "Read(./node_modules/**)",
+      "Read(./.git/**)",
+      "Read(./build/**)",
+      "Read(./dist/**)",
+      "Read(./.DS_Store)",
+      "Read(./coverage/**)",
+      "Read(./.nyc_output/**)",
+      "Read(./logs/**)",
+      "Read(./.cache/**)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Write(./secrets/**)",
+      "Write(./config/credentials.json)",
+      "Write(./package-lock.json)",
+      "Write(./yarn.lock)",
+      "Write(./Cargo.lock)",
+      "Write(./.git/**)"
+    ]
+  },
+  "hooks": {
+    "beforeBash": "echo '🔧 Executing: {{command}}'",
+    "afterWrite": "echo '📝 File updated: {{file}}'",
+    "beforeEdit": "echo '✏️  Editing: {{file}}'",
+    "afterEdit": "echo '✅ Edit completed: {{file}}'"
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 0
+  }
+}

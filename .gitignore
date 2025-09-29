@@ -26,3 +26,6 @@ vscode/User/globalStorage/ms-python.python/
 # Appium
 appium/.appium/node_modules/
 .aider*
+
+# Context Forge configuration (added automatically)
+.context-forge/

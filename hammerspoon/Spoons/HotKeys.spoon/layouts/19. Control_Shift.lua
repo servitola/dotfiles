@@ -2,7 +2,7 @@ return { modifier= {"left_control", "left_shift"}, chords={
 -- ╭—————╮__19.CTRL_SHIFT__╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————╮
 -- │ 📊  │  ℝ  │  ℝ  │  ℝ  │     │     │     │     │     │     │     │     │     │     │
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┤
--- │      │    │  ⌫  │  ⌦  │  ℝ  │     │     │     │     │     │    │     │     │   │
+-- │      │    │     │     │  ℝ  │     │     │     │     │     │    │     │     │   │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮  │
 -- │        │    │     │  ℝ  │     │  ℝ🔄│     │     │     │     │     │     │     │  │
 -- ├————————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴—————┴——┤
@@ -16,12 +16,10 @@ return { modifier= {"left_control", "left_shift"}, chords={
 -- 3: ℝ — toggle bookmark 3
 -- ⇥:  — go to previous tab
 -- q:  — log out with dialogs
--- w: ⌫ (backspace)
--- e: ⌦ (delete)
 -- r: ℝ — run Unit Tests
 -- ????? p:  — open private window
 -- a:  — select line to the left
--- s: ℝ — save macros
+-- s: ℝ — save macros (not needed I think)
 -- d: ℝ — debug Unit Tests
 -- g: ℝ🔄 — current file git history
 -- h: ℝ — hierarchy

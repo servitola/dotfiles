@@ -1,0 +1,20 @@
+{
+  "env": {
+    "NODE_ENV": "development",
+    "DEBUG": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Read",
+      "Write"
+    ],
+    "deny": [
+      "Read(./.env.production)",
+      "Write(./.env.production)",
+      "Write(./package-lock.json)",
+      "Write(./yarn.lock)"
+    ]
+  }
+}
