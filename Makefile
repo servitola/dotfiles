@@ -80,10 +80,6 @@ install:
 		fi; \
 	done'
 
-	@echo "setup Appium symlinks"
-	@rm -rf ~/.appium
-	@ln -sfvh ~/projects/dotfiles/appium/.appium ~/.appium
-
 	@echo "setup btop symlinks"
 	@rm -rf ~/.config/btop
 	@ln -sfvh ~/projects/dotfiles/btop ~/.config/btop
