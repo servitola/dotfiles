@@ -58,5 +58,8 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-# n8n Configuration
-export N8N_USER_FOLDER="/Users/servitola/projects/services/n8n/.n8n"
+# CLAUDE SPOTWARE
+export ANTHROPIC_BASE_URL="https://ccflare.dev.pl.spotwa.re"
+export DISABLE_BUG_COMMAND="1"
+export DISABLE_ERROR_REPORTING="1"
+export DISABLE_TELEMETRY="1"
