@@ -129,6 +129,9 @@ install:
 	@mkdir -p ~/.local/bin
 	@rm -rf ~/.local/bin/analyze-ui-test
 	@ln -sfvh ~/projects/dotfiles/bin/analyze-ui-test.sh ~/.local/bin/analyze-ui-test
+	@echo "setup Colima for containers"
+	@rm -rf ~/.colima/default/colima.yaml
+	@ln -sfvh ~/projects/dotfiles/colima/colima.yaml ~/.colima/default/colima.yaml
 
 	@echo "set default applications for different file extensions"
 	@$(SHELL) -c 'source macos/set_default_apps.sh'
