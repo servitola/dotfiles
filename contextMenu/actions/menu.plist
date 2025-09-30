@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Compare using Visual Studio Code</string>
+		<key>path</key>
+		<string>Compare using Visual Studio Code.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Open with Visual Studio Code</string>
+		<key>path</key>
+		<string>Open with Visual Studio Code.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>New Plain Text File</string>
+		<key>path</key>
+		<string>New Plain Text File.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>New Shell Script</string>
+		<key>path</key>
+		<string>New Shell Script.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Copy Contents</string>
+		<key>path</key>
+		<string>Copy Contents.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Copy Paths</string>
+		<key>path</key>
+		<string>Copy Paths.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>New iTerm2 Tab Here</string>
+		<key>path</key>
+		<string>New iTerm2 Tab Here.cmaction</string>
+	</dict>
+</array>
+</plist>
