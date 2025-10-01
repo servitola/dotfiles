@@ -73,9 +73,9 @@ print_section "Final Updates"
 print_task "Updating TLDR cache"
 tldr --update >/dev/null || echo "Error updating tldr cache"
 
-print_task "Checking Android SDK"
+print_task "Checking Android SDK licenses are accepted and Accept them"
 
-sdkmanager --licenses 2>&1 | grep -v "Warning: " >/dev/null || {
+yes | sdkmanager --licenses 2>&1 | grep -v "Warning: " >/dev/null || {
     error_code=$?
     if [ $error_code -ne 0 ] && [ $error_code -ne 141 ]; then
         echo "Error verifying Android SDK licenses"
