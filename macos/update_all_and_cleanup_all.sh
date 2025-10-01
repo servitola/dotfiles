@@ -34,6 +34,8 @@ brew cleanup
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
+source ~/projects/dotfiles/npm/install-globals.sh
+
 print_task "Updating .NET tools"
 dotnet tool update -g dotnet-trace
 
