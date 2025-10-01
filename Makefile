@@ -131,18 +131,8 @@ install:
 	@echo "run dock setup. Run once again when dockutil is installed please!"
 	@$(SHELL) -c 'source macos/dock_setup.sh'
 
-	@echo "installing trash-cli to replace rm with trash"
-	@npm install --global trash-cli
-
-	@echo "installing Claude Code CLI"
-	@npm install -g @anthropic-ai/claude-code
-
-	@echo "installing Appium Server for testing"
-	@npm install -g appium
-
-	@echo "installing vsce to publish vscode extensions"
-	@npm install --global vsce
-	@npm install --global typescript
+	@echo "installing Global NPM Packages"
+	@$(SHELL) -c '~/projects/dotfiles/npm/install-globals.sh'
 
 	@echo "Installing Context Menu settings..."
 	@rm -rf ~/Library/Group\ Containers/85P8ZUTQL8.net.langui.ContextMenu
@@ -159,5 +149,8 @@ install:
 
 	@echo "setup n8n workflow automation with auto-startup"
 	@$(SHELL) -c 'source n8n/setup.sh'
+
+	@echo "setup n8n local notification service"
+	@$(SHELL) -c 'source local_notification_service/install.sh'
 
 	@echo "Installation complete!"
