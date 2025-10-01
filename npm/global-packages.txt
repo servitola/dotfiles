@@ -1,0 +1,7 @@
+typescript
+n8n
+@anthropic-ai/claude-code
+appium
+@openai/codex
+@modelcontextprotocol/server-filesystem
+@cocal/google-calendar-mcp
