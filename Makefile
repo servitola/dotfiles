@@ -18,6 +18,10 @@ install:
 	@$(REMOVE) /etc/hosts
 	@$(LINK) ~/projects/dotfiles/macos/hosts /etc/hosts
 
+	@echo "setup Launch Agents"
+	@$(REMOVE) ~/Library/LaunchAgents
+	@$(LINK) ~/projects/dotfiles/LaunchAgents ~/Library/LaunchAgents
+
 	@echo "setup git symlinks"
 	@$(REMOVE) ~/.gitconfig
 	@$(LINK) ~/projects/dotfiles/git/gitconfig ~/.gitconfig

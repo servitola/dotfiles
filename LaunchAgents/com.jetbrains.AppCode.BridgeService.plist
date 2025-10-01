@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.jetbrains.AppCode.BridgeService</string>
+	<key>MachServices</key>
+	<dict>
+		<key>com.jetbrains.AppCode.BridgeService</key>
+		<true/>
+	</dict>
+	<key>Program</key>
+	<string>/Users/servitola/Applications/Rider.app/Contents/bin/Bridge.framework/Versions/A/Resources/BridgeService</string>
+	<key>RunAtLoad</key>
+	<false/>
+</dict>
+</plist>

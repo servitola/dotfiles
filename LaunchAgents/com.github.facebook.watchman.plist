@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.github.facebook.watchman</string>
+    <key>Disabled</key>
+    <false/>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/watchman</string>
+        <string>--foreground</string>
+        <string>--logfile=/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T//servitola-state/log</string>
+        <string>--log-level=1</string>
+        <string>--sockname=/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T//servitola-state/sock</string>
+        <string>--statefile=/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T//servitola-state/state</string>
+        <string>--pidfile=/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T//servitola-state/pid</string>
+    </array>
+    <key>KeepAlive</key>
+    <dict>
+        <key>Crashed</key>
+        <true/>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/Users/servitola/.npm-global/bin::/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/ruby/bin:/usr/local/Homebrew/bin:/Users/servitola/.local/bin:/usr/local/bin:/usr/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources:/Users/servitola/.local/bin:/usr/local/share/dotnet:/usr/local/share/dotnet/tools:/Users/servitola/.dotnet/tools:/usr/local/opt/sqlite/bin:/Users/servitola/Library/Application Support/JetBrains/Toolbox/scripts:/opt/homebrew/Cellar/openjdk@17/17.0.15:/Users/servitola/Library/Android/sdk/cmdline-tools/16.0/bin:/Users/servitola/Library/Android/sdk/emulator:/Users/servitola/Library/Android/sdk/build-tools/35.0.1:/Users/servitola/Library/Android/sdk/platform-tools:/opt/homebrew/opt/node@22/bin:/Users/servitola/.npm-global/bin/bin:/Users/servitola/.npm-global/bin:/Users/servitola/.npm-packages/bin:/Users/servitola/.npm-packages:/opt/homebrew/opt/fzf/bin</string>
+    </dict>
+    <key>ProcessType</key>
+    <string>Interactive</string>
+    <key>Nice</key>
+    <integer>-5</integer>
+</dict>
+</plist>
