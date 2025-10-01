@@ -99,7 +99,10 @@ You will be asked to install command tools - agree.
   * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
 
 * Q: I want to understand what this repository installs exactly
-* A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), creates symlinks, and completes the setup.
+* A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), deletes configs at default places, creates symlinks, and completes the setup.
+
+* Q: I want to save my global NPM packages list and install/update them
+* A: Check the [npm-list](https://github.com/servitola/dotfiles/blob/master/npm/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/npm/install-globals.sh)
 
 * Q: How to log in Hammerspoon to Hammerspoon's console faster?
 * A: In Hammerspoon's Lua file, write down:
