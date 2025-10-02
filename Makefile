@@ -20,7 +20,7 @@ install:
 
 	@echo "setup Launch Agents"
 	@$(REMOVE) ~/Library/LaunchAgents
-	@$(LINK) ~/projects/dotfiles/LaunchAgents ~/Library/LaunchAgents
+	@ln -s ~/projects/dotfiles/LaunchAgents ~/Library/LaunchAgents
 
 	@echo "setup git symlinks"
 	@$(REMOVE) ~/.gitconfig
