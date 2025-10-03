@@ -4,10 +4,8 @@
     "BASH_MAX_TIMEOUT_MS": "480000",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
     "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_TELEMETRY": "1"
-  },
-  "feedbackSurveyState": {
-    "lastShownTime": 1753972121027
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_AUTOUPDATER": "1"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
