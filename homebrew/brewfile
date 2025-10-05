@@ -1,5 +1,7 @@
 tap "alcova-ai/tap"
 tap "buo/cask-upgrade"
+tap "candid82/brew"
+tap "charmbracelet/tap"
 tap "domt4/autoupdate"
 tap "facebook/fb"
 tap "kegworks-app/kegworks"
