@@ -92,7 +92,6 @@ print_task "Updating Gruvbox wallpapers"
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 
-purge
 
 reload
 
