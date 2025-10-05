@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-echo "📦 Installing/updating global npm packages...\n"
+echo "📦 Installing/updating global npm packages..."
 
 while IFS= read -r package || [ -n "$package" ]; do
     # Skip empty lines and comments
