@@ -28,7 +28,8 @@ brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
-mas list
+# List mas apps to avoid bug with non updating apps from AppStore
+mas list >/dev/null 2>&1
 mas upgrade
 brew cleanup
 brew doctor

@@ -7,8 +7,6 @@ while IFS= read -r package || [ -n "$package" ]; do
     [[ -z "$package" ]] && continue
     [[ "$package" =~ ^[[:space:]]*# ]] && continue
 
-    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
     # Check if already installed and if update available
     if npm list -g "$package" >/dev/null 2>&1; then
         # Check if outdated
@@ -21,7 +19,7 @@ while IFS= read -r package || [ -n "$package" ]; do
                 echo "❌ Failed to update: $package"
             fi
         else
-            echo "⏭️  Already up-to-date: $package"
+            # echo "⏭️  Already up-to-date: $package"
         fi
     else
         echo "📥 Installing: $package"
