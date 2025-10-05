@@ -4,7 +4,12 @@ TEMP_DIR="/tmp/gruvbox-temp-$$"
 
 mkdir -p "$WALLPAPERS_DIR"
 
-API_RESPONSE=$(curl -s https://api.github.com/repos/AngelJumbo/gruvbox-wallpapers/contents/wallpapers/irl)
+CURL_OPTS=(-s)
+[ -n "$GITHUB_API_TOKEN" ] && CURL_OPTS+=(-H "Authorization: token $GITHUB_API_TOKEN")
+
+API_RESPONSE=$(curl "${CURL_OPTS[@]}" \
+    https://api.github.com/repos/AngelJumbo/gruvbox-wallpapers/contents/wallpapers/photography)
+
 if echo "$API_RESPONSE" | jq -e 'type == "array"' >/dev/null 2>&1; then
     REMOTE_FILES=$(echo "$API_RESPONSE" | jq -r '.[].name' | sort)
 elif echo "$API_RESPONSE" | jq -e 'has("message")' >/dev/null 2>&1; then
@@ -20,6 +25,7 @@ else
     echo "Unexpected API response format"
     exit 1
 fi
+
 LOCAL_FILES=$(find "$WALLPAPERS_DIR" -type f -exec basename {} \; 2>/dev/null | sort)
 
 echo "$REMOTE_FILES" > /tmp/remote_files_$$
@@ -29,11 +35,12 @@ rm -f /tmp/remote_files_$$ /tmp/local_files_$$
 
 [ -z "$MISSING_FILES" ] && exit 0
 
-git clone --filter=blob:none --sparse --depth=1 https://github.com/AngelJumbo/gruvbox-wallpapers.git "$TEMP_DIR" 2>/dev/null || exit 1
-cd "$TEMP_DIR" && git sparse-checkout set wallpapers/irl
+git clone --filter=blob:none --sparse --depth=1 \
+    https://github.com/AngelJumbo/gruvbox-wallpapers.git "$TEMP_DIR" 2>/dev/null || exit 1
+cd "$TEMP_DIR" && git sparse-checkout set wallpapers/photography
 
 echo "$MISSING_FILES" | while read -r file; do
-    [ -f "$TEMP_DIR/wallpapers/irl/$file" ] && cp "$TEMP_DIR/wallpapers/irl/$file" "$WALLPAPERS_DIR/"
+    [ -f "$TEMP_DIR/wallpapers/photography/$file" ] && cp "$TEMP_DIR/wallpapers/photography/$file" "$WALLPAPERS_DIR/"
 done
 
 rm -rf "$TEMP_DIR"
