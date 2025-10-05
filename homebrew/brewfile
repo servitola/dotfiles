@@ -249,13 +249,9 @@ mas "TestFlight", id: 899247664
 mas "The Unarchiver", id: 425424353
 mas "Transporter", id: 1450874784
 vscode "eamodio.gitlens"
-vscode "formulahendry.dotnet-test-explorer"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "jdinhlife.gruvbox"
-vscode "ms-dotnettools.csdevkit"
-vscode "ms-dotnettools.csharp"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "nguyenngoclong.terminal-keeper"
 vscode "saoudrizwan.claude-dev"
 vscode "redhat.vscode-xml"
