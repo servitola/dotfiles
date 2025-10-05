@@ -95,4 +95,4 @@ zsh -ic "omz update"
 
 reload
 
-printf "\n${YELLOW}${BOLD}✨ All updates and cleanup tasks completed!${NC}\n\n"
+printf "\n${YELLOW}${BOLD}✨ All updates and cleanup tasks completed!${NC}\n"
