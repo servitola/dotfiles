@@ -1,6 +1,6 @@
 typescript
 n8n
-@anthropic-ai/claude-code@1.0.124
+@anthropic-ai/claude-code
 appium
 @openai/codex
 @modelcontextprotocol/server-filesystem
