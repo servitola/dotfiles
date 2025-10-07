@@ -109,6 +109,9 @@ install:
 	@$(REMOVE) ~/.claude/settings.json
 	@$(LINK) ~/projects/dotfiles/claude-code/settings.json ~/.claude/settings.json
 
+	@echo "setup custom keyboard layout"
+	@$(SHELL) -c 'cd ~/projects/dotfiles/keyboard-layout && ./install.sh'
+
 	@echo "setup yazi symlinks"
 	@$(REMOVE) ~/.config/yazi
 	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
