@@ -61,11 +61,11 @@ yt-dlp https://www.youtube.com/user/ButKorn/videos
 * Q: I want to <ins>download a mp3</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: Same yt-dlp usage. Try my aliases in zsh to do so.
 
-Audio as .mp3:
+Audio as .mp3 and save to Desktop:
 ```
 yta https://www.youtube.com/watch?v=i6JjquwFNU4
 ```
-Video as .mp4:
+Video as .mp4 and save to Desktop:
 ```
 ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
 ```
