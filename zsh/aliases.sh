@@ -88,3 +88,8 @@ alias l="eza --icons --group-directories-first --color=always"
 alias ll="ls -l"
 alias la="ll -a"
 alias lt="ll --tree"
+
+# brew
+alias bi="brew install"
+alias bic="brew install --cask"
+alias bu="brew uninstall"
