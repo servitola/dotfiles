@@ -5954,7 +5954,7 @@
                                     "key_code": "fn",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Yandex' --args --incognito --new-window" }],
+                                "to": [{ "key_code": "left_control" }],
                                 "type": "basic"
                             }
                         ]
