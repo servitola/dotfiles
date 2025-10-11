@@ -40,6 +40,7 @@ install:
 	@$(LINK) ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 	@echo "setup Claude"
+	@mkdir -p ~/.claude
 	@$(REMOVE) ~/.claude/CLAUDE.md
 	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.claude/CLAUDE.md
 
@@ -52,6 +53,7 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
 	@$(LINK) ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
 
+	@mkdir -p ~/.codeium/windsurf-next/memories
 	@$(REMOVE) ~/.codeium/windsurf-next/memories/global_rules.md
 	@$(LINK) ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf-next/memories/global_rules.md
 
@@ -124,6 +126,7 @@ install:
 	@$(LINK) ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
 	@echo "setup Colima for containers"
+	@mkdir -p ~/.colima/default
 	@$(REMOVE) ~/.colima/default/colima.yaml
 	@$(LINK) ~/projects/dotfiles/colima/colima.yaml ~/.colima/default/colima.yaml
 
