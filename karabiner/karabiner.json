@@ -5946,6 +5946,43 @@
                             }
                         ]
                     },
+                     {
+                        "description": "Custom Right Command",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "quote",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "consumer_key_code": "volume_increment" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "slash",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "consumer_key_code": "volume_decrement" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "vk_consumer_previous" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "close_bracket",
+                                    "modifiers": { "mandatory": ["right_command"] }
+                                },
+                                "to": [{ "key_code": "vk_consumer_next" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
                     {
                         "description": "[Internal Keyboard] fn -> left_control",
                         "manipulators": [
