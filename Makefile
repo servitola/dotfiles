@@ -139,6 +139,4 @@ install:
 
 	@m appearance highlightcolor grape
 
-	@$(SHELL) 'source ableton/setup-mcp.sh'
-
 	@echo "Installation complete!"
