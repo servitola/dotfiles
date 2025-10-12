@@ -115,11 +115,6 @@ install:
 	@$(REMOVE) ~/.config/yazi
 	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
 
-	@echo "setup alt-tab symlinks"
-	@mkdir -p ~/Library/Preferences
-	@$(REMOVE) ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
-	@$(LINK) ~/projects/dotfiles/alt-tab/Library/Preferences/com.lwouis.alt-tab-macos.plist ~/Library/Preferences/com.lwouis.alt-tab-macos.plist
-
 	@echo "setup Fork custom commands symlink"
 	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
 	@$(REMOVE) ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
