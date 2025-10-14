@@ -39,6 +39,7 @@ brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
 source ~/projects/dotfiles/npm/install-globals.sh
+source ~/projects/dotfiles/python/install-globals.sh
 
 print_task "Update Appium Plugins"
 appium plugin update installed
