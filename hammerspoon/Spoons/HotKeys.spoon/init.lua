@@ -11,7 +11,8 @@ local layoutFiles = {
     "06. Greek_Shift", -- ⇧
     "07. Alt", -- ⌥ (Ilya Birman's layout)
     "08. Alt_Shift", -- ⌥⇧ (Ilya Birman's layout)
-    "09. Command", -- ⌘
+    "09. Command Left", -- ⌘
+    "09. Command Right", -- ⌘
     "10. Control", -- ⌃
     "11. Hyper", -- ⇪
     "12. Hyper_Alt", -- ⇪ ⌥
