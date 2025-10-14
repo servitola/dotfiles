@@ -145,6 +145,7 @@ brew "zsh-syntax-highlighting"
 brew "alcova-ai/tap/perplexity-mcp"
 brew "facebook/fb/idb-companion"
 brew "omnisharp/omnisharp-roslyn/omnisharp"
+brew "osx-cross/arm/arm-none-eabi-binutils", link: true
 brew "oven-sh/bun/bun"
 brew "stevencch99/windsurf-cli/windsurf-cli"
 brew "wix/brew/applesimutils"
