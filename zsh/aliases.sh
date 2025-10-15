@@ -93,3 +93,6 @@ alias lt="ll --tree"
 alias bi="brew install"
 alias bic="brew install --cask"
 alias bu="brew uninstall"
+
+# whisper
+alias w="whisperx --compute_type int8 --device cpu --model large-v3"
