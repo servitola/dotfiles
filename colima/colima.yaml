@@ -173,7 +173,7 @@ nestedVirtualization: false
 #
 # NOTE: value cannot be changed after virtual machine is created.
 # Default: virtiofs (for vz), sshfs (for qemu)
-mountType: sshfs
+mountType: virtiofs  # Using vz vmType, so virtiofs is optimal
 
 # Propagate inotify file events to the VM.
 # NOTE: this is experimental.
