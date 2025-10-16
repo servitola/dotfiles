@@ -115,7 +115,8 @@ function obj:init()
                 if chord_row.app then
                     hs.hotkey.bind(layer.modifier, chord_row.key, function()
 
-                        print("Hotkey triggered: " .. table.concat(layer.modifier, "+") .. "+" .. chord_row.key .. " → " .. chord_row.app)
+                        local modifierStr = type(layer.modifier) == "table" and table.concat(layer.modifier, "+") or layer.modifier
+                        print("Hotkey triggered: " .. modifierStr .. "+" .. chord_row.key .. " → " .. chord_row.app)
 
                         local app
                         if chord_row.app == "Visual Studio Code" then
