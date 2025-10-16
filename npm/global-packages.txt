@@ -1,6 +1,7 @@
 typescript
 n8n
 @anthropic-ai/claude-code
+@sourcegraph/amp
 appium
 @openai/codex
 @modelcontextprotocol/server-filesystem
