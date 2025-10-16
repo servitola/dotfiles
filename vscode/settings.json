@@ -38,5 +38,10 @@
         "git diff",
         "git show"
     ],
-    "terminal.external.osxExec": "iTerm.app"
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.external.osxExec": "iTerm.app",
+    "git.autofetch": true,
+    "amp.url": "https://ampcode.com/",
+    "amp.tab.enabled": true,
+    "editor.wordBasedSuggestions": "off"
 }
