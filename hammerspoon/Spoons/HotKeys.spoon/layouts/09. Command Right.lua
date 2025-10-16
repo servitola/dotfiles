@@ -132,5 +132,6 @@ return { modifier="right_command", chords={
 -- /: ℝ — comment line
 --    Music — Show/hide status bar
 -- ␣: Raycast
+-- ': Zoom
 }
 }
