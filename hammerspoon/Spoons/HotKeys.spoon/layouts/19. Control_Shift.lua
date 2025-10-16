@@ -21,8 +21,8 @@ return { modifier= {"left_control", "left_shift"}, chords={
 -- r: ℝ — run Unit Tests
 -- ????? p:  — open private window
 -- a:  — select line to the left
--- s: ℝ — save macros
--- d: ℝ — debug Unit Tests
+-- s: ⌫ (backspace) — LEFT HAND DELETE (karabiner)
+-- d: ⌦ (forward delete) — LEFT HAND DELETE (karabiner)
 -- g: ℝ🔄 — current file git history
 -- h: ℝ — hierarchy
 }
