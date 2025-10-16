@@ -5984,6 +5984,57 @@
                         ]
                     },
                     {
+                        "description": "Left Hand Delete/Backspace (Control + Shift + S/D)",
+                        "manipulators": [
+                            {
+                                "description": "Left Control + Left Shift + S -> Backspace",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_control", "left_shift"] }
+                                },
+                                "to": [{ "key_code": "delete_or_backspace" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Left Control + Left Shift + D -> Forward Delete",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_control", "left_shift"] }
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Left Control + Left Shift + Left Alt + S -> Option + Backspace",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_control", "left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Left Control + Left Shift + Left Alt + D -> Option + Forward Delete",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_control", "left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "[Internal Keyboard] fn -> left_control",
                         "manipulators": [
                             {
