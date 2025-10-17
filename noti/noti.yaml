@@ -1,0 +1,5 @@
+---
+nsuser:
+  soundName: Glass      # Success sound
+  soundNameFail: Basso  # Failure sound
+  sticky: false         # Don't make notifications sticky by default
