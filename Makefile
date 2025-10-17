@@ -187,8 +187,6 @@ install:
 
 	@m appearance --highlightcolor grape
 
-	@$(SHELL) 'source ableton/setup-mcp.sh'
-
 	@echo "setup ghostty symlinks"
 	@mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
 	@$(REMOVE) ~/Library/Application\ Support/com.mitchellh.ghostty/config
