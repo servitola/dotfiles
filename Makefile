@@ -119,6 +119,10 @@ install:
 	@$(REMOVE) ~/.config/amp
 	@$(LINK) ~/projects/dotfiles/amp ~/.config/amp
 
+	@echo "setup noti"
+	@$(REMOVE) ~/.config/noti
+	@$(LINK) ~/projects/dotfiles/noti ~/.config/noti
+
 	@echo "setup lazydocker symlinks"
 	@$(REMOVE) ~/Library/Application\ Support/lazydocker/config.yml
 	@$(LINK) ~/projects/dotfiles/lazydocker/config.yml ~/Library/Application\ Support/lazydocker/config.yml
