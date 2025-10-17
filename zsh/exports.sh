@@ -27,9 +27,8 @@ export DOTNET_ROOT=/usr/local/share/dotnet
 export USER_DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
-export PATH=$PATH:/usr/local/opt/sqlite/bin
-export PATH=$PATH:/usr/local/share/dotnet
 export PATH=$PATH:/Users/servitola/.dotnet/tools
+export PATH=$PATH:/usr/local/opt/sqlite/bin
 
 # JetBrains
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
