@@ -1,0 +1,54 @@
+{
+  "cleanupPeriodDays": 90,
+  "model": "claude-sonnet-4-20250514",
+  "includeCoAuthoredBy": false,
+  "env": {
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1",
+    "DISABLE_AUTOUPDATER": "0",
+    "BASH_DEFAULT_TIMEOUT_MS": "480000",
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "16384",
+    "ANTHROPIC_LOG": "info",
+    "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "false"
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Fetch",
+      "Glob",
+      "Grep",
+      "LS",
+      "MultiEdit",
+      "Read",
+      "Task",
+      "TodoWrite",
+      "WebFetch",
+      "WebSearch",
+      "Write"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./secrets/**)",
+      "Read(./config/credentials.json)",
+      "Read(./node_modules/**)",
+      "Read(./.git/**)",
+      "Read(./build/**)",
+      "Read(./dist/**)",
+      "Read(./.DS_Store)",
+      "Write(./.env)",
+      "Write(./.env.*)",
+      "Write(./secrets/**)",
+      "Write(./config/credentials.json)"
+    ]
+  },
+  "hooks": {
+    "beforeBash": "echo 'Executing command: {{command}}'",
+    "afterWrite": "echo 'File written: {{file}}'"
+  },
+  "feedbackSurveyState": {
+    "lastShownTime": 0
+  }
+}

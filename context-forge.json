@@ -1,0 +1,57 @@
+{
+  "project": {
+    "name": "servitola-dotfiles",
+    "type": "configuration",
+    "description": "Personal macOS dotfiles configuration with Hammerspoon, Karabiner, and development tools",
+    "version": "1.0.0"
+  },
+  "techStack": {
+    "primary": "shell",
+    "secondary": [
+      "lua",
+      "json",
+      "yaml"
+    ],
+    "tools": [
+      "hammerspoon",
+      "karabiner-elements",
+      "zsh",
+      "homebrew"
+    ],
+    "deployment": "symlinks"
+  },
+  "features": {
+    "prp": true,
+    "validation": true,
+    "hooks": true,
+    "documentation": true
+  },
+  "structure": {
+    "config": [
+      "hammerspoon",
+      "karabiner",
+      "zsh",
+      "git"
+    ],
+    "automation": [
+      "makefile",
+      "scripts"
+    ],
+    "apps": [
+      "homebrew/brewfile"
+    ]
+  },
+  "validation": {
+    "pre-commit": true,
+    "syntax-check": true,
+    "symlink-verify": true
+  },
+  "ai": {
+    "context": "dotfiles management and macOS automation",
+    "focus": [
+      "configuration",
+      "automation",
+      "system-integration"
+    ]
+  }
+}
