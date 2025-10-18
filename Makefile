@@ -96,6 +96,10 @@ install:
 	@$(REMOVE) ~/.config/eza
 	@$(LINK) ~/projects/dotfiles/eza ~/.config/eza
 
+	@echo "setup nano symlinks"
+	@$(REMOVE) ~/.nanorc
+	@$(LINK) ~/projects/dotfiles/nano/nanorc ~/.nanorc
+
 	@echo "setup aichat symlinks"
 	@mkdir -p ~/Library/Application\ Support/aichat
 	@$(REMOVE) ~/Library/Application\ Support/aichat/config.yaml
