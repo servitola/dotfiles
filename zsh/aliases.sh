@@ -96,3 +96,5 @@ alias bu="brew uninstall"
 
 # whisper
 alias w="whisperx --compute_type int8 --device cpu --model large-v3"
+
+alias lg="lazygit"
