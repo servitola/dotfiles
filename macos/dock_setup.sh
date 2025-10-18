@@ -20,9 +20,9 @@ defaults write com.apple.ActivityMonitor IconType -int 5
 echo "Remove all Dock icons"
 dockutil --no-restart --remove all
 
-echo "Set LaunchPad to Dock"
+echo "Set Apps application to Dock"
 dockApps=(
-  "/Applications/LaunchPad.app"
+  "/Applications/Apps.app"
 )
 
 for i in "${dockApps[@]}"
