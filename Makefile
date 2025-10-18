@@ -155,7 +155,7 @@ install:
 	@echo "Syncing gruvbox-wallpapers"
 	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
 
-	@m appearance highlightcolor grape
+	@m appearance --highlightcolor grape
 
 	@$(SHELL) 'source ableton/setup-mcp.sh'
 
