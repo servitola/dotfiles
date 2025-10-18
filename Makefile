@@ -21,6 +21,8 @@ install:
 	@echo "setup git symlinks"
 	@$(REMOVE) ~/.gitconfig
 	@$(LINK) ~/projects/dotfiles/git/gitconfig ~/.gitconfig
+	@$(REMOVE) ~/.config/git/ignore
+	@$(LINK) ~/projects/dotfiles/git/global_ignore ~/.config/git/ignore
 
 	@echo "setup karabiner symlinks"
 	@$(REMOVE) ~/.config/karabiner
