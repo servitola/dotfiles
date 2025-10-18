@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Load zsh-defer plugin first
-source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
+# source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
 
 # set homebrew autoupdate each 24 hours
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
@@ -29,19 +29,13 @@ source ~/projects/dotfiles/zsh/exports.sh
 # Load completion system
 autoload -Uz compinit && compinit
 
-# Load zoxide settings
-source ~/projects/dotfiles/zsh/zoxide.sh
-
-# Initialize zoxide
-eval "$(zoxide init zsh)"
-
 # Load fzf-tab (must be loaded after compinit but before other completion plugins)
-source ~/projects/dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-source ~/projects/dotfiles/zsh/fzf-tab-config.sh
+# source ~/projects/dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+# source ~/projects/dotfiles/zsh/fzf-tab-config.sh
 
 # Load fzf integration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/projects/dotfiles/zsh/fzf.sh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# source ~/projects/dotfiles/zsh/fzf.sh
 
 # Load better completion and navigation
 source ~/projects/dotfiles/zsh/completion.sh
