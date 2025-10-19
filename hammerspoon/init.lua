@@ -2,7 +2,7 @@ hs.console.clearConsole()
 hs.console.darkMode(true)
 hs.console.alpha(0.99)
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
-hs.keycodes.setLayout("English - Ilya Birman Typography")
+hs.keycodes.setLayout("En Birman")
 
 hs.loadSpoon("GruvboxWallpapers") -- set new wallpaper
 hs.loadSpoon("Windows") -- window management
