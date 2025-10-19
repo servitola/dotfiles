@@ -3,6 +3,7 @@
 SHELL := /bin/zsh -c
 REMOVE := sudo rm -rf
 LINK :=sudo ln -sfvh
+COPY := sudo cp -r
 
 install:
 
@@ -17,6 +18,10 @@ install:
 	@echo "setup hosts file (perhaps you need to do it manually later)"
 	@$(REMOVE) /etc/hosts
 	@$(LINK) ~/projects/dotfiles/macos/hosts /etc/hosts
+
+	@echo "setup Birman Layout"
+	@$(REMOVE) /Library/Keyboard\ Layouts/Birman.bundle
+	@$(COPY) ~/projects/dotfiles/keyboard-layout/Birman.bundle /Library/Keyboard\ Layouts/Birman.bundle
 
 	@echo "setup git symlinks"
 	@$(REMOVE) ~/.gitconfig

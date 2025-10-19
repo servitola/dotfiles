@@ -5,9 +5,9 @@ appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
       if(bundleId == "ru.keepcoder.Telegram"
          or bundleId == "one.ayugram.AyuGramDesktop")
       then
-        hs.keycodes.setLayout("Russian – Ilya Birman Typography")
+        hs.keycodes.setLayout("Ru Birman")
       else
-        hs.keycodes.setLayout("English – Ilya Birman Typography")
+        hs.keycodes.setLayout("En Birman")
       end
   end
 end)
