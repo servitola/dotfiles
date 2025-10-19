@@ -19,6 +19,7 @@
 -- 7: YouTube — Navigate to 70% of video
 -- 8: YouTube — Navigate to 80% of video
 -- 9: YouTube — Navigate to 90% of video
+-- ⇥  Unix Terminal — complete
 -- t: YouTube — Theatre mode
 -- i: YouTube — Minimize video
 -- ↩: Music — Play selected song from beginning
