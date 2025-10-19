@@ -25,25 +25,46 @@ return { modifier="left_control", chords={
 --    📝 — go to tab 8
 -- 9: 📝 — go to tab 9
 -- 0: 📝 — go to last tab
+-- -: Unix Terminal — undo last edit
 -- ⇥:  — switch tab forward
 -- q: ℝ — stop all
 --    📝 — switch between panels
 -- w: ℝ — close all notifications
+--    Unix Terminal — cut word backwards
 -- e: ℝ — find usages (custom)
+--    Unix Terminal — goto end of line
 -- r: ℝ — run
+--    Unix Terminal — reverse history search (decremental)
 -- t: ℝ — refactor this
+--    Unix Terminal — swap letters
+-- y: Unix Terminal — paste what was cut in terminal
 -- o: ℝ — override
+--    Unix Terminal — accept line and fetch next from history
+-- p: Unix Terminal — cycle though last commands back
 -- ↩:  — open context menu
 --    ℝ — generate (alternative to cmd + n)
 -- a: ℝ🔄 — git annotate (blame) (custom)
+--    Unix Terminal — goto begining of line
 -- s: ℝ — save with format (idea + custom macros)
+--    Unix Terminal — reverse history search (incremental)
 -- d: ℝ — debug (idea)
 --     — delete letter to the right
+--    Unix Terminal — delete letter to the right
+--    Unix Terminal — list completions (if line empty, logout)
 -- f: ℝ — focus Find panel
+--    Unix Terminal — forward one letter
 -- g: ℝ🔄 — focus Git panel
--- h:  — delete letter to the left
--- k:  — delete all text till the end of line
--- l: iTerm — Clear window
+-- h:  — cut letter to the left
+--    Unix Terminal — cut letter to the left
+-- k:  — cut all text till the end of line
+--    Unix Terminal — cut to the end of line
+-- l: Unix Terminal — clear window
+-- z: Unix Terminal — suspend (background)
+-- z + x: Unix Terminal — edit command in $EDITOR
+-- x + x: Unix Terminal — toggle between cursor and mark
+-- c: Unix Terminal — cancel/interrupt
+-- b: Unix Terminal — forward one letter
+-- p: Unix Terminal — cycle though last commands forward
 -- ␣:  — change language layout
 }
 }
