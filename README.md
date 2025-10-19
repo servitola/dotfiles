@@ -1,6 +1,6 @@
 # servitola dotfiles
 This is my answer to the question: "How to live with your MacOS?"
-I use this configuration and adjust it on two of my Macs: Mac Studio M1Pro and MacBook Pro 16 M3Pro since January 21, 2020. I try to sync every single property that can be synced.
+I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBook Pro 16 M3Pro, MacBook Pro 16 i9 2019 since January 21, 2020. I try to sync every single property that can be synced.
 
 ## CAUTION: I use this configuration, and it works, but the installation was not debugged on a new machine.
 ## I will be glad if you find any issues and report them.
@@ -10,7 +10,7 @@ I use this configuration and adjust it on two of my Macs: Mac Studio M1Pro and M
 * A: Look at the [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh) which uses [duti](https://github.com/moretension/duti). You'll easily understand how to add your file extension. Get your [app's name](https://stackoverflow.com/a/39464824/817396).
 
 * Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> to turn on <ins>automatically everywhere</ins> except in my messenger (I use [Telegram](https://telegram.org/))
-* A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for that: **Keyboard Pilot** but it conflicts with Ilya's layouts.
+* A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for the switching: **Keyboard Pilot** but it conflicts with Ilya's layouts.
 
 * Q: I want to <ins>manipulate my windows</ins> from my keyboard and I want only 4 or fewer easy positions
 * A: The easiest window management: `ctrl + alt + arrow keys`
@@ -50,7 +50,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
 
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
-* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extenions
+* A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extensions
 
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use the **yt-dlp** command with any link. For example:
@@ -104,9 +104,9 @@ You will be asked to install command tools - agree.
 * Q: I want to save my global NPM packages list and install/update them
 * A: Check the [npm-list](https://github.com/servitola/dotfiles/blob/master/npm/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/npm/install-globals.sh)
 
-* Q: How to log in Hammerspoon to Hammerspoon's console faster?
-* A: In Hammerspoon's Lua file, write down:
-```print "log message"```
+* Q: I want to save my global Python packages list and install/update them
+* A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
+
 #
 ## Extra:
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
