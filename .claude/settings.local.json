@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/servitola/.hammerspoon/Spoons/HotKeys.spoon/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

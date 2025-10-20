@@ -38,6 +38,9 @@ brew cleanup
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
+print_task "Update VSCode extensions"
+code --update-extensions
+
 source ~/projects/dotfiles/npm/install-globals.sh
 source ~/projects/dotfiles/python/install-globals.sh
 

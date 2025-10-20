@@ -1,5 +1,5 @@
 -- ╭—————╮__1.ENGLISH______╭—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬—————┬———————╮
--- │  `  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │    ⌫  │
+-- │  ⎋  │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │  -  │  =  │    ⌫  │
 -- ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬—————┤
 -- │  ⇥    │  q  │  w  │  e  │  r  │  t  │  y  │  u  │  i  │  o  │  p  │  [  │  ]  │  ↩  │
 -- ├———————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮    │
@@ -9,7 +9,7 @@
 -- ├————————┬┴————┬┴—————┼—————┴—————┴—————┴—————┴—————┼—————┴┬————┴┬————┴———————————————╯
 -- │  ⌃     │  ⌥  │   ⌘  │             ␣               │  ⌘   │  ⌥  │
 -- ╰————————┴—————┴——————┴—————————————————————————————┴——————┴—————╯
--- 0: YouTube — Navigate to 0% of video
+-- ⎋: escape
 -- 1: YouTube — Navigate to 10% of video
 -- 2: YouTube — Navigate to 20% of video
 -- 3: YouTube — Navigate to 30% of video
@@ -19,6 +19,7 @@
 -- 7: YouTube — Navigate to 70% of video
 -- 8: YouTube — Navigate to 80% of video
 -- 9: YouTube — Navigate to 90% of video
+-- 0: YouTube — Navigate to 0% of video
 -- ⇥  Unix Terminal — complete
 -- t: YouTube — Theatre mode
 -- i: YouTube — Minimize video

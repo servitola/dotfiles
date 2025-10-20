@@ -14,10 +14,16 @@ function set_window(x, y, width, height, window)
         return
     end
 
-    window:setFrame({
+    local new_frame = {
         x = screen_frame.x + (screen_frame.w * x),
         y = screen_frame.y + (screen_frame.h * y),
         w = screen_frame.w * width,
         h = screen_frame.h * height
-    }, animation_duration)
+    }
+
+    local current_frame = window:frame()
+
+    if not current_frame:equals(new_frame) then
+        window:setFrame(new_frame, animation_duration)
+    end
 end
