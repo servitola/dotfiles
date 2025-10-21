@@ -32,7 +32,7 @@ alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
-alias rm="rm -f"
+alias rm="trash"
 alias cat=bat
 alias mkdir="mkdir -pv"
 alias grep='grep --color=auto'
