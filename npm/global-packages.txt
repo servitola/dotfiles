@@ -8,3 +8,6 @@ appium
 @cocal/google-calendar-mcp
 trash-cli
 claude-hooks
+@builder.io/ai-shell
+trash-cli
+@deepracticex/ai-chat

@@ -27,5 +27,8 @@
     ],
     "deny": []
   },
-  "alwaysThinkingEnabled": false
+  "alwaysThinkingEnabled": false,
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  }
 }
