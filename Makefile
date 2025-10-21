@@ -13,6 +13,9 @@ install:
 	@$(SHELL) 'source xcode/install.sh'
 	@$(SHELL) 'source homebrew/install.sh'
 	@$(SHELL) 'source homebrew/install_minimum_homebrew_packages.sh'
+	@echo "Linking Homebrew completions for external commands"
+	@brew completions link
+
 	@$(SHELL) 'source zsh/setup_zsh.sh'
 
 	@echo "setup hosts file (perhaps you need to do it manually later)"
