@@ -49,6 +49,10 @@ dotnet tool update -g dotnet-trace
 
 print_section "System Maintenance"
 
+print_task "Rebuilding zsh completion cache"
+rm -f ~/.zcompdump* 2>/dev/null
+chmod -R go-w "$(brew --prefix)/share" 2>/dev/null || true
+
 print_task "Flushing DNS cache"
 dscacheutil -flushcache
 killall -HUP mDNSResponder
