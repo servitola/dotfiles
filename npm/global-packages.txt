@@ -6,3 +6,4 @@ appium
 @openai/codex
 @modelcontextprotocol/server-filesystem
 @cocal/google-calendar-mcp
+trash-cli
