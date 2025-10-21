@@ -154,6 +154,9 @@ install:
 	@echo "run dock setup. Run once again when dockutil is installed please!"
 	@$(SHELL) 'source macos/dock_setup.sh'
 
+	@echo "setting iTerm2 to use settings from dotfiles"
+	@$(SHELL) 'source iterm/install.sh'
+
 	@echo "installing Global NPM Packages"
 	@$(SHELL) 'source npm/install-globals.sh'
 
