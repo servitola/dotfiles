@@ -1,47 +1,86 @@
-# Better completion system
-autoload -Uz compinit && compinit
+# =============================================================================
+# Zsh Completion Configuration
+# =============================================================================
 
-# Load required modules
+# Load the zsh/complist module for advanced menu selection features
 zmodload zsh/complist
 
-# Make completion immediate
+# Start menu selection immediately (no need to press TAB multiple times)
 zstyle ':completion:*' menu select=0
 
-# Use menu selection with immediate navigation
+# Enable visual menu selection with arrow key navigation
 zstyle ':completion:*' menu select
+
+# Don't insert tab character if there's nothing to complete
 zstyle ':completion:*' insert-tab false
+
+# Complete special directories like . and ..
 zstyle ':completion:*' special-dirs true
 
-# Allow immediate arrow key navigation in menu
-bindkey -M menuselect '^[[A' up-line-or-history
-bindkey -M menuselect '^[[B' down-line-or-history
-bindkey -M menuselect '^[[C' forward-char
-bindkey -M menuselect '^[[D' backward-char
+# Allow immediate arrow key navigation in completion menu
+# This makes completion feel more responsive and intuitive
+bindkey -M menuselect '^[[A' up-line-or-history      # Up arrow
+bindkey -M menuselect '^[[B' down-line-or-history    # Down arrow
+bindkey -M menuselect '^[[C' forward-char            # Right arrow
+bindkey -M menuselect '^[[D' backward-char           # Left arrow
 
-# Case insensitive path-completion 
-zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+# Make completions case-insensitive
+zstyle ':completion:*' matcher-list \
+    'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
+    'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
-# Faster completion
+# -----------------------------------------------------------------------------
+# Performance Optimizations
+# -----------------------------------------------------------------------------
+# Accept exact matches even if there are ambiguous matches
+# This speeds up completion when you know exactly what you want
 zstyle ':completion:*' accept-exact '*(N)'
+
+# Enable completion caching for faster subsequent completions
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.zsh/.zcompcache"
 
-# Better directory stack navigation
+# -----------------------------------------------------------------------------
+# Directory Navigation Enhancements
+# -----------------------------------------------------------------------------
+# Automatically push directories onto the directory stack
 setopt AUTO_PUSHD
+
+# Don't push duplicate directories onto the stack
 setopt PUSHD_IGNORE_DUPS
+
+# Don't print directory stack after pushd/popd
 setopt PUSHD_SILENT
 
-# Better history navigation
+# -----------------------------------------------------------------------------
+# History Configuration
+# -----------------------------------------------------------------------------
+# Keep 10,000 lines of command history
 HISTSIZE=10000
 SAVEHIST=10000
+
+# Remove duplicate commands from history
 setopt HIST_IGNORE_ALL_DUPS
+
+# Don't save duplicate commands
 setopt HIST_SAVE_NO_DUPS
+
+# Remove unnecessary whitespace from commands before saving
 setopt HIST_REDUCE_BLANKS
+
+# Append to history immediately (not when shell exits)
 setopt INC_APPEND_HISTORY
+
+# Save timestamps and durations in history
 setopt EXTENDED_HISTORY
 
-# Make Tab key behavior more intuitive
-bindkey -M emacs '^I' menu-complete
-bindkey -M viins '^I' menu-complete
-bindkey -M emacs '^[[Z' reverse-menu-complete
-bindkey -M viins '^[[Z' reverse-menu-complete
+# -----------------------------------------------------------------------------
+# Tab Key Behavior
+# -----------------------------------------------------------------------------
+# Make TAB key cycle through completions immediately (like Bash)
+# Default zsh behavior requires TAB TAB to start cycling
+# This makes it more intuitive for users coming from other shells
+bindkey -M emacs '^I' menu-complete              # TAB cycles forward
+bindkey -M viins '^I' menu-complete              # TAB cycles forward (vi mode)
+bindkey -M emacs '^[[Z' reverse-menu-complete    # Shift-TAB cycles backward
+bindkey -M viins '^[[Z' reverse-menu-complete    # Shift-TAB cycles backward (vi mode)

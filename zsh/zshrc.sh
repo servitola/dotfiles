@@ -1,51 +1,57 @@
-# init powerlevel10k theme with its Instant Prompt feature
+# =============================================================================
+# .zshrc - Interactive Shell Configuration
+# =============================================================================
+
+# Powerlevel10k Instant Prompt
+# Should stay close to the top of .zshrc for optimal performance
 ZSH_THEME="powerlevel10k/powerlevel10k"
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Load zsh-defer plugin first
-# source ~/projects/dotfiles/zsh/plugins/zsh-defer/zsh-defer.plugin.zsh
-
-# set homebrew autoupdate each 24 hours
+# Auto-update Homebrew every 24 hours when running brew commands
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
-export HOMEBREW_NO_ENV_HINTS=1
 
 # Disable telemetry for Claude Code
 export CLAUDE_CODE_ENABLE_TELEMETRY=0
 
-DISABLE_UPDATE_PROMPT=true
-
+# Locale Configuration
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Load plugins and theme configuration
+# -----------------------------------------------------------------------------
+# Plugin Configuration (BEFORE oh-my-zsh loads)
+# -----------------------------------------------------------------------------
+# Define which oh-my-zsh plugins to load
 source ~/projects/dotfiles/zsh/plugins.sh
 
-# Load exports first to set up PATH
-source ~/projects/dotfiles/zsh/exports.sh
+# Oh My Zsh Initialization
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
-# Load completion system
-autoload -Uz compinit && compinit
-
-# Load fzf-tab (must be loaded after compinit but before other completion plugins)
+# -----------------------------------------------------------------------------
+# FZF Integration (currently disabled)
+# -----------------------------------------------------------------------------
+# Uncomment to enable fuzzy finder integration
+# Must be loaded AFTER compinit (oh-my-zsh) but BEFORE other completion plugins
 # source ~/projects/dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 # source ~/projects/dotfiles/zsh/fzf-tab-config.sh
-
-# Load fzf integration
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # source ~/projects/dotfiles/zsh/fzf.sh
 
-# Load better completion and navigation
+# -----------------------------------------------------------------------------
+# Custom Completion Configuration
+# -----------------------------------------------------------------------------
+# Load AFTER oh-my-zsh called compinit
+# This file only configures completion behavior (menu selection, caching, etc.)
+# It does NOT initialize the completion system
 source ~/projects/dotfiles/zsh/completion.sh
 
-source ~/.oh-my-zsh/oh-my-zsh.sh
-
 source ~/projects/dotfiles/zsh/aliases.sh
-
 source ~/projects/dotfiles/zsh/history_settings.sh
 
+# Syntax Highlighting & Autosuggestions
+# Load syntax highlighting and autosuggestions from Homebrew
 if [[ $(uname -m) == 'arm64' ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -64,5 +70,8 @@ else
     echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
 fi
 
+# iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# broot (tree navigator) launcher
+# source /Users/servitola/.config/broot/launcher/bash/br
