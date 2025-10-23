@@ -52,6 +52,20 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
 * A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extensions
 
+* Q: I want to save my global NPM packages list and install/update them
+* A: Check the [npm-list](https://github.com/servitola/dotfiles/blob/master/npm/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/npm/install-globals.sh)
+
+* Q: I want to save my global Python packages list and install/update them
+* A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
+
+* Q: I want to convert audio file to text
+* A: I use [whisper-x](https://github.com/m-bain/whisperX). I use CPU conversion. I use alias 'w' for 'whisperx' with biggest model
+
+Convert:
+```
+w '~/test.mp3'
+```
+
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
 * A: I use [yt-dlp](https://github.com/yt-dlp/yt-dlp). Just use the **yt-dlp** command with any link. For example:
 ```
@@ -101,19 +115,6 @@ You will be asked to install command tools - agree.
 * Q: I want to understand what this repository installs exactly
 * A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), deletes configs at default places, creates symlinks, and completes the setup.
 
-* Q: I want to save my global NPM packages list and install/update them
-* A: Check the [npm-list](https://github.com/servitola/dotfiles/blob/master/npm/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/npm/install-globals.sh)
-
-* Q: I want to save my global Python packages list and install/update them
-* A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
-
-* Q: I want to convert audio file to text
-* A: I use [whisper-x](https://github.com/m-bain/whisperX). I use CPU conversion. I use alias 'w' for 'whisperx' with biggest model
-
-Convert:
-```
-w '~/test.mp3'
-```
 #
 ## Extra:
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
