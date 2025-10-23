@@ -64,6 +64,7 @@ return { modifier="right_command", chords={
 -- e: ℝ — recent files dialog
 --    Telegram — toggle camera
 --    📝 — find with selection
+--    Google Meets — toggle video
 -- r: ℝ — replace in current file
 --    🌐 — refresh page
 --    Telegram — record audio/video message
@@ -100,6 +101,7 @@ return { modifier="right_command", chords={
 --     dialog — choose Don't Save option
 --    🌐 — add page to bookmarks
 --    iTerm — split pane vertically
+--    Google Meets — toggle mic
 -- f: find
 -- g: ℝ🔄 — git operations popup (custom)
 --    🌐 — find or find next
