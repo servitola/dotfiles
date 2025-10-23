@@ -63,7 +63,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 
 Convert:
 ```
-w '~/test.mp3'
+w ~/test.mp3
 ```
 
 * Q: I want to <ins>download a video</ins> from <ins>YouTube</ins> or <ins>RuTube</ins>:
