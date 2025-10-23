@@ -107,6 +107,13 @@ You will be asked to install command tools - agree.
 * Q: I want to save my global Python packages list and install/update them
 * A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
 
+* Q: I want to convert audio file to text
+* A: I use [whisper-x](https://github.com/m-bain/whisperX). I use CPU conversion. I use alias 'w' for 'whisperx' with biggest model
+
+Convert:
+```
+w '~/test.mp3'
+```
 #
 ## Extra:
 * [JetBrains Rider](https://www.jetbrains.com/rider/) settings
