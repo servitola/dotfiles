@@ -6,9 +6,6 @@ export TERM='xterm-256color'
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
-# Homebrew completions
-export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
-
 # System Paths
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/bin
@@ -58,7 +55,7 @@ export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
-# CLAUDE SPOTWARE
+# Claude Spotware Configuration
 export ANTHROPIC_BASE_URL="https://ccflare.dev.pl.spotwa.re"
 export DISABLE_BUG_COMMAND="1"
 export DISABLE_ERROR_REPORTING="1"
