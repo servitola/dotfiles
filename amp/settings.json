@@ -1,3 +1,12 @@
 {
-  "amp.dangerouslyAllowAll": true
+  "amp.tab.enabled": true,
+  // Disable updates. Updated with other global npm packages
+  "amp.updates.mode": "disabled",
+  "amp.mcpServers": {},
+  "amp.permissions": [
+    {
+      "tool": "*",
+      "action": "allow"
+    }
+  ]
 }
