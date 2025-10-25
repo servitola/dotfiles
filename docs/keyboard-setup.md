@@ -79,6 +79,29 @@ Each layout file contains:
 - **Visual layout**: ASCII art showing what each key does
 - **Key definitions**: Specific chord mappings for applications and functions
 
+### Lua File Format
+
+Each layout file is a Lua table with the following structure:
+
+```lua
+return {
+  modifier = {"modifier1", "modifier2"},  -- Array of modifier keys that activate this layer
+  chords = {                             -- Array of key mappings
+    { key = "a", app = "Application Name" },                    -- Launch app
+    { key = "b", specific_function = "function_name" },         -- Run custom function
+    { key = "c", app = "App", window_default_position = "left" } -- Launch with window positioning
+  }
+}
+```
+
+#### Attributes:
+
+- **`modifier`**: Array of Hammerspoon modifier names (`"hyper"`, `"left_control"`, `"left_shift"`, `"left_option"`, `"left_command"`)
+- **`chords`**: Array of chord definitions containing:
+  - **`key`**: The key that triggers the action (single character or key name like `"escape"`, `"tab"`)
+  - **`app`**: Application name to launch (must match macOS application name exactly)
+  - **`specific_function`**: Name of a custom function defined in `HotKeys.spoon/init.lua` (e.g., `"window.left"`, `"audio.internal"`)
+  - **`window_default_position`**: Optional window positioning (`"left"`, `"right"`, `"bottom"`)
 ### Available Layout Files
 
 **These files serve dual purposes:**
