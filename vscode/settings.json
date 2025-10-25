@@ -43,5 +43,8 @@
     "git.autofetch": true,
     "amp.url": "https://ampcode.com/",
     "amp.tab.enabled": true,
-    "editor.wordBasedSuggestions": "off"
+    "editor.wordBasedSuggestions": "off",
+    "amp.dangerouslyAllowAll": true,
+    "amp.experimental.promptAutocompleteMode": "tab",
+    "amp.experimental.reviewTool": true
 }
