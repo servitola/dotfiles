@@ -170,4 +170,9 @@ install:
 
 	@$(SHELL) 'source ableton/setup-mcp.sh'
 
+	@echo "setup ghostty symlinks"
+	@mkdir -p ~/Library/Application\ Support/com.mitchellh.ghostty
+	@$(REMOVE) ~/Library/Application\ Support/com.mitchellh.ghostty/config
+	@$(LINK) ~/projects/dotfiles/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
+
 	@echo "Installation complete!"
