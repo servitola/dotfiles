@@ -1,7 +1,5 @@
 function is_small_dialog(window)
-    if window == nil then
-        return false
-    end
+    if not window then return false end
 
     local app_title = window:application():title()
     local window_title = window:title()

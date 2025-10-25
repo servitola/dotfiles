@@ -1,5 +1,5 @@
 function set_window_bottom(window)
-    if window == nil then
+    if not window then
         window = hs.window.frontmostWindow()
     end
 
@@ -17,15 +17,17 @@ function set_window_bottom(window)
     local is_video = is_yandex_video_player(app_title, window_title, window) or
                     is_firefox_video_player(app_title, window_title) or
                     app_title == "IINA" or
-                    string.find(window_title or "", "YouTube") or
-                    string.find(window_title or "", "video")
+                     (window_title and (
+                         string.find(window_title, "YouTube") or
+                         string.find(window_title, "video")
+                     ))
 
     if is_video then
         local current = window:frame()
         local aspect_ratio = current.h / current.w
         local max_available_height = screen_frame.h * (1 - horizontal_line - spacing * 2)
 
-        if height > max_available_height or (aspect_ratio > 1.2) then
+        if height > max_available_height or aspect_ratio > 1.2 then
             height = max_available_height
             width = height / aspect_ratio
 

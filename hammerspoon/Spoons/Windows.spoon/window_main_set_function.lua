@@ -1,5 +1,5 @@
 function set_window(x, y, width, height, window)
-    if window == nil then
+    if not window then
         window = hs.window.frontmostWindow()
     end
 
