@@ -21,7 +21,7 @@ local layoutFiles = {
     "15. Hyper_Shift", -- ⇪ ⇧
     "16. Command_Shift", -- ⌘ ⇧
     "17. Command_Alt", -- ⌘ ⌥
-    "18. Command_Conrol", -- ⌘ ⌃
+    "18. Command_Control", -- ⌘ ⌃
     "19. Control_Shift", -- ⌃ ⇧
     "20. Control_Alt", -- ⌃ ⌥
     "21. Hyper_Alt_Command", -- ⇪ ⌥ ⌘
