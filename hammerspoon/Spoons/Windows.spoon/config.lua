@@ -2,7 +2,7 @@ right_side_app_titles = {}
 bottom_side_app_titles = { "IINA" , "Transmission", "YouTubeStream" }
 
 margin = 0.005
-animation_duration = 0.05
+animation_duration = 0.044
 horizontal_line = 0.70
 vertical_line = 0.73
 

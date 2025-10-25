@@ -141,13 +141,11 @@ function set_all_windows_positions()
             }, animation_duration)
         elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
-        elseif is_music_mini_player(app_title, window_title) then
-            set_window_bottom(window)
-        elseif is_firefox_video_player(app_title, window_title) then
-            set_window_bottom(window)
-        elseif is_yandex_video_player(app_title, window_title, window) then
-            set_window_bottom(window)
-        elseif is_finder_copy_dialog(app_title, window_title, window) then
+        elseif is_music_mini_player(app_title, window_title) or
+               is_firefox_video_player(app_title, window_title) or
+               is_yandex_video_player(app_title, window_title, window) or
+               is_finder_copy_dialog(app_title, window_title, window) or
+               is_activity_monitor_small_window(app_title, window_title, window) then
             set_window_bottom(window)
         elseif is_activity_monitor_cpu_window(app_title, window_title) then
             set_window_right(window)
