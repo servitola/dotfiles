@@ -1,4 +1,5 @@
 {
+  "globalShortcut": "",
   "mcpServers": {
     "filesystem": {
       "command": "/opt/homebrew/bin/npx",
@@ -33,8 +34,8 @@
       ]
     }
   },
-  "globalShortcut": "",
   "preferences": {
-    "menuBarEnabled": false
+    "menuBarEnabled": false,
+    "quickEntryDictationShortcut": "off"
   }
 }
