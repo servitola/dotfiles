@@ -57,5 +57,6 @@ return { modifier=hyper, chords={
 -- ,: home
 -- .: end
 -- /: volume down
+-- ␣: play/pause
 }
 }
