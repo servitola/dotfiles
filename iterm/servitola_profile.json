@@ -1,4 +1,5 @@
 {
+  "Set Local Environment Vars" : 2,
   "Working Directory" : "\/Users\/servitola",
   "Prompt Before Closing 2" : false,
   "Selected Text Color" : {
@@ -24,8 +25,9 @@
     "Alpha Component" : 1,
     "Green Component" : 0.82989895343780518
   },
-  "Use Custom Window Title" : false,
+  "Use Custom Window Title" : true,
   "Right Option Key Sends" : 0,
+  "Show Status Bar" : false,
   "Character Encoding" : 4,
   "Selection Color" : {
     "Red Component" : 0.90061241388320923,
@@ -36,10 +38,10 @@
   },
   "Triggers" : [
     {
-      "partial" : true,
+      "action" : "HighlightTrigger",
       "parameter" : "{#e2615b,}",
       "regex" : "error|ERROR|Error|Exception|EXCEPTION|exception",
-      "action" : "HighlightTrigger"
+      "partial" : true
     }
   ],
   "Mouse Reporting" : true,
@@ -54,6 +56,7 @@
   "Sync Title" : false,
   "Disable Window Resizing" : true,
   "Description" : "Default",
+  "Custom Locale" : "en_US.UTF-8",
   "Close Sessions On End" : true,
   "Jobs to Ignore" : [
     "rlogin",
@@ -79,7 +82,7 @@
     "Alpha Component" : 1,
     "Green Component" : 0.53254079818725586
   },
-  "Icon" : 0,
+  "Icon" : 2,
   "Use Non-ASCII Font" : false,
   "Link Color" : {
     "Red Component" : 0.7928692102432251,
@@ -96,11 +99,12 @@
     "Alpha Component" : 1,
     "Green Component" : 1
   },
+  "Custom Window Title" : "",
   "Unlimited Scrollback" : true,
   "Custom Command" : "No",
   "Keyboard Map" : {
-    "0x7f-0x80000" : {
-      "Text" : "0x1b 0x7f",
+    "0xf728-0x0" : {
+      "Text" : "0x4",
       "Action" : 11
     },
     "0xf702-0x280000" : {
@@ -110,6 +114,10 @@
     "0xf702-0x300000" : {
       "Text" : "0x1",
       "Action" : 11
+    },
+    "0xf703-0x280000" : {
+      "Text" : "f",
+      "Action" : 10
     },
     "0xf728-0x80000" : {
       "Text" : "d",
@@ -123,13 +131,9 @@
       "Text" : "0x5",
       "Action" : 11
     },
-    "0xf728-0x0" : {
-      "Text" : "0x4",
+    "0x7f-0x80000" : {
+      "Text" : "0x1b 0x7f",
       "Action" : 11
-    },
-    "0xf703-0x280000" : {
-      "Text" : "f",
-      "Action" : 10
     }
   },
   "Ansi 14 Color" : {
@@ -241,6 +245,13 @@
   "Command" : "",
   "Terminal Type" : "xterm-256color",
   "Horizontal Spacing" : 1,
+  "Tab Color" : {
+    "Red Component" : 0.45276486873626709,
+    "Color Space" : "P3",
+    "Blue Component" : 0.57255417108535767,
+    "Alpha Component" : 1,
+    "Green Component" : 0.63313275575637817
+  },
   "Option Key Sends" : 0,
   "Blink Allowed" : false,
   "Custom Icon Path" : "\/Users\/servitola\/projects\/dotfiles\/images\/avatars\/avatar211x211.png",
@@ -277,16 +288,16 @@
     "Alpha Component" : 1,
     "Green Component" : 0.43883562088012695
   },
-  "Use Tab Color" : false,
   "Columns" : 87,
+  "Use Tab Color" : true,
   "Visual Bell" : true,
   "Custom Directory" : "Recycle",
-  "ASCII Ligatures" : true,
   "Ansi 5 Color" : {
     "Red Component" : 0.62685638666152954,
     "Color Space" : "Calibrated",
     "Blue Component" : 0.45103743672370911,
     "Alpha Component" : 1,
     "Green Component" : 0.29604318737983704
-  }
+  },
+  "ASCII Ligatures" : true
 }

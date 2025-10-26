@@ -49,7 +49,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>ConvertDosNewlines</key>
 	<true/>
 	<key>Default Bookmark Guid</key>
-	<string>BDE315F2-4E54-40F8-93C6-314F2F20B729</string>
+	<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
 	<key>DefaultTabBarHeight</key>
 	<real>28</real>
 	<key>EscapeShellCharsWithBackslash</key>
@@ -403,6 +403,8 @@ The script should do this: \(ai.prompt)</string>
 			<string>/Users/servitola/projects/dotfiles/images/avatars/avatar211x211.png</string>
 			<key>Custom Locale</key>
 			<string>en_US.UTF-8</string>
+			<key>Custom Window Title</key>
+			<string></string>
 			<key>Default Bookmark</key>
 			<string>No</string>
 			<key>Description</key>
@@ -427,11 +429,11 @@ The script should do this: \(ai.prompt)</string>
 				<real>0.90061241388320923</real>
 			</dict>
 			<key>Guid</key>
-			<string>BDE315F2-4E54-40F8-93C6-314F2F20B729</string>
+			<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
 			<key>Horizontal Spacing</key>
 			<integer>1</integer>
 			<key>Icon</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Text</key>
@@ -575,10 +577,25 @@ The script should do this: \(ai.prompt)</string>
 			<integer>2</integer>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Status Bar</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Sync Title</key>
 			<false/>
+			<key>Tab Color</key>
+			<dict>
+				<key>Alpha Component</key>
+				<integer>1</integer>
+				<key>Blue Component</key>
+				<real>0.57255417108535767</real>
+				<key>Color Space</key>
+				<string>P3</string>
+				<key>Green Component</key>
+				<real>0.63313275575637817</real>
+				<key>Red Component</key>
+				<real>0.45276486873626709</real>
+			</dict>
 			<key>Tags</key>
 			<array>
 				<string>servitola</string>
@@ -607,13 +624,13 @@ The script should do this: \(ai.prompt)</string>
 			<key>Use Bright Bold</key>
 			<true/>
 			<key>Use Custom Window Title</key>
-			<false/>
+			<true/>
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Use Tab Color</key>
-			<false/>
+			<true/>
 			<key>Vertical Spacing</key>
 			<integer>1</integer>
 			<key>Visual Bell</key>
@@ -678,7 +695,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>ShowFullScreenTabBar</key>
 	<false/>
 	<key>SmartPlacement</key>
-	<true/>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>ToolbeltTools</key>
@@ -690,8 +707,8 @@ The script should do this: \(ai.prompt)</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
-	<integer>0</integer>
+	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
