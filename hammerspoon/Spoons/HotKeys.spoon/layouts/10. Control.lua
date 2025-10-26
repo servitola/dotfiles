@@ -54,6 +54,7 @@ return { modifier="left_control", chords={
 -- f: ℝ — focus Find panel
 --    Unix Terminal — forward one letter
 -- g: ℝ🔄 — focus Git panel
+--    📝 — goto line
 -- h:  — cut letter to the left
 --    Unix Terminal — cut letter to the left
 -- k:  — cut all text till the end of line
