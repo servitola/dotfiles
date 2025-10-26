@@ -18,4 +18,5 @@ return { modifier="alt", chords={
 -- z: 📝 — toggle wordwrap
 -- ␣: Music — Start Genious Shuffle
 { key="[", app="zoom.us" },
+-- double alt: Claude start dialog with screenshot
 }}
