@@ -158,8 +158,49 @@
                         ]
                     },
                     {
+                    "description": "Grave Accent to Escape",
+                        "manipulators": [
+                            {
+                                "from": {
+                                "key_code": "non_us_backslash"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper Layer",
                         "manipulators": [
+                        {
+                        "from": {
+                        "key_code": "non_us_backslash",
+                        "modifiers": { "mandatory": ["right_command", "right_control", "right_option", "right_shift"] }
+                        },
+                                "to": [
+                                {
+                                "key_code": "non_us_backslash"
+                                }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                            "from": {
+                            "key_code": "non_us_backslash",
+                            "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                            },
+                                "to": [
+                                {
+                                "key_code": "non_us_backslash",
+                                "modifiers": ["left_shift"]
+                                }
+                                ],
+                                "type": "basic"
+                            },
                             {
                                 "from": {
                                     "key_code": "escape",
