@@ -159,14 +159,66 @@
                     },
                     {
                     "description": "Grave Accent to Escape",
-                        "manipulators": [
-                            {
+                    "manipulators": [
+                    {
+                    "from": {
+                    "key_code": "non_us_backslash"
+                    },
+                    "to": [
+                    {
+                    "key_code": "escape"
+                    }
+                    ],
+                    "type": "basic"
+                    },
+                        {
                                 "from": {
-                                "key_code": "non_us_backslash"
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_command"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "escape"
+                                        "key_code": "escape",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_command", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape",
+                                        "modifiers": ["left_command", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
