@@ -164,6 +164,12 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 echo "Remove useless icons from Safari’s bookmarks bar"
 defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
+echo "Show the Develop menu in the menu bar"
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+echo "Show the Web Inspector in the Develop menu"
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+
 ###############################################################################
 echo "Transmission.app"                                                       #
 ###############################################################################
