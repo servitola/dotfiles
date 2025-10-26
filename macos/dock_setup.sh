@@ -17,6 +17,9 @@ defaults write com.apple.dock show-recents -bool false
 echo "Visualize CPU usage in the Activity Monitor Dock icon"
 defaults write com.apple.ActivityMonitor IconType -int 5
 
+echo "Show notification badges on dock icons"
+defaults write com.apple.dock show-process-indicators -bool true
+
 echo "Remove all Dock icons"
 dockutil --no-restart --remove all
 
