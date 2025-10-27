@@ -16,11 +16,11 @@ if [ -z "$(find "$DIR" -mindepth 1 -maxdepth 1 2>/dev/null)" ]; then
     exit 0
 fi
 
-ERROR_OUTPUT=$(find "$DIR" -mindepth 1 -delete 2>&1)
+# Clean with sudo directly
+ERROR_OUTPUT=$(sudo find "$DIR" -mindepth 1 -delete 2>&1)
 
 if [ $? -eq 0 ]; then
-    echo "  * $LABEL: cleaned"
+echo "  * $LABEL: cleaned"
 else
-    echo "  * $LABEL: Warn - failed to clean. $ERROR_OUTPUT"
-    exit 0
+    echo "  * $LABEL: ERROR - failed to clean. $ERROR_OUTPUT"
 fi
