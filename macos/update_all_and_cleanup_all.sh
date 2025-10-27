@@ -1,7 +1,7 @@
 #!/bin/zsh
 [[ ! -d "$PWD" ]] && { echo "❌ Current directory doesn't exist. Navigate to existing one, please"; return 1; }
 
-sudo -v
+sudo -v -S
 
 source ~/projects/dotfiles/zsh/functions.sh
 source ~/projects/dotfiles/zsh/aliases.sh
@@ -59,32 +59,32 @@ killall -HUP mDNSResponder
 
 print_task "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
-# "$TRY_CLEAN" ~/Library/Caches "Library Caches"
-# "$TRY_CLEAN" /Library/Caches "System Caches"
+"$TRY_CLEAN" ~/Library/Caches "Library Caches"
+"$TRY_CLEAN" /Library/Caches "System Caches"
 
 print_task "Cleaning logs"
-# "$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log" "Log files"
-# "$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log.0" "Rotated log files"
-# "$TRY_CLEAN" ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
-# "$TRY_CLEAN" /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
-# "$TRY_CLEAN" ~/.local/share/NuGet/v3-cache "NuGet Cache"
+"$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log" "Log files"
+"$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log.0" "Rotated log files"
+"$TRY_CLEAN" ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
+"$TRY_CLEAN" /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
+"$TRY_CLEAN" ~/.local/share/NuGet/v3-cache "NuGet Cache"
 
 print_task "Cleaning system files"
-# "$TRY_CLEAN_PATTERN" . f "*.DS_Store" "DS_Store files"
-# "$TRY_CLEAN_PATTERN" . d ".AppleD*" "Apple Double files"
+"$TRY_CLEAN_PATTERN" . f "*.DS_Store" "DS_Store files"
+"$TRY_CLEAN_PATTERN" . d ".AppleD*" "Apple Double files"
 
 print_task "Cleaning Trash"
-# "$TRY_CLEAN_PATTERN" /Volumes d ".Trashes" "Volume Trashes"
-# "$TRY_CLEAN_PATTERN" /private/var/log/asl f "*.asl" "ASL Logs"
-# if [ -w ~/.Trash ]; then
-#     "$TRY_CLEAN" ~/.Trash "User Trash"
-# else
-#     if rm -rf ~/.Trash/* 2>/dev/null; then
-#         echo "  * User Trash: cleaned (with elevated permissions)"
-#     else
-#         echo "  * User Trash: ERROR - permission denied (protected by system)"
-#     fi
-# fi
+"$TRY_CLEAN_PATTERN" /Volumes d ".Trashes" "Volume Trashes"
+"$TRY_CLEAN_PATTERN" /private/var/log/asl f "*.asl" "ASL Logs"
+if [ -w ~/.Trash ]; then
+    "$TRY_CLEAN" ~/.Trash "User Trash"
+else
+    if rm -rf ~/.Trash/* 2>/dev/null; then
+        echo "  * User Trash: cleaned (with elevated permissions)"
+    else
+        echo "  * User Trash: ERROR - permission denied (protected by system)"
+    fi
+fi
 
 setopt no_rm_star_silent #turn on safe mode back
 
