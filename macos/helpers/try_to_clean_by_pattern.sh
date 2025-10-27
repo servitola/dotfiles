@@ -23,16 +23,15 @@ if [ "$MATCHES" -eq 0 ]; then
     exit 0
 fi
 
-# Delete matches
+# Delete matches with sudo directly
 if [ "$TYPE" = "d" ]; then
-    find "$BASE_PATH" -type d -name "$PATTERN" -exec rm -rf {} \; 2>/dev/null
+ERROR_OUTPUT=$(sudo find "$BASE_PATH" -type d -name "$PATTERN" -exec rm -rf {} \; 2>&1)
 else
-    find "$BASE_PATH" -type "$TYPE" -name "$PATTERN" -delete 2>/dev/null
+ERROR_OUTPUT=$(sudo find "$BASE_PATH" -type "$TYPE" -name "$PATTERN" -delete 2>&1)
 fi
 
 if [ $? -eq 0 ]; then
-    echo "  * $LABEL: cleaned ($MATCHES items)"
+echo "  * $LABEL: cleaned ($MATCHES items)"
 else
-    echo "  * $LABEL: ERROR - failed to clean"
-    exit 0
+    echo "  * $LABEL: ERROR - failed to clean. $ERROR_OUTPUT"
 fi
