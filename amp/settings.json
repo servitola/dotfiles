@@ -8,5 +8,8 @@
       "tool": "*",
       "action": "allow"
     }
+  ],
+  "amp.guardedFiles.allowlist": [
+    "/Users/servitola/projects/Spotware/.claude/claude-code-commands.json"
   ]
 }

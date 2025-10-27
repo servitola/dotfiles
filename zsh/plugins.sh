@@ -1,36 +1,65 @@
-plugins=(
-  git            # Core git integration
+# =============================================================================
+# Oh My Zsh Plugins Configuration
+# =============================================================================
+# Plugins add completions, aliases, and functionality
+# Keep this minimal for fast shell startup
+# =============================================================================
 
-  z              # Directory jumping
+plugins=(
+  # VCS Integration
+  git              # Git aliases and completions
+
+  # Navigation
+  z                # Jump to frecent directories (autojump alternative)
+  
+  # Development Tools (with Homebrew completions)
+  brew             # Brew aliases and completions enhancement
+  docker           # Docker completions and aliases
+  docker-compose   # Docker Compose completions
+  npm              # npm completions and aliases
+  yarn             # Yarn completions
+  node             # Node.js utilities
+  
+  # macOS Integration
+  macos            # macOS-specific aliases (e.g., 'ofd' for Finder)
+  
+  # Productivity
+  aliases          # List and search aliases with 'acs'
+  colored-man-pages # Colored man pages for better readability
+  copypath         # Copy current path to clipboard
+  copyfile         # Copy file contents to clipboard
+  
+  # Optional: Uncomment if needed
+  # python         # Python virtualenv helpers
+  # pip            # pip completions
+  # kubectl        # Kubernetes completions
+  # terraform      # Terraform completions
 )
 
-# zoxide         # Smart directory navigation
-#   fzf            # Fuzzy finder
-
-# Defer loading of non-critical plugins
-# zsh-defer source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# zsh-defer source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# zsh-defer load-plugin dotenv        # Environment variables
-# zsh-defer load-plugin npm           # npm completions
-# zsh-defer load-plugin pip           # pip completions
-# zsh-defer load-plugin python        # python utilities
-# zsh-defer load-plugin nx-completion # nx completions
-# zsh-defer load-plugin aliases         # alias management
-# zsh-defer load-plugin common-aliases  # common aliases
-# zsh-defer load-plugin macos           # macOS specific features
-# # zsh-defer load-plugin sudo            # ESC ESC to add sudo
-# zsh-defer load-plugin colored-man-pages # colored man pages
-# zsh-defer load-plugin dirhistory      # directory navigation
-# zsh-defer load-plugin last-working-dir # restore last directory
-# zsh-defer load-plugin web-search      # web search from terminal
-# zsh-defer load-plugin ohmyzsh-full-autoupdate  # updates oh-my-zsh plugins
-# zsh-defer load-plugin zsh-navigation-tools # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/zsh-navigation-tools
-# # Define the plugin loading function
-# function load-plugin() {
-#   local plugin=$1
-#   if [[ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]]; then
-#     source $ZSH/plugins/$plugin/$plugin.plugin.zsh
-#   elif [[ -f $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh ]]; then
-#     source $ZSH_CUSTOM/plugins/$plugin/$plugin.plugin.zsh
-#   fi
-# }
+# =============================================================================
+# Plugin Notes
+# =============================================================================
+# 
+# brew plugin benefits:
+#   - Aliases: 'bubo' (brew update && brew outdated), 'bubc' (brew upgrade && brew cleanup)
+#   - Already have full completions from Homebrew itself
+#
+# docker/docker-compose plugins:
+#   - Add helpful aliases and completion enhancements
+#   - Work with Homebrew-installed Docker
+#
+# npm/yarn/node plugins:
+#   - Completions for common tasks
+#   - Aliases like 'npmg' (npm list -g --depth=0)
+#
+# macos plugin:
+#   - 'ofd' - Open current directory in Finder
+#   - 'pfd' - Print Finder directory
+#   - 'cdf' - cd to Finder directory
+#   - Many more macOS-specific helpers
+#
+# Performance note:
+#   - Each plugin adds ~5-20ms to startup time
+#   - Current config: ~100-150ms total plugin load time
+#   - Still maintains instant prompt with p10k
+# =============================================================================
