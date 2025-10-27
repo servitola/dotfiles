@@ -12,8 +12,9 @@
 
 
 '1' — 1st in a row button
--- ⌘: 1st tab in 📝, ℝ, 🌐
+-- ⌘: 1st tab in 🌐, Terminal
 -- ! ¹ ¡
+-- ⇪: F1
 -- plain: YouTube — Navigate to 10% of video
 -- ⌘: 📝, ℝ — focus solution explorer
 -- ⌘⇧: Visual Studio Code
@@ -22,8 +23,9 @@
 -- ⇪: F1 — 📝 — open commands palette
 
 '2' - 2nd in a row button
--- 2
--- @
+-- ⌘: 2st tab in 🌐, Terminal
+-- @ ² ¹⁄₂
+-- ⇪: F2
 -- plain: YouTube — Navigate to 20% of video
 -- ⌃: 📝 — go to tab 2
 -- ⌘→: ℝ — focus debug window
@@ -35,9 +37,10 @@
 '3' - 3rd in a row button
 -- 3
 -- #
+-- ⇪: F3
 -- plain: YouTube — Navigate to 30% of video
 -- ⌃: 📝 — go to tab 3
--- ⌘→: ℝ — focus unit tests explorer
+-- ⌘: ℝ — focus unit tests explorer
 -- ⌘⇧: Shotr — save screenshot of window ( native screenshot replaced)
 -- ⌘⌥: Fork — show commit filetree
 -- ⌃⇧: ℝ — toggle bookmark 3
@@ -101,6 +104,19 @@
 -- ⌘→: 🌐 — Reset zoom
 -- ⇪: F10
 
+'-' - minus/dash button
+-- - - - —
+-- _ _ _ –
+-- ⌃: Unix Terminal — undo last edit
+-- ⌘: Zoom out
+-- ⇪: F11 —  — show desktop
+
+'=' - plus/equals button
+-- =
+-- +
+-- ⌘→: 🌐 — Zoom in
+-- ⇪: F12 — 📝 — go to definition
+
 'tab' - switch to next button
 -- ⇥
 -- ⇧: select previous element, or move text block left
@@ -111,18 +127,43 @@
 -- ⌃⇧:  — go to previous tab
 -- ⇧: ↩ (enter)
 
-'space' - toggle/global_search button
--- toggle content preview
--- ␣ 'nbsp'
--- ⇧: ???
--- ⇪: play/pause
--- ⌃⇧⇪: play/pause
--- ⌃: change language layout
--- ⌘: Raycast
--- ⌥⌘:  — open Finder and focus Search this Mac
--- ⌥: Music — Start genious Shuffle
--- ⌘⌃:  — emogies
+'q' - quit/PgUp button
+-- q й ;
+-- Q Й :
+-- ⌘: close app
+-- ⌘⌃: logout
+-- ⌃⇧:  — log out with dialogs
+-- ⌘⇧:  — log out from account with closing of all apps
+-- ⇧: 🌐 Vim — go website root
+-- ⌃: ℝ — stop all
+-- ⇧: pageUp
+-- ⇧⌥⌘:  — close all other apps
 
+'w' - tab closing/up button
+-- w ц ς
+-- W Ц ΅
+-- ⌘: close tab
+-- ⌃: ℝ — close all notifications
+-- ⌘⇧: ℝ — close other tabs
+-- ⇧: up
+-- ⇧+⇧: move caret up and select text from the initial position
+-- ⇧+⌥: move line up
+-- ⇧+⌃:  — show all windows
+-- ⇧+⌘:  — go to the begining of the document
+-- ⇧+⌥⌘: 📝 — clone caret up
+-- ⌘⇧⇪: keyboard brightness up
+-- ⌃⇧⇪: volume up
+
+'e' - recent/PgDn button
+-- e у ε
+-- E У Ε
+-- ⌃: ℝ — find usages (custom)
+-- ⌘→: ℝ — recent files dialog
+-- ⌘⇧: ℝ — recent locations popup
+-- ⌘⌥: Music — show equalizer
+-- ⌘⌃: ℝ — show list of tabs of current panel
+-- ⇧: pagedown
+-- ⇧+⇧⌃: play/pause
 
 'return' - enter button
 -- ↩
@@ -201,17 +242,6 @@
 -- ⌃⌥: window.right
 -- ⇧: right
 -- ⇧⌃⌥: ⌦ — delete word to the right
-
-'e' - recent/PgDn button
--- e у ε
--- E У Ε
--- ⌃: ℝ — find usages (custom)
--- ⌘→: ℝ — recent files dialog
--- ⌘⇧: ℝ — recent locations popup
--- ⌘⌥: Music — show equalizer
--- ⌘⌃: ℝ — show list of tabs of current panel
--- ⇧: pagedown
--- ⇧+⇧⌃: play/pause
 
 'f' - find button
 -- f а φ
@@ -319,18 +349,6 @@
 -- ⇧: Music
 -- ⇧⌥⌘: Fork — quick Push
 
-'q' - quit/PgUp button
--- q й ;
--- Q Й :
--- ⌘: close app
--- ⌘⌃: logout
--- ⌃⇧:  — log out with dialogs
--- ⌘⇧:  — log out from account with closing of all apps
--- ⇧: 🌐 Vim — go website root
--- ⌃: ℝ — stop all
--- ⇧: pageUp
--- ⇧⌥⌘:  — close all other apps
-
 'r' - run button
 -- r к ρ ®
 -- R К Ρ ˚
@@ -394,14 +412,6 @@
 -- ⌃⌥: browser_youtube
 -- ⇧: Yandex
 
-'w' - tab closing/up button
--- w ц ς
--- W Ц ΅
--- ⌘: close tab
--- ⌃: ℝ — close all notifications
--- ⌘⇧: ℝ — close other tabs
--- ⇧: up
-
 'x' - cut button
 -- x ч χ
 -- X Ч Χ
@@ -449,13 +459,6 @@
 
 ', (home)'
 -- ⇧+⇧: select to the beginning of the line
-
-'-'
--- -
--- _
--- ⌃: Unix Terminal — undo last edit
--- ⌘→: 🌐 — Zoom out
--- ⇪: F11 —  — show desktop
 
 '.'
 -- .
@@ -516,12 +519,6 @@
 
 '<'
 -- ⇧: YouTube — speed down
-
-'='
--- =
--- +
--- ⌘→: 🌐 — Zoom in
--- ⇪: F12 — 📝 — go to definition
 
 '>'
 -- ⇧: YouTube — speed up
@@ -620,15 +617,6 @@
 -- ⇧+⌃: 📝 — scroll up (without moving caret)
 -- ⇧+⌘: 📝 — scroll up (without moving caret)
 
-'w (↑)'
--- ⇧+⇧: move caret up and select text from the initial position
--- ⇧+⌥: move line up
--- ⇧+⌃:  — show all windows
--- ⇧+⌘:  — go to the begining of the document
--- ⇧+⌥⌘: 📝 — clone caret up
--- ⇧+⌘⇧: increase keyboard brightness (karabiner)
--- ⇧+⇧⌃: volume up
-
 'x (home)'
 -- ⇧+⇧: select to the beginning of the line
 
@@ -658,3 +646,16 @@
 
 '🖱 (click)'
 -- ⌘→: ℝ — go to definition
+
+
+'space' - toggle/global_search button
+-- toggle content preview
+-- ␣ 'nbsp'
+-- ⇧: ???
+-- ⇪: play/pause
+-- ⌃⇧⇪: play/pause
+-- ⌃: change language layout
+-- ⌘: Raycast
+-- ⌥⌘:  — open Finder and focus Search this Mac
+-- ⌥: Music — Start genious Shuffle
+-- ⌘⌃:  — emogies
