@@ -1,7 +1,11 @@
-plugins=(
-  git            # Core git integration
+# =============================================================================
+# Oh My Zsh Plugins Configuration
+# =============================================================================
+# Plugins add completions, aliases, and functionality
+# Keep this minimal for fast shell startup
+# =============================================================================
 
-)
+#)
 
 #   fzf            # Fuzzy finder
 

@@ -435,7 +435,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Guid</key>
 			<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
 			<key>Horizontal Spacing</key>
-			<real>1</real>
+			<integer>1</integer>
 			<key>Icon</key>
 			<integer>2</integer>
 			<key>Idle Code</key>
@@ -636,7 +636,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Use Tab Color</key>
 			<true/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<integer>1</integer>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -712,8 +712,6 @@ The script should do this: \(ai.prompt)</string>
 	<true/>
 	<key>WindowNumber</key>
 	<false/>
-	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
-	<string>qrsAAAGXnXBrwGxMO6s=</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>

@@ -13,5 +13,8 @@
   "amp.git.commit.coauthor.enabled": false,
   "amp.tools.stopTimeout": 1200,
   "amp.anthropic.thinking.enabled": true,
-  "amp.dangerouslyAllowAll": true
+  "amp.dangerouslyAllowAll": true,
+  "amp.guardedFiles.allowlist": [
+    "/Users/servitola/projects/Spotware/.claude/claude-code-commands.json"
+  ]
 }
