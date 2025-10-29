@@ -27,7 +27,6 @@ brew "docker"
 brew "docker-compose"
 brew "dockutil"
 brew "duti"
-brew "exa"
 brew "eza"
 brew "ffmpeg"
 brew "fzf"
@@ -134,4 +133,5 @@ mas "Raycast Companion", id: 6738274497
 mas "TestFlight", id: 899247664
 mas "Transporter", id: 1450874784
 vscode "jetbrains.resharper-code"
+vscode "k--kato.intellij-idea-keybindings"
 vscode "saoudrizwan.claude-dev"
