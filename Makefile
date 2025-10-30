@@ -188,3 +188,5 @@ install:
 	@$(LINK) ~/projects/dotfiles/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 
 	@echo "Installation complete!"
+	@echo
+	@$(SHELL) 'source zsh/bin/random_ascii.sh'
