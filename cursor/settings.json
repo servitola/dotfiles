@@ -1,0 +1,158 @@
+{
+    "[python]": {
+        "editor.bracketPairColorization.enabled": false,
+        "editor.guides.bracketPairs": false,
+        "editor.tabSize": 4
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.detectIndentation": false,
+    "editor.guides.bracketPairs": true,
+    "editor.minimap.enabled": false,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.renderControlCharacters": true,
+    "editor.rulers": [
+        120
+    ],
+    "editor.showFoldingControls": "always",
+    "editor.snippetSuggestions": "top",
+    "editor.tabSize": 2,
+    "explorer.confirmDelete": false,
+    "files.exclude": {
+        "__pycache__": true,
+        "_site": true,
+        ".asset-cache": true,
+        ".bundle": true,
+        ".ipynb_checkpoints": true,
+        ".pytest_cache": true,
+        ".sass-cache": true,
+        ".svn": true,
+        "**/.DS_Store": true,
+        "**/.egg-info": true,
+        "**/.git": true,
+        "build": true,
+        "coverage": true,
+        "dist": true,
+        "log": true,
+        "node_modules": true,
+        "public/packs": true,
+        "tmp": true
+    },
+    "files.hotExit": "off",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.watcherExclude": {
+        "**/audits/**": true,
+        "**/coverage/**": true,
+        "**/log/**": true,
+        "**/node_modules/**": true,
+        "**/tmp/**": true,
+        "**/vendor/**": true
+    },
+    "git.enabled": true,
+    "notebook.diff.ignoreMetadata": true,
+    "notebook.lineNumbers": "on",
+    "notebook.markup.fontSize": 13,
+    "python.defaultInterpreterPath": "~/.pyenv/shims/python",
+    "python.formatting.provider": "yapf",
+    "python.languageServer": "Pylance",
+    "python.linting.enabled": false,
+    "python.linting.flake8Enabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.terminal.activateEnvironment": false,
+    "window.restoreWindows": "all",
+    "window.newWindowDimensions": "maximized",
+    "workbench.editor.enablePreview": true,
+    "workbench.settings.editor": "json",
+    "workbench.settings.openDefaultSettings": true,
+    "workbench.settings.useSplitJSON": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.panel.defaultLocation": "right",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "files.autoSave": "off",
+    "terminal.external.osxExec": "iTerm.app",
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "projectManager.git.baseFolders": [
+        "~/projects/"
+    ],
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "prettier.printWidth": 60,
+    "git.autofetch": false,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "log.error",
+                "settings": {
+                    "foreground": "#af1f1f",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "log.warning",
+                "settings": {
+                    "foreground": "#f4ad42",
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
+    "logFileHighlighter.customPatterns": [
+        {
+            "pattern": ".*",
+            "background": "#ff0000"
+        }
+    ],
+    "files.associations": {
+        "*.txt": "log"
+    },
+    "files.autoGuessEncoding": true,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook",
+        "git-rebase-todo": "gitlens.rebase"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "bracket-pair-colorizer-2.depreciation-notice": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "cSpell.userWords": [
+        "nrwl",
+        "omnisharp"
+    ],
+    "editor.inlineSuggest.enabled": true,
+    "settingsSync.ignoredExtensions": [],
+    "settingsSync.ignoredSettings": [],
+    "telemetry.telemetryLevel": "off",
+    "editor.fontSize": 17,
+    "terminal.integrated.fontSize": 20,
+    "markdown.preview.fontSize": 17,
+    "debug.console.fontSize": 16,
+    "scm.inputFontSize": 17,
+    "gitlens.hovers.currentLine.over": "line",
+    "github.copilot.enable": {
+        "*": true,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true
+    },
+    "explorer.fileNesting.enabled": true,
+    "editor.wordWrap": "on",
+    "workbench.iconTheme": "vscode-icons",
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "security.workspace.trust.untrustedFiles": "newWindow",
+    "vsicons.dontShowNewVersionMessage": true,
+    "editor.accessibilitySupport": "off",
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "redhat.telemetry.enabled": false,
+    "cursor.composer.shouldChimeAfterChatFinishes": true,
+    "cursor.composer.textSizeScale": 1.3
+}
