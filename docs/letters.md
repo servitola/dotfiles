@@ -1,38 +1,47 @@
-'escape' - cancel/tilda button
--- ⎋
--- ⇪  |  ` ё §
--- ⇧⇪ | ~ Ё ±
--- ⇧  | ~ Ё ±
--- ⌥  | ???
--- ⌃  | 📝 — toggle terminal
--- ⌘⌥ | force quit app
--- ⌃⇧ | activity monitor
--- ⌘⇧ | ???
--- ⌥⇧ | ???
+** 'escape' - cancel/tilda/ё button
+   | escape
+⇪  | ` ё §
+⇧⇪ | ~ Ё ±
+⇧  | ~ Ё ±
+⌥  | ???
+⌘  | switch to game
+⌃  | 📝 — toggle terminal
+⌘⌥ | force quit app
+⌘⇧ | ???
+⌥⇧ | ???
+⌘⌃ | ???
+⌥⌃ | ???
+⌃⇧⇪| activity monitor
 
 
-'1' — 1st in a row button
--- ⌘: 1st tab in 🌐, Terminal
--- ! ¹ ¡
--- ⇪: F1
--- plain: YouTube — Navigate to 10% of video
--- ⌘: 📝, ℝ — focus solution explorer
--- ⌘⇧: Visual Studio Code
--- ⌘⌥: Fork — show commit details
--- ⌃⇧: ℝ — toggle bookmark 1
--- ⇪: F1 — 📝 — open commands palette
+** '1' — 1st in a row button
+   | 1
+⇧  | !
+⌥  | ¹ ¹ ¡
+⇪  | F1
+   | 📝 — open commands palette
+⌃  | 1st tab in 📝
+⌘  | 1st tab in 🌐, Terminal
+   | 📝, ℝ — focus solution explorer
+⌘⇧ | Visual Studio Code
+⌘⌥ | Fork — show commit details
+⌘⌃ | ???
+⌃⇧ | ℝ — toggle bookmark 1
 
-'2' - 2nd in a row button
--- ⌘: 2st tab in 🌐, Terminal
--- @ ² ¹⁄₂
--- ⇪: F2
--- plain: YouTube — Navigate to 20% of video
--- ⌃: 📝 — go to tab 2
--- ⌘→: ℝ — focus debug window
--- ⌘⇧: Shotr — OCR from screen
--- ⌘⌥: Fork — show commit changes
--- ⌃⇧: ℝ — toggle bookmark 2
--- ⇪: F2 — ℝ — next error in file
+
+** '2' - 2nd in a row button
+   | 2
+⇧  | @
+⌘  | 2st tab in 🌐, Terminal
+@  | ² ¹⁄₂
+⇪  |  F2
+plain |  YouTube — Navigate to 20% of video
+⌃ |  📝 — go to tab 2
+⌘→ |  ℝ — focus debug window
+⌘⇧ |  Shotr — OCR from screen
+⌘⌥ |  Fork — show commit changes
+⌃⇧ |  ℝ — toggle bookmark 2
+⇪ |  F2 — ℝ — next error in file
 
 '3' - 3rd in a row button
 -- 3
