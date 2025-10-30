@@ -111,7 +111,9 @@ print_task "Updating Gruvbox wallpapers"
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 
+printf "\n${YELLOW}${BOLD}✨ All updates and cleanup tasks completed!${NC}\n"
+
+echo
+source ~/projects/dotfiles/zsh/bin/random_ascii.sh
 
 reload
-
-printf "\n${YELLOW}${BOLD}✨ All updates and cleanup tasks completed!${NC}\n"
