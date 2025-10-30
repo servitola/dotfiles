@@ -74,6 +74,13 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/Code/User/keybindings.json
 	@$(LINK) ~/projects/dotfiles/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
+	@echo "setup Cursor user settings symlinks"
+	@mkdir -p ~/Library/Application\ Support/Cursor/User
+	@$(REMOVE) ~/Library/Application\ Support/Cursor/User/keybindings.json
+	@$(LINK) ~/projects/dotfiles/cursor/keybindings.json ~/Library/Application\ Support/Cursor/User/keybindings.json
+	@$(REMOVE) ~/Library/Application\ Support/Cursor/User/settings.json
+	@$(LINK) ~/projects/dotfiles/cursor/settings.json ~/Library/Application\ Support/Cursor/User/settings.json
+
 	@echo "setup yt-dlp"
 	@mkdir -p ~/.config/yt-dlp
 	@$(REMOVE) ~/.config/yt-dlp/config
