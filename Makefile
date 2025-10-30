@@ -148,6 +148,11 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/lazydocker/config.yml
 	@$(LINK) ~/projects/dotfiles/lazydocker/config.yml ~/Library/Application\ Support/lazydocker/config.yml
 
+	@echo "setup lazygit symlinks"
+	@mkdir -p ~/Library/Application\ Support/lazygit
+	@$(REMOVE) ~/Library/Application\ Support/lazygit/config.yml
+	@$(LINK) ~/projects/dotfiles/lazygit/config.yml ~/Library/Application\ Support/lazygit/config.yml
+
 	@echo "setup Fork custom commands symlink"
 	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
 	@$(REMOVE) ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
