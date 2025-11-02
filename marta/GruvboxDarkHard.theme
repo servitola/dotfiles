@@ -1,0 +1,129 @@
+name "Gruvbox Dark Hard"
+
+base {
+    appearance "dark"
+    background #1d2021
+    separator #504945
+    text #ebdbb2
+}
+
+actionBar {
+    separator #665c54
+
+    button {
+        background #3c3836
+        hotkey #fabd2f
+        text #fbf1c7
+    }
+}
+
+asyncProgressBar {
+    border #d65d0e
+    progress #b8bb26
+    itemProgress #fabd2f
+}
+
+breadcrumbs {
+    color1 #282828
+    color2 #3c3836
+    color3 #504945
+    separator #928374
+    text #d5c4a1
+}
+
+files {
+    background {
+        alternate #282828
+        current #504945
+        currentSelected #665c54
+        selected #3c3836
+    }
+
+    dragDropSelection {
+        width 2
+    }
+
+    text {
+        current #fbf1c7
+        currentSelected #fabd2f
+        hidden #7c6f64
+        matched #fb4934
+        selected #fe8019
+
+        highlighting1 #83a598
+        highlighting2 #b8bb26
+        highlighting3 #d3869b
+        highlighting4 #fabd2f
+    }
+}
+
+searchBar {
+    query {
+        text #fbf1c7
+        placeholder #7c6f64
+    }
+
+    results {
+        highlighting #fabd2f
+        selection #504945
+        subtitle #a89984
+        text #ebdbb2
+    }
+
+    rowSeparator {
+        color #504945
+        show true
+    }
+}
+
+statusBar {
+    border #504945
+    text #d5c4a1
+    quickSelectNoResultsHighlighting #fb4934
+}
+
+tableHeader {
+    separator #504945
+    text #d5c4a1
+
+    pressed {
+        background #504945
+    }
+}
+
+tabs {
+    active {
+        text #fabd2f
+    }
+
+    inactive {
+        background #282828
+        text #928374
+    }
+}
+
+terminal {
+    caret {
+        background #504945
+        text #fbf1c7
+    }
+}
+
+textEditor {
+    error #fb4934
+    warning #fabd2f
+    keyword #8ec07c
+    comment #928374
+    identifier #83a598
+
+    literal {
+        string #b8bb26
+        number #d3869b
+        color #fabd2f
+    }
+
+    gutter {
+        background #3c3836
+        text #928374
+    }
+}

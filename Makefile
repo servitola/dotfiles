@@ -187,6 +187,16 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/com.mitchellh.ghostty/config
 	@$(LINK) ~/projects/dotfiles/ghostty/config ~/Library/Application\ Support/com.mitchellh.ghostty/config
 
+	@echo "setup Marta symlinks"
+	@mkdir -p ~/Library/Application\ Support/org.yanex.marta
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/conf.marco
+	@$(LINK) ~/projects/dotfiles/marta/conf.marco ~/Library/Application\ Support/org.yanex.marta/conf.marco
+	@mkdir -p ~/Library/Application\ Support/org.yanex.marta/Themes
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.theme
+	@$(LINK) ~/projects/dotfiles/marta/GruvboxDarkHard.theme ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.theme
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.ettyTheme
+	@$(LINK) ~/projects/dotfiles/marta/GruvboxDarkHard.ettyTheme ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.ettyTheme
+
 	@echo "Installation complete!"
 	@echo
 	@$(SHELL) 'source zsh/bin/random_ascii.sh'
