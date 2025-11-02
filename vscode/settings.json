@@ -46,5 +46,7 @@
     "editor.wordBasedSuggestions": "off",
     "amp.dangerouslyAllowAll": true,
     "amp.experimental.promptAutocompleteMode": "tab",
-    "amp.experimental.reviewTool": true
+    "amp.experimental.reviewTool": true,
+    "git.openRepositoryInParentFolders": "always",
+    "chat.agent.maxRequests": 60
 }
