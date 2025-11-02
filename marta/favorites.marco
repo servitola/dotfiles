@@ -1,0 +1,8 @@
+projects "/Users/servitola/projects"
+dotfiles "/Users/servitola/projects/dotfiles"
+Home "~"
+Downloads "${user.downloads}"
+Documents "${user.documents}"
+Desktop "${user.desktop}"
+Library "${user.library}"
+Applications "${all.applications}"
