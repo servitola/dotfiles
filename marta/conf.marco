@@ -1,5 +1,5 @@
 environment {
-    terminal "iTerm2"
+    terminal "iTerm"
     textEditor "Visual Studio Code"
 }
 
