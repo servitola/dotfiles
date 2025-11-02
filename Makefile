@@ -202,11 +202,12 @@ install:
 	@mkdir -p ~/Library/Application\ Support/org.yanex.marta
 	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/conf.marco
 	@$(LINK) ~/projects/dotfiles/marta/conf.marco ~/Library/Application\ Support/org.yanex.marta/conf.marco
-	@mkdir -p ~/Library/Application\ Support/org.yanex.marta/Themes
-	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.theme
-	@$(LINK) ~/projects/dotfiles/marta/GruvboxDarkHard.theme ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.theme
-	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.ettyTheme
-	@$(LINK) ~/projects/dotfiles/marta/GruvboxDarkHard.ettyTheme ~/Library/Application\ Support/org.yanex.marta/Themes/GruvboxDarkHard.ettyTheme
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/favorites.marco
+	@$(LINK) ~/projects/dotfiles/marta/favorites.marco ~/Library/Application\ Support/org.yanex.marta/favorites.marco
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Themes
+	@$(LINK) ~/projects/dotfiles/marta/themes ~/Library/Application\ Support/org.yanex.marta/Themes
+	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Plugins
+	@$(LINK) ~/projects/dotfiles/marta/plugins ~/Library/Application\ Support/org.yanex.marta/Plugins
 
 	@echo "Installation complete!"
 	@echo
