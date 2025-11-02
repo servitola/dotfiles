@@ -55,7 +55,7 @@ bell-features = attention,title
 shell-integration = detect
 
 # macOS specific settings
-macos-titlebar-style = transparent
+macos-titlebar-style = native
 window-decoration = auto
 
 
