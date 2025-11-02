@@ -1,0 +1,98 @@
+name	"esWhite"
+
+base { appearance "light"
+  text     	#000000    background	#ffffff
+  separator	#cdcdcd
+}
+
+actionBar {
+  button {
+    text  	#000000    background	#f4f4f4
+    hotkey	#406ea4
+  }
+}
+
+asyncProgressBar {
+  border      	#8d8d8d
+  progress    	#4e4c4c
+  itemProgress	#868383
+}
+
+breadcrumbs {
+  text     	#000000    background	#f3f3f3
+  color1   	#f3f3f3
+  color2   	#ffd23d
+  color3   	#d8d9d8
+  separator	#8d8d8d
+}
+
+files {
+  background {
+    alternate      	#f4f5f5
+    current        	#1067de
+    currentSelected	#1067de
+    selected       	#00000000
+  }
+  dragDropSelection { width 1}
+  text {
+    current        	#ffffff
+    hidden         	#666666
+    matched        	#22ee22
+    selected       	#ff8000
+    currentSelected	#ff8000
+
+    highlighting1	#07468d
+    highlighting2	#0c6600
+    highlighting3	#b25a05
+    highlighting4	#9931ff
+  }
+}
+
+searchBar { material "light"
+  query {
+    text       	#000000    background	#ff0000
+    placeholder	#aba8aa
+    border     	#f4f4f3
+  }
+  results {
+    text        	#000000
+    highlighting	#ff8c00
+    selection   	#7eacff
+    subtitle    	#406ea4
+  }
+  rowSeparator { show false    color #c2c4cc }
+}
+
+statusBar {
+  text                            	#000000
+  quickSelectNoResultsHighlighting	#fc4b4f
+}
+
+tableHeader {
+            background	#eceded
+  pressed { background	#e5e5e5 }
+}
+
+tabs {
+  active   { text	#000000  background	#fef6e6 }
+  inactive { text	#000000  background	#d0d0d0 }}
+
+terminal {
+  caret { text	#fffeff    background	#454545}
+}
+
+textEditor {
+  error     	#db4b41
+  warning   	#bf8c26
+  keyword   	#800040
+  comment   	#808080
+  identifier	#dfbe95
+
+  literal {
+    string	#108040
+    number	#074080
+    color 	#6897bb
+  }
+
+  gutter { text	#991d1c1c    background	#eaeaea }
+}
