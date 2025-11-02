@@ -14,6 +14,10 @@ function echo() {
 
 function shell_join() {
   local arg
+  if [ $# -eq 0 ]; then
+    printf " "
+    return
+  fi
   printf "%s" "$1"
   shift
   for arg in "$@"
