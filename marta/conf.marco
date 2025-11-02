@@ -1,0 +1,52 @@
+environment {
+    terminal "iTerm2"
+    textEditor "Visual Studio Code"
+}
+
+behavior {
+    theme "Gruvbox Dark Hard"
+
+    layout {
+        alwaysShowTabBar false
+        showActionBar false
+    }
+
+    setCurrentPathAsWindowTitle true
+
+    table {
+        verticalPadding 3
+        selectGoUpFolderOnEnter true
+
+        defaults {
+            showHiddenFiles true
+        }
+    }
+
+    quickSelect {
+        filterMatchedItems true
+    }
+}
+
+etty {
+    theme "GruvboxDarkHard"
+
+    fonts {
+        normal [ "JetBrains Mono" 19 ]
+    }
+}
+
+fonts {
+    actionBar [ "Default" 23 ]
+    virtualTabs [ "Default Bold" 23 ]
+    files [ "Default" 23 ]
+    statusBar [ "Default Light" 23 ]
+    tabs [ "Default" 21 ]
+    preferences [ "JetBrains Mono" 23 ]
+}
+
+keyBindings {
+    "F2" "core.rename"
+    "F3" "core.edit"
+    "Cmd+Up" "core.go.up"
+    "Cmd+Down" "core.open"
+}
