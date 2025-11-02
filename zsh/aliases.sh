@@ -99,3 +99,7 @@ alias bu="brew uninstall"
 alias w="whisperx --compute_type int8 --device cpu --model large-v3"
 
 alias lg="lazygit"
+alias ld="lazydocker"
+
+# File manager
+alias ff="open -a 'Marta' ."

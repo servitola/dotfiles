@@ -39,7 +39,7 @@ return { modifier=hyper, chords={
 -- a: left
 -- s: down
 -- d: right
-{ key="f", app="Finder" },
+{ key="f", app="Marta" },
 { key="g", app="Fork" },
 { key="h", app="Safari" },
 -- k: left
