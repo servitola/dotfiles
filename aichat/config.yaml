@@ -1,5 +1,18 @@
 model: openai:gpt-4o-mini
 clients:
 - type: openai
+- type: gemini
+  api_key: ${GEMINI_API_KEY}
+- type: groq
+  api_key: ${GROQ_API_KEY}
+- type: openai-compatible
+  name: openrouter
+  api_base: https://openrouter.ai/api/v1
+  api_key: ${OPEN_ROUTER_API_KEY}
+
+document_loaders:
+  pdf: 'pdftotext $1 -'
+  docx: 'pandoc --to plain $1'
+
 roles_dir: ~/projects/dotfiles/aichat/roles
 
