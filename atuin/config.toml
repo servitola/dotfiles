@@ -32,7 +32,7 @@ inline_height = 20
 # Search bar at top (more natural for many users)
 invert = true
 show_preview = true
-show_help = true
+show_help = false
 show_tabs = true
 
 ## Exit behavior
