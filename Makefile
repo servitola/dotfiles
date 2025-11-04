@@ -191,6 +191,8 @@ install:
 	@mkdir -p ~/Library/Application\ Support/aichat
 	@$(REMOVE) ~/Library/Application\ Support/aichat/config.yaml
 	@$(LINK) ~/projects/dotfiles/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
+	@$(REMOVE) ~/Library/Application\ Support/aichat/dark.tmTheme
+	@$(LINK) ~/projects/dotfiles/aichat/dark.tmTheme ~/Library/Application\ Support/aichat/dark.tmTheme
 
 	@echo "Syncing gruvbox-wallpapers"
 	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
