@@ -124,6 +124,11 @@ install:
 	@$(REMOVE) ~/.config/eza
 	@$(LINK) ~/projects/dotfiles/eza ~/.config/eza
 
+	@echo "setup atuin symlinks"
+	@mkdir -p ~/.config/atuin
+	@$(REMOVE) ~/.config/atuin/config.toml
+	@$(LINK) ~/projects/dotfiles/atuin/config.toml ~/.config/atuin/config.toml
+
 	@echo "setup nano symlinks"
 	@$(REMOVE) ~/.nanorc
 	@$(LINK) ~/projects/dotfiles/nano/nanorc ~/.nanorc

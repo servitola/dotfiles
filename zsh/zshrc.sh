@@ -77,5 +77,8 @@ fi
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# Atuin shell history
+eval "$(atuin init zsh)"
+
 # broot (tree navigator) launcher
 # source /Users/servitola/.config/broot/launcher/bash/br

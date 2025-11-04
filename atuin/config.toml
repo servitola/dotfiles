@@ -1,0 +1,144 @@
+## Atuin Configuration for servitola's dotfiles
+
+## Database and data locations (defaults are fine)
+# db_path = "~/.local/share/atuin/history.db"
+# key_path = "~/.local/share/atuin/key"
+# session_path = "~/.local/share/atuin/session"
+
+## Date format and timezone
+dialect = "us"
+timezone = "local"
+
+## Sync settings
+auto_sync = true
+update_check = true
+sync_address = "https://api.atuin.sh"
+sync_frequency = "10m"
+
+## Search configuration
+search_mode = "fuzzy"
+# Start with global filter, toggle with Ctrl-R
+filter_mode = "global"
+# Workspace filtering for git repos
+workspaces = true
+
+## Shell up-key behavior (can differ from Ctrl-R)
+# When pressing up-arrow, use directory filter for recent local context
+filter_mode_shell_up_key_binding = "directory"
+search_mode_shell_up_key_binding = "prefix"
+
+## UI/UX settings
+style = "auto"
+# 0 = full screen, or set a number for compact mode
+inline_height = 20
+# Search bar at top (more natural for many users)
+invert = true
+show_preview = true
+show_help = true
+show_tabs = true
+
+## Exit behavior
+# Return to original command on ESC
+exit_mode = "return-original"
+
+## Word navigation (emacs-style for most terminals)
+word_jump_mode = "emacs"
+word_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-."
+
+## Preview configuration
+max_preview_height = 6
+scroll_context_lines = 1
+
+## History format
+history_format = "{time}\t{command}\t{duration}"
+
+## Security: Filter sensitive commands from history
+secrets_filter = true
+history_filter = [
+  "^secret",
+  "^aws.*key",
+  ".*password.*",
+  ".*token.*",
+  ".*api[_-]?key.*",
+  "^export.*SECRET",
+  "^export.*PASSWORD",
+  "^export.*TOKEN",
+  "^export.*KEY",
+]
+
+## Filter certain directories from history
+# cwd_filter = [
+#   "^/tmp",
+#   "^/private",
+# ]
+
+## Execute on enter (modern UX), tab to edit
+enter_accept = true
+
+## Keymap mode
+# auto = detect from shell, or set to "emacs", "vim-insert", "vim-normal"
+keymap_mode = "auto"
+
+## Cursor styles per mode
+keymap_cursor = { emacs = "blink-bar", vim_insert = "blink-bar", vim_normal = "steady-block" }
+
+## Network timeouts
+network_connect_timeout = 5
+network_timeout = 5
+local_timeout = 5
+
+## Reduce motion for accessibility if needed
+# prefers_reduced_motion = false
+
+[stats]
+## Commands where subcommands matter for statistics
+common_subcommands = [
+  "apt",
+  "brew",
+  "cargo",
+  "docker",
+  "git",
+  "go",
+  "kubectl",
+  "npm",
+  "yarn",
+  "pnpm",
+  "pip",
+  "systemctl",
+  "tmux",
+]
+
+## Strip these prefixes from stats
+common_prefix = ["sudo", "doas"]
+
+## Ignore these commands completely
+ignored_commands = [
+  "ls",
+  "cd",
+  "pwd",
+  "exit",
+  "clear",
+  "c",
+]
+
+[keys]
+## Keep scrolling within TUI (don't exit on up/down at boundaries)
+scroll_exits = false
+
+[sync]
+## Enable sync v2 (record-based syncing)
+records = true
+
+[dotfiles]
+## Enable dotfiles syncing (aliases and env vars)
+enabled = false
+
+[preview]
+## Preview height calculation strategy
+strategy = "auto"
+
+[daemon]
+## Optional: use daemon for background syncing
+enabled = false
+sync_frequency = 300
+# socket_path = "~/.local/share/atuin/atuin.sock"
