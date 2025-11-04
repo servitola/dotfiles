@@ -36,10 +36,6 @@ install:
 	@$(REMOVE) ~/.config/karabiner
 	@$(LINK) ~/projects/dotfiles/karabiner ~/.config/karabiner
 
-	@echo "setup goku symlinks"
-	@$(REMOVE) ~/.config/karabiner.edn
-	@$(LINK) ~/projects/dotfiles/goku/karabiner.edn ~/.config/karabiner.edn
-
 	@echo "setup hammerspoon symlinks"
 	@$(REMOVE) ~/.hammerspoon
 	@$(LINK) ~/projects/dotfiles/hammerspoon ~/.hammerspoon
