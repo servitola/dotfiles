@@ -2,7 +2,7 @@
 
 SHELL := /bin/zsh -c
 REMOVE := sudo rm -rf
-LINK :=sudo ln -sfvh
+LINK := sudo ln -sfvh
 COPY := sudo cp -r
 
 install:
@@ -186,6 +186,11 @@ install:
 
 	@echo "installing Global NPM Packages"
 	@$(SHELL) 'source npm/install-globals.sh'
+
+	@echo 'setting aichat'
+	@mkdir -p ~/Library/Application\ Support/aichat
+	@$(REMOVE) ~/Library/Application\ Support/aichat/config.yaml
+	@$(LINK) ~/projects/dotfiles/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
 
 	@echo "Syncing gruvbox-wallpapers"
 	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
