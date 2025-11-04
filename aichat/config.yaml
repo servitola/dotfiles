@@ -1,0 +1,5 @@
+model: openai:gpt-4o-mini
+clients:
+- type: openai
+roles_dir: ~/projects/dotfiles/aichat/roles
+
