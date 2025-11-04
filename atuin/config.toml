@@ -1,12 +1,10 @@
-## Atuin Configuration for servitola's dotfiles
-
-## Database and data locations (defaults are fine)
+## Database and data locations
 # db_path = "~/.local/share/atuin/history.db"
 # key_path = "~/.local/share/atuin/key"
 # session_path = "~/.local/share/atuin/session"
 
 ## Date format and timezone
-dialect = "us"
+dialect = "uk"
 timezone = "local"
 
 ## Sync settings
