@@ -1,3 +1,4 @@
+#!/bin/bash
 # Catppuccin Mocha colors for eza
 export EZA_COLORS="
 di=1;34:    # directory (bold blue)
