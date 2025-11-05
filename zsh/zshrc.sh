@@ -54,17 +54,10 @@ source ~/projects/dotfiles/zsh/completion.sh
 source ~/projects/dotfiles/zsh/aliases.sh
 source ~/projects/dotfiles/zsh/history_settings.sh
 
-# Syntax Highlighting & Autosuggestions
-# Load syntax highlighting and autosuggestions from Homebrew
-if [[ $(uname -m) == 'arm64' ]]; then
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /opt/homebrew/share/zsh-autopair/autopair.zsh
-else
-  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-  source /usr/local/share/zsh-autopair/autopair.zsh
-fi
+# Load additional plugins from Homebrew
+source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ${HOMEBREW_PREFIX}/share/zsh-autopair/autopair.zsh
 
 # Load p10k theme
 source ~/projects/dotfiles/zsh/p10k.zsh
