@@ -1,6 +1,5 @@
 {
   "amp.tab.enabled": true,
-  // Disable updates. Updated with other global npm packages
   "amp.updates.mode": "disabled",
   "amp.mcpServers": {},
   "amp.permissions": [
@@ -8,5 +7,11 @@
       "tool": "*",
       "action": "allow"
     }
-  ]
+  ],
+  "amp.todos.enabled": true,
+  "amp.git.commit.ampThread.enabled": false,
+  "amp.git.commit.coauthor.enabled": false,
+  "amp.tools.stopTimeout": 1200,
+  "amp.anthropic.thinking.enabled": true,
+  "amp.dangerouslyAllowAll": true
 }
