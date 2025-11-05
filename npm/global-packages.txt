@@ -7,3 +7,4 @@ appium
 @modelcontextprotocol/server-filesystem
 @cocal/google-calendar-mcp
 trash-cli
+react-devtools
