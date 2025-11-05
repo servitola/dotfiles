@@ -27,7 +27,7 @@ fi
 
 # Kill screensaver process to reload config
 echo "🔄 Restarting screensaver engine..."
-killall ScreenSaverEngine 2>/dev/null || true
+killall ScreenSaverEngine 2> /dev/null || true
 
 echo ""
 echo "🌐 Complete. Screensaver URL: $SCREENSAVER_URL"

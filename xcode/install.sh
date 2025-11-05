@@ -3,12 +3,10 @@ source zsh/functions.sh
 
 echo "installing XCode if needed"
 
-if ! xcode-select --print-path &> /dev/null;
-then
+if ! xcode-select --print-path &> /dev/null; then
     xcode-select --install &> /dev/null
 
-    until xcode-select --print-path &> /dev/null;
-    do
+    until xcode-select --print-path &> /dev/null; do
         sleep 5
     done
 

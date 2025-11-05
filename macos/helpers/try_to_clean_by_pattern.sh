@@ -6,7 +6,7 @@
 #   try_to_clean_by_pattern.sh . d ".AppleD*" "Apple Double files"
 
 BASE_PATH="$1"
-TYPE="$2"      # f=file, d=directory
+TYPE="$2" # f=file, d=directory
 PATTERN="$3"
 LABEL="${4:-$PATTERN in $BASE_PATH}"
 
@@ -16,7 +16,7 @@ if [ ! -d "$BASE_PATH" ]; then
 fi
 
 # Check if any matches exist
-MATCHES=$(find "$BASE_PATH" -type "$TYPE" -name "$PATTERN" 2>/dev/null | wc -l | tr -d ' ')
+MATCHES=$(find "$BASE_PATH" -type "$TYPE" -name "$PATTERN" 2> /dev/null | wc -l | tr -d ' ')
 
 if [ "$MATCHES" -eq 0 ]; then
     echo "  * $LABEL: nothing to clean"
