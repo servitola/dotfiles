@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 export current_dir="$1"
 osascript << EOD
 set current_dir to quoted form of (system attribute "current_dir")
