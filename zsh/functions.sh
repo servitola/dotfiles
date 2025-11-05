@@ -9,24 +9,23 @@ tty_bold="$(tty_mkbold 39)"
 tty_reset="$(tty_escape 0)"
 
 function echo() {
-  printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
+    printf "${tty_blue}==>${tty_bold} %s${tty_reset}\n" "$(shell_join "$@")"
 }
 
 function shell_join() {
-  local arg
-  if [ $# -eq 0 ]; then
-    printf " "
-    return
-  fi
-  printf "%s" "$1"
-  shift
-  for arg in "$@"
-  do
-    printf " "
-    printf "%s" "${arg// /\ }"
-  done
+    local arg
+    if [ $# -eq 0 ]; then
+        printf " "
+        return
+    fi
+    printf "%s" "$1"
+    shift
+    for arg in "$@"; do
+        printf " "
+        printf "%s" "${arg// /\ }"
+    done
 }
 
 function mkd() {
-    mkdir -p "$@" && cd "$_";
+    mkdir -p "$@" && cd "$_"
 }
