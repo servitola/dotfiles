@@ -93,6 +93,9 @@ print_section "Final Updates"
 print_task "Updating TLDR cache"
 tldr --update >/dev/null || echo "Error updating tldr cache"
 
+print_task "Updating Bat cache"
+bat cache --build >/dev/null || echo "Error updating bat cache"
+
 print_task "Checking Android SDK licenses are accepted and Accept them"
 
 yes | sdkmanager --licenses 2>&1 | grep -v "Warning: " >/dev/null || {
