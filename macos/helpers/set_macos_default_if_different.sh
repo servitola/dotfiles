@@ -2,10 +2,11 @@
 
 # Function to set macOS default only if different from current value
 set_macos_default_if_different() {
-    local domain=$1
-    local key=$2
-    local type=$3
-    local new_value=$4
+    local title=$1
+    local domain=$2
+    local key=$3
+    local type=$4
+    local new_value=$5
 
     # Get current value
     current_value=$(sudo defaults read "$domain" "$key" 2> /dev/null)
@@ -34,11 +35,10 @@ set_macos_default_if_different() {
 
         defaults write "$domain" "$key" "$type" "$new_value"
 
-        # Only log if values actually differ (not just missing)
         if [[ -n "$current_value" ]]; then
-            echo "${GREEN}✓ Changed${NC} $domain → $key: ${YELLOW}$current_normalized${NC} → ${GREEN}$new_normalized${NC}"
+            echo "${GREEN}✓ Changed${NC} '$title' $domain → $key: ${YELLOW}$current_normalized${NC} → ${GREEN}$new_normalized${NC}"
         else
-            echo "${GREEN}✓ Set${NC} $domain → $key: ${GREEN}$new_normalized${NC}"
+            echo "${GREEN}✓ Set${NC} '$title' $domain → $key: ${GREEN}$new_normalized${NC}"
         fi
         ((CHANGES_MADE++))
         return 0
