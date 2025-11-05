@@ -1,5 +1,6 @@
+#!/bin/bash
 export current_dir="$1"
-osascript <<EOD
+osascript << EOD
 set current_dir to quoted form of (system attribute "current_dir")
   tell application "iTerm"
     tell current window

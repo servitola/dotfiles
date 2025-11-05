@@ -149,17 +149,17 @@ fix_issues() {
 
     # Stop any rogue n8n processes
     echo "1. Stopping any rogue n8n processes..."
-    pkill -f "node.*n8n.*start" 2>/dev/null || true
+    pkill -f "node.*n8n.*start" 2> /dev/null || true
     sleep 2
 
     # Unload service
     echo "2. Unloading service..."
-    launchctl unload "$PLIST_DEST" 2>/dev/null || true
+    launchctl unload "$PLIST_DEST" 2> /dev/null || true
     sleep 1
 
     # Remove extended attributes
     echo "3. Removing extended attributes..."
-    xattr -c "$PLIST_DEST" 2>/dev/null || true
+    xattr -c "$PLIST_DEST" 2> /dev/null || true
 
     # Reload service
     echo "4. Reloading service..."

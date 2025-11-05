@@ -23,28 +23,28 @@ export FZF_CTRL_T_OPTS="--preview 'head -100 {}'"
 
 # Better history search
 function fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
+    print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -E 's/ *[0-9]*\*? *//' | sed -E 's/\\/\\\\/g')
 }
 
 # cd with preview
 function cdf() {
-  local dir
-  dir=$(fd --type d --strip-cwd-prefix --hidden --follow --exclude .git | fzf --preview 'ls --color=always {}') &&
-  cd "$dir"
+    local dir
+    dir=$(fd --type d --strip-cwd-prefix --hidden --follow --exclude .git | fzf --preview 'ls --color=always {}') &&
+        cd "$dir"
 }
 
 # Better file search
 function ff() {
-  local file
-  file=$(fd --type f --strip-cwd-prefix --hidden --follow --exclude .git | fzf --preview 'head -100 {}') &&
-  ${EDITOR:-vim} "$file"
+    local file
+    file=$(fd --type f --strip-cwd-prefix --hidden --follow --exclude .git | fzf --preview 'head -100 {}') &&
+        ${EDITOR:-vim} "$file"
 }
 
 # Enhanced zoxide with fzf
 function zz() {
-  local dir
-  dir="$(zoxide query -l | fzf --preview 'ls --color=always {}')" &&
-  cd "${dir}"
+    local dir
+    dir="$(zoxide query -l | fzf --preview 'ls --color=always {}')" &&
+        cd "${dir}"
 }
 
 # Key bindings

@@ -1,5 +1,8 @@
 #!/bin/zsh
-[[ ! -d "$PWD" ]] && { echo "❌ Current directory doesn't exist. Navigate to existing one, please"; return 1; }
+[[ ! -d "$PWD" ]] && {
+    echo "❌ Current directory doesn't exist. Navigate to existing one, please"
+    return 1
+}
 
 sudo -v -S
 
@@ -26,13 +29,13 @@ print_task() {
 
 print_section "Apps Updates"
 
-rm -rf "brew --cache" >/dev/null 2>&1
+rm -rf "brew --cache" > /dev/null 2>&1
 brew tap --repair
 brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
 # List mas apps to avoid bug with non updating apps from AppStore
-mas list >/dev/null 2>&1
+mas list > /dev/null 2>&1
 mas upgrade
 brew cleanup
 brew doctor
@@ -50,8 +53,8 @@ dotnet tool update -g dotnet-trace
 print_section "System Maintenance"
 
 print_task "Rebuilding zsh completion cache"
-rm -f ~/.zcompdump* 2>/dev/null
-chmod -R go-w "$(brew --prefix)/share" 2>/dev/null || true
+rm -f ~/.zcompdump* 2> /dev/null
+chmod -R go-w "$(brew --prefix)/share" 2> /dev/null || true
 
 print_task "Flushing DNS cache"
 dscacheutil -flushcache
@@ -79,7 +82,7 @@ print_task "Cleaning Trash"
 if [ -w ~/.Trash ]; then
     "$TRY_CLEAN" ~/.Trash "User Trash"
 else
-    if rm -rf ~/.Trash/* 2>/dev/null; then
+    if rm -rf ~/.Trash/* 2> /dev/null; then
         echo "  * User Trash: cleaned (with elevated permissions)"
     else
         echo "  * User Trash: ERROR - permission denied (protected by system)"
@@ -91,14 +94,14 @@ setopt no_rm_star_silent #turn on safe mode back
 print_section "Final Updates"
 
 print_task "Updating TLDR cache"
-tldr --update >/dev/null || echo "Error updating tldr cache"
+tldr --update > /dev/null || echo "Error updating tldr cache"
 
 print_task "Updating Bat cache"
-bat cache --build >/dev/null || echo "Error updating bat cache"
+bat cache --build > /dev/null || echo "Error updating bat cache"
 
 print_task "Checking Android SDK licenses are accepted and Accept them"
 
-yes | sdkmanager --licenses 2>&1 | grep -v "Warning: " >/dev/null || {
+yes | sdkmanager --licenses 2>&1 | grep -v "Warning: " > /dev/null || {
     error_code=$?
     if [ $error_code -ne 0 ] && [ $error_code -ne 141 ]; then
         echo "Error verifying Android SDK licenses"
