@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 source ~/.config/openai_key.sh
 

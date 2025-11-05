@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 scripts_dir=~/Library/Application\ Scripts/net.langui.ContextMenuHelper
 mkdir -p "$scripts_dir"
 script_content=$'#!/bin/sh\npkill -nf ScriptMonitor\nexec "$@"'

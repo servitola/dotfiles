@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Usage: try_to_clean_by_pattern.sh <base_path> <type> <pattern> <label>
 # Examples:
