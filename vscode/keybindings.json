@@ -6,5 +6,15 @@
     {
         "key": "ctrl+`",
         "command": "-workbench.action.selectTheme"
+    },
+    {
+        "key": "ctrl+shift+cmd+n",
+        "command": "editor.action.sourceAction",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+n",
+        "command": "-editor.action.sourceAction",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
     }
 ]
