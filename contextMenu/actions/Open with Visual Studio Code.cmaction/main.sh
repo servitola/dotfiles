@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 cmd1='/usr/local/bin/code'
 cmd2='/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code'
 if [ -f "$cmd1" ]; then

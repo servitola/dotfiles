@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # n8n Service Management Script
 # Manages the n8n LaunchAgent for auto-starting n8n
