@@ -21,9 +21,8 @@ filter_mode = "global"
 workspaces = true
 
 ## Shell up-key behavior (can differ from Ctrl-R)
-# When pressing up-arrow, use directory filter for recent local context
-filter_mode_shell_up_key_binding = "directory"
-search_mode_shell_up_key_binding = "prefix"
+# Disable up-arrow binding - use standard shell history navigation
+up_arrow = false
 
 ## UI/UX settings
 style = "auto"
