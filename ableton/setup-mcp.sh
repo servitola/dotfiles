@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 set -e
 
 echo "🎹 Installing Ableton MCP Server..."

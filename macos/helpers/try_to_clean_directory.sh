@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Usage: clean_dir.sh <path> <label>
 # Example: clean_dir.sh ~/Library/Caches
@@ -11,7 +11,7 @@ if [ ! -d "$DIR" ]; then
     exit 0
 fi
 
-if [ -z "$(find "$DIR" -mindepth 1 -maxdepth 1 2>/dev/null)" ]; then
+if [ -z "$(find "$DIR" -mindepth 1 -maxdepth 1 2> /dev/null)" ]; then
     echo "  * $LABEL: already empty"
     exit 0
 fi

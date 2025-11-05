@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Google Calendar MCP Server Wrapper
 # Sources environment and launches with OAuth credentials
