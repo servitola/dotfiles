@@ -59,9 +59,11 @@ source ~/projects/dotfiles/zsh/history_settings.sh
 if [[ $(uname -m) == 'arm64' ]]; then
   source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /opt/homebrew/share/zsh-autopair/autopair.zsh
 else
   source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+  source /usr/local/share/zsh-autopair/autopair.zsh
 fi
 
 # Load p10k theme
