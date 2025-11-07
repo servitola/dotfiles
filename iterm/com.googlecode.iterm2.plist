@@ -52,6 +52,8 @@ The script should do this: \(ai.prompt)</string>
 	<true/>
 	<key>Default Bookmark Guid</key>
 	<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
+	<key>Default Browser Profile Guid</key>
+	<string>D8CA1410-E27A-4A3F-AFE9-EDF0EC3657CA</string>
 	<key>DefaultTabBarHeight</key>
 	<real>28</real>
 	<key>EscapeShellCharsWithBackslash</key>
@@ -355,7 +357,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>87</integer>
+			<integer>88</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -433,7 +435,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Guid</key>
 			<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
 			<key>Horizontal Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Icon</key>
 			<integer>2</integer>
 			<key>Idle Code</key>
@@ -538,7 +540,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>35</integer>
+			<integer>36</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -634,7 +636,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Use Tab Color</key>
 			<true/>
 			<key>Vertical Spacing</key>
-			<integer>1</integer>
+			<real>1</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -708,6 +710,8 @@ The script should do this: \(ai.prompt)</string>
 	<false/>
 	<key>WindowNumber</key>
 	<false/>
+	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
+	<string>qrsAAAGXnXBrwGxMO6s=</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewPreferredModeKey</key>
