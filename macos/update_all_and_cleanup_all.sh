@@ -117,6 +117,9 @@ print_task "Updating Gruvbox wallpapers"
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 
+print_task "Updating Atuin db (zsh history)"
+atuin sync
+
 printf "\n${YELLOW}${BOLD}✨ All updates and cleanup tasks completed!${NC}\n"
 
 echo
