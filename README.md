@@ -64,7 +64,7 @@ OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
 * Q: I want to convert audio file to text
 * A: I use [whisper-x](https://github.com/m-bain/whisperX). I use CPU conversion. I use alias 'w' for 'whisperx' with biggest model
 
-Convert:
+Convert with best quality:
 ```
 w ~/test.mp3
 ```
