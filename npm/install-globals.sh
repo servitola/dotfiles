@@ -36,4 +36,7 @@ while IFS= read -r package || [ -n "$package" ]; do
     fi
 done < ~/projects/dotfiles/npm/global-packages.txt
 
+echo "💾 Saving current global packages list..."
+npm list -g --depth=0 --json 2>/dev/null | jq -r '.dependencies | keys[]' | sort > ~/projects/dotfiles/npm/global-packages.txt
+
 echo "✅ Global NPM packages ready"
