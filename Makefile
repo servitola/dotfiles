@@ -217,6 +217,11 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/org.yanex.marta/Plugins
 	@$(LINK) ~/projects/dotfiles/marta/plugins ~/Library/Application\ Support/org.yanex.marta/Plugins
 
+	@echo "setup Heroic Launcher symlinks"
+	@mkdir -p ~/Library/Application\ Support/heroic
+	@$(REMOVE) ~/Library/Application\ Support/heroic/config.json
+	@$(LINK) ~/projects/dotfiles/heroic/config.json ~/Library/Application\ Support/heroic/config.json
+
 	@echo "Installation complete!"
 	@echo
 	@$(SHELL) 'source zsh/bin/random_ascii.sh'
