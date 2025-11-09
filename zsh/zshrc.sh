@@ -75,6 +75,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Atuin shell history
 eval "$(atuin init zsh)"
 
+# zoxide for fast directory navigation
+eval "$(zoxide init zsh)"
+
 # Restore original up arrow binding (prefix search from history)
 # https://til.simonwillison.net/macos/atuin
 autoload -U history-search-end
