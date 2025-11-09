@@ -1,10 +1,8 @@
 plugins=(
   git            # Core git integration
 
-  z              # Directory jumping
 )
 
-# zoxide         # Smart directory navigation
 #   fzf            # Fuzzy finder
 
 # Defer loading of non-critical plugins
