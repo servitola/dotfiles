@@ -53,7 +53,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>Default Bookmark Guid</key>
 	<string>AD867F00-9ACC-4A8E-BBD1-E6756D42C719</string>
 	<key>Default Browser Profile Guid</key>
-	<string>D8CA1410-E27A-4A3F-AFE9-EDF0EC3657CA</string>
+	<string>4B56EDB2-FD37-46D3-826D-0AF178F58392</string>
 	<key>DefaultTabBarHeight</key>
 	<real>28</real>
 	<key>EscapeShellCharsWithBackslash</key>
@@ -708,6 +708,8 @@ The script should do this: \(ai.prompt)</string>
 	</array>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>WebKitAdblockEnabled</key>
+	<true/>
 	<key>WindowNumber</key>
 	<false/>
 	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
