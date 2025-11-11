@@ -45,9 +45,8 @@ source ~/projects/dotfiles/npm/install-globals.sh
 
 uv python install 3.12
 uv python pin 3.12
-uv tool install faster-whisper
-uv tool install whisper-ctranslate2
 source ~/projects/dotfiles/python/install-globals.sh
+source ~/projects/dotfiles/python/install-uv-tools.sh
 
 print_task "Update Appium Plugins"
 appium plugin update installed

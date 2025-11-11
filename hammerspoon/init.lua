@@ -13,6 +13,7 @@ hs.loadSpoon("YouTrackTasks") -- YouTrack tasks view
 hs.loadSpoon("BrowserTabOpener") -- YouTube tab opener
 hs.loadSpoon("AudioSwitcher") -- audio device switching
 hs.loadSpoon("YouTubeStream") -- YouTube stream player
+hs.loadSpoon("VoiceDictation") -- voice-to-text typing
 hs.loadSpoon("HotKeys") -- all hotkeys
 
 require "config_UrlDispatcher" -- open urls in different browsers
