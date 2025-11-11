@@ -33,8 +33,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 - **docs/** - Specialized guides that AI can read selectively when needed
 - Reference via `@./docs/filename.md` syntax
 
-## Existing Rules Files
-- CLAUDE.md: Points to this AGENTS.md file
 
 ## Current Directory Structure (depth 2)
 .
