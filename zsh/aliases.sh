@@ -99,24 +99,14 @@ alias bu="brew uninstall"
 alias w='whisper_max'
 alias wv='whisper_voice'
 
-# quality max voice to text transcription
+# quality voice to text transcription
 function whisper_max() {
     whisperx --compute_type int8 --device cpu --model large-v3 "$1"
 }
 
-# fastest/quality voice to text trascription
+# fast voice to text trascription
 function whisper_voice() {
-    whisper-ctranslate2 "$1" \
-        --model small \
-        --language ru \
-        --compute_type int8 \
-        --device cpu \
-        --threads 12 \
-        --vad_filter True \
-        --beam_size 1 \
-        --task transcribe \
-        --output_dir . \
-        --output_format txt
+    whisper-mps --file-name "$1" --model-name base 2>/dev/null
 }
 
 alias lg="lazygit"
