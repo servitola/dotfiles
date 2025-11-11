@@ -248,6 +248,10 @@ function obj:init()
                         hs.hotkey.bind(layer.modifier, chord_row.key, function()
                             spoon.YouTubeStream:toggle()
                         end)
+                    elseif chord_row.specific_function == "voice_dictation.toggle" then
+                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
+                            spoon.VoiceDictation:toggleRecording()
+                        end)
                     end
                 end
             end
