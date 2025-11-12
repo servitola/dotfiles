@@ -43,6 +43,32 @@ function obj:toggleRecording()
     return self
 end
 
+--- VoiceDictation:cancelRecording()
+--- Method
+--- Cancel recording and delete the audio file
+---
+--- Returns:
+---  * The VoiceDictation object
+function obj:cancelRecording()
+    if not self.isRecording then
+        return self
+    end
+
+    if self.alertId then
+        hs.alert.closeSpecific(self.alertId)
+        self.alertId = nil
+    end
+
+    if self.recordingTask and self.recordingTask:isRunning() then
+        self.recordingTask:terminate()
+    end
+
+    self.isRecording = false
+    hs.alert.show("⏹️ Recording cancelled")
+    self:cleanup()
+    return self
+end
+
 --- Internal function to start recording
 function obj:startRecording()
     if self.isRecording then
