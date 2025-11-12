@@ -101,12 +101,12 @@ alias wv='whisper_voice'
 
 # quality voice to text transcription
 function whisper_max() {
-    whisperx --compute_type int8 --device cpu --model large-v3 "$1"
+    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
 }
 
 # fast voice to text trascription
 function whisper_voice() {
-    whisper-mps --file-name "$1" --model-name base 2>/dev/null
+    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name small --language ru 2>/dev/null
 }
 
 alias lg="lazygit"
