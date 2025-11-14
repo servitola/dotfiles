@@ -106,7 +106,7 @@ function whisper_max() {
 
 # fast voice to text trascription
 function whisper_voice() {
-    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name small --language ru 2>/dev/null
+    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name medium --language ru 2>/dev/null
 }
 
 alias lg="lazygit"
