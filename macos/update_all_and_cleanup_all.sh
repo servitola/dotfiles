@@ -31,7 +31,7 @@ print_section "Apps Updates"
 
 rm -rf "brew --cache" > /dev/null 2>&1
 brew tap --repair
-brew cu --all --yes --quiet --no-quarantine
+brew cu --all --yes --quiet
 brew update
 brew upgrade
 # List mas apps to avoid bug with non updating apps from AppStore
