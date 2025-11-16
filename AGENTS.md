@@ -36,11 +36,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 
 ## Current Directory Structure (depth 2)
 .
-├── LaunchAgents
-│   ├── com.colima.service.plist
-│   └── com.telegram-bot.service.plist
-├── ableton
-│   └── setup-mcp.sh
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
@@ -54,9 +49,9 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── annepro2
 │   ├── qmk
-│   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
+│   ├── ObinsKit_1.2.11_x64.dmg
 │   └── readme.md
 ├── atuin
 │   ├── config.toml
@@ -64,7 +59,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── bat
 │   └── config
 ├── bin
-│   └── setleds
 ├── btop
 │   ├── themes
 │   └── btop.conf
@@ -91,7 +85,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── dircolors
 ├── docs
-│   ├── README.md
 │   ├── ai-development-best-practices.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
@@ -105,6 +98,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── letters.md
 │   ├── llm-cost-reduction.md
 │   ├── mobile-fintech-ai-workflows.md
+│   ├── README.md
 │   ├── shell-zsh.md
 │   └── terminal-emulators.md
 ├── eza
@@ -134,12 +128,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── heroic
 │   └── config.json
 ├── homebrew
-│   ├── Support
 │   ├── examples
+│   ├── Support
 │   ├── brewfile
-│   ├── install.sh
 │   ├── install_all_homebrew_packages.sh
 │   ├── install_minimum_homebrew_packages.sh
+│   ├── install.sh
 │   └── minimum_brewfile
 ├── iina
 │   └── servitola.conf
@@ -165,12 +159,16 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── karabiner.json
 ├── keyboard-layout
 │   └── Birman.bundle
+├── LaunchAgents
+│   ├── com.colima.service.plist
+│   └── com.telegram-bot.service.plist
 ├── lazydocker
 │   └── config.yml
 ├── lazygit
 │   └── config.yml
 ├── lulu
-│   └── preferences.plist
+│   ├── preferences.plist
+│   └── rules.plist
 ├── macos
 │   ├── helpers
 │   ├── dock_setup.sh
@@ -189,10 +187,10 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── ini
 │   └── panels.ini
 ├── n8n
-│   ├── README.md
 │   ├── com.n8n.service.plist
 │   ├── install.sh
-│   └── n8n-service.sh
+│   ├── n8n-service.sh
+│   └── README.md
 ├── nano
 │   └── nanorc
 ├── noti
@@ -202,11 +200,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── install-globals.sh
 ├── nvim
 │   ├── lua
-│   ├── LICENSE
-│   ├── README.md
 │   ├── init.lua
 │   ├── lazy-lock.json
 │   ├── lazyvim.json
+│   ├── LICENSE
+│   ├── README.md
 │   └── stylua.toml
 ├── python
 │   ├── global-packages.txt
@@ -218,7 +216,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
-├── windows-terminal
 ├── windsurf
 │   ├── User
 │   └── global_rules.md
