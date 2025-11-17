@@ -552,15 +552,7 @@ set_macos_default_if_different \
     '-string' \
     ''
 
-# Method 1: Using defaults
-set_macos_default_if_different \
-	'Enable Dark Mode' \
-	'.GlobalPreferences' \
-	'AppleInterfaceStyle' \
-	'-string' \
-	'Dark'
-
-# Method 2: Using AppleScript (more reliable)
+# Set Dark Mode
 osascript -e \
     'tell application 'System Events' to tell appearance preferences to set dark mode to true'
 
