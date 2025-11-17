@@ -53,7 +53,7 @@ return { modifier=hyper, chords={
 -- x: home
 -- c: end
 { key="v", app="Yandex" },
-{ key="b", app="iTerm" },
+{ key="b", app="Warp" },
 { key="n", app="Visual Studio Code" },
 -- ,: home
 -- .: end
