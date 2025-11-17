@@ -1,9 +1,9 @@
 # Setup fzf with optimized settings
 export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix --hidden --follow --exclude .git'
 export FZF_DEFAULT_OPTS="
-  --height 40% 
-  --layout=reverse 
-  --border 
+  --height 40%
+  --layout=reverse
+  --border
   --info=inline
   --no-mouse
   --cycle
