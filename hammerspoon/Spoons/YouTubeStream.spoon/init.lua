@@ -50,9 +50,9 @@ local function getHtmlContent(videoId)
 </head>
 <body>
     <div class="video-container">
-        <iframe 
-            src="https://www.youtube.com/embed/]] .. videoId .. [[?autoplay=1&controls=1&rel=0&showinfo=0&color=white&enablejsapi=1" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        <iframe
+            src="https://www.youtube.com/embed/]] .. videoId .. [[?autoplay=1&controls=1&rel=0&showinfo=0&color=white&enablejsapi=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
             id="player">
         </iframe>
@@ -63,7 +63,7 @@ local function getHtmlContent(videoId)
         document.addEventListener('keydown', function(e) {
             const iframe = document.querySelector('iframe');
             const player = iframe.contentWindow;
-            
+
             // Space: Play/Pause
             if (e.keyCode === 32) {
                 player.postMessage('{"event":"command","func":"togglePlayPause","args":[]}', '*');
@@ -105,11 +105,11 @@ function obj:createWebview()
     local y = frame.y + (frame.h * (horizontal_line + spacing))
     local width = frame.w * (rightX - vertical_line)
     local height = frame.h * (1 - horizontal_line - spacing)
-    
+
     -- Calculate aspect ratio for video (16:9)
     local aspect_ratio = 9/16
     local max_available_height = frame.h * (1 - horizontal_line - spacing * 2)
-    
+
     -- Adjust height and width based on aspect ratio
     if height > max_available_height then
         height = max_available_height
@@ -162,7 +162,7 @@ function obj:toggle()
     else
         -- If window is hidden or doesn't exist, show it
         self:show()
-        
+
         -- If window exists and was previously hidden, resume playback
         if self.webview and not self.webview:hswindow():isVisible() then
             hs.timer.doAfter(0.5, function()
