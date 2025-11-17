@@ -48,7 +48,7 @@ function M.init(appSpecificHotkeys)
             setupAppHotkeys(appName, remaps)
         end
     end
-    
+
     -- Watch for app focus changes
     appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
         if eventType == hs.application.watcher.activated then
@@ -61,7 +61,7 @@ function M.init(appSpecificHotkeys)
         end
     end)
     appWatcher:start()
-    
+
     -- Enable hotkeys for currently focused app
     local currentApp = hs.application.frontmostApplication()
     if currentApp then
