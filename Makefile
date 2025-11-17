@@ -222,6 +222,10 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/heroic/config.json
 	@$(LINK) ~/projects/dotfiles/heroic/config.json ~/Library/Application\ Support/heroic/config.json
 
+	@echo "precommit setup"
+	@cd ~/projects/dotfiles/
+	@pre-commit install
+
 	@echo "Installation complete!"
 	@echo
 	@$(SHELL) 'source zsh/bin/random_ascii.sh'
