@@ -220,7 +220,7 @@ plain |  YouTube — Navigate to 20% of video
 'b' - 'build/branch/terminal' button
 -- b и β
 -- B И Β
--- ⇪: iTerm
+-- ⇪: Warp
 -- ⌃: Unix Terminal — forward one letter
 -- ⌘: go to declaration
 -- ⌘⇪: Fork — open Create Branch dialog
