@@ -100,7 +100,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── mobile-fintech-ai-workflows.md
 │   ├── README.md
 │   ├── shell-zsh.md
-│   └── terminal-emulators.md
+│   ├── terminal-emulators.md
+│   └── warp.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
@@ -216,6 +217,10 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
+├── warp
+│   ├── launch_configurations
+│   ├── themes
+│   └── keybindings.yaml
 ├── windsurf
 │   ├── User
 │   └── global_rules.md
@@ -247,5 +252,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── AGENTS.md
 ├── CLAUDE.md
 ├── Makefile
-└── README.md
+├── README.md
+└── WARP.md -> CLAUDE.md
 Finish of Directory Structure
