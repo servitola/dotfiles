@@ -18,7 +18,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
      ![Video of my window management](https://i.imgur.com/crdP0bi.gif)
 
 * Q: I want my <ins>Terminal to assist me</ins> and I know almost nothing
-* A: I use [iTerm2](https://iterm2.com/) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
+* A: I use [Warp](https://app.warp.dev/referral/495XNY) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
 
 * Q: I want to <ins>search my entire command history</ins> instantly with <ins>fuzzy search</ins> and <ins>sync across machines</ins>
 * A: I use [Atuin](https://atuin.sh/). It replaces your shell history with a SQLite database. Press `Ctrl-R` for fuzzy search through all your commands. Up arrow searches your current directory. It syncs encrypted across machines.
