@@ -57,3 +57,6 @@ export PATH="$PATH:$NODE_PATH"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# n8n Configuration
+export N8N_USER_FOLDER="/Users/servitola/projects/services/n8n/.n8n"
