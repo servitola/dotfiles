@@ -41,6 +41,9 @@ brew cleanup
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
+print_task "Updating VSCode extensions"
+code --update-extensions
+
 source ~/projects/dotfiles/npm/install-globals.sh
 
 uv python install 3.12
