@@ -13,12 +13,12 @@ while IFS= read -r package || [ -n "$package" ]; do
         current_version=$(npm list -g "$package" --depth=0 --json 2> /dev/null | grep -o '"version": "[^"]*"' | head -1 | cut -d'"' -f4)
 
         # Check if outdated and get latest version
-        outdated_info=$(npm outdated -g "$package" --json 2> /dev/null)
-        if [ -n "$outdated_info" ] && [ "$outdated_info" != "{}" ]; then
-            latest_version=$(echo "$outdated_info" | grep -o '"latest": "[^"]*"' | cut -d'"' -f4)
+        # Get latest version from registry
+        latest_version=$(npm view "$package" version 2> /dev/null)
 
+        if [ -n "$latest_version" ] && [ "$current_version" != "$latest_version" ]; then
             echo "🔄 Updating: $package ($current_version → $latest_version)"
-            npm update -g "$package" 2>&1 | grep -v "^npm warn"
+            npm install -g "$package@latest" 2>&1 | grep -v "^npm warn"
             if [ $? -eq 0 ]; then
                 echo "✅ Updated: $package to $latest_version"
             else
