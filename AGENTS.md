@@ -99,9 +99,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── llm-cost-reduction.md
 │   ├── mobile-fintech-ai-workflows.md
 │   ├── README.md
-│   ├── shell-zsh.md
-│   ├── terminal-emulators.md
-│   └── warp.md
+│   └── shell-zsh.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
