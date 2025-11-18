@@ -32,7 +32,7 @@ return { modifier=hyper, chords={
 { key="r", app="Rider" },
 { key="t", app="Telegram", window_default_position="right" },
 { key="y", app="Iina", window_default_position="bottom" },
-{ key="i", specific_function="voice_dictation.toggle" },
+-- { key="i", specific_function="voice_dictation.toggle" },
 -- o: up
 { key="p", app="Music" },
 -- [: previous track
