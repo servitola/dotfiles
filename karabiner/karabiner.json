@@ -158,20 +158,14 @@
                         ]
                     },
                     {
-                    "description": "Grave Accent to Escape",
-                    "manipulators": [
-                    {
-                    "from": {
-                    "key_code": "non_us_backslash"
-                    },
-                    "to": [
-                    {
-                    "key_code": "escape"
-                    }
-                    ],
-                    "type": "basic"
-                    },
-                        {
+                        "description": "Grave Accent to Escape",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "non_us_backslash" },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
                                 "from": {
                                     "key_code": "non_us_backslash",
                                     "modifiers": { "mandatory": ["left_command"] }
@@ -228,53 +222,41 @@
                     {
                         "description": "Hyper Layer",
                         "manipulators": [
-                        {
-                        "from": {
-                        "key_code": "non_us_backslash",
-                        "modifiers": { "mandatory": ["right_command", "right_control", "right_option", "right_shift"] }
-                        },
-                                "to": [
-                                {
-                                "key_code": "non_us_backslash"
-                                }
-                                ],
+                            {
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [{ "key_code": "non_us_backslash" }],
                                 "type": "basic"
                             },
                             {
-                            "from": {
-                            "key_code": "non_us_backslash",
-                            "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
-                            },
-                                "to": [
-                                {
-                                "key_code": "non_us_backslash",
-                                "modifiers": ["left_shift"]
-                                }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                            "from": {
-                            "key_code": "e",
-                                    "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                                "from": {
+                                    "key_code": "non_us_backslash",
+                                    "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
                                     {
-                                        "consumer_key_code": "play_or_pause"
+                                        "key_code": "non_us_backslash",
+                                        "modifiers": ["left_shift"]
                                     }
                                 ],
                                 "type": "basic"
                             },
                             {
-                            "from": {
-                            "key_code": "spacebar",
+                                "from": {
+                                    "key_code": "e",
                                     "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
-                                "to": [
-                                    {
-                                        "consumer_key_code": "play_or_pause"
-                                    }
-                                ],
+                                "to": [{ "consumer_key_code": "play_or_pause" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [{ "consumer_key_code": "play_or_pause" }],
                                 "type": "basic"
                             },
                             {
@@ -6063,7 +6045,7 @@
                             }
                         ]
                     },
-                     {
+                    {
                         "description": "Custom Right Command",
                         "manipulators": [
                             {
