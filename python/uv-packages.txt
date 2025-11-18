@@ -1,1 +1,1 @@
-whisper-mps
+whisperx

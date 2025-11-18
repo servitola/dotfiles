@@ -37,21 +37,17 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ## Current Directory Structure (depth 2)
 .
 ├── LaunchAgents
-│   ├── com.colima.service.plist
-│   └── com.telegram-bot.service.plist
+│   └── com.colima.service.plist
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
-│   ├── rags
 │   ├── roles
 │   ├── config.yaml
 │   └── dark.tmTheme
 ├── amp
-│   ├── commands
-│   ├── tools
 │   └── settings.json
 ├── annepro2
-│   ├── qmk
+│   ├── ANNE PRO 2.json
 │   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
@@ -120,8 +116,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── heroic
 │   └── config.json
 ├── homebrew
-│   ├── Support
-│   ├── examples
 │   ├── brewfile
 │   ├── install.sh
 │   ├── install_all_homebrew_packages.sh
@@ -140,7 +134,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── jetbrains android
 │   └── settings.zip
 ├── jetbrains rider
-│   ├── settings
 │   ├── rider.vmoptions
 │   └── settings.zip
 ├── jetbrains webstorm
@@ -148,7 +141,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── karabiner
 │   ├── assets
 │   ├── automatic_backups
-│   ├── rules
 │   └── karabiner.json
 ├── keyboard-layout
 │   └── Birman.bundle
@@ -165,6 +157,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── hosts
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
+│   ├── start_n8n.sh
 │   ├── sync_gruvbox_wallpapers.sh
 │   └── update_all_and_cleanup_all.sh
 ├── marta
@@ -173,7 +166,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── conf.marco
 │   └── favorites.marco
 ├── midnight commander
-│   ├── mcedit
 │   ├── ini
 │   └── panels.ini
 ├── n8n
@@ -224,7 +216,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── zsh
 │   ├── bin
 │   ├── plugins
-│   ├── secrets
 │   ├── aliases.sh
 │   ├── completion.sh
 │   ├── exports.sh
