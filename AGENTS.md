@@ -89,15 +89,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── cli-tools.md
-│   ├── editors.md
-│   ├── git.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   ├── karabiner-elements.md
 │   ├── keyboard-setup.md
 │   ├── letters.md
 │   ├── llm-cost-reduction.md
-│   ├── mobile-fintech-ai-workflows.md
 │   ├── README.md
 │   └── shell-zsh.md
 ├── eza
