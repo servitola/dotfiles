@@ -36,6 +36,7 @@
   },
   "preferences": {
     "menuBarEnabled": false,
-    "quickEntryDictationShortcut": "off"
+    "quickEntryDictationShortcut": "off",
+    "quickEntryShortcut": "off"
   }
 }
