@@ -24,6 +24,7 @@ alias ytaudio="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
 alias yta=ytaudio
 
 alias c=clear
+alias cd='z'
 
 # duckduckgo search
 alias d="ddgr -x -n 3"
