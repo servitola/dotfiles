@@ -24,7 +24,7 @@ print_section() {
 }
 
 print_task() {
-    printf "${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
+    printf "\n${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
 print_section "Apps Updates"
@@ -71,8 +71,7 @@ setopt rm_star_silent #turn off safe mode
 "$TRY_CLEAN" /Library/Caches "System Caches"
 
 print_task "Cleaning logs"
-"$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log" "Log files"
-"$TRY_CLEAN_PATTERN" ~/Library/Logs f "*.log.0" "Rotated log files"
+"$TRY_CLEAN" ~/Library/Logs "Library Logs"
 "$TRY_CLEAN" ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
 "$TRY_CLEAN" /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
 "$TRY_CLEAN" ~/.local/share/NuGet/v3-cache "NuGet Cache"
