@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+echo
 echo "🐍 Installing/updating global Python packages..."
 
 while IFS= read -r package; do

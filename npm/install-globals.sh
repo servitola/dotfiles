@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+echo
 echo "📦 Installing/updating global npm packages..."
 
 while IFS= read -r package || [ -n "$package" ]; do

@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+echo
 echo "⚙️  Installing/updating UV tools..."
 uv tool upgrade --all
 
