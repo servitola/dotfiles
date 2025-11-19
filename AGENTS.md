@@ -58,7 +58,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── login.sh
 ├── bat
 │   └── config
-├── bin
 ├── btop
 │   ├── themes
 │   └── btop.conf
@@ -83,7 +82,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── cursor
 │   ├── keybindings.json
 │   └── settings.json
-├── dircolors
 ├── docs
 │   ├── ai-development-best-practices.md
 │   ├── app-integration.md
