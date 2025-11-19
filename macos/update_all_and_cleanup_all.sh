@@ -35,7 +35,7 @@ brew cu --all --yes --quiet --no-quarantine
 brew update
 brew upgrade
 mas upgrade
-brew cleanup
+brew cleanup --scrub
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
