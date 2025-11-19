@@ -1,31 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.colima.service</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/colima</string>
+        <string>start</string>
+        <string>--foreground</string>
+    </array>
+
+    <key>EnvironmentVariables</key>
     <dict>
-        <key>Label</key>
-        <string>com.colima.docker</string>
-        <key>ProgramArguments</key>
-        <array>
-            <string>/bin/bash</string>
-            <string>-c</string>
-            <string>export PATH=/opt/homebrew/bin:$PATH &amp;&amp; /opt/homebrew/bin/colima start</string>
-        </array>
-        <key>EnvironmentVariables</key>
-        <dict>
-            <key>PATH</key>
-            <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
-        </dict>
-        <key>RunAtLoad</key>
-        <true />
-        <key>KeepAlive</key>
-        <false />
-        <key>StandardOutPath</key>
-        <string>/Users/servitola/.colima/startup.log</string>
-        <key>StandardErrorPath</key>
-        <string>/Users/servitola/.colima/startup.err</string>
-        <key>StartInterval</key>
-        <integer>30</integer>
-        <key>TimeOut</key>
-        <integer>300</integer>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
     </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+        <key>Crashed</key>
+        <true/>
+    </dict>
+
+    <key>ThrottleInterval</key>
+    <integer>60</integer>
+
+    <key>StandardOutPath</key>
+    <string>/Users/servitola/.colima/startup.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/servitola/.colima/startup.err</string>
+
+    <key>ProcessType</key>
+    <string>Interactive</string>
+</dict>
 </plist>
