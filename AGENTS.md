@@ -75,7 +75,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── google-calendar-mcp.sh
 │   └── google-maps-mcp.sh
 ├── colima
-│   └── colima.yaml
+│   └── default
 ├── contextMenu
 │   ├── actions
 │   └── helper_script.sh

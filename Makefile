@@ -171,9 +171,8 @@ install:
 	@$(LINK) ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
 	@echo "setup Colima for containers"
-	@mkdir -p ~/.colima/default
-	@$(REMOVE) ~/.colima/default/colima.yaml
-	@$(LINK) ~/projects/dotfiles/colima/colima.yaml ~/.colima/default/colima.yaml
+	@$(REMOVE) ~/.colima/default
+	@$(LINK) ~/projects/dotfiles/colima/default ~/.colima/default
 
 	@echo "set default applications for different file extensions"
 	@$(SHELL) 'source macos/set_default_apps.sh'
