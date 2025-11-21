@@ -72,6 +72,7 @@ print_task "Cleaning caches"
 setopt rm_star_silent #turn off safe mode
 "$TRY_CLEAN" ~/Library/Caches "Library Caches"
 "$TRY_CLEAN" /Library/Caches "System Caches"
+"$TRY_CLEAN" /Users/servitola/Library/Application\ Support/Caches "Application Support Caches"
 
 print_task "Cleaning logs"
 "$TRY_CLEAN" ~/Library/Logs "Library Logs"
