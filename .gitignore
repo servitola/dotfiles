@@ -26,3 +26,5 @@ vscode/User/globalStorage/ms-python.python/
 # Appium
 appium/.appium/node_modules/
 .aider*
+colima/default/daemon/daemon.log
+colima/default/daemon/daemon.pid
