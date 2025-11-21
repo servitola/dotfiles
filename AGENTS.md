@@ -165,6 +165,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
+│   ├── disable_spotlight.sh
 │   ├── dock_setup.sh
 │   ├── hosts
 │   ├── set_default_apps.sh
