@@ -50,29 +50,18 @@ install:
 	@$(REMOVE) ~/.claude/CLAUDE.md
 	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.claude/CLAUDE.md
 
-	@echo "setup Windsurf Next user settings symlinks"
-	@mkdir -p ~/Library/Application\ Support/Windsurf\ -\ Next/User
-
-	@$(REMOVE) ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
-	@$(LINK) ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json
-
-	@$(REMOVE) ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
-	@$(LINK) ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json
-
-	@mkdir -p ~/.codeium/windsurf-next/memories
-	@$(REMOVE) ~/.codeium/windsurf-next/memories/global_rules.md
-	@$(LINK) ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf-next/memories/global_rules.md
-
-	@echo "setup Windsurf (stable) to use Windsurf Next settings"
+	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
+
 	@$(REMOVE) ~/Library/Application\ Support/Windsurf/User/settings.json
-	@$(LINK) ~/Library/Application\ Support/Windsurf\ -\ Next/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
+	@$(LINK) ~/projects/dotfiles/windsurf/User/settings.json ~/Library/Application\ Support/Windsurf/User/settings.json
+
 	@$(REMOVE) ~/Library/Application\ Support/Windsurf/User/keybindings.json
-	@$(LINK) ~/Library/Application\ Support/Windsurf\ -\ Next/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
+	@$(LINK) ~/projects/dotfiles/windsurf/User/keybindings.json ~/Library/Application\ Support/Windsurf/User/keybindings.json
 
 	@mkdir -p ~/.codeium/windsurf/memories
 	@$(REMOVE) ~/.codeium/windsurf/memories/global_rules.md
-	@$(LINK) ~/.codeium/windsurf-next/memories/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
+	@$(LINK) ~/projects/dotfiles/windsurf/global_rules.md ~/.codeium/windsurf/memories/global_rules.md
 
 	@echo "setup VSCode user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Code/User
