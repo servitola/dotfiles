@@ -8,7 +8,6 @@ dofile("./Spoons/Windows.spoon/window_set_bottom_function.lua")
 dofile("./Spoons/Windows.spoon/window_set_right_function.lua")
 dofile("./Spoons/Windows.spoon/dialog_set_right_function.lua")
 dofile("./Spoons/Windows.spoon/windows_detection_functions.lua")
-dofile("./Spoons/Windows.spoon/windows_watcher.lua")
 dofile("./Spoons/Windows.spoon/adjust_right_panel_for_dialogs.lua")
 dofile("./Spoons/Windows.spoon/window_set_full_size_function.lua")
 dofile("./Spoons/Windows.spoon/restore_right_panel_windows_function.lua")
@@ -164,7 +163,6 @@ function set_all_windows_positions()
 end
 
 function obj:init()
-    setup_window_watcher()
     return self
 end
 
