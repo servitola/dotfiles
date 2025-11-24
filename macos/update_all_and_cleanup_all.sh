@@ -55,6 +55,9 @@ appium plugin update installed
 print_task "Updating .NET tools"
 dotnet tool update -g dotnet-trace
 
+print_task "Updating precommit hooks"
+pre-commit autoupdate
+
 print_section "System Maintenance"
 
 print_task "Removing Google Updater (Keystone)"
