@@ -83,7 +83,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── keybindings.json
 │   └── settings.json
 ├── docs
-│   ├── ai-development-best-practices.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
