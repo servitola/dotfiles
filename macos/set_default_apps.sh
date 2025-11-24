@@ -100,6 +100,7 @@ duti -s com.microsoft.VSCode .zshrc all
 duti -s com.microsoft.VSCode Makefile all
 duti -s com.microsoft.VSCode .settings all
 duti -s com.microsoft.VSCode .gitignore all
+duti -s com.microsoft.VSCode .opml all
 
 echo "Setting audio/video player"
 duti -s com.colliderli.iina public.audio all
