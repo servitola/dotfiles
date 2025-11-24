@@ -86,13 +86,10 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── ai-development-best-practices.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
-│   ├── cli-tools.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
-│   ├── karabiner-elements.md
 │   ├── keyboard-setup.md
 │   ├── letters.md
-│   ├── llm-cost-reduction.md
 │   ├── README.md
 │   └── shell-zsh.md
 ├── eza
@@ -165,7 +162,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
-│   ├── disable_spotlight.sh
 │   ├── dock_setup.sh
 │   ├── hosts
 │   ├── set_default_apps.sh
