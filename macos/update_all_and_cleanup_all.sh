@@ -42,6 +42,7 @@ brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 print_task "Updating VSCode extensions"
 code --update-extensions
 
+npm config set fund false
 source ~/projects/dotfiles/npm/install-globals.sh
 
 uv python install 3.12
