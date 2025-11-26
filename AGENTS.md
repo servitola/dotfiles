@@ -138,6 +138,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── jetbrains android
 │   └── settings.zip
 ├── jetbrains rider
+│   ├── settings
 │   ├── rider.vmoptions
 │   └── settings.zip
 ├── jetbrains webstorm
