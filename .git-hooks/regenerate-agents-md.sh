@@ -7,7 +7,7 @@ TEMP_FILE=$(mktemp)
 
 # Generate directory tree (without summary line)
 cd "$DOTFILES_ROOT"
-tree -L 2 -I '.git|.DS_Store|node_modules|ableton' --dirsfirst --noreport >"$TEMP_FILE"
+LC_COLLATE=C tree -L 2 -I '.git|.DS_Store|node_modules|ableton' --dirsfirst --noreport >"$TEMP_FILE"
 
 # Extract content before the marker
 awk '/^## Current Directory Structure \(depth 2\)$/{exit} {print}' "$AGENTS_MD" >"${AGENTS_MD}.tmp"
