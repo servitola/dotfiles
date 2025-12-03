@@ -36,6 +36,11 @@ brew update
 brew upgrade
 mas upgrade
 brew cleanup --scrub
+
+print_task "Set node22 is default"
+brew unlink node 2>/dev/null || true
+brew link --force --overwrite node@22
+
 brew doctor
 brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
 
