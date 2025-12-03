@@ -3,6 +3,17 @@
 echo
 echo "📦 Installing/updating global npm packages..."
 
+safe_npm_update() {
+    local package="$1"
+    local package_dir="$HOME/.npm-global/lib/node_modules/${package}"
+
+    if [ -d "$package_dir" ]; then
+        xattr -cr "$package_dir" 2>/dev/null || true
+    fi
+
+    npm install -g "$package@latest" 2>&1 | grep -v "^npm warn"
+}
+
 while IFS= read -r package || [ -n "$package" ]; do
     # Skip empty lines and comments
     [[ -z "$package" ]] && continue
@@ -19,7 +30,7 @@ while IFS= read -r package || [ -n "$package" ]; do
 
         if [ -n "$latest_version" ] && [ "$current_version" != "$latest_version" ]; then
             echo "🔄 Updating: $package ($current_version → $latest_version)"
-            npm install -g "$package@latest" 2>&1 | grep -v "^npm warn"
+            safe_npm_update "$package"
             if [ $? -eq 0 ]; then
                 echo "✅ Updated: $package to $latest_version"
             else
@@ -28,7 +39,7 @@ while IFS= read -r package || [ -n "$package" ]; do
         fi
     else
         echo "📥 Installing: $package"
-        npm install -g "$package" 2>&1 | grep -v "^npm warn"
+        safe_npm_update "$package"
         if [ $? -eq 0 ]; then
             echo "✅ Installed: $package"
         else
