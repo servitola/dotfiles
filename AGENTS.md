@@ -92,8 +92,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   ├── keyboard-setup.md
-│   ├── letters.md
-│   └── shell-zsh.md
+│   └── letters.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
