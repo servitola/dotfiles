@@ -1,2 +1,4 @@
 ---
-{}
+"pane_group:navigate_next": "cmd-]"
+"editor:delete_word_right": alt-delete
+"editor_view:insert_autosuggestion": cmd-enter
