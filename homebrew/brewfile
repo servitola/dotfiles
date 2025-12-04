@@ -42,7 +42,6 @@ brew "gemini-cli"
 brew "gh"
 brew "ghostscript"
 brew "gitleaks"
-brew "pydantic"
 brew "glances"
 brew "gping"
 brew "graphviz"
@@ -58,7 +57,7 @@ brew "mas"
 brew "midnight-commander"
 brew "nano"
 brew "neovim"
-brew "node@22"
+brew "node@22", link: true
 brew "noti"
 brew "openjdk@17"
 brew "pillow"
@@ -131,9 +130,7 @@ cask "workflowy"
 cask "yandex"
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
-mas "ContextMenu", id: 1236813619
 mas "DjVu Reader", id: 733144595
-mas "Folder Preview", id: 6698876601
 mas "Grazie", id: 6450955215
 mas "Grila", id: 6444335028
 mas "NepTunes", id: 1006739057

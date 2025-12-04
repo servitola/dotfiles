@@ -37,7 +37,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ## Current Directory Structure (depth 2)
 .
 ├── LaunchAgents
-│   └── com.colima.service.plist
+│   ├── com.colima.service.plist
+│   └── com.telegram-bot.service.plist
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
