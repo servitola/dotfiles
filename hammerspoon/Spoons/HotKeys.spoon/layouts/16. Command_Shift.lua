@@ -34,6 +34,7 @@ return { modifier={"left_command", "left_shift"}, chords={
 -- ↩: ℝ — complete current statement
 -- a: 📁 — go to Applications
 --    Fork — filter by active branch
+--    Fork — amend
 -- s: 📁 — go to Shared
 --    📝 — save file as
 -- d: 📁 — go to Desktop
