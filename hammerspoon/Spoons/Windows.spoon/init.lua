@@ -144,12 +144,11 @@ function set_all_windows_positions()
                is_firefox_video_player(app_title, window_title) or
                is_yandex_video_player(app_title, window_title, window) or
                is_finder_copy_dialog(app_title, window_title, window) or
-               is_activity_monitor_small_window(app_title, window_title, window) then
+               is_activity_monitor_small_window(app_title, window_title, window) or
+               is_activity_monitor_cpu_window(app_title, window_title) then
             set_window_bottom(window)
-        elseif is_activity_monitor_cpu_window(app_title, window_title) then
-            set_window_right(window)
-        elseif is_activity_monitor_small_window(app_title, window_title, window) then
-            set_window_bottom(window)
+        elseif is_winflow_recording_panel(app_title, window_title) then
+            -- nothing
         else
             if is_full_screen(window) then
                 if window == hs.window.frontmostWindow() then
