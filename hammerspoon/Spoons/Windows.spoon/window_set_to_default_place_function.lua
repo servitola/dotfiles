@@ -26,6 +26,8 @@ function set_window_default(window)
         set_window_right(window)
     elseif is_activity_monitor_small_window(app_title, window_title, window) then
         set_window_bottom(window)
+    elseif is_winflow_recording_panel(app_title, window_title) then
+        -- nothing
     else
         set_window_left(window)
     end

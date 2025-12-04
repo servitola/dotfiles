@@ -19,6 +19,14 @@ function is_activity_monitor_small_window(app_title, window_title, window)
     return is_small_window and is_not_main
 end
 
+function is_winflow_recording_panel(app_title, window_title)
+    if app_title == "Wispr Flow" and window_title == "Status" then
+        return true
+    else
+        return false
+    end
+end
+
 function is_android_emulator(window)
     local window_title = window:title()
     local app_title = window:application():title()
