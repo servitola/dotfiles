@@ -238,7 +238,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
-├── CLAUDE.md
+├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
 └── WARP.md -> CLAUDE.md
