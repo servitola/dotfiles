@@ -91,6 +91,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
+│   ├── keyboard-map-integration.md
 │   ├── keyboard-setup.md
 │   └── letters.md
 ├── eza
@@ -161,8 +162,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
+│   ├── ANDROID_MOUNT_SETUP.md
+│   ├── android_automount.sh
+│   ├── com.servitola.android-automount.plist
 │   ├── dock_setup.sh
 │   ├── hosts
+│   ├── install_android_mount.sh
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
 │   ├── sync_gruvbox_wallpapers.sh
