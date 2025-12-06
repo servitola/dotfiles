@@ -111,6 +111,7 @@ return { modifier="left_command", chords={
 -- k: Telegram — Focus search
 --    Telegram — create link
 --    Claude Desktop — New chat
+--    📝 — choose repository
 -- l: ℝ — go to line
 --    🌐 — Focus Url Line
 --    Music — Go to Current song
