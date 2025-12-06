@@ -1,0 +1,48 @@
+return {
+--    ╭—————╮
+--    │  ;  │    semicolon / right
+--    ╰—————╯
+--
+--         karabiner: ⇪; → →
+--                    ⇪⇧⌃; → vk_consumer_next
+--
+--          | chord |    |   symbol  |
+--               ;            ;/:/:
+--——————————————┼——————————————┼——————————————————————————————————
+--              ⇪;              →
+--             ⇪⇧;                       select one letter right
+--             ⇪⌃;
+--             ⇪⌥;                       jump to next word right
+--              ⌘;                       ℝ — run unit test
+--——————————————┼——————————————┼——————————————————————————————————
+--             ⇪⇧;
+--             ⇪⌃;
+--             ⇪⌥;
+--             ⌘⇧;                       end
+--             ⇧⌃;                       move to right workspace
+--             ⇧⌥;                       select word to the right
+--             ⇧⌘;
+--             ⌃⌥;
+--             ⌃⌘;
+--             ⌥⌘;                       Music — seek forward
+--——————————————┼——————————————┼——————————————————————————————————
+--            ⇪⇧⌃;        vk_consumer_next     next track
+--            ⇪⇧⌥;           ⇧⌥→           select word to the right
+--            ⇪⇧⌘;
+--            ⇪⌃⌥;
+--            ⇪⌃⌘;                          📝 — move tab to panel to the right
+--            ⇪⌥⌘;                          Music — seek forward; 📝 — go to next tab; iTerm — focus pane to the right
+--            ⇧⌃⌥;
+--            ⇧⌃⌘;
+--            ⇧⌥⌘;
+--            ⌃⌥⌘;
+--——————————————┼——————————————┼——————————————————————————————————
+--           ⇪⇧⌃⌥;
+--           ⇪⇧⌃⌘;
+--           ⇪⇧⌥⌘;
+--           ⇪⌃⌥⌘;
+--           ⇧⌃⌥⌘;
+--——————————————┼——————————————┼——————————————————————————————————
+--          ⇪⇧⌃⌥⌘;
+--              ┴              ┴
+}

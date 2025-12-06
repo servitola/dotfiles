@@ -1,0 +1,50 @@
+return {
+--    ╭—————╮
+--    │  S  │    save / down
+--    ╰—————╯
+--
+--         karabiner: ⇪s → ↓
+--                    ⇪⇧⌃s → volume_decrement
+--                    ⇪⇧⌘s → illumination_decrement
+--
+--——————— chord ┬ en | ru | el ┬
+--               s             s ы σ
+--——————————————┼——————————————┼——————————————————————————————————
+--              ⇪s               ↓
+--              ⇧s             S Ы Σ
+--              ⌃s                          ℝ — save with format (idea + custom macros)
+{ chord =  "⌥s",                        fn = "window.set_all_to_default" },
+--              ⌘s                          save
+--——————————————┼——————————————┼——————————————————————————————————
+--             ⇪⇧s            ⇧↓            select line down
+--             ⇪⌃s            ⌃↓
+--             ⇪⌥s            ⌥↓
+--             ⌘⇧s                          📁 — go to Shared
+--             ⇧⌃s                          (internal Rider shortcut)
+--             ⇧⌥s
+--             ⇧⌘s
+{ chord = "⌃⌥s",                        fn = "window.set_all_to_default" },
+--             ⌃⌘s                          📁 — toggle SideBar
+--                                          ℝ — toggle Sidebar
+--             ⌥⌘s
+--——————————————┼——————————————┼——————————————————————————————————
+--            ⇪⇧⌃s             volume_decrement
+--            ⇪⇧⌥s
+--            ⇪⇧⌘s             illumination_decrement
+--            ⇪⌃⌥s
+--            ⇪⌃⌘s                          ℝ — navigate to down method
+--            ⇪⌥⌘s                          📝 — clone caret down; iTerm — focus pane below
+--            ⇧⌃⌥s
+--            ⇧⌃⌘s
+--            ⇧⌥⌘s                         Fork — send all files to staged/unstaged
+--            ⌃⌥⌘s
+--——————————————┼——————————————┼——————————————————————————————————
+--           ⇪⇧⌃⌥s
+--           ⇪⇧⌃⌘s
+--           ⇪⇧⌥⌘s
+--           ⇪⌃⌥⌘s
+--           ⇧⌃⌥⌘s
+--——————————————┼——————————————┼——————————————————————————————————
+--          ⇪⇧⌃⌥⌘s
+--              ┴              ┴
+}

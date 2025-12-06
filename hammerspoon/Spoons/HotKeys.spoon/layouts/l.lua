@@ -1,0 +1,53 @@
+return {
+--    ╭—————╮
+--    │  L  │    line / current address
+--    ╰—————╯
+--
+--         karabiner: ⇪l → ↓
+--                    ⇪⇧⌃l → volume_decrement
+--                    ⇪⇧⌘l → illumination_decrement
+--
+--——————— chord ┬ en | ru | el ┬
+--          l   │ l    д    λ  │ YouTube 10sec forward
+--——————————————┼——————————————┼——————————————————————————————————
+--         ⇪l   │      ↓       │
+--         ⇧l   │ L    Д    Λ  │
+--         ⌃l   │              │ Unix Terminal — clear window
+--         ⌥l   │ ”    ”    ¬  │
+--         ⌘l   │              │ ℝ — go to line,
+--              │              │ 🌐 — Focus Url Line,
+--              │              │ Music — Go to Current song,
+--              │              │ Telegram — lock Telegram
+--——————————————┼——————————————┼——————————————————————————————————
+--        ⇪⇧l   │      ⇧↓      │ select line down
+--        ⇪⌃l   │              │ show all windows of current app
+--        ⇪⌥l   │              │
+--        ⌘⇧l   │              │ Fork — open Pull dialog
+--        ⇧⌃l   │              │ ℝ — focus in Solution explorer
+--        ⇧⌥l   │ ’    ’    ·  │
+--        ⇧⌘l   │              │
+--        ⌃⌥l   │              │
+--        ⌃⌘l   │              │
+--        ⌥⌘l   │              │ 📁 — downloads
+--——————————————┼——————————————┼——————————————————————————————————
+--       ⇪⇧⌃l   │              │ volume_decrement
+--       ⇪⇧⌥l   │              │
+--       ⇪⇧⌘l   │              │ illumination_decrement
+--       ⇪⌃⌥l   │              │
+--       ⇪⌃⌘l   │              │ ℝ — navigate to down method
+--       ⇪⌥⌘l   │              │ 📝 — clone caret down;
+--              │              │ iTerm — focus pane below
+--       ⇧⌃⌥l   │              │
+--       ⇧⌃⌘l   │              │
+--       ⇧⌥⌘l   │              │ Fork — quick Pull
+--       ⌃⌥⌘l   │              │
+--——————————————┼——————————————┼——————————————————————————————————
+--      ⇪⇧⌃⌥l   │              │
+--      ⇪⇧⌃⌘l   │              │
+--      ⇪⇧⌥⌘l   │              │
+--      ⇪⌃⌥⌘l   │              │
+--      ⇧⌃⌥⌘l   │              │
+--——————————————┼——————————————┼——————————————————————————————————
+--     ⇪⇧⌃⌥⌘l   │              │
+--              ┴              ┴
+}
