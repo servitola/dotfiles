@@ -6,18 +6,19 @@ return {
 --         karabiner: ⇪⇥ → ↩
 --
 --———————— chord ┬ en | ru | el ┬
---           ⇥   │       ⇥      │
+--           ⇥   │       ⇥      │ Unix Terminal — complete
 --———————————————┼——————————————┼——————————————————————————————————
 --          ⇪⇥   │       ↩      │  — enter / return
 --          ⇧⇥   │              │  — select previous element or move text block left
 --          ⌃⇥   │              │  — switch tab forward
---          ⌥⇥   │              │  —switch the app windows with AltTab app
+--          ⌥⇥   │              │  — switch the app windows with AltTab app
 --          ⌘⇥   │              │  — switch between open windows
 --———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧⇥   │              │
---         ⇪⌃⇥   │              │  — open context menu
+--         ⇪⇧⇥   │      ⇧↩      │
+--         ⇪⌃⇥   │      ⌃↩      │  — open context menu
 --               │              │ ℝ — generate (alternative to cmd + n)
---         ⇪⌥⇥   │              │
+--         ⇪⌥⇥   │      ⌥↩      │
+--         ⇪⌘⇥   │      ⌘↩      │
 --         ⌘⇧⇥   │              │  — switch between open windows backwards
 --         ⇧⌃⇥   │              │  — go to previous tab
 --         ⇧⌥⇥   │              │
@@ -36,11 +37,5 @@ return {
 --        ⇧⌃⌘⇥   │              │
 --        ⇧⌥⌘⇥   │              │
 --        ⌃⌥⌘⇥   │              │
---———————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃⌥⇥   │              │
---       ⇪⇧⌃⌘⇥   │              │
---       ⇪⇧⌥⌘⇥   │              │
---       ⇪⌃⌥⌘⇥   │              │
---       ⇧⌃⌥⌘⇥   │              │
 --               ┴              ┴
 }
