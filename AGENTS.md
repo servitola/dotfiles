@@ -141,9 +141,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.zip
 ├── jetbrains rider
 │   ├── settings
+│   ├── settings 2
 │   ├── rider.vmoptions
 │   └── settings.zip
 ├── jetbrains webstorm
+│   ├── settings
 │   └── settings.zip
 ├── karabiner
 │   ├── assets
