@@ -1,45 +1,30 @@
 local obj={}
 
 -- Hyper is Caps Lock (⇪) remapped to Hyper in Karabiner-Elements
-
-local layoutFiles = {
-    "01. English",
-    "02. Russian",
-    "03. Greek",
-    "04. English_Shift", -- ⇧
-    "05. Russian_Shift", -- ⇧
-    "06. Greek_Shift", -- ⇧
-    "07. Alt", -- ⌥ (Ilya Birman's layout)
-    "08. Alt_Shift", -- ⌥⇧ (Ilya Birman's layout)
-    "09. Command Left", -- ⌘
-    "09. Command Right", -- ⌘
-    "10. Control", -- ⌃
-    "11. Hyper", -- ⇪
-    "12. Hyper_Alt", -- ⇪ ⌥
-    "13. Hyper_Command", -- ⇪ ⌘
-    "14. Hyper_Control", -- ⇪ ⌃
-    "15. Hyper_Shift", -- ⇪ ⇧
-    "16. Command_Shift", -- ⌘ ⇧
-    "17. Command_Alt", -- ⌘ ⌥
-    "18. Command_Control", -- ⌘ ⌃
-    "19. Control_Shift", -- ⌃ ⇧
-    "20. Control_Alt", -- ⌃ ⌥
-    "21. Hyper_Alt_Command", -- ⇪ ⌥ ⌘
-    "22. Hyper_Alt_Control", -- ⇪ ⌥ ⌃
-    "23. Hyper_Alt_Shift", -- ⇪ ⌥ ⇧
-    "24. Hyper_Control_Command", -- ⇪ ⌘ ⌃
-    "25. Hyper_Command_Shift", -- ⇪ ⇧ ⌘
-    "26. Hyper_Shift_Control", -- ⇪ ⇧ ⌃
-    "27. Control_Alt_Command", -- ⌃ ⌥ ⌘
-    "28. Shift_Control_Alt", -- ⌃ ⌥ ⇧
-    "29. Shift_Control_Command", -- ⌃ ⇧ ⌘
-    "30. Shift_Alt_Command" -- ⇧ ⌥ ⌘
-}
+-- Karabiner sends: right_command + right_control + right_option + right_shift simultaneously
 
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
+local buttonFiles = {
+    "tilde",
+    "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+    "minus", "equal", "backspace",
+    "tab",
+    "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
+    "bracketleft", "bracketright",
+    "return",
+    "capslock",
+    "a", "s", "d", "f", "g", "h", "j", "k", "l",
+    "semicolon", "apostrophe", "backslash",
+    "shift",
+    "z", "x", "c", "v", "b", "n", "m",
+    "period", "comma", "slash",
+    "fn", "space",
+    "left","up", "down", "right"
+}
+
 -- Icons used:
---  — MacOS or common
+--  — MacOS or common
 -- 🌐 — Browser
 -- ℝ — Rider IDE
 -- 📁 — Finder
@@ -60,19 +45,50 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 -- ␣ -- Space
 -- ⎋ -- Escape
 
--- next hotkey candidate:
--- control + y
+local function parseChord(chordStr)
+    local modifiers = {}
+    local key = ""
+
+
+    key = chordStr:match("[a-z0-9]$")
+
+    if not key then
+        -- Key not found - invalid chord
+        return {}, ""
+    end
+
+    if chordStr:find("⇪") then
+        table.insert(modifiers, "right_command")
+        table.insert(modifiers, "right_control")
+        table.insert(modifiers, "right_option")
+        table.insert(modifiers, "right_shift")
+    end
+    if chordStr:find("⇧") then table.insert(modifiers, "shift") end
+    if chordStr:find("⌃") then table.insert(modifiers, "ctrl") end
+    if chordStr:find("⌥") then table.insert(modifiers, "alt") end
+    if chordStr:find("⌘") then table.insert(modifiers, "cmd") end
+
+    return modifiers, key
+end
 
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local layoutsPath = spoonPath .. "layouts/"
 
-layers_list = {}
+allChords = {}
 
-for _, filename in ipairs(layoutFiles) do
+for _, filename in ipairs(buttonFiles) do
     local filePath = layoutsPath .. filename .. ".lua"
-    local _, layout = pcall(dofile, filePath)
-    table.insert(layers_list, layout)
+    local success, buttonData = pcall(dofile, filePath)
+    if success and buttonData and type(buttonData) == "table" then
+        for _, chord_entry in ipairs(buttonData) do
+            if chord_entry then
+                table.insert(allChords, chord_entry)
+            end
+        end
+    end
 end
+
+print("DEBUG: Loaded " .. #allChords .. " total chord entries")
 
 function unsubscribe()
     if hideKSheetShortCut then
@@ -109,154 +125,183 @@ function obj:init()
 
     appSpecificHelper.init(appSpecificHotkeys)
 
-    for _, layer in pairs(layers_list) do
-        if layer.chords then
-            for _, chord_row in pairs(layer.chords) do
-                if chord_row.app then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
+    local bindCount = 0
+    for _, chord_entry in ipairs(allChords) do
+        if chord_entry.chord then
+            local modifiers, key = parseChord(chord_entry.chord)
 
-                        local modifierStr = type(layer.modifier) == "table" and table.concat(layer.modifier, "+") or layer.modifier
-                        print("Hotkey triggered: " .. modifierStr .. "+" .. chord_row.key .. " → " .. chord_row.app)
+            -- Validate key was extracted properly
+            if key == "" or key == nil then
+                print(string.format("DEBUG: Skipping invalid chord='%s' (key extraction failed)", chord_entry.chord))
+                goto continue
+            end
 
-                        local app
-                        if chord_row.app == "Visual Studio Code" then
-                            app = hs.application.get("com.microsoft.VSCode")
-                        else
-                            local found = hs.application.find(chord_row.app)
-                            app = found
-                            if found and tostring(found):match("hs.window:") then
-                                app = found:application()
-                                print("Found window, getting application: " .. tostring(app))
-                            end
-                        end
+            -- Debug: show what we're parsing
+            if chord_entry.app then
+                print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
+                    chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.app))
+            end
 
-                        if not app or (app and app.isHidden and app:isHidden()) then
-                            print("Launching/focusing app: " .. chord_row.app)
-                            hs.application.launchOrFocus(chord_row.app)
-                        elseif hs.application.frontmostApplication() ~= app then
-                            print("Activating app: " .. chord_row.app)
-                            if app and app.activate then
-                                hs.application.launchOrFocus(chord_row.app)
-                            end
-                        else
-                            print("Hiding app: " .. chord_row.app)
-                            if app and app.hide then
-                                app:hide()
-                            end
-                        end
-                    end)
-                    if chord_row.window_default_position then
-                        if chord_row.window_default_position == "right" then
-                            spoon.Windows:add_right_window_type_app(chord_row.app)
-                        elseif chord_row.window_default_position == "bottom" then
-                            spoon.Windows:add_bottom_window_type_app(chord_row.app)
+            -- Only bind if there are modifiers
+            if #modifiers == 0 then
+                print(string.format("DEBUG: Skipping chord='%s' (no modifiers found)", chord_entry.chord))
+                goto continue
+            end
+
+            if chord_entry.app then
+                hs.hotkey.bind(modifiers, key, function()
+
+                    local modifierStr = table.concat(modifiers, "+")
+                    print("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
+
+                    local app
+                    if chord_entry.app == "Visual Studio Code" then
+                        app = hs.application.get("com.microsoft.VSCode")
+                    else
+                        local found = hs.application.find(chord_entry.app)
+                        app = found
+                        if found and tostring(found):match("hs.window:") then
+                            app = found:application()
+                            print("Found window, getting application: " .. tostring(app))
                         end
                     end
-                elseif chord_row.sendKey then
-                    hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                        hs.eventtap.keyStrokes(chord_row.sendKey)
-                    end)
-                elseif chord_row.specific_function then
-                    if chord_row.specific_function == "window.left" then
-                        spoon.Windows:bind_window_left(layer.modifier, chord_row.key)
-                    elseif chord_row.specific_function == "window.right" then
-                        spoon.Windows:bind_window_right(layer.modifier, chord_row.key)
-                    elseif chord_row.specific_function == "window.fullscreen" then
-                        spoon.Windows:bind_window_fullscreen(layer.modifier, chord_row.key)
-                    elseif chord_row.specific_function == "window.set_all_to_default" then
-                        spoon.Windows:bind_all_windows_to_default(layer.modifier, chord_row.key)
-                    elseif chord_row.specific_function == "android.show_all" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            for _, window in ipairs(hs.window.allWindows()) do
-                                local window_title = window:title()
-                                local app_title = window:application():title()
-                                for _, app in ipairs(chord_row.layers_list) do
-                                    if app_title == app or string.find(window_title, app) then
-                                        window:focus()
-                                    end
-                                end
-                            end
-                        end)
-                    elseif chord_row.specific_function == "info.show_shortcuts" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            if ksheet then
-                                spoon.KSheet:hide()
-                            else
-                                hideKSheetShortCut:enable();
-                                spoon.KSheet:show()
-                            end
 
-                            ksheet = not ksheet
-                        end)
-                    elseif chord_row.specific_function == "set_russian_language" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            hs.keycodes.setLayout("Ru Birman")
-                        end)
-                    elseif chord_row.specific_function == "set_english_language" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            hs.keycodes.setLayout("En Birman")
-                        end)
-                    elseif chord_row.specific_function == "translate_to_russian" then
-                        spoon.PopupTranslateSelection:bindHotkeys({
-                            translate_to_ru = {layer.modifier, chord_row.key},
-                        })
-                    elseif chord_row.specific_function == "translate_to_english" then
-                        spoon.PopupTranslateSelection:bindHotkeys({
-                            translate_to_en = {layer.modifier, chord_row.key},
-                        })
-                    elseif chord_row.specific_function == "translate_to_greek" then
-                        spoon.PopupTranslateSelection:bindHotkeys({
-                            translate_to_el = {layer.modifier, chord_row.key},
-                        })
-                    elseif chord_row.specific_function == "audio.internal" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.AudioSwitcher:switchToInternal()
-                        end)
-                    elseif chord_row.specific_function == "audio.external" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.AudioSwitcher:switchToExternal()
-                        end)
-                    elseif chord_row.specific_function == "audio.marshall" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.AudioSwitcher:switchToMarshall()
-                        end)
-                    elseif chord_row.specific_function == "audio.bt" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.AudioSwitcher:switchToBT()
-                        end)
-                    elseif chord_row.specific_function == "show_youtrack" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.YouTrackTicket:toggle()
-                        end)
-                    elseif chord_row.specific_function == "show_youtrack_tasks" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.YouTrackTasks:toggle()
-                        end)
-                    elseif chord_row.specific_function == "browser_git" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.BrowserTabOpener:openTab("github.com")
-                        end)
-                    elseif chord_row.specific_function == "press_return" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            hs.eventtap.keyStroke({}, "return")
-                        end)
-                    elseif chord_row.specific_function == "browser_youtube" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.BrowserTabOpener:openTab("youtube.com")
-                        end)
-                    elseif chord_row.specific_function == "youtube_stream" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.YouTubeStream:toggle()
-                        end)
-                    elseif chord_row.specific_function == "voice_dictation.toggle" then
-                        hs.hotkey.bind(layer.modifier, chord_row.key, function()
-                            spoon.VoiceDictation:toggleRecording()
-                        end)
+                    if not app or (app and app.isHidden and app:isHidden()) then
+                        print("Launching/focusing app: " .. chord_entry.app)
+                        hs.application.launchOrFocus(chord_entry.app)
+                    elseif hs.application.frontmostApplication() ~= app then
+                        print("Activating app: " .. chord_entry.app)
+                        if app and app.activate then
+                            hs.application.launchOrFocus(chord_entry.app)
+                        end
+                    else
+                        print("Hiding app: " .. chord_entry.app)
+                        if app and app.hide then
+                            app:hide()
+                        end
+                    end
+                end)
+                if chord_entry.window_default_position then
+                    if chord_entry.window_default_position == "right" then
+                        spoon.Windows:add_right_window_type_app(chord_entry.app)
+                    elseif chord_entry.window_default_position == "bottom" then
+                        spoon.Windows:add_bottom_window_type_app(chord_entry.app)
                     end
                 end
+            elseif chord_entry.sendKey then
+                hs.hotkey.bind(modifiers, key, function()
+                    hs.eventtap.keyStrokes(chord_entry.sendKey)
+                end)
+                bindCount = bindCount + 1
+            elseif chord_entry.fn then
+                local functionName = chord_entry.fn
+                print(string.format("DEBUG: Binding specific_function chord='%s' → modifiers=[%s], key='%s', function='%s'",
+                    chord_entry.chord, table.concat(modifiers, ", "), key, functionName))
+                bindCount = bindCount + 1
+
+                if functionName == "window.left" then
+                    spoon.Windows:bind_window_left(modifiers, key)
+                elseif functionName == "window.right" then
+                    spoon.Windows:bind_window_right(modifiers, key)
+                elseif functionName == "window.fullscreen" then
+                    spoon.Windows:bind_window_fullscreen(modifiers, key)
+                elseif functionName == "window.set_all_to_default" then
+                    spoon.Windows:bind_all_windows_to_default(modifiers, key)
+                elseif functionName == "android.show_all" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        for _, window in ipairs(hs.window.allWindows()) do
+                            local window_title = window:title()
+                            local app_title = window:application():title()
+                            for _, app in ipairs(chord_entry.layers_list) do
+                                if app_title == app or string.find(window_title, app) then
+                                    window:focus()
+                                end
+                            end
+                        end
+                    end)
+                elseif functionName == "info.show_shortcuts" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        if ksheet then
+                            spoon.KSheet:hide()
+                        else
+                            hideKSheetShortCut:enable();
+                            spoon.KSheet:show()
+                        end
+
+                        ksheet = not ksheet
+                    end)
+                elseif functionName == "set_russian_language" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.keycodes.setLayout("Ru Birman")
+                    end)
+                elseif functionName == "set_english_language" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.keycodes.setLayout("En Birman")
+                    end)
+                elseif functionName == "translate_to_russian" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_ru = {modifiers, key},
+                    })
+                elseif functionName == "translate_to_english" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_en = {modifiers, key},
+                    })
+                elseif functionName == "translate_to_greek" then
+                    spoon.PopupTranslateSelection:bindHotkeys({
+                        translate_to_el = {modifiers, key},
+                    })
+                elseif functionName == "audio.internal" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:switchToInternal()
+                    end)
+                elseif functionName == "audio.external" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:switchToExternal()
+                    end)
+                elseif functionName == "audio.marshall" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:switchToMarshall()
+                    end)
+                elseif functionName == "audio.bt" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:switchToBT()
+                    end)
+                elseif functionName == "show_youtrack" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.YouTrackTicket:toggle()
+                    end)
+                elseif functionName == "show_youtrack_tasks" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.YouTrackTasks:toggle()
+                    end)
+                elseif functionName == "browser_git" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.BrowserTabOpener:openTab("github.com")
+                    end)
+                elseif functionName == "press_return" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.eventtap.keyStroke({}, "return")
+                    end)
+                elseif functionName == "browser_youtube" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.BrowserTabOpener:openTab("youtube.com")
+                    end)
+                elseif functionName == "youtube_stream" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.YouTubeStream:toggle()
+                    end)
+                elseif functionName == "voice_dictation.toggle" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.VoiceDictation:toggleRecording()
+                    end)
+                end
             end
+
+            ::continue::
         end
     end
+
+    print("DEBUG: Successfully bound " .. bindCount .. " hotkeys")
 end
 
 return obj
