@@ -22,8 +22,8 @@ return {
 --         ⇪⌥w   │     ⌥↑       │  — move line up
 --               │              │ ℝ — extend selection
 --         ⇪⌘w   │     ⌘↑       │ 📝 — jump to breadcumbs
---         ⌘⇧w   │              │
---         ⇧⌃w   │              │
+--         ⌘⇧w   │              │  — close window
+--         ⇧⌃w   │              │ ???
 --         ⇧⌥w   │ ⌃    ⌃    Β  │
 --         ⇧⌘w   │              │ ℝ — close other tabs
 --               │              │ 📝 — close window

@@ -24,8 +24,8 @@ return {
 --               │              │ ℝ — shrink selection
 --         ⇪⌘s   │     ⌘↓       │ ℝ — edit source
 --         ⌘⇧s   │              │ 📁 — go to Shared
---         ⇧⌃s   │              │ ℝ — my own save macros with Clean Up
---         ⇧⌥s   │              │
+--         ⇧⌃s   │      ⌦       │  — delete symbol to the right
+--         ⇧⌥s   │     ⌥⌦       │  — delete word to the right
 --         ⇧⌘s   │              │  — save as
 { chord = "⌃⌥s",                  fn = "window.set_all_to_default" },
 --         ⌃⌘s   │              │ 📁 — toggle SideBar

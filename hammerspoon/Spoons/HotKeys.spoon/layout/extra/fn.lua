@@ -1,0 +1,11 @@
+return {
+--    ╭————╮
+--    │ fn │    function key / left control
+--    ╰————╯
+--
+--         karabiner: fn → ⌃
+--
+--———————— chord ┬ en | ru | el ┬
+--           fn  │      ⌃       │
+--               ┴              ┴
+}

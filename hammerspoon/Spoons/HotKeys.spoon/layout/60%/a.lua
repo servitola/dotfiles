@@ -24,7 +24,7 @@ return {
 --         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
 --         ⌘⇧a   │              │ 📁 — go to Applications
 --         ⇧⌃a   │      ⌫       │  — delete symbol to the left
---         ⇧⌥a   │ ⌘    ⌘    no │
+--         ⇧⌥a   │     ⌥⌫       │  — delete word to the left
 --         ⇧⌘a   │              │ 📝 — show actions palette
 { chord = "⌃⌥a",                  fn = "window.left" },
 --         ⌃⌘a   │              │ ℝ — show all affected files in source control
@@ -36,8 +36,8 @@ return {
 --        ⇪⇧⌘a   │     ⇧⌘←      │  — select text to the left till the start of string
 --        ⇪⌃⌥a   │     ⌃⌥←      │
 --        ⇪⌃⌘a   │     ⌃⌘←      │ 📝 — move editor to previous group
---        ⇪⌥⌘a   │     ⌥⌘←      │ Music — seek backward;
---               │              │ 📝 — go to previous tab;
+--        ⇪⌥⌘a   │     ⌥⌘←      │ Music — seek backward
+--               │              │ 📝 — go to previous tab
 --               │              │ iTerm — focus pane to the left
 --        ⇧⌃⌥a   │      ⌥⌫      │  — delete word to the left
 --        ⇧⌃⌘a   │              │
