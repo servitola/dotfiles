@@ -25,7 +25,7 @@ return {
 --        ⇧⌘;   │              │
 --        ⌃⌥;   │              │
 --        ⌃⌘;   │              │
---        ⌥⌘;   │              │                       Music — seek forward
+--        ⌥⌘;   │              │ Music — seek forward
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃;   │  next_track  │ vk_consumer_next
 --       ⇪⇧⌥;   │     ⇧⌥→      │  — select word to the right

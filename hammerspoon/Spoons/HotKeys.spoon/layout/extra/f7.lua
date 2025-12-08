@@ -3,6 +3,6 @@ return {
 --    │ F7 │   Previous Track
 --    ╰————╯
 --
---         karabiner: ⇪7 → F7
+--        karabiner: F7 → Previous Track
 --
 }
