@@ -89,14 +89,10 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── README.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
-│   ├── click-hold-trackpad-shortcuts.md
-│   ├── control-shortcuts.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
-│   ├── keyboard-layouts-verification.md
 │   ├── keyboard-setup.md
-│   ├── letters.md
-│   └── macos-system-shortcuts.md
+│   └── letters.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
