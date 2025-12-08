@@ -21,12 +21,11 @@ return {
 --         ⇪⌃d   │      ⌃→      │  — jump to workspace to the right
 --         ⇪⌥d   │      ⌥→      │  — jump a word to the right
 --               │              │ YouTube — jump to chapter to the right
---         ⇪⌘d   │              │
+--         ⇪⌘d   │      ⌘→      │
 --         ⌘⇧d   │              │ 📁 — go to Desktop
 --         ⇧⌃d   │              │
 --         ⇧⌥d   │              │
 --         ⇧⌘d   │              │
---         ⌃⌥d   │              │ H — move window right
 { chord = "⌃⌥d",                  fn = "window.right" },
 --         ⌃⌘d   │              │  — look up the selected word
 --         ⌥⌘d   │              │  — show/hide Dock
