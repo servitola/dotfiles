@@ -1,13 +1,14 @@
 return {
---    ╭——————╮
---    │  ⇧   │    shift modifier
---    ╰——————╯
+--    ╭————————╮
+--    │  ⇧     │    shift modifier
+--    ╰————————╯
 --
 --         karabiner: no
 --
 --——————— chord ┬ en | ru | el ┬
---          ⇧   │      ⇧       │
+--      ⇧       │      ⇧       │
 --——————————————┼——————————————┼——————————————————————————————————
---          ⇧⇧  │              │ ℝ → open search
+--     ⇧⇧       │              │ ℝ → open search
+--      ⇧click  │              │ Safari — Add to Reading List
 --              ┴              ┴
 }
