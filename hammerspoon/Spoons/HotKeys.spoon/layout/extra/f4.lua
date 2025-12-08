@@ -1,8 +1,8 @@
 return {
 --    ╭————╮
---    │ F6 │   Sleep
+--    │ F4 │    Launchpad
 --    ╰————╯
 --
---         karabiner: ⇪6 → F6
+--       karabiner: F4 → LaunchPad
 --
 }

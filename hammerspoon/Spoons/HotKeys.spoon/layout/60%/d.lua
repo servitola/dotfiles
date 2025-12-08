@@ -21,20 +21,20 @@ return {
 --         ⇪⌃d   │      ⌃→      │  — jump to workspace to the right
 --         ⇪⌥d   │      ⌥→      │  — jump a word to the right
 --               │              │ YouTube — jump to chapter to the right
---         ⇪⌘d   │      ⌘→      │
---         ⌘⇧d   │              │ 📁 — go to Desktop
---         ⇧⌃d   │              │
---         ⇧⌥d   │              │
---         ⇧⌘d   │              │
+--         ⇪⌘d   │      ⌘→      │  — end/jump to end of line
+--         ⇧⌃d   │      ⌦       │  — delete symbol to the right
+--         ⇧⌥d   │     ⌥⌦       │  — delete word to the right
+--         ⇧⌘d   │              │ 📝 — focus Run and Debug panel
+--               │              │ 📁 — go to Desktop
 { chord = "⌃⌥d",                  fn = "window.right" },
 --         ⌃⌘d   │              │  — look up the selected word
 --         ⌥⌘d   │              │  — show/hide Dock
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃d   │  next_track  │  — vk_consumer_next
---        ⇪⇧⌥d   │      ⇧⌥→     │  — select word to the right
---        ⇪⇧⌘d   │              │
+--        ⇪⇧⌥d   │     ⇧⌥→      │  — select word to the right
+--        ⇪⇧⌘d   │     ⇧⌘→      │  — select line till the end
 --        ⇪⌃⌥d   │              │
---        ⇪⌃⌘d   │    ⌃⌘→       │ 📝 — move editor to next group
+--        ⇪⌃⌘d   │     ⌃⌘→      │ 📝 — move editor to next group
 --        ⇪⌥⌘d   │              │ Music — seek forward;
 --               │              │ 📝 — go to next tab;
 --               │              │ iTerm — focus pane to the right

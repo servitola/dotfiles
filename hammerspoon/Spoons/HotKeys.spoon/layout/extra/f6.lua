@@ -1,8 +1,8 @@
 return {
 --    ╭————╮
---    │ F9 │    Next Track
+--    │ F6 │   Sleep
 --    ╰————╯
 --
---      karabiner: ⇪9 → F9
+--        karabiner: F6 → Sleep
 --
 }
