@@ -89,11 +89,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── README.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
+│   ├── control-shortcuts.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   ├── keyboard-setup.md
-│   ├── letters.md
-│   └── vimium-shortcuts.md
+│   └── letters.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
