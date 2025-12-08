@@ -6130,6 +6130,48 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "description": "Left Shift + Left Alt + A -> Option + Backspace",
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Left Shift + Left Alt + D -> Option + Forward Delete",
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "description": "Left Shift + Left Alt + S -> Option + Forward Delete",
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },
