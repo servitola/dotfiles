@@ -21,7 +21,7 @@ return {
 --         ⇪⌃a   │      ⌃←      │  — jump to workspace to the left
 --         ⇪⌥a   │      ⌥←      │  — jump a word to the left
 --               │              │ YouTube — jump to chapter to the left
---         ⇪⌘a   │              │  — home, jump to the left start of string
+--         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
 --         ⌘⇧a   │              │ 📁 — go to Applications
 --         ⇧⌃a   │      ⌫       │  — delete symbol to the left
 --         ⇧⌥a   │ ⌘    ⌘    no │
