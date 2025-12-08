@@ -72,7 +72,7 @@ local function parseChord(chordStr)
 end
 
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
-local layoutsPath = spoonPath .. "layouts/"
+local layoutsPath = spoonPath .. "layout/" .. "60%/"
 
 allChords = {}
 
