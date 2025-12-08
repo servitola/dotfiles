@@ -1,8 +1,8 @@
 return {
 --    ╭—————╮
---    │ F10 │   Mute
+--    │ F11 │   Volume Down
 --    ╰—————╯
 --
---      karabiner: ⇪0 → F10
+--      karabiner: F11 → Volume Down
 --
 }
