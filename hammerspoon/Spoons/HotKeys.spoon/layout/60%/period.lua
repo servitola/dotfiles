@@ -13,6 +13,7 @@ return {
 --         ⌃.   │              │
 --         ⌥.   │              │
 --         ⌘.   │              │ IINA — stop and close video
+--              │              │ Music — stop playing
 --              │              │ ℝ — expand #region
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧.   │              │

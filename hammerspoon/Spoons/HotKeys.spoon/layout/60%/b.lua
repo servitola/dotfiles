@@ -13,6 +13,7 @@ return {
 --         ⌃b   │              │ Unix Terminal — forward one letter
 --         ⌥b   │ b    ß    no │
 --         ⌘b   │              │ ℝ — go to declaration
+--              │              │ Music — show or hide column browser
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧b   │              │
 --        ⇪⌃b   │              │
