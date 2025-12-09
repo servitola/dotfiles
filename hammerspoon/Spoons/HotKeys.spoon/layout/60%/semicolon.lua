@@ -19,7 +19,6 @@ return {
 --        ⇪⌃;   │      ⌃→      │  — jump to workspace to the right
 --        ⇪⌥;   │      ⌥→      │  — jump to next word right
 --        ⇪⌘;   │      ⌘→      │  — end/jump to end of line
---        ⌘⇧;   │              │
 --        ⇧⌃;   │              │  — move to right workspace
 --        ⇧⌥;   │ ¨    ¨    :  │
 --        ⇧⌘;   │              │

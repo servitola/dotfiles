@@ -22,11 +22,10 @@ return {
 --         ⇪⌥w   │     ⌥↑       │  — move line up
 --               │              │ ℝ — extend selection
 --         ⇪⌘w   │     ⌘↑       │ 📝 — jump to breadcumbs
---         ⌘⇧w   │              │  — close window
 --         ⇧⌃w   │              │ ???
 --         ⇧⌥w   │ ⌃    ⌃    Β  │
 --         ⇧⌘w   │              │ ℝ — close other tabs
---               │              │ 📝 — close window
+--               │              │  — close window
 { chord = "⌃⌥w",                  fn = "window.fullscreen" },
 --         ⌃⌘w   │              │
 --         ⌥⌘w   │              │ Mail — close all Mail windows

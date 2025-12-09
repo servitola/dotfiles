@@ -20,10 +20,9 @@ return {
 --        ⇪⌃5   │     ⌃F5      │  — move focus to Window's Toolbar
 --        ⇪⌥5   │     ⌥F5      │
 --        ⇪⌘5   │     ⌘F5      │
---        ⌘⇧5   │              │  — record video from screen
 --        ⇧⌃5   │              │
 --        ⇧⌥5   │              │
---        ⇧⌘5   │              │
+--        ⇧⌘5   │              │  — record video from screen
 --        ⌃⌥5   │              │
 --        ⌃⌘5   │              │
 --        ⌥⌘5   │              │

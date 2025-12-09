@@ -20,7 +20,6 @@ return {
 --         ⇪⌃v   │              │
 --         ⇪⌥v   │              │
 --         ⇪⌘v   │              │
---         ⌘⇧v   │              │
 --         ⇧⌃v   │              │
 --         ⇧⌥v   │              │
 --         ⇧⌘v   │              │ Mail — paste text into email as quotation

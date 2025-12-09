@@ -19,10 +19,10 @@ return {
 --        ⇪⌃u   │              │
 --        ⇪⌥u   │              │
 --        ⇪⌘u   │              │
---        ⌘⇧u   │              │ ℝ — toggle case of text
 --        ⇧⌃u   │              │
 --        ⇧⌥u   │ Ѵ    Ѵ    Ξ  │ ℝ — show unit testing quick panel
 --        ⇧⌘u   │              │ Mail — mark emails as read or unread
+--              │              │ ℝ — toggle case of text
 --        ⌃⌥u   │              │
 --        ⌃⌘u   │              │ Music — show/hide lyrics panel
 --        ⌥⌘u   │              │ Music — Show playing next queue

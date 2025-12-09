@@ -19,12 +19,12 @@ return {
 --         ⇪⌃f   │              │
 --         ⇪⌥f   │              │
 --         ⇪⌘f   │              │
---         ⌘⇧f   │              │ ℝ — search in files
 --         ⇧⌃f   │              │
 --         ⇧⌥f   │              │
 --         ⇧⌘f   │              │ Music — open/close Full Screen Player
 --               │              │ Fork — quick Fetch
 --               │              │ Mail — forward email
+--               │              │ ℝ — search in files
 { chord = "⌃⌥f",                  fn = "translate_to_russian" },
 --         ⌃⌘f   │              │ toggle fullscreen of current app
 --         ⌥⌘f   │              │ ℝ — extract field

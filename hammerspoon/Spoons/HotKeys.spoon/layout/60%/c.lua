@@ -19,10 +19,9 @@ return {
 --        ⇪⌥c   │     ⌥⌘→      │ 📝 — navigate to tab to the right
 --              │              │ Music — seek forward
 --        ⇪⌘c   │              │
---        ⌘⇧c   │              │ 📁 — go to Computer
 --        ⇧⌃c   │              │
 --        ⇧⌥c   │ ¢    ¢    Χ  │
---        ⇧⌘c   │              │
+--        ⇧⌘c   │              │ 📁 — go to Computer
 --        ⌃⌥c   │              │ itsycal Calendar (custom in app)
 --        ⌃⌘c   │              │ ℝ — scroll to Bottom
 --        ⌥⌘c   │              │ ℝ — introduce constant

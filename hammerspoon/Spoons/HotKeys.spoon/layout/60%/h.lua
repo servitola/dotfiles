@@ -18,10 +18,9 @@ return {
 --         ⇪⌃h   │              │
 --         ⇪⌥h   │              │
 --         ⇪⌘h   │              │
---         ⌘⇧h   │              │ 📁 — go to $HOME
 --         ⇧⌃h   │              │ ℝ — hierarchy
 --         ⇧⌥h   │     BIT      │ press double to adjust previous symbol
---         ⇧⌘h   │              │
+--         ⇧⌘h   │              │ 📁 — go to $HOME
 { chord = "⌃⌥h",                 app = "Hammerspoon", window_default_position = "right" },
 --         ⌃⌘h   │              │
 --         ⌥⌘h   │              │  — hide all other windows

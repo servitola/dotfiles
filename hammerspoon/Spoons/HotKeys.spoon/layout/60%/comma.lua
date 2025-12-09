@@ -14,11 +14,10 @@ return {
 --         ⌥,   │ «    «    «  │
 --         ⌘,   │              │ show settings ⚙️ of current app
 --——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧,   │     ⌘⇧←      │  — select text to start of line
+--        ⇪⇧,   │     ⇧⌘←      │  — select text to start of line
 --        ⇪⌃,   │              │
 --        ⇪⌥,   │              │
 --        ⇪⌘,   │              │
---        ⌘⇧,   │              │
 --        ⇧⌃,   │              │
 --        ⇧⌥,   │ „    „    no │
 --        ⇧⌘,   │              │

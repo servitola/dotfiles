@@ -20,11 +20,11 @@ return {
 --         ⇪⌃n   │              │
 --         ⇪⌥n   │              │
 --         ⇪⌘n   │              │
---         ⌘⇧n   │              │ 🌐 — open new Private Window
---               │              │ Music — create a playlist from selection
 --         ⇧⌃n   │              │
---         ⇧⌥n   │ ˜
+--         ⇧⌥n   │ ˜            │
 --         ⇧⌘n   │              │ Mail — get new emails
+--               │              │ 🌐 — open new Private Window
+--               │              │ Music — create a playlist from selection
 --         ⌃⌥n   │              │
 --         ⌃⌘n   │              │
 --         ⌥⌘n   │              │ Music — create a Smart Playlist
