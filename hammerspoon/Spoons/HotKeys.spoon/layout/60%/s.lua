@@ -23,10 +23,10 @@ return {
 --               │              │ YouTube — previous chapter in current video
 --               │              │ ℝ — shrink selection
 --         ⇪⌘s   │     ⌘↓       │ ℝ — edit source
---         ⌘⇧s   │              │ 📁 — go to Shared
 --         ⇧⌃s   │      ⌦       │  — delete symbol to the right
 --         ⇧⌥s   │     ⌥⌦       │  — delete word to the right
 --         ⇧⌘s   │              │  — save as
+--               │              │ 📁 — go to Shared
 { chord = "⌃⌥s",                  fn = "window.set_all_to_default" },
 --         ⌃⌘s   │              │ 📁 — toggle SideBar
 --               │              │ ℝ — toggle Sidebar

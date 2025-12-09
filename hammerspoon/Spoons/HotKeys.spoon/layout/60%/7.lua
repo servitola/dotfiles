@@ -20,7 +20,6 @@ return {
 --        ⇪⌃7   │     ⌃F7      │ change the way Tab moves focus
 --        ⇪⌥7   │     ⌥F7      │
 --        ⇪⌘7   │     ⌘F7      │
---        ⌘⇧7   │              │
 --        ⇧⌃7   │              │
 --        ⇧⌥7   │ ¿    ¿    Ϗ  │
 --        ⇧⌘7   │              │

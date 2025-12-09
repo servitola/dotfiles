@@ -19,7 +19,6 @@ return {
 --        ⇪⌃m   │              │
 --        ⇪⌥m   │              │
 --        ⇪⌘m   │              │
---        ⌘⇧m   │              │
 --        ⇧⌃m   │              │
 --        ⇧⌥m   │ •    •    Ύ  │
 --        ⇧⌘m   │              │ ℝ — new project window

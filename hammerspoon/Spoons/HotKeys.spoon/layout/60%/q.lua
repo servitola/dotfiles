@@ -20,10 +20,9 @@ return {
 --               │              │ 🌐 — go to tab to the left
 --         ⇪⌥q   │    ⌥PgUp     │
 --         ⇪⌘q   │    ⌘PgUp     │
---         ⌘⇧q   │              │  — log out from account with closing of all apps
 --         ⇧⌃q   │              │  — log out with dialogs (handled by macOS)
 --         ⇧⌥q   │              │
---         ⇧⌘q   │              │
+--         ⇧⌘q   │              │  — log out from account with closing of all apps
 { chord = "⌃⌥q",                  app = "Music" },
 --         ⌃⌘q   │              │  — lock screen
 --         ⌥⌘q   │              │

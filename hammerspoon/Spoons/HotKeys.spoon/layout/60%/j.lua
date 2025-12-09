@@ -18,7 +18,6 @@ return {
 --        ⇪⌃j   │              │
 --        ⇪⌥j   │              │
 --        ⇪⌘j   │              │
---        ⌘⇧j   │              │
 --        ⇧⌃j   │              │
 --        ⇧⌥j   │              │
 --        ⇧⌘j   │              │ Mail — move to Junk

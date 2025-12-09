@@ -19,12 +19,12 @@ return {
 --         ⇪⌃r   │              │
 --         ⇪⌥r   │              │
 --         ⇪⌘r   │              │
---         ⌘⇧r   │              │ ℝ — replace in files
---               │              │ Yandex — clear cache and reload page
 --         ⇧⌃r   │              │ ℝ — run Unit Tests
 --         ⇧⌥r   │ ˚    ˚    Δ  │
 --     ⇧⌥r ⇧⌥r   │ s̊    ы̊    no │ double to add sign to previous symbol
 --         ⇧⌘r   │              │ Mail — reply all to email
+--               │              │ ℝ — replace in files
+--               │              │ Yandex — clear cache and reload page
 { chord = "⌃⌥r",                  app = "WebStorm" },
 --         ⌃⌘r   │              │ ℝ — rerun tests
 --         ⌥⌘r   │              │ ℝ, 📝 — resume running (debugging)
