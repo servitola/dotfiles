@@ -24,9 +24,14 @@ return {
 --         ⇪⇧1   │     ⇧F1      │ ℝ — external documentation
 --         ⇪⌃1   │     ⌃F1      │
 --         ⇪⌥1   │     ⌥F1      │ ℝ — show 'Select in' dialog
---         ⇪⌘1   │     ⌘F1      │
+--         ⇪⌘1   │     ⌘0       │ 🌐 — Reset zoom
+--               │              │ Telegram — focus Saved Messages
+--               │              │ Music — Show/Hide Music window
+--               │              │ Fork — navigate to HEAD
+--               │              │ IINA — set window-scale 0.5
+--               │              │ Mail — show the Mail viewer window
 { chord = "⇧⌘1",                  app = "Visual Studio Code" },
---         ⇧⌃1   │                ℝ — toggle bookmark 1
+--         ⇧⌃1   │              │ ℝ — toggle bookmark 1
 --         ⇧⌥1   │ ›    ›    ύ  │
 { chord = "⌃⌥1",                  fn = "audio.internal" },
 --         ⌃⌘1   │              │
