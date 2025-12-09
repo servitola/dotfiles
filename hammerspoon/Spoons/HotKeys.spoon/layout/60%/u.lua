@@ -21,7 +21,7 @@ return {
 --        ⌘⇧u   │              │ ℝ — toggle case of text
 --        ⇧⌃u   │              │
 --        ⇧⌥u   │ Ѵ    Ѵ    Ξ  │ ℝ — show unit testing quick panel
---        ⇧⌘u   │              │
+--        ⇧⌘u   │              │ Mail — mark emails as read or unread
 --        ⌃⌥u   │              │
 --        ⌃⌘u   │              │ Music — show/hide lyrics panel
 --        ⌥⌘u   │              │ Music — Show playing next queue

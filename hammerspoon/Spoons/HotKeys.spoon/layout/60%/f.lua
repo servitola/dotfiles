@@ -23,6 +23,7 @@ return {
 --         ⇧⌃f   │              │
 --         ⇧⌥f   │              │
 --         ⇧⌘f   │              │ Fork — quick Fetch
+--               │              │ Mail — forward email
 { chord = "⌃⌥f",                  fn = "translate_to_russian" },
 --         ⌃⌘f   │              │ toggle fullscreen of current app
 --         ⌥⌘f   │              │ ℝ — extract field
