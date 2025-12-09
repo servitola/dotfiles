@@ -22,7 +22,7 @@ return {
 --         ⌘⇧→   │              │
 --         ⇧⌃→   │              │
 --         ⇧⌥→   │              │ 📝 — move line right
---         ⇧⌘→   │              │
+--         ⇧⌘→   │              │  — select line till the end
 { chord = "⌃⌥→",                  fn = "window.right" },
 --         ⌃⌘→   │              │ 📝 — move editor to next group
 --         ⌥⌘→   │              │ 📝 — navigate next tab
