@@ -18,10 +18,10 @@ return {
 --         ⇪⌃z   │              │
 --         ⇪⌥z   │              │
 --         ⇪⌘z   │              │
---         ⌘⇧z   │              │  — redo
 --               │              │ Mail — unsend email
 --         ⇧⌃z   │              │
 --         ⇧⌥z   │              │
+--         ⇧⌘z   │              │  — redo
 { chord = "⌃⌥z",                  app = "n8n" },
 { chord = "⌃⌘z",                  app = "Simulator" },
 --         ⌥⌘z   │              │ 📝 — revert selected in git

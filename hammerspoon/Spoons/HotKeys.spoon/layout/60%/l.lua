@@ -25,10 +25,9 @@ return {
 --        ⇪⌃l   │              │  — show all windows of current app
 --        ⇪⌥l   │              │
 --        ⇪⌘l   │              │
---        ⌘⇧l   │              │ Fork — open Pull dialog
 --        ⇧⌃l   │              │ ℝ — focus in Solution explorer
 --        ⇧⌥l   │ ’    ’    ·  │
---        ⇧⌘l   │              │
+--        ⇧⌘l   │              │ Fork — open Pull dialog
 --        ⌃⌥l   │              │
 --        ⌃⌘l   │              │ Mail — apply active Mail rules
 --        ⌥⌘l   │              │ 📁 — downloads

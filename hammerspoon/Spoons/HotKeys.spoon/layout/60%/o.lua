@@ -19,11 +19,11 @@ return {
 --        ⇪⌃o   │      ⌃↑      │  — show windows of current app
 --        ⇪⌥o   │      ⌥↑      │ ℝ — extend selection
 --        ⇪⌘o   │      ⌘↑      │ 📝 — jump to breadcumbs
---        ⌘⇧o   │              │ ℝ — go to file
 --        ⇧⌃o   │              │
 --        ⇧⌥o   │ Ѳ    Ѳ    Τ  │
 --        ⇧⌘o   │              │ 📝 — Search file by name
 --              │              │ Fork — command palette
+--              │              │ ℝ — go to file
 --        ⌃⌥o   │              │
 --        ⌃⌘o   │              │
 --        ⌥⌘o   │              │

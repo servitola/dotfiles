@@ -20,10 +20,9 @@ return {
 --         ⇪⌥x   │     ⌥⌘←      │ 📝 — navigate to tab to the left
 --               │              │ Music — seek backward
 --         ⇪⌘x   │              │
---         ⌘⇧x   │              │ 📝 — open Extensions
 --         ⇧⌃x   │              │
 --         ⇧⌥x   │ ·    ·   no  │
---         ⇧⌘x   │              │
+--         ⇧⌘x   │              │ 📝 — open Extensions
 { chord = "⌃⌥x",                  app = "Simulator" },
 --         ⌃⌘x   │              │ ℝ — scroll to Top
 --         ⌥⌘x   │              │

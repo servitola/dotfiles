@@ -21,10 +21,9 @@ return {
 --        ⇪⌥k   │      ⌥←      │  — jump a word to the left
 --              │              │ YouTube — jump to chapter to the left
 --        ⇪⌘k   │      ⌘←      │  — home/jump to start of line
---        ⌘⇧k   │              │ 📁 — go to Network
 --        ⇧⌃k   │              │
 --        ⇧⌥k   │              │
---        ⇧⌘k   │              │
+--        ⇧⌘k   │              │ 📁 — go to Network
 --        ⌃⌥k   │              │
 --        ⌃⌘k   │              │
 --        ⌥⌘k   │              │
