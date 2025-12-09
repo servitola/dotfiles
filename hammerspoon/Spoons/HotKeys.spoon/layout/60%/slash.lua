@@ -19,11 +19,10 @@ return {
 --        ⇪⌃/   │              │
 --        ⇪⌥/   │              │
 --        ⇪⌘/   │              │
---        ⌘⇧/   │              │ ℝ — comment
 --        ⇧⌃/   │              │
 --        ⇧⌥/   │ ´            │ set accent to previous letter (Birman's keyboard layout)
 --              │              │ double tap to apply
---        ⇧⌘/   │              │
+--        ⇧⌘/   │              │ ℝ — comment
 --        ⌃⌥/   │              │
 --        ⌃⌘/   │              │
 --        ⌥⌘/   │              │

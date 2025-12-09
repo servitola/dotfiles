@@ -19,10 +19,9 @@ return {
 --               │              │ ℝ — generate (alternative to cmd + n)
 --         ⇪⌥⇥   │      ⌥↩      │
 --         ⇪⌘⇥   │      ⌘↩      │
---         ⌘⇧⇥   │              │  — switch between open windows backwards
 --         ⇧⌃⇥   │              │  — go to previous tab
 --         ⇧⌥⇥   │              │
---         ⇧⌘⇥   │              │
+--         ⇧⌘⇥   │              │  — switch between open windows backwards
 { chord = "⌃⌥⇥",                  fn = "translate_to_english" },
 --         ⌃⌘⇥   │              │
 --         ⌥⌘⇥   │              │

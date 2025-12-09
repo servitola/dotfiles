@@ -19,10 +19,9 @@ return {
 --         ⇪⌃p   │              │
 --         ⇪⌥p   │              │
 --         ⇪⌘p   │              │
---         ⌘⇧p   │              │ Fork — open Push dialog
 --         ⇧⌃p   │              │
 --         ⇧⌥p   │              │
---         ⇧⌘p   │              │
+--         ⇧⌘p   │              │ Fork — open Push dialog
 --         ⌃⌥p   │              │
 --         ⌃⌘p   │              │
 --         ⌥⌘p   │              │ Yandex — print using system dialog

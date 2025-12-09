@@ -23,10 +23,9 @@ return {
 --         ⇪⌃4   │     ⌃F4      │
 --         ⇪⌥4   │     ⌥F4      │
 --         ⇪⌘4   │     ⌘F4      │
---         ⌘⇧4   │     ⇧F4      │ Shotr — start getting screenshot
 --         ⇧⌃4   │              │
 --         ⇧⌥4   │              │
---         ⇧⌘4   │              │
+--         ⇧⌘4   │              │ Shotr — start getting screenshot
 { chord = "⌃⌥4",                  fn = "audio.external" },
 --         ⌃⌘4   │              │
 --         ⌥⌘4   │              │

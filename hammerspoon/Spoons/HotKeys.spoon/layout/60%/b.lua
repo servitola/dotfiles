@@ -19,11 +19,11 @@ return {
 --        ⇪⌃b   │              │
 --        ⇪⌥b   │              │
 --        ⇪⌘b   │              │
---        ⌘⇧b   │              │ Fork — open Create Branch dialog
 --        ⇧⌃b   │              │ Unix Terminal — backward one letter
 --        ⇧⌥b   │ ẞ    ẞ    no │
 --        ⇧⌘b   │              │ ℝ — go to definition
 --              │              │ 📝 — select build task to run
+--              │              │ Fork — open Create Branch dialog
 --        ⌃⌥b   │              │
 --        ⌃⌘b   │              │ ℝ — go to implementation
 --        ⌥⌘b   │              │ 📝 — focus chat

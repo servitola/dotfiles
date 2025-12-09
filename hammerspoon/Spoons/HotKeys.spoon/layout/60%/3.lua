@@ -22,10 +22,9 @@ return {
 --         ⇪⌃3   │     ⌃F3      │  — move focus to Dock
 --         ⇪⌥3   │     ⌥F3      │
 --         ⇪⌘3   │     ⌘F3      │
---         ⌘⇧3   │              │ Shotr — save screenshot of window
 --         ⇧⌃3   │              │ ℝ — toggle bookmark 3
 --         ⇧⌥3   │              │
---         ⇧⌘3   │              │
+--         ⇧⌘3   │              │ Shotr — save screenshot of window
 { chord = "⌃⌥3",                  fn = "audio.marshall" },
 --         ⌃⌘3   │              │
 --         ⌥⌘3   │              │ Fork — show commit filetree

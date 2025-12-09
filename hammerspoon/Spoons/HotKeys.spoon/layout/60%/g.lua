@@ -18,10 +18,9 @@ return {
 --         ⇪⌃g   │              │
 --         ⇪⌥g   │              │
 --         ⇪⌘g   │              │
---         ⌘⇧g   │              │ 📁 — go to GoTo dialog
 --         ⇧⌃g   │              │ ℝ🔄 — current file git history
 --         ⇧⌥g   │              │
---         ⇧⌘g   │              │
+--         ⇧⌘g   │              │ 📁 — go to GoTo dialog
 --         ⌃⌥g   │              │ browser_git
 { chord = "⌃⌥g",                  fn = "browser_git" },
 --         ⌃⌘g   │              │ ℝ — select all occurances

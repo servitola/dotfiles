@@ -19,10 +19,9 @@ return {
 --        ⇪⌃↩   │              │
 --        ⇪⌥↩   │              │
 --        ⇪⌘↩   │              │
---        ⌘⇧↩   │              │ ℝ — complete current statement
 --        ⇧⌃↩   │              │
 --        ⇧⌥↩   │              │
---        ⇧⌘↩   │              │
+--        ⇧⌘↩   │              │ ℝ — complete current statement
 --        ⌃⌥↩   │              │
 --        ⌃⌘↩   │              │
 --        ⌥⌘↩   │              │ Fork — commit and push changes
