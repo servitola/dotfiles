@@ -11,7 +11,7 @@ return {
 --          ⇪2   │      F2      │ ℝ — next error in file
 --          ⇧2   │ @    "    @  │
 --          ⌃2   │              │ 📝 — go to tab 2
---          ⌥2   │              │
+--          ⌥2   │              │ ???
 --          ⌘2   │              │ ℝ — focus debug window
 --               │              │ 📁 — View as list
 --               │              │ 🌐 — Open 2nd tab
