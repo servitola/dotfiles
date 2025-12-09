@@ -6272,6 +6272,32 @@
                                 "from": { "key_code": "f12" },
                                 "to": [{ "consumer_key_code": "volume_increment" }],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["left_command", "right_shift", "right_command", "right_control", "right_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "bracket_left",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["left_command", "right_shift", "right_command", "right_control", "right_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "bracket_right",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },

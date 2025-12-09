@@ -21,7 +21,11 @@ return {
 --         ⇪⇧e   │    ⇧PgDn     │ select page of text down
 --         ⇪⌃e   │    ⌃PgDn     │ 📝 — scroll down (without moving caret)
 --         ⇪⌥e   │    ⌥PgDn     │
---         ⇪⌘e   │    ⌘PgDn     │
+--         ⇪⌘e   │      ⌘]      │ IINA — multiply speed 2.0
+--               │              │ ℝ — navigate forward
+--               │              │ 📁 — navigate forwardq
+--               │              │ 🌐 — navigate forward
+--               │              │ Music — navigate forward
 --         ⇧⌃e   │              │ ???
 --         ⇧⌥e   │              │ ???
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
