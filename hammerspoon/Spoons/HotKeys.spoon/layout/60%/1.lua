@@ -4,6 +4,7 @@ return {
 --    ╰—————╯
 --
 --         karabiner: ⇪1 → F1
+--                    ⇪⌘1 → ⌘0
 --
 --———————— chord ┬ en | ru | el ┬
 --           1   │      1       │ YouTube — Navigate to 10% of video

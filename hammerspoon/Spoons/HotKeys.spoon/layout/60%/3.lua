@@ -4,6 +4,7 @@ return {
 --    ╰—————╯
 --
 --         karabiner: ⇪3 → F3
+--                    ⌥3 → ⌘n
 --
 --———————— chord ┬ en | ru | el ┬
 --           3   │      3       │ YouTube navigate to 30% of video
@@ -11,7 +12,10 @@ return {
 --          ⇪3   │     F3       │  — find next (in file)
 --          ⇧3   │ #    №    #  │
 --          ⌃3   │              │ 📝 — go to tab 3
---          ⌥3   │              │ ???
+--          ⌥3   │     ⌘n       │  — new window
+--               │              │ Music — create a new playlist
+--               │              │ Mail — start a new email
+--               │              │ 📝 — new file
 --          ⌘3   │              │ ℝ — focus unit tests explorer
 --               │              │ 📁 — View in columns
 --               │              │ 🌐 — Open 3rd tab

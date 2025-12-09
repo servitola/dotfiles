@@ -16,7 +16,7 @@ return {
 --               │              │ Music — paste song information or artwork
 --———————————————┼——————————————┼——————————————————————————————————
 --   ⇪⇧v → F13   │              │
-{ chord = "F13",                   app = "Google Chrome" },
+{ chord = "F13",                  app = "Google Chrome" },
 --         ⇪⌃v   │              │
 --         ⇪⌥v   │              │
 --         ⇪⌘v   │              │
