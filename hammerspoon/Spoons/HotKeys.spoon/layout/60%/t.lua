@@ -13,15 +13,16 @@ return {
 --          ⌃t   │              │ ℝ — refactor this
 --          ⌥t   │ ™    ™    ™  │
 --          ⌘t   │              │  — new tab
+--               │              │ Music — turn visualizer on or off
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧t   │              │
 --         ⇪⌃t   │              │
 --         ⇪⌥t   │              │
 --         ⇪⌘t   │              │
---         ⌘⇧t   │              │  — reopen closed tab
 --         ⇧⌃t   │              │
 --         ⇧⌥t   │              │
 --         ⇧⌘t   │              │ Mail — format as Plain Text or Rich Format
+--               │              │  — reopen closed tab
 --         ⌃⌥t   │              │
 --         ⌃⌘t   │              │
 --         ⌥⌘t   │              │ Fork — hide/search toolbar

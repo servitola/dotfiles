@@ -25,7 +25,8 @@ return {
 --        ⇧⌘m   │              │ ℝ — new project window
 --        ⌃⌥m   │              │
 --        ⌃⌘m   │              │
---        ⌥⌘m   │              │ ℝ — extract method
+--        ⌥⌘m   │              │ Music — open/close MiniPlayer
+--              │              │ ℝ — extract method
 --              │              │ Mail — move to predicted mailbox
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃m   │              │

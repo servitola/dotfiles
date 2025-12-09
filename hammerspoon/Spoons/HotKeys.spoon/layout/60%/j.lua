@@ -12,7 +12,7 @@ return {
 --         ⇧j   │ J    О    Ξ  │
 --         ⌃j   │              │
 --         ⌥j   │ „    „    ≤  │
---         ⌘j   │              │ Music — Show sorting options
+--         ⌘j   │              │ Music — open View Options window
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧j   │              │
 --        ⇪⌃j   │              │

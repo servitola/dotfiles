@@ -14,7 +14,8 @@ return {
 --          ⌥↓   │              │  — move line down
 --               │              │ YouTube — previous chapter in current video
 --               │              │ ℝ — shrink selection
---          ⌘↓   │              │ ℝ — edit source
+--          ⌘↓   │              │ Music — decrease volume
+--               │              │ ℝ — edit source
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧↓   │              │
 --         ⇪⌃↓   │              │

@@ -22,11 +22,12 @@ return {
 --         ⇪⌥a   │      ⌥←      │  — jump a word to the left
 --               │              │ YouTube — jump to chapter to the left
 --         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
---         ⌘⇧a   │              │ 📁 — go to Applications
 --         ⇧⌃a   │      ⌫       │  — delete symbol to the left
 --         ⇧⌥a   │     ⌥⌫       │  — delete word to the left
 --         ⇧⌘a   │              │ 📝 — show actions palette
 --               │              │ Mail — attach files
+--               │              │ 📁 — go to Applications
+--               │              │ Music — deselect all songs
 { chord = "⌃⌥a",                  fn = "android.show_all" },
 --         ⌃⌘a   │              │ ℝ — show all affected files in source control
 --               │              │ Mail — archive message
