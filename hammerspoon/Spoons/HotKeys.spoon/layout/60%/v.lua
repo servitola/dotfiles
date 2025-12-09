@@ -3,7 +3,7 @@ return {
 --    │  V  │    paste / browser
 --    ╰—————╯
 --
---         karabiner: no
+--         karabiner: yes (⇪⇧v → F13)
 --
 --———————— chord ┬ en | ru | el ┬
 --           v   │ v    м    ω  │
@@ -12,9 +12,10 @@ return {
 --          ⇧v   │ V    М    Ω  │
 --          ⌃v   │              │
 { chord =  "⌥v",                  fn = "browser_youtube" },
---          ⌘v   │              │  — paste
+--          ⌘v   │              │  — paste
 --———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧v   │              │ ???
+--         ⇪⇧v   │    F13       │
+{ chord = "F13",                   app = "Google Chrome" },
 --         ⇪⌃v   │              │
 --         ⇪⌥v   │              │
 --         ⇪⌘v   │              │

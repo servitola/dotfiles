@@ -49,8 +49,8 @@ local function parseChord(chordStr)
     local modifiers = {}
     local key = ""
 
-
-    key = chordStr:match("[a-z0-9]$")
+    -- Check for function keys first (F1-F20)
+    key = chordStr:match("^F%d+$") or chordStr:match("[a-z0-9]$")
 
     if not key then
         -- Key not found - invalid chord
@@ -145,8 +145,9 @@ function obj:init()
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
-            -- Only bind if there are modifiers
-            if #modifiers == 0 then
+            -- Only bind if there are modifiers (or if it's a function key with no modifiers)
+            local isFunctionKey = key:match("^[Ff]%d+$")
+            if #modifiers == 0 and not isFunctionKey then
                 print(string.format("DEBUG: Skipping chord='%s' (no modifiers found)", chord_entry.chord))
                 goto continue
             end
