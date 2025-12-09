@@ -8,7 +8,7 @@ return {
 --——————— chord ┬ en | ru | el ┬
 --          -   │ -    −    −  │
 --——————————————┼——————————————┼——————————————————————————————————
---         ⇪-   │     F11      │  — show desktop
+--         ⇪-   │     F11      │  — show desktop
 --         ⇧-   │      _       │
 --         ⌃-   │              │ Unix Terminal — undo last edit
 --         ⌥-   │      −       │

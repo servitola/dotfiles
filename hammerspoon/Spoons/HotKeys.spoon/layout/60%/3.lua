@@ -11,7 +11,7 @@ return {
 --          ⇪3   │     F3       │  — find next (in file)
 --          ⇧3   │ #    №    #  │
 --          ⌃3   │              │ 📝 — go to tab 3
---          ⌥3   │              │
+--          ⌥3   │              │ ???
 --          ⌘3   │              │ ℝ — focus unit tests explorer
 --               │              │ 📁 — View in columns
 --               │              │ 🌐 — Open 3rd tab
