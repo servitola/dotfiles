@@ -19,6 +19,7 @@ return {
 --         ⇪⌥r   │              │
 --         ⇪⌘r   │              │
 --         ⌘⇧r   │              │ ℝ — replace in files
+--               │              │ Yandex — clear cache and reload page
 --         ⇧⌃r   │              │ ℝ — run Unit Tests
 --         ⇧⌥r   │ ˚    ˚    Δ  │
 --     ⇧⌥r ⇧⌥r   │ s̊    ы̊    no │ double to add sign to previous symbol

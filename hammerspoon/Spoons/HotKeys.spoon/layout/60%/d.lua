@@ -5,6 +5,7 @@ return {
 --
 --         karabiner: ⇪d → →
 --                    ⇪⇧⌃d → vk_consumer_next
+--                    ⇧⌃⌥d → ⌥⌦
 --
 --———————— chord ┬ en | ru | el ┬
 --           d   │ d    в    δ  │
@@ -23,7 +24,7 @@ return {
 --               │              │ YouTube — jump to chapter to the right
 --         ⇪⌘d   │      ⌘→      │  — end/jump to end of line
 --         ⇧⌃d   │      ⌦       │  — delete symbol to the right
---         ⇧⌥d   │     ⌥⌦       │  — delete word to the right
+--         ⇧⌥d   │      ⌥⌦      │  — delete word to the right
 --         ⇧⌘d   │              │ 📝 — focus Run and Debug panel
 --               │              │ 📁 — go to Desktop
 { chord = "⌃⌥d",                  fn = "window.right" },
@@ -38,7 +39,7 @@ return {
 --        ⇪⌥⌘d   │              │ Music — seek forward;
 --               │              │ 📝 — go to next tab;
 --               │              │ iTerm — focus pane to the right
---        ⇧⌃⌥d   │              │ ⌦ — delete word to the right
+--        ⇧⌃⌥d   │      ⌥⌦      │ ⌦ — delete word to the right
 --        ⇧⌃⌘d   │              │
 --        ⇧⌥⌘d   │              │
 --        ⌃⌥⌘d   │              │
