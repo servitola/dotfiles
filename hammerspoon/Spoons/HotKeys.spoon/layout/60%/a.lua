@@ -27,7 +27,7 @@ return {
 --         ⇧⌥a   │     ⌥⌫       │  — delete word to the left
 --         ⇧⌘a   │              │ 📝 — show actions palette
 --               │              │ Mail — attach files
-{ chord = "⌃⌥a",                  fn = "window.left" },
+{ chord = "⌃⌥a",                  fn = "android.show_all" },
 --         ⌃⌘a   │              │ ℝ — show all affected files in source control
 --               │              │ Mail — archive message
 --         ⌥⌘a   │              │
