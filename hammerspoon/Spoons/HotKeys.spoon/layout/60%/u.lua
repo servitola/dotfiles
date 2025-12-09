@@ -13,6 +13,7 @@ return {
 --         ⌃u   │              │
 --         ⌥u   │ ѵ    ѵ­­    no │
 --         ⌘u   │              │ Telegram — toggle underline for text
+--              │              │ Music — open 'stream audio file at a specific URL' dialog
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧u   │              │
 --        ⇪⌃u   │              │
