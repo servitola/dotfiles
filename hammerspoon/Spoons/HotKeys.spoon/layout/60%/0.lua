@@ -17,6 +17,7 @@ return {
 --              │              │ Music — Show/Hide Music window
 --              │              │ Fork — navigate to HEAD
 --              │              │ IINA — set window-scale 0.5
+--              │              │ Mail — show the Mail viewer window
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧0   │     ⇧F10     │
 --        ⇪⌃0   │     ⌃F10     │
@@ -26,7 +27,7 @@ return {
 --        ⇧⌥0   │ ›    ›    ύ  │
 --        ⇧⌘0   │              │
 --        ⌃⌥0   │              │
---        ⌃⌘0   │              │
+--        ⌃⌘0   │              │ Mail — show the Mail Activity window
 --        ⌥⌘0   │              │
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃0   │     ⇧⌃F10    │

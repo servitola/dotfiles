@@ -21,7 +21,7 @@ return {
 --         ⌘⇧t   │              │  — reopen closed tab
 --         ⇧⌃t   │              │
 --         ⇧⌥t   │              │
---         ⇧⌘t   │              │
+--         ⇧⌘t   │              │ Mail — format as Plain Text or Rich Format
 --         ⌃⌥t   │              │
 --         ⌃⌘t   │              │
 --         ⌥⌘t   │              │ Fork — hide/search toolbar
