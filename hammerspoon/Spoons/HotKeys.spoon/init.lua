@@ -140,6 +140,9 @@ function obj:init()
             if chord_entry.app then
                 print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.app))
+            elseif chord_entry.fn then
+                print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
+                    chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
             -- Only bind if there are modifiers
@@ -209,13 +212,36 @@ function obj:init()
                     spoon.Windows:bind_all_windows_to_default(modifiers, key)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
+                        local matching_windows = {}
                         for _, window in ipairs(hs.window.allWindows()) do
                             local window_title = window:title()
                             local app_title = window:application():title()
-                            for _, app in ipairs(chord_entry.layers_list) do
-                                if app_title == app or string.find(window_title, app) then
-                                    window:focus()
+                            for _, pattern in ipairs({"qemu-system-aarch64"}) do
+                                if app_title == pattern or string.find(window_title, pattern) then
+                                    table.insert(matching_windows, window)
                                 end
+                            end
+                        end
+
+                        if #matching_windows == 0 then
+                            return
+                        end
+
+                        local any_visible = false
+                        for _, window in ipairs(matching_windows) do
+                            if window:isVisible() then
+                                any_visible = true
+                                break
+                            end
+                        end
+
+                        if any_visible then
+                            for _, window in ipairs(matching_windows) do
+                                window:application():hide()
+                            end
+                        else
+                            for _, window in ipairs(matching_windows) do
+                                window:focus()
                             end
                         end
                     end)
