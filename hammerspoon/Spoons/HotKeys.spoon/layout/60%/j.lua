@@ -21,10 +21,11 @@ return {
 --        ⌘⇧j   │              │
 --        ⇧⌃j   │              │
 --        ⇧⌥j   │              │
---        ⇧⌘j   │              │
+--        ⇧⌘j   │              │ Mail — move to Junk
 --        ⌃⌥j   │              │
 --        ⌃⌘j   │              │
 --        ⌥⌘j   │              │ Yandex — JavaScript console
+--              │              │ Mail — erase junk mail
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃j   │              │
 --       ⇪⇧⌥j   │              │
