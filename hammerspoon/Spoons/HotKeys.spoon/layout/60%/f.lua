@@ -13,7 +13,7 @@ return {
 --          ⌃f   │              │ ℝ — focus Find panel
 --               │              │ 📝 — move cursor right
 --          ⌥f   │ f    £    ≠  │
---          ⌘f   │              │ find
+--          ⌘f   │              │  — find
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧f   │              │ ???
 --         ⇪⌃f   │              │
@@ -22,7 +22,8 @@ return {
 --         ⌘⇧f   │              │ ℝ — search in files
 --         ⇧⌃f   │              │
 --         ⇧⌥f   │              │
---         ⇧⌘f   │              │ Fork — quick Fetch
+--         ⇧⌘f   │              │ Music — open/close Full Screen Player
+--               │              │ Fork — quick Fetch
 --               │              │ Mail — forward email
 { chord = "⌃⌥f",                  fn = "translate_to_russian" },
 --         ⌃⌘f   │              │ toggle fullscreen of current app

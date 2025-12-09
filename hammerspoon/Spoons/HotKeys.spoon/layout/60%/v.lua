@@ -12,7 +12,8 @@ return {
 --          ⇧v   │ V    М    Ω  │
 --          ⌃v   │              │
 { chord =  "⌥v",                  fn = "browser_youtube" },
---          ⌘v   │              │  — paste
+--          ⌘v   │              │  — paste
+--               │              │ Music — paste song information or artwork
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧v   │    F13       │
 { chord = "F13",                   app = "Google Chrome" },
