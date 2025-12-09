@@ -27,6 +27,7 @@ return {
 --         ⇧⌥d   │      ⌥⌦      │  — delete word to the right
 --         ⇧⌘d   │              │ 📝 — focus Run and Debug panel
 --               │              │ 📁 — go to Desktop
+--               │              │ Mail — send emails
 { chord = "⌃⌥d",                  fn = "window.right" },
 --         ⌃⌘d   │              │  — look up the selected word
 --         ⌥⌘d   │              │  — show/hide Dock

@@ -21,7 +21,7 @@ return {
 --         ⌘⇧v   │              │
 --         ⇧⌃v   │              │
 --         ⇧⌥v   │              │
---         ⇧⌘v   │              │
+--         ⇧⌘v   │              │ Mail — paste text into email as quotation
 { chord = "⌃⌥v",                  fn = "browser_youtube" },
 --         ⌃⌘v   │              │
 --         ⌥⌘v   │              │ ℝ — extract variable

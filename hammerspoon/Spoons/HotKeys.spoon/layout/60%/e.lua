@@ -26,6 +26,7 @@ return {
 --         ⇧⌥e   │              │ ???
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
+--               │              │ Mail — redirect email
 --         ⌃⌥e   │              │ ???
 --         ⌃⌘e   │              │ ℝ — show list of tabs of current panel
 --         ⌥⌘e   │              │ Music — show equalizer
