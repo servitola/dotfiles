@@ -19,7 +19,11 @@ return {
 --         ⇪⌃q   │    ⌃PgUp     │ 📝 — scroll up (without moving caret)
 --               │              │ 🌐 — go to tab to the left
 --         ⇪⌥q   │    ⌥PgUp     │
---         ⇪⌘q   │    ⌘PgUp     │
+--         ⇪⌘q   │      ⌘[      │ IINA — multiply speed 0.5
+--               │              │ ℝ — navigate back
+--               │              │ 📁 — navigate back
+--               │              │ 🌐 — navigate back
+--               │              │ Music — navigate back
 --         ⇧⌃q   │              │  — log out with dialogs (handled by macOS)
 --         ⇧⌥q   │              │
 --         ⇧⌘q   │              │  — log out from account with closing of all apps
