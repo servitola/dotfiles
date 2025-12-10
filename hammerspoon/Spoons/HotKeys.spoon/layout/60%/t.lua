@@ -3,7 +3,7 @@ return {
 --    │  T  │    new tab / Telegram
 --    ╰—————╯
 --
---         karabiner: no
+--         karabiner: ⇪⇧t → F18
 --
 --———————— chord ┬ en | ru | el ┬
 --           t   │ t    е    τ  │ YouTube Theatre mode
@@ -15,7 +15,8 @@ return {
 --          ⌘t   │              │  — new tab
 --               │              │ Music — turn visualizer on or off
 --———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧t   │     F18      │
+--   ⇪⇧t → F18   │     F18      │
+{ chord = "F18",                  app = "zoom.us" },
 --         ⇪⌃t   │              │
 --         ⇪⌥t   │              │
 --         ⇪⌘t   │              │
