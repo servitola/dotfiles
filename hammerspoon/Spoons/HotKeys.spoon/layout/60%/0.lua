@@ -11,7 +11,7 @@ return {
 --         ⇪0   │     F10      │
 --         ⇧0   │ )    )    )  │
 --         ⌃0   │              │ 📝 — go to last tab
---         ⌥0   │ →    →    °  │
+--         ⌥0   │ →    →    →  │
 --         ⌘0   │              │ 🌐 — Reset zoom
 --              │              │ Telegram — focus Saved Messages
 --              │              │ Music — Show/Hide Music window
