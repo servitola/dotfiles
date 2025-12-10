@@ -17,7 +17,7 @@ return {
 --              │              │ Telegram — focus 7th folder or chat
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧7   │     ⇧F7      │
---        ⇪⌃7   │     ⌃F7      │ change the way Tab moves focus
+--        ⇪⌃7   │     ⌃F7      │  — change the way Tab moves focus
 --        ⇪⌥7   │     ⌥F7      │
 --        ⇪⌘7   │     ⌘F7      │
 --        ⇧⌃7   │              │
