@@ -3,7 +3,7 @@ return {
 --    │  ↑  │    arrow up
 --    ╰—————╯
 --
---         karabiner: no
+--         karabiner: ⇧⌘↑ → illumination_increment
 --
 --———————— chord ┬ en | ru | el ┬
 --           ↑   │       ↑      │ Telegram — edit last message
