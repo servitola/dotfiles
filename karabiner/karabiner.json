@@ -3573,9 +3573,9 @@
                                     "key_code": "q",
                                     "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
-                                "to": [
+                                 "to": [
                                     {
-                                        "key_code": "page_up",
+                                        "key_code": "open_bracket",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -4059,19 +4059,6 @@
                             {
                                 "from": {
                                     "key_code": "e",
-                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "page_down",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
                                     "modifiers": { "mandatory": ["left_control", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
@@ -4242,6 +4229,19 @@
                                     {
                                         "key_code": "page_down",
                                         "modifiers": ["left_option", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                 "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
