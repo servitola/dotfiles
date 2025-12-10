@@ -5,7 +5,8 @@ return {
 --
 --  karabiner: ⇧⌃a → ⌫
 --             ⇧⌃⌥a → ⌥⌫
---             ⇪⇧⌃a -> vk_consumer_previous
+--             ⇪⇧⌃a → vk_consumer_previous
+--             ⇧⌥⌘a → ⇧⌘⌫
 --
 --———————— chord ┬ en | ru | el ┬
 --           a   │ a    ф    α  │
@@ -43,7 +44,7 @@ return {
 --               │              │ iTerm — focus pane to the left
 --        ⇧⌃⌥a   │      ⌥⌫      │  — delete word to the left
 --        ⇧⌃⌘a   │              │
---        ⇧⌥⌘a   │              │
+--        ⇧⌥⌘a   │     ⇧⌘⌫      │ ℝ, 📝 — go to last edit place
 --        ⌃⌥⌘a   │              │
 --               ┴              ┴
 }

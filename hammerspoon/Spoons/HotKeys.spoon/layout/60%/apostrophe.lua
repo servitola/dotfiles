@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  '  │    quote / volume up / zoom
+--    │  '  │    quote / volume up
 --    ╰—————╯
 --
 --         karabiner: no
