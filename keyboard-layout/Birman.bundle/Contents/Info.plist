@@ -19,6 +19,17 @@
 		<key>TISIntendedLanguage</key>
 		<string>en</string>
 	</dict>
+	<key>KLInfo_Gr Birman</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISIconIsTemplate</key>
+		<true/>
+		<key>TISInputSourceID</key>
+		<string>org.sil.ukelele.keyboardlayout.unsavedukeleledocument.grbirman</string>
+		<key>TISIntendedLanguage</key>
+		<string>el</string>
+	</dict>
 	<key>KLInfo_Ru Birman</key>
 	<dict>
 		<key>TICapsLockLanguageSwitchCapable</key>
