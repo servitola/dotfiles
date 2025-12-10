@@ -155,10 +155,28 @@
                                 ],
                                 "type": "basic"
                             }
-                        ]
-                    },
-                    {
-                        "description": "Grave Accent to Escape",
+                            ]
+                            },
+                            {
+                            {
+                            "description": "Left Shift + Left Alt + Left Command + A = Command + Shift + Backspace",
+                            "manipulators": [
+                             {
+                                 "from": {
+                                     "key_code": "a",
+                                     "modifiers": { "mandatory": ["left_shift", "left_option", "left_command"] }
+                                 },
+                                 "to": [
+                                     {
+                                         "key_code": "delete_or_backspace",
+                                         "modifiers": ["left_command", "left_shift"]
+                                     }
+                                 ],
+                                 "type": "basic"
+                             }
+                            ]
+                            },
+                            "description": "Grave Accent to Escape",
                         "manipulators": [
                             {
                                 "description": "Left Shift + Tilde (no Hyper) -> Shift + Escape",
