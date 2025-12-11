@@ -14,6 +14,7 @@ return {
 --          ⇪d   │      →       │
 --          ⇧d   │ D    В    Δ  │
 --          ⌃d   │              │ ℝ, 📝 — debug
+--          ⌥d   │ °    °    °  │
 { chord =  "⌥d",                  fn = "window.right" },
 --          ⌘d   │              │  — duplicate
 --               │              │ ℝ — duplicate line

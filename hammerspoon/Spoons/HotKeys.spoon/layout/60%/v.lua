@@ -11,7 +11,7 @@ return {
 { chord =  "⇪v",                  app = "Yandex" },
 --          ⇧v   │ V    М    Ω  │
 --          ⌃v   │              │
-{ chord =  "⌥v",                  fn = "browser_youtube" },
+--          ⌥v   │ ↓    ↓    ↓  │
 --          ⌘v   │              │  — paste
 --               │              │ Music — paste song information or artwork
 --———————————————┼——————————————┼——————————————————————————————————
@@ -21,7 +21,7 @@ return {
 --         ⇪⌥v   │              │
 --         ⇪⌘v   │              │
 --         ⇧⌃v   │              │
---         ⇧⌥v   │              │
+--         ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --         ⇧⌘v   │              │ Mail — paste text into email as quotation
 { chord = "⌃⌥v",                  fn = "browser_youtube" },
 --         ⌃⌘v   │              │
