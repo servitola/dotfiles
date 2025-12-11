@@ -11,7 +11,7 @@ return {
 { chord =  "⇪b",                  app = "Warp" },
 --          ⇧b   │ B    И    Β  │
 --          ⌃b   │              │ Unix Terminal — forward one letter
---          ⌥b   │ b    ß    no │
+--          ⌥b   │ ß    ß    ß  │
 --          ⌘b   │              │ ℝ — go to declaration
 --               │              │ Music — show or hide column browser
 --———————————————┼——————————————┼——————————————————————————————————
@@ -21,7 +21,7 @@ return {
 --         ⇪⌥b   │              │
 --         ⇪⌘b   │              │
 --         ⇧⌃b   │              │ Unix Terminal — backward one letter
---         ⇧⌥b   │ ẞ    ẞ    no │
+--         ⇧⌥b   │ ẞ    ẞ    ẞ  │
 --         ⇧⌘b   │              │ ℝ — go to definition
 --               │              │ 📝 — select build task to run
 --               │              │ Fork — open Create Branch dialog
