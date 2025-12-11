@@ -18,6 +18,7 @@ return {
 { chord =  "⌥d",                  fn = "window.right" },
 --          ⌘d   │              │  — duplicate
 --               │              │ ℝ — duplicate line
+--               │              │ Google Meets — toggle microphone
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧d   │      ⇧→      │  — select letter to the right
 --         ⇪⌃d   │      ⌃→      │  — jump to workspace to the right
