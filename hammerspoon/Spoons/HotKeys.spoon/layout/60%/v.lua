@@ -4,6 +4,7 @@ return {
 --    ╰—————╯
 --
 --         karabiner: ⇪⇧v → F13
+--                    ⇪⌃v → F19
 --
 --———————— chord ┬ en | ru | el ┬
 --           v   │ v    м    ω  │
@@ -17,7 +18,8 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 --   ⇪⇧v → F13   │              │
 { chord = "F13",                  app = "Google Chrome" },
---         ⇪⌃v   │              │
+--   ⇪⌃v → F19   │              │
+{ chord = "F19",                  fn = "vpn.toggle_globalprotect" },
 --         ⇪⌥v   │              │
 --         ⇪⌘v   │              │
 --         ⇧⌃v   │              │
