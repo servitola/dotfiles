@@ -5,6 +5,9 @@ local obj={}
 
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
+local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
+local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
+
 local buttonFiles = {
     "tilde",
     "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
@@ -320,6 +323,10 @@ function obj:init()
                 elseif functionName == "voice_dictation.toggle" then
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.VoiceDictation:toggleRecording()
+                    end)
+                elseif functionName == "vpn.toggle_globalprotect" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        vpnGlobalProtect.toggle()
                     end)
                 end
             end

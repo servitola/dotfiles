@@ -408,6 +408,18 @@
                              },
                             {
                                  "from": {
+                                     "key_code": "v",
+                                     "modifiers": { "mandatory": ["left_control", "right_command", "right_control", "right_option", "right_shift"] }
+                                 },
+                                 "to": [
+                                     {
+                                         "key_code": "f19"
+                                     }
+                                 ],
+                                 "type": "basic"
+                             },
+                            {
+                                 "from": {
                                      "key_code": "b",
                                      "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                  },
