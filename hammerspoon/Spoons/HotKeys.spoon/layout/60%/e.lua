@@ -12,7 +12,8 @@ return {
 --          ⇪e   │     PgDn     │
 --          ⇧e   │ E    У    Ε  │
 --          ⌃e   │              │ ℝ — find usages (custom)
-{ chord =  "⌥e",                  app = "Claude" },
+--          ⌥e   │ €    €    €  │
+{ chord = "⌥e",                 app = "Claude" },
 --          ⌘e   │              │ ℝ — recent files dialog
 --               │              │ Telegram — toggle camera
 --               │              │ 📝 — find with selection
@@ -27,7 +28,7 @@ return {
 --               │              │ 🌐 — navigate forward
 --               │              │ Music — navigate forward
 --         ⇧⌃e   │              │ ???
---         ⇧⌥e   │              │ ???
+--         ⇧⌥e   │ ⌥    ⌥    Έ  │
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
 --               │              │ Mail — redirect email
