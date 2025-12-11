@@ -41,5 +41,16 @@
 		<key>TISIntendedLanguage</key>
 		<string>ru</string>
 	</dict>
+	<key>KLInfo_Uk Birman</key>
+	<dict>
+		<key>TICapsLockLanguageSwitchCapable</key>
+		<false/>
+		<key>TISIconIsTemplate</key>
+		<true/>
+		<key>TISInputSourceID</key>
+		<string>org.sil.ukelele.keyboardlayout.unsavedukeleledocument.ukbirman</string>
+		<key>TISIntendedLanguage</key>
+		<string>uk</string>
+	</dict>
 </dict>
 </plist>
