@@ -52,13 +52,30 @@ local function parseChord(chordStr)
     local modifiers = {}
     local key = ""
 
-    -- Check for function keys first (F1-F20)
     key = chordStr:match("^F%d+$") or chordStr:match("[a-z0-9]$")
 
-    if not key then
-        -- Key not found - invalid chord
-        return {}, ""
+    if key == nil then
+        if chordStr:match("^⇧⌃⎋$") then
+            key = "escape"
+        elseif chordStr:match("⌃⌥⇥$") then
+            key = "tab"
+        elseif chordStr:match("⌥%[") then
+            key = "["
+        elseif chordStr:match("⌥%]") then
+            key = "]"
+        elseif chordStr:match("←") then
+            key = "left"
+        elseif chordStr:match("→") then
+            key = "right"
+        elseif chordStr:match("↑") then
+            key = "up"
+        elseif chordStr:match("↓") then
+            key = "down"
+        end
     end
+
+    print(string.format("key 3: %s", key))
+
 
     if chordStr:find("⇪") then
         table.insert(modifiers, "right_command")
@@ -133,13 +150,6 @@ function obj:init()
         if chord_entry.chord then
             local modifiers, key = parseChord(chord_entry.chord)
 
-            -- Validate key was extracted properly
-            if key == "" or key == nil then
-                print(string.format("DEBUG: Skipping invalid chord='%s' (key extraction failed)", chord_entry.chord))
-                goto continue
-            end
-
-            -- Debug: show what we're parsing
             if chord_entry.app then
                 print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.app))
@@ -148,7 +158,6 @@ function obj:init()
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
-            -- Only bind if there are modifiers (or if it's a function key with no modifiers)
             local isFunctionKey = key:match("^[Ff]%d+$")
             if #modifiers == 0 and not isFunctionKey then
                 print(string.format("DEBUG: Skipping chord='%s' (no modifiers found)", chord_entry.chord))
