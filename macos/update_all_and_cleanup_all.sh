@@ -66,9 +66,6 @@ pre-commit autoupdate
 
 print_section "System Maintenance"
 
-print_task "Removing Google Updater (Keystone)"
-sudo ~/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/Helpers/ksinstall --uninstall 2>/dev/null || true
-
 print_task "Rebuilding zsh completion cache"
 rm -f ~/.zcompdump* 2> /dev/null
 chmod -R go-w "$(brew --prefix)/share" 2> /dev/null || true
