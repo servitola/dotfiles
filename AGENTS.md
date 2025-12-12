@@ -48,7 +48,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── amp
 │   └── settings.json
 ├── annepro2
-│   ├── ANNE PRO 2.json
 │   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
