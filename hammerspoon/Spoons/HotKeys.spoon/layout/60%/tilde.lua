@@ -3,7 +3,11 @@ return {
 --    │  ~  │    escape / tilde / ё button
 --    ╰—————╯
 --
---         karabiner: non_us_backslash → escape
+--         karabiner: ~ → ⎋
+--                    ⇪~ → `
+--                    ⇪⇧~ → ⇧`
+--                    ⇧⌃~ → ⇧⌃⎋
+--                    ⇪⌘~ → ⌘⎋
 --
 --———————— chord ┬ en | ru | el ┬
 --           ~   │      ⎋       │
@@ -18,6 +22,7 @@ return {
 --         ⇪⌃~   │      ⌃⎋      │ 📝 — toggle terminal
 --         ⇪⌥~   │      ⌥⎋      │ 📝 — suggest AI completions
 --         ⇪⌘~   │      ⌘⎋      │  — switch to game (???)
+--   ⇧⌃~ → ⇧⌃⎋   │              │
 { chord = "⇧⌃⎋",                  app = "Activity Monitor" },
 --         ⇧⌥~   │     ⇧⌥⎋      │
 --         ⇧⌘~   │     ⇧⌘⎋      │  — switch between windows of the current app (backward)
