@@ -27,7 +27,7 @@ return {
 --         ⇧⌥s   │     ⌥⌦       │  — delete word to the right
 --         ⇧⌘s   │              │  — save as
 --               │              │ 📁 — go to Shared
-{ chord = "⌃⌥s",                  fn = "window.set_all_to_default" },
+--         ⌃⌥s   │              │ ???
 --         ⌃⌘s   │              │ 📁 — toggle SideBar
 --               │              │ ℝ — toggle Sidebar
 --               │              │ Mail — hide/show sidebar
