@@ -131,9 +131,9 @@ local appSpecificHotkeys = {
     ["Fork"] = {
         { from = {"cmd", "shift"}, key = "e", to = {"cmd", "shift"}, target_key = "l" },
         { from = {"cmd", "shift"}, key = "r", to = {"cmd", "shift"}, target_key = "p" },
-        { from = {"control"}, key = "1", to = {"cmd", "alt"}, target_key = "1"},
-        { from = {"control"}, key = "2", to = {"cmd", "alt"}, target_key = "2"},
-        { from = {"control"}, key = "3", to = {"cmd", "alt"}, target_key = "3"}
+        { from = {"control"}, key = "q", to = {"cmd", "alt"}, target_key = "1"},
+        { from = {"control"}, key = "w", to = {"cmd", "alt"}, target_key = "2"},
+        { from = {"control"}, key = "e", to = {"cmd", "alt"}, target_key = "3"}
     },
     ["Music"] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
@@ -143,6 +143,9 @@ local appSpecificHotkeys = {
     },
     ["Finder"] = {
         { from = {"alt"}, key = "z", to = {"cmd", "alt"}, target_key = "l" },
+	},
+    ["Telegram"] = {
+        { from = {"control"}, key = "q", to = {"cmd"}, target_key = "0"}
     },
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
