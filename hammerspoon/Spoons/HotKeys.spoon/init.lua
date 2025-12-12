@@ -71,6 +71,10 @@ local function parseChord(chordStr)
             key = "up"
         elseif chordStr:match("↓") then
             key = "down"
+        elseif chordStr:match(",") then
+            key = ","
+        elseif chordStr:match(".") then
+            key = "."
         end
     end
 
