@@ -91,8 +91,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
-│   ├── keyboard-setup.md
-│   └── letters.md
+│   └── keyboard-setup.md
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
