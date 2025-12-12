@@ -78,9 +78,6 @@ local function parseChord(chordStr)
         end
     end
 
-    print(string.format("key 3: %s", key))
-
-
     if chordStr:find("⇪") then
         table.insert(modifiers, "right_command")
         table.insert(modifiers, "right_control")
@@ -155,17 +152,11 @@ function obj:init()
             local modifiers, key = parseChord(chord_entry.chord)
 
             if chord_entry.app then
-                print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
+                print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.app))
             elseif chord_entry.fn then
-                print(string.format("DEBUG: Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
+                print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
                     chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.fn))
-            end
-
-            local isFunctionKey = key:match("^[Ff]%d+$")
-            if #modifiers == 0 and not isFunctionKey then
-                print(string.format("DEBUG: Skipping chord='%s' (no modifiers found)", chord_entry.chord))
-                goto continue
             end
 
             if chord_entry.app then
@@ -215,8 +206,6 @@ function obj:init()
                 bindCount = bindCount + 1
             elseif chord_entry.fn then
                 local functionName = chord_entry.fn
-                print(string.format("DEBUG: Binding specific_function chord='%s' → modifiers=[%s], key='%s', function='%s'",
-                    chord_entry.chord, table.concat(modifiers, ", "), key, functionName))
                 bindCount = bindCount + 1
 
                 if functionName == "window.left" then
