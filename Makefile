@@ -22,7 +22,7 @@ install:
 	@$(REMOVE) /etc/hosts
 	@$(LINK) ~/projects/dotfiles/macos/hosts /etc/hosts
 
-	@echo "setup Birman Layout"
+	@echo "copy 'Birman Keyboard Layout' to /Library/Keyboard Layouts/"
 	@$(REMOVE) /Library/Keyboard\ Layouts/Birman.bundle
 	@$(COPY) ~/projects/dotfiles/keyboard-layout/Birman.bundle /Library/Keyboard\ Layouts/Birman.bundle
 
