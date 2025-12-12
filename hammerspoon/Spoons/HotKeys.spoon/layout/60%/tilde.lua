@@ -18,7 +18,7 @@ return {
 --         ⇪⌃~   │      ⌃⎋      │ 📝 — toggle terminal
 --         ⇪⌥~   │      ⌥⎋      │ 📝 — suggest AI completions
 --         ⇪⌘~   │      ⌘⎋      │  — switch to game (???)
-{ chord = "⇧⌃~",                  app = "Activity Monitor" },
+{ chord = "⇧⌃⎋",                  app = "Activity Monitor" },
 --         ⇧⌥~   │     ⇧⌥⎋      │
 --         ⇧⌘~   │     ⇧⌘⎋      │  — switch between windows of the current app (backward)
 --         ⌃⌥~   │              │
