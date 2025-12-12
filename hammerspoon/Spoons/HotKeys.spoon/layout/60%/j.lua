@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  J  │    jump
+--    │  J  │    jump / journal
 --    ╰—————╯
 --
 --         karabiner: no
@@ -21,7 +21,7 @@ return {
 --        ⇧⌃j   │              │
 --        ⇧⌥j   │              │
 --        ⇧⌘j   │              │ Mail — move to Junk
---        ⌃⌥j   │              │
+--        ⌃⌥j   │              │ Day One → create journal entry
 --        ⌃⌘j   │              │
 --        ⌥⌘j   │              │ Yandex — JavaScript console
 --              │              │ Mail — erase junk mail
