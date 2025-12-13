@@ -8,7 +8,7 @@ return {
 --——————— chord ┬ en | ru | el ┬
 --          j   │ j    о    ξ  │ YouTube 10sec back
 --——————————————┼——————————————┼——————————————————————————————————
---         ⇪j   │              │
+--         ⇪j   │              │ Day One → create journal entry
 --         ⇧j   │ J    О    Ξ  │
 --         ⌃j   │              │
 --         ⌥j   │ „    „    ≤  │
@@ -21,7 +21,7 @@ return {
 --        ⇧⌃j   │              │
 --        ⇧⌥j   │              │
 --        ⇧⌘j   │              │ Mail — move to Junk
---        ⌃⌥j   │              │ Day One → create journal entry
+--        ⌃⌥j   │              │
 --        ⌃⌘j   │              │
 --        ⌥⌘j   │              │ Yandex — JavaScript console
 --              │              │ Mail — erase junk mail
