@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  F  │    find / finder / full screen
+--    │  F  │    finder / full screen
 --    ╰—————╯
 --
 --         karabiner: no

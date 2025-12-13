@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  L  │    line / current address
+--    │  L  │    line / address
 --    ╰—————╯
 --
 --         karabiner: ⇪l → ↓

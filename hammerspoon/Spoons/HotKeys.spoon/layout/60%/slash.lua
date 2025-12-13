@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  /  │    volume down / comment
+--    │  /  │    🔈 / comment
 --    ╰—————╯
 --
 --         karabiner: no

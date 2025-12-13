@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  \  │    backslash / copilot
+--    │  \  │
 --    ╰—————╯
 --
 --         karabiner: no

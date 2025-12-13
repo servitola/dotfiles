@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ,  │    home / typography quotes / settings
+--    │  ,  │    home / settings
 --    ╰—————╯
 --
 --         karabiner: no

@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  W  │    close / up / notifications
+--    │  W  │    close / up
 --    ╰—————╯
 --
 --         karabiner: ⇪w → ↑

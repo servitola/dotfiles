@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ~  │    escape / tilde / ё button
+--    │  ~  │    escape / tilde
 --    ╰—————╯
 --
 --         karabiner: ~ → ⎋
