@@ -10,5 +10,6 @@ return {
 --——————————————┼——————————————┼——————————————————————————————————
 --     ⇧⇧       │              │ ℝ → open search
 --      ⇧click  │              │ Safari — Add to Reading List
+--      ⇧↩      │              │  — insert new line
 --              ┴              ┴
 }
