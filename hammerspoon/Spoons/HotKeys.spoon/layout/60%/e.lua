@@ -31,7 +31,7 @@ return {
 --               │              │ 📁 — navigate forwardq
 --               │              │ 🌐 — navigate forward
 --               │              │ Music — navigate forward
---         ⇧⌃e   │              │ ???
+--         ⇧⌃e   │      ⌘o      │  — open file
 --         ⇧⌥e   │ ⌥    ⌥    Έ  │
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
