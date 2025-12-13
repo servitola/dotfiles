@@ -11,7 +11,7 @@ return {
 { chord =  "⇪n",                  app = "Visual Studio Code" },
 --          ⇧n   │ N    Т    Ν  │
 --          ⌃n   │              │
---          ⌥n   │ ≈            │ Mail — open a new Mail viewer window
+--          ⌥n   │ ‘    ‘    ‘  │ Mail — open a new Mail viewer window
 --          ⌘n   │              │  — new window
 --               │              │ Music — create a new playlist
 --               │              │ Mail — start a new email
@@ -22,7 +22,7 @@ return {
 --         ⇪⌥n   │              │
 --         ⇪⌘n   │              │
 --         ⇧⌃n   │              │
---         ⇧⌥n   │ ˜            │
+--         ⇧⌥n   │ ˜    ˜    Ό  │
 --         ⇧⌘n   │              │ Mail — get new emails
 --               │              │ 🌐 — open new Private Window
 --               │              │ Music — create a playlist from selection

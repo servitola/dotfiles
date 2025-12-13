@@ -6054,12 +6054,12 @@
                             {
                                 "from": {
                                     "key_code": "x",
-                                    "modifiers": { "mandatory": ["left_control", "right_command", "right_control", "right_option", "right_shift"] }
+                                    "modifiers": { "mandatory": ["left_control"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["left_command", "left_control"]
+                                        "key_code": "k",
+                                        "modifiers": ["left_control"]
                                     }
                                 ],
                                 "type": "basic"
