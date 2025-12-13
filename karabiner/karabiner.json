@@ -4159,8 +4159,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "page_down",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "l",
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
@@ -6058,8 +6058,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "k",
-                                        "modifiers": ["left_control"]
+                                        "key_code": "slash",
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
