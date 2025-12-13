@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  0  │    zero / reset / last tab
+--    │  0  │    F10 / last / default
 --    ╰—————╯
 --
 --         karabiner: ⇪0 → F10

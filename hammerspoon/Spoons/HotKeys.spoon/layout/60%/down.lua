@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ↓  │    arrow down
+--    │  ↓  │    down
 --    ╰—————╯
 --
 --         karabiner: ⇧⌘↓ → illumination_decrement

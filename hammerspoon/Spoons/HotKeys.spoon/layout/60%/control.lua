@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ⌃  │    control modifier
+--    │  ⌃  │    control
 --    ╰—————╯
 --
 --         karabiner: no

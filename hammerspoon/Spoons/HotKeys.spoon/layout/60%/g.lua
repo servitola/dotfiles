@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  G  │    git / history / go to
+--    │  G  │    git / go to
 --    ╰—————╯
 --
 --         karabiner: no
