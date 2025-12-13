@@ -21,7 +21,11 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧e   │    ⇧PgDn     │ select page of text down
 --         ⇪⌃e   │    ⌃PgDn     │ 📝 — scroll down (without moving caret)
---         ⇪⌥e   │    ⌥PgDn     │
+--         ⇪⌥e   │      ⌘l      │ IINA — ab-loop (A-B loop)
+--               │              │ ℝ — go to line,
+--               │              │ 🌐 — Focus Url Line,
+--               │              │ Music — Go to Current song,
+--               │              │ Telegram — lock Telegram
 --         ⇪⌘e   │      ⌘]      │ IINA — multiply speed 2.0
 --               │              │ ℝ — navigate forward
 --               │              │ 📁 — navigate forwardq
