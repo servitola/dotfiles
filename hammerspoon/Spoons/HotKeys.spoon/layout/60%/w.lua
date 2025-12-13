@@ -10,7 +10,7 @@ return {
 --———————— chord ┬ en | ru | el ┬
 --           w   │ w    ц    ω  │ 🌐 Vim — toggle pin tab
 --———————————————┼——————————————┼——————————————————————————————————
---          ⇪w   │      ↑       │
+--          ⇪w   │      ↑       │  — up
 --          ⇧w   │ W    Ц    Ω  │
 --          ⌃w   │              │ ℝ — close all notifications
 --               │              │ 📝 — select window to switch
