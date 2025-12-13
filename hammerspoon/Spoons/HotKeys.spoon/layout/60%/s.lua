@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  S  │    save / down
+--    │  S  │    down / save
 --    ╰—————╯
 --
 --         karabiner: ⇪s → ↓

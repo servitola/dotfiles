@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  [  │    previous / back / "Хэ"
+--    │  [  │    back
 --    ╰—————╯
 --
 --         karabiner: ⇪[ → vk_consumer_previous

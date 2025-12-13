@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  B  │    build / branch / terminal
+--    │  B  │    terminal / build
 --    ╰—————╯
 --
 --        karabiner: ⇪⇧b → F14

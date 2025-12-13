@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  X  │    cut / home / xcode
+--    │  X  │    cut / home
 --    ╰—————╯
 --
 --         karabiner: ⇪x → ⌘←

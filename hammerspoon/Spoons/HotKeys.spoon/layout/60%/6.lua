@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  6  │    6th / F6 / Bookmark
+--    │  6  │    6th / F6
 --    ╰—————╯
 --
 --         karabiner: ⇪6 → F6

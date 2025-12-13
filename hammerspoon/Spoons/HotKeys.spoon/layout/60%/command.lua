@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ⌘  │    command modifier
+--    │  ⌘  │    command
 --    ╰—————╯
 --
 --         karabiner: no

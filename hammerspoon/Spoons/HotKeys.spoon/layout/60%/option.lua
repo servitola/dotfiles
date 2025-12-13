@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ⌥  │    alt / option modifier
+--    │  ⌥  │    option
 --    ╰—————╯
 --
 --         karabiner: no

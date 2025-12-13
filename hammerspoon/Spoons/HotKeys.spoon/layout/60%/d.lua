@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  D  │    delete / duplicate / right / debug / dictionary
+--    │  D  │    right / duplicate / delete
 --    ╰—————╯
 --
 --         karabiner: ⇪d → →

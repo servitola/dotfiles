@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ⇥  │    tab / return
+--    │  ⇥  │    tab / enter
 --    ╰—————╯
 --
 --         karabiner: ⇪⇥ → ↩

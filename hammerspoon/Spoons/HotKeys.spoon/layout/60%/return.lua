@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ↩  │    enter / apply
+--    │  ↩  │    apply
 --    ╰—————╯
 --
 --         karabiner: no
