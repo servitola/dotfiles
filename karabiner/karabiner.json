@@ -4168,6 +4168,19 @@
                             {
                                 "from": {
                                     "key_code": "e",
+                                    "modifiers": { "mandatory": ["left_shift", "left_control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "o",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
                                     "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [

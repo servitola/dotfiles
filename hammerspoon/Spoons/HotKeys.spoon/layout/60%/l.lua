@@ -22,7 +22,7 @@ return {
 --              │              │ Telegram — lock Telegram
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧l   │      ⇧↓      │  — select line down
---        ⇪⌃l   │              │  — show all windows of current app
+--        ⇪⌃l   │      ⌃↓      │  — show all windows of current app
 --        ⇪⌥l   │              │
 --        ⇪⌘l   │              │
 --        ⇧⌃l   │              │ ℝ — focus in Solution explorer
