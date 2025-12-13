@@ -1,6 +1,6 @@
 return {
 --    ╭————————╮
---    │     ⌫  │    delete
+--    │     ⌫  │    backspace / delete
 --    ╰————————╯
 --
 --         karabiner: ⇪⌫ → ⌦

@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  P  │    print / music / push
+--    │  P  │    print / push
 --    ╰—————╯
 --
 --         karabiner: no

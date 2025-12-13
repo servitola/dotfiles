@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  O  │    open / override / up
+--    │  O  │    open / up
 --    ╰—————╯
 --
 --         karabiner: ⇪⇧⌃o → volume_increment

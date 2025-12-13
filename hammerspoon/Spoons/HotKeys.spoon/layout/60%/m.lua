@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  M  │    minimize / mute / method
+--    │  M  │    minimize / mute
 --    ╰—————╯
 --
 --         karabiner: no

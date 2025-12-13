@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ]  │    next / forward / "Э"
+--    │  ]  │    forward
 --    ╰—————╯
 --
 --         karabiner: ⇪] → vk_consumer_next

@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  I  │    voice dictation / inspect
+--    │  I  │
 --    ╰—————╯
 --
 --         karabiner: no
