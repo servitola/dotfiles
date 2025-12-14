@@ -32,7 +32,7 @@ return {
 --       ⇪⇧⌘5   │              │
 --       ⇪⌃⌥5   │              │
 --       ⇪⌃⌘5   │              │
---       ⇪⌥⌘5   │              │  —show accessibility controls
+--       ⇪⌥⌘5   │              │  — show accessibility controls
 --       ⇧⌃⌥5   │              │
 --       ⇧⌃⌘5   │              │
 --       ⇧⌥⌘5   │              │
