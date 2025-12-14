@@ -14,7 +14,8 @@ return {
 --          ⇧w   │ W    Ц    Ω  │
 --          ⌃w   │              │ ℝ — close all notifications
 --               │              │ 📝 — select window to switch
-{ chord =  "⌥w",                  fn = "window.fullscreen" },
+--          ⌥w   │     ⌥↑       │  — move line up
+--               │              │ ℝ — extend selection
 --          ⌘w   │              │  — close current tab
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧w   │     ⇧↑       │  — select line up
@@ -23,10 +24,10 @@ return {
 --               │              │ ℝ — extend selection
 --         ⇪⌘w   │     ⌘↑       │ 📝 — jump to breadcumbs
 --         ⇧⌃w   │              │ ???
---         ⇧⌥w   │ ⌃    ⌃    ⌃  │
+--         ⇧⌥w   │    ⇧⌥↑       │ 📝 — move line up
 --         ⇧⌘w   │              │ ℝ — close other tabs
 --               │              │  — close window
---         ⌃⌥w   │              │
+{ chord = "⌃⌥w",                  fn = "window.fullscreen" },
 --         ⌃⌘w   │              │
 --         ⌥⌘w   │              │ Mail — close all Mail windows
 --               │              │ 📝 — toggle search whole word
