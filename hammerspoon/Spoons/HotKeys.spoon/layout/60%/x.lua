@@ -21,9 +21,10 @@ return {
 --         ⇪⌃x   │              │
 --         ⇪⌥x   │     ⌥⌘←      │ 📝 — navigate to tab to the left
 --               │              │ Music — seek backward
---         ⇪⌘x   │              │
+--         ⇪⌘x   │      ⌘p      │  — print
+--               │              │ Music — play
 --         ⇧⌃x   │              │
---         ⇧⌥x   │ ·    ·   no  │
+--         ⇧⌥x   │     ⇧⌘←      │  — select text to the left till the start of string
 --         ⇧⌘x   │              │ 📝 — open Extensions
 { chord = "⌃⌥x",                  app = "Simulator" },
 --         ⌃⌘x   │              │ ℝ — scroll to Top
