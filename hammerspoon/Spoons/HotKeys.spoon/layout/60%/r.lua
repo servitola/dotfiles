@@ -16,12 +16,12 @@ return {
 --                │              │ Mail — reply to email
 --————————————————┼——————————————┼——————————————————————————————————
 --    ⇪⇧r → F17   │              │
-{ chord =  "F17",                 app = "Android Studio" },
---          ⇪⌃r   │              │
---          ⇪⌥r   │              │
---          ⇪⌘r   │              │
+{ chord =  "F17",                  app = "Android Studio" },
+--          ⇪⌃r   │              │ ???
+--          ⇪⌥r   │              │ ???
+--          ⇪⌘r   │              │ ???
 --          ⇧⌃r   │              │ ℝ — run Unit Tests
---          ⇧⌥r   │ ˚    ˚    Δ  │
+--          ⇧⌥r   │ ˚    ˚    Δ  │ ???
 --      ⇧⌥r ⇧⌥r   │ s̊    ы̊    no │ double to add sign to previous symbol
 --          ⇧⌘r   │              │ Mail — reply all to email
 --                │              │ ℝ — replace in files
