@@ -20,5 +20,10 @@
     {
         "key": "ctrl+a",
         "command": "gitlens.toggleFileBlame:editor"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "editor.action.showContextMenu",
+        "when": "textInputFocus"
     }
 ]
