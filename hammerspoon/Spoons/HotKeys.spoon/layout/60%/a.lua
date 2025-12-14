@@ -16,7 +16,8 @@ return {
 --          ⇧a   │ A    Ф    Α  │
 --          ⌃a   │              │ ℝ🔄 — git annotate (blame)
 --          ⌥a   │ ≈    ≈    ≈  │
-{ chord =  "⌥a",                  fn = "window.left" },
+--          ⌥a   │      ⌥←      │  — jump a word to the left
+--               │              │ YouTube — jump to chapter to the left
 --          ⌘a   │              │  — select all
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧a   │      ⇧←      │  — select letter to the left
@@ -25,12 +26,12 @@ return {
 --               │              │ YouTube — jump to chapter to the left
 --         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
 --         ⇧⌃a   │      ⌫       │  — delete symbol to the left
---         ⇧⌥a   │     ⌥⌫       │  — delete word to the left
+--         ⇧⌥a   │     ⇧⌥←      │  — select word to the left
 --         ⇧⌘a   │              │ 📝 — show actions palette
 --               │              │ Mail — attach files
 --               │              │ 📁 — go to Applications
 --               │              │ Music — deselect all songs
-{ chord = "⌃⌥a",                  fn = "android.show_all" },
+{ chord = "⌃⌥a",                  fn = "window.left" },
 --         ⌃⌘a   │              │ ℝ — show all affected files in source control
 --               │              │ Mail — archive message
 --         ⌥⌘a   │              │

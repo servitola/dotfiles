@@ -3909,6 +3909,19 @@
                             {
                                 "from": {
                                     "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
                                     "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
@@ -4592,6 +4605,19 @@
                             {
                                 "from": {
                                     "key_code": "a",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "a",
                                     "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
@@ -4808,6 +4834,19 @@
                             {
                                 "from": {
                                     "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "s",
                                     "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
@@ -5007,6 +5046,19 @@
                                 "from": {
                                     "key_code": "d",
                                     "modifiers": { "mandatory": ["left_option", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_option"] }
                                 },
                                 "to": [
                                     {
@@ -6482,8 +6534,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["left_shift", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -6496,8 +6548,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "delete_forward",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["left_shift", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -6510,8 +6562,21 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "delete_forward",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "down_arrow",
+                                        "modifiers": ["left_shift", "left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "w",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "up_arrow",
+                                        "modifiers": ["left_shift", "left_option"]
                                     }
                                 ],
                                 "type": "basic"
