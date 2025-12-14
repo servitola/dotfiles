@@ -13,6 +13,65 @@
                 },
                 "rules": [
                     {
+                        "description": "Right Option + C → © (abc_copy)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["right_option"] }
+                                },
+                                "to": [
+                                    { "shell_command": "printf $(printf '00A9' | xxd -r -p) | pbcopy" },
+                                    {
+                                        "hold_down_milliseconds": 30,
+                                        "key_code": "vk_none"
+                                    },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["right_option"] }
+                                },
+                                "to": [
+                                    { "shell_command": "printf $(printf '20AC' | xxd -r -p) | pbcopy" },
+                                    {
+                                        "hold_down_milliseconds": 30,
+                                        "key_code": "vk_none"
+                                    },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["right_option"] }
+                                },
+                                "to": [
+                                    { "shell_command": "zsh -c 'export LANG=en_US.UTF-8; printf \"\\\\xC2\\\\xB0\" | iconv -t UTF-8 | pbcopy'" },
+                                    {
+                                        "hold_down_milliseconds": 50,
+                                        "key_code": "vk_none"
+                                    },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Caps Lock to Right Hyper",
                         "manipulators": [
                             {
