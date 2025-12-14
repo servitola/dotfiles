@@ -25,6 +25,7 @@ return {
 --               │              │ 🌐 — Focus Url Line,
 --               │              │ Music — Go to Current song,
 --               │              │ Telegram — lock Telegram
+--               │              │ 📝 — goto line
 --         ⇪⌘e   │      ⌘]      │ IINA — multiply speed 2.0
 --               │              │ ℝ — navigate forward
 --               │              │ 📁 — navigate forwardq
