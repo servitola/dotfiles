@@ -20,7 +20,7 @@ return {
 --              │              │ Music — seek forward
 --        ⇪⌘c   │              │
 --        ⇧⌃c   │              │
---        ⇧⌥c   │ ¢    ¢    ¢  │
+--        ⇧⌥c   │     ⇧⌘→      │  — select line till the end
 --        ⇧⌘c   │              │ 📁 — go to Computer
 --        ⌃⌥c   │              │ itsycal Calendar (custom in app)
 --        ⌃⌘c   │              │ ℝ — scroll to Bottom
