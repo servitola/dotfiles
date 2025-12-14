@@ -8,7 +8,7 @@ return {
 --———————— chord ┬ en | ru | el ┬
 --           i   │ i    ш    ι  │ YouTube Minimize video
 --———————————————┼——————————————┼——————————————————————————————————
-{ chord =  "⇪i",                  fn = "voice_dictation.toggle" },
+--{ chord =  "⇪i",                  fn = "voice_dictation.toggle" },
 --          ⇧i   │ I    Ш    Ι  │
 --          ⌃i   │              │
 --          ⌥i   │ і    і    †  │

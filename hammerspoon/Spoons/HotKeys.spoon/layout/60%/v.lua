@@ -11,7 +11,7 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 { chord =  "⇪v",                  app = "Yandex" },
 --          ⇧v   │ V    М    Ω  │
---          ⌃v   │              │
+--          ⌃v   │              │ ???
 --          ⌥v   │ ↓    ↓    ↓  │
 --          ⌘v   │              │  — paste
 --               │              │ Music — paste song information or artwork
@@ -20,13 +20,13 @@ return {
 { chord = "F13",                  app = "Google Chrome" },
 --   ⇪⌃v → F19   │              │
 { chord = "F19",                  fn = "vpn.toggle_globalprotect" },
---         ⇪⌥v   │              │
---         ⇪⌘v   │              │
---         ⇧⌃v   │              │
+--         ⇪⌥v   │              │ ???
+--         ⇪⌘v   │              │ ???
+--         ⇧⌃v   │              │ ???
 --         ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --         ⇧⌘v   │              │ Mail — paste text into email as quotation
 { chord = "⌃⌥v",                  fn = "browser_youtube" },
---         ⌃⌘v   │              │
+--         ⌃⌘v   │              │ ???
 --         ⌥⌘v   │              │ ℝ — extract variable
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃v   │              │

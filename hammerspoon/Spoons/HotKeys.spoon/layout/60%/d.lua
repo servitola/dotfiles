@@ -14,7 +14,6 @@ return {
 --          ⇪d   │      →       │  — right
 --          ⇧d   │ D    В    Δ  │
 --          ⌃d   │              │ ℝ, 📝 — debug
---          ⌥d   │ °    °    °  │
 --          ⌥d   │      ⌥→      │  — jump a word to the right
 --               │              │ YouTube — jump to chapter to the right
 --          ⌘d   │              │  — duplicate
