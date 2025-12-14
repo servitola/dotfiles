@@ -8,45 +8,44 @@ return {
 --             ⇪⇧⌃a → vk_consumer_previous
 --             ⇧⌥⌘a → ⇧⌘⌫
 --
---———————— chord ┬ en | ru | el ┬
---           a   │ a    ф    α  │
---          aa   │              │ 🌐 Vim — go back
---———————————————┼——————————————┼——————————————————————————————————
---          ⇪a   │      ←       │  — left
---          ⇧a   │ A    Ф    Α  │
---          ⌃a   │              │ ℝ🔄 — git annotate (blame)
---               │              │ 📝 — jump to line start
---          ⌥a   │      ⌥←      │  — jump a word to the left
---               │              │ YouTube — jump to chapter to the left
---          ⌘a   │              │  — select all
---———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧a   │      ⇧←      │  — select letter to the left
---         ⇪⌃a   │      ⌃←      │  — jump to workspace to the left
---         ⇪⌥a   │      ⌥←      │  — jump a word to the left
---               │              │ YouTube — jump to chapter to the left
---         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
---         ⇧⌃a   │      ⌫       │  — backspace (delete symbol to the left)
---         ⇧⌥a   │     ⇧⌥←      │  — select word to the left
---         ⇧⌘a   │              │ 📝 — show actions palette
---               │              │ Mail — attach files
---               │              │ 📁 — go to Applications
---               │              │ Music — deselect all songs
-{ chord = "⌃⌥a",                  fn = "window.left" },
---         ⌃⌘a   │              │ ℝ — show all affected files in source control
---               │              │ Mail — archive message
---         ⌥⌘a   │              │
---———————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧⌃a   │  prev_track  │  — previous track
---        ⇪⇧⌥a   │     ⇧⌥←      │  — select word to the left
---        ⇪⇧⌘a   │     ⇧⌘←      │  — select text to the left till the start of string
---        ⇪⌃⌥a   │     ⌃⌥←      │
---        ⇪⌃⌘a   │     ⌃⌘←      │ 📝 — move editor to previous group
---        ⇪⌥⌘a   │     ⌥⌘←      │ Music — seek backward
---               │              │ 📝 — go to previous tab
---               │              │ iTerm — focus pane to the left
---        ⇧⌃⌥a   │      ⌥⌫      │  — delete word to the left
---        ⇧⌃⌘a   │              │
---        ⇧⌥⌘a   │     ⇧⌘⌫      │ ℝ, 📝 — go to last edit place
---        ⌃⌥⌘a   │              │
---               ┴              ┴
+--———————— chord ┬ en | ru | el ┬ ┬
+--           a   │ a    ф    α  │ │
+--          aa   │              │ │ 🌐 Vim — go back
+--———————————————┼——————————————┼—┼——————————————————————————————————
+--          ⇪a   │      ←       │ │  — left
+--          ⇧a   │ A    Ф    Α  │ │
+--          ⌃a   │              │c│ ℝ, 📝 — git annotate (blame)
+--          ⌥a   │      ⌥←      │ │  — jump a word to the left
+--               │              │ │ YouTube — jump to chapter to the left
+--          ⌘a   │              │ │  — select all
+--———————————————┼——————————————┼—┼——————————————————————————————————
+--         ⇪⇧a   │      ⇧←      │ │  — select letter to the left
+--         ⇪⌃a   │      ⌃←      │ │  — jump to workspace to the left
+--         ⇪⌥a   │      ⌥←      │ │  — jump a word to the left
+--               │              │ │ YouTube — jump to chapter to the left
+--         ⇪⌘a   │      ⌘←      │ │  — home, jump to the left start of string
+--         ⇧⌃a   │      ⌫       │ │  — backspace (delete symbol to the left)
+--         ⇧⌥a   │     ⇧⌥←      │ │  — select word to the left
+--         ⇧⌘a   │              │ │ 📝 — show actions palette
+--               │              │ │ Mail — attach files
+--               │              │ │ 📁 — go to Applications
+--               │              │ │ Music — deselect all songs
+{ chord = "⌃⌥a",                    fn = "window.left" },
+--         ⌃⌘a   │              │ │ ℝ — show all affected files in source control
+--               │              │ │ Mail — archive message
+--         ⌥⌘a   │              │ │
+--———————————————┼——————————————┼—┼——————————————————————————————————
+--        ⇪⇧⌃a   │  prev_track  │ │  — previous track
+--        ⇪⇧⌥a   │     ⇧⌥←      │ │  — select word to the left
+--        ⇪⇧⌘a   │     ⇧⌘←      │ │  — select text to the left till the start of string
+--        ⇪⌃⌥a   │     ⌃⌥←      │ │
+--        ⇪⌃⌘a   │     ⌃⌘←      │ │ 📝 — move editor to previous group
+--        ⇪⌥⌘a   │     ⌥⌘←      │ │ Music — seek backward
+--               │              │ │ 📝 — go to previous tab
+--               │              │ │ iTerm — focus pane to the left
+--        ⇧⌃⌥a   │      ⌥⌫      │ │  — delete word to the left
+--        ⇧⌃⌘a   │              │ │
+--        ⇧⌥⌘a   │     ⇧⌘⌫      │ │ ℝ, 📝 — go to last edit place
+--        ⌃⌥⌘a   │              │ │
+--               ┴              ┴ ┴
 }
