@@ -491,6 +491,19 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "f",
+                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "o",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "g",
                                     "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
@@ -6144,6 +6157,32 @@
                                 "to": [
                                     {
                                         "key_code": "right_arrow",
+                                        "modifiers": ["left_command", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "c",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["left_command", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "x",
+                                    "modifiers": { "mandatory": ["left_shift", "left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_arrow",
                                         "modifiers": ["left_command", "left_shift"]
                                     }
                                 ],
