@@ -1,6 +1,10 @@
 local lastApp = nil
 local switchTimer = nil
 
+local function setKarabinerProfile(profile)
+    hs.execute(string.format('"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "%s"', profile))
+end
+
 local function setLanguageForApp(bundleId, layout)
     if switchTimer then
         switchTimer:stop()
@@ -24,10 +28,16 @@ end
 appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
     if eventType == hs.application.watcher.activated or eventType == hs.application.watcher.unhidden then
         bundleId = appObject:bundleID()
+        -- print("bundleID: " .. bundleId )
         if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" then
             setLanguageForApp(bundleId, "Ru Birman")
+            setKarabinerProfile("Default")
+        elseif bundleId == "com.blizzard.heroesofthestorm" or bundleId == "com.nvidia.gfnpc.mall" then
+            setLanguageForApp(bundleId, "ABC")
+            setKarabinerProfile("Empty")
         else
             setLanguageForApp(bundleId, "En Birman")
+            setKarabinerProfile("Default")
         end
     elseif eventType == hs.application.watcher.deactivated then
         bundleId = appObject:bundleID()

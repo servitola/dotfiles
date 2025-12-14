@@ -6632,7 +6632,7 @@
                     "to": [{ "key_code": "f12" }]
                 }
             ],
-            "name": "No HotKeys ",
+            "name": "Empty",
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
