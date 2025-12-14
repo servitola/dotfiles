@@ -13,21 +13,22 @@ return {
 --          ⇪s   │      ↓       │  — down
 --          ⇧s   │ S    Ы    Σ  │ 🌐 Vim — duplicate tab
 --          ⌃s   │              │ ℝ — save with format (idea + custom macros)
-{ chord =  "⌥s",                  fn = "window.set_all_to_default" },
+--          ⌥s   │      ⌥↓      │  — move line down
+--               │              │ YouTube — previous chapter in current video
 --          ⌘s   │              │ IINA — screenshot
 --               │              │  — save
 --———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧s   │     ⇧↓       │  — select line down
---         ⇪⌃s   │     ⌃↓       │  — show windows of current app
---         ⇪⌥s   │     ⌥↓       │  — move line down
+--         ⇪⇧s   │      ⇧↓      │  — select line down
+--         ⇪⌃s   │      ⌃↓      │  — show windows of current app
+--         ⇪⌥s   │      ⌥↓      │  — move line down
 --               │              │ YouTube — previous chapter in current video
 --               │              │ ℝ — shrink selection
---         ⇪⌘s   │     ⌘↓       │ ℝ — edit source
---         ⇧⌃s   │      ⌦       │  — delete symbol to the right
---         ⇧⌥s   │     ⌥⌦       │  — delete word to the right
+--         ⇪⌘s   │      ⌘↓      │ ℝ — edit source
+--         ⇧⌃s   │       ⌦      │  — delete symbol to the right
+--         ⇧⌥s   │     ⇧⌥↓      │ 📝 — move line down
 --         ⇧⌘s   │              │  — save as
 --               │              │ 📁 — go to Shared
---         ⌃⌥s   │              │ ???
+{ chord = "⌃⌥s",                  fn = "window.set_all_to_default" },
 --         ⌃⌘s   │              │ 📁 — toggle SideBar
 --               │              │ ℝ — toggle Sidebar
 --               │              │ Mail — hide/show sidebar

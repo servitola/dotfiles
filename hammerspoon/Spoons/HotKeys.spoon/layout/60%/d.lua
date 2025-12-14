@@ -15,7 +15,8 @@ return {
 --          ⇧d   │ D    В    Δ  │
 --          ⌃d   │              │ ℝ, 📝 — debug
 --          ⌥d   │ °    °    °  │
-{ chord =  "⌥d",                  fn = "window.right" },
+--          ⌥d   │      ⌥→      │  — jump a word to the right
+--               │              │ YouTube — jump to chapter to the right
 --          ⌘d   │              │  — duplicate
 --               │              │ ℝ — duplicate line
 --               │              │ Google Meets — toggle microphone
@@ -26,11 +27,12 @@ return {
 --               │              │ YouTube — jump to chapter to the right
 --         ⇪⌘d   │      ⌘→      │  — end/jump to end of line
 --         ⇧⌃d   │      ⌦       │  — delete symbol to the right
---         ⇧⌥d   │      ⌥⌦      │  — delete word to the right
+--         ⇧⌥d   │      ⌥⌦      │  delete word to the right
 --         ⇧⌘d   │              │ 📝 — focus Run and Debug panel
 --               │              │ 📁 — go to Desktop
 --               │              │ Mail — send emails
 --         ⌃⌥d   │              │ 📝 — focus Run and Debug panel
+{ chord = "⌃⌥d",                  fn = "window.right" },
 --         ⌃⌘d   │              │  — look up the selected word
 --         ⌥⌘d   │              │  — show/hide Dock
 --———————————————┼——————————————┼——————————————————————————————————

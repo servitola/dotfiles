@@ -13,7 +13,7 @@ return {
 --          ⇧e   │ E    У    Ε  │
 --          ⌃e   │              │ ℝ — find usages (custom)
 --          ⌥e   │ €    €    €  │
-{ chord = "⌥e",                 app = "Claude" },
+{ chord =  "⌥e",                  app = "Claude" },
 --          ⌘e   │              │ ℝ — recent files dialog
 --               │              │ Telegram — toggle camera
 --               │              │ 📝 — find with selection
