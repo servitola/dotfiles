@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  Q  │    quit / pageup
+--    │  Q  │    quit / pageup / backspace
 --    ╰—————╯
 --
 --        karabiner: ⇪q → PgUp
@@ -24,7 +24,7 @@ return {
 --               │              │ 📁 — navigate back
 --               │              │ 🌐 — navigate back
 --               │              │ Music — navigate back
---         ⇧⌃q   │              │  — log out with dialogs (handled by macOS)
+--         ⇧⌃q   │      ⌘⌫      │  — delete
 --         ⇧⌥q   │       ⌫      │  - delete symbol to the left
 --         ⇧⌘q   │              │  — log out from account with closing of all apps
 { chord = "⌃⌥q",                  app = "Music" },
