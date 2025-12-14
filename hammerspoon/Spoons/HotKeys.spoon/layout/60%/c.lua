@@ -18,8 +18,8 @@ return {
 --        ⇪⌃c   │     ⌃⌘→      │ 📝 — move editor to next group
 --        ⇪⌥c   │     ⌥⌘→      │ 📝 — navigate to tab to the right
 --              │              │ Music — seek forward
---        ⇪⌘c   │              │
---        ⇧⌃c   │              │
+--        ⇪⌘c   │              │ ???
+--        ⇧⌃c   │              │ ???
 --        ⇧⌥c   │     ⇧⌘→      │  — select line till the end
 --        ⇧⌘c   │              │ 📁 — go to Computer
 --        ⌃⌥c   │              │ itsycal Calendar (custom in app)
