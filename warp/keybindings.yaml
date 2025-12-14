@@ -1,4 +1,6 @@
 ---
+"editor_view:insert_autosuggestion": cmd-enter
 "pane_group:navigate_next": "cmd-]"
+"workspace:toggle_command_palette": shift-cmd-E
 "editor:delete_word_right": alt-delete
 "editor_view:insert_autosuggestion": cmd-enter
