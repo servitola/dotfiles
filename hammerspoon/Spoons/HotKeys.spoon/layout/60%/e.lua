@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  E  │    pagedown / find usages
+--    │  E  │    pagedown / delete / find usages
 --    ╰—————╯
 --
 --         karabiner: ⇪e → PgDn
@@ -30,7 +30,7 @@ return {
 --               │              │ 📁 — navigate forwardq
 --               │              │ 🌐 — navigate forward
 --               │              │ Music — navigate forward
---         ⇧⌃e   │      ⌘o      │  — open file
+--         ⇧⌃e   │      ⌘⌫      │  — delete
 --         ⇧⌥e   │      ⌦       │  — delete letter to the right
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
