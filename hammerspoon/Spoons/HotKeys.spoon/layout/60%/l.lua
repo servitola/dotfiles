@@ -17,6 +17,7 @@ return {
 --         ⌥l   │ ”    ”    ¬  │
 --         ⌘l   │              │ IINA — ab-loop (A-B loop)
 --              │              │ ℝ — go to line,
+--              │              │ 📝 — goto line
 --              │              │ 🌐 — Focus Url Line,
 --              │              │ Music — Go to Current song,
 --              │              │ Telegram — lock Telegram
