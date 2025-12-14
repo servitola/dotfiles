@@ -16,5 +16,9 @@
         "key": "cmd+n",
         "command": "-editor.action.sourceAction",
         "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+a",
+        "command": "gitlens.toggleFileBlame:editor"
     }
 ]
