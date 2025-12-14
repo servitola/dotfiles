@@ -6096,7 +6096,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
+                                        "key_code": "p",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
