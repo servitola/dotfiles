@@ -12,8 +12,7 @@ return {
 --          ⇪e   │     PgDn     │
 --          ⇧e   │ E    У    Ε  │
 --          ⌃e   │              │ ℝ — find usages (custom)
---          ⌥e   │ €    €    €  │
-{ chord =  "⌥e",                  app = "Claude" },
+--          ⌥e   │     ⌥⌦       │  — delete word to the right
 --          ⌘e   │              │ ℝ — recent files dialog
 --               │              │ Telegram — toggle camera
 --               │              │ 📝 — find with selection
@@ -32,11 +31,11 @@ return {
 --               │              │ 🌐 — navigate forward
 --               │              │ Music — navigate forward
 --         ⇧⌃e   │      ⌘o      │  — open file
---         ⇧⌥e   │ ⌥    ⌥    Έ  │
+--         ⇧⌥e   │      ⌦       │  — delete letter to the right
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
 --               │              │ Mail — redirect email
---         ⌃⌥e   │              │ ???
+{ chord = "⌃⌥e",                  app = "Claude" },
 --         ⌃⌘e   │              │ ℝ — show list of tabs of current panel
 --         ⌥⌘e   │              │ Music — show equalizer
 --———————————————┼——————————————┼——————————————————————————————————
