@@ -23,7 +23,7 @@ return {
 --         ⇪⌥w   │     ⌥↑       │  — move line up
 --               │              │ ℝ — extend selection
 --         ⇪⌘w   │     ⌘↑       │ 📝 — jump to breadcumbs
---         ⇧⌃w   │              │ ???
+--         ⇧⌃w   │     ⌘m       │  — minimize window
 --         ⇧⌥w   │    ⇧⌥↑       │ 📝 — move line up
 --         ⇧⌘w   │              │ ℝ — close other tabs
 --               │              │  — close window
