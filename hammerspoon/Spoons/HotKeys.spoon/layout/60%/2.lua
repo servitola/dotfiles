@@ -20,10 +20,10 @@ return {
 --               │              │ Telegram — focus 2nd folder or chat
 --               │              │ IINA — set window-scale 2
 --———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧2   │     ⇧F2      │
+--         ⇪⇧2   │     ⇧F2      │ ???
 --         ⇪⌃2   │     ⌃F2      │ move focus to the menu bar
 --         ⇪⌥2   │     ⌥F2      │ Fork — show commit changes
---         ⇪⌘2   │     ⌘F2      │
+--         ⇪⌘2   │     ⌘F2      │ ???
 --         ⇧⌃2   │              │ ℝ — toggle bookmark 2
 --         ⇧⌥2   │ ¹⁄₂  ¹⁄₂  ί  │
 --         ⇧⌘2   │              │ Shotr — OCR from screen
