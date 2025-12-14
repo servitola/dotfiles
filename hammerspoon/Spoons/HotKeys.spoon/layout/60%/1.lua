@@ -33,7 +33,7 @@ return {
 --               │              │ Mail — show the Mail viewer window
 { chord = "⇧⌘1",                  app = "Visual Studio Code" },
 --         ⇧⌃1   │              │ ℝ — toggle bookmark 1
---         ⇧⌥1   │ ›    ›    ύ  │
+--         ⇧⌥1   │ ¡    ¡    έ  │
 { chord = "⌃⌥1",                  fn = "audio.internal" },
 --         ⌃⌘1   │              │
 --         ⌥⌘1   │              │ Fork — show commit details
