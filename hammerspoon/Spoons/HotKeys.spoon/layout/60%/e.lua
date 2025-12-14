@@ -35,7 +35,7 @@ return {
 --         ⇧⌘e   │              │ 🌐 — opened tabs dialog
 --               │              │ ℝ — recent locations popup
 --               │              │ Mail — redirect email
-{ chord = "⌃⌥e",                  app = "Claude" },
+--         ⌃⌥e   │      ⌦       │  — delete letter to the right
 --         ⌃⌘e   │              │ ℝ — show list of tabs of current panel
 --         ⌥⌘e   │              │ Music — show equalizer
 --———————————————┼——————————————┼——————————————————————————————————
