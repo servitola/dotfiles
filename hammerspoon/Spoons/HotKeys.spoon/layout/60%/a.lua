@@ -15,7 +15,7 @@ return {
 --          ⇪a   │      ←       │  — left
 --          ⇧a   │ A    Ф    Α  │
 --          ⌃a   │              │ ℝ🔄 — git annotate (blame)
---          ⌥a   │ ≈    ≈    ≈  │
+--               │              │ 📝 — jump to line start
 --          ⌥a   │      ⌥←      │  — jump a word to the left
 --               │              │ YouTube — jump to chapter to the left
 --          ⌘a   │              │  — select all
@@ -25,7 +25,7 @@ return {
 --         ⇪⌥a   │      ⌥←      │  — jump a word to the left
 --               │              │ YouTube — jump to chapter to the left
 --         ⇪⌘a   │      ⌘←      │  — home, jump to the left start of string
---         ⇧⌃a   │      ⌫       │  — delete symbol to the left
+--         ⇧⌃a   │      ⌫       │  — backspace (delete symbol to the left)
 --         ⇧⌥a   │     ⇧⌥←      │  — select word to the left
 --         ⇧⌘a   │              │ 📝 — show actions palette
 --               │              │ Mail — attach files
