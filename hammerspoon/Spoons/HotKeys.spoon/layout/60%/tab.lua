@@ -11,7 +11,7 @@ return {
 --          ⇪⇥   │       ↩      │  — enter / return
 --          ⇧⇥   │              │  — select previous element or move text block left
 --          ⌃⇥   │              │  — switch tab forward
---          ⌥⇥   │              │  — switch the app windows with AltTab app
+--          ⌥⇥   │              │ AltTab — switch the current app windows
 --          ⌘⇥   │              │  — switch between open windows
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧⇥   │      ⇧↩      │
@@ -31,7 +31,7 @@ return {
 --        ⇪⇧⌘⇥   │              │
 --        ⇪⌃⌥⇥   │              │
 --        ⇪⌃⌘⇥   │              │
---        ⇪⌥⌘⇥   │              │ Fork — commit and push changes
+--        ⇪⌥⌘⇥   │     ⌥⌘↩      │ Fork — commit and push changes
 --        ⇧⌃⌥⇥   │              │
 --        ⇧⌃⌘⇥   │              │
 --        ⇧⌥⌘⇥   │              │
