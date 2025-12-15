@@ -11,7 +11,7 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 { chord =  "⇪v",                  app = "Yandex" },
 --          ⇧v   │ V    М    Ω  │
---          ⌃v   │              │ ???
+--          ⌃v   │              │ Terminal — paste
 --          ⌥v   │ ↓    ↓    ↓  │
 --          ⌘v   │              │  — paste
 --               │              │ Music — paste song information or artwork
