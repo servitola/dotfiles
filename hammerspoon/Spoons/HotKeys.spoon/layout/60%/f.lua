@@ -12,7 +12,7 @@ return {
 --           ⇧f   │ F    А    Φ  │
 --           ⌃f   │              │ ℝ — focus Find panel
 --                │              │ 📝 — move cursor right
---           ⌥f   │ f    £    ≠  │
+--           ⌥f   │ f    £    ≠  │ Fork — toggle Force Push on Push dialog
 --           ⌘f   │              │  — find
 --————————————————┼——————————————┼——————————————————————————————————
 --    ⇪⇧f → F15   │              │
@@ -24,6 +24,7 @@ return {
 --          ⇧⌥f   │              │ 📝 — format
 --          ⇧⌘f   │              │ Music — open/close Full Screen Player
 --                │              │ Fork — quick Fetch
+--                │              │ Fork — toggle Force Push on Push dialog
 --                │              │ Mail — forward email
 --                │              │ ℝ — search in files
 { chord =  "⌃⌥f",                  fn = "translate_to_russian" },
