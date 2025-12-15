@@ -18,7 +18,7 @@ return {
 --         ⇪⇧q   │    ⇧PgUp     │  — page of text up
 --         ⇪⌃q   │    ⌃PgUp     │ 📝 — scroll up (without moving caret)
 --               │              │ 🌐 — go to tab to the left
---         ⇪⌥q   │    ⌥PgUp     │
+--         ⇪⌥q   │      ⌘⌫      │  — delete
 --         ⇪⌘q   │      ⌘[      │ IINA — multiply speed 0.5
 --               │              │ ℝ — navigate back
 --               │              │ 📁 — navigate back

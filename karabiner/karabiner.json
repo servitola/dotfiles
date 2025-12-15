@@ -3893,12 +3893,12 @@
                             {
                                 "from": {
                                     "key_code": "q",
-                                    "modifiers": { "mandatory": ["left_option", "right_command", "right_control", "right_option", "right_shift"] }
+                                    "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "page_up",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "p",
+                                        "modifiers": ["right_command", "right_control", "right_option", "right_shift"]
                                     }
                                 ],
                                 "type": "basic"
@@ -3906,12 +3906,12 @@
                             {
                                 "from": {
                                     "key_code": "q",
-                                    "modifiers": { "mandatory": ["left_control", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                                    "modifiers": { "mandatory": ["left_option", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
-                                        "modifiers": ["right_command", "right_control", "right_option", "right_shift"]
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
