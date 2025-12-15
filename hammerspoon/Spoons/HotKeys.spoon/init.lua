@@ -52,7 +52,7 @@ local function parseChord(chordStr)
     local modifiers = {}
     local key = ""
 
-    key = chordStr:match("^F%d+$") or chordStr:match("[a-z0-9]$")
+    key = chordStr:match("F%d+") or chordStr:match("[a-z0-9]$")
 
     if key == nil then
         if chordStr:match("^⇧⌃⎋$") then
