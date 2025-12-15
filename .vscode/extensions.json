@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "k--kato.intellij-idea-keybindings"
+        "k--kato.intellij-idea-keybindings",
+        "jdinhlife.gruvbox",
+        "sourcegraph.amp"
     ]
 }
