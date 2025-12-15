@@ -13,5 +13,6 @@ return {
 --      ⇧click  │              │ Safari — Add to Reading List
 --      ⇧↩      │              │  — insert new line
 --              │              │ 📝 — insert line below
+--     ⌥⇧       │              │ 📝 — select non-linear areas
 --              ┴              ┴
 }
