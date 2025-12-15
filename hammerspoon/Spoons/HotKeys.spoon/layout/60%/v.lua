@@ -8,7 +8,7 @@ return {
 --————————— chord ┬ en | ru | el ┬
 --           v    │ v    м    ω  │
 --————————————————┼——————————————┼——————————————————————————————————
---     ⇪v → F19   │              │
+--           ⇪v   │     F19      │
 { chord =  "F19",                  app = "Yandex" },
 --           ⇧v   │ V    М    Ω  │
 --           ⌃v   │              │ Terminal — paste
@@ -16,9 +16,9 @@ return {
 --           ⌘v   │              │  — paste
 --                │              │ Music — paste song information or artwork
 --————————————————┼——————————————┼——————————————————————————————————
---   ⇪⇧v → ⇧F19   │              │
+--          ⇪⇧v   │     ⇧F19     │
 { chord = "⇧F19",                  app = "Google Chrome" },
---   ⇪⌃v → ⌃F19   │              │
+--          ⇪⌃v   │     ⌃F19     │
 { chord = "⌃F19",                  fn = "vpn.toggle_globalprotect" },
 --          ⇪⌥v   │     ⌥F19     │ ???
 --          ⇪⌘v   │     ⌘F19     │ ???
