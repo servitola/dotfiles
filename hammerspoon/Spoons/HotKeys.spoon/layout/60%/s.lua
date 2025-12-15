@@ -38,8 +38,8 @@ return {
 --        ⇪⇧⌥s   │              │ │
 --        ⇪⇧⌘s   │   light_dn   │k│  — illumination_decrement
 --        ⇪⌃⌥s   │              │ │
---        ⇪⌃⌘s   │              │ │ ℝ — navigate to down method
---        ⇪⌥⌘s   │              │ │ 📝 — clone caret down;
+--        ⇪⌃⌘s   │     ⌃⌘↓      │k│ ℝ — navigate to down method
+--        ⇪⌥⌘s   │     ⌥⌘↓      │k│ 📝 — clone caret down;
 --               │              │ │ iTerm — focus pane below
 --        ⇧⌃⌥s   │              │ │
 --        ⇧⌃⌘s   │              │ │
