@@ -652,9 +652,61 @@
                             {
                                 "from": {
                                     "key_code": "r",
-                                    "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                                    "modifiers": { "mandatory": ["right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [{ "key_code": "f17" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f17",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "mandatory": ["left_control", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f17",
+                                        "modifiers": ["left_control"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "mandatory": ["left_option", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f17",
+                                        "modifiers": ["left_option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f17",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
