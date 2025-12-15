@@ -19,7 +19,7 @@ return {
 --         ⇪⌥g   │              │ │
 --         ⇪⌘g   │              │ │
 --         ⇧⌃g   │              │ │ ℝ🔄 — current file git history
---         ⇧⌥g   │              │ │
+--         ⇧⌥g   │         Ϊ  │ │
 --         ⇧⌘g   │              │ │ 📁 — go to GoTo dialog
 { chord = "⌃⌥g",                    fn = "browser_git" },
 --         ⌃⌘g   │              │ │ ℝ — select all occurances

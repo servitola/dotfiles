@@ -38,9 +38,9 @@ return {
 --        ⇪⇧⌃d   │  next_track  │  — vk_consumer_next
 --        ⇪⇧⌥d   │     ⇧⌥→      │  — select word to the right
 --        ⇪⇧⌘d   │     ⇧⌘→      │  — select line till the end
---        ⇪⌃⌥d   │              │
+--        ⇪⌃⌥d   │     ⌃⌥→      │
 --        ⇪⌃⌘d   │     ⌃⌘→      │ 📝 — move editor to next group
---        ⇪⌥⌘d   │              │ Music — seek forward;
+--        ⇪⌥⌘d   │     ⌥⌘→      │ Music — seek forward;
 --               │              │ 📝 — go to next tab;
 --               │              │ iTerm — focus pane to the right
 --        ⇧⌃⌥d   │      ⌥⌦      │ ⌦ — delete word to the right
