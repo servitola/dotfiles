@@ -21,7 +21,8 @@ return {
 --          ⇪⌃v   │     ⌃F19     │
 { chord = "⌃F19",                  fn = "vpn.toggle_globalprotect" },
 --          ⇪⌥v   │     ⌥F19     │ ???
---          ⇪⌘v   │     ⌘F19     │ ???
+--          ⇪⌘v   │     ⌘F19     │
+{ chord = "⌘F19",                  fn = "browser_search_selected" },
 --          ⇧⌃v   │              │ ???
 --          ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --          ⇧⌘v   │              │ Mail — paste text into email as quotation
