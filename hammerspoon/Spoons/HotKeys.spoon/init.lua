@@ -7,6 +7,7 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
+local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
 
 local buttonFiles = {
     "tilde",
@@ -329,6 +330,10 @@ function obj:init()
                 elseif functionName == "vpn.toggle_globalprotect" then
                     hs.hotkey.bind(modifiers, key, function()
                         vpnGlobalProtect.toggle()
+                    end)
+                elseif functionName == "browser_search_selected" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        yandexSearch.searchSelectedText()
                     end)
                 end
             end
