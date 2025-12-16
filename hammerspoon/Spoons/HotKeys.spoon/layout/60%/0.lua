@@ -13,6 +13,7 @@ return {
 --         ⌃0   │              │ 📝 — go to last tab
 --         ⌥0   │ →    →    →  │
 --         ⌘0   │              │ 🌐 — Reset zoom
+--              │              │ 📝 — focus into primary sidebar
 --              │              │ Telegram — focus Saved Messages
 --              │              │ Music — Show/Hide Music window
 --              │              │ Fork — navigate to HEAD
