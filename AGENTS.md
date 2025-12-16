@@ -48,7 +48,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── amp
 │   └── settings.json
 ├── annepro2
-│   ├── ANNE PRO 2.json
 │   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
@@ -232,6 +231,5 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
-├── WARP.md -> CLAUDE.md
-└── extensions.json
+└── WARP.md -> CLAUDE.md
 Finish of Directory Structure
