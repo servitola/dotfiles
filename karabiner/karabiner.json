@@ -6361,19 +6361,6 @@
                             {
                                 "from": {
                                     "key_code": "x",
-                                    "modifiers": { "mandatory": ["left_control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "slash",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "x",
                                     "modifiers": { "mandatory": ["left_option", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [
