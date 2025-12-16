@@ -18,7 +18,11 @@ return {
 --        ⇪⌃c   │     ⌃⌘→      │ 📝 — move editor to next group
 --        ⇪⌥c   │     ⌥⌘→      │ 📝 — navigate to tab to the right
 --              │              │ Music — seek forward
---        ⇪⌘c   │              │ ???
+--        ⇪⌘c   │      ⌘]      │ IINA — multiply speed 2.0
+--              │              │ ℝ — navigate forward
+--              │              │ 📁 — navigate forwardq
+--              │              │ 🌐 — navigate forward
+--              │              │ Music — navigate forward
 --        ⇧⌃c   │              │ ???
 --        ⇧⌥c   │     ⇧⌘→      │  — select line till the end
 --        ⇧⌘c   │              │ 📁 — go to Computer

@@ -19,8 +19,11 @@ return {
 --         ⇪⌃x   │              │
 --         ⇪⌥x   │     ⌥⌘←      │ 📝 — navigate to tab to the left
 --               │              │ Music — seek backward
---         ⇪⌘x   │      ⌘p      │  — print
---               │              │ Music — play
+--         ⇪⌘x   │      ⌘[      │ IINA — multiply speed 0.5
+--               │              │ ℝ — navigate back
+--               │              │ 📁 — navigate back
+--               │              │ 🌐 — navigate back
+--               │              │ Music — navigate back
 --         ⇧⌃x   │              │
 --         ⇧⌥x   │     ⇧⌘←      │  — select text to the left till the start of string
 --         ⇧⌘x   │              │ 📝 — open Extensions
