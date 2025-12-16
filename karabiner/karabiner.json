@@ -3871,7 +3871,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "open_bracket",
+                                        "key_code": "delete_or_backspace",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -3911,20 +3911,7 @@
                                 "to": [
                                     {
                                         "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "q",
-                                    "modifiers": { "mandatory": ["left_option", "left_shift", "right_command", "right_control", "right_option", "right_shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_command", "left_shift"]
+                                        "modifiers": ["left_option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -4591,7 +4578,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "close_bracket",
+                                        "key_code": "delete_forward",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -6694,12 +6681,7 @@
                                     "key_code": "q",
                                     "modifiers": { "mandatory": ["left_option"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_option"]
-                                    }
-                                ],
+                                "to": [{ "key_code": "delete_or_backspace" }],
                                 "type": "basic"
                             },
                             {
@@ -6717,21 +6699,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "bracket_right",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "e",
-                                    "modifiers": { "mandatory": ["left_option"] }
-                                },
-                                "to": [
-                                    {
                                         "key_code": "delete_forward",
-                                        "modifiers": ["left_option"]
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
