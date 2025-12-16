@@ -21,7 +21,7 @@ return {
 --         ⇪⌥z   │     ⌥F20     │k│ ???
 --         ⇪⌘z   │     ⌘F20     │k│ ???
 --         ⇧⌃z   │              │ │ ???
---         ⇧⌥z   │              │ │ ???
+{ chord = "⇧⌥z",                    app = "Simulator" },
 --         ⇧⌘z   │              │ │  — redo
 --               │              │ │ Mail — unsend email
 { chord = "⌃⌥z",                    app = "n8n" },
