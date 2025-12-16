@@ -6352,7 +6352,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "p",
+                                        "key_code": "bracket_left",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -6438,7 +6438,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_arrow",
+                                        "key_code": "bracket_right",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -6683,7 +6683,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "bracket_left",
+                                        "key_code": "delete_or_backspace",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
