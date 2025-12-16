@@ -26,6 +26,7 @@ return {
 --         ⇪⌃1   │     ⌃F1      │ ???
 --         ⇪⌥1   │     ⌥F1      │ ℝ — show 'Select in' dialog
 --         ⇪⌘1   │     ⌘0       │ 🌐 — Reset zoom
+--               │              │ 📝 — focus into primary sidebar
 --               │              │ Telegram — focus Saved Messages
 --               │              │ Music — Show/Hide Music window
 --               │              │ Fork — navigate to HEAD
