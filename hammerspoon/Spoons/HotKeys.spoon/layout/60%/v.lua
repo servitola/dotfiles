@@ -16,14 +16,14 @@ return {
 --           ⌘v   │              │  — paste
 --                │              │ Music — paste song information or artwork
 --————————————————┼——————————————┼——————————————————————————————————
---          ⇪⇧v   │     ⇧F19     │
+--          ⇪⇧v   │     ⇧F19     │ ↓
 { chord = "⇧F19",                  app = "Google Chrome" },
---          ⇪⌃v   │     ⌃F19     │
+--          ⇪⌃v   │     ⌃F19     │ ↓
 { chord = "⌃F19",                  fn = "vpn.toggle_globalprotect" },
 --          ⇪⌥v   │     ⌥F19     │ ???
---          ⇪⌘v   │     ⌘F19     │
+--          ⇪⌘v   │     ⌘F19     │ ↓
 { chord = "⌘F19",                  fn = "browser_search_selected" },
---          ⇧⌃v   │              │ ???
+--          ⇧⌃v   │              │ Terminal — used sometimesž
 --          ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --          ⇧⌘v   │              │ Mail — paste text into email as quotation
 { chord =  "⌃⌥v",                  fn = "browser_youtube" },

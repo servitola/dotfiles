@@ -14,15 +14,15 @@ return {
 --          ⇧s   │ S    Ы    Σ  │l│ 🌐 Vim — duplicate tab
 --          ⌃s   │              │c│ ℝ — save with format (idea + custom macros)
 --          ⌥s   │      ⌥↓      │k│  — move line down
---               │              │ │ YouTube — previous chapter in current video
+--               │              │⋅│ YouTube — previous chapter in current video
 --          ⌘s   │              │ │ IINA — screenshot
 --               │              │ │  — save
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧s   │      ⇧↓      │k│  — select line down
 --         ⇪⌃s   │      ⌃↓      │k│  — show windows of current app
 --         ⇪⌥s   │      ⌥↓      │k│  — move line down
---               │              │ │ YouTube — previous chapter in current video
---               │              │ │ ℝ — shrink selection
+--               │              │⋅│ YouTube — previous chapter in current video
+--               │              │⋅│ ℝ — shrink selection
 --         ⇪⌘s   │      ⌘↓      │k│ ℝ — edit source
 --         ⇧⌃s   │              │ │
 --         ⇧⌥s   │     ⇧⌥↓      │k│ 📝 — move line down
