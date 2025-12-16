@@ -20,11 +20,8 @@ return {
 --               │              │ │ 🌐 — go to tab to the left
 --         ⇪⌥q   │      ⌘⌫      │k│  — delete
 --               │              │ │ ℝ, 📝 — delete line
---         ⇪⌘q   │      ⌘[      │k│ IINA — multiply speed 0.5
---               │              │ │ ℝ — navigate back
---               │              │ │ 📁 — navigate back
---               │              │ │ 🌐 — navigate back
---               │              │ │ Music — navigate back
+--         ⇪⌘q   │      ⌘⌫      │k│  — delete
+--               │              │ │ ℝ, 📝 — delete line
 --         ⇧⌃q   │       ⌫      │k│  — delete symbol to the left
 --         ⇧⌥q   │       ⌫      │k│  - delete symbol to the left
 --         ⇧⌘q   │              │ │  — log out from account with closing of all apps
