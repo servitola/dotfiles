@@ -246,6 +246,5 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
-├── WARP.md -> CLAUDE.md
-└── extensions.json
+└── WARP.md -> CLAUDE.md
 Finish of Directory Structure
