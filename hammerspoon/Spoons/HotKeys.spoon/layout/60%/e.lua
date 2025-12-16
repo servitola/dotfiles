@@ -12,7 +12,7 @@ return {
 --          ⇪e   │     PgDn     │ │
 --          ⇧e   │ E    У    Ε  │ │
 --          ⌃e   │              │c│ ℝ — find usages
---          ⌥e   │     ⌥⌦       │ │  — delete word to the right
+--          ⌥e   │      ⌦       │ │  — delete letter to the right
 --          ⌘e   │              │ │ ℝ — recent files dialog
 --               │              │ │ Telegram — toggle camera
 --               │              │ │ 📝 — find with selection
@@ -20,17 +20,8 @@ return {
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧e   │    ⇧PgDn     │ │ select page of text down
 --         ⇪⌃e   │    ⌃PgDn     │ │ 📝 — scroll down (without moving caret)
---         ⇪⌥e   │      ⌘l      │ │ IINA — ab-loop (A-B loop)
---               │              │ │ ℝ — go to line,
---               │              │ │ 🌐 — Focus Url Line,
---               │              │ │ Music — Go to Current song,
---               │              │ │ Telegram — lock Telegram
---               │              │ │ 📝 — goto line
---         ⇪⌘e   │      ⌘]      │ │ IINA — multiply speed 2.0
---               │              │ │ ℝ — navigate forward
---               │              │ │ 📁 — navigate forwardq
---               │              │ │ 🌐 — navigate forward
---               │              │ │ Music — navigate forward
+--         ⇪⌥e   │      ⌥⌦      │ │  — delete word to the right
+--         ⇪⌘e   │      ⌘⌦      │ │  — delete
 --         ⇧⌃e   │      ⌘⌫      │ │  — delete
 --         ⇧⌥e   │      ⌦       │ │  — delete letter to the right
 --         ⇧⌘e   │              │ │ 🌐 — opened tabs dialog

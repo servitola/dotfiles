@@ -12,18 +12,18 @@ return {
 --          ⇧q   │ Q    Й    :  │ │ 🌐 Vim — go to root domain
 --          ⌃q   │              │c│ ℝ — stop all/build
 --               │              │ │ 📝 — quick view popup
---          ⌥q   │      ⌥⌫      │k│  — delete word to the left
+--          ⌥q   │      ⌫       │k│  — delete letter to the left
 --          ⌘q   │              │ │  — close app
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧q   │    ⇧PgUp     │k│  — page of text up
 --         ⇪⌃q   │    ⌃PgUp     │k│ 📝 — scroll up (without moving caret)
 --               │              │ │ 🌐 — go to tab to the left
---         ⇪⌥q   │      ⌘⌫      │k│  — delete
+--         ⇪⌥q   │      ⌥⌫      │k│  — delete word to the left
 --               │              │ │ ℝ, 📝 — delete line
 --         ⇪⌘q   │      ⌘⌫      │k│  — delete
 --               │              │ │ ℝ, 📝 — delete line
 --         ⇧⌃q   │       ⌫      │k│  — delete symbol to the left
---         ⇧⌥q   │       ⌫      │k│  - delete symbol to the left
+--         ⇧⌥q   │              │ │
 --         ⇧⌘q   │              │ │  — log out from account with closing of all apps
 { chord = "⌃⌥q",                    app = "Music" },
 --         ⌃⌘q   │              │ │  — lock screen
