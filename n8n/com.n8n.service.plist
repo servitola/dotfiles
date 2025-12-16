@@ -1,37 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>com.n8n.service</string>
-
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Users/servitola/.npm-global/bin/n8n</string>
-        <string>start</string>
-    </array>
-
-    <key>EnvironmentVariables</key>
     <dict>
-        <key>N8N_USER_FOLDER</key>
+        <key>Label</key>
+        <string>com.n8n.service</string>
+
+        <key>ProgramArguments</key>
+        <array>
+            <string>/Users/servitola/.npm-global/bin/n8n</string>
+            <string>start</string>
+        </array>
+
+        <key>EnvironmentVariables</key>
+        <dict>
+            <key>N8N_USER_FOLDER</key>
+            <string>/Users/servitola/projects/services/n8n</string>
+            <key>N8N_RESTRICT_FILE_ACCESS_TO</key>
+            <string></string>
+            <key>NODES_EXCLUDE</key>
+            <string>[]</string>
+            <key>N8N_NODES_EXCLUDE</key>
+            <string>[]</string>
+            <key>PATH</key>
+            <string>/opt/homebrew/bin:/opt/homebrew/opt/node@22/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/servitola/.npm-global/bin</string>
+        </dict>
+
+        <key>RunAtLoad</key>
+        <true />
+
+        <key>KeepAlive</key>
+        <true />
+
+        <key>StandardOutPath</key>
+        <string>/Users/servitola/projects/services/n8n/n8n.log</string>
+
+        <key>StandardErrorPath</key>
+        <string>/Users/servitola/projects/services/n8n/n8n-error.log</string>
+
+        <key>WorkingDirectory</key>
         <string>/Users/servitola/projects/services/n8n</string>
-        <key>PATH</key>
-        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/servitola/.npm-global/bin</string>
     </dict>
-
-    <key>RunAtLoad</key>
-    <true/>
-
-    <key>KeepAlive</key>
-    <true/>
-
-    <key>StandardOutPath</key>
-    <string>/Users/servitola/projects/services/n8n/n8n.log</string>
-
-    <key>StandardErrorPath</key>
-    <string>/Users/servitola/projects/services/n8n/n8n-error.log</string>
-
-    <key>WorkingDirectory</key>
-    <string>/Users/servitola/projects/services/n8n</string>
-</dict>
 </plist>
