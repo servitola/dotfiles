@@ -13,27 +13,27 @@ return {
 --          aa   │              │e│ 🌐 Vim — go back
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --          ⇪a   │      ←       │k│  — left
---          ⇧a   │ A    Ф    Α  │ │
+--          ⇧a   │ A    Ф    Α  │⋅│
 --          ⌃a   │              │c│ ℝ, 📝 — git annotate (blame)
 --          ⌥a   │      ⌥←      │k│  — jump a word to the left
 --               │              │⋅│ YouTube — jump to chapter to the left
---          ⌘a   │              │ │  — select all
+--          ⌘a   │              │⋅│  — select all
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧a   │      ⇧←      │k│  — select letter to the left
 --         ⇪⌃a   │      ⌃←      │k│  — jump to workspace to the left
 --         ⇪⌥a   │      ⌥←      │k│  — jump a word to the left
 --               │              │⋅│ YouTube — jump to chapter to the left
 --         ⇪⌘a   │      ⌘←      │k│  — home, jump to the left start of string
---         ⇧⌃a   │              │ │  — select line to the left
+--         ⇧⌃a   │              │⋅│  — select line to the left
 --         ⇧⌥a   │     ⇧⌥←      │k│  — select word to the left
---         ⇧⌘a   │              │ │ 📝 — show actions palette
---               │              │ │ Mail — attach files
---               │              │ │ 📁 — go to Applications
---               │              │ │ Music — deselect all songs
+--         ⇧⌘a   │              │⋅│ 📝 — show actions palette
+--               │              │⋅│ Mail — attach files
+--               │              │⋅│ 📁 — go to Applications
+--               │              │⋅│ Music — deselect all songs
 { chord = "⌃⌥a",                    fn = "window.left" },
---         ⌃⌘a   │              │ │ ℝ — show all affected files in source control
---               │              │ │ Mail — archive message
---         ⌥⌘a   │              │ │
+--         ⌃⌘a   │              │⋅│ ℝ — show all affected files in source control
+--               │              │⋅│ Mail — archive message
+--         ⌥⌘a   │              │⋅│
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --        ⇪⇧⌃a   │  prev_track  │k│  — previous track
 --        ⇪⇧⌥a   │     ⇧⌥←      │k│  — select word to the left

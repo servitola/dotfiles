@@ -6,31 +6,31 @@ return {
 --         karabiner: ⇪c → ⌘→
 --
 --——————— chord ┬ en | ru | el ┬ ┬
---          c   │ c    с    ψ  │ │ YouTube subtitles
+--          c   │ c    с    ψ  │⋅│ YouTube subtitles
 --——————————————┼——————————————┼—┼——————————————————————————————————
---         ⇪c   │      ⌘→      │ │  → end
---         ⇧c   │ C    С    Ψ  │ │ 🌐 Vim — copy current URL
---         ⌃c   │              │ │ Unix Terminal — cancel/interrupt
+--         ⇪c   │      ⌘→      │k│  → end
+--         ⇧c   │ C    С    Ψ  │⋅│ 🌐 Vim — copy current URL
+--         ⌃c   │              │⋅│ Unix Terminal — cancel/interrupt
 { chord = "⌥c",                    app = "Claude" },
---         ⌘c   │              │ │  — copy
+--         ⌘c   │              │⋅│  — copy
 --——————————————┼——————————————┼—┼——————————————————————————————————
---        ⇪⇧c   │     ⇧⌘→      │ │  — select line till the end
---        ⇪⌃c   │     ⌃⌘→      │ │ 📝 — move editor to next group
---        ⇪⌥c   │     ⌥⌘→      │ │ 📝 — navigate to tab to the right
---              │              │ │ Music — seek forward
---        ⇪⌘c   │      ⌘]      │ │ IINA — multiply speed 2.0
---              │              │ │ ℝ — navigate forward
---              │              │ │ 📁 — navigate forwardq
---              │              │ │ 🌐 — navigate forward
---              │              │ │ Music — navigate forward
---        ⇧⌃c   │              │ │ Unix Terminal — used sometimes
---        ⇧⌥c   │     ⇧⌘→      │ │  — select line till the end
---        ⇧⌘c   │              │ │ 📁 — go to Computer
+--        ⇪⇧c   │     ⇧⌘→      │k│  — select line till the end
+--        ⇪⌃c   │     ⌃⌘→      │k│ 📝 — move editor to next group
+--        ⇪⌥c   │     ⌥⌘→      │k│ 📝 — navigate to tab to the right
+--              │              │⋅│ Music — seek forward
+--        ⇪⌘c   │      ⌘]      │k│ IINA — multiply speed 2.0
+--              │              │⋅│ ℝ — navigate forward
+--              │              │⋅│ 📁 — navigate forwardq
+--              │              │⋅│ 🌐 — navigate forward
+--              │              │⋅│ Music — navigate forward
+--        ⇧⌃c   │              │⋅│ Unix Terminal — used sometimes
+--        ⇧⌥c   │     ⇧⌘→      │k│  — select line till the end
+--        ⇧⌘c   │              │⋅│ 📁 — go to Computer
 --        ⌃⌥c   │              │c│ itsycal Calendar (custom in app)
---        ⌃⌘c   │              │ │ ℝ — scroll to Bottom
---        ⌥⌘c   │              │ │ ℝ — introduce constant
---              │              │ │ 📝 — introduce constant
---              │              │ │ Yandex — inspect elements
+--        ⌃⌘c   │              │⋅│ ℝ — scroll to Bottom
+--        ⌥⌘c   │              │⋅│ ℝ — introduce constant
+--              │              │e│ 📝 — introduce constant
+--              │              │⋅│ Yandex — inspect elements
 --——————————————┼——————————————┼—┼——————————————————————————————————
 --       ⇪⇧⌃c   │              │ │
 --       ⇪⇧⌥c   │              │ │
