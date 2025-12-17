@@ -150,14 +150,19 @@ function obj:init()
     local bindCount = 0
     for _, chord_entry in ipairs(allChords) do
         if chord_entry.chord then
-            local modifiers, key = parseChord(chord_entry.chord)
+            local code = chord_entry.chord
+            if chord_entry.code then
+                code = chord_entry.code
+            end
+
+            local modifiers, key = parseChord(code)
 
             if chord_entry.app then
                 print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
-                    chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.app))
+                    code, table.concat(modifiers, ", "), key, chord_entry.app))
             elseif chord_entry.fn then
                 print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
-                    chord_entry.chord, table.concat(modifiers, ", "), key, chord_entry.fn))
+                    code, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
             if chord_entry.app then
