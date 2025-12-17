@@ -7,37 +7,37 @@ return {
 --                    ⇪⇧⌃e → play_or_pause
 --
 --———————— chord ┬ en | ru | el ┬ ┬
---           e   │ e    у    ε  │ │ 🌐 Vim — scroll to bottom
+--           e   │ e    у    ε  │e│ 🌐 Vim — scroll to bottom
 --———————————————┼——————————————┼—┼——————————————————————————————————
---          ⇪e   │     PgDn     │ │
---          ⇧e   │ E    У    Ε  │ │
+--          ⇪e   │     PgDn     │k│
+--          ⇧e   │ E    У    Ε  │⋅│
 --          ⌃e   │              │c│ ℝ — find usages
---          ⌥e   │      ⌦       │ │  — delete letter to the right
---          ⌘e   │              │ │ ℝ — recent files dialog
---               │              │ │ Telegram — toggle camera
---               │              │ │ 📝 — find with selection
---               │              │ │ Google Meets — toggle video
+--          ⌥e   │      ⌦       │k│  — delete letter to the right
+--          ⌘e   │              │⋅│ ℝ — recent files dialog
+--               │              │⋅│ Telegram — toggle camera
+--               │              │⋅│ 📝 — find with selection
+--               │              │⋅│ Google Meets — toggle video
 --———————————————┼——————————————┼—┼——————————————————————————————————
---         ⇪⇧e   │    ⇧PgDn     │ │ select page of text down
---         ⇪⌃e   │    ⌃PgDn     │ │ 📝 — scroll down (without moving caret)
---         ⇪⌥e   │      ⌥⌦      │ │  — delete word to the right
---         ⇪⌘e   │      ⌘⌦      │ │  — delete
---         ⇧⌃e   │      ⌘⌫      │ │  — delete
---         ⇧⌥e   │      ⌦       │ │  — delete letter to the right
---         ⇧⌘e   │              │ │ 🌐 — opened tabs dialog
---               │              │ │ ℝ — recent locations popup
---               │              │ │ Mail — redirect email
+--         ⇪⇧e   │    ⇧PgDn     │k│ select page of text down
+--         ⇪⌃e   │    ⌃PgDn     │k│ 📝 — scroll down (without moving caret)
+--         ⇪⌥e   │      ⌥⌦      │k│  — delete word to the right
+--         ⇪⌘e   │      ⌘⌦      │k│  — delete
+--         ⇧⌃e   │      ⌘⌫      │k│  — delete
+--         ⇧⌥e   │      ⌦       │k│  — delete letter to the right
+--         ⇧⌘e   │              │⋅│ 🌐 — opened tabs dialog
+--               │              │⋅│ ℝ — recent locations popup
+--               │              │⋅│ Mail — redirect email
 --               │              │c│ Warp — command palette
---         ⌃⌥e   │      ⌦       │ │  — delete letter to the right
---         ⌃⌘e   │              │ │ ℝ — show list of tabs of current panel
---         ⌥⌘e   │              │ │ Music — show equalizer
+--         ⌃⌥e   │      ⌦       │k│  — delete letter to the right
+--         ⌃⌘e   │              │⋅│ ℝ — show list of tabs of current panel
+--         ⌥⌘e   │              │⋅│ Music — show equalizer
 --———————————————┼——————————————┼—┼——————————————————————————————————
---        ⇪⇧⌃e   │  play/pause  │ │  — play/pause current music/video
---        ⇪⇧⌥e   │    ⇧⌥PgDn    │ │
---        ⇪⇧⌘e   │    ⇧⌘PgDn    │ │
---        ⇪⌃⌥e   │    ⌃⌥PgDn    │ │
---        ⇪⌃⌘e   │    ⌃⌘PgDn    │ │
---        ⇪⌥⌘e   │    ⌥⌘PgDn    │ │
+--        ⇪⇧⌃e   │  play/pause  │k│  — play/pause current music/video
+--        ⇪⇧⌥e   │    ⇧⌥PgDn    │k│
+--        ⇪⇧⌘e   │    ⇧⌘PgDn    │k│
+--        ⇪⌃⌥e   │    ⌃⌥PgDn    │k│
+--        ⇪⌃⌘e   │    ⌃⌘PgDn    │k│
+--        ⇪⌥⌘e   │    ⌥⌘PgDn    │k│
 --        ⇧⌃⌥e   │              │ │
 --        ⇧⌃⌘e   │              │ │
 --        ⇧⌥⌘e   │              │ │
