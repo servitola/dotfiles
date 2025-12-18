@@ -51,7 +51,6 @@ source ~/.oh-my-zsh/oh-my-zsh.sh
 # It does NOT initialize the completion system
 source ~/projects/dotfiles/zsh/completion.sh
 
-source ~/projects/dotfiles/zsh/aliases.sh
 source ~/projects/dotfiles/zsh/history_settings.sh
 
 # Load additional plugins from Homebrew
@@ -77,6 +76,8 @@ eval "$(atuin init zsh)"
 
 # zoxide for fast directory navigation
 eval "$(zoxide init zsh)"
+
+source ~/projects/dotfiles/zsh/aliases.sh
 
 # Restore original up arrow binding (prefix search from history)
 # https://til.simonwillison.net/macos/atuin
