@@ -23,7 +23,7 @@ local buttonFiles = {
     "shift",
     "z", "x", "c", "v", "b", "n", "m",
     "period", "comma", "slash",
-    "fn", "space",
+    "space",
     "left","up", "down", "right"
 }
 
@@ -101,11 +101,15 @@ allChords = {}
 for _, filename in ipairs(buttonFiles) do
     local filePath = layoutsPath .. filename .. ".lua"
     local success, buttonData = pcall(dofile, filePath)
-    if success and buttonData and type(buttonData) == "table" then
-        for _, chord_entry in ipairs(buttonData) do
-            if chord_entry then
-                table.insert(allChords, chord_entry)
-            end
+    if not success then
+        error("Failed to load: " .. filePath .. "\nError: " .. tostring(buttonData))
+    end
+    if not buttonData or type(buttonData) ~= "table" then
+        error("Invalid data in: " .. filePath .. " (expected table, got " .. type(buttonData) .. ")")
+    end
+    for _, chord_entry in ipairs(buttonData) do
+        if chord_entry then
+            table.insert(allChords, chord_entry)
         end
     end
 end
