@@ -19,6 +19,7 @@ return {
 --          ⌥a   │      ⌥←      │            — jump a word to the left
 --               │              │     YouTube — jump to chapter to the left
 --          ⌘a   │              │            — select all
+--          ⇥a   │              │ ???
 --———————————————┼——————————————┼——————————————————————————————————————————————
 --         ⇪⇧a   │      ⇧←      │            — select letter to the left
 --         ⇪⌃a   │      ⌃←      │            — jump to workspace to the left
