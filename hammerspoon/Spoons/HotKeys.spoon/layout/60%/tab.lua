@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  ⇥  │    tab / enter
+--    │  ⇥  │    tab / enter / extra modifier layer button
 --    ╰—————╯
 --
 --         karabiner: ⇪⇥ → ↩
