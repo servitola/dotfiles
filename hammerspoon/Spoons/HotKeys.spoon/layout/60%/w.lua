@@ -14,18 +14,22 @@ return {
 --          ⇧w   │ W    Ц    Ω  │⋅│
 --          ⌃w   │              │⋅│ ℝ — close all notifications
 --               │              │⋅│ 📝 — select window to switch
---          ⌥w   │     ⌥↑       │k│  — move line up
+--          ⌥w   │      ⌥↑      │k│  — move line up
 --               │              │⋅│ ℝ — extend selection
 --          ⌘w   │              │⋅│  — close current tab
---          ⇥w   │              │ │ ???
+--          ⇥w   │      ⌘[      │k│ IINA — multiply speed 0.5
+--               │              │⋅│ ℝ — navigate back
+--               │              │⋅│ 📁 — navigate back
+--               │              │⋅│ 🌐 — navigate back
+--               │              │⋅│ Music — navigate back
 --———————————————┼——————————————┼—┼——————————————————————————————————
---         ⇪⇧w   │     ⇧↑       │k│  — select line up
---         ⇪⌃w   │     ⌃↑       │k│  — show all windows
---         ⇪⌥w   │     ⌥↑       │k│  — move line up
+--         ⇪⇧w   │      ⇧↑      │k│  — select line up
+--         ⇪⌃w   │      ⌃↑      │k│  — show all windows
+--         ⇪⌥w   │      ⌥↑      │k│  — move line up
 --               │              │⋅│ ℝ — extend selection
---         ⇪⌘w   │     ⌘↑       │k│ 📝 — jump to breadcumbs
---         ⇧⌃w   │     ⌘m       │k│  — minimize window
---         ⇧⌥w   │    ⇧⌥↑       │k│ 📝 — move line up
+--         ⇪⌘w   │      ⌘↑      │k│ 📝 — jump to breadcumbs
+--         ⇧⌃w   │      ⌘m      │k│  — minimize window
+--         ⇧⌥w   │     ⇧⌥↑      │k│ 📝 — move line up
 --         ⇧⌘w   │              │⋅│ ℝ — close other tabs
 --               │              │⋅│  — close window
 { chord = "⌃⌥w",                    fn = "window.fullscreen" },
