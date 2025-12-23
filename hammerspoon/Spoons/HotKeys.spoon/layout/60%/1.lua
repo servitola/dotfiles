@@ -33,13 +33,7 @@ return {
 --         ⇪⇧1   │     ⇧F1      │k│ ℝ — external documentation
 --         ⇪⌃1   │     ⌃F1      │k│ ???
 --         ⇪⌥1   │     ⌥F1      │k│ ℝ — show 'Select in' dialog
---         ⇪⌘1   │     ⌘0       │k│ 🌐 — Reset zoom
---               │              │⋅│ 📝 — focus into primary sidebar
---               │              │⋅│ Telegram — focus Saved Messages
---               │              │⋅│ Music — Show/Hide Music window
---               │              │⋅│ Fork — navigate to HEAD
---               │              │⋅│ IINA — set window-scale 0.5
---               │              │⋅│ Mail — show the Mail viewer window
+--         ⇪⌘1   │     ⌘F1      │k│ 📝 — show errors/warnings
 { chord = "⇧⌘1",                    app = "Visual Studio Code" },
 --         ⇧⌃1   │              │⋅│ ℝ — toggle bookmark 1
 --         ⇧⌥1   │ ¡    ¡    έ  │⋅│
