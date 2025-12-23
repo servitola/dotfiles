@@ -169,7 +169,7 @@
                                 "from": { "key_code": "w" },
                                 "to": [
                                     {
-                                        "key_code": "bracket_left",
+                                        "key_code": "open_bracket",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -186,7 +186,7 @@
                                 "from": { "key_code": "e" },
                                 "to": [
                                     {
-                                        "key_code": "bracket_right",
+                                        "key_code": "close_bracket",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -6572,7 +6572,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "bracket_left",
+                                        "key_code": "open_bracket",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
@@ -6658,7 +6658,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "bracket_right",
+                                        "key_code": "close_bracket",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
