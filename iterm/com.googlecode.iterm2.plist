@@ -645,6 +645,8 @@ The script should do this: \(ai.prompt)</string>
 			<string>/Users/servitola</string>
 		</dict>
 	</array>
+	<key>OnlyWhenMoreTabs</key>
+	<false/>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenNoWindowsAtStartup</key>
