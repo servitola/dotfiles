@@ -17,8 +17,11 @@ return {
 --               │              │⋅│ Telegram — toggle camera
 --               │              │⋅│ 📝 — find with selection
 --               │              │⋅│ Google Meets — toggle video
---          ⇥e   │     ⇧⌘⌫      │k│ ℝ, 📝 — go to last edit place
---               │              │⋅│ 🌐 — show clear history dialog
+--          ⇥e   │      ⌘]      │k│ IINA — multiply speed 2.0
+--               │              │ │ ℝ — navigate forward
+--               │              │ │ 📁 — navigate forwardq
+--               │              │ │ 🌐 — navigate forward
+--               │              │ │ Music — navigate forward
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧e   │    ⇧PgDn     │k│ select page of text down
 --         ⇪⌃e   │    ⌃PgDn     │k│ 📝 — scroll down (without moving caret)
