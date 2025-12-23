@@ -14,7 +14,7 @@ return {
 --          ⌃x   │              │⋅│  — used sometimes. Raycast — dismiss
 { chord =  "⌥x",                    app = "XCode" },
 --          ⌘x   │              │⋅│  — cut
---          ⇥x   │              │ │ ???
+--          ⇥x   │      ⌘,      │ │ show settings ⚙️ of current app
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧x   │              │ │ ???
 --         ⇪⌃x   │              │ │ ???
