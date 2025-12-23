@@ -17,6 +17,7 @@ return {
 --               │              │       Rider — duplicate line
 --               │              │      VSCode — duplicate line
 --               │              │ GoogleMeets — toggle microphone
+--          ⇥d   │              │ ???
 --———————————————┼——————————————┼————————————————————————————————————————————
 --         ⇪⇧d   │      ⇧→      │            — select letter to the right
 --         ⇪⌃d   │      ⌃→      │            — jump to workspace to the right

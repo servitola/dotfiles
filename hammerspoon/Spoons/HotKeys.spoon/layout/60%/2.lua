@@ -19,6 +19,7 @@ return {
 --               │              │⋅│ Activity Manager — Open/focus CPU usage window
 --               │              │⋅│ Telegram — focus 2nd folder or chat
 --               │              │⋅│ IINA — set window-scale 2
+--          ⇥2   │              │ │ ???
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧2   │     ⇧F2      │ │ ???
 --         ⇪⌃2   │     ⌃F2      │ │ move focus to the menu bar

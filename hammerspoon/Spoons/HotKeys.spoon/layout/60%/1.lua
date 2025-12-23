@@ -22,6 +22,7 @@ return {
 --               │              │⋅│ Activity Manager — Focus main window
 --               │              │⋅│ Telegram — focus 1st folder or chat
 --               │              │⋅│ IINA — set window-scale 1
+--          ⇥1   │              │ │ ???
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧1   │     ⇧F1      │k│ ℝ — external documentation
 --         ⇪⌃1   │     ⌃F1      │k│ ???

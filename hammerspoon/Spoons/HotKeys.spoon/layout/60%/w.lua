@@ -17,6 +17,7 @@ return {
 --          ⌥w   │     ⌥↑       │k│  — move line up
 --               │              │⋅│ ℝ — extend selection
 --          ⌘w   │              │⋅│  — close current tab
+--          ⇥w   │              │ │ ???
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧w   │     ⇧↑       │k│  — select line up
 --         ⇪⌃w   │     ⌃↑       │k│  — show all windows

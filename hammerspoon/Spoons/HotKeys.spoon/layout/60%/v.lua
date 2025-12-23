@@ -15,6 +15,7 @@ return {
 --           ⌥v   │ ↓    ↓    ↓  │⋅│
 --           ⌘v   │              │⋅│  — paste
 --                │              │⋅│ Music — paste song information or artwork
+--           ⇥v   │              │ │ ???
 --————————————————┼——————————————┼—┼——————————————————————————————————
 --          ⇪⇧v   │     ⇧F19     │k│ ↓
 { chord = "⇧F19",                    app = "Google Chrome" },
