@@ -89,6 +89,23 @@
                                 "from": { "key_code": "caps_lock" },
                                 "to": [{ "key_code": "return_or_enter" }],
                                 "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "1" },
+                                "to": [
+                                    {
+                                        "key_code": "0",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
                             }
                         ]
                     },
