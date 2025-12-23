@@ -15,12 +15,12 @@ return {
 --         ⇧l   │ L    Д    Λ  │
 --         ⌃l   │              │ Unix Terminal — clear window
 --         ⌥l   │ ”    ”    ¬  │
---         ⌘l   │              │ IINA — ab-loop (A-B loop)
---              │              │ ℝ — go to line,
---              │              │ 📝 — goto line
---              │              │ 🌐 — Focus Url Line,
---              │              │ Music — Go to Current song,
---              │              │ Telegram — lock Telegram
+--         ⌘l                  │        IINA — ab-loop (A-B loop)
+--              │              │       Rider — goto line,
+--              │              │      VSCode — goto line
+--              │              │     Browser — focus Url Line,
+--              │              │       Music — go to Current song,
+--              │              │    Telegram — lock Telegram
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧l   │      ⇧↓      │  — select line down
 --        ⇪⌃l   │      ⌃↓      │  — show all windows of current app

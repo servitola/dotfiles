@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  A  │    all / left
+--    │  A  │    all / left / address
 --    ╰—————╯
 --
 --  karabiner: ⇧⌃a → ⌫
@@ -19,7 +19,12 @@ return {
 --          ⌥a   │      ⌥←      │            — jump a word to the left
 --               │              │     YouTube — jump to chapter to the left
 --          ⌘a   │              │            — select all
---          ⇥a   │              │ ???
+--          ⇥a   │      ⌘l      │        IINA — ab-loop (A-B loop)
+--               │              │       Rider — goto line,
+--               │              │      VSCode — goto line
+--               │              │     Browser — focus Url Line,
+--               │              │       Music — go to Current song,
+--               │              │    Telegram — lock Telegram
 --———————————————┼——————————————┼——————————————————————————————————————————————
 --         ⇪⇧a   │      ⇧←      │            — select letter to the left
 --         ⇪⌃a   │      ⌃←      │            — jump to workspace to the left
