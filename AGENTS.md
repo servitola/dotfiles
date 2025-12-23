@@ -110,6 +110,14 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── colors.gitconfig
 │   ├── gitconfig
 │   └── global_ignore
+├── globalprotect
+│   ├── globalprotect-docker
+│   ├── README.md
+│   ├── SETUP.md
+│   ├── docker-compose.yml
+│   ├── increase-colima-memory.sh
+│   ├── init.sh
+│   └── start.sh
 ├── hammerspoon
 │   ├── Spoons
 │   ├── config_UrlDispatcher.lua
@@ -162,8 +170,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
+│   ├── check_wifi_environment.sh
+│   ├── connect_to_arris_router.sh
+│   ├── disable_apple_continuity.sh
 │   ├── dock_setup.sh
+│   ├── gaming_network_dashboard.sh
 │   ├── hosts
+│   ├── router_optimization_guide.md
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
 │   ├── sync_gruvbox_wallpapers.sh
