@@ -1097,7 +1097,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "0",
+                                        "key_code": "f1",
                                         "modifiers": ["left_command"]
                                     }
                                 ],
