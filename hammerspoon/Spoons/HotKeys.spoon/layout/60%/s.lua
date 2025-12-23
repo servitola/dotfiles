@@ -17,6 +17,7 @@ return {
 --               │              │⋅│ YouTube — previous chapter in current video
 --          ⌘s   │              │⋅│ IINA — screenshot
 --               │              │⋅│  — save
+--          ⇥s   │              │k│ karabiner — type 'servitola'
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧s   │      ⇧↓      │k│  — select line down
 --         ⇪⌃s   │      ⌃↓      │k│  — show windows of current app
