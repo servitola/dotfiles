@@ -22,7 +22,13 @@ return {
 --               │              │⋅│ Activity Manager — Focus main window
 --               │              │⋅│ Telegram — focus 1st folder or chat
 --               │              │⋅│ IINA — set window-scale 1
---          ⇥1   │              │ │ ???
+--          ⇥1   │     ⌘0       │k│ 🌐 — Reset zoom
+--               │              │⋅│ 📝 — focus into primary sidebar
+--               │              │⋅│ Telegram — focus Saved Messages
+--               │              │⋅│ Music — Show/Hide Music window
+--               │              │⋅│ Fork — navigate to HEAD
+--               │              │⋅│ IINA — set window-scale 0.5
+--               │              │⋅│ Mail — show the Mail viewer window
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧1   │     ⇧F1      │k│ ℝ — external documentation
 --         ⇪⌃1   │     ⌃F1      │k│ ???
