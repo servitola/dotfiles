@@ -13,6 +13,86 @@
                 },
                 "rules": [
                     {
+                        "description": "TAB as a POWERFUL MODIFIER LAYER",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "tab" },
+                                "parameters": { "basic.to_if_alone_timeout_milliseconds": 150 },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "tab_modifier",
+                                            "value": 1
+                                        }
+                                    }
+                                ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "tab_modifier",
+                                            "value": 0
+                                        }
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "example: TAB + C → 55555",
+                                "from": { "key_code": "c" },
+                                "to": [
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "s" },
+                                "to": [
+                                    { "key_code": "s" },
+                                    { "key_code": "e" },
+                                    { "key_code": "r" },
+                                    { "key_code": "v" },
+                                    { "key_code": "i" },
+                                    { "key_code": "t" },
+                                    { "key_code": "o" },
+                                    { "key_code": "l" },
+                                    { "key_code": "a" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": { "key_code": "caps_lock" },
+                                "to": [{ "key_code": "return_or_enter" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Right Option + C → © (abc_copy)",
                         "manipulators": [
                             {
