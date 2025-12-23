@@ -6792,6 +6792,14 @@
                                 },
                                 "to": [{ "key_code": "delete_forward" }],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "e",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [{ "key_code": "delete_forward" }],
+                                "type": "basic"
                             }
                         ]
                     },
