@@ -166,11 +166,28 @@
                                         "value": 1
                                     }
                                 ],
+                                "from": { "key_code": "w" },
+                                "to": [
+                                    {
+                                        "key_code": "bracket_left",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": { "key_code": "e" },
                                 "to": [
                                     {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["left_command", "left_shift"]
+                                        "key_code": "bracket_right",
+                                        "modifiers": ["left_command"]
                                     }
                                 ],
                                 "type": "basic"
