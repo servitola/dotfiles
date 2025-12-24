@@ -115,7 +115,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── README.md
 │   ├── SETUP.md
 │   ├── docker-compose.yml
-│   ├── increase-colima-memory.sh
 │   ├── init.sh
 │   └── start.sh
 ├── hammerspoon
