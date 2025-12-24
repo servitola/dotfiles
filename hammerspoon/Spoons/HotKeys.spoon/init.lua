@@ -61,13 +61,13 @@ local function parseChord(chordStr)
     end
 
     if key == nil then
-        if chordStr:match("^⇧⌃⎋$") then
+        if chordStr:match("⎋") then
             key = "escape"
-        elseif chordStr:match("⌃⌥⇥$") then
+        elseif chordStr:match("⇥") then
             key = "tab"
-        elseif chordStr:match("⌥%[") then
+        elseif chordStr:match("%[") then
             key = "["
-        elseif chordStr:match("⌥%]") then
+        elseif chordStr:match("%]") then
             key = "]"
         elseif chordStr:match("←") then
             key = "left"
