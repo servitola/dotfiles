@@ -54,8 +54,23 @@ function is_firefox_video_player(app_title, window_title)
   end
 end
 
+function is_yandex_extra_panel(app_title, window_title, window)
+    if not (app_title == "Yandex" and window_title) then
+        return false
+    end
+
+    if window_title == "" then
+        return true
+    end
+
+end
+
 function is_yandex_video_player(app_title, window_title, window)
     if not (app_title == "Yandex" and window_title) then
+        return false
+    end
+
+     if window_title == "" then
         return false
     end
 
