@@ -7106,6 +7106,19 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Right mods + Left Shift + Space to Keypad 0 (Music app control)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "spacebar",
+                                    "modifiers": { "mandatory": ["left_shift", "right_command", "right_option", "right_control", "right_shift"] }
+                                },
+                                "to": [{ "key_code": "keypad_0" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
