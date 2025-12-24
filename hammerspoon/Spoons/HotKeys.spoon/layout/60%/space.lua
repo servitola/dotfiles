@@ -17,7 +17,8 @@ return {
 --         ⌥␣   │ nbsp         │ Music — Start Genius Shuffle
 --         ⌘␣   │              │ Raycast
 --——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧␣   │              │
+--        ⇪⇧␣   │    num0      │
+{ chord = "num0",                 fn = "musicapp.play_pause" },
 --        ⇪⌃␣   │              │
 --        ⇪⌥␣   │              │
 --        ⇪⌘␣   │              │

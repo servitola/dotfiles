@@ -53,7 +53,12 @@ local function parseChord(chordStr)
     local modifiers = {}
     local key = ""
 
-    key = chordStr:match("F%d+") or chordStr:match("[a-z0-9]$")
+    local numMatch = chordStr:match("num(%d)")
+    if numMatch then
+        key = "pad" .. numMatch
+    else
+        key = chordStr:match("F%d+") or chordStr:match("[a-z0-9]$")
+    end
 
     if key == nil then
         if chordStr:match("^⇧⌃⎋$") then
@@ -326,7 +331,7 @@ function obj:init()
                     end)
                 elseif functionName == "browser_youtube" then
                     hs.hotkey.bind(modifiers, key, function()
-                        spoon.BrowserTabOpener:openTab("youtube.com")
+                        spoon.BrowserTabOpener:openPlayingYouTubeTab()
                     end)
                 elseif functionName == "youtube_stream" then
                     hs.hotkey.bind(modifiers, key, function()
@@ -343,6 +348,10 @@ function obj:init()
                 elseif functionName == "browser_search_selected" then
                     hs.hotkey.bind(modifiers, key, function()
                         yandexSearch.searchSelectedText()
+                    end)
+                elseif functionName == "musicapp.play_pause" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.itunes.playpause()
                     end)
                 end
             end
