@@ -86,13 +86,23 @@ function set_all_windows_positions()
     active_small_dialogs = {}
     right_panel_windows_adjusted = false
 
+    local windows = hs.window.allWindows()
     local android_positioned = false
-    local ios_positioned = false
+    local frontmost = hs.window.frontmostWindow()
 
-    for _, window in ipairs(hs.window.allWindows()) do
+    local screen_cache = {}
+    local function get_cached_screen(window)
+        local screen = window:screen()
+        local screen_id = screen:id()
+        if not screen_cache[screen_id] then
+            screen_cache[screen_id] = screen:frame()
+        end
+        return screen_cache[screen_id]
+    end
+
+    for _, window in ipairs(windows) do
         if is_android_emulator(window) then
-            local screen = window:screen()
-            local screen_frame = screen:frame()
+            local screen_frame = get_cached_screen(window)
             local frame = window:frame()
             local expected_x = screen_frame.x + (screen_frame.w * vertical_line)
             local expected_y = screen_frame.y + (screen_frame.h * topY)
@@ -100,11 +110,12 @@ function set_all_windows_positions()
             if math.abs(frame.x - expected_x) <= 1 and math.abs(frame.y - expected_y) <= 1 then
                 print("Found Android Emulator window in correct position - will skip all android windows")
                 android_positioned = true
+                break
             end
         end
     end
 
-    for _, window in ipairs(hs.window.allWindows()) do
+    for _, window in ipairs(windows) do
         local window_title = window:title()
         local app_title = window:application():title()
         print(string.format("Window: '%s', App: '%s'", window_title, app_title))
@@ -117,9 +128,7 @@ function set_all_windows_positions()
         elseif is_ios_simulator(window) then
             local current = window:frame()
             local aspect_ratio = current.h / current.w
-
-            local screen = window:screen()
-            local screen_frame = screen:frame()
+            local screen_frame = get_cached_screen(window)
 
             local target_width = screen_frame.w * 0.4
             local target_height = target_width * aspect_ratio
@@ -141,17 +150,18 @@ function set_all_windows_positions()
         elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) or
-               is_firefox_video_player(app_title, window_title) or
-               is_yandex_video_player(app_title, window_title, window) or
-               is_finder_copy_dialog(app_title, window_title, window) or
-               is_activity_monitor_small_window(app_title, window_title, window) or
-               is_activity_monitor_cpu_window(app_title, window_title) then
+                is_firefox_video_player(app_title, window_title) or
+                is_yandex_video_player(app_title, window_title, window) or
+                is_finder_copy_dialog(app_title, window_title, window) or
+                is_activity_monitor_small_window(app_title, window_title, window) or
+                is_activity_monitor_cpu_window(app_title, window_title) then
             set_window_bottom(window)
-        elseif is_winflow_recording_panel(app_title, window_title) then
+        elseif is_winflow_recording_panel(app_title, window_title) or
+                is_yandex_extra_panel(app_title, window_title, window) then
             -- nothing
         else
             if is_full_screen(window) then
-                if window == hs.window.frontmostWindow() then
+                if window == frontmost then
                     set_window_left(window)
                 end
             else

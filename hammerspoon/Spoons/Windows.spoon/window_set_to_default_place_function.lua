@@ -28,6 +28,8 @@ function set_window_default(window)
         set_window_bottom(window)
     elseif is_winflow_recording_panel(app_title, window_title) then
         -- nothing
+    elseif is_yandex_extra_panel(app_title, window_title) then
+        -- nothing
     else
         set_window_left(window)
     end
