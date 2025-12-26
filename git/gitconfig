@@ -50,3 +50,6 @@
 [include]
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
+
+[http "https://REDACTED-GITLAB"]
+	proxy = socks5://localhost:1080
