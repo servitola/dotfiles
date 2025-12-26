@@ -6,7 +6,9 @@
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_TELEMETRY": "1",
     "DISABLE_AUTOUPDATER": "1",
-    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1"
+    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1",
+    "HTTP_PROXY": "http://localhost:8118",
+    "HTTPS_PROXY": "http://localhost:8118"
   },
   "includeCoAuthoredBy": false,
   "permissions": {
