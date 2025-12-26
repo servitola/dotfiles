@@ -110,13 +110,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── colors.gitconfig
 │   ├── gitconfig
 │   └── global_ignore
-├── globalprotect
-│   ├── globalprotect-docker
-│   ├── README.md
-│   ├── SETUP.md
-│   ├── docker-compose.yml
-│   ├── init.sh
-│   └── start.sh
 ├── hammerspoon
 │   ├── Spoons
 │   ├── config_UrlDispatcher.lua
@@ -216,6 +209,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── uv-packages.txt
 ├── raycast
 │   └── Raycast.rayconfig
+├── voiceink
+│   └── VoiceInk_Settings_Backup.json
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
@@ -233,6 +228,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── yt-dlp
 │   ├── audioConfig
 │   ├── config
+│   ├── transcriptConfig
 │   └── videoConfig
 ├── zsh
 │   ├── bin
