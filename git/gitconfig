@@ -53,3 +53,7 @@
 
 [http "https://REDACTED-GITLAB"]
 	proxy = socks5://localhost:1080
+[http]
+	proxy =
+[https]
+	proxy =
