@@ -111,6 +111,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── global_ignore
 ├── hammerspoon
 │   ├── Spoons
+│   ├── lib
 │   ├── config_UrlDispatcher.lua
 │   ├── init.lua
 │   ├── reload_hammerspoon_on_script_changed.lua
