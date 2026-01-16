@@ -11,7 +11,7 @@ return {
 --          ⇪2   │      F2      │k│ ℝ — next error in file
 --          ⇧2   │ @    "    @  │⋅│
 --          ⌃2   │              │⋅│ 📝 — go to tab 2
---          ⌥2   │              │c│ WisprFlow — start recording
+--          ⌥2   │              │ │ ???
 --          ⌘2   │              │⋅│ ℝ — focus debug window
 --               │              │⋅│ 📁 — View as list
 --               │              │⋅│ 🌐 — Open 2nd tab
@@ -19,8 +19,13 @@ return {
 --               │              │⋅│ Activity Manager — Open/focus CPU usage window
 --               │              │⋅│ Telegram — focus 2nd folder or chat
 --               │              │⋅│ IINA — set window-scale 2
---          ⇥2   │     ⌘-       │ │ 🌐 — zoom out
---               │              │ │ ℝ — collapse code block
+--          ⇥2   │     ⌘0       │k│ 🌐 — Reset zoom
+--               │              │⋅│ 📝 — focus into primary sidebar
+--               │              │⋅│ Telegram — focus Saved Messages
+--               │              │⋅│ Music — Show/Hide Music window
+--               │              │⋅│ Fork — navigate to HEAD
+--               │              │⋅│ IINA — set window-scale 0.5
+--               │              │⋅│ Mail — show the Mail viewer window
 --———————————————┼——————————————┼—┼——————————————————————————————————
 --         ⇪⇧2   │     ⇧F2      │ │ ???
 --         ⇪⌃2   │     ⌃F2      │ │ move focus to the menu bar
