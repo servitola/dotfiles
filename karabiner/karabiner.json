@@ -4622,8 +4622,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "l",
-                                        "modifiers": ["left_command"]
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_option"]
                                     }
                                 ],
                                 "type": "basic"
