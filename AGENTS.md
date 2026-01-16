@@ -210,6 +210,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── raycast
 │   └── Raycast.rayconfig
 ├── voiceink
+│   ├── README.md
 │   └── settings.json
 ├── vscode
 │   ├── keybindings.json
