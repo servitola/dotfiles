@@ -2,7 +2,7 @@
 This is my answer to the question: "How to live with your MacOS?"
 I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBook Pro 16 M3Pro, MacBook Pro 16 i9 2019 since January 21, 2020. I try to sync every single property that can be synced.
 
-## CAUTION: I use this configuration, and it works, but the installation was not debugged on a new machine.
+## CAUTION: I use this configuration, and it works, but the installation was not debugged on a new machine. Also I have some specific details which can't fit others surely. They are described in the end of this readme.
 ## I will be glad if you find any issues and report them.
 ## Problems solved FAQ
 
@@ -112,7 +112,8 @@ You will be asked to install command tools - agree.
 
 * Q: What is <ins>important</ins> to do next?
 * A: Next, do the following:
-  * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours.
+  * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours. Also remove all 'proxy' lines from there since they are specific for my work.
+  * Remove proxy from [ClaudeConfig](https://github.com/servitola/dotfiles/blob/master/claude-code/settings.json). They are specific for my work
   * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
 
 * Q: I want to understand what this repository installs exactly
