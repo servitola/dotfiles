@@ -92,6 +92,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   └── keyboard-setup.md
+├── eqmac
+│   └── preset.json
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
