@@ -15,7 +15,7 @@ return {
 --         ⇧l   │ L    Д    Λ  │
 --         ⌃l   │              │ Unix Terminal — clear window
 --         ⌥l   │ ”    ”    ¬  │
---         ⌘l                  │        IINA — ab-loop (A-B loop)
+--         ⌘l   │              │        IINA — ab-loop (A-B loop)
 --              │              │       Rider — goto line,
 --              │              │      VSCode — goto line
 --              │              │     Browser — focus Url Line,
