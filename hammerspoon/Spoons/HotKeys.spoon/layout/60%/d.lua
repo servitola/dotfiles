@@ -17,7 +17,12 @@ return {
 --               │              │       Rider — duplicate line
 --               │              │      VSCode — duplicate line
 --               │              │ GoogleMeets — toggle microphone
---          ⇥d   │              │ ???
+--          ⇥d   │      ⌘l      │        IINA — ab-loop (A-B loop)
+--               │              │       Rider — goto line,
+--               │              │      VSCode — goto line
+--               │              │     Browser — focus Url Line,
+--               │              │       Music — go to Current song,
+--               │              │    Telegram — lock Telegram
 --———————————————┼——————————————┼————————————————————————————————————————————
 --         ⇪⇧d   │      ⇧→      │            — select letter to the right
 --         ⇪⌃d   │      ⌃→      │            — jump to workspace to the right
