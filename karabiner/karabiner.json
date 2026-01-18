@@ -45,14 +45,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "example: TAB + C → 55555",
                                 "from": { "key_code": "c" },
                                 "to": [
-                                    { "key_code": "5" },
-                                    { "key_code": "5" },
-                                    { "key_code": "5" },
-                                    { "key_code": "5" },
-                                    { "key_code": "5" }
+                                    {
+                                        "key_code": "slash",
+                                        "modifiers": ["left_command"]
+                                    }
                                 ],
                                 "type": "basic"
                             },
