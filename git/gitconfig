@@ -53,6 +53,8 @@
 
 [http "https://gitlab.ctrader.com"]
 	proxy = socks5://localhost:1080
+[http "https://github.com"]
+	proxy =
 [http]
 	proxy =
 [https]
