@@ -11,7 +11,11 @@ local function setupAppHotkeys(appName, remaps)
 
     for _, remap in pairs(remaps) do
         local hotkey = hs.hotkey.new(remap.from, remap.key, function()
-            hs.eventtap.keyStroke(remap.to, remap.target_key)
+            if remap.sendText then
+                hs.eventtap.keyStrokes(remap.sendText)
+            else
+                hs.eventtap.keyStroke(remap.to, remap.target_key)
+            end
         end)
         table.insert(appHotkeys[appName], hotkey)
     end
@@ -40,7 +44,11 @@ function M.init(appSpecificHotkeys)
             -- Global hotkeys - always enabled
             for _, remap in pairs(remaps) do
                 hs.hotkey.bind(remap.from, remap.key, function()
-                    hs.eventtap.keyStroke(remap.to, remap.target_key)
+                    if remap.sendText then
+                        hs.eventtap.keyStrokes(remap.sendText)
+                    else
+                        hs.eventtap.keyStroke(remap.to, remap.target_key)
+                    end
                 end)
             end
         else
