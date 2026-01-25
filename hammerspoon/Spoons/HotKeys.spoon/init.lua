@@ -138,6 +138,9 @@ local appSpecificHotkeys = {
     ["Music"] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
     },
+    ["Warp"] = {
+        { from = {"alt"}, key = "z", sendText = "/new" },
+    },
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
         { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }

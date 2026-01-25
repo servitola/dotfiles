@@ -14,6 +14,7 @@ return {
 --          ⇧z   │ Z    Я    Ζ  │ │ IINA — add sub-delay -0.5s
 --          ⌃z   │              │ │ Unix Terminal — suspend (background)
 --          ⌥z   │              │ │ 📝 — toggle wordwrap
+--               │              │ │ Warp — type "/new" (Claude Code shortcut)
 --          ⌘z   │              │ │  — undo
 --          ⇥z   │      ⌘/      │ │ ℝ — comment line
 --               │              │ │ 📝 — toggle comment line
