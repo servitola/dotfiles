@@ -10,6 +10,7 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 --          ⇪⇥   │       ↩      │  — enter / return
 --          ⇧⇥   │              │  — select previous element or move text block left
+--               │              │ Claude Code — cycle modes (default→auto-accept→plan)
 --          ⌃⇥   │              │  — switch tab forward
 --          ⌥⇥   │              │ AltTab — switch the current app windows
 --          ⌘⇥   │              │  — switch between open windows

@@ -13,6 +13,7 @@ return {
 --          ⇪s   │      ↓       │k│  — down
 --          ⇧s   │ S    Ы    Σ  │l│ 🌐 Vim — duplicate tab
 --          ⌃s   │              │c│ ℝ — save with format (idea + custom macros)
+--               │              │ │ Claude Code — stash prompt
 --          ⌥s   │      ⌥↓      │k│  — move line down
 --               │              │⋅│ YouTube — previous chapter in current video
 --          ⌘s   │              │⋅│ IINA — screenshot

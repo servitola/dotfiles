@@ -9,7 +9,7 @@ return {
 --          ↩   │      ↩       │ Music — Play selected song from beginning
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪↩   │              │
---         ⇧↩   │              │
+--         ⇧↩   │              │  — insert newline without submitting (multiline)
 --         ⌃↩   │              │  — open context menu
 --         ⌥↩   │              │ ℝ — show intention actions and quick-fixes popup
 --              │              │ 🌐 — open address in new tab
