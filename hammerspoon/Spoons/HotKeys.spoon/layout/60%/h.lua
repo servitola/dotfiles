@@ -1,9 +1,9 @@
 return {
 --    ╭—————╮
---    │  H  │    hide / safari
+--    │  H  │    hide / work browser (safari / firefox)
 --    ╰—————╯
 --
---         karabiner: no
+--         karabiner: ⇪⇧h → F16
 --
 --———————— chord ┬ en | ru | el ┬ ┬
 --           h   │ h    р    η  │⋅│
@@ -14,7 +14,8 @@ return {
 --          ⌥h   │ ₽    ₽    ₽  │⋅│
 --          ⌘h   │              │⋅│  — hide current app
 --———————————————┼——————————————┼—┼——————————————————————————————————
---         ⇪⇧h   │              │ │
+--    ⇪⇧h → F16   │              │ │ ↓
+{ chord = "F16",                    app = "Firefox" },
 --         ⇪⌃h   │              │ │
 --         ⇪⌥h   │              │ │
 --         ⇪⌘h   │              │ │
