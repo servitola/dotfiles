@@ -11,7 +11,7 @@ return {
 --          ⇧1   │ !    !    !  │
 --          ⌃1   │              │           VSCode — go to tab 1
 --               │              │            Rider — focus file in solution explorer
---          ⌥1   │              │ ???
+{ chord =  "⌥1",                               app = "Visual Studio Code" },
 --          ⌘1   │              │            Rider — focus solution explorer
 --               │              │           VSCode — focus solution explorer
 --               │              │           Finder — View as icons

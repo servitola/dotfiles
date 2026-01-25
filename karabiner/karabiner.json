@@ -7032,6 +7032,24 @@
                         ]
                     },
                     {
+                        "description": "Alt + 2 = Ctrl + Shift + Z",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "2",
+                                    "modifiers": { "mandatory": ["left_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "z",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Alt + 3 = Command + N",
                         "manipulators": [
                             {
