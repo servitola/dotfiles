@@ -25,7 +25,7 @@ return {
 --         ⇪⌃z   │     ⌃F20     │k│ ???
 --         ⇪⌥z   │     ⌥F20     │k│ ???
 --         ⇪⌘z   │     ⌘F20     │k│ ???
---         ⇧⌃z   │              │ │ ???
+--         ⇧⌃z   │              │ │ VoiceInk — start/stop recoding
 { chord = "⇧⌥z",                    app = "Simulator" },
 --         ⇧⌘z   │              │ │  — redo
 --               │              │ │ Mail — unsend email
