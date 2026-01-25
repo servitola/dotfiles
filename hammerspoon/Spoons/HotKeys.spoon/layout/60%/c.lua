@@ -32,7 +32,7 @@ return {
 --        ⌃⌥c   │              │c│ itsycal Calendar (custom in app)
 --        ⌃⌘c   │              │⋅│ ℝ — scroll to Bottom
 --        ⌥⌘c   │              │⋅│ ℝ — introduce constant
---              │              │e│ Finder — copy the path of the file
+--              │              │⋅│ Finder — copy the path of the file
 --              │              │e│ 📝 — introduce constant
 --              │              │⋅│ Yandex — inspect elements
 --——————————————┼——————————————┼—┼——————————————————————————————————
