@@ -15,6 +15,7 @@ return {
 --          ⌃z   │              │ │ Unix Terminal — suspend (background)
 --          ⌥z   │              │ │ 📝 — toggle wordwrap
 --               │              │ │ Warp — type "/new" (Claude Code shortcut)
+--               │              │ │ 📁 Finder — go to Downloads (⇧⌘L)
 --          ⌘z   │              │ │  — undo
 --          ⇥z   │      ⌘/      │ │ ℝ — comment line
 --               │              │ │ 📝 — toggle comment line
