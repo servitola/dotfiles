@@ -11,7 +11,7 @@ return {
 --          ⇪2   │      F2      │            Rider — next error in file
 --          ⇧2   │ @    "    @  │
 --          ⌃2   │              │           VSCode — go to tab 2
---          ⌥2   │              │ ???
+--          ⌥2   │     ⇧⌃z      │         VoiceInk — start/stop recoding
 --          ⌘2   │              │            Rider — focus debug window
 --               │              │           Finder — View as list
 --               │              │          Browser — Open 2nd tab
@@ -32,7 +32,7 @@ return {
 --         ⇪⌥2   │     ⌥F2      │             Fork — show commit changes
 --         ⇪⌘2   │     ⌘F2      │ ???
 --         ⇧⌃2   │              │            Rider — toggle bookmark 2
---         ⇧⌥2   │ ¹⁄₂  ¹⁄₂  ί  │
+--         ⇧⌥2   │ ¹⁄₂  ¹⁄₂  ί  │ ???
 --         ⇧⌘2   │              │            Shotr — OCR from screen
 { chord = "⌃⌥2",                                fn = "audio.bt" },
 --         ⌃⌘2   │              │
