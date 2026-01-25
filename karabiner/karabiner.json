@@ -925,7 +925,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "g",
+                                    "key_code": "h",
                                     "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
                                 "to": [{ "key_code": "f16" }],
