@@ -141,6 +141,9 @@ local appSpecificHotkeys = {
     ["Warp"] = {
         { from = {"alt"}, key = "z", sendText = "/new" },
     },
+    ["Finder"] = {
+        { from = {"alt"}, key = "z", to = {"cmd", "alt"}, target_key = "l" },
+    },
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
         { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
