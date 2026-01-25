@@ -7,6 +7,7 @@ return {
 --
 --——————— chord ┬ en | ru | el ┬
 --          \   │ \    \    \  │
+--               │              │ Claude Code — backslash + return for image newline
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪\   │              │
 --         ⇧\   │ |    /    |  │

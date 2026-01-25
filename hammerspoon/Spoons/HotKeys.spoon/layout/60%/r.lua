@@ -12,6 +12,8 @@ return {
 { chord =  "F17",                    app = "Rider" },
 --           ⇧r   │ R    К    Ρ  │⋅│
 --           ⌃r   │              │⋅│ ℝ — run
+--                │              │ │ Claude Code — reverse search history
+--                │              │ │ Atuin — reverse search history
 { chord =   "⌥r",                    app = "WebStorm" },
 --           ⌘r   │              │⋅│ ℝ, 📝 — replace in current file
 --                │              │⋅│ Mail — reply to email

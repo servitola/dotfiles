@@ -12,6 +12,7 @@ return {
 { chord =  "F19",                    app = "Yandex" },
 --           ⇧v   │ V    М    Ω  │⋅│
 --           ⌃v   │              │⋅│ Terminal — paste
+--                │              │ │ Claude Code — paste
 --           ⌥v   │ ↓    ↓    ↓  │⋅│
 --           ⌘v   │              │⋅│  — paste
 --                │              │⋅│ Music — paste song information or artwork
