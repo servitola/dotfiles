@@ -11,6 +11,7 @@ return {
 { chord =  "⇪t",                  app = "Telegram", window_default_position = "right" },
 --          ⇧t   │ T    Е    Τ  │
 --          ⌃t   │              │ ℝ — refactor this
+--               │              │ Claude Code — show todos
 --          ⌥t   │ ™    ™    ™  │
 --          ⌘t   │              │  — new tab
 --               │              │ Music — turn visualizer on or off
