@@ -6,34 +6,34 @@ return {
 --         karabiner: ⇪3 → F3
 --                    ⌥3 → ⌘n
 --
---———————— chord ┬ en | ru | el ┬
---           3   │      3       │ YouTube navigate to 30% of video
+--———————— chord ┬ en | ru | el ┬————————————— app — function ————————————————————
+--           3   │      3       │          YouTube — navigate to 30% of video
 --———————————————┼——————————————┼——————————————————————————————————
---          ⇪3   │     F3       │  — find next (in file)
+--          ⇪3   │     F3       │                 — find next (in file)
 --          ⇧3   │ #    №    #  │
---          ⌃3   │              │ 📝 — go to tab 3
---          ⌥3   │     ⌘n       │  — new window
---               │              │ Music — create a new playlist
---               │              │ Mail — start a new email
---               │              │ 📝 — new file
---          ⌘3   │              │ ℝ — focus unit tests explorer
---               │              │ 📁 — View in columns
---               │              │ 🌐 — Open 3rd tab
---               │              │ Activity Manager — Open/focus CPU history window
---               │              │ Telegram — focus 3rd folder or chat
---          ⇥3   │     ⌘-       │ 🌐 — zoom out
---               │              │ ℝ — collapse code block
+--          ⌃3   │              │           VSCode — go to tab 3
+--          ⌥3   │     ⌘n       │                 — new window
+--               │              │            Music — create a new playlist
+--               │              │             Mail — start a new email
+--               │              │           VSCode — new file
+--          ⌘3   │              │            Rider — focus unit tests explorer
+--               │              │           Finder — view in columns
+--               │              │          Browser — open 3rd tab
+--               │              │ Activity Manager — open/focus CPU history window
+--               │              │         Telegram — focus 3rd folder or chat
+--          ⇥3   │     ⌘-       │          Browser — zoom out
+--               │              │            Rider — collapse code block
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧3   │     ⇧F3      │ ???
---         ⇪⌃3   │     ⌃F3      │  — move focus to Dock
---         ⇪⌥3   │     ⌥F3      │ 📝 — show next change file changes
+--         ⇪⌃3   │     ⌃F3      │                 — move focus to Dock
+--         ⇪⌥3   │     ⌥F3      │           VSCode — show next change file changes
 --         ⇪⌘3   │     ⌘F3      │ ???
---         ⇧⌃3   │              │ ℝ — toggle bookmark 3
+--         ⇧⌃3   │              │            Rider — toggle bookmark 3
 --         ⇧⌥3   │ ¹⁄₃ ¹⁄₃   ή  │
---         ⇧⌘3   │              │ Shotr — save screenshot of window
-{ chord = "⌃⌥3",                  fn = "audio.marshall" },
+--         ⇧⌘3   │              │            Shotr — save screenshot of window
+{ chord = "⌃⌥3",                                fn = "audio.marshall" },
 --         ⌃⌘3   │              │ ???
---         ⌥⌘3   │              │ Fork — show commit filetree
+--         ⌥⌘3   │              │             Fork — show commit filetree
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃3   │              │
 --        ⇪⇧⌥3   │              │
