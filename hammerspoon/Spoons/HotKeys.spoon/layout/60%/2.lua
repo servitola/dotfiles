@@ -3,7 +3,6 @@ return {
 --    │  2  │    2nd / F2
 --    ╰—————╯
 --
---        karabiner: ⇪2 → F2
 --
 --———————— chord ┬ en | ru | el ┬————————————— app — function ————————————————————
 --           2   │      2       │          YouTube — Navigate to 20% of video
@@ -11,7 +10,7 @@ return {
 --          ⇪2   │      F2      │            Rider — next error in file
 --          ⇧2   │ @    "    @  │
 --          ⌃2   │              │           VSCode — go to tab 2
---          ⌥2   │     ⇧⌃z      │         VoiceInk — start/stop recoding
+--          ⌥2   │     ⇧⌃z      │         VoiceInk — start/stop recoding (CUSTOM)
 --          ⌘2   │              │            Rider — focus debug window
 --               │              │           Finder — View as list
 --               │              │          Browser — Open 2nd tab
