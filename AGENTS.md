@@ -92,8 +92,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   └── keyboard-setup.md
-├── eqmac
-│   └── preset.json
 ├── eza
 │   ├── colors.sh
 │   └── theme.yml
@@ -164,13 +162,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
-│   ├── check_wifi_environment.sh
-│   ├── connect_to_arris_router.sh
-│   ├── disable_apple_continuity.sh
 │   ├── dock_setup.sh
-│   ├── gaming_network_dashboard.sh
 │   ├── hosts
-│   ├── router_optimization_guide.md
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
 │   ├── sync_gruvbox_wallpapers.sh
@@ -211,9 +204,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── uv-packages.txt
 ├── raycast
 │   └── Raycast.rayconfig
-├── voiceink
-│   ├── README.md
-│   └── settings.json
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
@@ -231,7 +221,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── yt-dlp
 │   ├── audioConfig
 │   ├── config
-│   ├── transcriptConfig
 │   └── videoConfig
 ├── zsh
 │   ├── bin
