@@ -5,14 +5,14 @@ return {
 --
 --         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--————————chord ┬ en | ru | el ┬—————— app — function ————————————————————
 --          j   │ j    о    ξ  │ YouTube 10sec back
 --——————————————┼——————————————┼——————————————————————————————————
---         ⇪j   │              │ Day One → create journal entry
+--         ⇪j   │              │   Day One — create journal entry
 --         ⇧j   │ J    О    Ξ  │
 --         ⌃j   │              │
 --         ⌥j   │ „    „    ≤  │
---         ⌘j   │              │ Music — open View Options window
+--         ⌘j   │              │     Music — open View Options window
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧j   │              │
 --        ⇪⌃j   │              │
@@ -20,11 +20,11 @@ return {
 --        ⇪⌘j   │              │
 --        ⇧⌃j   │              │
 --        ⇧⌥j   │              │
---        ⇧⌘j   │              │ Mail — move to Junk
+--        ⇧⌘j   │              │      Mail — move to Junk
 --        ⌃⌥j   │              │
 --        ⌃⌘j   │              │
---        ⌥⌘j   │              │ Yandex — JavaScript console
---              │              │ Mail — erase junk mail
+--        ⌥⌘j   │              │    Yandex — JavaScript console
+--              │              │      Mail — erase junk mail
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃j   │              │
 --       ⇪⇧⌥j   │              │
