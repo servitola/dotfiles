@@ -3,7 +3,6 @@ return {
 --    │  F  │    finder / full screen
 --    ╰—————╯
 --
---         karabiner: no
 --
 --————————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --            f   │ f    а    φ  │      Browser — Go Full Screen Video

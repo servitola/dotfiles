@@ -5,7 +5,7 @@ return {
 --
 --         karabiner: no
 --
---———————— chord ┬ en | ru | el ┬
+--———————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --           i   │ i    ш    ι  │ YouTube Minimize video
 --———————————————┼——————————————┼——————————————————————————————————
 --{ chord =  "⇪i",                  fn = "voice_dictation.toggle" },
