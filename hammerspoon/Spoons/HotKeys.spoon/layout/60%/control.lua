@@ -3,15 +3,14 @@ return {
 --    │  ⌃  │    control
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬——— app — function ————————————————————
 --      ⌃       │      ⌃       │
---      ⌃click  │              │  — right button click
---              │              │ 📁 — open new new tab
---      ⌃scroll │              │  — zoom screen with Apple Accessibility
+--      ⌃click  │              │       — right button click
+--              │              │ Finder — open new new tab
+--      ⌃scroll │              │       — zoom screen with Apple Accessibility
 --——————————————┼——————————————┼——————————————————————————————————
---          ⌃⌃  │              │ 📝 — select task to run
---              │              │ ℝ — select configuration to run
+--          ⌃⌃  │              │ VSCode — select task to run
+--              │              │  Rider — select configuration to run
 --              ┴              ┴
 }

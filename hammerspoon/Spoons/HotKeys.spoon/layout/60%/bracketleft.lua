@@ -5,7 +5,7 @@ return {
 --
 --         karabiner: ⇪[ → vk_consumer_previous
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
 --          [   │ [    х    [  │
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪[   │  prev_track  │ vk_consumer_previous

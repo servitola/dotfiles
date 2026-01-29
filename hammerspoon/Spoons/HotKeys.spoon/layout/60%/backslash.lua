@@ -3,18 +3,17 @@ return {
 --    │  \  │
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --          \   │ \    \    \  │
---               │              │ Claude Code — backslash + return for image newline
+--              │              │  Claude Code — backslash + return for image newline
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪\   │              │
 --         ⇧\   │ |    /    |  │
 --         ⌃\   │              │
---         ⌥\   │              │ Copilot Suggestion
---         ⌘\   │              │ ℝ — send to C# interactive
---              │              │ IINA — set speed 1.0
+--         ⌥\   │              │       VSCode — Copilot Suggestion
+--         ⌘\   │              │        Rider — send to C# interactive
+--              │              │         IINA — set speed 1.0
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧\   │              │
 --        ⇪⌃\   │              │
