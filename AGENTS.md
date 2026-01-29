@@ -253,7 +253,5 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
-├── WARP.md -> CLAUDE.md
-├── package-lock.json
-└── package.json
+└── WARP.md -> CLAUDE.md
 Finish of Directory Structure
