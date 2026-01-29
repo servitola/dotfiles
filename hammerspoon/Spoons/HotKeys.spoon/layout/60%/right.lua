@@ -5,7 +5,7 @@ return {
 --
 --         karabiner: no
 --
---———————— chord ┬ en | ru | el ┬
+--———————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --           →   │      →       │ YouTube — seek forward 5sec
 --               │              │ IINA — seek forward 5sec
 --———————————————┼——————————————┼——————————————————————————————————

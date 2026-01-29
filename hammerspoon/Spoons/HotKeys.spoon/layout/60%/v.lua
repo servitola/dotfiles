@@ -22,7 +22,7 @@ return {
 { chord = "⇧F19",                    app = "Google Chrome" },
 --          ⇪⌃v   │     ⌃F19     │k│ ↓
 { chord = "⌃F19",                    fn = "vpn.toggle_globalprotect" },
---          ⇪⌥v   │     ⌥F19     │k│ ???
+--          ⇪⌥v   │     ⌥F19     │k│ maccy — show buffer
 --          ⇪⌘v   │     ⌘F19     │k│ ↓
 { chord = "⌘F19",                    fn = "browser_search_selected" },
 --          ⇧⌃v   │              │⋅│ Terminal — used sometimesž
