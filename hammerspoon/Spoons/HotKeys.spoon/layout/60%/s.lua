@@ -29,7 +29,7 @@ return {
 --               │              │      Finder — go to Shared
 { chord = "⌃⌥s",                           fn = "window.set_all_to_default" },
 --         ⌃⌘s   │              │      Finder — toggle SideBar
---               │              │           ℝ — toggle Sidebar
+--               │              │       Rider — toggle Sidebar
 --               │              │        Mail — hide/show sidebar
 --         ⌥⌘s   │              │
 --———————————————┼——————————————┼————————————————————————————————————
@@ -40,6 +40,7 @@ return {
 --        ⇪⌃⌘s   │     ⌃⌘↓      │       Rider — navigate to down method
 --        ⇪⌥⌘s   │     ⌥⌘↓      │      VSCode — clone caret down
 --               │              │       iTerm — focus pane below
+--               │              │       Rider — next in panel
 --        ⇧⌃⌥s   │              │
 --        ⇧⌃⌘s   │              │
 --        ⇧⌥⌘s   │              │        Fork — send all files to staged/unstaged
