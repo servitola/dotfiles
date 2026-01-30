@@ -15,3 +15,9 @@ repos:
         language: system
         pass_filenames: false
         always_run: true
+      - id: regenerate-hammerspoon-spoons
+        name: Regenerate Hammerspoon Spoons list
+        entry: .git-hooks/regenerate-hammerspoon-spoons.sh
+        language: system
+        pass_filenames: false
+        always_run: true
