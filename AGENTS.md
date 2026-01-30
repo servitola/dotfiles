@@ -115,6 +115,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── hammerspoon
 │   ├── Spoons
 │   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
 │   ├── config_UrlDispatcher.lua
 │   ├── init.lua
 │   ├── reload_hammerspoon_on_script_changed.lua
@@ -124,7 +126,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── homebrew
 │   ├── Support
 │   ├── examples
-│   ├── AGENTS.md
 │   ├── brewfile
 │   ├── install.sh
 │   ├── install_all_homebrew_packages.sh
@@ -155,6 +156,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── automatic_backups
 │   ├── rules
 │   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
 │   └── karabiner.json
 ├── keyboard-layout
 │   └── Birman.bundle
