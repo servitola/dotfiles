@@ -32,7 +32,6 @@ Uses `hs.application.watcher` to detect app focus changes:
 - KSheet
 - PopupTranslateSelection
 - URLDispatcher
-- VoiceDictation
 - Windows
 - YouTrackTasks
 - YouTrackTicket
