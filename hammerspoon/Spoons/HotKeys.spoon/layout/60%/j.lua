@@ -3,10 +3,9 @@ return {
 --    │  J  │    jump / journal
 --    ╰—————╯
 --
---         karabiner: no
 --
 --————————chord ┬ en | ru | el ┬—————— app — function ————————————————————
---          j   │ j    о    ξ  │ YouTube 10sec back
+--          j   │ j    о    ξ  │   YouTube — 10sec back
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪j   │              │   Day One — create journal entry
 --         ⇧j   │ J    О    Ξ  │

@@ -3,18 +3,17 @@ return {
 --    │  .  │    end
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
---          .   │ .    ю    .  │ IINA — frame-step (advance one frame)
+--——————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
+--          .   │ .    ю    .  │          IINA — frame-step (advance one frame)
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪.   │     ⌘→       │ end
 --         ⇧.   │ >    Ю    >  │
 --         ⌃.   │              │
 --         ⌥.   │              │
---         ⌘.   │              │ IINA — stop and close video
---              │              │ Music — stop playing
---              │              │ ℝ — expand #region
+--         ⌘.   │              │          IINA — stop and close video
+--              │              │         Music — stop playing
+--              │              │         Rider — expand #region
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧.   │              │
 --        ⇪⌃.   │              │

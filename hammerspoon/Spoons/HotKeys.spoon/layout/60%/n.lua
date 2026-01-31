@@ -29,7 +29,7 @@ return {
 --         ⌃⌘n   │              │
 --         ⌥⌘n   │              │        Music — create a Smart Playlist
 --                              │         Mail — open a new tab in Mail viewer
---                              │            ℝ — inline
+--                              │        Rider — inline
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃n   │              │
 --        ⇪⇧⌥n   │              │

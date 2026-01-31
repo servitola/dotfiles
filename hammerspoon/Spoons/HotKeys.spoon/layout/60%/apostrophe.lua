@@ -3,9 +3,8 @@ return {
 --    │  '  │    quote / volume up
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬———————— app — function ——————————
 --          '   │ '    э   ΄   │
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪'   │  volume up   │
