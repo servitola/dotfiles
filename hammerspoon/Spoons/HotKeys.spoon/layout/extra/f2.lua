@@ -1,8 +1,11 @@
 return {
 --    ╭————╮
---    │ F2 │    Brightness Up
+--    │ F2 │    Brightness Up / Maximum
 --    ╰————╯
 --
---      karabiner: F2 → Brightness Up
 --
+--——————— chord ┬———————————————————————————────────
+--          F2  │    increase brightness
+--         ⇧F2  │    brightness to maximum (100%)
+--              ┴
 }

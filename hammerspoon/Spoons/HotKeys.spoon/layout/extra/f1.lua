@@ -1,8 +1,11 @@
 return {
 --    ╭————╮
---    │ F1 │    Brightness Down
+--    │ F1 │    Brightness Down / Minimum
 --    ╰————╯
 --
---      karabiner: F1 → Brightness Down
 --
+--——————— chord ┬———————————————————————————────────
+--          F1  │    decrease brightness
+--         ⇧F1  │    brightness to minimum (0%)
+--              ┴
 }

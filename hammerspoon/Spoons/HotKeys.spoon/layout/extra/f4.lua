@@ -1,8 +1,10 @@
 return {
 --    ╭————╮
---    │ F4 │    Launchpad
+--    │ F4 │    Spotlight / Cmd+Space
 --    ╰————╯
 --
---       karabiner: F4 → LaunchPad
 --
+--——————— chord ┬ karabiner ┬────────────────────────
+--          F4  │     ⌘␣    │  open Raycast
+--              ┴           ┴
 }
