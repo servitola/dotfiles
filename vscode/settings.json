@@ -39,7 +39,7 @@
         "git show"
     ],
     "security.workspace.trust.untrustedFiles": "open",
-    "terminal.external.osxExec": "iTerm.app",
+    "terminal.external.osxExec": "Warp.app",
     "git.autofetch": true,
     "amp.url": "https://ampcode.com/",
     "amp.tab.enabled": true,
