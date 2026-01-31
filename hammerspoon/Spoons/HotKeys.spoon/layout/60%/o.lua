@@ -3,42 +3,40 @@ return {
 --    │  O  │    open / up
 --    ╰—————╯
 --
---         karabiner: ⇪⇧⌃o → volume_increment
---                    ⇪⇧⌘o → illumination_increment
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --          o   │ o    щ    ο  │
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪o   │      ↑       │
 --         ⇧o   │ O    Щ    Ο  │
---         ⌃o   │              │ ℝ — override
---              │              │ Claude Code — verbose output
+--         ⌃o   │              │        Rider — override
+--              │              │  Claude Code — verbose output
 --         ⌥o   │ °    °    œ  │
---         ⌘o   │              │  — open file
+--         ⌘o   │              │             — open file
 --——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧o   │      ⇧↑      │  — select text up one line
---        ⇪⌃o   │      ⌃↑      │  — show windows of current app
---        ⇪⌥o   │      ⌥↑      │ ℝ — extend selection
---        ⇪⌘o   │      ⌘↑      │ 📝 — jump to breadcumbs
+--        ⇪⇧o   │      ⇧↑      │             — select text up one line
+--        ⇪⌃o   │      ⌃↑      │             — show windows of current app
+--        ⇪⌥o   │      ⌥↑      │        Rider — extend selection
+--        ⇪⌘o   │      ⌘↑      │       VSCode — jump to breadcumbs
 --        ⇧⌃o   │              │
 --        ⇧⌥o   │ Ѳ    Ѳ    Τ  │
---        ⇧⌘o   │              │ 📝 — Search file by name
---              │              │ Fork — command palette
---              │              │ ℝ — go to file
+--        ⇧⌘o   │              │       VSCode — Search file by name
+--              │              │         Fork — command palette
+--              │              │        Rider — go to file
 --        ⌃⌥o   │              │
 --        ⌃⌘o   │              │
 --        ⌥⌘o   │              │
 --——————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃o   │  volume_up   │ volume_increment
+--       ⇪⇧⌃o   │  volume_up   │             — volume_increment
 --       ⇪⇧⌥o   │              │
---       ⇪⇧⌘o   │ key_light_up │ illumination_increment
+--       ⇪⇧⌘o   │ key_light_up │             — keyboard light increment
 --       ⇪⌃⌥o   │              │
---       ⇪⌃⌘o   │              │ ℝ — navigate to up method
---       ⇪⌥⌘o   │              │ 📝 — clone caret up;
---              │              │ iTerm — focus pane above
+--       ⇪⌃⌘o   │              │        Rider — navigate to up method
+--       ⇪⌥⌘o   │              │       VSCode — clone caret up;
+--              │              │        iTerm — focus pane above
 --       ⇧⌃⌥o   │              │
 --       ⇧⌃⌘o   │              │
---       ⇧⌥⌘o   │              │ Fork — open file
---       ⌃⌥⌘o   │              │ ℝ — Recent projects popup
+--       ⇧⌥⌘o   │              │         Fork — open file
+--       ⌃⌥⌘o   │              │        Rider — Recent projects popup
 --              ┴              ┴
 }

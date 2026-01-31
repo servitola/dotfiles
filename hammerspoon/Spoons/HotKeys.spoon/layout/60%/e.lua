@@ -3,8 +3,6 @@ return {
 --    │  E  │    pagedown / delete / find usages
 --    ╰—————╯
 --
---         karabiner: ⇪e → PgDn
---                    ⇪⇧⌃e → play_or_pause
 --
 --———————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --           e   │ e    у    ε  │  Browser Vim — scroll to bottom

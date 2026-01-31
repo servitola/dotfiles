@@ -3,31 +3,30 @@ return {
 --    │  T  │    new tab / Telegram
 --    ╰—————╯
 --
---         karabiner: ⇪⇧t → F18
 --
---———————— chord ┬ en | ru | el ┬
---           t   │ t    е    τ  │ YouTube Theatre mode
+--———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
+--           t   │ t    е    τ  │       YouTube — Theatre mode
 --———————————————┼——————————————┼——————————————————————————————————
-{ chord =  "⇪t",                  app = "Telegram", window_default_position = "right" },
+{ chord =  "⇪t",                            app = "Telegram", window_default_position = "right" },
 --          ⇧t   │ T    Е    Τ  │
---          ⌃t   │              │ ℝ — refactor this
---               │              │ Claude Code — show todos
+--          ⌃t   │              │         Rider — refactor this
+--               │              │   Claude Code — show todos
 --          ⌥t   │ ™    ™    ™  │
---          ⌘t   │              │  — new tab
---               │              │ Music — turn visualizer on or off
+--          ⌘t   │              │              — new tab
+--               │              │         Music — turn visualizer on or off
 --———————————————┼——————————————┼——————————————————————————————————
 --   ⇪⇧t → F18   │     F18      │
-{ chord = "F18",                  app = "zoom.us" },
+{ chord = "F18",                            app = "zoom.us" },
 --         ⇪⌃t   │              │
 --         ⇪⌥t   │              │
 --         ⇪⌘t   │              │
 --         ⇧⌃t   │              │
 --         ⇧⌥t   │              │
---         ⇧⌘t   │              │ Mail — format as Plain Text or Rich Format
---               │              │  — reopen closed tab
+--         ⇧⌘t   │              │          Mail — format as Plain Text or Rich Format
+--               │              │              — reopen closed tab
 --         ⌃⌥t   │              │
 --         ⌃⌘t   │              │
---         ⌥⌘t   │              │ Fork — hide/search toolbar
+--         ⌥⌘t   │              │          Fork — hide/search toolbar
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃t   │              │
 --        ⇪⇧⌥t   │              │

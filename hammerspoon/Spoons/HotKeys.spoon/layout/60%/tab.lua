@@ -3,27 +3,26 @@ return {
 --    │  ⇥  │    tab / enter / extra modifier layer button
 --    ╰—————╯
 --
---         karabiner: ⇪⇥ → ↩
 --
---———————— chord ┬ en | ru | el ┬
+--———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
 --           ⇥   │       ⇥      │ Unix Terminal — complete
 --———————————————┼——————————————┼——————————————————————————————————
---          ⇪⇥   │       ↩      │  — enter / return
---          ⇧⇥   │              │  — select previous element or move text block left
---               │              │ Claude Code — cycle modes (default→auto-accept→plan)
---          ⌃⇥   │              │  — switch tab forward
---          ⌥⇥   │              │ AltTab — switch the current app windows
---          ⌘⇥   │              │  — switch between open windows
+--          ⇪⇥   │       ↩      │              — enter / return
+--          ⇧⇥   │              │              — select previous element or move text block left
+--               │              │   Claude Code — cycle modes (default→auto-accept→plan)
+--          ⌃⇥   │              │              — switch tab forward
+--          ⌥⇥   │              │        AltTab — switch the current app windows
+--          ⌘⇥   │              │              — switch between open windows
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧⇥   │      ⇧↩      │
---         ⇪⌃⇥   │      ⌃↩      │  — open context menu
---               │              │ ℝ — generate (alternative to cmd + n)
+--         ⇪⌃⇥   │      ⌃↩      │              — open context menu
+--               │              │         Rider — generate (alternative to cmd + n)
 --         ⇪⌥⇥   │      ⌥↩      │
 --         ⇪⌘⇥   │      ⌘↩      │
---         ⇧⌃⇥   │              │  — go to previous tab
+--         ⇧⌃⇥   │              │              — go to previous tab
 --         ⇧⌥⇥   │              │
---         ⇧⌘⇥   │              │  — switch between open windows backwards
-{ chord = "⌃⌥⇥",                  fn = "translate_to_english" },
+--         ⇧⌘⇥   │              │              — switch between open windows backwards
+{ chord = "⌃⌥⇥",                             fn = "translate_to_english" },
 --         ⌃⌘⇥   │              │
 --         ⌥⌘⇥   │              │
 --———————————————┼——————————————┼——————————————————————————————————
@@ -32,7 +31,7 @@ return {
 --        ⇪⇧⌘⇥   │              │
 --        ⇪⌃⌥⇥   │              │
 --        ⇪⌃⌘⇥   │              │
---        ⇪⌥⌘⇥   │     ⌥⌘↩      │ Fork — commit and push changes
+--        ⇪⌥⌘⇥   │     ⌥⌘↩      │           Fork — commit and push changes
 --        ⇧⌃⌥⇥   │              │
 --        ⇧⌃⌘⇥   │              │
 --        ⇧⌥⌘⇥   │              │

@@ -3,8 +3,6 @@ return {
 --    │  3  │    3rd / F3
 --    ╰—————╯
 --
---         karabiner: ⇪3 → F3
---                    ⌥3 → ⌘n
 --
 --———————— chord ┬ en | ru | el ┬————————————— app — function ————————————————————
 --           3   │      3       │          YouTube — navigate to 30% of video

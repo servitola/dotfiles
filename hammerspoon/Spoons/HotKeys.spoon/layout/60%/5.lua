@@ -3,7 +3,6 @@ return {
 --    │  5  │    5th / F5
 --    ╰—————╯
 --
---         karabiner: ⇪5 → F5
 --
 --——————— chord ┬ en | ru | el ┬————— app — function ————————————————————
 --          5   │      5       │  YouTube — navigate to 50% of video

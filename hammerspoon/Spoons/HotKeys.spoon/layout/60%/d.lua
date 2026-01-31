@@ -3,6 +3,7 @@ return {
 --    │  D  │    right / duplicate / delete
 --    ╰—————╯
 --
+--
 --———————— chord ┬ en | ru | el ┬———————— app — function ————————————————————
 --           d   │ d    в    δ  │            — letter 'd'
 --          dd   │              │  BrowserVim — go forward
