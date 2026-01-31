@@ -3,9 +3,6 @@ return {
 --    │  L  │    line / address
 --    ╰—————╯
 --
---         karabiner: ⇪l → ↓
---                    ⇪⇧⌃l → volume_decrement
---                    ⇪⇧⌘l → illumination_decrement
 --
 --——————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
 --          l   │ l    д    λ  │       YouTube — 10sec forward
@@ -33,16 +30,16 @@ return {
 --        ⌃⌘l   │              │          Mail — apply active Mail rules
 --        ⌥⌘l   │              │        Finder — downloads
 --——————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃l   │              │ volume_decrement
+--       ⇪⇧⌃l   │ volume_decr  │              — volume_decrement
 --       ⇪⇧⌥l   │              │
---       ⇪⇧⌘l   │   light_dn   │ illumination_decrement
+--       ⇪⇧⌘l   │   light_dn   │              — keyboard illumination decrement
 --       ⇪⌃⌥l   │              │
---       ⇪⌃⌘l   │              │ ℝ — navigate to down method
---       ⇪⌥⌘l   │              │ 📝 — clone caret down;
---              │              │ iTerm — focus pane below
+--       ⇪⌃⌘l   │              │         Rider — navigate to down method
+--       ⇪⌥⌘l   │              │        VSCode — clone caret down;
+--              │              │         iTerm — focus pane below
 --       ⇧⌃⌥l   │              │
 --       ⇧⌃⌘l   │              │
---       ⇧⌥⌘l   │              │ Fork — quick Pull
+--       ⇧⌥⌘l   │              │          Fork — quick Pull
 --       ⌃⌥⌘l   │              │
 --              ┴              ┴
 }

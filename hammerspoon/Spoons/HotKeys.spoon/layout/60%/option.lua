@@ -3,12 +3,11 @@ return {
 --    │  ⌥  │    option
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --       ⌥      │              │
 --       ⌥drag  │              │ select non-linear areas
 --       ⌥hold  │              │ see additional options
---       ⌥⇧     │              │ 📝 — select non-linear areas
+--       ⌥⇧     │              │ VSCode — select non-linear areas
 --              ┴              ┴
 }

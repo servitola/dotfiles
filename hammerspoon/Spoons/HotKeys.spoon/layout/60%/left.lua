@@ -3,7 +3,6 @@ return {
 --    │  ←  │    left
 --    ╰—————╯
 --
---         karabiner: no
 --
 --———————— chord ┬ en | ru | el ┬
 --           ←   │      ←       │ YouTube — seek backward 5sec
