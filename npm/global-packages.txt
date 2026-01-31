@@ -1,4 +1,3 @@
-@anthropic-ai/claude-code
 @cocal/google-calendar-mcp
 @gongrzhe/server-gmail-autoauth-mcp
 @modelcontextprotocol/server-brave-search
