@@ -6923,7 +6923,12 @@
                             },
                             {
                                 "from": { "key_code": "f4" },
-                                "to": [{ "shell_command": "open -a 'Launchpad'" }],
+                                "to": [
+                                    {
+                                        "key_code": "spacebar",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
