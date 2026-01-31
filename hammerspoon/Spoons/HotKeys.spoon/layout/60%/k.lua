@@ -3,39 +3,37 @@ return {
 --    │  K  │    left
 --    ╰—————╯
 --
---         karabiner: ⇪k → ←
---                    ⇪⇧⌃k → vk_consumer_previous
 --
---——————— chord ┬ en | ru | el ┬
---          k   │ k    л    κ  │ YouTube play/pause
+--——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
+--          k   │ k    л    κ  │      YouTube — play/pause
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪k   │      ←       │
 --         ⇧k   │ K    Л    Κ  │
---         ⌃k   │              │  — cut all text till the end of line
+--         ⌃k   │              │             — cut all text till the end of line
 --         ⌥k   │ “    ”    ¬  │
---         ⌘k   │              │ Telegram — Focus search
---              │              │ 📝 — choose repository
+--         ⌘k   │              │     Telegram — Focus search
+--              │              │       VSCode — choose repository
 --——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧k   │      ⇧←      │  — select letter to the left
---        ⇪⌃k   │      ⌃←      │  — jump to workspace to the left
---        ⇪⌥k   │      ⌥←      │  — jump a word to the left
---              │              │ YouTube — jump to chapter to the left
---        ⇪⌘k   │      ⌘←      │  — home/jump to start of line
+--        ⇪⇧k   │      ⇧←      │             — select letter to the left
+--        ⇪⌃k   │      ⌃←      │             — jump to workspace to the left
+--        ⇪⌥k   │      ⌥←      │             — jump a word to the left
+--              │              │      YouTube — jump to chapter to the left
+--        ⇪⌘k   │      ⌘←      │             — home/jump to start of line
 --        ⇧⌃k   │              │
 --        ⇧⌥k   │              │
---        ⇧⌘k   │              │ 📁 — go to Network
+--        ⇧⌘k   │              │       Finder — go to Network
 --        ⌃⌥k   │              │
 --        ⌃⌘k   │              │
 --        ⌥⌘k   │              │
 --——————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃k   │  prev_track  │ vk_consumer_previous
---       ⇪⇧⌥k   │     ⇧⌥←      │  — select word to the left
+--       ⇪⇧⌃k   │  prev_track  │             — previous track
+--       ⇪⇧⌥k   │     ⇧⌥←      │             — select word to the left
 --       ⇪⇧⌘k   │     ⇧⌘←      │
 --       ⇪⌃⌥k   │     ⌃⌥←      │
---       ⇪⌃⌘k   │     ⌃⌘←      │ 📝 — move editor to previous group
---       ⇪⌥⌘k   │     ⌥⌘←      │ Music — seek backward;
---              │              │ 📝 — go to previous tab;
---              │              │ iTerm — focus pane to the left
+--       ⇪⌃⌘k   │     ⌃⌘←      │       VSCode — move editor to previous group
+--       ⇪⌥⌘k   │     ⌥⌘←      │        Music — seek backward;
+--              │              │       VSCode — go to previous tab;
+--              │              │        iTerm — focus pane to the left
 --       ⇧⌃⌥k   │              │
 --       ⇧⌃⌘k   │              │
 --       ⇧⌥⌘k   │              │

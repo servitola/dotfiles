@@ -3,30 +3,29 @@ return {
 --    │  U  │
 --    ╰—————╯
 --
---         karabiner: no
 --
---——————— chord ┬ en | ru | el ┬
+--——————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
 --          u   │ u    г    υ  │
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪u   │              │
 --         ⇧u   │ U    Г    Υ  │
 --         ⌃u   │              │
 --         ⌥u   │ ѵ    ѵ­­    no │
---         ⌘u   │              │ Telegram — toggle underline for text
---              │              │ Music — open 'stream audio file at a specific URL' dialog
+--         ⌘u   │              │      Telegram — toggle underline for text
+--              │              │         Music — open 'stream audio file at a specific URL' dialog
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧u   │              │
 --        ⇪⌃u   │              │
 --        ⇪⌥u   │              │
 --        ⇪⌘u   │              │
 --        ⇧⌃u   │              │
---        ⇧⌥u   │ Ѵ    Ѵ    Ξ  │ ℝ — show unit testing quick panel
---        ⇧⌘u   │              │ Mail — mark emails as read or unread
---              │              │ ℝ — toggle case of text
+--        ⇧⌥u   │ Ѵ    Ѵ    Ξ  │         Rider — show unit testing quick panel
+--        ⇧⌘u   │              │          Mail — mark emails as read or unread
+--              │              │         Rider — toggle case of text
 --        ⌃⌥u   │              │
---        ⌃⌘u   │              │ Music — show/hide lyrics panel
---        ⌥⌘u   │              │ Music — Show playing next queue
---              │              │ Yandex — view source code
+--        ⌃⌘u   │              │         Music — show/hide lyrics panel
+--        ⌥⌘u   │              │         Music — Show playing next queue
+--              │              │        Yandex — view source code
 --——————————————┼——————————————┼——————————————————————————————————
 --       ⇪⇧⌃u   │              │
 --       ⇪⇧⌥u   │              │

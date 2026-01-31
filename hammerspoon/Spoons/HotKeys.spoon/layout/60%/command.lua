@@ -3,7 +3,6 @@ return {
 --    │  ⌘  │    command
 --    ╰—————╯
 --
---         karabiner: no
 --
 --——————— chord ┬ en | ru | el ┬
 --          ⌘   │      ⌘       │
