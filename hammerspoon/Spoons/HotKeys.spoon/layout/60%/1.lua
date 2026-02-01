@@ -27,7 +27,7 @@ return {
 --         ⇪⌃1   │     ⌃F1      │ ???
 --         ⇪⌥1   │     ⌥F1      │            Rider — show 'Select in' dialog
 --         ⇪⌘1   │     ⌘F1      │           VSCode — show errors/warnings
-{ chord = "⇧⌘1",                               app = "Visual Studio Code" },
+{ chord = "⇧⌘1",                                fn = "vscode.dotfiles" },
 --         ⇧⌃1   │              │            Rider — toggle bookmark 1
 --         ⇧⌥1   │ ¡    ¡    έ  │
 { chord = "⌃⌥1",                                fn = "audio.internal" },

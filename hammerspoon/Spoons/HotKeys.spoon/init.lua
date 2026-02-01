@@ -359,6 +359,38 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         hs.itunes.playpause()
                     end)
+                elseif functionName == "vscode.dotfiles" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local dotfilesPath = os.getenv("HOME") .. "/projects/dotfiles"
+                        local vscode = hs.application.get("com.microsoft.VSCode")
+
+                        if not vscode then
+                            hs.execute("open -a 'Visual Studio Code' '" .. dotfilesPath .. "'", true)
+                            return
+                        end
+
+                        local dotfilesWindow = nil
+                        for _, window in ipairs(vscode:allWindows()) do
+                            local title = window:title()
+                            if title:find("dotfiles") or title:find("/projects/dotfiles") then
+                                dotfilesWindow = window
+                                break
+                            end
+                        end
+
+                        if dotfilesWindow then
+                            local isFrontmost = hs.application.frontmostApplication() == vscode
+                            local isFocused = (hs.window.focusedWindow() == dotfilesWindow)
+
+                            if isFrontmost and isFocused then
+                                vscode:hide()
+                            else
+                                dotfilesWindow:focus()
+                            end
+                        else
+                            hs.execute("open -a 'Visual Studio Code' '" .. dotfilesPath .. "'", true)
+                        end
+                    end)
                 end
             end
 
