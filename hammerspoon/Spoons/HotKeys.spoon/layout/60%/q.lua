@@ -27,7 +27,7 @@ return {
 --               │              │         Rider — delete line
 --               │              │        VSCode — delete line
 --         ⇧⌃q   │       ⌫      │              — delete symbol to the left
---         ⇧⌥q   │              │
+--         ⇧⌥q   │      ⇧⌫      │         Rider — delete line
 --         ⇧⌘q   │              │              — log out from account with closing of all apps
 { chord = "⌃⌥q",                            app = "Music" },
 --         ⌃⌘q   │              │              — lock screen

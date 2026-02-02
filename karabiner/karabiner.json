@@ -295,6 +295,27 @@
                         ]
                     },
                     {
+                        "description": "Alt + Shift + Q = Shift + Delete Forward",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": ["left_option", "left_shift"],
+                                        "optional": []
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_forward",
+                                        "modifiers": ["left_shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Right Option + C → © (abc_copy)",
                         "manipulators": [
                             {
