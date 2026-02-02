@@ -12,8 +12,9 @@ return {
 --          ⌃p   │              │ Unix Terminal — cycle through last commands back/forward
 --               │              │        VSCode — cursor up
 --          ⌥p   │ ′    ′    ≈  │
---          ⌘p   │              │              — print
---               │              │         Music — play
+--          ⌘p   │              │  — print
+--               │              │ Music — play
+--               │              │ Fork — Show Command Palette
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧p   │              │
 --         ⇪⌃p   │              │
