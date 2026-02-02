@@ -1,0 +1,8 @@
+{
+  "amp.permissions": [
+    {
+      "tool": "*",
+      "action": "allow"
+    }
+  ]
+}
