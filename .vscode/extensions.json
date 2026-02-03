@@ -2,6 +2,9 @@
     "recommendations": [
         "k--kato.intellij-idea-keybindings",
         "jdinhlife.gruvbox",
-        "sourcegraph.amp"
+        "sourcegraph.amp",
+        "ms-vscode-remote.remote-ssh",
+        "ms-vscode-remote.remote-ssh-edit",
+        "ms-vscode.remote-explorer"
     ]
 }
