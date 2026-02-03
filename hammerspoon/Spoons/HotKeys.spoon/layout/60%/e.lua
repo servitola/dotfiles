@@ -26,7 +26,7 @@ return {
 --         ⇪⌥e   │      ⌥⌦      │             — delete word to the right
 --         ⇪⌘e   │      ⌘⌦      │             — delete
 --         ⇧⌃e   │      ⌘⌫      │             — delete
---         ⇧⌥e   │      ⌦       │             — delete letter to the right
+--         ⇧⌥e   │      ⇧⌦      │             — delete letter to the right
 --         ⇧⌘e   │              │      Browser — opened tabs dialog
 --               │              │        Rider — recent locations popup
 --               │              │         Mail — redirect email

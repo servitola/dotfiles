@@ -6,7 +6,7 @@ return {
 --
 --———————— chord ┬ en | ru | el ┬———————— app — function ————————————————————
 --           a   │ a    ф    α  │
---          aa   │              │  BrowserVim — go back
+--          aa   │              │  BrowserVim — go back — CUSTOM
 --———————————————┼——————————————┼——————————————————————————————————————————————
 --          ⇪a   │      ←       │            — go left
 --          ⇧a   │ A    Ф    Α  │
