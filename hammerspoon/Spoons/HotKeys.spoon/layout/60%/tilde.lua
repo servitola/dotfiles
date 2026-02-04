@@ -13,7 +13,7 @@ return {
 --          ⌃~   │      ⌃⎋      │        VSCode — toggle terminal
 --          ⌥~   │      ⌥⎋      │        VSCode — suggest AI completions
 --          ⌘~   │      ⌘⎋      │              — switch to game (???)
---          ⇥~   │              │ ???
+--          ⇥~   │   ⌘+tilde    │     karabiner
 --———————————————┼——————————————┼——————————————————————————————————
 --         ⇪⇧~   │ ~    Ё    ±  │
 --         ⇪⌃~   │      ⌃⎋      │        VSCode — toggle terminal
