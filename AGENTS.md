@@ -88,8 +88,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── hammerspoon.md
 │   ├── homebrew.md
 │   ├── keyboard-setup.md
-│   ├── README.md
-│   └── video-focus-helper.md
+│   └── README.md
 ├── eqmac
 │   └── preset.json
 ├── eza
