@@ -14,6 +14,7 @@ return {
 --         ⌘5   │              │    Rider — focus problems window
 --              │              │  Browser — Open 5th tab
 --              │              │ Telegram — focus 5th folder or chat
+--         ⇥5   │    55555     │
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧5   │     ⇧F5      │
 --        ⇪⌃5   │     ⌃F5      │         — move focus to Window's Toolbar
