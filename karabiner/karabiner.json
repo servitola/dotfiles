@@ -164,6 +164,25 @@
                                         "value": 1
                                     }
                                 ],
+                                "description": "TAB + 5 → 55555",
+                                "from": { "key_code": "5" },
+                                "to": [
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" },
+                                    { "key_code": "5" }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": { "key_code": "a" },
                                 "to": [
                                     {
