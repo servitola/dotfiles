@@ -36,22 +36,22 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 
 ## Current Directory Structure (depth 2)
 .
+├── LaunchAgents
+│   ├── com.colima.service.plist
+│   └── com.telegram-bot.service.plist
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
-│   ├── rags
 │   ├── roles
 │   ├── config.yaml
 │   └── dark.tmTheme
 ├── amp
-│   ├── commands
-│   ├── tools
 │   └── settings.json
 ├── annepro2
-│   ├── qmk
+│   ├── ANNE PRO 2.json
+│   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
-│   ├── ObinsKit_1.2.11_x64.dmg
 │   └── readme.md
 ├── atuin
 │   ├── config.toml
@@ -66,6 +66,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── chromium-vimium-extension
 │   └── vimium-options.json
 ├── claude-code
+│   ├── agents
+│   ├── commands
+│   ├── hooks
+│   ├── output-styles
+│   ├── plugins
+│   ├── prompts
 │   ├── CLAUDE.md
 │   └── settings.json
 ├── claude-desktop
@@ -83,12 +89,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── keybindings.json
 │   └── settings.json
 ├── docs
+│   ├── plans
+│   ├── README.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
-│   ├── keyboard-setup.md
-│   └── README.md
+│   └── keyboard-setup.md
 ├── eqmac
 │   └── preset.json
 ├── eza
@@ -111,22 +118,24 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── global_ignore
 ├── hammerspoon
 │   ├── Spoons
+│   ├── lib
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
 │   ├── config_UrlDispatcher.lua
 │   ├── init.lua
 │   ├── reload_hammerspoon_on_script_changed.lua
-│   ├── set_language_on_app_focused.lua
-│   └── WARP.md -> AGENTS.md
+│   └── set_language_on_app_focused.lua
 ├── heroic
 │   └── config.json
 ├── homebrew
-│   ├── examples
-│   ├── Support
+│   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
 │   ├── brewfile
+│   ├── install.sh
 │   ├── install_all_homebrew_packages.sh
 │   ├── install_minimum_homebrew_packages.sh
-│   ├── install.sh
 │   └── minimum_brewfile
 ├── iina
 │   └── servitola.conf
@@ -141,44 +150,40 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── jetbrains android
 │   └── settings.zip
 ├── jetbrains rider
-│   ├── settings
-│   ├── settings 2
 │   ├── rider.vmoptions
 │   └── settings.zip
 ├── jetbrains webstorm
-│   ├── settings
 │   └── settings.zip
 ├── karabiner
 │   ├── assets
 │   ├── automatic_backups
-│   ├── rules
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
-│   ├── karabiner.json
-│   └── WARP.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
+│   └── karabiner.json
 ├── keyboard-layout
 │   └── Birman.bundle
-├── LaunchAgents
-│   ├── com.colima.service.plist
-│   └── com.telegram-bot.service.plist
 ├── lazydocker
 │   └── config.yml
 ├── lazygit
 │   └── config.yml
+├── linux
+│   ├── INSTALLATION_GUIDE.md
+│   ├── README.md
+│   ├── install.sh
+│   ├── packages.txt
+│   ├── remote-install.sh
+│   └── zshrc-linux.sh
 ├── lulu
 │   ├── preferences.plist
 │   └── rules.plist
 ├── macos
 │   ├── helpers
-│   ├── check_wifi_environment.sh
-│   ├── connect_to_arris_router.sh
-│   ├── disable_apple_continuity.sh
 │   ├── dock_setup.sh
-│   ├── gaming_network_dashboard.sh
 │   ├── hosts
-│   ├── router_optimization_guide.md
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
+│   ├── start_n8n.sh
 │   ├── sync_gruvbox_wallpapers.sh
 │   └── update_all_and_cleanup_all.sh
 ├── marta
@@ -187,14 +192,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── conf.marco
 │   └── favorites.marco
 ├── midnight commander
-│   ├── mcedit
 │   ├── ini
 │   └── panels.ini
 ├── n8n
+│   ├── README.md
 │   ├── com.n8n.service.plist
 │   ├── install.sh
-│   ├── n8n-service.sh
-│   └── README.md
+│   └── n8n-service.sh
 ├── nano
 │   └── nanorc
 ├── noti
@@ -204,11 +208,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── install-globals.sh
 ├── nvim
 │   ├── lua
+│   ├── LICENSE
+│   ├── README.md
 │   ├── init.lua
 │   ├── lazy-lock.json
 │   ├── lazyvim.json
-│   ├── LICENSE
-│   ├── README.md
 │   └── stylua.toml
 ├── python
 │   ├── global-packages.txt
@@ -217,9 +221,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── uv-packages.txt
 ├── raycast
 │   └── Raycast.rayconfig
-├── voiceink
-│   ├── README.md
-│   └── settings.json
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
@@ -237,12 +238,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── yt-dlp
 │   ├── audioConfig
 │   ├── config
-│   ├── transcriptConfig
 │   └── videoConfig
 ├── zsh
 │   ├── bin
 │   ├── plugins
-│   ├── secrets
+│   ├── AGENTS.md
+│   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
 │   ├── aliases.sh
 │   ├── completion.sh
 │   ├── exports.sh
