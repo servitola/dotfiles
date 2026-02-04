@@ -4,17 +4,17 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬————— app — function ————————————————————
---          5   │      5       │  YouTube — navigate to 50% of video
+--——————— chord ┬ en | ru | el ┬—————— app — function ————————————————————
+--          5   │      5       │   YouTube — navigate to 50% of video
 --——————————————┼——————————————┼——————————————————————————————
 --         ⇪5   │     F5       │
 --         ⇧5   │      %       │
---         ⌃5   │              │    Rider — go to Bookmark 5
+--         ⌃5   │              │     Rider — go to Bookmark 5
 --         ⌥5   │ ‰    ‰    §  │
---         ⌘5   │              │    Rider — focus problems window
---              │              │  Browser — Open 5th tab
---              │              │ Telegram — focus 5th folder or chat
---         ⇥5   │    55555     │
+--         ⌘5   │              │     Rider — focus problems window
+--              │              │   Browser — Open 5th tab
+--              │              │  Telegram — focus 5th folder or chat
+--         ⇥5   │    55555     │ karabiner — type '55555'
 --——————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧5   │     ⇧F5      │
 --        ⇪⌃5   │     ⌃F5      │         — move focus to Window's Toolbar
