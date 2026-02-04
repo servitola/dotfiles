@@ -337,7 +337,7 @@ function obj:init()
                     end)
                 elseif functionName == "browser_youtube" then
                     hs.hotkey.bind(modifiers, key, function()
-                        spoon.BrowserTabOpener:openPlayingYouTubeTab()
+                        spoon.BrowserTabOpener:openTab("youtube.com")
                     end)
                 elseif functionName == "youtube_stream" then
                     hs.hotkey.bind(modifiers, key, function()
