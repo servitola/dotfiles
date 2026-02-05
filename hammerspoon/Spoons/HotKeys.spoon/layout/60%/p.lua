@@ -9,8 +9,9 @@ return {
 --———————————————┼——————————————┼——————————————————————————————————
 { chord =  "⇪p",                            app = "Music" },
 --          ⇧p   │ P    З    Π  │
---          ⌃p   │              │ Unix Terminal — cycle through last commands back/forward
+--          ⌃p   │              │ Unix Terminal — cycle through last commands forward
 --               │              │        VSCode — cursor up
+--               │              │   Claude Code — cycle through last commands forward
 --          ⌥p   │ ′    ′    ≈  │
 --          ⌘p   │              │  — print
 --               │              │ Music — play
@@ -20,7 +21,8 @@ return {
 --         ⇪⌃p   │              │
 --         ⇪⌥p   │              │
 --         ⇪⌘p   │              │
---         ⇧⌃p   │              │
+--         ⇧⌃p   │              │ Unix Terminal — cycle through last commands back
+--               │              │   Claude Code — cycle through last commands back
 --         ⇧⌥p   │              │
 --         ⇧⌘p   │              │          Fork — open Push dialog
 --               │              │        VSCode — open command palette
