@@ -21,7 +21,7 @@ return {
 --        ⇪⌘8   │     ⌘F8      │
 --        ⇧⌃8   │              │
 --        ⇧⌥8   │              │
---        ⇧⌘8   │              │
+--        ⇧⌘8   │              │         Rider — toggle Column selection mode
 --        ⌃⌥8   │              │
 --        ⌃⌘8   │              │
 --        ⌥⌘8   │              │
