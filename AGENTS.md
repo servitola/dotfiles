@@ -170,6 +170,9 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── rules.plist
 ├── macos
 │   ├── helpers
+│   ├── android-dual-proxy.sh
+│   ├── android-proxy-filter.py
+│   ├── android-proxy-router.pac
 │   ├── check_wifi_environment.sh
 │   ├── connect_to_arris_router.sh
 │   ├── disable_apple_continuity.sh
@@ -180,7 +183,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
 │   ├── sync_gruvbox_wallpapers.sh
-│   └── update_all_and_cleanup_all.sh
+│   ├── update_all_and_cleanup_all.sh
+│   └── vpn-proxy-config-example.conf
 ├── marta
 │   ├── plugins
 │   ├── themes
