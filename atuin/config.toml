@@ -8,8 +8,8 @@ dialect = "uk"
 timezone = "local"
 
 ## Sync settings
-auto_sync = true
-update_check = true
+auto_sync = false
+update_check = false
 sync_address = "https://api.atuin.sh"
 sync_frequency = "10m"
 
