@@ -1,6 +1,6 @@
 return {
 --    ╭—————╮
---    │  R  │    replace / refresh / IDE
+--    │  R  │    replace / refresh / IDE / P
 --    ╰—————╯
 --
 --
@@ -17,6 +17,9 @@ return {
 --           ⌘r   │              │       VSCode — replace in current file
 --                │              │        Rider — replace in current file
 --                │              │         Mail — reply to email
+--           ⇥r   │      ⌘p      │             — print
+--                │              │        Music — play
+--                │              │         Fork — show command palette
 --————————————————┼——————————————┼————————————————————————————————————
 --          ⇪⇧r   │     ⇧F17     │                 ↓
 { chord = "⇧F17",                           app = "Android Studio" },
