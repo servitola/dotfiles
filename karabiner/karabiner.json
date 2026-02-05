@@ -268,6 +268,23 @@
                                         "value": 1
                                     }
                                 ],
+                                "from": { "key_code": "r" },
+                                "to": [
+                                    {
+                                        "key_code": "p",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "tab_modifier",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
                                 "from": { "key_code": "z" },
                                 "to": [
                                     {
