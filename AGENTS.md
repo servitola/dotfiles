@@ -165,6 +165,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── config.yml
 ├── lazygit
 │   └── config.yml
+├── linux
+│   ├── eza
+│   ├── zsh
+│   ├── install.sh
+│   └── packages.txt
 ├── lulu
 │   ├── preferences.plist
 │   └── rules.plist
