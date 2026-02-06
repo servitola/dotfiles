@@ -241,7 +241,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── yt-dlp
 │   ├── audioConfig
 │   ├── config
-│   ├── transcriptConfig
 │   └── videoConfig
 ├── zsh
 │   ├── bin

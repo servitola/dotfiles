@@ -29,7 +29,8 @@ return {
 --               │              │          Mail — unsend email
 --         ⌃⌥z   │              │ ???
 { chord = "⌃⌘z",                            app = "Simulator" },
---         ⌥⌘z   │              │        VSCOde — revert selected in git
+--         ⌥⌘z   │              │        VSCode — revert selected in git
+--               │              │         Rider — show 'revert selected in git' popup
 --———————————————┼——————————————┼————————————————————————————————————
 --        ⇪⇧⌃z   │    rewind    │              — rewind
 --        ⇪⇧⌥z   │              │
