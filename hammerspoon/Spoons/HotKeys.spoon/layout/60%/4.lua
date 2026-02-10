@@ -29,7 +29,7 @@ return {
 --         ⇧⌘4   │              │            Shotr — start getting screenshot
 { chord = "⌃⌥4",                                fn = "audio.external" },
 --         ⌃⌘4   │              │
---         ⌥⌘4   │              │
+--         ⌥⌘4   │              │         Telegram — focus 4th chat
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃4   │    ⇧⌃F4      │
 --        ⇪⇧⌥4   │    ⇧⌥F4      │
