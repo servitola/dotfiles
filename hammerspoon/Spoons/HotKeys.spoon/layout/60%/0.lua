@@ -28,7 +28,7 @@ return {
 --         ⇧⌘0   │              │
 --         ⌃⌥0   │              │
 --         ⌃⌘0   │              │        Mail — show the Mail Activity window
---         ⌥⌘0   │              │
+--         ⌥⌘0   │              │    Telegram — focus Saved Messages
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃0   │     ⇧⌃F10    │
 --        ⇪⇧⌥0   │     ⇧⌥F10    │

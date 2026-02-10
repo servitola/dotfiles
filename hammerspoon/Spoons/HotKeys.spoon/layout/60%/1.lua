@@ -32,7 +32,8 @@ return {
 --         ⇧⌥1   │ ¡    ¡    έ  │
 { chord = "⌃⌥1",                                fn = "audio.internal" },
 --         ⌃⌘1   │              │
---         ⌥⌘1   │              │ Fork — show commit details
+--         ⌥⌘1   │              │             Fork — show commit details
+--               │              │         Telegram — focus 1st chat
 --———————————————┼——————————————┼————————————————————————————————————
 --        ⇪⇧⌃1   │              │
 --        ⇪⇧⌥1   │              │

@@ -32,6 +32,7 @@ return {
 { chord = "⌃⌥3",                                fn = "audio.marshall" },
 --         ⌃⌘3   │              │ ???
 --         ⌥⌘3   │              │             Fork — show commit filetree
+--         ⌥⌘3   │              │         Telegram — focus 3rd chat
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃3   │              │
 --        ⇪⇧⌥3   │              │
