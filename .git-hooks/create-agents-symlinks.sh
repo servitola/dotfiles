@@ -13,14 +13,14 @@ find "$DOTFILES_ROOT" -maxdepth 4 -name "AGENTS.md" -type f ! -path "*/.git/*" -
     if [[ $depth -le 3 ]]; then
         # Create CLAUDE.md symlink pointing to AGENTS.md
         claude_file="$parent_dir/CLAUDE.md"
-        if [[ ! -e "$claude_file" ]]; then
-            ln -sfvh "$(basename "$agents_file")" "$claude_file"
+        if [[ ! -L "$claude_file" ]] || [[ $(readlink "$claude_file") != "AGENTS.md" ]]; then
+            ln -sfvh "AGENTS.md" "$claude_file" 2>/dev/null || true
         fi
 
-        # Create WARP.md symlink pointing to CLAUDE.md
+        # Create WARP.md symlink pointing to AGENTS.md
         warp_file="$parent_dir/WARP.md"
-        if [[ ! -e "$warp_file" ]]; then
-            ln -sfvh "$(basename "$agents_file")" "$warp_file"
+        if [[ ! -L "$warp_file" ]] || [[ $(readlink "$warp_file") != "AGENTS.md" ]]; then
+            ln -sfvh "AGENTS.md" "$warp_file" 2>/dev/null || true
         fi
     fi
 done
