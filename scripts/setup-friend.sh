@@ -172,5 +172,8 @@ else
     echo -e "  ${YELLOW}*${NC} Warp Terminal — drag to Applications and launch"
 fi
 echo ""
-echo -e "  ${CYAN}Next step: open Warp and type ${BOLD}amp${NC}"
+echo -e "  ${CYAN}Next steps:${NC}"
+echo -e "  ${BOLD}1.${NC} Open Warp"
+echo -e "  ${BOLD}2.${NC} Run ${BOLD}amp login${NC} to authenticate"
+echo -e "  ${BOLD}3.${NC} Go to any project folder and type ${BOLD}amp${NC}"
 echo ""
