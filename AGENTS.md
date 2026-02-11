@@ -36,9 +36,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 
 ## Current Directory Structure (depth 2)
 .
-├── LaunchAgents
-│   ├── com.colima.service.plist
-│   └── com.telegram-bot.service.plist
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
@@ -49,9 +46,9 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── annepro2
 │   ├── ANNE PRO 2.json
-│   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
+│   ├── ObinsKit_1.2.11_x64.dmg
 │   └── readme.md
 ├── atuin
 │   ├── config.toml
@@ -90,12 +87,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── docs
 │   ├── plans
-│   ├── README.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
 │   ├── homebrew.md
-│   └── keyboard-setup.md
+│   ├── keyboard-setup.md
+│   └── README.md
 ├── eqmac
 │   └── preset.json
 ├── eza
@@ -117,26 +114,26 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── gitconfig
 │   └── global_ignore
 ├── hammerspoon
-│   ├── Spoons
 │   ├── lib
+│   ├── Spoons
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
-│   ├── WARP.md -> AGENTS.md
 │   ├── config_UrlDispatcher.lua
 │   ├── init.lua
 │   ├── reload_hammerspoon_on_script_changed.lua
-│   └── set_language_on_app_focused.lua
+│   ├── set_language_on_app_focused.lua
+│   └── WARP.md -> AGENTS.md
 ├── heroic
 │   └── config.json
 ├── homebrew
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
-│   ├── WARP.md -> AGENTS.md
 │   ├── brewfile
-│   ├── install.sh
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── install_all_homebrew_packages.sh
 │   ├── install_minimum_homebrew_packages.sh
-│   └── minimum_brewfile
+│   ├── install.sh
+│   ├── minimum_brewfile
+│   └── WARP.md -> AGENTS.md
 ├── iina
 │   └── servitola.conf
 ├── images
@@ -159,10 +156,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── automatic_backups
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
-│   ├── WARP.md -> AGENTS.md
-│   └── karabiner.json
+│   ├── karabiner.json
+│   └── WARP.md -> AGENTS.md
 ├── keyboard-layout
 │   └── Birman.bundle
+├── LaunchAgents
+│   ├── com.colima.service.plist
+│   └── com.telegram-bot.service.plist
 ├── lazydocker
 │   └── config.yml
 ├── lazygit
@@ -189,10 +189,10 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── ini
 │   └── panels.ini
 ├── n8n
-│   ├── README.md
 │   ├── com.n8n.service.plist
 │   ├── install.sh
-│   └── n8n-service.sh
+│   ├── n8n-service.sh
+│   └── README.md
 ├── nano
 │   └── nanorc
 ├── noti
@@ -202,11 +202,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── install-globals.sh
 ├── nvim
 │   ├── lua
-│   ├── LICENSE
-│   ├── README.md
 │   ├── init.lua
 │   ├── lazy-lock.json
 │   ├── lazyvim.json
+│   ├── LICENSE
+│   ├── README.md
 │   └── stylua.toml
 ├── python
 │   ├── global-packages.txt
@@ -239,9 +239,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── bin
 │   ├── plugins
 │   ├── AGENTS.md
-│   ├── CLAUDE.md -> AGENTS.md
-│   ├── WARP.md -> AGENTS.md
 │   ├── aliases.sh
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── completion.sh
 │   ├── exports.sh
 │   ├── functions.sh
@@ -251,10 +250,11 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── p10k.zsh
 │   ├── plugins.sh
 │   ├── setup_zsh.sh
+│   ├── WARP.md -> AGENTS.md
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
-├── AGENTS.md.bak.67128
+├── AGENTS.md.bak.68105
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md

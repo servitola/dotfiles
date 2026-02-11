@@ -77,10 +77,10 @@ if ! command -v npm &>/dev/null; then
 fi
 
 # --- 4. ampcode ---
-if ! command -v ampcode &>/dev/null; then
+if ! command -v amp &>/dev/null; then
     info "[4/5] Installing ampcode..."
-    if ! npm install -g @anthropic-ai/ampcode; then
-        fail "Failed to install ampcode. Try manually: npm install -g @anthropic-ai/ampcode"
+    if ! npm install -g @sourcegraph/amp; then
+        fail "Failed to install ampcode. Try manually: npm install -g @sourcegraph/amp"
     fi
 else
     info "[4/5] ampcode — OK"
@@ -112,7 +112,7 @@ echo "=== Done ==="
 echo ""
 command -v brew    &>/dev/null && info "Homebrew $(brew --version 2>/dev/null | head -1)"
 command -v node    &>/dev/null && info "Node.js $(node --version 2>/dev/null)"
-command -v ampcode &>/dev/null && info "ampcode $(ampcode --version 2>/dev/null || echo 'installed')"
+command -v amp    &>/dev/null && info "ampcode $(amp --version 2>/dev/null || echo 'installed')"
 if [[ -d "/Applications/Warp.app" ]]; then
     info "Warp Terminal"
 else
