@@ -254,7 +254,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
-├── AGENTS.md.bak.68105
+├── AGENTS.md.bak.70925
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md

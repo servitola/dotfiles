@@ -24,24 +24,24 @@ fail()  { echo -e "${RED}[ERROR]${NC} $1"; exit 1; }
 
 echo ""
 echo "=== macOS Developer Setup ==="
-echo "    Homebrew -> Node.js -> ampcode + Warp"
+echo "    Homebrew -> Node.js -> ampcode (+ config) + Warp"
 echo ""
 
 # --- 1. Xcode Command Line Tools ---
 if ! xcode-select -p &>/dev/null; then
-    info "[1/5] Installing Xcode Command Line Tools..."
+    info "[1/6] Installing Xcode Command Line Tools..."
     xcode-select --install 2>/dev/null || true
     echo ""
     warn "A system dialog should appear. Click 'Install' and wait."
     warn "After it finishes, run this script again."
     exit 0
 else
-    info "[1/5] Xcode Command Line Tools — OK"
+    info "[1/6] Xcode Command Line Tools — OK"
 fi
 
 # --- 2. Homebrew ---
 if ! command -v brew &>/dev/null; then
-    info "[2/5] Installing Homebrew..."
+    info "[2/6] Installing Homebrew..."
     if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
         fail "Homebrew installation failed. Check your internet connection and try again."
     fi
@@ -55,7 +55,7 @@ if ! command -v brew &>/dev/null; then
         eval "$(/usr/local/bin/brew shellenv)"
     fi
 else
-    info "[2/5] Homebrew — OK"
+    info "[2/6] Homebrew — OK"
 fi
 
 if ! command -v brew &>/dev/null; then
@@ -64,12 +64,12 @@ fi
 
 # --- 3. Node.js ---
 if ! command -v node &>/dev/null; then
-    info "[3/5] Installing Node.js via Homebrew..."
+    info "[3/6] Installing Node.js via Homebrew..."
     if ! brew install node; then
         fail "Failed to install Node.js. Run 'brew doctor' and try again."
     fi
 else
-    info "[3/5] Node.js $(node --version) — OK"
+    info "[3/6] Node.js $(node --version) — OK"
 fi
 
 if ! command -v npm &>/dev/null; then
@@ -78,19 +78,36 @@ fi
 
 # --- 4. ampcode ---
 if ! command -v amp &>/dev/null; then
-    info "[4/5] Installing ampcode..."
+    info "[4/6] Installing ampcode..."
     if ! npm install -g @sourcegraph/amp; then
         fail "Failed to install ampcode. Try manually: npm install -g @sourcegraph/amp"
     fi
 else
-    info "[4/5] ampcode — OK"
+    info "[4/6] ampcode — OK"
 fi
 
-# --- 5. Warp Terminal ---
-if [[ -d "/Applications/Warp.app" ]]; then
-    info "[5/5] Warp Terminal — OK"
+# --- 5. ampcode settings ---
+AMP_CONFIG_DIR="$HOME/.config/amp"
+AMP_SETTINGS="$AMP_CONFIG_DIR/settings.json"
+AMP_SETTINGS_URL="https://raw.githubusercontent.com/servitola/dotfiles/spotware/amp/settings.json"
+
+mkdir -p "$AMP_CONFIG_DIR"
+if [[ -f "$AMP_SETTINGS" ]]; then
+    info "[5/6] ampcode settings already exist at $AMP_SETTINGS — skipping"
+    warn "To overwrite, delete the file and re-run the script"
 else
-    info "[5/5] Downloading Warp Terminal..."
+    info "[5/6] Downloading ampcode settings..."
+    if ! curl -fsSL "$AMP_SETTINGS_URL" -o "$AMP_SETTINGS"; then
+        fail "Failed to download ampcode settings. Check your internet connection."
+    fi
+    info "[5/6] ampcode settings — OK"
+fi
+
+# --- 6. Warp Terminal ---
+if [[ -d "/Applications/Warp.app" ]]; then
+    info "[6/6] Warp Terminal — OK"
+else
+    info "[6/6] Downloading Warp Terminal..."
     WARP_DMG="/tmp/Warp.dmg"
 
     if ! curl -fSL "https://releases.warp.dev/stable/v0.2025.01.01.00.00.stable_00/Warp.dmg" -o "$WARP_DMG" 2>/dev/null; then
