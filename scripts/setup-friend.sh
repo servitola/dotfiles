@@ -44,7 +44,7 @@ echo ""
 sleep 1
 
 # --- 1. Xcode Command Line Tools ---
-step "Step 1/6: Xcode Command Line Tools"
+step "Step 1/7: Xcode Command Line Tools"
 if ! xcode-select -p &>/dev/null; then
     echo -e "  Installing... this is needed for everything else"
     xcode-select --install 2>/dev/null || true
@@ -57,7 +57,7 @@ else
 fi
 
 # --- 2. Homebrew ---
-step "Step 2/6: Homebrew (package manager)"
+step "Step 2/7: Homebrew (package manager)"
 if ! command -v brew &>/dev/null; then
     echo -e "  Installing the backbone of macOS dev tools..."
     if ! /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; then
@@ -82,7 +82,7 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # --- 3. Node.js ---
-step "Step 3/6: Node.js"
+step "Step 3/7: Node.js"
 if ! command -v node &>/dev/null; then
     echo -e "  Installing JavaScript runtime..."
     if ! brew install node; then
@@ -98,7 +98,7 @@ if ! command -v npm &>/dev/null; then
 fi
 
 # --- 4. ampcode ---
-step "Step 4/6: Ampcode (AI coding agent)"
+step "Step 4/7: Ampcode (AI coding agent)"
 if ! command -v amp &>/dev/null; then
     echo -e "  Installing the good stuff..."
     if ! npm install -g @sourcegraph/amp; then
@@ -110,7 +110,7 @@ else
 fi
 
 # --- 5. ampcode settings ---
-step "Step 5/6: Ampcode settings"
+step "Step 5/7: Ampcode settings"
 AMP_CONFIG_DIR="$HOME/.config/amp"
 AMP_SETTINGS="$AMP_CONFIG_DIR/settings.json"
 AMP_SETTINGS_URL="https://raw.githubusercontent.com/servitola/dotfiles/spotware/amp/settings.json"
@@ -127,8 +127,54 @@ else
     info "Settings saved to $AMP_SETTINGS"
 fi
 
-# --- 6. Warp Terminal ---
-step "Step 6/6: Warp Terminal"
+# --- 6. Global AI profile ---
+step "Step 6/7: Global AI profile (AGENTS.md)"
+AMP_AGENTS_MD="$AMP_CONFIG_DIR/AGENTS.md"
+
+if [[ -f "$AMP_AGENTS_MD" ]]; then
+    info "AGENTS.md already exists"
+    warn "To overwrite, delete $AMP_AGENTS_MD and re-run"
+else
+    echo -e "  Creating your AI assistant profile..."
+    cat > "$AMP_AGENTS_MD" << 'AGENTSMD'
+# Global Instructions
+
+## About the user
+
+- Name: Alexey (aloner)
+- Role: Marketing specialist
+- Technical level: intermediate — comfortable with basic terminal commands, but not a developer
+- OS: macOS
+- Primary language: Russian (understands English)
+
+## Communication style
+
+- Respond in Russian by default unless the user writes in English
+- Explain technical concepts in simple terms, avoid unnecessary jargon
+- When suggesting terminal commands, briefly explain what each command does
+- If a task involves risk (deleting files, changing system settings), always warn before executing
+- Prefer step-by-step instructions over long blocks of code
+
+## How to help
+
+- Be proactive: suggest solutions, not just answer questions
+- When the user asks "how to do X", give a ready-to-use solution, not just theory
+- For file operations, always confirm paths before modifying
+- If unsure about user's intent, ask a clarifying question instead of guessing
+- Help with: marketing automation, data analysis, text processing, file management, web scraping, spreadsheets
+
+## Environment
+
+- Shell: zsh (default macOS)
+- Terminal: Warp
+- Package manager: Homebrew
+- No development environment pre-configured — install tools as needed
+AGENTSMD
+    info "Profile created at $AMP_AGENTS_MD"
+fi
+
+# --- 7. Warp Terminal ---
+step "Step 7/7: Warp Terminal"
 if [[ -d "/Applications/Warp.app" ]]; then
     info "Warp is already installed"
 else
@@ -166,6 +212,7 @@ command -v brew &>/dev/null && echo -e "  ${GREEN}*${NC} Homebrew $(brew --versi
 command -v node &>/dev/null && echo -e "  ${GREEN}*${NC} Node.js $(node --version 2>/dev/null)"
 command -v amp  &>/dev/null && echo -e "  ${GREEN}*${NC} Ampcode $(amp --version 2>/dev/null || echo '')"
 [[ -f "$HOME/.config/amp/settings.json" ]] && echo -e "  ${GREEN}*${NC} Ampcode settings configured"
+[[ -f "$HOME/.config/amp/AGENTS.md" ]] && echo -e "  ${GREEN}*${NC} AI profile (AGENTS.md)"
 if [[ -d "/Applications/Warp.app" ]]; then
     echo -e "  ${GREEN}*${NC} Warp Terminal"
 else
