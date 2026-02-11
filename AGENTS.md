@@ -214,6 +214,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── uv-packages.txt
 ├── raycast
 │   └── Raycast.rayconfig
+├── scripts
+│   └── setup-friend.sh
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
@@ -251,6 +253,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
+├── AGENTS.md.bak.85093
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
