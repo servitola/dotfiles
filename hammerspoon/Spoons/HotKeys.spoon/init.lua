@@ -318,6 +318,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.AudioSwitcher:switchToMarshall()
                     end)
+                elseif functionName == "audio.connect_marshall" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:connectAndSwitchToMarshall()
+                    end)
                 elseif functionName == "audio.bt" then
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.AudioSwitcher:switchToBT()

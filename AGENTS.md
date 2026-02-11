@@ -39,16 +39,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
-│   ├── rags
 │   ├── roles
 │   ├── config.yaml
 │   └── dark.tmTheme
 ├── amp
-│   ├── commands
-│   ├── tools
 │   └── settings.json
 ├── annepro2
-│   ├── qmk
+│   ├── ANNE PRO 2.json
 │   ├── layout.json
 │   ├── lightning.json
 │   ├── ObinsKit_1.2.11_x64.dmg
@@ -66,6 +63,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── chromium-vimium-extension
 │   └── vimium-options.json
 ├── claude-code
+│   ├── agents
+│   ├── commands
+│   ├── hooks
+│   ├── output-styles
+│   ├── plugins
+│   ├── prompts
 │   ├── CLAUDE.md
 │   └── settings.json
 ├── claude-desktop
@@ -83,6 +86,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── keybindings.json
 │   └── settings.json
 ├── docs
+│   ├── plans
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
@@ -110,6 +114,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── gitconfig
 │   └── global_ignore
 ├── hammerspoon
+│   ├── lib
 │   ├── Spoons
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
@@ -121,13 +126,14 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── heroic
 │   └── config.json
 ├── homebrew
-│   ├── examples
-│   ├── Support
+│   ├── AGENTS.md
 │   ├── brewfile
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── install_all_homebrew_packages.sh
 │   ├── install_minimum_homebrew_packages.sh
 │   ├── install.sh
-│   └── minimum_brewfile
+│   ├── minimum_brewfile
+│   └── WARP.md -> AGENTS.md
 ├── iina
 │   └── servitola.conf
 ├── images
@@ -141,17 +147,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── jetbrains android
 │   └── settings.zip
 ├── jetbrains rider
-│   ├── settings
-│   ├── settings 2
 │   ├── rider.vmoptions
 │   └── settings.zip
 ├── jetbrains webstorm
-│   ├── settings
 │   └── settings.zip
 ├── karabiner
 │   ├── assets
 │   ├── automatic_backups
-│   ├── rules
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
 │   ├── karabiner.json
@@ -165,20 +167,17 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── config.yml
 ├── lazygit
 │   └── config.yml
+├── linux
 ├── lulu
 │   ├── preferences.plist
 │   └── rules.plist
 ├── macos
 │   ├── helpers
-│   ├── check_wifi_environment.sh
-│   ├── connect_to_arris_router.sh
-│   ├── disable_apple_continuity.sh
 │   ├── dock_setup.sh
-│   ├── gaming_network_dashboard.sh
 │   ├── hosts
-│   ├── router_optimization_guide.md
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
+│   ├── start_n8n.sh
 │   ├── sync_gruvbox_wallpapers.sh
 │   └── update_all_and_cleanup_all.sh
 ├── marta
@@ -187,7 +186,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── conf.marco
 │   └── favorites.marco
 ├── midnight commander
-│   ├── mcedit
 │   ├── ini
 │   └── panels.ini
 ├── n8n
@@ -217,9 +215,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── uv-packages.txt
 ├── raycast
 │   └── Raycast.rayconfig
-├── voiceink
-│   ├── README.md
-│   └── settings.json
 ├── vscode
 │   ├── keybindings.json
 │   └── settings.json
@@ -237,13 +232,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 ├── yt-dlp
 │   ├── audioConfig
 │   ├── config
-│   ├── transcriptConfig
 │   └── videoConfig
 ├── zsh
 │   ├── bin
 │   ├── plugins
-│   ├── secrets
+│   ├── AGENTS.md
 │   ├── aliases.sh
+│   ├── CLAUDE.md -> AGENTS.md
 │   ├── completion.sh
 │   ├── exports.sh
 │   ├── functions.sh
@@ -253,6 +248,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── p10k.zsh
 │   ├── plugins.sh
 │   ├── setup_zsh.sh
+│   ├── WARP.md -> AGENTS.md
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
