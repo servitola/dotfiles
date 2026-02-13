@@ -143,7 +143,7 @@ local appSpecificHotkeys = {
     },
     ["Finder"] = {
         { from = {"alt"}, key = "z", to = {"cmd", "alt"}, target_key = "l" },
-    },
+	},
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
         { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
@@ -314,6 +314,10 @@ function obj:init()
                 elseif functionName == "audio.marshall" then
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.AudioSwitcher:switchToMarshall()
+                    end)
+                elseif functionName == "audio.connect_marshall" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.AudioSwitcher:connectAndSwitchToMarshall()
                     end)
                 elseif functionName == "audio.bt" then
                     hs.hotkey.bind(modifiers, key, function()
