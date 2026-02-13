@@ -49,6 +49,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── annepro2
 │   ├── ANNE PRO 2.json
+│   ├── ObinsKit_1.2.11_x64.dmg
 │   ├── layout.json
 │   ├── lightning.json
 │   └── readme.md
@@ -89,6 +90,7 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── settings.json
 ├── docs
 │   ├── plans
+│   ├── README.md
 │   ├── app-integration.md
 │   ├── claude-code-best-practices.md
 │   ├── hammerspoon.md
@@ -115,8 +117,8 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── gitconfig
 │   └── global_ignore
 ├── hammerspoon
-│   ├── lib
 │   ├── Spoons
+│   ├── lib
 │   ├── AGENTS.md
 │   ├── CLAUDE.md -> AGENTS.md
 │   ├── WARP.md -> AGENTS.md
@@ -128,13 +130,13 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   └── config.json
 ├── homebrew
 │   ├── AGENTS.md
-│   ├── brewfile
 │   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
+│   ├── brewfile
+│   ├── install.sh
 │   ├── install_all_homebrew_packages.sh
 │   ├── install_minimum_homebrew_packages.sh
-│   ├── install.sh
-│   ├── minimum_brewfile
-│   └── WARP.md -> AGENTS.md
+│   └── minimum_brewfile
 ├── iina
 │   └── servitola.conf
 ├── images
@@ -238,8 +240,9 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── bin
 │   ├── plugins
 │   ├── AGENTS.md
-│   ├── aliases.sh
 │   ├── CLAUDE.md -> AGENTS.md
+│   ├── WARP.md -> AGENTS.md
+│   ├── aliases.sh
 │   ├── completion.sh
 │   ├── exports.sh
 │   ├── functions.sh
@@ -249,11 +252,9 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── p10k.zsh
 │   ├── plugins.sh
 │   ├── setup_zsh.sh
-│   ├── WARP.md -> AGENTS.md
 │   ├── zprofile.sh
 │   └── zshrc.sh
 ├── AGENTS.md
-├── AGENTS.md.bak.85093
 ├── CLAUDE.md -> AGENTS.md
 ├── Makefile
 ├── README.md
