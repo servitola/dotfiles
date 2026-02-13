@@ -29,7 +29,7 @@ return {
 --         ⇧⌃3   │              │            Rider — toggle bookmark 3
 --         ⇧⌥3   │ ¹⁄₃ ¹⁄₃   ή  │
 --         ⇧⌘3   │              │            Shotr — save screenshot of window
-{ chord = "⌃⌥3",                                fn = "audio.marshall" },
+{ chord = "⌃⌥3",                                fn = "audio.connect_marshall" },
 --         ⌃⌘3   │              │ ???
 --         ⌥⌘3   │              │             Fork — show commit filetree
 --         ⌥⌘3   │              │         Telegram — focus 3rd chat
