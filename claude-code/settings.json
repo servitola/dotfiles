@@ -29,6 +29,18 @@
     ],
     "deny": []
   },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/claude-code/hooks/check-hook-script-length.sh"
+          }
+        ]
+      }
+    ]
+  },
   "alwaysThinkingEnabled": false,
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true
