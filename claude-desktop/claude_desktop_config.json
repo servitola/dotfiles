@@ -36,7 +36,9 @@
   },
   "preferences": {
     "menuBarEnabled": false,
+    "quickEntryShortcut": "off",
     "quickEntryDictationShortcut": "off",
-    "quickEntryShortcut": "off"
+    "sidebarMode": "chat",
+    "coworkScheduledTasksEnabled": false
   }
 }
