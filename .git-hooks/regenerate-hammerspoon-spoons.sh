@@ -5,9 +5,9 @@ DOTFILES_ROOT="$HOME/projects/dotfiles"
 HAMMERSPOON_AGENTS="$DOTFILES_ROOT/hammerspoon/AGENTS.md"
 SPOONS_DIR="$DOTFILES_ROOT/hammerspoon/Spoons"
 TEMP_FILE=$(mktemp)
-BACKUP_FILE="${HAMMERSPOON_AGENTS}.bak.$$"
+BACKUP_FILE=$(mktemp)
 
-# Safety: create backup before modifying
+# Safety: create backup in temp location (not visible)
 cp "$HAMMERSPOON_AGENTS" "$BACKUP_FILE"
 
 # Generate list of Spoons
