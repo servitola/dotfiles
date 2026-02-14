@@ -5,6 +5,7 @@
 @openai/codex
 @sourcegraph/amp
 appium
+figma-developer-mcp
 n8n
 react-devtools
 trash-cli
