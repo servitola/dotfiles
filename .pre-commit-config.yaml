@@ -16,17 +16,17 @@ repos:
         pass_filenames: false
         always_run: true
         stages: [pre-commit]
-      - id: regenerate-hammerspoon-spoons
-        name: Regenerate Hammerspoon Spoons list
-        entry: .git-hooks/regenerate-hammerspoon-spoons.sh
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [pre-commit]
-      - id: create-agents-symlinks
-        name: Create AGENTS.md symlinks in subdirectories
-        entry: .git-hooks/create-agents-symlinks.sh
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [pre-commit]
+      # - id: regenerate-hammerspoon-spoons
+      #   name: Regenerate Hammerspoon Spoons list
+      #   entry: .git-hooks/regenerate-hammerspoon-spoons.sh
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
+      #   stages: [commit]
+      # - id: create-agents-symlinks
+      #   name: Create AGENTS.md symlinks in subdirectories
+      #   entry: .git-hooks/create-agents-symlinks.sh
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
+      #   stages: [commit]
