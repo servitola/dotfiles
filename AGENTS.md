@@ -214,6 +214,12 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── install-globals.sh
 │   ├── install-uv-tools.sh
 │   └── uv-packages.txt
+├── qwen-code
+│   ├── agents
+│   ├── mcp
+│   ├── skills
+│   ├── QWEN.md
+│   └── settings.json
 ├── raycast
 │   └── Raycast.rayconfig
 ├── scripts
