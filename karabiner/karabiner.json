@@ -953,6 +953,19 @@
                             },
                             {
                                 "from": {
+                                    "key_code": "g",
+                                    "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f13",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
                                     "key_code": "b",
                                     "modifiers": { "mandatory": ["left_shift", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
