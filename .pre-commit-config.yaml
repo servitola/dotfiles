@@ -7,15 +7,15 @@ repos:
       - id: trailing-whitespace
       - id: check-added-large-files
       - id: check-yaml
-  - repo: local
-    hooks:
-      - id: regenerate-agents-md
-        name: Regenerate AGENTS.md directory structure
-        entry: .git-hooks/regenerate-agents-md.sh
-        language: system
-        pass_filenames: false
-        always_run: true
-        stages: [pre-commit]
+  # - repo: local
+    # hooks:
+      # - id: regenerate-agents-md
+      #   name: Regenerate AGENTS.md directory structure
+      #   entry: .git-hooks/regenerate-agents-md.sh
+      #   language: system
+      #   pass_filenames: false
+      #   always_run: true
+      #   stages: [pre-commit]
       # - id: regenerate-hammerspoon-spoons
       #   name: Regenerate Hammerspoon Spoons list
       #   entry: .git-hooks/regenerate-hammerspoon-spoons.sh
