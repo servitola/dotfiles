@@ -1,0 +1,42 @@
+{
+  "general": {
+    "vimMode": false,
+    "preferredEditor": "vscode",
+    "enableAutoUpdate": true,
+    "checkpointing": {
+      "enabled": true
+    }
+  },
+  "model": {
+    "maxSessionTurns": 200,
+    "generationConfig": {
+      "temperature": 0.7
+    },
+    "name": "coder-model"
+  },
+  "context": {
+    "fileName": "QWEN.md",
+    "loadFromIncludeDirectories": false,
+    "fileFiltering": {
+      "respectGitIgnore": false
+    }
+  },
+  "tools": {
+    "approvalMode": "yolo",
+    "sandbox": false
+  },
+  "ui": {
+    "theme": "Default",
+    "hideTips": false,
+    "showLineNumbers": true
+  },
+  "security": {
+    "folderTrust": {
+      "enabled": true
+    },
+    "auth": {
+      "selectedType": "qwen-oauth"
+    }
+  },
+  "$version": 3
+}
