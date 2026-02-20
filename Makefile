@@ -133,6 +133,13 @@ install:
 	@$(REMOVE) ~/.claude/settings.json
 	@$(LINK) ~/projects/dotfiles/claude-code/settings.json ~/.claude/settings.json
 
+	@echo "setup Qwen Code symlinks"
+	@mkdir -p ~/.qwen
+	@$(REMOVE) ~/.qwen/settings.json
+	@$(LINK) ~/projects/dotfiles/qwen-code/settings.json ~/.qwen/settings.json
+	@$(REMOVE) ~/.qwen/QWEN.md
+	@$(LINK) ~/projects/dotfiles/qwen-code/QWEN.md ~/.qwen/QWEN.md
+
 	@echo "setup yazi symlinks"
 	@$(REMOVE) ~/.config/yazi
 	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
