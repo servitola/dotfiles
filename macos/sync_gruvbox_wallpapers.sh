@@ -1,6 +1,7 @@
 #!/bin/zsh
 WALLPAPERS_DIR="$HOME/Pictures/Wallpapers"
 TEMP_DIR="/tmp/gruvbox-temp-$$"
+GIT_REPO_DIR="$HOME/.cache/gruvbox-wallpapers"
 
 mkdir -p "$WALLPAPERS_DIR"
 
@@ -8,7 +9,7 @@ CURL_OPTS=(-s)
 [ -n "$GITHUB_API_TOKEN" ] && CURL_OPTS+=(-H "Authorization: token $GITHUB_API_TOKEN")
 
 # Directories to sync from the repository
-CATEGORIES=("photography" "pixelart", "mix", "minimalistic")
+CATEGORIES=("photography" "pixelart" "mix" "minimalistic")
 ALL_REMOTE_FILES=""
 
 # Fetch file lists from all categories
@@ -42,19 +43,27 @@ echo "$LOCAL_FILES" > /tmp/local_files_$$
 MISSING_FILES=$(comm -23 /tmp/remote_files_$$ /tmp/local_files_$$)
 rm -f /tmp/remote_files_$$ /tmp/local_files_$$
 
-[ -z "$MISSING_FILES" ] && exit 0
+[ -z "$MISSING_FILES" ] && echo "✓ Wallpapers up to date" && exit 0
 
-git clone --filter=blob:none --sparse --depth=1 \
-    https://github.com/AngelJumbo/gruvbox-wallpapers.git "$TEMP_DIR" 2> /dev/null || exit 1
-cd "$TEMP_DIR" && git sparse-checkout set wallpapers/photography wallpapers/pixelart wallpapers/mix wallpapers/minimalistic
+echo "⬇ Downloading missing wallpapers..."
+
+# Clone or update cached repository
+if [ -d "$GIT_REPO_DIR/.git" ]; then
+    cd "$GIT_REPO_DIR" && git fetch origin --depth=1 > /dev/null 2>&1
+else
+    mkdir -p "$GIT_REPO_DIR"
+    git clone --filter=blob:none --sparse --depth=1 \
+        https://github.com/AngelJumbo/gruvbox-wallpapers.git "$GIT_REPO_DIR" 2> /dev/null || exit 1
+    cd "$GIT_REPO_DIR" && git sparse-checkout set wallpapers/photography wallpapers/pixelart wallpapers/mix wallpapers/minimalistic > /dev/null 2>&1
+fi
 
 echo "$MISSING_FILES" | while read -r file; do
     for CATEGORY in "${CATEGORIES[@]}"; do
-        if [ -f "$TEMP_DIR/wallpapers/$CATEGORY/$file" ]; then
-            cp "$TEMP_DIR/wallpapers/$CATEGORY/$file" "$WALLPAPERS_DIR/"
+        if [ -f "$GIT_REPO_DIR/wallpapers/$CATEGORY/$file" ]; then
+            cp "$GIT_REPO_DIR/wallpapers/$CATEGORY/$file" "$WALLPAPERS_DIR/"
             break
         fi
     done
 done
 
-rm -rf "$TEMP_DIR"
+echo "✓ Wallpapers synced"
