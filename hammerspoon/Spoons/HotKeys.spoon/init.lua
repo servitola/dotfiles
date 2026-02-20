@@ -395,6 +395,38 @@ function obj:init()
                             hs.execute("open -a 'Visual Studio Code' '" .. dotfilesPath .. "'", true)
                         end
                     end)
+                elseif functionName == "fork.dotfiles" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local dotfilesPath = os.getenv("HOME") .. "/projects/dotfiles"
+                        local fork = hs.application.find("Fork")
+
+                        if not fork then
+                            hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
+                            return
+                        end
+
+                        local dotfilesWindow = nil
+                        for _, window in ipairs(fork:allWindows()) do
+                            local title = window:title()
+                            if title:find("dotfiles") then
+                                dotfilesWindow = window
+                                break
+                            end
+                        end
+
+                        if dotfilesWindow then
+                            local isFrontmost = hs.application.frontmostApplication() == fork
+                            local isFocused = (hs.window.focusedWindow() == dotfilesWindow)
+
+                            if isFrontmost and isFocused then
+                                fork:hide()
+                            else
+                                dotfilesWindow:focus()
+                            end
+                        else
+                            hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
+                        end
+                    end)
                 end
             end
 
