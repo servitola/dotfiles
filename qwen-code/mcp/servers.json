@@ -1,0 +1,91 @@
+{
+  "$schema": "https://qwenlm.github.io/qwen-code-docs/en/users/configuration/settings.schema.json",
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "description": "GitHub repository management, PRs, issues, and code review",
+      "timeout": 30000
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-filesystem"],
+      "cwd": "${HOME}",
+      "description": "Secure file system operations with path validation",
+      "timeout": 30000,
+      "includeTools": [
+        "read_file",
+        "read_many_files",
+        "write_file",
+        "list_directory",
+        "search_files",
+        "get_file_info"
+      ]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "description": "Structured problem-solving and step-by-step reasoning",
+      "timeout": 60000
+    },
+    "memory-bank": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory-bank"],
+      "description": "Persistent memory across sessions for project context",
+      "timeout": 30000
+    },
+    "brave-search": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-brave-search"],
+      "env": {
+        "BRAVE_API_KEY": "${BRAVE_API_KEY}"
+      },
+      "description": "Privacy-focused web search for research and documentation",
+      "timeout": 30000,
+      "includeTools": [
+        "brave_web_search",
+        "brave_local_search"
+      ]
+    },
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-fetch"],
+      "description": "Real-time web content retrieval and HTML-to-Markdown conversion",
+      "timeout": 30000
+    },
+    "git": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-git"],
+      "description": "Git operations, branch management, and repository insights",
+      "timeout": 30000
+    },
+    "postgresql": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "${DATABASE_URL}"
+      },
+      "description": "PostgreSQL database operations and queries",
+      "timeout": 30000,
+      "includeTools": [
+        "query",
+        "list_tables",
+        "describe_table"
+      ]
+    }
+  },
+  "mcp": {
+    "allowed": [
+      "github",
+      "filesystem",
+      "sequential-thinking",
+      "memory-bank",
+      "fetch",
+      "git"
+    ],
+    "excluded": []
+  }
+}
