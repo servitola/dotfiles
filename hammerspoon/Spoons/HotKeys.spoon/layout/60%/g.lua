@@ -17,7 +17,9 @@ return {
 --          ⇪⇧g   │              │
 --          ⇪⌃g   │              │
 --          ⇪⌥g   │              │
---          ⇪⌘g   │              │
+--          ⇪⌘g   │     ⌘F13     │                  ↓
+{ chord = "⌘F13",                            fn = "fork.dotfiles" },
+--                │              │
 --          ⇧⌃g   │              │        Rider — current file git history
 --          ⇧⌥g   │         Ϊ  │
 --          ⇧⌘g   │              │       Finder — go to GoTo dialog
