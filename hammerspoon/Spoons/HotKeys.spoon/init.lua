@@ -427,6 +427,38 @@ function obj:init()
                             hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
                         end
                     end)
+                elseif functionName == "fork.workprojectdev" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local repoPath = os.getenv("HOME") .. "/projects/workname/workprojectDev"
+                        local fork = hs.application.find("Fork")
+
+                        if not fork then
+                            hs.execute("open -a Fork '" .. repoPath .. "'", true)
+                            return
+                        end
+
+                        local repoWindow = nil
+                        for _, window in ipairs(fork:allWindows()) do
+                            local title = window:title()
+                            if title:find("workprojectDev") then
+                                repoWindow = window
+                                break
+                            end
+                        end
+
+                        if repoWindow then
+                            local isFrontmost = hs.application.frontmostApplication() == fork
+                            local isFocused = (hs.window.focusedWindow() == repoWindow)
+
+                            if isFrontmost and isFocused then
+                                fork:hide()
+                            else
+                                repoWindow:focus()
+                            end
+                        else
+                            hs.execute("open -a Fork '" .. repoPath .. "'", true)
+                        end
+                    end)
                 end
             end
 
