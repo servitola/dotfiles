@@ -1,0 +1,59 @@
+default_profile = ""
+
+[theme]
+name = ""
+
+[claude]
+
+[updates]
+check_enabled = true
+auto_update = false
+check_interval_hours = 24
+notify_in_cli = true
+
+[worktree]
+enabled = false
+path_template = "../{repo-name}-worktrees/{branch}"
+bare_repo_path_template = "./{branch}"
+auto_cleanup = true
+show_branch_in_tui = true
+delete_branch_on_cleanup = false
+
+[sandbox]
+enabled_by_default = false
+default_image = "ghcr.io/njbrake/aoe-sandbox:latest"
+extra_volumes = []
+environment = [
+    "TERM",
+    "COLORTERM",
+    "FORCE_COLOR",
+    "NO_COLOR",
+]
+auto_cleanup = true
+default_terminal_mode = "host"
+volume_ignores = []
+mount_ssh = false
+container_runtime = "docker"
+
+[tmux]
+status_bar = "auto"
+mouse = "auto"
+
+[session]
+default_tool = "claude"
+yolo_mode_default = true
+
+[diff]
+context_lines = 3
+
+[hooks]
+
+[sound]
+enabled = true
+mode = "random"
+
+[app_state]
+has_seen_welcome = true
+last_seen_version = "0.13.0"
+home_list_width = 35
+has_seen_custom_instruction_warning = false
