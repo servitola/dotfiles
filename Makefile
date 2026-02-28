@@ -166,6 +166,10 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 	@$(LINK) ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
+	@echo "setup agent-of-empires (aoe) symlink"
+	@$(REMOVE) ~/Library/Application\ Support/agent-of-empires
+	@$(LINK) ~/projects/dotfiles/agent-of-empires ~/Library/Application\ Support/agent-of-empires
+
 	@echo "setup Colima for containers"
 	@$(REMOVE) ~/.colima/default
 	@$(LINK) ~/projects/dotfiles/colima/default ~/.colima/default

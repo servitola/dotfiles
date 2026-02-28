@@ -28,3 +28,4 @@ appium/.appium/node_modules/
 .aider*
 colima/default/daemon/daemon.log
 colima/default/daemon/daemon.pid
+agent-of-empires/update_cache.json
