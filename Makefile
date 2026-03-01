@@ -145,6 +145,12 @@ install:
 	@$(LINK) ~/projects/dotfiles/qwen-code/settings.json ~/.qwen/settings.json
 	@$(REMOVE) ~/.qwen/QWEN.md
 	@$(LINK) ~/projects/dotfiles/qwen-code/QWEN.md ~/.qwen/QWEN.md
+	@$(REMOVE) ~/.qwen/skills
+	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.qwen/skills
+	@$(REMOVE) ~/.qwen/agents
+	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.qwen/agents
+	@$(REMOVE) ~/.qwen/commands
+	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.qwen/commands
 
 	@echo "setup yazi symlinks"
 	@$(REMOVE) ~/.config/yazi
@@ -153,6 +159,12 @@ install:
 	@echo "setup ampcode settings"
 	@$(REMOVE) ~/.config/amp
 	@$(LINK) ~/projects/dotfiles/amp ~/.config/amp
+	@$(REMOVE) ~/.config/amp/commands
+	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.config/amp/commands
+	@$(REMOVE) ~/.config/amp/agents
+	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.config/amp/agents
+	@$(REMOVE) ~/.config/amp/skills
+	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.config/amp/skills
 
 	@echo "setup noti"
 	@$(REMOVE) ~/.config/noti
