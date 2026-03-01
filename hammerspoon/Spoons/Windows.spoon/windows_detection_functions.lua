@@ -95,6 +95,10 @@ function is_finder_copy_dialog(app_title, window_title, window)
     return is_copy and is_small_window
 end
 
+function is_telegram_video_player(app_title, window_title)
+    return app_title == "Telegram" and window_title == ""
+end
+
 function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
