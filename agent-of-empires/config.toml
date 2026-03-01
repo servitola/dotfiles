@@ -41,7 +41,7 @@ mouse = "auto"
 
 [session]
 default_tool = "claude"
-yolo_mode_default = true
+yolo_mode_default = false
 
 [diff]
 context_lines = 3
