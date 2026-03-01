@@ -1,0 +1,56 @@
+---
+description: |
+  Execute task from tasks/*.md with quality gates.
+
+  Use when: "выполни задачу", "сделай таску", "do task", "execute task", "запусти задачу"
+---
+
+# Do Task
+
+Execute a spec-driven task with validation and status tracking.
+
+## Step 1: Read Task
+
+1. Read task file (user provides path or task number)
+   - If user didn't specify → ask: "Which task to execute?"
+2. Verify task status is `planned` (if not → ask user before proceeding)
+3. Update task frontmatter: `status: planned` → `status: in_progress`
+4. Read every file listed in the task's "Context Files" section
+
+## Step 2: Execute
+
+1. Load each skill listed in the task (frontmatter `skills: [...]` and "Required Skills" section)
+   - If a skill is not found → warn user, continue with remaining skills
+   - If task has no skill (frontmatter `skills: []` or absent) → read the task, execute "What to do" and "Verification Steps" directly. For tasks with user instructions → show the instruction to user, wait for confirmation.
+2. Follow loaded skill workflow
+3. Git commit implementation (code + tests pass): `feat|fix|refactor: task {N} — {brief description}`
+4. For each reviewer from the task's "Reviewers" section (if present):
+   1. Spawn subagent via Task tool (subagent_type = reviewer name, e.g. `code-reviewer`)
+   2. Pass: git diff of changes, path to task file, path to tech-spec, path to user-spec
+   3. Reviewer loads its own skill automatically (via agent frontmatter `skills:`)
+   4. Report is written to the path specified in the task's "Reviewers" section
+   5. Read report. If findings exist → fix, re-run tests, git commit: `fix: address review round {N} for task {N}`, repeat (max 3 rounds)
+
+## Step 3: Verify
+
+1. Check each acceptance criterion from task file
+2. If task has "Verification Steps → Smoke" → execute each smoke command, record results in decisions.md Verification section
+3. If task has "Verification Steps → User" → ask user to verify, wait for confirmation
+4. If any verification fails → fix → re-run tests → re-run reviewers (new round) → re-verify
+   - After 3 failed rounds → stop, report failures to user, keep status `in_progress`
+   - Tool unavailable → document, suggest manual check
+
+## Step 4: Complete
+
+1. Read template `~/.claude/shared/work-templates/decisions.md.template` and write a concise execution report to `work/{feature}/decisions.md`. Follow template format strictly — no extra sections.
+2. Update task frontmatter: `status: in_progress` → `status: done`
+3. Update tech-spec: `- [ ] Task N` → `- [x] Task N`
+4. Git commit: `chore: complete task {N} — update status and decisions`
+
+## Self-Verification
+
+- [ ] Task status is `done`
+- [ ] Tech-spec checkbox updated
+- [ ] decisions.md entry written with reviews and verification results
+- [ ] Git commit created with task reference
+- [ ] Every acceptance criterion from task file is met

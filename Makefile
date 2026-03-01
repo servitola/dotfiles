@@ -49,6 +49,12 @@ install:
 	@mkdir -p ~/.claude
 	@$(REMOVE) ~/.claude/CLAUDE.md
 	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.claude/CLAUDE.md
+	@$(REMOVE) ~/.claude/commands
+	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.claude/commands
+	@$(REMOVE) ~/.claude/agents
+	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.claude/agents
+	@$(REMOVE) ~/.claude/skills
+	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.claude/skills
 
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
