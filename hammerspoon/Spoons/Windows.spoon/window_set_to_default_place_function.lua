@@ -20,6 +20,8 @@ function set_window_default(window)
         set_window_bottom(window)
     elseif is_firefox_video_player(app_title, window_title) then
         set_window_bottom(window)
+    elseif is_telegram_video_player(app_title, window_title) then
+        set_window_bottom(window)
     elseif is_yandex_video_player(app_title, window_title, window) then
         set_window_bottom(window)
     elseif is_activity_monitor_cpu_window(app_title, window_title) then

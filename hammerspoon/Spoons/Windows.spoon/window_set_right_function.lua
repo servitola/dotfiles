@@ -8,6 +8,8 @@ function set_window_right(window)
 
     if hs.fnutils.contains(bottom_side_app_titles, app_title) then
         set_window_bottom(window)
+    elseif is_telegram_video_player(app_title, window_title) then
+        set_window_bottom(window)
     elseif is_yandex_video_player(app_title, window_title, window) then
         set_window_bottom(window)
     elseif is_activity_monitor_small_window(app_title, window_title, window) and not is_activity_monitor_cpu_window(app_title, window_title) then
