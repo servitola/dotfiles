@@ -33,7 +33,11 @@ set_macos_default_if_different() {
     # Compare and set if different
     if [[ "$current_normalized" != "$new_normalized" ]] || [[ -z "$current_value" ]]; then
 
-        defaults write "$domain" "$key" "$type" "$new_value"
+        if [[ "$domain" == /Library/* ]]; then
+            sudo defaults write "$domain" "$key" "$type" "$new_value"
+        else
+            defaults write "$domain" "$key" "$type" "$new_value"
+        fi
 
         if [[ -n "$current_value" ]]; then
             echo "${GREEN}✓ Changed${NC} '$title' $domain → $key: ${YELLOW}$current_normalized${NC} → ${GREEN}$new_normalized${NC}"
