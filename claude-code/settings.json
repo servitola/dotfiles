@@ -26,7 +26,8 @@
       "TodoWrite",
       "WebFetch",
       "WebSearch",
-      "Write"
+      "Write",
+      "mcp__youtrack__*"
     ],
     "deny": []
   },
