@@ -211,9 +211,7 @@ set_macos_default_if_different \
     '-string' \
     'Nlsv'
 
-echo 'Expand the following File Info panes:'
-echo ''General', 'Open with', and 'Sharing &
-Permissions''
+echo "Expand the following File Info panes: General, Open with, and Sharing & Permissions"
 defaults write com.apple.finder \
     FXInfoPanesExpanded \
     -dict \
@@ -257,7 +255,6 @@ echo 'Photos' #
 ###############################################################################
 
 defaults -currentHost write \
-	'Prevent Photos from opening automatically when devices are plugged in' \
     com.apple.ImageCapture \
     disableHotPlug \
     -bool true
@@ -554,7 +551,7 @@ set_macos_default_if_different \
 
 # Set Dark Mode
 osascript -e \
-    'tell application 'System Events' to tell appearance preferences to set dark mode to true'
+    "tell application \"System Events\" to tell appearance preferences to set dark mode to true"
 
 # Enable Dark Mode for Terminal.app
 set_macos_default_if_different \
