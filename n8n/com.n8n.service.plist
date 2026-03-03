@@ -7,8 +7,8 @@
 
         <key>ProgramArguments</key>
         <array>
-            <string>/Users/servitola/.npm-global/bin/n8n</string>
-            <string>start</string>
+            <string>/bin/zsh</string>
+            <string>/Users/servitola/projects/dotfiles/n8n/n8n-start.sh</string>
         </array>
 
         <key>EnvironmentVariables</key>
@@ -23,6 +23,16 @@
             <string>[]</string>
             <key>PATH</key>
             <string>/opt/homebrew/bin:/opt/homebrew/opt/node@22/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/servitola/.npm-global/bin</string>
+            <key>EXECUTIONS_DATA_SAVE_ON_SUCCESS</key>
+            <string>none</string>
+            <key>EXECUTIONS_DATA_SAVE_ON_ERROR</key>
+            <string>all</string>
+            <key>EXECUTIONS_DATA_PRUNE</key>
+            <string>true</string>
+            <key>EXECUTIONS_DATA_MAX_AGE</key>
+            <string>24</string>
+            <key>EXECUTIONS_DATA_PRUNE_MAX_COUNT</key>
+            <string>100</string>
         </dict>
 
         <key>RunAtLoad</key>
