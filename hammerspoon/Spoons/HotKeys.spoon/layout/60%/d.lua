@@ -4,50 +4,51 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬———————— app — function ————————————————————
---           d   │ d    в    δ  │            — letter 'd'
---          dd   │              │  BrowserVim — go forward
+--———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
+--           d   │ d    в    δ  │              — letter 'd'
+--          dd   │              │    BrowserVim — go forward
 --———————————————┼——————————————┼————————————————————————————————————————————
---          ⇪d   │      →       │            — go right
+--          ⇪d   │      →       │              — go right
 --          ⇧d   │ D    В    Δ  │
---          ⌃d   │              │       Rider — start debug
---               │              │      VSCode — start debug
---          ⌥d   │      ⌥→      │            — jump a word to the right
---               │              │     YouTube — jump to chapter to the right
---          ⌘d   │              │            — duplicate
---               │              │       Rider — duplicate line
---               │              │      VSCode — duplicate line
---               │              │ GoogleMeets — toggle microphone
---          ⇥d   │      ⌘l      │        IINA — ab-loop (A-B loop)
---               │              │       Rider — goto line,
---               │              │      VSCode — goto line
---               │              │     Browser — focus Url Line,
---               │              │       Music — go to Current song,
---               │              │    Telegram — lock Telegram
+--          ⌃d   │              │         Rider — start debug
+--               │              │        VSCode — start debug
+--               │              │ Unix Terminal — clear window
+--          ⌥d   │      ⌥→      │              — jump a word to the right
+--               │              │       YouTube — jump to chapter to the right
+--          ⌘d   │              │              — duplicate
+--               │              │         Rider — duplicate line
+--               │              │        VSCode — duplicate line
+--               │              │   GoogleMeets — toggle microphone
+--          ⇥d   │      ⌘l      │          IINA — ab-loop (A-B loop)
+--               │              │         Rider — goto line,
+--               │              │        VSCode — goto line
+--               │              │       Browser — focus Url Line,
+--               │              │         Music — go to Current song,
+--               │              │      Telegram — lock Telegram
 --———————————————┼——————————————┼————————————————————————————————————————————
---         ⇪⇧d   │      ⇧→      │            — select letter to the right
---         ⇪⌃d   │      ⌃→      │            — jump to workspace to the right
---         ⇪⌥d   │      ⌥→      │            — jump a word to the right
---               │              │     YouTube — jump to chapter to the right
---         ⇪⌘d   │      ⌘→      │            — end/jump to end of line
+--         ⇪⇧d   │      ⇧→      │              — select letter to the right
+--         ⇪⌃d   │      ⌃→      │              — jump to workspace to the right
+--         ⇪⌥d   │      ⌥→      │              — jump a word to the right
+--               │              │       YouTube — jump to chapter to the right
+--         ⇪⌘d   │      ⌘→      │              — end/jump to end of line
 --         ⇧⌃d   │              │
 --         ⇧⌥d   │              │
---         ⇧⌘d   │              │      VSCode — focus Run and Debug panel
---               │              │      Finder — go to Desktop
---               │              │        Mail — send emails
---         ⌃⌥d   │              │      VSCode — focus Run and Debug panel
-{ chord = "⌃⌥d",                           fn = "window.right" },
---         ⌃⌘d   │              │            — look up the selected word
---         ⌥⌘d   │              │            — show/hide Dock
+--         ⇧⌘d   │              │        VSCode — focus Run and Debug panel
+--               │              │        Finder — go to Desktop
+--               │              │          Mail — send emails
+--         ⌃⌥d   │              │        VSCode — focus Run and Debug panel
+{ chord = "⌃⌥d",                             fn = "window.right" },
+--         ⌃⌘d   │              │              — look up the selected word
+--         ⌥⌘d   │              │              — show/hide Dock
 --———————————————┼——————————————┼————————————————————————————————————————————
---        ⇪⇧⌃d   │  next_track  │            — go to next track
---        ⇪⇧⌥d   │     ⇧⌥→      │            — select word to the right
---        ⇪⇧⌘d   │     ⇧⌘→      │            — select line till the end
+--        ⇪⇧⌃d   │  next_track  │              — go to next track
+--        ⇪⇧⌥d   │     ⇧⌥→      │              — select word to the right
+--        ⇪⇧⌘d   │     ⇧⌘→      │              — select line till the end
 --        ⇪⌃⌥d   │     ⌃⌥→      │
---        ⇪⌃⌘d   │     ⌃⌘→      │      VSCode — move editor to next group
---        ⇪⌥⌘d   │     ⌥⌘→      │       Music — seek forward;
---               │              │      VSCode — go to next tab;
---               │              │       iTerm — focus pane to the right
+--        ⇪⌃⌘d   │     ⌃⌘→      │        VSCode — move editor to next group
+--        ⇪⌥⌘d   │     ⌥⌘→      │         Music — seek forward;
+--               │              │        VSCode — go to next tab;
+--               │              │         iTerm — focus pane to the right
 --        ⇧⌃⌥d   │              │
 --        ⇧⌃⌘d   │              │
 --        ⇧⌥⌘d   │              │
