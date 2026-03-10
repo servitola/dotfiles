@@ -259,6 +259,7 @@ cask "xcodes-app"
 cask "yandex"
 cask "yandextelemost"
 cask "zoom"
+mas "AmneziaWG", id: 6478942365
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "ContextMenu", id: 1236813619
