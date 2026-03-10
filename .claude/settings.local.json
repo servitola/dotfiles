@@ -24,7 +24,8 @@
       "WebFetch",
       "WebSearch",
       "Write",
-      "Skill(superpowers:brainstorming)"
+      "Skill(superpowers:brainstorming)",
+      "mcp__youtrack-mcp-server__youtrack_list_projects"
     ],
     "deny": []
   },
