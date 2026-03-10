@@ -48,7 +48,7 @@ brew "cloudflared"
 brew "cmake"
 brew "ruby"
 brew "cocoapods"
-brew "colima"
+brew "colima", restart_service: :changed
 brew "cowsay"
 brew "ddgr"
 brew "detekt"
