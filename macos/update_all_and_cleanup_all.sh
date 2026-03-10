@@ -34,6 +34,10 @@ brew tap --repair
 brew cu --all --yes --quiet
 brew update
 brew upgrade
+
+print_task "Removing quarantine flags from updated applications"
+brew_unquarantine
+
 mas upgrade
 brew cleanup --scrub
 
