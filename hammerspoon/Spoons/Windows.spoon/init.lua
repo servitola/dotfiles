@@ -17,6 +17,37 @@ local active_small_dialogs = {}
 local right_panel_windows_adjusted = false
 local right_panel_windows_positions = {}
 
+-- Performance: Cache for visible windows to avoid repeated allWindows() calls
+local visible_windows_cache = nil
+local cache_timestamp = 0
+local CACHE_TTL = 0.1  -- Cache valid for 100ms
+
+local function get_visible_windows()
+    local now = hs.timer.secondsSinceEpoch()
+
+    -- Return cached results if still valid
+    if visible_windows_cache and (now - cache_timestamp) < CACHE_TTL then
+        return visible_windows_cache
+    end
+
+    -- Rebuild cache: filter visible/standard windows only
+    local windows = {}
+    for _, window in ipairs(hs.window.allWindows()) do
+        -- Performance: Skip hidden/minimized windows immediately
+        if window:isVisible() and window:isStandard() then
+            table.insert(windows, window)
+        end
+    end
+
+    visible_windows_cache = windows
+    cache_timestamp = now
+    return windows
+end
+
+local function invalidate_window_cache()
+    visible_windows_cache = nil
+end
+
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
 end
@@ -85,11 +116,14 @@ function set_all_windows_positions()
 
     active_small_dialogs = {}
     right_panel_windows_adjusted = false
+    invalidate_window_cache()  -- Invalidate cache to get fresh window list
 
-    local windows = hs.window.allWindows()
+    -- Performance: Use cached visible windows
+    local windows = get_visible_windows()
     local android_positioned = false
     local frontmost = hs.window.frontmostWindow()
 
+    -- Performance: Cache screen frames (expensive operation)
     local screen_cache = {}
     local function get_cached_screen(window)
         local screen = window:screen()
@@ -100,6 +134,8 @@ function set_all_windows_positions()
         return screen_cache[screen_id]
     end
 
+    -- Performance optimization: Separate Android emulator windows first pass
+    -- Check if Android emulator is already in correct position
     for _, window in ipairs(windows) do
         if is_android_emulator(window) then
             local screen_frame = get_cached_screen(window)
@@ -115,6 +151,7 @@ function set_all_windows_positions()
         end
     end
 
+    -- Main window positioning loop
     for _, window in ipairs(windows) do
         local window_title = window:title()
         local app_title = window:application():title()
