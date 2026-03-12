@@ -14,4 +14,11 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # =============================================================================
 
 # Daily dialog at 8:00 AM
-0 8 * * * osascript -e 'display notification "Good! Time to start your day!" with title "Daily Reminder"'
+0 8 * * * osascript -e 'display notification "Good morning! Time to start your day!" with title "Daily Reminder"'
+
+# =============================================================================
+# Weekly Meetings
+# =============================================================================
+
+# Zoom meeting every Saturday at 7:29 AM
+29 7 * * 6 . ~/.config/greek\ lessons\ zoom\ credentials && open "zoommtg://zoom.us/join?confno=${ZOOM_MEETING_ID}&pwd=${ZOOM_MEETING_PASSWORD}"
