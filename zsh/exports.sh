@@ -34,7 +34,7 @@ export PATH=$PATH:/usr/local/opt/sqlite/bin
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android Development
-export JAVA_HOME=/opt/homebrew/Cellar/openjdk@17/17.0.16
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
 export PATH=$PATH:$JAVA_HOME
 
 # Docker (via Colima)
