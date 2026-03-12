@@ -1,0 +1,17 @@
+# =============================================================================
+# Crontab - Managed by dotfiles
+# =============================================================================
+# Edit this file, then run: crontab ~/projects/dotfiles/cron/schedule.cron
+# View current: crontab -l
+# =============================================================================
+
+# Environment
+SHELL=/bin/zsh
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+# =============================================================================
+# Daily Reminders
+# =============================================================================
+
+# Daily dialog at 8:00 AM
+0 8 * * * osascript -e 'display notification "Good! Time to start your day!" with title "Daily Reminder"'
