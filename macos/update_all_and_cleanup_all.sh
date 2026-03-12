@@ -84,11 +84,60 @@ setopt rm_star_silent #turn off safe mode
 "$TRY_CLEAN" /Library/Caches "System Caches"
 "$TRY_CLEAN" /Users/servitola/Library/Application\ Support/Caches "Application Support Caches"
 
+print_task "Cleaning old Battle.net versions"
+BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
+if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
+    # Count only actual version folders (Battle.net.XXXX pattern, excluding .app symlink)
+    version_count=$(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | wc -l | tr -d ' ')
+    if [ "$version_count" -gt 1 ]; then
+        # Get oldest version folder by modification time
+        oldest_version=$(ls -1dt "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | tail -1 | xargs basename)
+        if [ -n "$oldest_version" ]; then
+            rm -rf "$BATTLENET_VERSIONS_DIR/$oldest_version"
+            echo "  * Removed old Battle.net version: $oldest_version"
+        fi
+    fi
+fi
+
+print_task "Cleaning Spotlight Knowledge Events"
+SPOTLIGHT_KNOWLEDGE_DIR="$HOME/Library/Metadata/SpotlightKnowledgeEvents"
+if [ -d "$SPOTLIGHT_KNOWLEDGE_DIR" ]; then
+    spotlight_size=$(du -sh "$SPOTLIGHT_KNOWLEDGE_DIR" 2>/dev/null | cut -f1)
+    if [ -n "$spotlight_size" ]; then
+        rm -rf "$SPOTLIGHT_KNOWLEDGE_DIR"/*
+        echo "  * Cleaned Spotlight Knowledge Events (was: $spotlight_size)"
+    fi
+fi
+
+"$TRY_CLEAN" ~/Library/Caches/JetBrains "JetBrains IDE Caches"
+"$TRY_CLEAN" ~/Library/Developer/Xcode/Archives "Xcode Archives (old builds)"
+"$TRY_CLEAN" ~/.android/cache "Android SDK Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/discord/Cache "Discord Cache"
+
+if [ -d ~/.gradle/caches ]; then
+    gradle_cache_size=$(du -sh ~/.gradle/caches 2>/dev/null | cut -f1)
+    find ~/.gradle/caches -type d -name "*-*" -mtime +30 -exec rm -rf {} + 2>/dev/null
+    echo "  * Gradle Cache: cleaned old versions (was: $gradle_cache_size)"
+fi
+
 print_task "Cleaning logs"
 "$TRY_CLEAN" ~/Library/Logs "Library Logs"
 "$TRY_CLEAN" ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
 "$TRY_CLEAN" /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
 "$TRY_CLEAN" ~/.local/share/NuGet/v3-cache "NuGet Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/Moises/Cache/Cache_Data "Moises Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/Code/logs "VSCode Logs"
+"$TRY_CLEAN" ~/Library/Application\ Support/Code/CachedData "VSCode Cached Data"
+"$TRY_CLEAN" ~/Library/Application\ Support/Yandex/YandexBrowser/Resources/extension/cache_2 "Yandex Browser Extension Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/Claude/Cache/Cache_Data "Claude Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/Blizzard/Heroes\ of\ the\ Storm/GameLogs "HOTS Logs"
+"$TRY_CLEAN" ~/Library/Application\ Support/discord/Cache/Cache_Data "Discord Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/Windsurf/CachedData "Windsurf Cached Data"
+"$TRY_CLEAN" ~/projects/cTraderDev/cTrader/Mobile.Touch.cTrader/bin "Work bins"
+"$TRY_CLEAN" ~/Library/Application\ Support/Steam/logs "Steam Logs"
+"$TRY_CLEAN" ~/Library/Logs/JetBrains "JetBrains IDE Logs"
+"$TRY_CLEAN" ~/Library/Messages/Attachments "Messages Attachments"
+
 
 print_task "Cleaning system files"
 "$TRY_CLEAN_PATTERN" . f "*.DS_Store" "DS_Store files"
