@@ -13,5 +13,10 @@
     "name": "Work",
     "path": "Work",
     "collapsed": false
+  },
+  {
+    "name": "External",
+    "path": "External",
+    "collapsed": false
   }
 ]
