@@ -249,7 +249,7 @@ install:
 	@pre-commit install
 
 	@echo "setup cron jobs"
-	@crontab ~/projects/dotfiles/cron
+	@crontab ~/projects/dotfiles/cron/schedule.cron
 
 	@echo "Installation complete!"
 	@echo
