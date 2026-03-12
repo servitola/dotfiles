@@ -7,7 +7,7 @@ return {
 --———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
 --           b   │ b    и    β  │
 --———————————————┼——————————————┼————————————————————————————————————
-{ chord =  "⇪b",                            app = "Warp" },
+{ chord =  "⇪b",                            fn = "warp.launch_default" },
 --          ⇧b   │ B    И    Β  │
 --          ⌃b   │              │ Unix Terminal — forward one letter
 --          ⌥b   │ ß    ß    ß  │
