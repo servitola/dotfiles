@@ -54,6 +54,6 @@ mode = "random"
 
 [app_state]
 has_seen_welcome = true
-last_seen_version = "0.13.0"
+last_seen_version = "0.15.1"
 home_list_width = 35
 has_seen_custom_instruction_warning = false
