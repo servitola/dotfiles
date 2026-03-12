@@ -427,6 +427,48 @@ function obj:init()
                             hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
                         end
                     end)
+                elseif functionName == "warp.launch_default" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local warp = hs.application.get("dev.warp.Warp-Stable")
+                        if not warp then
+                            local watcher
+                            watcher = hs.application.watcher.new(function(name, event, app)
+                                if name == "Warp" and event == hs.application.watcher.launched then
+                                    watcher:stop()
+                                    hs.timer.doAfter(0.3, function()
+                                        local w = hs.application.get("dev.warp.Warp-Stable")
+                                        if not w then return end
+                                        local savedFrame
+                                        local windows = w:allWindows()
+                                        if #windows > 0 then
+                                            savedFrame = windows[1]:frame()
+                                        end
+                                        for _, win in ipairs(windows) do
+                                            win:close()
+                                        end
+                                        w:hide()
+                                        hs.urlevent.openURL("warp://launch/Default")
+                                        hs.timer.doAfter(0.3, function()
+                                            local w2 = hs.application.get("dev.warp.Warp-Stable")
+                                            if w2 then
+                                                local win = w2:mainWindow()
+                                                if win and savedFrame then
+                                                    win:setFrame(savedFrame)
+                                                end
+                                                w2:activate()
+                                            end
+                                        end)
+                                    end)
+                                end
+                            end)
+                            watcher:start()
+                            hs.application.open("dev.warp.Warp-Stable")
+                        elseif hs.application.frontmostApplication() == warp then
+                            warp:hide()
+                        else
+                            warp:activate()
+                        end
+                    end)
                 elseif functionName == "fork.ctraderdev" then
                     hs.hotkey.bind(modifiers, key, function()
                         local repoPath = os.getenv("HOME") .. "/projects/Spotware/cTraderDev"
