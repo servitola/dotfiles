@@ -103,6 +103,7 @@ duti -s com.microsoft.VSCode .gitignore all
 duti -s com.microsoft.VSCode .opml all
 duti -s com.microsoft.VSCode .keylayout all
 duti -s com.microsoft.VSCode .patch all
+duti -s com.microsoft.VSCode .cron all
 
 echo "Setting audio/video player"
 duti -s com.colliderli.iina public.audio all
