@@ -248,6 +248,9 @@ install:
 	@cd ~/projects/dotfiles/
 	@pre-commit install
 
+	@echo "setup cron jobs"
+	@crontab ~/projects/dotfiles/cron
+
 	@echo "Installation complete!"
 	@echo
 	@$(SHELL) 'source zsh/bin/random_ascii.sh'
