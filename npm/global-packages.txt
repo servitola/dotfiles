@@ -8,5 +8,4 @@ appium
 figma-developer-mcp
 n8n
 react-devtools
-trash-cli
 typescript
