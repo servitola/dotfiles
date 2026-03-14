@@ -93,7 +93,7 @@ ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
 * A: I use [maccy](https://maccy.app/). It is installed with all programs using homebrew here.
 
 * Q: I want to find out what is taking up space on my hard drive
-* A: I use [baobab](https://wiki.gnome.org/action/show/Apps/DiskUsageAnalyzer?action=show&redirect=Apps%2FBaobab). Just type `baobab` in Terminal/iTerm2.
+* A: I use [GrandPerspective](https://grandperspectiv.sourceforge.net/)
 
 * Q: How to <ins>install</ins> this repository?
 * A: With regular Makefile. Run ```cd ~/projects/dotfiles && make``` in Terminal.
