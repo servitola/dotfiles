@@ -53,11 +53,15 @@ code --update-extensions
 
 npm config set fund false
 source ~/projects/dotfiles/npm/install-globals.sh
+npm cache verify
 
 uv python install 3.12
 uv python pin 3.12
 source ~/projects/dotfiles/python/install-globals.sh
 source ~/projects/dotfiles/python/install-uv-tools.sh
+uv cache prune
+
+go clean -modcache
 
 print_task "Update Appium Plugins"
 appium plugin update installed
@@ -137,6 +141,10 @@ print_task "Cleaning logs"
 "$TRY_CLEAN" ~/Library/Application\ Support/Steam/logs "Steam Logs"
 "$TRY_CLEAN" ~/Library/Logs/JetBrains "JetBrains IDE Logs"
 "$TRY_CLEAN" ~/Library/Messages/Attachments "Messages Attachments"
+"$TRY_CLEAN" ~/.npm/_logs "NPM Logs"
+"$TRY_CLEAN" ~/.npm/_npx "NPX Cache"
+"$TRY_CLEAN" ~/.cache/pre-commit "pre-commit Cache"
+"$TRY_CLEAN" ~/.cache/puppeteer "Puppeteer Cache"
 
 
 print_task "Cleaning system files"
