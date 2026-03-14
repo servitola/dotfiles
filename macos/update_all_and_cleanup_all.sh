@@ -46,7 +46,7 @@ brew unlink node 2>/dev/null || true
 brew link --force --overwrite node@22
 
 brew doctor
-brew bundle dump --force --file=~/projects/dotfiles/homebrew/brewfile
+brew bundle dump --force --describe --file=~/projects/dotfiles/homebrew/brewfile
 
 print_task "Updating VSCode extensions"
 code --update-extensions
