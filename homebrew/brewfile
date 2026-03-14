@@ -36,7 +36,6 @@ brew "asio"
 brew "atuin"
 brew "gtk4"
 brew "libadwaita"
-brew "baobab"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Get/set bluetooth power and discoverable state
@@ -366,6 +365,8 @@ cask "git-credential-manager"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Graphically shows disk usage within a file system
+cask "grandperspective"
 # Sheet music editor software for guitar, bass, keyboards, drums and more
 cask "guitar-pro"
 # Desktop automation application
