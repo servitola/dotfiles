@@ -17,8 +17,6 @@ tap "oven-sh/bun"
 tap "qmk/qmk"
 tap "stevencch99/windsurf-cli"
 tap "wix/brew"
-brew "icu4c@77", link: true
-brew "pango"
 brew "librsvg"
 # All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
@@ -74,6 +72,8 @@ brew "colima", restart_service: :changed
 brew "cowsay"
 # DuckDuckGo from the terminal
 brew "ddgr"
+# C/C++ and Java libraries for Unicode and globalization
+brew "icu4c@77", link: true
 # Static code analysis for Kotlin
 brew "detekt"
 # Good-lookin' diffs with diff-highlight and more
@@ -122,6 +122,8 @@ brew "firebase-cli"
 brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
