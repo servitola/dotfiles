@@ -11,6 +11,7 @@ fi
 
 # Auto-update Homebrew every 24 hours when running brew commands
 export HOMEBREW_AUTO_UPDATE_SECS="86400"
+export HOMEBREW_NO_ANALYTICS=1
 
 # Disable telemetry for Claude Code
 export CLAUDE_CODE_ENABLE_TELEMETRY=0
