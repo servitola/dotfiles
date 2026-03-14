@@ -35,16 +35,6 @@ source ~/projects/dotfiles/zsh/plugins.sh
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # -----------------------------------------------------------------------------
-# FZF Integration (currently disabled)
-# -----------------------------------------------------------------------------
-# Uncomment to enable fuzzy finder integration
-# Must be loaded AFTER compinit (oh-my-zsh) but BEFORE other completion plugins
-# source ~/projects/dotfiles/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-# source ~/projects/dotfiles/zsh/fzf-tab-config.sh
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# source ~/projects/dotfiles/zsh/fzf.sh
-
-# -----------------------------------------------------------------------------
 # Custom Completion Configuration
 # -----------------------------------------------------------------------------
 # Load AFTER oh-my-zsh called compinit
