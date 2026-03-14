@@ -6,7 +6,7 @@
 
 ## Architecture & Structure
 - **Dotfiles repo**: Configuration files symlinked to system locations (~/.zshrc, ~/.gitconfig, etc.)
-- **Package management**: Homebrew with brewfile for app installations
+- **Package management**: Homebrew with brewfile for app installations and documentation in `/opt/homebrew/docs/`
 - **Automation**: Hammerspoon for window management, URL routing, keyboard layouts
 - **Keyboard**: Karabiner-Elements for advanced keyboard customization
 - **Shell**: Zsh + Oh My Zsh with extensive plugin ecosystem
