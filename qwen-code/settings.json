@@ -28,7 +28,8 @@
   "ui": {
     "theme": "Default",
     "hideTips": false,
-    "showLineNumbers": true
+    "showLineNumbers": true,
+    "feedbackLastShownTimestamp": 1773087973766
   },
   "security": {
     "folderTrust": {
