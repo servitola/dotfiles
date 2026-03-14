@@ -91,18 +91,25 @@ setopt rm_star_silent #turn off safe mode
 print_task "Cleaning old Battle.net versions"
 BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
 if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
-    # Count only actual version folders (Battle.net.XXXX pattern, excluding .app symlink)
-    version_count=$(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | wc -l | tr -d ' ')
-    if [ "$version_count" -gt 1 ]; then
-        # Get oldest version folder by modification time
-        oldest_version=$(ls -1dt "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | tail -1 | xargs basename)
-        if [ -n "$oldest_version" ]; then
-            rm -rf "$BATTLENET_VERSIONS_DIR/$oldest_version"
-            echo "  * Removed old Battle.net version: $oldest_version"
+    # Get all version folders (Battle.net.XXXX pattern, excluding .app and hidden folders)
+    old_versions=($(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$'))
+    version_count=${#old_versions[@]}
+    if [ "$version_count" -gt 0 ]; then
+        # Remove ALL old version folders, keep only Battle.net.app
+        for version_dir in "${old_versions[@]}"; do
+            if [ -d "$version_dir" ]; then
+                version_name=$(basename "$version_dir")
+                version_size=$(du -sh "$version_dir" 2>/dev/null | cut -f1)
+                rm -rf "$version_dir"
+                echo "  * Removed old Battle.net version: $version_name ($version_size)"
         fi
+        done
     fi
 fi
 
+"$TRY_CLEAN" ~/Library/Application\ Support/CrashReporter "Crash reports"
+"$TRY_CLEAN" ~/Library/Application\ Support/heroic/Cache "Heroic Cache"
+"$TRY_CLEAN" ~/Library/Application\ Support/heroic/images-cache "Heroic Images Cache"
 print_task "Cleaning Spotlight Knowledge Events"
 SPOTLIGHT_KNOWLEDGE_DIR="$HOME/Library/Metadata/SpotlightKnowledgeEvents"
 if [ -d "$SPOTLIGHT_KNOWLEDGE_DIR" ]; then
@@ -145,10 +152,12 @@ print_task "Cleaning logs"
 "$TRY_CLEAN" ~/.npm/_npx "NPX Cache"
 "$TRY_CLEAN" ~/.cache/pre-commit "pre-commit Cache"
 "$TRY_CLEAN" ~/.cache/puppeteer "Puppeteer Cache"
+"$TRY_CLEAN" /System/Volumes/Data/.PreviousSystemInformation "Previous System Information"
+"$TRY_CLEAN" /Library/Logs/DiagnosticReports "System Diagnostic Reports"
 
 
 print_task "Cleaning system files"
-"$TRY_CLEAN_PATTERN" . f "*.DS_Store" "DS_Store files"
+"$TRY_CLEAN_PATTERN" ~ f ".DS_Store" "DS_Store files"
 "$TRY_CLEAN_PATTERN" . d ".AppleD*" "Apple Double files"
 
 print_task "Cleaning Trash"
