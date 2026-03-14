@@ -118,8 +118,6 @@ brew "figlet"
 brew "findutils"
 # Firebase command-line tools
 brew "firebase-cli"
-# Command-line fuzzy finder written in Go
-brew "fzf"
 # Interact with Google Gemini AI models from the command-line
 brew "gemini-cli"
 # GitHub command-line tool
