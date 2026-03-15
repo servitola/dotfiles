@@ -8,6 +8,8 @@
   "env": {
     "BASH_MAX_TIMEOUT_MS": "480000",
     "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "CLAUDE_MODEL": "claude-opus-4-6",
+    "CLAUDE_SMALL_FAST_MODEL": "claude-haiku-4-5-20251001",
     "DISABLE_AUTOUPDATER": "1",
     "DISABLE_ERROR_REPORTING": "1",
     "DISABLE_TELEMETRY": "1",
@@ -25,6 +27,17 @@
           }
         ],
         "matcher": "permission_prompt|elicitation_dialog"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "FILE=$(jq -r '.tool_input.file_path'); if [[ $FILE == *.go ]]; then cd \"$(git rev-parse --show-toplevel)\" && go vet ./...; elif [[ $FILE == *.ts ]]; then npx tsc --noEmit 2>&1 | head -20; fi",
+            "type": "command"
+          }
+        ],
+        "matcher": "Edit|Write|MultiEdit"
       }
     ],
     "PreToolUse": [
@@ -56,20 +69,10 @@
           }
         ]
       }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "FILE=$(jq -r '.tool_input.file_path'); if [[ $FILE == *.go ]]; then cd \"$(git rev-parse --show-toplevel)\" && go vet ./...; elif [[ $FILE == *.ts ]]; then npx tsc --noEmit 2>&1 | head -20; fi"
-          }
-        ]
-      }
     ]
   },
   "includeCoAuthoredBy": false,
+  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash",
