@@ -25,3 +25,4 @@ history.jsonl
 mcp-needs-auth-cache.json
 claude-office-config.env
 memory/
+image-cache
