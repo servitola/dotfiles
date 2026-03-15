@@ -1121,12 +1121,7 @@
                                     "key_code": "z",
                                     "modifiers": { "mandatory": ["left_command", "right_command", "right_control", "right_option", "right_shift"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "f20",
-                                        "modifiers": ["left_command"]
-                                    }
-                                ],
+                                "to": [{ "key_code": "slash" }],
                                 "type": "basic"
                             },
                             {
@@ -1136,8 +1131,8 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "f20",
-                                        "modifiers": ["left_option"]
+                                        "key_code": "slash",
+                                        "modifiers": ["left_shift"]
                                     }
                                 ],
                                 "type": "basic"

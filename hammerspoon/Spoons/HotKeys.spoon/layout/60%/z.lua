@@ -21,8 +21,8 @@ return {
 --———————————————┼——————————————┼————————————————————————————————————
 --         ⇪⇧z   │     ⇧F20     │ ???
 --         ⇪⌃z   │     ⌃F20     │ ???
---         ⇪⌥z   │     ⌥F20     │ ???
---         ⇪⌘z   │     ⌘F20     │ ???
+--         ⇪⌥z   │    ⇧/  (?)   │               — question mark (Karabiner direct)
+--         ⇪⌘z   │      /       │               — slash (Karabiner direct)
 --         ⇧⌃z   │              │      VoiceInk — start/stop recoding
 { chord = "⇧⌥z",                            app = "Simulator" },
 --         ⇧⌘z   │              │              — redo
