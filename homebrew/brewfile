@@ -215,6 +215,8 @@ brew "ollama"
 brew "pytorch"
 brew "opencv"
 brew "openjdk@17"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
 brew "openvpn"
 # 7-Zip (high compression file archiver) implementation
@@ -241,7 +243,6 @@ brew "pygments"
 brew "python@3.11"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
-brew "ripgrep"
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
 brew "rsync"
