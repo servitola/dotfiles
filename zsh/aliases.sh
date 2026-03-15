@@ -38,6 +38,7 @@ alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
+alias grep='rg'
 alias rm="trash"
 alias cat=mcat
 alias mkdir="mkdir -pv"
