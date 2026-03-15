@@ -56,6 +56,17 @@
           }
         ]
       }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path'); if [[ $FILE == *.go ]]; then cd \"$(git rev-parse --show-toplevel)\" && go vet ./...; elif [[ $FILE == *.ts ]]; then npx tsc --noEmit 2>&1 | head -20; fi"
+          }
+        ]
+      }
     ]
   },
   "includeCoAuthoredBy": false,
