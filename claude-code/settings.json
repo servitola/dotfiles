@@ -88,6 +88,7 @@
       "mcp__youtrack-mcp-server__*",
       "Skill(superpowers:brainstorming)"
     ],
+    "defaultMode": "default",
     "deny": []
   }
 }
