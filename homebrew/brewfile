@@ -204,6 +204,8 @@ brew "ninja"
 brew "node@22", link: true
 # Trigger notifications when a process completes
 brew "noti"
+# Retrieves currently playing media, and simulates media actions
+brew "nowplaying-cli"
 # Package for scientific computing with Python
 brew "numpy"
 # Create, run, and share large language models (LLMs)
