@@ -375,7 +375,6 @@ cask "hammerspoon"
 cask "heroic"
 # Free and open-source media player
 cask "iina"
-cask "insomnia"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar calendar
