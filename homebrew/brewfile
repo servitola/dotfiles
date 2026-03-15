@@ -24,6 +24,8 @@ brew "aichat"
 brew "openjdk"
 # Flexible lightweight test report tool
 brew "allure"
+# Terminal multiplexer
+brew "tmux"
 # Terminal session manager for AI coding agents
 brew "aoe"
 # GNU Binutils for arm-none-eabi cross development
@@ -263,7 +265,6 @@ brew "tealdeer"
 brew "telegram-downloader"
 # Terminal IRC client
 brew "tiny"
-brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
