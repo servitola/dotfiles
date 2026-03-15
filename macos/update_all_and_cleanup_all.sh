@@ -160,6 +160,15 @@ print_task "Cleaning system files"
 "$TRY_CLEAN_PATTERN" ~ f ".DS_Store" "DS_Store files"
 "$TRY_CLEAN_PATTERN" . d ".AppleD*" "Apple Double files"
 
+print_task "Cleaning Homebrew cask installers"
+cask_installers_count=$(find /opt/homebrew/Caskroom -type f \( -name "*.pkg" -o -name "*.dmg" -o -name "*.zip" -o -name "*.tar.gz" \) ! -path "*/.metadata/*" 2>/dev/null | wc -l | tr -d ' ')
+if [ "$cask_installers_count" -gt 0 ]; then
+    cask_installers_size=$(du -sh /opt/homebrew/Caskroom 2>/dev/null | cut -f1)
+    find /opt/homebrew/Caskroom -type f \( -name "*.pkg" -o -name "*.dmg" -o -name "*.zip" -o -name "*.tar.gz" \) ! -path "*/.metadata/*" -delete 2>/dev/null
+    cask_installers_size_after=$(du -sh /opt/homebrew/Caskroom 2>/dev/null | cut -f1)
+    echo "  * Cask installers: cleaned ($cask_installers_count files, freed space)"
+fi
+
 print_task "Cleaning Trash"
 "$TRY_CLEAN_PATTERN" /Volumes d ".Trashes" "Volume Trashes"
 "$TRY_CLEAN_PATTERN" /private/var/log/asl f "*.asl" "ASL Logs"
