@@ -1,0 +1,27 @@
+# Claude Code runtime data — not synced
+sessions/
+cache/
+backups/
+projects/
+projects_bak/
+todos/
+todos_bak/
+tasks/
+plans/
+downloads/
+file-history/
+paste-cache/
+shell-snapshots/
+session-env/
+ide/
+plugins/
+usage-data/
+hooks/
+prompts/
+output-styles/
+.DS_Store
+.update.lock
+history.jsonl
+mcp-needs-auth-cache.json
+claude-office-config.env
+memory/

@@ -46,15 +46,8 @@ install:
 	@$(LINK) ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
 	@echo "setup Claude"
-	@mkdir -p ~/.claude
-	@$(REMOVE) ~/.claude/CLAUDE.md
-	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.claude/CLAUDE.md
-	@$(REMOVE) ~/.claude/commands
-	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.claude/commands
-	@$(REMOVE) ~/.claude/agents
-	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.claude/agents
-	@$(REMOVE) ~/.claude/skills
-	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.claude/skills
+	@$(REMOVE) ~/.claude
+	@$(LINK) ~/projects/dotfiles/claude-code ~/.claude
 
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
@@ -134,10 +127,6 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/Claude/claude_desktop_config.json
 	@$(LINK) ~/projects/dotfiles/claude-desktop/claude_desktop_config.json ~/Library/Application\ Support/Claude/claude_desktop_config.json
 
-	@echo "setup Claude Code settings symlink"
-	@mkdir -p ~/.claude
-	@$(REMOVE) ~/.claude/settings.json
-	@$(LINK) ~/projects/dotfiles/claude-code/settings.json ~/.claude/settings.json
 
 	@echo "setup Qwen Code symlinks"
 	@mkdir -p ~/.qwen
