@@ -51,9 +51,6 @@ brew "carthage"
 brew "coreutils"
 # Emacs dependency management
 brew "cask"
-brew "openblas"
-brew "pkgconf"
-brew "hdf5"
 brew "node", link: false
 # Tool to route Claude Code requests to different models and customize any request
 brew "claude-code-router"
@@ -143,6 +140,11 @@ brew "gradle"
 brew "librsvg"
 # Toolkit for creating graphical user interfaces
 brew "gtk4"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# File format designed to store large amounts of data
+brew "hdf5"
+# Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # CLI for Heroku
 brew "heroku"
@@ -209,6 +211,8 @@ brew "node@22", link: true
 brew "noti"
 # Retrieves currently playing media, and simulates media actions
 brew "nowplaying-cli"
+# Optimized BLAS library
+brew "openblas"
 # Package for scientific computing with Python
 brew "numpy"
 # Create, run, and share large language models (LLMs)
