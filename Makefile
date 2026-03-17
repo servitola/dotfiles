@@ -87,11 +87,11 @@ install:
 
 	@echo "Setting up Rider vmoptions symlink for all Rider installations"
 	@sh -c '\
-	for dir in "~/Library/Application Support/JetBrains/Rider*"; do \
+	for dir in "$$HOME/Library/Application Support/JetBrains"/Rider*; do \
 		if [ -d "$$dir" ]; then \
 			echo "Updating: $$dir/rider.vmoptions"; \
 			$(REMOVE) "$$dir/rider.vmoptions"; \
-			$(LINK) "~/projects/dotfiles/jetbrains rider/rider.vmoptions" "$$dir/rider.vmoptions"; \
+			$(LINK) "$$HOME/projects/dotfiles/jetbrains rider/rider.vmoptions" "$$dir/rider.vmoptions"; \
 		fi; \
 	done'
 
