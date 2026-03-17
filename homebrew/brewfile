@@ -210,7 +210,6 @@ brew "nowplaying-cli"
 brew "numpy"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
-brew "pytorch"
 brew "opencv"
 brew "openjdk@17"
 # Search tool like grep and The Silver Searcher
@@ -241,6 +240,8 @@ brew "pygments"
 brew "python@3.11"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
+# Tensors and dynamic neural networks
+brew "pytorch"
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
 brew "rsync"
