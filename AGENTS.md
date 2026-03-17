@@ -36,9 +36,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 
 ## Current Directory Structure (depth 2)
 .
-├── LaunchAgents
-│   ├── com.colima.service.plist
-│   └── com.telegram-bot.service.plist
 ├── adguard
 │   └── adg_settings.adg.adguardsettings
 ├── aichat
@@ -78,8 +75,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── github-mcp.sh
 │   ├── google-calendar-mcp.sh
 │   └── google-maps-mcp.sh
-├── colima
-│   └── default
 ├── contextMenu
 │   ├── actions
 │   └── helper_script.sh
