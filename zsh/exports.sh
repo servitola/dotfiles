@@ -69,10 +69,10 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # Node.js & NPM Configuration
 export PATH="$PATH:/opt/homebrew/opt/node@22/bin"
-export NODE_PATH=~/.npm-global/bin
+export NPM_GLOBAL=~/.npm-global
 export NPM_PACKAGES=~/.npm-packages
-export PATH="$PATH:$NODE_PATH/bin"
-export PATH="$PATH:$NODE_PATH"
+export NODE_PATH="$NPM_GLOBAL/lib/node_modules"
+export PATH="$PATH:$NPM_GLOBAL/bin"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
