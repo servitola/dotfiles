@@ -79,4 +79,4 @@ bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
 
 # broot (tree navigator) launcher
-# source /Users/servitola/.config/broot/launcher/bash/br
+# source ~/.config/broot/launcher/bash/br
