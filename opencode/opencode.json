@@ -1,0 +1,6 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "qwen/qwen3-32b",
+  "autoupdate": false,
+  "disabled_providers": ["opencode"]
+}
