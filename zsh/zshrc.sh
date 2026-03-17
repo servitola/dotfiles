@@ -2,9 +2,6 @@
 # .zshrc - Interactive Shell Configuration
 # =============================================================================
 
-# exports
-source ~/projects/dotfiles/zsh/exports.sh
-
 # Powerlevel10k Instant Prompt
 # Should stay close to the top of .zshrc for optimal performance
 ZSH_THEME="powerlevel10k/powerlevel10k"
