@@ -265,6 +265,8 @@ brew "sevenzip"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Non-interactive SSH password auth
+brew "sshpass"
 # Generate clients, server stubs, and docs from an OpenAPI spec
 brew "swagger-codegen"
 # Very fast implementation of tldr in Rust
