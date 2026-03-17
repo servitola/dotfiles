@@ -53,28 +53,6 @@ setopt PUSHD_IGNORE_DUPS
 setopt PUSHD_SILENT
 
 # -----------------------------------------------------------------------------
-# History Configuration
-# -----------------------------------------------------------------------------
-# Keep 10,000 lines of command history
-HISTSIZE=10000
-SAVEHIST=10000
-
-# Remove duplicate commands from history
-setopt HIST_IGNORE_ALL_DUPS
-
-# Don't save duplicate commands
-setopt HIST_SAVE_NO_DUPS
-
-# Remove unnecessary whitespace from commands before saving
-setopt HIST_REDUCE_BLANKS
-
-# Append to history immediately (not when shell exits)
-setopt INC_APPEND_HISTORY
-
-# Save timestamps and durations in history
-setopt EXTENDED_HISTORY
-
-# -----------------------------------------------------------------------------
 # Tab Key Behavior
 # -----------------------------------------------------------------------------
 # Make TAB key cycle through completions immediately (like Bash)
