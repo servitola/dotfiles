@@ -177,10 +177,6 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/agent-of-empires
 	@$(LINK) ~/projects/dotfiles/agent-of-empires ~/Library/Application\ Support/agent-of-empires
 
-	@echo "setup Colima for containers"
-	@$(REMOVE) ~/.colima/default
-	@$(LINK) ~/projects/dotfiles/colima/default ~/.colima/default
-
 	@echo "set default applications for different file extensions"
 	@$(SHELL) 'source macos/set_default_apps.sh'
 
