@@ -155,6 +155,10 @@ install:
 	@$(REMOVE) ~/.config/amp/skills
 	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.config/amp/skills
 
+	@echo "setup OpenCode symlinks"
+	@mkdir -p ~/.opencode
+	@$(REMOVE) ~/.opencode/opencode.json
+	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.opencode/opencode.json
 	@echo "setup noti"
 	@$(REMOVE) ~/.config/noti
 	@$(LINK) ~/projects/dotfiles/noti ~/.config/noti
