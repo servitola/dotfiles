@@ -110,3 +110,6 @@ houses.jpg
 board.jpg
 this-wallpaper-is-not-available.png
 mountain_at_dusk.jpg
+image33.png
+books.jpg
+atoms.png
