@@ -1,14 +1,21 @@
 # =============================================================================
 # Environment Variables Configuration
+# Sourced once from zshenv.sh (deepest level, all shell types)
 # =============================================================================
+
+# Guard: skip if already loaded (prevents duplicate PATH entries)
+[[ -n "$_EXPORTS_LOADED" ]] && return 0
+export _EXPORTS_LOADED=1
 
 export TERM='xterm-256color'
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
+# Initialize Homebrew environment (must come before anything using HOMEBREW_PREFIX)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Homebrew completions
 export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
-
 
 # Source keys
 if [ -f ~/.config/openai_key.sh ]; then
@@ -45,8 +52,8 @@ export PATH=$PATH:/usr/local/opt/sqlite/bin
 export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android Development
-export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-export PATH=$PATH:$JAVA_HOME
+    export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+    export PATH=$PATH:$JAVA_HOME
 
 # Docker (via OrbStack)
 # OrbStack auto-configures DOCKER_HOST, but we set it explicitly for consistency
@@ -69,6 +76,11 @@ export PATH="$PATH:$NODE_PATH"
 export PATH="$PATH:$NPM_PACKAGES/bin"
 export PATH="$PATH:$NPM_PACKAGES"
 export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
+
+# Claude Code
+export CLAUDE_CODE_USE_BEDROCK=0
+export CLAUDE_MODEL="claude-opus-4-6"
+export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
 # n8n Configuration
 export N8N_USER_FOLDER="/Users/servitola/projects/services/n8n/.n8n"
