@@ -44,7 +44,7 @@ Available tools and preferences:
 - Editor: VS Code, vim, nano
 - Package manager: Homebrew, npm, pip
 - Version control: Git
-- Container: Docker, Colima
+- Container: Docker, OrbStack
 - Automation: Hammerspoon, Makefile
 
 When executing commands, format them as:
