@@ -217,7 +217,6 @@ brew "openblas"
 brew "numpy"
 # Create, run, and share large language models (LLMs)
 brew "ollama"
-brew "opencv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
