@@ -9,6 +9,18 @@ export ZSH=~/.oh-my-zsh
 # Homebrew completions
 export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 
+
+# Source keys
+if [ -f ~/.config/openai_key.sh ]; then
+    source ~/.config/openai_key.sh
+else
+    echo "\033[31mError: No API key file not found at ~/.config/openai_key\033[0m"
+fi
+
+# Go
+export GOPATH="$HOME/go"
+export PATH="$PATH:$GOPATH/bin"
+
 # System Paths
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/bin
