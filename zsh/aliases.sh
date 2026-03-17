@@ -1,5 +1,19 @@
 # update all
 alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
+
+# wallpapers blocklist: block and delete a wallpaper by filename
+wallblock() {
+    local file="$1"
+    local blocklist="$HOME/projects/dotfiles/macos/wallpapers-blocklist.txt"
+    if [[ -z "$file" ]]; then
+        echo "Usage: wallblock <filename>"
+        return 1
+    fi
+    echo "$file" >> "$blocklist"
+    rm -f "$HOME/Pictures/Wallpapers/$file"
+    echo "Blocked and deleted: $file"
+}
+
 alias u=up
 
 alias a="claude -c"
