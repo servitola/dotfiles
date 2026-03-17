@@ -8,6 +8,8 @@ fi
 echo "Setup zsh and terminal stuff symlinks"
 rm -rf ~/.zshrc
 ln -sfvh ~/projects/dotfiles/zsh/zshrc.sh ~/.zshrc
+rm -rf ~/.zshenv
+ln -sfvh ~/projects/dotfiles/zsh/zshenv.sh ~/.zshenv
 rm -rf ~/.zprofile
 ln -sfvh ~/projects/dotfiles/zsh/zprofile.sh ~/.zprofile
 
