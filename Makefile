@@ -230,8 +230,7 @@ install:
 	@$(LINK) ~/projects/dotfiles/warp ~/.warp
 
 	@echo "precommit setup"
-	@cd ~/projects/dotfiles/
-	@pre-commit install
+	@cd ~/projects/dotfiles/ && pre-commit install
 
 	@echo "setup cron jobs"
 	@crontab ~/projects/dotfiles/cron/schedule.cron
