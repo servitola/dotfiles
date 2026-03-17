@@ -68,8 +68,6 @@ brew "cmake"
 brew "ruby"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-# Container runtimes on MacOS (and Linux) with minimal setup
-brew "colima", restart_service: :changed
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
 # DuckDuckGo from the terminal
@@ -423,6 +421,8 @@ cask "onyx"
 cask "openclaw"
 # Web browser
 cask "opera"
+# Replacement for Docker Desktop
+cask "orbstack"
 # Remote desktop
 cask "parsec"
 # Collaboration platform for API development
