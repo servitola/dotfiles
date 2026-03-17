@@ -14,7 +14,7 @@ export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 if [ -f ~/.config/openai_key.sh ]; then
     source ~/.config/openai_key.sh
 else
-    echo "\033[31mError: No API key file not found at ~/.config/openai_key\033[0m"
+    echo "\033[31mError: API key file not found at ~/.config/openai_key\033[0m"
 fi
 
 # Go
