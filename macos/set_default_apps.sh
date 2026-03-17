@@ -99,7 +99,6 @@ duti -s com.microsoft.VSCode .zsh all
 duti -s com.microsoft.VSCode .zshrc all
 duti -s com.microsoft.VSCode Makefile all
 duti -s com.microsoft.VSCode .settings all
-duti -s com.microsoft.VSCode .gitignore all
 duti -s com.microsoft.VSCode .opml all
 duti -s com.microsoft.VSCode .keylayout all
 duti -s com.microsoft.VSCode .patch all
