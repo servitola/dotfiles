@@ -2,6 +2,9 @@
 # .zshrc - Interactive Shell Configuration
 # =============================================================================
 
+# exports
+source ~/projects/dotfiles/zsh/exports.sh
+
 # Powerlevel10k Instant Prompt
 # Should stay close to the top of .zshrc for optimal performance
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -52,13 +55,6 @@ source ${HOMEBREW_PREFIX}/share/zsh-autopair/autopair.zsh
 
 # Load p10k theme
 source ~/projects/dotfiles/zsh/p10k.zsh
-
-# Source OpenAI API key from config
-if [ -f ~/.config/openai_key.sh ]; then
-    source ~/.config/openai_key.sh
-else
-    echo "\033[31mError: OpenAI API key file not found at ~/.config/openai_key\033[0m"
-fi
 
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
