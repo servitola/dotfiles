@@ -6,9 +6,10 @@ source 'macos/helpers/set_plist_value_if_different.sh'
 sudo -v
 echo 'Setting macos defaults'
 
-echo 'Close any open System Preferences panes,'
+echo 'Close any open System Settings panes,'
 echo 'to prevent them from overriding'
-osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Settings" to quit' 2>/dev/null
+osascript -e 'tell application "System Preferences" to quit' 2>/dev/null
 
 echo 'Show the ~/Library folder.'
 chflags nohidden ~/Library
