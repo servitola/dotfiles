@@ -8,4 +8,4 @@ os:
   copyToClipboardCmd: "pbcopy < {{text}}"
   editPreset: "vscode"
   open: "open {{filename}}"
-  shellFunctionsFile: ~/projects/dotfiles/zsh/aliases.zsh
+  shellFunctionsFile: ~/projects/dotfiles/zsh/aliases.sh
