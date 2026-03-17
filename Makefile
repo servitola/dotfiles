@@ -117,10 +117,6 @@ install:
 	@$(REMOVE) ~/.nanorc
 	@$(LINK) ~/projects/dotfiles/nano/nanorc ~/.nanorc
 
-	@echo "setup aichat symlinks"
-	@mkdir -p ~/Library/Application\ Support/aichat
-	@$(REMOVE) ~/Library/Application\ Support/aichat/config.yaml
-	@$(LINK) ~/projects/dotfiles/Library/Application\ Support/aichat/config.yaml ~/Library/Application\ Support/aichat/config.yaml
 
 	@echo "setup Claude Desktop config symlink"
 	@mkdir -p ~/Library/Application\ Support/Claude
