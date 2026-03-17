@@ -34,7 +34,7 @@ function cdf() {
 }
 
 # Better file search
-function ff() {
+function fs() {
     local file
     file=$(fd --type f --strip-cwd-prefix --hidden --follow --exclude .git | fzf --preview 'head -100 {}') &&
         ${EDITOR:-vim} "$file"
