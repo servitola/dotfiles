@@ -26,7 +26,7 @@ print_task() {
 
 print_section "Apps Updates"
 
-rm -rf "brew --cache" > /dev/null 2>&1
+rm -rf $(brew --cache) > /dev/null 2>&1
 brew tap --repair
 brew cu --all --yes --quiet
 brew update
