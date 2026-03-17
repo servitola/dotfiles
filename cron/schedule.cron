@@ -21,4 +21,4 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 # =============================================================================
 
 # Zoom meeting every Saturday at 7:29 AM
-29 7 * * 6 . ~/.config/greek\ lessons\ zoom\ credentials && open "zoommtg://zoom.us/join?confno=${ZOOM_MEETING_ID}&pwd=${ZOOM_MEETING_PASSWORD}"
+29 7 * * 6 . "$HOME/.config/greek lessons zoom credentials" && open "zoommtg://zoom.us/join?confno=${ZOOM_MEETING_ID}&pwd=${ZOOM_MEETING_PASSWORD}"
