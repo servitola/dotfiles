@@ -418,7 +418,6 @@ cask "obs"
 cask "obsidian"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
-cask "openclaw"
 # Web browser
 cask "opera"
 # Replacement for Docker Desktop
