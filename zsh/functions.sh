@@ -48,10 +48,10 @@ function brew_unquarantine() {
         if xattr -p com.apple.quarantine "$app" &>/dev/null; then
             # Try to remove quarantine
             if xattr -d com.apple.quarantine "$app" 2>/dev/null; then
-                echo "  ✓ /$app"
+                echo "  ✓ $app"
                 ((removed_count++))
             else
-                echo "  ⚠ /$app (skipped - protected by system)"
+                echo "  ⚠ $app (skipped - protected by system)"
                 ((skipped_count++))
             fi
         fi
