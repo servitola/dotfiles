@@ -37,8 +37,9 @@ export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 export JAVA_HOME=$(/usr/libexec/java_home -v 21)
 export PATH=$PATH:$JAVA_HOME
 
-# Docker (via Colima)
-export DOCKER_HOST=unix:///$HOME/.colima/docker.sock
+# Docker (via OrbStack)
+# OrbStack auto-configures DOCKER_HOST, but we set it explicitly for consistency
+export DOCKER_HOST=unix:///Users/servitola/.orbstack/docker.sock
 
 # Android SDK Configuration
 export ANDROID_SDK=~/Library/Android/sdk
