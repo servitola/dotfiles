@@ -195,9 +195,6 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/aichat/dark.tmTheme
 	@$(LINK) ~/projects/dotfiles/aichat/dark.tmTheme ~/Library/Application\ Support/aichat/dark.tmTheme
 
-	@echo "Syncing gruvbox-wallpapers"
-	@~/projects/dotfiles/macos/sync_gruvbox_wallpapers.sh
-
 	@m appearance --highlightcolor grape
 
 	@$(SHELL) 'source ableton/setup-mcp.sh'
