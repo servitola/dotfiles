@@ -17,7 +17,6 @@ tap "oven-sh/bun"
 tap "qmk/qmk"
 tap "stevencch99/windsurf-cli"
 tap "wix/brew"
-brew "librsvg"
 # All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
 # Development kit for the Java programming language
@@ -34,8 +33,6 @@ brew "arm-none-eabi-binutils"
 brew "asio"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
-brew "gtk4"
-brew "libadwaita"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Get/set bluetooth power and discoverable state
@@ -142,6 +139,10 @@ brew "go"
 brew "gping"
 # Open-source build automation tool based on the Groovy and Kotlin DSL
 brew "gradle"
+# Library to render SVG files using Cairo
+brew "librsvg"
+# Toolkit for creating graphical user interfaces
+brew "gtk4"
 brew "terminal-notifier"
 # CLI for Heroku
 brew "heroku"
@@ -165,6 +166,9 @@ brew "kubernetes-cli"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Building blocks for modern adaptive GNOME applications
+brew "libadwaita"
+# Library that sends desktop notifications to a notification daemon
 brew "libnotify"
 # Lynx-like WWW browser that supports tables, menus, etc.
 brew "links"
