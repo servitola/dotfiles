@@ -56,7 +56,6 @@ alias grep='rg'
 alias rm="trash"
 alias cat=mcat
 alias mkdir="mkdir -pv"
-alias grep='grep --color=auto'
 alias search=grep
 alias python=python3
 alias pip=pip3
