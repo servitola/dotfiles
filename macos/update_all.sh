@@ -3,7 +3,6 @@
 
 source ~/projects/dotfiles/zsh/functions.sh
 source ~/projects/dotfiles/zsh/aliases.sh
-source ~/projects/dotfiles/zsh/exports.sh
 
 # Gruvbox colors
 RED='\033[0;31m'
