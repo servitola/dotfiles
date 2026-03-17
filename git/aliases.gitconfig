@@ -98,4 +98,3 @@
     # Kaleidoscope commands
     dkal = difftool -y -t Kaleidoscope
     mkal = mergetool -y -t Kaleidoscope
-    remotes = remote -v
