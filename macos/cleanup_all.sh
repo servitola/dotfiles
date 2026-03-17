@@ -57,7 +57,7 @@ if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
     fi
 fi
 
-"$TRY_CLEAN" /Users/servitola/Library/Application\ Support/Battle.net/Logs "HOTS Log"
+"$TRY_CLEAN" ~/Library/Application\ Support/Battle.net/Logs "HOTS Log"
 "$TRY_CLEAN" ~/Library/Application\ Support/CrashReporter "Crash reports"
 "$TRY_CLEAN" ~/Library/Application\ Support/heroic/Cache "Heroic Cache"
 "$TRY_CLEAN" ~/Library/Application\ Support/heroic/images-cache "Heroic Images Cache"
