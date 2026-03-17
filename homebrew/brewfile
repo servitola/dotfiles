@@ -150,7 +150,6 @@ brew "heroku"
 brew "id3v2"
 # Tool for managing apps on iOS devices
 brew "ideviceinstaller"
-brew "python@3.12"
 brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
@@ -243,8 +242,11 @@ brew "pygments"
 brew "python@3.11"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
 # Tensors and dynamic neural networks
 brew "pytorch"
+# AI-powered command-line workflow tool for developers
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
 brew "rsync"
