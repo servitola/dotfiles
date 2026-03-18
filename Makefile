@@ -160,6 +160,7 @@ install:
 	@$(LINK) ~/projects/dotfiles/noti ~/.config/noti
 
 	@echo "setup lazydocker symlinks"
+	@mkdir -p ~/Library/Application\ Support/lazydocker
 	@$(REMOVE) ~/Library/Application\ Support/lazydocker/config.yml
 	@$(LINK) ~/projects/dotfiles/lazydocker/config.yml ~/Library/Application\ Support/lazydocker/config.yml
 
