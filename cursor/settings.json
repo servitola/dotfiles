@@ -4,6 +4,7 @@
         "editor.guides.bracketPairs": false,
         "editor.tabSize": 4
     },
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.bracketPairColorization.enabled": true,
     "editor.detectIndentation": false,
     "editor.guides.bracketPairs": true,
@@ -129,7 +130,7 @@
     "settingsSync.ignoredSettings": [],
     "telemetry.telemetryLevel": "off",
     "editor.fontSize": 17,
-    "terminal.integrated.fontSize": 20,
+    "terminal.integrated.fontSize": 17,
     "markdown.preview.fontSize": 17,
     "debug.console.fontSize": 16,
     "scm.inputFontSize": 17,

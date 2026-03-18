@@ -1,7 +1,7 @@
 {
     // Editor appearance
-    "editor.fontFamily": "MesloLGS",
-    "editor.fontSize": 15,
+    "editor.fontFamily": "JetBrainsMono Nerd Font",
+    "editor.fontSize": 17,
     "editor.lineHeight": 1.5,
     "editor.fontLigatures": true,
     "editor.minimap.enabled": false,
@@ -56,8 +56,8 @@
     "sideBar.fontSize": 15,
     "explorer.fontSize": 15,
     // Terminal settings
-    "terminal.integrated.fontFamily": "JetBrains Mono",
-    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+    "terminal.integrated.fontSize": 17,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
     "terminal.integrated.shell.osx": "/bin/zsh",
@@ -161,7 +161,7 @@
     "debug.toolBarLocation": "docked",
     "debug.inlineValues": true,
     "debug.console.fontSize": 25,
-    "debug.console.fontFamily": "JetBrains Mono",
+    "debug.console.fontFamily": "JetBrainsMono Nerd Font",
     // Other settings
     "breadcrumbs.enabled": true,
     "telemetry.telemetryLevel": "off",
