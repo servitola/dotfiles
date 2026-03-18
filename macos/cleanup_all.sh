@@ -111,7 +111,7 @@ print_task "Cleaning logs"
 
 print_task "Cleaning core dumps"
 if [ -d /cores ] && [ "$(ls -A /cores 2>/dev/null)" ]; then
-    sudo rm -rf /cores/*
+    sudo realrm -rf /cores/*
     echo "  * Core dumps: cleaned"
 fi
 
@@ -134,7 +134,7 @@ print_task "Cleaning Trash"
 if [ -w ~/.Trash ]; then
     "$TRY_CLEAN" ~/.Trash "User Trash"
 else
-    if rm -rf ~/.Trash/* 2> /dev/null; then
+    if realrm -rf ~/.Trash/* 2> /dev/null; then
         echo "  * User Trash: cleaned (with elevated permissions)"
     else
         echo "  * User Trash: ERROR - permission denied (protected by system)"

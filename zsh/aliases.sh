@@ -52,8 +52,10 @@ alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
+alias sudo='sudo '
 alias grep='rg'
 alias rm="trash"
+alias realrm="/bin/rm"
 alias cat=mcat
 alias mkdir="mkdir -pv"
 alias search=grep
