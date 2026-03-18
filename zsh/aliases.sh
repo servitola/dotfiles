@@ -62,7 +62,6 @@ alias search=grep
 alias python=python3
 alias pip=pip3
 alias wifi=airport
-alias ls=eza
 alias e=eza
 alias htop=btop
 alias t=btop
