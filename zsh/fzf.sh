@@ -49,6 +49,6 @@ function zz() {
 
 # Key bindings
 bindkey '^R' fh  # Ctrl-R for history search
-bindkey '^T' ff  # Ctrl-T for file search
+bindkey '^T' fs  # Ctrl-T for file search
 bindkey '^G' cdf # Ctrl-G for directory search
 bindkey '^Z' zz  # Ctrl-Z for zoxide + fzf
