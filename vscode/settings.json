@@ -1,6 +1,7 @@
 {
     "editor.fontFamily": "JetBrainsMono Nerd Font",
     "editor.fontSize": 17,
+    "terminal.integrated.fontSize": 17,
     "editor.lineHeight": 1.5,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
