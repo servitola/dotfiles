@@ -137,18 +137,6 @@ end
 
 Configured in `config_UrlDispatcher.lua`.
 
-## Voice Dictation
-
-### VoiceDictation Spoon
-
-Real-time speech-to-text typing:
-- Activate via keyboard shortcut
-- Speaks into microphone
-- Types transcribed text
-
-### Integration
-
-Works with any application that accepts text input.
 
 ## Configuration Management
 
