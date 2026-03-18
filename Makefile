@@ -223,7 +223,6 @@ install:
 	@$(LINK) ~/projects/dotfiles/heroic/config.json ~/Library/Application\ Support/heroic/config.json
 
 	@echo "setup Warp terminal symlinks"
-	@mkdir -p ~/.warp
 	@$(REMOVE) ~/.warp
 	@$(LINK) ~/projects/dotfiles/warp ~/.warp
 
