@@ -28,7 +28,7 @@ return {
 --               │              │        VSCode — open command palette
 --         ⌃⌥p   │              │
 --         ⌃⌘p   │              │
---         ⌥⌘p   │              │        1Yandex — print using system dialog
+--         ⌥⌘p   │              │        Yandex — print using system dialog
 --———————————————┼——————————————┼——————————————————————————————————
 --        ⇪⇧⌃p   │              │
 --        ⇪⇧⌥p   │              │
