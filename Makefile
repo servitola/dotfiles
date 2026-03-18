@@ -226,6 +226,40 @@ install:
 	@$(REMOVE) ~/.warp
 	@$(LINK) ~/projects/dotfiles/warp ~/.warp
 
+	@echo "Making scripts executable"
+	@chmod +x \
+		macos/update_all_and_cleanup_all.sh \
+		macos/update_all.sh \
+		macos/cleanup_all.sh \
+		macos/set_defaults.sh \
+		macos/set_default_apps.sh \
+		macos/dock_setup.sh \
+		macos/helpers/try_to_clean_directory.sh \
+		macos/helpers/try_to_clean_by_pattern.sh \
+		macos/helpers/download_wallpaper.sh \
+		macos/helpers/fetch_wallpaper_url.sh \
+		macos/helpers/set_macos_default_if_different.sh \
+		macos/helpers/set_plist_value_if_different.sh \
+		macos/helpers/colors.sh \
+		homebrew/install.sh \
+		homebrew/install_all_homebrew_packages.sh \
+		homebrew/install_minimum_homebrew_packages.sh \
+		npm/install-globals.sh \
+		python/install-globals.sh \
+		python/install-uv-tools.sh \
+		n8n/install.sh \
+		n8n/n8n-service.sh \
+		n8n/n8n-start.sh \
+		iterm/install.sh \
+		xcode/install.sh \
+		zsh/setup_zsh.sh \
+		zsh/bin/random_ascii.sh \
+		ableton/setup-mcp.sh \
+		claude-desktop/deepseek-mcp.sh \
+		claude-desktop/github-mcp.sh \
+		claude-desktop/google-calendar-mcp.sh \
+		claude-desktop/google-maps-mcp.sh
+
 	@echo "precommit setup"
 	@cd ~/projects/dotfiles/ && pre-commit install
 
