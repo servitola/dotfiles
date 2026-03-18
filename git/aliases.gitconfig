@@ -67,8 +67,6 @@
 	# show all deleted files in the repo
     deleted = "!git log --diff-filter=D --summary | grep delete"
 
-	cleanup = "!git remote prune origin && git gc && git clean -df && git stash clear"
-
 	# rebase the current branch with changes from upstream remote
     update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
 
