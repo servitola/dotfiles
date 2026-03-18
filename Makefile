@@ -28,6 +28,7 @@ install:
 	@echo "setup git symlinks"
 	@$(REMOVE) ~/.gitconfig
 	@$(LINK) ~/projects/dotfiles/git/gitconfig ~/.gitconfig
+	@mkdir -p ~/.config/git
 	@$(REMOVE) ~/.config/git/ignore
 	@$(LINK) ~/projects/dotfiles/git/global_ignore ~/.config/git/ignore
 
