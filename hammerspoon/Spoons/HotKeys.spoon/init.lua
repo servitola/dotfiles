@@ -347,10 +347,6 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.YouTubeStream:toggle()
                     end)
-                elseif functionName == "voice_dictation.toggle" then
-                    hs.hotkey.bind(modifiers, key, function()
-                        spoon.VoiceDictation:toggleRecording()
-                    end)
                 elseif functionName == "vpn.toggle_globalprotect" then
                     hs.hotkey.bind(modifiers, key, function()
                         vpnGlobalProtect.toggle()
