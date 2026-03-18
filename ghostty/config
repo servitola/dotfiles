@@ -43,7 +43,7 @@ background-opacity = 0.8
 background-blur = 2
 
 # Working directory
-working-directory = /Users/servitola
+working-directory = home
 
 # Terminal behavior
 term = xterm-256color
