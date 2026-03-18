@@ -147,7 +147,6 @@
         "**/node_modules": true,
         "**/obj": true,
         "**/venv": true,
-        "**/.git": true,
     },
     "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
