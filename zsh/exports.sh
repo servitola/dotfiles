@@ -45,7 +45,7 @@ export DOTNET_ROOT=/usr/local/share/dotnet
 export USER_DOTNET_ROOT=/usr/local/share/dotnet
 export PATH=$PATH:$DOTNET_ROOT
 export PATH=$PATH:$DOTNET_ROOT/tools
-export PATH=$PATH:/Users/servitola/.dotnet/tools
+export PATH=$PATH:$HOME/.dotnet/tools
 export PATH=$PATH:/usr/local/opt/sqlite/bin
 
 # JetBrains Toolbox Scripts
@@ -57,7 +57,7 @@ export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Docker (via OrbStack)
 # OrbStack auto-configures DOCKER_HOST, but we set it explicitly for consistency
-export DOCKER_HOST=unix:///Users/servitola/.orbstack/docker.sock
+export DOCKER_HOST=unix://$HOME/.orbstack/docker.sock
 
 # Android SDK Configuration
 export ANDROID_SDK=~/Library/Android/sdk
@@ -83,4 +83,4 @@ export CLAUDE_MODEL="claude-opus-4-6"
 export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
 # n8n Configuration
-export N8N_USER_FOLDER="/Users/servitola/projects/services/n8n/.n8n"
+export N8N_USER_FOLDER="$HOME/projects/services/n8n/.n8n"
