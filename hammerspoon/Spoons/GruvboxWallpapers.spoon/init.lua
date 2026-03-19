@@ -1,7 +1,7 @@
 --- === GruvboxWallpapers ===
 ---
---- Download and set a random wallpaper from gruvbox collection daily
---- Downloads one random filtered wallpaper instead of syncing all locally
+--- Download and set a random wallpaper from configured collections daily
+--- Fetches all candidates once, then tries them in shuffled order
 ---
 
 local obj = {}
@@ -11,10 +11,10 @@ obj.wallpapers_dir = os.getenv("HOME") .. "/Pictures/Wallpapers/GruvBox"
 obj.current_wallpaper = nil
 obj.dotfiles_path = os.getenv("HOME") .. "/projects/dotfiles"
 
--- Fetch a random wallpaper URL from available gruvbox repositories
-function obj:fetchRandomWallpaperURL()
+-- Fetch all wallpaper candidates (one API scan, returns shuffled JSON array)
+function obj:fetchAllCandidates()
     local script_path = self.dotfiles_path .. "/macos/helpers/fetch_wallpaper_url.sh"
-    local cmd = string.format('zsh "%s" 2>&1', script_path)
+    local cmd = string.format('zsh "%s" 2>/dev/null', script_path)
     local handle = io.popen(cmd)
     if not handle then
         return nil, "Failed to execute fetch script"
@@ -27,15 +27,17 @@ function obj:fetchRandomWallpaperURL()
         return nil, "Fetch script failed: " .. result:gsub("%s+", " ")
     end
 
-    -- Parse JSON output: {"name": "...", "url": "..."}
-    local name = result:match('"name"%:%s*"([^"]+)"')
-    local url = result:match('"url"%:%s*"([^"]+)"')
-
-    if not name or not url then
-        return nil, "Failed to parse wallpaper URL from: " .. result
+    -- Parse JSON array: [{"name":"...", "url":"..."}, ...]
+    local candidates = {}
+    for name, url in result:gmatch('"name"%s*:%s*"([^"]+)"%s*,%s*"url"%s*:%s*"([^"]+)"') do
+        table.insert(candidates, {name = name, url = url})
     end
 
-    return {name = name, url = url}, nil
+    if #candidates == 0 then
+        return nil, "No wallpaper candidates found"
+    end
+
+    return candidates, nil
 end
 
 -- Download wallpaper from URL to local path
@@ -51,7 +53,6 @@ function obj:downloadWallpaper(url, output_path, name)
     local success, exit_type, exit_code = handle:close()
 
     if exit_type == "exit" and exit_code ~= 0 then
-        -- Check if it was a resolution failure (wallpaper was blocklisted)
         if result:match("BLOCKLIST:") then
             return "BLOCKLIST", name
         end
@@ -62,57 +63,49 @@ function obj:downloadWallpaper(url, output_path, name)
 end
 
 function obj:setRandomWallpaper()
-    local MAX_RETRIES = 10
-    local attempts = 0
-    local blocked_names = {}
+    -- Single API scan: get all candidates shuffled
+    local candidates, err = self:fetchAllCandidates()
+    if not candidates then
+        print("GruvboxWallpapers: " .. (err or "unknown error"))
+        return
+    end
 
-    while attempts < MAX_RETRIES do
-        attempts = attempts + 1
+    print("GruvboxWallpapers: " .. #candidates .. " candidates, trying in order...")
 
-        -- Fetch random wallpaper URL
-        local wallpaper_info, err = self:fetchRandomWallpaperURL()
-        if not wallpaper_info then
+    -- Try candidates one by one (already shuffled, no re-scanning)
+    local MAX_TRIES = math.min(#candidates, 10)
+    for i = 1, MAX_TRIES do
+        local candidate = candidates[i]
+
+        local temp_name = "temp_" .. os.time() .. "_" .. math.random(1000) .. ".jpg"
+        local temp_path = self.wallpapers_dir .. "/" .. temp_name
+
+        local success, result = self:downloadWallpaper(candidate.url, temp_path, candidate.name)
+
+        if success == "BLOCKLIST" then
+            -- Resolution too low, try next candidate
+            print("GruvboxWallpapers: skipping " .. candidate.name .. " (low resolution)")
+        elseif not success then
+            print("GruvboxWallpapers: download failed for " .. candidate.name .. ", trying next")
+        else
+            -- Clean up old wallpapers
+            if self.current_wallpaper then
+                os.remove(self.current_wallpaper)
+            end
+            local cmd = string.format('find "%s" -type f ! -name "%s" -delete 2>/dev/null', self.wallpapers_dir, temp_name)
+            os.execute(cmd)
+
+            -- Move to final location and set
+            local final_path = self.wallpapers_dir .. "/" .. candidate.name
+            os.rename(temp_path, final_path)
+            self.current_wallpaper = final_path
+            hs.screen.mainScreen():desktopImageURL("file://" .. self.current_wallpaper:gsub(" ", "%%20"))
+            print("GruvboxWallpapers: set " .. candidate.name)
             return
         end
-
-        -- Skip if we already blocked this one in this session
-        if blocked_names[wallpaper_info.name] then
-            -- Try again
-        else
-            -- Download to temp file
-            local temp_name = "temp_" .. os.time() .. "_" .. math.random(1000) .. ".jpg"
-            local temp_path = self.wallpapers_dir .. "/" .. temp_name
-
-            -- Download
-            local success, result = self:downloadWallpaper(wallpaper_info.url, temp_path, wallpaper_info.name)
-
-            if success == "BLOCKLIST" then
-                -- Resolution too low, wallpaper was blocklisted, try again
-                blocked_names[wallpaper_info.name] = true
-                -- Try again
-            elseif not success then
-                return
-            else
-                -- Remove old wallpaper if exists
-                if self.current_wallpaper and self.current_wallpaper ~= temp_path then
-                    os.remove(self.current_wallpaper)
-                end
-
-                -- Clean up any other files in the directory (previous downloads)
-                local cmd = string.format('find "%s" -type f ! -name "%s" -delete 2>/dev/null', self.wallpapers_dir, temp_name)
-                os.execute(cmd)
-
-                -- Move new wallpaper to final location
-                local final_path = self.wallpapers_dir .. "/" .. wallpaper_info.name
-                os.rename(temp_path, final_path)
-
-                -- Set as desktop wallpaper
-                self.current_wallpaper = final_path
-                hs.screen.mainScreen():desktopImageURL("file://" .. self.current_wallpaper)
-                return
-            end
-        end
     end
+
+    print("GruvboxWallpapers: failed to set wallpaper after " .. MAX_TRIES .. " tries")
 end
 
 function obj:init()
