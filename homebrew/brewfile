@@ -173,8 +173,6 @@ brew "libadwaita"
 brew "libnotify"
 # Lynx-like WWW browser that supports tables, menus, etc.
 brew "links"
-# LLM inference in C/C++
-brew "llama.cpp"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Text-based web browser
