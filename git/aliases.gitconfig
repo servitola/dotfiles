@@ -32,20 +32,15 @@
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 	last = log -n 1
-	pl = !git sphph && git pull origin master --rebase && git remote prune origin && git submodule update --init --recursive && git splpl
-	pull = pl
 	ps = !git f && git push -v
 	rb = rebase
 	rbi = rebase -i
 	sh = show
 	sm = status -s
-	splpl = !git stash list | grep ": autostash" | tr -dc '0-9' | xargs git stash apply
 	st = status
-	push = ps
 	remotes = remote --verbose
 	rup = remote update
 	rsh = !git reset --hard
-	sphph = !git stash save autostash
 	tags = tag -l
 	undo = !git reset HEAD~1 --mixed
 	unstage = reset HEAD --
