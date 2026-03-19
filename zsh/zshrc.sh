@@ -56,22 +56,17 @@ source ~/projects/dotfiles/zsh/p10k.zsh
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Atuin shell history
-eval "$(atuin init zsh)"
+# Atuin shell history (--disable-up-arrow keeps native prefix search on up/down)
+eval "$(atuin init zsh --disable-up-arrow)"
 
 # zoxide for fast directory navigation
 eval "$(zoxide init zsh)"
 
-# Restore original up arrow binding (prefix search from history)
-# https://til.simonwillison.net/macos/atuin
+# Up/down arrow: prefix-based history search (type beginning, then arrow to filter)
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
-# Bind both possible up-arrow escape sequences
 bindkey "^[[A" history-beginning-search-backward-end  # Standard terminals
 bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2)
 bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
-
-# broot (tree navigator) launcher
-# source ~/.config/broot/launcher/bash/br
