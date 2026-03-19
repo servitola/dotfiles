@@ -10,7 +10,7 @@ wallblock() {
         return 1
     fi
     echo "$file" >> "$blocklist"
-    rm -f "$HOME/Pictures/Wallpapers/$file"
+    /bin/rm -f "$HOME/Pictures/Wallpapers/$file"
     echo "Blocked and deleted: $file"
 }
 
