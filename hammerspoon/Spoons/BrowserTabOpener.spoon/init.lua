@@ -2,37 +2,49 @@ local obj = {}
 obj.__index = obj
 
 function obj:openTab(urlPattern)
-    local success, urls, err = hs.osascript.applescript([[
+    local script = string.format([[
         tell application "Yandex"
-            set urlList to ""
-            repeat with w in windows
-                repeat with t in tabs of w
-                    set urlList to urlList & URL of t & ", "
-                end repeat
+            set matchedTabs to {}
+            set currentMatchPos to 0
+            set currentActive to active tab index of front window
+
+            set tabCounter to 0
+            repeat with t in tabs of front window
+                set tabCounter to tabCounter + 1
+                if URL of t contains "%s" then
+                    set end of matchedTabs to tabCounter
+                    if tabCounter = currentActive then
+                        set currentMatchPos to (count of matchedTabs)
+                    end if
+                end if
             end repeat
-            return text 1 thru -3 of urlList
+
+            if (count of matchedTabs) = 0 then
+                return "none"
+            end if
+
+            set nextPos to 1
+            if currentMatchPos > 0 and currentMatchPos < (count of matchedTabs) then
+                set nextPos to currentMatchPos + 1
+            else if currentMatchPos = (count of matchedTabs) then
+                set nextPos to 1
+            end if
+
+            set active tab index of front window to item nextPos of matchedTabs
+            activate
+            return "ok"
         end tell
-    ]])
+    ]], urlPattern:gsub('"', '\\"'))
 
-    if success then
+    local success, result, err = hs.osascript.applescript(script)
 
-        for url in string.gmatch(urls, "[^,]+") do
-            url = url:match("^%s*(.-)%s*$")
-            if string.match(url, urlPattern) then
-                hs.application.launchOrFocus("Yandex")
-                hs.timer.doAfter(0.1, function()
-                    hs.urlevent.openURLWithBundle(url, "ru.yandex.desktop.yandex-browser")
-                end)
-                return
-            end
-        end
-
+    if success and result == "ok" then
+        hs.application.launchOrFocus("Yandex")
+    else
         hs.application.launchOrFocus("Yandex")
         hs.timer.doAfter(0.1, function()
             hs.urlevent.openURLWithBundle(urlPattern, "ru.yandex.desktop.yandex-browser")
         end)
-    else
-        hs.alert.show("Error getting Yandex tabs: " .. (err or "unknown error"))
     end
 end
 
