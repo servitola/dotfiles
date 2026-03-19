@@ -283,6 +283,7 @@ brew "unar"
 brew "uv"
 # Internet file retriever
 brew "wget"
+# Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
 # JavaScript package manager
 brew "yarn"
