@@ -38,7 +38,7 @@ print_task "Cleaning caches"
 setopt rm_star_silent
 "$TRY_CLEAN" ~/Library/Caches "Library Caches"
 "$TRY_CLEAN" /Library/Caches "System Caches"
-"$TRY_CLEAN" /Users/servitola/Library/Application\ Support/Caches "Application Support Caches"
+"$TRY_CLEAN" ~/Library/Application\ Support/Caches "Application Support Caches"
 
 print_task "Cleaning old Battle.net versions"
 BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
