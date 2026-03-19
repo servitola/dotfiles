@@ -8,26 +8,24 @@
 	s = status -s
 	t = tag
 	w = whatchanged
-	alias=!git config -l | grep ^alias | cut -c 7- | sort # List aliases.
+	alias = !git config -l | grep ^alias | cut -c 7- | sort
 	bd = branch -d
 	bD = branch -D
-	# Show verbose output about tags, branches or remotes
 	branches = branch --all
 	ci = commit
 	cm = commit --amend
-	co = checkout
-	cob = checkout -b
+	co = switch
+	cob = switch -c
 	contributors = shortlog --summary --numbered
 	cp = cherry-pick
-	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 	diffc = diff --cached
 	# Find commits by source code
-	fc = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 	ff = merge --ff-only
 	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h	%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-	# Switch to a branch, creating it if necessary.
-	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	# Switch to a branch, creating it if necessary
+	go = "!f() { git switch -c \"$1\" 2> /dev/null || git switch \"$1\"; }; f"
 	last = log -n 1
 	rb = rebase
 	rbi = rebase -i
@@ -41,37 +39,32 @@
 	whoami = config user.email
 
 	# show what I did today
-    day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
+	day = "!sh -c 'git log --reverse --no-merges --branches=* --date=local --after=\"yesterday 11:59PM\" --author=\"`git config --get user.name`\"'"
 
 	# show the committers in the last 100 commits, sorted by who has commited the most
-    review = "!git log --no-merges --pretty=%an | head -n 100 | sort | uniq -c | sort -nr"
+	review = "!git log --no-merges --pretty=%an | head -n 100 | sort | uniq -c | sort -nr"
 
 	# order files by number of commits, ascending
-    # Written by Corey Haines
-    # Scriptified by Gary Bernhardt
-    # Show churn for a time range:
-    # $ git churn --since='1 month ago'
-    churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
+	# Show churn for a time range: $ git churn --since='1 month ago'
+	churn = "!f() { git log --all -M -C --name-only --format='format:' \"$@\" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print \"count\tfile\"} {print $1 \"\t\" $2}' | sort -g; }; f"
 
 	# show all deleted files in the repo
-    deleted = "!git log --diff-filter=D --summary | grep delete"
+	deleted = "!git log --diff-filter=D --summary | grep delete"
 
 	# rebase the current branch with changes from upstream remote
-    update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
+	update = !git fetch upstream && git rebase upstream/`git rev-parse --abbrev-ref HEAD`
 
 	# clean up all
-    forget = "!git fetch -p origin && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
+	forget = "!git fetch -p origin && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D"
 
 	# show the most recently touched branches
-    recent = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/heads | sed -e 's-refs/heads/--' | less -XFR"
-    latest = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/remotes | sed -e 's-refs/remotes/origin/--' | less -XFR"
+	recent = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/heads | sed -e 's-refs/heads/--' | less -XFR"
+	latest = "!git for-each-ref --sort='-committerdate' --format='%(color:red)%(refname)%(color:reset)%09%(committerdate)' refs/remotes | sed -e 's-refs/remotes/origin/--' | less -XFR"
 
-
-# grep commands
-
-    # 'diff grep'
-    dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"
-    # diff grep changes between two commits
-    dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -"
-    # add grep
-    ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --all' -"
+	# grep commands
+	# diff grep
+	dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"
+	# diff grep changes between two commits
+	dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -"
+	# add grep
+	ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --all' -"
