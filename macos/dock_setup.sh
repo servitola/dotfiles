@@ -25,7 +25,7 @@ dockutil --no-restart --remove all
 
 echo "Set Apps application to Dock"
 dockApps=(
-    "/Applications/Apps.app"
+    "/System/Applications/Apps.app"
 )
 
 for i in "${dockApps[@]}"; do
