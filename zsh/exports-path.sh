@@ -24,7 +24,9 @@ path+=( ~/.local/bin )
 
 # DotNet
 path+=( "$DOTNET_ROOT" "$HOME/.dotnet/tools" )
-path+=( /usr/local/opt/sqlite/bin )
+
+# SQLite (Homebrew, works on both Apple Silicon and Intel)
+path+=( "$HOMEBREW_PREFIX/opt/sqlite/bin" )
 
 # JetBrains Toolbox Scripts
 path+=( ~/Library/Application\ Support/JetBrains/Toolbox/scripts )
