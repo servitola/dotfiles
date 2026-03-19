@@ -89,13 +89,11 @@ alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applicat
 # Show active network interfaces
 alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
-# Lock the screen (when going AFK)
-alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
+alias ips="ifconfig -a | rg -o 'inet6?\s+(addr:\s*)?(((\d+\.){3}\d+)|[a-fA-F0-9:]+)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 alias wifis="wifi -s"
 alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
