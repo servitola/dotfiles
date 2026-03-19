@@ -47,6 +47,9 @@ install:
 	@echo "setup Claude"
 	@$(REMOVE) ~/.claude
 	@$(LINK) ~/projects/dotfiles/claude-code ~/.claude
+	@mkdir -p ~/.claude/projects/-Users-servitola-projects-dotfiles
+	@$(REMOVE) ~/.claude/projects/-Users-servitola-projects-dotfiles/memory
+	@$(LINK) ~/projects/dotfiles/claude-code-memory ~/.claude/projects/-Users-servitola-projects-dotfiles/memory
 
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
