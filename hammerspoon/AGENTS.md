@@ -25,14 +25,11 @@ Uses `hs.application.watcher` to detect app focus changes:
 ## Installed Spoons
 - AudioSwitcher
 - BrowserTabOpener
-- CursorMemory
-- FoodyOrder
 - GruvboxWallpapers
 - HotKeys
 - KSheet
 - PopupTranslateSelection
 - URLDispatcher
-- VideoFocus
 - Windows
 - YouTrackTasks
 - YouTrackTicket
