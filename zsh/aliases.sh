@@ -48,31 +48,29 @@ fi
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
-alias gtop=btop
 alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 alias sudo='sudo '
-alias grep='rg'
 alias rm="trash"
 alias realrm="/bin/rm"
 alias cat=bat
 alias mkdir="mkdir -pv"
-alias search=grep
+alias search=rg
 alias e=eza
-alias htop=btop
-alias t=btop
-alias b=btop
+alias top=btop
 alias ping="prettyping -c 10 --nolegend"
 
-# -i \"2:2\"
-alias rec="ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422  -f avfoundation -i \"2\" -preset ultrafast -c:a pcm_s16le -probesize 100M \"output_$(date +%Y%m%d_%H%M%S).mp4\""
+# screen recording
+rec() {
+    ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422 -f avfoundation -i "2" -preset ultrafast -c:a pcm_s16le -probesize 100M "output_$(date +%Y%m%d_%H%M%S).mp4"
+}
 
 # ANDROID ADB
-alias android_deep_link='f() { adb shell am start -a android.intent.action.VIEW -d "$1" }; f'
+android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
 alias android_deep_link_to_Development='android_deep_link https://ct.spotware.com'
 alias android_run_emulator='emulator -avd $(emulator -list-avds| head -1) &'
-alias android_paste_to_emulator='f() { adb shell input text "${1}" }; f'
+android_paste_to_emulator() { adb shell input text "$1"; }
 alias android_uninstall_app='adb shell pm uninstall --user 0 com.dev.ct.dev'
 alias android_uninstall_app_leave_data='adb shell pm uninstall -k --user 0 com.dev.ct.dev'
 alias android_clean_data_for_app='adb shell pm clear --user 0 com.dev.ct.dev'
@@ -82,9 +80,6 @@ alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sd
 
 # iOS
 alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 alias path='echo -e ${PATH//:/\\n}'
 
@@ -118,7 +113,7 @@ function whisper_max() {
     ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
 }
 
-# fast voice to text trascription
+# fast voice to text transcription
 function whisper_voice() {
     ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name medium --language ru 2>/dev/null
 }

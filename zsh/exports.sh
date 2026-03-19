@@ -1,18 +1,21 @@
 # =============================================================================
-# Environment Variables Configuration
-# Sourced once from zshenv.sh (deepest level, all shell types)
+# Environment Variables Configuration (non-PATH)
+# Sourced from zshenv.sh — runs for ALL shell types (scripts, interactive, login)
+# PATH is set in zprofile.sh (after macOS path_helper reorders it)
 # =============================================================================
 
-# Guard: skip if already loaded (prevents duplicate PATH entries)
+# Guard: skip if already loaded
 [[ -n "$_EXPORTS_LOADED" ]] && return 0
 export _EXPORTS_LOADED=1
 
-export TERM='xterm-256color'
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
-# Initialize Homebrew environment (must come before anything using HOMEBREW_PREFIX)
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# Homebrew environment variables (constants on Apple Silicon)
+# PATH is properly set via brew shellenv in exports-path.sh/zprofile.sh
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
 
 # Homebrew completions
 export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
@@ -26,56 +29,20 @@ fi
 
 # Go
 export GOPATH="$HOME/go"
-export PATH="$PATH:$GOPATH/bin"
 
-# System Paths
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:/usr/local/sbin
-export PATH=$PATH:/bin
-export PATH=$PATH:/sbin
-export PATH=$PATH:/usr/bin
-export PATH=$PATH:/usr/sbin
-export PATH=$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands
-export PATH=$PATH:/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
-export SDKROOT=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk
-
-# DotNet Configuration
+# .NET SDK
 export DOTNET_ROOT=/usr/local/share/dotnet
-export USER_DOTNET_ROOT=/usr/local/share/dotnet
-export PATH=$PATH:$DOTNET_ROOT
-export PATH=$PATH:$DOTNET_ROOT/tools
-export PATH=$PATH:$HOME/.dotnet/tools
-export PATH=$PATH:/usr/local/opt/sqlite/bin
-
-# JetBrains Toolbox Scripts
-export PATH=$PATH:~/Library/Application\ Support/JetBrains/Toolbox/scripts
 
 # Java & Android Development
-    export JAVA_HOME=$(/usr/libexec/java_home -v 21)
-    export PATH=$PATH:$JAVA_HOME
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-21.jdk/Contents/Home
+export ANDROID_HOME=~/Library/Android/sdk
 
 # Docker (via OrbStack)
-# OrbStack auto-configures DOCKER_HOST, but we set it explicitly for consistency
 export DOCKER_HOST=unix://$HOME/.orbstack/docker.sock
 
-# Android SDK Configuration
-export ANDROID_SDK=~/Library/Android/sdk
-export ANDROID_HOME=~/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/16.0/bin
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/build-tools/35.0.1
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # Node.js & NPM Configuration
-export PATH="$PATH:/opt/homebrew/opt/node@22/bin"
 export NPM_GLOBAL=~/.npm-global
-export NPM_PACKAGES=~/.npm-packages
 export NODE_PATH="$NPM_GLOBAL/lib/node_modules"
-export PATH="$PATH:$NPM_GLOBAL/bin"
-export PATH="$PATH:$NPM_PACKAGES/bin"
-export PATH="$PATH:$NPM_PACKAGES"
-export MANPATH="${MANPATH-$(manpath)}:$NPM_PACKAGES/share/man"
 
 # Claude Code
 export CLAUDE_CODE_USE_BEDROCK=0
