@@ -82,8 +82,6 @@ brew "docker-buildx"
 brew "docker-compose"
 # Platform keystore credential helper for Docker
 brew "docker-credential-helper"
-# Create Docker hosts locally and on cloud providers
-brew "docker-machine"
 # Tool for managing dock items
 brew "dockutil"
 # Cross-platform library for audio I/O
