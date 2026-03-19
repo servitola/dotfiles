@@ -11,11 +11,18 @@ export _EXPORTS_LOADED=1
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
+# Locale
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # Homebrew environment variables (constants on Apple Silicon)
 # PATH is properly set via brew shellenv in exports-path.sh/zprofile.sh
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_REPOSITORY="/opt/homebrew"
+export HOMEBREW_AUTO_UPDATE_SECS="86400"
+export HOMEBREW_NO_ANALYTICS=1
 
 # Homebrew completions
 export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
@@ -46,6 +53,7 @@ export NODE_PATH="$NPM_GLOBAL/lib/node_modules"
 
 # Claude Code
 export CLAUDE_CODE_USE_BEDROCK=0
+export CLAUDE_CODE_ENABLE_TELEMETRY=0
 export CLAUDE_MODEL="claude-opus-4-6"
 export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
