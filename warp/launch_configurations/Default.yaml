@@ -5,14 +5,14 @@ windows:
     tabs:
       - title: AI
         layout:
-          cwd: $HOME/projects/dotfiles
+          cwd: /Users/servitola/projects/dotfiles
           is_focused: true
           commands:
             - exec: aoe
         color: red
       - title: Web
         layout:
-          cwd: $HOME/projects/Spotware/ctradermobileweb
+          cwd: /Users/servitola/projects/Spotware/ctradermobileweb
           is_focused: true
           commands:
             - exec: yarn install && yarn dev
