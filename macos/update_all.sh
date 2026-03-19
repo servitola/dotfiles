@@ -2,7 +2,6 @@
 # Update all packages and tools
 
 source ~/projects/dotfiles/zsh/functions.sh
-source ~/projects/dotfiles/zsh/aliases.sh
 
 # Gruvbox colors
 RED='\033[0;31m'
