@@ -7,7 +7,6 @@ COPY := sudo cp -r
 
 install:
 
-	@$(SHELL) 'source zsh/exports.sh'
 	@$(SHELL) 'source macos/set_defaults.sh'
 	@$(SHELL) 'source xcode/install.sh'
 	@$(SHELL) 'source homebrew/install.sh'
