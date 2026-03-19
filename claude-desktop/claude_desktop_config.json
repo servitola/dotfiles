@@ -38,7 +38,8 @@
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
     "quickEntryDictationShortcut": "off",
+    "coworkScheduledTasksEnabled": false,
     "sidebarMode": "chat",
-    "coworkScheduledTasksEnabled": false
+    "coworkWebSearchEnabled": true
   }
 }
