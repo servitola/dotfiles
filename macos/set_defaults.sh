@@ -124,8 +124,8 @@ set_macos_default_if_different \
 	'Add message to Login Windows' \
     '/Library/Preferences/com.apple.loginwindow' \
     'LoginwindowText' \
-    'Found this computer? Please contact me at:' \
-    'servitola@gmail.com'
+    '-string' \
+    'Found this computer? Please contact me at: servitola@gmail.com'
 
 set_macos_default_if_different \
 	'Set highlight color to green' \
