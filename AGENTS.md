@@ -185,8 +185,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── router_optimization_guide.md
 │   ├── set_default_apps.sh
 │   ├── set_defaults.sh
-│   ├── sync_gruvbox_wallpapers.sh
-│   ├── update_all_and_cleanup_all.sh
 │   └── vpn-proxy-config-example.conf
 ├── marta
 │   ├── plugins
