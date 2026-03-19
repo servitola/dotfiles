@@ -1,7 +1,6 @@
 [alias]
 
 	b = branch -vv
-	c = !git add -A && git commit --verbose -m
 	d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 	f = fetch --all
 	l = log -n 25 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -14,7 +13,6 @@
 	bD = branch -D
 	# Show verbose output about tags, branches or remotes
 	branches = branch --all
-	ca = commit -a
 	ci = commit
 	ch = cherry-pick
 	cm = commit --amend
@@ -32,7 +30,6 @@
 	# Switch to a branch, creating it if necessary.
 	go = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 	last = log -n 1
-	ps = !git f && git push -v
 	rb = rebase
 	rbi = rebase -i
 	sh = show
@@ -40,7 +37,6 @@
 	st = status
 	remotes = remote --verbose
 	rup = remote update
-	rsh = !git reset --hard
 	tags = tag -l
 	undo = !git reset HEAD~1 --mixed
 	unstage = reset HEAD --
@@ -85,9 +81,3 @@
     ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --all' -"
     # add all
     aa = !git ls-files -d | xargs git rm && git ls-files -m -o --exclude-standard | xargs git add
-    # remove grep - Remove found files that are NOT under version control
-    rg = "!sh -c 'git ls-files --others --exclude-standard | grep $1 | xargs rm' -"
-
-    # Kaleidoscope commands
-    dkal = difftool -y -t Kaleidoscope
-    mkal = mergetool -y -t Kaleidoscope
