@@ -141,8 +141,11 @@ install:
 	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
 
 	@echo "setup ampcode settings"
-	@$(REMOVE) ~/.config/amp
-	@$(LINK) ~/projects/dotfiles/amp ~/.config/amp
+	@mkdir -p ~/.config/amp
+	@$(REMOVE) ~/.config/amp/settings.json
+	@$(LINK) ~/projects/dotfiles/amp/settings.json ~/.config/amp/settings.json
+	@$(REMOVE) ~/.config/amp/tools
+	@$(LINK) ~/projects/dotfiles/amp/tools ~/.config/amp/tools
 	@$(REMOVE) ~/.config/amp/commands
 	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.config/amp/commands
 	@$(REMOVE) ~/.config/amp/agents
