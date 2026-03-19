@@ -10,7 +10,7 @@ wallblock() {
         return 1
     fi
     echo "$file" >> "$blocklist"
-    /bin/rm -f "$HOME/Pictures/Wallpapers/$file"
+    /bin/rm -f "$HOME/Pictures/Wallpapers/GruvBox/$file"
     echo "Blocked and deleted: $file"
 }
 
@@ -77,9 +77,6 @@ alias android_clean_data_for_app='adb shell pm clear --user 0 com.dev.ct.dev'
 alias android_list_real_devices='adb usb'
 alias android_download_dev_db='adb pull /sdcard/test.txt ~/projects/com.dev.ct.dev.mementoes.db'
 alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sdcard/test.txt'
-
-# iOS
-alias ios_run_emulator="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 
 alias path='echo -e ${PATH//:/\\n}'
 
