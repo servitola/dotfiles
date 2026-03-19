@@ -12,3 +12,9 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 
 - When debugging, always establish the root cause with evidence before proposing fixes. Do not guess or apply speculative patches.
 - When editing shell scripts, be careful with quoting, associative arrays, and sed regex syntax.
+
+# Shared AI Coding Tools
+
+This `claude-code/` directory is the single source of truth for commands, agents, and skills.
+Amp (`~/.config/amp/`) and Qwen Code (`~/.qwen/`) symlink their `commands/`, `agents/`, and `skills/` directories here.
+When adding or editing commands/agents/skills — do it here. All tools pick up changes automatically.

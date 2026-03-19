@@ -15,6 +15,29 @@
 - **Symlinks**: Created via Makefile (e.g., ~/.gitconfig → git/gitconfig; app configs link to respective directories)
 - **Reference**: See @./README.md for detailed setup
 
+## AI Coding Tools — Shared Configuration
+Claude Code (`claude-code/`) is the single source of truth for commands, agents, and skills.
+Other AI coding tools (Amp, Qwen Code) symlink to claude-code's directories so they all share the same setup.
+
+**Source directories (in dotfiles repo):**
+- `claude-code/commands/` — slash commands
+- `claude-code/agents/` — agent definitions
+- `claude-code/skills/` — skill definitions
+
+**Symlink targets (created by Makefile):**
+- `~/.config/amp/commands` → `claude-code/commands`
+- `~/.config/amp/agents` → `claude-code/agents`
+- `~/.config/amp/skills` → `claude-code/skills`
+- `~/.qwen/commands` → `claude-code/commands`
+- `~/.qwen/agents` → `claude-code/agents`
+- `~/.qwen/skills` → `claude-code/skills`
+
+**Tool-specific configs (not shared):**
+- `amp/settings.json`, `amp/tools/` — Amp's own settings
+- `qwen-code/settings.json`, `qwen-code/QWEN.md` — Qwen's own settings
+
+When adding new commands, agents, or skills — add them to `claude-code/` only. All tools pick them up automatically via symlinks.
+
 ## Code Style Guidelines
 - **Theme**: Gruvbox Dark Hard
 - **Naming**: Standard conventions per language/framework
@@ -45,7 +68,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── config.yaml
 │   └── dark.tmTheme
 ├── amp
-│   ├── commands
 │   ├── tools
 │   └── settings.json
 ├── annepro2
