@@ -24,4 +24,5 @@ echo
 
 source ~/projects/dotfiles/zsh/bin/random_ascii.sh
 
-reload
+echo "${GREEN}${BOLD}🔄 Reloading shell to apply changes...${NC}"
+exec zsh
