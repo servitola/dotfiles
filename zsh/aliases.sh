@@ -59,7 +59,6 @@ alias realrm="/bin/rm"
 alias cat=bat
 alias mkdir="mkdir -pv"
 alias search=grep
-alias wifi=airport
 alias e=eza
 alias htop=btop
 alias t=btop
