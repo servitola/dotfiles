@@ -2,6 +2,7 @@
   "alwaysThinkingEnabled": false,
   "apiKeyHelper": "echo mainuser",
   "cleanupPeriodDays": 60,
+  "effortLevel": "high",
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true
   },
