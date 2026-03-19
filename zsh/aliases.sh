@@ -1,5 +1,5 @@
 # update all
-alias up='zsh ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
+alias up='source ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 
 # wallpapers blocklist: block and delete a wallpaper by filename
 wallblock() {
@@ -69,14 +69,12 @@ rec() {
 # ANDROID ADB
 android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
 alias android_deep_link_to_Development='android_deep_link https://ct.spotware.com'
-alias android_run_emulator='emulator -avd $(emulator -list-avds| head -1) &'
+android_run_emulator() { emulator -avd "$(emulator -list-avds | head -1)" & }
 android_paste_to_emulator() { adb shell input text "$1"; }
 alias android_uninstall_app='adb shell pm uninstall --user 0 com.dev.ct.dev'
 alias android_uninstall_app_leave_data='adb shell pm uninstall -k --user 0 com.dev.ct.dev'
 alias android_clean_data_for_app='adb shell pm clear --user 0 com.dev.ct.dev'
 alias android_list_real_devices='adb usb'
-alias android_download_dev_db='adb pull /sdcard/test.txt ~/projects/com.dev.ct.dev.mementoes.db'
-alias android_upload_dev_db='adb push ~/projects/com.dev.ct.dev.mementoes.db /sdcard/test.txt'
 
 alias path='echo -e ${PATH//:/\\n}'
 
@@ -86,10 +84,7 @@ alias ips="ifconfig -a | rg -o 'inet6?\s+(addr:\s*)?(((\d+\.){3}\d+)|[a-fA-F0-9:
 alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 
-# Load eza colors
-source ~/projects/dotfiles/eza/colors.sh
-
-# eza aliases with custom theme
+# eza aliases (theme from ~/.config/eza/theme.yml)
 alias ls="eza --icons --group-directories-first --color=always"
 alias l="eza --icons --group-directories-first --color=always"
 alias ll="ls -l"
