@@ -1,0 +1,256 @@
+{
+    "description": "Grave Accent to Escape",
+    "manipulators": [
+        {
+            "description": "Left Shift + Tilde (no Hyper) -> Shift + Escape",
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_shift"
+                    ],
+                    "optional": [
+                        "left_command",
+                        "left_option",
+                        "left_control"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_shift"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "non_us_backslash"
+            },
+            "to": [
+                {
+                    "key_code": "escape"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "grave_accent_and_tilde"
+            },
+            "to": [
+                {
+                    "key_code": "escape"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_command"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": {
+                    "mandatory": [
+                        "left_command"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_option"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": {
+                    "mandatory": [
+                        "left_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_option"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_control"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_control"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": {
+                    "mandatory": [
+                        "left_control"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_control"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_command",
+                        "left_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_command",
+                        "left_option"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": {
+                    "mandatory": [
+                        "left_command",
+                        "left_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "escape",
+                    "modifiers": [
+                        "left_command",
+                        "left_option"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "description": "Right Modifiers + Left Shift + Backslash -> Left Shift + Tilde (pass-through)",
+            "from": {
+                "key_code": "non_us_backslash",
+                "modifiers": {
+                    "mandatory": [
+                        "left_shift",
+                        "right_shift",
+                        "right_command",
+                        "right_control",
+                        "right_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "non_us_backslash",
+                    "modifiers": [
+                        "left_shift"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "description": "Right Modifiers + Left Shift + Backslash -> Left Shift + Tilde (pass-through)",
+            "from": {
+                "key_code": "grave_accent_and_tilde",
+                "modifiers": {
+                    "mandatory": [
+                        "left_shift",
+                        "right_shift",
+                        "right_command",
+                        "right_control",
+                        "right_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "non_us_backslash",
+                    "modifiers": [
+                        "left_shift"
+                    ]
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
