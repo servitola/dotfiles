@@ -94,4 +94,8 @@ zsh -ic "omz update"
 print_task "Updating Atuin db (zsh history)"
 atuin sync
 
+
+print_task "Setting macOS appearance"
+m appearance --highlightcolor grape
+
 printf "\n${YELLOW}${BOLD}✨ All updates completed!${NC}\n"
