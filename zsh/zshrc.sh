@@ -49,7 +49,6 @@ source ~/projects/dotfiles/zsh/history_settings.sh
 # Load additional plugins from Homebrew
 source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ${HOMEBREW_PREFIX}/share/zsh-autopair/autopair.zsh
 
 # Load p10k theme
 source ~/projects/dotfiles/zsh/p10k.zsh
