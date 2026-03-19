@@ -220,3 +220,4 @@ a_foggy_forest_with_trees.jpg
 mpv-shot0007-2024-10-10.jpg
 image28.png
 a_astronaut_walking_through_a_doorway.jpg
+an_airplane_wing_seen_through_a_window.jpg
