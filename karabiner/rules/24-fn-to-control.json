@@ -1,0 +1,21 @@
+{
+    "description": "[Internal Keyboard] fn -> left_control",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "fn",
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "left_control"
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
