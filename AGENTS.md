@@ -273,8 +273,6 @@ See @./docs/keyboard-setup.md for complete keyboard customization documentation.
 │   ├── completion.sh
 │   ├── exports.sh
 │   ├── functions.sh
-│   ├── fzf-tab-config.sh
-│   ├── fzf.sh
 │   ├── history_settings.sh
 │   ├── p10k.zsh
 │   ├── plugins.sh

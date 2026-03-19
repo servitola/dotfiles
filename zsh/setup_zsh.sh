@@ -25,9 +25,3 @@ else
     echo "Powerlevel10k already installed, updating..."
     cd ~/.oh-my-zsh/custom/themes/powerlevel10k && git pull
 fi
-
-echo "cloning nx-completion plugin to oh-my-zsh plugins"
-[[ -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion ]] || git clone https://github.com/jscutlery/nx-completion.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/nx-completion
-
-echo "cloning OhMyZsh-full-autoupdate to oh-my-zsh plugins"
-[[ -d ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate ]] || git clone https://github.com/Pilaton/OhMyZsh-full-autoupdate.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ohmyzsh-full-autoupdate
