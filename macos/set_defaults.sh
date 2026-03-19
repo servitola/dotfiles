@@ -22,13 +22,6 @@ set_macos_default_if_different \
     'none'
 
 set_macos_default_if_different \
-	'Improve Bluetooth audio quality' \
-    'com.apple.BluetoothAudioAgent' \
-    'Apple Bitpool Min (editable)' \
-    '-int' \
-    40
-
-set_macos_default_if_different \
 	'Disable automatic audio device switching' \
     'com.apple.audio.AudioMIDISetup' \
     'Automatic Device Switching' \
@@ -147,12 +140,6 @@ set_macos_default_if_different \
     'disable-shadow' \
     '-bool' \
     true
-
-set_macos_default_if_different \
-	"Always open everything in Finder's list view" \
-    'com.apple.Finder' \
-    'FXPreferredViewStyle' \
-    'Nlsv'
 
 ###############################################################################
 echo 'Finder' #
