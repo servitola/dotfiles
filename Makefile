@@ -202,8 +202,6 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/aichat/dark.tmTheme
 	@$(LINK) ~/projects/dotfiles/aichat/dark.tmTheme ~/Library/Application\ Support/aichat/dark.tmTheme
 
-	@m appearance --highlightcolor grape
-
 	@$(SHELL) 'source ableton/setup-mcp.sh'
 
 	@echo "setup ghostty symlinks"
