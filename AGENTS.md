@@ -19,6 +19,7 @@
 - **Theme**: Gruvbox Dark Hard
 - **Naming**: Standard conventions per language/framework
 - **Error handling**: Appropriate for shell scripts and config files
+- **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
 - **Linting**: No linting required - this is a configuration repository (shell scripts, Lua scripts, dotfiles)
 
 ## Adding New Applications/Tools
