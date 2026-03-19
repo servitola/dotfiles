@@ -29,7 +29,7 @@ dockApps=(
 )
 
 for i in "${dockApps[@]}"; do
-    dockutil --no-restart --add $i
+    dockutil --no-restart --add "$i"
 done
 
 killall Dock
