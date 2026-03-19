@@ -258,6 +258,7 @@ install:
 		zsh/setup_zsh.sh \
 		zsh/bin/random_ascii.sh \
 		ableton/setup-mcp.sh \
+		karabiner/build.sh \
 		claude-desktop/deepseek-mcp.sh \
 		claude-desktop/github-mcp.sh \
 		claude-desktop/google-calendar-mcp.sh \
