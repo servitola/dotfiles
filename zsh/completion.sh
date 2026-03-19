@@ -1,12 +1,10 @@
 # =============================================================================
 # Zsh Completion Configuration
+# Loaded AFTER oh-my-zsh calls compinit
 # =============================================================================
 
 # Load the zsh/complist module for advanced menu selection features
 zmodload zsh/complist
-
-# Start menu selection immediately (no need to press TAB multiple times)
-zstyle ':completion:*' menu select=0
 
 # Enable visual menu selection with arrow key navigation
 zstyle ':completion:*' menu select
@@ -18,7 +16,6 @@ zstyle ':completion:*' insert-tab false
 zstyle ':completion:*' special-dirs true
 
 # Allow immediate arrow key navigation in completion menu
-# This makes completion feel more responsive and intuitive
 bindkey -M menuselect '^[[A' up-line-or-history      # Up arrow
 bindkey -M menuselect '^[[B' down-line-or-history    # Down arrow
 bindkey -M menuselect '^[[C' forward-char            # Right arrow
@@ -29,36 +26,20 @@ zstyle ':completion:*' matcher-list \
     'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' \
     'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
-# -----------------------------------------------------------------------------
-# Performance Optimizations
-# -----------------------------------------------------------------------------
 # Accept exact matches even if there are ambiguous matches
-# This speeds up completion when you know exactly what you want
 zstyle ':completion:*' accept-exact '*(N)'
 
 # Enable completion caching for faster subsequent completions
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path "$HOME/.zsh/.zcompcache"
 
-# -----------------------------------------------------------------------------
-# Directory Navigation Enhancements
-# -----------------------------------------------------------------------------
-# Automatically push directories onto the directory stack
-setopt AUTO_PUSHD
-
-# Don't push duplicate directories onto the stack
-setopt PUSHD_IGNORE_DUPS
-
-# Don't print directory stack after pushd/popd
-setopt PUSHD_SILENT
-
-# -----------------------------------------------------------------------------
-# Tab Key Behavior
-# -----------------------------------------------------------------------------
-# Make TAB key cycle through completions immediately (like Bash)
-# Default zsh behavior requires TAB TAB to start cycling
-# This makes it more intuitive for users coming from other shells
+# TAB cycles through completions immediately (like Bash)
 bindkey -M emacs '^I' menu-complete              # TAB cycles forward
 bindkey -M viins '^I' menu-complete              # TAB cycles forward (vi mode)
 bindkey -M emacs '^[[Z' reverse-menu-complete    # Shift-TAB cycles backward
 bindkey -M viins '^[[Z' reverse-menu-complete    # Shift-TAB cycles backward (vi mode)
+
+# Directory navigation
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
