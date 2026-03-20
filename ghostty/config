@@ -46,7 +46,7 @@ background-blur = 2
 working-directory = home
 
 # Terminal behavior
-scrollback-limit = 10000
+scrollback-limit = none
 copy-on-select = true
 bell-features = attention,title
 
