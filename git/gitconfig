@@ -46,6 +46,9 @@
 [rebase]
 	autoStash = true
 
+[rerere]
+	enabled = true
+
 [include]
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
