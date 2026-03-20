@@ -4,6 +4,10 @@ function mkd() {
     mkdir -p "$@" && cd "$_"
 }
 
+# cd to git repo root
+function groot() {
+    cd "$(git rev-parse --show-toplevel)"
+}
 # Remove macOS quarantine flags from applications
 # Useful after `brew upgrade` to avoid repeated "App downloaded from internet" prompts
 function brew_unquarantine() {
