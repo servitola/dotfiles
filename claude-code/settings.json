@@ -1,6 +1,10 @@
 {
-  "alwaysThinkingEnabled": false,
-  "apiKeyHelper": "echo mainuser",
+  "alwaysThinkingEnabled": true,
+  "apiKeyHelper": "uv run --no-project --python 3.12 ~/.claude/scripts/username.py",
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "cleanupPeriodDays": 60,
   "effortLevel": "high",
   "enabledPlugins": {
@@ -72,7 +76,6 @@
       }
     ]
   },
-  "includeCoAuthoredBy": false,
   "model": "opus[1m]",
   "permissions": {
     "allow": [
@@ -92,7 +95,7 @@
       "mcp__youtrack-mcp-server__*",
       "Skill(superpowers:brainstorming)"
     ],
-    "defaultMode": "default",
+    "defaultMode": "plan",
     "deny": []
   }
 }
