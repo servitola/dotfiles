@@ -141,6 +141,15 @@ set_macos_default_if_different \
     '-bool' \
     true
 
+echo 'Save screenshots to ~/Pictures/Screenshots'
+mkdir -p ~/Pictures/Screenshots
+set_macos_default_if_different \
+	'Set screenshots location' \
+    'com.apple.screencapture' \
+    'location' \
+    '-string' \
+    "$HOME/Pictures/Screenshots"
+
 ###############################################################################
 echo 'Finder' #
 ###############################################################################
