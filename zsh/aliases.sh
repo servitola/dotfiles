@@ -40,10 +40,7 @@ alias ytaudio="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
 alias yta=ytaudio
 
 alias cl=clear
-# Only alias cd to z in interactive shells where zoxide is available
-if [[ -o interactive ]] && command -v __zoxide_z &> /dev/null; then
-    alias cd='z'
-fi
+alias cd='z'
 
 # duckduckgo search
 alias d="ddgr -x -n 3"
