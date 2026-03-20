@@ -3,6 +3,7 @@
 
 TRY_CLEAN="$HOME/projects/dotfiles/macos/helpers/try_to_clean_directory.sh"
 TRY_CLEAN_PATTERN="$HOME/projects/dotfiles/macos/helpers/try_to_clean_by_pattern.sh"
+source "$HOME/projects/dotfiles/macos/helpers/spinner.sh"
 
 # Gruvbox colors
 RED='\033[0;31m'
@@ -24,6 +25,9 @@ print_task() {
     printf "\n${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
+# Cache sudo credentials upfront so cleanup isn't interrupted by password prompts
+sudo -v
+
 _free_bytes_before=$(df -k / | awk 'NR==2 {print $4}')
 
 print_section "System Maintenance"
@@ -42,21 +46,33 @@ setopt rm_star_silent
 "$TRY_CLEAN" /Library/Caches "System Caches"
 "$TRY_CLEAN" ~/Library/Application\ Support/Caches "Application Support Caches"
 
-print_task "Cleaning old Battle.net versions"
 BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
 if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
     old_versions=($(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$'))
     version_count=${#old_versions[@]}
     if [ "$version_count" -gt 0 ]; then
+        spinner_start "Battle.net old versions"
+        total_size_kb=0
         for version_dir in "${old_versions[@]}"; do
             if [ -d "$version_dir" ]; then
-                version_name=$(basename "$version_dir")
-                version_size=$(du -sh "$version_dir" 2>/dev/null | cut -f1)
+                dir_kb=$(du -sk "$version_dir" 2>/dev/null | cut -f1)
+                total_size_kb=$(( total_size_kb + dir_kb ))
                 rm -rf "$version_dir"
-                echo "  * Removed old Battle.net version: $version_name ($version_size)"
             fi
         done
+        if [ "$total_size_kb" -ge 1048576 ]; then
+            bnet_size="$(( total_size_kb / 1048576 )) GB"
+        elif [ "$total_size_kb" -ge 1024 ]; then
+            bnet_size="$(( total_size_kb / 1024 )) MB"
+        else
+            bnet_size="${total_size_kb} KB"
+        fi
+        spinner_stop "Battle.net old versions: cleaned ($version_count versions, $bnet_size)"
+    else
+        printf "  ${DIM}* Battle.net old versions: nothing to clean${NC}\n"
     fi
+else
+    printf "  ${DIM}* Battle.net old versions: not found${NC}\n"
 fi
 
 "$TRY_CLEAN" ~/Library/Application\ Support/Battle.net/Logs "HOTS Log"
@@ -64,15 +80,7 @@ fi
 "$TRY_CLEAN" ~/Library/Application\ Support/heroic/Cache "Heroic Cache"
 "$TRY_CLEAN" ~/Library/Application\ Support/heroic/images-cache "Heroic Images Cache"
 
-print_task "Cleaning Spotlight Knowledge Events"
-SPOTLIGHT_KNOWLEDGE_DIR="$HOME/Library/Metadata/SpotlightKnowledgeEvents"
-if [ -d "$SPOTLIGHT_KNOWLEDGE_DIR" ]; then
-    spotlight_size=$(du -sh "$SPOTLIGHT_KNOWLEDGE_DIR" 2>/dev/null | cut -f1)
-    if [ -n "$spotlight_size" ]; then
-        rm -rf "$SPOTLIGHT_KNOWLEDGE_DIR"/*
-        echo "  * Cleaned Spotlight Knowledge Events (was: $spotlight_size)"
-    fi
-fi
+"$TRY_CLEAN" ~/Library/Metadata/SpotlightKnowledgeEvents "Spotlight Knowledge Events"
 
 "$TRY_CLEAN" ~/Library/Caches/JetBrains "JetBrains IDE Caches"
 "$TRY_CLEAN" ~/Library/Developer/Xcode/Archives "Xcode Archives (old builds)"
@@ -115,23 +123,41 @@ fi
 "$TRY_CLEAN" /System/Volumes/Data/.PreviousSystemInformation "Previous System Information"
 "$TRY_CLEAN" /Library/Logs/DiagnosticReports "System Diagnostic Reports"
 
-print_task "Cleaning core dumps"
 if [ -d /cores ] && [ "$(ls -A /cores 2>/dev/null)" ]; then
+    spinner_start "Core dumps"
+    cores_kb=$(du -sk /cores 2>/dev/null | cut -f1)
     sudo realrm -rf /cores/*
-    echo "  * Core dumps: cleaned"
+    if [ "$cores_kb" -ge 1048576 ]; then
+        cores_size="$(( cores_kb / 1048576 )) GB"
+    elif [ "$cores_kb" -ge 1024 ]; then
+        cores_size="$(( cores_kb / 1024 )) MB"
+    else
+        cores_size="${cores_kb} KB"
+    fi
+    spinner_stop "Core dumps: cleaned ($cores_size)"
+else
+    printf "  ${DIM}* Core dumps: nothing to clean${NC}\n"
 fi
 
-print_task "Cleaning system files"
 "$TRY_CLEAN_PATTERN" ~ f ".DS_Store" "DS_Store files"
 "$TRY_CLEAN_PATTERN" . d ".AppleD*" "Apple Double files"
 
 print_task "Cleaning Homebrew cask installers"
 cask_installers_count=$(find /opt/homebrew/Caskroom -type f \( -name "*.pkg" -o -name "*.dmg" -o -name "*.zip" -o -name "*.tar.gz" \) ! -path "*/.metadata/*" 2>/dev/null | wc -l | tr -d ' ')
 if [ "$cask_installers_count" -gt 0 ]; then
-    cask_installers_size=$(du -sh /opt/homebrew/Caskroom 2>/dev/null | cut -f1)
+    spinner_start "Cask installers"
+    cask_size_kb=$(find /opt/homebrew/Caskroom -type f \( -name "*.pkg" -o -name "*.dmg" -o -name "*.zip" -o -name "*.tar.gz" \) ! -path "*/.metadata/*" -exec du -sk {} + 2>/dev/null | awk '{s+=$1} END {print s+0}')
     find /opt/homebrew/Caskroom -type f \( -name "*.pkg" -o -name "*.dmg" -o -name "*.zip" -o -name "*.tar.gz" \) ! -path "*/.metadata/*" -delete 2>/dev/null
-    cask_installers_size_after=$(du -sh /opt/homebrew/Caskroom 2>/dev/null | cut -f1)
-    echo "  * Cask installers: cleaned ($cask_installers_count files, freed space)"
+    if [ "$cask_size_kb" -ge 1048576 ]; then
+        cask_size="$(( cask_size_kb / 1048576 )) GB"
+    elif [ "$cask_size_kb" -ge 1024 ]; then
+        cask_size="$(( cask_size_kb / 1024 )) MB"
+    else
+        cask_size="${cask_size_kb} KB"
+    fi
+    spinner_stop "Cask installers: cleaned ($cask_installers_count files, $cask_size)"
+else
+    printf "  ${DIM}* Cask installers: nothing to clean${NC}\n"
 fi
 
 print_task "Cleaning Trash"
@@ -140,10 +166,23 @@ print_task "Cleaning Trash"
 if [ -w ~/.Trash ]; then
     "$TRY_CLEAN" ~/.Trash "User Trash"
 else
-    if realrm -rf ~/.Trash/* 2> /dev/null; then
-        echo "  * User Trash: cleaned (with elevated permissions)"
+    trash_kb=$(du -sk ~/.Trash 2>/dev/null | cut -f1)
+    if [ -n "$trash_kb" ] && [ "$trash_kb" -gt 0 ]; then
+        spinner_start "User Trash"
+        if realrm -rf ~/.Trash/* 2> /dev/null; then
+            if [ "$trash_kb" -ge 1048576 ]; then
+                trash_size="$(( trash_kb / 1048576 )) GB"
+            elif [ "$trash_kb" -ge 1024 ]; then
+                trash_size="$(( trash_kb / 1024 )) MB"
+            else
+                trash_size="${trash_kb} KB"
+            fi
+            spinner_stop "User Trash: cleaned ($trash_size)"
+        else
+            spinner_stop_error "User Trash: ERROR - permission denied (protected by system)"
+        fi
     else
-        echo "  * User Trash: ERROR - permission denied (protected by system)"
+        printf "  ${DIM}* User Trash: already empty${NC}\n"
     fi
 fi
 
