@@ -558,5 +558,45 @@ set_macos_default_if_different \
 	'-string' \
 	'Pro'
 
+###############################################################################
+echo 'Dock' #
+###############################################################################
+
+set_macos_default_if_different \
+	'Don'\''t automatically rearrange Spaces based on most recent use' \
+    'com.apple.dock' \
+    'mru-spaces' \
+    '-bool' \
+    false
+
+###############################################################################
+echo 'Dialogs' #
+###############################################################################
+
+set_macos_default_if_different \
+	'Expand save panel by default' \
+    'NSGlobalDomain' \
+    'NSNavPanelExpandedStateForSaveMode' \
+    '-bool' \
+    true
+set_macos_default_if_different \
+	'Expand save panel by default (Save As)' \
+    'NSGlobalDomain' \
+    'NSNavPanelExpandedStateForSaveMode2' \
+    '-bool' \
+    true
+set_macos_default_if_different \
+	'Expand print panel by default' \
+    'NSGlobalDomain' \
+    'PMPrintingExpandedStateForPrint' \
+    '-bool' \
+    true
+set_macos_default_if_different \
+	'Expand print panel by default 2' \
+    'NSGlobalDomain' \
+    'PMPrintingExpandedStateForPrint2' \
+    '-bool' \
+    true
+
 echo 'Scrolling settings (traditional)'
 defaults write -g com.apple.swipescrolldirection -bool false
