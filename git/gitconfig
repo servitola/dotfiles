@@ -49,6 +49,9 @@
 [rerere]
 	enabled = true
 
+[help]
+	autocorrect = prompt
+
 [include]
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
