@@ -39,8 +39,6 @@ brew "bat"
 brew "blueutil"
 # Collection of portable C++ source libraries
 brew "boost"
-# New way to see and navigate directory trees
-brew "broot"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Command-line tool to manipulate Android App Bundles
