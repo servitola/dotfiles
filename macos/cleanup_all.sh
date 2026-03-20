@@ -24,6 +24,8 @@ print_task() {
     printf "\n${GREEN}${BOLD}⚡${NC} ${BOLD}%s${NC}\n" "$1"
 }
 
+_free_bytes_before=$(df -k / | awk 'NR==2 {print $4}')
+
 print_section "System Maintenance"
 
 print_task "Rebuilding zsh completion cache"
@@ -147,4 +149,15 @@ fi
 
 setopt no_rm_star_silent
 
-printf "\n${YELLOW}${BOLD}✨ All cleanup completed!${NC}\n"
+_free_bytes_after=$(df -k / | awk 'NR==2 {print $4}')
+_freed_kb=$(( _free_bytes_after - _free_bytes_before ))
+if [ "$_freed_kb" -gt 1048576 ]; then
+    _freed="$(( _freed_kb / 1048576 )) GB"
+elif [ "$_freed_kb" -gt 1024 ]; then
+    _freed="$(( _freed_kb / 1024 )) MB"
+else
+    _freed="${_freed_kb} KB"
+fi
+_free_gb=$(( _free_bytes_after / 1048576 ))
+
+printf "\n${YELLOW}${BOLD}✨ All cleanup completed! Freed ${_freed} (${_free_gb} GB available)${NC}\n"
