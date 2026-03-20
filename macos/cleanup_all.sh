@@ -76,14 +76,7 @@ fi
 "$TRY_CLEAN" ~/Library/Developer/Xcode/Archives "Xcode Archives (old builds)"
 "$TRY_CLEAN" ~/.android/cache "Android SDK Cache"
 "$TRY_CLEAN" ~/Library/Application\ Support/discord/Cache "Discord Cache"
-
-if [ -d ~/.gradle/caches ]; then
-    gradle_cache_size=$(du -sh ~/.gradle/caches 2>/dev/null | cut -f1)
-    find ~/.gradle/caches -type d -name "*-*" -mtime +30 -exec rm -rf {} + 2>/dev/null
-    echo "  * Gradle Cache: cleaned old versions (was: $gradle_cache_size)"
-fi
-
-print_task "Cleaning logs"
+"$TRY_CLEAN" ~/.gradle/caches "Gradle Cache"
 "$TRY_CLEAN" ~/Library/Logs "Library Logs"
 "$TRY_CLEAN" ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
 "$TRY_CLEAN" /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
