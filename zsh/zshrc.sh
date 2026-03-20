@@ -46,9 +46,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Atuin shell history (--disable-up-arrow keeps native prefix search on up/down)
 eval "$(atuin init zsh --disable-up-arrow)"
 
-# zoxide for fast directory navigation
-eval "$(zoxide init zsh)"
-
 # Up/down arrow: prefix-based history search (type beginning, then arrow to filter)
 autoload -U history-search-end
 zle -N history-beginning-search-backward-end history-search-end
@@ -57,3 +54,6 @@ bindkey "^[[A" history-beginning-search-backward-end  # Standard terminals
 bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2)
 bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
+# zoxide for fast directory navigation (must be last — hooks into precmd)
+eval "$(zoxide init zsh)"
+
