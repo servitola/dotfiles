@@ -10,6 +10,9 @@ typeset -U PATH path
 # Homebrew — must be first to take priority over system binaries
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Local dev builds — shadow Homebrew formulae with local build of aoe agent (for testing)
+path+=( ~/projects/aoe/agent-of-empires/target/release )
+
 # Node.js (Homebrew-managed)
 path+=( /opt/homebrew/opt/node@22/bin )
 
