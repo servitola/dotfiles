@@ -20,6 +20,7 @@ _S_CLR='\033[K'
 _S_YELLOW='\033[0;33m'
 
 spinner_start() {
+    setopt LOCAL_OPTIONS NO_MONITOR
     _SPINNER_LABEL="$1"
     (
         i=0
@@ -33,6 +34,7 @@ spinner_start() {
 }
 
 spinner_stop() {
+    setopt LOCAL_OPTIONS NO_MONITOR
     kill $_SPINNER_PID 2>/dev/null
     wait $_SPINNER_PID 2>/dev/null
     printf "\r${_S_CLR}  ${_S_GREEN}${_S_BOLD}* $1${_S_NC}\n"
@@ -40,6 +42,7 @@ spinner_stop() {
 }
 
 spinner_stop_dim() {
+    setopt LOCAL_OPTIONS NO_MONITOR
     kill $_SPINNER_PID 2>/dev/null
     wait $_SPINNER_PID 2>/dev/null
     printf "\r${_S_CLR}  ${_S_DIM}* $1${_S_NC}\n"
@@ -47,6 +50,7 @@ spinner_stop_dim() {
 }
 
 spinner_stop_error() {
+    setopt LOCAL_OPTIONS NO_MONITOR
     kill $_SPINNER_PID 2>/dev/null
     wait $_SPINNER_PID 2>/dev/null
     printf "\r${_S_CLR}  ${_S_YELLOW}* $1${_S_NC}\n"
