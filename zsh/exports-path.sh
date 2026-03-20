@@ -7,11 +7,11 @@
 # Deduplicate PATH entries (zsh built-in)
 typeset -U PATH path
 
-# Homebrew — must be first to take priority over system binaries
+# Homebrew — must be early to take priority over system binaries
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Local dev builds — shadow Homebrew formulae with local build of aoe agent (for testing)
-path+=( ~/projects/aoe/agent-of-empires/target/release )
+path=( ~/projects/aoe/agent-of-empires/target/release $path )
 
 # Node.js (Homebrew-managed)
 path+=( /opt/homebrew/opt/node@22/bin )
