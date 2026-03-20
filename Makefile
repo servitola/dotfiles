@@ -231,6 +231,11 @@ install:
 
 	@echo "Making scripts executable"
 	@chmod +x \
+		cleanup/clean.sh \
+		cleanup/cleanup_all.sh \
+		cleanup/helpers.sh \
+		cleanup/try_clean.sh \
+		cleanup/cleanup_targets.sh \
 		macos/update_all_and_cleanup_all.sh \
 		macos/update_all.sh \
 		macos/cleanup_all.sh \
