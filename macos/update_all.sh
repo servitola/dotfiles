@@ -55,7 +55,11 @@ uv python install 3.12
 uv python pin 3.12
 source ~/projects/dotfiles/python/install-globals.sh
 source ~/projects/dotfiles/python/install-uv-tools.sh
-uv cache prune
+if pgrep -x uv > /dev/null; then
+    echo "  * Skipping uv cache prune (uv is currently running)"
+else
+    uv cache prune
+fi
 
 go clean -modcache
 
