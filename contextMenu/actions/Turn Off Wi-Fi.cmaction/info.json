@@ -1,0 +1,20 @@
+{
+  "name" : "Turn Off Wi-Fi",
+  "options" : {
+    "noSandbox" : false,
+    "outputsText" : false,
+    "acceptTextFrom" : "copy",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
+    "acceptFiles" : false,
+    "acceptDirs" : false,
+    "confirmExecution" : false
+  },
+  "uuid" : "3DF9BDF8-AF96-460C-872F-F21A8DA572D5",
+  "showInContextMenu" : false,
+  "isTemplateIcon" : true,
+  "type" : "shell",
+  "icon" : "icon.icns",
+  "path" : "/bin/zsh"
+}

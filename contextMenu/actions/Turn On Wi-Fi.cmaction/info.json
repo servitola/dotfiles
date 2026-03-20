@@ -1,0 +1,20 @@
+{
+  "name" : "Turn On Wi-Fi",
+  "options" : {
+    "noSandbox" : false,
+    "outputsText" : false,
+    "acceptTextFrom" : "copy",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
+    "acceptFiles" : false,
+    "acceptDirs" : false,
+    "confirmExecution" : false
+  },
+  "uuid" : "C463C886-0C6A-419D-8BA4-76F016E8E1D0",
+  "showInContextMenu" : false,
+  "isTemplateIcon" : true,
+  "type" : "shell",
+  "icon" : "icon.icns",
+  "path" : "/bin/zsh"
+}

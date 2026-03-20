@@ -64,9 +64,151 @@
 		<key>enabled</key>
 		<true/>
 		<key>name</key>
+		<string>Resize Image</string>
+		<key>path</key>
+		<string>Resize Image.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
 		<string>New iTerm2 Tab Here</string>
 		<key>path</key>
 		<string>New iTerm2 Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Quick Word Lookup</string>
+		<key>path</key>
+		<string>Quick Word Lookup.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Clear Clipboard</string>
+		<key>path</key>
+		<string>Clear Clipboard.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Paste Without Formatting</string>
+		<key>path</key>
+		<string>Paste Without Formatting.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>Paste as File</string>
+		<key>path</key>
+		<string>Paste as File.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Capture Screen Text</string>
+		<key>path</key>
+		<string>Capture Screen Text.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Turn On Wi-Fi</string>
+		<key>path</key>
+		<string>Turn On Wi-Fi.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<true/>
+		<key>name</key>
+		<string>Turn Off Wi-Fi</string>
+		<key>path</key>
+		<string>Turn Off Wi-Fi.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>shell</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Create QR from Selection</string>
+		<key>path</key>
+		<string>Create QR from Selection.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Create QR from Text</string>
+		<key>path</key>
+		<string>Create QR from Text.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>isTemplateIcon</key>
+		<integer>1</integer>
+		<key>name</key>
+		<string>Capture and Decode QR Code</string>
+		<key>path</key>
+		<string>Capture and Decode QR Code.cmaction</string>
+		<key>showInContextMenu</key>
+		<false/>
+		<key>type</key>
+		<string>builtin</string>
 	</dict>
 </array>
 </plist>

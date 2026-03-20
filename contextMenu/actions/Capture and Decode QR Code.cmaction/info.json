@@ -1,0 +1,9 @@
+{
+  "name" : "Capture and Decode QR Code",
+  "type" : "builtin",
+  "isTemplateIcon" : 1,
+  "actionId" : "capture-decode-qr",
+  "requiredPermissions": ["screen-recording"],
+  "showInContextMenu" : false,
+  "uuid" : "02B69B83-79B5-427A-BFB4-0C1820B8791D"
+}
