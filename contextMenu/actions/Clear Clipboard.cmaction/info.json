@@ -1,0 +1,7 @@
+{
+  "name" : "Clear Clipboard",
+  "type" : "builtin",
+  "actionId" : "clear-clipboard",
+  "showInContextMenu" : false,
+  "uuid" : "16813E1D-7FFC-4C53-A488-A75AB8CFD3BF"
+}

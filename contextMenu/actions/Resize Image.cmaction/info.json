@@ -1,0 +1,13 @@
+{
+  "path" : "/bin/zsh",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "name" : "Resize Image",
+  "type" : "shell",
+  "uuid" : "A1B2C3D4-5678-9ABC-DEF0-112233445566"
+}

@@ -1,0 +1,8 @@
+{
+  "name" : "Paste as File",
+  "type" : "builtin",
+  "actionId" : "paste-as-file",
+  "requiredPermissions": ["accessibility"],
+  "showInContextMenu" : false,
+  "uuid" : "70AC8835-E111-4DB8-BAB7-A12474C135F0"
+}

@@ -1,0 +1,9 @@
+{
+  "name" : "Create QR from Selection",
+  "type" : "builtin",
+  "isTemplateIcon" : 1,
+  "showInContextMenu" : false,
+  "actionId" : "create-qr-from-selection",
+  "requiredPermissions": ["accessibility"],
+  "uuid" : "9CF0A566-A5C3-49D3-93FC-F402F6A38A38"
+}

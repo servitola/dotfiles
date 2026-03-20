@@ -1,0 +1,11 @@
+{
+  "requiredPermissions" : [
+    "accessibility"
+  ],
+  "uuid" : "66741265-507C-47D8-ABFE-BA76E234A593",
+  "actionId" : "quick-word-lookup",
+  "type" : "builtin",
+  "name" : "Quick Word Lookup",
+  "showInContextMenu" : false,
+  "icon" : "icon.icns"
+}
