@@ -1,0 +1,9 @@
+{
+  "name" : "Capture Screen Text",
+  "type" : "builtin",
+  "isTemplateIcon" : 1,
+  "actionId" : "capture-screen-text",
+  "requiredPermissions": ["screen-recording"],
+  "showInContextMenu" : false,
+  "uuid" : "11E08B74-20F3-44CF-9C78-1708A6E1B574"
+}

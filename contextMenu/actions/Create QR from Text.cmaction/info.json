@@ -1,0 +1,8 @@
+{
+  "name" : "Create QR from Text",
+  "type" : "builtin",
+  "isTemplateIcon" : 1,
+  "showInContextMenu" : false,
+  "actionId" : "create-qr-from-text",
+  "uuid" : "19CE739E-1C19-402C-9761-5F67902C16E7"
+}

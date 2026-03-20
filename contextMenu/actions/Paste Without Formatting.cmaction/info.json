@@ -1,0 +1,20 @@
+{
+  "icon" : "icon.icns",
+  "isTemplateIcon" : 1,
+  "type" : "shell",
+  "uuid" : "0E39506B-6D45-45BB-9099-8A95E5EF93E1",
+  "showInContextMenu" : false,
+  "path" : "/bin/zsh",
+  "name" : "Paste Without Formatting",
+  "options" : {
+    "noSandbox" : false,
+    "outputsText" : true,
+    "acceptTextFrom" : "clipboard",
+    "showOutput" : false,
+    "acceptsText" : false,
+    "outputTextTo" : "paste",
+    "acceptFiles" : false,
+    "acceptDirs" : false,
+    "confirmExecution" : false
+  }
+}
