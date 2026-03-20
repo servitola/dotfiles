@@ -112,3 +112,6 @@ alias ld="lazydocker"
 
 # File manager
 alias ff="open -a 'Marta' ."
+
+# copy absolute path to clipboard (file or current dir)
+ppp() { readlink -f "${1:-.}" | tr -d '\n' | pbcopy && echo "Copied: $(pbpaste)"; }
