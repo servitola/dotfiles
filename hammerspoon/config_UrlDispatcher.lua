@@ -10,6 +10,4 @@ urlDispatcherSpoon.url_patterns = {
     { "xd.adobe.com.*", Safari }
   }
 
-urlDispatcherSpoon.url_redir_decoders = {
-    { "Fix broken Preview anchor URLs", "%%23", "#", false, "Preview" },
-  }
+urlDispatcherSpoon.url_redir_decoders = {}
