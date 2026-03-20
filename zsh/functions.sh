@@ -8,6 +8,19 @@ function mkd() {
 function groot() {
     cd "$(git rev-parse --show-toplevel)"
 }
+
+# get macOS app Bundle ID and copy to clipboard
+function bundleid() {
+    local id=$(osascript -e "id of app \"$1\"" 2>/dev/null)
+    if [[ -n "$id" ]]; then
+        echo "$id" | tr -d '\n' | pbcopy
+        echo "$id (copied)"
+    else
+        echo "App not found: $1"
+        return 1
+    fi
+}
+
 # Remove macOS quarantine flags from applications
 # Useful after `brew upgrade` to avoid repeated "App downloaded from internet" prompts
 function brew_unquarantine() {
