@@ -18,7 +18,7 @@ source "$SCRIPT_DIR/update_all.sh"
 echo
 
 echo "${YELLOW}🧹 Running cleanup...${NC}"
-source "$SCRIPT_DIR/cleanup_all.sh"
+source "$SCRIPT_DIR/../cleanup/cleanup_all.sh"
 
 echo
 
