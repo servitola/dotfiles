@@ -58,4 +58,4 @@ export CLAUDE_MODEL="claude-opus-4-6"
 export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
 # n8n Configuration
-export N8N_USER_FOLDER="$HOME/projects/services/n8n/.n8n"
+export N8N_USER_FOLDER="$HOME/projects/services/n8n"
