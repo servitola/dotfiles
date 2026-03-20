@@ -45,7 +45,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-21.jdk/Cont
 export ANDROID_HOME=~/Library/Android/sdk
 
 # Docker (via OrbStack)
-export DOCKER_HOST=unix://$HOME/.orbstack/docker.sock
+export DOCKER_HOST=unix://$HOME/.orbstack/run/docker.sock
 
 # Node.js & NPM Configuration
 export NPM_GLOBAL=~/.npm-global
