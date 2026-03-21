@@ -3,6 +3,7 @@ local M = {}
 
 function M.searchSelectedText()
     local currentApp = hs.application.frontmostApplication()
+    if not currentApp then return end
     local appName = currentApp:name()
 
     local selectedText = nil
