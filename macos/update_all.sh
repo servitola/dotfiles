@@ -72,6 +72,15 @@ dotnet tool update -g dotnet-trace
 print_task "Updating precommit hooks"
 pre-commit autoupdate
 
+print_section "Docker Containers"
+
+for dir in $(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project.working_dir" }}' $(docker ps -q 2>/dev/null) 2>/dev/null | sort -u); do
+    print_task "Updating $(basename $dir)"
+    docker compose --project-directory "$dir" pull --ignore-buildable
+    docker compose --project-directory "$dir" build --pull
+    docker compose --project-directory "$dir" up -d
+done
+
 print_section "Final Updates"
 
 print_task "Updating TLDR cache"
