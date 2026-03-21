@@ -14,11 +14,7 @@ source "$CLEANUP_DIR/try_clean.sh"
 : "${HOMEBREW_PREFIX:=/opt/homebrew}"
 [ ! -d "$HOMEBREW_PREFIX" ] && HOMEBREW_PREFIX="/usr/local"
 
-if command -v realrm &>/dev/null; then
-    RM_CMD="realrm"
-else
-    RM_CMD="/bin/rm"
-fi
+RM_CMD="/bin/rm"
 
 # Gruvbox colors
 GREEN='\033[0;92m'
