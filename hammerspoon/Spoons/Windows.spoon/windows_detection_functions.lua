@@ -1,5 +1,3 @@
-local cfg = cfg or _G._win_cfg
-
 function is_ios_simulator(window)
     local app = window:application()
     return app and app:title() == "Simulator"
@@ -93,8 +91,8 @@ function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
 
-    if math.floor(window_frame.h) == math.floor(screen_size.h * cfg.bottomY - screen_size.h * cfg.topY - cfg.top_bar_height)
-        and math.floor(window_frame.w) == math.floor(screen_size.w * cfg.rightX - screen_size.w * cfg.leftX) then
+    if math.floor(window_frame.h) == math.floor(screen_size.h * bottomY - screen_size.h * topY - top_bar_height)
+        and math.floor(window_frame.w) == math.floor(screen_size.w * rightX - screen_size.w * leftX) then
         return true
     else
         return false
