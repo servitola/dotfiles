@@ -54,6 +54,8 @@ bindkey "^[[A" history-beginning-search-backward-end  # Standard terminals
 bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2)
 bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
+
+source ~/.config/claude_code_settings.sh
+
 # zoxide for fast directory navigation (must be last — hooks into precmd)
 eval "$(zoxide init zsh)"
-
