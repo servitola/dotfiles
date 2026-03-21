@@ -1,7 +1,7 @@
 default_profile = ""
 
 [theme]
-name = ""
+name = "gruvbox-dark"
 
 [claude]
 
