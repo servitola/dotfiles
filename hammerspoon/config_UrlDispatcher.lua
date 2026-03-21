@@ -1,13 +1,13 @@
-Safari = "com.apple.Safari"
+Firefox = "org.mozilla.firefox"
 Yandex = "ru.yandex.desktop.yandex-browser"
 urlDispatcherSpoon = hs.loadSpoon("URLDispatcher")
 
 urlDispatcherSpoon.default_handler = Yandex
 
 urlDispatcherSpoon.url_patterns = {
-    { ".*workname.*", Safari },
-    { ".*workproject.*", Safari },
-    { "xd.adobe.com.*", Safari }
+    { ".*workname.*", Firefox },
+    { ".*workproject.*", Firefox },
+    { "xd.adobe.com.*", Firefox }
   }
 
 urlDispatcherSpoon.url_redir_decoders = {}
