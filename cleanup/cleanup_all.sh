@@ -74,6 +74,9 @@ else
     printf "  ${DIM}* Cask installers: Homebrew Caskroom not found${NC}\n"
 fi
 
+print_task "Cleaning unused Docker images"
+docker image prune -f
+
 print_task "Cleaning Trash"
 try_clean_pattern /Volumes d ".Trashes" "Volume Trashes"
 try_clean_pattern /private/var/log/asl f "*.asl" "ASL Logs"
