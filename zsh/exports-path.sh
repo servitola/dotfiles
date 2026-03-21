@@ -37,10 +37,10 @@ path+=( ~/Library/Application\ Support/JetBrains/Toolbox/scripts )
 # Java (java binary found via /usr/bin/java wrapper, but add bin/ for other tools)
 path+=( "$JAVA_HOME/bin" )
 
-# Android SDK
-path+=( "$ANDROID_HOME/cmdline-tools/16.0/bin" )
+# Android SDK (auto-detect latest installed versions)
+path+=( "$ANDROID_HOME/cmdline-tools/$(ls "$ANDROID_HOME/cmdline-tools/" 2>/dev/null | sort -V | tail -1)/bin" )
 path+=( "$ANDROID_HOME/emulator" )
-path+=( "$ANDROID_HOME/build-tools/35.0.1" )
+path+=( "$ANDROID_HOME/build-tools/$(ls "$ANDROID_HOME/build-tools/" 2>/dev/null | sort -V | tail -1)" )
 path+=( "$ANDROID_HOME/platform-tools" )
 
 # NPM global packages
