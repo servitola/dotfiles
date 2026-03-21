@@ -11,22 +11,25 @@ try_clean ~/Library/Application\ Support/Caches "Application Support Caches"
 # --- Gaming ---
 
 BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
+BATTLENET_KEEP=2
 if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
-    old_versions=($(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$'))
-    version_count=${#old_versions[@]}
-    if [ "$version_count" -gt 0 ]; then
+    all_versions=($(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | sort -t. -k3 -n))
+    total_count=${#all_versions[@]}
+    if [ "$total_count" -gt "$BATTLENET_KEEP" ]; then
+        remove_count=$(( total_count - BATTLENET_KEEP ))
+        old_versions=("${all_versions[@]:0:$remove_count}")
         spinner_start "Battle.net old versions"
         total_size_kb=0
         for version_dir in "${old_versions[@]}"; do
             if [ -d "$version_dir" ]; then
                 dir_kb=$(du -sk "$version_dir" 2>/dev/null | cut -f1)
                 total_size_kb=$(( total_size_kb + dir_kb ))
-                rm -rf "$version_dir"
+                "$RM_CMD" -rf "$version_dir"
             fi
         done
-        spinner_stop "Battle.net old versions: cleaned ($version_count versions, $(format_size $total_size_kb))"
+        spinner_stop "Battle.net old versions: cleaned ($remove_count of $total_count, kept $BATTLENET_KEEP newest, $(format_size $total_size_kb))"
     else
-        printf "  ${DIM}* Battle.net old versions: nothing to clean${NC}\n"
+        printf "  ${DIM}* Battle.net old versions: $total_count found, keeping all (≤$BATTLENET_KEEP)${NC}\n"
     fi
 else
     printf "  ${DIM}* Battle.net old versions: not found${NC}\n"
