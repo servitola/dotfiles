@@ -6,7 +6,9 @@ function mkd() {
 
 # cd to git repo root
 function groot() {
-    cd "$(git rev-parse --show-toplevel)"
+    local root
+    root=$(git rev-parse --show-toplevel 2>/dev/null) || { echo "Not in a git repository" >&2; return 1; }
+    cd "$root"
 }
 
 # get macOS app Bundle ID and copy to clipboard
