@@ -28,10 +28,6 @@ set_macos_default_if_different \
     '-bool' \
     false
 
-echo 'Unload Siri Service'
-launchctl unload -w \
-    /System/Library/LaunchAgents/com.apple.Siri.plist \
-    2> /dev/null
 set_macos_default_if_different \
 	'Remove the Siri menu bar icon' \
     'com.apple.Siri' \
