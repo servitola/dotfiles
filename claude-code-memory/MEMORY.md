@@ -23,7 +23,7 @@
 - **PATH**: ALL in `exports-path.sh` (sourced via zprofile after macOS path_helper)
 - **zshrc.sh**: Only interactive setup — plugins, completions, keybindings. No env vars, no PATH
 - **Loading order**: exports.sh → exports-path.sh → zshrc.sh (plugins → oh-my-zsh → completion → history_settings → functions → aliases → syntax-highlighting → autosuggestions → p10k → atuin → zoxide → keybindings)
-- **Homebrew**: Constants hardcoded in exports.sh (no `eval brew shellenv` in zshenv). `eval` only in exports-path.sh for PATH
+- **Homebrew**: Constants set via arch detection in exports.sh (no `eval brew shellenv` in zshenv). `eval` only in exports-path.sh for PATH
 - **Karabiner**: `karabiner.json` is GENERATED. Edit `rules/*.json`, run `build.sh`. See [design-decisions.md](design-decisions.md)
 - **Hammerspoon**: Auto-reloads on file save. All Spoons loaded from init.lua. Use `hs.task.new()` for async (never `io.popen`)
 - **`up` alias**: Uses `source` (not subshell) so `exec zsh` at end reloads the actual shell
@@ -39,6 +39,8 @@
 ## Don't Touch These (intentional quirks)
 - Window split 73%/27% — It's perfect
 - Marshall BT 5-second delay — works, don't optimize
+- **hs.itunes**: Use `hs.itunes` for music control in Hammerspoon. `hs.music` does NOT work despite being the "replacement" — it's broken
+- **Makefile sudo rm -rf**: The `REMOVE := sudo rm -rf` in Makefile is intentional. Needed for system-level symlinks. Don't change
 
 ## Hammerspoon Debugging
 ```bash
