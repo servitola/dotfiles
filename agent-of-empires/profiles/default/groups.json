@@ -13,5 +13,10 @@
     "name": "External",
     "path": "External",
     "collapsed": false
+  },
+  {
+    "name": "Services",
+    "path": "Services",
+    "collapsed": false
   }
 ]
