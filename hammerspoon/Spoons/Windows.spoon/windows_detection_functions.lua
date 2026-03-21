@@ -1,5 +1,8 @@
+local cfg = cfg or _G._win_cfg
+
 function is_ios_simulator(window)
-    return window:application():title() == "Simulator"
+    local app = window:application()
+    return app and app:title() == "Simulator"
 end
 
 function is_activity_monitor_cpu_window(app_title, window_title)
@@ -20,38 +23,24 @@ function is_activity_monitor_small_window(app_title, window_title, window)
 end
 
 function is_winflow_recording_panel(app_title, window_title)
-    if app_title == "Wispr Flow" and window_title == "Status" then
-        return true
-    else
-        return false
-    end
+    return app_title == "Wispr Flow" and window_title == "Status"
 end
 
 function is_android_emulator(window)
     local window_title = window:title()
-    local app_title = window:application():title()
+    local app = window:application()
+    if not app then return false end
+    local app_title = app:title()
 
-    if app_title == "qemu-system-x86_64" or string.find(window_title, "Android Emulator") then
-        return true
-    else
-        return false
-    end
+    return app_title == "qemu-system-x86_64" or string.find(window_title, "Android Emulator") ~= nil
 end
 
 function is_music_mini_player(app_title, window_title)
-    if app_title == "Music" and window_title == "Mini Player" then
-        return true
-    else
-        return false
-    end
+    return app_title == "Music" and window_title == "Mini Player"
 end
 
 function is_firefox_video_player(app_title, window_title)
-  if app_title == "Firefox" and window_title == "Picture-in-Picture" then
-      return true
-  else
-      return false
-  end
+    return app_title == "Firefox" and window_title == "Picture-in-Picture"
 end
 
 function is_yandex_extra_panel(app_title, window_title, window)
@@ -63,6 +52,7 @@ function is_yandex_extra_panel(app_title, window_title, window)
         return true
     end
 
+    return false
 end
 
 function is_yandex_video_player(app_title, window_title, window)
@@ -103,8 +93,8 @@ function is_full_screen(window)
     local window_frame = window:frame()
     local screen_size = window:screen():fullFrame()
 
-    if math.floor(window_frame.h) == math.floor(screen_size.h * bottomY - screen_size.h * topY - top_bar_height)
-        and math.floor(window_frame.w) == math.floor(screen_size.w * rightX - screen_size.w * leftX) then
+    if math.floor(window_frame.h) == math.floor(screen_size.h * cfg.bottomY - screen_size.h * cfg.topY - cfg.top_bar_height)
+        and math.floor(window_frame.w) == math.floor(screen_size.w * cfg.rightX - screen_size.w * cfg.leftX) then
         return true
     else
         return false

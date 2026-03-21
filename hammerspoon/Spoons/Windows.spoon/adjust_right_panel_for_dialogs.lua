@@ -12,6 +12,7 @@ function adjust_right_panel_for_dialogs()
     end
 
     local screen = hs.screen.mainScreen()
+    if not screen then return end
     local screen_frame = screen:frame()
 
     local tall_window_height = screen_frame.h * horizontal_line * 0.5

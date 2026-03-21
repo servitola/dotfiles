@@ -164,7 +164,8 @@ function obj:toggle()
         self:show()
 
         -- If window exists and was previously hidden, resume playback
-        if self.webview and not self.webview:hswindow():isVisible() then
+        local hswin = self.webview and self.webview:hswindow()
+        if hswin and not hswin:isVisible() then
             hs.timer.doAfter(0.5, function()
                 if self.webview then
                     self.webview:evaluateJavaScript("document.querySelector('iframe').contentWindow.postMessage('{\"event\":\"command\",\"func\":\"playVideo\",\"args\":[]}', '*')")

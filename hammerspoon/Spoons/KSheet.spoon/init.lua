@@ -37,12 +37,14 @@ local function processMenuItems(menustru)
     local menu = ""
         for pos,val in pairs(menustru) do
             if type(val) == "table" then
-                -- TODO: Remove menubar items with no shortcuts in them
                 if val.AXRole == "AXMenuBarItem" and type(val.AXChildren) == "table" then
-                    menu = menu .. "<ul class='col col" .. pos .. "'>"
-                    menu = menu .. "<li class='title'><strong>" .. val.AXTitle .. "</strong></li>"
-                    menu = menu .. processMenuItems(val.AXChildren[1])
-                    menu = menu .. "</ul>"
+                    local submenu = processMenuItems(val.AXChildren[1])
+                    if submenu ~= "" then
+                        menu = menu .. "<ul class='col col" .. pos .. "'>"
+                        menu = menu .. "<li class='title'><strong>" .. val.AXTitle .. "</strong></li>"
+                        menu = menu .. submenu
+                        menu = menu .. "</ul>"
+                    end
                 elseif val.AXRole == "AXMenuItem" and not val.AXChildren then
                     if not (val.AXMenuItemCmdChar == '' and val.AXMenuItemCmdGlyph == '') then
                         local CmdModifiers = ''
@@ -65,6 +67,7 @@ end
 local function generateHtml(application)
     local app_title = application:title()
     local menuitems_tree = application:getMenuItems()
+    if not menuitems_tree then return "<html><body><p>No menu items available for " .. app_title .. "</p></body></html>" end
     local allmenuitems = processMenuItems(menuitems_tree)
 
     local html = [[

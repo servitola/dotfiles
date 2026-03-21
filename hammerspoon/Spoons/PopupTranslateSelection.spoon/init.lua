@@ -56,7 +56,7 @@ obj.webview = nil
 ---  * The PopupTranslateSelection object
 function obj:translatePopup(text, to, from)
    local query=hs.http.encodeForQuery(text)
-   local url = "http://translate.google.com/translate_t?" ..
+   local url = "https://translate.google.com/translate_t?" ..
       (from and ("sl=" .. from .. "&") or "") ..
       (to and ("tl=" .. to .. "&") or "") ..
       "text=" .. query

@@ -2,8 +2,9 @@ function get_right_panel_windows()
     local right_windows = {}
 
     for _, window in ipairs(hs.window.allWindows()) do
-        if window:isVisible() and not is_small_dialog(window) then
-            local app_title = window:application():title()
+        local app = window:application()
+        if app and window:isVisible() and not is_small_dialog(window) then
+            local app_title = app:title()
             local window_frame = window:frame()
             local screen = window:screen()
             local screen_frame = screen:frame()

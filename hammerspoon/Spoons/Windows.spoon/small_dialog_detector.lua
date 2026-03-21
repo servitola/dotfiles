@@ -1,7 +1,9 @@
 function is_small_dialog(window)
     if not window then return false end
+    local app = window:application()
+    if not app then return false end
 
-    local app_title = window:application():title()
+    local app_title = app:title()
     local window_title = window:title()
     local window_frame = window:frame()
 
