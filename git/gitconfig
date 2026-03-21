@@ -2,13 +2,6 @@
 	name = servitola
 	email = servitola@gmail.com
 
-[color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
-
 [branch]
 	sort = -committerdate
 
