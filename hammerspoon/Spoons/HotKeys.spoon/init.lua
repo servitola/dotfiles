@@ -424,13 +424,16 @@ function obj:init()
                         end
                     end)
                 elseif functionName == "warp.launch_default" then
+                    local warpLaunchWatcher = nil
                     hs.hotkey.bind(modifiers, key, function()
                         local warp = hs.application.get("dev.warp.Warp-Stable")
                         if not warp then
-                            local watcher
-                            watcher = hs.application.watcher.new(function(name, event, app)
+                            -- Stop any previous watcher to prevent leaks on rapid presses
+                            if warpLaunchWatcher then warpLaunchWatcher:stop() end
+                            warpLaunchWatcher = hs.application.watcher.new(function(name, event, app)
                                 if name == "Warp" and event == hs.application.watcher.launched then
-                                    watcher:stop()
+                                    warpLaunchWatcher:stop()
+                                    warpLaunchWatcher = nil
                                     hs.timer.doAfter(0.3, function()
                                         local w = hs.application.get("dev.warp.Warp-Stable")
                                         if not w then return end
@@ -457,7 +460,7 @@ function obj:init()
                                     end)
                                 end
                             end)
-                            watcher:start()
+                            warpLaunchWatcher:start()
                             hs.application.open("dev.warp.Warp-Stable")
                         elseif hs.application.frontmostApplication() == warp then
                             warp:hide()
