@@ -67,6 +67,7 @@ rec() {
 android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
 alias android_deep_link_to_Development='android_deep_link https://ct.spotware.com'
 android_run_emulator() { emulator -avd "$(emulator -list-avds | head -1)" & }
+android_vpn() { android_run_emulator && sleep 10 && adb shell settings put global http_proxy 10.0.2.2:8118; }
 android_paste_to_emulator() { adb shell input text "$1"; }
 alias android_uninstall_app='adb shell pm uninstall --user 0 com.dev.ct.dev'
 alias android_uninstall_app_leave_data='adb shell pm uninstall -k --user 0 com.dev.ct.dev'
@@ -99,12 +100,12 @@ alias wv='whisper_voice'
 
 # quality voice to text transcription
 function whisper_max() {
-    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
+    whisper-mps --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
 }
 
 # fast voice to text transcription
 function whisper_voice() {
-    ~/projects/whisper-mps-lang/venv/bin/whisper-mps  --file-name "$1" --model-name medium --language ru 2>/dev/null
+    whisper-mps --file-name "$1" --model-name medium --language ru 2>/dev/null
 }
 
 alias lg="lazygit"
