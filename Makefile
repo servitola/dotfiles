@@ -119,6 +119,11 @@ install:
 	@$(REMOVE) ~/.nanorc
 	@$(LINK) ~/projects/dotfiles/nano/nanorc ~/.nanorc
 
+	@echo "setup nuget symlinks"
+	@mkdir -p ~/.nuget/NuGet
+	@$(REMOVE) ~/.nuget/NuGet/NuGet.Config
+	@$(LINK) ~/projects/dotfiles/nuget/NuGet.Config ~/.nuget/NuGet/NuGet.Config
+
 
 	@echo "setup Claude Desktop config symlink"
 	@mkdir -p ~/Library/Application\ Support/Claude
