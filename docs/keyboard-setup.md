@@ -34,7 +34,7 @@ The Hyper layer provides quick access to applications, navigation, and media con
 ├—————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬——————┴—┬——————┴—┬————┴—┬———┴—┬———┴—┬———┴—┬———┴—┬———┴—┬————┤
 │  ↩    │PgUp │  ↑  │PgDn │  ℝ  │Telegram│  IINA  │      │     │  ↑  │Music│ ⏮  │  ⏭  │    │
 ├———————┴┬————┴┬————┴┬————┴┬————┴┬———————┴┬———————┴┬—————┴┬————┴┬————┴┬————┴┬————┴┬————┴╮   │
-│ 🟢🟢🟢  │  ←  │  ↓  │  →  │  📁  │Fork🔄  │ Safari │      │  ←  │  ↓  │  →  │ 🔊  │     │   │
+│ 🟢🟢🟢  │  ←  │  ↓  │  →  │  📁  │Fork🔄  │Firefox │      │  ←  │  ↓  │  →  │ 🔊  │     │   │
 ├————————┴┬————┴┬————┴┬————┴┬————┴┬———————┴┬———————┴┬—————┴┬————┴┬————┴┬————┴┬————┴—————┴———┤
 │         │ AI  │home │ end │ 🌐  │ Warp │   📝    │      │home │ end │ 🔉  │              │
 ├————————┬┴————┬┴—————┼—————┴—————┴————————┴————————┴——————┼—————┴┬————┴┬————┴——————————————╯
@@ -43,7 +43,7 @@ The Hyper layer provides quick access to applications, navigation, and media con
 ```
 
 **Key mappings:**
-- **Applications**: R=Rider, T=Telegram, Y=IINA, F=Finder, G=Fork, H=Safari, P=Music, V=Yandex, B=iTerm2, N=VSCode
+- **Applications**: R=Rider, T=Telegram, Y=IINA, F=Finder, G=Fork, H=Firefox, P=Music, V=Yandex, B=iTerm2, N=VSCode
 - **Navigation**: Tab=Enter, Q/E=PageUp/Down, W/A/S/D=Arrows, X/C=Home/End
 - **Media**: [/]=Previous/Next, '=Volume Up, /=Volume Down
 - **Special**: Z=Opcode (AI), Space=Play/Pause

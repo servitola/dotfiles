@@ -57,5 +57,9 @@ export CLAUDE_CODE_ENABLE_TELEMETRY=0
 export CLAUDE_MODEL="claude-opus-4-6"
 export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
+# Firefox: disable safe mode dialog (Hyper key sends Option, which triggers it)
+export MOZ_DISABLE_SAFE_MODE_KEY=1
+launchctl setenv MOZ_DISABLE_SAFE_MODE_KEY 1
+
 # n8n Configuration
 export N8N_USER_FOLDER="$HOME/projects/services/n8n"
