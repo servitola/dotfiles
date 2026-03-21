@@ -25,10 +25,15 @@ local function setLanguageForApp(bundleId, layout)
     end)
 end
 
+-- Stop previous watcher on config reload to prevent duplicates
+if appwatcher then appwatcher:stop() end
+
 appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
+    if not appObject then return end
+    local bundleId = appObject:bundleID()
+    if not bundleId then return end
+
     if eventType == hs.application.watcher.activated or eventType == hs.application.watcher.unhidden then
-        local bundleId = appObject:bundleID()
-        -- print("bundleID: " .. bundleId )
         if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" then
             setLanguageForApp(bundleId, "Ru Birman")
             setKarabinerProfile("Default")
@@ -40,7 +45,6 @@ appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
             setKarabinerProfile("Default")
         end
     elseif eventType == hs.application.watcher.deactivated then
-        local bundleId = appObject:bundleID()
         if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" then
             lastApp = nil
         end
