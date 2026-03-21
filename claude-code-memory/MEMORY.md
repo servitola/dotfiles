@@ -41,6 +41,17 @@
 - Marshall BT 5-second delay — works, don't optimize
 - **hs.itunes**: Use `hs.itunes` for music control in Hammerspoon. `hs.music` does NOT work despite being the "replacement" — it's broken
 - **Makefile sudo rm -rf**: The `REMOVE := sudo rm -rf` in Makefile is intentional. Needed for system-level symlinks. Don't change
+- **duti**: Still works for setting default apps on macOS despite being unmaintained (last update 2019). No need to replace
+## Code Organization
+- **aliases.sh**: Contains both aliases AND small functions (wallblock, rec, android_*, whisper_*, ppp). Don't reorganize — mixing aliases and related functions in one file is intentional
+- **yandex_search.lua**: Searches Perplexity AI, opened in Yandex browser. Name refers to browser, not search engine
+- **AudioSwitcher blueutil**: Hardcoded `/opt/homebrew/bin/blueutil` path is known. Only used on Apple Silicon Macs
+
+## Repo Conventions
+- **`.gitignore`**: Intentionally minimal — only project-specific ignores. Global patterns go in `git/global_ignore`
+- **`npm/install-globals.sh`**: Reads and writes `global-packages.txt` in the same run (updates versions). By design
+- **`brew cu`**: Homebrew cask-updates command. Works. Don't replace with `brew upgrade --cask`
+- **`brew cleanup --scrub`**: Valid flag, cleans old downloads. Works despite what linters say
 
 ## Hammerspoon Debugging
 ```bash
