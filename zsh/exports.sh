@@ -41,7 +41,7 @@ export GOPATH="$HOME/go"
 export DOTNET_ROOT=/usr/local/share/dotnet
 
 # Java & Android Development
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/openlogic-openjdk-21.jdk/Contents/Home
+export JAVA_HOME=$(/usr/libexec/java_home -v 21 2>/dev/null)
 export ANDROID_HOME=~/Library/Android/sdk
 
 # Docker (via OrbStack)
