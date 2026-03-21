@@ -38,8 +38,12 @@ function obj:openTab(urlPattern)
 
     local success, result, err = hs.osascript.applescript(script)
 
+    if not success then
+        hs.logger.new('BrowserTabOpener'):d("AppleScript error: " .. tostring(err))
+    end
+
     if success and result == "ok" then
-        hs.application.launchOrFocus("Yandex")
+        -- Tab found and switched — just focus the browser
     else
         hs.application.launchOrFocus("Yandex")
         hs.timer.doAfter(0.1, function()
