@@ -54,24 +54,6 @@ set_macos_default_if_different \
     'LSQuarantine' \
     '-bool' \
     false
-set_macos_default_if_different \
-	'Disable disk image verification' \
-    'com.apple.frameworks.diskimages' \
-    'skip-verify' \
-    '-bool' \
-    true
-set_macos_default_if_different \
-	'Disable disk image verification for locked images' \
-    'com.apple.frameworks.diskimages' \
-    'skip-verify-locked' \
-    '-bool' \
-    true
-set_macos_default_if_different \
-	'Disable disk image verification for remote images' \
-    'com.apple.frameworks.diskimages' \
-    'skip-verify-remote' \
-    '-bool' \
-    true
 
 echo 'Enable snap-to-grid for icons on the'
 echo 'desktop and in other icon views'
