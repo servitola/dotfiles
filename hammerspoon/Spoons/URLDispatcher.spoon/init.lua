@@ -94,7 +94,12 @@ end
 ---  * fullURL - A string containing the full, original URL. This is the only parameter used in this implementation.
 function obj:dispatchURL(scheme, host, params, fullUrl)
    local url = fullUrl
-   local currentApp = hs.window.frontmostWindow():application():name()
+   local currentApp = "unknown"
+   local frontWindow = hs.window.frontmostWindow()
+   if frontWindow then
+      local app = frontWindow:application()
+      if app then currentApp = app:name() or "unknown" end
+   end
    self.logger.df("Dispatching URL '%s' from application %s", url, currentApp)
    if self.decode_slack_redir_urls then
       local newUrl = string.match(url, 'https://slack.redir.net/.*url=(.*)')
