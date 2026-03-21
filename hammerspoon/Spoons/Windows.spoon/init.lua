@@ -1,4 +1,5 @@
 local obj = {}
+local log = hs.logger.new('Windows', 'info')
 
 dofile("./Spoons/Windows.spoon/config.lua")
 dofile("./Spoons/Windows.spoon/window_main_set_function.lua")
@@ -81,7 +82,7 @@ function set_window_left(window)
 end
 
 function set_all_windows_positions()
-    print("=== All Windows List ===")
+    log.d("=== All Windows List ===")
 
     active_small_dialogs = {}
     right_panel_windows_adjusted = false
@@ -108,7 +109,7 @@ function set_all_windows_positions()
             local expected_y = screen_frame.y + (screen_frame.h * topY)
 
             if math.abs(frame.x - expected_x) <= 1 and math.abs(frame.y - expected_y) <= 1 then
-                print("Found Android Emulator window in correct position - will skip all android windows")
+                log.d("Found Android Emulator window in correct position - will skip all android windows")
                 android_positioned = true
                 break
             end
@@ -117,12 +118,14 @@ function set_all_windows_positions()
 
     for _, window in ipairs(windows) do
         local window_title = window:title()
-        local app_title = window:application():title()
-        print(string.format("Window: '%s', App: '%s'", window_title, app_title))
+        local app = window:application()
+        if not app then goto continue end
+        local app_title = app:title()
+        log.d(string.format("Window: '%s', App: '%s'", window_title, app_title))
 
         if is_android_emulator(window) then
             if not android_positioned then
-                print("Moving Android Emulator window to right side")
+                log.d("Moving Android Emulator window to right side")
                 set_window(vertical_line, topY, rightX - vertical_line, horizontal_line - margin, window)
             end
         elseif is_ios_simulator(window) then
@@ -168,6 +171,7 @@ function set_all_windows_positions()
                 set_window_left(window)
             end
         end
+        ::continue::
     end
 end
 

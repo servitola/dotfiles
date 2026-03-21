@@ -2,11 +2,14 @@ function set_window_bottom(window)
     if not window then
         window = hs.window.frontmostWindow()
     end
-
+    if not window then return end
+    local app = window:application()
+    if not app then return end
     local screen = window:screen()
+    if not screen then return end
     local screen_frame = screen:frame()
 
-    local app_title = window:application():title()
+    local app_title = app:title()
     local window_title = window:title()
 
     local x = screen_frame.x + (screen_frame.w * vertical_line)

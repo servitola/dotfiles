@@ -6,6 +6,7 @@ local obj={}
 hyper = { "right_command", "right_control", "right_option", "right_shift" }
 
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
+local log = hs.logger.new('HotKeys', 'info')
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
 local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
 
@@ -119,7 +120,7 @@ for _, filename in ipairs(buttonFiles) do
     end
 end
 
-print("DEBUG: Loaded " .. #allChords .. " total chord entries")
+log.d("Loaded " .. #allChords .. " total chord entries")
 
 function unsubscribe()
     if hideKSheetShortCut then
@@ -173,10 +174,10 @@ function obj:init()
             local modifiers, key = parseChord(code)
 
             if chord_entry.app then
-                print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
+                log.d(string.format("Binding chord='%s' → modifiers=[%s], key='%s', app='%s'",
                     code, table.concat(modifiers, ", "), key, chord_entry.app))
             elseif chord_entry.fn then
-                print(string.format("Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
+                log.d(string.format("Binding chord='%s' → modifiers=[%s], key='%s', fn='%s'",
                     code, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
@@ -184,7 +185,7 @@ function obj:init()
                 hs.hotkey.bind(modifiers, key, function()
 
                     local modifierStr = table.concat(modifiers, "+")
-                    print("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
+                    log.d("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
 
                     local app
                     if chord_entry.app == "Visual Studio Code" then
@@ -194,20 +195,20 @@ function obj:init()
                         app = found
                         if found and tostring(found):match("hs.window:") then
                             app = found:application()
-                            print("Found window, getting application: " .. tostring(app))
+                            log.d("Found window, getting application: " .. tostring(app))
                         end
                     end
 
                     if not app or (app and app.isHidden and app:isHidden()) then
-                        print("Launching/focusing app: " .. chord_entry.app)
+                        log.d("Launching/focusing app: " .. chord_entry.app)
                         hs.application.launchOrFocus(chord_entry.app)
                     elseif hs.application.frontmostApplication() ~= app then
-                        print("Activating app: " .. chord_entry.app)
+                        log.d("Activating app: " .. chord_entry.app)
                         if app and app.activate then
                             hs.application.launchOrFocus(chord_entry.app)
                         end
                     else
-                        print("Hiding app: " .. chord_entry.app)
+                        log.d("Hiding app: " .. chord_entry.app)
                         if app and app.hide then
                             app:hide()
                         end
@@ -365,7 +366,7 @@ function obj:init()
                         local vscode = hs.application.get("com.microsoft.VSCode")
 
                         if not vscode then
-                            hs.execute("open -a 'Visual Studio Code' '" .. dotfilesPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Visual Studio Code", dotfilesPath}):start()
                             return
                         end
 
@@ -388,7 +389,7 @@ function obj:init()
                                 dotfilesWindow:focus()
                             end
                         else
-                            hs.execute("open -a 'Visual Studio Code' '" .. dotfilesPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Visual Studio Code", dotfilesPath}):start()
                         end
                     end)
                 elseif functionName == "fork.dotfiles" then
@@ -397,7 +398,7 @@ function obj:init()
                         local fork = hs.application.find("Fork")
 
                         if not fork then
-                            hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", dotfilesPath}):start()
                             return
                         end
 
@@ -420,7 +421,7 @@ function obj:init()
                                 dotfilesWindow:focus()
                             end
                         else
-                            hs.execute("open -a Fork '" .. dotfilesPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", dotfilesPath}):start()
                         end
                     end)
                 elseif functionName == "warp.launch_default" then
@@ -474,7 +475,7 @@ function obj:init()
                         local fork = hs.application.find("Fork")
 
                         if not fork then
-                            hs.execute("open -a Fork '" .. repoPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", repoPath}):start()
                             return
                         end
 
@@ -497,7 +498,7 @@ function obj:init()
                                 repoWindow:focus()
                             end
                         else
-                            hs.execute("open -a Fork '" .. repoPath .. "'", true)
+                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", repoPath}):start()
                         end
                     end)
                 end
@@ -507,7 +508,7 @@ function obj:init()
         end
     end
 
-    print("DEBUG: Successfully bound " .. bindCount .. " hotkeys")
+    log.d("Successfully bound " .. bindCount .. " hotkeys")
 end
 
 return obj

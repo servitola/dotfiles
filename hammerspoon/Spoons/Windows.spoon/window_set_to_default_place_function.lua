@@ -2,8 +2,11 @@ function set_window_default(window)
     if window == nil then
         window = hs.window.frontmostWindow()
     end
+    if not window then return end
+    local app = window:application()
+    if not app then return end
 
-    local app_title = window:application():title()
+    local app_title = app:title()
     local window_title = window:title()
 
     if is_small_dialog(window) then
