@@ -1,20 +1,20 @@
 return {
 --    ╭—————╮
---    │  H  │    hide / work browser (safari / firefox)
+--    │  H  │    hide / work browser (firefox / safari)
 --    ╰—————╯
 --
 --
 --———————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
 --           h   │ h    р    η  │
 --———————————————┼——————————————┼————————————————————————————————————
-{ chord =  "⇪h",                           app = "Safari" },
+{ chord =  "⇪h",                           app = "Firefox" },
 --          ⇧h   │ H    Р    Η  │
 --          ⌃h   │              │             — cut letter to the left
 --          ⌥h   │ ₽    ₽    ₽  │
 --          ⌘h   │              │             — hide current app
 --———————————————┼——————————————┼————————————————————————————————————
 --    ⇪⇧h → F16  │              │  ↓
-{ chord = "F16",                           app = "Firefox" },
+{ chord = "F16",                           app = "Safari" },
 --         ⇪⌃h   │              │
 --         ⇪⌥h   │              │
 --         ⇪⌘h   │              │
