@@ -13,7 +13,7 @@ try_clean ~/Library/Application\ Support/Caches "Application Support Caches"
 BATTLENET_VERSIONS_DIR="$HOME/Library/Application Support/Battle.net/Versions"
 BATTLENET_KEEP=2
 if [ -d "$BATTLENET_VERSIONS_DIR" ]; then
-    all_versions=($(ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | sort -t. -k3 -n))
+    all_versions=("${(@f)$(command ls -1d "$BATTLENET_VERSIONS_DIR"/Battle.net.[0-9]* 2>/dev/null | grep -v '\.app$' | sort -t. -k3 -n)}")
     total_count=${#all_versions[@]}
     if [ "$total_count" -gt "$BATTLENET_KEEP" ]; then
         remove_count=$(( total_count - BATTLENET_KEEP ))
