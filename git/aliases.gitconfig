@@ -20,10 +20,10 @@
 	cp = cherry-pick
 	diffc = diff --cached
 	# Find commits by source code
-	fc = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+	fc = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S\"$1\"; }; f"
 	ff = merge --ff-only
 	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+	fm = "!f() { git log --pretty=format:'%C(yellow)%h\t%Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=\"$1\"; }; f"
 	# Switch to a branch, creating it if necessary
 	go = "!f() { git switch -c \"$1\" 2> /dev/null || git switch \"$1\"; }; f"
 	last = log -n 1
@@ -63,8 +63,8 @@
 
 	# grep commands
 	# diff grep
-	dg = "!sh -c 'git ls-files -m | grep $1 | xargs git diff' -"
+	dg = "!sh -c 'git ls-files -m | grep \"$1\" | xargs git diff' -"
 	# diff grep changes between two commits
-	dgc = "!sh -c 'git ls-files | grep $1 | xargs git diff $2 $3 -- ' -"
+	dgc = "!sh -c 'git ls-files | grep \"$1\" | xargs git diff $2 $3 -- ' -"
 	# add grep
-	ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep $1 | xargs git add --all' -"
+	ag = "!sh -c 'git ls-files -m -o --exclude-standard | grep \"$1\" | xargs git add --all' -"
