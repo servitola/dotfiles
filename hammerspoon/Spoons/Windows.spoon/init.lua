@@ -11,6 +11,7 @@ dofile("./Spoons/Windows.spoon/dialog_set_right_function.lua")
 dofile("./Spoons/Windows.spoon/windows_detection_functions.lua")
 dofile("./Spoons/Windows.spoon/adjust_right_panel_for_dialogs.lua")
 dofile("./Spoons/Windows.spoon/window_set_full_size_function.lua")
+dofile("./Spoons/Windows.spoon/window_set_half_function.lua")
 dofile("./Spoons/Windows.spoon/restore_right_panel_windows_function.lua")
 dofile("./Spoons/Windows.spoon/window_set_to_default_place_function.lua")
 
@@ -40,6 +41,22 @@ end
 
 function obj:bind_all_windows_to_default(modifier, key)
     hs.hotkey.bind(modifier, key, set_all_windows_positions)
+end
+
+function obj:bind_window_half_left(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_half_left)
+end
+
+function obj:bind_window_half_right(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_half_right)
+end
+
+function obj:bind_window_half_top(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_half_top)
+end
+
+function obj:bind_window_half_bottom(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_half_bottom)
 end
 
 function obj:set_all_windows_positions()

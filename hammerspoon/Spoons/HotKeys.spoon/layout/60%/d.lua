@@ -49,7 +49,7 @@ return {
 --        ⇪⌥⌘d   │     ⌥⌘→      │         Music — seek forward;
 --               │              │        VSCode — go to next tab;
 --               │              │         iTerm — focus pane to the right
---        ⇧⌃⌥d   │              │
+{ chord= "⇧⌃⌥d",                             fn = "window.half_right" },
 --        ⇧⌃⌘d   │              │
 --        ⇧⌥⌘d   │              │
 --        ⌃⌥⌘d   │              │
