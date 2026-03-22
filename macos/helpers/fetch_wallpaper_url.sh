@@ -14,6 +14,8 @@ REPOS=(
     "AngelJumbo/gruvbox-wallpapers|wallpapers"
     "Nix3l/gruvbox-bgs|"
     "dharmx/walls|."
+    "makccr/wallpapers|wallpapers"
+    "Ajaymanikandan0x/hyprland_wallpapers|"
 )
 
 fetch_json() {
