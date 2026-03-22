@@ -57,5 +57,7 @@ bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application m
 
 source ~/.config/claude_code_settings.sh
 
-# zoxide for fast directory navigation (must be last — hooks into precmd)
+# zoxide for fast directory navigation (must be last — hooks into chpwd)
+# _ZO_DOCTOR=0: suppress false-positive warning caused by Warp terminal injecting hooks after .zshrc
+_ZO_DOCTOR=0
 eval "$(zoxide init zsh)"
