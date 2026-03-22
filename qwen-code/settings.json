@@ -5,7 +5,8 @@
     "enableAutoUpdate": true,
     "checkpointing": {
       "enabled": true
-    }
+    },
+    "gitCoAuthor": false
   },
   "model": {
     "maxSessionTurns": 250,
