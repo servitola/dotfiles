@@ -41,7 +41,7 @@ return {
 --        ⇪⌥⌘s   │     ⌥⌘↓      │      VSCode — clone caret down
 --               │              │       iTerm — focus pane below
 --               │              │       Rider — next in panel
---        ⇧⌃⌥s   │              │
+{ chord= "⇧⌃⌥s",                          fn = "window.half_bottom" },
 --        ⇧⌃⌘s   │              │
 --        ⇧⌥⌘s   │              │        Fork — send all files to staged/unstaged
 --        ⌃⌥⌘s   │              │

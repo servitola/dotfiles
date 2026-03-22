@@ -41,7 +41,7 @@ return {
 --        ⇪⌃⌘w   │     ⌃⌘↑      │         Rider — navigate to up method
 --        ⇪⌥⌘w   │     ⌥⌘↑      │        VSCode — clone caret up;
 --               │              │         iTerm — focus pane above
---        ⇧⌃⌥w   │              │
+{ chord= "⇧⌃⌥w",                             fn = "window.half_top" },
 --        ⇧⌃⌘w   │              │
 --        ⇧⌥⌘w   │              │
 --        ⌃⌥⌘w   │              │

@@ -46,7 +46,7 @@ return {
 --        ⇪⌥⌘a   │     ⌥⌘←      │       Music — seek backward
 --               │              │      VSCode — go to previous tab
 --               │              │       iTerm — focus pane to the left
---        ⇧⌃⌥a   │      ⌥⌫      │            — delete word to the left
+{ chord= "⇧⌃⌥a",                           fn = "window.half_left" },
 --        ⇧⌃⌘a   │              │
 --        ⇧⌥⌘a   │     ⇧⌘⌫      │       Rider — go to last edit place
 --               │              │      VSCode — go to last edit place
