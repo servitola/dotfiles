@@ -235,6 +235,14 @@ function obj:init()
                     spoon.Windows:bind_window_fullscreen(modifiers, key)
                 elseif functionName == "window.set_all_to_default" then
                     spoon.Windows:bind_all_windows_to_default(modifiers, key)
+                elseif functionName == "window.half_left" then
+                    spoon.Windows:bind_window_half_left(modifiers, key)
+                elseif functionName == "window.half_right" then
+                    spoon.Windows:bind_window_half_right(modifiers, key)
+                elseif functionName == "window.half_top" then
+                    spoon.Windows:bind_window_half_top(modifiers, key)
+                elseif functionName == "window.half_bottom" then
+                    spoon.Windows:bind_window_half_bottom(modifiers, key)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
@@ -319,7 +327,7 @@ function obj:init()
                     end)
                 elseif functionName == "audio.bt" then
                     hs.hotkey.bind(modifiers, key, function()
-                        spoon.AudioSwitcher:switchToBT()
+                        spoon.AudioSwitcher:connectAndSwitchToBT()
                     end)
                 elseif functionName == "show_youtrack" then
                     hs.hotkey.bind(modifiers, key, function()
