@@ -1,6 +1,7 @@
 #!/bin/zsh
-# Fetch ALL available wallpaper URLs from configured repositories
-# Outputs: JSON array of {name, url} objects, shuffled randomly
+# Fetch a random wallpaper URL from configured repositories
+# Picks random repo → random subdir → random image (2-3 API calls)
+# Outputs: JSON array of {name, url} objects (candidates from one directory)
 # Used by Hammerspoon GruvboxWallpapers.spoon
 
 BLOCKLIST="$HOME/projects/dotfiles/macos/wallpapers-blocklist.txt"
@@ -15,89 +16,51 @@ REPOS=(
     "dharmx/walls|."
 )
 
-fetch_files() {
-    local owner_repo="$1"
-    local path="$2"
-    /usr/bin/curl -sL "${CURL_OPTS[@]}" "https://api.github.com/repos/$owner_repo/contents/$path"
-}
-
-is_image() {
-    [[ "$1" =~ \.(png|jpg|jpeg|gif|webp|heic)$ ]]
+fetch_json() {
+    /usr/bin/curl -sL "${CURL_OPTS[@]}" "https://api.github.com/repos/$1/contents/$2"
 }
 
 check_rate_limit() {
-    local response="$1"
-    local context="$2"
-    if echo "$response" | jq -e 'has("message")' > /dev/null 2>&1; then
-        local msg=$(echo "$response" | jq -r '.message')
-        if echo "$msg" | grep -q "rate limit"; then
-            echo "ERROR: GitHub API rate limit reached" >&2
-            exit 1
-        fi
-        echo "API error [$context]: $msg" >&2
+    if echo "$1" | jq -e 'has("message")' > /dev/null 2>&1; then
+        local msg=$(echo "$1" | jq -r '.message')
+        echo "API error [$2]: $msg" >&2
         return 1
     fi
     return 0
 }
 
-collect_images() {
-    local api_response="$1"
-    echo "$api_response" | jq -r '.[] | select(.type=="file") | [.name, .download_url] | @tsv'
-}
+# Pick a random repo
+REPO_ENTRY="${REPOS[$((RANDOM % ${#REPOS[@]} + 1))]}"
+OWNER_REPO="${REPO_ENTRY%%|*}"
+ROOT_PATH="${REPO_ENTRY#*|}"
 
-# Collect all name\turl pairs
-WALLPAPERS=()
+# For repos with subdirs, pick a random subdirectory
+API_PATH="$ROOT_PATH"
+if [[ -n "$ROOT_PATH" ]]; then
+    ROOT_RESPONSE=$(fetch_json "$OWNER_REPO" "$ROOT_PATH")
+    check_rate_limit "$ROOT_RESPONSE" "$OWNER_REPO" || exit 1
 
-for repo_entry in "${REPOS[@]}"; do
-    OWNER_REPO="${repo_entry%%|*}"
-    ROOT_PATH="${repo_entry#*|}"
-
-    if [[ -n "$ROOT_PATH" ]]; then
-        # repo has category subdirectories — fetch them dynamically
-        ROOT_RESPONSE=$(fetch_files "$OWNER_REPO" "$ROOT_PATH")
-        check_rate_limit "$ROOT_RESPONSE" "$OWNER_REPO" || continue
-
-        CATEGORIES=()
-        while IFS= read -r line; do
-            CATEGORIES+=("$line")
-        done < <(echo "$ROOT_RESPONSE" | jq -r '.[] | select(.type=="dir") | .name')
-
-        for CATEGORY in "${CATEGORIES[@]}"; do
-            CATEGORY_ENCODED=$(printf '%s' "$CATEGORY" | python3 -c "import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read()))")
-            API_RESPONSE=$(fetch_files "$OWNER_REPO" "$ROOT_PATH/$CATEGORY_ENCODED")
-            check_rate_limit "$API_RESPONSE" "$OWNER_REPO/$CATEGORY" || continue
-
-            if echo "$API_RESPONSE" | jq -e 'type == "array"' > /dev/null 2>&1; then
-                while IFS=$'\t' read -r name download_url; do
-                    is_image "$name" || continue
-                    name="${name#_}"
-                    WALLPAPERS+=("${name}	${download_url}")
-                done < <(collect_images "$API_RESPONSE")
-            fi
-        done
-    else
-        # flat repo — files at root
-        API_RESPONSE=$(fetch_files "$OWNER_REPO" "")
-        check_rate_limit "$API_RESPONSE" "$OWNER_REPO" || continue
-
-        if echo "$API_RESPONSE" | jq -e 'type == "array"' > /dev/null 2>&1; then
-            while IFS=$'\t' read -r name download_url; do
-                is_image "$name" || continue
-                name="${name#_}"
-                WALLPAPERS+=("${name}	${download_url}")
-            done < <(collect_images "$API_RESPONSE")
-        fi
+    CATEGORY=$(echo "$ROOT_RESPONSE" | jq -r '.[] | select(.type=="dir") | .name' | shuf -n1)
+    if [[ -z "$CATEGORY" ]]; then
+        echo "ERROR: no subdirectories found in $OWNER_REPO/$ROOT_PATH" >&2
+        exit 1
     fi
-done
+    API_PATH="$ROOT_PATH/$(printf '%s' "$CATEGORY" | python3 -c "import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read()))")"
+fi
 
-# Filter out blocklisted wallpapers, output as shuffled JSON array
-{
-    for entry in "${WALLPAPERS[@]}"; do
-        name="${entry%%	*}"
-        url="${entry#*	}"
+# Fetch images from the chosen directory
+API_RESPONSE=$(fetch_json "$OWNER_REPO" "$API_PATH")
+check_rate_limit "$API_RESPONSE" "$OWNER_REPO/$API_PATH" || exit 1
+
+# Filter to images, exclude blocklisted, shuffle, output as JSON
+echo "$API_RESPONSE" | jq -r '.[] | select(.type=="file") | [.name, .download_url] | @tsv' \
+    | grep -iE '\.(png|jpg|jpeg|webp|heic)$' \
+    | while IFS=$'\t' read -r name url; do
+        name="${name#_}"
         if [[ -f "$BLOCKLIST" ]] && grep -qxF "$name" "$BLOCKLIST"; then
             continue
         fi
         printf '%s\t%s\n' "$name" "$url"
-    done
-} | shuf | jq -Rnc '[inputs | split("\t") | {name: .[0], url: .[1]}]'
+    done \
+    | shuf \
+    | jq -Rnc '[inputs | split("\t") | {name: .[0], url: .[1]}]'
