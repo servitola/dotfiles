@@ -7,3 +7,4 @@ colima/default/daemon/daemon.log
 colima/default/daemon/daemon.pid
 
 
+cron/cron_jobs/youtrack.cron

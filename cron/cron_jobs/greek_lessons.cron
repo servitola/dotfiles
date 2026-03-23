@@ -1,0 +1,8 @@
+# =============================================================================
+# Crontab - Weekly Meetings
+# =============================================================================
+# Managed by dotfiles
+# =============================================================================
+
+# Zoom meeting every Saturday at 7:29 AM
+29 7 * * 6 . "$HOME/.config/greek lessons zoom credentials" && open "zoommtg://zoom.us/join?confno=${ZOOM_MEETING_ID}&pwd=${ZOOM_MEETING_PASSWORD}"

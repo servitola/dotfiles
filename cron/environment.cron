@@ -1,0 +1,10 @@
+# =============================================================================
+# Crontab - Environment Variables
+# =============================================================================
+# Managed by dotfiles
+# This file contains environment settings for all cron jobs
+# =============================================================================
+
+# Environment
+SHELL=/bin/zsh
+PATH=/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
