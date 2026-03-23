@@ -278,7 +278,7 @@ install:
 	@cd ~/projects/dotfiles/ && pre-commit install
 
 	@echo "setup cron jobs"
-	@crontab ~/projects/dotfiles/cron/schedule.cron
+	@~/projects/dotfiles/cron/init-cron-jobs.sh
 
 	@echo "Installation complete!"
 	@echo
