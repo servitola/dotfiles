@@ -1,5 +1,7 @@
 # Agent Guidelines for Dotfiles Repository
 
+These dotfiles are an operating system on top of macOS. Not just a set of configs, but a living, evolving workspace management system.
+
 ## Build/Test Commands
 - `make` - Full dotfiles installation & symlink setup
 - `up` - System-wide update & cleanup (brew, npm, macOS, cache)
