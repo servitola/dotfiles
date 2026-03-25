@@ -361,6 +361,13 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         yandexSearch.searchSelectedText()
                     end)
+                elseif functionName == "paste_bypass" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local contents = hs.pasteboard.getContents()
+                        if contents then
+                            hs.eventtap.keyStrokes(contents)
+                        end
+                    end)
                 elseif functionName == "musicapp.play_pause" then
                     hs.hotkey.bind(modifiers, key, function()
                         hs.itunes.playpause()
