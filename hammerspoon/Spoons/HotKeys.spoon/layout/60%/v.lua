@@ -24,7 +24,8 @@ return {
 --          ⇪⌥v   │     ⌥F19     │         maccy — show buffer
 --          ⇪⌘v   │     ⌘F19     │                  ↓
 { chord = "⌘F19",                             fn = "browser_search_selected" },
---          ⇧⌃v   │              │      Terminal — used sometimesž
+--          ⇧⌃v   │              │      Terminal — used sometimes
+{ chord =  "⌃⌘v",                             fn = "paste_bypass" },
 --          ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --          ⇧⌘v   │              │          Mail — paste text into email as quotation
 { chord =  "⌃⌥v",                             fn = "browser_youtube" },
