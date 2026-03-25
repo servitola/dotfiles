@@ -59,5 +59,5 @@ source ~/.config/claude_code_settings.sh
 
 # zoxide for fast directory navigation (must be last — hooks into chpwd)
 # _ZO_DOCTOR=0: suppress false-positive warning caused by Warp terminal injecting hooks after .zshrc
-_ZO_DOCTOR=0
+export _ZO_DOCTOR=0
 eval "$(zoxide init zsh)"
