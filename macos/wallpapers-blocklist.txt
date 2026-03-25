@@ -1,5 +1,5 @@
 # Wallpapers blocklist - filenames listed here will not be downloaded during sync
-# Add filenames one per line. Use `wallblock <filename>` alias to block and delete at once.
+# Add filenames one per line
 girl.jpg
 jars.jpg
 burnout.png
@@ -733,3 +733,16 @@ a_purple_and_orange_mountain_range.png
 a_cartoon_of_people_around_a_table_with_food_and_drinks.jpg
 silentvoice3.jpg
 1347701.png
+Lofi-Cafe2.png
+Game-GTA.png
+Fantasy-Medieval_Travern.png
+1348362.png
+a_tree_with_white_flowers.jpg
+a_bird_on_a_statue.jpg
+a_snow_covered_road_with_two_large_machines.jpg
+a_group_of_tall_buildings_with_cartoon_characters_on_them.jpg
+a_man_and_a_robot_standing_in_a_parking_lot.jpg
+a_group_of_people_walking_in_a_field_with_a_round_object_in_the_foreground.jpg
+a_mountain_with_snow_on_top_01.jpg
+a_foggy_forest_with_trees_02.jpg
+a_foggy_mountain_with_trees.png
