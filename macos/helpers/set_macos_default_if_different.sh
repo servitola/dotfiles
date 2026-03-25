@@ -1,12 +1,16 @@
 #!/bin/zsh
 
 # Function to set macOS default only if different from current value
+# Usage: set_macos_default_if_different "Title" "domain" "key" "type" "value"
 set_macos_default_if_different() {
     local title=$1
     local domain=$2
     local key=$3
     local type=$4
     local new_value=$5
+
+    # Print bullet point
+    echo "  ${DIM}•${NC} $title"
 
     # Get current value
     current_value=$(sudo defaults read "$domain" "$key" 2> /dev/null)
@@ -40,12 +44,15 @@ set_macos_default_if_different() {
         fi
 
         if [[ -n "$current_value" ]]; then
-            echo "${GREEN}✓ Changed${NC} '$title' $domain → $key: ${YELLOW}$current_normalized${NC} → ${GREEN}$new_normalized${NC}"
+            echo "  ${GREEN}✓${NC} Changed: ${YELLOW}$current_normalized${NC} → ${GREEN}$new_normalized${NC}"
         else
-            echo "${GREEN}✓ Set${NC} '$title' $domain → $key: ${GREEN}$new_normalized${NC}"
+            echo "  ${GREEN}✓${NC} Set: ${GREEN}$new_normalized${NC}"
         fi
         ((CHANGES_MADE++))
         return 0
     fi
+
+    echo "  ${YELLOW}○${NC} Already set: ${CYAN}$current_normalized${NC}"
+    ((SKIPPED_COUNT++))
     return 1
 }
