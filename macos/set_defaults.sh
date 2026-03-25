@@ -1,10 +1,17 @@
 #!/bin/zsh
 source 'zsh/functions.sh'
+source 'macos/helpers/colors.sh'
 source 'macos/helpers/set_macos_default_if_different.sh'
 source 'macos/helpers/set_plist_value_if_different.sh'
 
+# Initialize counters
+CHANGES_MADE=0
+SKIPPED_COUNT=0
+
 sudo -v
-echo 'Setting macos defaults'
+echo ''
+echo "${BOLD}Setting macOS defaults${NC}"
+echo ''
 
 echo 'Close any open System Settings panes,'
 echo 'to prevent them from overriding'
@@ -47,13 +54,13 @@ echo 'keys with Karabine app'
 defaults write -g com.apple.keyboard.fnState \
     -bool true
 
-spctl --master-disable
 set_macos_default_if_different \
 	'Disable the "Are you sure you want to open this application?" dialog' \
     'com.apple.LaunchServices' \
     'LSQuarantine' \
     '-bool' \
     false
+spctl --master-disable
 
 echo 'Enable snap-to-grid for icons on the'
 echo 'desktop and in other icon views'
@@ -303,15 +310,14 @@ echo 'Safari' #
 ###############################################################################
 
 set_macos_default_if_different \
-	'Prevent Safari from opening ‘safe’ files automatically after downloading' \
+	'Prevent Safari from opening safe files automatically after downloading' \
     'com.apple.Safari' \
     'AutoOpenSafeDownloads' \
     '-bool' \
     false
 
-echo
 set_macos_default_if_different \
-	'Remove icons from Safari’s bookmarks bar' \
+	'Remove icons from Safaris bookmarks bar' \
     'com.apple.Safari' \
     'ProxiesInBookmarksBar' \
     '()'
@@ -355,21 +361,21 @@ set_macos_default_if_different \
     true
 
 set_macos_default_if_different \
-	"Don't prompt for confirmation before downloading" \
+	'Dont prompt for confirmation before downloading' \
     'org.m0k.transmission' \
     'DownloadAsk' \
     '-bool' \
     false
 
 set_macos_default_if_different \
-	"Don't prompt for confirmation when' opening magnet links" \
+	'Dont prompt for confirmation when opening magnet links' \
     'org.m0k.transmission' \
     'MagnetOpenAsk' \
     '-bool' \
     false
 
 set_macos_default_if_different \
-	"Don't prompt for confirmation before removing non-downloading active transfers" \
+	'Dont prompt for confirmation before removing non-downloading active transfers' \
     'org.m0k.transmission' \
     'CheckRemoveDownloading' \
     '-bool' \
@@ -578,3 +584,14 @@ set_macos_default_if_different \
 
 echo 'Scrolling settings (traditional)'
 defaults write -g com.apple.swipescrolldirection -bool false
+
+# Print summary
+echo ''
+echo "${BOLD}${CYAN}───────────────────────────────────────────────────────────${NC}"
+echo "${BOLD}Summary${NC}"
+echo "${CYAN}───────────────────────────────────────────────────────────${NC}"
+echo "  Total settings processed: ${DIM}$((CHANGES_MADE + SKIPPED_COUNT))${NC}"
+echo "  ${GREEN}Changes made:${NC} ${BOLD}${GREEN}$CHANGES_MADE${NC}"
+echo "  ${YELLOW}Already set:${NC} ${BOLD}${YELLOW}$SKIPPED_COUNT${NC}"
+echo "${CYAN}───────────────────────────────────────────────────────────${NC}"
+echo ''
