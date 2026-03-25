@@ -25,11 +25,11 @@ return {
 --          ⇪⌘v   │     ⌘F19     │                  ↓
 { chord = "⌘F19",                             fn = "browser_search_selected" },
 --          ⇧⌃v   │              │      Terminal — used sometimes
-{ chord =  "⌃⌘v",                             fn = "paste_bypass" },
 --          ⇧⌥v   │ ˇ    ˇ    ˇ  │
 --          ⇧⌘v   │              │          Mail — paste text into email as quotation
 { chord =  "⌃⌥v",                             fn = "browser_youtube" },
---          ⌃⌘v   │              │ ???
+--          ⌃⌘v   │              │              — paste bypass (type clipboard for restricted fields)
+{ chord =  "⌃⌘v",                             fn = "paste_bypass" },
 --          ⌥⌘v   │              │         Rider — extract variable
 --————————————————┼——————————————┼————————————————————————————————————
 --         ⇪⇧⌃v   │              │
