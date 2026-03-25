@@ -243,6 +243,16 @@ function obj:init()
                     spoon.Windows:bind_window_top_60(modifiers, key)
                 elseif functionName == "window.bottom_40" then
                     spoon.Windows:bind_window_bottom_40(modifiers, key)
+                elseif functionName == "window.center" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local win = hs.window.frontmostWindow()
+                        if not win then return end
+                        local screen = win:screen():frame()
+                        local frame = win:frame()
+                        frame.x = screen.x + (screen.w - frame.w) / 2
+                        frame.y = screen.y + (screen.h - frame.h) / 2
+                        win:setFrame(frame, 0)
+                    end)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
