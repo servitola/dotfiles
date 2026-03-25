@@ -64,10 +64,6 @@ brew "cocoapods"
 brew "cowsay"
 # DuckDuckGo from the terminal
 brew "ddgr"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c@77", link: true
-# Static code analysis for Kotlin
-brew "detekt"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
 # Bash, Zsh and Fish completion for Docker
@@ -249,8 +245,6 @@ brew "qwen-code"
 brew "rsync"
 # Safe, concurrent, practical language
 brew "rust"
-# Display and control your Android device
-brew "scrcpy"
 # SDL 1.2 compatibility layer that uses SDL 2.0 behind the scenes
 brew "sdl12-compat"
 # 7-Zip is a file archiver with a high compression ratio
@@ -322,8 +316,6 @@ cask "alt-tab"
 cask "amneziavpn"
 # Application uninstaller
 cask "appcleaner"
-# Telegram client with ghost mode and message history
-cask "ayugram"
 # Online gaming platform
 cask "battle-net"
 # Open source IDE for exploring and testing APIs
@@ -376,8 +368,6 @@ cask "google-chrome"
 cask "google-drive"
 # Graphically shows disk usage within a file system
 cask "grandperspective"
-# Sheet music editor software for guitar, bass, keyboards, drums and more
-cask "guitar-pro"
 # Desktop automation application
 cask "hammerspoon"
 # Game launcher
