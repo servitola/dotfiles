@@ -375,6 +375,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         local contents = hs.pasteboard.getContents()
                         if contents then
+                            if #contents > 10000 then
+                                hs.alert.show("Clipboard too large (" .. #contents .. " chars)", 2)
+                                return
+                            end
                             hs.eventtap.keyStrokes(contents)
                         end
                     end)
