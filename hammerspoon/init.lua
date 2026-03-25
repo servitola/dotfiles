@@ -14,8 +14,9 @@ hs.loadSpoon("YouTrackTasks") -- YouTrack tasks view
 hs.loadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
 hs.loadSpoon("AudioSwitcher") -- audio device switching
 hs.loadSpoon("YouTubeStream") -- YouTube stream player
+hs.loadSpoon("URLDispatcher") -- open urls in different browsers
 hs.loadSpoon("HotKeys") -- all hotkeys
 
-require "config_UrlDispatcher" -- open urls in different browsers
+require "config_UrlDispatcher"
 require "set_language_on_app_focused"
 require "reload_hammerspoon_on_script_changed"
