@@ -27,7 +27,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Autoupdate **Everything** with the `up` command. Run `up` from Terminal. It also cleans a lot of cache folders. I have 200+ applications and feel no pressure.
 
 * Q: I want my <ins>work web links</ins> to be opened <ins>in Firefox</ins> and the <ins>other stuff</ins> in <ins>another browser</ins>
-* A: Look at `hammerspoon/config_UrlDispatcher.lua`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
+* A: Look at `hammerspoon/config_UrlDispatcher.lua`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](https://www.hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
 
 * Q: I want to <ins>understand</ins> all the <ins>shortcuts</ins> I can use on macOS and <ins>with this repository</ins>
 * A: Almost all shortcuts are easy to use and set up with: `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
