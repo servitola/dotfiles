@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Update all packages and tools
 
-source ~/projects/dotfiles/zsh/functions.sh
+source ~/projects/dotfiles/macos_update/functions.sh
 
 # Gruvbox colors
 RED='\033[0;31m'
@@ -39,7 +39,7 @@ brew cleanup --scrub
 
 print_task "Set node22 is default"
 brew unlink node 2>/dev/null || true
-brew link --force --overwrite node@22
+brew unlink node@22 && brew link node@22
 
 brew doctor
 brew bundle dump --force --describe --file=~/projects/dotfiles/homebrew/brewfile
@@ -52,7 +52,6 @@ source ~/projects/dotfiles/npm/install-globals.sh
 npm cache verify
 
 uv python install 3.12
-uv python pin 3.12
 source ~/projects/dotfiles/python/install-globals.sh
 source ~/projects/dotfiles/python/install-uv-tools.sh
 if pgrep -x uv > /dev/null; then
@@ -60,8 +59,6 @@ if pgrep -x uv > /dev/null; then
 else
     uv cache prune
 fi
-
-go clean -modcache
 
 print_task "Update Appium Plugins"
 appium plugin update installed
