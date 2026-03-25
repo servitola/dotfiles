@@ -94,6 +94,64 @@ fi
 
 setopt no_rm_star_silent
 
+if [ "$AGGRESSIVE" = "true" ]; then
+    print_section "Aggressive Cleanup"
+
+    print_task "Cleaning Go module cache"
+    if command -v go &>/dev/null; then
+        spinner_start "Go module cache"
+        go clean -modcache 2>/dev/null
+        spinner_stop "Go module cache: cleaned"
+    else
+        printf "  ${DIM}* Go module cache: go not found${NC}\n"
+    fi
+
+    print_task "Cleaning all NuGet caches"
+    if command -v dotnet &>/dev/null; then
+        spinner_start "NuGet all caches"
+        dotnet nuget locals all --clear 2>/dev/null
+        spinner_stop "NuGet all caches: cleaned"
+    else
+        printf "  ${DIM}* NuGet caches: dotnet not found${NC}\n"
+    fi
+
+    print_task "Cleaning npm cache"
+    if command -v npm &>/dev/null; then
+        spinner_start "npm cache"
+        npm cache clean --force 2>/dev/null
+        spinner_stop "npm cache: cleaned"
+    else
+        printf "  ${DIM}* npm cache: npm not found${NC}\n"
+    fi
+
+    print_task "Cleaning Docker (all unused images + build cache)"
+    if command -v docker &>/dev/null && docker info &>/dev/null; then
+        spinner_start "Docker system prune"
+        docker system prune -a -f 2>/dev/null
+        docker builder prune -a -f 2>/dev/null
+        spinner_stop "Docker system + build cache: cleaned"
+    else
+        printf "  ${DIM}* Docker: not running${NC}\n"
+    fi
+
+    print_task "Aggressive git gc + prune (all repositories)"
+    _git_repo_count=0
+    while IFS= read -r -d '' git_dir; do
+        repo_path="${git_dir%/.git}"
+        cd "$repo_path" 2>/dev/null || continue
+        git rev-parse --git-dir &>/dev/null || continue
+        _git_repo_count=$(( _git_repo_count + 1 ))
+        printf "  ${DIM}* Pruning: ${repo_path/#$HOME/~}${NC}\r"
+        git reflog expire --expire=now --expire-unreachable=now --all 2>/dev/null
+        git gc --aggressive --prune=now 2>/dev/null
+        git remote prune origin 2>/dev/null
+        git fetch --prune 2>/dev/null
+        git repack -a -d --depth=250 --window=250 2>/dev/null
+        git prune --expire=now 2>/dev/null
+    done < <(find "$HOME" -type d -name ".git" -not -path "*/node_modules/*" -not -path "*/.Trash/*" -not -path "*/Library/*" -print0 2>/dev/null)
+    printf "\r\033[K  ${_S_GREEN}${_S_BOLD}* Git aggressive gc: pruned ${_git_repo_count} repositories${_S_NC}\n"
+fi
+
 _free_bytes_after=$(df -k / | awk 'NR==2 {print $4}')
 _freed_kb=$(( _free_bytes_after - _free_bytes_before ))
 _free_gb=$(( _free_bytes_after / 1048576 ))
