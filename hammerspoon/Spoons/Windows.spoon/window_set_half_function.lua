@@ -18,7 +18,7 @@ function set_window_half_right(window)
     set_window(half_line, topY, rightX - half_line, bottomY - topY, window)
 end
 
-function set_window_half_top(window)
+function set_window_top_60(window)
     if not window then
         window = hs.window.frontmostWindow()
     end
@@ -28,7 +28,7 @@ function set_window_half_top(window)
     set_window(leftX, topY, rightX - leftX, split_line - spacing, window)
 end
 
-function set_window_half_bottom(window)
+function set_window_bottom_40(window)
     if not window then
         window = hs.window.frontmostWindow()
     end

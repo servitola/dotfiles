@@ -51,12 +51,12 @@ function obj:bind_window_half_right(modifier, key)
     hs.hotkey.bind(modifier, key, set_window_half_right)
 end
 
-function obj:bind_window_half_top(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_half_top)
+function obj:bind_window_top_60(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_top_60)
 end
 
-function obj:bind_window_half_bottom(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_half_bottom)
+function obj:bind_window_bottom_40(modifier, key)
+    hs.hotkey.bind(modifier, key, set_window_bottom_40)
 end
 
 function obj:set_all_windows_positions()

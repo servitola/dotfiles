@@ -239,10 +239,10 @@ function obj:init()
                     spoon.Windows:bind_window_half_left(modifiers, key)
                 elseif functionName == "window.half_right" then
                     spoon.Windows:bind_window_half_right(modifiers, key)
-                elseif functionName == "window.half_top" then
-                    spoon.Windows:bind_window_half_top(modifiers, key)
-                elseif functionName == "window.half_bottom" then
-                    spoon.Windows:bind_window_half_bottom(modifiers, key)
+                elseif functionName == "window.top_60" then
+                    spoon.Windows:bind_window_top_60(modifiers, key)
+                elseif functionName == "window.bottom_40" then
+                    spoon.Windows:bind_window_bottom_40(modifiers, key)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
