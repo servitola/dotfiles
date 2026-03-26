@@ -2,7 +2,6 @@
 local M = {}
 
 local appHotkeys = {}
-local appWatcher = nil
 
 local function setupAppHotkeys(appName, remaps)
     if not appHotkeys[appName] then
@@ -38,10 +37,8 @@ local function disableAppHotkeys(appName)
 end
 
 function M.init(appSpecificHotkeys)
-    -- Setup hotkeys for all configured apps
     for appName, remaps in pairs(appSpecificHotkeys) do
         if appName == "*" then
-            -- Global hotkeys - always enabled
             for _, remap in pairs(remaps) do
                 hs.hotkey.bind(remap.from, remap.key, function()
                     if remap.sendText then
@@ -52,25 +49,20 @@ function M.init(appSpecificHotkeys)
                 end)
             end
         else
-            -- App-specific hotkeys
             setupAppHotkeys(appName, remaps)
         end
     end
 
-    -- Watch for app focus changes
-    appWatcher = hs.application.watcher.new(function(appName, eventType, appObject)
+    -- Register with centralized app watcher hub (no own watcher)
+    appWatcherHub.register(function(appName, eventType, appObject)
         if eventType == hs.application.watcher.activated then
-            -- Disable all app-specific hotkeys
             for app, _ in pairs(appHotkeys) do
                 disableAppHotkeys(app)
             end
-            -- Enable hotkeys for the newly focused app
             enableAppHotkeys(appName)
         end
     end)
-    appWatcher:start()
 
-    -- Enable hotkeys for currently focused app
     local currentApp = hs.application.frontmostApplication()
     if currentApp then
         enableAppHotkeys(currentApp:name())
@@ -78,12 +70,6 @@ function M.init(appSpecificHotkeys)
 end
 
 function M.stop()
-    if appWatcher then
-        appWatcher:stop()
-        appWatcher = nil
-    end
-
-    -- Disable all hotkeys
     for appName, _ in pairs(appHotkeys) do
         disableAppHotkeys(appName)
     end
