@@ -22,7 +22,7 @@ function obj:connectAndSwitchToMarshall()
     -- standalone process with its own Bluetooth entitlements.
     hs.execute("open -a /opt/homebrew/bin/blueutil --args --connect " .. mac)
     hs.timer.doAfter(5, function()
-        switchToAudioDevice("Marshall")
+        switchToAudioDevice("Marshall", "🔊 Marshall")
     end)
 end
 
@@ -34,7 +34,7 @@ function obj:connectAndSwitchToBT()
     local mac = "eb-06-ef-24-61-cf"
     hs.execute("open -a /opt/homebrew/bin/blueutil --args --connect " .. mac)
     hs.timer.doAfter(5, function()
-        switchToAudioDevice("BT")
+        switchToAudioDevice("BT", "🔊 Audio System")
     end)
 end
 
