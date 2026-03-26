@@ -41,7 +41,7 @@ function M.toggle()
         hs.task.new("/usr/bin/osascript", function(exitCode2)
             if exitCode2 == 0 then
                 local statusText = wasConnected and "Disconnected" or "Connected"
-                showNotification("GlobalProtect VPN", "Status: " .. statusText)
+                showNotification("GlobalProtect VPN", statusText)
             else
                 showNotification("GlobalProtect VPN", "Failed to toggle")
             end
