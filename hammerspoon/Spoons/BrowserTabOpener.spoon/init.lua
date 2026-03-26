@@ -47,7 +47,7 @@ function obj:openTab(urlPattern)
     else
         hs.application.launchOrFocus("Yandex")
         hs.timer.doAfter(0.1, function()
-            hs.urlevent.openURLWithBundle(urlPattern, "ru.yandex.desktop.yandex-browser")
+            hs.urlevent.openURLWithBundle("https://" .. urlPattern, "ru.yandex.desktop.yandex-browser")
         end)
     end
 end
