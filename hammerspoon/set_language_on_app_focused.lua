@@ -25,10 +25,7 @@ local function setLanguageForApp(bundleId, layout)
     end)
 end
 
--- Stop previous watcher on config reload to prevent duplicates
-if appwatcher then appwatcher:stop() end
-
-appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
+appWatcherHub.register(function(appName, eventType, appObject)
     if not appObject then return end
     local bundleId = appObject:bundleID()
     if not bundleId then return end
@@ -50,4 +47,3 @@ appwatcher = hs.application.watcher.new(function(appName, eventType, appObject)
         end
     end
 end)
-appwatcher:start()

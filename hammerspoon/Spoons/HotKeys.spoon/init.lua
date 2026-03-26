@@ -9,6 +9,51 @@ local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local log = hs.logger.new('HotKeys', 'info')
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
 local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
+local systemHealth = dofile(spoonPath .. "system_health.lua")
+
+-- Generic helper: focus a specific window of an app, or launch it with a path
+-- appNameOrId: bundle ID (e.g. "com.microsoft.VSCode") or app name (e.g. "Fork")
+-- appDisplayName: name for "open -a" launch (required for bundle IDs)
+local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayName)
+    local isBundleId = appNameOrId:find("%.")
+    local app
+    if isBundleId then
+        app = hs.application.get(appNameOrId)
+    else
+        local found = hs.application.find(appNameOrId)
+        if found and tostring(found):match("hs.window:") then
+            app = found:application()
+        else
+            app = found
+        end
+    end
+
+    if not app then
+        local launchName = appDisplayName or appNameOrId
+        hs.task.new("/usr/bin/open", nil, { "-a", launchName, launchPath }):start()
+        return
+    end
+
+    local targetWindow = nil
+    for _, window in ipairs(app:allWindows()) do
+        if window:title():find(titlePattern) then
+            targetWindow = window
+            break
+        end
+    end
+
+    if targetWindow then
+        if hs.application.frontmostApplication() == app and hs.window.focusedWindow() == targetWindow then
+            app:hide()
+        else
+            targetWindow:focus()
+        end
+    else
+        hs.task.new("/usr/bin/open", nil, { "-a",
+            appNameOrId:find("%.") and appNameOrId or appNameOrId,
+            launchPath }):start()
+    end
+end
 
 local buttonFiles = {
     "tilde",
@@ -80,7 +125,7 @@ local function parseChord(chordStr)
             key = "down"
         elseif chordStr:match(",") then
             key = ","
-        elseif chordStr:match(".") then
+        elseif chordStr:match("%.") then
             key = "."
         end
     end
@@ -99,7 +144,6 @@ local function parseChord(chordStr)
     return modifiers, key
 end
 
-local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local layoutsPath = spoonPath .. "layout/" .. "60%/"
 
 allChords = {}
@@ -388,67 +432,13 @@ function obj:init()
                     end)
                 elseif functionName == "vscode.dotfiles" then
                     hs.hotkey.bind(modifiers, key, function()
-                        local dotfilesPath = os.getenv("HOME") .. "/projects/dotfiles"
-                        local vscode = hs.application.get("com.microsoft.VSCode")
-
-                        if not vscode then
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Visual Studio Code", dotfilesPath}):start()
-                            return
-                        end
-
-                        local dotfilesWindow = nil
-                        for _, window in ipairs(vscode:allWindows()) do
-                            local title = window:title()
-                            if title:find("dotfiles") or title:find("/projects/dotfiles") then
-                                dotfilesWindow = window
-                                break
-                            end
-                        end
-
-                        if dotfilesWindow then
-                            local isFrontmost = hs.application.frontmostApplication() == vscode
-                            local isFocused = (hs.window.focusedWindow() == dotfilesWindow)
-
-                            if isFrontmost and isFocused then
-                                vscode:hide()
-                            else
-                                dotfilesWindow:focus()
-                            end
-                        else
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Visual Studio Code", dotfilesPath}):start()
-                        end
+                        focusAppWindow("com.microsoft.VSCode", "dotfiles",
+                            os.getenv("HOME") .. "/projects/dotfiles", "Visual Studio Code")
                     end)
                 elseif functionName == "fork.dotfiles" then
                     hs.hotkey.bind(modifiers, key, function()
-                        local dotfilesPath = os.getenv("HOME") .. "/projects/dotfiles"
-                        local fork = hs.application.find("Fork")
-
-                        if not fork then
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", dotfilesPath}):start()
-                            return
-                        end
-
-                        local dotfilesWindow = nil
-                        for _, window in ipairs(fork:allWindows()) do
-                            local title = window:title()
-                            if title:find("dotfiles") then
-                                dotfilesWindow = window
-                                break
-                            end
-                        end
-
-                        if dotfilesWindow then
-                            local isFrontmost = hs.application.frontmostApplication() == fork
-                            local isFocused = (hs.window.focusedWindow() == dotfilesWindow)
-
-                            if isFrontmost and isFocused then
-                                fork:hide()
-                            else
-                                dotfilesWindow:focus()
-                            end
-                        else
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", dotfilesPath}):start()
-                        end
+                        focusAppWindow("Fork", "dotfiles",
+                            os.getenv("HOME") .. "/projects/dotfiles")
                     end)
                 elseif functionName == "warp.launch_default" then
                     local warpLaunchWatcher = nil
@@ -497,35 +487,12 @@ function obj:init()
                     end)
                 elseif functionName == "fork.ctraderdev" then
                     hs.hotkey.bind(modifiers, key, function()
-                        local repoPath = os.getenv("HOME") .. "/projects/Spotware/cTraderDev"
-                        local fork = hs.application.find("Fork")
-
-                        if not fork then
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", repoPath}):start()
-                            return
-                        end
-
-                        local repoWindow = nil
-                        for _, window in ipairs(fork:allWindows()) do
-                            local title = window:title()
-                            if title:find("cTraderDev") then
-                                repoWindow = window
-                                break
-                            end
-                        end
-
-                        if repoWindow then
-                            local isFrontmost = hs.application.frontmostApplication() == fork
-                            local isFocused = (hs.window.focusedWindow() == repoWindow)
-
-                            if isFrontmost and isFocused then
-                                fork:hide()
-                            else
-                                repoWindow:focus()
-                            end
-                        else
-                            hs.task.new("/usr/bin/open", nil, {"-a", "Fork", repoPath}):start()
-                        end
+                        focusAppWindow("Fork", "cTraderDev",
+                            os.getenv("HOME") .. "/projects/Spotware/cTraderDev")
+                    end)
+                elseif functionName == "system_health" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        systemHealth.toggle()
                     end)
                 end
             end
