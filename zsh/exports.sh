@@ -40,8 +40,8 @@ export GOPATH="$HOME/go"
 # .NET SDK
 export DOTNET_ROOT=/usr/local/share/dotnet
 
-# Java & Android Development
-export JAVA_HOME=$(/usr/libexec/java_home -v 21 2>/dev/null)
+# Java & Android Development — ARM64 Homebrew JDK 21
+export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
 export ANDROID_HOME=~/Library/Android/sdk
 
 # Docker (via OrbStack)
