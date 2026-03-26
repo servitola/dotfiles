@@ -5,6 +5,8 @@ hs.ipc.cliInstall()
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
 hs.keycodes.setLayout("En Birman")
 
+require "app_watcher_hub" -- centralized app event dispatcher (must load before spoons)
+
 hs.loadSpoon("GruvboxWallpapers") -- set new wallpaper
 hs.loadSpoon("Windows") -- window management
 hs.loadSpoon("KSheet") -- shortcuts cheatsheet
