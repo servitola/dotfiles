@@ -498,6 +498,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         systemHealth.toggle()
                     end)
+                elseif functionName == "hammerspoon_reload" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.reload()
+                    end)
                 end
             end
 
