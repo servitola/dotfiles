@@ -13,7 +13,7 @@ local function setupAppHotkeys(appName, remaps)
             if remap.sendText then
                 hs.eventtap.keyStrokes(remap.sendText)
             else
-                hs.eventtap.keyStroke(remap.to, remap.target_key)
+                hs.eventtap.keyStroke(remap.to, remap.target_key, 0)
             end
         end)
         table.insert(appHotkeys[appName], hotkey)
@@ -44,7 +44,7 @@ function M.init(appSpecificHotkeys)
                     if remap.sendText then
                         hs.eventtap.keyStrokes(remap.sendText)
                     else
-                        hs.eventtap.keyStroke(remap.to, remap.target_key)
+                        hs.eventtap.keyStroke(remap.to, remap.target_key, 0)
                     end
                 end)
             end
