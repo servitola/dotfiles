@@ -407,6 +407,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.BrowserTabOpener:openTab("youtube.com")
                     end)
+                elseif functionName == "browser_youtube_playing" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.BrowserTabOpener:focusPlayingTab("youtube.com/watch")
+                    end)
                 elseif functionName == "youtube_stream" then
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.YouTubeStream:toggle()
