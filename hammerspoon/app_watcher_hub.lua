@@ -3,7 +3,8 @@
 -- Prevents multiple watchers reacting to the same events
 
 appWatcherHub = {
-    _handlers = {}
+    _handlers = {},
+    _log = hs.logger.new('appWatcherHub', 'info')
 }
 
 function appWatcherHub.register(handler)
@@ -12,7 +13,10 @@ end
 
 appWatcherHub._watcher = hs.application.watcher.new(function(appName, eventType, appObject)
     for _, handler in ipairs(appWatcherHub._handlers) do
-        handler(appName, eventType, appObject)
+        local ok, err = pcall(handler, appName, eventType, appObject)
+        if not ok then
+            appWatcherHub._log.e("handler error: " .. tostring(err))
+        end
     end
 end)
 appWatcherHub._watcher:start()
