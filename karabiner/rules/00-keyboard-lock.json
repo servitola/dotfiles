@@ -1,0 +1,57 @@
+{
+    "description": "Keyboard Lock Toggle (LCtrl + RAlt + Backspace)",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "delete_or_backspace",
+                "modifiers": {
+                    "mandatory": ["left_control", "right_option"],
+                    "optional": ["any"]
+                }
+            },
+            "to": [
+                { "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'" }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+            ],
+            "from": {
+                "any": "consumer_key_code",
+                "modifiers": { "optional": ["any"] }
+            },
+            "to": [
+                { "key_code": "vk_none" }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+            ],
+            "from": {
+                "any": "apple_vendor_keyboard_key_code",
+                "modifiers": { "optional": ["any"] }
+            },
+            "to": [
+                { "key_code": "vk_none" }
+            ],
+            "type": "basic"
+        },
+        {
+            "conditions": [
+                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+            ],
+            "from": {
+                "any": "apple_vendor_top_case_key_code",
+                "modifiers": { "optional": ["any"] }
+            },
+            "to": [
+                { "key_code": "vk_none" }
+            ],
+            "type": "basic"
+        }
+    ]
+}
