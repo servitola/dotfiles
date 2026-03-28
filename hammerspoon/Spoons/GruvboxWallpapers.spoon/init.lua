@@ -66,7 +66,7 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
 
         -- Clean up all previous wallpapers in the directory
         for file in hs.fs.dir(self.wallpapers_dir) do
-            if file ~= "." and file ~= ".." and file ~= temp_name then
+            if file ~= "." and file ~= ".." and file ~= temp_name and file ~= ".history" then
                 os.remove(self.wallpapers_dir .. "/" .. file)
             end
         end
@@ -75,6 +75,25 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
         self.current_wallpaper = final_path
         hs.screen.mainScreen():desktopImageURL("file://" .. final_path)
         log.i("set " .. candidate.name .. " as " .. final_name)
+
+        -- Track in history to avoid repeats
+        local history_path = self.wallpapers_dir .. "/.history"
+        local hf = io.open(history_path, "a")
+        if hf then hf:write(candidate.name .. "\n"); hf:close() end
+        -- Trim to last 100 entries
+        local tf = io.open(history_path, "r")
+        if tf then
+            local lines = {}
+            for line in tf:lines() do table.insert(lines, line) end
+            tf:close()
+            if #lines > 100 then
+                local wf = io.open(history_path, "w")
+                if wf then
+                    for j = #lines - 99, #lines do wf:write(lines[j] .. "\n") end
+                    wf:close()
+                end
+            end
+        end
     end, makeStreamCallback(buf), {script_path, candidate.url, temp_path, candidate.name})
     self._task:start()
 end
