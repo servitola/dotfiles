@@ -39,7 +39,7 @@ return {
 --         ⇪⌃⌥v   │              │
 --         ⇪⌃⌘v   │              │
 --         ⇪⌥⌘v   │              │
---         ⇧⌃⌥v   │              │
+--         ⇧⌃⌥v   │              │      🌐 Yandex — focus playing YouTube tab
 --         ⇧⌃⌘v   │              │
 --         ⇧⌥⌘v   │              │
 --         ⌃⌥⌘v   │              │
