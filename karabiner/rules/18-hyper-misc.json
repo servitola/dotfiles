@@ -218,6 +218,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f1",
                 "modifiers": {
@@ -234,6 +235,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f1"
             },
@@ -245,6 +247,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f2",
                 "modifiers": {
@@ -261,6 +264,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f2"
             },
@@ -272,6 +276,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f3"
             },
@@ -283,6 +288,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f4"
             },
@@ -297,6 +303,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f5"
             },
@@ -308,6 +315,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f6"
             },
@@ -319,6 +327,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f7"
             },
@@ -330,6 +339,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f8"
             },
@@ -341,6 +351,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f9"
             },
@@ -352,6 +363,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f10"
             },
@@ -363,6 +375,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f11"
             },
@@ -374,6 +387,7 @@
             "type": "basic"
         },
         {
+            "conditions": [{ "name": "keyboard_disabled", "type": "variable_unless", "value": 1 }],
             "from": {
                 "key_code": "f12"
             },
