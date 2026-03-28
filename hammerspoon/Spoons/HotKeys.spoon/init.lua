@@ -10,6 +10,7 @@ local log = hs.logger.new('HotKeys', 'info')
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
 local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
 local systemHealth = dofile(spoonPath .. "system_health.lua")
+local _launchTask = nil  -- prevent GC of hs.task used for app launching
 
 -- Generic helper: focus a specific window of an app, or launch it with a path
 -- appNameOrId: bundle ID (e.g. "com.microsoft.VSCode") or app name (e.g. "Fork")
@@ -30,7 +31,9 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
 
     if not app then
         local launchName = appDisplayName or appNameOrId
-        hs.task.new("/usr/bin/open", nil, { "-a", launchName, launchPath }):start()
+        _launchTask = hs.task.new("/usr/bin/open", function() _launchTask = nil end,
+            { "-a", launchName, launchPath })
+        _launchTask:start()
         return
     end
 
@@ -49,9 +52,9 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
             targetWindow:focus()
         end
     else
-        hs.task.new("/usr/bin/open", nil, { "-a",
-            appNameOrId:find("%.") and appNameOrId or appNameOrId,
-            launchPath }):start()
+        _launchTask = hs.task.new("/usr/bin/open", function() _launchTask = nil end,
+            { "-a", appNameOrId:find("%.") and appNameOrId or appNameOrId, launchPath })
+        _launchTask:start()
     end
 end
 
@@ -152,16 +155,19 @@ for _, filename in ipairs(buttonFiles) do
     local filePath = layoutsPath .. filename .. ".lua"
     local success, buttonData = pcall(dofile, filePath)
     if not success then
-        error("Failed to load: " .. filePath .. "\nError: " .. tostring(buttonData))
+        log.e("Failed to load: " .. filePath .. "\nError: " .. tostring(buttonData))
+        goto continue
     end
     if not buttonData or type(buttonData) ~= "table" then
-        error("Invalid data in: " .. filePath .. " (expected table, got " .. type(buttonData) .. ")")
+        log.e("Invalid data in: " .. filePath .. " (expected table, got " .. type(buttonData) .. ")")
+        goto continue
     end
     for _, chord_entry in ipairs(buttonData) do
         if chord_entry then
             table.insert(allChords, chord_entry)
         end
     end
+    ::continue::
 end
 
 log.d("Loaded " .. #allChords .. " total chord entries")
@@ -301,13 +307,16 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
                         for _, window in ipairs(hs.window.allWindows()) do
+                            local app = window:application()
+                            if app then
                             local window_title = window:title()
-                            local app_title = window:application():title()
+                                local app_title = app:title()
                             for _, pattern in ipairs({"qemu-system-aarch64"}) do
                                 if app_title == pattern or string.find(window_title, pattern) then
                                     table.insert(matching_windows, window)
                                 end
                             end
+                        end
                         end
 
                         if #matching_windows == 0 then
