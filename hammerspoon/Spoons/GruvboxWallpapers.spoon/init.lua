@@ -43,9 +43,10 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
     local candidate = candidates[i]
     local temp_name = "temp_" .. os.time() .. "_" .. math.random(1000) .. ".jpg"
     local temp_path = self.wallpapers_dir .. "/" .. temp_name
-    local script_path = self.dotfiles_path .. "/macos/helpers/download_wallpaper.sh"
+    local script_path = self.dotfiles_path .. "/hammerspoon/Spoons/GruvboxWallpapers.spoon/download_wallpaper.sh"
     local buf = {out = "", err = ""}
 
+    if self._task then self._task:terminate() end
     self._task = hs.task.new("/bin/zsh", function(exitCode)
         self._task = nil
         if exitCode ~= 0 then
@@ -58,17 +59,22 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
             return
         end
 
-        -- Clean up previous wallpaper
-        if self.current_wallpaper then
-            os.remove(self.current_wallpaper)
+        -- Extract extension from original name
+        local ext = candidate.name:match("%.([^%.]+)$") or "jpg"
+        local final_name = "current_wallpaper." .. ext
+        local final_path = self.wallpapers_dir .. "/" .. final_name
+
+        -- Clean up all previous wallpapers in the directory
+        for file in hs.fs.dir(self.wallpapers_dir) do
+            if file ~= "." and file ~= ".." and file ~= temp_name then
+                os.remove(self.wallpapers_dir .. "/" .. file)
+            end
         end
 
-        -- Move to final location and set
-        local final_path = self.wallpapers_dir .. "/" .. candidate.name
         os.rename(temp_path, final_path)
         self.current_wallpaper = final_path
-        hs.screen.mainScreen():desktopImageURL("file://" .. self.current_wallpaper:gsub(" ", "%%20"))
-        log.i("set " .. candidate.name)
+        hs.screen.mainScreen():desktopImageURL("file://" .. final_path)
+        log.i("set " .. candidate.name .. " as " .. final_name)
     end, makeStreamCallback(buf), {script_path, candidate.url, temp_path, candidate.name})
     self._task:start()
 end
@@ -82,9 +88,10 @@ function obj:setRandomWallpaper(attempt)
         return
     end
 
-    local script_path = self.dotfiles_path .. "/macos/helpers/fetch_wallpaper_url.sh"
+    local script_path = self.dotfiles_path .. "/hammerspoon/Spoons/GruvboxWallpapers.spoon/fetch_wallpaper_url.sh"
     local buf = {out = "", err = ""}
 
+    if self._task then self._task:terminate() end
     self._task = hs.task.new("/bin/zsh", function(exitCode)
         self._task = nil
         if exitCode ~= 0 then
