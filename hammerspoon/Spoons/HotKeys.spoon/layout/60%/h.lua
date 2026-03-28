@@ -31,7 +31,8 @@ return {
 --        ⇪⌃⌥h   │              │
 --        ⇪⌃⌘h   │              │
 --        ⇪⌥⌘h   │              │
---        ⇧⌃⌥h   │              │
+{ chord = "⇧⌃⌥h",                               fn = "hammerspoon_reload" },
+--        ⇧⌃⌥h   │              │             — reload Hammerspoon config
 --        ⇧⌃⌘h   │              │
 --        ⇧⌥⌘h   │              │        Fork — quick Stash
 --        ⌃⌥⌘h   │              │
