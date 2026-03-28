@@ -5,6 +5,7 @@
 # Used by Hammerspoon GruvboxWallpapers.spoon
 
 BLOCKLIST="$HOME/projects/dotfiles/macos/wallpapers-blocklist.txt"
+HISTORY="$HOME/Pictures/Wallpapers/GruvBox/.history"
 
 CURL_OPTS=(-s --noproxy '*')
 [ -n "$GITHUB_API_TOKEN" ] && CURL_OPTS+=(-H "Authorization: token $GITHUB_API_TOKEN")
@@ -60,6 +61,9 @@ echo "$API_RESPONSE" | jq -r '.[] | select(.type=="file") | [.name, .download_ur
     | while IFS=$'\t' read -r name url; do
         name="${name#_}"
         if [[ -f "$BLOCKLIST" ]] && grep -qxF "$name" "$BLOCKLIST"; then
+            continue
+        fi
+        if [[ -f "$HISTORY" ]] && grep -qxF "$name" "$HISTORY"; then
             continue
         fi
         printf '%s\t%s\n' "$name" "$url"
