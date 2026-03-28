@@ -1,19 +1,21 @@
 local obj = {}
 local log = hs.logger.new('Windows', 'info')
 
-dofile("./Spoons/Windows.spoon/config.lua")
-dofile("./Spoons/Windows.spoon/window_main_set_function.lua")
-dofile("./Spoons/Windows.spoon/small_dialog_detector.lua")
-dofile("./Spoons/Windows.spoon/get_right_panel_windows.lua")
-dofile("./Spoons/Windows.spoon/window_set_bottom_function.lua")
-dofile("./Spoons/Windows.spoon/window_set_right_function.lua")
-dofile("./Spoons/Windows.spoon/dialog_set_right_function.lua")
-dofile("./Spoons/Windows.spoon/windows_detection_functions.lua")
-dofile("./Spoons/Windows.spoon/adjust_right_panel_for_dialogs.lua")
-dofile("./Spoons/Windows.spoon/window_set_full_size_function.lua")
-dofile("./Spoons/Windows.spoon/window_set_half_function.lua")
-dofile("./Spoons/Windows.spoon/restore_right_panel_windows_function.lua")
-dofile("./Spoons/Windows.spoon/window_set_to_default_place_function.lua")
+local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
+
+dofile(spoonPath .. "config.lua")
+dofile(spoonPath .. "window_main_set_function.lua")
+dofile(spoonPath .. "small_dialog_detector.lua")
+dofile(spoonPath .. "get_right_panel_windows.lua")
+dofile(spoonPath .. "window_set_bottom_function.lua")
+dofile(spoonPath .. "window_set_right_function.lua")
+dofile(spoonPath .. "dialog_set_right_function.lua")
+dofile(spoonPath .. "windows_detection_functions.lua")
+dofile(spoonPath .. "adjust_right_panel_for_dialogs.lua")
+dofile(spoonPath .. "window_set_full_size_function.lua")
+dofile(spoonPath .. "window_set_half_function.lua")
+dofile(spoonPath .. "restore_right_panel_windows_function.lua")
+dofile(spoonPath .. "window_set_to_default_place_function.lua")
 
 local active_small_dialogs = {}
 local right_panel_windows_adjusted = false
