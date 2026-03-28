@@ -395,6 +395,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.BrowserTabOpener:openTab("github.com")
                     end)
+                elseif functionName == "browser_git_dotfiles" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.BrowserTabOpener:openTab("github.com/servitola/dotfiles")
+                    end)
                 elseif functionName == "press_return" then
                     hs.hotkey.bind(modifiers, key, function()
                         hs.eventtap.keyStroke({}, "return")
