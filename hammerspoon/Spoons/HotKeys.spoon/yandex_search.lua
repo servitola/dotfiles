@@ -4,7 +4,6 @@ local M = {}
 function M.searchSelectedText()
     local currentApp = hs.application.frontmostApplication()
     if not currentApp then return end
-    local appName = currentApp:name()
 
     local selectedText = nil
 
@@ -15,18 +14,23 @@ function M.searchSelectedText()
         selectedText = focusedElement:attributeValue("AXSelectedText")
     end
 
-    -- Fallback to clipboard if no selection found
-    if not selectedText or selectedText == "" then
-        hs.eventtap.keyStroke({"cmd"}, "c")
-        hs.timer.usleep(100000)
-        selectedText = hs.pasteboard.getContents()
-    end
-
     if selectedText and selectedText ~= "" then
         local encoded = hs.http.encodeForQuery(selectedText)
         local url = string.format("https://www.perplexity.ai/search?q=%s", encoded)
         hs.urlevent.openURL(url)
+        return
     end
+
+    -- Fallback: copy to clipboard async, then read
+    hs.eventtap.keyStroke({"cmd"}, "c")
+    hs.timer.doAfter(0.15, function()
+        local clipText = hs.pasteboard.getContents()
+        if clipText and clipText ~= "" then
+            local encoded = hs.http.encodeForQuery(clipText)
+            local url = string.format("https://www.perplexity.ai/search?q=%s", encoded)
+            hs.urlevent.openURL(url)
+        end
+    end)
 end
 
 return M
