@@ -1,7 +1,9 @@
 local obj = {}
 
-dofile("./Spoons/AudioSwitcher.spoon/find_audio_device.lua")
-dofile("./Spoons/AudioSwitcher.spoon/switch_to_audio_device_safely.lua")
+local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
+
+dofile(spoonPath .. "find_audio_device.lua")
+dofile(spoonPath .. "switch_to_audio_device_safely.lua")
 
 function obj:switchToExternal()
     switchToAudioDevice("Scarlett")
