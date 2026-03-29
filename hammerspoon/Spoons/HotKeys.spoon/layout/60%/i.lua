@@ -7,7 +7,8 @@ return {
 --———————— chord ┬ en | ru | el ┬————————————— app — function ————————————————————
 --           i   │ i    ш    ι  │          YouTube — Minimize video
 --———————————————┼——————————————┼——————————————————————————————————
---          ⇪i   │              │
+--          ⇪i   │              │              — system health dashboard
+{ chord = "⇪i",                                  fn = "system_health" },
 --          ⇧i   │ I    Ш    Ι  │
 --          ⌃i   │              │
 --          ⌥i   │ і    і    †  │

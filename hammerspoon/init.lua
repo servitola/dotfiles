@@ -27,8 +27,11 @@ safeLoadSpoon("YouTubeStream") -- YouTube stream player
 safeLoadSpoon("UFCOverlay") -- UFC fight stats overlay
 safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
+
+require "reactive_state"  -- shared state (must load before modules that use it)
 require "config_UrlDispatcher"
 require "set_language_on_app_focused"
+appUsageAnalytics = require "app_usage_analytics"
 require "keyboard_lock"
 require "text_expansion"
 require "reload_hammerspoon_on_script_changed"
