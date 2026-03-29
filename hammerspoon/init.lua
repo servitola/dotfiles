@@ -7,18 +7,26 @@ hs.keycodes.setLayout("En Birman")
 
 require "app_watcher_hub" -- centralized app event dispatcher (must load before spoons)
 
-hs.loadSpoon("GruvboxWallpapers") -- set new wallpaper
-hs.loadSpoon("Windows") -- window management
-hs.loadSpoon("KSheet") -- shortcuts cheatsheet
-hs.loadSpoon("PopupTranslateSelection") -- translate selected text
-hs.loadSpoon("YouTrackTicket") -- YouTrack ticket creation
-hs.loadSpoon("YouTrackTasks") -- YouTrack tasks view
-hs.loadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
-hs.loadSpoon("AudioSwitcher") -- audio device switching
-hs.loadSpoon("YouTubeStream") -- YouTube stream player
-hs.loadSpoon("URLDispatcher") -- open urls in different browsers
-hs.loadSpoon("HotKeys") -- all hotkeys
+local function safeLoadSpoon(name)
+    local ok, err = pcall(hs.loadSpoon, name)
+    if not ok then
+        hs.logger.new('init'):e("Failed to load " .. name .. ": " .. tostring(err))
+        hs.notify.new({ title = "Hammerspoon", informativeText = "Failed to load " .. name }):send()
+    end
+end
 
+safeLoadSpoon("GruvboxWallpapers") -- set new wallpaper
+safeLoadSpoon("Windows") -- window management
+safeLoadSpoon("KSheet") -- shortcuts cheatsheet
+safeLoadSpoon("PopupTranslateSelection") -- translate selected text
+safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
+safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
+safeLoadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
+safeLoadSpoon("AudioSwitcher") -- audio device switching
+safeLoadSpoon("YouTubeStream") -- YouTube stream player
+safeLoadSpoon("UFCOverlay") -- UFC fight stats overlay
+safeLoadSpoon("URLDispatcher") -- open urls in different browsers
+safeLoadSpoon("HotKeys") -- all hotkeys
 require "config_UrlDispatcher"
 require "set_language_on_app_focused"
 require "reload_hammerspoon_on_script_changed"
