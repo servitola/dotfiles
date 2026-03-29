@@ -29,5 +29,6 @@ safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
 require "config_UrlDispatcher"
 require "set_language_on_app_focused"
+require "keyboard_lock"
 require "text_expansion"
 require "reload_hammerspoon_on_script_changed"
