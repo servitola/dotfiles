@@ -43,6 +43,7 @@ mouse = "auto"
 [session]
 default_tool = "claude"
 yolo_mode_default = false
+agent_status_hooks = true
 
 [diff]
 context_lines = 3
@@ -55,7 +56,7 @@ mode = "random"
 
 [app_state]
 has_seen_welcome = true
-last_seen_version = "0.18.1"
+last_seen_version = "1.0.0"
 home_list_width = 35
 has_seen_custom_instruction_warning = false
 has_acknowledged_agent_hooks = true
