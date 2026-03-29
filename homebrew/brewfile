@@ -209,6 +209,8 @@ brew "numpy"
 brew "ollama"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# AI coding agent, built for the terminal
+brew "opencode"
 # Development kit for the Java programming language
 brew "openjdk@21"
 # SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
