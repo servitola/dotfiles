@@ -103,6 +103,36 @@ duti -s com.microsoft.VSCode .opml all
 duti -s com.microsoft.VSCode .keylayout all
 duti -s com.microsoft.VSCode .patch all
 duti -s com.microsoft.VSCode .cron all
+duti -s com.microsoft.VSCode .cs all
+duti -s com.microsoft.VSCode .csproj all
+duti -s com.microsoft.VSCode .props all
+duti -s com.microsoft.VSCode .resx all
+duti -s com.microsoft.VSCode .runsettings all
+duti -s com.microsoft.VSCode .dotsettings all
+duti -s com.microsoft.VSCode .xaml all
+duti -s com.microsoft.VSCode .html all
+duti -s com.microsoft.VSCode .mjs all
+duti -s com.microsoft.VSCode .cmake all
+duti -s com.microsoft.VSCode .env all
+duti -s com.microsoft.VSCode .cfg all
+duti -s com.microsoft.VSCode .mk all
+duti -s com.microsoft.VSCode .jsonl all
+duti -s com.microsoft.VSCode .diff all
+duti -s com.microsoft.VSCode .groovy all
+duti -s com.microsoft.VSCode .ps1 all
+duti -s com.microsoft.VSCode .cu all
+duti -s com.microsoft.VSCode .cuh all
+duti -s com.microsoft.VSCode .mm all
+duti -s com.microsoft.VSCode .metal all
+duti -s com.microsoft.VSCode .nix all
+duti -s com.microsoft.VSCode .mod all
+duti -s com.microsoft.VSCode .sum all
+duti -s com.microsoft.VSCode .strings all
+duti -s com.microsoft.VSCode .entitlements all
+duti -s com.microsoft.VSCode .storyboard all
+duti -s com.microsoft.VSCode .pem all
+duti -s com.microsoft.VSCode .crt all
+duti -s com.microsoft.VSCode .ipynb all
 
 echo "Setting audio/video player"
 duti -s com.colliderli.iina public.audio all
@@ -129,19 +159,36 @@ duti -s com.colliderli.iina .opus all
 duti -s com.colliderli.iina .wav all
 duti -s com.colliderli.iina .webm all
 duti -s com.colliderli.iina .wmv all
+duti -s com.colliderli.iina .aac all
+duti -s com.colliderli.iina .aif all
+duti -s com.colliderli.iina .mid all
 
 echo "Setting image preview"
-duti -s com.apple.Preview public.image all
-duti -s com.apple.Preview .bmp all
-duti -s com.apple.Preview .gif all
-duti -s com.apple.Preview .jpg all
-duti -s com.apple.Preview .jpeg all
+duti -s cc.ffitch.shottr public.image all
+duti -s cc.ffitch.shottr .bmp all
+duti -s cc.ffitch.shottr .gif all
+duti -s cc.ffitch.shottr .jpg all
+duti -s cc.ffitch.shottr .jpeg all
+duti -s cc.ffitch.shottr .png all
+duti -s cc.ffitch.shottr .tif all
+duti -s cc.ffitch.shottr .tiff all
+duti -s cc.ffitch.shottr .heic all
+duti -s cc.ffitch.shottr .avif all
+duti -s cc.ffitch.shottr .ico all
+duti -s cc.ffitch.shottr .icns all
+
+echo "Setting docs preview"
 duti -s com.apple.Preview .pdf all
-duti -s com.apple.Preview .png all
-duti -s com.apple.Preview .tif all
-duti -s com.apple.Preview .tiff all
 
 duti -s com.jetbrains.rider .sln all
 
 duti -s com.ableton.AbletonLive12 .alp all
 duti -s com.ableton.AbletonLive12 .als all
+
+echo "Setting document viewers"
+duti -s com.apple.iWork.Pages .doc all
+duti -s com.apple.iWork.Pages .docx all
+
+echo "Setting ebook readers"
+duti -s com.firmshell.djvureader .djvu all
+duti -s com.apple.iBooksX .epub all
