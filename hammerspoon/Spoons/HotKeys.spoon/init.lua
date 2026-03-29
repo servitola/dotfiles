@@ -461,6 +461,8 @@ function obj:init()
                     end)
                 elseif functionName == "warp.launch_default" then
                     local warpLaunchWatcher = nil
+                    local warpTimer1 = nil  -- prevent GC
+                    local warpTimer2 = nil  -- prevent GC
                     hs.hotkey.bind(modifiers, key, function()
                         local warp = hs.application.get("dev.warp.Warp-Stable")
                         if not warp then
@@ -470,7 +472,8 @@ function obj:init()
                                 if name == "Warp" and event == hs.application.watcher.launched then
                                     warpLaunchWatcher:stop()
                                     warpLaunchWatcher = nil
-                                    hs.timer.doAfter(0.3, function()
+                                    warpTimer1 = hs.timer.doAfter(0.3, function()
+                                        warpTimer1 = nil
                                         local w = hs.application.get("dev.warp.Warp-Stable")
                                         if not w then return end
                                         local savedFrame
@@ -483,7 +486,8 @@ function obj:init()
                                         end
                                         w:hide()
                                         hs.urlevent.openURL("warp://launch/Default")
-                                        hs.timer.doAfter(0.3, function()
+                                        warpTimer2 = hs.timer.doAfter(0.3, function()
+                                            warpTimer2 = nil
                                             local w2 = hs.application.get("dev.warp.Warp-Stable")
                                             if w2 then
                                                 local win = w2:mainWindow()
@@ -516,6 +520,10 @@ function obj:init()
                 elseif functionName == "clipboard_llm" then
                     hs.hotkey.bind(modifiers, key, function()
                         clipboardLlm.show()
+                    end)
+                elseif functionName == "app_usage_stats" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        if appUsageAnalytics then appUsageAnalytics.toggle() end
                     end)
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
