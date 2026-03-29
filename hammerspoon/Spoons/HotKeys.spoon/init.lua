@@ -10,6 +10,8 @@ local log = hs.logger.new('HotKeys', 'info')
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
 local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
 local systemHealth = dofile(spoonPath .. "system_health.lua")
+local clipboardLlm = dofile(spoonPath .. "clipboard_llm.lua")
+
 local _launchTask = nil  -- prevent GC of hs.task used for app launching
 
 -- Generic helper: focus a specific window of an app, or launch it with a path
@@ -510,6 +512,10 @@ function obj:init()
                 elseif functionName == "system_health" then
                     hs.hotkey.bind(modifiers, key, function()
                         systemHealth.toggle()
+                    end)
+                elseif functionName == "clipboard_llm" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        clipboardLlm.show()
                     end)
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
