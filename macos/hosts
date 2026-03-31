@@ -8,6 +8,23 @@
 255.255.255.255	broadcasthost
 ::1             localhost
 
+# Anthropic telemetry
 0.0.0.0 statsig.anthropic.com
+0.0.0.0 statsig.com
+::1 statsig.anthropic.com        # IPv6 for Anthropic
+0.0.0.0 sentry.io
+0.0.0.0 o1137031.ingest.sentry.io
 
-::1 statsig.anthropic.com
+# VS Code telemetry
+0.0.0.0 dc.services.visualstudio.com
+0.0.0.0 vortex.data.microsoft.com
+0.0.0.0 mobile.events.data.microsoft.com
+
+# Microsoft general telemetry
+0.0.0.0 watson.telemetry.microsoft.com
+0.0.0.0 telemetry.microsoft.com
+0.0.0.0 settings-win.data.microsoft.com
+
+0.0.0.0 api.mixpanel.com          # Analytics
+0.0.0.0 *.segment.io             # Tracking
+0.0.0.0 vortex-win.data.microsoft.com  # Additional MS telemetry
