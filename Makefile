@@ -247,24 +247,23 @@ install:
 
 	@echo "Making scripts executable"
 	@chmod +x \
-		cleanup/clean.sh \
-		cleanup/cleanup_all.sh \
-		cleanup/helpers.sh \
-		cleanup/try_clean.sh \
-		cleanup/cleanup_targets.sh \
-		macos/update_all_and_cleanup_all.sh \
-		macos/update_all.sh \
-		macos/cleanup_all.sh \
+		macos_cleanup/clean.sh \
+		macos_cleanup/cleanup_all.sh \
+		macos_cleanup/helpers.sh \
+		macos_cleanup/try_clean.sh \
+		macos_cleanup/cleanup_targets.sh \
+		macos_update/update_all.sh \
 		macos/set_defaults.sh \
 		macos/set_default_apps.sh \
 		macos/dock_setup.sh \
 		macos/helpers/try_to_clean_directory.sh \
 		macos/helpers/try_to_clean_by_pattern.sh \
-		macos/helpers/download_wallpaper.sh \
-		macos/helpers/fetch_wallpaper_url.sh \
 		macos/helpers/set_macos_default_if_different.sh \
 		macos/helpers/set_plist_value_if_different.sh \
 		macos/helpers/colors.sh \
+		macos/helpers/spinner.sh \
+		hammerspoon/Spoons/GruvboxWallpapers.spoon/download_wallpaper.sh \
+		hammerspoon/Spoons/GruvboxWallpapers.spoon/fetch_wallpaper_url.sh \
 		homebrew/install.sh \
 		homebrew/install_all_homebrew_packages.sh \
 		homebrew/install_minimum_homebrew_packages.sh \
