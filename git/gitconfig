@@ -35,6 +35,9 @@
 
 [push]
   	followTags = true
+[fetch]
+	prune = true
+
 
 [rebase]
 	autoStash = true
