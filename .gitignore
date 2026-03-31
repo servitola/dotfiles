@@ -1,5 +1,6 @@
 .DS_Store
 karabiner/automatic_backups/
+karabiner/karabiner.json
 
 jetbrains rider/settings
 .aider*
