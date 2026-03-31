@@ -206,6 +206,11 @@ install:
 	@echo "installing Global NPM Packages"
 	@$(SHELL) 'source npm/install-globals.sh'
 
+	@echo "setup uv config"
+	@mkdir -p ~/.config/uv
+	@$(REMOVE) ~/.config/uv/uv.toml
+	@$(LINK) ~/projects/dotfiles/uv/uv.toml ~/.config/uv/uv.toml
+
 	@echo 'setting aichat'
 	@mkdir -p ~/Library/Application\ Support/aichat
 	@$(REMOVE) ~/Library/Application\ Support/aichat/config.yaml
