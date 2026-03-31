@@ -34,6 +34,8 @@ install:
 	@echo "setup karabiner symlinks"
 	@$(REMOVE) ~/.config/karabiner
 	@$(LINK) ~/projects/dotfiles/karabiner ~/.config/karabiner
+	@echo "building karabiner.json from rules"
+	@~/projects/dotfiles/karabiner/build.sh
 
 	@echo "setup hammerspoon symlinks"
 	@$(REMOVE) ~/.hammerspoon
