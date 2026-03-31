@@ -1,0 +1,3 @@
+prefix=~/.npm-global
+fund=false
+min-release-age=7

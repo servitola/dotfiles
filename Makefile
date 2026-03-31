@@ -199,6 +199,10 @@ install:
 	@echo "setting iTerm2 to use settings from dotfiles"
 	@$(SHELL) 'source iterm/install.sh'
 
+	@echo "setup npm config"
+	@$(REMOVE) ~/.npmrc
+	@$(LINK) ~/projects/dotfiles/npm/npmrc ~/.npmrc
+
 	@echo "installing Global NPM Packages"
 	@$(SHELL) 'source npm/install-globals.sh'
 
