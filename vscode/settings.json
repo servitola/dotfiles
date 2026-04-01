@@ -50,4 +50,5 @@
     "amp.experimental.reviewTool": true,
     "git.openRepositoryInParentFolders": "always",
     "chat.agent.maxRequests": 60
+    "telemetry.telemetryLevel": "off"
 }
