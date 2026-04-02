@@ -7,7 +7,9 @@ return {
 --————————chord ┬ en | ru | el ┬—————— app — function ————————————————————
 --          j   │ j    о    ξ  │   YouTube — 10sec back
 --——————————————┼——————————————┼——————————————————————————————————
---         ⇪j   │              │   Day One — create journal entry
+--         ⇪j   │              │   WorkBot — toggle (workbot://toggle)
+
+    { chord = "⇪j", fn = "workbot.toggle" },
 --         ⇧j   │ J    О    Ξ  │
 --         ⌃j   │              │
 --         ⌥j   │ „    „    ≤  │
