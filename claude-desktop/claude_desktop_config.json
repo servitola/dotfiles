@@ -38,8 +38,11 @@
     "menuBarEnabled": false,
     "quickEntryShortcut": "off",
     "quickEntryDictationShortcut": "off",
-    "coworkScheduledTasksEnabled": false,
-    "sidebarMode": "chat",
-    "coworkWebSearchEnabled": true
+    "coworkScheduledTasksEnabled": true,
+    "ccdScheduledTasksEnabled": true,
+    "sidebarMode": "code",
+    "coworkWebSearchEnabled": true,
+    "allowAllBrowserActions": true,
+    "chicagoEnabled": true
   }
 }
