@@ -4,6 +4,41 @@
   },
   {
     "action" : {
+      "script" : "rider ${repo:path}\/xTrader.sln",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Open Rider",
+    "referenceTargets" : [
+      "localBranch",
+      "remoteBranch"
+    ],
+    "target" : "reference"
+  },
+  {
+    "action" : {
+      "args" : "${repo:path}\/xTrader.sln",
+      "path" : "rider",
+      "showOutput" : true,
+      "type" : "process",
+      "waitForExit" : true
+    },
+    "name" : "Open Rider",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "rider ${repo:path}\/xTrader.sln",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Open Rider",
+    "target" : "revision"
+  },
+  {
+    "action" : {
       "script" : "commit_message=$(git show -s --format=%B \"$sha\")\n\nif [[ $commit_message =~ ([A-Z]+-[0-9]+) ]]; then\n    ticket=\"${BASH_REMATCH[1]}\"\n    open \"https:\/\/yt.ctrader.com\/issue\/$ticket\"\nelse\n    echo \"No ticket number found in commit message: $commit_message\"\n    exit 1\nfi",
       "showOutput" : false,
       "type" : "sh",
@@ -11,5 +46,99 @@
     },
     "name" : "Open YouTrack",
     "target" : "revision"
+  },
+  {
+    "action" : {
+      "script" : "GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash \"$name\"",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Autosquash Rebase",
+    "referenceTargets" : [
+      "localBranch",
+      "remoteBranch"
+    ],
+    "target" : "reference"
+  },
+  {
+    "action" : {
+      "script" : "git commit --fixup=\"$sha\"",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Fixup Commit",
+    "target" : "revision"
+  },
+  {
+    "action" : {
+      "script" : "current=$(git rev-parse --abbrev-ref HEAD)\ngit switch Development && git merge --no-ff \"$current\"",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Merge into Development",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "open -a Warp \"${repo:path}\"",
+      "showOutput" : false,
+      "type" : "sh",
+      "waitForExit" : false
+    },
+    "name" : "Open in Warp",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "git reset --soft HEAD~1",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Undo Last Commit",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "branches=$(git branch --merged Development | grep -v '\\*\\|Development')\nif [ -n \"$branches\" ]; then\n    echo \"$branches\" | xargs git branch -d\nelse\n    echo \"No merged branches to clean\"\nfi",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Clean Merged Branches",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "git rev-parse --abbrev-ref HEAD | tr -d '\\n' | pbcopy",
+      "showOutput" : false,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Copy Branch Name",
+    "target" : "repository"
+  },
+  {
+    "action" : {
+      "script" : "git branch -a --contains \"$sha\"",
+      "showOutput" : true,
+      "type" : "sh",
+      "waitForExit" : true
+    },
+    "name" : "Branches Containing Commit",
+    "target" : "revision"
+  },
+  {
+    "action" : {
+      "script" : "code \"${repo:path}\"",
+      "showOutput" : false,
+      "type" : "sh",
+      "waitForExit" : false
+    },
+    "name" : "Open in VSCode",
+    "target" : "repository"
   }
 ]
