@@ -15,6 +15,9 @@
     },
     "name": "coder-model"
   },
+  "telemetry": {
+    "enabled": false
+  },
   "context": {
     "fileName": "QWEN.md",
     "loadFromIncludeDirectories": false,
