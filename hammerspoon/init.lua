@@ -24,7 +24,6 @@ safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
 safeLoadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
 safeLoadSpoon("AudioSwitcher") -- audio device switching
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
-safeLoadSpoon("UFCOverlay") -- UFC fight stats overlay
 safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
 
@@ -34,4 +33,5 @@ require "set_language_on_app_focused"
 appUsageAnalytics = require "app_usage_analytics"
 require "keyboard_lock"
 require "text_expansion"
+require "dismiss_fork_dialog"
 require "reload_hammerspoon_on_script_changed"
