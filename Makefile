@@ -167,6 +167,11 @@ install:
 	@mkdir -p ~/.opencode
 	@$(REMOVE) ~/.opencode/opencode.json
 	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.opencode/opencode.json
+	@echo "setup Crush symlinks"
+	@mkdir -p ~/.config/crush
+	@$(REMOVE) ~/.config/crush/crush.json
+	@$(LINK) ~/projects/dotfiles/crush/crush.json ~/.config/crush/crush.json
+
 	@echo "setup noti"
 	@$(REMOVE) ~/.config/noti
 	@$(LINK) ~/projects/dotfiles/noti ~/.config/noti
