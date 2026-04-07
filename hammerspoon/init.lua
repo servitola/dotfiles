@@ -30,6 +30,7 @@ safeLoadSpoon("HotKeys") -- all hotkeys
 require "reactive_state"  -- shared state (must load before modules that use it)
 require "config_UrlDispatcher"
 require "set_language_on_app_focused"
+require "punto_switcher"
 appUsageAnalytics = require "app_usage_analytics"
 require "keyboard_lock"
 require "text_expansion"
