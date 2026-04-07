@@ -1,6 +1,43 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "qwen/qwen3-32b",
   "autoupdate": false,
-  "disabled_providers": ["opencode"]
+  "model": "litellm/coder",
+  "small_model": "litellm/glm",
+  "provider": {
+    "litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LiteLLM Local (OpenRouter free)",
+      "options": {
+        "baseURL": "http://localhost:4000/v1",
+        "apiKey": "sk-local-workbot"
+      },
+      "models": {
+        "auto": {
+          "name": "Auto (rotation across free pool)",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "coder": {
+          "name": "Qwen3-Coder 480B (heavy coding)",
+          "limit": { "context": 262000, "output": 16384 }
+        },
+        "plus": {
+          "name": "Qwen 3.6 Plus 1M (huge context)",
+          "limit": { "context": 1000000, "output": 16384 }
+        },
+        "nemotron": {
+          "name": "NVIDIA Nemotron 3 Super 120B",
+          "limit": { "context": 262144, "output": 16384 }
+        },
+        "gpt": {
+          "name": "OpenAI gpt-oss 120B",
+          "limit": { "context": 131072, "output": 16384 }
+        },
+        "glm": {
+          "name": "GLM-4.5 Air (fast)",
+          "limit": { "context": 131072, "output": 8192 }
+        }
+      }
+    }
+  },
+  "disabled_providers": ["opencode", "anthropic", "openai", "google", "openrouter"]
 }

@@ -164,9 +164,10 @@ install:
 	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.config/amp/skills
 
 	@echo "setup OpenCode symlinks"
-	@mkdir -p ~/.opencode
-	@$(REMOVE) ~/.opencode/opencode.json
-	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.opencode/opencode.json
+	@mkdir -p ~/.config/opencode
+	@$(REMOVE) ~/.config/opencode/opencode.json
+	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.config/opencode/opencode.json
+
 	@echo "setup Crush symlinks"
 	@mkdir -p ~/.config/crush
 	@$(REMOVE) ~/.config/crush/crush.json
