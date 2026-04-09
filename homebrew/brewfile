@@ -311,8 +311,6 @@ brew "wix/brew/applesimutils"
 cask "adguard"
 # Unified GUI for command-line AI agents
 cask "aionui"
-# Mobile device management suite
-cask "airdroid"
 # Menu bar tool to limit maximum charging percentage
 cask "aldente"
 # Command tool to create Finder aliases, and to resolve them to full paths
@@ -338,16 +336,12 @@ cask "claude-code"
 cask "coconutbattery"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Real time event viewer
-cask "crescendo"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 # Voice and text chat software
 cask "discord"
-# Emulator for x86 with DOS
-cask "dosbox"
 # System-wide audio equaliser
 cask "eqmac"
 # Utility to finds and fix problems on computer systems
@@ -476,10 +470,8 @@ mas "ContextMenu", id: 1236813619
 mas "Day One", id: 1055511498
 mas "Developer", id: 640199958
 mas "DjVu Reader", id: 733144595
-mas "feedly", id: 865500966
 mas "Folder Preview", id: 6698876601
 mas "Gifski", id: 1351639930
-mas "GIPHY CAPTURE", id: 668208984
 mas "Grammarly for Safari", id: 1462114288
 mas "MsgFiler 4", id: 6478043112
 mas "NepTunes", id: 1006739057
@@ -487,7 +479,6 @@ mas "Pages", id: 409201541
 mas "Peek", id: 1554235898
 mas "Pixave", id: 924891282
 mas "Raycast Companion", id: 6738274497
-mas "Reeder", id: 1449412482
 mas "RocketSim", id: 1504940162
 mas "Shareful", id: 1522267256
 mas "Shazam", id: 897118787
