@@ -1,0 +1,37 @@
+# Aider → LiteLLM → OpenRouter free models
+#
+# All routed through the local LiteLLM proxy at http://localhost:4000. Models
+# are free-tier OpenRouter slugs (no dollar cost). Aider uses the OpenAI
+# provider path because LiteLLM exposes an OpenAI-compatible /v1 endpoint;
+# the "openai/" prefix tells aider's internal litellm wrapper which provider
+# driver to use, and the slug after it is the model_name defined in
+# ~/projects/LiteLLM/config.yaml.
+#
+# Switch model at invocation time:
+#   aider --model openai/coder           # heavy coding (qwen3-coder 480B)
+#   aider --model openai/plus            # huge context (qwen3.6-plus 1M)
+#   aider --model openai/nemotron        # reasoning (nemotron 120B)
+#   aider --model openai/glm             # fast small tasks
+#   aider --model openai/auto            # rotation across the whole pool
+
+openai-api-base: http://localhost:4000/v1
+openai-api-key: sk-local-workbot
+
+# Default model for edits and main reasoning.
+model: openai/coder
+
+# Cheap/fast model for auto-commits, summaries, and internal bookkeeping.
+weak-model: openai/glm
+
+# Git behavior — aider commits each edit automatically.
+auto-commits: true
+dirty-commits: true
+
+# Safety — never push, never run shell commands without confirm.
+auto-lint: false
+auto-test: false
+
+# UI preferences.
+dark-mode: true
+pretty: true
+stream: true
