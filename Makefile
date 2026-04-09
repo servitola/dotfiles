@@ -173,6 +173,9 @@ install:
 	@$(REMOVE) ~/.config/crush/crush.json
 	@$(LINK) ~/projects/dotfiles/crush/crush.json ~/.config/crush/crush.json
 
+	@echo "setup Aider symlinks"
+	@$(REMOVE) ~/.aider.conf.yml
+	@$(LINK) ~/projects/dotfiles/aider/aider.conf.yml ~/.aider.conf.yml
 	@echo "setup noti"
 	@$(REMOVE) ~/.config/noti
 	@$(LINK) ~/projects/dotfiles/noti ~/.config/noti
