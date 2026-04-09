@@ -27,3 +27,4 @@ claude-office-config.env
 memory/
 image-cache
 scripts
+toolbox-env.sh
