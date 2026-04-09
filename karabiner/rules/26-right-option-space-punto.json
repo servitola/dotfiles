@@ -1,0 +1,25 @@
+{
+    "description": "Right Option + Space → F14 (Punto Switcher reconversion)",
+    "manipulators": [
+        {
+            "type": "basic",
+            "from": {
+                "key_code": "spacebar",
+                "modifiers": {
+                    "mandatory": [
+                        "right_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "vk_none",
+                    "hold_down_milliseconds": 50
+                },
+                {
+                    "key_code": "f14"
+                }
+            ]
+        }
+    ]
+}
