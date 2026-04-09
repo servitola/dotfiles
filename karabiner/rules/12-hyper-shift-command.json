@@ -449,31 +449,6 @@
     },
     {
       "from": {
-        "key_code": "l",
-        "modifiers": {
-          "mandatory": [
-            "left_command",
-            "left_shift",
-            "right_command",
-            "right_control",
-            "right_option",
-            "right_shift"
-          ]
-        }
-      },
-      "to": [
-        {
-          "key_code": "down_arrow",
-          "modifiers": [
-            "left_command",
-            "left_shift"
-          ]
-        }
-      ],
-      "type": "basic"
-    },
-    {
-      "from": {
         "key_code": "non_us_backslash",
         "modifiers": {
           "mandatory": [
@@ -520,31 +495,6 @@
     },
     {
       "from": {
-        "key_code": "o",
-        "modifiers": {
-          "mandatory": [
-            "left_command",
-            "left_shift",
-            "right_command",
-            "right_control",
-            "right_option",
-            "right_shift"
-          ]
-        }
-      },
-      "to": [
-        {
-          "key_code": "up_arrow",
-          "modifiers": [
-            "left_command",
-            "left_shift"
-          ]
-        }
-      ],
-      "type": "basic"
-    },
-    {
-      "from": {
         "key_code": "q",
         "modifiers": {
           "mandatory": [
@@ -570,31 +520,6 @@
     },
     {
       "from": {
-        "key_code": "q",
-        "modifiers": {
-          "mandatory": [
-            "left_command",
-            "left_shift",
-            "right_command",
-            "right_control",
-            "right_option",
-            "right_shift"
-          ]
-        }
-      },
-      "to": [
-        {
-          "key_code": "page_up",
-          "modifiers": [
-            "left_command",
-            "left_shift"
-          ]
-        }
-      ],
-      "type": "basic"
-    },
-    {
-      "from": {
         "key_code": "s",
         "modifiers": {
           "mandatory": [
@@ -610,31 +535,6 @@
       "to": [
         {
           "key_code": "illumination_decrement"
-        }
-      ],
-      "type": "basic"
-    },
-    {
-      "from": {
-        "key_code": "s",
-        "modifiers": {
-          "mandatory": [
-            "left_command",
-            "left_shift",
-            "right_command",
-            "right_control",
-            "right_option",
-            "right_shift"
-          ]
-        }
-      },
-      "to": [
-        {
-          "key_code": "down_arrow",
-          "modifiers": [
-            "left_command",
-            "left_shift"
-          ]
         }
       ],
       "type": "basic"
@@ -706,31 +606,6 @@
       "to": [
         {
           "key_code": "illumination_increment"
-        }
-      ],
-      "type": "basic"
-    },
-    {
-      "from": {
-        "key_code": "w",
-        "modifiers": {
-          "mandatory": [
-            "left_command",
-            "left_shift",
-            "right_command",
-            "right_control",
-            "right_option",
-            "right_shift"
-          ]
-        }
-      },
-      "to": [
-        {
-          "key_code": "up_arrow",
-          "modifiers": [
-            "left_command",
-            "left_shift"
-          ]
         }
       ],
       "type": "basic"
