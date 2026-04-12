@@ -279,9 +279,6 @@ install:
 		npm/install-globals.sh \
 		python/install-globals.sh \
 		python/install-uv-tools.sh \
-		n8n/install.sh \
-		n8n/n8n-service.sh \
-		n8n/n8n-start.sh \
 		iterm/install.sh \
 		xcode/install.sh \
 		zsh/setup_zsh.sh \
