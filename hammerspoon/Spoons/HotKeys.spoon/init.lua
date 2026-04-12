@@ -527,7 +527,7 @@ function obj:init()
                     end)
                 elseif functionName == "workbot.toggle" then
                     hs.hotkey.bind(modifiers, key, function()
-                        hs.urlevent.openURL("workbot://toggle")
+                        hs.urlevent.openURL("workbot2://toggle")
                     end)
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
