@@ -7,7 +7,6 @@
 @sourcegraph/amp
 appium
 figma-developer-mcp
-n8n
 opencode-ai
 react-devtools
 typescript

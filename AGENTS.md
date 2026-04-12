@@ -12,7 +12,6 @@ These dotfiles are an operating system on top of macOS. Not just a set of config
 - **Automation**: Hammerspoon for window management, URL routing, keyboard layouts
 - **Keyboard**: Karabiner-Elements for advanced keyboard customization
 - **Shell**: Zsh + Oh My Zsh with extensive plugin ecosystem
-- **Workflow**: n8n with Docker, auto-starting via LaunchAgents
 - **No databases or APIs**: Pure configuration repository
 - **Symlinks**: Created via Makefile (e.g., ~/.gitconfig → git/gitconfig; app configs link to respective directories)
 - **Reference**: See @./README.md for detailed setup
