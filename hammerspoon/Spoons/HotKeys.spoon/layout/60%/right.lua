@@ -35,6 +35,7 @@ return {
 { chord= "⇧⌃⌥→",                            fn = "window.half_right" },
 --        ⇧⌃⌘→   │              │
 --        ⇧⌥⌘→   │              │
---        ⌃⌥⌘→   │              │
+--  ⌃⌥⌘⇧→ → ⌃⌥F13 │              │              — focus comms apps (hide non-comms)
+{ chord = "⌃⌥F13",                               fn = "window.focus_comms" },
 --               ┴              ┴
 }
