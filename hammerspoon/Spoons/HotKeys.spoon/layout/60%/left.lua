@@ -35,6 +35,7 @@ return {
 { chord= "⇧⌃⌥←",                           fn = "window.half_left" },
 --        ⇧⌃⌘←   │              │
 --        ⇧⌥⌘←   │              │
---        ⌃⌥⌘←   │              │
+--  ⌃⌥⌘⇧← → ⇧⌃F13 │              │              — focus personal apps (hide non-personal)
+{ chord = "⇧⌃F13",                               fn = "window.focus_personal" },
 --               ┴              ┴
 }
