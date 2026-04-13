@@ -36,6 +36,7 @@ return {
 { chord= "⇧⌃⌥↓",                              fn = "window.bottom_40" },
 --        ⇧⌃⌘↓   │              │
 --        ⇧⌥⌘↓   │              │
---        ⌃⌥⌘↓   │              │
+--  ⌃⌥⌘⇧↓ → ⇧F13 │              │              — hide all except Warp & WorkBot
+{ chord = "⇧F13",                               fn = "window.hide_all_except_work" },
 --               ┴              ┴
 }

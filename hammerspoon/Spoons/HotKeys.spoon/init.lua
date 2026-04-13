@@ -529,6 +529,37 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         hs.urlevent.openURL("workbot2://toggle")
                     end)
+                elseif functionName == "window.hide_all_except_work"
+                    or functionName == "window.focus_work"
+                    or functionName == "window.focus_personal"
+                    or functionName == "window.focus_comms" then
+                    local exceptionSets = {
+                        ["window.hide_all_except_work"] = { ["Warp"] = true, ["Workbot"] = true },
+                        ["window.focus_work"] = {
+                            ["Rider"] = true, ["Fork"] = true, ["Firefox"] = true,
+                            ["Warp"] = true, ["Code"] = true,
+                            ["Workbot"] = true
+                        },
+                        ["window.focus_personal"] = {
+                            ["Telegram"] = true, ["Yandex"] = true
+                        },
+                        ["window.focus_comms"] = {
+                            ["Telegram"] = true, ["Messages"] = true
+                        },
+                    }
+                    local exceptions = exceptionSets[functionName]
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.closeConsole()
+                        for _, app in ipairs(hs.application.runningApplications()) do
+                            if app:kind() == 1 then
+                                if exceptions[app:name()] then
+                                    if app:isHidden() then app:unhide() end
+                                else
+                                    if not app:isHidden() then app:hide() end
+                                end
+                            end
+                        end
+                    end)
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
                         hs.reload()
