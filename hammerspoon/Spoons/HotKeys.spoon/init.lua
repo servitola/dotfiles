@@ -544,21 +544,60 @@ function obj:init()
                             ["Telegram"] = true, ["Yandex"] = true
                         },
                         ["window.focus_comms"] = {
-                            ["Telegram"] = true, ["Messages"] = true
+                            ["Telegram"] = true, ["Messages"] = true,
+                            ["zoom.us"] = true, ["Yandex Telemost"] = true
                         },
                     }
+                    local focusApps = {
+                        ["window.hide_all_except_work"] = { "Warp" },
+                        ["window.focus_work"] = { "Firefox" },
+                        ["window.focus_personal"] = { "Telegram" },
+                        ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Telegram" },
+                    }
                     local exceptions = exceptionSets[functionName]
+                    local focusList = focusApps[functionName]
                     hs.hotkey.bind(modifiers, key, function()
                         hs.closeConsole()
                         for _, app in ipairs(hs.application.runningApplications()) do
                             if app:kind() == 1 then
-                                if exceptions[app:name()] then
+                                local appName = app:name()
+                                local isException = exceptions[appName]
+                                if isException then
                                     if app:isHidden() then app:unhide() end
+                                elseif appName == "Yandex" then
+                                    local hasVideo = false
+                                    for _, win in ipairs(app:allWindows()) do
+                                        if is_yandex_video_player(appName, win:title(), win) then
+                                            hasVideo = true
+                                        else
+                                            win:minimize()
+                                        end
+                                    end
+                                    if not hasVideo and not app:isHidden() then app:hide() end
+                                elseif appName == "Telegram" then
+                                    local hasVideo = false
+                                    for _, win in ipairs(app:allWindows()) do
+                                        if not win:isStandard() then
+                                            hasVideo = true
+                                        else
+                                            win:minimize()
+                                        end
+                                    end
+                                    if not hasVideo and not app:isHidden() then app:hide() end
                                 else
                                     if not app:isHidden() then app:hide() end
                                 end
                             end
                         end
+                        for _, name in ipairs(focusList) do
+                            local a = hs.application.get(name)
+                            if a then a:activate(); break end
+                        end
+                    end)
+                elseif functionName == "window.hide_current" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        local win = hs.window.focusedWindow()
+                        if win then win:minimize() end
                     end)
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
