@@ -35,6 +35,7 @@ return {
 --        ⇧⌃⌥h   │              │             — reload Hammerspoon config
 --        ⇧⌃⌘h   │              │
 --        ⇧⌥⌘h   │              │        Fork — quick Stash
---        ⌃⌥⌘h   │              │
+{ chord = "F13",                                 fn = "window.hide_current" },
+--  ⌃⌥⌘h → F13  │              │             — hide current window only
 --               ┴              ┴
 }

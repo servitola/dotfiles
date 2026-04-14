@@ -1,0 +1,23 @@
+{
+    "description": "Ctrl+Alt+Cmd+H → F13 (hide current window)",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "h",
+                "modifiers": {
+                    "mandatory": [
+                        "left_control",
+                        "left_option",
+                        "left_command"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "f13"
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}
