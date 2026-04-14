@@ -179,7 +179,8 @@ function set_all_windows_positions()
                 is_activity_monitor_cpu_window(app_title, window_title) then
             set_window_bottom(window)
         elseif is_winflow_recording_panel(app_title, window_title) or
-                is_yandex_extra_panel(app_title, window_title, window) then
+                is_yandex_extra_panel(app_title, window_title, window) or
+                app_title == "Raycast" then
             -- nothing
         else
             if is_full_screen(window) then
