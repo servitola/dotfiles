@@ -28,3 +28,4 @@ memory/
 image-cache
 scripts
 toolbox-env.sh
+telemetry/
