@@ -43,11 +43,12 @@ if [[ -n "$ROOT_PATH" ]]; then
     ROOT_RESPONSE=$(fetch_json "$OWNER_REPO" "$ROOT_PATH")
     check_rate_limit "$ROOT_RESPONSE" "$OWNER_REPO" || exit 1
 
-    CATEGORY=$(echo "$ROOT_RESPONSE" | jq -r '.[] | select(.type=="dir") | .name' | shuf -n1)
-    if [[ -z "$CATEGORY" ]]; then
+    CATEGORIES=($(echo "$ROOT_RESPONSE" | jq -r '.[] | select(.type=="dir") | .name'))
+    if [[ ${#CATEGORIES[@]} -eq 0 ]]; then
         echo "ERROR: no subdirectories found in $OWNER_REPO/$ROOT_PATH" >&2
         exit 1
     fi
+    CATEGORY="${CATEGORIES[$((RANDOM % ${#CATEGORIES[@]} + 1))]}"
     API_PATH="$ROOT_PATH/$(printf '%s' "$CATEGORY" | python3 -c "import sys, urllib.parse; print(urllib.parse.quote(sys.stdin.read()))")"
 fi
 
@@ -68,5 +69,5 @@ echo "$API_RESPONSE" | jq -r '.[] | select(.type=="file") | [.name, .download_ur
         fi
         printf '%s\t%s\n' "$name" "$url"
     done \
-    | shuf \
+    | sort -R \
     | jq -Rnc '[inputs | split("\t") | {name: .[0], url: .[1]}]'
