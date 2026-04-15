@@ -564,6 +564,9 @@ function obj:init()
                                 local isException = exceptions[appName]
                                 if isException then
                                     if app:isHidden() then app:unhide() end
+                                    for _, win in ipairs(app:allWindows()) do
+                                        if win:isMinimized() then win:unminimize() end
+                                    end
                                 elseif appName == "Yandex" then
                                     local hasVideo = false
                                     for _, win in ipairs(app:allWindows()) do
