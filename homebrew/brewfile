@@ -246,6 +246,8 @@ brew "pytorch"
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
 brew "rsync"
+# Extremely fast Python linter, written in Rust
+brew "ruff"
 # Safe, concurrent, practical language
 brew "rust"
 # SDL 1.2 compatibility layer that uses SDL 2.0 behind the scenes
