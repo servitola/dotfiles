@@ -23,7 +23,6 @@ safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
 safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
 safeLoadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
 safeLoadSpoon("AudioSwitcher") -- audio device switching
-spoon.AudioSwitcher:startWatcher()
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
 safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
