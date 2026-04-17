@@ -59,29 +59,9 @@ local function waitForAudioDevice(deviceName, message, timeoutSecs)
     )
 end
 
--- Check if a Bluetooth device is already connected by parsing system_profiler output.
--- This avoids TCC restrictions that crash blueutil when called from Hammerspoon.
 local function isBluetoothConnected(mac)
-    local output, status = hs.execute("system_profiler SPBluetoothDataType 2>/dev/null")
-    if not status or not output then
-        return false
-    end
-
-    -- Normalize MAC to uppercase for matching
-    local normalizedMac = string.gsub(mac, "-", ":"):upper()
-
-    -- Look for the device in the "Connected:" section
-    -- We check if the MAC appears after "Connected:" and before "Not Connected:"
-    local connectedSection = output:match("Connected:%s*\n(.-)Not Connected:")
-    if not connectedSection then
-        -- If there's no "Not Connected" section, everything after "Connected:" is connected
-        connectedSection = output:match("Connected:%s*\n(.*)")
-    end
-    if not connectedSection then
-        return false
-    end
-
-    return connectedSection:upper():find(normalizedMac) ~= nil
+    local output = hs.execute("/opt/homebrew/bin/blueutil --is-connected " .. mac)
+    return output and output:match("^%s*1") ~= nil
 end
 
 function obj:connectAndSwitchToMarshall()
@@ -94,7 +74,7 @@ function obj:connectAndSwitchToMarshall()
     end
 
     log.i("Marshall not connected, initiating connection")
-    hs.execute("open -a /opt/homebrew/bin/blueutil --args --connect " .. mac)
+    hs.execute("/opt/homebrew/bin/blueutil --connect " .. mac)
     waitForAudioDevice("Marshall", "🔊 Marshall", 15)
 end
 
@@ -108,7 +88,7 @@ function obj:connectAndSwitchToBT()
     end
 
     log.i("BT not connected, initiating connection")
-    hs.execute("open -a /opt/homebrew/bin/blueutil --args --connect " .. mac)
+    hs.execute("/opt/homebrew/bin/blueutil --connect " .. mac)
     waitForAudioDevice("Laptop", "🔊 Audio System", 15)
 end
 
