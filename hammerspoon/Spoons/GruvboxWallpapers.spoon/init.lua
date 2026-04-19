@@ -59,9 +59,7 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
             return
         end
 
-        -- Extract extension from original name
-        local ext = candidate.name:match("%.([^%.]+)$") or "jpg"
-        local final_name = "current_wallpaper." .. ext
+        local final_name = candidate.name
         local final_path = self.wallpapers_dir .. "/" .. final_name
 
         -- Clean up all previous wallpapers in the directory
