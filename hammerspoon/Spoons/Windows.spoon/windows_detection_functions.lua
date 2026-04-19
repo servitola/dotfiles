@@ -3,6 +3,21 @@ function is_ios_simulator(window)
     return app and app:title() == "Simulator"
 end
 
+function get_ios_simulator_size(window, screen_frame)
+    local current = window:frame()
+    local aspect_ratio = current.h / current.w
+    if not screen_frame then
+        screen_frame = window:screen():frame()
+    end
+    local target_width = screen_frame.w * 0.4
+    local target_height = target_width * aspect_ratio
+    if target_height > screen_frame.h * 0.7 then
+        target_height = screen_frame.h * 0.7
+        target_width = target_height / aspect_ratio
+    end
+    return target_width, target_height, screen_frame
+end
+
 function is_activity_monitor_cpu_window(app_title, window_title)
     return app_title == "Activity Monitor" and
            (window_title == "CPU History" or window_title == "GPU History")
