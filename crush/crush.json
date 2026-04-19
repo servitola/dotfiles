@@ -8,48 +8,24 @@
       "api_key": "sk-local-workbot",
       "models": [
         {
-          "id": "auto",
-          "name": "Auto (free pool rotation)",
+          "id": "gpt",
+          "name": "OpenAI gpt-oss 120B (recommended)",
           "cost_per_1m_in": 0,
           "cost_per_1m_out": 0,
           "context_window": 131072,
-          "default_max_tokens": 8192
-        },
-        {
-          "id": "coder",
-          "name": "Qwen3-Coder 480B",
-          "cost_per_1m_in": 0,
-          "cost_per_1m_out": 0,
-          "context_window": 262000,
-          "default_max_tokens": 16384
-        },
-        {
-          "id": "plus",
-          "name": "Qwen 3.6 Plus (1M context)",
-          "cost_per_1m_in": 0,
-          "cost_per_1m_out": 0,
-          "context_window": 1000000,
           "default_max_tokens": 16384
         },
         {
           "id": "nemotron",
-          "name": "NVIDIA Nemotron 3 Super 120B",
+          "name": "NVIDIA Nemotron 3 Super 120B (long context)",
           "cost_per_1m_in": 0,
           "cost_per_1m_out": 0,
           "context_window": 262144,
           "default_max_tokens": 16384
         },
         {
-          "id": "gpt",
-          "name": "OpenAI gpt-oss 120B",
-          "cost_per_1m_in": 0,
-          "cost_per_1m_out": 0,
-          "context_window": 131072,
-          "default_max_tokens": 16384
-        },
-        {
           "id": "glm",
-          "name": "GLM-4.5 Air (fast)",
+          "name": "GLM-4.5 Air (fast, lightweight)",
           "cost_per_1m_in": 0,
           "cost_per_1m_out": 0,
           "context_window": 131072,
@@ -60,7 +36,7 @@
   },
   "models": {
     "large": {
-      "model": "coder",
+      "model": "gpt",
       "provider": "litellm",
       "max_tokens": 16384
     },

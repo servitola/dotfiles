@@ -26,11 +26,11 @@
     }
   },
   "tools": {
-    "approvalMode": "yolo",
+    "approvalMode": "plan",
     "sandbox": false
   },
   "ui": {
-    "theme": "Default",
+    "theme": "GitHub",
     "hideTips": false,
     "showLineNumbers": true,
     "feedbackLastShownTimestamp": 1773087973766
