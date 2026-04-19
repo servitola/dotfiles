@@ -1,0 +1,272 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="910" height="376" viewBox="0 0 910 376">
+<defs>
+  <filter id="shadow" x="-4%" y="-4%" width="108%" height="116%">
+    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.07"/></filter>
+  <filter id="shadow-bound" x="-4%" y="-4%" width="108%" height="116%">
+    <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.12"/></filter>
+  <symbol id="apple" viewBox="0 0 16 16"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></symbol>
+  <symbol id="win-icon" viewBox="0 0 16 16">
+    <rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
+    <rect x="6" y="7" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/></symbol>
+  <symbol id="audio-icon" viewBox="0 0 16 16">
+    <path d="M7 3L3.5 6H1v4h2.5L7 13V3z" stroke-width="1.2" fill="none"/>
+    <path d="M10 5.5a3 3 0 010 5M12 3.5a6 6 0 010 9" fill="none" stroke-width="1.2"/></symbol>
+  <symbol id="birman" viewBox="0 0 16 16">
+    <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
+    <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <style>
+    text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
+           fill: #1d1d1f; }
+    .key-label { font-size: 9px; fill: #c7c7cc; }
+    .bind-label { font-size: 10px; font-weight: 500; }
+    .title { font-size: 18px; font-weight: 600; fill: #1d1d1f; }
+    .legend-text { font-size: 10px; fill: #1d1d1f; }
+  </style>
+</defs>
+<text x="24" y="42" class="title">Alt — Special Chars + Apps</text>
+<rect x="24" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="24" y="62" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="44.0" y="64" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="51.0" y="93" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⌥⎋</text>
+<text x="73" y="103" text-anchor="end" class="key-label">~</text>
+<rect x="82" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="82" y="62" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="100.0" y="65" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="109.0" y="93" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">VS Code</text>
+<text x="131" y="103" text-anchor="end" class="key-label">1</text>
+<rect x="140" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="140" y="62" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="160.0" y="64" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="167.0" y="93" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⇧⌃z</text>
+<text x="189" y="103" text-anchor="end" class="key-label">2</text>
+<rect x="198" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="198" y="62" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="218.0" y="64" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="225.0" y="93" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⌘n</text>
+<text x="247" y="103" text-anchor="end" class="key-label">3</text>
+<rect x="256" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="283.0" y="87.0" text-anchor="middle" class="key-label">4</text>
+<rect x="314" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="314" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="334.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="341.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">‰</text>
+<text x="363" y="103" text-anchor="end" class="key-label">5</text>
+<rect x="372" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="372" y="62" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="399.0" y="90.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↑</text>
+<text x="421" y="103" text-anchor="end" class="key-label">6</text>
+<rect x="430" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="457.0" y="87.0" text-anchor="middle" class="key-label">7</text>
+<rect x="488" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="488" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="508.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="515.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">∞</text>
+<text x="537" y="103" text-anchor="end" class="key-label">8</text>
+<rect x="546" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="546" y="62" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="573.0" y="90.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">←</text>
+<text x="595" y="103" text-anchor="end" class="key-label">9</text>
+<rect x="604" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="604" y="62" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="631.0" y="90.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">→</text>
+<text x="653" y="103" text-anchor="end" class="key-label">0</text>
+<rect x="662" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="662" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="682.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="689.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">−</text>
+<text x="711" y="103" text-anchor="end" class="key-label">-</text>
+<rect x="720" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="720" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="740.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="747.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">≠</text>
+<text x="769" y="103" text-anchor="end" class="key-label">=</text>
+<rect x="778" y="60" width="112" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="834.0" y="87.0" text-anchor="middle" class="key-label">⌫</text>
+<rect x="24" y="112" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="65.5" y="139.0" text-anchor="middle" class="key-label">⇥</text>
+<rect x="111.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="111.0" y="114" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="131.0" y="116" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="138.0" y="145" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⌫</text>
+<text x="160.0" y="155" text-anchor="end" class="key-label">Q</text>
+<rect x="169.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="169.0" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="196.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌥↑</text>
+<text x="218.0" y="155" text-anchor="end" class="key-label">W</text>
+<rect x="227.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="247.0" y="116" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="254.0" y="145" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⌦</text>
+<text x="276.0" y="155" text-anchor="end" class="key-label">E</text>
+<rect x="285.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="285.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="303.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="312.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">WebStorm</text>
+<text x="334.0" y="155" text-anchor="end" class="key-label">R</text>
+<rect x="343.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="343.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="363.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="370.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">™</text>
+<text x="392.0" y="155" text-anchor="end" class="key-label">T</text>
+<rect x="401.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="401.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="421.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="428.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">ѣ</text>
+<text x="450.0" y="155" text-anchor="end" class="key-label">Y</text>
+<rect x="459.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="459.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="479.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="486.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">ѵ</text>
+<text x="508.0" y="155" text-anchor="end" class="key-label">U</text>
+<rect x="517.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="517.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="537.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="544.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">і</text>
+<text x="566.0" y="155" text-anchor="end" class="key-label">I</text>
+<rect x="575.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="575.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="595.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="602.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">°</text>
+<text x="624.0" y="155" text-anchor="end" class="key-label">O</text>
+<rect x="633.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="633.0" y="114" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="653.0" y="116" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="660.0" y="145" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">′</text>
+<text x="682.0" y="155" text-anchor="end" class="key-label">P</text>
+<rect x="691.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="691.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="709.0" y="117" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABy2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+NTEyPC9leGlmOlBpeGVsWERpbWVuc2lvbj4KICAgICAgICAgPGV4aWY6UGl4ZWxZRGltZW5zaW9uPjUxMjwvZXhpZjpQaXhlbFlEaW1lbnNpb24+CiAgICAgIDwvcmRmOkRlc2NyaXB0aW9uPgogICA8L3JkZjpSREY+CjwveDp4bXBtZXRhPgoAheCYAAAFr0lEQVRYCe1XXYhVVRT+zjn33DMzOgyjZRZJL0WUaIQYmhK9KhTZQ38PST1IQQRBBBaGEEIRib71GJT9GASSLyGGUliWEZaOQlkQqcwUo9PVub/n7L5vnX3uPeeqz/Xgsj1777XXXt+311p73xNwXf7jCATXxN9yLEbt7tWAWw6kixG6GGEIBFkA/auxp0hVZxsJ4epB5uKIfQREgevWonA2CnASnfPfn9y+vHM1rKsTeHp2PZIFbxN0DeoJQYXkm42dn7MPnJEgMJLQiQhi9ta4FmUtrX+XdRqvnH592eFhElcSeHJmPcYm9yOqTSBrGwCJ5IB0mJMpzY1Yrg9pp9Mn1CW0NRKc13mI0HUamG88dPqNKgltH8javaOIF+wCCN4heMqljC0lT43Vl+fKgq1JHyDjuNUDLqlxPJ+GaPbYt9rouGS8V0t237Ll87EBYH6uwfzWtfeR7yp0u0x9CawAGu4NfIggdalAjQRwmfOmWpskgtF74kV3rRkADhNAsgJBjeA0sUYSBZGrgucn70fBCA10XRK5TCIN6xkdJGhl8coyAaKVJHOLDFjhDuhIuZeIRJF/G1On5Dmua27jQic9G9XqZdJh2nr01a2FiLNoEVf6UiXg0thy7JRoetWJ5Fzg8mgd/5hzvyadUES43IfeXuv0kbFvMhrtLq9zSYYJ1PJTKQRyqp10JOf8zyKiE5twvSDoQYygCEukE3HZF8RoLyJlqRLISFHNkYA2KRwiYU2O2IRv6fDj1JD48lAvcB+8PHKca1lNayLcKxhyTqnOtFvgRqKHhSMZJkYzLExSvmxc6zhMjPCO83kDeYKXZaQW0IZzvXOdAGNxwHcgYLACjNepp02lSEWwJFdGwE5PEl2Hh9fVsGl1jNuWRDg0lWHqT4fH1/GoPNG2TzO+VcD2R3kG4nz0bYZjv2fY+VQNXWWQMloH3vqihwMnqKhzk/RKaUmqBFR8Ga3UIocPDzbx67kUO58Zw7EzXWx+MMYT77Rw57II2zbFVhqv7c3w27TDe89H2LgyxLtfprhpIsCdNwf44JsUL2+IcOA4/Ro4kRW5kgylgFYWAW7opbj39hC7nh3D1vfncfhkm0+rdiqGakqs7/xUz/DsJeDCZeDvhmNTafDEMrV3RL02DaQagYyrRoA0WSyb1tSR0OLFjQlOncvw2dE2Pn6JRUDZ9kkbEWthx2P5j9Wer1krIwFm5gJeNWABw98gkamzRFfxKgIWheqZqwnZ8OMOjCx9FfwFU31GUYjRJLJeiZ7jiSYmamh1CdLmVt6OkdEQCUMz1+BvNEPgBKbdJJ7x6LpAeaz4NybZ5vSb2LN0qxnxz3AEXH4LSJVXLeUVuzSv7TkYSGiuwePJq30bOLTaedOa05U0fWg/TCoSu832otJHzqTAtr5KIGDpO/8OmLV2MC0C1FyvSDGWZ3tg/LqjjdbMprATqG/eBTINBlIloOpXDShZuhGF04KMvWx0rufDwDUmgNaLuWxs7okZYdrLrR4rqssyRIAvkAiIiD2/3vEVAPJSHKlMRvZlYE9G+y063JZWL2KVQK95sf8U9wEKJx60iEr/pN55+dQal1uRKserkXUuXjsC3YtT+v406Z+kcOZDfYVjrZNcQaxY76fER0Tx7/Erq3l+qkxAcRzI9L6j6PxzIv8okVOfDqsNP7f6YKH634tB0dLW3hBvZ2Nf0JZSBrt94RRmDh4ZAOZlMZjP/tzGjff/gWTyEYT12BxaqGWikw66/BshVxVL+Yx23tTmGke8/2mridnjz+HI5p/8LutUl1U5u/8XTK46gdr4Cv7aLEHIzSG/IfSy6HNNfbkVuqI3W9oHfo9S2W1MYfaHF3Bo474qGM2GFf35+KobcMfmBzC6mP9jkkwipEeBmDBz+uKxQtW4yKTX5XPeKDeL5l9TOLP7K0wfmfGbr3f/rwj8C8HHtPZIbM7wAAAAAElFTkSuQmCC"/>
+<text x="718.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Zoom</text>
+<text x="740.0" y="155" text-anchor="end" class="key-label">[</text>
+<rect x="749.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="776.0" y="139.0" text-anchor="middle" class="key-label">]</text>
+<rect x="807.0" y="112" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="848.5" y="139.0" text-anchor="middle" class="key-label">\</text>
+<rect x="125.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="125.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="152.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌥←</text>
+<text x="174.5" y="207" text-anchor="end" class="key-label">A</text>
+<rect x="183.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="210.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌥↓</text>
+<text x="232.5" y="207" text-anchor="end" class="key-label">S</text>
+<rect x="241.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="241.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="268.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌥→</text>
+<text x="290.5" y="207" text-anchor="end" class="key-label">D</text>
+<rect x="299.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="299.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="319.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="326.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">f</text>
+<text x="348.5" y="207" text-anchor="end" class="key-label">F</text>
+<rect x="357.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="357.5" y="166" width="3" height="44" rx="1.5" fill="#af52de"/>
+<text x="384.5" y="192.0" text-anchor="middle" class="bind-label" fill="#af52de" font-size="10px">GitHub</text>
+<text x="406.5" y="207" text-anchor="end" class="key-label">G</text>
+<rect x="415.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="415.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="435.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="442.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">₽</text>
+<text x="464.5" y="207" text-anchor="end" class="key-label">H</text>
+<rect x="473.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="473.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="493.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="500.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">„</text>
+<text x="522.5" y="207" text-anchor="end" class="key-label">J</text>
+<rect x="531.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="531.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="551.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="558.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">“</text>
+<text x="580.5" y="207" text-anchor="end" class="key-label">K</text>
+<rect x="589.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="589.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="609.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="616.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">”</text>
+<text x="638.5" y="207" text-anchor="end" class="key-label">L</text>
+<rect x="647.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="674.5" y="191.0" text-anchor="middle" class="key-label">;</text>
+<rect x="705.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="705.5" y="166" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="725.5" y="168" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="732.5" y="197" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">’</text>
+<text x="754.5" y="207" text-anchor="end" class="key-label">'</text>
+<rect x="763.5" y="164" width="126.5" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="826.75" y="191.0" text-anchor="middle" class="key-label">↩</text>
+<rect x="154.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="181.5" y="243.0" text-anchor="middle" class="key-label">Z</text>
+<rect x="212.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="212.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="230.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="239.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">XCode</text>
+<text x="261.5" y="259" text-anchor="end" class="key-label">X</text>
+<rect x="270.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="270.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="288.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="297.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Claude</text>
+<text x="319.5" y="259" text-anchor="end" class="key-label">C</text>
+<rect x="328.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="328.5" y="218" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="355.5" y="246.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↓</text>
+<text x="377.5" y="259" text-anchor="end" class="key-label">V</text>
+<rect x="386.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="386.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="406.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="413.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">ß</text>
+<text x="435.5" y="259" text-anchor="end" class="key-label">B</text>
+<rect x="444.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="444.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="464.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="471.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">‘</text>
+<text x="493.5" y="259" text-anchor="end" class="key-label">N</text>
+<rect x="502.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="502.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="522.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="529.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">−</text>
+<text x="551.5" y="259" text-anchor="end" class="key-label">M</text>
+<rect x="560.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="560.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="580.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="587.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">«</text>
+<text x="609.5" y="259" text-anchor="end" class="key-label">,</text>
+<rect x="618.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="645.5" y="243.0" text-anchor="middle" class="key-label">.</text>
+<rect x="676.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="676.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="696.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="703.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">…</text>
+<text x="725.5" y="259" text-anchor="end" class="key-label">/</text>
+<rect x="96.5" y="268" width="68.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
+<text x="130.75" y="296.0" text-anchor="middle" class="bind-label" fill="#007aff">⌥</text>
+<rect x="241.5" y="268" width="358.5" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="241.5" y="270" width="3" height="44" rx="1.5" fill="#8e8e93"/>
+<use href="#birman" x="413.75" y="272" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
+<text x="420.75" y="301" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">nbsp</text>
+<text x="595.0" y="311" text-anchor="end" class="key-label"></text>
+<rect x="676.5" y="268" width="68.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
+<text x="710.75" y="296.0" text-anchor="middle" class="bind-label" fill="#007aff">⌥</text>
+<rect x="749.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="749.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="769.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="776.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">jump to previ…</text>
+<text x="798.0" y="311" text-anchor="end" class="key-label">←</text>
+<rect x="807.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="807.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="827.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">move line up</text>
+<text x="856.0" y="311" text-anchor="end" class="key-label">↑↓</text>
+<rect x="865.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="865.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="885.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">jump to next …</text>
+<text x="914.0" y="311" text-anchor="end" class="key-label">→</text>
+<rect x="24" y="328" width="10" height="10" rx="2" fill="#007aff"/>
+<text x="38" y="337" class="legend-text">Apps</text>
+<rect x="80.0" y="328" width="10" height="10" rx="2" fill="#5ac8fa"/>
+<text x="94.0" y="337" class="legend-text">Navigation</text>
+<rect x="175.0" y="328" width="10" height="10" rx="2" fill="#af52de"/>
+<text x="189.0" y="337" class="legend-text">Browser / Translate</text>
+<rect x="328.5" y="328" width="10" height="10" rx="2" fill="#86868b"/>
+<text x="342.5" y="337" class="legend-text">macOS</text>
+<rect x="391.0" y="328" width="10" height="10" rx="2" fill="#8e8e93"/>
+<text x="405.0" y="337" class="legend-text">Birman Layout</text>
+</svg>
