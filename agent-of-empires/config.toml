@@ -6,7 +6,7 @@ name = "gruvbox-dark"
 [claude]
 
 [updates]
-check_enabled = true
+check_enabled = false
 auto_update = false
 check_interval_hours = 24
 notify_in_cli = true
@@ -51,12 +51,18 @@ context_lines = 3
 [hooks]
 
 [sound]
-enabled = true
+enabled = false
 mode = "random"
 
 [app_state]
 has_seen_welcome = true
-last_seen_version = "1.0.0"
+last_seen_version = "1.4.5"
 home_list_width = 35
 has_seen_custom_instruction_warning = false
 has_acknowledged_agent_hooks = true
+
+[web]
+notifications_enabled = true
+notify_on_waiting = true
+notify_on_idle = false
+notify_on_error = true
