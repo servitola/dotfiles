@@ -14,6 +14,10 @@
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="karabiner-icon" viewBox="0 0 16 16">
+    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
            fill: #1d1d1f; }
@@ -23,15 +27,14 @@
     .legend-text { font-size: 10px; fill: #1d1d1f; }
   </style>
 </defs>
+<rect width="910" height="376" rx="16" fill="white" fill-opacity="0.92"/>
 <text x="24" y="42" class="title">Shift + Cmd</text>
-<rect x="24" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="24" y="62" width="3" height="44" rx="1.5" fill="#86868b"/>
-<use href="#apple" x="44.0" y="64" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="51.0" y="93" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⇧⌘⎋</text>
-<text x="73" y="103" text-anchor="end" class="key-label">~</text>
+<rect x="24" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="51.0" y="87.0" text-anchor="middle" class="key-label">~</text>
 <rect x="82" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="82" y="62" width="3" height="44" rx="1.5" fill="#007aff"/>
-<text x="109.0" y="88.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="8px">VS Dotfiles</text>
+<image x="100.0" y="65" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="109.0" y="93" text-anchor="middle" class="bind-label" fill="#007aff" font-size="8px">VS Dotfiles</text>
 <text x="131" y="103" text-anchor="end" class="key-label">1</text>
 <rect x="140" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="167.0" y="87.0" text-anchor="middle" class="key-label">2</text>
@@ -42,7 +45,7 @@
 <rect x="314" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="314" y="62" width="3" height="44" rx="1.5" fill="#86868b"/>
 <use href="#apple" x="334.0" y="64" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="341.0" y="93" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">record video …</text>
+<text x="341.0" y="88" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">record video</text><text x="341.0" y="99" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">from screen</text>
 <text x="363" y="103" text-anchor="end" class="key-label">5</text>
 <rect x="372" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="399.0" y="87.0" text-anchor="middle" class="key-label">6</text>
@@ -63,12 +66,12 @@
 <rect x="24" y="112" width="83.0" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="24" y="114" width="3" height="44" rx="1.5" fill="#86868b"/>
 <use href="#apple" x="58.5" y="116" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="65.5" y="145" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">switch betwee…</text>
+<text x="65.5" y="140" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">switch between open</text><text x="65.5" y="151" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">windows backwards</text>
 <text x="102.0" y="155" text-anchor="end" class="key-label">⇥</text>
 <rect x="111.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="111.0" y="114" width="3" height="44" rx="1.5" fill="#86868b"/>
 <use href="#apple" x="131.0" y="116" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="138.0" y="145" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">log out from …</text>
+<text x="138.0" y="140" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">log out from account with</text><text x="138.0" y="151" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">closing of all apps</text>
 <text x="160.0" y="155" text-anchor="end" class="key-label">Q</text>
 <rect x="169.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="196.0" y="139.0" text-anchor="middle" class="key-label">W</text>
@@ -99,7 +102,7 @@
 <rect x="183.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#86868b"/>
 <use href="#apple" x="203.5" y="168" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#86868b" font-size="9px">save as</text>
+<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">save as</text>
 <text x="232.5" y="207" text-anchor="end" class="key-label">S</text>
 <rect x="241.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="268.5" y="191.0" text-anchor="middle" class="key-label">D</text>
@@ -124,9 +127,9 @@
 <rect x="24" y="216" width="126.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
 <text x="87.25" y="244.0" text-anchor="middle" class="bind-label" fill="#007aff">⇧</text>
 <rect x="154.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="154.5" y="218" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="174.5" y="220" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="181.5" y="249" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">redo</text>
+<rect x="154.5" y="218" width="3" height="44" rx="1.5" fill="#86868b"/>
+<use href="#apple" x="174.5" y="220" width="14" height="14" fill="#86868b" stroke="#86868b"/>
+<text x="181.5" y="249" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">redo</text>
 <text x="203.5" y="259" text-anchor="end" class="key-label">Z</text>
 <rect x="212.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="239.5" y="243.0" text-anchor="middle" class="key-label">X</text>
@@ -157,22 +160,23 @@
 <rect x="749.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="749.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
 <use href="#apple" x="769.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="776.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">select text t…</text>
+<text x="776.0" y="296" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">select text to</text><text x="776.0" y="307" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">start of line</text>
 <text x="798.0" y="311" text-anchor="end" class="key-label">←</text>
 <rect x="807.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="807.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
-<use href="#apple" x="827.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">key_light_up</text>
+<rect x="807.0" y="270" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="827.0" y="272" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="834.0" y="296" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">increase keyboard light</text><text x="834.0" y="307" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">(illumination_increment)</text>
 <text x="856.0" y="311" text-anchor="end" class="key-label">↑↓</text>
 <rect x="865.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="865.0" y="270" width="3" height="44" rx="1.5" fill="#86868b"/>
-<use href="#apple" x="885.0" y="272" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#86868b" font-size="8px">select line t…</text>
+<rect x="865.0" y="270" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="892.0" y="291.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="7px">select line till</text><text x="892.0" y="302.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="7px">the end</text>
 <text x="914.0" y="311" text-anchor="end" class="key-label">→</text>
 <rect x="24" y="328" width="10" height="10" rx="2" fill="#007aff"/>
 <text x="38" y="337" class="legend-text">Apps</text>
-<rect x="80.0" y="328" width="10" height="10" rx="2" fill="#86868b"/>
-<text x="94.0" y="337" class="legend-text">macOS</text>
-<rect x="142.5" y="328" width="10" height="10" rx="2" fill="#8e8e93"/>
-<text x="156.5" y="337" class="legend-text">Birman Layout</text>
+<rect x="80.0" y="328" width="10" height="10" rx="2" fill="#5ac8fa"/>
+<text x="94.0" y="337" class="legend-text">Navigation</text>
+<rect x="175.0" y="328" width="10" height="10" rx="2" fill="#86868b"/>
+<text x="189.0" y="337" class="legend-text">macOS</text>
+<rect x="237.5" y="328" width="10" height="10" rx="2" fill="#a2845e"/>
+<text x="251.5" y="337" class="legend-text">Karabiner</text>
 </svg>

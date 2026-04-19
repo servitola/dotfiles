@@ -14,6 +14,10 @@
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="karabiner-icon" viewBox="0 0 16 16">
+    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
            fill: #1d1d1f; }
@@ -23,6 +27,7 @@
     .legend-text { font-size: 10px; fill: #1d1d1f; }
   </style>
 </defs>
+<rect width="910" height="376" rx="16" fill="white" fill-opacity="0.92"/>
 <text x="24" y="42" class="title">Hyper — Apps + Navigation</text>
 <rect x="24" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="24" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
@@ -30,82 +35,84 @@
 <text x="51.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">`</text>
 <text x="73" y="103" text-anchor="end" class="key-label">~</text>
 <rect x="82" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="82" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="102.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="109.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F1</text>
+<rect x="82" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="102.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="109.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — quick</text><text x="109.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">documentation</text>
 <text x="131" y="103" text-anchor="end" class="key-label">1</text>
 <rect x="140" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="140" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="160.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="167.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F2</text>
+<rect x="140" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="160.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="167.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — next error</text><text x="167.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">in file</text>
 <text x="189" y="103" text-anchor="end" class="key-label">2</text>
 <rect x="198" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="198" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="218.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="225.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F3</text>
+<rect x="198" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="218.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="225.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">find next</text><text x="225.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">(in file)</text>
 <text x="247" y="103" text-anchor="end" class="key-label">3</text>
 <rect x="256" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="256" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="276.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="283.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F4</text>
+<rect x="256" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="276.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="283.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">VSCode — go to next</text><text x="283.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">found occurrence</text>
 <text x="305" y="103" text-anchor="end" class="key-label">4</text>
 <rect x="314" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="314" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="334.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="341.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F5</text>
+<rect x="314" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="334.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="341.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">F5</text>
 <text x="363" y="103" text-anchor="end" class="key-label">5</text>
 <rect x="372" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="372" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="392.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="399.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F6</text>
+<rect x="372" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="392.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="399.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — move</text>
 <text x="421" y="103" text-anchor="end" class="key-label">6</text>
 <rect x="430" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="430" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="450.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="457.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F7</text>
+<rect x="430" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="450.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="457.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — step into</text><text x="457.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">(debugging)</text>
 <text x="479" y="103" text-anchor="end" class="key-label">7</text>
 <rect x="488" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="488" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="508.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="515.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F8</text>
+<rect x="488" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="508.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="515.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — step over</text><text x="515.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">(debugging)</text>
 <text x="537" y="103" text-anchor="end" class="key-label">8</text>
 <rect x="546" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="546" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="566.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="573.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F9</text>
+<rect x="546" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="566.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="573.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Rider — resume program</text><text x="573.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">(debugging)</text>
 <text x="595" y="103" text-anchor="end" class="key-label">9</text>
 <rect x="604" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="604" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="624.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="631.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F10</text>
+<rect x="604" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="624.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="631.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">F10</text>
 <text x="653" y="103" text-anchor="end" class="key-label">0</text>
 <rect x="662" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="662" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="682.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="689.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F11</text>
+<rect x="662" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="682.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="689.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">show desktop</text>
 <text x="711" y="103" text-anchor="end" class="key-label">-</text>
 <rect x="720" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="720" y="62" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<use href="#birman" x="740.0" y="64" width="14" height="14" fill="#8e8e93" stroke="#8e8e93"/>
-<text x="747.0" y="93" text-anchor="middle" class="bind-label" fill="#8e8e93" font-size="10px">F12</text>
+<rect x="720" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="740.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="747.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">F12</text>
 <text x="769" y="103" text-anchor="end" class="key-label">=</text>
 <rect x="778" y="60" width="112" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="834.0" y="87.0" text-anchor="middle" class="key-label">⌫</text>
 <rect x="24" y="112" width="83.0" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="24" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="65.5" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↩</text>
+<text x="65.5" y="135.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="8px">enter /</text><text x="65.5" y="146.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="8px">return</text>
 <text x="102.0" y="155" text-anchor="end" class="key-label">⇥</text>
 <rect x="111.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="111.0" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
 <text x="138.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">PgUp</text>
 <text x="160.0" y="155" text-anchor="end" class="key-label">Q</text>
 <rect x="169.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="169.0" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="196.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↑</text>
+<rect x="169.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="189.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="196.0" y="145" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">up</text>
 <text x="218.0" y="155" text-anchor="end" class="key-label">W</text>
 <rect x="227.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="254.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">PgDn</text>
+<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="247.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="254.0" y="145" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="9px">page down</text>
 <text x="276.0" y="155" text-anchor="end" class="key-label">E</text>
 <rect x="285.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="285.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
@@ -115,7 +122,7 @@
 <rect x="343.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="343.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="361.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="370.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Telegram</text>
+<text x="370.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Telegram</text>
 <text x="392.0" y="155" text-anchor="end" class="key-label">T</text>
 <rect x="401.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="401.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
@@ -124,11 +131,13 @@
 <text x="450.0" y="155" text-anchor="end" class="key-label">Y</text>
 <rect x="459.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="459.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
-<text x="486.0" y="140.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Interview</text>
+<image x="477.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="486.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Interview</text>
 <text x="508.0" y="155" text-anchor="end" class="key-label">U</text>
 <rect x="517.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="517.0" y="114" width="3" height="44" rx="1.5" fill="#ff3b30"/>
-<text x="544.0" y="140.0" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="9px">Sys Health</text>
+<image x="535.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="544.0" y="145" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="8px">Sys Health</text>
 <text x="566.0" y="155" text-anchor="end" class="key-label">I</text>
 <rect x="575.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="575.0" y="114" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
@@ -140,30 +149,33 @@
 <text x="660.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Music</text>
 <text x="682.0" y="155" text-anchor="end" class="key-label">P</text>
 <rect x="691.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="691.0" y="114" width="3" height="44" rx="1.5" fill="#ff9500"/>
-<use href="#audio-icon" x="711.0" y="116" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="718.0" y="145" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="10px">⏮</text>
+<rect x="691.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="711.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="718.0" y="145" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">vk_consumer_previous</text>
 <text x="740.0" y="155" text-anchor="end" class="key-label">[</text>
 <rect x="749.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="749.0" y="114" width="3" height="44" rx="1.5" fill="#ff9500"/>
-<use href="#audio-icon" x="769.0" y="116" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="776.0" y="145" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="10px">⏭</text>
+<rect x="749.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="769.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="776.0" y="145" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">vk_consumer_next</text>
 <text x="798.0" y="155" text-anchor="end" class="key-label">]</text>
 <rect x="807.0" y="112" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="848.5" y="139.0" text-anchor="middle" class="key-label">\</text>
 <rect x="24" y="164" width="97.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
 <text x="72.75" y="192.0" text-anchor="middle" class="bind-label" fill="#007aff">⇪</text>
 <rect x="125.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="125.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="152.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">←</text>
+<rect x="125.5" y="166" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="145.5" y="168" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="152.5" y="197" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">go left</text>
 <text x="174.5" y="207" text-anchor="end" class="key-label">A</text>
 <rect x="183.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="210.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↓</text>
+<rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="203.5" y="168" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">down</text>
 <text x="232.5" y="207" text-anchor="end" class="key-label">S</text>
 <rect x="241.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="241.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="268.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">→</text>
+<rect x="241.5" y="166" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="261.5" y="168" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="268.5" y="197" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">go right</text>
 <text x="290.5" y="207" text-anchor="end" class="key-label">D</text>
 <rect x="299.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="299.5" y="166" width="3" height="44" rx="1.5" fill="#007aff"/>
@@ -178,12 +190,12 @@
 <rect x="415.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="415.5" y="166" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="433.5" y="169" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="442.5" y="197" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Firefox</text>
+<text x="442.5" y="197" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Firefox</text>
 <text x="464.5" y="207" text-anchor="end" class="key-label">H</text>
 <rect x="473.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="473.5" y="166" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="491.5" y="169" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABY2lDQ1BrQ0dDb2xvclNwYWNlRGlzcGxheVAzAAAokX2QsUvDUBDGv1aloHUQHRwcMolDlJIKuji0FURxCFXB6pS+pqmQxkeSIgU3/4GC/4EKzm4Whzo6OAiik+jm5KTgouV5L4mkInqP435877vjOCA5bnBu9wOoO75bXMorm6UtJfWMBL0gDObxnK6vSv6uP+P9PvTeTstZv///jcGK6TGqn5QZxl0fSKjE+p7PJe8Tj7m0FHFLshXyieRyyOeBZ71YIL4mVljNqBC/EKvlHt3q4brdYNEOcvu06WysyTmUE1jEDjxw2DDQhAId2T/8s4G/gF1yN+FSn4UafOrJkSInmMTLcMAwA5VYQ4ZSk3eO7ncX3U+NtYMnYKEjhLiItZUOcDZHJ2vH2tQ8MDIEXLW54RqB1EeZrFaB11NguASM3lDPtlfNauH26Tww8CjE2ySQOgS6LSE+joToHlPzA3DpfAEDp2ITpJYOWwAAAARjSUNQDA0AAW4D4+8AAABsZVhJZk1NACoAAAAIAAQBGgAFAAAAAQAAAD4BGwAFAAAAAQAAAEYBKAADAAAAAQACAACHaQAEAAAAAQAAAE4AAAAAAAAAkAAAAAEAAACQAAAAAQACoAIABAAAAAEAAAAgoAMABAAAAAEAAAAgAAAAAMasi/UAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAGdaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJYTVAgQ29yZSA2LjAuMCI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjUxMjwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj41MTI8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KuC9IVwAAA8xJREFUWAnFV1tIFFEY/s6ZmXXXrHWzFAvtYj5UdO/BqIcoutENur0EvVhRkBBEUQQhERX1UBERRFIPQUQXKIgoggi60YNdDHqoNBNLS9HSctfdmen/j42puTO7W2s/LHP2zPn/77+f+QX60NLdL0NWwJhjW+YK2NZGQNAJu88p/uvs89ONiFfIs0JqN2RH9MHNw5Nbep7uxb1kX9VWoek7IcQYBrBikZ5nU15LPYN4SRHbrrHN2NFb+yeddoQpBcrLy+UTa9VxzQiUWWaUDI857//pU0gdUjNgRjtOlshr2wnXkozw2Fy9mcHNaDht4IzDhjEGYzEm7wmOuenDC3J9AbmH99JOhAXCqtM6MUWafsyiGA0YOFvHhjKmwoYlVqXd5HgAhK3Tu9K/yXZLJbetilLKXkUVD1btd2GKUlYgJWJg07SRM0RHVkDDj7CFpm9RsA7JKEIKkKQkicGDmRo2Lc7H7PFBZGZIfP0ew9M3bThz6xNaaa1riXjDhirDJPGV5cUjAxg+xMCFe4248vALgoN0LJgaQvn60Rg6WIfFWiZAKSlg6AKVb9ux61w1zt9twMfmzm6oiYWZKFs+Egnip+YBB02jgPMvL+RzttQzRN7QKAQxyhEvSskDjtBI1MLcydl49f47Hr3+5myjKD+AU1vGYf6UEKIeSqRUBTYZ1hmzsLJkGLYtG0EJaGJHxTtcfvAF04qysGFenlJiRI6P7p9uvfpdJK0AJxfLLF2Yj/Vzc5XQu89bUN8cQXVDB8LklZUlObhT2aISlPPFjcTifS89dPzNzjHNMKRKskXTQ93gR67WUf0LusWhsj8326d6AlvPe26UsAeiMVuV167VBZhZPFjJrHzXjhPX61UXdIC4CTW2dqpm5Oz9tQKcbKPz/Ni7rlDFlgXWNIRx+PIH5fK+TYcrI1Hy9ACDTx2bhT1rCzE8aCi53HIPXKpFc1sMPo8YeyniqgCX0OwJQexeU4BBfk3J+hExcYgsr2kMq3zwAvB679oHOOOXzBjaDW7S/2MUc+6CnIz/glylcCwv3v+MZnI509nbDeCS8/tc2ZLSi8qwioolfiVy9o/KzcAwunieVbd3ZXdSEG6HBVxzgFm5kdQ1RVD7OaLWbuJSece+rOj6bo/PzqHw6mjxuft/8wuzQkLa1/o/MgC7hC21MB7T91kdDw0DRfxZzpiMLXlWs21xkCcWHsfST4IS2aBbUhxkbFVPs7SrZ3hc0gw/zZHp8wTLZgzGYkw2tpfJ/2047en2vuM5XbLUJeL3iZ68f67ZPr6T44/nPwF0AYIliM3UyAAAAABJRU5ErkJggg=="/>
-<text x="500.5" y="197" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Workbot</text>
+<text x="500.5" y="197" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Workbot</text>
 <text x="522.5" y="207" text-anchor="end" class="key-label">J</text>
 <rect x="531.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="531.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
@@ -194,8 +206,9 @@
 <text x="616.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">↓</text>
 <text x="638.5" y="207" text-anchor="end" class="key-label">L</text>
 <rect x="647.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="647.5" y="166" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="674.5" y="194.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">→</text>
+<rect x="647.5" y="166" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="667.5" y="168" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="674.5" y="197" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">move right</text>
 <text x="696.5" y="207" text-anchor="end" class="key-label">;</text>
 <rect x="705.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="705.5" y="166" width="3" height="44" rx="1.5" fill="#ff9500"/>
@@ -208,14 +221,10 @@
 <rect x="154.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
 <text x="181.5" y="244.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Android</text>
 <text x="203.5" y="259" text-anchor="end" class="key-label">Z</text>
-<rect x="212.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="212.5" y="218" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="239.5" y="246.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">Home</text>
-<text x="261.5" y="259" text-anchor="end" class="key-label">X</text>
-<rect x="270.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="270.5" y="218" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="297.5" y="246.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">End</text>
-<text x="319.5" y="259" text-anchor="end" class="key-label">C</text>
+<rect x="212.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="239.5" y="243.0" text-anchor="middle" class="key-label">X</text>
+<rect x="270.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="297.5" y="243.0" text-anchor="middle" class="key-label">C</text>
 <rect x="328.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="328.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="346.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
@@ -223,26 +232,23 @@
 <text x="377.5" y="259" text-anchor="end" class="key-label">V</text>
 <rect x="386.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="386.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
-<text x="413.5" y="244.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Warp</text>
+<image x="404.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="413.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Warp</text>
 <text x="435.5" y="259" text-anchor="end" class="key-label">B</text>
 <rect x="444.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="444.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="462.5" y="221" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MTAyNDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xMDI0PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsHtO6kAAASCSURBVFgJ7VZtaFtVGH7uvbntEvuRtE2nXXX9SKe0RUTqdM5iQcRFKg7nNj/o9IcT/zhGFcQ/wv4FxKr94SgD/xQKFcoEpwU/wC5zY2k3h7Tomui067JuMUkT89Xb5F7fky7tPXfcNi0F/bFDwj3vfd/zPM95z3vOPcCd9h9nQDDj9/v9pS6X65FcLne/JEkOVVVLKVY0ize8V0VRXKCxURp7ORAIjLe0tCwYYszNdDr9hKZp5+m/We08wzRn1HlSqdRumu38ZjEXcBgmw9ZR3d6dmJiwUdouFgZt9pNhM47bmW+9iUajXRslvRnPaEeGJ7VPxhPajZRqCsM49AIseoMKp1VvF9v/K5LCgeM/wTc1B3tHBQb9Gg62WPDqAyWoK+Pr9hbHjwVszkuyHQVHsc+pYBzuj8fg8/8NwSrDZhFwM6XhwwsZPHMygdOzWQ7KyMEJEAShhItewzj3RzhP/uvsPFAiLUdLtLmZkGBSxdmgsvyedYwcnADyc3ZO1TDgC+HS9RQHwozRyTk89+lpXA0nAZnINfrlVC6OCRGZg28cB2fo47JE/uaXM3hr+AqeOjGNwZ/Dy+4h3wz2f3YG4QSdLRaCoFhBU/HGrq1orN4CNrbYxhWhflBOVTF1LQpIIiLpLA6RkEtzGWyXk3hn+CKyGk2PfNRB9V0CPN0u9DzZiu6vs9BSlAnTM1bPQvp5c8UqtUgY2leH10euwjtLM6I17Ru7DmQo5SpLXA5YFNBxrxX9B9qxq72JZi5QMuIrIEX0TJeAjW2qq8XIK43YS1sKbHnZopaVA84GSBYrDj9ag2+O7CbyZnIycr4GGMZabVUBbHCl3Q6bEgNiIVbCVGmUDYkEVdWjYlsT7FU1a3Gs6l9VQCSpYN/xsxjyBYF0BAjPUeZZgWnIiQI+8kbg/nwagUjxHzqjGlMBC1kV+wfO4dT4zNI2o9kfapPw/k4ZIssC0yEL+GE6hq6By/jqtxgdBWI+SUaS1WzTIhQFDQ6ZTjEiKrNo+ODZRhx1PwhZtqC27He8N5aAwopRFnEtpuCFwQDe7dyKbK58XSJMBciShBM9HWir+QWPNdfAvXMHTWTptDv6tAsO6xW8/W0M/2RJBBUn7UZ4vgtiW1MDZOsWKhWWorWbUQBXxg57JY69/DihLBEvwwkyXutsht36Jw6fiiCUYSKoRmkJ9LTsPMqXzPLAfIfjoJErjS4NiytWoWcgL7wmxuc7GvHFi7W4r5ww6VhYKgx2MArI5ARUWRQ8ZOchjRycALow0FdlPU1EV/t2nDx4D1qrVGjExYgrxAX01Ecx3LWIPc38/cPIwS0BXRamq6ur16MgH/uwqx4jL1lw7PsbaLg7QfeAUrTVOyGU8OQsmHGYEng8nspkMjlpep1Zw5HNJDVNSZtGMez+/v4KUwHM4fP59iiKkjBF2aCDYTLsVckLTq/X2x2PxzecCaNGhsUwC/j6p+lH0+12O3t7ezudTucOm81mZzcZ+nNFqwfS90kAu5UqdA2fD4VC0319fd7R0VH6mNxp/8MM/AtA5+OHfI1GcAAAAABJRU5ErkJggg=="/>
-<text x="471.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">VS Code</text>
+<text x="471.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">VS Code</text>
 <text x="493.5" y="259" text-anchor="end" class="key-label">N</text>
 <rect x="502.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="502.5" y="218" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="522.5" y="220" width="14" height="14" fill="#34c759" stroke="#34c759"/>
 <text x="529.5" y="249" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Center</text>
 <text x="551.5" y="259" text-anchor="end" class="key-label">M</text>
-<rect x="560.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="560.5" y="218" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="587.5" y="246.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">Home</text>
-<text x="609.5" y="259" text-anchor="end" class="key-label">,</text>
-<rect x="618.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="618.5" y="218" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="645.5" y="246.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">End</text>
-<text x="667.5" y="259" text-anchor="end" class="key-label">.</text>
+<rect x="560.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="587.5" y="243.0" text-anchor="middle" class="key-label">,</text>
+<rect x="618.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="645.5" y="243.0" text-anchor="middle" class="key-label">.</text>
 <rect x="676.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="676.5" y="218" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="696.5" y="220" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
@@ -251,7 +257,7 @@
 <rect x="241.5" y="268" width="358.5" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="241.5" y="270" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="413.75" y="272" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="420.75" y="301" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="10px">▶/⏸</text>
+<text x="420.75" y="301" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="9px">play_or_pause</text>
 <text x="595.0" y="311" text-anchor="end" class="key-label"></text>
 <rect x="749.0" y="268" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="776.0" y="295.0" text-anchor="middle" class="key-label">←</text>
@@ -271,4 +277,6 @@
 <text x="405.0" y="337" class="legend-text">System</text>
 <rect x="460.0" y="328" width="10" height="10" rx="2" fill="#8e8e93"/>
 <text x="474.0" y="337" class="legend-text">Birman Layout</text>
+<rect x="574.5" y="328" width="10" height="10" rx="2" fill="#a2845e"/>
+<text x="588.5" y="337" class="legend-text">Karabiner</text>
 </svg>

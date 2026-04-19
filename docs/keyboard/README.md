@@ -9,6 +9,7 @@ Complete visual reference of all keyboard shortcut layers. Auto-generated from [
 -  **Navigation** (teal) — arrows, page up/down, home/end
 -  **Browser / Translate** (purple) — open browser tabs, translate text
 -  **System** (red) — reload, VPN, wallpaper
+-  **Karabiner** (brown, remap icon) — Karabiner-Elements key remappings (F-keys, navigation, media)
 -  **macOS** (gray, Apple icon) — standard macOS shortcuts
 -  **Birman Layout** (gray, Б icon) — Ilya Birman keyboard layout characters
 
