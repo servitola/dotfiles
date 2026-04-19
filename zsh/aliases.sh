@@ -96,6 +96,7 @@ function whisper_voice() {
 
 alias lg="lazygit"
 alias g="lazygit"
+alias ga="git add -A && git commit -m \"1\""
 alias ld="lazydocker"
 
 # File manager
