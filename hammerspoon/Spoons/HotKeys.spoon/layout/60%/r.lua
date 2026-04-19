@@ -26,7 +26,8 @@ return {
 --          ⇪⌃r   │     ⌃F17     │                 ↓
 { chord = "⌃F17",                          fn = "clipboard_llm" },
 --          ⇪⌥r   │     ⌥F17     │ ???
---          ⇪⌘r   │     ⌘F17     │ ???
+--          ⇪⌘r   │     ⌘F17     │                 ↓
+{ chord = "⌘F17",                          app = "OrbStack" },
 --          ⇧⌃r   │              │        Rider — run Unit Tests
 --          ⇧⌥r   │ ˚    ˚    Δ  │ ???
 --      ⇧⌥r ⇧⌥r   │ s̊    ы̊    no │ double to add sign to previous symbol
