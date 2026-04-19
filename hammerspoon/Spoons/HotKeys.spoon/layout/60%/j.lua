@@ -8,7 +8,7 @@ return {
 --          j   │ j    о    ξ  │   YouTube — 10sec back
 --——————————————┼——————————————┼——————————————————————————————————
 --         ⇪j   │              │   WorkBot — toggle (workbot://toggle)
-{ chord = "⇪j", fn = "workbot.toggle" },
+{ chord = "⇪j", app = "Workbot", window_default_position = "right" },
 --         ⇧j   │ J    О    Ξ  │
 --         ⌃j   │              │
 --         ⌥j   │ „    „    ≤  │

@@ -51,12 +51,30 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
         if hs.application.frontmostApplication() == app and hs.window.focusedWindow() == targetWindow then
             app:hide()
         else
+            if targetWindow:isMinimized() then targetWindow:unminimize() end
             targetWindow:focus()
         end
     else
         _launchTask = hs.task.new("/usr/bin/open", function() _launchTask = nil end,
             { "-a", appNameOrId:find("%.") and appNameOrId or appNameOrId, launchPath })
         _launchTask:start()
+    end
+end
+
+local function unminimize_if_needed(app)
+    if not app then return end
+    if app.isHidden and app:isHidden() then app:unhide() end
+    local hasVisible = false
+    for _, win in ipairs(app:allWindows() or {}) do
+        if win:isStandard() and not win:isMinimized() then
+            hasVisible = true
+            break
+        end
+    end
+    if not hasVisible then
+        for _, win in ipairs(app:allWindows() or {}) do
+            if win:isMinimized() then win:unminimize() end
+        end
     end
 end
 
@@ -230,74 +248,7 @@ function obj:init()
                     code, table.concat(modifiers, ", "), key, chord_entry.fn))
             end
 
-            if chord_entry.app then
-                hs.hotkey.bind(modifiers, key, function()
-
-                    local modifierStr = table.concat(modifiers, "+")
-                    log.d("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
-
-                    local app
-                    if chord_entry.app == "Visual Studio Code" then
-                        app = hs.application.get("com.microsoft.VSCode")
-                    else
-                        local found = hs.application.find(chord_entry.app)
-                        app = found
-                        if found and tostring(found):match("hs.window:") then
-                            app = found:application()
-                            log.d("Found window, getting application: " .. tostring(app))
-                        end
-                    end
-
-                    local function unminimize_all(a)
-                        if not a then return end
-                        if a.isHidden and a:isHidden() then a:unhide() end
-                        for _, win in ipairs(a:allWindows() or {}) do
-                            if win:isMinimized() then win:unminimize() end
-                        end
-                    end
-
-                    if not app or (app and app.isHidden and app:isHidden()) then
-                        log.d("Launching/focusing app: " .. chord_entry.app)
-                        hs.application.launchOrFocus(chord_entry.app)
-                        hs.timer.doAfter(0.15, function()
-                            unminimize_all(hs.application.find(chord_entry.app))
-                        end)
-                    elseif hs.application.frontmostApplication() ~= app then
-                        log.d("Activating app: " .. chord_entry.app)
-                        if app and app.activate then
-                            hs.application.launchOrFocus(chord_entry.app)
-                        end
-                        unminimize_all(app)
-                    else
-                        local hasVisibleWindow = false
-                        for _, win in ipairs(app:allWindows() or {}) do
-                            if win:isStandard() and not win:isMinimized() then
-                                hasVisibleWindow = true
-                                break
-                            end
-                        end
-                        if hasVisibleWindow then
-                        log.d("Hiding app: " .. chord_entry.app)
-                            if app and app.hide then app:hide() end
-                        else
-                            log.d("Unminimizing app: " .. chord_entry.app)
-                            unminimize_all(app)
-                        end
-                    end
-                end)
-                if chord_entry.window_default_position then
-                    if chord_entry.window_default_position == "right" then
-                        spoon.Windows:add_right_window_type_app(chord_entry.app)
-                    elseif chord_entry.window_default_position == "bottom" then
-                        spoon.Windows:add_bottom_window_type_app(chord_entry.app)
-                    end
-                end
-            elseif chord_entry.sendKey then
-                hs.hotkey.bind(modifiers, key, function()
-                    hs.eventtap.keyStrokes(chord_entry.sendKey)
-                end)
-                bindCount = bindCount + 1
-            elseif chord_entry.fn then
+            if chord_entry.fn then
                 local functionName = chord_entry.fn
                 bindCount = bindCount + 1
 
@@ -318,15 +269,7 @@ function obj:init()
                 elseif functionName == "window.bottom_40" then
                     spoon.Windows:bind_window_bottom_40(modifiers, key)
                 elseif functionName == "window.center" then
-                    hs.hotkey.bind(modifiers, key, function()
-                        local win = hs.window.frontmostWindow()
-                        if not win then return end
-                        local screen = win:screen():frame()
-                        local frame = win:frame()
-                        frame.x = screen.x + (screen.w - frame.w) / 2
-                        frame.y = screen.y + (screen.h - frame.h) / 2
-                        win:setFrame(frame, 0)
-                    end)
+                    spoon.Windows:bind_window_center(modifiers, key)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
@@ -527,6 +470,7 @@ function obj:init()
                         elseif hs.application.frontmostApplication() == warp then
                             warp:hide()
                         else
+                            unminimize_if_needed(warp)
                             warp:activate()
                         end
                     end)
@@ -547,9 +491,7 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         if appUsageAnalytics then appUsageAnalytics.toggle() end
                     end)
-                elseif functionName == "workbot.toggle" then
                     hs.hotkey.bind(modifiers, key, function()
-                        hs.urlevent.openURL("workbot2://toggle")
                     end)
                 elseif functionName == "window.hide_all_except_work"
                     or functionName == "window.focus_work"
@@ -632,6 +574,64 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         spoon.GruvboxWallpapers:setRandomWallpaper()
                     end)
+                end
+            elseif chord_entry.app then
+                hs.hotkey.bind(modifiers, key, function()
+
+                    local modifierStr = table.concat(modifiers, "+")
+                    log.d("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
+
+                    local app
+                    if chord_entry.app == "Visual Studio Code" then
+                        app = hs.application.get("com.microsoft.VSCode")
+                    else
+                        local found = hs.application.find(chord_entry.app)
+                        app = found
+                        if found and tostring(found):match("hs.window:") then
+                            app = found:application()
+                            log.d("Found window, getting application: " .. tostring(app))
+                        end
+                    end
+
+                    if not app or (app and app.isHidden and app:isHidden()) then
+                        log.d("Launching/focusing app: " .. chord_entry.app)
+                        hs.application.launchOrFocus(chord_entry.app)
+                        hs.timer.doAfter(0.15, function()
+                            unminimize_if_needed(hs.application.find(chord_entry.app))
+                        end)
+                    elseif hs.application.frontmostApplication() ~= app then
+                        log.d("Activating app: " .. chord_entry.app)
+                        unminimize_if_needed(app)
+                        app:activate()
+                    else
+                        local hasVisibleWindow = false
+                        for _, win in ipairs(app:allWindows() or {}) do
+                            if win:isVisible() then
+                                hasVisibleWindow = true
+                                break
+                            end
+                        end
+                        if hasVisibleWindow then
+                            log.d("Hiding app: " .. chord_entry.app)
+                            if app and app.hide then app:hide() end
+                        else
+                            log.d("Unminimizing app: " .. chord_entry.app)
+                            unminimize_if_needed(app)
+                        end
+                    end
+                end)
+            elseif chord_entry.sendKey then
+                hs.hotkey.bind(modifiers, key, function()
+                    hs.eventtap.keyStrokes(chord_entry.sendKey)
+                end)
+                bindCount = bindCount + 1
+            end
+
+            if chord_entry.window_default_position and chord_entry.app then
+                if chord_entry.window_default_position == "right" then
+                    spoon.Windows:add_right_window_type_app(chord_entry.app)
+                elseif chord_entry.window_default_position == "bottom" then
+                    spoon.Windows:add_bottom_window_type_app(chord_entry.app)
                 end
             end
 
