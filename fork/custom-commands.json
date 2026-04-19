@@ -4,7 +4,7 @@
   },
   {
     "action" : {
-      "script" : "rider ${repo:path}\/xTrader.sln",
+      "script" : "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
       "showOutput" : true,
       "type" : "sh",
       "waitForExit" : true
@@ -18,10 +18,9 @@
   },
   {
     "action" : {
-      "args" : "${repo:path}\/xTrader.sln",
-      "path" : "rider",
+      "script" : "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
       "showOutput" : true,
-      "type" : "process",
+      "type" : "sh",
       "waitForExit" : true
     },
     "name" : "Open Rider",
@@ -29,7 +28,7 @@
   },
   {
     "action" : {
-      "script" : "rider ${repo:path}\/xTrader.sln",
+      "script" : "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
       "showOutput" : true,
       "type" : "sh",
       "waitForExit" : true
