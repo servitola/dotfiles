@@ -1,0 +1,3 @@
+# Auto-synced by docker/sync.sh. Edit by hand to add/remove services.
+# Paths are relative to $HOME.
+projects/dotfiles/litellm
