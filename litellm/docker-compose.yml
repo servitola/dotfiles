@@ -9,13 +9,8 @@ services:
       - ./config.yaml:/app/config.yaml:ro
     environment:
       OPENROUTER_API_KEY: ${OPEN_ROUTER_API_KEY}
-      # Extra upstreams proxied through LiteLLM (for comparison with
-      # Workbot's direct AIProvider.groq/nvidia/polza/githubModels):
       GROQ_API_KEY: ${GROQ_API_KEY}
-      # User's shell var is typo'd NVIDEA_*; remap to canonical name
-      # so the LiteLLM config.yaml reference stays clean.
       NVIDIA_API_KEY: ${NVIDEA_API_KEY}
-      POLZA_API_KEY: ${POLZA_API_KEY}
       GITHUB_MODELS_TOKEN: ${GITHUB_API_TOKEN}
       LITELLM_MASTER_KEY: sk-local-workbot
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
@@ -54,18 +49,6 @@ services:
       timeout: 5s
       retries: 5
 
-  qdrant:
-    image: qdrant/qdrant:latest
-    container_name: qdrant
-    restart: unless-stopped
-    ports:
-      - "127.0.0.1:6333:6333"
-      - "127.0.0.1:6334:6334"
-    volumes:
-      - qdrant_storage:/qdrant/storage
-
 volumes:
-  qdrant_storage:
-    name: litellm_qdrant_storage
   postgres_data:
     name: litellm_postgres_data
