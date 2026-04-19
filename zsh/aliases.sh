@@ -95,6 +95,7 @@ function whisper_voice() {
 }
 
 alias lg="lazygit"
+alias g="lazygit"
 alias ld="lazydocker"
 
 # File manager
