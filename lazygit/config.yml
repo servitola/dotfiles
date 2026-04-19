@@ -1,11 +1,41 @@
 gui:
   authorColors:
     "servitola": "magenta"
-  showRandomTip: true
+  nerdFontsVersion: "3"
+  showCommandLog: false
+  showDivergenceFromBaseBranch: "arrowAndNumber"
+  theme:
+    activeBorderColor:
+      - "#d79921"
+      - bold
+    inactiveBorderColor:
+      - "#504945"
+    optionsTextColor:
+      - "#458588"
+    selectedLineBgColor:
+      - "#3c3836"
+    inactiveViewSelectedLineBgColor:
+      - "#3c3836"
+    cherryPickedCommitBgColor:
+      - "#504945"
+    cherryPickedCommitFgColor:
+      - "#d79921"
+    unstagedChangesColor:
+      - "#cc241d"
+    defaultFgColor:
+      - "#ebdbb2"
+    searchingActiveBorderColor:
+      - "#fabd2f"
+    markedBaseCommitFgColor:
+      - "#d79921"
+    markedBaseCommitBgColor:
+      - "#504945"
 git:
   parseEmoji: true
+  pagers:
+    - colorArg: always
+      pager: "diff-so-fancy"
 os:
-  copyToClipboardCmd: "pbcopy < {{text}}"
   editPreset: "vscode"
   open: "open {{filename}}"
   shellFunctionsFile: ~/projects/dotfiles/zsh/aliases.sh
