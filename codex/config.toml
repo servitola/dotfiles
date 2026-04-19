@@ -7,6 +7,8 @@ approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 web_search = "live"
 default_mode = "plan"
+
+[sandbox_workspace_write]
 network_access = true
 [model_providers.litellm]
 name = "LiteLLM Local (OpenRouter free)"
