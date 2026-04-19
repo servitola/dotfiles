@@ -337,6 +337,8 @@ cask "claude-code"
 cask "coconutbattery"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # Browser for SQLite databases
 cask "db-browser-for-sqlite"
 # Universal database tool and SQL client
