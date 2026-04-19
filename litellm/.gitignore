@@ -1,6 +1,1 @@
 .env
-*.log
-__pycache__/
-.ruff_cache/
-qdrant_storage/
-.DS_Store
