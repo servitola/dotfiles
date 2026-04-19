@@ -25,11 +25,11 @@ function obj:openTab(urlPattern)
                 return "none"
             end if
 
-            set nextPos to 1
-            if currentMatchPos > 0 and currentMatchPos < (count of matchedTabs) then
-                set nextPos to currentMatchPos + 1
-            else if currentMatchPos = (count of matchedTabs) then
-                set nextPos to 1
+            set nextPos to (count of matchedTabs)
+            if currentMatchPos > 1 then
+                set nextPos to currentMatchPos - 1
+            else if currentMatchPos = 1 then
+                set nextPos to (count of matchedTabs)
             end if
 
             set active tab index of front window to item nextPos of matchedTabs
