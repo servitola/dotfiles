@@ -147,7 +147,7 @@ install:
 	@$(REMOVE) ~/.qwen/settings.json
 	@$(LINK) ~/projects/dotfiles/qwen-code/settings.json ~/.qwen/settings.json
 	@$(REMOVE) ~/.qwen/QWEN.md
-	@$(LINK) ~/projects/dotfiles/qwen-code/QWEN.md ~/.qwen/QWEN.md
+	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.qwen/QWEN.md
 	@$(REMOVE) ~/.qwen/skills
 	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.qwen/skills
 	@$(REMOVE) ~/.qwen/agents
