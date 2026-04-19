@@ -4,6 +4,8 @@ gui:
   nerdFontsVersion: "3"
   showCommandLog: false
   showDivergenceFromBaseBranch: "arrowAndNumber"
+  commitAuthorLongLength: 9
+  commitHashLength: 0
   theme:
     activeBorderColor:
       - "#d79921"
