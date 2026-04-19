@@ -14,6 +14,10 @@
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="karabiner-icon" viewBox="0 0 16 16">
+    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
            fill: #1d1d1f; }
@@ -23,28 +27,29 @@
     .legend-text { font-size: 10px; fill: #1d1d1f; }
   </style>
 </defs>
+<rect width="910" height="376" rx="16" fill="white" fill-opacity="0.92"/>
 <text x="24" y="42" class="title">Ctrl + Alt — Window Management</text>
 <rect x="24" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="51.0" y="87.0" text-anchor="middle" class="key-label">~</text>
 <rect x="82" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="82" y="62" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="102.0" y="64" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="109.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="8px">Audio Int</text>
+<text x="109.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="9px">Audio Int</text>
 <text x="131" y="103" text-anchor="end" class="key-label">1</text>
 <rect x="140" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="140" y="62" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="160.0" y="64" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="167.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="9px">Audio BT</text>
+<text x="167.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="10px">Audio BT</text>
 <text x="189" y="103" text-anchor="end" class="key-label">2</text>
 <rect x="198" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="198" y="62" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="218.0" y="64" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="225.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="9px">Marshall</text>
+<text x="225.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="10px">Marshall</text>
 <text x="247" y="103" text-anchor="end" class="key-label">3</text>
 <rect x="256" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="256" y="62" width="3" height="44" rx="1.5" fill="#ff9500"/>
 <use href="#audio-icon" x="276.0" y="64" width="14" height="14" fill="#ff9500" stroke="#ff9500"/>
-<text x="283.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="8px">Audio Ext</text>
+<text x="283.0" y="93" text-anchor="middle" class="bind-label" fill="#ff9500" font-size="9px">Audio Ext</text>
 <text x="305" y="103" text-anchor="end" class="key-label">4</text>
 <rect x="314" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="341.0" y="87.0" text-anchor="middle" class="key-label">5</text>
@@ -76,29 +81,31 @@
 <rect x="169.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="169.0" y="114" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="189.0" y="116" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="196.0" y="145" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Fullscr</text>
+<text x="196.0" y="145" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Fullscr</text>
 <text x="218.0" y="155" text-anchor="end" class="key-label">W</text>
 <rect x="227.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#86868b"/>
-<use href="#apple" x="247.0" y="116" width="14" height="14" fill="#86868b" stroke="#86868b"/>
-<text x="254.0" y="145" text-anchor="middle" class="bind-label" fill="#86868b" font-size="10px">⌦</text>
+<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<use href="#karabiner-icon" x="247.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
+<text x="254.0" y="140" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">delete letter</text><text x="254.0" y="151" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">to the right</text>
 <text x="276.0" y="155" text-anchor="end" class="key-label">E</text>
 <rect x="285.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="285.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="303.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="312.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">WebStorm</text>
+<text x="312.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">WebStorm</text>
 <text x="334.0" y="155" text-anchor="end" class="key-label">R</text>
 <rect x="343.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="370.0" y="139.0" text-anchor="middle" class="key-label">T</text>
 <rect x="401.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="401.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
-<text x="428.0" y="140.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">YT Stream</text>
+<image x="419.0" y="117" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABnWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4yNTY8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjU2PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cl6wHhsAAARFSURBVFgJ7VZLTFxlFP4G2pkiIh3tVEpiiynVUo3Gd+NjQ1i7kp0mptZo6ivRjWhrNVFSFxAlxMyiLmxVKokbXRBXpPLQOkSrorQoaEwcJYKk0GHec/zOMHPv/Yd7L4M2cdOT/Ln//c853/fd878ucNn+5woENsIvIjWJROLmYDB4N/P2sm3T/EAg8Bd95zOZzFf19fWTfC/o+CWz8fHxumQy+VgulxsvFAppkrma+jRGYzXnkghYWlq6L5vNnnFl9BnUHM39TyIIcCCfz1/04fF1aa5i/CsRi4uLB1jSnC9DFU7FUKwNiYjH4/dzLhMWfmpZJJexXtftqOxk3gpTLMWsSsTg4OCVqVTqays7fk7ktXtF3n1CJJuyhj07mYJI9HeRV34TidvrVTEVe10Rc3NzZCrZhT9Fju4XOXgVW4PI8YMimWTZu/aZ5qe/Te0Pfyvy6IzIEYq4YM+iYlcKqHEO9PX1hRoaGh63xjJJIJviRmdY8Argy4+A44eA9IoVYnVSGaD3M+D0L4zlqJ4waWGzjwTFVg4rhx1DQHt7+y08ZG61Ara1AE+fApr2rApREWc+BvooInnRCsMKhb7xHskngRAhs3lgx2bguSYgwmfJFFs5yu/6NAQ0Njbur62t3eQMwI4bgacGgOa2VRFbtBKfAsdURAJIsBpHjgGfx0heyy/OMpYQz5K8WUthm2Irhz0CGGShUIhsLnbt7lUR0UeAX78H6riWvmC5Dz9JEVuA2CwQ3gvoNOyj7/lWYLv95U7ESg6jAlRYPNudCVY/0kIRHwLX38ZKsOR1Oh2nKYQtRLIU18qeCND1AMm9T2HeEwaHIYAnly4db7v6Oor4ALjhLiBHwiBLvJlFTLN/0y7gaCfn3H+ncesYHIYA3maL3uwlT7gZeOEEK8E1UeB859l27wRef4Z3Y+O66eT42xlkCFheXp52Oj37W7cDLftKAnJAK7/+mrBnuNNBjp+c74aA6enpCSrkHqrChGGaHeBez1NEFabYs7OzE85QQ0A0Gj3LH44fnAG+fZ1NFSD2YeMXr9j9/f1nnTGGgKGhoaWZmZn3nQGefSUuCmBElQL49SeVw4lpCFBHb2/viYWFhR+dQa79ogAVwQZt/qaYPT09Jyuj1ggYGBiYGx4efimd1r21jml2cVP5T4FiKaZiVyKuEaABnZ2dn8RisVf5W+X9aQUuvHLLcSt6mGIolmJ6hHgObxodHX2R93jx/uWfjXn9nnqT1+4dIg/eI/LOW4avHKu5ikEG48j3ZHRx1LBsD83Pz0+WGRS8TCAr/FNKrP4yGuMM1hzNJaZrlV24vIc6Ojp2jo2NvUzQ7/jLbf9hlFWVnurTmJGRkcO8dnd5I9oe41y2h917kUikqbu7+/a2trY7w+FwK+/34vGnRzjt56mpqYmurq5vKOIPd4S1oxsSUJHOyx/lO1dXYXUnaAXI5dd/ANMJvH+jf8osAAAAAElFTkSuQmCC"/>
+<text x="428.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">YT Stream</text>
 <text x="450.0" y="155" text-anchor="end" class="key-label">Y</text>
 <rect x="459.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="486.0" y="139.0" text-anchor="middle" class="key-label">U</text>
 <rect x="517.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="517.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
-<text x="544.0" y="140.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Shortcuts</text>
+<image x="535.0" y="117" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="544.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Shortcuts</text>
 <text x="566.0" y="155" text-anchor="end" class="key-label">I</text>
 <rect x="575.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="602.0" y="139.0" text-anchor="middle" class="key-label">O</text>
@@ -113,17 +120,17 @@
 <rect x="125.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="125.5" y="166" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="145.5" y="168" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="152.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Window ←</text>
+<text x="152.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Window ←</text>
 <text x="174.5" y="207" text-anchor="end" class="key-label">A</text>
 <rect x="183.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="203.5" y="168" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="8px">Win Reset</text>
+<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Win Reset</text>
 <text x="232.5" y="207" text-anchor="end" class="key-label">S</text>
 <rect x="241.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="241.5" y="166" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="261.5" y="168" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="268.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Window →</text>
+<text x="268.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Window →</text>
 <text x="290.5" y="207" text-anchor="end" class="key-label">D</text>
 <rect x="299.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="299.5" y="166" width="3" height="44" rx="1.5" fill="#af52de"/>
@@ -131,7 +138,8 @@
 <text x="348.5" y="207" text-anchor="end" class="key-label">F</text>
 <rect x="357.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="357.5" y="166" width="3" height="44" rx="1.5" fill="#af52de"/>
-<text x="384.5" y="192.0" text-anchor="middle" class="bind-label" fill="#af52de" font-size="10px">GitHub</text>
+<image x="375.5" y="169" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABnWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOlBpeGVsWERpbWVuc2lvbj4yNTY8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjU2PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+Cl6wHhsAAARFSURBVFgJ7VZLTFxlFP4G2pkiIh3tVEpiiynVUo3Gd+NjQ1i7kp0mptZo6ivRjWhrNVFSFxAlxMyiLmxVKokbXRBXpPLQOkSrorQoaEwcJYKk0GHec/zOMHPv/Yd7L4M2cdOT/Ln//c853/fd878ucNn+5woENsIvIjWJROLmYDB4N/P2sm3T/EAg8Bd95zOZzFf19fWTfC/o+CWz8fHxumQy+VgulxsvFAppkrma+jRGYzXnkghYWlq6L5vNnnFl9BnUHM39TyIIcCCfz1/04fF1aa5i/CsRi4uLB1jSnC9DFU7FUKwNiYjH4/dzLhMWfmpZJJexXtftqOxk3gpTLMWsSsTg4OCVqVTqays7fk7ktXtF3n1CJJuyhj07mYJI9HeRV34TidvrVTEVe10Rc3NzZCrZhT9Fju4XOXgVW4PI8YMimWTZu/aZ5qe/Te0Pfyvy6IzIEYq4YM+iYlcKqHEO9PX1hRoaGh63xjJJIJviRmdY8Argy4+A44eA9IoVYnVSGaD3M+D0L4zlqJ4waWGzjwTFVg4rhx1DQHt7+y08ZG61Ara1AE+fApr2rApREWc+BvooInnRCsMKhb7xHskngRAhs3lgx2bguSYgwmfJFFs5yu/6NAQ0Njbur62t3eQMwI4bgacGgOa2VRFbtBKfAsdURAJIsBpHjgGfx0heyy/OMpYQz5K8WUthm2Irhz0CGGShUIhsLnbt7lUR0UeAX78H6riWvmC5Dz9JEVuA2CwQ3gvoNOyj7/lWYLv95U7ESg6jAlRYPNudCVY/0kIRHwLX38ZKsOR1Oh2nKYQtRLIU18qeCND1AMm9T2HeEwaHIYAnly4db7v6Oor4ALjhLiBHwiBLvJlFTLN/0y7gaCfn3H+ncesYHIYA3maL3uwlT7gZeOEEK8E1UeB859l27wRef4Z3Y+O66eT42xlkCFheXp52Oj37W7cDLftKAnJAK7/+mrBnuNNBjp+c74aA6enpCSrkHqrChGGaHeBez1NEFabYs7OzE85QQ0A0Gj3LH44fnAG+fZ1NFSD2YeMXr9j9/f1nnTGGgKGhoaWZmZn3nQGefSUuCmBElQL49SeVw4lpCFBHb2/viYWFhR+dQa79ogAVwQZt/qaYPT09Jyuj1ggYGBiYGx4efimd1r21jml2cVP5T4FiKaZiVyKuEaABnZ2dn8RisVf5W+X9aQUuvHLLcSt6mGIolmJ6hHgObxodHX2R93jx/uWfjXn9nnqT1+4dIg/eI/LOW4avHKu5ikEG48j3ZHRx1LBsD83Pz0+WGRS8TCAr/FNKrP4yGuMM1hzNJaZrlV24vIc6Ojp2jo2NvUzQ7/jLbf9hlFWVnurTmJGRkcO8dnd5I9oe41y2h917kUikqbu7+/a2trY7w+FwK+/34vGnRzjt56mpqYmurq5vKOIPd4S1oxsSUJHOyx/lO1dXYXUnaAXI5dd/ANMJvH+jf8osAAAAAElFTkSuQmCC"/>
+<text x="384.5" y="197" text-anchor="middle" class="bind-label" fill="#af52de" font-size="10px">GitHub</text>
 <text x="406.5" y="207" text-anchor="end" class="key-label">G</text>
 <rect x="415.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="415.5" y="166" width="3" height="44" rx="1.5" fill="#007aff"/>
@@ -155,13 +163,14 @@
 <rect x="212.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="212.5" y="218" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="230.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="239.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="8px">Simulator</text>
+<text x="239.5" y="249" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Simulator</text>
 <text x="261.5" y="259" text-anchor="end" class="key-label">X</text>
 <rect x="270.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="297.5" y="243.0" text-anchor="middle" class="key-label">C</text>
 <rect x="328.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="328.5" y="218" width="3" height="44" rx="1.5" fill="#af52de"/>
-<text x="355.5" y="244.0" text-anchor="middle" class="bind-label" fill="#af52de" font-size="9px">YouTube</text>
+<image x="346.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="355.5" y="249" text-anchor="middle" class="bind-label" fill="#af52de" font-size="10px">YouTube</text>
 <text x="377.5" y="259" text-anchor="end" class="key-label">V</text>
 <rect x="386.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="413.5" y="243.0" text-anchor="middle" class="key-label">B</text>
@@ -186,17 +195,17 @@
 <rect x="749.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="749.0" y="270" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="769.0" y="272" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="776.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Window ←</text>
+<text x="776.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Window ←</text>
 <text x="798.0" y="311" text-anchor="end" class="key-label">←</text>
 <rect x="807.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="807.0" y="270" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="827.0" y="272" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Fullscr</text>
+<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Fullscr</text>
 <text x="856.0" y="311" text-anchor="end" class="key-label">↑↓</text>
 <rect x="865.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="865.0" y="270" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="885.0" y="272" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Window →</text>
+<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Window →</text>
 <text x="914.0" y="311" text-anchor="end" class="key-label">→</text>
 <rect x="24" y="328" width="10" height="10" rx="2" fill="#007aff"/>
 <text x="38" y="337" class="legend-text">Apps</text>
@@ -206,6 +215,6 @@
 <text x="195.5" y="337" class="legend-text">Media / Audio</text>
 <rect x="296.0" y="328" width="10" height="10" rx="2" fill="#af52de"/>
 <text x="310.0" y="337" class="legend-text">Browser / Translate</text>
-<rect x="449.5" y="328" width="10" height="10" rx="2" fill="#86868b"/>
-<text x="463.5" y="337" class="legend-text">macOS</text>
+<rect x="449.5" y="328" width="10" height="10" rx="2" fill="#a2845e"/>
+<text x="463.5" y="337" class="legend-text">Karabiner</text>
 </svg>

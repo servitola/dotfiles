@@ -1,29 +1,28 @@
-"""Apple-style color palette and category classification."""
-
+"""Apple-style color palette and category classification using source tags."""
 PALETTE = {
     "key_bg": "#f5f5f7", "key_bg_bound": "#ffffff",
     "key_border": "#d2d2d7", "key_border_unbound": "#e8e8ed",
     "text": "#1d1d1f", "text_dim": "#c7c7cc",
     "app": "#007aff", "window": "#34c759", "media": "#ff9500",
     "nav": "#5ac8fa", "browser": "#af52de", "system": "#ff3b30",
-    "macos": "#86868b", "birman": "#8e8e93",
+    "macos": "#86868b", "birman": "#8e8e93", "karabiner": "#a2845e",
 }
 CATEGORY_LABELS = {
     "app": "Apps", "window": "Window Mgmt", "media": "Media / Audio",
     "nav": "Navigation", "browser": "Browser / Translate", "system": "System",
-    "macos": "macOS", "birman": "Birman Layout",
+    "macos": "macOS", "birman": "Birman Layout", "karabiner": "Karabiner",
 }
-# Icons per category (SVG symbol id or None)
 CATEGORY_ICONS = {
-    "macos": "apple", "window": "win-icon", "media": "audio-icon", "birman": "birman",
+    "macos": "apple", "window": "win-icon", "media": "audio-icon",
+    "birman": "birman", "karabiner": "karabiner-icon",
 }
-
+# fn → category (overrides tag-based detection)
 _WIN = {"window."}
 _MEDIA_L = {"vol", "volume", "⏮", "⏭", "▶", "⏸", "play", "prev_track", "next_track"}
 _NAV_L = {"←", "→", "↑", "↓", "pgup", "pgdn", "home", "end", "↩", "enter"}
 _BROWSER = {"browser_", "translate_"}
 _SYS = {"hammerspoon_reload", "vpn.", "wallpaper_", "system_health", "screenshot_ai"}
-_MOD_CHARS = set("⌥⌘⇧⌃⌫⌦←→↑↓")
+_TAG_CAT = {"K": "karabiner", "B": "birman", "\uf8ff": "macos"}
 
 
 def get_category(entry):
@@ -37,10 +36,7 @@ def get_category(entry):
     if any(m in label for m in _MEDIA_L): return "media"
     if any(n in label for n in _NAV_L): return "nav"
     if entry.get("app"): return "app"
-    raw = entry.get("label", "")
-    # Birman: short character labels without modifier symbols
-    if not fn and 0 < len(raw) <= 4 and not any(c in raw for c in _MOD_CHARS):
-        return "birman"
-    if not fn and raw:
-        return "macos"
+    # Use source tag from comment documentation
+    tag = entry.get("source_tag", "")
+    if tag in _TAG_CAT: return _TAG_CAT[tag]
     return "app"
