@@ -606,6 +606,10 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         hs.reload()
                     end)
+                elseif functionName == "wallpaper_refresh" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.GruvboxWallpapers:setRandomWallpaper()
+                    end)
                 end
             end
 
