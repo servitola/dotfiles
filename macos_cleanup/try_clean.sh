@@ -5,6 +5,7 @@
 try_clean() {
     local DIR="$1"
     local LABEL="${2:-$1}"
+    local EXCLUDE="${3:-}"
 
     if [ ! -d "$DIR" ]; then
         printf "  ${_S_DIM}* $LABEL: not found${_S_NC}\n"
@@ -25,7 +26,12 @@ try_clean() {
         return
     fi
 
-    local ERROR_OUTPUT=$(sudo find "$DIR" -mindepth 1 -delete 2>&1 </dev/null)
+    local ERROR_OUTPUT
+    if [ -n "$EXCLUDE" ]; then
+        ERROR_OUTPUT=$(sudo find "$DIR" -mindepth 1 -maxdepth 1 -not -name "$EXCLUDE" -exec rm -rf {} + 2>&1 </dev/null)
+    else
+        ERROR_OUTPUT=$(sudo find "$DIR" -mindepth 1 -delete 2>&1 </dev/null)
+    fi
 
     if [ $? -eq 0 ]; then
         spinner_stop "$LABEL: cleaned ($(format_size $SIZE_KB))"
