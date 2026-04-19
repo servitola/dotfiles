@@ -4,7 +4,7 @@
 
 # --- Caches ---
 
-try_clean ~/Library/Caches "Library Caches"
+try_clean ~/Library/Caches "Library Caches" "tealdeer"
 try_clean /Library/Caches "System Caches"
 try_clean ~/Library/Application\ Support/Caches "Application Support Caches"
 
