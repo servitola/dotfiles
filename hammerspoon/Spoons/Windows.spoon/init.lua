@@ -14,12 +14,10 @@ dofile(spoonPath .. "windows_detection_functions.lua")
 dofile(spoonPath .. "adjust_right_panel_for_dialogs.lua")
 dofile(spoonPath .. "window_set_full_size_function.lua")
 dofile(spoonPath .. "window_set_half_function.lua")
-dofile(spoonPath .. "restore_right_panel_windows_function.lua")
 dofile(spoonPath .. "window_set_to_default_place_function.lua")
 
 local active_small_dialogs = {}
 local right_panel_windows_adjusted = false
-local right_panel_windows_positions = {}
 
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
@@ -61,6 +59,18 @@ function obj:bind_window_bottom_40(modifier, key)
     hs.hotkey.bind(modifier, key, set_window_bottom_40)
 end
 
+function obj:bind_window_center(modifier, key)
+    hs.hotkey.bind(modifier, key, function()
+        local win = hs.window.frontmostWindow()
+        if not win then return end
+        local screen = win:screen():frame()
+        local frame = win:frame()
+        frame.x = screen.x + (screen.w - frame.w) / 2
+        frame.y = screen.y + (screen.h - frame.h) / 2
+        win:setFrame(frame, 0)
+    end)
+end
+
 function obj:set_all_windows_positions()
     set_all_windows_positions()
 end
@@ -71,28 +81,11 @@ function set_window_left(window)
     end
 
     if is_ios_simulator(window) then
-        local current = window:frame()
-        local aspect_ratio = current.h / current.w
-
-        local screen = window:screen()
-        local screen_frame = screen:frame()
-
-        local target_width = screen_frame.w * 0.4
-        local target_height = target_width * aspect_ratio
-
-        if target_height > screen_frame.h * 0.7 then
-            target_height = screen_frame.h * 0.7
-            target_width = target_height / aspect_ratio
-        end
-
-        local x = screen_frame.x + margin
-        local y = screen_frame.y + (screen_frame.h - target_height) / 2 - (screen_frame.h * 0.1)
-
+        local w, h, sf = get_ios_simulator_size(window)
         window:setFrame({
-            x = x,
-            y = y,
-            w = target_width,
-            h = target_height
+            x = sf.x + margin,
+            y = sf.y + (sf.h - h) / 2 - (sf.h * 0.1),
+            w = w, h = h
         }, animation_duration)
         return
     end
@@ -148,26 +141,11 @@ function set_all_windows_positions()
                 set_window(vertical_line, topY, rightX - vertical_line, horizontal_line - margin, window)
             end
         elseif is_ios_simulator(window) then
-            local current = window:frame()
-            local aspect_ratio = current.h / current.w
-            local screen_frame = get_cached_screen(window)
-
-            local target_width = screen_frame.w * 0.4
-            local target_height = target_width * aspect_ratio
-
-            if target_height > screen_frame.h * 0.7 then
-                target_height = screen_frame.h * 0.7
-                target_width = target_height / aspect_ratio
-            end
-
-            local x = screen_frame.x + screen_frame.w * vertical_line
-            local y = screen_frame.y + (screen_frame.h * topY)
-
+            local w, h, sf = get_ios_simulator_size(window, get_cached_screen(window))
             window:setFrame({
-                x = x,
-                y = y,
-                w = target_width,
-                h = target_height
+                x = sf.x + sf.w * vertical_line,
+                y = sf.y + (sf.h * topY),
+                w = w, h = h
             }, animation_duration)
         elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)

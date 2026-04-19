@@ -6,11 +6,6 @@ function adjust_right_panel_for_dialogs()
     right_panel_windows_adjusted = true
     local right_windows = get_right_panel_windows()
 
-    right_panel_windows_positions = {}
-    for _, window in ipairs(right_windows) do
-        right_panel_windows_positions[window:id()] = window:frame()
-    end
-
     local screen = hs.screen.mainScreen()
     if not screen then return end
     local screen_frame = screen:frame()
