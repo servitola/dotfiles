@@ -1,0 +1,71 @@
+services:
+  litellm:
+    image: ghcr.io/berriai/litellm:main-latest
+    container_name: litellm
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:4000:4000"
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+    environment:
+      OPENROUTER_API_KEY: ${OPEN_ROUTER_API_KEY}
+      # Extra upstreams proxied through LiteLLM (for comparison with
+      # Workbot's direct AIProvider.groq/nvidia/polza/githubModels):
+      GROQ_API_KEY: ${GROQ_API_KEY}
+      # User's shell var is typo'd NVIDEA_*; remap to canonical name
+      # so the LiteLLM config.yaml reference stays clean.
+      NVIDIA_API_KEY: ${NVIDEA_API_KEY}
+      POLZA_API_KEY: ${POLZA_API_KEY}
+      GITHUB_MODELS_TOKEN: ${GITHUB_API_TOKEN}
+      LITELLM_MASTER_KEY: sk-local-workbot
+      DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
+      UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}
+      UI_PASSWORD: ${LITELLM_UI_PASSWORD:?set LITELLM_UI_PASSWORD in ~/.config/openai_key.sh}
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["--config", "/app/config.yaml", "--port", "4000"]
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import sys, urllib.request; urllib.request.urlopen('http://127.0.0.1:4000/health/liveliness', timeout=3); sys.exit(0)",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  db:
+    image: postgres:16-alpine
+    container_name: litellm-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: litellm
+      POSTGRES_USER: litellm
+      POSTGRES_PASSWORD: litellm
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U litellm -d litellm"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+
+volumes:
+  qdrant_storage:
+    name: litellm_qdrant_storage
+  postgres_data:
+    name: litellm_postgres_data

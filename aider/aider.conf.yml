@@ -5,7 +5,7 @@
 # provider path because LiteLLM exposes an OpenAI-compatible /v1 endpoint;
 # the "openai/" prefix tells aider's internal litellm wrapper which provider
 # driver to use, and the slug after it is the model_name defined in
-# ~/projects/LiteLLM/config.yaml.
+# ~/projects/dotfiles/litellm/config.yaml.
 #
 # Switch model at invocation time:
 #   aider --model openai/coder           # heavy coding (qwen3-coder 480B)

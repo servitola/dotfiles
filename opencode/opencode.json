@@ -1,43 +1,67 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
-  "model": "litellm/coder",
-  "small_model": "litellm/glm",
+
+  "instructions": [
+    "~/projects/dotfiles/claude-code/CLAUDE.md"
+  ],
+
+  "model": "litellm/coding",
+  "small_model": "litellm/fast",
+
   "provider": {
     "litellm": {
       "npm": "@ai-sdk/openai-compatible",
-      "name": "LiteLLM Local (OpenRouter free)",
+      "name": "LiteLLM Local",
       "options": {
         "baseURL": "http://localhost:4000/v1",
-        "apiKey": "sk-local-workbot"
+        "apiKey": "{env:LITELLM_MASTER_KEY}"
       },
       "models": {
-        "auto": {
-          "name": "Auto (rotation across free pool)",
-          "limit": { "context": 131072, "output": 8192 }
-        },
-        "coder": {
-          "name": "Qwen3-Coder 480B (heavy coding)",
-          "limit": { "context": 262000, "output": 16384 }
-        },
-        "plus": {
-          "name": "Qwen 3.6 Plus 1M (huge context)",
-          "limit": { "context": 1000000, "output": 16384 }
-        },
-        "nemotron": {
-          "name": "NVIDIA Nemotron 3 Super 120B",
-          "limit": { "context": 262144, "output": 16384 }
-        },
-        "gpt": {
-          "name": "OpenAI gpt-oss 120B",
-          "limit": { "context": 131072, "output": 16384 }
-        },
-        "glm": {
-          "name": "GLM-4.5 Air (fast)",
-          "limit": { "context": 131072, "output": 8192 }
-        }
+        "coding":     { "name": "Rotation: coding (gpt-oss / Kimi / DeepSeek)", "limit": { "context": 131072, "output": 16384 } },
+        "reasoning":  { "name": "Rotation: reasoning (Nemotron 120B / DeepSeek / Llama)", "limit": { "context": 262144, "output": 16384 } },
+        "fast":       { "name": "Rotation: fast (Groq-only, ~1-3s)", "limit": { "context": 131072, "output": 8192 } },
+        "vision":     { "name": "Rotation: vision (Nemotron-VL / Gemma)", "limit": { "context": 131072, "output": 8192 } },
+        "premium":    { "name": "Rotation: premium (Polza Claude Sonnet 4 / GPT-4o)", "limit": { "context": 200000, "output": 8192 } },
+
+        "gpt":                 { "name": "OpenAI gpt-oss 120B (OpenRouter free)", "limit": { "context": 131072, "output": 16384 } },
+        "nemotron":            { "name": "NVIDIA Nemotron 3 Super 120B (OpenRouter free, 262k)", "limit": { "context": 262144, "output": 16384 } },
+        "glm":                 { "name": "Z.AI GLM-4.5 Air (OpenRouter free, lightweight)", "limit": { "context": 131072, "output": 8192 } },
+
+        "groq-llama":          { "name": "Groq Llama 3.3 70B (direct, fast)", "limit": { "context": 131072, "output": 8192 } },
+        "groq-gpt-oss":        { "name": "Groq gpt-oss 120B (direct, fast)", "limit": { "context": 131072, "output": 16384 } },
+        "groq-compound":       { "name": "Groq Compound (agentic, web+code)", "limit": { "context": 131072, "output": 8192 } },
+
+        "nvidia-kimi":         { "name": "NVIDIA Moonshot Kimi K2.5", "limit": { "context": 131072, "output": 16384 } },
+        "nvidia-deepseek":     { "name": "NVIDIA DeepSeek V3.2", "limit": { "context": 131072, "output": 16384 } },
+        "nvidia-nemotron-120b":{ "name": "NVIDIA Nemotron 120B (direct)", "limit": { "context": 131072, "output": 16384 } },
+
+        "polza-claude":        { "name": "Polza → Claude Sonnet 4 (paid, best)", "limit": { "context": 200000, "output": 8192 } },
+        "polza-gpt4o":         { "name": "Polza → GPT-4o (paid)", "limit": { "context": 128000, "output": 16384 } }
       }
     }
   },
-  "disabled_providers": ["opencode", "anthropic", "openai", "google", "openrouter"]
+
+  "disabled_providers": ["opencode", "anthropic", "openai", "google", "openrouter", "github-copilot"],
+
+  "permission": {
+    "edit": "allow",
+    "webfetch": "allow",
+    "bash": {
+      "*": "allow",
+      "sudo *": "ask",
+      "rm -rf *": "deny",
+      "rm -rf /*": "deny",
+      "shutdown *": "deny",
+      "reboot *": "deny",
+      "diskutil erase*": "deny",
+      "dd if=*": "ask",
+      "mkfs*": "deny",
+      "> /dev/*": "deny",
+      "curl * | sh": "ask",
+      "curl * | bash": "ask",
+      "git push --force*": "ask",
+      "git push -f*": "ask"
+    }
+  }
 }
