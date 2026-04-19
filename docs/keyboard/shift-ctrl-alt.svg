@@ -14,6 +14,10 @@
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="karabiner-icon" viewBox="0 0 16 16">
+    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
            fill: #1d1d1f; }
@@ -23,6 +27,7 @@
     .legend-text { font-size: 10px; fill: #1d1d1f; }
   </style>
 </defs>
+<rect width="910" height="376" rx="16" fill="white" fill-opacity="0.92"/>
 <text x="24" y="42" class="title">Shift + Ctrl + Alt — Half-Window</text>
 <rect x="24" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="51.0" y="87.0" text-anchor="middle" class="key-label">~</text>
@@ -59,7 +64,7 @@
 <rect x="169.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="169.0" y="114" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="189.0" y="116" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="196.0" y="145" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Top 60%</text>
+<text x="196.0" y="145" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Top 60%</text>
 <text x="218.0" y="155" text-anchor="end" class="key-label">W</text>
 <rect x="227.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="254.0" y="139.0" text-anchor="middle" class="key-label">E</text>
@@ -91,22 +96,24 @@
 <rect x="183.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="183.5" y="166" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="203.5" y="168" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Bot 40%</text>
+<text x="210.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Bot 40%</text>
 <text x="232.5" y="207" text-anchor="end" class="key-label">S</text>
 <rect x="241.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="241.5" y="166" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="261.5" y="168" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="268.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">½ Right</text>
+<text x="268.5" y="197" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">½ Right</text>
 <text x="290.5" y="207" text-anchor="end" class="key-label">D</text>
 <rect x="299.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="326.5" y="191.0" text-anchor="middle" class="key-label">F</text>
 <rect x="357.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="357.5" y="166" width="3" height="44" rx="1.5" fill="#af52de"/>
-<text x="384.5" y="192.0" text-anchor="middle" class="bind-label" fill="#af52de" font-size="8px">GH Dotfiles</text>
+<image x="375.5" y="169" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="384.5" y="197" text-anchor="middle" class="bind-label" fill="#af52de" font-size="8px">GH Dotfiles</text>
 <text x="406.5" y="207" text-anchor="end" class="key-label">G</text>
 <rect x="415.5" y="164" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="415.5" y="166" width="3" height="44" rx="1.5" fill="#ff3b30"/>
-<text x="442.5" y="192.0" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="9px">HS Reload</text>
+<image x="433.5" y="169" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="442.5" y="197" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="10px">Reload</text>
 <text x="464.5" y="207" text-anchor="end" class="key-label">H</text>
 <rect x="473.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="500.5" y="191.0" text-anchor="middle" class="key-label">J</text>
@@ -130,7 +137,8 @@
 <text x="297.5" y="243.0" text-anchor="middle" class="key-label">C</text>
 <rect x="328.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="328.5" y="218" width="3" height="44" rx="1.5" fill="#af52de"/>
-<text x="355.5" y="244.0" text-anchor="middle" class="bind-label" fill="#af52de" font-size="9px">YT Playing</text>
+<image x="346.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="355.5" y="249" text-anchor="middle" class="bind-label" fill="#af52de" font-size="8px">YT Playing</text>
 <text x="377.5" y="259" text-anchor="end" class="key-label">V</text>
 <rect x="386.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="413.5" y="243.0" text-anchor="middle" class="key-label">B</text>
@@ -162,12 +170,12 @@
 <rect x="807.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="807.0" y="270" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="827.0" y="272" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Top 60%</text>
+<text x="834.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Top 60%</text>
 <text x="856.0" y="311" text-anchor="end" class="key-label">↑↓</text>
 <rect x="865.0" y="268" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="865.0" y="270" width="3" height="44" rx="1.5" fill="#34c759"/>
 <use href="#win-icon" x="885.0" y="272" width="14" height="14" fill="#34c759" stroke="#34c759"/>
-<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">½ Right</text>
+<text x="892.0" y="301" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">½ Right</text>
 <text x="914.0" y="311" text-anchor="end" class="key-label">→</text>
 <rect x="24" y="328" width="10" height="10" rx="2" fill="#34c759"/>
 <text x="38" y="337" class="legend-text">Window Mgmt</text>

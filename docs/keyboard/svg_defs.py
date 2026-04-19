@@ -27,6 +27,10 @@ def svg_defs():
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="karabiner-icon" viewBox="0 0 16 16">
+    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
+    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
     text {{ font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
            fill: {PALETTE["text"]}; }}
