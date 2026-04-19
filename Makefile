@@ -53,6 +53,15 @@ install:
 	@$(REMOVE) ~/.claude/projects/-Users-servitola-projects-dotfiles/memory
 	@$(LINK) ~/projects/dotfiles/claude-code-memory ~/.claude/projects/-Users-servitola-projects-dotfiles/memory
 
+	@echo "setup Codex"
+	@mkdir -p ~/.codex
+	@$(REMOVE) ~/.codex/config.toml
+	@$(LINK) ~/projects/dotfiles/codex/config.toml ~/.codex/config.toml
+	@$(REMOVE) ~/.codex/AGENTS.md
+	@$(LINK) ~/projects/dotfiles/AGENTS.md ~/.codex/AGENTS.md
+	@$(REMOVE) ~/.codex/instructions.md
+	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.codex/instructions.md
+
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
 
@@ -167,6 +176,10 @@ install:
 	@mkdir -p ~/.config/opencode
 	@$(REMOVE) ~/.config/opencode/opencode.json
 	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.config/opencode/opencode.json
+	@$(REMOVE) ~/.config/opencode/commands
+	@$(LINK) ~/projects/dotfiles/opencode/commands ~/.config/opencode/commands
+	@$(REMOVE) ~/.config/opencode/agents
+	@$(LINK) ~/projects/dotfiles/opencode/agents ~/.config/opencode/agents
 
 	@echo "setup Crush symlinks"
 	@mkdir -p ~/.config/crush
