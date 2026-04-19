@@ -123,6 +123,12 @@ The old 30 numbered layout files (`01. English.lua` through `30. Shift_Alt_Comma
 
 3. Hammerspoon auto-reloads on file save (ensure valid Lua syntax)
 
+## Visual Reference
+
+See **@./keyboard/** for auto-generated SVG diagrams of all 24 shortcut layers with app icons, category colors, and modifier highlighting.
+
+Regenerate: `python3 docs/keyboard/generate.py`
+
 ## Files Reference
 
 - @./karabiner/rules/ - Karabiner rule files (source of truth, `karabiner.json` is generated via `build.sh`)
@@ -132,3 +138,4 @@ The old 30 numbered layout files (`01. English.lua` through `30. Shift_Alt_Comma
 - @./hammerspoon/Spoons/Hotkeys.spoon/old/ - Legacy 30 numbered layout files (reference only)
 - @./keyboard-layout/Birman.bundle/ - Custom keyboard layout (Ukelele bundle)
 - @./keyboard-layout/Birman.bundle/Contents/Resources/*.keylayout - Ukelele XML source files
+- @./keyboard/ - Auto-generated SVG keyboard shortcut diagrams

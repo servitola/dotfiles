@@ -30,15 +30,11 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Look at `hammerspoon/config_UrlDispatcher.lua`. There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](https://www.hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
 
 * Q: I want to <ins>understand</ins> all the <ins>shortcuts</ins> I can use on macOS and <ins>with this repository</ins>
-* A: Almost all shortcuts are easy to use and set up with: `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
+* A: See the **[complete keyboard shortcuts reference](docs/keyboard/)** with all 24 layers visualized. Below is the main Hyper layer:
 
-1. Caps Lock + key
-1. Option + key
-1. Shift + Option
-1. Shift + key
+![Hyper Layer](docs/keyboard/hyper.svg)
 
-OBSOLETED IMAGE!!! CHECK THE FILE `hammerspoon/Spoons/Hotkeys.spoon/init.lua`
-![Hyper Key Layout](https://i.imgur.com/37uyo3Z.jpg)
+*Auto-generated from [Lua config](hammerspoon/Spoons/Hotkeys.spoon/layout/60%/) + Karabiner rules. [View all 24 layers](docs/keyboard/) or run `python3 docs/keyboard/generate.py` to regenerate.*
 
 * Q: I want to control my <ins>environment variables</ins> (Exports)
 * A: Look at [Zsh exports.sh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.sh)
