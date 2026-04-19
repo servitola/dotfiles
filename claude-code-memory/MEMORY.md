@@ -41,7 +41,6 @@
 
 ## Don't Touch These (intentional quirks)
 - Window split 73%/27% — It's perfect
-- Marshall BT 5-second delay — works, don't optimize
 - **hs.itunes**: Use `hs.itunes` for music control in Hammerspoon. `hs.music` does NOT work despite being the "replacement" — it's broken
 - **Makefile sudo rm -rf**: The `REMOVE := sudo rm -rf` in Makefile is intentional. Needed for system-level symlinks. Don't change
 - **duti**: Still works for setting default apps on macOS despite being unmaintained (last update 2019). No need to replace
