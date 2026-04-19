@@ -72,6 +72,16 @@
   },
   {
     "action": {
+      "script": "git add -A && git commit -m \"1\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Commit All as '1'",
+    "target": "revision"
+  },
+  {
+    "action": {
       "script": "git reset --mixed \"$sha\"",
       "showOutput": false,
       "type": "sh",
