@@ -248,18 +248,40 @@ function obj:init()
                         end
                     end
 
+                    local function unminimize_all(a)
+                        if not a then return end
+                        if a.isHidden and a:isHidden() then a:unhide() end
+                        for _, win in ipairs(a:allWindows() or {}) do
+                            if win:isMinimized() then win:unminimize() end
+                        end
+                    end
+
                     if not app or (app and app.isHidden and app:isHidden()) then
                         log.d("Launching/focusing app: " .. chord_entry.app)
                         hs.application.launchOrFocus(chord_entry.app)
+                        hs.timer.doAfter(0.15, function()
+                            unminimize_all(hs.application.find(chord_entry.app))
+                        end)
                     elseif hs.application.frontmostApplication() ~= app then
                         log.d("Activating app: " .. chord_entry.app)
                         if app and app.activate then
                             hs.application.launchOrFocus(chord_entry.app)
                         end
+                        unminimize_all(app)
                     else
+                        local hasVisibleWindow = false
+                        for _, win in ipairs(app:allWindows() or {}) do
+                            if win:isStandard() and not win:isMinimized() then
+                                hasVisibleWindow = true
+                                break
+                            end
+                        end
+                        if hasVisibleWindow then
                         log.d("Hiding app: " .. chord_entry.app)
-                        if app and app.hide then
-                            app:hide()
+                            if app and app.hide then app:hide() end
+                        else
+                            log.d("Unminimizing app: " .. chord_entry.app)
+                            unminimize_all(app)
                         end
                     end
                 end)
