@@ -33,7 +33,8 @@ return {
 --        ⇪⌥⌘h   │              │
 { chord = "⇧⌃⌥h",                               fn = "hammerspoon_reload" },
 --        ⇧⌃⌥h   │              │             — reload Hammerspoon config
---        ⇧⌃⌘h   │              │
+{ chord = "⇧⌃⌥⌘h",                              fn = "wallpaper_refresh" },
+--        ⇧⌃⌥⌘h  │              │             — refresh wallpaper
 --        ⇧⌥⌘h   │              │        Fork — quick Stash
 { chord = "F13",                                 fn = "window.hide_current" },
 --  ⌃⌥⌘h → F13  │              │             — hide current window only
