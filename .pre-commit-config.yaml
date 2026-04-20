@@ -30,3 +30,10 @@ repos:
       #   pass_filenames: false
       #   always_run: true
       #   stages: [commit]
+      # - id: regenerate-keyboard-svg
+      #   name: Regenerate keyboard shortcut SVGs
+      #   entry: .git-hooks/regenerate-keyboard-svg.sh
+      #   language: system
+      #   pass_filenames: false
+      #   files: hammerspoon/Spoons/Hotkeys\.spoon/layout/60%/.*\.lua$
+      #   stages: [pre-commit]
