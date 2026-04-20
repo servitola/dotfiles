@@ -89,10 +89,8 @@
     "allow": [
       "Bash",
       "Edit",
-      "Fetch",
       "Glob",
       "Grep",
-      "LS",
       "MultiEdit",
       "Read",
       "Task",
