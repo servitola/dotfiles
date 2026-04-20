@@ -4,6 +4,7 @@
     "commit": "",
     "pr": ""
   },
+  "autoMemoryEnabled": false,
   "cleanupPeriodDays": 60,
   "effortLevel": "high",
   "enabledPlugins": {
