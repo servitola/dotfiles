@@ -20,9 +20,9 @@ alias yc="yarn check-all"
 alias ya="yi && yb && yc"
 
 # download from YouTube
-alias ytvideo="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
+alias ytvideo="noglob yt-dlp --config-location ~/projects/dotfiles/yt-dlp/videoConfig"
 alias ytv=ytvideo
-alias ytaudio="yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
+alias ytaudio="noglob yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
 alias yta=ytaudio
 
 alias cl=clear
