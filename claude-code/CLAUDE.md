@@ -12,7 +12,8 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 
 - When debugging, always establish the root cause with evidence before proposing fixes. Do not guess or apply speculative patches.
 - When editing shell scripts, be careful with quoting, associative arrays, and sed regex syntax.
-- Maximize parallel agent usage. When solving tasks, launch as many agents concurrently as possible — explore, research, and work in parallel rather than sequentially. The more independent agents running simultaneously, the better.
+- Launch as many agents concurrently as possible — work in parallel rather than sequentially. The more independent agents running simultaneously, the better.
+- Codex will review your output once you are done
 
 # Shared AI Coding Tools
 
