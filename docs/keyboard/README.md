@@ -4,7 +4,7 @@ Complete visual reference of all keyboard shortcut layers. Auto-generated from [
 
 **Legend**: Each key shows its binding with a colored accent bar. Category icons indicate the type:
 -  **Apps** (blue) — launch/focus/hide applications
--  **Window Mgmt** (green) — window positioning and sizing
+-  **Window Management** (green) — window positioning and sizing
 -  **Media / Audio** (orange) — playback, volume, audio source switching
 -  **Navigation** (teal) — arrows, page up/down, home/end
 -  **Browser / Translate** (purple) — open browser tabs, translate text

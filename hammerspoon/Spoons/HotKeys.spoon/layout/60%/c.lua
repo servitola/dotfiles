@@ -4,46 +4,46 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
---          c   │ c    с    ψ  │       YouTube — subtitles
---——————————————┼——————————————┼————————————————————————————————————
---         ⇪c   │      ⌘→      │              → end
---         ⇧c   │ C    С    Ψ  │   Browser Vim — copy current URL
---         ⌃c   │              │ Unix Terminal — cancel/interrupt
+--——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--          c   │              │ c    с    ψ  │   │       YouTube — subtitles
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--         ⇪c   │      ⌘→      │              │   │              → end
+--         ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
+--         ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
 { chord = "⌥c",                            app = "Claude" },
---         ⌘c   │              │              — copy
---         ⇥c   │      ⌘/      │         Rider — toggle comment line
---              │              │        VSCode — toggle comment line
---              │              │         Music — show or hide the status bar
---——————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧c   │     ⇧⌘→      │              — select line till the end
---        ⇪⌃c   │     ⌃⌘→      │        VSCode — move editor to next group
---        ⇪⌥c   │     ⌥⌘→      │        VSCode — navigate to tab to the right
---              │              │         Music — seek forward
---        ⇪⌘c   │      ⌘]      │          IINA — multiply speed 2.0
---              │              │         Rider — navigate forward
---              │              │        Finder — navigate forwardq
---              │              │       Browser — navigate forward
---              │              │         Music — navigate forward
---        ⇧⌃c   │              │ Unix Terminal — used sometimes
---        ⇧⌥c   │     ⇧⌘→      │              — select line till the end
---        ⇧⌘c   │              │        Finder — go to Computer
---        ⌃⌥c   │              │ itsycal Calendar (custom in app)
---        ⌃⌘c   │              │         Rider — scroll to Bottom
---        ⌥⌘c   │              │         Rider — introduce constant
---              │              │        Finder — copy the path of the file
---              │              │        VSCode — introduce constant
---              │              │        Yandex — inspect elements
---——————————————┼——————————————┼————————————————————————————————————
---       ⇪⇧⌃c   │              │
---       ⇪⇧⌥c   │              │
---       ⇪⇧⌘c   │              │
---       ⇪⌃⌥c   │              │
---       ⇪⌃⌘c   │              │
---       ⇪⌥⌘c   │              │
---       ⇧⌃⌥c   │              │
---       ⇧⌃⌘c   │              │
---       ⇧⌥⌘c   │              │
---       ⌃⌥⌘c   │              │
---              ┴              ┴
+--         ⌘c   │              │              │ ✓ │              — copy
+--         ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
+--              │              │              │   │        VSCode — toggle comment line
+--              │              │              │   │         Music — show or hide the status bar
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧c   │     ⇧⌘→      │              │ ✓ │              — select line till the end
+--        ⇪⌃c   │     ⌃⌘→      │              │   │        VSCode — move editor to next group
+--        ⇪⌥c   │     ⌥⌘→      │              │   │        VSCode — navigate to tab to the right
+--              │              │              │   │         Music — seek forward
+--        ⇪⌘c   │      ⌘]      │              │   │          IINA — multiply speed 2.0
+--              │              │              │   │         Rider — navigate forward
+--              │              │              │   │        Finder — navigate forwardq
+--              │              │              │   │       Browser — navigate forward
+--              │              │              │   │         Music — navigate forward
+--        ⇧⌃c   │              │              │   │ Unix Terminal — used sometimes
+--        ⇧⌥c   │     ⇧⌘→      │              │ ✓ │              — select line till the end
+--        ⇧⌘c   │              │              │   │        Finder — go to Computer
+--        ⌃⌥c   │              │              │   │ itsycal Calendar (custom in app)
+--        ⌃⌘c   │              │              │   │         Rider — scroll to Bottom
+--        ⌥⌘c   │              │              │   │         Rider — introduce constant
+--              │              │              │   │        Finder — copy the path of the file
+--              │              │              │   │        VSCode — introduce constant
+--              │              │              │   │        Yandex — inspect elements
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--       ⇪⇧⌃c   │              │              │   │
+--       ⇪⇧⌥c   │              │              │   │
+--       ⇪⇧⌘c   │              │              │   │
+--       ⇪⌃⌥c   │              │              │   │
+--       ⇪⌃⌘c   │              │              │   │
+--       ⇪⌥⌘c   │              │              │   │
+--       ⇧⌃⌥c   │              │              │   │
+--       ⇧⌃⌘c   │              │              │   │
+--       ⇧⌥⌘c   │              │              │   │
+--       ⌃⌥⌘c   │              │              │   │
+--              ┴              ┴              ┴   ┴
 }

@@ -4,36 +4,36 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬—————— app — function ————————————————————
---          ↩   │      ↩       │   Music — Play selected song from beginning
---——————————————┼——————————————┼——————————————————————————————————
---         ⇪↩   │              │
---         ⇧↩   │              │        — insert newline without submitting (multiline)
---         ⌃↩   │              │        — open context menu
---         ⌥↩   │              │   Rider — show intention actions and quick-fixes popup
---              │              │ Browser — open address in new tab
---         ⌘↩   │              │        — agree or apply, send message
---——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧↩   │              │
---        ⇪⌃↩   │              │
---        ⇪⌥↩   │              │
---        ⇪⌘↩   │              │
---        ⇧⌃↩   │              │
---        ⇧⌥↩   │              │
---        ⇧⌘↩   │              │   Rider — complete current statement
---        ⌃⌥↩   │              │
---        ⌃⌘↩   │              │
---        ⌥⌘↩   │              │    Fork — commit and push changes
---——————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃↩   │              │
---       ⇪⇧⌥↩   │              │
---       ⇪⇧⌘↩   │              │
---       ⇪⌃⌥↩   │              │
---       ⇪⌃⌘↩   │              │
---       ⇪⌥⌘↩   │              │
---       ⇧⌃⌥↩   │              │
---       ⇧⌃⌘↩   │              │
---       ⇧⌥⌘↩   │              │
---       ⌃⌥⌘↩   │              │
---              ┴              ┴
+--——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————— app — function ————————————————————
+--          ↩   │      ↩       │              │   │   Music — Play selected song from beginning
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--         ⇪↩   │              │              │   │
+--         ⇧↩   │              │              │ ✓ │        — insert newline without submitting (multiline)
+--         ⌃↩   │              │              │ ✓ │        — open context menu
+--         ⌥↩   │              │              │   │   Rider — show intention actions and quick-fixes popup
+--              │              │              │   │ Browser — open address in new tab
+--         ⌘↩   │              │              │ ✓ │        — agree or apply, send message
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--        ⇪⇧↩   │              │              │   │
+--        ⇪⌃↩   │              │              │   │
+--        ⇪⌥↩   │              │              │   │
+--        ⇪⌘↩   │              │              │   │
+--        ⇧⌃↩   │              │              │   │
+--        ⇧⌥↩   │              │              │   │
+--        ⇧⌘↩   │              │              │   │   Rider — complete current statement
+--        ⌃⌥↩   │              │              │   │
+--        ⌃⌘↩   │              │              │   │
+--        ⌥⌘↩   │              │              │   │    Fork — commit and push changes
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--       ⇪⇧⌃↩   │              │              │   │
+--       ⇪⇧⌥↩   │              │              │   │
+--       ⇪⇧⌘↩   │              │              │   │
+--       ⇪⌃⌥↩   │              │              │   │
+--       ⇪⌃⌘↩   │              │              │   │
+--       ⇪⌥⌘↩   │              │              │   │
+--       ⇧⌃⌥↩   │              │              │   │
+--       ⇧⌃⌘↩   │              │              │   │
+--       ⇧⌥⌘↩   │              │              │   │
+--       ⌃⌥⌘↩   │              │              │   │
+--              ┴              ┴              ┴   ┴
 }

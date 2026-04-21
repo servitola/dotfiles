@@ -4,46 +4,46 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
---           e   │ e    у    ε  │  Browser Vim — scroll to bottom
---———————————————┼——————————————┼————————————————————————————————————
---          ⇪e   │     PgDn     │             — page down
---          ⇧e   │ E    У    Ε  │
---          ⌃e   │              │        Rider — find usages
---          ⌥e   │      ⌦       │             — delete letter to the right
---          ⌘e   │              │        Rider — recent files dialog
---               │              │     Telegram — toggle camera
---               │              │       VSCode — find with selection
---               │              │ Google Meets — toggle video
---          ⇥e   │      ⌘]      │         IINA — multiply speed 2.0
---               │              │        Rider — navigate forward
---               │              │       Finder — navigate forward
---               │              │      Browser — navigate forward
---               │              │        Music — navigate forward
---———————————————┼——————————————┼————————————————————————————————————
---         ⇪⇧e   │    ⇧PgDn     │             — select page of text down
---         ⇪⌃e   │    ⌃PgDn     │       VSCode — scroll down (without moving caret)
---         ⇪⌥e   │      ⌥⌦      │             — delete word to the right
---         ⇪⌘e   │      ⌘⌦      │             — delete
---         ⇧⌃e   │      ⌘⌫      │             — delete
---         ⇧⌥e   │      ⇧⌦      │             — delete letter to the right
---         ⇧⌘e   │              │      Browser — opened tabs dialog
---               │              │        Rider — recent locations popup
---               │              │         Mail — redirect email
---               │              │         Warp — command palette
---         ⌃⌥e   │      ⌦       │             — delete letter to the right
---         ⌃⌘e   │              │        Rider — show list of tabs of current panel
---         ⌥⌘e   │              │        Music — show equalizer
---———————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧⌃e   │  play/pause  │             — play/pause current music/video
---        ⇪⇧⌥e   │    ⇧⌥PgDn    │
---        ⇪⇧⌘e   │    ⇧⌘PgDn    │
---        ⇪⌃⌥e   │    ⌃⌥PgDn    │
---        ⇪⌃⌘e   │    ⌃⌘PgDn    │
---        ⇪⌥⌘e   │    ⌥⌘PgDn    │
---        ⇧⌃⌥e   │              │
---        ⇧⌃⌘e   │              │
---        ⇧⌥⌘e   │              │
---        ⌃⌥⌘e   │              │
---               ┴              ┴
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————— app — function ————————————————————
+--           e   │              │ e    у    ε  │   │  Browser Vim — scroll to bottom
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--          ⇪e   │     PgDn     │              │ ✓ │             — page down
+--          ⇧e   │              │ E    У    Ε  │   │
+--          ⌃e   │              │              │   │        Rider — find usages
+--          ⌥e   │      ⌦       │              │ ✓ │             — delete letter to the right
+--          ⌘e   │              │              │   │        Rider — recent files dialog
+--               │              │              │   │     Telegram — toggle camera
+--               │              │              │   │       VSCode — find with selection
+--               │              │              │   │ Google Meets — toggle video
+--          ⇥e   │      ⌘]      │              │   │         IINA — multiply speed 2.0
+--               │              │              │   │        Rider — navigate forward
+--               │              │              │   │       Finder — navigate forward
+--               │              │              │   │      Browser — navigate forward
+--               │              │              │   │        Music — navigate forward
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--         ⇪⇧e   │    ⇧PgDn     │              │ ✓ │             — select page of text down
+--         ⇪⌃e   │    ⌃PgDn     │              │   │       VSCode — scroll down (without moving caret)
+--         ⇪⌥e   │      ⌥⌦      │              │ ✓ │             — delete word to the right
+--         ⇪⌘e   │      ⌘⌦      │              │ ✓ │             — delete
+--         ⇧⌃e   │      ⌘⌫      │              │ ✓ │             — delete
+--         ⇧⌥e   │      ⇧⌦      │              │ ✓ │             — delete letter to the right
+--         ⇧⌘e   │              │              │   │      Browser — opened tabs dialog
+--               │              │              │   │        Rider — recent locations popup
+--               │              │              │   │         Mail — redirect email
+--               │              │              │   │         Warp — command palette
+--         ⌃⌥e   │      ⌦       │              │ ✓ │             — delete letter to the right
+--         ⌃⌘e   │              │              │   │        Rider — show list of tabs of current panel
+--         ⌥⌘e   │              │              │   │        Music — show equalizer
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧⌃e   │  play/pause  │              │ ✓ │             — play/pause current music/video
+--        ⇪⇧⌥e   │    ⇧⌥PgDn    │              │   │
+--        ⇪⇧⌘e   │    ⇧⌘PgDn    │              │   │
+--        ⇪⌃⌥e   │    ⌃⌥PgDn    │              │   │
+--        ⇪⌃⌘e   │    ⌃⌘PgDn    │              │   │
+--        ⇪⌥⌘e   │    ⌥⌘PgDn    │              │   │
+--        ⇧⌃⌥e   │              │              │   │
+--        ⇧⌃⌘e   │              │              │   │
+--        ⇧⌥⌘e   │              │              │   │
+--        ⌃⌥⌘e   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

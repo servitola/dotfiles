@@ -104,6 +104,9 @@ print_task "Updating Atuin db (zsh history)"
 atuin sync
 
 
+print_task "Regenerating keyboard SVGs"
+python3 ~/projects/dotfiles/docs/keyboard/generate.py 2>&1 | tail -3
+
 print_task "Setting macOS appearance"
 m appearance --highlightcolor grape
 
