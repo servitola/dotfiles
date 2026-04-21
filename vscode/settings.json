@@ -51,4 +51,6 @@
     "git.openRepositoryInParentFolders": "always",
     "chat.agent.maxRequests": 60
     "telemetry.telemetryLevel": "off"
+    "claudeCode.preferredLocation": "panel",
+    "claudeCode.initialPermissionMode": "plan"
 }
