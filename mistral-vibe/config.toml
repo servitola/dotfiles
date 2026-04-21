@@ -1,0 +1,23 @@
+active_model = "devstral-small"
+enable_telemetry = false
+include_project_context = true
+models = [
+    { name = "labs-devstral-small-2512", provider = "mistral", alias = "devstral-small" },
+    { name = "devstral-2512", provider = "mistral", alias = "devstral" },
+    { name = "coding", provider = "litellm", alias = "free" },
+    { name = "nemotron", provider = "litellm", alias = "nemotron" },
+    { name = "fast", provider = "litellm", alias = "fast" },
+]
+
+[[providers]]
+name = "mistral"
+api_base = "https://api.mistral.ai/v1"
+api_key_env_var = "MISTRAL_API_KEY"
+backend = "mistral"
+
+[[providers]]
+name = "litellm"
+api_base = "http://localhost:4000/v1"
+api_key_env_var = "LITELLM_MASTER_KEY"
+api_style = "openai"
+backend = "generic"

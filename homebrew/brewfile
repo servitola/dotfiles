@@ -184,6 +184,8 @@ brew "python@3.13"
 brew "midnight-commander"
 # AI on the command-line
 brew "mods"
+# CLI coding agent by Mistral AI
+brew "mistral-vibe"
 # Cross platform, open source .NET development framework
 brew "mono"
 # Collection of tools that nobody wrote when UNIX was young
