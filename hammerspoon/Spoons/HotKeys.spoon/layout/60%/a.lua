@@ -4,52 +4,52 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬———————— app — function ————————————————————
---           a   │ a    ф    α  │
---          aa   │              │  BrowserVim — go back — CUSTOM
---———————————————┼——————————————┼——————————————————————————————————————————————
---          ⇪a   │      ←       │            — go left
---          ⇧a   │ A    Ф    Α  │
---          ⌃a   │              │       Rider — git annotate (blame) — CUSTOM
---               │              │      VSCode — git annotate (blame) — CUSTOM
---          ⌥a   │      ⌥←      │            — jump a word to the left
---               │              │     YouTube — jump to chapter to the left
---          ⌘a   │              │            — select all
---          ⇥a   │      ⌘l      │        IINA — ab-loop (A-B loop)
---               │              │       Rider — goto line,
---               │              │      VSCode — goto line
---               │              │     Browser — focus Url Line,
---               │              │       Music — go to Current song,
---               │              │    Telegram — lock Telegram
---———————————————┼——————————————┼——————————————————————————————————————————————
---         ⇪⇧a   │      ⇧←      │            — select letter to the left
---         ⇪⌃a   │      ⌃←      │            — jump to workspace to the left
---         ⇪⌥a   │      ⌥←      │            — jump a word to the left
---               │              │     YouTube — jump to chapter to the left
---         ⇪⌘a   │      ⌘←      │            — home, jump to the left start of string
---         ⇧⌃a   │              │            — select line to the left
---         ⇧⌥a   │     ⇧⌥←      │            — select word to the left
---         ⇧⌘a   │              │      VSCode — show actions palette
---               │              │        Mail — attach files
---               │              │      Finder — go to Applications
---               │              │       Music — deselect all songs
-{ chord = "⌃⌥a",                           fn = "window.left" },
---         ⌃⌘a   │              │       Rider — show all affected files in source control
---               │              │        Mail — archive message
---         ⌥⌘a   │              │
---———————————————┼——————————————┼——————————————————————————————————————————————
---        ⇪⇧⌃a   │  prev_track  │            — previous track
---        ⇪⇧⌥a   │     ⇧⌥←      │            — select word to the left
---        ⇪⇧⌘a   │     ⇧⌘←      │            — select text to the left till the start of string
---        ⇪⌃⌥a   │     ⌃⌥←      │
---        ⇪⌃⌘a   │     ⌃⌘←      │      VSCode — move editor to previous group
---        ⇪⌥⌘a   │     ⌥⌘←      │       Music — seek backward
---               │              │      VSCode — go to previous tab
---               │              │       iTerm — focus pane to the left
-{ chord= "⇧⌃⌥a",                           fn = "window.half_left" },
---        ⇧⌃⌘a   │              │
---        ⇧⌥⌘a   │     ⇧⌘⌫      │       Rider — go to last edit place
---               │              │      VSCode — go to last edit place
---        ⌃⌥⌘a   │              │
---               ┴              ┴
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬———————— app — function ————————————————————
+--           a   │              │ a    ф    α  │   │
+--          aa   │              │              │   │  BrowserVim — go back — CUSTOM
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
+--          ⇪a   │      ←       │              │   │
+--          ⇧a   │              │ A    Ф    Α  │   │
+--          ⌃a   │              │              │   │       Rider — git annotate (blame) — CUSTOM
+--               │              │              │   │      VSCode — git annotate (blame) — CUSTOM
+--          ⌥a   │      ⌥←      │              │ ✓ │            — jump a word to the left
+--               │              │              │   │     YouTube — jump to chapter to the left
+--          ⌘a   │              │              │ ✓ │            — select all
+--          ⇥a   │      ⌘l      │              │   │        IINA — ab-loop (A-B loop)
+--               │              │              │   │       Rider — goto line,
+--               │              │              │   │      VSCode — goto line
+--               │              │              │   │     Browser — focus Url Line,
+--               │              │              │   │       Music — go to Current song,
+--               │              │              │   │    Telegram — lock Telegram
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
+--         ⇪⇧a   │      ⇧←      │              │ ✓ │            — select letter to the left
+--         ⇪⌃a   │      ⌃←      │              │ ✓ │            — jump to workspace to the left
+--         ⇪⌥a   │      ⌥←      │              │ ✓ │            — jump a word to the left
+--               │              │              │   │     YouTube — jump to chapter to the left
+--         ⇪⌘a   │      ⌘←      │              │ ✓ │            — home, jump to the left start of string
+--         ⇧⌃a   │              │              │ ✓ │            — select line to the left
+--         ⇧⌥a   │     ⇧⌥←      │              │ ✓ │            — select word to the left
+--         ⇧⌘a   │              │              │   │      VSCode — show actions palette
+--               │              │              │   │        Mail — attach files
+--               │              │              │   │      Finder — go to Applications
+--               │              │              │   │       Music — deselect all songs
+{ chord = "⌃⌥a",                                              fn = "window.left" },
+--         ⌃⌘a   │              │              │   │       Rider — show all affected files in source control
+--               │              │              │   │        Mail — archive message
+--         ⌥⌘a   │              │              │   │
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
+--        ⇪⇧⌃a   │  prev_track  │              │ ✓ │            — previous track
+--        ⇪⇧⌥a   │     ⇧⌥←      │              │ ✓ │            — select word to the left
+--        ⇪⇧⌘a   │     ⇧⌘←      │              │ ✓ │            — select text to the left till the start of string
+--        ⇪⌃⌥a   │     ⌃⌥←      │              │   │
+--        ⇪⌃⌘a   │     ⌃⌘←      │              │   │      VSCode — move editor to previous group
+--        ⇪⌥⌘a   │     ⌥⌘←      │              │   │       Music — seek backward
+--               │              │              │   │      VSCode — go to previous tab
+--               │              │              │   │       iTerm — focus pane to the left
+{ chord= "⇧⌃⌥a",                                              fn = "window.half_left" },
+--        ⇧⌃⌘a   │              │              │   │
+--        ⇧⌥⌘a   │     ⇧⌘⌫      │              │   │       Rider — go to last edit place
+--               │              │              │   │      VSCode — go to last edit place
+--        ⌃⌥⌘a   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

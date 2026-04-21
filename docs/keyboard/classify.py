@@ -9,7 +9,7 @@ _KM = {"⇥":"tab","⎋":"tilde","←":"left","→":"right","↑":"up","↓":"do
 _f = frozenset
 _T = {_f(): "Base", _f({"hyper"}): "Hyper — Apps + Navigation",
     _f({"ctrl","alt"}): "Ctrl + Alt — Window Management",
-    _f({"shift","ctrl","alt"}): "Shift + Ctrl + Alt — Half-Window",
+    _f({"shift","ctrl","alt"}): "Shift + Ctrl + Alt — Shift of Ctrl + Alt layer",
     _f({"hyper","shift"}): "Hyper + Shift — Extended Apps",
     _f({"hyper","ctrl"}): "Hyper + Ctrl — Workspaces + Scroll",
     _f({"hyper","alt"}): "Hyper + Alt — Word Operations",

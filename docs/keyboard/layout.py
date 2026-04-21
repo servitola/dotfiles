@@ -21,7 +21,7 @@ ROWS = [
      ("\u21e7", 2.75, "shift_r")],
 
     [("\u2303", 1.25, "ctrl"), ("\u2325", 1.25, "opt"), ("\u2318", 1.25, "cmd"),
-     ("", 6.25, "space"), ("\u2318", 1.25, "cmd_r"), ("\u2325", 1.25, "opt_r"),
+     ("", 5.75, "space"), ("\u2318", 1.25, "cmd_r"), ("\u2325", 1.25, "opt_r"),
      ("\u2190", 1, "left"), ("\u2191\u2193", 1, "updown"), ("\u2192", 1, "right")],
 ]
 
@@ -33,5 +33,15 @@ KEY_ALIASES = {
 
 
 def get_key_id(row_key_id):
-    """Resolve aliases to canonical key id for entry lookup."""
     return KEY_ALIASES.get(row_key_id, row_key_id)
+
+def trackpad_bounds(px, U, G):
+    """Return (x1, x2) for trackpad card aligned with ⌥ keys."""
+    cx = px
+    x1 = x2 = px
+    for _, wu, kid in ROWS[-1]:
+        w = wu*U+(wu-1)*G if wu > 1 else U
+        if kid == "opt": x1 = cx
+        if kid == "opt_r": x2 = cx + w
+        cx += w + G
+    return x1, x2

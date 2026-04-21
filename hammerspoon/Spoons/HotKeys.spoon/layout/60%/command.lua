@@ -4,8 +4,8 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬
---          ⌘   │      ⌘       │
---       ⌘click │              │ 🌐 — open in new tab but stay on current page
---              ┴              ┴
+--——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬
+--          ⌘   │      ⌘       │              │   │
+--       ⌘click │              │              │   │ 🌐 — open in new tab but stay on current page
+--              ┴              ┴              ┴   ┴
 }

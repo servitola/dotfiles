@@ -4,39 +4,39 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
---          k   │ k    л    κ  │      YouTube — play/pause
---——————————————┼——————————————┼——————————————————————————————————
---         ⇪k   │      ←       │
---         ⇧k   │ K    Л    Κ  │
---         ⌃k   │              │             — cut all text till the end of line
---         ⌥k   │ “    ”    ¬  │
---         ⌘k   │              │     Telegram — Focus search
---              │              │       VSCode — choose repository
---——————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧k   │      ⇧←      │             — select letter to the left
---        ⇪⌃k   │      ⌃←      │             — jump to workspace to the left
---        ⇪⌥k   │      ⌥←      │             — jump a word to the left
---              │              │      YouTube — jump to chapter to the left
---        ⇪⌘k   │      ⌘←      │             — home/jump to start of line
---        ⇧⌃k   │              │
---        ⇧⌥k   │              │
---        ⇧⌘k   │              │       Finder — go to Network
---        ⌃⌥k   │              │
---        ⌃⌘k   │              │
---        ⌥⌘k   │              │
---——————————————┼——————————————┼——————————————————————————————————
---       ⇪⇧⌃k   │  prev_track  │             — previous track
---       ⇪⇧⌥k   │     ⇧⌥←      │             — select word to the left
---       ⇪⇧⌘k   │     ⇧⌘←      │
---       ⇪⌃⌥k   │     ⌃⌥←      │
---       ⇪⌃⌘k   │     ⌃⌘←      │       VSCode — move editor to previous group
---       ⇪⌥⌘k   │     ⌥⌘←      │        Music — seek backward;
---              │              │       VSCode — go to previous tab;
---              │              │        iTerm — focus pane to the left
---       ⇧⌃⌥k   │              │
---       ⇧⌃⌘k   │              │
---       ⇧⌥⌘k   │              │
---       ⌃⌥⌘k   │              │
---              ┴              ┴
+--——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————— app — function ————————————————————
+--          k   │              │ k    л    κ  │   │      YouTube — play/pause
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--         ⇪k   │      ←       │              │   │
+--         ⇧k   │              │ K    Л    Κ  │   │
+--         ⌃k   │              │              │ ✓ │             — cut all text till the end of line
+--         ⌥k   │              │ “    ”    ¬  │   │
+--         ⌘k   │              │              │   │     Telegram — Focus search
+--              │              │              │   │       VSCode — choose repository
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--        ⇪⇧k   │      ⇧←      │              │ ✓ │             — select letter to the left
+--        ⇪⌃k   │      ⌃←      │              │ ✓ │             — jump to workspace to the left
+--        ⇪⌥k   │      ⌥←      │              │ ✓ │             — jump a word to the left
+--              │              │              │   │      YouTube — jump to chapter to the left
+--        ⇪⌘k   │      ⌘←      │              │ ✓ │             — home/jump to start of line
+--        ⇧⌃k   │              │              │   │
+--        ⇧⌥k   │              │              │   │
+--        ⇧⌘k   │              │              │   │       Finder — go to Network
+--        ⌃⌥k   │              │              │   │
+--        ⌃⌘k   │              │              │   │
+--        ⌥⌘k   │              │              │   │
+--——————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--       ⇪⇧⌃k   │  prev_track  │              │ ✓ │             — previous track
+--       ⇪⇧⌥k   │     ⇧⌥←      │              │ ✓ │             — select word to the left
+--       ⇪⇧⌘k   │     ⇧⌘←      │              │   │
+--       ⇪⌃⌥k   │     ⌃⌥←      │              │   │
+--       ⇪⌃⌘k   │     ⌃⌘←      │              │   │       VSCode — move editor to previous group
+--       ⇪⌥⌘k   │     ⌥⌘←      │              │   │        Music — seek backward;
+--              │              │              │   │       VSCode — go to previous tab;
+--              │              │              │   │        iTerm — focus pane to the left
+--       ⇧⌃⌥k   │              │              │   │
+--       ⇧⌃⌘k   │              │              │   │
+--       ⇧⌥⌘k   │              │              │   │
+--       ⌃⌥⌘k   │              │              │   │
+--              ┴              ┴              ┴   ┴
 }
