@@ -4,39 +4,39 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
---           ↑   │       ↑      │      Telegram — edit last message
---               │              │          IINA — sound up 5%
---———————————————┼——————————————┼——————————————————————————————————
---          ⇪↑   │              │
---          ⇧↑   │              │              — select text up one line
---          ⌃↑   │              │              — show windows of current app
---          ⌥↑   │              │              — move line up
---               │              │         Rider — extend selection
---          ⌘↑   │              │         Music — increase volume
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--           ↑   │      ↑       │              │   │      Telegram — edit last message
+--               │              │              │   │          IINA — sound up 5%
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--          ⇪↑   │      ↑       │              │   │          IINA — sound up 5%
+--          ⇧↑   │              │              │ ✓ │              — select text up one line
+--          ⌃↑   │              │              │ ✓ │              — show windows of current app
+--          ⌥↑   │              │              │ ✓ │              — move line up
+--               │              │              │   │         Rider — extend selection
+--          ⌘↑   │              │              │   │         Music — increase volume
 --                              │        VSCode — jump to breadcumbs
---———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧↑   │              │
---         ⇪⌃↑   │              │
---         ⇪⌥↑   │              │
---         ⇪⌘↑   │              │
---         ⇧⌃↑   │              │ FIX!!! should up volume up
---         ⇧⌥↑   │              │        VSCode — move line up
---         ⇧⌘↑   │ key_light_up │  — increase keyboard light (illumination_increment)
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--         ⇪⇧↑   │              │              │   │
+--         ⇪⌃↑   │              │              │   │
+--         ⇪⌥↑   │              │              │   │
+--         ⇪⌘↑   │              │              │   │
+--         ⇧⌃↑   │              │              │   │ FIX!!! should up volume up
+--         ⇧⌥↑   │              │              │   │        VSCode — move line up
+--         ⇧⌘↑   │ key_light_up │              │ ✓ │  — increase keyboard light (illumination_increment)
 { chord = "⌃⌥↑",                             fn = "window.fullscreen" },
---         ⌃⌘↑   │              │
---         ⌥⌘↑   │              │        VSCode — create cursor up
---———————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧⌃↑   │              │
---        ⇪⇧⌥↑   │              │
---        ⇪⇧⌘↑   │              │
---        ⇪⌃⌥↑   │              │
---        ⇪⌃⌘↑   │              │
---        ⇪⌥⌘↑   │              │
+--         ⌃⌘↑   │              │              │   │
+--         ⌥⌘↑   │              │              │   │        VSCode — create cursor up
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--        ⇪⇧⌃↑   │              │              │   │
+--        ⇪⇧⌥↑   │              │              │   │
+--        ⇪⇧⌘↑   │              │              │   │
+--        ⇪⌃⌥↑   │              │              │   │
+--        ⇪⌃⌘↑   │              │              │   │
+--        ⇪⌥⌘↑   │              │              │   │
 { chord= "⇧⌃⌥↑",                            fn = "window.top_60" },
---        ⇧⌃⌘↑   │              │
---        ⇧⌥⌘↑   │              │
---  ⌃⌥⌘⇧↑ → ⌃F13  │              │              — focus work apps (hide non-work)
+--        ⇧⌃⌘↑   │              │              │   │
+--        ⇧⌥⌘↑   │              │              │   │
+--  ⌃⌥⌘⇧↑ → ⌃F13  │              │              │ ✓ │              — focus work apps (hide non-work)
 { chord = "⌃F13",                                fn = "window.focus_work" },
---               ┴              ┴
+--               ┴              ┴              ┴   ┴
 }

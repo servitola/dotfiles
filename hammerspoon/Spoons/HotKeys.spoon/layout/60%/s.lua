@@ -4,46 +4,46 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬———————— app — function ————————————————————
---           s   │ s    ы    σ  │
---———————————————┼——————————————┼—————————————  ———————————————————————
---          ⇪s   │      ↓       │            — down
---          ⇧s   │ S    Ы    Σ  │ Browser Vim — duplicate tab
---          ⌃s   │              │       Rider — save with format (idea + custom macros)
---               │              │ Claude Code — stash prompt
---          ⌥s   │      ⌥↓      │            — move line down
---               │              │     YouTube — previous chapter in current video
---          ⌘s   │              │        IINA — screenshot
---               │              │            — save
---          ⇥s   │              │   karabiner — type 'servitola'
---———————————————┼——————————————┼————————————————————————————————————
---         ⇪⇧s   │      ⇧↓      │            — select line down
---         ⇪⌃s   │      ⌃↓      │            — show windows of current app
---         ⇪⌥s   │      ⌥↓      │            — move line down
---               │              │     YouTube — previous chapter in current video
---               │              │       Rider — shrink selection
---         ⇪⌘s   │      ⌘↓      │       Rider — edit source
---         ⇧⌃s   │              │
---         ⇧⌥s   │     ⇧⌥↓      │      VSCode — move line down
---         ⇧⌘s   │              │            — save as
---               │              │      Finder — go to Shared
-{ chord = "⌃⌥s",                           fn = "window.set_all_to_default" },
---         ⌃⌘s   │              │      Finder — toggle SideBar
---               │              │       Rider — toggle Sidebar
---               │              │        Mail — hide/show sidebar
---         ⌥⌘s   │              │
---———————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧⌃s   │ volume_down  │            — volume down
---        ⇪⇧⌥s   │              │
---        ⇪⇧⌘s   │   light_dn   │            — illumination_decrement
---        ⇪⌃⌥s   │              │
---        ⇪⌃⌘s   │     ⌃⌘↓      │       Rider — navigate to down method
---        ⇪⌥⌘s   │     ⌥⌘↓      │      VSCode — clone caret down
---               │              │       iTerm — focus pane below
---               │              │       Rider — next in panel
-{ chord= "⇧⌃⌥s",                          fn = "window.bottom_40" },
---        ⇧⌃⌘s   │              │
---        ⇧⌥⌘s   │              │        Fork — send all files to staged/unstaged
---        ⌃⌥⌘s   │              │
---               ┴              ┴
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬———————— app — function ————————————————————
+--           s   │              │ s    ы    σ  │   │
+--———————————————┼——————————————┼——————————————┼———┼—————————————  ———————————————————————
+--          ⇪s   │      ↓       │              │ ✓ │            — down
+--          ⇧s   │              │ S    Ы    Σ  │   │ Browser Vim — duplicate tab
+--          ⌃s   │              │              │   │       Rider — save with format (idea + custom macros)
+--               │              │              │   │ Claude Code — stash prompt
+--          ⌥s   │      ⌥↓      │              │ ✓ │            — move line down
+--               │              │              │   │     YouTube — previous chapter in current video
+--          ⌘s   │              │              │   │        IINA — screenshot
+--               │              │              │ ✓ │            — save
+--          ⇥s   │              │              │ ✓ │   karabiner — type 'servitola'
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--         ⇪⇧s   │      ⇧↓      │              │ ✓ │            — select line down
+--         ⇪⌃s   │      ⌃↓      │              │ ✓ │            — show windows of current app
+--         ⇪⌥s   │      ⌥↓      │              │ ✓ │            — move line down
+--               │              │              │   │     YouTube — previous chapter in current video
+--               │              │              │   │       Rider — shrink selection
+--         ⇪⌘s   │      ⌘↓      │              │   │       Rider — edit source
+--         ⇧⌃s   │              │              │   │
+--         ⇧⌥s   │     ⇧⌥↓      │              │   │      VSCode — move line down
+--         ⇧⌘s   │              │              │ ✓ │            — save as
+--               │              │              │   │      Finder — go to Shared
+{ chord = "⌃⌥s",                                              fn = "window.set_all_to_default" },
+--         ⌃⌘s   │              │              │   │      Finder — toggle SideBar
+--               │              │              │   │       Rider — toggle Sidebar
+--               │              │              │   │        Mail — hide/show sidebar
+--         ⌥⌘s   │              │              │   │
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧⌃s   │ volume_down  │              │ ✓ │            — volume down
+--        ⇪⇧⌥s   │              │              │   │
+--        ⇪⇧⌘s   │   light_dn   │              │ ✓ │            — illumination_decrement
+--        ⇪⌃⌥s   │              │              │   │
+--        ⇪⌃⌘s   │     ⌃⌘↓      │              │   │       Rider — navigate to down method
+--        ⇪⌥⌘s   │     ⌥⌘↓      │              │   │      VSCode — clone caret down
+--               │              │              │   │       iTerm — focus pane below
+--               │              │              │   │       Rider — next in panel
+{ chord= "⇧⌃⌥s",                                              fn = "window.bottom_40" },
+--        ⇧⌃⌘s   │              │              │   │
+--        ⇧⌥⌘s   │              │              │   │        Fork — send all files to staged/unstaged
+--        ⌃⌥⌘s   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

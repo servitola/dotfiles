@@ -1,9 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="910" height="376" viewBox="0 0 910 376">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="608" viewBox="0 0 922 608">
 <defs>
-  <filter id="shadow" x="-4%" y="-4%" width="108%" height="116%">
-    <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.07"/></filter>
-  <filter id="shadow-bound" x="-4%" y="-4%" width="108%" height="116%">
-    <feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#000" flood-opacity="0.12"/></filter>
+  <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
+    <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
+  <filter id="shadow-bound" x="-6%" y="-6%" width="112%" height="120%">
+    <feDropShadow dx="0" dy="0.5" stdDeviation="1.5" flood-color="#000" flood-opacity="0.08"/>
+    <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.03"/></filter>
+  <filter id="shadow-card" x="-4%" y="-4%" width="108%" height="116%">
+    <feDropShadow dx="0" dy="1" stdDeviation="6" flood-color="#000" flood-opacity="0.06"/></filter>
   <symbol id="apple" viewBox="0 0 16 16"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></symbol>
   <symbol id="win-icon" viewBox="0 0 16 16">
     <rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
@@ -14,175 +17,451 @@
   <symbol id="birman" viewBox="0 0 16 16">
     <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
-  <symbol id="karabiner-icon" viewBox="0 0 16 16">
-    <rect x="1" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
-    <rect x="10" y="5" width="5" height="6" rx="1" fill="none" stroke-width="1.2"/>
-    <path d="M6 8h1.5m1 0h1.5M9.5 6.5l1 1.5-1 1.5" fill="none" stroke-width="1.1"/></symbol>
   <style>
-    text { font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif;
-           fill: #1d1d1f; }
-    .key-label { font-size: 9px; fill: #c7c7cc; }
-    .bind-label { font-size: 10px; font-weight: 500; }
-    .title { font-size: 18px; font-weight: 600; fill: #1d1d1f; }
-    .legend-text { font-size: 10px; fill: #1d1d1f; }
+    text { font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; fill: #1d1d1f; }
+    .key-label { font-size: 8px; fill: #aeaeb2; letter-spacing: 0.02em; }
+    .bind-label { font-size: 10px; font-weight: 500; letter-spacing: -0.01em; }
+    .title { font-size: 15px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
+    .legend-text { font-size: 10px; fill: #86868b; font-weight: 400; }
+    .detail-text { font-size: 9px; fill: #86868b; }
+    .detail-key { font-size: 9px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
+    .key-group { cursor: default; }
+    .key-group:hover > rect:first-child { stroke: #007aff !important; stroke-width: 1.5px !important; }
+    .key-tip { transition: opacity 0.15s ease; }
+    .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="910" height="376" rx="16" fill="white" fill-opacity="0.92"/>
-<text x="24" y="42" class="title">Hyper + Ctrl — Workspaces + Scroll</text>
-<rect x="24" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="24" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="44.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="51.0" y="88" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">toggle</text><text x="51.0" y="99" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">terminal</text>
-<text x="73" y="103" text-anchor="end" class="key-label">~</text>
-<rect x="82" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="109.0" y="87.0" text-anchor="middle" class="key-label">1</text>
-<rect x="140" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="167.0" y="87.0" text-anchor="middle" class="key-label">2</text>
-<rect x="198" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="225.0" y="87.0" text-anchor="middle" class="key-label">3</text>
-<rect x="256" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="256" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="276.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="283.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F4</text>
-<text x="305" y="103" text-anchor="end" class="key-label">4</text>
-<rect x="314" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="341.0" y="87.0" text-anchor="middle" class="key-label">5</text>
-<rect x="372" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="372" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="392.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="399.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F6</text>
-<text x="421" y="103" text-anchor="end" class="key-label">6</text>
-<rect x="430" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="457.0" y="87.0" text-anchor="middle" class="key-label">7</text>
-<rect x="488" y="60" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="515.0" y="87.0" text-anchor="middle" class="key-label">8</text>
-<rect x="546" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="546" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="566.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="573.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F9</text>
-<text x="595" y="103" text-anchor="end" class="key-label">9</text>
-<rect x="604" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="604" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="624.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="631.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F10</text>
-<text x="653" y="103" text-anchor="end" class="key-label">0</text>
-<rect x="662" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="662" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="682.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="689.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F11</text>
-<text x="711" y="103" text-anchor="end" class="key-label">-</text>
-<rect x="720" y="60" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="720" y="62" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="740.0" y="64" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="747.0" y="93" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F12</text>
-<text x="769" y="103" text-anchor="end" class="key-label">=</text>
-<rect x="778" y="60" width="112" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="834.0" y="87.0" text-anchor="middle" class="key-label">⌫</text>
-<rect x="24" y="112" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="65.5" y="139.0" text-anchor="middle" class="key-label">⇥</text>
-<rect x="111.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="111.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="131.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="138.0" y="140" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">scroll up (without</text><text x="138.0" y="151" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">moving caret)</text>
-<text x="160.0" y="155" text-anchor="end" class="key-label">Q</text>
-<rect x="169.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="196.0" y="139.0" text-anchor="middle" class="key-label">W</text>
-<rect x="227.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="227.0" y="114" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="247.0" y="116" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="254.0" y="140" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">scroll down (without</text><text x="254.0" y="151" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">moving caret)</text>
-<text x="276.0" y="155" text-anchor="end" class="key-label">E</text>
-<rect x="285.0" y="112" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="285.0" y="114" width="3" height="44" rx="1.5" fill="#007aff"/>
-<image x="303.0" y="117" width="18" height="18" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MTAyNDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xMDI0PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsHtO6kAAAdUSURBVFgJpZdZbxvXFcd/s3IVJZEiLWuxYlu25aVe4qq1XNtB/BQgQIG8tCiKAkX7WPQLFP0K/QZFX/rSviVB0KJpUsBubbeW4TVxbMuStYtaKO7LkMOZnktV8SJqMXoJcoZ37tz7v+f8z/+cq3kvfuXzFs3XdLwm6JqPpqkXPfm2blqzqD7/LWbUW2/t8UeT2WsVhzv/fEQ+56CZBppufPu2ZhiUSy5uY+8I3gKAhuv6TH41wdChfRimxur8DGvpdZqeJkB0no3PcO8fU1Sqnvz/FteON+aOT195qBmy4Is1jGaQUFQn8+xzDG+Vzi6LmaWTVIpxNN9j7MPjGIaH7+3NCnvEKUhkh8WVMrZl4Wdv8Hz5NLfTv6ZUsvjXeBc3b3ucvHII3WgKB/a2uNrfni2gmBWOhZifmBEATVL7+xlOunxzo5Nzlz4gu5iRIStCR/kIV/YKYs8W8JseycM91LJijGqFAetPuE//yOLTKukvfkeH829025Y9+axnqjSFL69Gh9ptu7Z3C4hPAyGDEx+cQs9MEgkU8aJ1fvpzyC/5rCwaOOVhLNuUb1NIqEJzd1fsHYAyq1ihKxFlaSVFT3iN4FBd+iB+CNzKEl9//g1OIMz59w4IEZUe7G6F3V3gi/B4XuurGTa5XJm6eZRStbNlYRUdODqFepyO3jiHR3paIbrBw5cC1c78qm9PFqhWXGYX5ujstsim0xg1i8nlE8TNCUJOhaV5G2Pkuxy/cEBC0cV33e3W29K/CwAlML7sKCTi4tCxb5zh0Qq1SZ/ifYv5qTChQIhIwkV37zJ1Z4bO/SeJpxLoSDj+3xwQva83RIDyDznxvXuEI8XWpIHvGARjPhVPR6s16YmUaObzePlZCgsz1I5fofedQQxFxJYvtifjDhZQycZkfm6W7sEHhKMFUTfldk3STxN7yOfwj2q4GUlHVRstIIsJ8ULpAisLt5h2IzRKDsfO9cob27e2ABRe3TCp1jzK5WmSdkN6NJpNi2rdJhyso4uvTbkag0p4NgLO9zUC/dDbX2BmehrH8ahXkwQlfLdzx1YAMlu95jP11QvM3AR6oMzKTIq1RZd6Qcd2LBp1l4Hvr4pVyq3dqVDcMLJYTe7MuIaeXiDeP0owLNKtBmzTtgIQn9kBnf0HksxnM2SfJxnUfygZr0FE/J6fL5ItPifYd5vBY3WWH1v0HKljmpKA/reIaTRIpCrk7j+mnkxhheTB5sM3gGwFIAM0zcOV5LOc7+DwhfdZq0ok6CbDF48SWkxT/c8q9eUu7t8RP68ME+x8SNeBWWhu+EKTbNgh1slmmpSzJbojsZaIvbF266+p1Eolj9ea+DIWCxDt2Ud8oI9OrSl+t/Edh0RPAuvyGNc+CzN2/l1xSYTMg0+xuz/GtmtoAqK8aKI3JUqyOn5Lkl+b/bU/eruspcqup3fnMX2DzkQYS4oPK2BJBWSKJaXYwCaS6iQ+EiF2WkTIPcXyvTjpLwNUZgM4DxsUx2VcxwBRkW5flHS71nLBm1ZQhcXRM/1kC0MgyeX6n6+Rmc1y7P0znL80QlSsc1Xu69UGlUqRdOY64UUPqxlGXy/hV02KdDFw6bRYRawgOUQksi2G9rlAOKAUUFPlXsPlykdXOHvxNM1STSwgH3GbJ2OsoISXhGMsPEzA+QWW0YVT1Kk2JFSPnCMx2C27lwjYZnGFyNzif9UrHDAtX+JYlE/yekcixOkPz8gDSUqNzZgTIJKiu5MJ7L6rUgM8pyqfgLgpW7DwlqqEl2rEu0Qtd+BBywJbQWiSTg0CxjpTk8JuTWLZbWwsrgC2mo8u3Cgt1Pj61iMmlv9OsSzSLZmxFj1I4uAgbq2uQmrzhbZXfeviapz4S1jcu18XdX3O44dPcEQVdSnDdUN2JK5R5Xg9o5Mbl/K8LjsPFFpleo2gcMTg4KkkvYPh3dbfLh2Lnim/CXvfOWiyvrbA9JNVqTokLCMpInYUb72JI5WQs1qXpHSdVPwxeixF59mrTD9e4sndNMdOxtvu+tXOtkL0UraEwUKieI9GXFLu+toM63PzrKajBHMDJEO9VL0CqwGPXOMUKbuDYwe76B2KyQFGye/rp6ZXF9683wbA5mMVOmINOXgoUPEenXifxtOpPJ98muUjQjTNGH/LjdEtEZHMVyndrDA6YtHVLe8ovgqhX25oc96X110AbA7cyGWKL+srFl/cifGXnM4p2+FCMs7cqpwRii5nnTnmiw43nuW5fLTB5XdtOUeoDbTXADV7ex3YXPeVqyLzeh4eyCnoZ7/8DZHhH/DCCzGerzNh7+dhaIwHwT5CI0HWnCifPIrx+88ccgWpkJWebNN2BtACrhKsOEImuTUd4NbyALFohJ+MDvDbYjc/toeYPSJFR0Tqgx6LyChkJHdU5Aj3rNTHH/4q3MltRuNWS+wMQLlPEcmT4qQc5+aX01w82tvay1h/gkA8QvZyH96o6MYlk6AUJ7oIV8ZKMVcKERTzT9d6+fiaI5tov9R/AaL6/hm5mpGuAAAAAElFTkSuQmCC"/>
-<text x="312.0" y="145" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Clip LLM</text>
-<text x="334.0" y="155" text-anchor="end" class="key-label">R</text>
-<rect x="343.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="370.0" y="139.0" text-anchor="middle" class="key-label">T</text>
-<rect x="401.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="428.0" y="139.0" text-anchor="middle" class="key-label">Y</text>
-<rect x="459.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="486.0" y="139.0" text-anchor="middle" class="key-label">U</text>
-<rect x="517.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="544.0" y="139.0" text-anchor="middle" class="key-label">I</text>
-<rect x="575.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="602.0" y="139.0" text-anchor="middle" class="key-label">O</text>
-<rect x="633.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="660.0" y="139.0" text-anchor="middle" class="key-label">P</text>
-<rect x="691.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="718.0" y="139.0" text-anchor="middle" class="key-label">[</text>
-<rect x="749.0" y="112" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="776.0" y="139.0" text-anchor="middle" class="key-label">]</text>
-<rect x="807.0" y="112" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="848.5" y="139.0" text-anchor="middle" class="key-label">\</text>
-<rect x="24" y="164" width="97.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
-<text x="72.75" y="192.0" text-anchor="middle" class="bind-label" fill="#007aff">⇪</text>
-<rect x="125.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="152.5" y="191.0" text-anchor="middle" class="key-label">A</text>
-<rect x="183.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="210.5" y="191.0" text-anchor="middle" class="key-label">S</text>
-<rect x="241.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="268.5" y="191.0" text-anchor="middle" class="key-label">D</text>
-<rect x="299.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="326.5" y="191.0" text-anchor="middle" class="key-label">F</text>
-<rect x="357.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="384.5" y="191.0" text-anchor="middle" class="key-label">G</text>
-<rect x="415.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="442.5" y="191.0" text-anchor="middle" class="key-label">H</text>
-<rect x="473.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="500.5" y="191.0" text-anchor="middle" class="key-label">J</text>
-<rect x="531.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="558.5" y="191.0" text-anchor="middle" class="key-label">K</text>
-<rect x="589.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="616.5" y="191.0" text-anchor="middle" class="key-label">L</text>
-<rect x="647.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="674.5" y="191.0" text-anchor="middle" class="key-label">;</text>
-<rect x="705.5" y="164" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="732.5" y="191.0" text-anchor="middle" class="key-label">'</text>
-<rect x="763.5" y="164" width="126.5" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="826.75" y="191.0" text-anchor="middle" class="key-label">↩</text>
-<rect x="154.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="154.5" y="218" width="3" height="44" rx="1.5" fill="#ff3b30"/>
-<image x="172.5" y="221" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="181.5" y="249" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="9px">AI Screen</text>
-<text x="203.5" y="259" text-anchor="end" class="key-label">Z</text>
-<rect x="212.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="239.5" y="243.0" text-anchor="middle" class="key-label">X</text>
-<rect x="270.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="270.5" y="218" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<use href="#karabiner-icon" x="290.5" y="220" width="14" height="14" fill="#a2845e" stroke="#a2845e"/>
-<text x="297.5" y="244" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">move editor to</text><text x="297.5" y="255" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">next group</text>
-<text x="319.5" y="259" text-anchor="end" class="key-label">C</text>
-<rect x="328.5" y="216" width="54" height="48" rx="6" fill="#ffffff" stroke="#d2d2d7" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="328.5" y="218" width="3" height="44" rx="1.5" fill="#ff3b30"/>
-<text x="355.5" y="244.0" text-anchor="middle" class="bind-label" fill="#ff3b30" font-size="10px">VPN</text>
-<text x="377.5" y="259" text-anchor="end" class="key-label">V</text>
-<rect x="386.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="413.5" y="243.0" text-anchor="middle" class="key-label">B</text>
-<rect x="444.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="471.5" y="243.0" text-anchor="middle" class="key-label">N</text>
-<rect x="502.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="529.5" y="243.0" text-anchor="middle" class="key-label">M</text>
-<rect x="560.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="587.5" y="243.0" text-anchor="middle" class="key-label">,</text>
-<rect x="618.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="645.5" y="243.0" text-anchor="middle" class="key-label">.</text>
-<rect x="676.5" y="216" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="703.5" y="243.0" text-anchor="middle" class="key-label">/</text>
-<rect x="24" y="268" width="68.5" height="48" rx="6" fill="#e3f0ff" stroke="#007aff" stroke-width="1.5" filter="url(#shadow-bound)"/>
-<text x="58.25" y="296.0" text-anchor="middle" class="bind-label" fill="#007aff">⌃</text>
-<rect x="241.5" y="268" width="358.5" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="420.75" y="295.0" text-anchor="middle" class="key-label"></text>
-<rect x="749.0" y="268" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="776.0" y="295.0" text-anchor="middle" class="key-label">←</text>
-<rect x="807.0" y="268" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="834.0" y="295.0" text-anchor="middle" class="key-label">↑↓</text>
-<rect x="865.0" y="268" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#e8e8ed" stroke-width="0.5" filter="url(#shadow)"/>
-<text x="892.0" y="295.0" text-anchor="middle" class="key-label">→</text>
-<rect x="24" y="328" width="10" height="10" rx="2" fill="#007aff"/>
-<text x="38" y="337" class="legend-text">Apps</text>
-<rect x="80.0" y="328" width="10" height="10" rx="2" fill="#ff3b30"/>
-<text x="94.0" y="337" class="legend-text">System</text>
-<rect x="149.0" y="328" width="10" height="10" rx="2" fill="#a2845e"/>
-<text x="163.0" y="337" class="legend-text">Karabiner</text>
+<rect width="922" height="608" fill="none"/>
+<text x="28" y="30" class="title">Hyper + Ctrl — Workspaces + Scroll</text>
+<rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
+<g class="key-group">
+<rect x="28" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="28" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="55.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃⎋</text>
+<text x="77" y="105" text-anchor="end" class="key-label">~</text>
+<title>~: ⌃⎋</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="-65.0" y="114" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="50.0,114 60.0,114 55.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="51.0,114 59.0,114 55.0,110" fill="white"/>
+<image x="-55.0" y="123" width="13" height="13" href="data:image/png;base64,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"/>
+<text x="-39.0" y="134" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
+<text x="-2.0" y="134" font-size="8px" fill="#1d1d1f">toggle terminal</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="86" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="86" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="113.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F1</text>
+<text x="135" y="105" text-anchor="end" class="key-label">1</text>
+<title>1: ⌃F1</title>
+</g>
+<g class="key-group">
+<rect x="144" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="144" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="171.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F2</text>
+<text x="193" y="105" text-anchor="end" class="key-label">2</text>
+<title>2: ⌃F2</title>
+</g>
+<g class="key-group">
+<rect x="202" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="202" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="229.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F3</text>
+<text x="251" y="105" text-anchor="end" class="key-label">3</text>
+<title>3: ⌃F3</title>
+</g>
+<g class="key-group">
+<rect x="260" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="260" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="287.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F4</text>
+<text x="309" y="105" text-anchor="end" class="key-label">4</text>
+<title>4: ⌃F4</title>
+</g>
+<g class="key-group">
+<rect x="318" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="318" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="345.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F5</text>
+<text x="367" y="105" text-anchor="end" class="key-label">5</text>
+<title>5: ⌃F5</title>
+</g>
+<g class="key-group">
+<rect x="376" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="376" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="403.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F6</text>
+<text x="425" y="105" text-anchor="end" class="key-label">6</text>
+<title>6: ⌃F6</title>
+</g>
+<g class="key-group">
+<rect x="434" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="434" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="461.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F7</text>
+<text x="483" y="105" text-anchor="end" class="key-label">7</text>
+<title>7: ⌃F7</title>
+</g>
+<g class="key-group">
+<rect x="492" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="492" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="519.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F8</text>
+<text x="541" y="105" text-anchor="end" class="key-label">8</text>
+<title>8: ⌃F8</title>
+</g>
+<g class="key-group">
+<rect x="550" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="550" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="577.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F9</text>
+<text x="599" y="105" text-anchor="end" class="key-label">9</text>
+<title>9: ⌃F9</title>
+</g>
+<g class="key-group">
+<rect x="608" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="608" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="635.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F10</text>
+<text x="657" y="105" text-anchor="end" class="key-label">0</text>
+<title>0: ⌃F10</title>
+</g>
+<g class="key-group">
+<rect x="666" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="666" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="693.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F11</text>
+<text x="715" y="105" text-anchor="end" class="key-label">-</text>
+<title>-: ⌃F11</title>
+</g>
+<g class="key-group">
+<rect x="724" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="724" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="751.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F12</text>
+<text x="773" y="105" text-anchor="end" class="key-label">=</text>
+<title>=: ⌃F12</title>
+</g>
+<g class="key-group">
+<rect x="782" y="62" width="112" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="838.0" y="89.0" text-anchor="middle" class="key-label">⌫</text>
+<title>⌫</title>
+</g>
+<g class="key-group">
+<rect x="28" y="114" width="83.0" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="28" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="69.5" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃↩</text>
+<text x="106.0" y="157" text-anchor="end" class="key-label">⇥</text>
+<title>⇥: ⌃↩</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="-50.5" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="64.5,166 74.5,166 69.5,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="65.5,166 73.5,166 69.5,162" fill="white"/>
+<image x="-40.5" y="175" width="13" height="13" href="data:image/png;base64,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"/>
+<text x="-24.5" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="7.0" y="186" font-size="8px" fill="#1d1d1f">generate (alternative to cmd + n)</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="115.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="115.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="142.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="10px">⌃PgUp</text>
+<text x="164.0" y="157" text-anchor="end" class="key-label">Q</text>
+<title>Q: ⌃PgUp</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="22.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="137.0,166 147.0,166 142.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="138.0,166 146.0,166 142.0,162" fill="white"/>
+<image x="32.0" y="175" width="13" height="13" href="data:image/png;base64,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"/>
+<text x="48.0" y="186" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
+<text x="85.0" y="186" font-size="8px" fill="#1d1d1f">scroll up (without moving caret)</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="173.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="173.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="200.0" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃↑</text>
+<text x="222.0" y="157" text-anchor="end" class="key-label">W</text>
+<title>W: ⌃↑</title>
+</g>
+<g class="key-group">
+<rect x="231.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="231.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="258.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="10px">⌃PgDn</text>
+<text x="280.0" y="157" text-anchor="end" class="key-label">E</text>
+<title>E: ⌃PgDn</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="138.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="253.0,166 263.0,166 258.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="254.0,166 262.0,166 258.0,162" fill="white"/>
+<image x="148.0" y="175" width="13" height="13" href="data:image/png;base64,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"/>
+<text x="164.0" y="186" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
+<text x="201.0" y="186" font-size="8px" fill="#1d1d1f">scroll down (without moving caret)</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="289.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="289.0" y="116" width="3" height="44" rx="1.5" fill="#007aff"/>
+<image x="307.0" y="119" width="18" height="18" href="data:image/png;base64,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"/>
+<text x="316.0" y="147" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Clip LLM</text>
+<text x="338.0" y="157" text-anchor="end" class="key-label">R</text>
+<title>R: Clip LLM — Clipboard Llm</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="196.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="311.0,166 321.0,166 316.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="312.0,166 320.0,166 316.0,162" fill="white"/>
+<text x="206.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Clip LLM</text>
+<text x="254.0" y="186" font-size="8px" fill="#1d1d1f">clipboard llm</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="347.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="374.0" y="141.0" text-anchor="middle" class="key-label">T</text>
+<title>T</title>
+</g>
+<g class="key-group">
+<rect x="405.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="432.0" y="141.0" text-anchor="middle" class="key-label">Y</text>
+<title>Y</title>
+</g>
+<g class="key-group">
+<rect x="463.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="490.0" y="141.0" text-anchor="middle" class="key-label">U</text>
+<title>U</title>
+</g>
+<g class="key-group">
+<rect x="521.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="548.0" y="141.0" text-anchor="middle" class="key-label">I</text>
+<title>I</title>
+</g>
+<g class="key-group">
+<rect x="579.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="579.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="606.0" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃↑</text>
+<text x="628.0" y="157" text-anchor="end" class="key-label">O</text>
+<title>O: ⌃↑</title>
+</g>
+<g class="key-group">
+<rect x="637.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="664.0" y="141.0" text-anchor="middle" class="key-label">P</text>
+<title>P</title>
+</g>
+<g class="key-group">
+<rect x="695.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="722.0" y="141.0" text-anchor="middle" class="key-label">[</text>
+<title>[</title>
+</g>
+<g class="key-group">
+<rect x="753.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="780.0" y="141.0" text-anchor="middle" class="key-label">]</text>
+<title>]</title>
+</g>
+<g class="key-group">
+<rect x="811.0" y="114" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="852.5" y="141.0" text-anchor="middle" class="key-label">\</text>
+<title>\</title>
+</g>
+<g class="key-group">
+<rect x="28" y="166" width="97.5" height="48" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="1" filter="url(#shadow-bound)"/>
+<text x="76.75" y="194.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="14px" font-weight="600">⇪</text>
+<title>⇪</title>
+</g>
+<g class="key-group">
+<rect x="129.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="129.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="156.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃←</text>
+<text x="178.5" y="209" text-anchor="end" class="key-label">A</text>
+<title>A: ⌃←</title>
+</g>
+<g class="key-group">
+<rect x="187.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="187.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="214.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃↓</text>
+<text x="236.5" y="209" text-anchor="end" class="key-label">S</text>
+<title>S: ⌃↓</title>
+</g>
+<g class="key-group">
+<rect x="245.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="245.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="272.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃→</text>
+<text x="294.5" y="209" text-anchor="end" class="key-label">D</text>
+<title>D: ⌃→</title>
+</g>
+<g class="key-group">
+<rect x="303.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="330.5" y="193.0" text-anchor="middle" class="key-label">F</text>
+<title>F</title>
+</g>
+<g class="key-group">
+<rect x="361.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="388.5" y="193.0" text-anchor="middle" class="key-label">G</text>
+<title>G</title>
+</g>
+<g class="key-group">
+<rect x="419.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="446.5" y="193.0" text-anchor="middle" class="key-label">H</text>
+<title>H</title>
+</g>
+<g class="key-group">
+<rect x="477.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="504.5" y="193.0" text-anchor="middle" class="key-label">J</text>
+<title>J</title>
+</g>
+<g class="key-group">
+<rect x="535.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="535.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="562.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃←</text>
+<text x="584.5" y="209" text-anchor="end" class="key-label">K</text>
+<title>K: ⌃←</title>
+</g>
+<g class="key-group">
+<rect x="593.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="593.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="620.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃↓</text>
+<text x="642.5" y="209" text-anchor="end" class="key-label">L</text>
+<title>L: ⌃↓</title>
+</g>
+<g class="key-group">
+<rect x="651.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="651.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="678.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃→</text>
+<text x="700.5" y="209" text-anchor="end" class="key-label">;</text>
+<title>;: ⌃→</title>
+</g>
+<g class="key-group">
+<rect x="709.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="736.5" y="193.0" text-anchor="middle" class="key-label">'</text>
+<title>'</title>
+</g>
+<g class="key-group">
+<rect x="767.5" y="166" width="126.5" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="830.75" y="193.0" text-anchor="middle" class="key-label">↩</text>
+<title>↩</title>
+</g>
+<g class="key-group">
+<rect x="158.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="158.5" y="220" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="185.5" y="246.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌃F20</text>
+<text x="207.5" y="261" text-anchor="end" class="key-label">Z</text>
+<title>Z: ⌃F20</title>
+</g>
+<g class="key-group">
+<rect x="216.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="243.5" y="245.0" text-anchor="middle" class="key-label">X</text>
+<title>X</title>
+</g>
+<g class="key-group">
+<rect x="274.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="274.5" y="220" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
+<text x="301.5" y="248.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌃⌘→</text>
+<text x="323.5" y="261" text-anchor="end" class="key-label">C</text>
+<title>C: ⌃⌘→</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="181.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="296.5,270 306.5,270 301.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="297.5,270 305.5,270 301.5,266" fill="white"/>
+<image x="191.5" y="279" width="13" height="13" href="data:image/png;base64,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"/>
+<text x="207.5" y="290" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
+<text x="244.5" y="290" font-size="8px" fill="#1d1d1f">move editor to next group</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="332.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
+<rect x="332.5" y="220" width="3" height="44" rx="1.5" fill="#ff453a"/>
+<text x="359.5" y="246.0" text-anchor="middle" class="bind-label" fill="#ff453a" font-size="10px">VPN</text>
+<text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
+<title>V: VPN — Vpn: Toggle Globalprotect</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
+<text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">VPN</text>
+<text x="270.0" y="290" font-size="8px" fill="#1d1d1f">vpn: toggle globalprotect</text>
+</g>
+</g>
+<g class="key-group">
+<rect x="390.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="417.5" y="245.0" text-anchor="middle" class="key-label">B</text>
+<title>B</title>
+</g>
+<g class="key-group">
+<rect x="448.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="475.5" y="245.0" text-anchor="middle" class="key-label">N</text>
+<title>N</title>
+</g>
+<g class="key-group">
+<rect x="506.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="533.5" y="245.0" text-anchor="middle" class="key-label">M</text>
+<title>M</title>
+</g>
+<g class="key-group">
+<rect x="564.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="591.5" y="245.0" text-anchor="middle" class="key-label">,</text>
+<title>,</title>
+</g>
+<g class="key-group">
+<rect x="622.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="649.5" y="245.0" text-anchor="middle" class="key-label">.</text>
+<title>.</title>
+</g>
+<g class="key-group">
+<rect x="680.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="707.5" y="245.0" text-anchor="middle" class="key-label">/</text>
+<title>/</title>
+</g>
+<g class="key-group">
+<rect x="28" y="270" width="68.5" height="48" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="1" filter="url(#shadow-bound)"/>
+<text x="62.25" y="298.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="14px" font-weight="600">⌃</text>
+<title>⌃</title>
+</g>
+<g class="key-group">
+<rect x="245.5" y="270" width="329.5" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="410.25" y="297.0" text-anchor="middle" class="key-label"></text>
+<title></title>
+</g>
+<g class="key-group">
+<rect x="724.0" y="270" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="751.0" y="297.0" text-anchor="middle" class="key-label">←</text>
+<title>←</title>
+</g>
+<g class="key-group">
+<rect x="782.0" y="270" width="54" height="22" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="809.0" y="284.0" text-anchor="middle" class="key-label">↑</text>
+<title>↑</title>
+</g>
+<g class="key-group">
+<rect x="782.0" y="296" width="54" height="22" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="809.0" y="310.0" text-anchor="middle" class="key-label">↓</text>
+<title>↓</title>
+</g>
+<g class="key-group">
+<rect x="840.0" y="270" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
+<text x="867.0" y="297.0" text-anchor="middle" class="key-label">→</text>
+<title>→</title>
+</g>
+<rect x="100.5" y="340" width="619.5" height="244" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<circle cx="117.5" cy="354" r="4" fill="#007aff"/>
+<text x="126.5" y="358" class="legend-text">Apps</text>
+<circle cx="174.3" cy="354" r="4" fill="#5ac8fa"/>
+<text x="183.3" y="358" class="legend-text">Navigation</text>
+<circle cx="268.3" cy="354" r="4" fill="#ff453a"/>
+<text x="277.3" y="358" class="legend-text">System</text>
+<line x1="108.5" y1="368" x2="603.5" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
+<text x="108.5" y="386" font-size="12px" font-weight="600" fill="#1d1d1f">R</text>
+<text x="178.5" y="386" font-size="12px" font-weight="500" fill="#007aff">Clip LLM</text>
+<text x="288.5" y="386" font-size="11px" fill="#48484a">clipboard llm</text>
+<text x="108.5" y="412" font-size="12px" font-weight="600" fill="#1d1d1f">V</text>
+<text x="178.5" y="412" font-size="12px" font-weight="500" fill="#ff453a">VPN</text>
+<text x="288.5" y="412" font-size="11px" fill="#48484a">vpn: toggle globalprotect</text>
+<text x="108.5" y="438" font-size="12px" font-weight="600" fill="#1d1d1f">⇪⌃~</text>
+<image x="178.5" y="425" width="17" height="17" href="data:image/png;base64,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"/>
+<text x="198.5" y="438" font-size="12px" font-weight="500" fill="#007aff">VSCode</text>
+<text x="288.5" y="438" font-size="11px" fill="#48484a">toggle terminal</text>
+<text x="108.5" y="464" font-size="12px" font-weight="600" fill="#1d1d1f">⇪⌃⇥</text>
+<image x="178.5" y="451" width="17" height="17" href="data:image/png;base64,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"/>
+<text x="198.5" y="464" font-size="12px" font-weight="500" fill="#007aff">Rider</text>
+<text x="288.5" y="464" font-size="11px" fill="#48484a">generate (alternative to cmd + n)</text>
+<text x="108.5" y="490" font-size="12px" font-weight="600" fill="#1d1d1f">⇪⌃q</text>
+<image x="178.5" y="477" width="17" height="17" href="data:image/png;base64,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"/>
+<text x="198.5" y="490" font-size="12px" font-weight="500" fill="#007aff">VSCode</text>
+<text x="288.5" y="490" font-size="11px" fill="#48484a">scroll up (without moving caret)</text>
+<text x="108.5" y="516" font-size="12px" font-weight="600" fill="#1d1d1f">⇪⌃e</text>
+<image x="178.5" y="503" width="17" height="17" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAAB+C9pSAAAACXBIWXMAABYlAAAWJQFJUiTwAAABzWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iWE1QIENvcmUgNi4wLjAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczpleGlmPSJodHRwOi8vbnMuYWRvYmUuY29tL2V4aWYvMS4wLyI+CiAgICAgICAgIDxleGlmOkNvbG9yU3BhY2U+MTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MTAyNDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+CiAgICAgICAgIDxleGlmOlBpeGVsWURpbWVuc2lvbj4xMDI0PC9leGlmOlBpeGVsWURpbWVuc2lvbj4KICAgICAgPC9yZGY6RGVzY3JpcHRpb24+CiAgIDwvcmRmOlJERj4KPC94OnhtcG1ldGE+CsHtO6kAAASCSURBVFgJ7VZtaFtVGH7uvbntEvuRtE2nXXX9SKe0RUTqdM5iQcRFKg7nNj/o9IcT/zhGFcQ/wv4FxKr94SgD/xQKFcoEpwU/wC5zY2k3h7Tomui067JuMUkT89Xb5F7fky7tPXfcNi0F/bFDwj3vfd/zPM95z3vOPcCd9h9nQDDj9/v9pS6X65FcLne/JEkOVVVLKVY0ize8V0VRXKCxURp7ORAIjLe0tCwYYszNdDr9hKZp5+m/We08wzRn1HlSqdRumu38ZjEXcBgmw9ZR3d6dmJiwUdouFgZt9pNhM47bmW+9iUajXRslvRnPaEeGJ7VPxhPajZRqCsM49AIseoMKp1VvF9v/K5LCgeM/wTc1B3tHBQb9Gg62WPDqAyWoK+Pr9hbHjwVszkuyHQVHsc+pYBzuj8fg8/8NwSrDZhFwM6XhwwsZPHMygdOzWQ7KyMEJEAShhItewzj3RzhP/uvsPFAiLUdLtLmZkGBSxdmgsvyedYwcnADyc3ZO1TDgC+HS9RQHwozRyTk89+lpXA0nAZnINfrlVC6OCRGZg28cB2fo47JE/uaXM3hr+AqeOjGNwZ/Dy+4h3wz2f3YG4QSdLRaCoFhBU/HGrq1orN4CNrbYxhWhflBOVTF1LQpIIiLpLA6RkEtzGWyXk3hn+CKyGk2PfNRB9V0CPN0u9DzZiu6vs9BSlAnTM1bPQvp5c8UqtUgY2leH10euwjtLM6I17Ru7DmQo5SpLXA5YFNBxrxX9B9qxq72JZi5QMuIrIEX0TJeAjW2qq8XIK43YS1sKbHnZopaVA84GSBYrDj9ag2+O7CbyZnIycr4GGMZabVUBbHCl3Q6bEgNiIVbCVGmUDYkEVdWjYlsT7FU1a3Gs6l9VQCSpYN/xsxjyBYF0BAjPUeZZgWnIiQI+8kbg/nwagUjxHzqjGlMBC1kV+wfO4dT4zNI2o9kfapPw/k4ZIssC0yEL+GE6hq6By/jqtxgdBWI+SUaS1WzTIhQFDQ6ZTjEiKrNo+ODZRhx1PwhZtqC27He8N5aAwopRFnEtpuCFwQDe7dyKbK58XSJMBciShBM9HWir+QWPNdfAvXMHTWTptDv6tAsO6xW8/W0M/2RJBBUn7UZ4vgtiW1MDZOsWKhWWorWbUQBXxg57JY69/DihLBEvwwkyXutsht36Jw6fiiCUYSKoRmkJ9LTsPMqXzPLAfIfjoJErjS4NiytWoWcgL7wmxuc7GvHFi7W4r5ww6VhYKgx2MArI5ARUWRQ8ZOchjRycALow0FdlPU1EV/t2nDx4D1qrVGjExYgrxAX01Ecx3LWIPc38/cPIwS0BXRamq6ur16MgH/uwqx4jL1lw7PsbaLg7QfeAUrTVOyGU8OQsmHGYEng8nspkMjlpep1Zw5HNJDVNSZtGMez+/v4KUwHM4fP59iiKkjBF2aCDYTLsVckLTq/X2x2PxzecCaNGhsUwC/j6p+lH0+12O3t7ezudTucOm81mZzcZ+nNFqwfS90kAu5UqdA2fD4VC0319fd7R0VH6mNxp/8MM/AtA5+OHfI1GcAAAAABJRU5ErkJggg=="/>
+<text x="198.5" y="516" font-size="12px" font-weight="500" fill="#007aff">VSCode</text>
+<text x="288.5" y="516" font-size="11px" fill="#48484a">scroll down (without moving caret)</text>
+<text x="108.5" y="542" font-size="12px" font-weight="600" fill="#1d1d1f">⇪⌃c</text>
+<image x="178.5" y="529" width="17" height="17" href="data:image/png;base64,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"/>
+<text x="198.5" y="542" font-size="12px" font-weight="500" fill="#007aff">VSCode</text>
+<text x="288.5" y="542" font-size="11px" fill="#48484a">move editor to next group</text>
 </svg>

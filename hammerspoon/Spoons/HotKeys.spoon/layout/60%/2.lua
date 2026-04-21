@@ -4,48 +4,48 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬————————————— app — function ————————————————————
---           2   │      2       │          YouTube — Navigate to 20% of video
---———————————————┼——————————————┼————————————————————————————————————
---          ⇪2   │      F2      │            Rider — next error in file
---          ⇧2   │ @    "    @  │
---          ⌃2   │              │           VSCode — go to tab 2
---          ⌥2   │     ⇧⌃z      │         VoiceInk — start/stop recoding (CUSTOM)
---          ⌘2   │              │            Rider — focus debug window
---               │              │           Finder — View as list
---               │              │          Browser — Open 2nd tab
---               │              │             Fork — Focus All commits window
---               │              │ Activity Manager — Open/focus CPU usage window
---               │              │         Telegram — focus 2nd folder or chat
---               │              │             IINA — set window-scale 2
---          ⇥2   │     ⌘0       │          Browser — Reset zoom
---               │              │           VSCode — focus into primary sidebar
---               │              │         Telegram — focus Saved Messages
---               │              │            Music — Show/Hide Music window
---               │              │             Fork — navigate to HEAD
---               │              │             IINA — set window-scale 0.5
---               │              │             Mail — show the Mail viewer window
---———————————————┼——————————————┼————————————————————————————————————
---         ⇪⇧2   │     ⇧F2      │ ???
---         ⇪⌃2   │     ⌃F2      │                 — move focus to the menu bar
---         ⇪⌥2   │     ⌥F2      │             Fork — show commit changes
---         ⇪⌘2   │     ⌘F2      │ ???
---         ⇧⌃2   │              │            Rider — toggle bookmark 2
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————————— app — function ————————————————————
+--           2   │              │      2       │   │          YouTube — Navigate to 20% of video
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--          ⇪2   │      F2      │              │   │            Rider — next error in file
+--          ⇧2   │              │ @    "    @  │   │
+--          ⌃2   │              │              │   │           VSCode — go to tab 2
+--          ⌥2   │     ⇧⌃z      │              │ ✓ │         VoiceInk — start/stop recoding (CUSTOM)
+--          ⌘2   │              │              │   │            Rider — focus debug window
+--               │              │              │   │           Finder — View as list
+--               │              │              │   │          Browser — Open 2nd tab
+--               │              │              │   │             Fork — Focus All commits window
+--               │              │              │   │ Activity Manager — Open/focus CPU usage window
+--               │              │              │   │         Telegram — focus 2nd folder or chat
+--               │              │              │   │             IINA — set window-scale 2
+--          ⇥2   │      ⌘0      │              │   │          Browser — Reset zoom
+--               │              │              │   │           VSCode — focus into primary sidebar
+--               │              │              │   │         Telegram — focus Saved Messages
+--               │              │              │   │            Music — Show/Hide Music window
+--               │              │              │   │             Fork — navigate to HEAD
+--               │              │              │   │             IINA — set window-scale 0.5
+--               │              │              │   │             Mail — show the Mail viewer window
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--         ⇪⇧2   │     ⇧F2      │              │   │ ???
+--         ⇪⌃2   │     ⌃F2      │              │ ✓ │                 — move focus to the menu bar
+--         ⇪⌥2   │     ⌥F2      │              │   │             Fork — show commit changes
+--         ⇪⌘2   │     ⌘F2      │              │   │ ???
+--         ⇧⌃2   │              │              │   │            Rider — toggle bookmark 2
 { chord = "⇧⌥2",                               app = "VoiceInk" },
---         ⇧⌘2   │              │            Shotr — OCR from screen
+--         ⇧⌘2   │              │              │   │            Shotr — OCR from screen
 { chord = "⌃⌥2",                                fn = "audio.bt" },
---         ⌃⌘2   │              │
---         ⌥⌘2   │              │         Telegram — focus 2nd chat
---———————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧⌃2   │              │
---        ⇪⇧⌥2   │              │
---        ⇪⇧⌘2   │              │
---        ⇪⌃⌥2   │              │
---        ⇪⌃⌘2   │              │
---        ⇪⌥⌘2   │              │
---        ⇧⌃⌥2   │              │
---        ⇧⌃⌘2   │              │
---        ⇧⌥⌘2   │              │
---        ⌃⌥⌘2   │              │
---               ┴              ┴
+--         ⌃⌘2   │              │              │   │
+--         ⌥⌘2   │              │              │   │         Telegram — focus 2nd chat
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧⌃2   │              │              │   │
+--        ⇪⇧⌥2   │              │              │   │
+--        ⇪⇧⌘2   │              │              │   │
+--        ⇪⌃⌥2   │              │              │   │
+--        ⇪⌃⌘2   │              │              │   │
+--        ⇪⌥⌘2   │              │              │   │
+--        ⇧⌃⌥2   │              │              │   │
+--        ⇧⌃⌘2   │              │              │   │
+--        ⇧⌥⌘2   │              │              │   │
+--        ⌃⌥⌘2   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

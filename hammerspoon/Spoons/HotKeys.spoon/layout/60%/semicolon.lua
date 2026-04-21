@@ -4,38 +4,38 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬ en | ru | el ┬————————— app — function ————————————————————
---          ;   │ ;    ж    ΄  │
---——————————————┼——————————————┼————————————————————————————————————
---         ⇪;   │      →       │             — move right
---         ⇧;   │ :    Ж    ¨  │
---         ⌃;   │              │
---         ⌥;   │              │
---         ⌘;   │              │        Rider — run unit test
---              │              │       VSCode — show 'select task to configure' dialog
---——————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧;   │      ⇧→      │             — select one letter right
---        ⇪⌃;   │      ⌃→      │             — jump to workspace to the right
---        ⇪⌥;   │      ⌥→      │             — jump to next word right
---        ⇪⌘;   │      ⌘→      │             — end/jump to end of line
---        ⇧⌃;   │              │             — move to right workspace
---        ⇧⌥;   │ ¨    ¨    :  │
---        ⇧⌘;   │              │
---        ⌃⌥;   │              │
---        ⌃⌘;   │              │
---        ⌥⌘;   │              │        Music — seek forward
---——————————————┼——————————————┼————————————————————————————————————
---       ⇪⇧⌃;   │  next_track  │             — next track
---       ⇪⇧⌥;   │     ⇧⌥→      │             — select word to the right
---       ⇪⇧⌘;   │     ⇧⌘→      │             — select text till the end of line
---       ⇪⌃⌥;   │              │
---       ⇪⌃⌘;   │     ⌃⌘→      │       VSCode — move editor to next group
---       ⇪⌥⌘;   │     ⌥⌘→      │        Music — seek forward
---              │              │       VSCode — go to next tab;
---              │              │        iTerm — focus pane to the right
---       ⇧⌃⌥;   │              │
---       ⇧⌃⌘;   │              │
---       ⇧⌥⌘;   │              │
---       ⌃⌥⌘;   │              │
---              ┴              ┴
+--——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————— app — function ————————————————————
+--          ;   │              │ ;    ж    ΄  │   │
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--         ⇪;   │      →       │              │ ✓ │             — move right
+--         ⇧;   │              │ :    Ж    ¨  │   │
+--         ⌃;   │              │              │   │
+--         ⌥;   │              │              │   │
+--         ⌘;   │              │              │   │        Rider — run unit test
+--              │              │              │   │       VSCode — show 'select task to configure' dialog
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧;   │      ⇧→      │              │ ✓ │             — select one letter right
+--        ⇪⌃;   │      ⌃→      │              │ ✓ │             — jump to workspace to the right
+--        ⇪⌥;   │      ⌥→      │              │ ✓ │             — jump to next word right
+--        ⇪⌘;   │      ⌘→      │              │ ✓ │             — end/jump to end of line
+--        ⇧⌃;   │              │              │ ✓ │             — move to right workspace
+--        ⇧⌥;   │              │ ¨    ¨    :  │   │
+--        ⇧⌘;   │              │              │   │
+--        ⌃⌥;   │              │              │   │
+--        ⌃⌘;   │              │              │   │
+--        ⌥⌘;   │              │              │   │        Music — seek forward
+--——————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--       ⇪⇧⌃;   │  next_track  │              │ ✓ │             — next track
+--       ⇪⇧⌥;   │     ⇧⌥→      │              │ ✓ │             — select word to the right
+--       ⇪⇧⌘;   │     ⇧⌘→      │              │ ✓ │             — select text till the end of line
+--       ⇪⌃⌥;   │              │              │   │
+--       ⇪⌃⌘;   │     ⌃⌘→      │              │   │       VSCode — move editor to next group
+--       ⇪⌥⌘;   │     ⌥⌘→      │              │   │        Music — seek forward
+--              │              │              │   │       VSCode — go to next tab;
+--              │              │              │   │        iTerm — focus pane to the right
+--       ⇧⌃⌥;   │              │              │   │
+--       ⇧⌃⌘;   │              │              │   │
+--       ⇧⌥⌘;   │              │              │   │
+--       ⌃⌥⌘;   │              │              │   │
+--              ┴              ┴              ┴   ┴
 }

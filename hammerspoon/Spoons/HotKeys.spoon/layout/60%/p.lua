@@ -4,41 +4,41 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
---           p   │ p    з    π  │
---———————————————┼——————————————┼——————————————————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--           p   │              │ p    з    π  │   │
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
 { chord =  "⇪p",                            app = "Music" },
---          ⇧p   │ P    З    Π  │
---          ⌃p   │              │ Unix Terminal — cycle through last commands forward
---               │              │        VSCode — cursor up
---               │              │   Claude Code — cycle through last commands forward
---          ⌥p   │ ′    ′    ≈  │
---          ⌘p   │              │  — print
---               │              │ Music — play
---               │              │ Fork — Show Command Palette
---———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧p   │              │
---         ⇪⌃p   │              │
---         ⇪⌥p   │              │
---         ⇪⌘p   │              │
---         ⇧⌃p   │              │ Unix Terminal — cycle through last commands back
---               │              │   Claude Code — cycle through last commands back
---         ⇧⌥p   │              │
---         ⇧⌘p   │              │          Fork — open Push dialog
---               │              │        VSCode — open command palette
---         ⌃⌥p   │              │
---         ⌃⌘p   │              │
---         ⌥⌘p   │              │        Yandex — print using system dialog
---———————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧⌃p   │              │
---        ⇪⇧⌥p   │              │
---        ⇪⇧⌘p   │              │
---        ⇪⌃⌥p   │              │
---        ⇪⌃⌘p   │              │
---        ⇪⌥⌘p   │              │
---        ⇧⌃⌥p   │              │
---        ⇧⌃⌘p   │              │
---        ⇧⌥⌘p   │              │          Fork — quick Push
---        ⌃⌥⌘p   │              │
---               ┴              ┴
+--          ⇧p   │              │ P    З    Π  │   │
+--          ⌃p   │              │              │   │ Unix Terminal — cycle through last commands forward
+--               │              │              │   │        VSCode — cursor up
+--               │              │              │   │   Claude Code — cycle through last commands forward
+--          ⌥p   │              │ ′    ′    ≈  │   │
+--          ⌘p   │              │              │ ✓ │  — print
+--               │              │              │   │ Music — play
+--               │              │              │   │ Fork — Show Command Palette
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--         ⇪⇧p   │              │              │   │
+--         ⇪⌃p   │              │              │   │
+--         ⇪⌥p   │              │              │   │
+--         ⇪⌘p   │              │              │   │
+--         ⇧⌃p   │              │              │   │ Unix Terminal — cycle through last commands back
+--               │              │              │   │   Claude Code — cycle through last commands back
+--         ⇧⌥p   │              │              │   │
+--         ⇧⌘p   │              │              │   │          Fork — open Push dialog
+--               │              │              │   │        VSCode — open command palette
+--         ⌃⌥p   │              │              │   │
+--         ⌃⌘p   │              │              │   │
+--         ⌥⌘p   │              │              │   │        Yandex — print using system dialog
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--        ⇪⇧⌃p   │              │              │   │
+--        ⇪⇧⌥p   │              │              │   │
+--        ⇪⇧⌘p   │              │              │   │
+--        ⇪⌃⌥p   │              │              │   │
+--        ⇪⌃⌘p   │              │              │   │
+--        ⇪⌥⌘p   │              │              │   │
+--        ⇧⌃⌥p   │              │              │   │
+--        ⇧⌃⌘p   │              │              │   │
+--        ⇧⌥⌘p   │              │              │   │          Fork — quick Push
+--        ⌃⌥⌘p   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

@@ -4,38 +4,38 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
---           ~   │      ⎋       │
---          ~~   │      ⎋⎋      │   Claude Code — clear input
---———————————————┼——————————————┼——————————————————————————————————
---          ⇪~   │ `    ё    §  │
---          ⇧~   │      ⇧⎋      │         Rider — hide current panel
---          ⌃~   │      ⌃⎋      │        VSCode — toggle terminal
---          ⌥~   │      ⌥⎋      │        VSCode — suggest AI completions
---          ⌘~   │      ⌘⎋      │              — switch to game (???)
---          ⇥~   │   ⌘+tilde    │     karabiner
---———————————————┼——————————————┼——————————————————————————————————
---         ⇪⇧~   │ ~    Ё    ±  │
---         ⇪⌃~   │      ⌃⎋      │        VSCode — toggle terminal
---         ⇪⌥~   │      ⌥⎋      │        VSCode — suggest AI completions
---         ⇪⌘~   │      ⌘⎋      │              — switch to game (???)
---   ⇧⌃~ → ⇧⌃⎋   │              │
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--           ~   │              │      ⎋       │   │
+--          ~~   │              │      ⎋⎋      │   │   Claude Code — clear input
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--          ⇪~   │              │ `    ё    §  │   │
+--          ⇧~   │      ⇧⎋      │              │   │         Rider — hide current panel
+--          ⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
+--          ⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
+--          ⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)
+--          ⇥~   │   ⌘+tilde    │              │   │     karabiner
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--         ⇪⇧~   │              │ ~    Ё    ±  │   │
+--         ⇪⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
+--         ⇪⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
+--         ⇪⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)
+--   ⇧⌃~ → ⇧⌃⎋   │              │              │   │
 { chord = "⇧⌃⎋",                            app = "Activity Monitor" },
---         ⇧⌥~   │     ⇧⌥⎋      │
---         ⇧⌘~   │     ⇧⌘⎋      │              — switch between windows of the current app (backward)
---         ⌃⌥~   │              │
---         ⌃⌘~   │              │
---         ⌥⌘~   │     ⌥⌘⎋      │              — force quit current app
---———————————————┼——————————————┼——————————————————————————————————
---        ⇪⇧⌃~   │              │
---        ⇪⇧⌥~   │              │
---        ⇪⇧⌘~   │              │
---        ⇪⌃⌥~   │              │
---        ⇪⌃⌘~   │              │
---        ⇪⌥⌘~   │              │
---        ⇧⌃⌥~   │              │
---        ⇧⌃⌘~   │              │
---        ⇧⌥⌘~   │              │
---        ⌃⌥⌘~   │              │
---               ┴              ┴
+--         ⇧⌥~   │     ⇧⌥⎋      │              │   │
+--         ⇧⌘~   │     ⇧⌘⎋      │              │ ✓ │              — switch between windows of the current app (backward)
+--         ⌃⌥~   │              │              │   │
+--         ⌃⌘~   │              │              │   │
+--         ⌥⌘~   │     ⌥⌘⎋      │              │ ✓ │              — force quit current app
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————
+--        ⇪⇧⌃~   │              │              │   │
+--        ⇪⇧⌥~   │              │              │   │
+--        ⇪⇧⌘~   │              │              │   │
+--        ⇪⌃⌥~   │              │              │   │
+--        ⇪⌃⌘~   │              │              │   │
+--        ⇪⌥⌘~   │              │              │   │
+--        ⇧⌃⌥~   │              │              │   │
+--        ⇧⌃⌘~   │              │              │   │
+--        ⇧⌥⌘~   │              │              │   │
+--        ⌃⌥⌘~   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }

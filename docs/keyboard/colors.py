@@ -1,22 +1,27 @@
-"""Apple-style color palette and category classification using source tags."""
+"""Color palette: Apple Magic Keyboard (silver) + trackpad-style card."""
 PALETTE = {
+    # Silver keyboard body
+    "kb_bg": "#e8e8ed", "kb_border": "#d1d1d6",
+    # White keycaps
     "key_bg": "#f5f5f7", "key_bg_bound": "#ffffff",
-    "key_border": "#d2d2d7", "key_border_unbound": "#e8e8ed",
-    "text": "#1d1d1f", "text_dim": "#c7c7cc",
+    "key_border": "#c7c7cc", "key_border_unbound": "#d5d5da",
+    # Text
+    "text": "#1d1d1f", "text_dim": "#86868b",
+    "key_text": "#1d1d1f", "key_text_dim": "#aeaeb2",
+    # Category colors (Apple system colors)
     "app": "#007aff", "window": "#34c759", "media": "#ff9500",
-    "nav": "#5ac8fa", "browser": "#af52de", "system": "#ff3b30",
+    "nav": "#5ac8fa", "browser": "#af52de", "system": "#ff453a",
     "macos": "#86868b", "birman": "#8e8e93", "karabiner": "#a2845e",
 }
 CATEGORY_LABELS = {
     "app": "Apps", "window": "Window Mgmt", "media": "Media / Audio",
     "nav": "Navigation", "browser": "Browser / Translate", "system": "System",
-    "macos": "macOS", "birman": "Birman Layout", "karabiner": "Karabiner",
+    "macos": "macOS", "birman": "Birman Layout",
 }
 CATEGORY_ICONS = {
     "macos": "apple", "window": "win-icon", "media": "audio-icon",
-    "birman": "birman", "karabiner": "karabiner-icon",
+    "birman": "birman",
 }
-# fn → category (overrides tag-based detection)
 _WIN = {"window."}
 _MEDIA_L = {"vol", "volume", "⏮", "⏭", "▶", "⏸", "play", "prev_track", "next_track"}
 _NAV_L = {"←", "→", "↑", "↓", "pgup", "pgdn", "home", "end", "↩", "enter"}
@@ -24,10 +29,8 @@ _BROWSER = {"browser_", "translate_"}
 _SYS = {"hammerspoon_reload", "vpn.", "wallpaper_", "system_health", "screenshot_ai"}
 _TAG_CAT = {"K": "karabiner", "B": "birman", "\uf8ff": "macos"}
 
-
 def get_category(entry):
-    fn = entry.get("fn", "")
-    label = entry.get("label", "").lower()
+    fn = entry.get("fn", ""); label = entry.get("label", "").lower()
     if fn:
         if any(fn.startswith(p) for p in _BROWSER): return "browser"
         if any(fn.startswith(p) for p in _SYS): return "system"
@@ -36,7 +39,5 @@ def get_category(entry):
     if any(m in label for m in _MEDIA_L): return "media"
     if any(n in label for n in _NAV_L): return "nav"
     if entry.get("app"): return "app"
-    # Use source tag from comment documentation
     tag = entry.get("source_tag", "")
-    if tag in _TAG_CAT: return _TAG_CAT[tag]
-    return "app"
+    return _TAG_CAT.get(tag, "app")

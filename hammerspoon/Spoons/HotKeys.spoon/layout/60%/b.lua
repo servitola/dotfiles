@@ -4,41 +4,41 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬ en | ru | el ┬—————————— app — function ————————————————————
---           b   │ b    и    β  │
---———————————————┼——————————————┼————————————————————————————————————
-{ chord =  "⇪b",                             fn = "warp.launch_default" },
---          ⇧b   │ B    И    Β  │
---          ⌃b   │              │ Unix Terminal — forward one letter
---          ⌥b   │ ß    ß    ß  │
---          ⌘b   │              │         Rider — go to declaration
---               │              │         Music — show or hide column browser
---               │              │          Warp — show/hide tabs bar
---———————————————┼——————————————┼————————————————————————————————————
---   ⇪⇧b → F14   │     F14      │                  ↓
-{ chord = "F14",                            app = "iTerm" },
---         ⇪⌃b   │              │
---         ⇪⌥b   │              │
---         ⇪⌘b   │              │
---         ⇧⌃b   │              │ Unix Terminal — backward one letter
---         ⇧⌥b   │ ẞ    ẞ    ẞ  │
---         ⇧⌘b   │              │         Rider — go to definition
---               │              │        VSCode — select build task to run
---               │              │          Fork — open Create Branch dialog
---         ⌃⌥b   │              │
---         ⌃⌘b   │              │         Rider — go to implementation
---         ⌥⌘b   │              │        VSCode — focus chat
---               │              │          Mail — show Bcc field
---———————————————┼——————————————┼————————————————————————————————————
---        ⇪⇧⌃b   │              │
---        ⇪⇧⌥b   │              │
---        ⇪⇧⌘b   │              │
---        ⇪⌃⌥b   │              │
---        ⇪⌃⌘b   │              │
---        ⇪⌥⌘b   │              │
---        ⇧⌃⌥b   │              │
---        ⇧⌃⌘b   │              │
---        ⇧⌥⌘b   │              │
---        ⌃⌥⌘b   │              │
---               ┴              ┴
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--           b   │              │ b    и    β  │   │
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+{ chord =  "⇪b",                                                fn = "warp.launch_default" },
+--          ⇧b   │              │ B    И    Β  │   │
+--          ⌃b   │              │              │   │ Unix Terminal — forward one letter
+--          ⌥b   │              │ ß    ß    ß  │   │
+--          ⌘b   │              │              │   │         Rider — go to declaration
+--               │              │              │   │         Music — show or hide column browser
+--               │              │              │   │          Warp — show/hide tabs bar
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--   ⇪⇧b → F14   │     F14      │              │   │                  ↓
+{ chord = "F14",                                               app = "iTerm" },
+--         ⇪⌃b   │              │              │   │
+--         ⇪⌥b   │              │              │   │
+--         ⇪⌘b   │              │              │   │
+--         ⇧⌃b   │              │              │   │ Unix Terminal — backward one letter
+--         ⇧⌥b   │              │ ẞ    ẞ    ẞ  │   │
+--         ⇧⌘b   │              │              │   │         Rider — go to definition
+--               │              │              │   │        VSCode — select build task to run
+--               │              │              │   │          Fork — open Create Branch dialog
+--         ⌃⌥b   │              │              │   │
+--         ⌃⌘b   │              │              │   │         Rider — go to implementation
+--         ⌥⌘b   │              │              │   │        VSCode — focus chat
+--               │              │              │   │          Mail — show Bcc field
+--———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--        ⇪⇧⌃b   │              │              │   │
+--        ⇪⇧⌥b   │              │              │   │
+--        ⇪⇧⌘b   │              │              │   │
+--        ⇪⌃⌥b   │              │              │   │
+--        ⇪⌃⌘b   │              │              │   │
+--        ⇪⌥⌘b   │              │              │   │
+--        ⇧⌃⌥b   │              │              │   │
+--        ⇧⌃⌘b   │              │              │   │
+--        ⇧⌥⌘b   │              │              │   │
+--        ⌃⌥⌘b   │              │              │   │
+--               ┴              ┴              ┴   ┴
 }
