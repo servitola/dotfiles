@@ -186,6 +186,11 @@ install:
 	@$(REMOVE) ~/.config/crush/crush.json
 	@$(LINK) ~/projects/dotfiles/crush/crush.json ~/.config/crush/crush.json
 
+	@echo "setup Mistral Vibe symlinks"
+	@mkdir -p ~/.vibe
+	@$(REMOVE) ~/.vibe/config.toml
+	@$(LINK) ~/projects/dotfiles/mistral-vibe/config.toml ~/.vibe/config.toml
+
 	@echo "setup Aider symlinks"
 	@$(REMOVE) ~/.aider.conf.yml
 	@$(LINK) ~/projects/dotfiles/aider/aider.conf.yml ~/.aider.conf.yml
