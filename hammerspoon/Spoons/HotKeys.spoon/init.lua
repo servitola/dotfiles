@@ -62,7 +62,7 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
 end
 
 local function unminimize_if_needed(app)
-    if not app then return end
+    if not app then return false end
     if app.isHidden and app:isHidden() then app:unhide() end
     local hasVisible = false
     for _, win in ipairs(app:allWindows() or {}) do
@@ -72,10 +72,16 @@ local function unminimize_if_needed(app)
         end
     end
     if not hasVisible then
+        local unminimized = false
         for _, win in ipairs(app:allWindows() or {}) do
-            if win:isMinimized() then win:unminimize() end
+            if win:isMinimized() then
+                win:unminimize()
+                unminimized = true
         end
     end
+        return unminimized
+    end
+    return true
 end
 
 local buttonFiles = {
@@ -530,6 +536,7 @@ function obj:init()
                                     if app:isHidden() then app:unhide() end
                                     for _, win in ipairs(app:allWindows()) do
                                         if win:isMinimized() then win:unminimize() end
+                                        set_window_default(win)
                                     end
                                 elseif appName == "Yandex" then
                                     local hasVideo = false
@@ -601,8 +608,11 @@ function obj:init()
                         end)
                     elseif hs.application.frontmostApplication() ~= app then
                         log.d("Activating app: " .. chord_entry.app)
-                        unminimize_if_needed(app)
+                        if not unminimize_if_needed(app) then
+                            hs.application.launchOrFocus(chord_entry.app)
+                        else
                         app:activate()
+                        end
                     else
                         local hasVisibleWindow = false
                         for _, win in ipairs(app:allWindows() or {}) do
@@ -615,8 +625,10 @@ function obj:init()
                             log.d("Hiding app: " .. chord_entry.app)
                             if app and app.hide then app:hide() end
                         else
-                            log.d("Unminimizing app: " .. chord_entry.app)
-                            unminimize_if_needed(app)
+                            log.d("Opening main window for app: " .. chord_entry.app)
+                            if not unminimize_if_needed(app) then
+                                hs.application.launchOrFocus(chord_entry.app)
+                            end
                         end
                     end
                 end)
