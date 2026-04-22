@@ -2,3 +2,4 @@
 # Paths are relative to $HOME.
 projects/dotfiles/docker-logger
 projects/dotfiles/litellm
+projects/dotfiles/qdrant
