@@ -12,6 +12,7 @@ services:
       GROQ_API_KEY: ${GROQ_API_KEY}
       NVIDIA_API_KEY: ${NVIDEA_API_KEY}
       GITHUB_MODELS_TOKEN: ${GITHUB_API_TOKEN}
+      ZAI_API_KEY: ${ZAI_API_KEY}
       LITELLM_MASTER_KEY: sk-local-workbot
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
       UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}
