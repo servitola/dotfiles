@@ -31,7 +31,7 @@ FN_APP = {  # fn → app name for icon (use _terminal/_browser for defaults)
     "info.show_shortcuts": "Hammerspoon", "clipboard_llm": "Hammerspoon",
     "screenshot_ai": "Hammerspoon", "app_usage_stats": "Hammerspoon",
     "interview.toggle": "Hammerspoon", "vscode.dotfiles": "Visual Studio Code",
-    "fork.dotfiles": "Fork", "fork.ctraderdev": "Fork",
+    "fork.dotfiles":"Fork","fork.ctraderdev":"Fork",
 }
 COMMENT_OUTPUT_LABELS = {
     "prev_track": "\u23ee", "next_track": "\u23ed", "rewind": "\u23ea", "fast_forward": "\u23e9",
