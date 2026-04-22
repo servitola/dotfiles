@@ -14,7 +14,7 @@ URL="$1"
 OUTPUT="$2"
 WALLPAPER_NAME="$3"
 WALLPAPERS_DIR="$(dirname "$OUTPUT")"
-BLOCKLIST="$HOME/projects/dotfiles/macos/wallpapers-blocklist.txt"
+BLOCKLIST="$HOME/Pictures/Wallpapers/GruvBox/blocklist.txt"
 
 CURL_OPTS=(-s --noproxy '*')
 [ -n "$GITHUB_API_TOKEN" ] && CURL_OPTS+=(-H "Authorization: token $GITHUB_API_TOKEN")
