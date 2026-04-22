@@ -1,4 +1,4 @@
-# LiteLLM → free model providers (OpenRouter / Groq / NVIDIA NIM / GitHub)
+# LiteLLM → free model providers (OpenRouter / Groq / NVIDIA NIM / GitHub / Z.AI)
 #
 # Every deployment uses the form `openai/<slug>` with an explicit `api_base`
 # instead of the native `openrouter/<slug>`. Reason: LiteLLM leaks the
@@ -46,14 +46,13 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
 
-  # Z.AI GLM-4.5 Air — 21B, 131k context.
-  # Weakest of the three; kept for lightweight phases (quick Q&A, short
-  # decisions). Not suitable for execute / test-generation on large tasks.
+  # Z.AI GLM-4.7-Flash — 31.2B MoE (3B active), 202k context.
+  # Native Z.AI provider, free tier. Strong tool-use, vision, coding.
+  # Replaces GLM-4.5 Air (weaker, smaller context).
   - model_name: glm
     litellm_params:
-      model: openai/z-ai/glm-4.5-air:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
+      model: zai/glm-4.7-flash
+      api_key: os.environ/ZAI_API_KEY
 
   # Vision pool — three models under the same name for reliability on
   # image tasks. Shuffle is justified here because vision models rarely
@@ -73,6 +72,10 @@ model_list:
       model: openai/google/gemma-4-26b-a4b-it:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: vision
+    litellm_params:
+      model: zai/glm-4.7-flash
+      api_key: os.environ/ZAI_API_KEY
 
   # Embeddings for local RAG / Qdrant.
   # Free OpenRouter embedding model so the same local LiteLLM proxy can serve
@@ -182,6 +185,10 @@ model_list:
       model: openai/deepseek-ai/deepseek-v3.2
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
+  - model_name: coding
+    litellm_params:
+      model: zai/glm-4.7-flash
+      api_key: os.environ/ZAI_API_KEY
 
   # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek + Llama.
   - model_name: reasoning

@@ -6,6 +6,7 @@ points at a free-tier upstream. Whitelist:
 
   OpenRouter (https://openrouter.ai/api/v1)        — model must end with `:free`
   Groq native (model starts with `groq/`)          — free tier built in
+  Z.AI native (model starts with `zai/`)           — free tier
   NVIDIA NIM (https://integrate.api.nvidia.com/v1) — free credits
   GitHub Models (https://models.github.ai/inference) — free quota
 
@@ -83,6 +84,8 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
     """Return (is_free, reason)."""
     if model.startswith("groq/"):
         return True, "groq native"
+    if model.startswith("zai/"):
+        return True, "zai native (free tier)"
     if api_base == OPENROUTER_API_BASE:
         if model.endswith(":free"):
             return True, "openrouter :free"
