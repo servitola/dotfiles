@@ -64,7 +64,7 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
 
         -- Clean up all previous wallpapers in the directory
         for file in hs.fs.dir(self.wallpapers_dir) do
-            if file ~= "." and file ~= ".." and file ~= temp_name and file ~= ".history" then
+            if file ~= "." and file ~= ".." and file ~= temp_name and file ~= "history.log" and file ~= "blocklist.txt" then
                 os.remove(self.wallpapers_dir .. "/" .. file)
             end
         end
@@ -75,7 +75,7 @@ function obj:tryCandidate(candidates, i, maxTries, fetchAttempt)
         log.i("set " .. candidate.name .. " as " .. final_name)
 
         -- Track in history to avoid repeats
-        local history_path = self.wallpapers_dir .. "/.history"
+        local history_path = self.wallpapers_dir .. "/history.log"
         local hf = io.open(history_path, "a")
         if hf then hf:write(candidate.name .. "\n"); hf:close() end
         -- Trim to last 100 entries
