@@ -25,10 +25,10 @@
         },
         {
           "id": "glm",
-          "name": "GLM-4.5 Air (fast, lightweight)",
+          "name": "GLM-4.7 Flash (MoE, 202k context)",
           "cost_per_1m_in": 0,
           "cost_per_1m_out": 0,
-          "context_window": 131072,
+          "context_window": 202752,
           "default_max_tokens": 8192
         }
       ]
