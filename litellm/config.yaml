@@ -1,34 +1,6 @@
 # LiteLLM → free model providers (OpenRouter / Groq / NVIDIA NIM / GitHub / Z.AI)
-#
-# Every deployment uses the form `openai/<slug>` with an explicit `api_base`
-# instead of the native `openrouter/<slug>`. Reason: LiteLLM leaks the
-# `openrouter/` prefix to the upstream on `/v1/messages` (Anthropic endpoint),
-# and OpenRouter returns 400 "not a valid model ID". `openai/<slug>` with an
-# explicit api_base bypasses the bug and behaves identically on both endpoints.
-#
-# Policy (empirically validated 2026-04-16):
-# - Only models that OpenRouter reliably delivers without silent fallback are
-#   kept. qwen3-next-80b:free is frequently unavailable and silently falls
-#   back to glm-air → the "plus" alias was removed.
-# - qwen3-coder:free is back in: it handles coding / structured-JSON well and
-#   is used by AudioRSS and `ai -m coder`. If it drops, the upstream returns
-#   400 and the client can route to a fallback explicitly.
-# - Router-level shuffle/fallback is disabled for direct names: if a model
-#   dies, the upstream error surfaces instead of silently switching to a
-#   weaker model. Callers (e.g. Workbot) handle errors explicitly via
-#   phaseFailed.
-# - Claude-style renaming aliases (claude-sonnet-4-5 etc.) were removed —
-#   they mapped to unstable qwen models.
 
 model_list:
-  # Qwen3-Coder 480B MoE — specialised for code and structured-JSON output,
-  # 262k context. Used by AudioRSS ad_detector (strict JSON) and as the
-  # default for `ai -m coder`.
-  - model_name: coder
-    litellm_params:
-      model: openai/qwen/qwen3-coder:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
 
   # NVIDIA Nemotron 3 Super 120B — hybrid Mamba-Transformer, 262k context.
   # Fast (~4s), honest routing, good at reasoning / planning.
@@ -48,7 +20,6 @@ model_list:
 
   # Z.AI GLM-4.7-Flash — 31.2B MoE (3B active), 202k context.
   # Native Z.AI provider, free tier. Strong tool-use, vision, coding.
-  # Replaces GLM-4.5 Air (weaker, smaller context).
   - model_name: glm
     litellm_params:
       model: zai/glm-4.7-flash
@@ -85,11 +56,6 @@ model_list:
       model: openai/nvidia/llama-nemotron-embed-vl-1b-v2:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-      # Free-tier OpenRouter throttles this embed slug hard. Let the
-      # proxy absorb short 429/5xx bursts before the client sees them;
-      # bulk ingests (spotware-rag refresh-code) also retry on top of
-      # this, so the combined budget is num_retries × client_retries.
-      # Not a router-level fallback — this retries the same model.
       num_retries: 3
       timeout: 90
 
@@ -156,66 +122,55 @@ model_list:
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
   # router does simple-shuffle between deployments, cools down the one that
-  # failed (allowed_fails/cooldown_time), and retries against the next. The
-  # `vision` group above already worked this way — here we extend the pattern
-  # to coding / reasoning / fast / premium.
-  #
-  # Direct names (`gpt`, `nemotron`, `groq-llama`…) stay as they are — use
-  # them when the caller needs one specific model.
+  # failed (allowed_fails/cooldown_time), and retries against the next
 
-  # coding — good tool-use and structured output. Default for `q` / Qwen Code.
-  # Declaration order does not affect shuffle (simple-shuffle is uniform),
-  # but entries are listed from cheap to paid upstream for clarity.
-  - model_name: coding
-    litellm_params:
-      model: openai/openai/gpt-oss-120b:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-  - model_name: coding
-    litellm_params:
-      model: groq/openai/gpt-oss-120b
-      api_key: os.environ/GROQ_API_KEY
+  # coding — good tool-use and structured output
   - model_name: coding
     litellm_params:
       model: openai/moonshotai/kimi-k2.5
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
+      order: 1
   - model_name: coding
     litellm_params:
       model: openai/deepseek-ai/deepseek-v3.2
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
+      order: 1
+  - model_name: coding
+    litellm_params:
+      model: openai/openai/gpt-oss-120b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
   - model_name: coding
     litellm_params:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
+      order: 2
 
-  # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek + Llama.
+  # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek.
+  # NIM and OpenRouter both ~100%.
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      order: 1
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
+      order: 1
   - model_name: reasoning
     litellm_params:
       model: openai/deepseek-ai/deepseek-v3.2
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-  - model_name: reasoning
-    litellm_params:
-      model: groq/llama-3.3-70b-versatile
-      api_key: os.environ/GROQ_API_KEY
+      order: 2
 
-  # fast — latency-critical (~1-3s). Groq-only, all direct.
-  # groq/compound is excluded from rotation: it's agentic and does not
-  # support tool-calling, which breaks clients that send tools (Qwen Code,
-  # OpenCode). Compound stays available as the direct `groq-compound` for
-  # special cases.
+  # fast — latency-critical (~1-3s). Groq-only, all direct, support tool-calling.
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
@@ -236,16 +191,16 @@ router_settings:
   #   model" and "any model in this class".
   num_retries: 2
   retry_after: 5
-  allowed_fails: 2
-  cooldown_time: 30
+  allowed_fails: 1
+  cooldown_time: 60
   routing_strategy: simple-shuffle
   # Qwen Code CLI defaults to a model name from ~/.qwen/settings.json
   # (model.name = "coder-model") and/or the names from the official LiteLLM
   # tutorial. Map those onto the `coding` rotation group — which contains
-  # gpt-oss-120b (OR + Groq), Kimi K2.5, DeepSeek V3.2. qwen3-coder:free was
-  # discontinued on OpenRouter (2026-04), so the direct `coder` no longer
-  # works.
+  # Kimi K2.5, DeepSeek V3.2 (NIM, order 1) and gpt-oss + GLM (order 2).
+  # `coder` alias also redirected here (qwen3-coder:free dead since 2026-04).
   model_group_alias:
+    coder: coding
     coder-model: coding
     qwen-code: coding
     qwen3-coder-plus: coding
