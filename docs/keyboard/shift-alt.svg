@@ -8,23 +8,27 @@
   <filter id="shadow-card" x="-4%" y="-4%" width="108%" height="116%">
     <feDropShadow dx="0" dy="1" stdDeviation="6" flood-color="#000" flood-opacity="0.06"/></filter>
   <symbol id="apple" viewBox="0 0 16 16"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></symbol>
-  <symbol id="win-icon" viewBox="0 0 16 16">
-    <rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
+  <symbol id="win-icon" viewBox="0 0 16 16"><rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
     <rect x="6" y="7" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/></symbol>
-  <symbol id="audio-icon" viewBox="0 0 16 16">
-    <path d="M7 3L3.5 6H1v4h2.5L7 13V3z" stroke-width="1.2" fill="none"/>
-    <path d="M10 5.5a3 3 0 010 5M12 3.5a6 6 0 010 9" fill="none" stroke-width="1.2"/></symbol>
-  <symbol id="birman" viewBox="0 0 16 16">
-    <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
+  <symbol id="birman" viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="vol-up" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 5.5a3 3 0 010 5M12.5 3a7 7 0 010 10" fill="none" stroke-width="1.1"/></symbol>
+  <symbol id="vol-dn" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 6a2.5 2.5 0 010 4" fill="none" stroke-width="1.2"/></symbol>
+  <symbol id="track-prev" viewBox="0 0 16 16"><rect x="1" y="4" width="1.5" height="8" rx=".5"/><polygon points="4,8 11,3.5 11,12.5"/></symbol>
+  <symbol id="track-next" viewBox="0 0 16 16"><polygon points="5,3.5 5,12.5 12,8"/><rect x="13.5" y="4" width="1.5" height="8" rx=".5"/></symbol>
+  <symbol id="play-pause" viewBox="0 0 16 16"><polygon points="1,3 1,13 7,8"/><rect x="9" y="3" width="2.5" height="10" rx=".5"/><rect x="13" y="3" width="2.5" height="10" rx=".5"/></symbol>
+  <symbol id="android" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="2"/><circle cx="6" cy="10" r="1"/><circle cx="10" cy="10" r="1"/>
+    <line x1="5" y1="3.5" x2="3.5" y2="6" stroke-width="1.2" stroke-linecap="round"/><line x1="11" y1="3.5" x2="12.5" y2="6" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="arr-up" viewBox="0 0 24 24"><path d="M12 4L4 14h5v6h6v-6h5z"/></symbol>
+  <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20L4 10h5V4h6v6h5z"/></symbol>
+  <symbol id="arr-l" viewBox="0 0 24 24"><path d="M4 12L14 4v5h6v6h-6v5z"/></symbol>
+  <symbol id="arr-r" viewBox="0 0 24 24"><path d="M20 12L10 4v5H4v6h6v5z"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; fill: #1d1d1f; }
     .key-label { font-size: 8px; fill: #aeaeb2; letter-spacing: 0.02em; }
     .bind-label { font-size: 10px; font-weight: 500; letter-spacing: -0.01em; }
     .title { font-size: 15px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .legend-text { font-size: 10px; fill: #86868b; font-weight: 400; }
-    .detail-text { font-size: 9px; fill: #86868b; }
-    .detail-key { font-size: 9px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .key-group { cursor: default; }
     .key-group:hover > rect:first-child { stroke: #007aff !important; stroke-width: 1.5px !important; }
     .key-tip { transition: opacity 0.15s ease; }
@@ -37,7 +41,7 @@
 <g class="key-group">
 <rect x="28" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="28" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="55.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⇧⌥⎋</text>
+<text x="55.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⇧⌥⎋</text>
 <text x="77" y="105" text-anchor="end" class="key-label">~</text>
 <title>~: ⇧⌥⎋</title>
 </g>
@@ -50,7 +54,7 @@
 <rect x="144" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="144" y="64" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="162.0" y="67" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="171.0" y="95" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">VoiceInk</text>
+<text x="171.0" y="95" text-anchor="middle" class="bind-label" fill="#007aff" font-size="12px">VoiceInk</text>
 <text x="193" y="105" text-anchor="end" class="key-label">2</text>
 <title>2: VoiceInk</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -124,7 +128,7 @@
 <g class="key-group">
 <rect x="115.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="115.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="142.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⇧⌫</text>
+<text x="142.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⇧⌫</text>
 <text x="164.0" y="157" text-anchor="end" class="key-label">Q</text>
 <title>Q: ⇧⌫</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -139,7 +143,7 @@
 <g class="key-group">
 <rect x="173.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="173.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="200.0" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⇧⌥↑</text>
+<text x="200.0" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⇧⌥↑</text>
 <text x="222.0" y="157" text-anchor="end" class="key-label">W</text>
 <title>W: ⇧⌥↑</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -154,7 +158,7 @@
 <g class="key-group">
 <rect x="231.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="231.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="258.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="18px">⇧⌦</text>
+<text x="258.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⇧⌦</text>
 <text x="280.0" y="157" text-anchor="end" class="key-label">E</text>
 <title>E: ⇧⌦</title>
 </g>
@@ -219,14 +223,14 @@
 <g class="key-group">
 <rect x="129.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="129.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="156.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⇧⌥←</text>
+<text x="156.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⇧⌥←</text>
 <text x="178.5" y="209" text-anchor="end" class="key-label">A</text>
 <title>A: ⇧⌥←</title>
 </g>
 <g class="key-group">
 <rect x="187.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="187.5" y="168" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="214.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⇧⌥↓</text>
+<text x="214.5" y="196.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⇧⌥↓</text>
 <text x="236.5" y="209" text-anchor="end" class="key-label">S</text>
 <title>S: ⇧⌥↓</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -305,7 +309,7 @@
 <rect x="158.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="158.5" y="220" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="176.5" y="223" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="185.5" y="251" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Simulator</text>
+<text x="185.5" y="251" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Simulator</text>
 <text x="207.5" y="261" text-anchor="end" class="key-label">Z</text>
 <title>Z: Simulator</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -319,14 +323,14 @@
 <g class="key-group">
 <rect x="216.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="216.5" y="220" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="243.5" y="248.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⇧⌘←</text>
+<text x="243.5" y="248.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⇧⌘←</text>
 <text x="265.5" y="261" text-anchor="end" class="key-label">X</text>
 <title>X: ⇧⌘←</title>
 </g>
 <g class="key-group">
 <rect x="274.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="274.5" y="220" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="301.5" y="248.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⇧⌘→</text>
+<text x="301.5" y="248.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⇧⌘→</text>
 <text x="323.5" y="261" text-anchor="end" class="key-label">C</text>
 <title>C: ⇧⌘→</title>
 </g>

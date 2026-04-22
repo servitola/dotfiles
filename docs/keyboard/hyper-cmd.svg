@@ -8,23 +8,27 @@
   <filter id="shadow-card" x="-4%" y="-4%" width="108%" height="116%">
     <feDropShadow dx="0" dy="1" stdDeviation="6" flood-color="#000" flood-opacity="0.06"/></filter>
   <symbol id="apple" viewBox="0 0 16 16"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></symbol>
-  <symbol id="win-icon" viewBox="0 0 16 16">
-    <rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
+  <symbol id="win-icon" viewBox="0 0 16 16"><rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
     <rect x="6" y="7" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/></symbol>
-  <symbol id="audio-icon" viewBox="0 0 16 16">
-    <path d="M7 3L3.5 6H1v4h2.5L7 13V3z" stroke-width="1.2" fill="none"/>
-    <path d="M10 5.5a3 3 0 010 5M12 3.5a6 6 0 010 9" fill="none" stroke-width="1.2"/></symbol>
-  <symbol id="birman" viewBox="0 0 16 16">
-    <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
+  <symbol id="birman" viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="vol-up" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 5.5a3 3 0 010 5M12.5 3a7 7 0 010 10" fill="none" stroke-width="1.1"/></symbol>
+  <symbol id="vol-dn" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 6a2.5 2.5 0 010 4" fill="none" stroke-width="1.2"/></symbol>
+  <symbol id="track-prev" viewBox="0 0 16 16"><rect x="1" y="4" width="1.5" height="8" rx=".5"/><polygon points="4,8 11,3.5 11,12.5"/></symbol>
+  <symbol id="track-next" viewBox="0 0 16 16"><polygon points="5,3.5 5,12.5 12,8"/><rect x="13.5" y="4" width="1.5" height="8" rx=".5"/></symbol>
+  <symbol id="play-pause" viewBox="0 0 16 16"><polygon points="1,3 1,13 7,8"/><rect x="9" y="3" width="2.5" height="10" rx=".5"/><rect x="13" y="3" width="2.5" height="10" rx=".5"/></symbol>
+  <symbol id="android" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="2"/><circle cx="6" cy="10" r="1"/><circle cx="10" cy="10" r="1"/>
+    <line x1="5" y1="3.5" x2="3.5" y2="6" stroke-width="1.2" stroke-linecap="round"/><line x1="11" y1="3.5" x2="12.5" y2="6" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="arr-up" viewBox="0 0 24 24"><path d="M12 4L4 14h5v6h6v-6h5z"/></symbol>
+  <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20L4 10h5V4h6v6h5z"/></symbol>
+  <symbol id="arr-l" viewBox="0 0 24 24"><path d="M4 12L14 4v5h6v6h-6v5z"/></symbol>
+  <symbol id="arr-r" viewBox="0 0 24 24"><path d="M20 12L10 4v5H4v6h6v5z"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; fill: #1d1d1f; }
     .key-label { font-size: 8px; fill: #aeaeb2; letter-spacing: 0.02em; }
     .bind-label { font-size: 10px; font-weight: 500; letter-spacing: -0.01em; }
     .title { font-size: 15px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .legend-text { font-size: 10px; fill: #86868b; font-weight: 400; }
-    .detail-text { font-size: 9px; fill: #86868b; }
-    .detail-key { font-size: 9px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .key-group { cursor: default; }
     .key-group:hover > rect:first-child { stroke: #007aff !important; stroke-width: 1.5px !important; }
     .key-tip { transition: opacity 0.15s ease; }
@@ -37,14 +41,14 @@
 <g class="key-group">
 <rect x="28" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="28" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="55.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘⎋</text>
+<text x="55.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⎋</text>
 <text x="77" y="105" text-anchor="end" class="key-label">~</text>
 <title>~: ⌘⎋</title>
 </g>
 <g class="key-group">
 <rect x="86" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="86" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="113.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F1</text>
+<text x="113.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F1</text>
 <text x="135" y="105" text-anchor="end" class="key-label">1</text>
 <title>1: ⌘F1</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -59,77 +63,77 @@
 <g class="key-group">
 <rect x="144" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="144" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="171.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F2</text>
+<text x="171.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F2</text>
 <text x="193" y="105" text-anchor="end" class="key-label">2</text>
 <title>2: ⌘F2</title>
 </g>
 <g class="key-group">
 <rect x="202" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="202" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="229.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F3</text>
+<text x="229.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F3</text>
 <text x="251" y="105" text-anchor="end" class="key-label">3</text>
 <title>3: ⌘F3</title>
 </g>
 <g class="key-group">
 <rect x="260" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="260" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="287.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F4</text>
+<text x="287.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F4</text>
 <text x="309" y="105" text-anchor="end" class="key-label">4</text>
 <title>4: ⌘F4</title>
 </g>
 <g class="key-group">
 <rect x="318" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="318" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="345.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F5</text>
+<text x="345.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F5</text>
 <text x="367" y="105" text-anchor="end" class="key-label">5</text>
 <title>5: ⌘F5</title>
 </g>
 <g class="key-group">
 <rect x="376" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="376" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="403.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F6</text>
+<text x="403.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F6</text>
 <text x="425" y="105" text-anchor="end" class="key-label">6</text>
 <title>6: ⌘F6</title>
 </g>
 <g class="key-group">
 <rect x="434" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="434" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="461.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F7</text>
+<text x="461.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F7</text>
 <text x="483" y="105" text-anchor="end" class="key-label">7</text>
 <title>7: ⌘F7</title>
 </g>
 <g class="key-group">
 <rect x="492" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="492" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="519.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F8</text>
+<text x="519.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F8</text>
 <text x="541" y="105" text-anchor="end" class="key-label">8</text>
 <title>8: ⌘F8</title>
 </g>
 <g class="key-group">
 <rect x="550" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="550" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="577.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F9</text>
+<text x="577.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F9</text>
 <text x="599" y="105" text-anchor="end" class="key-label">9</text>
 <title>9: ⌘F9</title>
 </g>
 <g class="key-group">
 <rect x="608" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="608" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="635.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F10</text>
+<text x="635.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F10</text>
 <text x="657" y="105" text-anchor="end" class="key-label">0</text>
 <title>0: ⌘F10</title>
 </g>
 <g class="key-group">
 <rect x="666" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="666" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="693.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F11</text>
+<text x="693.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F11</text>
 <text x="715" y="105" text-anchor="end" class="key-label">-</text>
 <title>-: ⌘F11</title>
 </g>
 <g class="key-group">
 <rect x="724" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="724" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="751.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F12</text>
+<text x="751.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F12</text>
 <text x="773" y="105" text-anchor="end" class="key-label">=</text>
 <title>=: ⌘F12</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -149,14 +153,14 @@
 <g class="key-group">
 <rect x="28" y="114" width="83.0" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="28" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="69.5" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="18px">⌘↩</text>
+<text x="69.5" y="144.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="14px">⌘↩</text>
 <text x="106.0" y="157" text-anchor="end" class="key-label">⇥</text>
 <title>⇥: ⌘↩</title>
 </g>
 <g class="key-group">
 <rect x="115.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="115.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="142.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘⌫</text>
+<text x="142.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⌫</text>
 <text x="164.0" y="157" text-anchor="end" class="key-label">Q</text>
 <title>Q: ⌘⌫</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -174,7 +178,7 @@
 <g class="key-group">
 <rect x="173.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="173.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="200.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">Top</text>
+<text x="200.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">Top</text>
 <text x="222.0" y="157" text-anchor="end" class="key-label">W</text>
 <title>W: Top</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -189,7 +193,7 @@
 <g class="key-group">
 <rect x="231.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="231.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="258.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="18px">⌘⌦</text>
+<text x="258.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⌦</text>
 <text x="280.0" y="157" text-anchor="end" class="key-label">E</text>
 <title>E: ⌘⌦</title>
 </g>
@@ -197,7 +201,7 @@
 <rect x="289.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="289.0" y="116" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="307.0" y="119" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="316.0" y="147" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">OrbStack</text>
+<text x="316.0" y="147" text-anchor="middle" class="bind-label" fill="#007aff" font-size="12px">OrbStack</text>
 <text x="338.0" y="157" text-anchor="end" class="key-label">R</text>
 <title>R: OrbStack</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -232,7 +236,7 @@
 <g class="key-group">
 <rect x="579.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="579.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="606.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">Top</text>
+<text x="606.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">Top</text>
 <text x="628.0" y="157" text-anchor="end" class="key-label">O</text>
 <title>O: Top</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -279,7 +283,7 @@
 <g class="key-group">
 <rect x="187.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="187.5" y="168" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="214.5" y="194.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">Bottom</text>
+<text x="214.5" y="196.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">Bottom</text>
 <text x="236.5" y="209" text-anchor="end" class="key-label">S</text>
 <title>S: Bottom</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -301,14 +305,14 @@
 <g class="key-group">
 <rect x="303.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="303.5" y="168" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="330.5" y="194.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘o</text>
+<text x="330.5" y="196.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘o</text>
 <text x="352.5" y="209" text-anchor="end" class="key-label">F</text>
 <title>F: ⌘o</title>
 </g>
 <g class="key-group">
 <rect x="361.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="361.5" y="168" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="388.5" y="194.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘F13</text>
+<text x="388.5" y="196.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F13</text>
 <text x="410.5" y="209" text-anchor="end" class="key-label">G</text>
 <title>G: ⌘F13</title>
 </g>
@@ -359,7 +363,7 @@
 <g class="key-group">
 <rect x="216.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="216.5" y="220" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="243.5" y="246.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘[</text>
+<text x="243.5" y="248.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘[</text>
 <text x="265.5" y="261" text-anchor="end" class="key-label">X</text>
 <title>X: ⌘[</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -384,7 +388,7 @@
 <g class="key-group">
 <rect x="274.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="274.5" y="220" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="301.5" y="246.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘]</text>
+<text x="301.5" y="248.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘]</text>
 <text x="323.5" y="261" text-anchor="end" class="key-label">C</text>
 <title>C: ⌘]</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -410,7 +414,7 @@
 <rect x="332.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="332.5" y="220" width="3" height="44" rx="1.5" fill="#af52de"/>
 <image x="350.5" y="223" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="359.5" y="251" text-anchor="middle" class="bind-label" fill="#af52de" font-size="8px">Search Sel</text>
+<text x="359.5" y="251" text-anchor="middle" class="bind-label" fill="#af52de" font-size="9px">Search Sel</text>
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: Search Sel — Browser Search Selected</title>
 <g class="key-tip" opacity="0" pointer-events="none">

@@ -8,23 +8,27 @@
   <filter id="shadow-card" x="-4%" y="-4%" width="108%" height="116%">
     <feDropShadow dx="0" dy="1" stdDeviation="6" flood-color="#000" flood-opacity="0.06"/></filter>
   <symbol id="apple" viewBox="0 0 16 16"><path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516s1.52.087 2.475-1.258.762-2.391.728-2.43m3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422s1.675-2.789 1.698-2.854-.597-.79-1.254-1.157a3.7 3.7 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56s.625 1.924 1.273 2.796c.576.984 1.34 1.667 1.659 1.899s1.219.386 1.843.067c.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282"/></symbol>
-  <symbol id="win-icon" viewBox="0 0 16 16">
-    <rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
+  <symbol id="win-icon" viewBox="0 0 16 16"><rect x="1" y="2" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/>
     <rect x="6" y="7" width="9" height="7" rx="1" fill="none" stroke-width="1.3"/></symbol>
-  <symbol id="audio-icon" viewBox="0 0 16 16">
-    <path d="M7 3L3.5 6H1v4h2.5L7 13V3z" stroke-width="1.2" fill="none"/>
-    <path d="M10 5.5a3 3 0 010 5M12 3.5a6 6 0 010 9" fill="none" stroke-width="1.2"/></symbol>
-  <symbol id="birman" viewBox="0 0 16 16">
-    <rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
+  <symbol id="birman" viewBox="0 0 16 16"><rect x="1" y="3" width="14" height="10" rx="2" fill="none" stroke-width="1"/>
     <text x="8" y="11.5" text-anchor="middle" font-size="8" font-weight="600">Б</text></symbol>
+  <symbol id="vol-up" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 5.5a3 3 0 010 5M12.5 3a7 7 0 010 10" fill="none" stroke-width="1.1"/></symbol>
+  <symbol id="vol-dn" viewBox="0 0 16 16"><path d="M7 3L3.5 6H1v4h2.5L7 13V3z" fill="none" stroke-width="1.2"/><path d="M10 6a2.5 2.5 0 010 4" fill="none" stroke-width="1.2"/></symbol>
+  <symbol id="track-prev" viewBox="0 0 16 16"><rect x="1" y="4" width="1.5" height="8" rx=".5"/><polygon points="4,8 11,3.5 11,12.5"/></symbol>
+  <symbol id="track-next" viewBox="0 0 16 16"><polygon points="5,3.5 5,12.5 12,8"/><rect x="13.5" y="4" width="1.5" height="8" rx=".5"/></symbol>
+  <symbol id="play-pause" viewBox="0 0 16 16"><polygon points="1,3 1,13 7,8"/><rect x="9" y="3" width="2.5" height="10" rx=".5"/><rect x="13" y="3" width="2.5" height="10" rx=".5"/></symbol>
+  <symbol id="android" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="2"/><circle cx="6" cy="10" r="1"/><circle cx="10" cy="10" r="1"/>
+    <line x1="5" y1="3.5" x2="3.5" y2="6" stroke-width="1.2" stroke-linecap="round"/><line x1="11" y1="3.5" x2="12.5" y2="6" stroke-width="1.2" stroke-linecap="round"/></symbol>
+  <symbol id="arr-up" viewBox="0 0 24 24"><path d="M12 4L4 14h5v6h6v-6h5z"/></symbol>
+  <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20L4 10h5V4h6v6h5z"/></symbol>
+  <symbol id="arr-l" viewBox="0 0 24 24"><path d="M4 12L14 4v5h6v6h-6v5z"/></symbol>
+  <symbol id="arr-r" viewBox="0 0 24 24"><path d="M20 12L10 4v5H4v6h6v5z"/></symbol>
   <style>
     text { font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; fill: #1d1d1f; }
     .key-label { font-size: 8px; fill: #aeaeb2; letter-spacing: 0.02em; }
     .bind-label { font-size: 10px; font-weight: 500; letter-spacing: -0.01em; }
     .title { font-size: 15px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .legend-text { font-size: 10px; fill: #86868b; font-weight: 400; }
-    .detail-text { font-size: 9px; fill: #86868b; }
-    .detail-key { font-size: 9px; font-weight: 600; fill: #1d1d1f; letter-spacing: -0.01em; }
     .key-group { cursor: default; }
     .key-group:hover > rect:first-child { stroke: #007aff !important; stroke-width: 1.5px !important; }
     .key-tip { transition: opacity 0.15s ease; }
@@ -37,7 +41,7 @@
 <g class="key-group">
 <rect x="28" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="28" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="55.0" y="90.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌥⌘⎋</text>
+<text x="55.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌥⌘⎋</text>
 <text x="77" y="105" text-anchor="end" class="key-label">~</text>
 <title>~: ⌥⌘⎋</title>
 </g>
@@ -212,7 +216,7 @@
 <g class="key-group">
 <rect x="115.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="115.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="142.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="10px">⌘⌫</text>
+<text x="142.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⌫</text>
 <text x="164.0" y="157" text-anchor="end" class="key-label">Q</text>
 <title>Q: ⌘⌫</title>
 <g class="key-tip" opacity="0" pointer-events="none">
@@ -566,7 +570,7 @@
 <rect x="564.5" y="218" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="564.5" y="220" width="3" height="44" rx="1.5" fill="#007aff"/>
 <image x="582.5" y="223" width="18" height="18" href="data:image/png;base64,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"/>
-<text x="591.5" y="251" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Settings</text>
+<text x="591.5" y="251" text-anchor="middle" class="bind-label" fill="#007aff" font-size="12px">Settings</text>
 <text x="613.5" y="261" text-anchor="end" class="key-label">,</text>
 <title>,: Settings (System Settings)</title>
 <g class="key-tip" opacity="0" pointer-events="none">
