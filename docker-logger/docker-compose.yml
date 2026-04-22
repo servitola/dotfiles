@@ -1,0 +1,15 @@
+services:
+  docker-logger:
+    image: umputun/docker-logger
+    container_name: docker-logger
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./logs:/srv/logs
+    environment:
+      - LOG_FILES=true
+      - MIX_ERR=true
+      - MAX_SIZE=10
+      - MAX_FILES=5
+      - MAX_AGE=14
+      - EXCLUDE=docker-logger
