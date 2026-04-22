@@ -4,8 +4,8 @@
 # Outputs: JSON array of {name, url} objects (candidates from one directory)
 # Used by Hammerspoon GruvboxWallpapers.spoon
 
-BLOCKLIST="$HOME/projects/dotfiles/macos/wallpapers-blocklist.txt"
-HISTORY="$HOME/Pictures/Wallpapers/GruvBox/.history"
+BLOCKLIST="$HOME/Pictures/Wallpapers/GruvBox/blocklist.txt"
+HISTORY="$HOME/Pictures/Wallpapers/GruvBox/history.log"
 
 CURL_OPTS=(-s --noproxy '*')
 [ -n "$GITHUB_API_TOKEN" ] && CURL_OPTS+=(-H "Authorization: token $GITHUB_API_TOKEN")
