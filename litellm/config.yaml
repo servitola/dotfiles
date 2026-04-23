@@ -1,4 +1,4 @@
-# LiteLLM → free model providers (OpenRouter / Groq / NVIDIA NIM / GitHub / Z.AI)
+# LiteLLM → free model providers (OpenRouter / Groq / NVIDIA NIM / GitHub / Z.AI / Mistral / Gemini)
 
 model_list:
 
@@ -119,6 +119,43 @@ model_list:
       api_base: https://models.github.ai/inference
       api_key: os.environ/GITHUB_MODELS_TOKEN
 
+  # === Mistral direct (free: ~1 RPS, 500K TPM, ~1B tokens/month) ============
+  # Phone verification required. OpenAI-compatible endpoint. Free tier
+  # requires data-training opt-in for prompts outside EU/EEA/UK.
+  - model_name: mistral-codestral
+    litellm_params:
+      model: mistral/codestral-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: mistral-small
+    litellm_params:
+      model: mistral/mistral-small-latest
+      api_key: os.environ/MISTRAL_API_KEY
+  - model_name: mistral-large
+    litellm_params:
+      model: mistral/mistral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+
+  # === Gemini direct (free: 10 RPM / 250 RPD Flash, 500 RPD search) ========
+  # Standalone Gemini without search grounding. Generous free tier.
+  - model_name: gemini
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+
+  # === Cerebras (free: 30 RPM, 14 400 RPD, 1M tokens/day) ==================
+  # Wafer-scale chip — fastest free inference (~2 600 tok/s). No credit card.
+  # OpenAI-compatible at api.cerebras.ai/v1.
+  - model_name: cerebras-qwen
+    litellm_params:
+      model: openai/qwen-3-235b
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+  - model_name: cerebras-llama
+    litellm_params:
+      model: openai/llama-3.3-70b
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
   # router does simple-shuffle between deployments, cools down the one that
@@ -139,7 +176,23 @@ model_list:
       order: 1
   - model_name: coding
     litellm_params:
+      model: mistral/codestral-latest
+      api_key: os.environ/MISTRAL_API_KEY
+      order: 1
+  - model_name: coding
+    litellm_params:
+      model: groq/kimi-k2-instruct
+      api_key: os.environ/GROQ_API_KEY
+      order: 1
+  - model_name: coding
+    litellm_params:
       model: openai/openai/gpt-oss-120b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+  - model_name: coding
+    litellm_params:
+      model: openai/mistralai/devstral-2512:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
@@ -148,9 +201,19 @@ model_list:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
       order: 2
+  - model_name: coding
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      order: 2
 
-  # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek.
-  # NIM and OpenRouter both ~100%.
+  # reasoning — planning, analysis, long-context. Qwen3-235B (Cerebras) + Nemotron 120B + DeepSeek + Mistral Large.
+  - model_name: reasoning
+    litellm_params:
+      model: openai/qwen-3-235b
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+      order: 1
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
@@ -169,22 +232,86 @@ model_list:
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
       order: 2
+  - model_name: reasoning
+    litellm_params:
+      model: openai/deepseek/deepseek-r1-0528:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+  - model_name: reasoning
+    litellm_params:
+      model: mistral/mistral-large-latest
+      api_key: os.environ/MISTRAL_API_KEY
+      order: 2
+  - model_name: reasoning
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      order: 2
 
-  # fast — latency-critical (~1-3s). Groq-only, all direct, support tool-calling.
+  # fast — latency-critical. Cerebras (~2 600 tok/s) first, Groq (~300-500 tok/s) fallback.
+  - model_name: fast
+    litellm_params:
+      model: openai/llama-3.3-70b
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+      order: 1
+  - model_name: fast
+    litellm_params:
+      model: openai/qwen-3-235b
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+      order: 1
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
       api_key: os.environ/GROQ_API_KEY
+      order: 2
   - model_name: fast
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
+      order: 2
+  - model_name: fast
+    litellm_params:
+      model: groq/qwen3-32b
+      api_key: os.environ/GROQ_API_KEY
+      order: 2
+
+  # === Web Search (free tier) ==================================================
+  # Gemini 2.5 Flash with Google Search grounding (free: 500 search RPD).
+  # Groq Compound (above) also does web search automatically (free: 250 RPD).
+  - model_name: gemini-search
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      web_search_options:
+        search_context_size: "medium"
+  - model_name: groq-compound-mini
+    litellm_params:
+      model: groq/groq/compound-mini
+      api_key: os.environ/GROQ_API_KEY
+
+  # web-search — rotation group for callers that need "any search model".
+  # Gemini preferred (500 RPD vs Groq's 250 RPD).
+  - model_name: web-search
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GEMINI_API_KEY
+      web_search_options:
+        search_context_size: "medium"
+      order: 1
+  - model_name: web-search
+    litellm_params:
+      model: groq/groq/compound
+      api_key: os.environ/GROQ_API_KEY
+      order: 2
 
 router_settings:
   # Fallback policy:
   # - Direct names (gpt, nemotron, …) do NOT fall back between themselves.
   #   If you called `gpt` and it failed → the client sees an error.
-  # - Rotation groups (coding, reasoning, fast, vision, premium) have
+  # - Rotation groups (coding, reasoning, fast, vision, web-search) have
   #   several deployments under one model_name. The router does
   #   simple-shuffle; on allowed_fails in a row → cooldown + shuffle to
   #   another. Callers should decide explicitly between "this specific

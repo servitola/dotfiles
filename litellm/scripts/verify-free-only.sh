@@ -7,6 +7,9 @@ points at a free-tier upstream. Whitelist:
   OpenRouter (https://openrouter.ai/api/v1)        — model must end with `:free`
   Groq native (model starts with `groq/`)          — free tier built in
   Z.AI native (model starts with `zai/`)           — free tier
+  Gemini native (model starts with `gemini/`)      — free tier (AI Studio)
+  Mistral native (model starts with `mistral/`)    — free tier (~1B tokens/month)
+  Cerebras (https://api.cerebras.ai/v1)            — free tier (1M tokens/day)
   NVIDIA NIM (https://integrate.api.nvidia.com/v1) — free credits
   GitHub Models (https://models.github.ai/inference) — free quota
 
@@ -26,6 +29,7 @@ from pathlib import Path
 FREE_API_BASES = {
     "https://integrate.api.nvidia.com/v1",
     "https://models.github.ai/inference",
+    "https://api.cerebras.ai/v1",
 }
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 
@@ -86,6 +90,10 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
         return True, "groq native"
     if model.startswith("zai/"):
         return True, "zai native (free tier)"
+    if model.startswith("gemini/"):
+        return True, "gemini native (AI Studio free tier)"
+    if model.startswith("mistral/"):
+        return True, "mistral native (free tier)"
     if api_base == OPENROUTER_API_BASE:
         if model.endswith(":free"):
             return True, "openrouter :free"
