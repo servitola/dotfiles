@@ -308,6 +308,11 @@ install:
 		claude-desktop/google-calendar-mcp.sh \
 		claude-desktop/google-maps-mcp.sh
 
+	@echo "setup LiteLLM (LLM proxy)"
+	@cd ~/projects/dotfiles/litellm && docker compose up -d
+	@echo "setup docker-logger (centralized container log collection)"
+	@cd ~/projects/dotfiles/docker-logger && docker compose up -d
+
 	@echo "precommit setup"
 	@cd ~/projects/dotfiles/ && pre-commit install
 
