@@ -77,6 +77,10 @@ for dir in $(docker inspect --format '{{ index .Config.Labels "com.docker.compos
     docker compose --project-directory "$dir" build --pull
     docker compose --project-directory "$dir" up -d
 done
+print_section "LiteLLM Model Health"
+
+print_task "Checking model availability across providers"
+python3 ~/projects/dotfiles/litellm/scripts/check-models.py || echo "  * model-health check failed"
 
 print_section "Final Updates"
 
