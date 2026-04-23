@@ -72,9 +72,9 @@
           }
         },
         "glm": {
-          "name": "Z.AI GLM-4.5 Air (OpenRouter free, lightweight)",
+          "name": "Z.AI GLM-4.7 Flash (native, 202k context)",
           "limit": {
-            "context": 131072,
+            "context": 202752,
             "output": 8192
           }
         },
