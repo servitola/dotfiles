@@ -71,12 +71,8 @@ pre-commit autoupdate
 
 print_section "Docker Containers"
 
-for dir in $(docker inspect --format '{{ index .Config.Labels "com.docker.compose.project.working_dir" }}' $(docker ps -q 2>/dev/null) 2>/dev/null | sort -u); do
-    print_task "Updating $(basename $dir)"
-    docker compose --project-directory "$dir" pull --ignore-buildable
-    docker compose --project-directory "$dir" build --pull
-    docker compose --project-directory "$dir" up -d
-done
+~/projects/dotfiles/docker/up.sh
+
 print_section "LiteLLM Model Health"
 
 print_task "Checking model availability across providers"
