@@ -8,7 +8,8 @@
   "cleanupPeriodDays": 60,
   "effortLevel": "high",
   "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
+    "superpowers@superpowers-marketplace": true,
+    "warp@claude-code-warp": true
   },
   "env": {
     "BASH_MAX_TIMEOUT_MS": "480000",
@@ -17,8 +18,16 @@
     "CLAUDE_SMALL_FAST_MODEL": "claude-haiku-4-5-20251001",
     "DISABLE_AUTOUPDATER": "1",
     "DISABLE_ERROR_REPORTING": "1",
-    "DISABLE_TELEMETRY": "1",
     "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
+  "extraKnownMarketplaces": {
+    "claude-code-warp": {
+      "source": {
+        "repo": "warpdotdev/claude-code-warp",
+        "source": "github"
+      }
+    }
   },
   "hooks": {
     "ElicitationResult": [
