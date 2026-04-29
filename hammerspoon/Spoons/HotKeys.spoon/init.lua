@@ -212,7 +212,7 @@ local appSpecificHotkeys = {
     ["Music"] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
     },
-    ["Warp"] = {
+    ["WarpOss"] = {
         { from = {"alt"}, key = "z", sendText = "/new" },
     },
     ["Finder"] = {
@@ -435,17 +435,17 @@ function obj:init()
                     local warpTimer1 = nil  -- prevent GC
                     local warpTimer2 = nil  -- prevent GC
                     hs.hotkey.bind(modifiers, key, function()
-                        local warp = hs.application.get("dev.warp.Warp-Stable")
+                        local warp = hs.application.get("dev.warp.WarpOss")
                         if not warp then
                             -- Stop any previous watcher to prevent leaks on rapid presses
                             if warpLaunchWatcher then warpLaunchWatcher:stop() end
                             warpLaunchWatcher = hs.application.watcher.new(function(name, event, app)
-                                if name == "Warp" and event == hs.application.watcher.launched then
+                                if name == "WarpOss" and event == hs.application.watcher.launched then
                                     warpLaunchWatcher:stop()
                                     warpLaunchWatcher = nil
                                     warpTimer1 = hs.timer.doAfter(0.3, function()
                                         warpTimer1 = nil
-                                        local w = hs.application.get("dev.warp.Warp-Stable")
+                                        local w = hs.application.get("dev.warp.WarpOss")
                                         if not w then return end
                                         local savedFrame
                                         local windows = w:allWindows()
@@ -456,10 +456,10 @@ function obj:init()
                                             win:close()
                                         end
                                         w:hide()
-                                        hs.urlevent.openURL("warp://launch/Default")
+                                        hs.urlevent.openURL("warposs://launch/Default")
                                         warpTimer2 = hs.timer.doAfter(0.3, function()
                                             warpTimer2 = nil
-                                            local w2 = hs.application.get("dev.warp.Warp-Stable")
+                                            local w2 = hs.application.get("dev.warp.WarpOss")
                                             if w2 then
                                                 local win = w2:mainWindow()
                                                 if win and savedFrame then
@@ -472,7 +472,7 @@ function obj:init()
                                 end
                             end)
                             warpLaunchWatcher:start()
-                            hs.application.open("dev.warp.Warp-Stable")
+                            hs.application.open("dev.warp.WarpOss")
                         elseif hs.application.frontmostApplication() == warp then
                             warp:hide()
                         else
@@ -504,10 +504,10 @@ function obj:init()
                     or functionName == "window.focus_personal"
                     or functionName == "window.focus_comms" then
                     local exceptionSets = {
-                        ["window.hide_all_except_work"] = { ["Warp"] = true, ["Workbot"] = true },
+                        ["window.hide_all_except_work"] = { ["WarpOss"] = true, ["Workbot"] = true },
                         ["window.focus_work"] = {
                             ["Rider"] = true, ["Fork"] = true, ["Firefox"] = true,
-                            ["Warp"] = true, ["Code"] = true,
+                            ["WarpOss"] = true, ["Code"] = true,
                             ["Workbot"] = true
                         },
                         ["window.focus_personal"] = {
@@ -519,7 +519,7 @@ function obj:init()
                         },
                     }
                     local focusApps = {
-                        ["window.hide_all_except_work"] = { "Warp" },
+                        ["window.hide_all_except_work"] = { "WarpOss" },
                         ["window.focus_work"] = { "Firefox" },
                         ["window.focus_personal"] = { "Telegram" },
                         ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Telegram" },
