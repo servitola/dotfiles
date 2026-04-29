@@ -158,8 +158,6 @@ brew "kubernetes-cli"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
-# Building blocks for modern adaptive GNOME applications
-brew "libadwaita"
 # Library that sends desktop notifications to a notification daemon
 brew "libnotify"
 # Lynx-like WWW browser that supports tables, menus, etc.
