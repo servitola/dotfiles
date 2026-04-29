@@ -101,5 +101,44 @@ fi
 
 # --- Patterns ---
 
-try_clean_pattern ~ f ".DS_Store" "DS_Store files"
+# DS_Store: single-pass find with exclusions and timeout (avoid 3x traversal of ~)
+_DS_LABEL="DS_Store files"
+spinner_start "$_DS_LABEL"
+_DS_TMPFILE=$(mktemp)
+
+if command -v timeout &>/dev/null; then
+    timeout 30 find ~ -xdev \
+        -path ~/Library -prune -o \
+        -path ~/.Trash -prune -o \
+        -name node_modules -prune -o \
+        -name .git -prune -o \
+        -type f -name ".DS_Store" -print0 \
+        >| "$_DS_TMPFILE" 2>/dev/null
+    _DS_EXIT=$?
+else
+    find ~ -xdev \
+        -path ~/Library -prune -o \
+        -path ~/.Trash -prune -o \
+        -name node_modules -prune -o \
+        -name .git -prune -o \
+        -type f -name ".DS_Store" -print0 \
+        >| "$_DS_TMPFILE" 2>/dev/null
+    _DS_EXIT=$?
+fi
+
+_DS_COUNT=$(tr -cd '\0' < "$_DS_TMPFILE" | wc -c | tr -d ' ')
+
+if [ "$_DS_COUNT" -eq 0 ]; then
+    spinner_stop_dim "$_DS_LABEL: nothing to clean"
+elif [ "$_DS_EXIT" -eq 124 ]; then
+    xargs -0 rm -f < "$_DS_TMPFILE" 2>/dev/null
+    _DS_SIZE_KB=$(( _DS_COUNT * 4 ))
+    spinner_stop "$_DS_LABEL: cleaned ($_DS_COUNT items, $(format_size $_DS_SIZE_KB)) (timed out, partial)"
+else
+    xargs -0 rm -f < "$_DS_TMPFILE" 2>/dev/null
+    _DS_SIZE_KB=$(( _DS_COUNT * 4 ))
+    spinner_stop "$_DS_LABEL: cleaned ($_DS_COUNT items, $(format_size $_DS_SIZE_KB))"
+fi
+
+rm -f "$_DS_TMPFILE"
 try_clean_pattern . d ".AppleD*" "Apple Double files"
