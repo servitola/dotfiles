@@ -392,6 +392,8 @@ cask "karabiner-elements"
 cask "kegworks"
 # Personal AI-powered transcription and notetaking service
 cask "limitless"
+# Discover, download, and run local LLMs
+cask "lm-studio"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Adaptive brightness for external displays
