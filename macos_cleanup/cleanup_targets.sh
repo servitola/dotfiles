@@ -76,6 +76,7 @@ try_clean ~/Library/Application\ Support/obsidian/Code\ Cache "Obsidian Code Cac
 try_clean ~/Library/Application\ Support/obsidian/DawnGraphiteCache "Obsidian GraphiteCache"
 try_clean ~/Library/Application\ Support/obsidian/DawnWebGPUCache "Obsidian WebGPU Cache"
 try_clean ~/Library/Application\ Support/Claude/Cache/Cache_Data "Claude Cache"
+try_clean ~/Library/Application\ Support/Claude/vm_bundles "Claude Cowork Virtual Machine"
 try_clean ~/Library/Application\ Support/Moises/Cache/Cache_Data "Moises Cache"
 try_clean ~/Library/Application\ Support/Yandex/YandexBrowser/Resources/extension/cache_2 "Yandex Browser Extension Cache"
 try_clean ~/Library/Application\ Support/Google/GoogleUpdater/crx_cache "Google Updater Cache"
