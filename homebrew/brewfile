@@ -434,6 +434,8 @@ cask "reaper"
 cask "sf-symbols"
 # Screenshot measurement and annotation tool
 cask "shottr"
+# Porting tool, to make Windows programs/games into native apps
+cask "kegworks-app/kegworks/sikarugir"
 # Displays all open files and sockets in use by all running processes
 cask "sloth"
 # Video game digital distribution service
