@@ -3,37 +3,41 @@
 # requires-python = ">=3.11"
 # dependencies = ["gradio-client>=1.4", "Pillow>=10"]
 # ///
-"""Image edit via HuggingFace Space (Qwen-Image-Edit-2511 family).
+"""Inpaint a region via HuggingFace Space (FLUX.1-Fill-dev).
 
-Free, no auth, no API key. Single-input edit OR multi-reference compose
-(up to ~3 images) — Qwen-Image-Edit-2511 takes a list of images natively.
+Use when only part of the image must change (e.g. "denser plant in the
+top-left corner, keep everything else"). White pixels in the mask are
+repainted. Pass either a paint mask PNG or a --bbox x,y,w,h that is
+rasterised into a rectangular mask.
 
-Falls back across Spaces because any single one can be sleeping / queued
-/ in RUNTIME_ERROR state.
+Free, no auth. The Space uses Gradio's ImageEditor input — we wrap the
+input + mask into the {background, layers, composite, id} dict.
 """
 from __future__ import annotations
 
 import argparse
 import shutil
 import sys
+import tempfile
 from pathlib import Path
 
 from gradio_client import Client, handle_file
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
-# Order: fastest first, then full-quality, then official.
 SPACES = [
-    "linoyts/Qwen-Image-Edit-2511-Fast",
-    "Qwen/Qwen-Image-Edit-2511",
-    "multimodalart/Qwen-Image-Edit-Fast",
+    "black-forest-labs/FLUX.1-Fill-dev",
 ]
 
 
-def edit(input_path: Path, ref_paths: list[Path], prompt: str, output_path: Path) -> None:
-    image_paths = [input_path] + list(ref_paths)
+def inpaint(input_path: Path, mask_path: Path, prompt: str, output_path: Path) -> None:
     width, height = _dims(input_path)
-    images_arg = [{"image": handle_file(str(p)), "caption": None} for p in image_paths]
+    edit_images = {
+        "background": handle_file(str(input_path)),
+        "layers": [handle_file(str(mask_path))],
+        "composite": handle_file(str(input_path)),
+        "id": None,
+    }
 
     last_err: Exception | None = None
     for space in SPACES:
@@ -46,15 +50,14 @@ def edit(input_path: Path, ref_paths: list[Path], prompt: str, output_path: Path
 
         try:
             result = client.predict(
-                images=images_arg,
+                edit_images=edit_images,
                 prompt=prompt,
                 seed=0,
                 randomize_seed=True,
-                true_guidance_scale=4.0,
-                num_inference_steps=8 if "Fast" in space else 20,
-                height=height,
                 width=width,
-                rewrite_prompt=True,
+                height=height,
+                guidance_scale=30.0,
+                num_inference_steps=28,
                 api_name="/infer",
             )
         except Exception as exc:
@@ -70,10 +73,25 @@ def edit(input_path: Path, ref_paths: list[Path], prompt: str, output_path: Path
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(path, output_path)
-        print(f"OK: {output_path} (space={space}, refs={len(ref_paths)})")
+        print(f"OK: {output_path} (space={space})")
         return
 
-    raise SystemExit(f"all Spaces failed. last error: {last_err}")
+    raise SystemExit(f"all inpaint Spaces failed. last error: {last_err}")
+
+
+def _bbox_to_mask(input_path: Path, bbox_str: str) -> Path:
+    try:
+        x, y, w, h = (int(v.strip()) for v in bbox_str.split(","))
+    except ValueError:
+        sys.exit(f"--bbox must be x,y,w,h integers, got: {bbox_str!r}")
+    with Image.open(input_path) as src:
+        size = src.size
+    mask = Image.new("RGBA", size, (0, 0, 0, 0))
+    ImageDraw.Draw(mask).rectangle([x, y, x + w, y + h], fill=(255, 255, 255, 255))
+    fd, out = tempfile.mkstemp(prefix="inpaint_mask_", suffix=".png")
+    mask.save(out)
+    Path(out).chmod(0o644)
+    return Path(out)
 
 
 def _dims(path: Path) -> tuple[int, int]:
@@ -103,20 +121,22 @@ def main() -> None:
     parser.add_argument("--input", required=True, type=Path)
     parser.add_argument("--prompt", required=True)
     parser.add_argument("--output", required=True, type=Path)
-    parser.add_argument(
-        "--ref",
-        type=Path,
-        action="append",
-        default=[],
-        help="extra reference image; pass --ref multiple times for up to ~3 total",
-    )
+    mask_group = parser.add_mutually_exclusive_group(required=True)
+    mask_group.add_argument("--mask", type=Path, help="PNG mask, white=repaint, same size as input")
+    mask_group.add_argument("--bbox", help="rectangle to repaint, format: x,y,w,h in input pixels")
     args = parser.parse_args()
+
     if not args.input.exists():
         sys.exit(f"input not found: {args.input}")
-    for r in args.ref:
-        if not r.exists():
-            sys.exit(f"ref not found: {r}")
-    edit(args.input, args.ref, args.prompt, args.output)
+
+    if args.mask:
+        if not args.mask.exists():
+            sys.exit(f"mask not found: {args.mask}")
+        mask_path = args.mask
+    else:
+        mask_path = _bbox_to_mask(args.input, args.bbox)
+
+    inpaint(args.input, mask_path, args.prompt, args.output)
 
 
 if __name__ == "__main__":
