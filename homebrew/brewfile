@@ -268,6 +268,8 @@ brew "tealdeer"
 brew "telegram-downloader"
 # Terminal IRC client
 brew "tiny"
+# Lightweight BitTorrent client
+brew "transmission-cli"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Command-line unarchiving tools supporting multiple formats
