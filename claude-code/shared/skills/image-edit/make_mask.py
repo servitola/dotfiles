@@ -3,179 +3,78 @@
 # requires-python = ">=3.11"
 # dependencies = ["Pillow>=10"]
 # ///
-"""Build an inpaint mask from geometric primitives.
+"""Build an inpaint mask from primitives. See SKILL.md for full docs.
 
-White pixels = repaint. Black pixels = preserve. The mask is sized to
-match the reference image so it can be passed directly to
-`edit_inpaint.py --mask` or `edit_fal_fill.py --mask`.
-
-Each --add SHAPE unions the shape into the white area; each --sub SHAPE
-subtracts it. Shapes are evaluated left-to-right in command-line order.
-Feathering blurs the boundary so the inpaint blends without seams.
-
-Shapes (coords in input pixels; use `%` suffix for percent of image):
-  rect:x,y,w,h            axis-aligned rectangle
-  ellipse:cx,cy,rx,ry     ellipse centred at cx,cy
-  arch:x,y,w,h            rectangle with semicircular top (mirror shape)
-  ring:cx,cy,r_out,r_in   annulus, r_out > r_in
-
-Examples:
-
-  # Repaint the green frame around an arched mirror (the ring between an
-  # outer arch and an inner arch). Soft 6 px feather for clean blend.
-  make_mask.py --like input.jpg --output /tmp/m.png --feather 6 \
-    --add arch:140,60,520,720 \
-    --sub arch:200,120,400,600
-
-  # Repaint the upper third of the mirror (where the neon caption lives)
-  make_mask.py --like input.jpg --output /tmp/m.png --feather 4 \
-    --add rect:200,120,400,200
-
-  # Preview before spending a paid inpaint call
-  make_mask.py --like input.jpg --output /tmp/m.png --add arch:140,60,520,720 \
-    --preview /tmp/preview.png
+--shape [op:]kind:coords  where op=add|sub, kind=rect|ellipse|arch|ring.
+Refinements: --shift DX,DY  --grow N  --shrink N  --feather N
+Reuse last mask: --from-mask /tmp/_last_mask.png  (auto-cached after each run).
 """
 from __future__ import annotations
-
-import argparse
-import sys
+import argparse, sys
 from pathlib import Path
-from typing import Iterable
-
 from PIL import Image, ImageDraw, ImageFilter
 
+CACHE = Path("/tmp/_last_mask.png")
 
-def parse_shape(spec: str, w: int, h: int) -> tuple[str, list[int]]:
-    if ":" not in spec:
-        sys.exit(f"shape must be 'kind:args', got: {spec!r}")
-    kind, args = spec.split(":", 1)
-    try:
-        nums = [_resolve(piece.strip(), w if i % 2 == 0 else h)
-                for i, piece in enumerate(args.split(","))]
-    except ValueError as exc:
-        sys.exit(f"bad numbers in shape {spec!r}: {exc}")
-    return kind.strip().lower(), nums
+def res(p, dim): return round(float(p[:-1]) / 100 * dim) if p.endswith("%") else int(p)
 
+def parse_shape(spec, w, h):
+    parts = spec.split(":")
+    op = parts.pop(0) if parts and parts[0] in ("add", "sub") else "add"
+    if len(parts) != 2: sys.exit(f"bad shape {spec!r}")
+    kind, raw = parts[0].lower(), parts[1].split(",")
+    nums = [res(a.strip(), w if i % 2 == 0 else h) for i, a in enumerate(raw)]
+    return op, kind, nums
 
-def _resolve(piece: str, dim: int) -> int:
-    if piece.endswith("%"):
-        return round(float(piece[:-1]) / 100.0 * dim)
-    return int(piece)
-
-
-def draw_shape(canvas: Image.Image, kind: str, nums: list[int], fill: int) -> None:
-    d = ImageDraw.Draw(canvas)
-    if kind == "rect":
-        x, y, w, h = _require(nums, 4, "rect")
-        d.rectangle([x, y, x + w, y + h], fill=fill)
-    elif kind == "ellipse":
-        cx, cy, rx, ry = _require(nums, 4, "ellipse")
-        d.ellipse([cx - rx, cy - ry, cx + rx, cy + ry], fill=fill)
+def draw(c, kind, n, fill):
+    d = ImageDraw.Draw(c)
+    if kind == "rect": d.rectangle([n[0], n[1], n[0]+n[2], n[1]+n[3]], fill=fill)
+    elif kind == "ellipse": d.ellipse([n[0]-n[2], n[1]-n[3], n[0]+n[2], n[1]+n[3]], fill=fill)
     elif kind == "arch":
-        x, y, w, h = _require(nums, 4, "arch")
-        r = w // 2
-        d.rectangle([x, y + r, x + w, y + h], fill=fill)
-        d.pieslice([x, y, x + w, y + 2 * r], start=180, end=360, fill=fill)
+        x, y, w, h = n; r = w // 2
+        d.rectangle([x, y+r, x+w, y+h], fill=fill)
+        d.pieslice([x, y, x+w, y+2*r], 180, 360, fill=fill)
     elif kind == "ring":
-        cx, cy, ro, ri = _require(nums, 4, "ring")
-        d.ellipse([cx - ro, cy - ro, cx + ro, cy + ro], fill=fill)
-        d.ellipse([cx - ri, cy - ri, cx + ri, cy + ri], fill=0 if fill else 255)
-    else:
-        sys.exit(f"unknown shape kind: {kind!r}")
+        d.ellipse([n[0]-n[2], n[1]-n[2], n[0]+n[2], n[1]+n[2]], fill=fill)
+        d.ellipse([n[0]-n[3], n[1]-n[3], n[0]+n[3], n[1]+n[3]], fill=0 if fill else 255)
+    else: sys.exit(f"unknown kind: {kind!r}")
 
-
-def _require(nums: list[int], n: int, kind: str) -> list[int]:
-    if len(nums) != n:
-        sys.exit(f"{kind} needs {n} numbers, got {len(nums)}: {nums}")
-    return nums
-
-
-def build_mask(like: Path, ops: Iterable[tuple[str, str, list[int]]], feather: int) -> Image.Image:
-    with Image.open(like) as src:
-        w, h = src.size
-    mask = Image.new("L", (w, h), 0)
-    for op, kind, nums in ops:
-        fill = 255 if op == "add" else 0
-        draw_shape(mask, kind, nums, fill)
-    if feather > 0:
-        mask = mask.filter(ImageFilter.GaussianBlur(radius=feather))
-    return mask
-
-
-def make_preview(like: Path, mask: Image.Image, out: Path) -> None:
-    with Image.open(like) as src:
-        base = src.convert("RGB")
-    overlay = Image.new("RGB", base.size, (255, 0, 0))
-    blended = Image.composite(overlay, base, mask).convert("RGB")
-    preview = Image.blend(base, blended, 0.55)
-    out.parent.mkdir(parents=True, exist_ok=True)
-    preview.save(out)
-
-
-def main() -> None:
+def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("--like", required=True, type=Path, help="reference image — mask is sized to match")
-    p.add_argument("--output", required=True, type=Path, help="mask PNG to write")
-    p.add_argument("--add", action="append", default=[], metavar="SHAPE",
-                   help="union shape into mask (white). Repeatable.")
-    p.add_argument("--sub", action="append", default=[], metavar="SHAPE",
-                   help="subtract shape from mask (black). Repeatable.")
-    p.add_argument("--feather", type=int, default=4, help="gaussian blur radius on edges (px). Default 4.")
-    p.add_argument("--preview", type=Path, help="also write an overlay PNG: input tinted red where mask is white")
-    args = p.parse_args()
+    p.add_argument("--like", required=True, type=Path)
+    p.add_argument("--output", required=True, type=Path)
+    p.add_argument("--shape", action="append", default=[])
+    p.add_argument("--from-mask", type=Path, dest="from_mask")
+    p.add_argument("--shift"); p.add_argument("--grow", type=int, default=0)
+    p.add_argument("--shrink", type=int, default=0); p.add_argument("--feather", type=int, default=4)
+    p.add_argument("--preview", type=Path); p.add_argument("--no-cache", action="store_true")
+    a = p.parse_args()
+    if not a.like.exists(): sys.exit(f"not found: {a.like}")
+    if not a.shape and not a.from_mask: sys.exit("need --shape or --from-mask")
+    with Image.open(a.like) as s: w, h = s.size
+    if a.from_mask:
+        with Image.open(a.from_mask) as m:
+            mask = m.convert("L").resize((w, h)) if m.size != (w, h) else m.convert("L")
+    else: mask = Image.new("L", (w, h), 0)
+    for spec in a.shape:
+        op, kind, nums = parse_shape(spec, w, h)
+        draw(mask, kind, nums, 255 if op == "add" else 0)
+    if a.shift:
+        dx, dy = (int(v) for v in a.shift.split(","))
+        t = Image.new("L", (w, h), 0); t.paste(mask, (dx, dy)); mask = t
+    if a.grow or a.shrink:
+        mask = mask.point(lambda v: 255 if v >= 128 else 0)
+        if a.grow: mask = mask.filter(ImageFilter.MaxFilter(a.grow*2+1))
+        if a.shrink: mask = mask.filter(ImageFilter.MinFilter(a.shrink*2+1))
+    if a.feather > 0: mask = mask.filter(ImageFilter.GaussianBlur(a.feather))
+    a.output.parent.mkdir(parents=True, exist_ok=True); mask.save(a.output)
+    if not a.no_cache: mask.save(CACHE)
+    print(f"OK: {a.output} ({w}x{h})")
+    if a.preview:
+        with Image.open(a.like) as s: base = s.convert("RGB")
+        red = Image.new("RGB", base.size, (255, 0, 0))
+        prev = Image.blend(base, Image.composite(red, base, mask).convert("RGB"), 0.55)
+        a.preview.parent.mkdir(parents=True, exist_ok=True); prev.save(a.preview)
+        print(f"PREVIEW: {a.preview}")
 
-    if not args.like.exists():
-        sys.exit(f"reference image not found: {args.like}")
-    if not args.add and not args.sub:
-        sys.exit("at least one --add or --sub shape required")
-
-    with Image.open(args.like) as src:
-        w, h = src.size
-
-    ops: list[tuple[str, str, list[int]]] = []
-    raw = [("add", s) for s in args.add] + [("sub", s) for s in args.sub]
-    raw_in_argv_order = _interleave_in_argv_order(args.add, args.sub)
-    for op, spec in raw_in_argv_order:
-        kind, nums = parse_shape(spec, w, h)
-        ops.append((op, kind, nums))
-
-    mask = build_mask(args.like, ops, args.feather)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    mask.save(args.output)
-    print(f"OK: {args.output} ({w}x{h}, {len(ops)} shapes, feather={args.feather})")
-
-    if args.preview:
-        make_preview(args.like, mask, args.preview)
-        print(f"PREVIEW: {args.preview}")
-
-
-def _interleave_in_argv_order(adds: list[str], subs: list[str]) -> list[tuple[str, str]]:
-    """Reconstruct CLI order so subtractions occur after their adds.
-
-    argparse with action="append" loses interleaving. We reparse sys.argv
-    to recover the order users typed.
-    """
-    order: list[tuple[str, str]] = []
-    add_iter, sub_iter = iter(adds), iter(subs)
-    args = sys.argv[1:]
-    i = 0
-    while i < len(args):
-        if args[i] == "--add" and i + 1 < len(args):
-            order.append(("add", next(add_iter)))
-            i += 2
-        elif args[i] == "--sub" and i + 1 < len(args):
-            order.append(("sub", next(sub_iter)))
-            i += 2
-        elif args[i].startswith("--add="):
-            order.append(("add", next(add_iter)))
-            i += 1
-        elif args[i].startswith("--sub="):
-            order.append(("sub", next(sub_iter)))
-            i += 1
-        else:
-            i += 1
-    return order
-
-
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
