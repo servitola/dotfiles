@@ -1,0 +1,30 @@
+# Site settings. Edited by the AI when the user asks for changes.
+# Comments stay in English; the user never reads this file directly.
+
+name: "My site"
+description: ""
+lang: ru
+url: ""              # filled after first deploy
+
+# Which sections appear in nav. A section also hides automatically if the
+# corresponding folder is empty (e.g. no posts -> /blog hidden).
+sections:
+  home: true
+  about: true
+  blog: true         # reads from posts/
+  portfolio: true    # reads from projects/
+  gallery: true      # reads from gallery/
+  contacts: true     # reads from links.yaml
+
+# Visual design. Colors in hex. Fonts: any name from fonts.google.com.
+theme:
+  primary-color: "#2563eb"
+  background: "#ffffff"
+  text-color: "#0f172a"
+  heading-font: "Inter"
+  body-font: "Inter"
+  dark-mode: auto    # auto | on | off
+
+seo:
+  keywords: []
+  author: ""

@@ -1,0 +1,9 @@
+# Contacts and social links. Empty fields are not shown on the site.
+
+email: ""
+telegram: ""        # username without @, e.g. "alice"
+instagram: ""
+youtube: ""         # channel name without @
+tiktok: ""
+vkontakte: ""
+website: ""         # personal domain if any

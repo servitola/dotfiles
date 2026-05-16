@@ -1,0 +1,81 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadPosts } from '../../lib/content.mjs';
+import { loadSiteConfig } from '../../lib/config.mjs';
+import { labels } from '../../lib/labels.mjs';
+import { marked } from 'marked';
+
+export async function getStaticPaths() {
+  const posts = loadPosts();
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const { post } = Astro.props;
+const html = await Promise.resolve(marked.parse(post.body));
+---
+
+<Base title={post.title} description={post.description}>
+  {post.cover && (
+    <div class="hero">
+      <img src={`/${post.cover}`} alt="" />
+    </div>
+  )}
+  <article class="section">
+    <div class="container">
+      <header class="post-header">
+        <h1>{post.title}</h1>
+        {post.date && <p class="date">{new Date(post.date).toLocaleDateString(t.locale)}</p>}
+      </header>
+      <div class="content" set:html={html} />
+      <p class="back"><a href="/blog">{t.backToPosts}</a></p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .hero {
+    width: 100%;
+    height: clamp(240px, 45vh, 480px);
+    overflow: hidden;
+  }
+  .hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .post-header {
+    margin-bottom: 2rem;
+  }
+  .date {
+    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  .content {
+    max-width: 680px;
+    font-size: 1.05rem;
+  }
+  .content :global(img) {
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+    width: 100%;
+  }
+  .content :global(h2) {
+    margin-top: 2.5rem;
+  }
+  .content :global(blockquote) {
+    border-left: 3px solid var(--color-primary);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: color-mix(in srgb, var(--color-text) 80%, transparent);
+    font-style: italic;
+  }
+  .back {
+    margin-top: 3rem;
+  }
+</style>

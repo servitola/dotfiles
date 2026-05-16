@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadPosts } from '../../lib/content.mjs';
+import { loadSiteConfig } from '../../lib/config.mjs';
+import { labels } from '../../lib/labels.mjs';
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const posts = loadPosts();
+---
+
+<Base title={t.blog}>
+  <section class="section">
+    <div class="container">
+      <h1>{t.blog}</h1>
+      {posts.length === 0 && <p>{t.emptyBlog}</p>}
+      <div class="list">
+        {posts.map((p) => (
+          <a href={`/blog/${p.slug}`} class="card">
+            <h2>{p.title}</h2>
+            {p.date && <small>{new Date(p.date).toLocaleDateString(t.locale)}</small>}
+            {p.description && <p>{p.description}</p>}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .card h2 {
+    color: var(--color-primary);
+  }
+</style>

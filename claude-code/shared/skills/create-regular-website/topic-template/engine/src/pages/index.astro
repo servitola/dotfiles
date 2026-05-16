@@ -1,0 +1,133 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadHome, loadPosts, loadProjects, loadGallery, loadAbout } from '../lib/content.mjs';
+import { loadSiteConfig } from '../lib/config.mjs';
+import { labels } from '../lib/labels.mjs';
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const home = loadHome();
+const posts = loadPosts().slice(0, 3);
+const projects = loadProjects().slice(0, 3);
+const albums = loadGallery();
+const about = loadAbout();
+
+const galleryPreview = albums
+  .flatMap((a) => a.photos.map((p) => ({ ...p, albumSlug: a.slug })))
+  .slice(0, 6);
+---
+
+<Base>
+  {home && (
+    <section class="hero">
+      <div class="container">
+        <h1>{home.data?.title || site.name}</h1>
+        {home.data?.subtitle && <p class="subtitle">{home.data.subtitle}</p>}
+      </div>
+    </section>
+  )}
+
+  {about && site.sections.about && (
+    <section class="section">
+      <div class="container">
+        <h2>{about.data?.title || t.aboutDefault}</h2>
+        <p>{about.body.split('\n\n')[0]}</p>
+        <a href="/about">{t.seeMore}</a>
+      </div>
+    </section>
+  )}
+
+  {posts.length > 0 && site.sections.blog && (
+    <section class="section">
+      <div class="container">
+        <h2>{t.latestPosts}</h2>
+        <div class="grid">
+          {posts.map((p) => (
+            <a href={`/blog/${p.slug}`} class="card post-card">
+              {p.cover && <img src={`/${p.cover}`} alt="" class="post-cover" />}
+              <h3>{p.title}</h3>
+              {p.date && <small>{new Date(p.date).toLocaleDateString(t.locale)}</small>}
+              {p.description && <p>{p.description}</p>}
+            </a>
+          ))}
+        </div>
+        <p><a href="/blog">{t.allPosts}</a></p>
+      </div>
+    </section>
+  )}
+
+  {galleryPreview.length > 0 && site.sections.gallery && (
+    <section class="section">
+      <div class="container">
+        <h2>{t.fromGallery}</h2>
+        <div class="preview-grid">
+          {galleryPreview.map((p) => (
+            <a href={`/gallery/${p.albumSlug}`}>
+              <img src={`/${p.path}`} alt={p.caption} loading="lazy" />
+            </a>
+          ))}
+        </div>
+        <p><a href="/gallery">{t.allAlbums}</a></p>
+      </div>
+    </section>
+  )}
+
+  {projects.length > 0 && site.sections.portfolio && (
+    <section class="section">
+      <div class="container">
+        <h2>{t.myProjects}</h2>
+        <div class="grid">
+          {projects.map((pr) => (
+            <a href={`/projects/${pr.slug}`} class="card">
+              {pr.cover && <img src={`/${pr.cover}`} alt={pr.name} />}
+              <h3>{pr.name}</h3>
+              {pr.year && <small>{pr.year}</small>}
+            </a>
+          ))}
+        </div>
+        <p><a href="/projects">{t.allProjects}</a></p>
+      </div>
+    </section>
+  )}
+</Base>
+
+<style>
+  .hero {
+    padding: 5rem 0 3rem;
+    text-align: center;
+  }
+  .subtitle {
+    font-size: 1.25rem;
+    color: color-mix(in srgb, var(--color-text) 75%, transparent);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .post-cover {
+    width: calc(100% + 1rem);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin: -0.5rem -0.5rem 1rem;
+  }
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  .preview-grid a {
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    transition: transform 0.2s;
+  }
+  .preview-grid a:hover {
+    transform: scale(1.03);
+  }
+  .preview-grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
