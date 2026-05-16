@@ -218,6 +218,8 @@ brew "openvpn"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
+# Identify unused code in Swift projects
+brew "periphery"
 # General-purpose scripting language
 brew "php"
 # Execute binaries from Python packages in isolated environments
