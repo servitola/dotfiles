@@ -9,7 +9,7 @@
     <key>author</key>
     <string>Brian Reilly (https://github.com/Briles/gruvbox)</string>
     <key>name</key>
-    <string>gruvbox (Dark) (Medium)</string>
+    <string>gruvbox (Dark) (Hard)</string>
     <key>colorSpaceName</key>
     <string>sRGB</string>
     <key>settings</key>
@@ -18,7 +18,7 @@
         <key>settings</key>
         <dict>
           <key>background</key>
-          <string>#282828</string>
+          <string>#1d2021</string>
           <key>caret</key>
           <string>#a89984</string>
           <key>foreground</key>
