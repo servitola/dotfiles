@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadLinks, loadSiteConfig } from '../lib/config.mjs';
+import { labels } from '../lib/labels.mjs';
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const links = loadLinks();
+
+const items = [
+  { key: 'email', href: (v) => `mailto:${v}`, display: (v) => v },
+  { key: 'telegram', href: (v) => `https://t.me/${String(v).replace(/^@/, '')}`, display: (v) => v },
+  { key: 'instagram', href: (v) => `https://instagram.com/${v}`, display: (v) => `@${v}` },
+  { key: 'youtube', href: (v) => `https://youtube.com/@${v}`, display: (v) => `@${v}` },
+  { key: 'tiktok', href: (v) => `https://tiktok.com/@${v}`, display: (v) => `@${v}` },
+  { key: 'vkontakte', href: (v) => `https://vk.com/${v}`, display: (v) => v },
+  { key: 'website', href: (v) => v, display: (v) => v },
+].filter((it) => links[it.key]);
+---
+
+<Base title={t.contacts}>
+  <section class="section">
+    <div class="container">
+      <h1>{t.contacts}</h1>
+      {items.length === 0 ? (
+        <p>{t.emptyContacts}</p>
+      ) : (
+        <ul class="list">
+          {items.map((it) => (
+            <li>
+              <span class="label">{t.contactsLabels[it.key]}:</span>
+              <a href={it.href(links[it.key])} target="_blank" rel="noopener">{it.display(links[it.key])}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-size: 1.125rem;
+  }
+  .label {
+    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+    margin-right: 0.5rem;
+  }
+</style>

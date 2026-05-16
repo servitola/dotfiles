@@ -1,0 +1,82 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadGallery } from '../../lib/content.mjs';
+import { loadSiteConfig } from '../../lib/config.mjs';
+import { labels } from '../../lib/labels.mjs';
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const albums = loadGallery();
+---
+
+<Base title={t.gallery}>
+  <section class="section">
+    <div class="container">
+      <h1>{t.gallery}</h1>
+      {albums.length === 0 && <p class="empty">{t.emptyGallery}</p>}
+      <div class="album-grid">
+        {albums.map((album) => (
+          <a href={`/gallery/${album.slug}`} class="album-card">
+            {album.photos[0] && (
+              <div class="album-cover">
+                <img src={`/${album.photos[0].path}`} alt={album.name} loading="lazy" />
+                {album.photos.length > 1 && (
+                  <span class="count">{t.photoCount(album.photos.length)}</span>
+                )}
+              </div>
+            )}
+            <h3>{album.name}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .album-card {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .album-cover {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    transition: transform 0.2s;
+  }
+  .album-card:hover .album-cover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-text) 12%, transparent);
+  }
+  .album-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .count {
+    position: absolute;
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: color-mix(in srgb, #000 65%, transparent);
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+  .album-card h3 {
+    margin: 0.75rem 0 0;
+    font-size: 1.1rem;
+  }
+  .empty {
+    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+  }
+</style>

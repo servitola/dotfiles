@@ -1,0 +1,71 @@
+---
+import { loadSiteConfig, loadLinks } from '../lib/config.mjs';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+const site = loadSiteConfig();
+const links = loadLinks();
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title: pageTitle, description: pageDesc } = Astro.props;
+const title = pageTitle ? `${pageTitle} — ${site.name}` : site.name;
+const desc = pageDesc || site.description || '';
+
+const cssVars = {
+  primary: site.theme['primary-color'],
+  bg: site.theme.background,
+  text: site.theme['text-color'],
+  fontHeading: site.theme['heading-font'],
+  fontBody: site.theme['body-font'],
+};
+
+const SYSTEM_FONTS = new Set(['system-ui', 'sans-serif', 'serif', 'monospace', 'ui-sans-serif', 'ui-serif']);
+const fonts = [...new Set([site.theme['heading-font'], site.theme['body-font']])]
+  .filter((f) => f && !SYSTEM_FONTS.has(String(f).toLowerCase().trim()));
+const googleFontsUrl = fonts.length > 0
+  ? `https://fonts.googleapis.com/css2?${fonts.map((f) => `family=${encodeURIComponent(String(f).trim())}:wght@400;500;700`).join('&')}&display=swap`
+  : null;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {desc && <meta name="description" content={desc} />}
+    {site.seo?.author && <meta name="author" content={site.seo.author} />}
+    {site.seo?.keywords?.length > 0 && (
+      <meta name="keywords" content={site.seo.keywords.join(', ')} />
+    )}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {googleFontsUrl && (
+      <>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href={googleFontsUrl} rel="stylesheet" />
+      </>
+    )}
+    <style is:global define:vars={cssVars}>
+      :root {
+        --color-primary: var(--primary);
+        --color-bg: var(--bg);
+        --color-text: var(--text);
+        --font-heading: var(--fontHeading), system-ui, sans-serif;
+        --font-body: var(--fontBody), system-ui, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <Header site={site} />
+    <main>
+      <slot />
+    </main>
+    <Footer site={site} links={links} />
+  </body>
+</html>

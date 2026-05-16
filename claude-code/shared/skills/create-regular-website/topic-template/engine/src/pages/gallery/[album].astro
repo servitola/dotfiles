@@ -1,0 +1,160 @@
+---
+import Base from '../../layouts/Base.astro';
+import { loadGallery } from '../../lib/content.mjs';
+import { loadSiteConfig } from '../../lib/config.mjs';
+import { labels } from '../../lib/labels.mjs';
+
+export async function getStaticPaths() {
+  const albums = loadGallery();
+  return albums.map((album) => ({
+    params: { album: album.slug },
+    props: { album },
+  }));
+}
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const { album } = Astro.props;
+---
+
+<Base title={album.name}>
+  <section class="section">
+    <div class="container">
+      <a href="/gallery" class="back">{t.backToAlbums}</a>
+      <h1>{album.name}</h1>
+      <p class="meta">{t.photoCount(album.photos.length)}</p>
+      <div class="masonry">
+        {album.photos.map((p) => (
+          <figure class="item">
+            <img src={`/${p.path}`} alt={p.caption} loading="lazy" data-full={`/${p.path}`} />
+            {p.caption && <figcaption>{p.caption}</figcaption>}
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true">
+    <img id="lightbox-img" src="" alt="" />
+    <button class="lightbox-close" aria-label="Close">×</button>
+  </div>
+</Base>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img');
+  const closeBtn = document.querySelector('.lightbox-close');
+
+  function openLightbox(src) {
+    if (!lb || !lbImg) return;
+    (lbImg as HTMLImageElement).src = src;
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    if (!lb) return;
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll<HTMLImageElement>('.item img').forEach((img) => {
+    img.addEventListener('click', () => {
+      const full = img.dataset.full || img.src;
+      openLightbox(full);
+    });
+  });
+
+  lb?.addEventListener('click', (e) => {
+    if (e.target === lb || e.target === closeBtn) closeLightbox();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+<style>
+  .back {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+    text-decoration: none;
+    opacity: 0.7;
+  }
+  .back:hover {
+    opacity: 1;
+  }
+  .meta {
+    color: color-mix(in srgb, var(--color-text) 60%, transparent);
+    margin-bottom: 1.5rem;
+  }
+  .masonry {
+    column-count: 3;
+    column-gap: 0.75rem;
+  }
+  @media (max-width: 768px) {
+    .masonry { column-count: 2; }
+  }
+  @media (max-width: 480px) {
+    .masonry { column-count: 1; }
+  }
+  .item {
+    break-inside: avoid;
+    margin: 0 0 0.75rem;
+  }
+  .item img {
+    width: 100%;
+    border-radius: 0.5rem;
+    cursor: zoom-in;
+    transition: transform 0.2s;
+    display: block;
+  }
+  .item img:hover {
+    transform: scale(1.01);
+  }
+  .item figcaption {
+    font-size: 0.85rem;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+    padding: 0.4rem 0.25rem 0;
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(8, 8, 12, 0.94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 2rem;
+    backdrop-filter: blur(6px);
+  }
+  .lightbox.open {
+    display: flex;
+  }
+  .lightbox img {
+    max-width: 95vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 0.25rem;
+    cursor: zoom-out;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    opacity: 0.7;
+  }
+  .lightbox-close:hover {
+    opacity: 1;
+  }
+</style>

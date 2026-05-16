@@ -1,0 +1,64 @@
+---
+import { loadPosts, loadProjects, loadGallery } from '../lib/content.mjs';
+import { labels } from '../lib/labels.mjs';
+
+const { site } = Astro.props;
+const t = labels(site.lang);
+
+const show = {
+  about: site.sections.about,
+  blog: site.sections.blog && loadPosts().length > 0,
+  projects: site.sections.portfolio && loadProjects().length > 0,
+  gallery: site.sections.gallery && loadGallery().length > 0,
+  contacts: site.sections.contacts,
+};
+---
+
+<header class="header">
+  <div class="container">
+    <a href="/" class="logo">{site.name}</a>
+    <nav>
+      {show.about && <a href="/about">{t.about}</a>}
+      {show.blog && <a href="/blog">{t.blog}</a>}
+      {show.projects && <a href="/projects">{t.projects}</a>}
+      {show.gallery && <a href="/gallery">{t.gallery}</a>}
+      {show.contacts && <a href="/contacts">{t.contacts}</a>}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    padding: 1rem 0;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+  nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  nav a:hover {
+    color: var(--color-primary);
+  }
+</style>

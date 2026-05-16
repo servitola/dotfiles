@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadAbout } from '../lib/content.mjs';
+import { loadSiteConfig } from '../lib/config.mjs';
+import { labels } from '../lib/labels.mjs';
+import { marked } from 'marked';
+
+const site = loadSiteConfig();
+const t = labels(site.lang);
+const about = loadAbout();
+const html = about ? await Promise.resolve(marked.parse(about.body)) : '';
+---
+
+<Base title={about?.data?.title || t.aboutDefault}>
+  <article class="section">
+    <div class="container">
+      <h1>{about?.data?.title || t.aboutDefault}</h1>
+      {about?.data?.photo && <img src={`/${about.data.photo}`} alt="" class="photo" />}
+      {about ? <div set:html={html} /> : <p>{t.emptyAbout}</p>}
+    </div>
+  </article>
+</Base>
+
+<style>
+  .photo {
+    max-width: 320px;
+    border-radius: 1rem;
+    margin: 0 0 1.5rem;
+  }
+</style>

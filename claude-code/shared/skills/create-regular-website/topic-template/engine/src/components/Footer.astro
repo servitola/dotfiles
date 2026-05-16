@@ -1,0 +1,64 @@
+---
+import { labels } from '../lib/labels.mjs';
+
+const { site, links } = Astro.props;
+const t = labels(site.lang);
+
+const socials = [
+  { key: 'telegram', prefix: 'https://t.me/' },
+  { key: 'instagram', prefix: 'https://instagram.com/' },
+  { key: 'youtube', prefix: 'https://youtube.com/@' },
+  { key: 'tiktok', prefix: 'https://tiktok.com/@' },
+  { key: 'vkontakte', prefix: 'https://vk.com/' },
+].filter((s) => links[s.key]);
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    {socials.length > 0 && (
+      <div class="socials">
+        {socials.map((s) => (
+          <a href={`${s.prefix}${String(links[s.key]).replace(/^@/, '')}`} target="_blank" rel="noopener">
+            {t.contactsLabels[s.key]}
+          </a>
+        ))}
+        {links.email && <a href={`mailto:${links.email}`}>{t.contactsLabels.email}</a>}
+      </div>
+    )}
+    <p>© {year} {site.name}</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    color: color-mix(in srgb, var(--color-text) 70%, transparent);
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.875rem;
+  }
+  .socials {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .socials a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .socials a:hover {
+    color: var(--color-primary);
+  }
+</style>

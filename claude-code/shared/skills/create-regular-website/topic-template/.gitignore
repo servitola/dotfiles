@@ -1,0 +1,7 @@
+engine/node_modules/
+engine/dist/
+engine/.astro/
+engine/.cache/
+built-site/
+.DS_Store
+*.log
