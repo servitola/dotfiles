@@ -33,14 +33,23 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
 
-  # Dolphin Mistral 24B (Venice edition) — uncensored fine-tune via OpenRouter.
-  # Replaces the dropped local LM Studio Jinx for "no moderation" use cases;
-  # no on-device weights needed, runs on OpenRouter's free tier.
+  # Uncensored rotation — replaces the dropped local LM Studio Jinx for
+  # "no moderation" use cases. Two-deployment group so 429 on OpenRouter
+  # doesn't take the alias offline.
+  #   order 1: Dolphin Mistral 24B Venice — actual uncensored fine-tune
+  #   order 2: Hermes 3 405B — Nous steerable, soft fallback (no hard refusals)
   - model_name: uncensored
     litellm_params:
       model: openai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      order: 1
+  - model_name: uncensored
+    litellm_params:
+      model: openai/nousresearch/hermes-3-llama-3.1-405b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # Vision pool — three models under the same name for reliability on
   # image tasks. Shuffle is justified here because vision models rarely
