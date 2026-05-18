@@ -38,17 +38,26 @@ model_list:
   # doesn't take the alias offline.
   #   order 1: Dolphin Mistral 24B Venice — actual uncensored fine-tune
   #   order 2: Hermes 3 405B — Nous steerable, soft fallback (no hard refusals)
+  # Both slugs are routed by OpenRouter to the same upstream provider (Venice),
+  # which applies escalating backoff: retry_after grows from ~4s to ~30s when
+  # the same slug is hammered. So `num_retries: 0` per deployment — we don't
+  # punish Venice with retries; router-level allowed_fails:1 + cooldown_time:60
+  # parks the failing deployment and shuffles to the sibling instead.
   - model_name: uncensored
     litellm_params:
       model: openai/cognitivecomputations/dolphin-mistral-24b-venice-edition:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 60
+      num_retries: 0
       order: 1
   - model_name: uncensored
     litellm_params:
       model: openai/nousresearch/hermes-3-llama-3.1-405b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      num_retries: 0
       order: 2
 
   # Vision pool — three models under the same name for reliability on
