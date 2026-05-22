@@ -9,4 +9,5 @@ colima/default/daemon/daemon.pid
 
 
 cron/cron_jobs/youtrack.cron
+cron/cron_jobs/*.private.cron
 docker-logger/logs
