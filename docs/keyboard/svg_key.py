@@ -1,10 +1,11 @@
 """Render a single keyboard key — Apple Magic Keyboard keycap."""
 from config import KEY_RADIUS as R
 from colors import PALETTE as P, get_category as _cat, CATEGORY_ICONS
+from icons import icon_slug
 _E = lambda t: t.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;").replace('"',"&quot;")
 _BIG = {"PgUp","PgDn","Home","End","`",*(f"F{i}" for i in range(1,13))}
 _LBL_ICON = {"Vol ↑":"vol-up","Vol ↓":"vol-dn","⏮":"track-prev","⏭":"track-next","▶/⏸":"play-pause",
-    "Android":"android","🔆":"vol-up","🔅":"vol-dn","←":"arr-l","→":"arr-r","↑":"arr-up","↓":"arr-dn"}
+    "Android":"android","←":"arr-l","→":"arr-r","↑":"arr-up","↓":"arr-dn"}
 _ICON_ONLY = {"⏮","⏭","▶/⏸","←","→","↑","↓"}
 
 def _fs(lb,w,top):
@@ -27,7 +28,31 @@ def _tip(kd,e):
     if app: return f"{kd}: {app}" if app==lb else f"{kd}: {lb} ({app})"
     return f"{kd}: {lb} — {fn.replace('_',' ').replace('.', ': ').title()}" if fn else (f"{kd}: {lb}" if lb else kd)
 
-def render_key(x,y,w,h,kd,entry,icon=None,is_mod=False,wu=1,extra=""):
+def _birman_key(x,y,w,h,kd,en,ru,gr):
+    """Render a key with all 3 Birman layout characters: en (main), ru, gr."""
+    p,cx=['<g class="key-group">'],x+w/2
+    bc=P["birman"]; kb=P["key_bg_bound"]; bd=P["key_border"]
+    p.append(_r(x,y,w,h,kb,bd,"0.5","shadow-bound"))
+    p.append(f'<rect x="{x}" y="{y+2}" width="3" height="{h-4}" rx="1.5" fill="{bc}"/>')
+    # English — main char, top center, large
+    p.append(f'<text x="{cx}" y="{y+20}" text-anchor="middle" font-size="15px" font-weight="600" fill="{P["text"]}">{_E(en)}</text>')
+    # Russian — bottom left
+    if ru and ru != en:
+        p.append(f'<text x="{x+8}" y="{y+h-8}" font-size="11px" fill="{bc}">{_E(ru)}</text>')
+    # Greek — bottom right (before key label)
+    if gr and gr != en and gr != ru:
+        p.append(f'<text x="{x+w-18}" y="{y+h-8}" font-size="11px" fill="#af52de">{_E(gr)}</text>')
+    # Key name — small corner
+    if h>=30: p.append(f'<text x="{x+w-5}" y="{y+10}" text-anchor="end" class="key-label">{_E(kd)}</text>')
+    p+=[f'<title>{_E(kd)}: {_E(en)} / {_E(ru)} / {_E(gr)}</title>','</g>']; return "\n".join(p)
+
+
+def render_key(x,y,w,h,kd,entry,icon=None,is_mod=False,wu=1,extra="",birman_triplet=None):
+    # Birman triplet mode: show en/ru/gr on the key
+    if birman_triplet and not is_mod and not (entry and (entry.get("app") or entry.get("fn"))):
+        en, ru, gr = birman_triplet
+        if en or ru or gr:
+            return _birman_key(x,y,w,h,kd,en or "",ru or "",gr or "")+(f"\n{extra}" if extra else "")
     p,cx,cy=['<g class="key-group">'],x+w/2,y+h/2
     if is_mod:
         bg,bc=("#d4e4f7","#007aff") if not entry else (P["key_bg_bound"],P["key_border"]); p.append(_r(x,y,w,h,bg,bc,"1","shadow-bound"))
@@ -40,7 +65,7 @@ def render_key(x,y,w,h,kd,entry,icon=None,is_mod=False,wu=1,extra=""):
         p+=[_r(x,y,w,h,P["key_bg_bound"],P["key_border"],"0.5","shadow-bound"),f'<rect x="{x}" y="{y+2}" width="3" height="{h-4}" rx="1.5" fill="{c}"/>']
         is_k=entry.get("source_tag")=="K"; icon=None if is_k else icon; ci=_LBL_ICON.get(lb) or (None if is_k else CATEGORY_ICONS.get(cat)); ico=lb in _ICON_ONLY
         top=bool(icon or ci); fs=min(_fs(lb,w,top),13) if h<30 else _fs(lb,w,top)
-        if icon: p.append(f'<image x="{cx-9}" y="{y+5}" width="18" height="18" href="data:image/png;base64,{icon}"/>')
+        if icon: p.append(f'<use href="#icon-{icon_slug(icon)}" x="{cx-9}" y="{y+5}" width="18" height="18"/>')
         elif ci:
             sz=((26 if lb in{"←","→","↑","↓"} else 16) if ico else 14); ox,oy=(cx-sz//2,cy-sz//2) if ico else (cx-7,y+4)
             p.append(f'<use href="#{ci}" x="{ox}" y="{oy}" width="{sz}" height="{sz}" fill="{c}" stroke="{c}"/>')
