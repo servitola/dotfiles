@@ -4,7 +4,7 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬———————— app — function ————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           a   │              │ a    ф    α  │   │
 --          aa   │              │              │   │  BrowserVim — go back — CUSTOM
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -33,6 +33,7 @@ return {
 --               │              │              │   │        Mail — attach files
 --               │              │              │   │      Finder — go to Applications
 --               │              │              │   │       Music — deselect all songs
+--         ⌃⌥a   │              │              │   │ Window ←
 { chord = "⌃⌥a",                                              fn = "window.left" },
 --         ⌃⌘a   │              │              │   │       Rider — show all affected files in source control
 --               │              │              │   │        Mail — archive message
@@ -46,6 +47,7 @@ return {
 --        ⇪⌥⌘a   │     ⌥⌘←      │              │   │       Music — seek backward
 --               │              │              │   │      VSCode — go to previous tab
 --               │              │              │   │       iTerm — focus pane to the left
+--        ⇧⌃⌥a   │              │              │   │ ½ Left
 { chord= "⇧⌃⌥a",                                              fn = "window.half_left" },
 --        ⇧⌃⌘a   │              │              │   │
 --        ⇧⌥⌘a   │     ⇧⌘⌫      │              │   │       Rider — go to last edit place

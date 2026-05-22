@@ -4,9 +4,9 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————— app — function ————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           q   │              │ q    й    ;  │   │
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪q   │     PgUp     │              │   │
 --          ⇧q   │              │ Q    Й    :  │   │   Browser Vimt — go to root domain
 --          ⌃q   │              │              │   │         Rider — stop all/build
@@ -16,7 +16,7 @@ return {
 --          ⇥q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
 --               │              │              │   │       Browser — show clear history dialog
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧q   │    ⇧PgUp     │              │ ✓ │              — page of text up
 --         ⇪⌃q   │    ⌃PgUp     │              │   │        VSCode — scroll up (without moving caret)
 --               │              │              │   │       Browser — go to tab to the left
@@ -29,19 +29,21 @@ return {
 --         ⇧⌃q   │      ⌫       │              │ ✓ │              — delete symbol to the left
 --         ⇧⌥q   │      ⇧⌫      │              │   │         Rider — delete line
 --         ⇧⌘q   │              │              │ ✓ │              — log out from account with closing of all apps
+--         ⌃⌥q   │              │              │   │ Music
 { chord = "⌃⌥q",                            app = "Music" },
 --         ⌃⌘q   │              │              │ ✓ │              — lock screen
 --         ⌥⌘q   │      ⌘⌫      │              │ ✓ │              — delete
 --               │              │              │   │         Rider — delete line
 --               │              │              │   │        VSCode — delete line
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃q   │      ⇪p      │              │   │ H — open Music app
 --        ⇪⇧⌥q   │              │              │   │
 --        ⇪⇧⌘q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
 --        ⇪⌃⌥q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
---        ⇪⌃⌘q   │              │              │   │
+{ chord = "num2",                                fn  = "apps.close_unnecessary" },
+-- ⇪⌃⌘q → num2   │              │              │   │ H — close unnecessary apps
 --        ⇪⌥⌘q   │              │              │   │
 --        ⇧⌃⌥q   │              │              │   │
 --        ⇧⌃⌘q   │              │              │   │
