@@ -4,9 +4,9 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬—————————— app — function ————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           w   │              │ w    ц    ω  │   │   Browser Vim — toggle pin tab
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪w   │      ↑       │              │ ✓ │              — up
 --          ⇧w   │              │ W    Ц    Ω  │   │
 --          ⌃w   │              │              │   │         Rider — close all notifications
@@ -19,7 +19,7 @@ return {
 --               │              │              │   │        Finder — navigate back
 --               │              │              │   │       Browser — navigate back
 --               │              │              │   │         Music — navigate back
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧w   │      ⇧↑      │              │ ✓ │              — select line up
 --         ⇪⌃w   │      ⌃↑      │              │ ✓ │              — show all windows
 --         ⇪⌥w   │      ⌥↑      │              │ ✓ │              — move line up
@@ -29,11 +29,12 @@ return {
 --         ⇧⌥w   │     ⇧⌥↑      │              │   │        VSCode — move line up
 --         ⇧⌘w   │              │              │   │         Rider — close other tabs
 --               │              │              │ ✓ │              — close window
+--         ⌃⌥w   │              │              │   │ Fullscr
 { chord = "⌃⌥w",                             fn = "window.fullscreen" },
 --         ⌃⌘w   │              │              │   │ ???
 --         ⌥⌘w   │              │              │   │          Mail — close all Mail windows
 --               │              │              │   │        VSCode — toggle search whole word
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃w   │  volume_up   │              │ ✓ │              — volume_increment
 --        ⇪⇧⌥w   │              │              │   │
 --        ⇪⇧⌘w   │ key_light_up │              │ ✓ │              — illumination_increment
@@ -41,6 +42,7 @@ return {
 --        ⇪⌃⌘w   │     ⌃⌘↑      │              │   │         Rider — navigate to up method
 --        ⇪⌥⌘w   │     ⌥⌘↑      │              │   │        VSCode — clone caret up;
 --               │              │              │   │         iTerm — focus pane above
+--        ⇧⌃⌥w   │              │              │   │ Top 60%
 { chord= "⇧⌃⌥w",                             fn = "window.top_60" },
 --        ⇧⌃⌘w   │              │              │   │
 --        ⇧⌥⌘w   │              │              │   │
