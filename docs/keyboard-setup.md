@@ -99,11 +99,19 @@ return {
 
 ### Key File Documentation
 
-Each key file also contains extensive ASCII art comments documenting ALL modifier combinations for that physical key, including:
-- macOS defaults
-- Karabiner remappings
-- App-specific shortcuts (Rider, VSCode, Fork, etc.)
-- Birman layout special characters
+Each key file contains a 4-column ASCII art table documenting ALL modifier combinations:
+
+```
+--———— chord ┬  karabiner  ┬ en | ru | el ┬——— app — function ———
+--      ⇪w   │      ↑       │              │            — up
+--      ⇧w   │              │ W    Ц    Ω  │
+--      ⌥w   │      ⌥↑      │              │  Rider — extend
+```
+
+- **Column 1 (chord)**: Modifier symbols + key
+- **Column 2 (karabiner)**: What Karabiner sends (arrows, PgUp/PgDn, media keys, modifier combos). Auto-detected by SVG generator — no tags needed
+- **Column 3 (birman)**: Characters in English | Russian | Greek layouts
+- **Column 4 (description)**: App-specific actions, with optional `B:`/`ⓘ:` tags for Birman/macOS entries
 
 ### Legacy Layout Files
 

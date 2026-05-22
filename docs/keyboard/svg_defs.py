@@ -1,4 +1,4 @@
-"""SVG <defs>: Apple Magic Keyboard aesthetic + media/android symbols."""
+"""SVG <defs>: Apple Magic Keyboard aesthetic + media/android symbols + app icons."""
 from colors import PALETTE as P
 
 _APPLE = ('M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 '
@@ -11,7 +11,19 @@ _APPLE = ('M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.
     '1.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758q.52-1.185.473-1.282')
 _SPK = 'M7 3L3.5 6H1v4h2.5L7 13V3z'  # speaker base path
 
-def svg_defs():
+def _icon_symbols(icon_map):
+    """Concatenate pre-built <symbol> blocks from icons.extract_icons().
+
+    Each value in icon_map is already a complete `<symbol id="icon-<slug>">…
+    </symbol>` element (PNG-backed for installed apps, synthetic disc for
+    missing ones). Referenced via `<use href="#icon-<slug>">` from renderers.
+    """
+    if not icon_map: return ""
+    return "\n  " + "\n  ".join(icon_map.values())
+
+
+def svg_defs(icon_map=None):
+    icon_block = _icon_symbols(icon_map)
     return f'''<defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -32,10 +44,10 @@ def svg_defs():
   <symbol id="play-pause" viewBox="0 0 16 16"><polygon points="1,3 1,13 7,8"/><rect x="9" y="3" width="2.5" height="10" rx=".5"/><rect x="13" y="3" width="2.5" height="10" rx=".5"/></symbol>
   <symbol id="android" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="7" rx="2"/><circle cx="6" cy="10" r="1"/><circle cx="10" cy="10" r="1"/>
     <line x1="5" y1="3.5" x2="3.5" y2="6" stroke-width="1.2" stroke-linecap="round"/><line x1="11" y1="3.5" x2="12.5" y2="6" stroke-width="1.2" stroke-linecap="round"/></symbol>
-  <symbol id="arr-up" viewBox="0 0 24 24"><path d="M12 4L4 14h5v6h6v-6h5z"/></symbol>
-  <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20L4 10h5V4h6v6h5z"/></symbol>
-  <symbol id="arr-l" viewBox="0 0 24 24"><path d="M4 12L14 4v5h6v6h-6v5z"/></symbol>
-  <symbol id="arr-r" viewBox="0 0 24 24"><path d="M20 12L10 4v5H4v6h6v5z"/></symbol>
+  <symbol id="arr-up" viewBox="0 0 24 24"><path d="M12 4 L20 12 L15 12 L15 20 L9 20 L9 12 L4 12 Z"/></symbol>
+  <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20 L20 12 L15 12 L15 4 L9 4 L9 12 L4 12 Z"/></symbol>
+  <symbol id="arr-l"  viewBox="0 0 24 24"><path d="M4 12 L12 4 L12 9 L20 9 L20 15 L12 15 L12 20 Z"/></symbol>
+  <symbol id="arr-r"  viewBox="0 0 24 24"><path d="M20 12 L12 4 L12 9 L4 9 L4 15 L12 15 L12 20 Z"/></symbol>{icon_block}
   <style>
     text {{ font-family: -apple-system, "SF Pro Display", system-ui, sans-serif; fill: {P["text"]}; }}
     .key-label {{ font-size: 8px; fill: {P["key_text_dim"]}; letter-spacing: 0.02em; }}

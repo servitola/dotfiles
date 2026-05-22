@@ -1,6 +1,7 @@
 """Render rich hover tooltips with app icons and shortcut lists."""
 from svg_details import _ic, _E
 from parse_brew import get_brew_desc
+from icons import icon_slug
 
 _LH, _PX, _PY = 18, 10, 8
 _TW = 240
@@ -36,7 +37,7 @@ def render_tooltip(x, y, w, h, key_descs, icon_map, brew_descs=None, entry=None)
     ey = ty + _PY + 12
     for icon_key, title, sub, bdesc in lines:
         ic = _ic(im, icon_key) if icon_key else None; ix = tx+_PX
-        if ic: p.append(f'<image x="{ix}" y="{ey-11}" width="13" height="13" href="data:image/png;base64,{ic}"/>'); ix+=16
+        if ic: p.append(f'<use href="#icon-{icon_slug(ic)}" x="{ix}" y="{ey-11}" width="13" height="13"/>'); ix+=16
         p.append(f'<text x="{ix}" y="{ey}" font-size="9px" font-weight="600" fill="#007aff">{_E(title)}</text>')
         if sub: p.append(f'<text x="{ix+len(title)*5.5+4}" y="{ey}" font-size="8px" fill="#1d1d1f">{_E(sub)}</text>')
         ey += _LH

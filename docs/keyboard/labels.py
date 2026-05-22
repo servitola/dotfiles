@@ -40,7 +40,7 @@ COMMENT_OUTPUT_LABELS = {
     "\u2318\u2192": "End", "\u2318\u2190": "Home", "\u2318\u2191": "Top", "\u2318\u2193": "Bottom",
     "key_light_up": "🔆", "light_dn": "🔅",
 }
-_S = {"Visual Studio Code":"VS Code","zoom.us":"Zoom","Android Studio":"A.Studio",
+_S = {"Visual Studio Code":"VS Code","zoom.us":"Zoom",
       "Activity Monitor":"Activity","Google Chrome":"Chrome",
       "System Settings":"Settings","Heroes of the Storm":"HotS"}
 

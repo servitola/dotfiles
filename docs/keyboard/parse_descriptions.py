@@ -1,10 +1,7 @@
 """Parse app-specific shortcuts from Lua 5-column description column."""
 import os, re
 from config import LAYOUT_DIR, BUTTON_FILES
-
-# 5-col: chord │ karabiner │ birman │ G │ description
-_RE = re.compile(r'--\s+((?:[⇪⇧⌃⌥⌘]*)(?:[a-zA-Z0-9⇥⎋\[\]←→↑↓,\.;\'/\\`~\-=]|F\d+|num\d+|␣)+)'
-                 r'\s+│[^│]*│[^│]*│[^│]*│\s*(.*?)\s*$')
+from _chord_regex import CHORD_ROW_DESC as _RE
 # Continuation line (no chord)
 _CONT = re.compile(r'--\s+│[^│]*│[^│]*│[^│]*│\s*(.*?)\s*$')
 # App — function [/ tooltip] pattern

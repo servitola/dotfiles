@@ -18,6 +18,11 @@ _T = {_f(): "Base", _f({"hyper"}): "Hyper — Apps + Navigation",
     _f({"tab_mod"}): "Tab — Quick Actions"}
 
 def _parse_modifiers(cs):
+    # Whole-string lookup first \u2014 different modifier prefixes can route to
+    # different physical keys (e.g. \u21e7F13 from down_arrow, \u2303F13 from up_arrow).
+    if cs in FKEY_MAPPING:
+        key, mods = FKEY_MAPPING[cs]
+        return frozenset(mods), _KM.get(key, key)
     mods, r = set(), cs
     if r.startswith("\u21e5") and len(r)>1 and r[1] not in "\u21ea\u21e7\u2303\u2325\u2318":
         mods.add("tab_mod"); r = r[1:]  # Tab as modifier prefix
@@ -26,7 +31,6 @@ def _parse_modifiers(cs):
     key = r.strip()
     if re.match(r'^F\d+$', key) and key in FKEY_MAPPING:
         key, extra = FKEY_MAPPING[key]; mods |= extra
-    if re.match(r'^num\d$', key): key, mods = "space", mods | {"hyper","shift"}
     return frozenset(mods), _KM.get(key, key)
 
 
