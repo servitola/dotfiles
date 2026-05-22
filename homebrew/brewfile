@@ -264,6 +264,8 @@ brew "shfmt"
 brew "sshpass"
 # Generate clients, server stubs, and docs from an OpenAPI spec
 brew "swagger-codegen"
+# Tool to enforce Swift style and conventions
+brew "swiftlint"
 # Very fast implementation of tldr in Rust
 brew "tealdeer"
 # Telegram Messenger downloader/tools written in Golang
