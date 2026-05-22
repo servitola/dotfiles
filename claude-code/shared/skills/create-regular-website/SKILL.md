@@ -4,7 +4,7 @@ description: |
   Creates and maintains a personal website for a non-technical user — blog,
   portfolio, gallery, personal landing page, or any combination. Content
   lives as files in the user's topic folder; the site publishes to
-  Cloudflare Pages.
+  Surge.sh (accessible from Russia without VPN).
 
   Trigger on initialization when the user says things like: "I want a
   website", "make me a site", "let's start a blog", "I want a portfolio",
@@ -193,7 +193,7 @@ Reply with a natural sentence, not file lists. Sources:
 - Post count → entries in `posts/*.md`
 - Albums → subfolders of `gallery/`
 - Projects → subfolders of `projects/`
-- URL → `https://<transliterated-topic-name>.pages.dev` (computed in
+- URL → `https://<transliterated-topic-name>.surge.sh` (computed in
   `deploy.sh`)
 
 ## Publish
@@ -205,8 +205,7 @@ One shell call:
 bash ~/projects/dotfiles/claude-code/shared/skills/create-regular-website/scripts/deploy.sh "$PWD"
 ```
 
-The script builds, creates the CF Pages project if missing, deploys,
-prints the URL.
+The script builds the site and pushes it to Surge.sh, prints the URL.
 
 After a successful deploy:
 1. Send the URL via `mcp__bot__send_message` if Telegram MCP is wired.
@@ -221,16 +220,18 @@ a big change before going live:
 ```
 bash .../scripts/deploy.sh "$PWD" --preview
 ```
-Gives a separate URL, production untouched.
+Deploys to `<slug>-preview.surge.sh` — separate URL, production untouched.
 
 ## When something breaks
 
 Read the error, do not show stack traces to the user. Common cases:
 
-- `CLOUDFLARE_API_TOKEN missing` — token unset; escalate.
+- `SURGE_LOGIN / SURGE_TOKEN must be set` — credentials missing; escalate
+  to the operator.
 - `npm ERR! ...` — engine deps broken; run `update-engine.sh`.
-- `Project not found` right after creation — Cloudflare propagation;
-  wait 10 seconds and retry.
+- `domain is already in use` / `not authorized to deploy to <slug>.surge.sh`
+  — someone else already owns that subdomain on Surge. Ask the user to
+  rename the site topic to something more unique, then redeploy.
 - Cyrillic in topic name → transliterated to slug, expected.
 
 If you cannot fix it in 1–2 attempts, say in the user's language:
@@ -249,8 +250,8 @@ Refreshes the engine code without touching user content.
 
 ## Multiple sites
 
-If the user has several site topics, each is independent. CF Pages
-project name = transliterated topic name. Each gets its own URL.
+If the user has several site topics, each is independent. Surge domain
+= `<transliterated-topic-name>.surge.sh`. Each gets its own URL.
 Deploying one does not affect others.
 
 ## Voice messages
@@ -308,7 +309,7 @@ the user's language.
 > **User**: вот текст в блог — *Сегодня пересадила фикус…*
 > **You**: *(writes posts/peresadila-fikus.md with title and today's date)* Сохранила как «Пересадила фикус», 15 мая. Опубликовать?
 > **User**: да
-> **You**: *(deploy.sh)* Готово, можно посмотреть: https://zelyonyy-ugol.pages.dev/blog/peresadila-fikus
+> **You**: *(deploy.sh)* Готово, можно посмотреть: https://zelyonyy-ugol.surge.sh/blog/peresadila-fikus
 
 ### Example 3 — photos for gallery
 
@@ -339,17 +340,23 @@ the user's language.
 - User content slugs (post filenames, album folder names) MAY be
   Cyrillic or any Unicode — they become URL slugs. URLs like
   `/blog/моя-статья` work fine in modern browsers.
-- Large photos (>5 MB): Cloudflare Pages limits are 25 MB per file and
-  20,000 files per deploy. Fine for typical use; don't upload RAW.
+- Large photos (>5 MB): Surge.sh free plan allows up to 1 GB per
+  project. Fine for typical use; don't upload RAW.
 - The host's auto-commit hook commits everything after each action.
   Deletions therefore vanish from the working tree — recovery is via
   git, which is not the user's path.
-- Two rapid deploys of the same site: Cloudflare handles it but the
-  last one wins. Don't trigger back-to-back deploys for the same site.
-- Topic name slug collisions: two site topics with similar names can
-  produce the same CF project slug (e.g. "blog about plants" vs.
-  "blog-about-plants"). Before init, `wrangler pages project list` —
-  if a clash, ask the user to rename the topic.
+- Two rapid deploys of the same site: Surge handles it but the last one
+  wins. Don't trigger back-to-back deploys for the same site.
+- Surge subdomains are a global namespace — `<slug>.surge.sh` must not
+  be taken by anyone else. If deploy errors with "already in use" /
+  "not authorized", ask the user to rename the site topic to something
+  more distinctive, then redeploy.
+- Surge reserves slugs starting with `surge-` (e.g. `surge-test`,
+  `surge-blog`). Attempting to deploy such a slug makes surge crash
+  with `Cannot read properties of undefined (reading 'filename')` —
+  this is a client bug masking a server-side rejection. If you see
+  this error, ask the user to rename the topic to not start with
+  "surge-", then redeploy.
 - Supported fonts: anything on [fonts.google.com](https://fonts.google.com).
   A wrong name silently falls back to a system font (no error).
 
