@@ -264,6 +264,8 @@ brew "shfmt"
 brew "sshpass"
 # Generate clients, server stubs, and docs from an OpenAPI spec
 brew "swagger-codegen"
+# Formatting tool for reformatting Swift code
+brew "swiftformat"
 # Tool to enforce Swift style and conventions
 brew "swiftlint"
 # Very fast implementation of tldr in Rust
