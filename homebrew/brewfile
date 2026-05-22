@@ -182,6 +182,8 @@ brew "midnight-commander"
 brew "mistral-vibe"
 # AI on the command-line
 brew "mods"
+# Deep clean and optimize your Mac
+brew "mole"
 # Cross platform, open source .NET development framework
 brew "mono"
 # Collection of tools that nobody wrote when UNIX was young
