@@ -1,9 +1,11 @@
 # HotKeys Spoon Rules
 
 ## Layout File Structure
-- Each layout file in `layout/60%/` returns `{modifier = {...}, chords = {...}}`
-- Files named after keys: `a.lua`, `space.lua`, `return.lua`, etc.
-- All button files loaded via `buttonFiles` array in init.lua
+- Each file in `layout/60%/` returns a flat array of chord entries: `return { {chord=…}, … }`
+- Files named after physical keys: `a.lua`, `space.lua`, `return.lua`, etc.
+- All button files loaded via `buttonFiles` array in `init.lua`
+- Canonical ASCII format enforced by `docs/keyboard/tools/lint.py` (pre-commit hook)
+- Auto-fix format and insert missing rows: `python3 docs/keyboard/tools/normalize.py --insert-missing`
 
 ## Chord Definition Format
 ```lua
@@ -22,6 +24,21 @@
 - `⇪` = Hyper (Caps Lock remapped in Karabiner)
 - `⌘` = Command, `⌥` = Option, `⌃` = Control, `⇧` = Shift
 - Karabiner remaps keys to F-keys (e.g., `⇪v` → `F19`)
+
+## Documentation Format (canonical 5-column)
+```
+-- chord │ karabiner │ en | ru | el │ G │ app — function
+-- ⇪w    │     ↑     │              │   │         — up
+```
+Column geometry: `│` at positions [17, 32, 47, 51]. See `a.lua` for the reference.
+- **Chord column**: pressed combination, right-aligned (last char at position 13)
+- **Karabiner column**: what Karabiner sends (mirrors `karabiner/rules/*.json`)
+- **Birman column**: layout characters in `en  ru  el` order (mirrors `Birman.bundle/*.keylayout`)
+- **G column**: `✓` if global macOS default, blank otherwise
+- **Description**: `App — function` or `— function` for global; optional `B:`/`ⓘ:` tags
+
+Validate: `python3 docs/keyboard/tools/lint.py`
+Auto-fix format + insert missing rows: `python3 docs/keyboard/tools/normalize.py --insert-missing`
 
 ## Critical Rules
 - ASCII art comments must match actual chord definitions
