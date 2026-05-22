@@ -5,7 +5,7 @@ import { loadSiteConfig } from './src/lib/config.mjs';
 const site = loadSiteConfig();
 
 export default defineConfig({
-  site: site.url || 'https://example.pages.dev',
+  site: site.url || 'https://example.surge.sh',
   outDir: '../built-site',
   publicDir: 'public',
   integrations: [mdx()],
