@@ -25,6 +25,14 @@ model_list:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
 
+  # DeepSeek V4 Flash on OpenRouter — 1M context, free tier. Replaces the
+  # retired nvidia-deepseek (v3.2) as a no-quota path to v4-class reasoning.
+  - model_name: deepseek
+    litellm_params:
+      model: openai/deepseek/deepseek-v4-flash:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+
   # Vision pool — three models under the same name for reliability on
   # image tasks. Shuffle is justified here because vision models rarely
   # overlap in capabilities and rate limits park them in cooldown often.
@@ -48,6 +56,11 @@ model_list:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
 
+  # OCR — removed 2026-05-16: baidu/qianfan-ocr-fast:free pulled from
+  # OpenRouter and no free OCR-tuned replacement is currently available.
+  # Use the `vision` rotation for image text extraction until a dedicated
+  # OCR model returns.
+
   # Embeddings for local RAG / Qdrant.
   # Free OpenRouter embedding model so the same local LiteLLM proxy can serve
   # both retrieval and generation.
@@ -68,14 +81,23 @@ model_list:
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: groq-gpt-oss
     litellm_params:
       model: groq/openai/gpt-oss-120b
       api_key: os.environ/GROQ_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: groq-compound
     litellm_params:
       model: groq/groq/compound
       api_key: os.environ/GROQ_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === NVIDIA NIM direct (free 1000-5000 credits, 40 RPM) ===
   # Different from the OpenRouter-proxied `nemotron` above: this hits
@@ -96,12 +118,20 @@ model_list:
       api_key: os.environ/NVIDIA_API_KEY
   - model_name: nvidia-kimi
     litellm_params:
-      model: openai/moonshotai/kimi-k2.5
+      # k2.5 was bumped to k2.6 on NIM on 2026-04-30.
+      model: openai/moonshotai/kimi-k2.6
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
   - model_name: nvidia-deepseek
     litellm_params:
-      model: openai/deepseek-ai/deepseek-v3.2
+      # v3.2 retired on NIM; v4-pro is the current flagship.
+      model: openai/deepseek-ai/deepseek-v4-pro
+      api_base: https://integrate.api.nvidia.com/v1
+      api_key: os.environ/NVIDIA_API_KEY
+  - model_name: nvidia-deepseek-flash
+    litellm_params:
+      # Lighter v4 sibling — faster, still 1M context.
+      model: openai/deepseek-ai/deepseek-v4-flash
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
 
@@ -126,14 +156,23 @@ model_list:
     litellm_params:
       model: mistral/codestral-latest
       api_key: os.environ/MISTRAL_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: mistral-small
     litellm_params:
       model: mistral/mistral-small-latest
       api_key: os.environ/MISTRAL_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: mistral-large
     litellm_params:
       model: mistral/mistral-large-latest
       api_key: os.environ/MISTRAL_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Gemini direct (free: 10 RPM / 250 RPD Flash, 500 RPD search) ========
   # Standalone Gemini without search grounding. Generous free tier.
@@ -141,18 +180,42 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
+  # Gemini 2.5 Flash Image (Nano Banana) — text-to-image AND image edit
+  # (background removal/replace, inpainting, relight). Free: 500 images/day,
+  # 1024x1024, accepts input images for edit workflows.
+  - model_name: image-edit
+    litellm_params:
+      model: gemini/gemini-2.5-flash-image
+      api_key: os.environ/GEMINI_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+      output_cost_per_image: 0
 
   # === Cerebras (free: 30 RPM, 14 400 RPD, 1M tokens/day) ==================
   # Wafer-scale chip — fastest free inference (~2 600 tok/s). No credit card.
   # OpenAI-compatible at api.cerebras.ai/v1.
   - model_name: cerebras-qwen
     litellm_params:
-      model: openai/qwen-3-235b
+      # Slug renamed on 2026-04-23: qwen-3-235b → qwen-3-235b-a22b-instruct-2507.
+      model: openai/qwen-3-235b-a22b-instruct-2507
       api_base: https://api.cerebras.ai/v1
       api_key: os.environ/CEREBRAS_API_KEY
-  - model_name: cerebras-llama
+  - model_name: cerebras-glm
     litellm_params:
-      model: openai/llama-3.3-70b
+      # Cerebras started hosting Z.AI GLM-4.7 — same flagship as `glm` alias
+      # but on wafer-scale silicon. Replaces the dropped `cerebras-llama`.
+      model: openai/zai-glm-4.7
+      api_base: https://api.cerebras.ai/v1
+      api_key: os.environ/CEREBRAS_API_KEY
+  - model_name: cerebras-gpt-oss
+    litellm_params:
+      # gpt-oss-120b on Cerebras — fastest path to gpt-oss outputs.
+      model: openai/gpt-oss-120b
       api_base: https://api.cerebras.ai/v1
       api_key: os.environ/CEREBRAS_API_KEY
 
@@ -164,26 +227,20 @@ model_list:
   # coding — good tool-use and structured output
   - model_name: coding
     litellm_params:
-      model: openai/moonshotai/kimi-k2.5
-      api_base: https://integrate.api.nvidia.com/v1
-      api_key: os.environ/NVIDIA_API_KEY
-      order: 1
-  - model_name: coding
-    litellm_params:
-      model: openai/deepseek-ai/deepseek-v3.2
-      api_base: https://integrate.api.nvidia.com/v1
-      api_key: os.environ/NVIDIA_API_KEY
-      order: 1
-  - model_name: coding
-    litellm_params:
       model: mistral/codestral-latest
       api_key: os.environ/MISTRAL_API_KEY
       order: 1
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
-      model: groq/kimi-k2-instruct
+      model: groq/meta-llama/llama-4-scout-17b-16e-instruct
       api_key: os.environ/GROQ_API_KEY
       order: 1
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       model: openai/openai/gpt-oss-120b:free
@@ -192,7 +249,14 @@ model_list:
       order: 2
   - model_name: coding
     litellm_params:
-      model: openai/mistralai/devstral-2512:free
+      model: openai/qwen/qwen3-coder:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+  - model_name: coding
+    litellm_params:
+      # Qwen3-Next 80B MoE (3B active) — fresh free model, strong coding/general.
+      model: openai/qwen/qwen3-next-80b-a3b-instruct:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
@@ -206,14 +270,12 @@ model_list:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
-  # reasoning — planning, analysis, long-context. Qwen3-235B (Cerebras) + Nemotron 120B + DeepSeek + Mistral Large.
-  - model_name: reasoning
-    litellm_params:
-      model: openai/qwen-3-235b
-      api_base: https://api.cerebras.ai/v1
-      api_key: os.environ/CEREBRAS_API_KEY
-      order: 1
+  # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek V4 (1M ctx) at order 1,
+  # Hermes 405B / Trinity-thinking / Mistral Large / Gemini at order 2.
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
@@ -228,13 +290,21 @@ model_list:
       order: 1
   - model_name: reasoning
     litellm_params:
-      model: openai/deepseek-ai/deepseek-v3.2
-      api_base: https://integrate.api.nvidia.com/v1
-      api_key: os.environ/NVIDIA_API_KEY
+      # DeepSeek V4 Flash on OpenRouter: 1M context, free tier.
+      model: openai/deepseek/deepseek-v4-flash:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 1
+  - model_name: reasoning
+    litellm_params:
+      model: openai/nousresearch/hermes-3-llama-3.1-405b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
       order: 2
   - model_name: reasoning
     litellm_params:
-      model: openai/deepseek/deepseek-r1-0528:free
+      # Arcee Trinity Large Thinking — explicit thinking model, 262k context, free.
+      model: openai/arcee-ai/trinity-large-thinking:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
@@ -243,40 +313,43 @@ model_list:
       model: mistral/mistral-large-latest
       api_key: os.environ/MISTRAL_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       model: gemini/gemini-2.5-flash
       api_key: os.environ/GEMINI_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # fast — latency-critical. Cerebras (~2 600 tok/s) first, Groq (~300-500 tok/s) fallback.
-  - model_name: fast
-    litellm_params:
-      model: openai/llama-3.3-70b
-      api_base: https://api.cerebras.ai/v1
-      api_key: os.environ/CEREBRAS_API_KEY
-      order: 1
-  - model_name: fast
-    litellm_params:
-      model: openai/qwen-3-235b
-      api_base: https://api.cerebras.ai/v1
-      api_key: os.environ/CEREBRAS_API_KEY
-      order: 1
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
       api_key: os.environ/GROQ_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       model: groq/llama-3.3-70b-versatile
       api_key: os.environ/GROQ_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
-      model: groq/qwen3-32b
+      model: groq/qwen/qwen3-32b
       api_key: os.environ/GROQ_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Web Search (free tier) ==================================================
   # Gemini 2.5 Flash with Google Search grounding (free: 500 search RPD).
@@ -287,10 +360,16 @@ model_list:
       api_key: os.environ/GEMINI_API_KEY
       web_search_options:
         search_context_size: "medium"
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: groq-compound-mini
     litellm_params:
       model: groq/groq/compound-mini
       api_key: os.environ/GROQ_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # web-search — rotation group for callers that need "any search model".
   # Gemini preferred (500 RPD vs Groq's 250 RPD).
@@ -301,11 +380,17 @@ model_list:
       web_search_options:
         search_context_size: "medium"
       order: 1
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: web-search
     litellm_params:
       model: groq/groq/compound
       api_key: os.environ/GROQ_API_KEY
       order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
 router_settings:
   # Fallback policy:

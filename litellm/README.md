@@ -1,6 +1,6 @@
 # LiteLLM — free model proxy
 
-Local OpenAI/Anthropic-compatible proxy over nine free upstreams (OpenRouter `:free`, Groq, Cerebras, NVIDIA NIM, GitHub Models, Z.AI, Mistral, Gemini) with automatic rotation.
+Local OpenAI/Anthropic-compatible proxy over eight free upstreams (OpenRouter `:free`, Groq, Cerebras, NVIDIA NIM, GitHub Models, Z.AI, Mistral, Gemini) with automatic rotation.
 
 - **Endpoint:** `http://localhost:4000`
 - **Master key:** `sk-local-workbot`

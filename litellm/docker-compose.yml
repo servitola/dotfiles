@@ -20,6 +20,7 @@ services:
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
       UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}
       UI_PASSWORD: ${LITELLM_UI_PASSWORD:?set LITELLM_UI_PASSWORD in ~/.config/openai_key.sh}
+      OLLAMA_API_BASE: http://host.docker.internal:11434
     depends_on:
       db:
         condition: service_healthy

@@ -1,1 +1,4 @@
 .env
+model-health.json
+__pycache__/
+*.pyc
