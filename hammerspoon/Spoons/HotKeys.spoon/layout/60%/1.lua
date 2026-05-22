@@ -4,13 +4,14 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————————— app — function ————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           1   │              │      1       │   │          YouTube — Navigate to 10% of video
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪1   │      F1      │              │   │            Rider — quick documentation
 --          ⇧1   │              │ !    !    !  │   │
 --          ⌃1   │              │              │   │           VSCode — go to tab 1
 --               │              │              │   │            Rider — focus file in solution explorer
+--          ⌥1   │              │              │   │ Visual Studio Code
 { chord =  "⌥1",                               app = "Visual Studio Code" },
 --          ⌘1   │              │              │   │            Rider — focus solution explorer
 --               │              │              │   │           VSCode — focus solution explorer
@@ -22,19 +23,21 @@ return {
 --               │              │              │   │             IINA — set window-scale 1
 --          ⇥1   │      ⌘9      │              │   │          Browser — open last tab
 --               │              │              │   │         Telegram — focus 9th folder or chat
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧1   │     ⇧F1      │              │   │            Rider — external documentation
 --         ⇪⌃1   │     ⌃F1      │              │   │ ???
 --         ⇪⌥1   │     ⌥F1      │              │   │            Rider — show 'Select in' dialog
 --         ⇪⌘1   │     ⌘F1      │              │   │           VSCode — show errors/warnings
+--         ⇧⌘1   │              │              │   │ VS Dotfiles
 { chord = "⇧⌘1",                                fn = "vscode.dotfiles" },
 --         ⇧⌃1   │              │              │   │            Rider — toggle bookmark 1
 --         ⇧⌥1   │              │ ¡    ¡    έ  │   │
+--         ⌃⌥1   │              │              │   │ Audio Int
 { chord = "⌃⌥1",                                fn = "audio.internal" },
 --         ⌃⌘1   │              │              │   │
 --         ⌥⌘1   │              │              │   │             Fork — show commit details
 --               │              │              │   │         Telegram — focus 1st chat
---———————————————┼——————————————┼——————————————┼———┼————————————————————————————————————
+--———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃1   │              │              │   │
 --        ⇪⇧⌥1   │              │              │   │
 --        ⇪⇧⌘1   │              │              │   │
