@@ -12,7 +12,7 @@ return {
 --          ⇧z   │              │ Z    Я    Ζ  │   │          IINA — add sub-delay -0.5s
 --          ⌃z   │              │              │   │ Unix Terminal — suspend (background)
 --          ⌥z   │              │              │   │        VSCode — toggle wordwrap
---               │              │              │   │          Warp — type "/new" (Claude Code shortcut) HAMMERSPOON CUSTOM
+--               │              │              │   │           Zap — type "/new" (Claude Code shortcut) HAMMERSPOON CUSTOM
 --               │              │              │   │        Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM
 --          ⌘z   │              │              │ ✓ │              — undo
 --          ⇥z   │      ⌘/      │              │   │         Rider — comment line
