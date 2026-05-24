@@ -1,0 +1,173 @@
+[appearance]
+spacing = "compact"
+
+[appearance.text]
+match_notebook_to_monospace_font_size = true
+notebook_font_size = 24.0
+ai_font_name = "JetBrainsMono Nerd Font Mono"
+font_name = "JetBrainsMono Nerd Font Mono"
+match_ai_font = true
+ligature_rendering_enabled = true
+font_size = 13.0
+
+[appearance.window]
+override_opacity = 67
+new_windows_num_rows = 37
+left_panel_visibility_across_tabs = true
+open_windows_at_custom_size = true
+zoom_level = 150
+override_blur = 1
+new_windows_num_columns = 80
+
+[appearance.vertical_tabs]
+display_granularity = "panes"
+enabled = true
+view_mode = "expanded"
+primary_info = "command"
+
+[appearance.tabs]
+preserve_active_tab_color = false
+workspace_decoration_visibility = "always_show"
+
+[appearance.full_screen_apps]
+alt_screen_padding = "match_blocklist"
+
+[appearance.cursor]
+cursor_display_type = "bar"
+
+[appearance.themes]
+system_theme = false
+theme = { custom = { name = "Gruvbox Dark", path = "/Users/servitola/.warp/themes/gruvbox_dark.yaml" } }
+
+[appearance.panes]
+should_dim_inactive_panes = false
+
+[privacy]
+crash_reporting_enabled = true
+telemetry_enabled = true
+custom_secret_regex_list = [
+  { name = "IPv4 Address", pattern = '\b((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}\b' },
+  {
+    name = "IPv6 Address",
+    pattern = '\b((([0-9A-Fa-f]{1,4}:){1,6}:)|(([0-9A-Fa-f]{1,4}:){7}))([0-9A-Fa-f]{1,4})\b',
+  },
+  { name = "Slack App Token", pattern = '\bxapp-[0-9]+-[A-Za-z0-9_]+-[0-9]+-[a-f0-9]+\b' },
+  { name = "Phone Number", pattern = '\b(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}\b' },
+  {
+    name = "AWS Access ID",
+    pattern = '\b(AKIA|A3T|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{12,}\b',
+  },
+  {
+    name = "MAC Address",
+    pattern = '\b((([a-zA-z0-9]{2}[-:]){5}([a-zA-z0-9]{2}))|(([a-zA-z0-9]{2}:){5}([a-zA-z0-9]{2})))\b',
+  },
+  { name = "Google API Key", pattern = '\bAIza[0-9A-Za-z-_]{35}\b' },
+  { name = "Google OAuth ID", pattern = '\b[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com\b' },
+  { name = "GitHub Classic Personal Access Token", pattern = '\bghp_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Fine-Grained Personal Access Token", pattern = '\bgithub_pat_[A-Za-z0-9_]{82}\b' },
+  { name = "GitHub OAuth Access Token", pattern = '\bgho_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub User-to-Server Token", pattern = '\bghu_[A-Za-z0-9_]{36}\b' },
+  { name = "GitHub Server-to-Server Token", pattern = '\bghs_[A-Za-z0-9_]{36}\b' },
+  { name = "Stripe Key", pattern = '\b(?:r|s)k_(test|live)_[0-9a-zA-Z]{24}\b' },
+  { name = "Firebase Auth Domain", pattern = '\b([a-z0-9-]){1,30}(\.firebaseapp\.com)\b' },
+  { name = "JWT", pattern = '\b(ey[a-zA-z0-9_\-=]{10,}\.){2}[a-zA-z0-9_\-=]{10,}\b' },
+  { name = "OpenAI API Key", pattern = '\bsk-[a-zA-Z0-9]{48}\b' },
+  { name = "Anthropic API Key", pattern = '\bsk-ant-api\d{0,2}-[a-zA-Z0-9\-]{80,120}\b' },
+  { name = "Generic SK API Key", pattern = '\bsk-[a-zA-Z0-9\-]{10,100}\b' },
+  { name = "Fireworks API Key", pattern = '\bfw_[a-zA-Z0-9]{24}\b' },
+]
+
+[code]
+
+[code.indexing]
+agent_mode_codebase_context_auto_indexing = false
+
+[code.editor]
+open_file_editor = { external_editor = "vs_code" }
+show_code_review_button = true
+
+[terminal]
+show_terminal_zero_state_block = false
+use_audible_bell = true
+
+[terminal.input]
+completions_open_while_typing = true
+alias_expansion_enabled = true
+input_box_type_setting = "universal"
+honor_ps1 = false
+
+[agents]
+cloud_conversation_storage_enabled = true
+
+[agents.third_party]
+auto_open_composer_on_cli_agent_start = true
+auto_dismiss_composer_after_submit = false
+should_render_cli_agent_toolbar = true
+
+[agents.voice]
+voice_input_enabled = false
+voice_input_toggle_key = "none"
+
+[agents.warp_agent]
+
+[agents.warp_agent.input]
+ai_command_denylist = ""
+include_agent_commands_in_history = true
+nld_in_terminal_enabled = true
+
+[agents.warp_agent.other]
+should_render_use_agent_toolbar_for_user_commands = false
+
+[agents.mcp_servers]
+file_based_mcp_enabled = true
+
+[account]
+is_settings_sync_enabled = true
+
+[general]
+restore_session = true
+login_item = false
+new_tab_placement = "after_all_tabs"
+default_session_mode = "agent"
+show_warning_before_quitting = false
+
+[general.undo_close]
+grace_period = 120
+
+[notifications]
+toast_duration_secs = 8
+
+[notifications.preferences]
+is_agent_task_completed_enabled = true
+is_long_running_enabled = true
+is_needs_attention_enabled = true
+is_password_prompt_enabled = true
+long_running_threshold = 30
+mode = "disabled"
+play_notification_sound = true
+
+[session]
+
+[session.working_directory_config]
+advanced_mode = false
+global = { custom_dir = "~/projects/dotfiles", mode = "custom_dir" }
+new_tab = { custom_dir = "", mode = "previous_dir" }
+new_window = { custom_dir = "", mode = "previous_dir" }
+split_pane = { custom_dir = "", mode = "previous_dir" }
+
+[session.new_session_shell_override]
+executable = "/bin/zsh"
+
+[warpify]
+
+[warpify.subshells]
+added_subshell_commands = []
+
+[warpify.ssh]
+use_ssh_tmux_wrapper = true
+
+[accessibility]
+accessibility_verbosity = "concise"
+
+[workflows]
+show_global_workflows_in_universal_search = true

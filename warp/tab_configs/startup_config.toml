@@ -1,0 +1,8 @@
+name = "New tab: dotfiles"
+
+[[panes]]
+id = "main"
+type = "agent"
+directory = "/Users/servitola/projects/dotfiles"
+
+[params]
