@@ -60,10 +60,6 @@
     "terminal.integrated.fontSize": 17,
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.cursorStyle": "line",
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.shellArgs.osx": [
-        "-l"
-    ],
     "terminal.integrated.copyOnSelection": true,
     "terminal.integrated.enableMultiLinePasteWarning": false,
     "files.autoSaveDelay": 1000,
@@ -194,8 +190,6 @@
     "editor.renderLineHighlight": "all",
     "editor.occurrencesHighlight": "singleFile",
     "editor.showFoldingControls": "always",
-    "workbench.editor.showTabs": true,
-    "workbench.editor.enablePreview": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "explorer.decorations.badges": true,
     "explorer.decorations.colors": true,
@@ -229,10 +223,6 @@
     "omnisharp.enableEditorConfigSupport": true,
     "dotnet.codeLens.enableReferencesCodeLens": true,
     "dotnet.formatting.organizeImportsOnFormat": true,
-    "gitlens.ai.model": "openai:gpt-4o",
-    "csharp.semanticHighlighting.enabled": true,
-    "omnisharp.enableRoslynAnalyzers": true,
-    "omnisharp.enableEditorConfigSupport": true,
     // Roslynator settings
     "roslynator.analyzerSearchPaths": [
         "${workspaceFolder}/packages"
@@ -257,7 +247,7 @@
     "windsurf.enableModelBasedAutoExecution": true,
     "windsurf.autoExecutionPolicy": "turbo",
     "windsurf.explainAndFixInCurrentConversation": true,
-    "windsurf.searchMaxWorkspaceFileCount": 0,
+    "windsurf.searchMaxWorkspaceFileCount": 10000,
     "windsurf.autocompleteSpeed": "fast",
     "windsurf.rememberLastModelSelection": true,
     "windsurf.openRecentConversation": true,
