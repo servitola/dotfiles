@@ -268,7 +268,7 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/heroic/config.json
 	@$(LINK) ~/projects/dotfiles/heroic/config.json ~/Library/Application\ Support/heroic/config.json
 
-	@echo "setup Warp terminal symlinks"
+	@echo "setup Zap terminal config (Zap inherits ~/.warp from Warp)"
 	@$(REMOVE) ~/.warp
 	@$(LINK) ~/projects/dotfiles/warp ~/.warp
 
