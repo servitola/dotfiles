@@ -77,7 +77,7 @@ KEY_DISPLAY = {
 }
 
 # Default apps for icon resolution (edit when you change default terminal/browser)
-DEFAULT_APPS = {"_terminal": "Warp", "_browser": "Firefox"}
+DEFAULT_APPS = {"_terminal": "Zap", "_browser": "Firefox"}
 MIN_LAYER_ENTRIES = 3
 KEY_UNIT = 54
 KEY_HEIGHT = 48

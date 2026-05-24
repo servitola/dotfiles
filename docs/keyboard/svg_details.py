@@ -6,7 +6,7 @@ _AL = {"VSCode":"Visual Studio Code","IINA":"Iina","WorkBot":"Workbot",
     "Claude Code":"Claude","Activity Manager":"Activity Monitor","GoogleMeets":"zoom.us",
     "YouTube":"_browser","Browser":"_browser","Browser Vim":"_browser",
     "Unix Terminal":"_terminal","Terminal":"_terminal",
-    "Shotr":"Shottr","maccy":"Maccy","Warp":"Warp"}
+    "Shotr":"Shottr","maccy":"Maccy","Warp":"Zap"}
 _RH = 24  # row height (was 20)
 _SEP = 6  # extra gap between key groups
 _KC = PALETTE["karabiner"]; _BC = PALETTE["birman"]; _AC = PALETTE["app"]
