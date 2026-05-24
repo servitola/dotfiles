@@ -322,6 +322,15 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: coding
+    litellm_params:
+      # MiniMax M2.5 — 456B MoE flagship tuned for agents / tool-use / coding.
+      # OpenRouter :free routes via OpenInference (not Venice), so the quota
+      # is independent from the uncensored group.
+      model: openai/minimax/minimax-m2.5:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek V4 (1M ctx) at order 1,
   # Hermes 405B / Trinity-thinking / Mistral Large / Gemini at order 2.
@@ -373,6 +382,23 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: reasoning
+    litellm_params:
+      # Llama 3.3 70B instruct — universal instruct, not a narrow fine-tune.
+      # Free on OpenRouter, decent long-form reasoning. Added as another
+      # order-2 fallback so the group has more cushion against 429s.
+      model: openai/meta-llama/llama-3.3-70b-instruct:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+  - model_name: reasoning
+    litellm_params:
+      # MiniMax M2.5 — 456B MoE, agentic-tuned, strong long-context reasoning.
+      # OpenRouter :free → OpenInference upstream (independent from Venice).
+      model: openai/minimax/minimax-m2.5:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # fast — latency-critical. Cerebras (~2 600 tok/s) first, Groq (~300-500 tok/s) fallback.
   - model_name: fast
