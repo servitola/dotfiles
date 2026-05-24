@@ -74,7 +74,19 @@ If during later phases a gap is discovered — launch `code-researcher` again wi
 **Scope:** `phase2_user_experience` + `phase3_integration` items.
 
 1. Summarize understanding: "Я понял задачу так: [X]. Делать планирую так: [Y, based on code]."
-2. Questions based on code findings: "Нашёл модуль X, который делает Y — переиспользуем?"
+2. **Surface assumptions explicitly.** Before asking new questions,
+   list assumptions you've already baked into the summary so the user
+   can correct them in one shot rather than across many turns:
+   ```
+   ДОПУЩЕНИЯ, КОТОРЫЕ Я УЖЕ ДЕЛАЮ (поправь, если что не так):
+   1. Сценарий бьём отдельным флагом, а не миграцией данных.
+   2. Не трогаем модуль X, только модуль Y.
+   3. Триггер — действие пользователя, а не cron.
+   4. Падать молча нельзя — показываем ошибку.
+   ```
+   Include only assumptions that **change scope or design** if wrong.
+   Skip framework facts and items already settled in Cycle 1.
+3. Questions based on code findings: "Нашёл модуль X, который делает Y — переиспользуем?"
 3. Cover deploy and user actions (items `deploy_approach`, `manual_user_actions`):
    - "Нужны ли ручные шаги для запуска? (создать бота, получить API ключи, настроить сервис, зарегистрироваться где-то)"
    - "Как деплоить? Что нужно настроить? (уже есть CI/CD, нужно настроить, ручной деплой)"

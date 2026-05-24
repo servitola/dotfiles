@@ -49,12 +49,43 @@ If during later phases a gap is discovered — launch `code-researcher` again wi
 
 Analyze if additional information is needed based on user-spec and code research.
 
-- Ask technical questions if gaps exist. No limit on question count — ask as many as needed.
+### Step 3.0: Surface Assumptions (before any clarification questions)
+
+Before asking technical questions, **declare every non-trivial
+assumption you would otherwise silently bake into the tech-spec**.
+Read user-spec.md + code-research.md, list the things you inferred
+but the user did not state explicitly, and ask the user to correct
+them. Format:
+
+```
+ASSUMPTIONS I'M MAKING (correct me now or I'll proceed with these):
+1. Storage: Postgres (per existing prisma schema), not adding Redis.
+2. Auth: session-cookies, no JWT — same as billing service.
+3. Deploy target: existing AKS cluster, not new infra.
+4. Browsers: modern evergreen only, no IE11.
+5. Time zone handling: UTC in DB, local in UI (existing pattern).
+6. Failure mode for {X}: surface to user, no silent retry.
+```
+
+Rules:
+- Include only assumptions that **change the design** if wrong.
+- Don't list framework facts or things already in user-spec.
+- One line per assumption, no commentary.
+- Wait for user to confirm/correct before continuing to questions.
+
+Why: silent assumptions are the #1 source of post-validation churn.
+Surfacing them up front replaces 3 rework loops with one batch.
+
+### Step 3.1: Technical questions
+
+- Ask technical questions if gaps remain after assumptions are
+  confirmed. No limit on question count — ask as many as needed.
 - Focus: technical constraints, integration points, data sources, external dependencies.
 - If gaps found in user-spec requirements — discuss with user and update user-spec too (via subagent or directly).
 - If requirements are fundamentally unclear — suggest creating user-spec first.
 
 **Checkpoint:**
+- [ ] Assumptions declared and confirmed
 - [ ] All technical gaps clarified (or none existed)
 
 ## Phase 4: Create tech-spec
