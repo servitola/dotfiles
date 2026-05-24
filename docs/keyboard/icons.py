@@ -15,7 +15,6 @@ def icon_slug(name):
 _NAME_OVERRIDES = {
     "Iina": "IINA",
     "XCode": "Xcode",
-    "Warp": "WarpOss",      # user installed the open-source Warp build
 }
 _JXA = ('ObjC.import("AppKit");var ws=$.NSWorkspace.sharedWorkspace,'
     'i=ws.iconForFile("APP");i.setSize({width:SZ,height:SZ});'
@@ -71,7 +70,7 @@ def _stable_hue(name):
 
 
 def _initial_for(name):
-    """Pick a 1–2 letter initial — `Visual Studio Code` → `VS`, `Warp` → `W`."""
+    """Pick a 1–2 letter initial — `Visual Studio Code` → `VS`, `Zap` → `Z`."""
     words = [w for w in re.split(r"[^A-Za-z0-9]+", name) if w]
     if not words: return "?"
     if len(words) == 1: return words[0][0].upper()

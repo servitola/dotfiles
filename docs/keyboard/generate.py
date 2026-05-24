@@ -69,7 +69,7 @@ app_names = {e["app"] for e in active if "app" in e}
 app_names |= {DEFAULT_APPS.get(v, v) for v in FN_APP.values()}
 app_names |= {e.get("app_hint") for e in comments if "app_hint" in e} - {None}
 app_names |= {app for e in full for app, _ in e.get("descriptions", []) if app} - {""}
-app_names |= {"Shottr","Maccy","Mail","Warp","Safari","Raycast","Rider"}  # extra for tooltips
+app_names |= {"Shottr","Maccy","Mail","Zap","Safari","Raycast","Rider"}  # extra for tooltips
 print(f"Extracting icons for {len(app_names)} apps...")
 icon_map = extract_icons(app_names)
 print(f"  Found {len(icon_map)} icons")

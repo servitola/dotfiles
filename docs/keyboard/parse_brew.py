@@ -29,7 +29,7 @@ _CASK_ALIAS = {
     "Rider": "rider", "Fork": "fork", "Firefox": "firefox",
     "Telegram": "telegram", "Iina": "iina", "IINA": "iina",
     "Yandex": "yandex", "Shottr": "shottr", "Maccy": "maccy",
-    "Warp": "warp", "iTerm": "iterm2", "Google Chrome": "google-chrome",
+    "iTerm": "iterm2", "Google Chrome": "google-chrome",
     "Raycast": "raycast", "OrbStack": "orbstack", "Claude": "claude",
     "zoom.us": "zoom", "VoiceInk": "voiceink",
 }
