@@ -15,6 +15,29 @@ Decompose tech-spec Implementation Tasks into individual task files with paralle
 **Output:** `work/{feature}/tasks/*.md` (validated)
 **Language:** Task files in English, communication in Russian
 
+## Task Split Triggers (apply per task before saving)
+
+Atomic tasks ship reliably; XL tasks rot. Split any task that hits
+**any** of the following:
+
+1. **Time** — implementation + tests would take more than ~2h of focused
+   agent work.
+2. **AC count** — more than 3 acceptance criteria.
+3. **"and" in the title** — "Add X **and** Y" is almost always two tasks
+   masquerading as one.
+4. **Touches 2+ independent subsystems** — e.g. auth and billing,
+   API and infra config.
+5. **>5 files modified** — split horizontally (foundation first) or
+   vertically (slice by user-visible behavior).
+
+When splitting, prefer **vertical slices** (one complete user-visible
+path through the stack) over horizontal (all DB → all API → all UI).
+Vertical slices leave the system working at every step; horizontal
+slices don't.
+
+If a task survives all five triggers — proceed. If it fails one —
+split, then re-check the children against the same triggers.
+
 ## Phase 1: Create Tasks
 
 1. Ask user for feature name if not provided.
