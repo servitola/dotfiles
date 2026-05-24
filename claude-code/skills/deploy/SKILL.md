@@ -1,3 +1,21 @@
+---
+name: deploy
+description: |
+  Execute a deploy: run tests, sync changed files to server, restart services,
+  verify, commit. For user-visible or risk-bearing changes, decouple deploy
+  from release via feature flags with staged rollout (internal → 5% → 25% →
+  50% → 100%), numeric advance/hold/rollback thresholds (error rate, P95
+  latency, JS errors, business metrics), and a written rollback plan.
+
+  Use when: "задеплой", "выкати", "раскатай", "deploy", "ship it",
+  "поэтапный rollout", "staged rollout", "план отката", "rollback plan",
+  "feature flag rollout"
+
+  For CI/CD pipeline setup use deploy-pipeline. For pre-deploy testing use
+  pre-deploy-qa. For post-deploy verification use post-deploy-qa.
+  For GCP-specific deploy use gcp-deploy.
+---
+
 # Deploy Skill
 
 ## Standard deploy flow

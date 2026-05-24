@@ -58,6 +58,26 @@ After test suite passes, verify that tests actually exercise the feature:
 - **major** — works but with significant issues (edge cases, UX bugs, degraded behavior). Escalate to critical if it affects data integrity or core user workflow.
 - **minor** — cosmetic, inaccuracies, improvements
 
+## Rollout Readiness (when feature ships behind a flag / staged)
+
+Pre-deploy QA also verifies that staged-rollout safety nets exist
+before approving deploy. If the feature is user-visible or carries
+risk, all of these must be in place:
+
+- [ ] Feature flag (or equivalent kill switch) wired up and tested OFF
+- [ ] Rollback plan written (see `deploy` skill template)
+- [ ] Baseline metrics captured for the 24h window before deploy:
+      error rate, P95 latency, client JS error count, key business
+      metric(s). Without baselines the rollout thresholds are unusable.
+- [ ] Monitoring dashboards reachable and show data right now (not "we
+      have them somewhere")
+- [ ] Rollout decision thresholds (see `deploy` SKILL) reviewed —
+      reviewer understands when to hold and when to roll back
+
+If any item is missing → finding with severity `critical`, status =
+`failed`. Don't downgrade these: a deploy without rollback is an
+unsupervised production change.
+
 ## Output
 
 ### JSON report → `logs/working/qa-report.json`
