@@ -134,6 +134,24 @@ description: |
 
 ---
 
+## Bug Fixes: The Prove-It Pattern
+
+Never start a bug fix by editing code. Start by **writing a test that
+reproduces the bug** — it must fail with the current code.
+
+```
+Bug report → write reproduction test → test FAILS (bug confirmed)
+            → implement the fix → test PASSES → run full suite
+```
+
+Why: a passing test before the fix proves nothing; the test you write
+after the fix tends to test the fix's implementation, not the
+behaviour you wanted. The Prove-It test becomes a permanent regression
+guard.
+
+If reproduction is non-trivial, spawn a subagent to write the test
+**without knowledge of the fix** — separation makes the test robust.
+
 ## Key Testing Principles
 
 1. **Write tests immediately** - In the same session as the code, before moving on
@@ -146,6 +164,8 @@ description: |
 8. **Clean state** - Always start with known database state
 9. **Tests must verify real behavior** - Assert on actual results, not mock calls
 10. **Every test earns its place** - Each test catches a specific failure no other test catches (see below)
+11. **DAMP > DRY in tests** - In production code DRY wins. In tests, Descriptive And Meaningful Phrases win: each test reads like a self-contained specification, even at the cost of repetition. Don't extract shared setup just to avoid duplicating an input shape — it obscures what each test verifies.
+12. **Bug fix = Prove-It test first** - See the Prove-It Pattern section above. No reproduction test → not a fix, just a guess.
 
 ---
 
@@ -219,10 +239,33 @@ For some project types, E2E tests are MORE valuable than unit tests:
 
 ## Mocking Strategy
 
+### Test Double Preference Order
+
+Use the simplest double that does the job. More real code = more
+confidence.
+
+```
+1. Real implementation    → Highest confidence, catches real bugs
+2. Fake                   → In-memory version of a dependency (e.g. in-mem DB)
+3. Stub                   → Returns canned data, no behavior
+4. Mock (interaction)     → Verifies method calls — use sparingly
+```
+
+Mocks are the **last resort**, used only when the real dependency is
+too slow, non-deterministic, or has side effects you can't control
+(external APIs, email sending, payment gateways). Over-mocking creates
+tests that pass while production breaks.
+
+If a test verifies "method X was called with arguments Y" instead of
+asserting on observable state — replace the mock with a fake or a real
+implementation.
+
 ### Unit Tests
 - **Mock:** Database, API calls, file system, time
 - **Why:** Fast, isolated, deterministic
-- **How:** Use framework mocking (jest.mock, unittest.mock)
+- **How:** Use framework mocking (jest.mock, unittest.mock). Prefer
+  in-memory fakes (e.g. better-sqlite3, in-memory queue) over mocks
+  when available — fakes catch contract drift, mocks don't.
 
 ### Integration Tests
 - **Real:** Database (test DB), file system
