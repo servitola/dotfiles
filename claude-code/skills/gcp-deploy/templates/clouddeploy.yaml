@@ -1,0 +1,30 @@
+apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: {{SERVICE_NAME}}-pipeline
+description: Delivery pipeline for {{SERVICE_NAME}} (dev → prod)
+serialPipeline:
+  stages:
+    - targetId: {{SERVICE_NAME}}-dev
+      profiles: [dev]
+    - targetId: {{SERVICE_NAME}}-prod
+      profiles: [prod]
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: {{SERVICE_NAME}}-dev
+description: Dev Cloud Run target
+run:
+  location: projects/{{PROJECT_ID}}/locations/{{REGION}}
+
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: {{SERVICE_NAME}}-prod
+description: Prod Cloud Run target (manual approval)
+requireApproval: true
+run:
+  location: projects/{{PROJECT_ID}}/locations/{{REGION}}

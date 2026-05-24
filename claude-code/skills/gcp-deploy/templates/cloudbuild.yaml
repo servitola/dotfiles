@@ -1,0 +1,51 @@
+# Cloud Build pipeline for {{SERVICE_NAME}}
+# Substitutions are passed by Cloud Build trigger or via gcloud --substitutions
+substitutions:
+  _REGION: '{{REGION}}'
+  _REPO: '{{REPO}}'
+  _SERVICE: '{{SERVICE_NAME}}'
+
+steps:
+  # Language-specific test step — adjust per references/languages.md
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'test'
+    entrypoint: 'bash'
+    args: ['-c', 'echo "TODO: replace with language-specific test command"']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build'
+    args:
+      - 'build'
+      - '-t'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA'
+      - '.'
+    waitFor: ['test']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push'
+    args:
+      - 'push'
+      - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA'
+    waitFor: ['build']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'release'
+    entrypoint: 'gcloud'
+    args:
+      - 'deploy'
+      - 'releases'
+      - 'create'
+      - 'rel-$SHORT_SHA'
+      - '--delivery-pipeline=${_SERVICE}-pipeline'
+      - '--region=${_REGION}'
+      - '--images=app=${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA'
+    waitFor: ['push']
+
+images:
+  - '${_REGION}-docker.pkg.dev/$PROJECT_ID/${_REPO}/${_SERVICE}:$SHORT_SHA'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+  machineType: E2_HIGHCPU_8
+
+timeout: '1800s'
