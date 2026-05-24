@@ -543,6 +543,21 @@ set_macos_default_if_different \
 	'Pro'
 
 ###############################################################################
+echo 'Google Chrome' #
+###############################################################################
+
+# Disable on-device AI / Gemini Nano model (~4 GB in
+# ~/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/).
+# 1 = Disabled: Chrome won't download the model and deletes the existing one.
+# https://chromeenterprise.google/policies/gen-ai-local-foundational-model-settings/
+set_macos_default_if_different \
+	'Disable on-device AI (Gemini Nano)' \
+    'com.google.Chrome' \
+    'GenAILocalFoundationalModelSettings' \
+    '-int' \
+    1
+
+###############################################################################
 echo 'Dock' #
 ###############################################################################
 
