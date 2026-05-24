@@ -7,14 +7,14 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           b   │              │ b    и    β  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪b   │              │              │   │ Warp
-{ chord =  "⇪b",                                                fn = "warp.launch_default" },
+--          ⇪b   │              │              │   │ Zap
+{ chord =  "⇪b",                                                fn = "zap.launch_default" },
 --          ⇧b   │              │ B    И    Β  │   │
 --          ⌃b   │              │              │   │ Unix Terminal — forward one letter
 --          ⌥b   │              │ ß    ß    ß  │   │
 --          ⌘b   │              │              │   │         Rider — go to declaration
 --               │              │              │   │         Music — show or hide column browser
---               │              │              │   │          Warp — show/hide tabs bar
+--               │              │              │   │           Zap — show/hide tabs bar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --   ⇪⇧b → F14   │     F14      │              │   │                  ↓
 { chord = "F14",                                               app = "iTerm" },

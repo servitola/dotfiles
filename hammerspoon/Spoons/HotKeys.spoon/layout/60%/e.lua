@@ -30,7 +30,7 @@ return {
 --         ⇧⌘e   │              │              │   │      Browser — opened tabs dialog
 --               │              │              │   │        Rider — recent locations popup
 --               │              │              │   │         Mail — redirect email
---               │              │              │   │         Warp — command palette
+--               │              │              │   │          Zap — command palette
 --         ⌃⌥e   │      ⌦       │              │ ✓ │             — delete letter to the right
 --         ⌃⌘e   │              │              │   │        Rider — show list of tabs of current panel
 --         ⌥⌘e   │              │              │   │        Music — show equalizer
