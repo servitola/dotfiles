@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""Skill usage statistics from Claude Code transcripts.
+
+Scans ~/.claude/projects/**/*.jsonl for `Skill` tool invocations and
+aggregates by skill name. Use --since to filter by recency, --skill to
+drill into one skill, --json for machine-readable output.
+"""
+import argparse
+import glob
+import json
+import os
+import sys
+from collections import Counter, defaultdict
+from datetime import datetime, timedelta, timezone
+
+PROJECTS_GLOB = os.path.expanduser("~/.claude/projects/**/*.jsonl")
+
+
+def parse_since(s):
+    if not s:
+        return None
+    unit = s[-1]
+    n = int(s[:-1])
+    if unit == "d":
+        return datetime.now(timezone.utc) - timedelta(days=n)
+    if unit == "h":
+        return datetime.now(timezone.utc) - timedelta(hours=n)
+    raise SystemExit(f"--since: use Nd or Nh (got {s!r})")
+
+
+def short_cwd(cwd):
+    """Shorten ~/projects/foo → foo, else last 2 segments."""
+    if not cwd or cwd == "-":
+        return "-"
+    home_projects = os.path.expanduser("~/projects/")
+    if cwd.startswith(home_projects):
+        rest = cwd[len(home_projects):]
+        return rest.split("/", 1)[0] if rest else "projects"
+    return "/".join(cwd.rstrip("/").rsplit("/", 2)[-2:])
+
+
+def iter_invocations(since=None):
+    for path in glob.iglob(PROJECTS_GLOB, recursive=True):
+        try:
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    try:
+                        obj = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    msg = obj.get("message")
+                    if not isinstance(msg, dict):
+                        continue
+                    content = msg.get("content")
+                    if not isinstance(content, list):
+                        continue
+                    for block in content:
+                        if not isinstance(block, dict):
+                            continue
+                        if block.get("type") != "tool_use" or block.get("name") != "Skill":
+                            continue
+                        skill = (block.get("input") or {}).get("skill")
+                        if not skill:
+                            continue
+                        ts_raw = obj.get("timestamp") or ""
+                        try:
+                            ts = datetime.fromisoformat(ts_raw.replace("Z", "+00:00"))
+                        except ValueError:
+                            ts = None
+                        if since and (ts is None or ts < since):
+                            continue
+                        yield {
+                            "skill": skill,
+                            "ts": ts,
+                            "cwd": obj.get("cwd") or "-",
+                            "session": obj.get("sessionId") or "",
+                        }
+        except OSError:
+            continue
+
+
+def aggregate(invocations):
+    counts = Counter()
+    first, last = {}, {}
+    cwds = defaultdict(Counter)
+    sessions = defaultdict(set)
+    for inv in invocations:
+        s = inv["skill"]
+        counts[s] += 1
+        ts = inv["ts"]
+        if ts:
+            if s not in first or ts < first[s]:
+                first[s] = ts
+            if s not in last or ts > last[s]:
+                last[s] = ts
+        cwds[s][short_cwd(inv["cwd"])] += 1
+        if inv["session"]:
+            sessions[s].add(inv["session"])
+    return counts, first, last, cwds, sessions
+
+
+def fmt_date(dt):
+    return dt.strftime("%Y-%m-%d") if dt else "-"
+
+
+def render_table(counts, last, cwds, sessions, limit=None):
+    rows = counts.most_common(limit)
+    if not rows:
+        print("(no skill invocations found)")
+        return
+    width_skill = max(len(s) for s, _ in rows)
+    print(f"{'COUNT':>5}  {'SESSIONS':>8}  {'SKILL':<{width_skill}}  {'LAST USED':<10}  TOP PROJECT")
+    for skill, count in rows:
+        top_proj = cwds[skill].most_common(1)[0][0] if cwds[skill] else "-"
+        sess_count = len(sessions[skill])
+        print(f"{count:>5}  {sess_count:>8}  {skill:<{width_skill}}  {fmt_date(last.get(skill)):<10}  {top_proj}")
+
+
+def render_detail(skill, invocations):
+    items = [i for i in invocations if i["skill"] == skill]
+    if not items:
+        print(f"(no invocations of {skill!r} found)")
+        return
+    items.sort(key=lambda x: x["ts"] or datetime.min.replace(tzinfo=timezone.utc), reverse=True)
+    print(f"{skill}: {len(items)} invocations across {len({i['session'] for i in items})} sessions\n")
+    for inv in items:
+        print(f"  {fmt_date(inv['ts'])}  {short_cwd(inv['cwd'])}")
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--since", help="filter to last N days (e.g. 7d) or hours (24h)")
+    ap.add_argument("--skill", help="show every invocation of this skill")
+    ap.add_argument("--limit", type=int, default=None, help="top N skills (default all)")
+    ap.add_argument("--json", action="store_true", help="machine-readable output")
+    args = ap.parse_args()
+
+    since = parse_since(args.since)
+    invocations = list(iter_invocations(since=since))
+
+    if args.json:
+        counts, first, last, cwds, sessions = aggregate(invocations)
+        out = {
+            "total_invocations": sum(counts.values()),
+            "total_skills": len(counts),
+            "since": since.isoformat() if since else None,
+            "skills": [
+                {
+                    "skill": s,
+                    "count": c,
+                    "sessions": len(sessions[s]),
+                    "first_used": first[s].isoformat() if s in first else None,
+                    "last_used": last[s].isoformat() if s in last else None,
+                    "top_projects": cwds[s].most_common(5),
+                }
+                for s, c in counts.most_common(args.limit)
+            ],
+        }
+        json.dump(out, sys.stdout, indent=2, default=str)
+        sys.stdout.write("\n")
+        return
+
+    if args.skill:
+        render_detail(args.skill, invocations)
+        return
+
+    counts, first, last, cwds, sessions = aggregate(invocations)
+    header = f"Skill usage — {sum(counts.values())} invocations across {len(counts)} skills"
+    if since:
+        header += f" since {since.strftime('%Y-%m-%d')}"
+    print(header)
+    print()
+    render_table(counts, last, cwds, sessions, limit=args.limit)
+
+
+if __name__ == "__main__":
+    main()
