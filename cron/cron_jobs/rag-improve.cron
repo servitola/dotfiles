@@ -1,0 +1,5 @@
+# rag-improve: autonomous RAG corpus expansion + revisit + eval sweep
+# Runs every 2 hours; lockfile at /tmp/rag-improve.lock prevents overlap
+# Writes to ~/projects/dotfiles/rag/{rag.eval.json, rag-eval-history.md, rag-gaps.md, rag-retired.md}
+# Quota per run: ~15 chat calls + ~130 embed calls
+0 */2 * * * /Users/servitola/projects/dotfiles/rag/scripts/rag-improve.py >> /tmp/rag-improve.log 2>&1
