@@ -82,6 +82,73 @@ If any missing, request them before proceeding.
 - **Dependencies First**: Always include npm audit results
 - **No Assumptions**: Flag uncertain framework protections for manual review
 
+## Triaging `npm audit` (and equivalents) Results
+
+Not every `audit` finding warrants a release block. Apply this decision
+tree to avoid false alarms and noise:
+
+```
+Vulnerability reported
+├── Severity: critical or high
+│   ├── Vulnerable code path actually reachable in your app?
+│   │   ├── YES → fix immediately (update / patch / replace)
+│   │   └── NO  (dev-only, unused path) → fix soon, not a blocker
+│   └── Fix available?
+│       ├── YES → update to patched version
+│       └── NO  → workaround / replace dep / allowlist with review date
+├── Severity: moderate
+│   ├── Reachable in production → fix in next release cycle
+│   └── Dev-only                → fix when convenient, backlog
+└── Severity: low                → batch with regular dep updates
+```
+
+Key questions to answer in the report for every audit finding:
+1. Is the vulnerable function actually called on a code path you ship?
+2. Is the dependency runtime or dev-only?
+3. Does the deployment context expose this (e.g. a server-side flaw in
+   a client-only build)?
+
+If you defer, **document the reason and a review date** — silent
+deferral becomes permanent acceptance.
+
+## Three-Tier Boundary System
+
+Apply these rules when reviewing or designing security-relevant code.
+Treat the "Ask first" list as a gate: even when the implementation
+looks fine, surface the change to the user before approving.
+
+**Always do (no exceptions):**
+- Validate every external input at the system boundary (route/handler)
+- Parameterize all DB queries; never concatenate user input into SQL
+- Encode output (use framework auto-escaping, don't bypass it)
+- HTTPS for all external traffic
+- Hash passwords with bcrypt/scrypt/argon2 (cost ≥ 12)
+- Set security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
+- Use `httpOnly`, `secure`, `sameSite` cookies for sessions
+- Run `npm audit` (or equivalent) before every release
+
+**Ask first (requires human approval — surface to user, don't auto-approve):**
+- New authentication flow or change to existing auth logic
+- New category of sensitive data being stored (PII, payment, health)
+- New external service integration
+- CORS configuration changes
+- New file upload handler
+- Rate-limiting or throttling changes
+- Elevated permissions / new roles granted
+
+**Never do:**
+- Commit secrets to version control
+- Log sensitive data (passwords, tokens, full card numbers, PII)
+- Treat client-side validation as a security boundary
+- Disable security headers for convenience
+- Use `eval()` / `innerHTML` with user-controlled data
+- Store session/auth tokens in localStorage or other client-accessible storage
+- Expose stack traces or internal error details to users
+
+When auditing code, every "Ask first" change spotted in a diff is a
+**finding by default** — the question becomes "was this approved?",
+not "is this safe?".
+
 ## Escalation
 
 Flag immediately:
@@ -89,3 +156,4 @@ Flag immediately:
 - Signs of existing compromise or malicious code
 - Systemic architecture issues requiring redesign
 - Compliance violations (GDPR, PCI-DSS)
+- Unauthorised changes from the "Ask first" tier shipped without review
