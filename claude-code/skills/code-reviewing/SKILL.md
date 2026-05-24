@@ -216,6 +216,75 @@ Focus on dimensions based on code context:
    - **minor** → improvements that are valuable but optional
 5. **Recommendation Formulation**: Provide specific, actionable suggestions
 
+## Comment Severity Prefixes
+
+Internal severity (critical/major/minor) drives review verdict. The
+**comment to the author** must additionally start with a prefix so the
+author knows what's required vs optional. Without prefixes authors
+treat every comment as mandatory and waste time on suggestions.
+
+| Prefix | Meaning | Author action |
+|---|---|---|
+| *(no prefix)* | Required change | Address before merge |
+| **Critical:** | Blocks merge | Security, data loss, broken functionality |
+| **Nit:** | Minor, optional | May ignore — formatting, style preference |
+| **Optional:** / **Consider:** | Suggestion worth thinking about | Not required |
+| **FYI:** | Informational only | No action — context for future |
+
+Mapping from internal severity:
+- critical → `Critical:` prefix
+- major → no prefix (required) or `Critical:` if blocking
+- minor → `Nit:` or `Optional:`
+
+## Change Sizing
+
+Small focused changes review faster and ship safer. Target sizes:
+
+| Diff size | Verdict |
+|---|---|
+| ~100 lines | Good. Reviewable in one sitting. |
+| ~300 lines | Acceptable if single logical change. |
+| ~1000 lines | Too large. Ask author to split. |
+
+Exception: file deletions and automated refactors where reviewer only
+verifies intent, not each line.
+
+**Splitting strategies when a change is too large:**
+
+| Strategy | How | When |
+|---|---|---|
+| **Stack** | Submit small change, start next based on it | Sequential dependencies |
+| **By file group** | Separate changes for groups needing different reviewers | Cross-cutting concerns |
+| **Horizontal** | Shared code/stubs first, then consumers | Layered architecture |
+| **Vertical** | Smaller full-stack slices of the feature | Feature work |
+
+**Separate refactoring from feature work.** A PR that refactors AND adds
+new behavior = two PRs. Small renames may piggyback at reviewer
+discretion.
+
+## Dead Code Hygiene
+
+After refactoring or implementation, look for orphaned code: now-unused
+functions, components, constants, backwards-compat shims, `_unused`
+no-op vars, `// removed` comments.
+
+Process:
+1. Identify what is now unreachable or unused.
+2. List it explicitly in the review comment.
+3. **Ask before deleting.** Don't silently nuke things — you may not see
+   external callers.
+
+```
+DEAD CODE IDENTIFIED:
+- formatLegacyDate() in src/utils/date.ts — replaced by formatDate()
+- OldTaskCard in src/components/ — replaced by TaskCard
+- LEGACY_API_URL in src/config.ts — no remaining references
+→ Safe to remove these?
+```
+
+Don't accept "I'll clean it up later." Cleanup before merge or a filed
+ticket with assignee — otherwise it never happens.
+
 ## Quality Standards
 
 Be thorough but pragmatic:
