@@ -245,6 +245,23 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
+  # Azure AI Speech (Cognitive Services) — neural TTS via /v1/audio/speech.
+  # Resource `tts-greek` in West Europe, pricing tier F0 (free): 500 000
+  # characters/month neural, recurring. 400+ voices, 140+ locales.
+  # Greek voices: el-GR-NestorasNeural (m), el-GR-AthinaNeural (f).
+  # Voice is passed at call time as the `voice` request param.
+  # $0 guarantee depends on F0 pricing tier — verified in Azure portal,
+  # NOT enforced by verify-free-only.sh (proxy can't see Azure-side config).
+  - model_name: tts-azure
+    litellm_params:
+      model: azure/speech/azure-tts
+      api_base: https://westeurope.tts.speech.microsoft.com
+      api_key: os.environ/AZURE_VOICE_TTS_GREEK_API_KEY1
+    model_info:
+      mode: audio_speech
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
   # === Cerebras (free: 30 RPM, 14 400 RPD, 1M tokens/day) ==================
   # Wafer-scale chip — fastest free inference (~2 600 tok/s). No credit card.
   # OpenAI-compatible at api.cerebras.ai/v1.

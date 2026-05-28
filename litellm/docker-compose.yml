@@ -16,6 +16,7 @@ services:
       GEMINI_API_KEY: ${GEMINI_API_KEY}
       MISTRAL_API_KEY: ${MISTRAL_API_KEY}
       CEREBRAS_API_KEY: ${CEREBRAS_API_KEY}
+      AZURE_VOICE_TTS_GREEK_API_KEY1: ${AZURE_VOICE_TTS_GREEK_API_KEY1}
       LITELLM_MASTER_KEY: sk-local-workbot
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
       UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}

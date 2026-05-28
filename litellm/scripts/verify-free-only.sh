@@ -12,6 +12,9 @@ points at a free-tier upstream. Whitelist:
   Cerebras (https://api.cerebras.ai/v1)            — free tier (1M tokens/day)
   NVIDIA NIM (https://integrate.api.nvidia.com/v1) — free credits
   GitHub Models (https://models.github.ai/inference) — free quota
+  Azure AI Speech (https://<region>.tts.speech.microsoft.com) — F0 pricing
+    tier on the resource gives 500K chars/month free; this script can't see
+    the Azure-side tier, so the operator must verify F0 is set in the portal.
 
 Anything else exits non-zero.
 
@@ -94,6 +97,8 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
         return True, "gemini native (AI Studio free tier)"
     if model.startswith("mistral/"):
         return True, "mistral native (free tier)"
+    if api_base and api_base.endswith(".tts.speech.microsoft.com"):
+        return True, "azure speech (free tier requires F0 set on resource)"
     if api_base == OPENROUTER_API_BASE:
         if model.endswith(":free"):
             return True, "openrouter :free"
