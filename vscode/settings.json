@@ -49,8 +49,13 @@
     "amp.experimental.promptAutocompleteMode": "tab",
     "amp.experimental.reviewTool": true,
     "git.openRepositoryInParentFolders": "always",
-    "chat.agent.maxRequests": 60
-    "telemetry.telemetryLevel": "off"
+    "chat.agent.maxRequests": 60,
+    "go.gopath": "/Users/servitola/go",
+    "go.goroot": "/opt/homebrew/opt/go/libexec",
+    "go.toolsManagement.autoUpdate": true,
+    "security.promptForLocalFileProtocolHandling": false,
+    "telemetry.telemetryLevel": "off",
+    "dotnetAcquisitionExtension.enableTelemetry": false,
     "claudeCode.preferredLocation": "panel",
     "claudeCode.initialPermissionMode": "plan"
 }
