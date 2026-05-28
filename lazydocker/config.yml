@@ -1,0 +1,34 @@
+gui:
+  theme:
+    activeBorderColor:
+      - "#d79921"
+      - bold
+    inactiveBorderColor:
+      - "#504945"
+    optionsTextColor:
+      - "#458588"
+    selectedLineBgColor:
+      - "#3c3836"
+  returnImmediately: true
+  wrapMainPanel: true
+  border: "rounded"
+  showBottomLine: true
+logs:
+  timestamps: true
+  since: "24h"
+  tail: 500
+commandTemplates:
+  dockerCompose: "docker compose"
+customCommands:
+  containers:
+    - name: bash
+      attach: true
+      command: "docker exec -it {{ .Container.ID }} /bin/bash"
+      serviceNames: []
+    - name: sh (alpine)
+      attach: true
+      command: "docker exec -it {{ .Container.ID }} /bin/sh"
+      serviceNames: []
+oS:
+  openCommand: "open {{filename}}"
+  openLinkCommand: "open {{link}}"
