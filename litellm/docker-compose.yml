@@ -7,6 +7,7 @@ services:
       - "127.0.0.1:4000:4000"
     volumes:
       - ./config.yaml:/app/config.yaml:ro
+      - ./redact_secrets.py:/app/redact_secrets.py:ro
     environment:
       OPENROUTER_API_KEY: ${OPEN_ROUTER_API_KEY}
       GROQ_API_KEY: ${GROQ_API_KEY}
@@ -19,6 +20,7 @@ services:
       AZURE_VOICE_TTS_GREEK_API_KEY1: ${AZURE_VOICE_TTS_GREEK_API_KEY1}
       LITELLM_MASTER_KEY: sk-local-workbot
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
+      PYTHONPATH: /app
       UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}
       UI_PASSWORD: ${LITELLM_UI_PASSWORD:?set LITELLM_UI_PASSWORD in ~/.config/openai_key.sh}
       OLLAMA_API_BASE: http://host.docker.internal:11434

@@ -515,6 +515,12 @@ litellm_settings:
   drop_params: true
   set_verbose: false
   telemetry: false
+  # Strip secret patterns (sk-…, sk-ant-…, AWS keys, GitHub/GitLab PATs,
+  # Slack tokens, JWTs, private keys, Google API keys) from messages
+  # before they hit any upstream provider AND before they land in
+  # spend_logs. See redact_secrets.py for the pattern list.
+  callbacks: redact_secrets.redact_secrets_instance
+  redact_messages_in_exceptions: true
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
