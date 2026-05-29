@@ -78,6 +78,15 @@ print_section "LiteLLM Model Health"
 print_task "Checking model availability across providers"
 python3 ~/projects/dotfiles/litellm/scripts/check-models.py || echo "  * model-health check failed"
 
+print_task "Clearing macOS aerial wallpaper downloads"
+# macOS keeps re-downloading multi-GB .mov aerial wallpapers; purge them every update.
+# Currently-used aerial (if any) is locked and will be skipped silently.
+AERIAL_DIR="$HOME/Library/Application Support/com.apple.wallpaper/aerials"
+if [ -d "$AERIAL_DIR/videos" ]; then
+    rm -f "$AERIAL_DIR"/videos/*.mov 2>/dev/null
+    rm -f "$AERIAL_DIR"/thumbnails/* 2>/dev/null
+fi
+
 print_section "Final Updates"
 
 print_task "Updating TLDR cache"
