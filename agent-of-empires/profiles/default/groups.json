@@ -18,5 +18,10 @@
     "name": "Services",
     "path": "Services",
     "collapsed": false
+  },
+  {
+    "name": "work",
+    "path": "work",
+    "collapsed": false
   }
 ]
