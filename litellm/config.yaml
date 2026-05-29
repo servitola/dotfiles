@@ -521,6 +521,16 @@ litellm_settings:
   # spend_logs. See redact_secrets.py for the pattern list.
   callbacks: redact_secrets.redact_secrets_instance
   redact_messages_in_exceptions: true
+  # Exact-match response cache in Redis. Same prompt + same model →
+  # served from cache, no upstream call, no quota consumed. Cuts cooldown
+  # churn on free-tier 429s. TTL 1h is a sane default for skill/agent
+  # workloads where prompts repeat but knowledge drifts.
+  cache: true
+  cache_params:
+    type: redis
+    host: redis
+    port: 6379
+    ttl: 3600
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY
