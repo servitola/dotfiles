@@ -46,6 +46,10 @@ install:
 	@$(REMOVE) ~/.config/mc
 	@$(LINK) ~/projects/dotfiles/midnight\ commander ~/.config/mc
 
+	@echo "setup tmux symlink"
+	@$(REMOVE) ~/.tmux.conf
+	@$(LINK) ~/projects/dotfiles/tmux/tmux.conf ~/.tmux.conf
+
 	@echo "setup Claude"
 	@$(REMOVE) ~/.claude
 	@$(LINK) ~/projects/dotfiles/claude-code ~/.claude
