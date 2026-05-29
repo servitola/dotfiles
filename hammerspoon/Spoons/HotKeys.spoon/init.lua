@@ -212,7 +212,7 @@ local appSpecificHotkeys = {
     ["Music"] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
     },
-    ["WarpOss"] = {
+    ["Zap"] = {
         { from = {"alt"}, key = "z", sendText = "/new" },
     },
     ["Finder"] = {
