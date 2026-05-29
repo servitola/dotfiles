@@ -430,22 +430,22 @@ function obj:init()
                         focusAppWindow("Fork", "dotfiles",
                             os.getenv("HOME") .. "/projects/dotfiles")
                     end)
-                elseif functionName == "warp.launch_default" then
-                    local warpLaunchWatcher = nil
-                    local warpTimer1 = nil  -- prevent GC
-                    local warpTimer2 = nil  -- prevent GC
+                elseif functionName == "zap.launch_default" then
+                    local zapLaunchWatcher = nil
+                    local zapTimer1 = nil  -- prevent GC
+                    local zapTimer2 = nil  -- prevent GC
                     hs.hotkey.bind(modifiers, key, function()
-                        local warp = hs.application.get("dev.warp.WarpOss")
-                        if not warp then
+                        local zap = hs.application.get("dev.zap.Zap")
+                        if not zap then
                             -- Stop any previous watcher to prevent leaks on rapid presses
-                            if warpLaunchWatcher then warpLaunchWatcher:stop() end
-                            warpLaunchWatcher = hs.application.watcher.new(function(name, event, app)
-                                if name == "WarpOss" and event == hs.application.watcher.launched then
-                                    warpLaunchWatcher:stop()
-                                    warpLaunchWatcher = nil
-                                    warpTimer1 = hs.timer.doAfter(0.3, function()
-                                        warpTimer1 = nil
-                                        local w = hs.application.get("dev.warp.WarpOss")
+                            if zapLaunchWatcher then zapLaunchWatcher:stop() end
+                            zapLaunchWatcher = hs.application.watcher.new(function(name, event, app)
+                                if name == "Zap" and event == hs.application.watcher.launched then
+                                    zapLaunchWatcher:stop()
+                                    zapLaunchWatcher = nil
+                                    zapTimer1 = hs.timer.doAfter(0.3, function()
+                                        zapTimer1 = nil
+                                        local w = hs.application.get("dev.zap.Zap")
                                         if not w then return end
                                         local savedFrame
                                         local windows = w:allWindows()
@@ -456,10 +456,10 @@ function obj:init()
                                             win:close()
                                         end
                                         w:hide()
-                                        hs.urlevent.openURL("warposs://launch/Default")
-                                        warpTimer2 = hs.timer.doAfter(0.3, function()
-                                            warpTimer2 = nil
-                                            local w2 = hs.application.get("dev.warp.WarpOss")
+                                        hs.urlevent.openURL("zap://launch/Default")
+                                        zapTimer2 = hs.timer.doAfter(0.3, function()
+                                            zapTimer2 = nil
+                                            local w2 = hs.application.get("dev.zap.Zap")
                                             if w2 then
                                                 local win = w2:mainWindow()
                                                 if win and savedFrame then
@@ -471,13 +471,13 @@ function obj:init()
                                     end)
                                 end
                             end)
-                            warpLaunchWatcher:start()
-                            hs.application.open("dev.warp.WarpOss")
-                        elseif hs.application.frontmostApplication() == warp then
-                            warp:hide()
+                            zapLaunchWatcher:start()
+                            hs.application.open("dev.zap.Zap")
+                        elseif hs.application.frontmostApplication() == zap then
+                            zap:hide()
                         else
-                            unminimize_if_needed(warp)
-                            warp:activate()
+                            unminimize_if_needed(zap)
+                            zap:activate()
                         end
                     end)
                 elseif functionName == "fork.ctraderdev" then
@@ -504,10 +504,10 @@ function obj:init()
                     or functionName == "window.focus_personal"
                     or functionName == "window.focus_comms" then
                     local exceptionSets = {
-                        ["window.hide_all_except_work"] = { ["WarpOss"] = true, ["Workbot"] = true },
+                        ["window.hide_all_except_work"] = { ["Zap"] = true, ["Workbot"] = true },
                         ["window.focus_work"] = {
                             ["Rider"] = true, ["Fork"] = true, ["Firefox"] = true,
-                            ["WarpOss"] = true, ["Code"] = true,
+                            ["Zap"] = true, ["Code"] = true,
                             ["Workbot"] = true
                         },
                         ["window.focus_personal"] = {
@@ -519,7 +519,7 @@ function obj:init()
                         },
                     }
                     local focusApps = {
-                        ["window.hide_all_except_work"] = { "WarpOss" },
+                        ["window.hide_all_except_work"] = { "Zap" },
                         ["window.focus_work"] = { "Firefox" },
                         ["window.focus_personal"] = { "Telegram" },
                         ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Telegram" },
