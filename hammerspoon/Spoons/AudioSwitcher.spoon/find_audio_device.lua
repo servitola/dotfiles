@@ -6,7 +6,7 @@ function findAudioDevice(pattern)
 
     for _, device in ipairs(devices) do
         local name = device:name()
-        if name and string.find(name:lower(), pattern:lower()) then
+        if name and string.find(name:lower(), pattern:lower(), 1, true) then
             return device
         end
     end
