@@ -38,7 +38,7 @@ fi
 export GOPATH="$HOME/go"
 
 # .NET SDK
-export DOTNET_ROOT=/usr/local/share/dotnet
+export DOTNET_ROOT="$(brew --prefix dotnet)/libexec"
 
 # Java & Android Development — ARM64 Homebrew JDK 21
 export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
