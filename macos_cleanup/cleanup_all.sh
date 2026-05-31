@@ -94,6 +94,26 @@ fi
 
 setopt no_rm_star_silent
 
+print_task "Palo Alto GlobalProtect logs (older than 7 days)"
+GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
+if [ -d "$GP_LOG_DIR" ]; then
+    spinner_start "GlobalProtect log rotation"
+    gp_before_kb=$(du -sk "$GP_LOG_DIR" 2>/dev/null | cut -f1)
+    # Rotated logs (PanGPS.1.log, PanGpHip.2.log, etc.) — always safe to drop
+    find "$GP_LOG_DIR" -maxdepth 1 -type f -name "*.[0-9].log" -delete 2>/dev/null
+    # Older log files (no rotation suffix) only if untouched 7+ days
+    find "$GP_LOG_DIR" -maxdepth 1 -type f -name "*.log" -mtime +7 -delete 2>/dev/null
+    gp_after_kb=$(du -sk "$GP_LOG_DIR" 2>/dev/null | cut -f1)
+    gp_freed_kb=$(( gp_before_kb - gp_after_kb ))
+    if [ "$gp_freed_kb" -gt 0 ]; then
+        spinner_stop "GlobalProtect: freed $(format_size $gp_freed_kb)"
+    else
+        spinner_stop "GlobalProtect: nothing to clean"
+    fi
+else
+    printf "  ${DIM}* GlobalProtect: log directory not found${NC}\n"
+fi
+
 if [ "$AGGRESSIVE" = "true" ]; then
     print_section "Aggressive Cleanup"
 
