@@ -94,6 +94,21 @@ fi
 
 setopt no_rm_star_silent
 
+print_task "Atuin maintenance"
+ATUIN_DIR="$HOME/.local/share/atuin"
+if [ -d "$ATUIN_DIR" ] && command -v sqlite3 &>/dev/null; then
+    spinner_start "Atuin backups + VACUUM"
+    atuin_before_kb=$(du -sk "$ATUIN_DIR" 2>/dev/null | cut -f1)
+    "$RM_CMD" -rf "$ATUIN_DIR/backups/"* 2>/dev/null
+    for db in history.db records.db kv.db meta.db scripts.db; do
+        [ -f "$ATUIN_DIR/$db" ] && sqlite3 "$ATUIN_DIR/$db" 'VACUUM;' 2>/dev/null
+    done
+    atuin_after_kb=$(du -sk "$ATUIN_DIR" 2>/dev/null | cut -f1)
+    atuin_freed_kb=$(( atuin_before_kb - atuin_after_kb ))
+    spinner_stop "Atuin: freed $(format_size $atuin_freed_kb)"
+else
+    printf "  ${DIM}* Atuin: not installed or sqlite3 missing${NC}\n"
+fi
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
 if [ -d "$GP_LOG_DIR" ]; then
