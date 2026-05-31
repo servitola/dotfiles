@@ -9,7 +9,6 @@ tap "hudochenkov/sshpass"
 tap "kegworks-app/kegworks"
 tap "microsoft/git"
 tap "ngrok/ngrok"
-tap "omnisharp/omnisharp-roslyn"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
 tap "oven-sh/bun"
@@ -184,8 +183,6 @@ brew "mistral-vibe"
 brew "mods"
 # Deep clean and optimize your Mac
 brew "mole"
-# Cross platform, open source .NET development framework
-brew "mono"
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
 # Free (GNU) replacement for the Pico text editor
@@ -236,14 +233,10 @@ brew "pstree"
 brew "pyenv"
 # Generic syntax highlighter
 brew "pygments"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.11"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.12"
-# Tensors and dynamic neural networks
-brew "pytorch"
 # AI-powered command-line workflow tool for developers
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
@@ -312,16 +305,12 @@ brew "alcova-ai/tap/perplexity-mcp"
 brew "charmbracelet/tap/crush"
 # A Powerful Command Line for automating iOS Simulators
 brew "facebook/fb/idb-companion"
-# Cross platform .NET development in the editor of your choice
-brew "omnisharp/omnisharp-roslyn/omnisharp"
 # A CLI tool for seamlessly opening files and directories in Windsurf editor from your terminal
 brew "stevencch99/windsurf-cli/windsurf-cli"
 # Apple simulator utilities
 brew "wix/brew/applesimutils"
 # Stand alone ad blocker
 cask "adguard"
-# Unified GUI for command-line AI agents
-cask "aionui"
 # Menu bar tool to limit maximum charging percentage
 cask "aldente"
 # Command tool to create Finder aliases, and to resolve them to full paths
@@ -339,8 +328,6 @@ cask "blackhole-2ch"
 cask "blender"
 # Web debugging Proxy application
 cask "charles"
-# OpenAI's official ChatGPT desktop app
-cask "chatgpt"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Tool to show live information about the batteries in various devices
@@ -408,8 +395,6 @@ cask "macs-fan-control"
 cask "marta"
 # Online collaborative whiteboard platform
 cask "miro"
-# Open-source DJ software
-cask "mixxx"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # App to write, plan, collaborate, and get organised
@@ -444,8 +429,6 @@ cask "kegworks-app/kegworks/sikarugir"
 cask "sloth"
 # Video game digital distribution service
 cask "steam"
-# Remote access and connectivity software focused on security
-cask "teamviewer"
 # Messaging app with a focus on speed and security
 cask "telegram"
 # Open-source BitTorrent client
