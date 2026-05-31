@@ -3,6 +3,7 @@ obj._switching = false
 obj._watcher = nil
 
 local log = hs.logger.new('AudioSwitcher', 'info')
+local notify = require("notify")
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 
 dofile(spoonPath .. "find_audio_device.lua")
@@ -15,48 +16,99 @@ local BLOCKED_TRANSPORT_TYPES = {
     ["airplay"]      = true,
 }
 
+-- Per-device presentation: friendly title + subtitle, SF Symbol, accent.
+-- Tech device names (BE-RCA, MacBook Pro Speakers, Marshall BT) live in
+-- the AudioSwitcher matching layer; the user never sees them in banners.
+-- The symbol pulses via SwiftUI's variableColor effect (sound emanating).
+local PRESETS = {
+    internal = {
+        title = "Laptop",
+        subtitle = "built-in speakers",
+        symbol = "laptopcomputer",
+        symbolColor = "#5856d6",
+        tint = "indigo",
+    },
+    external = {
+        title = "Scarlett",
+        subtitle = "audio interface",
+        symbol = "music.mic",
+        symbolColor = "#ff9500",
+        tint = "orange",
+    },
+    marshall = {
+        title = "Marshall",
+        subtitle = "bluetooth speaker",
+        symbol = "hifispeaker.fill",
+        symbolColor = "#ff453a",
+        tint = "red",
+    },
+    berca = {
+        title = "Living room",
+        subtitle = "floor speakers",
+        symbol = "hifispeaker.2.fill",
+        symbolColor = "#34c759",
+        tint = "green",
+    },
+}
+
 function obj:switchToExternal()
-    switchToAudioDevice("Scarlett")
+    switchToAudioDevicePreset("Scarlett", PRESETS.external)
 end
 
 function obj:switchToInternal()
-    switchToAudioDevice("MacBook Pro")
+    switchToAudioDevicePreset("MacBook Pro", PRESETS.internal)
 end
 
 function obj:switchToMarshall()
-    switchToAudioDevice("Marshall")
+    switchToAudioDevicePreset("Marshall BT", PRESETS.marshall)
 end
 
 -- Wait for an audio device to appear, checking every second.
-local function waitForAudioDevice(deviceName, message, timeoutSecs)
+-- Preset variant — banner uses the per-device symbol/title/color.
+local function waitForAudioDevicePreset(deviceName, preset, timeoutSecs)
+    local function announceSuccess(_dev)
+        notify.show({
+            title       = preset.title,
+            message     = preset.subtitle,
+            symbol      = preset.symbol,
+            symbolColor = preset.symbolColor,
+            tint        = preset.tint,
+            animate     = true,
+            duration    = 2,
+        })
+    end
+
     local device = findAudioDevice(deviceName)
     if device then
         device:setDefaultOutputDevice()
-        hs.notify.new({ title = device:name(), informativeText = message or "OK" }):send()
+        announceSuccess(device)
         return
     end
 
     local elapsed = 0
     local interval = 1
     local timeout = timeoutSecs or 15
+    local timer
 
-    local timer = hs.timer.doUntil(
-        function()
-            local dev = findAudioDevice(deviceName)
-            if dev then
-                dev:setDefaultOutputDevice()
-                hs.notify.new({ title = dev:name(), informativeText = message or "OK" }):send()
-                return true
-            end
-            elapsed = elapsed + interval
-            if elapsed >= timeout then
-                hs.notify.new({ title = "⚠️ " .. deviceName .. " not found", informativeText = "timed out after " .. timeout .. "s" }):send()
-                return true
-            end
-            return false
-        end,
-        interval
-    )
+    timer = hs.timer.doEvery(interval, function()
+        local dev = findAudioDevice(deviceName)
+        if dev then
+            dev:setDefaultOutputDevice()
+            announceSuccess(dev)
+            timer:stop()
+            return
+        end
+        elapsed = elapsed + interval
+        if elapsed >= timeout then
+            notify.show({
+                title    = "⚠️ " .. preset.title .. " not found",
+                message  = "timed out after " .. timeout .. "s",
+                tint     = "red",
+                duration = 5,
+            })
+            timer:stop()
+        end
+    end)
 end
 
 local function isBluetoothConnected(mac)
@@ -64,18 +116,23 @@ local function isBluetoothConnected(mac)
     return output and output:match("^%s*1") ~= nil
 end
 
+-- Non-blocking BT connect: returns immediately, blueutil runs in background.
+local function connectBluetoothAsync(mac)
+    hs.task.new("/opt/homebrew/bin/blueutil", nil, {"--connect", mac}):start()
+end
+
 function obj:connectAndSwitchToMarshall()
     local mac = "24-c4-06-9a-c2-aa"
 
     if isBluetoothConnected(mac) then
         log.i("Marshall already connected, switching immediately")
-        switchToAudioDevice("Marshall", "🔊 Marshall")
+        switchToAudioDevicePreset("Marshall BT", PRESETS.marshall)
         return
     end
 
     log.i("Marshall not connected, initiating connection")
-    hs.execute("/opt/homebrew/bin/blueutil --connect " .. mac)
-    waitForAudioDevice("Marshall", "🔊 Marshall", 15)
+    connectBluetoothAsync(mac)
+    waitForAudioDevicePreset("Marshall BT", PRESETS.marshall, 15)
 end
 
 function obj:connectAndSwitchToBT()
@@ -83,13 +140,13 @@ function obj:connectAndSwitchToBT()
 
     if isBluetoothConnected(mac) then
         log.i("BT already connected, switching immediately")
-        switchToAudioDevice("Laptop", "🔊 Audio System")
+        switchToAudioDevicePreset("BE-RCA", PRESETS.berca)
         return
     end
 
     log.i("BT not connected, initiating connection")
-    hs.execute("/opt/homebrew/bin/blueutil --connect " .. mac)
-    waitForAudioDevice("Laptop", "🔊 Audio System", 15)
+    connectBluetoothAsync(mac)
+    waitForAudioDevicePreset("BE-RCA", PRESETS.berca, 15)
 end
 
 function obj:startWatcher()
@@ -104,11 +161,12 @@ function obj:startWatcher()
         if not BLOCKED_TRANSPORT_TYPES[transport] then return end
 
         log.i("HDMI/display audio detected: " .. device:name() .. " (" .. transport .. "), switching to BT")
-        hs.notify.new({
-            title = "🔇 " .. device:name() .. " blocked",
-            informativeText = "Switching to BT speakers",
-            withdrawAfter = 5
-        }):send()
+        notify.show({
+            title    = "🔇 " .. device:name() .. " blocked",
+            message  = "Switching to BT speakers",
+            tint     = "orange",
+            duration = 4,
+        })
 
         self._switching = true
         hs.timer.doAfter(1, function()

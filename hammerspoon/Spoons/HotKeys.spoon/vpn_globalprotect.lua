@@ -1,6 +1,8 @@
 -- GlobalProtect VPN Toggle Module
 -- Runs AppleScript asynchronously via hs.task to avoid blocking Hammerspoon
 
+local notify = require("notify")
+
 local M = {}
 
 local checkScript = [[
@@ -23,15 +25,44 @@ tell application "System Events" to tell process "GlobalProtect"
 end tell
 ]]
 
-local function showNotification(title, text)
-    hs.notify.new({ title = title, informativeText = text }):send()
+local function vpnConnected()
+    notify.show({
+        title       = "VPN connected",
+        message     = "GlobalProtect",
+        symbol      = "lock.shield.fill",
+        symbolColor = "#34c759",
+        tint        = "green",
+        animate     = true,
+        duration    = 2,
+    })
+end
+
+local function vpnDisconnected()
+    notify.show({
+        title       = "VPN off",
+        message     = "GlobalProtect",
+        symbol      = "lock.open.fill",
+        symbolColor = "#8e8e93",
+        tint        = "gray",
+        duration    = 2,
+    })
+end
+
+local function vpnError(text)
+    notify.show({
+        title    = "VPN error",
+        message  = text,
+        symbol   = "exclamationmark.shield.fill",
+        tint     = "red",
+        duration = 5,
+    })
 end
 
 function M.toggle()
     -- Step 1: check current status (async)
     hs.task.new("/usr/bin/osascript", function(exitCode, stdout, stderr)
         if exitCode ~= 0 then
-            showNotification("GlobalProtect VPN", "Failed to check VPN status")
+            vpnError("failed to check status")
             return
         end
 
@@ -40,10 +71,13 @@ function M.toggle()
         -- Step 2: toggle connection (async)
         hs.task.new("/usr/bin/osascript", function(exitCode2)
             if exitCode2 == 0 then
-                local statusText = wasConnected and "Disconnected" or "Connected"
-                showNotification("GlobalProtect VPN", statusText)
+                if wasConnected then
+                    vpnDisconnected()
+                else
+                    vpnConnected()
+                end
             else
-                showNotification("GlobalProtect VPN", "Failed to toggle")
+                vpnError("toggle failed")
             end
         end, {"-e", toggleScript}):start()
     end, {"-e", checkScript}):start()
