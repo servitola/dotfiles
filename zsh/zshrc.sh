@@ -11,7 +11,7 @@ fi
 
 # Async autosuggestions for better performance
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
-export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
 # -----------------------------------------------------------------------------
 # Plugin Configuration (BEFORE oh-my-zsh loads)
