@@ -19,7 +19,9 @@ def _icon_symbols(icon_map):
     missing ones). Referenced via `<use href="#icon-<slug>">` from renderers.
     """
     if not icon_map: return ""
-    return "\n  " + "\n  ".join(icon_map.values())
+    # Sort by name so output is deterministic regardless of upstream set/dict order
+    # (PYTHONHASHSEED randomizes set iteration → previously caused spurious diffs).
+    return "\n  " + "\n  ".join(v for _, v in sorted(icon_map.items()))
 
 
 def svg_defs(icon_map=None):
