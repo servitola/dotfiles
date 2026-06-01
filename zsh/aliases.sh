@@ -1,3 +1,7 @@
+# Guard: skip if already loaded
+[[ -n "$_ALIASES_LOADED" ]] && return 0
+export _ALIASES_LOADED=1
+
 # update all
 alias up='source ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
