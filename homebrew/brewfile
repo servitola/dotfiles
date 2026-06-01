@@ -33,8 +33,6 @@ brew "atuin"
 brew "bat"
 # Get/set bluetooth power and discoverable state
 brew "blueutil"
-# Collection of portable C++ source libraries
-brew "boost"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # Command-line tool to manipulate Android App Bundles
@@ -43,8 +41,6 @@ brew "bundletool"
 brew "carthage"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Emacs dependency management
-brew "cask"
 brew "node", link: false
 # Tool to route Claude Code requests to different models and customize any request
 brew "claude-code-router"
@@ -217,8 +213,6 @@ brew "p7zip"
 brew "pandoc"
 # Identify unused code in Swift projects
 brew "periphery"
-# General-purpose scripting language
-brew "php"
 # Execute binaries from Python packages in isolated environments
 brew "pipx"
 # PDF rendering library (based on the xpdf-3.0 code base)
@@ -235,8 +229,6 @@ brew "pyenv"
 brew "pygments"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.12"
 # AI-powered command-line workflow tool for developers
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
@@ -305,8 +297,6 @@ brew "alcova-ai/tap/perplexity-mcp"
 brew "charmbracelet/tap/crush"
 # A Powerful Command Line for automating iOS Simulators
 brew "facebook/fb/idb-companion"
-# A CLI tool for seamlessly opening files and directories in Windsurf editor from your terminal
-brew "stevencch99/windsurf-cli/windsurf-cli"
 # Apple simulator utilities
 brew "wix/brew/applesimutils"
 # Stand alone ad blocker
@@ -381,8 +371,6 @@ cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
 cask "kegworks"
-# Personal AI-powered transcription and notetaking service
-cask "limitless"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Adaptive brightness for external displays
@@ -495,8 +483,6 @@ go "github.com/go-delve/delve/cmd/dlv"
 go "github.com/golangci/golangci-lint/cmd/golangci-lint"
 go "golang.org/x/tools/gopls"
 uv "ableton-mcp-extended"
-uv "aider-chat"
-uv "whisper-mps"
 npm "@cocal/google-calendar-mcp"
 npm "@gongrzhe/server-gmail-autoauth-mcp"
 npm "@modelcontextprotocol/server-brave-search"
