@@ -109,6 +109,23 @@ if [ -d "$ATUIN_DIR" ] && command -v sqlite3 &>/dev/null; then
 else
     printf "  ${DIM}* Atuin: not installed or sqlite3 missing${NC}\n"
 fi
+
+print_task "Mole cache (older than 14 days)"
+MOLE_DIR="$HOME/.cache/mole"
+if [ -d "$MOLE_DIR" ]; then
+    spinner_start "Mole stale scan cache"
+    mole_before_kb=$(du -sk "$MOLE_DIR" 2>/dev/null | cut -f1)
+    find "$MOLE_DIR" -type f -name "*.cache" -mtime +14 -delete 2>/dev/null
+    mole_after_kb=$(du -sk "$MOLE_DIR" 2>/dev/null | cut -f1)
+    mole_freed_kb=$(( mole_before_kb - mole_after_kb ))
+    if [ "$mole_freed_kb" -gt 0 ]; then
+        spinner_stop "Mole: freed $(format_size $mole_freed_kb)"
+    else
+        spinner_stop "Mole: nothing to clean"
+    fi
+else
+    printf "  ${DIM}* Mole: no cache directory${NC}\n"
+fi
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
 if [ -d "$GP_LOG_DIR" ]; then
