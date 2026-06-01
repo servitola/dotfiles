@@ -27,13 +27,90 @@ curl -s http://localhost:4000/v1/models -H "Authorization: Bearer sk-local-workb
 
 | kind | names |
 |---|---|
-| direct | `coder`, `nemotron`, `gpt`, `glm`, `gemini`, `vision`, `embed` |
+| direct | `nemotron`, `gpt`, `glm`, `deepseek`, `gemini`, `uncensored`, `vision`, `embed` |
 | direct (Mistral) | `mistral-codestral`, `mistral-small`, `mistral-large` |
-| direct (Cerebras) | `cerebras-qwen`, `cerebras-llama` |
-| rotation (shuffle + cooldown) | `coding` (default for `auto`), `reasoning`, `fast` |
-| provider-specific | `groq-*`, `nvidia-*`, `github-*` |
+| direct (Cerebras) | `cerebras-qwen`, `cerebras-glm`, `cerebras-gpt-oss` |
+| direct (NVIDIA NIM) | `nvidia-nemotron`, `nvidia-nemotron-120b`, `nvidia-kimi`, `nvidia-deepseek`, `nvidia-deepseek-flash` |
+| direct (Groq) | `groq-llama`, `groq-gpt-oss`, `groq-compound`, `groq-compound-mini` |
+| direct (GitHub) | `github-gpt4o-mini`, `github-deepseek-r1` |
+| rotation (shuffle + cooldown) | `coding` (default for `auto`), `reasoning`, `fast`, `vision`, `web-search` |
+| web search | `gemini-search`, `groq-compound`, `web-search` |
+| TTS | `tts`, `tts-pro`, `tts-piper`, `tts-azure`, `tts-azure-ru` |
+| STT | `voiceink-local` |
+| embeddings | `embed` (1024-dim, OpenRouter/NVIDIA) |
+| image generation | `image-edit` (Gemini 2.5 Flash Image) |
+
+`model_group_alias`: `coder`, `coder-model`, `qwen-code`, `qwen3-coder-plus` → `coding`; `auto` → `coding`.
 
 Full routing in [config.yaml](config.yaml). Add a model = new block under the right `model_name:`, then `docker compose restart`.
+
+## TTS (text-to-speech)
+
+| alias | backend | notes |
+|---|---|---|
+| `tts` | Gemini 2.5 Flash TTS | primary; free 15 RPM, multilingual, voice e.g. `Kore` |
+| `tts-pro` | Gemini 2.5 Pro TTS | better prosody, same quota pool |
+| `tts-piper` | Piper (local) | Russian only; always free, no quota; shim on `:8177` |
+| `tts-azure` | Azure Neural | voice-agnostic; used by `greek-tts` skill explicitly |
+| `tts-azure-ru` | Azure Neural | forces `ru-RU-DmitryNeural`; last-resort Russian fallback |
+
+**Fallback chain for `tts`:** Gemini → `tts-piper` → `tts-azure-ru`
+
+### Piper shim
+
+Local FastAPI shim at `~/projects/dotfiles/litellm/piper-shim/app.py`, launchd agent `com.servitola.piper-shim`, port `127.0.0.1:8177`. Piper venv at `~/.venv/tts`, voice model at `~/.local/share/piper-voices/ru_RU-irina-medium.onnx`.
+
+```bash
+# health check
+curl http://127.0.0.1:8177/health
+
+# logs
+tail -f ~/projects/dotfiles/litellm/piper-shim/logs/launchd.err.log
+
+# restart shim
+launchctl unload ~/Library/LaunchAgents/com.servitola.piper-shim.plist
+launchctl load   ~/Library/LaunchAgents/com.servitola.piper-shim.plist
+```
+
+## Caching
+
+Response cache in Redis — same or semantically similar prompt + same model → instant response from cache, no upstream call, no quota consumed.
+
+**Stack:** `redis/redis-stack-server` (provides RediSearch for vector similarity). Config: `docker-compose.yml` → `redis` service, `config.yaml` → `litellm_settings.cache_params`.
+
+| param | value | notes |
+|---|---|---|
+| type | `redis-semantic` | vector similarity search via RediSearch |
+| TTL | 24 h | keys expire after 24 hours |
+| similarity threshold | 0.85 | cosine similarity ≥ 85% = cache hit |
+| embedding model | `mistral/mistral-embed` | called at every lookup to vectorize the prompt; uses `MISTRAL_API_KEY` |
+
+**How it works:** on every request LiteLLM calls `mistral-embed` to get a vector for the incoming prompt, runs a KNN search in the `litellm_semantic_cache_index` index, and returns the stored response if the nearest neighbor has similarity ≥ 0.85. On miss, the upstream is called and the response + vector are stored with TTL 24h.
+
+**Monitoring hit rate:**
+
+```bash
+docker exec litellm-redis redis-cli INFO stats | awk -F: '
+  /keyspace_hits/   { h=$2+0 }
+  /keyspace_misses/ { m=$2+0 }
+  END { printf "hits=%d miss=%d hit_rate=%.1f%%\n", h, m, (h+m>0 ? h/(h+m)*100 : 0) }'
+```
+
+**Diagnostics:**
+
+```bash
+docker exec litellm-redis redis-cli ping              # Redis alive
+docker exec litellm-redis redis-cli FT._LIST          # should show litellm_semantic_cache_index
+docker exec litellm-redis redis-cli DBSIZE            # key count
+docker exec litellm-redis redis-cli INFO memory | grep used_memory_human
+```
+
+**Changing the embedding model:** if you swap `redis_semantic_cache_embedding_model`, the vector dimensions change — flush the semantic index first:
+
+```bash
+docker exec litellm-redis redis-cli FT.DROPINDEX litellm_semantic_cache_index DD
+docker compose restart litellm   # proxy recreates the index on startup
+```
 
 ## $0 guarantee
 
@@ -49,5 +126,14 @@ All tools share this proxy and `sk-local-workbot`. Configs live in their own dot
 
 ```bash
 docker compose logs -f litellm
-docker compose logs litellm | grep -i '429\|rate'   # rate limits
+rtk proxy docker logs litellm | grep -i '429\|rate'  # rate limits (unfiltered)
+
+# Cache hit rate
+docker exec litellm-redis redis-cli INFO stats | awk -F: '
+  /keyspace_hits/   { h=$2+0 }
+  /keyspace_misses/ { m=$2+0 }
+  END { printf "hits=%d miss=%d hit_rate=%.1f%%\n", h, m, (h+m>0 ? h/(h+m)*100 : 0) }'
+
+# Watch live ops/sec
+watch -n2 'docker exec litellm-redis redis-cli INFO stats | grep -E "keyspace_hits|keyspace_misses|instantaneous_ops"'
 ```
