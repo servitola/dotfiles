@@ -126,6 +126,22 @@ if [ -d "$MOLE_DIR" ]; then
 else
     printf "  ${DIM}* Mole: no cache directory${NC}\n"
 fi
+
+print_task "Orphan AAX plugins (no Pro Tools installed)"
+AVID_DIR="/Library/Application Support/Avid"
+if [ -d "$AVID_DIR" ] && [ ! -d "/Applications/Pro Tools.app" ]; then
+    spinner_start "Orphan AAX cleanup"
+    avid_before_kb=$(du -sk "$AVID_DIR" 2>/dev/null | cut -f1)
+    sudo "$RM_CMD" -rf "$AVID_DIR" 2>/dev/null
+    if [ ! -d "$AVID_DIR" ]; then
+        spinner_stop "Avid AAX: freed $(format_size $avid_before_kb) (no Pro Tools, plugins were orphan)"
+    else
+        spinner_stop_error "Avid AAX: failed (need sudo)"
+    fi
+elif [ -d "/Applications/Pro Tools.app" ]; then
+    printf "  ${DIM}* Avid AAX: Pro Tools installed, keeping plugins${NC}\n"
+else
+    printf "  ${DIM}* Avid AAX: nothing to clean${NC}\n"
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
 if [ -d "$GP_LOG_DIR" ]; then
