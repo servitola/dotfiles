@@ -142,6 +142,28 @@ elif [ -d "/Applications/Pro Tools.app" ]; then
     printf "  ${DIM}* Avid AAX: Pro Tools installed, keeping plugins${NC}\n"
 else
     printf "  ${DIM}* Avid AAX: nothing to clean${NC}\n"
+fi
+
+print_task "Steam htmlcache (CEF browser cache)"
+STEAM_HTMLCACHE="$HOME/Library/Application Support/Steam/config/htmlcache"
+if [ -d "$STEAM_HTMLCACHE" ]; then
+    if pgrep -x "steam_osx" > /dev/null || pgrep -x "Steam" > /dev/null; then
+        printf "  ${DIM}* Steam htmlcache: Steam is running, skipping${NC}\n"
+    else
+        spinner_start "Steam embedded browser cache"
+        steam_before_kb=$(du -sk "$STEAM_HTMLCACHE" 2>/dev/null | cut -f1)
+        "$RM_CMD" -rf "$STEAM_HTMLCACHE"/* 2>/dev/null
+        steam_after_kb=$(du -sk "$STEAM_HTMLCACHE" 2>/dev/null | cut -f1)
+        steam_freed_kb=$(( steam_before_kb - steam_after_kb ))
+        if [ "$steam_freed_kb" -gt 0 ]; then
+            spinner_stop "Steam htmlcache: freed $(format_size $steam_freed_kb)"
+        else
+            spinner_stop "Steam htmlcache: nothing to clean"
+        fi
+    fi
+else
+    printf "  ${DIM}* Steam htmlcache: not installed${NC}\n"
+fi
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
 if [ -d "$GP_LOG_DIR" ]; then
