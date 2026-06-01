@@ -3,12 +3,12 @@ default_profile = ""
 [theme]
 name = "gruvbox-dark"
 color_mode = "truecolor"
+idle_decay_minutes = 0
 
 [claude]
 
 [updates]
 check_enabled = false
-auto_update = false
 check_interval_hours = 24
 notify_in_cli = true
 
@@ -40,6 +40,7 @@ container_runtime = "docker"
 [tmux]
 status_bar = "auto"
 mouse = "auto"
+clipboard = "auto"
 
 [session]
 default_tool = "claude"
@@ -58,7 +59,7 @@ mode = "random"
 
 [app_state]
 has_seen_welcome = true
-last_seen_version = "1.4.6"
+last_seen_version = "1.5.2"
 home_list_width = 35
 has_seen_custom_instruction_warning = false
 has_acknowledged_agent_hooks = true
