@@ -6,12 +6,19 @@ hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
 hs.keycodes.setLayout("En Birman")
 
 require "app_watcher_hub" -- centralized app event dispatcher (must load before spoons)
+local notify = require "notify"
 
 local function safeLoadSpoon(name)
     local ok, err = pcall(hs.loadSpoon, name)
     if not ok then
         hs.logger.new('init'):e("Failed to load " .. name .. ": " .. tostring(err))
-        hs.notify.new({ title = "Hammerspoon", informativeText = "Failed to load " .. name }):send()
+        notify.show({
+            title    = "Spoon failed",
+            message  = name .. " — " .. tostring(err):sub(1, 80),
+            symbol   = "exclamationmark.triangle.fill",
+            tint     = "red",
+            duration = 8,
+        })
     end
 end
 
