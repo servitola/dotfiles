@@ -1,12 +1,32 @@
 local log = hs.logger.new('KeyboardLock', 'info')
+local banner = require("notify")
 local M = {}
 local locked = false
 local lockTap = nil
 
 local karabinerCli = "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli"
 
-local function notify(text)
-    hs.notify.new({ title = "Keyboard", informativeText = text }):send()
+local function notifyLocked()
+    banner.show({
+        title       = "Keyboard locked",
+        message     = "input blocked",
+        symbol      = "keyboard.fill",
+        symbolColor = "#ff453a",
+        tint        = "red",
+        animate     = true,
+        duration    = 2,
+    })
+end
+
+local function notifyUnlocked(autoFromWake)
+    banner.show({
+        title       = "Keyboard unlocked",
+        message     = autoFromWake and "auto-unlocked after wake" or "input restored",
+        symbol      = "keyboard",
+        symbolColor = "#34c759",
+        tint        = "green",
+        duration    = 2,
+    })
 end
 
 local function setKarabinerVar(value)
@@ -25,7 +45,7 @@ end
 function M.toggle()
     if locked then
         stopTap()
-        notify("Unlocked")
+        notifyUnlocked(false)
         log.i("Keyboard unlocked")
     else
         lockTap = hs.eventtap.new(
@@ -41,7 +61,7 @@ function M.toggle()
         lockTap:start()
         setKarabinerVar(1)
         locked = true
-        notify("Locked")
+        notifyLocked()
         log.i("Keyboard locked")
     end
 end
@@ -51,7 +71,7 @@ local sleepWatcher = hs.caffeinate.watcher.new(function(event)
     if locked and (event == hs.caffeinate.watcher.systemDidWake
                 or event == hs.caffeinate.watcher.screensDidWake) then
         stopTap()
-        notify("Auto-unlocked after wake")
+        notifyUnlocked(true)
         log.i("Keyboard auto-unlocked after wake")
     end
 end)
