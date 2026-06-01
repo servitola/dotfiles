@@ -247,11 +247,15 @@ model_list:
 
   # Azure AI Speech (Cognitive Services) — neural TTS via /v1/audio/speech.
   # Resource `tts-greek` in West Europe, pricing tier F0 (free): 500 000
-  # characters/month neural, recurring. 400+ voices, 140+ locales.
-  # Greek voices: el-GR-NestorasNeural (m), el-GR-AthinaNeural (f).
+  # characters/month neural, recurring. 400+ voices, 140+ locales (the
+  # resource name is historical — voices are NOT region-locked, any neural
+  # voice in any locale works through this endpoint).
   # Voice is passed at call time as the `voice` request param.
   # $0 guarantee depends on F0 pricing tier — verified in Azure portal,
   # NOT enforced by verify-free-only.sh (proxy can't see Azure-side config).
+  #
+  # `tts-azure`: voice-agnostic deployment used by greek-tts skill, which
+  # sends explicit Azure voice ids per turn (el-GR-NestorasNeural, etc.).
   - model_name: tts-azure
     litellm_params:
       model: azure/speech/azure-tts
@@ -259,6 +263,62 @@ model_list:
       api_key: os.environ/AZURE_VOICE_TTS_GREEK_API_KEY1
     model_info:
       mode: audio_speech
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
+  # `tts-azure-ru`: same Azure backend, but `tts_voice_rewriter` callback
+  # forces voice → ru-RU-DmitryNeural regardless of incoming `voice`. Wired
+  # as the last-resort fallback for `tts` (after tts-piper).
+  - model_name: tts-azure-ru
+    litellm_params:
+      model: azure/speech/azure-tts
+      api_base: https://westeurope.tts.speech.microsoft.com
+      api_key: os.environ/AZURE_VOICE_TTS_GREEK_API_KEY1
+    model_info:
+      mode: audio_speech
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
+  # Piper TTS — local Russian TTS via FastAPI shim on the host.
+  # Shim at ~/projects/dotfiles/litellm/piper-shim/app.py (launchd,
+  # com.servitola.piper-shim, port 8177). Voice param is ignored — the
+  # shim always uses ru_RU-irina-medium. Always available, zero quota.
+  # First fallback for `tts` when Gemini quota is exhausted.
+  - model_name: tts-piper
+    litellm_params:
+      model: openai/tts-1
+      api_base: http://host.docker.internal:8177/v1
+      api_key: sk-no-key
+    model_info:
+      mode: audio_speech
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
+  # === Speech-to-text =======================================================
+  # VoiceInk fork at ~/projects/voiceink — whisper.cpp + Metal large-v3-turbo
+  # running inside the always-open VoiceInk.app, with the user's dictionary
+  # (vocabulary + word replacements) auto-applied. The CLI at
+  # VoiceInkCLI/voiceink is an IPC client to the app via
+  # DistributedNotificationCenter; it returns plain text on stdout.
+  #
+  # Bridged into LiteLLM by a FastAPI shim that exposes a real OpenAI
+  # /v1/audio/transcriptions endpoint on 127.0.0.1:8178. The shim lives at
+  # ~/projects/dotfiles/litellm/voiceink-shim/, runs under launchd
+  # (com.servitola.voiceink-shim), and shells out to the CLI per request.
+  # Container reaches it via host.docker.internal, same pattern as Ollama.
+  #
+  # Limitations vs OpenAI Whisper API:
+  # - response_format=verbose_json / srt / vtt → 400 (no segments/timestamps)
+  # - prompt / temperature / language are accepted but ignored (would need
+  #   extending the VoiceInk IPC protocol on the Swift side)
+  # - model param ignored (model is whatever VoiceInk.app has loaded)
+  - model_name: voiceink-local
+    litellm_params:
+      model: openai/whisper-1
+      api_base: http://host.docker.internal:8178/v1
+      api_key: "not-needed"
+    model_info:
+      mode: audio_transcription
       input_cost_per_token: 0
       output_cost_per_token: 0
 
@@ -510,16 +570,27 @@ router_settings:
     qwen3-coder-plus: coding
     # `ai` helper's default model is "auto" — keep it routable
     auto: coding
+  # When Gemini TTS 429s/500s on the free quota, transparently retry on
+  # Azure. `tts-azure-ru` re-dispatches through the proxy, so the
+  # `tts_voice_rewriter` pre-call hook fires and replaces the Gemini voice
+  # name (Kore/Puck/…) with `ru-RU-DmitryNeural` before the Azure call.
+  fallbacks:
+    - tts: ["tts-piper", "tts-azure-ru"]
 
 litellm_settings:
   drop_params: true
   set_verbose: false
   telemetry: false
-  # Strip secret patterns (sk-…, sk-ant-…, AWS keys, GitHub/GitLab PATs,
-  # Slack tokens, JWTs, private keys, Google API keys) from messages
-  # before they hit any upstream provider AND before they land in
-  # spend_logs. See redact_secrets.py for the pattern list.
-  callbacks: redact_secrets.redact_secrets_instance
+  # Pre-call hooks (run in order):
+  # 1. redact_secrets — strip sk-…, AWS keys, GitHub PATs, JWTs, etc.
+  #    before any upstream provider sees the payload AND before it lands
+  #    in spend_logs. See redact_secrets.py for the pattern list.
+  # 2. tts_voice_rewriter — rewrite the `voice` param on /v1/audio/speech
+  #    for fallback-only deployments (tts-azure-ru) so Gemini voice ids
+  #    map to valid Azure neural voices. See tts_voice_rewriter.py.
+  callbacks:
+    - redact_secrets.redact_secrets_instance
+    - tts_voice_rewriter.tts_voice_rewriter_instance
   redact_messages_in_exceptions: true
   # Exact-match response cache in Redis. Same prompt + same model →
   # served from cache, no upstream call, no quota consumed. Cuts cooldown
@@ -527,10 +598,12 @@ litellm_settings:
   # workloads where prompts repeat but knowledge drifts.
   cache: true
   cache_params:
-    type: redis
+    type: redis-semantic
     host: redis
     port: 6379
-    ttl: 3600
+    ttl: 86400
+    similarity_threshold: 0.85
+    redis_semantic_cache_embedding_model: mistral/mistral-embed
 
 general_settings:
   master_key: os.environ/LITELLM_MASTER_KEY

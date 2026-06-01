@@ -8,6 +8,7 @@ services:
     volumes:
       - ./config.yaml:/app/config.yaml:ro
       - ./redact_secrets.py:/app/redact_secrets.py:ro
+      - ./tts_voice_rewriter.py:/app/tts_voice_rewriter.py:ro
     environment:
       OPENROUTER_API_KEY: ${OPEN_ROUTER_API_KEY}
       GROQ_API_KEY: ${GROQ_API_KEY}
@@ -22,6 +23,7 @@ services:
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
       REDIS_HOST: redis
       REDIS_PORT: "6379"
+      REDIS_PASSWORD: ""
       PYTHONPATH: /app
       UI_USERNAME: ${LITELLM_UI_USERNAME:?set LITELLM_UI_USERNAME in ~/.config/openai_key.sh}
       UI_PASSWORD: ${LITELLM_UI_PASSWORD:?set LITELLM_UI_PASSWORD in ~/.config/openai_key.sh}
@@ -67,12 +69,12 @@ services:
       - default
 
   redis:
-    image: redis:7-alpine
+    image: redis/redis-stack-server:latest
     container_name: litellm-redis
     restart: unless-stopped
     command:
       [
-        "redis-server",
+        "redis-stack-server",
         "--save", "60", "1",
         "--maxmemory", "256mb",
         "--maxmemory-policy", "allkeys-lru",
