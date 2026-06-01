@@ -80,6 +80,17 @@ alias bi="brew install"
 alias bic="brew install --cask"
 alias bu="brew uninstall"
 
+# text to speech (Russian, local Piper TTS)
+alias say-ru='piper_say'
+
+function piper_say() {
+    local text="${*:-$(cat)}"
+    echo "$text" | ~/.venv/tts/bin/python -m piper \
+        --model ~/.local/share/piper-voices/ru_RU-irina-medium.onnx \
+        --output_file /tmp/piper_out.wav 2>/dev/null \
+    && afplay /tmp/piper_out.wav
+}
+
 # voice to text transcription
 alias w='whisper_max'
 alias wv='whisper_voice'
