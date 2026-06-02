@@ -74,6 +74,11 @@ print_section "Docker Containers"
 
 ~/projects/dotfiles/docker/up.sh
 
+print_section "Immich Sync"
+
+print_task "Syncing local folders to Immich on i9"
+~/projects/dotfiles/immich/sync.sh
+
 print_section "LiteLLM Model Health"
 
 print_task "Checking model availability across providers"
