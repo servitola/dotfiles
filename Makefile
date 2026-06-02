@@ -272,9 +272,9 @@ install:
 	@$(REMOVE) ~/Library/Application\ Support/heroic/config.json
 	@$(LINK) ~/projects/dotfiles/heroic/config.json ~/Library/Application\ Support/heroic/config.json
 
-	@echo "setup Zap terminal config (Zap inherits ~/.warp from Warp)"
-	@$(REMOVE) ~/.warp
-	@$(LINK) ~/projects/dotfiles/warp ~/.warp
+	@echo "setup Zap terminal config"
+	@$(REMOVE) ~/.zap
+	@$(LINK) ~/projects/dotfiles/zap ~/.zap
 
 	@echo "Making scripts executable"
 	@chmod +x \
