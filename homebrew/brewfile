@@ -305,7 +305,6 @@ cask "aldente"
 cask "alisma"
 # Enable Windows-like alt-tab
 cask "alt-tab"
-cask "amneziavpn"
 # Application uninstaller
 cask "appcleaner"
 # Online gaming platform
@@ -314,8 +313,6 @@ cask "battle-net"
 cask "blackhole-2ch"
 # 3D creation suite
 cask "blender"
-# Web debugging Proxy application
-cask "charles"
 # Terminal-based AI coding assistant
 cask "claude-code"
 # Tool to show live information about the batteries in various devices
