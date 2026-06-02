@@ -130,8 +130,6 @@ brew "pkgconf"
 brew "hdf5"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
-# CLI for Heroku
-brew "heroku"
 # Command-line editor
 brew "id3v2"
 # Tool for managing apps on iOS devices
