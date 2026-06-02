@@ -1,24 +1,27 @@
--- Thin Hammerspoon → NotifyDaemon client. Spawns the `notify-send` helper
--- (writes JSON to ~/.notifyd.sock) which renders a Tahoe Liquid Glass
+-- Thin Hammerspoon → glasswings client. Spawns `glasswings-send`
+-- (writes JSON to ~/.glasswings.sock) which renders a Tahoe Liquid Glass
 -- banner via the resident Swift daemon.
+--
+-- The daemon lives in its own project — https://github.com/servitola/glasswings.
+-- Install it once via `~/projects/glasswings/install.sh`; that drops the
+-- CLI at ~/.local/bin/glasswings-send and registers a LaunchAgent.
 --
 -- Usage:
 --   local notify = require("notify")
 --   notify.show({
---     title    = "🔊 Audio System",
+--     title    = "Audio",
 --     message  = "BE-RCA",
---     icon     = os.getenv("HOME") .. "/projects/dotfiles/hammerspoon/icons/speakers.png",
---     tint     = "green",     -- name ("green"/"red"/...) or "#rrggbb"
---     duration = 3,           -- seconds; daemon default = 3
---     sound    = "Glass",     -- macOS system sound name; optional
+--     tint     = "green",
+--     animate  = true,
+--     layered  = true,
+--     duration = 3,
 --   })
 --
--- Daemon down? Check ~/Library/Logs/notifyd.log and rebuild via
--- ~/projects/dotfiles/notifier/build-daemon.sh
+-- Daemon down? `tail -f ~/Library/Logs/glasswings.log` and re-run install.
 
 local M = {}
 
-local NOTIFY_SEND = os.getenv("HOME") .. "/projects/dotfiles/notifier/notify-send"
+local GLASSWINGS_SEND = os.getenv("HOME") .. "/.local/bin/glasswings-send"
 
 function M.show(opts)
     opts = opts or {}
@@ -32,13 +35,18 @@ function M.show(opts)
     if opts.symbol      then payload.symbol      = opts.symbol end
     if opts.symbolColor then payload.symbolColor = opts.symbolColor end
     if opts.animate ~= nil then payload.animate  = opts.animate end
+    if opts.id          then payload.id          = opts.id end
+    if opts.symbolBefore      then payload.symbolBefore      = opts.symbolBefore end
+    if opts.symbolBeforeColor then payload.symbolBeforeColor = opts.symbolBeforeColor end
+    if opts.shape             then payload.shape             = opts.shape end
+    if opts.layered ~= nil    then payload.layered           = opts.layered end
 
     local json = hs.json.encode(payload)
-    hs.task.new(NOTIFY_SEND, nil, { json }):start()
+    hs.task.new(GLASSWINGS_SEND, nil, { json }):start()
 end
 
 function M.clear()
-    hs.task.new(NOTIFY_SEND, nil, { '{"action":"clear"}' }):start()
+    hs.task.new(GLASSWINGS_SEND, nil, { '{"action":"clear"}' }):start()
 end
 
 return M

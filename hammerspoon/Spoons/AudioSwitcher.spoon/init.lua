@@ -65,9 +65,14 @@ end
 
 -- Wait for an audio device to appear, checking every second.
 -- Preset variant — banner uses the per-device symbol/title/color.
+-- Shares the same `audio-state` banner id as the synchronous switch path
+-- so rapid hotkey presses morph one banner instead of stacking.
+local AUDIO_BANNER_ID = "audio-state"
+
 local function waitForAudioDevicePreset(deviceName, preset, timeoutSecs)
     local function announceSuccess(_dev)
         notify.show({
+            id          = AUDIO_BANNER_ID,
             title       = preset.title,
             message     = preset.subtitle,
             symbol      = preset.symbol,
@@ -101,6 +106,7 @@ local function waitForAudioDevicePreset(deviceName, preset, timeoutSecs)
         elapsed = elapsed + interval
         if elapsed >= timeout then
             notify.show({
+                id       = AUDIO_BANNER_ID,
                 title    = "⚠️ " .. preset.title .. " not found",
                 message  = "timed out after " .. timeout .. "s",
                 tint     = "red",
