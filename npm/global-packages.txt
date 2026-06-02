@@ -1,5 +1,6 @@
 @cocal/google-calendar-mcp
 @gongrzhe/server-gmail-autoauth-mcp
+@immich/cli
 @modelcontextprotocol/server-brave-search
 @modelcontextprotocol/server-filesystem
 @openai/codex
