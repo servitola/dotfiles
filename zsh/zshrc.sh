@@ -57,6 +57,7 @@ bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application m
 
 source ~/.config/claude_code_settings.sh
 source ~/projects/dotfiles/litellm/ai.sh
+source ~/projects/dotfiles/rag/rag.sh
 
 # zoxide for fast directory navigation (must be last — hooks into chpwd)
 # _ZO_DOCTOR=0: suppress false-positive warning caused by Warp terminal injecting hooks after .zshrc
