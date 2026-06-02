@@ -25,13 +25,11 @@ model_list:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
 
-  # DeepSeek V4 Flash on OpenRouter — 1M context, free tier. Replaces the
-  # retired nvidia-deepseek (v3.2) as a no-quota path to v4-class reasoning.
-  - model_name: deepseek
-    litellm_params:
-      model: openai/deepseek/deepseek-v4-flash:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
+  # `deepseek` direct alias dropped 2026-06-02. OpenRouter pulled every
+  # DeepSeek `:free` slug, and the NIM v4-flash/v4-pro endpoints hang on
+  # inference (slug appears in /v1/models but completions time out). For
+  # DeepSeek-class reasoning use `nvidia-kimi` (K2.6 on NIM) or the
+  # `reasoning` rotation group.
 
   # Uncensored rotation — replaces the dropped local LM Studio Jinx for
   # "no moderation" use cases. Two-deployment group so 429 on OpenRouter
@@ -325,12 +323,8 @@ model_list:
   # === Cerebras (free: 30 RPM, 14 400 RPD, 1M tokens/day) ==================
   # Wafer-scale chip — fastest free inference (~2 600 tok/s). No credit card.
   # OpenAI-compatible at api.cerebras.ai/v1.
-  - model_name: cerebras-qwen
-    litellm_params:
-      # Slug renamed on 2026-04-23: qwen-3-235b → qwen-3-235b-a22b-instruct-2507.
-      model: openai/qwen-3-235b-a22b-instruct-2507
-      api_base: https://api.cerebras.ai/v1
-      api_key: os.environ/CEREBRAS_API_KEY
+  # As of 2026-06 Cerebras hosts only zai-glm-4.7 and gpt-oss-120b — Qwen
+  # was removed (previously cerebras-qwen=qwen-3-235b-a22b-instruct-2507).
   - model_name: cerebras-glm
     litellm_params:
       # Cerebras started hosting Z.AI GLM-4.7 — same flagship as `glm` alias
@@ -401,16 +395,26 @@ model_list:
       output_cost_per_token: 0
   - model_name: coding
     litellm_params:
-      # MiniMax M2.5 — 456B MoE flagship tuned for agents / tool-use / coding.
-      # OpenRouter :free routes via OpenInference (not Venice), so the quota
-      # is independent from the uncensored group.
-      model: openai/minimax/minimax-m2.5:free
+      # Moonshot Kimi K2.6 — flagship agentic/coding model on OpenRouter free.
+      # Independent quota from `nvidia-kimi` (same upstream on NIM). order:1
+      # because K2.6 is a top-tier coder.
+      model: openai/moonshotai/kimi-k2.6:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 1
+  - model_name: coding
+    litellm_params:
+      # NVIDIA Nemotron 3 Nano 30B MoE (3B active) — fast, free on OpenRouter.
+      # Smaller sibling of `nemotron` (3-super-120b). Order 2 fallback.
+      model: openai/nvidia/nemotron-3-nano-30b-a3b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
 
-  # reasoning — planning, analysis, long-context. Nemotron 120B + DeepSeek V4 (1M ctx) at order 1,
-  # Hermes 405B / Trinity-thinking / Mistral Large / Gemini at order 2.
+  # reasoning — planning, analysis, long-context. Nemotron 120B (×2) +
+  # Kimi K2.6 at order 1, Hermes 405B / Llama 3.3 70B / Mistral Large /
+  # Gemini at order 2. DeepSeek V4 / Trinity Thinking / MiniMax dropped
+  # on 2026-06-02 (all pulled from OpenRouter).
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
@@ -425,21 +429,15 @@ model_list:
       order: 1
   - model_name: reasoning
     litellm_params:
-      # DeepSeek V4 Flash on OpenRouter: 1M context, free tier.
-      model: openai/deepseek/deepseek-v4-flash:free
+      # Moonshot Kimi K2.6 — large MoE, strong long-form reasoning.
+      # Independent quota from `nvidia-kimi` (same upstream on NIM).
+      model: openai/moonshotai/kimi-k2.6:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 1
   - model_name: reasoning
     litellm_params:
       model: openai/nousresearch/hermes-3-llama-3.1-405b:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-      order: 2
-  - model_name: reasoning
-    litellm_params:
-      # Arcee Trinity Large Thinking — explicit thinking model, 262k context, free.
-      model: openai/arcee-ai/trinity-large-thinking:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
@@ -465,14 +463,6 @@ model_list:
       # Free on OpenRouter, decent long-form reasoning. Added as another
       # order-2 fallback so the group has more cushion against 429s.
       model: openai/meta-llama/llama-3.3-70b-instruct:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-      order: 2
-  - model_name: reasoning
-    litellm_params:
-      # MiniMax M2.5 — 456B MoE, agentic-tuned, strong long-context reasoning.
-      # OpenRouter :free → OpenInference upstream (independent from Venice).
-      model: openai/minimax/minimax-m2.5:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
@@ -502,6 +492,14 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: fast
+    litellm_params:
+      # Nemotron Nano 30B MoE (3B active) on OpenRouter free — non-Groq
+      # diversification so the group survives a Groq outage.
+      model: openai/nvidia/nemotron-3-nano-30b-a3b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # === Web Search (free tier) ==================================================
   # Gemini 2.5 Flash with Google Search grounding (free: 500 search RPD).
@@ -561,7 +559,7 @@ router_settings:
   # Qwen Code CLI defaults to a model name from ~/.qwen/settings.json
   # (model.name = "coder-model") and/or the names from the official LiteLLM
   # tutorial. Map those onto the `coding` rotation group — which contains
-  # Kimi K2.5, DeepSeek V3.2 (NIM, order 1) and gpt-oss + GLM (order 2).
+  # Codestral, Llama 4 Scout, Kimi K2.6, gpt-oss, GLM, Gemini, Nemotron Nano.
   # `coder` alias also redirected here (qwen3-coder:free dead since 2026-04).
   model_group_alias:
     coder: coding
