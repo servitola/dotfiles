@@ -1,0 +1,12 @@
+#!/bin/zsh
+# rag — standalone wrapper around the `rag` shell function defined in
+# ~/projects/dotfiles/rag/rag.sh, so that non-zsh callers (bash subshells
+# used by Claude Code, Qwen Code, Codex, etc.) can invoke `rag` as a regular
+# command.
+#
+# The function-based form is still preferred in interactive zsh (ai-like
+# aliases, completion). This wrapper just forwards to it.
+
+set -u
+source "$HOME/projects/dotfiles/rag/rag.sh"
+rag "$@"

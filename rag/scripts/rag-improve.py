@@ -60,6 +60,7 @@ def _load_module(name: str, file: str) -> ModuleType:
 
 rag_eval = _load_module("rag_eval", "rag-eval.py")
 rag_ingest = _load_module("rag_ingest", "rag-ingest.py")
+rag_prune_gaps = _load_module("rag_prune_gaps", "rag-prune-gaps.py")
 
 
 # ----------------------------------------------------------------------------
@@ -75,10 +76,18 @@ EVAL_FILE = RAG_ROOT / "rag.eval.json"  # mutated in main() if --eval-file given
 # path-relative reporting in stats / gaps / origin fields.
 CURRENT_REPO_ROOT: Path = DOTFILES_ROOT
 HISTORY_FILE = RAG_ROOT / "rag-eval-history.md"
-GAPS_FILE = RAG_ROOT / "rag-gaps.md"
+# Legacy single-file location, kept readable for the prune tool. New gaps go
+# under rag/gaps/<collection>.md — see gaps_file_for().
+GAPS_FILE_LEGACY = RAG_ROOT / "rag-gaps.md"
+GAPS_DIR = RAG_ROOT / "gaps"
 RETIRED_FILE = RAG_ROOT / "rag-retired.md"
 RAG_CONF = RAG_ROOT / "rag.conf"
 LOCKFILE = Path("/tmp/rag-improve.lock")  # mutated in main() per --collection
+
+
+def gaps_file_for(collection: str) -> Path:
+    """Per-collection gap log. Created lazily by append_gap()."""
+    return GAPS_DIR / f"{collection}.md"
 
 # Substring excludes for the active collection, populated in main() from rag.conf.
 # Used by _is_indexable() so that proposer never sees files that ingest skipped —
@@ -117,6 +126,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--no-revisit", action="store_true")
     p.add_argument("--no-git", action="store_true")
     p.add_argument("--no-final-eval", action="store_true", help="Skip full-eval sweep at the end")
+    p.add_argument("--no-prune-gaps", action="store_true",
+                   help="Skip the gap-prune phase (rag/gaps/<collection>.md). "
+                        "Pruning drops entries whose `expect` substring is now in top-k.")
     p.add_argument("--use-claude-cli", action="store_true",
                    help="Route chat() through the local `claude` CLI (subscription auth) "
                         "instead of LiteLLM. Use with --chat-model claude-opus-4-7.")
@@ -686,8 +698,11 @@ def ensure_log(path: Path, header: str) -> None:
         path.write_text(header, encoding="utf-8")
 
 
-def append_gap(primary: Path, proposal: dict, hits: list[dict], reason: str) -> None:
-    ensure_log(GAPS_FILE, "# RAG gaps — cases that failed retrieval or judge\n\n")
+def append_gap(primary: Path, proposal: dict, hits: list[dict], reason: str,
+               collection: str) -> None:
+    GAPS_DIR.mkdir(parents=True, exist_ok=True)
+    gaps_file = gaps_file_for(collection)
+    ensure_log(gaps_file, f"# RAG gaps — {collection} — cases that failed retrieval or judge\n\n")
     date = datetime.date.today().isoformat()
     rel = str(primary.relative_to(CURRENT_REPO_ROOT)) if primary.is_relative_to(CURRENT_REPO_ROOT) else str(primary)
     top3 = [h.get("payload", {}).get("path", "?") for h in hits[:3]]
@@ -698,7 +713,7 @@ def append_gap(primary: Path, proposal: dict, hits: list[dict], reason: str) -> 
         f"  top-3: {' | '.join(top3) if top3 else '(none)'}",
         "",
     ]
-    with GAPS_FILE.open("a", encoding="utf-8") as f:
+    with gaps_file.open("a", encoding="utf-8") as f:
         f.write("\n".join(entry))
 
 
@@ -725,10 +740,21 @@ def append_history(stats: dict) -> None:
         f"  accepted: {stats['accepted']} "
         f"(reject: {stats['rejected_syntactic']} syntactic, "
         f"{stats['rejected_retrieval']} retrieval miss, "
-        f"{stats['rejected_judge']} judge WRONG/UNCLEAR)",
+        f"{stats['rejected_judge']} judge WRONG/UNCLEAR"
+        + (f", {stats['judge_unavailable']} judge unavailable" if stats.get("judge_unavailable") else "")
+        + ")",
         f"- revisit: {stats['revisit_checked']} checked, "
         f"{stats['revisit_strikes']} new strikes, {stats['revisit_retired']} retired",
     ]
+    if stats.get("gaps_total"):
+        lines.append(
+            f"- gaps: {stats['gaps_total']} checked, "
+            f"{stats['gaps_pruned']} pruned, {stats['gaps_kept']} kept")
+    if stats.get("rejected_syntactic_reasons"):
+        breakdown = ", ".join(
+            f"{n} {r}" for r, n in sorted(
+                stats["rejected_syntactic_reasons"].items(), key=lambda x: -x[1]))
+        lines.append(f"  syntactic breakdown: {breakdown}")
     if "eval_total" in stats:
         pct = (stats["eval_passed"] * 100 // stats["eval_total"]) if stats["eval_total"] else 0
         lines.append(f"- eval: {stats['eval_passed']}/{stats['eval_total']} passing ({pct}%)"
@@ -791,13 +817,18 @@ def main() -> int:
             "proposals_total": 0,
             "accepted": 0,
             "rejected_syntactic": 0,
+            "rejected_syntactic_reasons": {},  # reason -> count
             "rejected_retrieval": 0,
             "rejected_judge": 0,
+            "judge_unavailable": 0,
             "chat_calls": 0,
             "embed_calls": 0,
             "revisit_checked": 0,
             "revisit_strikes": 0,
             "revisit_retired": 0,
+            "gaps_total": 0,
+            "gaps_pruned": 0,
+            "gaps_kept": 0,
         }
 
         # --- load eval
@@ -821,6 +852,12 @@ def main() -> int:
                 ok, reason = validate_proposal(p, pack_lower, primary.name, existing_hashes)
                 if not ok:
                     stats["rejected_syntactic"] += 1
+                    # Bucket the reason so we can see if rejections are dominated
+                    # by one cause (e.g. "duplicate question" → proposer keeps
+                    # repeating itself once the corpus grows large).
+                    bucket = reason.split("(")[0].strip() or reason
+                    stats["rejected_syntactic_reasons"][bucket] = \
+                        stats["rejected_syntactic_reasons"].get(bucket, 0) + 1
                     if args.dry_run:
                         print(f"  syntactic reject: {reason}  ({p['q'][:60]})", file=sys.stderr)
                     continue
@@ -837,7 +874,7 @@ def main() -> int:
                     stats["rejected_retrieval"] += 1
                     stats["embed_calls"] += 0  # retrieval already counted
                     if not args.dry_run:
-                        append_gap(primary, p, hits, f"retrieval: {r_reason}")
+                        append_gap(primary, p, hits, f"retrieval: {r_reason}", args.collection)
                     else:
                         print(f"  retrieval miss: {p['q'][:60]}", file=sys.stderr)
                     continue
@@ -846,9 +883,17 @@ def main() -> int:
                 stats["chat_calls"] += 1
 
                 if verdict != "OK":
+                    # Judge upstream failure is not a real gap — skip logging.
+                    # Both the proposer and the judge can hallucinate, so we
+                    # only record verdicts that came back from a live judge.
+                    if j_reason == "(judge unavailable)":
+                        stats["judge_unavailable"] += 1
+                        if args.dry_run:
+                            print(f"  judge unavailable, skipping: {p['q'][:60]}", file=sys.stderr)
+                        continue
                     stats["rejected_judge"] += 1
                     if not args.dry_run:
-                        append_gap(primary, p, hits, f"judge {verdict}: {j_reason}")
+                        append_gap(primary, p, hits, f"judge {verdict}: {j_reason}", args.collection)
                     else:
                         print(f"  judge {verdict}: {j_reason}  ({p['q'][:60]})", file=sys.stderr)
                     continue
@@ -891,6 +936,20 @@ def main() -> int:
         # --- save eval atomically (if any change)
         if not args.dry_run and (accepted_cases or stats["revisit_retired"] or stats["revisit_strikes"]):
             save_eval_atomic(eval_data)
+
+        # --- prune gap log: drop entries where retrieval now surfaces `expect`.
+        # Operates only on the per-collection file (gaps/<collection>.md), not
+        # the legacy aggregate — use `rag prune-gaps --legacy` for that on demand.
+        if not args.no_prune_gaps:
+            gaps_path = gaps_file_for(args.collection)
+            if gaps_path.exists():
+                top_k_prune = eval_data.get("top_k", args.top_k)
+                ps = rag_prune_gaps.prune_file(
+                    gaps_path, args.collection, top_k_prune, dry_run=args.dry_run)
+                stats["gaps_total"] = ps["total"]
+                stats["gaps_pruned"] = ps["closed"]
+                stats["gaps_kept"] = ps["open"]
+                stats["embed_calls"] += ps["total"]
 
         # --- full eval sweep
         if not args.no_final_eval:
