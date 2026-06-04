@@ -19,6 +19,7 @@ These dotfiles are an operating system on top of macOS. Not just a set of config
 ## AI Coding Tools — Shared Configuration
 Claude Code (`claude-code/`) is the single source of truth for commands, agents, and skills.
 Other AI coding tools (Amp, Qwen Code) symlink to claude-code's directories so they all share the same setup.
+Codex keeps its own global config in `codex/`, but should reuse `claude-code/` for shared AI assets whenever the format is compatible.
 
 **Source directories (in dotfiles repo):**
 - `claude-code/commands/` — slash commands
