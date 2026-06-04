@@ -10,3 +10,4 @@ figma-developer-mcp
 opencode-ai
 react-devtools
 typescript
+youtrack-mcp-server
