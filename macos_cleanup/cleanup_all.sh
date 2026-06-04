@@ -164,6 +164,24 @@ if [ -d "$STEAM_HTMLCACHE" ]; then
 else
     printf "  ${DIM}* Steam htmlcache: not installed${NC}\n"
 fi
+
+print_task "Google DriveFS logs"
+DRIVEFS_LOGS="$HOME/Library/Application Support/Google/DriveFS/Logs"
+if [ -d "$DRIVEFS_LOGS" ]; then
+    spinner_start "DriveFS logs"
+    drivefs_before_kb=$(du -sk "$DRIVEFS_LOGS" 2>/dev/null | cut -f1)
+    "$RM_CMD" -rf "$DRIVEFS_LOGS"/* 2>/dev/null
+    drivefs_after_kb=$(du -sk "$DRIVEFS_LOGS" 2>/dev/null | cut -f1)
+    drivefs_freed_kb=$(( drivefs_before_kb - drivefs_after_kb ))
+    if [ "$drivefs_freed_kb" -gt 0 ]; then
+        spinner_stop "DriveFS Logs: freed $(format_size $drivefs_freed_kb)"
+    else
+        spinner_stop "DriveFS Logs: nothing to clean"
+    fi
+else
+    printf "  ${DIM}* DriveFS Logs: not installed${NC}\n"
+fi
+
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
 if [ -d "$GP_LOG_DIR" ]; then
