@@ -49,5 +49,5 @@ path+=( "$NPM_GLOBAL/bin" )
 # Rust/Cargo
 path+=( "$HOME/.cargo/bin" )
 
-# System extras
-path+=( /Library/Frameworks/Mono.framework/Versions/Current/Commands )
+# Dotfiles-shipped tools (rag wrapper, etc.)
+path+=( "$HOME/projects/dotfiles/zsh/bin" )
