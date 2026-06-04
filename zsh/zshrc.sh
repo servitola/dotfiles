@@ -55,7 +55,6 @@ bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2
 bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
 
-source ~/.config/claude_code_settings.sh
 source ~/projects/dotfiles/litellm/ai.sh
 source ~/projects/dotfiles/rag/rag.sh
 
