@@ -28,6 +28,16 @@
 		<key>icon</key>
 		<string>icon.icns</string>
 		<key>name</key>
+		<string>Open with Fork</string>
+		<key>path</key>
+		<string>Open with Fork.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
 		<string>New Plain Text File</string>
 		<key>path</key>
 		<string>New Plain Text File.cmaction</string>

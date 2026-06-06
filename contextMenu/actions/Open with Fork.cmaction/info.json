@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Open with Fork",
+  "type" : "shell",
+  "uuid" : "92259B19-7506-4846-87DB-653812D62EA3"
+}
