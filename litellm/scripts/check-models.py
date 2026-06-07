@@ -9,6 +9,10 @@ Checks each configured model against its provider's live model catalog:
   GitHub      GET /v1/models              (auth: $GITHUB_API_TOKEN)
   Mistral     GET /v1/models              (auth: $MISTRAL_API_KEY)
   Cerebras    GET /v1/models              (auth: $CEREBRAS_API_KEY)
+  SambaNova   GET /v1/models              (auth: $SAMBANOVA_API_KEY)
+  Chutes      GET /v1/models              (auth: $CHUTES_API_KEY)
+  Together    GET /v1/models              (auth: $TOGETHER_API_KEY)
+  LLM7        GET /v1/models              (public, no auth)
   Gemini      GET /v1beta/models          (auth: $GEMINI_API_KEY)
   Z.AI        no list endpoint            (always assumed ok)
   Ollama      GET /api/tags               (local)
@@ -53,6 +57,10 @@ OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 NVIDIA_API_BASE = "https://integrate.api.nvidia.com/v1"
 GITHUB_API_BASE = "https://models.github.ai/inference"
 CEREBRAS_API_BASE = "https://api.cerebras.ai/v1"
+SAMBANOVA_API_BASE = "https://api.sambanova.ai/v1"
+CHUTES_API_BASE = "https://llm.chutes.ai/v1"
+TOGETHER_API_BASE = "https://api.together.xyz/v1"
+LLM7_API_BASE = "https://api.llm7.io/v1"
 
 # ANSI colors (match update_all.sh)
 GREEN = "\033[0;92m"
@@ -103,6 +111,14 @@ def _classify_provider(model: str, api_base: str | None) -> str:
         return "github"
     if api_base == CEREBRAS_API_BASE:
         return "cerebras"
+    if api_base == SAMBANOVA_API_BASE:
+        return "sambanova"
+    if api_base == CHUTES_API_BASE:
+        return "chutes"
+    if api_base == TOGETHER_API_BASE:
+        return "together"
+    if api_base == LLM7_API_BASE:
+        return "llm7"
     return "unknown"
 
 
@@ -294,6 +310,61 @@ def fetch_cerebras_models() -> set[str] | None:
     return None
 
 
+def fetch_sambanova_models() -> set[str] | None:
+    key = os.environ.get("SAMBANOVA_API_KEY", "")
+    if not key:
+        return None
+    data = _http_json(
+        f"{SAMBANOVA_API_BASE}/models",
+        headers={"Authorization": f"Bearer {key}"},
+    )
+    if data and "data" in data:
+        return {m["id"] for m in data["data"] if "id" in m}
+    return None
+
+
+def fetch_chutes_models() -> set[str] | None:
+    key = os.environ.get("CHUTES_API_KEY", "")
+    if not key:
+        return None
+    data = _http_json(
+        f"{CHUTES_API_BASE}/models",
+        headers={"Authorization": f"Bearer {key}"},
+        timeout=20,
+    )
+    if data and "data" in data:
+        return {m["id"] for m in data["data"] if "id" in m}
+    return None
+
+
+def fetch_together_models() -> set[str] | None:
+    key = os.environ.get("TOGETHER_API_KEY", "")
+    if not key:
+        return None
+    # Together's /v1/models returns a bare JSON array, not {"data": [...]}.
+    data = _http_json(
+        f"{TOGETHER_API_BASE}/models",
+        headers={"Authorization": f"Bearer {key}"},
+        timeout=20,
+    )
+    if isinstance(data, list):
+        return {m["id"] for m in data if isinstance(m, dict) and "id" in m}
+    if data and "data" in data:
+        return {m["id"] for m in data["data"] if "id" in m}
+    return None
+
+
+def fetch_llm7_models() -> set[str] | None:
+    # LLM7 catalog is public (anonymous) — no key required. Returns a bare
+    # JSON array, not {"data": [...]}.
+    data = _http_json(f"{LLM7_API_BASE}/models")
+    if isinstance(data, list):
+        return {m["id"] for m in data if isinstance(m, dict) and "id" in m}
+    if data and "data" in data:
+        return {m["id"] for m in data["data"] if "id" in m}
+    return None
+
+
 def fetch_gemini_models() -> set[str] | None:
     key = os.environ.get("GEMINI_API_KEY", "")
     if not key:
@@ -339,6 +410,10 @@ def fetch_all_catalogs(raw_openrouter: set[str] | None = None) -> dict[str, set[
         "github": _lowercase_set(fetch_github_models()),
         "mistral": _lowercase_set(fetch_mistral_models()),
         "cerebras": _lowercase_set(fetch_cerebras_models()),
+        "sambanova": _lowercase_set(fetch_sambanova_models()),
+        "chutes": _lowercase_set(fetch_chutes_models()),
+        "together": _lowercase_set(fetch_together_models()),
+        "llm7": _lowercase_set(fetch_llm7_models()),
         "gemini": _lowercase_set(fetch_gemini_models()),
         "ollama": _lowercase_set(fetch_ollama_models()),
         "zai": None,  # no list endpoint
@@ -359,8 +434,10 @@ def normalize_slug(deployment: Deployment) -> str:
     if deployment.provider == "openrouter":
         # openai/nvidia/nemotron-3-super-120b-a12b:free → nvidia/nemotron-3-super-120b-a12b:free
         return slug.removeprefix("openai/")
-    if deployment.provider in ("nvidia", "github", "cerebras"):
+    if deployment.provider in ("nvidia", "github", "cerebras",
+                               "sambanova", "chutes", "together", "llm7"):
         # openai/moonshotai/kimi-k2.5 → moonshotai/kimi-k2.5
+        # openai/Qwen/Qwen3.5-397B-A17B-TEE → Qwen/Qwen3.5-397B-A17B-TEE
         return slug.removeprefix("openai/")
     if deployment.provider == "mistral":
         # mistral/codestral-latest → codestral-latest
