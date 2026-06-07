@@ -1,0 +1,36 @@
+# Smart case: case-insensitive unless pattern has uppercase
+--smart-case
+
+# Search hidden files (but still respect .gitignore)
+--hidden
+
+# Don't search inside .git directories
+--glob=!.git/
+
+# Limit line length for readability
+--max-columns=150
+--max-columns-preview
+
+# Gruvbox-inspired colors
+--colors=line:fg:yellow
+--colors=line:style:bold
+--colors=path:fg:green
+--colors=path:style:bold
+--colors=match:fg:red
+--colors=match:style:bold
+
+# .NET build output (noisy, never want to search)
+--glob=!bin/
+--glob=!obj/
+--glob=!Debug/
+--glob=!Release/
+
+# Common noise
+--glob=!node_modules/
+--glob=!.DS_Store
+--glob=!coverage/
+--glob=!dist/
+--glob=!*.min.js
+--glob=!*.min.css
+--glob=!package-lock.json
+--glob=!yarn.lock
