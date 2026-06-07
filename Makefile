@@ -159,6 +159,18 @@ install:
 	@$(REMOVE) ~/.qwen/commands
 	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.qwen/commands
 
+	@echo "setup LiteLLM + RAG scripts executable"
+	@chmod +x \
+		~/projects/dotfiles/litellm/ai.sh \
+		~/projects/dotfiles/litellm/scripts/verify-free-only.sh \
+		~/projects/dotfiles/litellm/scripts/check-models.py \
+		~/projects/dotfiles/rag/rag.sh \
+		~/projects/dotfiles/rag/scripts/rag-ingest.py \
+		~/projects/dotfiles/rag/scripts/rag-ask.py \
+		~/projects/dotfiles/rag/scripts/rag-eval.py \
+		~/projects/dotfiles/rag/scripts/rag-improve.py \
+		~/projects/dotfiles/rag/scripts/rag-karabiner-summary.py
+
 	@echo "setup yazi symlinks"
 	@$(REMOVE) ~/.config/yazi
 	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
