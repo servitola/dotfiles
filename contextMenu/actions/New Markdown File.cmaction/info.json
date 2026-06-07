@@ -1,0 +1,13 @@
+{
+  "path" : "document.md",
+  "options" : {
+    "executable" : false,
+    "prefix" : "document",
+    "suffix" : "md",
+    "hideExtension" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "New Markdown File",
+  "type" : "file",
+  "uuid" : "31732CD6-4CBA-45AE-A0E5-49C13A02DEC5"
+}

@@ -1,0 +1,13 @@
+{
+  "path" : "/bin/sh",
+  "uuid" : "6631A076-9C43-4683-8128-7729501DC1DF",
+  "options" : {
+    "acceptDirs" : true,
+    "noSandbox" : true
+  },
+  "name" : "New Zap Tab Here",
+  "dependencies" : [
+    "/Applications/Zap.app"
+  ],
+  "type" : "shell"
+}
