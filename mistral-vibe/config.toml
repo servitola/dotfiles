@@ -21,3 +21,8 @@ api_base = "http://localhost:4000/v1"
 api_key_env_var = "LITELLM_MASTER_KEY"
 api_style = "openai"
 backend = "generic"
+
+[tools.bash]
+allowlist = [
+    "python -m",
+]
