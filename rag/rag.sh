@@ -64,6 +64,7 @@ rag() {
   local rag_dir="$HOME/projects/dotfiles/rag"
   local scripts_dir="$rag_dir/scripts"
   local conf="$rag_dir/rag.conf"
+  local conf_private="$rag_dir/rag.private.conf"
 
   # Pre-flight helper defined inline so it cannot drift out of sync with rag()
   # across partial re-sources or stale persistent shells (Claude Code, tmux).
@@ -229,9 +230,9 @@ rag() {
         fi
         rm -f "$err_log"
         refreshed=$((refreshed + 1))
-      done < "$conf"
+      done < <(cat "$conf" "$conf_private" 2>/dev/null)
       if [ -n "$only" ] && [ "$refreshed" -eq 0 ]; then
-        echo "rag refresh: collection '$only' not in $conf" >&2
+        echo "rag refresh: collection '$only' not in $conf (or $conf_private)" >&2
         return 1
       fi
       ;;
@@ -303,9 +304,9 @@ _rag() {
 
   _rag_conf_collections() {
     local conf="$HOME/projects/dotfiles/rag/rag.conf"
-    [ -f "$conf" ] || return
+    local conf_private="$HOME/projects/dotfiles/rag/rag.private.conf"
     local -a names
-    names=(${(f)"$(sed 's/#.*//' "$conf" | awk -F: 'NF>1 && $1 !~ /^[[:space:]]*$/ {gsub(/^[[:space:]]+|[[:space:]]+$/,"",$1); print $1}')"})
+    names=(${(f)"$(cat "$conf" "$conf_private" 2>/dev/null | sed 's/#.*//' | awk -F: 'NF>1 && $1 !~ /^[[:space:]]*$/ {gsub(/^[[:space:]]+|[[:space:]]+$/,"",$1); print $1}')"})
     compadd -a names
   }
 

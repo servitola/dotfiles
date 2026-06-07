@@ -10,6 +10,7 @@ colima/default/daemon/daemon.pid
 
 cron/cron_jobs/youtrack.cron
 cron/cron_jobs/*.private.cron
+rag/rag.private.conf
 .claude/worktrees
 **/__pycache__
 docker-logger/logs
