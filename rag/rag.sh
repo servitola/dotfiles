@@ -11,6 +11,8 @@
 #   rag status                           health of LiteLLM + Qdrant
 #   rag eval    [file] [--verbose]       run canonical questions (rag.eval.json)
 #   rag prune-gaps [flags]               drop gap entries that retrieval now closes
+#   rag queries [flags]                  digest of real queries you asked
+#   rag answer-eval [flags]              grade final-answer quality, not just retrieval
 #   rag help                             show this help
 #
 # ingest flags (forwarded to scripts/rag-ingest.py):
@@ -142,6 +144,23 @@ rag() {
       fi
       _rag_preflight 1 1 || return 1
       python3 "$scripts_dir/rag-prune-gaps.py" "$@"
+      ;;
+
+    queries)
+      if [ ! -f "$scripts_dir/rag-queries.py" ]; then
+        echo "rag: $scripts_dir/rag-queries.py not found" >&2
+        return 1
+      fi
+      python3 "$scripts_dir/rag-queries.py" "$@"
+      ;;
+
+    answer-eval)
+      if [ ! -f "$scripts_dir/rag-answer-eval.py" ]; then
+        echo "rag: $scripts_dir/rag-answer-eval.py not found" >&2
+        return 1
+      fi
+      _rag_preflight 1 1 || return 1
+      python3 "$scripts_dir/rag-answer-eval.py" "$@"
       ;;
 
     status)
@@ -292,6 +311,8 @@ _rag() {
     'eval:run canonical questions for regression check'
     'improve:autonomous loop: propose new cases, validate, grow corpus'
     'prune-gaps:drop gap entries that retrieval now closes'
+    'queries:digest of real queries you asked (mine for new eval cases)'
+    'answer-eval:grade the final answer quality, not just retrieval'
     'help:show help'
   )
 
@@ -370,6 +391,21 @@ _rag() {
         '--top-k[retrieval depth]:n' \
         '--legacy[also process rag/rag-gaps.md]' \
         '--dry-run[report only, write nothing]'
+      ;;
+    queries)
+      _arguments \
+        '--weak[only weak queries (the work queue)]' \
+        '--limit[max rows]:n' \
+        '--since[only queries since date]:date'
+      ;;
+    answer-eval)
+      _arguments \
+        '--sample[N cases to grade]:n' \
+        '--answer-model[model that answers]:model:(gpt fast coding groq-llama nvidia-nemotron)' \
+        '--judge-model[model that grades]:model:(fast gpt groq-llama)' \
+        '--manual-only[grade only hand-written cases]' \
+        '--verbose[print each verdict + reason]' \
+        '--seed[reproducible sample]:seed'
       ;;
   esac
 }

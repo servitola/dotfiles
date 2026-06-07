@@ -63,6 +63,18 @@ DEFAULT_EXTENSIONS = {
     ".plist",
 }
 
+# Extension-less files that are still high-signal config/manifests. Matched by
+# exact lowercase filename. Without this, e.g. homebrew/brewfile (the canonical
+# list of every installed app) would be invisible to retrieval.
+EXTRA_FILENAMES = {
+    "brewfile",
+    "minimum_brewfile",
+    "makefile",
+    "dockerfile",
+    "procfile",
+    "justfile",
+}
+
 # Path segments always skipped during recursion — these are never useful for
 # RAG and frequently contain noise that would drown real content. Matched by
 # exact segment name (not substring), so e.g. ".git" is skipped but "git"
@@ -307,14 +319,16 @@ def iter_files(
     for raw in paths:
         path = Path(raw).expanduser().resolve()
         if path.is_file():
-            if path.suffix.lower() in allowed_extensions and not _is_filtered(path, excludes):
+            ok_ext = path.suffix.lower() in allowed_extensions or path.name.lower() in EXTRA_FILENAMES
+            if ok_ext and not _is_filtered(path, excludes):
                 yield path
                 yielded += 1
         elif path.is_dir():
             for child in sorted(path.rglob("*")):
                 if not child.is_file():
                     continue
-                if child.suffix.lower() not in allowed_extensions:
+                if (child.suffix.lower() not in allowed_extensions
+                        and child.name.lower() not in EXTRA_FILENAMES):
                     continue
                 if _is_filtered(child, excludes):
                     continue
@@ -448,7 +462,11 @@ def _llm_summary(path: Path, text: str, model: str) -> str:
             headers={"Authorization": f"Bearer {LITELLM_MASTER_KEY}"},
         )
         if data and "choices" in data:
-            answer = data["choices"][0]["message"]["content"].strip().strip('"\'')
+            msg = data["choices"][0].get("message", {}) or {}
+            # Free reasoning models can return content=None (budget spent on
+            # hidden reasoning). Fall back to reasoning_content, then heuristic.
+            content = msg.get("content") or msg.get("reasoning_content")
+            answer = content.strip().strip('"\'') if content else ""
             if answer and len(answer) > 5:
                 return answer[:160]
             break

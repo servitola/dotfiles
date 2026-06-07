@@ -11,12 +11,14 @@ Examples:
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import os
 import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from pathlib import Path
 
 
 LITELLM_URL = os.environ.get("LITELLM_URL", "http://localhost:4000")
@@ -25,6 +27,26 @@ QDRANT_URL = os.environ.get("QDRANT_URL", "http://localhost:6333")
 EMBED_MODEL = os.environ.get("RAG_EMBED_MODEL", "embed")
 CHAT_MODEL = os.environ.get("RAG_CHAT_MODEL", "gpt")
 DEFAULT_COLLECTION = os.environ.get("RAG_COLLECTION", "workflow")
+
+# Real-query log: every ask/context is appended here as one JSON line. This is
+# the highest-signal source of eval cases — the questions actually asked, not
+# the ones a model imagines. Mined by `rag queries` / rag-queries.py.
+# Disable with RAG_LOG_QUERIES=0.
+QUERY_LOG = Path(__file__).resolve().parent.parent / "logs" / "queries.jsonl"
+LOG_QUERIES = os.environ.get("RAG_LOG_QUERIES", "1").strip() not in ("0", "false", "no")
+
+
+def log_query(record: dict) -> None:
+    """Append one query record as JSON line. Best-effort — never raises."""
+    if not LOG_QUERIES:
+        return
+    try:
+        QUERY_LOG.parent.mkdir(parents=True, exist_ok=True)
+        record = {"ts": datetime.datetime.now().isoformat(timespec="seconds"), **record}
+        with QUERY_LOG.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
+    except Exception:
+        pass  # logging must never break a query
 
 SYSTEM_PROMPT = """You answer using only the retrieved context when possible.
 If the context is insufficient, say that directly.
@@ -195,12 +217,20 @@ def main() -> int:
         else:
             hits = search_qdrant(args.collection, query_vector, args.top_k)
 
+    top3 = [h.get("payload", {}).get("path", "?") for h in hits[:3]]
+
     if not hits:
+        log_query({"q": args.question, "collection": args.collection, "mode": args.mode,
+                   "top_k": args.top_k, "n_hits": 0, "top3": [], "answered": False,
+                   "reason": "no_context"})
         print("No context found in Qdrant for this question.", file=sys.stderr)
         return 1
 
     context = build_context(hits)
     if args.context_only:
+        log_query({"q": args.question, "collection": args.collection, "mode": args.mode,
+                   "top_k": args.top_k, "n_hits": len(hits), "top3": top3,
+                   "answered": None, "reason": "context_only"})
         print(context)
         return 0
 
@@ -210,11 +240,23 @@ def main() -> int:
         print("\n=== Answer ===")
 
     response = ask_llm(args.question, context, args.model)
+    text = response.get("choices", [{}])[0].get("message", {}).get("content")
+
+    # An answer is "weak" when the model says the context was insufficient —
+    # exactly the cases worth converting into eval gaps. Cheap heuristic over
+    # the answer text; refined later by the answer-eval judge if needed.
+    weak_markers = ("insufficient", "not enough", "cannot find", "can't find",
+                    "no information", "недостаточно", "не нашёл", "не нашел",
+                    "нет информации", "не содержит")
+    answered = bool(text) and not any(m in text.lower() for m in weak_markers) if text else False
+    log_query({"q": args.question, "collection": args.collection, "mode": args.mode,
+               "top_k": args.top_k, "n_hits": len(hits), "top3": top3,
+               "answered": answered, "model": args.model})
+
     if args.json:
         print(json.dumps(response, ensure_ascii=False, indent=2))
         return 0
 
-    text = response.get("choices", [{}])[0].get("message", {}).get("content")
     if not text:
         error = response.get("error", {}).get("message", "No answer content returned.")
         print(error, file=sys.stderr)
