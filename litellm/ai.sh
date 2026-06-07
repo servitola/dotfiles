@@ -12,7 +12,15 @@
 #                 Rotation groups: auto (default → coding) | coding | reasoning | fast.
 #                 Provider-specific: groq-llama | groq-gpt-oss | groq-compound |
 #                                    nvidia-nemotron | nvidia-nemotron-120b | nvidia-kimi | nvidia-deepseek |
-#                                    github-gpt4o-mini | github-deepseek-r1.
+#                                    github-gpt4o-mini | github-deepseek-r1 |
+#                                    sambanova-deepseek | sambanova-llama | sambanova-maverick |
+#                                    sambanova-minimax | sambanova-gpt-oss |
+#                                    chutes-qwen-thinking | chutes-qwen-coder | chutes-deepseek |
+#                                    chutes-kimi | chutes-glm | chutes-minimax | chutes-qwen-small |
+#                                    together-magistral | together-qwen-thinking | together-qwen-coder |
+#                                    together-deepseek | together-llama | together-minimax |
+#                                    mistral-magistral | mistral-magistral-small | gemini-flash-lite |
+#                                    llm7-qwen | llm7-mistral | llm7-codestral.
 #   -t, --tokens  max_tokens (default 1500)
 #   -s, --system  system prompt
 #   -f, --file    image file (png/jpg/gif/webp) — auto-selects vision model
