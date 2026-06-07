@@ -12,6 +12,14 @@ points at a free-tier upstream. Whitelist:
   Cerebras (https://api.cerebras.ai/v1)            — free tier (1M tokens/day)
   NVIDIA NIM (https://integrate.api.nvidia.com/v1) — free credits
   GitHub Models (https://models.github.ai/inference) — free quota
+  SambaNova (https://api.sambanova.ai/v1)          — persistent free tier
+  Chutes (https://llm.chutes.ai/v1)                — decentralised free tier
+  LLM7 (https://api.llm7.io/v1)                     — anonymous free tier
+  Together AI (https://api.together.xyz/v1)        — trial credits, EXPIRE.
+    NOT a recurring free tier — once the $25-$100 trial credit is spent,
+    calls start billing. Whitelisted because all Together deployments are
+    order:2 fallbacks / power-call aliases used deliberately. Operator must
+    watch the credit balance; this script can't see it.
   Azure AI Speech (https://<region>.tts.speech.microsoft.com) — F0 pricing
     tier on the resource gives 500K chars/month free; this script can't see
     the Azure-side tier, so the operator must verify F0 is set in the portal.
@@ -34,6 +42,14 @@ FREE_API_BASES = {
     "https://integrate.api.nvidia.com/v1",
     "https://models.github.ai/inference",
     "https://api.cerebras.ai/v1",
+    "https://api.sambanova.ai/v1",
+    "https://llm.chutes.ai/v1",
+    "https://api.llm7.io/v1",
+}
+# Together AI runs on expiring trial credits, not a recurring free tier.
+# Whitelisted separately so the reason string flags the billing risk.
+TRIAL_API_BASES = {
+    "https://api.together.xyz/v1",
 }
 OPENROUTER_API_BASE = "https://openrouter.ai/api/v1"
 
@@ -108,6 +124,8 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
         return False, f"OpenRouter slug missing :free suffix ({model!r})"
     if api_base in FREE_API_BASES:
         return True, f"whitelisted api_base ({api_base})"
+    if api_base in TRIAL_API_BASES:
+        return True, f"trial credits — EXPIRE, watch balance ({api_base})"
     if api_base is None:
         return False, "non-groq deployment has no api_base (unknown provider)"
     return False, f"unknown/paid api_base: {api_base}"
