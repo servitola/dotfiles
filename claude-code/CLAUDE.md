@@ -13,6 +13,7 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 - When editing shell scripts, be careful with quoting, associative arrays, and sed regex syntax.
 - Launch as many agents concurrently as possible — work in parallel rather than sequentially. The more independent agents running simultaneously, the better.
 - Codex will review your output once you are done
+- When creating a git worktree branch from a remote ref (e.g. `origin/Development`, `origin/main`, `origin/master`), ALWAYS pass `--no-track` so the new branch does not set the protected upstream as its push target. Example: `git worktree add <path> -b <new-branch> --no-track origin/Development`. Never let a feature/fix branch track a primary upstream — a stray `git push` could land work on the protected branch by accident.
 
 # Shared AI Coding Tools
 
