@@ -26,6 +26,12 @@ repos:
         language: system
         files: ^claude-code/skills/[^/]+/SKILL\.md$
         stages: [pre-commit]
+      - id: ensure-agents-symlinks
+        name: Ensure AGENTS.md has CLAUDE.md / WARP.md symlinks
+        entry: .git-hooks/ensure-agents-symlinks.sh
+        language: system
+        files: (^|/)AGENTS\.md$
+        stages: [pre-commit]
   # - repo: local
     # hooks:
       # - id: regenerate-agents-md
