@@ -125,6 +125,11 @@ install:
 	@$(REMOVE) ~/.config/eza
 	@$(LINK) ~/projects/dotfiles/eza ~/.config/eza
 
+	@echo "setup ripgrep config"
+	@mkdir -p ~/.config/ripgrep
+	@$(REMOVE) ~/.config/ripgrep/ripgreprc
+	@$(LINK) ~/projects/dotfiles/ripgrep/ripgreprc ~/.config/ripgrep/ripgreprc
+
 	@echo "setup atuin symlinks"
 	@mkdir -p ~/.config/atuin
 	@$(REMOVE) ~/.config/atuin/config.toml
