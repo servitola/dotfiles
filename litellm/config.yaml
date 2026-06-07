@@ -97,6 +97,41 @@ model_list:
       num_retries: 3
       timeout: 90
 
+  # === New OpenRouter :free (discovered 2026-06-07 via check-models --discover) ==
+  # NVIDIA Nemotron 3 Ultra 550B-A55B — flagship free reasoner, upgrade over
+  # the 120b super. Big → can be slow; reasoning model (emits <think>).
+  - model_name: nemotron-ultra
+    litellm_params:
+      model: openai/nvidia/nemotron-3-ultra-550b-a55b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 120
+  # NVIDIA Nemotron 3 Nano Omni 30B-A3B reasoning — fast multimodal-ish reasoner.
+  - model_name: nemotron-omni
+    litellm_params:
+      model: openai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+  # Poolside Laguna M.1 — coding-focused model, free on OpenRouter.
+  - model_name: poolside-laguna
+    litellm_params:
+      model: openai/poolside/laguna-m.1:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+  # Z.AI GLM-4.5-Air via OpenRouter free — independent quota from the native
+  # `glm` (zai key), good all-rounder backup.
+  - model_name: glm-air
+    litellm_params:
+      model: openai/z-ai/glm-4.5-air:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+  # OpenAI gpt-oss 20B — lighter/faster sibling of the 120b.
+  - model_name: gpt-oss-20b
+    litellm_params:
+      model: openai/openai/gpt-oss-20b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+
   # === Groq direct (free: 30 RPM / 6K TPM / 14 400 RPD) ===
   # `groq/` prefix — LiteLLM has native provider integration for Groq,
   # so no need for the `openai/<slug>` + api_base workaround. Kept for
@@ -659,6 +694,20 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: coding
+    litellm_params:
+      # Poolside Laguna M.1 — coding-focused, free on OpenRouter. New (2026-06-07).
+      model: openai/poolside/laguna-m.1:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+  - model_name: coding
+    litellm_params:
+      # GLM-4.5-Air via OpenRouter free — independent quota from native `glm`.
+      model: openai/z-ai/glm-4.5-air:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # reasoning — planning, analysis, long-context. Nemotron 120B (×2) +
   # Kimi K2.6 at order 1, Hermes 405B / Llama 3.3 70B / Mistral Large /
@@ -772,6 +821,22 @@ model_list:
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
       order: 2
+  - model_name: reasoning
+    litellm_params:
+      # Nemotron 3 Ultra 550B — flagship free reasoner (OpenRouter). New 2026-06-07.
+      # order:1 for quality; larger timeout since 550B can be slow.
+      model: openai/nvidia/nemotron-3-ultra-550b-a55b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 120
+      order: 1
+  - model_name: reasoning
+    litellm_params:
+      # Nemotron 3 Nano Omni 30B reasoning — fast order-2 cushion (OpenRouter).
+      model: openai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
 
   # fast — latency-critical. Cerebras (~2 600 tok/s) first, Groq (~300-500 tok/s) fallback.
   - model_name: fast
@@ -838,6 +903,13 @@ model_list:
       model: openai/meta-llama/Llama-3.3-70B-Instruct-Turbo
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
+      order: 2
+  - model_name: fast
+    litellm_params:
+      # gpt-oss 20B via OpenRouter free — lighter sibling of 120b. New 2026-06-07.
+      model: openai/openai/gpt-oss-20b:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
       order: 2
 
   # === Web Search (free tier) ==================================================
