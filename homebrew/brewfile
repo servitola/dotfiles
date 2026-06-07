@@ -124,7 +124,6 @@ brew "terminal-notifier"
 brew "id3v2"
 # Tool for managing apps on iOS devices
 brew "ideviceinstaller"
-brew "imagemagick"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
 # Small Clojure interpreter, linter and formatter
