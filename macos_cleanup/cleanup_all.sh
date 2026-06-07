@@ -144,6 +144,48 @@ else
     printf "  ${DIM}* Avid AAX: nothing to clean${NC}\n"
 fi
 
+print_task "GeForce NOW CEF cache"
+GFN_CACHE="$HOME/Library/Application Support/NVIDIA/GeForceNOW/CefCache"
+if [ -d "$GFN_CACHE" ]; then
+    if pgrep -x "GeForceNOW" > /dev/null; then
+        printf "  ${DIM}* GeForce NOW: app is running, skipping${NC}\n"
+    else
+        spinner_start "GeForce NOW Chromium cache"
+        gfn_before_kb=$(du -sk "$GFN_CACHE" 2>/dev/null | cut -f1)
+        "$RM_CMD" -rf "$GFN_CACHE"/* 2>/dev/null
+        gfn_after_kb=$(du -sk "$GFN_CACHE" 2>/dev/null | cut -f1)
+        gfn_freed_kb=$(( gfn_before_kb - gfn_after_kb ))
+        if [ "$gfn_freed_kb" -gt 0 ]; then
+            spinner_stop "GeForce NOW: freed $(format_size $gfn_freed_kb)"
+        else
+            spinner_stop "GeForce NOW: nothing to clean"
+        fi
+    fi
+else
+    printf "  ${DIM}* GeForce NOW: not installed${NC}\n"
+fi
+
+print_task "Battle.net BrowserCaches"
+BNET_CACHES="$HOME/Library/Application Support/Battle.net/BrowserCaches"
+if [ -d "$BNET_CACHES" ]; then
+    if pgrep -x "Battle.net" > /dev/null || pgrep -x "Battle.net Helper" > /dev/null; then
+        printf "  ${DIM}* Battle.net: app is running, skipping${NC}\n"
+    else
+        spinner_start "Battle.net embedded browser cache"
+        bnet_before_kb=$(du -sk "$BNET_CACHES" 2>/dev/null | cut -f1)
+        "$RM_CMD" -rf "$BNET_CACHES"/* 2>/dev/null
+        bnet_after_kb=$(du -sk "$BNET_CACHES" 2>/dev/null | cut -f1)
+        bnet_freed_kb=$(( bnet_before_kb - bnet_after_kb ))
+        if [ "$bnet_freed_kb" -gt 0 ]; then
+            spinner_stop "Battle.net: freed $(format_size $bnet_freed_kb)"
+        else
+            spinner_stop "Battle.net: nothing to clean"
+        fi
+    fi
+else
+    printf "  ${DIM}* Battle.net: not installed${NC}\n"
+fi
+
 print_task "Steam htmlcache (CEF browser cache)"
 STEAM_HTMLCACHE="$HOME/Library/Application Support/Steam/config/htmlcache"
 if [ -d "$STEAM_HTMLCACHE" ]; then
