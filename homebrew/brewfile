@@ -304,7 +304,7 @@ cask "blackhole-2ch"
 # 3D creation suite
 cask "blender"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # Tool to show live information about the batteries in various devices
 cask "coconutbattery"
 # OpenAI's coding agent that runs in your terminal
