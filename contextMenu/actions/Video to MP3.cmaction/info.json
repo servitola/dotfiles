@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Video to MP3",
+  "type" : "shell",
+  "uuid" : "7F2F3601-A433-49DF-B2A4-505AAF5CB9B5"
+}

@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : false,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Send to Telegram",
+  "type" : "shell",
+  "uuid" : "435627CC-D297-4EEA-B659-736473AE9167"
+}

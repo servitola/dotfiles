@@ -38,9 +38,29 @@
 		<key>icon</key>
 		<string>icon.icns</string>
 		<key>name</key>
+		<string>Open with Rider</string>
+		<key>path</key>
+		<string>Open with Rider.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
 		<string>New Plain Text File</string>
 		<key>path</key>
 		<string>New Plain Text File.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>New Markdown File</string>
+		<key>path</key>
+		<string>New Markdown File.cmaction</string>
 	</dict>
 	<dict>
 		<key>enabled</key>
@@ -85,6 +105,44 @@
 		<string>New iTerm2 Tab Here</string>
 		<key>path</key>
 		<string>New iTerm2 Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>name</key>
+		<string>New Zap Tab Here</string>
+		<key>path</key>
+		<string>New Zap Tab Here.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Send to Telegram</string>
+		<key>path</key>
+		<string>Send to Telegram.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Video to MP3</string>
+		<key>path</key>
+		<string>Video to MP3.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
+		<string>Transcribe with VoiceInk</string>
+		<key>path</key>
+		<string>Transcribe with VoiceInk.cmaction</string>
 	</dict>
 	<dict>
 		<key>enabled</key>
