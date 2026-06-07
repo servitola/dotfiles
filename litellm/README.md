@@ -1,6 +1,6 @@
 # LiteLLM — free model proxy
 
-Local OpenAI/Anthropic-compatible proxy over eight free upstreams (OpenRouter `:free`, Groq, Cerebras, NVIDIA NIM, GitHub Models, Z.AI, Mistral, Gemini) with automatic rotation.
+Local OpenAI/Anthropic-compatible proxy over twelve free upstreams (OpenRouter `:free`, Groq, Cerebras, NVIDIA NIM, GitHub Models, Z.AI, Mistral, Gemini, SambaNova, Chutes, LLM7, plus Together AI on expiring trial credits) with automatic rotation.
 
 - **Endpoint:** `http://localhost:4000`
 - **Master key:** `sk-local-workbot`
@@ -27,12 +27,17 @@ curl -s http://localhost:4000/v1/models -H "Authorization: Bearer sk-local-workb
 
 | kind | names |
 |---|---|
-| direct | `nemotron`, `gpt`, `glm`, `deepseek`, `gemini`, `uncensored`, `vision`, `embed` |
-| direct (Mistral) | `mistral-codestral`, `mistral-small`, `mistral-large` |
-| direct (Cerebras) | `cerebras-qwen`, `cerebras-glm`, `cerebras-gpt-oss` |
+| direct (OpenRouter) | `nemotron`, `nemotron-ultra`, `nemotron-omni`, `gpt`, `gpt-oss-20b`, `glm`, `glm-air`, `poolside-laguna`, `uncensored`, `vision`, `embed` |
+| direct (Mistral) | `mistral-codestral`, `mistral-small`, `mistral-large`, `mistral-magistral`, `mistral-magistral-small` |
+| direct (Cerebras) | `cerebras-glm`, `cerebras-gpt-oss` |
 | direct (NVIDIA NIM) | `nvidia-nemotron`, `nvidia-nemotron-120b`, `nvidia-kimi`, `nvidia-deepseek`, `nvidia-deepseek-flash` |
 | direct (Groq) | `groq-llama`, `groq-gpt-oss`, `groq-compound`, `groq-compound-mini` |
 | direct (GitHub) | `github-gpt4o-mini`, `github-deepseek-r1` |
+| direct (Gemini) | `gemini`, `gemini-flash-lite`, `gemini-search` |
+| direct (SambaNova) | `sambanova-deepseek`, `sambanova-llama`, `sambanova-maverick`, `sambanova-minimax`, `sambanova-gpt-oss` |
+| direct (Chutes) | `chutes-qwen-thinking`, `chutes-qwen-coder`, `chutes-qwen-small`, `chutes-deepseek`, `chutes-kimi`, `chutes-glm`, `chutes-minimax` |
+| direct (Together, trial) | `together-magistral`, `together-qwen-thinking`, `together-qwen-coder`, `together-deepseek`, `together-llama`, `together-minimax` |
+| direct (LLM7, anon) | `llm7-qwen`, `llm7-mistral`, `llm7-codestral` |
 | rotation (shuffle + cooldown) | `coding` (default for `auto`), `reasoning`, `fast`, `vision`, `web-search` |
 | web search | `gemini-search`, `groq-compound`, `web-search` |
 | TTS | `tts`, `tts-pro`, `tts-piper`, `tts-azure`, `tts-azure-ru` |
@@ -114,9 +119,10 @@ docker compose restart litellm   # proxy recreates the index on startup
 
 ## $0 guarantee
 
-1. [scripts/verify-free-only.sh](scripts/verify-free-only.sh) — walks every deployment and checks `(model, api_base)` against a whitelist (OpenRouter `:free` / Groq / Z.AI / Gemini / Mistral / Cerebras / NVIDIA NIM / GitHub Models). Run before every config change.
-2. Port 4000 bound to `127.0.0.1` only.
-3. Set a ~$0.01 OpenRouter credit limit — free models don't debit, any accidental paid call returns 402.
+1. [scripts/verify-free-only.sh](scripts/verify-free-only.sh) — walks every deployment and checks `(model, api_base)` against a whitelist (OpenRouter `:free` / Groq / Z.AI / Gemini / Mistral / Cerebras / NVIDIA NIM / GitHub Models / SambaNova / Chutes / LLM7 / local shims / Azure Speech). Run before every config change; must exit 0.
+2. Together AI (`api.together.xyz`) is whitelisted as **trial credits, not a recurring free tier** — once the trial balance is spent it bills. The script flags it (`trial credits — EXPIRE`) but can't see the balance; watch it in the Together dashboard.
+3. Port 4000 bound to `127.0.0.1` only.
+4. Set a ~$0.01 OpenRouter credit limit — free models don't debit, any accidental paid call returns 402.
 
 ## Connected CLIs
 
