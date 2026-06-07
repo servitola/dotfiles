@@ -63,3 +63,5 @@ export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 export MOZ_DISABLE_SAFE_MODE_KEY=1
 launchctl setenv MOZ_DISABLE_SAFE_MODE_KEY 1
 
+# ripgrep config
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
