@@ -370,14 +370,10 @@ cask "marta"
 cask "miro"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# App to write, plan, collaborate, and get organised
-cask "notion"
 # Cloud gaming platform
 cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
 cask "obs"
-# Knowledge base that works on top of a local folder of plain text Markdown files
-cask "obsidian"
 # Verify system files structure, run miscellaneous maintenance and more
 cask "onyx"
 # Web browser
