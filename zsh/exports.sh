@@ -37,8 +37,10 @@ fi
 # Go
 export GOPATH="$HOME/go"
 
-# .NET SDK
-export DOTNET_ROOT="$(brew --prefix dotnet)/libexec"
+# .NET SDK — installed via dotnet-install.sh into ~/.dotnet
+# (Homebrew dotnet uninstalled because it can't pin SDK to a specific patch
+# version that global.json may require; ~/.dotnet/sdk/ holds N versions side-by-side)
+export DOTNET_ROOT="$HOME/.dotnet"
 
 # Java & Android Development — ARM64 Homebrew JDK 21
 export JAVA_HOME=/opt/homebrew/opt/openjdk@21/libexec/openjdk.jdk/Contents/Home
