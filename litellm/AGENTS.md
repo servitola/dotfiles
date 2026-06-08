@@ -16,6 +16,24 @@
 - Port stays `127.0.0.1:4000`. UI creds stay `${LITELLM_UI_*:?...}` — never hardcoded.
 - `embed` alias uses `nvidia/llama-nemotron-embed-vl-1b-v2:free` (1024-dim). Changing the model breaks every Qdrant collection that used it — coordinate with `../rag/`.
 
+## Consumers — what routes through this proxy
+
+This is the **free-tier hub**: the things that talk to an LLM but shouldn't burn
+paid quota point at `127.0.0.1:4000`. **The primary AI coding tool — Claude Code —
+does NOT route through here**; it uses the paid Anthropic API directly. This proxy
+serves the *free* lane: CI/bulk jobs, image work, RAG, the `ai` CLI, and the
+experimental coding agents. If you change an alias, port, or the `embed` model,
+these break:
+
+- **`ai` CLI + RAG (the real daily consumers):** `ai.sh` (the `ai` command) and `../rag/` — `embed` for every Qdrant collection + chat models for `rag ask/improve/answer-eval`. These two matter day-to-day; everything below is experimental.
+- **Experimental coding agents — default model each picks:** `../opencode/` → `coding` (small `fast`); `../qwen-code/` → `coder-model`; `../aider/` → `coding` (weak `glm`). The `auto` model-group and the `coder`/`coder-model`/`qwen-code` aliases all resolve to **`coding`**. Exceptions: `../mistral-vibe/` defaults to its own `devstral-small`; `../codex/` defaults to its own `gpt-5.4-mini` (litellm only via `-c model_provider=litellm -c model=gpt`). All experiments — not used for real coding work; Claude Code is.
+- **Other CLIs / shell:** `../zsh/` `functions/qwen.sh` (`qm`), `../mistral-vibe/` (`vibe`), `../aichat/`.
+- **Voice/TTS:** `../voiceink/` via the `voiceink-local` shim (:8178), the `greek-tts` skill via `tts-azure`, `piper-shim/` via `tts-piper` (:8177).
+- **Desktop/MCP:** `../claude-desktop/` (`deepseek-mcp.sh`) — **not in use**: the Claude Desktop app is currently uninstalled; config kept on purpose (don't delete).
+
+Invariant: the proxy (and its docker stack) must be **up first** — `rag status`
+checks it. Consumers fail loudly if it's down (fail-fast convention).
+
 ## Caching
 
 Redis semantic cache via RediSearch (vector KNN). Key facts:
