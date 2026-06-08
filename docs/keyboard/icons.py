@@ -15,6 +15,7 @@ def icon_slug(name):
 _NAME_OVERRIDES = {
     "Iina": "IINA",
     "XCode": "Xcode",
+    "Raycast": "Raycast Beta",
 }
 _JXA = ('ObjC.import("AppKit");var ws=$.NSWorkspace.sharedWorkspace,'
     'i=ws.iconForFile("APP");i.setSize({width:SZ,height:SZ});'
@@ -22,17 +23,44 @@ _JXA = ('ObjC.import("AppKit");var ws=$.NSWorkspace.sharedWorkspace,'
     'r.representationUsingTypeProperties($.NSBitmapImageFileTypePNG,$())'
     '.writeToFileAtomically("OUT",true);')
 
+# Standard macOS application locations, searched directly when Spotlight is off.
+# `~/Applications` covers JetBrains Toolbox apps (Rider) and other per-user installs;
+# CoreServices covers Finder and friends.
+_APP_DIRS = [
+    "/Applications",
+    "/Applications/Utilities",
+    "/System/Applications",
+    "/System/Applications/Utilities",
+    "/System/Library/CoreServices",
+    "/System/Library/CoreServices/Applications",
+    os.path.expanduser("~/Applications"),
+]
+
+def _is_bundle(path):
+    """True if `path` is a real .app bundle (has Contents/Info.plist), not e.g.
+    a compiled terminfo entry like `/usr/share/terminfo/69/iTerm.app`."""
+    return bool(path) and os.path.isfile(os.path.join(path, "Contents", "Info.plist"))
+
 def _find(name):
-    """Locate a real .app bundle for `name`. Iterates mdfind hits and skips
-    non-bundle matches (e.g. `/usr/share/terminfo/69/iTerm.app` is a compiled
-    terminfo entry, not an app — Info.plist is absent)."""
+    """Locate a real .app bundle for `name`.
+
+    Tries Spotlight (`mdfind`) first — fast and finds apps in non-standard
+    locations. Falls back to a direct scan of the standard application
+    directories, which is essential because Spotlight indexing is disabled on
+    this machine (`mdutil -s /` → "Indexing and searching disabled"), so
+    `mdfind` returns nothing and every icon would degrade to a synthetic disc."""
     name = _NAME_OVERRIDES.get(name, name)
     r = sp.run(["mdfind", f'kMDItemKind == "Application" && kMDItemFSName == "{name}.app"'],
                capture_output=True, text=True, timeout=5)
     for path in r.stdout.splitlines():
         path = path.strip()
-        if path and os.path.isfile(os.path.join(path, "Contents", "Info.plist")):
+        if _is_bundle(path):
             return path
+    # Spotlight miss (or disabled): scan standard locations directly.
+    for d in _APP_DIRS:
+        cand = os.path.join(d, f"{name}.app")
+        if _is_bundle(cand):
+            return cand
     return None
 
 def _icns(app):
