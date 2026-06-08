@@ -50,7 +50,6 @@ services:
       start_period: 30s
     networks:
       - default
-      - mesh
 
   db:
     image: postgres:16-alpine
@@ -96,8 +95,3 @@ volumes:
     name: litellm_postgres_data
   redis_data:
     name: litellm_redis_data
-
-networks:
-  mesh:
-    name: ai-mesh
-    external: true
