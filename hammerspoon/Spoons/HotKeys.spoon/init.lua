@@ -61,6 +61,13 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
     end
 end
 
+local function yandex_title_has_video(title)
+    if not title or title == "" then return false end
+    for _, m in ipairs(yandex_video_title_markers) do
+        if title:find(m, 1, true) then return true end
+    end
+    return false
+end
 local function unminimize_if_needed(app)
     if not app then return false end
     if app.isHidden and app:isHidden() then app:unhide() end
@@ -528,6 +535,7 @@ function obj:init()
                     local focusList = focusApps[functionName]
                     hs.hotkey.bind(modifiers, key, function()
                         hs.closeConsole()
+                        local yandexPopupAsync = false
                         for _, app in ipairs(hs.application.runningApplications()) do
                             if app:kind() == 1 then
                                 local appName = app:name()
@@ -539,15 +547,71 @@ function obj:init()
                                         set_window_default(win)
                                     end
                                 elseif appName == "Yandex" then
-                                    local hasVideo = false
-                                    for _, win in ipairs(app:allWindows()) do
-                                        if is_yandex_video_player(appName, win:title(), win) then
-                                            hasVideo = true
+                                    local yandexApp = app
+                                    local keepVisibleNoVideo = (functionName == "window.focus_personal")
+
+                                    local function apply_yandex_layout()
+                                        local popupWin = nil
+                                        for _, win in ipairs(yandexApp:allWindows()) do
+                                            if is_yandex_video_player("Yandex", win:title(), win) then
+                                                popupWin = win
+                                                break
+                                            end
+                                        end
+
+                                        if popupWin then
+                                            for _, win in ipairs(yandexApp:allWindows()) do
+                                                if win == popupWin then
+                                                    set_window_left(win)
                                         else
                                             win:minimize()
                                         end
                                     end
-                                    if not hasVideo and not app:isHidden() then app:hide() end
+                                        elseif keepVisibleNoVideo then
+                                            if yandexApp:isHidden() then yandexApp:unhide() end
+                                            for _, win in ipairs(yandexApp:allWindows()) do
+                                                if win:isMinimized() then win:unminimize() end
+                                                set_window_default(win)
+                                            end
+                                        else
+                                            for _, win in ipairs(yandexApp:allWindows()) do
+                                                win:minimize()
+                                            end
+                                            if not yandexApp:isHidden() then yandexApp:hide() end
+                                        end
+                                    end
+
+                                    local hasPopup = false
+                                    for _, win in ipairs(yandexApp:allWindows()) do
+                                        if is_yandex_video_player("Yandex", win:title(), win) then
+                                            hasPopup = true
+                                            break
+                                        end
+                                    end
+
+                                    local frontWin = yandexApp:focusedWindow() or yandexApp:mainWindow()
+                                    local frontTitle = frontWin and frontWin:title() or ""
+
+                                    if not hasPopup and yandex_title_has_video(frontTitle) then
+                                        yandexPopupAsync = true
+                                        local fnNameLocal = functionName
+                                        hs.timer.doAfter(0.18, function()
+                                            yandexApp:activate()
+                                            hs.timer.doAfter(0.08, function()
+                                                hs.eventtap.keyStroke({"cmd", "alt"}, "right", 0)
+                                                hs.timer.doAfter(0.35, function()
+                                                    apply_yandex_layout()
+                                                    local tg = hs.application.get("Telegram")
+                                                    if tg then tg:activate() end
+                                                    if fnNameLocal == "window.focus_personal" then
+                                                        telegram_select_personal_folder(0.15)
+                                                    end
+                                                end)
+                                            end)
+                                        end)
+                                    else
+                                        apply_yandex_layout()
+                                    end
                                 elseif appName == "Telegram" then
                                     local hasVideo = false
                                     for _, win in ipairs(app:allWindows()) do
