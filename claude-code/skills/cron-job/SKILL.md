@@ -1,14 +1,17 @@
 ---
 name: cron-job
 description: |
-  Add, edit, or remove scheduled tasks in the dotfiles cron setup at
-  ~/projects/dotfiles/cron/cron_jobs/. Picks the right file, validates the
+  Add, edit, or remove scheduled tasks AND reminders in the dotfiles cron setup
+  at ~/projects/dotfiles/cron/cron_jobs/. Picks the right file, validates the
   schedule expression, wires logging/locking, and reinstalls crontab via
-  init-cron-jobs.sh. New entries always go into private (gitignored) files.
+  init-cron-jobs.sh. Reminders are scheduled Telegram messages (see the
+  Reminders section). New entries always go into private (gitignored) files.
 
   Use when: "добавь крон", "новая задача по расписанию", "запланируй задачу",
   "поставь в крон", "schedule a task", "add a cron job", "add to crontab",
-  "запиши в крон", "убери из крона", "remove cron job", "edit cron schedule".
+  "запиши в крон", "убери из крона", "remove cron job", "edit cron schedule",
+  "напомни мне", "поставь напоминание", "напоминание", "разовое напоминание",
+  "напоминай каждый", "remind me", "set a reminder", "remind me to", "ping me at".
 ---
 
 # Cron Job
@@ -92,6 +95,41 @@ If `crontab -l` doesn't show it, `init-cron-jobs.sh` failed silently or matched 
 ### 5. Tell the user what changed
 
 One short summary: which file was touched, the schedule in plain words, and the log path if any. The file is private and won't sync to other machines via git — mention that once.
+
+## Reminders (delivered via Telegram)
+
+A "reminder" is just a cron entry that posts a Telegram message at the scheduled
+time — reminders here go to **Telegram**, not macOS notifications. Two helpers do
+the sending (each sources the bot token from
+`~/projects/services/telegram-bot/scripts/.env` and POSTs to the local bot API):
+
+- `~/projects/dotfiles/cron/scripts/tg-send.sh <chat_id> "<text>"` — plain chat
+- `~/projects/dotfiles/cron/scripts/tg-send-thread.sh <chat_id> <thread_id> "<text>"` — forum-topic thread
+
+**Always confirm the destination** (chat_id / thread_id) with the user, or reuse
+an existing reminders file's target. Existing example to copy the shape from:
+`cron_jobs/friend-reminders.private.cron` (documents its chat + thread + a
+timezone-offset note in the header).
+
+Recurring reminder — inline the helper in the cron line:
+
+```
+# Reminder: weekly review, Fri 17:00
+0 17 * * 5 /Users/servitola/projects/dotfiles/cron/scripts/tg-send-thread.sh <chat_id> <thread_id> "🗒️ Еженедельный обзор" >> /Users/servitola/projects/dotfiles/cron/logs/reminders.log 2>&1
+```
+
+For reminders with logic (rotation, conditions, dynamic text), write a script in
+`cron/scripts/` and call it from cron — see `greek-daily-reminder.sh` for the
+pattern (`SEND="$HOME/.../tg-send-thread.sh"; exec "$SEND" "$CHAT_ID" "$THREAD_ID" "$MSG"`).
+
+**One-shot reminders** ("напомни завтра в 15:00"): cron is recurring by nature,
+so use a specific date — `M H D Mo *` (e.g. `0 15 9 6 *` = Jun 9, 15:00). It
+fires once; then **delete the entry and re-run `init-cron-jobs.sh`** — it will
+NOT clean itself up. Tell the user this.
+
+**Timezone:** the host runs in EEST (UTC+3). When the user gives a wall-clock
+time for someone in another zone, convert to host TZ (friend-reminders documents
+a Novosibirsk UTC+7 → −4h example).
 
 ## Removing or changing entries
 
