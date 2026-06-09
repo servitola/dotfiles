@@ -126,7 +126,7 @@ Backend: **local rembg** with `birefnet-general` model. Fully offline after
 the first run downloads the ~300 MB ONNX model into `~/.u2net/`.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/cutout_rembg.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/cutout_rembg.py \
   --input /path/to/input.jpg \
   --output /tmp/cutout.png
 ```
@@ -154,7 +154,7 @@ output is softer and identity sometimes drifts on cabinets / faces /
 small text. Daily ZeroGPU budget is shared per IP.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_hfspace.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_hfspace.py \
   --input /path/to/input.jpg \
   --prompt "Place this potted plant on a polished oak shelf, soft window light from camera-left at golden hour, warm 3200K, photorealistic" \
   --output /tmp/edit.png
@@ -167,7 +167,7 @@ disappointed the user or has obvious drift — see the **Free-first,
 paid on request** section for when to offer this.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_fal.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_fal.py \
   --input /path/to/input.jpg \
   --prompt "Place this potted plant on a polished oak shelf, soft window light from camera-left at golden hour, warm 3200K, photorealistic" \
   --output /tmp/edit.png
@@ -191,7 +191,7 @@ accepts a list of images). Then offer paid upgrade to `edit_fal.py
 free composition under-used the references.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_hfspace.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_hfspace.py \
   --input /tmp/coffee-machine-source.jpg \
   --ref /tmp/variant-1-arch-mirror.jpg \
   --prompt "Keep the cabinet, marble countertop, and coffee machine from image 1 exactly. Replace the wall behind them with the arched mirror from image 2. Add a denser monstera plant growing from the wall in the top-left corner. Match lighting and perspective of image 1, photorealistic." \
@@ -217,7 +217,7 @@ One-time setup (do once on this machine):
    while logged in and accept the license.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_mflux.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_mflux.py \
   --input /path/to/input.jpg \
   --prompt "Place this potted plant on a polished oak shelf, soft window light from camera-left at golden hour, warm 3200K, photorealistic" \
   --output /tmp/edit.png
@@ -238,7 +238,7 @@ White pixels in the mask are repainted; black pixels are preserved.
 You can pass either a ready mask PNG or a rectangle:
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_inpaint.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_inpaint.py \
   --input /tmp/source.jpg \
   --bbox 0,0,512,512 \
   --prompt "Dense monstera plant growing from the wall, lush leaves filling this corner, matching the warm interior lighting" \
@@ -259,7 +259,7 @@ send that via `mcp__bot__send_image` (with a short caption like «вот
 3 варианта — какой?»). Do not spam 3 separate messages.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/collage.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/collage.py \
   --inputs /tmp/inpainted.png /tmp/inpainted-2.png /tmp/inpainted-3.png \
   --output /tmp/inpainted_grid.png
 ```
@@ -274,7 +274,7 @@ than the free Space. Offer this when the free inpaint's repainted
 region has visible seams or low detail.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/edit_fal_fill.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/edit_fal_fill.py \
   --input /tmp/source.jpg \
   --mask /tmp/mask.png \
   --variants 3 \
@@ -315,7 +315,7 @@ visual identity: "the cabinet", "the green plants framing the mirror",
 text, fine wires) — for those skip to make_mask.py.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/auto_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/auto_mask.py \
   --like /tmp/prev.jpg \
   --describe "the green plants framing the mirror" \
   --output /tmp/mask.png \
@@ -347,26 +347,26 @@ Recipes:
 
 ```bash
 # Auto-mask the plants, then she said "толще" → grow last by 25 px
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/auto_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/auto_mask.py \
   --like /tmp/prev.jpg --describe "the green plants framing the mirror" \
   --output /tmp/mask.png
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/make_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/make_mask.py \
   --like /tmp/prev.jpg --from-mask /tmp/_last_mask.png --grow 25 \
   --output /tmp/mask.png --preview /tmp/preview.png
 
 # Neon caption — Florence-2 won't see it, build by hand
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/make_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/make_mask.py \
   --like /tmp/prev.jpg --output /tmp/mask.png --feather 4 \
   --shape rect:200,120,400,200
 
 # Thin the gold frame: outer arch minus a slightly-smaller arch
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/make_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/make_mask.py \
   --like /tmp/prev.jpg --output /tmp/mask.png --feather 3 \
   --shape arch:200,120,400,600 \
   --shape sub:arch:210,130,380,580
 
 # After preview, she said "правее" → shift cached mask 40 px right
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/make_mask.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/make_mask.py \
   --like /tmp/prev.jpg --from-mask /tmp/_last_mask.png --shift 40,0 \
   --output /tmp/mask.png --preview /tmp/preview.png
 ```
@@ -401,7 +401,7 @@ clean background texture from elsewhere in the same image. Pure PIL,
 free, deterministic.
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/patch_fill.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/patch_fill.py \
   --input /tmp/source.png \
   --output /tmp/out.png \
   --target 365,590,330,425 \
@@ -441,7 +441,7 @@ public endpoint as of 2026; only the image-edit `kontext` model was
 gated).
 
 ```bash
-uv run ~/projects/dotfiles/claude-code/shared/skills/image-edit/generate_pollinations.py \
+uv run ~/projects/dotfiles/claude-code/skills/image-edit/generate_pollinations.py \
   --prompt "Cozy bright living room with monstera plant on a wooden floor, soft morning light, photorealistic" \
   --output /tmp/gen.png
 ```
