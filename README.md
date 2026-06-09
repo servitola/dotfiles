@@ -1,4 +1,10 @@
 # servitola dotfiles
+
+[![CI](https://github.com/servitola/dotfiles/actions/workflows/ci.yml/badge.svg)](https://github.com/servitola/dotfiles/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![macOS](https://img.shields.io/badge/platform-macOS-blue?logo=apple)
+![Since 2020](https://img.shields.io/github/created-at/servitola/dotfiles?label=since)
+
 This is my answer to the question: "How to live with your MacOS?"
 I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBook Pro 16 M3Pro, MacBook Pro 16 i9 2019 since January 21, 2020. I try to sync every single property that can be synced.
 
