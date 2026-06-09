@@ -18,3 +18,10 @@ claude-code/.last-cleanup
 claude-code/stats-cache.json
 litellm/piper-shim/logs
 litellm/voiceink-shim/logs
+
+# Generated RAG logs / eval history
+rag/gaps/
+rag/rag-eval-history.md
+rag/rag-answer-eval-history.md
+rag/rag-gaps.md
+rag/rag-retired.md
