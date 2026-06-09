@@ -4,14 +4,9 @@
 source ~/projects/dotfiles/macos_update/functions.sh
 
 # Gruvbox colors
-RED='\033[0;31m'
 GREEN='\033[0;92m'      # Bright green
 YELLOW='\033[0;33m'
 BLUE='\033[0;94m'       # Bright blue
-MAGENTA='\033[0;35m'
-CYAN='\033[0;36m'
-WHITE='\033[0;37m'
-DIM='\033[2m'
 BOLD='\033[1m'
 NC='\033[0m'
 
@@ -112,7 +107,7 @@ yes | sdkmanager --licenses 2>&1 | grep -v "Warning: " > /dev/null || {
 }
 
 print_task "Updating Powerlevel10k theme"
-git -C ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k pull
+git -C "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" pull
 
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
@@ -127,4 +122,4 @@ python3 ~/projects/dotfiles/docs/keyboard/generate.py 2>&1 | tail -3
 print_task "Setting macOS appearance"
 m appearance --highlightcolor grape
 
-printf "\n${YELLOW}${BOLD}✨ All updates completed!${NC}\n"
+printf '\n%b✨ All updates completed!%b\n' "${YELLOW}${BOLD}" "${NC}"
