@@ -51,9 +51,9 @@
 [include]
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
+	; work-specific sections (private overlay; silently skipped when absent)
+	path = "~/projects/dotfiles_private/git/work.gitconfig"
 
-[http "https://REDACTED-GITLAB"]
-	proxy = socks5://localhost:1080
 [http "https://github.com"]
 	proxy =
 [http]
