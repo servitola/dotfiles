@@ -80,8 +80,8 @@ If no template/brand given, use a clean academic-leaning style:
 - Без emoji в заголовках/буллетах unless asked.
 - Numbered headings for рефератов/докладов (`1.`, `1.1.`, …) если объём > 3 страниц; иначе без нумерации.
 
-For friend/family bots: keep it sober. For friend
-specifically (medical content): formal academic tone, references in
+For friend/family bot topics: keep it sober. When the topic's content
+domain is academic or medical: formal academic tone, references in
 Vancouver style if the user asks for sources.
 
 ## Template — generator script
