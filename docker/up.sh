@@ -14,7 +14,11 @@ if [ -f "$HOME/.config/openai_key.sh" ]; then
 fi
 
 REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.txt"
+# Optional gitignored overlay (symlink into dotfiles_private) for stacks
+# that should not be listed in the public registry.
+PRIVATE_REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.private.txt"
 
+{ cat "$REGISTRY"; [ -f "$PRIVATE_REGISTRY" ] && cat "$PRIVATE_REGISTRY"; true; } | \
 while IFS= read -r rel || [ -n "$rel" ]; do
     [[ -z "$rel" || "$rel" =~ ^[[:space:]]*# ]] && continue
     dir="$HOME/$rel"
@@ -37,4 +41,4 @@ while IFS= read -r rel || [ -n "$rel" ]; do
     docker compose --project-directory "$dir" pull --ignore-buildable
     docker compose --project-directory "$dir" build --pull
     docker compose --project-directory "$dir" up -d
-done < "$REGISTRY"
+done
