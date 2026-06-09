@@ -333,8 +333,8 @@ on. Either rephrase shorter, or skip to make_mask.py with primitives.
 **Stage 2 — `make_mask.py` (local PIL, free, instant).** Two roles:
 
 A) Compose masks from geometric primitives — `rect`, `ellipse`, `arch`
-   (rectangle with semicircular top, exactly the mirror shape friend
-   works with), `ring` (annulus). `--shape add:rect:…` unions, `--shape
+   (rectangle with semicircular top — the classic arched-mirror shape),
+   `ring` (annulus). `--shape add:rect:…` unions, `--shape
    sub:arch:…` subtracts. Coords accept `%` suffix for percent of dim.
 
 B) **Refine an existing mask** — `--from-mask /tmp/_last_mask.png` plus
@@ -430,7 +430,7 @@ Pair patch_fill with edge effects:
   top of the texture fill.
 
 This was the right move for «обрежь зеркало снизу до уровня растений»
-in the friend «Идеи» topic — `patch_fill.py` of dark wall + new
+in a friend's ideas topic — `patch_fill.py` of dark wall + new
 horizontal LED bar at the new bottom edge.
 
 ### generate — с нуля без фото
