@@ -9,7 +9,7 @@ This is my answer to the question: "How to live with your MacOS?"
 I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBook Pro 16 M3Pro, MacBook Pro 16 i9 2019 since January 21, 2020. I try to sync every single property that can be synced.
 
 ## CAUTION: I use this configuration, and it works, but the installation was not debugged on a new machine. Also I have some specific details which can't fit others surely. They are described in the end of this readme.
-## I will be glad if you find any issues and report them.
+## I will be glad if you find any issues and report them — please open a [GitHub Issue](https://github.com/servitola/dotfiles/issues).
 ## Problems solved FAQ
 
 * Q: I want <ins>all file types</ins> to be opened with the <ins>proper app</ins> on <ins>double tap</ins> **always**
