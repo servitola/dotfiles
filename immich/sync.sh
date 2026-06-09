@@ -14,7 +14,15 @@ set -u
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-IMMICH_URL="https://REDACTED-IP:47443"
+# Server address lives in the gitignored immich.private.env overlay
+# (symlink into ~/projects/dotfiles_private) so the public repo does not
+# expose it. Soft-exit keeps `up` runs green on machines without it.
+ENV_FILE="${0:A:h}/immich.private.env"
+if [ ! -f "$ENV_FILE" ]; then
+    echo "  * Skip: immich.private.env missing (private overlay not installed)"
+    exit 0
+fi
+source "$ENV_FILE"  # sets IMMICH_URL
 
 if ! command -v immich >/dev/null 2>&1; then
     echo "  * Skip: immich CLI not installed (npm i -g @immich/cli)"
