@@ -40,7 +40,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 
 ![Hyper Layer](docs/keyboard/hyper.svg)
 
-*Auto-generated from [Lua config](hammerspoon/Spoons/Hotkeys.spoon/layout/60%/) + Karabiner rules. [View all 24 layers](docs/keyboard/) or run `python3 docs/keyboard/generate.py` to regenerate.*
+*Auto-generated from [Lua config](hammerspoon/Spoons/HotKeys.spoon/layout/60%/) + Karabiner rules. [View all 24 layers](docs/keyboard/) or run `python3 docs/keyboard/generate.py` to regenerate.*
 
 * Q: I want to control my <ins>environment variables</ins> (Exports)
 * A: Look at [Zsh exports.sh](https://github.com/servitola/dotfiles/blob/master/zsh/exports.sh)
