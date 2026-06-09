@@ -25,3 +25,6 @@ rag/rag-eval-history.md
 rag/rag-answer-eval-history.md
 rag/rag-gaps.md
 rag/rag-retired.md
+
+# External skill clone (github.com/DenisSergeevitch/agents-best-practices)
+claude-code/skills/agents-best-practices/
