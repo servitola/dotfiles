@@ -108,7 +108,7 @@ the sending (each sources the bot token from
 
 **Always confirm the destination** (chat_id / thread_id) with the user, or reuse
 an existing reminders file's target. Existing example to copy the shape from:
-`cron_jobs/friend-reminders.private.cron` (documents its chat + thread + a
+any `cron_jobs/*-reminders.private.cron` (documents its chat + thread + a
 timezone-offset note in the header).
 
 Recurring reminder — inline the helper in the cron line:
@@ -128,8 +128,8 @@ fires once; then **delete the entry and re-run `init-cron-jobs.sh`** — it will
 NOT clean itself up. Tell the user this.
 
 **Timezone:** the host runs in EEST (UTC+3). When the user gives a wall-clock
-time for someone in another zone, convert to host TZ (friend-reminders documents
-a Novosibirsk UTC+7 → −4h example).
+time for someone in another zone, convert to host TZ (the private reminders
+files document per-person offset examples, e.g. UTC+7 → −4h).
 
 ## Removing or changing entries
 
