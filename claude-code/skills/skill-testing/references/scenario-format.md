@@ -26,8 +26,42 @@ Edge-case modifications (only for edge-case scenarios):
 - Меняет требования в середине
 - Отвечает "ну сделай как-нибудь" даже на продуктовые вопросы
 
+## Persona Answer Sheet
+
+Anticipated questions the skill will ask, with in-character answers.
+
+Rules for the runner:
+- (a) a question not covered here → make the most persona-consistent
+  assumption and log it in journal.md under "Assumed answers";
+- (b) at any user-approval checkpoint (the skill says "present to user",
+  "wait for confirmation") → assume approval and log
+  `ASKED-USER "{checkpoint}" → assumed approval`.
+
+Authoring rule: answers contain persona facts and data only — never
+procedural hints about what the skill should do next (the same sheet goes
+to the baseline runner).
+
+Example Q/A pairs:
+- Q: "Какой стек предпочитаете?" → A: "Без разницы, что проще поддерживать.
+  Я не программист."
+- Q: "Нужна ли авторизация?" → A: "Да, вход через Google, без паролей."
+- Q: "Какой дедлайн / приоритет?" → A: "Не горит, главное чтобы работало."
+- Q: "Где хранить данные?" → A: "Не знаю, выбери сам что-то простое."
+- Q: "Подтвердите план" → assumed approval (rule (b)).
+
+## Side Effects
+
+redirect (default) | allow-with-cleanup: {paths}
+
+Redirect covers both absolute paths and relative paths (relative writes
+would land in the orchestrator's cwd).
+External/irreversible effects are never authorized by this field — they go
+through the user-facing gate.
+For allow-with-cleanup: list the exact paths and the cleanup step.
+
 ## Acceptance Criteria
-(number depends on skill complexity)
+(number depends on skill complexity — simple skills may have 5,
+complex procedural skills can have 15+)
 
 Format:
 1. [Process] {observable behavior during execution}
@@ -36,7 +70,7 @@ Format:
 
 Each criterion:
 - Binary: pass or fail, no "partially"
-- Observable: checkable from messages and files
+- Observable: checkable from journal entries and created files
 - Specific: no subjective assessments
 - Skill-focused: tests skill behavior, not general agent quality
 
@@ -45,9 +79,8 @@ Each criterion:
 - Which references the skill says to read (verify runner read them)
 - How to check time-dependent criteria (e.g., TDD order)
 - What file contents to verify (not just file existence)
-
-### Model for this test
-{opus | sonnet} (agreed with user during design)
+- Which artifacts prove which criteria (outcome criteria are graded from
+  artifacts only)
 ```
 
 ## Prompt Examples

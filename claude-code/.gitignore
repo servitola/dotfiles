@@ -27,5 +27,7 @@ claude-office-config.env
 memory/
 image-cache
 /scripts/
+skill-tests/*/reports/
+skill-tests/*/runs/
 toolbox-env.sh
 telemetry/
