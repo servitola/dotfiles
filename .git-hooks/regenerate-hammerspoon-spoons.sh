@@ -12,7 +12,8 @@ cp "$HAMMERSPOON_AGENTS" "$BACKUP_FILE"
 
 # Generate list of Spoons
 cd "$SPOONS_DIR"
-ls -1d *.spoon 2>/dev/null | sed 's/.spoon$//' | sort > "$TEMP_FILE"
+find . -mindepth 1 -maxdepth 1 -type d -name '*.spoon' 2>/dev/null \
+    | sed 's|^\./||; s/\.spoon$//' | sort > "$TEMP_FILE"
 
 # Extract content before the marker
 awk '/^## Installed Spoons$/{exit} {print}' "$HAMMERSPOON_AGENTS" > "${HAMMERSPOON_AGENTS}.tmp"
@@ -28,7 +29,7 @@ echo "" >> "${HAMMERSPOON_AGENTS}.tmp"
 awk '/^## Critical Rules$/{flag=1} flag' "$HAMMERSPOON_AGENTS" >> "${HAMMERSPOON_AGENTS}.tmp"
 
 # Verify the new file isn't empty and has reasonable size
-if [ ! -s "${HAMMERSPOON_AGENTS}.tmp" ] || [ $(wc -l < "${HAMMERSPOON_AGENTS}.tmp") -lt 5 ]; then
+if [ ! -s "${HAMMERSPOON_AGENTS}.tmp" ] || [ "$(wc -l < "${HAMMERSPOON_AGENTS}.tmp")" -lt 5 ]; then
     echo "ERROR: regenerate-hammerspoon-spoons.sh produced invalid output. Restoring from backup." >&2
     cp "$BACKUP_FILE" "$HAMMERSPOON_AGENTS"
     rm -f "$BACKUP_FILE" "$TEMP_FILE" "${HAMMERSPOON_AGENTS}.tmp"

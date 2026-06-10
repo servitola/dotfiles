@@ -15,5 +15,7 @@ jobs:
           python-version: "3.12"
       - name: Install pre-commit
         run: pip install pre-commit
+      - name: Install zsh (lint-shell hook needs it; shellcheck is preinstalled)
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq zsh
       - name: Run all hooks on all files
         run: pre-commit run --all-files --show-diff-on-failure
