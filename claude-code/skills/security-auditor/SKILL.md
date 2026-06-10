@@ -1,13 +1,14 @@
 ---
 name: security-auditor
 description: |
-  Comprehensive security analysis against OWASP Top 10 standards.
-  Use after code-reviewer for code handling: authentication, user input, database queries, external APIs.
+  Comprehensive security analysis against OWASP Top 10 standards. Run after
+  code-reviewer for code handling authentication, user input, database
+  queries, or external APIs.
 
-  AUTOMATIC TRIGGER - Invoke when user says ANY of:
-  "проверь безопасность", "security audit", "найди уязвимости", "check security"
+  Use when: "проверь безопасность", "найди уязвимости", "аудит безопасности",
+  "security audit", "check security", "find vulnerabilities", "OWASP review"
 
-  Do NOT use for: general code review (use code-reviewer), testing (use test-reviewer)
+  For general code review use code-reviewer; for test quality use test-reviewer.
 ---
 
 # Security Auditor
@@ -30,6 +31,9 @@ Elite security analysis with deep expertise in OWASP Top 10 and modern vulnerabi
    - Security headers (CSP, HSTS, X-Frame-Options)
    - Hardcoded secrets (API keys, tokens, passwords, connection strings in source code)
    - SSRF (server-side request forgery — user-controlled URLs in server-side requests)
+   - Server-side template injection (runtime template rendering from untrusted
+     strings — `Template(user_input)`, `Engine.from_string`, runtime-compiled
+     Handlebars/EJS/Razor; its own injection class, up to RCE)
    - Insecure design (missing threat modeling, business logic flaws)
    - Software and data integrity (deserialization attacks, CI/CD integrity)
    - Security logging and monitoring (audit trails, security event logging)
@@ -44,6 +48,9 @@ Elite security analysis with deep expertise in OWASP Top 10 and modern vulnerabi
    - Direct and transitive dependency vulnerabilities
    - Outdated packages with known security issues
    - Recommended upgrade paths
+   - Dependency hygiene: lockfile committed and enforced — CI must install
+     with `npm ci` (or frozen-lockfile equivalent), never bare `npm install`;
+     flag suspicious `postinstall` scripts in dependencies
 
 ## Operational Protocol
 
@@ -56,6 +63,11 @@ If any missing, request them before proceeding.
 
 **Analysis Methodology**:
 1. Review files systematically, starting with entry points (routes, controllers)
+   — identify the stack(s) and run the per-stack grep patterns from
+   [references/scanning-heuristics.md](references/scanning-heuristics.md)
+   (React/browser JS, Express, Next.js, Django/Python, dependency hygiene).
+   A grep hit is a lead, not a finding — confirm data origin, sink type,
+   and existing controls before reporting
 2. Trace data flow from input to output, identifying trust boundaries
 3. Check auth at each protected endpoint
 4. Examine all database queries for injection
@@ -126,6 +138,8 @@ looks fine, surface the change to the user before approving.
 - Set security headers (CSP, HSTS, X-Frame-Options, X-Content-Type-Options)
 - Use `httpOnly`, `secure`, `sameSite` cookies for sessions
 - Run `npm audit` (or equivalent) before every release
+- Install from the lockfile in CI (`npm ci` / frozen-lockfile) — bare
+  `npm install` in CI drifts from the lockfile and breaks build reproducibility
 
 **Ask first (requires human approval — surface to user, don't auto-approve):**
 - New authentication flow or change to existing auth logic
@@ -135,6 +149,16 @@ looks fine, surface the change to the user before approving.
 - New file upload handler
 - Rate-limiting or throttling changes
 - Elevated permissions / new roles granted
+- Any CSRF exemption (`@csrf_exempt` or equivalent) — acceptable only for
+  webhook endpoints WITH a compensating control: HMAC signature verification
+  over the raw body (Stripe/GitHub-style), never just an obscure URL
+- Proxy trust header changes (`SECURE_PROXY_SSL_HEADER`, Express
+  `trust proxy`) — safe only when the proxy provably strips/overwrites the
+  client-supplied header; common foot-gun in Docker/K8s deployments
+- Secret/signing key rotation — must be staged so signed data survives
+  (e.g. Django `SECRET_KEY_FALLBACKS`: new key active, old key temporarily
+  in fallbacks, then removed promptly — stale fallback keys extend the
+  attack window of a compromised key)
 
 **Never do:**
 - Commit secrets to version control
@@ -142,6 +166,8 @@ looks fine, surface the change to the user before approving.
 - Treat client-side validation as a security boundary
 - Disable security headers for convenience
 - Use `eval()` / `innerHTML` with user-controlled data
+- Render templates from untrusted strings at runtime (`Template(user_input)`,
+  `Engine.from_string`, runtime-compiled Handlebars/EJS/Razor)
 - Store session/auth tokens in localStorage or other client-accessible storage
 - Expose stack traces or internal error details to users
 
