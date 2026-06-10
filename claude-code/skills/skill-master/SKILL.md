@@ -128,7 +128,8 @@ For optional fields, see [frontmatter-options.md](references/frontmatter-options
 Every SKILL.md body consists of:
 - **Core workflow** — main instructions that are always needed
 - **Links to references** — for optional/detailed information
-- Keep under 500 lines (otherwise → split to references)
+
+SKILL.md is a router, not an encyclopedia. It answers "what is this skill and where do I go for my case" — depth lives in references. Target under ~150 lines; 500 is the hard limit. Approaching either → split (see [Progressive Disclosure](#progressive-disclosure) for splitting patterns).
 
 **When defining output format**, read [output-patterns.md](references/output-patterns.md) — template pattern, examples pattern.
 
@@ -249,9 +250,11 @@ Skills use a three-level loading system to manage context efficiently:
 2. **SKILL.md body** — When skill triggers (<5k words)
 3. **Bundled resources** — As needed by Claude (unlimited, scripts execute without reading)
 
-Keep SKILL.md body under 500 lines. Split content into separate files when approaching this limit. When splitting, reference them from SKILL.md and describe clearly when to read them.
-
 **Key principle:** When a skill supports multiple variations, frameworks, or options, keep only the core workflow and selection guidance in SKILL.md. Move variant-specific details into separate reference files.
+
+**When to split:** body approaching ~150 lines, OR covering 3+ distinct sub-workflows / domains / variants. Extract each branch into a reference; SKILL.md keeps only the routing. Scripts go to `scripts/`, documentation to `references/`.
+
+**Load only what the request needs.** A router works only if the agent follows one branch. Loading every reference defeats progressive disclosure — same context cost as one giant file. Say so in the skill itself, near the reference links: "Load the smallest set of references that fits the task."
 
 **Pattern 1: High-level guide with references**
 
@@ -308,8 +311,31 @@ For simple edits, modify XML directly.
 For tracked changes, see [REDLINING.md](REDLINING.md) — revision marks, accept/reject logic.
 ```
 
+**Pattern 4: Decision-tree router**
+
+For skills with many independent branches, route with an explicit decision tree — each user need maps to exactly one reference, and the agent loads only that branch:
+
+```markdown
+## What do you need?
+
+Deploy a change?
+├─ Static site → read [static.md](references/static.md)
+├─ API service → read [api.md](references/api.md)
+└─ Background worker → read [worker.md](references/worker.md)
+
+Debug a failure?
+├─ Build error → read [build-errors.md](references/build-errors.md)
+└─ Runtime error → read [runtime-errors.md](references/runtime-errors.md)
+```
+
+With many references (8+), add an index file (e.g. `references/_sections.md`): a routing table mapping "open when" conditions to files, plus reading order for common scenarios. SKILL.md links the index; the agent consults it instead of scanning every file.
+
+A routing tree/index differs from the passive resource catalog (anti-pattern above): every entry states a condition the agent matches against the request ("Build error → read X"), so it drives navigation instead of describing files.
+
+**Anti-pattern: monolithic SKILL.md.** A wall of text covering every variant, mode, and edge case inline. Every request pays the token cost of all branches, and the relevant instructions drown in irrelevant ones. Symptom: SKILL.md is hundreds of lines with an empty `references/`. Fix: keep the routing, extract each branch into a reference.
+
 **Important guidelines:**
-- Keep references one level deep from SKILL.md
+- Keep references one level deep from SKILL.md (an index file routing to sibling references is fine)
 - For files longer than 100 lines, include a table of contents at the top
 
 ### Positive over Negative
@@ -393,7 +419,8 @@ skill-checker is defined in `~/.claude/agents/skill-checker.md` and has skill-ma
 **Universal (all skills):**
 - [ ] name in kebab-case, ≤64 chars
 - [ ] description < 1024 chars, includes "Use when:" with trigger phrases
-- [ ] SKILL.md < 500 lines
+- [ ] SKILL.md < 500 lines (router target: < ~150 — depth in references)
+- [ ] Multi-branch skills route via decision tree or index; each branch loads only its own references
 - [ ] All referenced files exist
 - [ ] No extra docs (README, CHANGELOG)
 - [ ] References contain only conditional content (not needed on every execution path)
