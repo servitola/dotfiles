@@ -5,6 +5,13 @@
 # Usage (local):  ~/projects/dotfiles/cleanup/cleanup_all.sh
 # Usage (curl):   curl -fsSL .../cleanup/clean.sh | zsh
 
+# Safety options: referencing an unset variable is an error (no_unset), so a
+# typo'd variable can never expand to "" inside an rm path; pipelines report
+# failures (pipe_fail). err_exit is deliberately NOT set — cleanup is
+# conservative by design: missing/empty/running-app targets skip silently.
+# Run as a child process (`zsh cleanup_all.sh`), don't source interactively.
+setopt no_unset pipe_fail
+
 : "${CLEANUP_DIR:=$(dirname "$0")}"
 source "$CLEANUP_DIR/helpers.sh"
 source "$CLEANUP_DIR/try_clean.sh"
@@ -244,7 +251,7 @@ else
     printf "  ${DIM}* GlobalProtect: log directory not found${NC}\n"
 fi
 
-if [ "$AGGRESSIVE" = "true" ]; then
+if [ "${AGGRESSIVE:-}" = "true" ]; then
     print_section "Aggressive Cleanup"
 
     print_task "Cleaning Go module cache"
