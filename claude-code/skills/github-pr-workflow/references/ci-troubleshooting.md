@@ -2,9 +2,20 @@
 
 Common CI failure patterns and how to diagnose them from the logs.
 
+## Contents
+
+- [Reading CI Logs](#reading-ci-logs)
+- [Common Failure Patterns](#common-failure-patterns): [tests](#test-failures), [lint](#lint--formatting-failures), [types](#type-check-failures-mypy--pyright), [build](#build--compilation-failures), [permissions](#permission--auth-failures), [timeouts](#timeout-failures), [docker](#docker--container-failures)
+- [Auto-Fix Decision Tree](#auto-fix-decision-tree)
+- [Re-running After Fix](#re-running-after-fix)
+
 ## Reading CI Logs
 
 ```bash
+# Fastest: bundled script (gh) — lists failing checks, pulls run/job logs,
+# extracts the failure snippet by scanning backwards from the end of the log
+python3 ~/projects/dotfiles/claude-code/skills/github-pr-workflow/scripts/inspect_pr_checks.py --repo . --pr <number-or-url>
+
 # With gh
 gh run view <RUN_ID> --log-failed
 

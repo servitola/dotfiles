@@ -1,14 +1,14 @@
 ---
 name: github-pr-workflow
 description: |
-  Drive the full GitHub pull-request lifecycle: branch, commit, push, open a PR, monitor and auto-fix CI, then merge.
+  Drive the full GitHub pull-request lifecycle: branch, commit, push, open a PR, monitor and auto-fix CI, address review comments, then merge.
 
-  Use when: "открой PR", "создай пулреквест", "проверь CI на пулреквесте", "смержи PR", "open a pull request", "create a PR", "fix failing CI", "merge this PR"
+  Use when: "открой PR", "создай пулреквест", "проверь CI на пулреквесте", "разбери комментарии ревью", "ответь на комментарии в PR", "смержи PR", "open a pull request", "create a PR", "fix failing CI", "address review comments", "merge this PR"
 ---
 
 # GitHub Pull Request Workflow
 
-Complete guide for managing the PR lifecycle. Each section shows the `gh` way first, then the `git` + `curl` fallback for machines without `gh`.
+Complete guide for managing the PR lifecycle. Sections show the `gh` way; for machines without `gh`, equivalent `git` + `curl` commands live in `references/rest-fallbacks.md`.
 
 ## Prerequisites
 
@@ -95,14 +95,7 @@ git commit -m "feat: add JWT-based user authentication
 - Add unit tests for auth flow"
 ```
 
-Commit message format (Conventional Commits):
-```
-type(scope): short description
-
-Longer explanation if needed. Wrap at 72 characters.
-```
-
-Types: `feat`, `fix`, `refactor`, `docs`, `test`, `ci`, `chore`, `perf`
+Write messages in Conventional Commits format: `type(scope): short description`, body wrapped at 72 characters. Pick the type, breaking-change marker, and issue-linking syntax from `references/conventional-commits.md`.
 
 ## 3. Pushing and Creating a PR
 
@@ -110,6 +103,54 @@ Types: `feat`, `fix`, `refactor`, `docs`, `test`, `ci`, `chore`, `perf`
 
 ```bash
 git push -u origin HEAD
+```
+
+### Check for an Existing PR First
+
+A branch can only have one open PR. Before creating anything, check whether one already exists:
+
+```bash
+# With gh — returns PR info if the current branch already has one
+gh pr view "$(git branch --show-current)" --json number,isDraft,url 2>/dev/null
+
+# With git + curl
+BRANCH=$(git branch --show-current)
+curl -s -H "Authorization: token $GITHUB_TOKEN" \
+  "https://api.github.com/repos/$OWNER/$REPO/pulls?head=$OWNER:$BRANCH&state=open"
+```
+
+If a PR already exists:
+- **Update it in place** (`gh pr edit` / `PATCH .../pulls/N`) — never create a second PR for the same branch.
+- Preserve the existing review state — don't convert a ready-for-review PR back to draft. Only brand-new PRs created by this workflow may start as draft.
+- When rewriting the body, preserve key existing content — especially **images and manually added notes** (the author may have no way to recover a removed image).
+
+### PR Template Discovery
+
+Before composing the PR body, check whether the repo defines its own template. Candidates, in order:
+
+```bash
+REPO_ROOT=$(git rev-parse --show-toplevel)
+ls "$REPO_ROOT/.github/pull_request_template.md" \
+   "$REPO_ROOT/.github/PULL_REQUEST_TEMPLATE.md" \
+   "$REPO_ROOT"/.github/pull_request_template/*.md \
+   "$REPO_ROOT"/.github/PULL_REQUEST_TEMPLATE/*.md 2>/dev/null
+```
+
+- **Exactly one template** → read it and shape the PR body around it: keep its headings, required checklists, and repo-specific prompts; replace placeholder text with diff-specific content (or `N/A` where a section genuinely doesn't apply). Don't discard template sections just because the default body shape is shorter.
+- **Multiple templates** → stop and ask the user which one to use.
+- **No template** → fall back to the default body shape: a `## Summary` / `## Motivation`-style body, or the fuller skeletons in `assets/pr-body-feature.md` and `assets/pr-body-bugfix.md`.
+
+### PR Body Content Rules
+
+- Explain **why** first, then **what** changed. If the conversation discussed the motivation, capture it in the body.
+- Describe the **net change** only — don't narrate approaches that were attempted and undone during development.
+- Avoid absolute local paths (`/Users/you/...`); use repo-relative paths in backticks.
+- Include verification claims **only when actually evidenced**: a reproduced bug, a before/after check, a targeted test of the changed behavior, or a manual scenario with observed output. Don't pad with generic linter/CI/"tests pass" filler; if a template requires a verification section and nothing was run, write `Not run` with a reason.
+- Write the body to a temp file with real newlines and pass it via `--body-file` (avoids `\n`-escaped markdown):
+
+```bash
+gh pr create --title "..." --body-file /tmp/pr-body.md
+gh pr edit --body-file /tmp/pr-body.md     # when updating an existing PR
 ```
 
 ### Create the PR
@@ -131,26 +172,7 @@ Closes #42"
 
 Options: `--draft`, `--reviewer user1,user2`, `--label "enhancement"`, `--base develop`
 
-**With git + curl:**
-
-```bash
-BRANCH=$(git branch --show-current)
-
-curl -s -X POST \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/$OWNER/$REPO/pulls \
-  -d "{
-    \"title\": \"feat: add JWT-based user authentication\",
-    \"body\": \"## Summary\nAdds login and register API endpoints.\n\nCloses #42\",
-    \"head\": \"$BRANCH\",
-    \"base\": \"main\"
-  }"
-```
-
-The response JSON includes the PR `number` — save it for later commands.
-
-To create as a draft, add `"draft": true` to the JSON body.
+No `gh` available? Use the "Create the PR" section in `references/rest-fallbacks.md`.
 
 ## 4. Monitoring CI Status
 
@@ -166,55 +188,29 @@ gh pr checks
 gh pr checks --watch
 ```
 
-**With git + curl:**
-
-```bash
-# Get the latest commit SHA on the current branch
-SHA=$(git rev-parse HEAD)
-
-# Query the combined status
-curl -s \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/commits/$SHA/status \
-  | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-print(f\"Overall: {data['state']}\")
-for s in data.get('statuses', []):
-    print(f\"  {s['context']}: {s['state']} - {s.get('description', '')}\")"
-
-# Also check GitHub Actions check runs (separate endpoint)
-curl -s \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/commits/$SHA/check-runs \
-  | python3 -c "
-import sys, json
-data = json.load(sys.stdin)
-for cr in data.get('check_runs', []):
-    print(f\"  {cr['name']}: {cr['status']} / {cr['conclusion'] or 'pending'}\")"
-```
-
-### Poll Until Complete (git + curl)
-
-```bash
-# Simple polling loop — check every 30 seconds, up to 10 minutes
-SHA=$(git rev-parse HEAD)
-for i in $(seq 1 20); do
-  STATUS=$(curl -s \
-    -H "Authorization: token $GITHUB_TOKEN" \
-    https://api.github.com/repos/$OWNER/$REPO/commits/$SHA/status \
-    | python3 -c "import sys,json; print(json.load(sys.stdin)['state'])")
-  echo "Check $i: $STATUS"
-  if [ "$STATUS" = "success" ] || [ "$STATUS" = "failure" ] || [ "$STATUS" = "error" ]; then
-    break
-  fi
-  sleep 30
-done
-```
+No `gh` available? Use the "Check CI Status" section (including the polling loop) in `references/rest-fallbacks.md`.
 
 ## 5. Auto-Fixing CI Failures
 
 When CI fails, diagnose and fix. This loop works with either auth method.
+
+### Fast Path: Bundled Inspection Script (gh)
+
+One command that does the whole diagnosis: lists failing checks, fetches the GitHub Actions run/job logs (with fallback to per-job logs when the run log is still pending), and extracts the failure snippet — it searches backwards from the end of the log for failure markers (`error`, `traceback`, `assert`, `panic`, …) and prints the surrounding context:
+
+```bash
+python3 ~/projects/dotfiles/claude-code/skills/github-pr-workflow/scripts/inspect_pr_checks.py --repo . --pr <number-or-url>
+
+# Useful flags
+#   --pr           PR number or URL (defaults to the current branch's PR)
+#   --json         machine-friendly output for summarization
+#   --max-lines N  cap snippet/tail length (default 160)
+#   --context N    lines of context around the failure marker (default 30)
+```
+
+Checks whose `detailsUrl` is not a GitHub Actions run (e.g. Buildkite) are labeled `external` — only the URL is reported; don't try to scrape other providers. Exits non-zero while failing checks remain, so it can drive automation loops. Requires `gh`; with `curl`-only auth use the manual steps below.
+
+For common failure patterns and fixes see `references/ci-troubleshooting.md`.
 
 ### Step 1: Get Failure Details
 
@@ -228,29 +224,7 @@ gh run list --branch $(git branch --show-current) --limit 5
 gh run view <RUN_ID> --log-failed
 ```
 
-**With git + curl:**
-
-```bash
-BRANCH=$(git branch --show-current)
-
-# List workflow runs on this branch
-curl -s \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  "https://api.github.com/repos/$OWNER/$REPO/actions/runs?branch=$BRANCH&per_page=5" \
-  | python3 -c "
-import sys, json
-runs = json.load(sys.stdin)['workflow_runs']
-for r in runs:
-    print(f\"Run {r['id']}: {r['name']} - {r['conclusion'] or r['status']}\")"
-
-# Get failed job logs (download as zip, extract, read)
-RUN_ID=<run_id>
-curl -s -L \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/actions/runs/$RUN_ID/logs \
-  -o /tmp/ci-logs.zip
-cd /tmp && unzip -o ci-logs.zip -d ci-logs && cat ci-logs/*.txt
-```
+No `gh` available? Use the "Get CI Failure Details" section in `references/rest-fallbacks.md`.
 
 ### Step 2: Fix and Push
 
@@ -277,7 +251,43 @@ When asked to auto-fix CI, follow this loop:
 5. Wait for CI → re-check status
 6. Repeat if still failing (up to 3 attempts, then ask the user)
 
-## 6. Merging
+## 6. Addressing Review Comments
+
+When a PR comes back with feedback, address all three comment types — not just the conversation tab. A PR has three kinds of feedback: conversation comments, review submissions (Approve / Request changes / Comment), and inline review threads on specific lines. Plain `gh pr view --comments` misses inline threads; fetch everything via the GraphQL API.
+
+### Step 1: Fetch All Comments
+
+```bash
+# Bundled script (requires gh): conversation comments + reviews + inline
+# threads (with resolved/outdated state and file:line), cursor-paginated
+# so nothing is dropped on busy PRs. Resolves the current branch's PR.
+python3 ~/projects/dotfiles/claude-code/skills/github-pr-workflow/scripts/fetch_comments.py > /tmp/pr_comments.json
+```
+
+For the raw GraphQL query and the `curl` fallback see `references/review-comments.md`.
+
+### Step 2: Present Grouped, Let the User Pick
+
+Number every actionable item and group: conversation comments, review summaries, then **unresolved** inline threads (show `path:line`, author, and a one-line summary of what the fix would take). Skip threads that are already resolved; mark outdated ones. Then ask the user which numbered items to address — don't silently fix everything.
+
+### Step 3: Fix, Reply, Resolve
+
+For each selected item: fix the code, commit, push, then close the loop on GitHub:
+
+```bash
+# Reply inside an inline thread (COMMENT_ID = numeric databaseId of the thread's first comment)
+gh api "repos/$OWNER/$REPO/pulls/$PR_NUMBER/comments/$COMMENT_ID/replies" \
+  -f body="Fixed in $(git rev-parse --short HEAD)"
+
+# Resolve the thread (THREAD_ID = GraphQL node id from the fetch output)
+gh api graphql -f query='
+  mutation { resolveReviewThread(input: {threadId: "<THREAD_ID>"}) {
+    thread { isResolved } } }'
+```
+
+Only resolve threads you actually addressed; leave questions for the reviewer unresolved with a reply.
+
+## 7. Merging
 
 **With gh:**
 
@@ -289,48 +299,9 @@ gh pr merge --squash --delete-branch
 gh pr merge --auto --squash --delete-branch
 ```
 
-**With git + curl:**
+No `gh` available? Use the "Merge the PR" section (including auto-merge) in `references/rest-fallbacks.md`.
 
-```bash
-PR_NUMBER=<number>
-
-# Merge the PR via API (squash)
-curl -s -X PUT \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER/merge \
-  -d "{
-    \"merge_method\": \"squash\",
-    \"commit_title\": \"feat: add user authentication (#$PR_NUMBER)\"
-  }"
-
-# Delete the remote branch after merge
-BRANCH=$(git branch --show-current)
-git push origin --delete $BRANCH
-
-# Switch back to main locally
-git checkout main && git pull origin main
-git branch -d $BRANCH
-```
-
-Merge methods: `"merge"` (merge commit), `"squash"`, `"rebase"`
-
-### Enable Auto-Merge (curl)
-
-```bash
-# Auto-merge requires the repo to have it enabled in settings.
-# This uses the GraphQL API since REST doesn't support auto-merge.
-PR_NODE_ID=$(curl -s \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$OWNER/$REPO/pulls/$PR_NUMBER \
-  | python3 -c "import sys,json; print(json.load(sys.stdin)['node_id'])")
-
-curl -s -X POST \
-  -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/graphql \
-  -d "{\"query\": \"mutation { enablePullRequestAutoMerge(input: {pullRequestId: \\\"$PR_NODE_ID\\\", mergeMethod: SQUASH}) { clientMutationId } }\"}"
-```
-
-## 7. Complete Workflow Example
+## 8. Complete Workflow Example
 
 ```bash
 # 1. Start from clean main
@@ -350,12 +321,14 @@ Preserves the ?next= parameter instead of always redirecting to /dashboard."
 # 5. Push
 git push -u origin HEAD
 
-# 6. Create PR (picks gh or curl based on what's available)
+# 6. Create PR — check for an existing one and discover the repo template first
 # ... (see Section 3)
 
-# 7. Monitor CI (see Section 4)
+# 7. Monitor CI (see Section 4); if red, auto-fix (see Section 5)
 
-# 8. Merge when green (see Section 6)
+# 8. Address review comments if any (see Section 6)
+
+# 9. Merge when green (see Section 7)
 ```
 
 ## Useful PR Commands Reference
