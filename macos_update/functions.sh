@@ -23,10 +23,10 @@ function brew_unquarantine() {
             # Try to remove quarantine
             if xattr -d com.apple.quarantine "$app" 2>/dev/null; then
                 echo "  ✓ $app"
-                ((removed_count++))
+                (( ++removed_count ))  # pre-increment: (( x++ )) from 0 yields status 1 → err_exit trap
             else
                 echo "  ⚠ $app (skipped - protected by system)"
-                ((skipped_count++))
+                (( ++skipped_count ))
             fi
         fi
     done
