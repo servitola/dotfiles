@@ -979,10 +979,12 @@ router_settings:
     qwen3-coder-plus: coding
     # `ai` helper's default model is "auto" — keep it routable
     auto: coding
-  # When Gemini TTS 429s/500s on the free quota, transparently retry on
-  # Azure. `tts-azure-ru` re-dispatches through the proxy, so the
-  # `tts_voice_rewriter` pre-call hook fires and replaces the Gemini voice
-  # name (Kore/Puck/…) with `ru-RU-DmitryNeural` before the Azure call.
+  # Declared TTS fallback chain — but in practice router fallbacks do NOT
+  # fire for /v1/audio/speech (observed by the serho bot, see its
+  # tts_fallback.py): callers implement the chain client-side, retrying the
+  # next alias themselves. `tts-azure-ru` re-dispatches through the proxy,
+  # so the `tts_voice_rewriter` pre-call hook fires and replaces the Gemini
+  # voice name (Kore/Puck/…) with `ru-RU-DmitryNeural` before the Azure call.
   fallbacks:
     - tts: ["tts-piper", "tts-azure-ru"]
 
