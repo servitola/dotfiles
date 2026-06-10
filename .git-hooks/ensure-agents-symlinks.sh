@@ -8,7 +8,6 @@
 # worktree would leave the symlink uncommitted).
 set -euo pipefail
 
-made=0
 for f in "$@"; do
     case "$(basename "$f")" in
         AGENTS.md) ;;
@@ -22,7 +21,6 @@ for f in "$@"; do
             ln -sfh "AGENTS.md" "$link"
             git add "$link"
             echo "ensure-agents-symlinks: linked $link -> AGENTS.md"
-            made=1
         fi
     done
 done

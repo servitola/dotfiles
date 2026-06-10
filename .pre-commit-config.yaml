@@ -32,6 +32,12 @@ repos:
         language: system
         files: (^|/)AGENTS\.md$
         stages: [pre-commit]
+      - id: lint-shell
+        name: Lint shell scripts (zsh -n / shellcheck by shebang)
+        entry: .git-hooks/lint-shell.sh
+        language: system
+        files: (\.sh$|^zsh/bin/[^/.]+$)
+        stages: [pre-commit]
   # - repo: local
     # hooks:
       # - id: regenerate-agents-md

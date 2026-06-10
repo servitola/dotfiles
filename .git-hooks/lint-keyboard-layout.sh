@@ -8,7 +8,6 @@ set -e
 # Repo root from git so the hook also works on CI runners (pre-commit
 # always runs hooks from the repository root).
 DOTFILES_ROOT="$(git rev-parse --show-toplevel)"
-LAYOUT_DIR="$DOTFILES_ROOT/hammerspoon/Spoons/HotKeys.spoon/layout/60%"
 
 # Filter to only *.lua files inside layout/60%/
 files=()

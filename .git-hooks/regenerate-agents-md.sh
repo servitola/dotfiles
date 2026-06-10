@@ -13,9 +13,11 @@ LC_COLLATE=C tree -L 2 -I '.git|.DS_Store|node_modules|ableton' --dirsfirst --no
 awk '/^## Current Directory Structure \(depth 2\)$/{exit} {print}' "$AGENTS_MD" >"${AGENTS_MD}.tmp"
 
 # Add the new section
-echo "## Current Directory Structure (depth 2)" >>"${AGENTS_MD}.tmp"
-cat "$TEMP_FILE" >>"${AGENTS_MD}.tmp"
-echo "Finish of Directory Structure" >>"${AGENTS_MD}.tmp"
+{
+    echo "## Current Directory Structure (depth 2)"
+    cat "$TEMP_FILE"
+    echo "Finish of Directory Structure"
+} >>"${AGENTS_MD}.tmp"
 
 # Extract content after the marker (if any)
 awk '/^Finish of Directory Structure$/{flag=1; next} flag' "$AGENTS_MD" >>"${AGENTS_MD}.tmp"
