@@ -1,28 +1,25 @@
 ---
 name: create-regular-website
 description: |
-  Creates and maintains a personal website for a non-technical user — blog,
-  portfolio, gallery, personal landing page, or any combination. Content
+  Creates and maintains a personal website for a non-technical user —
+  blog, portfolio, gallery, landing page, or any mix. Content
   lives as files in the user's topic folder; the site publishes to
   Surge.sh (accessible from Russia without VPN).
 
-  Trigger on initialization when the user says things like: "I want a
-  website", "make me a site", "let's start a blog", "I want a portfolio",
-  "personal page", "site about [topic]", in any language.
+  Trigger on initialization when the user says, in any language: "I want
+  a website", "make me a site", "let's start a blog", "I want a
+  portfolio", "personal page", "site about [topic]".
 
   Trigger on content work — only when the current folder contains
-  `site.yaml` — when the user says: "new post", "here is text", "for the
-  blog", "for the gallery", "this is my work", "here are photos", "about
-  me", "rename the site", "different color", "delete the post", "publish",
-  "update the site", "show the link", "how does it look now".
+  `site.yaml`: "new post", "here is text/photos", "for the
+  blog/gallery", "this is my work", "about me", "rename the site",
+  "different color", "delete the post", "publish", "update the site",
+  "show the link", "how does it look now".
 
-  SKIP when:
-  - The folder has no `site.yaml` AND the user is not asking to create a
-    site (e.g. "new note for ideas", "save this somewhere").
-  - The user asks about how the site works technically (npm, deploy, git)
-    — that is for the operator, not the user.
-  - The user asks for a site for someone else (different topic, possibly
-    different stack).
+  SKIP when: the folder has no `site.yaml` AND the user is not asking to
+  create a site (e.g. "save this note somewhere"); the user asks how the
+  site works technically (npm, deploy, git) — that is for the operator;
+  the user wants a site for someone else (different topic/stack).
 ---
 
 # create-regular-website

@@ -5,22 +5,18 @@ description: |
   Four pipelines: cutout (transparent PNG), edit (place subject on a new
   background, relight, or compose 2-3 reference images), inpaint (repaint
   one masked region, keep the rest pixel-identical), generate
-  (text-to-image from scratch). Optimized for plants, pots, interiors,
-  product shots, but works on any photo.
+  (text-to-image from scratch). Works on any photo.
 
   Use when user sends a photo and asks any of: "обработай фото",
-  "отредактируй фото", "поправь картинку", "сделай картинку",
-  "убери фон", "вырежи фон", "удали фон", "сделай прозрачный",
-  "поставь на", "помести на", "смени фон", "другой фон",
-  "другой свет", "перегенерь свет", "вписать в сцену",
-  "переделай фото", "восстанови фото", "почисти фото",
-  "сгенерируй картинку", "нарисуй картинку", "сделай иллюстрацию",
-  "edit photo", "edit image", "process image", "remove background",
-  "cutout", "transparent", "place on", "relight", "change background",
-  "generate image", "make picture", "restyle".
+  "отредактируй фото", "сделай картинку", "убери фон", "вырежи фон",
+  "сделай прозрачный", "поставь на", "смени фон", "другой свет",
+  "вписать в сцену", "переделай фото", "сгенерируй картинку",
+  "нарисуй картинку", "edit photo", "process image",
+  "remove background", "cutout", "transparent", "place on", "relight",
+  "change background", "generate image", "restyle".
 
-  Also: when working in a Telegram topic whose CLAUDE.md says "any photo
-  triggers image-edit", route every incoming image through this skill.
+  Also: in a Telegram topic whose CLAUDE.md says "any photo triggers
+  image-edit", route every incoming image through this skill.
 ---
 
 # image-edit
