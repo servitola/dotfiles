@@ -22,384 +22,52 @@ Core problems it solves:
 - **Scope creep** — specs approved before coding starts
 - **Outdated agent knowledge** — Context7 MCP fetches current library docs
 
----
-
 ## Development Pipeline
 
-The full path from idea to production. Each step has a command, a skill behind it, and validators.
+The full path from idea to production. Each step has a command, a skill behind it, and validators:
 
-### Step 1: User Spec — `/new-user-spec`
+| Step | Command | Output | Skill |
+|------|---------|--------|-------|
+| 1. User Spec | `/new-user-spec` | `work/{feature}/user-spec.md` (approved) | `user-spec-planning` |
+| 2. Tech Spec | `/new-tech-spec` | `work/{feature}/tech-spec.md` (approved) | `tech-spec-planning` |
+| 3. Task Decomposition | `/decompose-tech-spec` | `work/{feature}/tasks/*.md` (validated) | `task-decomposition` |
+| 4. Implementation | `/do-task` or `/do-feature` | committed code + reviews | from task file / `feature-execution` |
+| 5. Done | `/done` | PK updated, feature archived | `documentation-writing` |
 
-**What:** Structured interview to capture requirements in human-readable form (Russian).
+Step 4 mode choice:
+- **`/do-task`** — single task, manual control, debugging, iterating on one piece.
+- **`/do-feature`** — multiple tasks ready, standard feature work, parallel execution via agent teams.
 
-**Process:**
-- Agent reads Project Knowledge files to understand the project
-- Scans codebase for relevant code, patterns, integration points
-- Runs 3 interview cycles with the user (general → code-informed → edge cases)
-- `interview-completeness-checker` agent verifies coverage
-- Creates `user-spec.md` from interview data → git commit draft
-- 2 validators run in parallel (up to 3 iterations):
-  - `userspec-quality-validator` — document structure, acceptance criteria testability
-  - `userspec-adequacy-validator` — solution feasibility, over/underengineering
-- Git commit after each validation round
-- User approves → git commit approval (status: approved)
+To run or explain any step, follow its process in [pipeline.md](references/pipeline.md) — per-step validators, commit points, iteration limits, wave mechanics, escalation rules, plus cross-cutting principles (commit strategy, validation counts, checkpoint recovery, Context7, just-in-time context).
 
-**Output:** `work/{feature}/user-spec.md` (status: approved)
+## What Do You Need?
 
-**Skill:** `user-spec-planning`
+Run a pipeline step / explain how a stage works?
+→ read [pipeline.md](references/pipeline.md) — steps 1–5 in detail + key principles
 
-### Step 2: Tech Spec — `/new-tech-spec`
+Find where docs, specs, tasks live (Project Knowledge, `work/{feature}/`, global `~/.claude/`)?
+→ read [project-structure.md](references/project-structure.md)
 
-**What:** Technical architecture, decisions, testing strategy, implementation plan.
+Look up a skill, agent, or slash command by name or category?
+→ read [ecosystem.md](references/ecosystem.md) — planning/execution/quality/meta skills, validators, reviewers, commands
 
-**Process:**
-- Reads approved user-spec
-- Researches codebase, checks dependencies, uses Context7 for external libraries
-- Asks technical clarification questions
-- Copies tech-spec template, edits sections in place → `tech-spec.md` with architecture (including Shared Resources for heavy objects like ML models, DB pools), decisions, testing strategy, brief Implementation Tasks (scope only — AC and TDD are added during task-decomposition) → git commit draft
-- Implementation Tasks include Verify-smoke (executable checks: curl, python -c, docker) and Verify-user (manual UI/UX checks) fields where applicable
-- Last two waves are always Audit Wave (3 parallel auditors: code, security, test) and Final Wave (QA + deploy)
-- 5 validators run in parallel (up to 3 iterations):
-  - `skeptic` — detects non-existent files, functions, APIs (mirages)
-  - `completeness-validator` — bidirectional requirements traceability, over/underengineering, solution depth
-  - `security-auditor` — OWASP Top 10 review
-  - `test-reviewer` — test plan adequacy
-  - `tech-spec-validator` — template compliance, task quality, wave conflict detection
-- Git commit after each validation round
-- User approves → git commit approval (status: approved)
+Apply the cross-skill behavioural rules in detail (formats, failure modes)?
+→ read [operating-behaviors.md](references/operating-behaviors.md)
 
-**Output:** `work/{feature}/tech-spec.md` (status: approved)
-
-**Skill:** `tech-spec-planning`
-
-### Step 3: Task Decomposition — `/decompose-tech-spec`
-
-**What:** Break tech-spec into atomic task files.
-
-**Process:**
-- For each Implementation Task in tech-spec, `task-creator` agent copies task template and fills it (parallel)
-- Each task file expands brief tech-spec scope into: acceptance criteria, TDD anchor (from Testing Strategy), context files, skills, reviewers, wave, dependencies → git commit draft
-- 2 validators run in parallel (up to 3 iterations):
-  - `task-validator` — template compliance, content quality
-  - `reality-checker` — validates against actual codebase (file existence, feasibility)
-- Cross-task integration check: both validators re-run on all tasks together — catches shared resource conflicts, duplicate heavy resource init, hidden dependencies (max 2 extra iterations)
-- Git commit after each validation round
-- User approves → git commit approval
-
-**Output:** `work/{feature}/tasks/*.md` (validated)
-
-**Skill:** `task-decomposition`
-
-### Step 4: Implementation
-
-**Choose `/do-task` when:** single task, manual control, debugging, iterating on one piece.
-**Choose `/do-feature` when:** multiple tasks ready, standard feature work, want parallel execution.
-
-Two modes:
-
-#### Mode A: Single Task — `/do-task`
-
-One task per session. Suited for manual, controlled execution.
-
-**Process:**
-- Reads task file and all its Context Files
-- Loads skills specified in task (e.g. `code-writing`, `pre-deploy-qa`, `infrastructure-setup`)
-- Follows loaded skill workflow (TDD for code tasks, verification for QA tasks, etc.)
-- Git commit implementation (code + tests pass)
-- Runs reviewers specified in task (if any), up to 3 review iterations
-- Git commit after each round of review fixes (tests pass)
-- Writes entry to `decisions.md`, updates task status → done
-- Git commit status + decisions
-
-**Skill:** Loaded from task file (typically `code-writing` for code tasks)
-
-#### Mode B: Full Feature — `/do-feature`
-
-All tasks via agent teams. Team lead orchestrates waves of parallel work.
-
-**Process:**
-- Team lead reads tech-spec and all task files, builds execution plan
-- Checks `checkpoint.yml` — if resuming after context compaction, skips completed waves (uses decisions.md as source of truth for what actually completed)
-- Creates team via TeamCreate
-- Executes tasks wave by wave:
-  - Spawns one agent per task (parallel within wave)
-  - Each teammate: follows loaded skill workflow, runs smoke verification if task has Verify-smoke (before reviews), commits code (tests pass), sends diff to reviewers, fixes findings with commits per round (max 3 rounds), commits review reports
-  - Each teammate writes `decisions.md` entry
-  - Lead commits status updates (task frontmatter + decisions.md) after wave completes, updates `checkpoint.yml`
-- **Audit Wave** (always present): 3 auditors run in parallel (code-reviewer, security-auditor, test-reviewer) — review all feature code holistically. Issues found → lead spawns fixer agent, auditors become reviewers (max 3 fix rounds)
-- **Ad-hoc agents**: when lead needs work outside planned tasks (fixing audit findings, escalations), assigns matching skill + reviewers based on work type
-- **Final Wave**: QA (always), deploy + post-deploy (if applicable)
-- **Escalation**: after 3 failed fix rounds — stop, report to user, write decisions.md entry, wait for decision
-- User reviews results, team shuts down, `checkpoint.yml` deleted
-
-Tasks can be code, user-action, deploy, config, or verification. Task nature is determined by its skill + description, not a separate type field.
-
-**Skill:** `feature-execution`
-
-### Step 5: Done — `/done`
-
-**What:** Finalize feature, update project knowledge, archive.
-
-**Process:**
-- Reads user-spec, tech-spec, decisions.md
-- Updates affected Project Knowledge files (architecture.md, patterns.md, deployment.md, etc.)
-- Moves `work/{feature}/` → `work/completed/{feature}/`
-- Commits changes
-
-**Skill:** Loads `documentation-writing` skill for PK update rules
-
----
-
-## Project Structure
-
-### Project Knowledge — the Knowledge Base
-
-All project documentation lives in `.claude/skills/project-knowledge/references/`. This is the single source of truth for everything about the project.
-
-**4 core + optional files:**
-
-| File | Content |
-|------|---------|
-| `project.md` | Purpose, audience, core features, scope |
-| `architecture.md` | Tech stack, structure, dependencies, data model |
-| `patterns.md` | Code conventions, git workflow, testing, business rules |
-| `deployment.md` | Platform, env vars, CI/CD, monitoring |
-| `ux-guidelines.md` | UI language, tone, domain glossary (optional) |
-
-Features and roadmap live in the project backlog (external to PK).
-
-**CLAUDE.md is minimal.** It contains only the project name, a reference to project-knowledge skill, methodology overview, and default branch. All real information lives in Project Knowledge files.
-
-**`project-planning` skill** creates PK from scratch in new projects via interview (`/init-project-knowledge`).
-
-**`documentation-writing` skill** manages existing PK: audits, updates, checks consistency. `/done` command uses it to update PK after feature completion.
-
-### Work Items
-
-```
-work/{feature}/
-├── user-spec.md          # Requirements (Russian, for human)
-├── tech-spec.md          # Architecture (English, for agent)
-├── decisions.md          # Decisions made during implementation
-├── tasks/
-│   ├── 1.md              # Atomic task files
-│   ├── 2.md
-│   └── 3.md
-└── logs/                 # Working logs (interview, research, reviews)
-```
-
-Completed features are archived to `work/completed/{feature}/`.
-
-### Global Structure `~/.claude/`
-
-```
-~/.claude/
-├── skills/               # Skills (methodology, workflow, quality)
-├── agents/               # Agents (validators, reviewers, creators)
-├── commands/             # Slash commands
-├── shared/               # Templates, scripts, interview plans
-├── hooks/                # Automation hooks
-└── CLAUDE.md             # Global instructions
-```
-
----
+Load the smallest set of references that fits the task.
 
 ## Core Operating Behaviors (apply across all skills)
 
-These are non-negotiable behaviours every agent in this methodology
-follows, regardless of which skill is active. The pipeline (specs,
-validators, reviewers) catches *outputs*; these behaviours catch
-*inputs* — the silent failure modes that bypass validators.
+Every agent in this methodology follows these, regardless of which skill is active. The pipeline (specs, validators, reviewers) catches *outputs*; these behaviours catch *inputs* — silent failure modes that bypass validators:
 
-### 1. Surface Assumptions
+1. **Surface assumptions** — before non-trivial work, list assumptions explicitly so the user can correct them.
+2. **Manage confusion actively** — on inconsistency: stop, name the confusion, present the tradeoff, wait for resolution.
+3. **Push back when warranted** — point out clear problems, quantify the downside, propose an alternative.
+4. **Enforce simplicity** — prefer boring, obvious solutions; abstractions earn their complexity.
+5. **Scope discipline** — touch only what the task requires; record side-observations as `NOTICED BUT NOT TOUCHING:`.
+6. **Verify, don't assume** — a task is complete only when verification evidence exists (tests, build output, smoke check).
 
-Before non-trivial work, list assumptions you'd otherwise silently
-bake in. Format:
-
-```
-ASSUMPTIONS I'M MAKING (correct me now or I proceed with these):
-1. {requirement assumption}
-2. {architecture assumption}
-3. {scope assumption}
-```
-
-Skills that ritualise this: `user-spec-planning` (Cycle 2),
-`tech-spec-planning` (Phase 3 step 3.0).
-
-### 2. Manage Confusion Actively
-
-On any inconsistency or conflicting requirement: **stop**, name the
-specific confusion, present the tradeoff, wait for resolution. Silent
-guessing is the #1 source of post-validation rework.
-
-### 3. Push Back When Warranted
-
-Sycophancy is a failure mode. When an approach has a clear problem:
-point it out, quantify the downside ("adds ~200 ms latency", not
-"might be slower"), propose an alternative, accept the human's
-override if they have full context.
-
-### 4. Enforce Simplicity
-
-The natural tendency is to overcomplicate. Resist actively. Before
-finishing implementation, ask: can this be done in fewer lines? Are
-the abstractions earning their complexity? Would a staff engineer
-say "why didn't you just…"? Prefer boring, obvious solutions.
-
-### 5. Scope Discipline
-
-Touch only what the task requires. Don't "clean up" adjacent code,
-refactor orthogonal systems, delete things you don't fully
-understand, or add features that "seem useful". Record observations
-as `NOTICED BUT NOT TOUCHING:` instead. See `code-writing` Phase 2.
-
-### 6. Verify, Don't Assume
-
-A task isn't complete until verification passes. "Seems right" is
-never sufficient — there must be evidence (passing tests, build
-output, smoke check, runtime data). Each skill defines its own
-verification step; do not skip it.
-
-### Failure modes these behaviours catch
-
-1. Wrong assumptions running unchecked.
-2. Plowing ahead through confusion.
-3. Not surfacing inconsistencies.
-4. Saying "of course!" to bad ideas.
-5. Overcomplicating code and APIs.
-6. Modifying code orthogonal to the task.
-7. Deleting code without confirming it's unused.
-8. Skipping verification because "it looks right".
-
-## Key Principles
-
-### Commit Strategy
-Commit after each step where the repository state is stable and meaningful. Not after every action — after each result.
-
-- **Planning stages** (user-spec, tech-spec, tasks): draft commit → validation round commits → approval commit
-- **Single task execution** (do-task): implementation commit (tests pass) → review fix commits (tests pass) → status/decisions commit
-- **Feature execution** (do-feature): teammates commit code + review fixes, lead commits statuses per wave
-- **Finalization** (done): single commit with PK updates + archive
-
-### Spec-Driven Development
-Write specifications before code. The hierarchy: User Spec → Tech Spec → Tasks → Code. Code starts only after specs are approved.
-
-### Validation at Every Stage
-- User spec: 2 validators (quality + adequacy)
-- Tech spec: 5 validators (skeptic + completeness + security + test + template/task-quality)
-- Tasks: 2 validators (template + reality)
-- Code: 3 reviewers (code + test + security) + smoke verification (API calls, library checks, MCP tools, local runs)
-- Audit Wave: 3 auditors (code + security + test) review all feature code holistically after implementation waves
-- QA tasks: pre-deploy QA (tests + acceptance criteria), post-deploy QA (verification on live environment)
-
-Max 3 fix iterations at each stage.
-
-### Project Knowledge as Single Source of Truth
-Project documentation = `.claude/skills/project-knowledge/references/`. CLAUDE.md stays minimal — just a pointer. The `/done` command updates PK after every feature. The `documentation-writing` skill audits PK for bloat and quality.
-
-### Just-In-Time Context
-Agent reads only what's needed for current task, not everything. Task files list their Context Files explicitly.
-
-### Context7 for Library Docs
-Agent uses Context7 MCP to fetch current library documentation instead of relying on training data. Used during tech-spec research and code implementation.
-
-### Checkpoint Recovery
-Feature execution persists state to `checkpoint.yml` after each wave. A `SessionStart(compact)` hook detects context compaction during long feature executions and injects recovery context — the lead resumes from the next pending wave using checkpoint + decisions.md as source of truth.
-
----
-
-## Skills Ecosystem
-
-<!-- Exclude from methodology catalogs: items for private repo management (public-repo skill, public-repo-scanner agent, sync-public command). They are tooling for maintaining this repository, not part of the development methodology. -->
-
-### Planning Skills
-| Skill | Purpose |
-|-------|---------|
-| `project-planning` | New project: interview → project knowledge docs (project.md, architecture.md, etc.) |
-| `user-spec-planning` | Feature requirements: interview → user-spec.md |
-| `tech-spec-planning` | Architecture: research → tech-spec.md |
-| `task-decomposition` | Decompose tech-spec into atomic task files |
-
-### Execution Skills
-| Skill | Purpose |
-|-------|---------|
-| `code-writing` | TDD cycle: plan → tests → code → review |
-| `prompt-master` | LLM prompt engineering: write, improve, verify prompts |
-| `feature-execution` | Team lead dispatches agents by wave; teammates commit own code, lead commits statuses |
-| `pre-deploy-qa` | Pre-deploy acceptance testing: tests + acceptance criteria |
-| `post-deploy-qa` | Post-deploy verification on live environment via MCP tools |
-
-### Quality & Review Skills
-| Skill | Purpose |
-|-------|---------|
-| `code-reviewing` | 11-dimension code review methodology (incl. Resource Management) |
-| `security-auditor` | OWASP Top 10 security analysis |
-| `test-master` | Testing strategy: when to use which tests |
-
-### Meta Skills
-| Skill | Purpose |
-|-------|---------|
-| `methodology` | This skill — how the process works |
-| `documentation-writing` | Manage Project Knowledge files |
-| `skill-master` | Create and maintain quality skills |
-| `infrastructure-setup` | Framework init, Docker, pre-commit hooks, testing setup |
-| `deploy-pipeline` | CI/CD pipelines, deployment config, automated deploy |
-| `prompt-master` | Effective prompts for LLMs (also an execution skill) |
-| `skill-testing` | Design and run skill tests: quick smoke or full A/B with baseline |
-
----
-
-## Agents
-
-Agents are isolated subprocesses with fresh context. They receive input, do one job, return structured output.
-
-### Validators (run during spec/task creation)
-- `userspec-quality-validator` — document quality and completeness
-- `userspec-adequacy-validator` — solution feasibility
-- `interview-completeness-checker` — interview coverage gaps
-- `tech-spec-validator` — template compliance
-- `skeptic` — detects mirages (non-existent files/functions/APIs)
-- `completeness-validator` — bidirectional requirements traceability, over/underengineering, solution depth
-- `task-validator` — task template compliance
-- `task-creator` — generates task files from tech-spec
-- `reality-checker` — validates tasks against codebase
-
-### Reviewers (run during/after code writing)
-- `code-reviewer` — code quality across 10 dimensions
-- `test-reviewer` — test quality analysis with concrete fixes
-- `security-auditor` — OWASP Top 10, auth, input validation
-- `prompt-reviewer` — prompt quality against prompt-master principles
-- `documentation-reviewer` — project-knowledge quality against documentation-writing principles
-- `deploy-reviewer` — CI/CD pipeline and deployment configuration quality
-- `infrastructure-reviewer` — folder structure, Docker, pre-commit hooks, .gitignore
-
-### Research
-- `code-researcher` — codebase research for features (files, patterns, tests, integrations, risks)
-
-### QA
-- `pre-deploy-qa` — pre-deploy acceptance testing (tests + acceptance criteria)
-- `post-deploy-qa` — post-deploy verification on live environment (MCP tools, AVP)
-
-### Meta
-- `skill-checker` — validates skills against skill-master standards
-
----
-
-## Commands Reference
-
-| Command | Purpose |
-|---------|---------|
-| `/new-user-spec` | Interview → user-spec.md |
-| `/new-tech-spec` | Research → tech-spec.md |
-| `/decompose-tech-spec` | Tech-spec → task files |
-| `/do-task` | Execute single task with quality gates |
-| `/do-feature` | Execute all tasks via agent teams |
-| `/done` | Update PK, archive feature |
-| `/write-code` | Ad-hoc coding with TDD and reviews |
-| `/init-project` | Initialize new project with template, git, GitHub |
-| `/init-project-knowledge` | Fill all project documentation via project-planning skill |
-
----
+When applying these during work, follow the formats and rules in [operating-behaviors.md](references/operating-behaviors.md) — assumption-listing format, which skills ritualise each behaviour, and the 8 failure modes they catch.
 
 ## Workflow Quick Start
 
