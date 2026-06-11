@@ -65,6 +65,9 @@ install:
 	@$(LINK) ~/projects/dotfiles/AGENTS.md ~/.codex/AGENTS.md
 	@$(REMOVE) ~/.codex/instructions.md
 	@$(LINK) ~/projects/dotfiles/claude-code/CLAUDE.md ~/.codex/instructions.md
+	@mkdir -p ~/.agents
+	@$(REMOVE) ~/.agents/skills
+	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.agents/skills
 
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
