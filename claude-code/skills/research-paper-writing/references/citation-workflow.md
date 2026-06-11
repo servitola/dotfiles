@@ -84,6 +84,14 @@ Google Scholar has no official API. Scraping violates ToS. Use SerpApi ($75-275/
 5. ADD → Add verified entry to .bib file
 ```
 
+**If any step fails**, mark the citation as a placeholder and tell the scientist:
+
+```latex
+\cite{PLACEHOLDER_author2024_verify_this}  % TODO: Verify this citation exists
+```
+
+Then report: "I've marked [X] citations as placeholders that need verification."
+
 ### Step 1: Search
 
 Use Semantic Scholar for ML/AI papers:

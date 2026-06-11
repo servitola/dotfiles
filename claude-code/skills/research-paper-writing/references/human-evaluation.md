@@ -2,6 +2,8 @@
 
 Comprehensive guide for designing, running, and reporting human evaluations in ML/AI papers. Human evaluation is the primary evidence for many NLP, HCI, and alignment papers, and is increasingly expected as complementary evidence at all ML venues.
 
+Design human evaluation **before** running automated experiments — human eval often has longer lead times (IRB approval, annotator recruitment). Reviewers at NLP venues (ACL, EMNLP) expect it for generation tasks, and for any contribution about human-facing qualities (readability, preference, trust).
+
 ---
 
 ## Contents
@@ -35,6 +37,8 @@ Comprehensive guide for designing, running, and reporting human evaluations in M
 ---
 
 ## Study Design
+
+**Annotator type** (expert, crowdworker, end-user) is a design decision in itself — match it to what your claims require. A claim about expert judgment needs expert annotators; a claim about general user preference needs end-users or crowdworkers.
 
 ### Evaluation Types
 

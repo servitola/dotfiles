@@ -1,6 +1,58 @@
 # Experiment Design Patterns
 
-Patterns and best practices distilled from running research experiments at scale. These cover experiment infrastructure, evaluation protocols, monitoring, and failure recovery.
+Patterns and best practices distilled from running research experiments at scale. These cover experiment design, infrastructure, evaluation protocols, monitoring, failure recovery, and the bridge from results to writing.
+
+---
+
+## Contents
+
+- [Designing Experiments Around Claims](#designing-experiments-around-claims)
+- [Experiment Infrastructure](#experiment-infrastructure)
+- [Launching Experiments](#launching-experiments)
+- [The Experiment Journal](#the-experiment-journal)
+- [Evaluation Protocols](#evaluation-protocols)
+- [Statistical Analysis](#statistical-analysis)
+- [Monitoring (Cron Pattern)](#monitoring-cron-pattern)
+- [Failure Recovery](#failure-recovery)
+- [From Results to Writing](#from-results-to-writing)
+- [Task/Benchmark Design](#taskbenchmark-design)
+- [Visualization Best Practices](#visualization-best-practices)
+
+---
+
+## Designing Experiments Around Claims
+
+Every experiment must answer a specific question that supports a paper claim.
+
+### Map Claims to Experiments
+
+Create an explicit mapping:
+
+| Claim | Experiment | Expected Evidence |
+|-------|-----------|-------------------|
+| "Our method outperforms baselines" | Main comparison (Table 1) | Win rate, statistical significance |
+| "Effect is larger for weaker models" | Model scaling study | Monotonic improvement curve |
+| "Convergence requires scope constraints" | Constrained vs unconstrained | Convergence rate comparison |
+
+**Rule**: If an experiment doesn't map to a claim, don't run it.
+
+### Design Baselines
+
+Strong baselines are what separates accepted papers from rejected ones. Reviewers will ask: "Did they compare against X?"
+
+Standard baseline categories:
+- **Naive baseline**: Simplest possible approach
+- **Strong baseline**: Best known existing method
+- **Ablation baselines**: Your method minus one component
+- **Compute-matched baselines**: Same compute budget, different allocation
+
+### Define Evaluation Protocol
+
+Before running anything, specify:
+- **Metrics**: What you're measuring, direction symbols (higher/lower better)
+- **Aggregation**: How results are combined across runs/tasks
+- **Statistical tests**: What tests will establish significance
+- **Sample sizes**: How many runs/problems/tasks
 
 ---
 
@@ -115,6 +167,63 @@ Keep generation, evaluation, and visualization in separate scripts:
 | `make_charts.py` | Figure generation |
 
 This lets you re-run evaluation without re-running expensive generation, and regenerate figures without re-running analysis.
+
+---
+
+## Launching Experiments
+
+Use `nohup` for long-running experiments:
+
+```bash
+nohup python run_experiment.py --config config.yaml > logs/experiment_01.log 2>&1 &
+echo $!  # Record the PID
+```
+
+**Parallel execution**: Run independent experiments simultaneously, but be aware of API rate limits. 4+ concurrent experiments on the same API will slow each down.
+
+**Commit completed results.** After each experiment batch completes:
+
+```bash
+git add -A
+git commit -m "Add <experiment name>: <key finding in 1 line>"
+git push
+```
+
+Git log is the experiment history — commit every completed batch with a descriptive message.
+
+---
+
+## The Experiment Journal
+
+Git commits track what happened, but not the **exploration tree** — the decisions about what to try next based on what you learned. Maintain a structured experiment journal that captures this tree:
+
+```json
+// experiment_journal.jsonl — append one entry per experiment attempt
+{
+  "id": "exp_003",
+  "parent": "exp_001",
+  "timestamp": "2025-05-10T14:30:00Z",
+  "hypothesis": "Adding scope constraints will fix convergence failure from exp_001",
+  "plan": "Re-run autoreason with max_tokens=2000 and fixed structure template",
+  "config": {"model": "haiku", "strategy": "autoreason", "max_tokens": 2000},
+  "status": "completed",
+  "result_path": "results/exp_003/",
+  "key_metrics": {"win_rate": 0.85, "convergence_rounds": 3},
+  "analysis": "Scope constraints fixed convergence. Win rate jumped from 0.42 to 0.85.",
+  "next_steps": ["Try same constraints on Sonnet", "Test without structure template"],
+  "figures": ["figures/exp003_convergence.pdf"]
+}
+```
+
+**Why a journal, not just git?** Git tracks file changes. The journal tracks the reasoning: why you tried X, what you learned, and what that implies for the next experiment. When writing the paper, this tree is invaluable for the Methods section ("we observed X, which motivated Y") and for honest failure reporting.
+
+**Selecting the best path**: When the journal shows a branching tree (exp_001 → exp_002a, exp_002b, exp_003), identify the path that best supports the paper's claims. Document dead-end branches in the appendix as ablations or negative results.
+
+**Snapshot code per experiment**: Copy the experiment script after each run:
+```bash
+cp experiment.py results/exp_003/experiment_snapshot.py
+```
+This enables exact reproduction even after subsequent code changes.
 
 ---
 
@@ -510,6 +619,114 @@ Pre-Flight:
 - [ ] Dataset/task files are accessible
 - [ ] Config matches intended experiment
 ```
+
+---
+
+## From Results to Writing
+
+### Aggregate Results
+
+Write analysis scripts that load all result files from a batch, compute per-task and aggregate metrics, and generate summary tables:
+
+```python
+# Standard aggregation pattern
+import json
+import numpy as np
+from pathlib import Path
+
+results = {}
+for result_file in Path("results/").rglob("result.json"):
+    data = json.loads(result_file.read_text())
+    strategy = result_file.parent.name
+    task = result_file.parent.parent.name
+    results.setdefault(strategy, {})[task] = data
+
+# Compute aggregate metrics
+for strategy, tasks in results.items():
+    scores = [t["score"] for t in tasks.values()]
+    print(f"{strategy}: mean={np.mean(scores):.1f}, std={np.std(scores):.1f}")
+```
+
+### Identify the Story
+
+After analysis, explicitly answer:
+1. **What is the main finding?** State it in one sentence.
+2. **What surprised you?** Unexpected results often make the best papers.
+3. **What failed?** Failed experiments can be the most informative. Honest reporting of failures strengthens the paper.
+4. **What follow-up experiments are needed?** Results often raise new questions.
+
+### Handling Negative or Null Results
+
+When your hypothesis was wrong or results are inconclusive, you have three options:
+
+| Situation | Action | Venue Fit |
+|-----------|--------|-----------|
+| Hypothesis wrong but **why** is informative | Frame paper around the analysis of why | NeurIPS, ICML (if analysis is rigorous) |
+| Method doesn't beat baselines but **reveals something new** | Reframe contribution as understanding/analysis | ICLR (values understanding), workshop papers |
+| Clean negative result on popular claim | Write it up — the field needs to know | NeurIPS Datasets & Benchmarks, TMLR, workshops |
+| Results inconclusive, no clear story | Pivot — run different experiments or reframe | Don't force a paper that isn't there |
+
+**How to write a negative results paper:**
+- Lead with what the community believes and why it matters to test it
+- Describe your rigorous methodology (must be airtight — reviewers will scrutinize harder)
+- Present the null result clearly with statistical evidence
+- Analyze **why** the expected result didn't materialize
+- Discuss implications for the field
+
+**Venues that explicitly welcome negative results**: NeurIPS (Datasets & Benchmarks track), TMLR, ML Reproducibility Challenge, workshops at major conferences. Some workshops specifically call for negative results.
+
+### Decide: More Experiments or Write?
+
+| Situation | Action |
+|-----------|--------|
+| Core claims supported, results significant | Move to paper drafting |
+| Results inconclusive, need more data | Back to experiment design |
+| Unexpected finding suggests new direction | Back to experiment design |
+| Missing one ablation reviewers will ask for | Run it, then draft |
+| All experiments done but some failed | Note failures, move to drafting |
+
+### The Experiment Log (Bridge to Writeup)
+
+Before moving to paper writing, create a structured experiment log that bridges results to prose. This is the single most important connective tissue between experiments and the writeup — without it, the writing agent has to re-derive the story from raw result files.
+
+**Create `experiment_log.md`** with the following structure:
+
+```markdown
+# Experiment Log
+
+## Contribution (one sentence)
+[The paper's main claim]
+
+## Experiments Run
+
+### Experiment 1: [Name]
+- **Claim tested**: [Which paper claim this supports]
+- **Setup**: [Model, dataset, config, number of runs]
+- **Key result**: [One sentence with the number]
+- **Result files**: results/exp1/final_info.json
+- **Figures generated**: figures/exp1_comparison.pdf
+- **Surprising findings**: [Anything unexpected]
+
+### Experiment 2: [Name]
+...
+
+## Figures
+| Filename | Description | Which section it belongs in |
+|----------|-------------|---------------------------|
+| figures/main_comparison.pdf | Bar chart comparing all methods on benchmark X | Results, Figure 2 |
+| figures/ablation.pdf | Ablation removing components A, B, C | Results, Figure 3 |
+...
+
+## Failed Experiments (document for honesty)
+- [What was tried, why it failed, what it tells us]
+
+## Open Questions
+- [Anything the results raised that the paper should address]
+```
+
+**Why this matters**: When drafting, the agent (or a delegated sub-agent) can load `experiment_log.md` alongside the LaTeX template and produce a first draft grounded in actual results. Without this bridge, the writing agent must parse raw JSON/CSV files and infer the story — a common source of hallucinated or misreported numbers.
+
+**Git discipline**: Commit this log alongside the results it describes.
 
 ---
 

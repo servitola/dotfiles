@@ -11,6 +11,7 @@ Guide for writing non-standard paper types: theory papers, survey/tutorial paper
 - [Benchmark and Dataset Papers](#benchmark-and-dataset-papers)
 - [Position Papers](#position-papers)
 - [Reproducibility and Replication Papers](#reproducibility-and-replication-papers)
+- [Workshop and Short Papers](#workshop-and-short-papers)
 
 ---
 
@@ -93,7 +94,7 @@ $\epsilon$-stationary point.
 
 ### Proof Sketches
 
-The proof sketch is the most important part of the main text for a theory paper. Reviewers evaluate whether you have genuine insight or just mechanical derivation.
+The proof sketch is the most important part of the main text for a theory paper. Reviewers evaluate whether you have genuine insight or just mechanical derivation. A sketch should convey the main idea in 0.5-1 page; provide intuition before the formal proof ("The key insight is...").
 
 **Good proof sketch pattern:**
 
@@ -479,3 +480,38 @@ Datasheet Questions:
 | **ReScience** | Journal dedicated to replications |
 | **TMLR** | Accepts reproductions with analysis |
 | **Workshops** | Reproducibility workshops at major conferences |
+
+---
+
+## Workshop and Short Papers
+
+Workshop papers and short papers (e.g., ACL short papers, Findings papers) follow the same pipeline as full papers but with different constraints and expectations.
+
+### Workshop Papers
+
+| Property | Workshop | Main Conference |
+|----------|----------|-----------------|
+| **Page limit** | 4-6 pages (typically) | 7-9 pages |
+| **Review standard** | Lower bar for completeness | Must be complete, thorough |
+| **Review process** | Usually single-blind or light review | Double-blind, rigorous |
+| **What's valued** | Interesting ideas, preliminary results, position pieces | Complete empirical story with strong baselines |
+| **arXiv** | Post anytime | Timing matters (see [submission.md](submission.md), arXiv strategy) |
+| **Contribution bar** | Novel direction, interesting negative result, work-in-progress | Significant advance with strong evidence |
+
+**When to target a workshop:**
+- Early-stage idea you want feedback on before a full paper
+- Negative result that doesn't justify 8+ pages
+- Position piece or opinion on a timely topic
+- Replication study or reproducibility report
+
+### ACL Short Papers & Findings
+
+ACL venues have distinct submission types:
+
+| Type | Pages | What's Expected |
+|------|-------|-----------------|
+| **Long paper** | 8 | Complete study, strong baselines, ablations |
+| **Short paper** | 4 | Focused contribution: one clear point with evidence |
+| **Findings** | 8 | Solid work that narrowly missed main conference |
+
+**Short paper strategy**: Pick ONE claim and support it thoroughly. Don't try to compress a long paper into 4 pages — write a different, more focused paper.

@@ -6,7 +6,46 @@ Complete reference for the autoreason iterative refinement method, derived from 
 
 ---
 
+## Contents
+
+- [Strategy Selection Guide](#strategy-selection-guide)
+- [The Autoreason Loop](#the-autoreason-loop)
+- [Scoring: Borda Count](#scoring-borda-count)
+- [Model Selection Guide](#model-selection-guide)
+- [Scope Constraint Design](#scope-constraint-design)
+- [Failure Taxonomy](#failure-taxonomy)
+- [Code Domain Adaptation](#code-domain-adaptation)
+- [Applying Autoreason to Paper Writing](#applying-autoreason-to-paper-writing)
+- [Compute Budget Reference](#compute-budget-reference)
+
+---
+
 ## Strategy Selection Guide
+
+### Quick Decision Table
+
+| Your Situation | Strategy | Why |
+|---------------|----------|-----|
+| Mid-tier model + constrained task | **Autoreason** | Sweet spot. Generation-evaluation gap is widest. Baselines actively destroy weak model outputs. |
+| Mid-tier model + open task | **Autoreason** with scope constraints added | Add fixed facts, structure, or deliverable to bound the improvement space. |
+| Frontier model + constrained task | **Autoreason** | Wins 2/3 constrained tasks even at frontier. |
+| Frontier model + unconstrained task | **Critique-and-revise** or **single pass** | Autoreason comes last. Model self-evaluates well enough. |
+| Concrete technical task (system design) | **Critique-and-revise** | Direct find-and-fix loop is more efficient. |
+| Template-filling task (one correct structure) | **Single pass** or **conservative** | Minimal decision space. Iteration adds no value. |
+| Code with test cases | **Autoreason (code variant)** | Structured analysis of *why* it failed before fixing. Recovery rate 62% vs 43%. |
+| Very weak model (Llama 8B class) | **Single pass** | Model too weak for diverse candidates. Invest in generation quality. |
+
+Compact tier view of the generation-evaluation gap (full analysis below):
+
+```
+Model Tier        │ Generation │ Self-Eval │ Gap    │ Autoreason Value
+──────────────────┼────────────┼───────────┼────────┼─────────────────
+Weak (Llama 8B)   │ Poor       │ Poor      │ Small  │ None — can't generate diverse candidates
+Mid (Haiku 3.5)   │ Decent     │ Poor      │ LARGE  │ MAXIMUM — 42/42 perfect Borda
+Mid (Gemini Flash)│ Decent     │ Moderate  │ Large  │ High — wins 2/3
+Strong (Sonnet 4) │ Good       │ Decent    │ Medium │ Moderate — wins 3/5
+Frontier (S4.6)   │ Excellent  │ Good      │ Small  │ Only with constraints
+```
 
 ### Decision Tree
 
