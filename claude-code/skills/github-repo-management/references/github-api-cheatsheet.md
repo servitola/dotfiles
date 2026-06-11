@@ -4,11 +4,40 @@ Base URL: `https://api.github.com`
 
 All requests need: `-H "Authorization: token $GITHUB_TOKEN"`
 
-Set `$GITHUB_TOKEN` and repo coordinates from your environment / `gh`:
+## Contents
+
+- [Setup](#setup)
+- [Repositories](#repositories)
+- [Pull Requests](#pull-requests)
+- [Issues](#issues)
+- [CI / GitHub Actions](#ci--github-actions)
+- [Releases](#releases)
+- [Secrets](#secrets)
+- [Branch Protection](#branch-protection)
+- [User / Auth](#user--auth)
+- [Pagination](#pagination)
+- [Rate Limits](#rate-limits)
+- [Common curl Patterns](#common-curl-patterns)
+
+## Setup
+
+Set `$GITHUB_TOKEN` and repo coordinates. `gh` is optional — when it's
+absent, fall back to `~/.git-credentials` and the `origin` remote (same
+approach as [rest-fallbacks.md § Setup](rest-fallbacks.md#setup)):
+
 ```bash
-export GITHUB_TOKEN="${GITHUB_TOKEN:-$(gh auth token 2>/dev/null)}"
-export GH_OWNER="$(gh repo view --json owner -q .owner.login 2>/dev/null)"
-export GH_REPO="$(gh repo view --json name  -q .name        2>/dev/null)"
+if command -v gh &>/dev/null && gh auth status &>/dev/null; then
+  export GITHUB_TOKEN="${GITHUB_TOKEN:-$(gh auth token 2>/dev/null)}"
+  export OWNER="$(gh repo view --json owner -q .owner.login 2>/dev/null)"
+  export REPO="$(gh repo view --json name  -q .name        2>/dev/null)"
+else
+  if [ -z "$GITHUB_TOKEN" ] && grep -q "github.com" ~/.git-credentials 2>/dev/null; then
+    export GITHUB_TOKEN=$(grep "github.com" ~/.git-credentials 2>/dev/null | head -1 | sed 's|https://[^:]*:\([^@]*\)@.*|\1|')
+  fi
+  OWNER_REPO=$(git remote get-url origin 2>/dev/null | sed -E 's|.*github\.com[:/]||; s|\.git$||')
+  export OWNER="${OWNER_REPO%%/*}"
+  export REPO="${OWNER_REPO##*/}"
+fi
 ```
 (`GITHUB_TOKEN` can also live in `~/.config/openai_key.sh`.)
 
@@ -140,24 +169,24 @@ Most list endpoints support:
 ```bash
 # GET
 curl -s -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GH_OWNER/$GH_REPO
+  https://api.github.com/repos/$OWNER/$REPO
 
 # POST with JSON body
 curl -s -X POST \
   -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GH_OWNER/$GH_REPO/issues \
+  https://api.github.com/repos/$OWNER/$REPO/issues \
   -d '{"title": "...", "body": "..."}'
 
 # PATCH (update)
 curl -s -X PATCH \
   -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GH_OWNER/$GH_REPO/issues/42 \
+  https://api.github.com/repos/$OWNER/$REPO/issues/42 \
   -d '{"state": "closed"}'
 
 # DELETE
 curl -s -X DELETE \
   -H "Authorization: token $GITHUB_TOKEN" \
-  https://api.github.com/repos/$GH_OWNER/$GH_REPO/issues/42/labels/bug
+  https://api.github.com/repos/$OWNER/$REPO/issues/42/labels/bug
 
 # Parse JSON response with python3
 curl -s ... | python3 -c "import sys,json; data=json.load(sys.stdin); print(data['field'])"
