@@ -1,5 +1,5 @@
 environment {
-    terminal "iTerm"
+    terminal "Zap"
     textEditor "Visual Studio Code"
 }
 
