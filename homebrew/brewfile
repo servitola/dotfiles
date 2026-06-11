@@ -281,7 +281,7 @@ brew "zsh-syntax-highlighting"
 # A Model Context Protocol (MCP) server for the Perplexity API
 brew "alcova-ai/tap/perplexity-mcp"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush"
+brew "charmbracelet/tap/crush", trusted: true
 # A Powerful Command Line for automating iOS Simulators
 brew "facebook/fb/idb-companion"
 # Apple simulator utilities
