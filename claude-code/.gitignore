@@ -16,7 +16,7 @@ session-env/
 ide/
 plugins/
 usage-data/
-hooks/
+hooks/*
 prompts/
 output-styles/
 .DS_Store
