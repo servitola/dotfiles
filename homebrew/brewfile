@@ -368,6 +368,8 @@ cask "macs-fan-control"
 cask "marta"
 # Online collaborative whiteboard platform
 cask "miro"
+# Open-source music notation software
+cask "musescore"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Cloud gaming platform
