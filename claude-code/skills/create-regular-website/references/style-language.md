@@ -5,6 +5,16 @@ you translate to concrete CSS color values, fonts, and density. Goal:
 pick a reasonable starting point without asking about hex codes, then
 iterate based on user reaction.
 
+## Contents
+
+- [Color palettes (whole sets)](#color-palettes-whole-sets)
+- [Single-axis tweaks](#single-axis-tweaks-when-a-palette-is-already-chosen)
+- [Fonts](#fonts)
+- [Hiding / showing sections](#hiding--showing-sections)
+- [Languages other than ru / en](#languages-other-than-ru--en)
+- ["Like X" style references](#like-x-style-references)
+- [When the user is unhappy after a change](#when-the-user-is-unhappy-after-a-change)
+
 ## Color palettes (whole sets)
 
 Each palette is `primary-color` + `background` + `text-color`. Apply
