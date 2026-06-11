@@ -3,7 +3,6 @@
 @immich/cli
 @modelcontextprotocol/server-brave-search
 @modelcontextprotocol/server-filesystem
-@openai/codex
 @sourcegraph/amp
 appium
 figma-developer-mcp
