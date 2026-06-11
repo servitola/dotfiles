@@ -1,6 +1,6 @@
 tap "alcova-ai/tap"
 tap "charmbracelet/tap"
-tap "facebook/fb"
+tap "facebook/fb", trusted: true
 tap "getsentry/tools"
 tap "kegworks-app/kegworks"
 tap "ngrok/ngrok"
@@ -286,6 +286,7 @@ brew "charmbracelet/tap/crush"
 brew "facebook/fb/idb-companion"
 # Apple simulator utilities
 brew "wix/brew/applesimutils"
+brew "facebook/fb/idb-companion", trusted: true
 # Stand alone ad blocker
 cask "adguard"
 # Menu bar tool to limit maximum charging percentage
