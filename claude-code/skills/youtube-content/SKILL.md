@@ -12,8 +12,6 @@ description: |
 
 Use when the user shares a YouTube URL or video link, asks to summarize a video, requests a transcript, or wants to extract and reformat content from any YouTube video. Transforms transcripts into structured content (chapters, summaries, threads, blog posts).
 
-Extract transcripts from YouTube videos and convert them into useful formats.
-
 ## Prerequisites
 
 ```bash
@@ -40,16 +38,12 @@ python3 SKILL_DIR/scripts/fetch_transcript.py "URL" --language tr,en
 
 ## Output Formats
 
-After fetching the transcript, format it based on what the user asks for:
+After fetching the transcript, format it based on what the user asks for.
+If the user did not specify a format, default to a summary.
 
-- **Chapters**: Group by topic shifts, output timestamped chapter list
-- **Summary**: Concise 5-10 sentence overview of the entire video
-- **Chapter summaries**: Chapters with a short paragraph summary for each
-- **Thread**: Twitter/X thread format — numbered posts, each under 280 chars
-- **Blog post**: Full article with title, sections, and key takeaways
-- **Quotes**: Notable quotes with timestamps
+### Chapters
 
-### Example — Chapters Output
+Group by topic shifts, output a timestamped chapter list:
 
 ```
 00:00 Introduction — host opens with the problem statement
@@ -59,12 +53,63 @@ After fetching the transcript, format it based on what the user asks for:
 31:55 Q&A — audience questions on scalability and next steps
 ```
 
+### Summary
+
+A 5-10 sentence overview covering the video's main points, key arguments,
+and conclusions. Written in third person, present tense.
+
+### Chapter Summaries
+
+Chapters with a short paragraph summary for each:
+
+```
+## 00:00 Introduction (2 min)
+The speaker introduces the topic of X and explains why it matters for Y.
+
+## 02:15 Background (3 min)
+A review of prior work in the field, covering approaches A, B, and C.
+```
+
+### Thread (Twitter/X)
+
+Numbered posts, each under 280 chars:
+
+```
+1/ Just watched an incredible talk on [topic]. Here are the key takeaways: 🧵
+
+2/ First insight: [point]. This matters because [reason].
+
+3/ The surprising part: [unexpected finding]. Most people assume [common belief], but the data shows otherwise.
+
+4/ Practical takeaway: [actionable advice].
+
+5/ Full video: [URL]
+```
+
+### Blog Post
+
+Full article with:
+- Title
+- Introduction paragraph
+- H2 sections for each major topic
+- Key quotes (with timestamps)
+- Conclusion / takeaways
+
+### Quotes
+
+Notable quotes with timestamps:
+
+```
+"The most important thing is not the model size, but the data quality." — 05:32
+"We found that scaling past 70B parameters gave diminishing returns." — 12:18
+```
+
 ## Workflow
 
 1. **Fetch** the transcript using the helper script with `--text-only --timestamps`.
 2. **Validate**: confirm the output is non-empty and in the expected language. If empty, retry without `--language` to get any available transcript. If still empty, tell the user the video likely has transcripts disabled.
 3. **Chunk if needed**: if the transcript exceeds ~50K characters, split into overlapping chunks (~40K with 2K overlap) and summarize each chunk before merging.
-4. **Transform** into the requested output format. If the user did not specify a format, default to a summary.
+4. **Transform** into the requested output format following the templates in the Output Formats section above — chapters, summary, chapter summaries, thread, blog post, quotes. If the user did not specify a format, default to a summary.
 5. **Verify**: re-read the transformed output to check for coherence, correct timestamps, and completeness before presenting.
 
 ## Error Handling
