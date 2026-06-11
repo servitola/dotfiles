@@ -1,5 +1,17 @@
 # Core API Reference
 
+## Contents
+
+- [Canvas Setup](#canvas-setup)
+- [Coordinate System](#coordinate-system)
+- [Draw Loop](#draw-loop)
+- [Transform Stack](#transform-stack)
+- [Offscreen Buffers (createGraphics)](#offscreen-buffers-creategraphics)
+- [Composition Patterns](#composition-patterns)
+- [Random and Noise](#random-and-noise)
+- [Math Utilities](#math-utilities)
+- [p5.js 2.0 Changes](#p5js-20-changes)
+
 ## Canvas Setup
 
 ### createCanvas()
@@ -290,6 +302,18 @@ let x = random(100);        // always same value for seed 42
 let y = random(-1, 1);      // range
 let item = random(myArray);  // random element
 ```
+
+Every generative sketch must be reproducible: same seed, same output. Seed both generators in `setup()`:
+
+```javascript
+function setup() {
+  randomSeed(CONFIG.seed);
+  noiseSeed(CONFIG.seed);   // noise() has its own seed
+  // All random() and noise() calls now deterministic
+}
+```
+
+Use `random()` for all visual elements — `Math.random()` ignores the seed, so reserve it for performance-critical non-visual code. If you need a fresh seed: `CONFIG.seed = floor(random(99999))`.
 
 ### Gaussian Random
 

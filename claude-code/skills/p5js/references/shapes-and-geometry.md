@@ -1,5 +1,17 @@
 # Shapes and Geometry
 
+## Contents
+
+- [2D Primitives](#2d-primitives)
+- [Stroke and Fill](#stroke-and-fill)
+- [Custom Shapes with Vertices](#custom-shapes-with-vertices)
+- [Bezier Curves](#bezier-curves)
+- [Catmull-Rom Splines](#catmull-rom-splines)
+- [p5.Vector](#p5vector)
+- [Signed Distance Fields (2D)](#signed-distance-fields-2d)
+- [Useful Geometry Patterns](#useful-geometry-patterns)
+- [Clipping and Masking](#clipping-and-masking)
+
 ## 2D Primitives
 
 ```javascript

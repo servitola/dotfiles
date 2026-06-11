@@ -1,5 +1,15 @@
 # Interaction
 
+## Contents
+
+- [Mouse Events](#mouse-events)
+- [Keyboard Events](#keyboard-events)
+- [Touch Events](#touch-events)
+- [DOM Elements](#dom-elements)
+- [Audio Input (p5.sound)](#audio-input-p5sound)
+- [Scroll-Driven Animation](#scroll-driven-animation)
+- [Responsive Events](#responsive-events)
+
 ## Mouse Events
 
 ### Continuous State

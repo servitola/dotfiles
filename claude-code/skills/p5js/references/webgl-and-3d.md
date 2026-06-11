@@ -1,5 +1,16 @@
 # WebGL and 3D
 
+## Contents
+
+- [WebGL Mode Setup](#webgl-mode-setup)
+- [3D Primitives](#3d-primitives)
+- [Camera](#camera)
+- [Lighting](#lighting)
+- [Materials](#materials)
+- [Custom Geometry](#custom-geometry)
+- [GLSL Shaders](#glsl-shaders)
+- [Framebuffers](#framebuffers)
+
 ## WebGL Mode Setup
 
 ```javascript
@@ -19,6 +30,13 @@ function draw() {
   // Now coordinates work like P2D
 }
 ```
+
+### Mode Gotchas
+
+- Origin is center, not top-left; Y-axis is inverted (positive Y goes up in WEBGL, down in P2D)
+- `push()`/`pop()` around every transform — the matrix stack overflows silently
+- `texture()` before `rect()`/`plane()` — not after
+- Custom shaders: `createShader(vert, frag)` — test on multiple browsers
 
 ## 3D Primitives
 

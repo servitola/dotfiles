@@ -1,15 +1,31 @@
 # Export Pipeline
 
+## Contents
+
+- [PNG Export](#png-export)
+- [GIF Export](#gif-export)
+- [Frame Sequence Export](#frame-sequence-export)
+- [Headless Export (Puppeteer)](#headless-export-puppeteer)
+- [SVG Export](#svg-export)
+- [Export Format Decision Guide](#export-format-decision-guide)
+- [Tiling for Ultra-High-Resolution](#tiling-for-ultra-high-resolution)
+- [CCapture.js — Deterministic Video Capture](#ccapturejs--deterministic-video-capture)
+- [Programmatic Export (canvas API)](#programmatic-export-canvas-api)
+- [SVG Export (p5.js-svg)](#svg-export-p5js-svg)
+- [Platform Export](#platform-export)
+
 ## PNG Export
 
 ### In-Sketch (Keyboard Shortcut)
 
+Standard key-binding convention — include these in every sketch's `keyPressed()`:
+
 ```javascript
 function keyPressed() {
-  if (key === 's' || key === 'S') {
-    saveCanvas('output', 'png');
-    // Downloads output.png immediately
-  }
+  if (key === 's' || key === 'S') saveCanvas('output', 'png');   // PNG still
+  if (key === 'g' || key === 'G') saveGif('output', 5);          // 5-second GIF
+  if (key === 'r' || key === 'R') { randomSeed(millis()); noiseSeed(millis()); }  // reseed
+  if (key === ' ') CONFIG.paused = !CONFIG.paused;               // pause toggle
 }
 ```
 

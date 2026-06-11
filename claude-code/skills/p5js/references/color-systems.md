@@ -1,5 +1,16 @@
 # Color Systems
 
+## Contents
+
+- [Color Modes](#color-modes)
+- [Color Objects](#color-objects)
+- [Color Interpolation](#color-interpolation)
+- [Gradient Rendering](#gradient-rendering)
+- [Procedural Palette Generation](#procedural-palette-generation)
+- [Curated Palette Library](#curated-palette-library)
+- [Blend Modes](#blend-modes)
+- [Background Techniques](#background-techniques)
+
 ## Color Modes
 
 ### HSB (Recommended for Generative Art)

@@ -1,5 +1,14 @@
 # Troubleshooting
 
+## Contents
+
+- [Performance](#performance)
+- [Common Mistakes](#common-mistakes)
+- [Browser Compatibility](#browser-compatibility)
+- [CORS Issues](#cors-issues)
+- [Memory Leaks](#memory-leaks)
+- [Debugging Tips](#debugging-tips)
+
 ## Performance
 
 ### Step Zero — Disable FES
@@ -179,6 +188,16 @@ if (frameCount % 5 === 0) {
 | Ambient animation | 30fps | 20fps |
 | Export/recording | 30fps render | Any (offline) |
 | Mobile | 30fps | 20fps |
+
+### Capacity Targets
+
+| Metric | Target |
+|--------|--------|
+| Particle count (P2D shapes) | 5,000-10,000 at 60fps |
+| Particle count (pixel buffer) | 50,000-100,000 at 60fps |
+| Canvas resolution | Up to 3840x2160 (export), 1920x1080 (interactive) |
+| File size (HTML) | < 100KB (excluding CDN libraries) |
+| Load time | < 2s to first frame |
 
 ### Per-Pixel Rendering Budgets
 

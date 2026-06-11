@@ -1,5 +1,14 @@
 # Typography
 
+## Contents
+
+- [Loading Fonts](#loading-fonts)
+- [Text Rendering](#text-rendering)
+- [textToPoints() — Text as Particles](#texttopoints--text-as-particles)
+- [Kinetic Typography](#kinetic-typography)
+- [Text as Mask](#text-as-mask)
+- [Responsive Text Sizing](#responsive-text-sizing)
+
 ## Loading Fonts
 
 ### System Fonts

@@ -1,5 +1,18 @@
 # Animation
 
+## Contents
+
+- [Frame-Based Animation](#frame-based-animation)
+- [Easing Functions](#easing-functions)
+- [Spring Physics](#spring-physics)
+- [State Machines](#state-machines)
+- [Timeline Sequencing](#timeline-sequencing)
+- [Noise-Driven Motion](#noise-driven-motion)
+- [Transition Patterns](#transition-patterns)
+- [Recording Deterministic Animations](#recording-deterministic-animations)
+- [Scene Fade Envelopes (Video)](#scene-fade-envelopes-video)
+- [Animating Static Algorithms](#animating-static-algorithms)
+
 ## Frame-Based Animation
 
 ### The Draw Loop
