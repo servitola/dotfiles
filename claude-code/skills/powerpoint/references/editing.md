@@ -1,5 +1,13 @@
 # Editing Presentations
 
+## Contents
+
+- [Template-Based Workflow](#template-based-workflow)
+- [Scripts](#scripts) — unpack, add_slide, clean, pack, thumbnail
+- [Slide Operations](#slide-operations) — reorder, delete, add
+- [Editing Content](#editing-content) — subagents, formatting rules
+- [Common Pitfalls](#common-pitfalls) — template adaptation, multi-item content, smart quotes
+
 ## Template-Based Workflow
 
 When using an existing presentation as a template:
@@ -94,7 +102,7 @@ python scripts/thumbnail.py input.pptx [output_prefix] [--cols N]
 
 Creates `thumbnails.jpg` with slide filenames as labels. Default 3 columns, max 12 per grid.
 
-**Use for template analysis only** (choosing layouts). For visual QA, use `soffice` + `pdftoppm` to create full-resolution individual slide images—see SKILL.md.
+**Use for template analysis only** (choosing layouts). For visual QA, use `soffice` + `pdftoppm` to create full-resolution individual slide images—see [qa.md](qa.md).
 
 ---
 

@@ -1,5 +1,21 @@
 # PptxGenJS Tutorial
 
+## Contents
+
+- [Setup & Basic Structure](#setup--basic-structure)
+- [Layout Dimensions](#layout-dimensions)
+- [Text & Formatting](#text--formatting)
+- [Lists & Bullets](#lists--bullets)
+- [Shapes](#shapes)
+- [Images](#images) — sources, options, sizing, formats
+- [Icons](#icons) — react-icons setup, rasterization
+- [Slide Backgrounds](#slide-backgrounds)
+- [Tables](#tables)
+- [Charts](#charts) — including better-looking charts
+- [Slide Masters](#slide-masters)
+- [Common Pitfalls](#common-pitfalls) — corruption-causing mistakes
+- [Quick Reference](#quick-reference)
+
 ## Setup & Basic Structure
 
 ```javascript
