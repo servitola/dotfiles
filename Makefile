@@ -176,10 +176,6 @@ install:
 		~/projects/dotfiles/rag/scripts/rag-improve.py \
 		~/projects/dotfiles/rag/scripts/rag-karabiner-summary.py
 
-	@echo "setup yazi symlinks"
-	@$(REMOVE) ~/.config/yazi
-	@$(LINK) ~/projects/dotfiles/yazi/.config/yazi ~/.config/yazi
-
 	@echo "setup ampcode settings"
 	@mkdir -p ~/.config/amp
 	@$(REMOVE) ~/.config/amp/settings.json
