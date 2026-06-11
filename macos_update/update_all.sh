@@ -1,5 +1,11 @@
 #!/bin/zsh
 # Update all packages and tools
+#
+# Strict mode (fail-fast policy): any failing step aborts the run, referencing
+# an unset variable is an error, a pipeline fails if any component fails.
+# Run as a child process (`zsh update_all.sh`) — never source into an
+# interactive shell, or these options leak into it and break the prompt.
+setopt err_exit no_unset pipe_fail
 
 source ~/projects/dotfiles/macos_update/functions.sh
 
@@ -22,19 +28,14 @@ print_section "Apps Updates"
 
 rm -rf "$(brew --cache)" > /dev/null 2>&1
 brew tap --repair
-brew cu --all --yes --quiet
 brew update
-brew upgrade
+brew upgrade --greedy
 
 print_task "Removing quarantine flags from updated applications"
 brew_unquarantine
 
 mas upgrade
 brew cleanup --scrub
-
-print_task "Set node22 is default"
-brew unlink node 2>/dev/null || true
-brew unlink node@22 && brew link node@22
 
 brew doctor
 brew bundle dump --force --describe --file=~/projects/dotfiles/homebrew/brewfile
