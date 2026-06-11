@@ -41,25 +41,6 @@ curl -s "https://api.airtable.com/v0/$BASE_ID/$TABLE?maxRecords=5" \
 
 `-s` suppresses curl's progress bar — keep it set for every call so the output stays clean. Pipe through `python3 -m json.tool` (always present) or `jq` (if installed) for readable JSON.
 
-## Field Types (request body shapes)
-
-| Field type | Write shape |
-|---|---|
-| Single line text | `"Name": "hello"` |
-| Long text | `"Notes": "multi\nline"` |
-| Number | `"Score": 42` |
-| Checkbox | `"Done": true` |
-| Single select | `"Status": "Todo"` (name must already exist unless `typecast: true`) |
-| Multi-select | `"Tags": ["urgent", "bug"]` |
-| Date | `"Due": "2026-04-01"` |
-| DateTime (UTC) | `"At": "2026-04-01T14:30:00.000Z"` |
-| URL / Email / Phone | `"Link": "https://…"` |
-| Attachment | `"Files": [{"url": "https://…"}]` (Airtable fetches + rehosts) |
-| Linked record | `"Owner": ["recXXXXXXXXXXXXXX"]` (array of record IDs) |
-| User | `"AssignedTo": {"id": "usrXXXXXXXXXXXXXX"}` |
-
-Pass `"typecast": true` at the top level of a create/update body to let Airtable auto-coerce values (e.g. create a new select option on the fly, convert `"42"` → `42`).
-
 ## Common Queries
 
 ### List bases the token can see
@@ -118,64 +99,9 @@ curl -s "https://api.airtable.com/v0/$BASE_ID/$TABLE?view=Grid%20view&maxRecords
 ```
 Views apply their saved filter + sort server-side.
 
-## Common Mutations
+## Writing Records
 
-### Create a record
-```bash
-curl -s -X POST "https://api.airtable.com/v0/$BASE_ID/$TABLE" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"fields":{"Name":"New task","Status":"Todo","Priority":"High"}}' | python3 -m json.tool
-```
-
-### Create up to 10 records in one call
-```bash
-curl -s -X POST "https://api.airtable.com/v0/$BASE_ID/$TABLE" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "typecast": true,
-    "records": [
-      {"fields": {"Name": "Task A", "Status": "Todo"}},
-      {"fields": {"Name": "Task B", "Status": "In progress"}}
-    ]
-  }' | python3 -m json.tool
-```
-Batch endpoints are capped at **10 records per request**. For larger inserts, loop in batches of 10 with a short sleep to respect 5 req/sec/base.
-
-### Update a record (PATCH — merges, preserves unchanged fields)
-```bash
-curl -s -X PATCH "https://api.airtable.com/v0/$BASE_ID/$TABLE/$RECORD_ID" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"fields":{"Status":"Done"}}' | python3 -m json.tool
-```
-
-### Upsert by a merge field (no ID needed)
-```bash
-curl -s -X PATCH "https://api.airtable.com/v0/$BASE_ID/$TABLE" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "performUpsert": {"fieldsToMergeOn": ["Email"]},
-    "records": [
-      {"fields": {"Email": "user@example.com", "Status": "Active"}}
-    ]
-  }' | python3 -m json.tool
-```
-`performUpsert` creates records whose merge-field values are new, patches records whose merge-field values already exist. Great for idempotent syncs.
-
-### Delete a record
-```bash
-curl -s -X DELETE "https://api.airtable.com/v0/$BASE_ID/$TABLE/$RECORD_ID" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" | python3 -m json.tool
-```
-
-### Delete up to 10 records in one call
-```bash
-curl -s -X DELETE "https://api.airtable.com/v0/$BASE_ID/$TABLE?records%5B%5D=rec1&records%5B%5D=rec2" \
-  -H "Authorization: Bearer $AIRTABLE_API_KEY" | python3 -m json.tool
-```
+Creating, updating, upserting, or deleting records? Build the request bodies from [writing-records.md](references/writing-records.md) — write shape per field type, single/batch create, PATCH vs PUT, upserts by merge field, deletes, `typecast`, write-specific pitfalls. Read-only tasks skip it.
 
 ## Pagination
 
@@ -206,8 +132,6 @@ done
 
 - **`filterByFormula` MUST be URL-encoded.** Field names with spaces or non-ASCII also need encoding (`{My Field}` → `%7BMy%20Field%7D`). Use Python stdlib (pattern above) — never hand-escape.
 - **Empty fields are omitted from responses.** A missing `"Assignee"` key doesn't mean the field doesn't exist — it means this record's value is empty. Check the schema (step 3) before concluding a field is missing.
-- **PATCH vs PUT.** `PATCH` merges supplied fields into the record. `PUT` replaces the record entirely and clears any field you didn't include. Default to `PATCH`.
-- **Single-select options must exist.** Writing `"Status": "Shipping"` when `Shipping` isn't in the field's option list errors with `INVALID_MULTIPLE_CHOICE_OPTIONS` unless you pass `"typecast": true` (which auto-creates the option).
 - **Per-base token scoping.** A `403` on one base while another works means the token's Access list doesn't include that base — not a scope or auth issue. Send the user to https://airtable.com/create/tokens to grant it.
 - **Rate limits are per base, not per token.** 5 req/sec on `baseA` and 5 req/sec on `baseB` is fine; 6 req/sec on `baseA` alone will throttle. Monitor the `Retry-After` header on `429`.
 
