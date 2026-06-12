@@ -6,10 +6,9 @@ description: |
   session is active, end the session. Falls back to built-in `caffeinate`
   if Amphetamine is not installed.
 
-  Use when: "не давай компу заснуть", "включи amphetamine", "запусти амфетамин",
-  "keep mac awake", "stay awake", "отключи сон", "не дай уснуть",
-  "продли бодрствование", "останови amphetamine", "выключи амфетамин",
-  "проверь активна ли сессия amphetamine", "сколько ещё не заснёт".
+  Use when: "включи amphetamine", "запусти амфетамин",
+  "keep mac awake", "останови amphetamine", "выключи амфетамин",
+  "проверь активна ли сессия amphetamine".
 ---
 
 # Amphetamine Control
