@@ -165,8 +165,6 @@ brew "mole"
 brew "moreutils"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
-# Ambitious Vim-fork focused on extensibility and agility
-brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Open-source, cross-platform JavaScript runtime environment
