@@ -1,10 +1,5 @@
-tap "alcova-ai/tap"
 tap "charmbracelet/tap"
 tap "facebook/fb", trusted: true
-tap "getsentry/tools"
-tap "kegworks-app/kegworks"
-tap "ngrok/ngrok"
-tap "wix/brew"
 # All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
 # Development kit for the Java programming language
@@ -262,8 +257,6 @@ brew "wget"
 brew "wireshark"
 # JavaScript package manager
 brew "yarn"
-# Blazing fast terminal file manager written in Rust, based on async I/O
-brew "yazi"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
 # General-purpose lossless data-compression library
@@ -281,7 +274,6 @@ brew "zsh-syntax-highlighting"
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 brew "charmbracelet/tap/crush", trusted: true
 # A Powerful Command Line for automating iOS Simulators
-brew "facebook/fb/idb-companion"
 # Apple simulator utilities
 brew "wix/brew/applesimutils"
 brew "facebook/fb/idb-companion", trusted: true
@@ -364,12 +356,8 @@ cask "maccy"
 cask "macs-fan-control"
 # Extensible two-pane file manager
 cask "marta"
-# Online collaborative whiteboard platform
-cask "miro"
 # Open-source music notation software
 cask "musescore"
-# Reverse proxy, secure introspectable tunnels to localhost
-cask "ngrok"
 # Cloud gaming platform
 cask "nvidia-geforce-now"
 # Open-source software for live streaming and screen recording
@@ -382,8 +370,6 @@ cask "opera"
 cask "orbstack"
 # Remote desktop
 cask "parsec"
-# Control your tools with a few keystrokes
-cask "raycast"
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # Screenshot measurement and annotation tool
