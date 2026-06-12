@@ -1,18 +1,15 @@
 ---
 name: skill-testing
 description: |
-  Tests Claude Code skills end to end: designs test scenarios, executes
-  them via parallel subagent runners against a no-skill baseline, grades
-  acceptance criteria on evidence, and reports. Modes: quick smoke test
-  (default, no interview), scenario design only, run existing scenarios,
-  full A/B cycle with baseline and graders.
+  Tests Claude Code skills end to end: designs scenarios, executes them
+  via parallel subagent runners against a no-skill baseline, grades
+  acceptance criteria on evidence, reports. Modes: quick smoke test
+  (default), design only, run existing scenarios, full A/B cycle.
 
-  Use when: "протестируй скилл", "проверь скилл тестами", "smoke test
-  skill" (quick); "придумай тесты для скилла", "спроектируй сценарии
-  тестирования", "design skill test scenarios" (design only); "прогони
+  Use when: "протестируй скилл", "smoke test skill" (quick); "придумай
+  тесты для скилла", "design skill test scenarios" (design); "прогони
   сценарии скилла", "запусти тесты скилла", "run skill test scenarios"
-  (run existing); "полный тест скилла", "A/B тест скилла с baseline",
-  "full A/B skill test" (full cycle).
+  (run); "полный тест скилла", "full A/B skill test" (full).
 ---
 
 # Skill Testing

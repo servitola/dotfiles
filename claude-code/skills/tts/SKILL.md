@@ -1,19 +1,16 @@
 ---
 name: tts
 description: |
-  Generate speech audio (WAV/MP3) from text using the user's own TTS stack:
-  local LiteLLM proxy (localhost:4000) with Gemini TTS, local Piper (Russian),
-  and Azure Neural voices. Zero paid APIs — everything routes through free
-  backends the user already runs.
+  Generate speech audio (WAV/MP3) from text via the user's own free TTS
+  stack: local LiteLLM proxy (localhost:4000) with Gemini TTS, local Piper
+  (Russian), Azure Neural voices.
 
   Use when: "озвучь текст", "озвучь это", "сделай аудио из текста",
-  "сгенерируй речь", "преврати в голос", "сделай mp3 из текста",
-  "проговори текст", "text to speech", "voice this text", "read this aloud",
-  "make an mp3 of this text", "generate speech", "synthesize audio".
+  "сгенерируй речь", "сделай mp3 из текста", "проговори текст", "text to
+  speech", "voice this text", "read this aloud", "generate speech".
 
-  Do NOT use for: Greek audio (use the greek-tts skill — dialogue detection,
-  el-GR voices, rate control) or speech-to-text (use the voiceink-local
-  alias / VoiceInk app).
+  Do NOT use for: Greek audio (greek-tts skill) or speech-to-text
+  (voiceink-local alias / VoiceInk app).
 ---
 
 # TTS — text to speech via the local LiteLLM proxy

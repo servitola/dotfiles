@@ -1,17 +1,15 @@
 ---
 name: cron-job
 description: |
-  Add, edit, or remove scheduled tasks AND reminders in the dotfiles cron setup
-  at ~/projects/dotfiles/cron/cron_jobs/. Picks the right file, validates the
-  schedule expression, wires logging/locking, and reinstalls crontab via
-  init-cron-jobs.sh. Reminders are scheduled Telegram messages (see the
-  Reminders section). New entries always go into private (gitignored) files.
+  Add, edit, or remove scheduled tasks AND reminders (scheduled Telegram
+  messages) in ~/projects/dotfiles/cron/cron_jobs/: picks the right file,
+  validates the schedule, wires logging/locking, reinstalls crontab via
+  init-cron-jobs.sh. New entries always go into private (gitignored) files.
 
-  Use when: "добавь крон", "новая задача по расписанию", "запланируй задачу",
-  "поставь в крон", "schedule a task", "add a cron job", "add to crontab",
-  "запиши в крон", "убери из крона", "remove cron job", "edit cron schedule",
-  "напомни мне", "поставь напоминание", "напоминание", "разовое напоминание",
-  "напоминай каждый", "remind me", "set a reminder", "remind me to", "ping me at".
+  Use when: "добавь крон", "запланируй задачу", "поставь в крон", "запиши
+  в крон", "убери из крона", "schedule a task", "add a cron job", "add to
+  crontab", "remove cron job", "напомни мне", "поставь напоминание",
+  "напоминай каждый", "remind me", "set a reminder", "ping me at".
 ---
 
 # Cron Job

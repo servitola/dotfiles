@@ -1,21 +1,18 @@
 ---
 name: browser-skill-creator
 description: |
-  Creates site-specific browser-automation skills (like order-food, gov-cy,
-  book-doctor-cy, pay-bills-cy) that drive real websites via Playwright MCP.
-  Runs a discovery interview, sets up a persistent logged-in profile in
-  ~/.claude-playwright-profiles/<name>, walks the site once to record
-  role+name selectors, then generates a SKILL.md from the proven template:
-  hard rules (stop one step before final confirmation / payment), user
-  context, first-run login, cache files, fallbacks, dated SELECTORS.md.
+  Creates site-specific browser-automation skills that drive real websites
+  via Playwright MCP: discovery interview, persistent logged-in profile in
+  ~/.claude-playwright-profiles/<name>, recorded role+name selectors, then
+  a SKILL.md from the proven template (always stops one step before final
+  confirmation / payment).
 
-  Use when: "сделай скилл для сайта", "автоматизируй сайт", "хочу скилл
-  который заходит на сайт", "скилл для браузера", "make a browser skill for
-  site", "automate this website", "site automation skill".
+  Use when: "сделай скилл для сайта", "автоматизируй сайт", "скилл для
+  браузера", "make a browser skill for site", "automate this website",
+  "site automation skill".
 
-  Do NOT use for: generic skill creation without a website (use
-  skill-master), one-off browser tasks (drive Playwright MCP directly),
-  API-based integrations (no browser needed — normal skill with curl).
+  Do NOT use for: skills without a website (skill-master), one-off browser
+  tasks (drive Playwright MCP directly), API integrations (curl, no browser).
 ---
 
 # browser-skill-creator

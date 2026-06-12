@@ -1,19 +1,15 @@
 ---
 name: docx
 description: |
-  Generate or edit Word (.docx) documents from a description. Builds
-  headings, paragraphs, bullet/numbered lists, simple tables and embedded
-  images, saves the file into the current topic folder, and sends it to
-  the user via the bot MCP `send_document` tool.
+  Generate or edit Word (.docx) documents: headings, paragraphs, lists,
+  simple tables, embedded images. Saves into the current topic folder and
+  sends via the bot MCP `send_document` tool. Also applies when the user
+  sends an existing .docx and asks to change, translate, or restyle it.
 
-  Use when user asks any of: "сделай реферат", "напиши доклад",
-  "сделай документ", "сделай ворд", "сделай docx", "оформи в ворде",
-  "собери реферат", "переделай документ", "поправь docx",
-  "напиши эссе", "сделай курсовую", "make a docx", "write a report",
-  "write an essay", "edit this docx".
-
-  Also: when user sends an existing `.docx` file and asks to change,
-  rework, translate, restyle, or extend it.
+  Use when: "сделай реферат", "напиши доклад", "сделай документ", "сделай
+  ворд", "сделай docx", "оформи в ворде", "поправь docx", "напиши эссе",
+  "сделай курсовую", "make a docx", "write a report", "write an essay",
+  "edit this docx".
 ---
 
 # docx
