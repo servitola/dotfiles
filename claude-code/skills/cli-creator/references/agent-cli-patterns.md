@@ -11,7 +11,7 @@
 - Raw escape hatch
 - Companion skill pattern
 
-Use this reference when designing the command surface for a new CLI an agent (Claude Code, Amp, Qwen) should run.
+Use this reference when designing the command surface for a new CLI an agent (Claude Code, Qwen) should run.
 
 ## Mental model
 

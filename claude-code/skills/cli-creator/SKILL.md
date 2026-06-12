@@ -8,7 +8,7 @@ description: |
 
 # CLI Creator
 
-Create a real CLI that future agent threads (Claude Code, Amp, Qwen) can run by command name from any working directory.
+Create a real CLI that future agent threads (Claude Code, Qwen) can run by command name from any working directory.
 
 This skill is for durable tools, not one-off scripts. If a short script in the current repo solves the task, write the script there instead.
 
@@ -126,7 +126,7 @@ Write the companion skill in the order a future agent thread should use the CLI,
 
 Keep API reference details in the CLI docs or a skill reference file. Keep the skill focused on ordering, safety, and examples future threads should actually run.
 
-New companion skills go to `~/projects/dotfiles/claude-code/skills/<tool-name>/` — this directory is the single source of truth, symlinked into Amp and Qwen Code, so the skill becomes available across all the user's AI coding tools automatically.
+New companion skills go to `~/projects/dotfiles/claude-code/skills/<tool-name>/` — this directory is the single source of truth, symlinked into Qwen Code, so the skill becomes available across all the user's AI coding tools automatically.
 
 ## Done when
 

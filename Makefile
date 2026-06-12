@@ -179,19 +179,6 @@ install:
 		~/projects/dotfiles/rag/scripts/rag-improve.py \
 		~/projects/dotfiles/rag/scripts/rag-karabiner-summary.py
 
-	@echo "setup ampcode settings"
-	@mkdir -p ~/.config/amp
-	@$(REMOVE) ~/.config/amp/settings.json
-	@$(LINK) ~/projects/dotfiles/amp/settings.json ~/.config/amp/settings.json
-	@$(REMOVE) ~/.config/amp/tools
-	@$(LINK) ~/projects/dotfiles/amp/tools ~/.config/amp/tools
-	@$(REMOVE) ~/.config/amp/commands
-	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.config/amp/commands
-	@$(REMOVE) ~/.config/amp/agents
-	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.config/amp/agents
-	@$(REMOVE) ~/.config/amp/skills
-	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.config/amp/skills
-
 	@echo "setup OpenCode symlinks"
 	@mkdir -p ~/.config/opencode
 	@$(REMOVE) ~/.config/opencode/opencode.json

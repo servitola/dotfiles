@@ -3,7 +3,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["mcp>=1.2"]
 # ///
-"""rag-mcp — MCP server exposing the dotfiles RAG to Claude Code / Codex / Amp.
+"""rag-mcp — MCP server exposing the dotfiles RAG to Claude Code / Codex.
 
 Two tools are exported:
   rag_context(query, top_k=8, collection)  → top-K retrieved chunks (no LLM call)

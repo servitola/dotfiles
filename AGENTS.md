@@ -22,7 +22,7 @@ matters and what's just an experiment. Each directory also has its own
 - **Reference**: See `README.md` for detailed setup
 
 ## AI Coding Tools — Shared Configuration
-Claude Code (`claude-code/`) is the single source of truth for `commands/`, `agents/`, `skills/`; Amp, Qwen Code, and Codex consume them via Makefile symlinks. Codex keeps its own global config in `codex/`.
+Claude Code (`claude-code/`) is the single source of truth for `commands/`, `agents/`, `skills/`; Qwen Code, and Codex consume them via Makefile symlinks. Codex keeps its own global config in `codex/`.
 When adding new shared commands, agents, or skills — add them to `claude-code/` only.
 Detached (opt-in, per-folder) skills and MCP servers live in `claude-code/detached_skills/` and `claude-code/detached_mcp/` — attach with `skill-attach <name> [dir]` / `mcp-attach <name> [dir]`.
 Full symlink map, tool-specific configs, and Codex operational rules (1024-char description limit, vendored `openai-docs`, install via cask only): see `claude-code/AGENTS.md`.

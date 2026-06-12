@@ -1,11 +1,8 @@
 # claude-code — shared AI-tool assets (commands, agents, skills) + Claude Code config
 
-Single source of truth for `commands/`, `agents/`, `skills/` shared across Claude Code, Amp, Qwen Code, Codex. `~/.claude` is a symlink to this directory.
+Single source of truth for `commands/`, `agents/`, `skills/` shared across Claude Code, Qwen Code, Codex. `~/.claude` is a symlink to this directory.
 
 ## Symlink targets (created by Makefile)
-- `~/.config/amp/commands` → `claude-code/commands`
-- `~/.config/amp/agents` → `claude-code/agents`
-- `~/.config/amp/skills` → `claude-code/skills`
 - `~/.qwen/commands` → `claude-code/commands`
 - `~/.qwen/agents` → `claude-code/agents`
 - `~/.qwen/skills` → `claude-code/skills`
@@ -15,7 +12,6 @@ Single source of truth for `commands/`, `agents/`, `skills/` shared across Claud
 - `~/.agents/skills` → `claude-code/skills` (Codex skills — current location; `~/.codex/skills` is deprecated)
 
 ## Tool-specific configs (not shared)
-- `amp/settings.json`, `amp/tools/` — Amp's own settings
 - `qwen-code/settings.json` — Qwen's own settings (context comes from `claude-code/CLAUDE.md` via `~/.qwen/QWEN.md` symlink)
 - `codex/config.toml` — Codex's own global config
 
