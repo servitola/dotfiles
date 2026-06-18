@@ -14,7 +14,7 @@
 - TTS aliases: `tts` (Gemini, primary), `tts-piper` (local Piper Russian, always available), `tts-azure` (Greek skill), `tts-azure-ru` (Azure Russian fallback). Fallback chain: `tts → tts-piper → tts-azure-ru`. Use `tts` for Russian speech; do NOT use `tts-azure` for Russian (it's voice-agnostic, used by greek-tts skill with explicit Azure voice ids).
 - `host.docker.internal` api_base entries (`tts-piper` on `:8177`, `voiceink-local` on `:8178`) are local shims — free, no paid quota. `verify-free-only.sh` whitelists this host explicitly.
 - Port stays `127.0.0.1:4000`. UI creds stay `${LITELLM_UI_*:?...}` — never hardcoded.
-- `embed` alias uses `nvidia/llama-nemotron-embed-vl-1b-v2:free` (1024-dim). Changing the model breaks every Qdrant collection that used it — coordinate with `../rag/`.
+- `embed` alias uses `nvidia/llama-nemotron-embed-vl-1b-v2:free` (2048-dim, verified live via `/v1/embeddings`). Changing the model breaks every Qdrant collection that used it — coordinate with `../rag/`.
 
 ## Consumers — what routes through this proxy
 
