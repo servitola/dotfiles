@@ -22,6 +22,12 @@ services:
       CHUTES_API_KEY: ${CHUTES_API_KEY}
       AZURE_VOICE_TTS_GREEK_API_KEY1: ${AZURE_VOICE_TTS_GREEK_API_KEY1}
       LITELLM_MASTER_KEY: sk-local-workbot
+      # Structured JSON container logs (grep-able docker logs).
+      JSON_LOGS: "True"
+      # Use the bundled cost-map instead of fetching api.litellm.ai — keeps
+      # the proxy offline/no-phone-home and avoids a stale remote map ever
+      # attributing paid cost to a free call (belt-and-suspenders for $0).
+      LITELLM_LOCAL_MODEL_COST_MAP: "True"
       DATABASE_URL: postgresql://litellm:litellm@db:5432/litellm
       REDIS_HOST: redis
       REDIS_PORT: "6379"
