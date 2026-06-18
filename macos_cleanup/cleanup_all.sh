@@ -172,27 +172,6 @@ else
     printf "  ${DIM}* GeForce NOW: not installed${NC}\n"
 fi
 
-print_task "Battle.net BrowserCaches"
-BNET_CACHES="$HOME/Library/Application Support/Battle.net/BrowserCaches"
-if [ -d "$BNET_CACHES" ]; then
-    if pgrep -x "Battle.net" > /dev/null || pgrep -x "Battle.net Helper" > /dev/null; then
-        printf "  ${DIM}* Battle.net: app is running, skipping${NC}\n"
-    else
-        spinner_start "Battle.net embedded browser cache"
-        bnet_before_kb=$(du -sk "$BNET_CACHES" 2>/dev/null | cut -f1)
-        "$RM_CMD" -rf "$BNET_CACHES"/* 2>/dev/null
-        bnet_after_kb=$(du -sk "$BNET_CACHES" 2>/dev/null | cut -f1)
-        bnet_freed_kb=$(( bnet_before_kb - bnet_after_kb ))
-        if [ "$bnet_freed_kb" -gt 0 ]; then
-            spinner_stop "Battle.net: freed $(format_size $bnet_freed_kb)"
-        else
-            spinner_stop "Battle.net: nothing to clean"
-        fi
-    fi
-else
-    printf "  ${DIM}* Battle.net: not installed${NC}\n"
-fi
-
 print_task "Steam htmlcache (CEF browser cache)"
 STEAM_HTMLCACHE="$HOME/Library/Application Support/Steam/config/htmlcache"
 if [ -d "$STEAM_HTMLCACHE" ]; then
