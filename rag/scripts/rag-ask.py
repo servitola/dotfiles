@@ -14,6 +14,7 @@ import argparse
 import datetime
 import json
 import os
+import re
 import sys
 import urllib.error
 import urllib.parse
@@ -52,6 +53,9 @@ SYSTEM_PROMPT = """You answer using only the retrieved context when possible.
 If the context is insufficient, say that directly.
 Prefer concise, technically precise answers.
 When useful, cite the source paths from the provided context.
+When the question asks for multiple items, values, or parts (e.g. "which two
+values", a list, both sides of a pair), enumerate ALL of them present in the
+context — don't stop after the first.
 
 IMPORTANT — multi-hop questions: when the answer spans multiple files (e.g.
 a Karabiner rule remaps a key to an F-key, and a Hammerspoon binding then
@@ -71,6 +75,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--json", action="store_true", help="Print raw JSON response")
     parser.add_argument("--show-context", action="store_true", help="Print retrieved chunks before the answer")
     parser.add_argument("--context-only", action="store_true", help="Print only retrieved context, skip LLM call")
+    parser.add_argument("--decompose", action="store_true",
+                        help="Split a complex question into sub-questions, retrieve for each, "
+                             "and answer over the union (better multi-hop coverage)")
     return parser.parse_args()
 
 
@@ -200,22 +207,94 @@ def ask_llm(question: str, context: str, model: str) -> dict:
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
             ],
+            # Bypass LiteLLM's semantic cache. It matches by embedding similarity,
+            # so a novel question whose retrieved context overlaps a recently
+            # cached prompt (e.g. a rag-improve / case-gen PROPOSE call) would get
+            # that unrelated completion back — answering about order types when
+            # asked about margin, or returning eval-case JSON. Answers must be
+            # generated fresh from THIS question's context.
+            "cache": {"no-cache": True},
         },
         headers={"Authorization": f"Bearer {LITELLM_MASTER_KEY}"},
     )
 
 
+def retrieve(collection: str, question: str, mode: str, top_k: int) -> list[dict]:
+    """One retrieval pass for a single question, honouring the search mode."""
+    if mode == "fts":
+        return search_fts(collection, question, top_k)
+    vector = embed_query(question)
+    if mode == "hybrid":
+        return search_hybrid(collection, vector, question, top_k)
+    return search_qdrant(collection, vector, top_k)
+
+
+DECOMPOSE_PROMPT = """You split a complex question into the MINIMAL set of standalone \
+sub-questions whose individual answers together fully cover it. Rules:
+- Each sub-question is self-contained and targets ONE fact or hop.
+- KEEP the concrete entities/terms from the original question in EVERY sub-question
+  (e.g. keep "Hyper+V", a function name, a config key). Do NOT abstract them into
+  generic phrasings like "the event" or "that component" — generic sub-questions
+  retrieve generic chunks and miss the specific fact.
+- For a multi-hop chain (A maps to B, B triggers C), make one sub-question per hop, AND
+  include one sub-question phrased around the FINAL concrete OUTCOME (e.g. "what app does
+  Hyper+V ultimately launch?"), since the answer often lives in a summary/cheatsheet chunk.
+- If the question is already atomic (a single fact), return just the original question unchanged.
+- Output ONLY the sub-questions, one per line, no numbering, no commentary. At most 4."""
+
+
+def decompose_question(question: str, model: str) -> list[str]:
+    """Ask the LLM for sub-questions. Falls back to [question] on any failure."""
+    try:
+        resp = http_json(
+            "POST",
+            f"{LITELLM_URL}/v1/chat/completions",
+            payload={
+                "model": model,
+                "max_tokens": 300,
+                "messages": [
+                    {"role": "system", "content": DECOMPOSE_PROMPT},
+                    {"role": "user", "content": question},
+                ],
+                "cache": {"no-cache": True},
+            },
+            headers={"Authorization": f"Bearer {LITELLM_MASTER_KEY}"},
+        )
+        text = resp.get("choices", [{}])[0].get("message", {}).get("content") or ""
+    except SystemExit:
+        return [question]
+    subs: list[str] = []
+    for line in text.splitlines():
+        s = re.sub(r"^\s*[-*\d.)]+\s*", "", line).strip()
+        if s and s not in subs:
+            subs.append(s)
+    return subs[:4] or [question]
+
+
+def merge_hits(hit_lists: list[list[dict]], cap: int) -> list[dict]:
+    """Union retrieved chunks across sub-questions, dedup, keep best score, cap."""
+    best: dict[tuple, dict] = {}
+    for hits in hit_lists:
+        for h in hits:
+            pl = h.get("payload", {})
+            key = (pl.get("path", ""), (pl.get("text") or "")[:120])
+            if key not in best or h.get("score", 0.0) > best[key].get("score", 0.0):
+                best[key] = h
+    return sorted(best.values(), key=lambda h: h.get("score", 0.0), reverse=True)[:cap]
+
+
 def main() -> int:
     args = parse_args()
 
-    if args.mode == "fts":
-        hits = search_fts(args.collection, args.question, args.top_k)
+    if args.decompose:
+        subs = decompose_question(args.question, args.model)
+        print(f"[decompose] {len(subs)} sub-question(s):", file=sys.stderr)
+        for s in subs:
+            print(f"  - {s}", file=sys.stderr)
+        hit_lists = [retrieve(args.collection, s, args.mode, args.top_k) for s in subs]
+        hits = merge_hits(hit_lists, cap=max(args.top_k * 2, 14))
     else:
-        query_vector = embed_query(args.question)
-        if args.mode == "hybrid":
-            hits = search_hybrid(args.collection, query_vector, args.question, args.top_k)
-        else:
-            hits = search_qdrant(args.collection, query_vector, args.top_k)
+        hits = retrieve(args.collection, args.question, args.mode, args.top_k)
 
     top3 = [h.get("payload", {}).get("path", "?") for h in hits[:3]]
 
