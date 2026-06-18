@@ -680,7 +680,16 @@ def main() -> int:
     current_paths: set[str] = set()  # all paths we see on disk (for orphan cleanup)
 
     for path in files:
-        text = read_text(path)
+        try:
+            text = read_text(path)
+        except (FileNotFoundError, OSError) as exc:
+            # The file vanished or became unreadable between the directory walk
+            # and this read — e.g. an app regenerating contextMenu .cmaction
+            # bundles mid-refresh. A batch ingest must skip the file, not abort
+            # the whole collection.
+            print(f"  ! skip unreadable {path}: {exc}", file=sys.stderr)
+            skipped_files += 1
+            continue
         path_str = str(path)
         current_paths.add(path_str)
         h = content_hash(text)
