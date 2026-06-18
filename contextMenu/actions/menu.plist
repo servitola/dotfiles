@@ -140,6 +140,16 @@
 		<key>icon</key>
 		<string>icon.icns</string>
 		<key>name</key>
+		<string>Open on TV</string>
+		<key>path</key>
+		<string>Open on TV.cmaction</string>
+	</dict>
+	<dict>
+		<key>enabled</key>
+		<true/>
+		<key>icon</key>
+		<string>icon.icns</string>
+		<key>name</key>
 		<string>Transcribe with VoiceInk</string>
 		<key>path</key>
 		<string>Transcribe with VoiceInk.cmaction</string>

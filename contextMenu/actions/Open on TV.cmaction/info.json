@@ -1,0 +1,14 @@
+{
+  "path" : "/bin/bash",
+  "options" : {
+    "acceptDirs" : true,
+    "acceptFiles" : true,
+    "noSandbox" : true,
+    "confirmExecution" : false,
+    "showOutput" : false
+  },
+  "icon" : "icon.icns",
+  "name" : "Open on TV",
+  "type" : "shell",
+  "uuid" : "67C132F5-7965-422E-B418-14ADBD92AE0F"
+}
