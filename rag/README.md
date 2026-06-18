@@ -13,7 +13,7 @@ Both must be running. `rag status` checks both.
 |---|---|
 | `rag.sh` | Main zsh wrapper — defines the `rag` function and zsh completion |
 | `rag.conf` | Declarative collections for `rag refresh` — "what lives in which collection" |
-| `rag.eval.json` | Regression corpus — questions + `must_contain` / `must_hit_path` assertions |
+| `rag.eval.json` | Regression corpus for the `dotfiles` collection (canonical real file). Other collections: `rag.eval.<collection>.json`, symlinked from `dotfiles_private/rag/` |
 | `rag-eval-history.md` | Append-only quality trend (one block per `rag improve` run) |
 | `gaps/<collection>.md` | Retrieval/judge failures flagged by `rag improve` — per-collection todo queue. Old aggregated `rag-gaps.md` is kept readable for `rag prune-gaps --legacy`. |
 | `rag-retired.md` | Auto-generated cases that hit 3 consecutive strikes and were dropped |
@@ -24,6 +24,12 @@ Both must be running. `rag status` checks both.
 | `scripts/rag-prune-gaps.py` | Re-run gap entries against current retrieval; drop the ones now closed |
 | `scripts/rag-queries.py` | Digest of real queries logged by `rag ask`/`rag context` — mine for new eval cases |
 | `scripts/rag-answer-eval.py` | Grade the final LLM answer (GOOD/PARTIAL/BAD), not just whether a chunk was retrieved |
+| `scripts/rag-answer-eval-nightly.py` | Cron wrapper: nightly answer-quality gate, Telegram alert on regression |
+| `scripts/verify-case.py` | Verify candidate eval cases against live retrieval (same path as `rag eval`); stdin JSON → JSON verdicts |
+| `scripts/merge-verified-cases.py` | Re-verify + dedup + merge bulk-generated cases into the right eval files |
+| `scripts/rerank-ab.py` | A/B the reranker vs plain hybrid on a suite (verdict: see `docs/retrieval-benchmark.md`) |
+| `scripts/answer-ab.py` | A/B answer-generation models, fixed sample, no history side-effects |
+| `docs/retrieval-benchmark.md` | Baseline pass rates + reranker/embedder A/B methodology and verdict |
 | `logs/queries.jsonl` | Append-only log of every real query (gitignored, per-machine) |
 | `scripts/rag-karabiner-summary.py` | Regenerate `karabiner/rules/SUMMARY.md` (dotfiles-specific) |
 
@@ -58,6 +64,8 @@ rag help                            show this help
 ```
 
 `zsh/bin/rag` is a standalone wrapper — non-zsh callers (Claude Code, Codex bash subshells) can invoke `rag <subcommand>` as a regular command.
+
+**`rag ask --decompose`** — for multi-hop / chained questions, splits the question into sub-questions, retrieves for each, and answers over the union of chunks. One query often misses a later hop (e.g. the Hammerspoon action behind an F-key); decomposing surfaces it. Opt-in: costs one extra LLM call + N retrievals, so leave it off for simple lookups.
 
 ## Config — `rag.conf`
 
@@ -109,17 +117,21 @@ The pipeline (`scripts/rag-eval.py`) exposes `embed()`, `search()`, `run_case()`
 7. **Prune gaps** in `gaps/<collection>.md`: re-run each entry through retrieval, drop the ones whose `expect` substring is now in top-k. Embed upstream failures keep the entry (decision deferred). Disable with `--no-prune-gaps`.
 8. **Full eval** sweep, results appended to `rag-eval-history.md`.
 
-Lockfile `/tmp/rag-improve.lock` prevents concurrent runs.
+Per-collection lockfile `/tmp/rag-improve.<collection>.lock` prevents concurrent runs of the same collection (different collections can run in parallel).
 
 ### Invocation
 
 ```bash
-rag improve                          # normal run
+rag improve                          # normal run — dotfiles collection (rag.eval.json)
+rag improve --collection serho       # one other collection (auto-picks rag.eval.serho.json)
+rag improve --all --rotate 2         # rotate through ALL collections, 2 per run (cursor in /tmp/rag-improve.rotation.json)
 rag improve --dry-run                # propose+judge but don't write
 rag improve --files-per-run 10       # bigger burst
 rag improve --chat-model fast        # Groq group, ~1-3s per call
 rag improve --no-revisit --no-git    # selectively disable phases
 ```
+
+Gaps are only logged for a real source file (exists, non-empty) whose `expect` substring literally occurs in it — deleted/empty files and invented needles are dropped, not queued.
 
 ### Pruning the gap log
 
@@ -164,12 +176,18 @@ answer-eval` closes that gap — retrieve → answer → judge GOOD/PARTIAL/BAD:
 
 ```bash
 rag answer-eval --manual-only --verbose          # grade your hand-written cases
-rag answer-eval --sample 30 --answer-model gpt    # broader, reliable answer model
+rag answer-eval --sample 30                       # broader sample
 ```
 
-Opt-in (not in cron — ~2 chat calls per case). Appends to
-`rag-answer-eval-history.md`. Bypasses LiteLLM's semantic cache so grades always
-reflect a fresh answer.
+Defaults (set by A/B, 2026-06-17): answer model `gpt` (what `rag ask` serves),
+judge `github-gpt4o-mini` (non-reasoning → clean verdicts, no `<think>` leak),
+top-10 chunks of context (matches `rag ask`). The old `fast/fast` default was an
+unreliable grader, not a real quality signal. Bypasses LiteLLM's semantic cache
+so grades reflect a fresh answer. Appends to `rag-answer-eval-history.md`.
+
+A cron wrapper [scripts/rag-answer-eval-nightly.py](scripts/rag-answer-eval-nightly.py)
+runs a small nightly sample per collection and sends a Telegram alert if a
+collection's quality score regresses (drop >15pp or below a floor).
 
 ## Index hygiene
 
@@ -178,26 +196,30 @@ Two defects found via answer-eval, both fixed in `rag.conf` / scripts:
 - **Eval corpus pollution** — `rag.eval.json`, `gaps/`, `rag-*-history.md` were
   being ingested into the `dotfiles` collection, so questions *about* the
   dotfiles retrieved the eval data itself. Now excluded in `rag.conf`.
-- **Semantic-cache cross-match** — LiteLLM's semantic cache (`cache: true`) can
-  return a cached completion from a *different* prompt that shares context
-  chunks (e.g. a `rag improve` PROPOSE prompt leaking into a real answer).
-  `rag answer-eval` sends `cache: {no-cache}`. Worth knowing this can also affect
-  real `rag ask` answers under concurrent cron load.
+- **Semantic-cache cross-match** — LiteLLM's semantic cache matches by embedding
+  similarity, so it can return a cached completion from a *different* prompt that
+  shares context chunks (e.g. a `rag improve` PROPOSE prompt, or one ask leaking
+  into another). This was poisoning real `rag ask` answers (asked about margin →
+  got an answer about order types; asked about routing → got eval-case JSON).
+  Fixed: `rag ask` and `rag answer-eval` now both send `cache: {no-cache}`. Any
+  new chat call on an answer path must do the same.
 
 ### Cron (opt-in)
 
-Installed by `make install` from [../cron/cron_jobs/rag-improve.cron](../cron/cron_jobs/rag-improve.cron):
+Installed by `../cron/init-cron-jobs.sh` from [../cron/cron_jobs/rag-improve.cron](../cron/cron_jobs/rag-improve.cron) and `rag-answer-eval.private.cron`:
 
 ```
-0 */2 * * * ~/projects/dotfiles/rag/scripts/rag-improve.py >> /tmp/rag-improve.log 2>&1
+0  * * * * rag-improve.py                          # dotfiles, hourly
+30 * * * * rag-improve.py --all --rotate 2         # rotate other collections, hourly at :30
+30 3 * * * rag-answer-eval-nightly.py              # nightly answer-quality gate + Telegram alert
 ```
 
-~15 chat + ~130 embed calls per run; free quota handles this every 2h trivially.
+~15 chat + ~130 embed calls per collection-run; free quota handles this trivially. Per-collection lockfiles keep the two `rag-improve` lines from colliding.
 
 ### After a week
 
-- `rag.eval.json` grown from baseline 102 to several hundred cases reflecting files you actually touched.
-- `rag-gaps.md` — todo queue of retrieval weak spots. Each entry suggests a place to write a SUMMARY.md or tune the chunker.
+- Eval suites grown across all 10 collections (≈2.5k cases total) reflecting files you actually touched.
+- `gaps/<collection>.md` — todo queue of retrieval weak spots. Each entry suggests a place to write a SUMMARY.md or tune the chunker.
 - `rag-eval-history.md` — quality dashboard. Any regression is immediately visible.
 - `rag-retired.md` — cases that decayed. Points to drift (deleted files, chunker changes, upstream flakiness).
 
