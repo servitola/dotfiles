@@ -17,6 +17,9 @@ ide/
 plugins/
 usage-data/
 hooks/*
+!hooks/post-compact-restore.sh
+!hooks/compress-bash-output.py
+!hooks/rag-context-inject.py
 prompts/
 output-styles/
 .DS_Store
