@@ -98,6 +98,9 @@ def chat(prompt: str, model: str, max_tokens: int = 600, retries: int = 3) -> st
 
 ANSWER_PROMPT = """Answer the question using ONLY the context below. If the context
 is insufficient, say so plainly. Be concise and technically precise.
+When the question asks for multiple items, values, or parts (e.g. "which two
+values", a list, both sides of a pair), enumerate ALL of them present in the
+context — do not stop after the first.
 
 Question: {q}
 
@@ -136,11 +139,13 @@ def grade_case(case: dict, collection: str, top_k: int,
     hits = rag_eval.search_then_rerank(collection, q, vec, top_k)
     if not hits:
         return "BAD", "", "no context retrieved"
-    # Keep context lean: top 6 chunks × 900 chars. Enough to answer, and small
-    # enough that free-tier / reasoning models don't exhaust their output budget
-    # on a giant prompt and return empty content.
+    # Feed top 10 chunks × 900 chars — matches what `rag ask` actually serves
+    # (top_k=10), so grading reflects the real answer path. The earlier 6-chunk
+    # window under-fed context: needles sitting in retrieved-but-unshown chunks
+    # 7-12 made the model answer "insufficient context" → false PARTIAL/BAD.
+    # max_tokens below is generous enough that reasoning models still finish.
     blocks = []
-    for i, h in enumerate(hits[:6], 1):
+    for i, h in enumerate(hits[:10], 1):
         pl = h.get("payload", {})
         blocks.append(f"[{i}] {pl.get('path','?')}\n{(pl.get('text') or '')[:900]}")
     context = "\n\n".join(blocks)
@@ -153,11 +158,19 @@ def grade_case(case: dict, collection: str, top_k: int,
                        judge_model, max_tokens=500)
     if not verdict_raw:
         return "SKIP", answer, "judge unavailable"
+    # Reasoning judge models (gpt/coding/nemotron) leak chain-of-thought as a
+    # <think>...</think> block before the verdict. Strip it so the parsed
+    # verdict/reason — and the history file — reflect the conclusion, not the
+    # scratchpad. Handles an unclosed <think> too (reasoning ran to the cap).
+    import re
+    verdict_raw = re.sub(r"<think>.*?</think>", "", verdict_raw, flags=re.DOTALL | re.IGNORECASE)
+    verdict_raw = re.sub(r"<think>.*$", "", verdict_raw, flags=re.DOTALL | re.IGNORECASE).strip()
+    if not verdict_raw:
+        return "SKIP", answer, "judge returned only reasoning, no verdict"
     first = verdict_raw.strip().splitlines()[0] if verdict_raw.strip() else ""
     parts = first.split(":", 1)
     verdict = parts[0].strip().upper()
     if verdict not in ("GOOD", "PARTIAL", "BAD"):
-        import re
         m = re.search(r"\b(GOOD|PARTIAL|BAD)\b", verdict_raw, re.IGNORECASE)
         verdict = m.group(1).upper() if m else "PARTIAL"
     reason = parts[1].strip() if len(parts) > 1 else verdict_raw.strip()[:160]
@@ -184,8 +197,12 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sample", type=int, default=20)
     ap.add_argument("--seed", default="answer-eval")
-    ap.add_argument("--answer-model", default=os.environ.get("RAG_ANSWER_MODEL", "fast"))
-    ap.add_argument("--judge-model", default=os.environ.get("RAG_JUDGE_MODEL", "fast"))
+    # answer defaults to `gpt` (what `rag ask` actually serves); judge to the
+    # non-reasoning github-gpt4o-mini (clean verdicts, no <think> leak, no
+    # reasoning-token exhaustion) — A/B (2026-06-17) showed `fast/fast` was an
+    # unreliable grader, not a real quality signal.
+    ap.add_argument("--answer-model", default=os.environ.get("RAG_ANSWER_MODEL", "gpt"))
+    ap.add_argument("--judge-model", default=os.environ.get("RAG_JUDGE_MODEL", "github-gpt4o-mini"))
     ap.add_argument("--manual-only", action="store_true", help="grade only hand-written cases")
     ap.add_argument("--verbose", action="store_true")
     ap.add_argument("--eval-file", default=str(EVAL_FILE))
