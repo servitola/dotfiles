@@ -1,5 +1,15 @@
 # rag-improve: autonomous RAG corpus expansion + revisit + eval sweep
-# Runs every hour; lockfile at /tmp/rag-improve.dotfiles.lock prevents overlap
-# Writes to ~/projects/dotfiles/rag/{rag.eval.json, rag-eval-history.md, gaps/<collection>.md, rag-retired.md}
-# Quota per run: ~15 chat calls + ~130 embed calls
-0 * * * * /Users/servitola/projects/dotfiles/rag/scripts/rag-improve.py >> /tmp/rag-improve.log 2>&1
+# Per-collection lockfiles at /tmp/rag-improve.<collection>.lock prevent overlap
+# (each collection has its own lock, so one stuck run never wedges the others).
+# Writes to ~/projects/dotfiles/rag/{rag.eval[.<collection>].json, rag-eval-history.md,
+#   gaps/<collection>.md, rag-retired.md}. Quota per collection: ~15 chat + ~130 embed.
+#
+# Line 1 — dotfiles (default, primary/largest collection) every hour, unchanged.
+# Line 2 — every OTHER collection via round-robin: each run advances --rotate
+#   collections (cursor in /tmp/rag-improve.rotation.json). Runs at :30 so it
+#   never overlaps the dotfiles run, and --all already includes dotfiles in the
+#   rotation but its own lockfile makes a concurrent dotfiles pick a no-op.
+#   With ~10 declared collections and --rotate 2 the fleet is fully swept every
+#   ~5 hours while per-invocation quota stays modest (~30 chat + ~260 embed).
+0  * * * * /Users/servitola/projects/dotfiles/rag/scripts/rag-improve.py >> /tmp/rag-improve.log 2>&1
+30 * * * * /Users/servitola/projects/dotfiles/rag/scripts/rag-improve.py --all --rotate 2 >> /tmp/rag-improve.log 2>&1

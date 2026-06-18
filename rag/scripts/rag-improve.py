@@ -14,8 +14,18 @@ Each run:
 Gaps (retrieval miss or judge rejection) land in rag-gaps.md.
 Retired cases (3 strikes) land in rag-retired.md.
 
+Works per-collection: --collection picks the target and its matching eval file
+(rag.eval.json for 'dotfiles', rag.eval.<collection>.json otherwise). --all
+rotates through every collection declared in rag.conf + rag.private.conf,
+tending --rotate of them per invocation (round-robin via a /tmp cursor) so a
+single run stays within free-tier quota. Each collection uses its own lockfile
+(/tmp/rag-improve.<collection>.lock) so they never block one another.
+
 Invocation:
-  rag improve
+  rag improve                                  # dotfiles (default, unchanged)
+  rag improve --collection sphere              # one other collection
+  rag improve --all                            # rotate --rotate collections
+  rag improve --all --rotate 3 --dry-run
   rag improve --dry-run
   rag improve --files-per-run 10
   rag improve --chat-model fast
@@ -69,10 +79,10 @@ rag_prune_gaps = _load_module("rag_prune_gaps", "rag-prune-gaps.py")
 
 DOTFILES_ROOT = Path.home() / "projects" / "dotfiles"
 RAG_ROOT = DOTFILES_ROOT / "rag"
-EVAL_FILE = RAG_ROOT / "rag.eval.json"  # mutated in main() if --eval-file given
+EVAL_FILE = RAG_ROOT / "rag.eval.json"  # set per collection in run_collection()
 
-# Root of the repo being improved this run. Defaults to dotfiles, mutated in
-# main() from rag.conf based on --collection. Used by git log, git grep, and
+# Root of the repo being improved this run. Defaults to dotfiles, set per
+# collection in run_collection() from rag.conf. Used by git log, git grep, and
 # path-relative reporting in stats / gaps / origin fields.
 CURRENT_REPO_ROOT: Path = DOTFILES_ROOT
 HISTORY_FILE = RAG_ROOT / "rag-eval-history.md"
@@ -82,6 +92,11 @@ GAPS_FILE_LEGACY = RAG_ROOT / "rag-gaps.md"
 GAPS_DIR = RAG_ROOT / "gaps"
 RETIRED_FILE = RAG_ROOT / "rag-retired.md"
 RAG_CONF = RAG_ROOT / "rag.conf"
+RAG_PRIVATE_CONF = RAG_ROOT / "rag.private.conf"  # gitignored, same format as rag.conf
+# Round-robin cursor for `--all`: which collections were tended last invocation.
+# Small JSON ({"cursor": <int>}); lets each hourly run advance a few collections
+# instead of hammering all of them. See pick_rotation() / advance_rotation().
+ROTATION_STATE = Path("/tmp/rag-improve.rotation.json")
 LOCKFILE = Path("/tmp/rag-improve.lock")  # mutated in main() per --collection
 
 
@@ -89,7 +104,7 @@ def gaps_file_for(collection: str) -> Path:
     """Per-collection gap log. Created lazily by append_gap()."""
     return GAPS_DIR / f"{collection}.md"
 
-# Substring excludes for the active collection, populated in main() from rag.conf.
+# Substring excludes for the active collection, populated in run_collection() from rag.conf.
 # Used by _is_indexable() so that proposer never sees files that ingest skipped —
 # otherwise the loop generates retrieval-miss noise for non-indexed paths.
 _EXCLUDES: list[str] = []
@@ -111,9 +126,18 @@ SKIP_FILENAMES = {"SUMMARY.md", "README.md"}
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Autonomous RAG improvement loop.")
     p.add_argument("--collection", default=os.environ.get("RAG_COLLECTION", "dotfiles"))
+    p.add_argument("--all", action="store_true",
+                   help="Tend every collection declared in rag.conf + rag.private.conf, "
+                        "ROTATING --rotate of them per invocation (round-robin via "
+                        f"{ROTATION_STATE}). Ignores --collection / --eval-file.")
+    p.add_argument("--rotate", type=int, default=2,
+                   help="With --all: how many collections to process this invocation "
+                        "(round-robin). Default 2 — keeps per-run quota modest at the "
+                        "hourly cadence (10 collections => full sweep every ~5 hours).")
     p.add_argument("--eval-file", default=None,
-                   help="Path to rag.eval.json for this collection. Default: rag/rag.eval.json. "
-                        "Use rag/rag.eval.<collection>.json for per-collection corpora.")
+                   help="Path to the rag.eval.*.json for this collection. Default is derived "
+                        "from --collection: rag/rag.eval.json for 'dotfiles', "
+                        "rag/rag.eval.<collection>.json otherwise.")
     p.add_argument("--files-per-run", type=int, default=5)
     p.add_argument("--cases-per-file", type=int, default=2)
     p.add_argument("--chat-model", default="coding")
@@ -311,6 +335,65 @@ def load_excludes_for_collection(collection: str, conf: Path = RAG_CONF) -> list
     """Backwards-compat shim — returns just the excludes."""
     _, excludes = load_collection_config(collection, conf)
     return excludes
+
+
+def default_eval_file_for(collection: str) -> Path:
+    """Per-collection regression suite path.
+
+    `dotfiles` keeps the historical default `rag.eval.json` (so nothing relying
+    on it breaks); every other collection uses `rag.eval.<collection>.json`.
+    """
+    if collection == "dotfiles":
+        return RAG_ROOT / "rag.eval.json"
+    return RAG_ROOT / f"rag.eval.{collection}.json"
+
+
+def discover_collections() -> list[str]:
+    """All collection names declared in rag.conf + rag.private.conf, in file
+    order (rag.conf first), de-duplicated. This is the canonical `--all` set —
+    collections with a known source path. Drives round-robin rotation."""
+    names: list[str] = []
+    seen: set[str] = set()
+    for conf in (RAG_CONF, RAG_PRIVATE_CONF):
+        if not conf.exists():
+            continue
+        for raw in conf.read_text(encoding="utf-8").splitlines():
+            line = raw.split("#", 1)[0].strip()
+            if not line or ":" not in line:
+                continue
+            name = line.partition(":")[0].strip()
+            if name and name not in seen:
+                seen.add(name)
+                names.append(name)
+    return names
+
+
+def _read_rotation_cursor() -> int:
+    try:
+        return int(json.loads(ROTATION_STATE.read_text(encoding="utf-8")).get("cursor", 0))
+    except (OSError, ValueError, json.JSONDecodeError):
+        return 0
+
+
+def _write_rotation_cursor(cursor: int) -> None:
+    try:
+        ROTATION_STATE.write_text(json.dumps({"cursor": cursor}) + "\n", encoding="utf-8")
+    except OSError:
+        pass  # best-effort; a missing state file just restarts rotation at 0
+
+
+def pick_rotation(collections: list[str], n: int) -> tuple[list[str], int]:
+    """Pick the next `n` collections round-robin from the persisted cursor.
+
+    Returns (picked, next_cursor). Wraps around the list so over many runs every
+    collection is tended evenly without ever processing all of them at once.
+    """
+    if not collections:
+        return [], 0
+    n = max(1, min(n, len(collections)))
+    start = _read_rotation_cursor() % len(collections)
+    picked = [collections[(start + i) % len(collections)] for i in range(n)]
+    return picked, (start + n) % len(collections)
 
 
 def get_recent_files(days: int = 7) -> list[Path]:
@@ -700,6 +783,20 @@ def ensure_log(path: Path, header: str) -> None:
 
 def append_gap(primary: Path, proposal: dict, hits: list[dict], reason: str,
                collection: str) -> None:
+    # Guard against noise: a gap is only real when the source file still exists,
+    # is non-empty, and the expected substring actually occurs in it. Proposals
+    # occasionally reference a since-deleted or empty file, or invent an `expect`
+    # whose wording isn't a literal substring of the source (e.g. "PNG download"
+    # when the file says "Download PNG"). Those are bad proposals, not retrieval
+    # deficiencies, and must not pollute the gap log — drop them silently.
+    needle = proposal.get("must_contain")
+    if needle:
+        try:
+            src_text = primary.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            return  # source unreadable / deleted -> not a real gap
+        if not src_text.strip() or needle.lower() not in src_text.lower():
+            return  # empty source or invented needle -> not a real gap
     GAPS_DIR.mkdir(parents=True, exist_ok=True)
     gaps_file = gaps_file_for(collection)
     ensure_log(gaps_file, f"# RAG gaps — {collection} — cases that failed retrieval or judge\n\n")
@@ -769,28 +866,37 @@ def append_history(stats: dict) -> None:
 # Main pipeline
 # ----------------------------------------------------------------------------
 
-def main() -> int:
-    args = parse_args()
+def run_collection(args: argparse.Namespace, collection: str, eval_file_arg: str | None) -> int:
+    """Run one full improve pass for a single collection.
 
-    global _EXCLUDES, _CLAUDE_CLI_BUDGET_USD, EVAL_FILE, CURRENT_REPO_ROOT, LOCKFILE
-    LOCKFILE = Path(f"/tmp/rag-improve.{args.collection}.lock")
+    Sets the per-collection module globals (lockfile, repo root, eval file,
+    excludes) then executes the propose → validate → judge → revisit → eval
+    pipeline. Returns a process-style exit code; the --all loop OR's these.
+    """
+    global _EXCLUDES, EVAL_FILE, CURRENT_REPO_ROOT, LOCKFILE
+    # Reset repo root each pass — under --all we run several collections in one
+    # process, so don't let the previous collection's root leak into this one.
+    CURRENT_REPO_ROOT = DOTFILES_ROOT
+    # Per-collection lockfile so collections never block each other and a stuck
+    # run only wedges its own collection, not the whole fleet.
+    LOCKFILE = Path(f"/tmp/rag-improve.{collection}.lock")
 
     lock = acquire_lock()
     if lock is None:
-        print(f"rag-improve: another run for '{args.collection}' in progress — exiting", file=sys.stderr)
+        print(f"rag-improve: another run for '{collection}' in progress — exiting", file=sys.stderr)
         return 0
 
-    root, _EXCLUDES = load_collection_config(args.collection)
+    # Resolve the eval file: explicit --eval-file wins, else derive from name.
+    EVAL_FILE = (Path(eval_file_arg).expanduser().resolve()
+                 if eval_file_arg else default_eval_file_for(collection))
+    print(f"rag-improve: collection '{collection}' eval file {EVAL_FILE}", file=sys.stderr)
+
+    root, _EXCLUDES = load_collection_config(collection)
     if root is not None:
         CURRENT_REPO_ROOT = root
-        print(f"rag-improve: collection '{args.collection}' rooted at {CURRENT_REPO_ROOT}", file=sys.stderr)
-    if args.eval_file:
-        EVAL_FILE = Path(args.eval_file).expanduser().resolve()
-        print(f"rag-improve: using eval file {EVAL_FILE}", file=sys.stderr)
-    if args.use_claude_cli:
-        _CLAUDE_CLI_BUDGET_USD = float(args.claude_cli_budget_usd)
-        print(f"rag-improve: routing chat() through `claude` CLI, budget "
-              f"${_CLAUDE_CLI_BUDGET_USD:.2f}", file=sys.stderr)
+        print(f"rag-improve: collection '{collection}' rooted at {CURRENT_REPO_ROOT}", file=sys.stderr)
+    # NB: --use-claude-cli budget is configured once in main() (global across an
+    # --all run), so it is intentionally not (re)set here per collection.
 
     try:
         today = datetime.date.today().isoformat()
@@ -798,9 +904,9 @@ def main() -> int:
 
         # --- file pools
         recent = [] if args.no_git else get_recent_files()
-        indexed = get_indexed_files(args.collection)
+        indexed = get_indexed_files(collection)
         if not indexed:
-            print(f"rag-improve: collection '{args.collection}' is empty", file=sys.stderr)
+            print(f"rag-improve: collection '{collection}' is empty", file=sys.stderr)
             return 1
 
         chosen = sample_files(recent, indexed, args.files_per_run, today)
@@ -839,7 +945,7 @@ def main() -> int:
 
         for primary in chosen:
             print(f"→ {primary.name}", file=sys.stderr)
-            pack, pack_lower = build_context_pack(primary, args.collection)
+            pack, pack_lower = build_context_pack(primary, collection)
             stats["embed_calls"] += 1  # semantic neighbours
 
             prompt = PROPOSE_PROMPT_TMPL.format(pack=pack, n=args.cases_per_file)
@@ -864,7 +970,7 @@ def main() -> int:
 
                 status, hits, r_reason = rag_eval.run_case(
                     {"q": p["q"], "must_contain": p["must_contain"]},
-                    args.collection, args.top_k,
+                    collection, args.top_k,
                 )
                 stats["embed_calls"] += 1
 
@@ -874,7 +980,7 @@ def main() -> int:
                     stats["rejected_retrieval"] += 1
                     stats["embed_calls"] += 0  # retrieval already counted
                     if not args.dry_run:
-                        append_gap(primary, p, hits, f"retrieval: {r_reason}", args.collection)
+                        append_gap(primary, p, hits, f"retrieval: {r_reason}", collection)
                     else:
                         print(f"  retrieval miss: {p['q'][:60]}", file=sys.stderr)
                     continue
@@ -893,7 +999,7 @@ def main() -> int:
                         continue
                     stats["rejected_judge"] += 1
                     if not args.dry_run:
-                        append_gap(primary, p, hits, f"judge {verdict}: {j_reason}", args.collection)
+                        append_gap(primary, p, hits, f"judge {verdict}: {j_reason}", collection)
                     else:
                         print(f"  judge {verdict}: {j_reason}  ({p['q'][:60]})", file=sys.stderr)
                     continue
@@ -921,7 +1027,7 @@ def main() -> int:
         # --- revisit
         if not args.no_revisit:
             rs = revisit_auto_cases(
-                eval_data, args.collection,
+                eval_data, collection,
                 eval_data.get("top_k", args.top_k),
                 args.revisit_sample, today,
             )
@@ -941,11 +1047,11 @@ def main() -> int:
         # Operates only on the per-collection file (gaps/<collection>.md), not
         # the legacy aggregate — use `rag prune-gaps --legacy` for that on demand.
         if not args.no_prune_gaps:
-            gaps_path = gaps_file_for(args.collection)
+            gaps_path = gaps_file_for(collection)
             if gaps_path.exists():
                 top_k_prune = eval_data.get("top_k", args.top_k)
                 ps = rag_prune_gaps.prune_file(
-                    gaps_path, args.collection, top_k_prune, dry_run=args.dry_run)
+                    gaps_path, collection, top_k_prune, dry_run=args.dry_run)
                 stats["gaps_total"] = ps["total"]
                 stats["gaps_pruned"] = ps["closed"]
                 stats["gaps_kept"] = ps["open"]
@@ -955,7 +1061,7 @@ def main() -> int:
         if not args.no_final_eval:
             passed = failed = skipped = 0
             top_k = eval_data.get("top_k", args.top_k)
-            coll = eval_data.get("collection", args.collection)
+            coll = eval_data.get("collection", collection)
             for c in eval_data["cases"]:
                 status, _, _ = rag_eval.run_case(c, coll, top_k)
                 stats["embed_calls"] += 1
@@ -976,7 +1082,7 @@ def main() -> int:
 
         # --- summary to stdout
         summary = (
-            f"rag-improve: accepted {stats['accepted']}/{stats['proposals_total']}, "
+            f"rag-improve[{collection}]: accepted {stats['accepted']}/{stats['proposals_total']}, "
             f"gaps: {stats['rejected_retrieval'] + stats['rejected_judge']}, "
             f"retired: {stats['revisit_retired']}"
         )
@@ -989,6 +1095,44 @@ def main() -> int:
         if lock:
             fcntl.flock(lock, fcntl.LOCK_UN)
             lock.close()
+
+
+def main() -> int:
+    args = parse_args()
+
+    if args.use_claude_cli:
+        # Set the budget cap once for the whole process (shared across all
+        # collections in an --all run, so the spend ceiling is global).
+        global _CLAUDE_CLI_BUDGET_USD
+        _CLAUDE_CLI_BUDGET_USD = float(args.claude_cli_budget_usd)
+        print(f"rag-improve: routing chat() through `claude` CLI, budget "
+              f"${_CLAUDE_CLI_BUDGET_USD:.2f}", file=sys.stderr)
+
+    if not args.all:
+        # Single-collection mode (default). No args -> dotfiles + rag.eval.json,
+        # exactly as before, so existing callers and cron stay backward compatible.
+        return run_collection(args, args.collection, args.eval_file)
+
+    # --all: rotate through declared collections so we never hammer all of them
+    # in one invocation. Each hourly run advances the cursor by --rotate.
+    collections = discover_collections()
+    if not collections:
+        print("rag-improve: --all found no collections in rag.conf / rag.private.conf",
+              file=sys.stderr)
+        return 1
+    picked, next_cursor = pick_rotation(collections, args.rotate)
+    print(f"rag-improve: --all rotating {picked} "
+          f"(of {len(collections)} declared; cursor -> {next_cursor})", file=sys.stderr)
+
+    rc = 0
+    for coll in picked:
+        # --eval-file is meaningless across multiple collections — always derive.
+        rc |= run_collection(args, coll, None)
+    if not args.dry_run:
+        # Persist the cursor only on a real run; dry-runs must not advance the
+        # fleet, so they can be repeated freely while developing.
+        _write_rotation_cursor(next_cursor)
+    return rc
 
 
 if __name__ == "__main__":
