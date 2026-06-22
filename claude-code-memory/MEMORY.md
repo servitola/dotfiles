@@ -5,7 +5,7 @@
 - Dotfiles must work on both Apple Silicon (`/opt/homebrew/`) and Intel (`/usr/local/`). Use `$HOMEBREW_PREFIX` not hardcoded paths
 
 ## Vlad's Preferences
-- **Editor**: VSCode (`code`). nvim installed for fun only — don't suggest nvim workflows
+- **Editor**: VSCode (`code`)
 - **Theme**: Gruvbox Dark Hard everywhere (terminals, editors, eza, bat, git, btop)
 - **Font**: JetBrainsMono Nerd Font / MesloLGS NF
 - **Terminal**: Zap (daily driver, Hyper+B), Ghostty, iTerm2 (legacy)
