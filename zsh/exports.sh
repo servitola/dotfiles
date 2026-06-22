@@ -56,7 +56,6 @@ export NODE_PATH="$NPM_GLOBAL/lib/node_modules"
 # Claude Code
 export CLAUDE_CODE_USE_BEDROCK=0
 export CLAUDE_CODE_ENABLE_TELEMETRY=0
-export CLAUDE_MODEL="claude-opus-4-6"
 export CLAUDE_SMALL_FAST_MODEL="claude-haiku-4-5-20251001"
 
 # Firefox: disable safe mode dialog (Hyper key sends Option, which triggers it)
