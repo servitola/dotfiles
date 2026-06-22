@@ -750,32 +750,6 @@ model_list:
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
     model_info: *zero
-  - model_name: coding
-    litellm_params:
-      # Moonshot Kimi K2.6 — flagship agentic/coding model on OpenRouter free.
-      # Independent quota from `nvidia-kimi` (same upstream on NIM). order:1
-      # because K2.6 is a top-tier coder.
-      model: openai/moonshotai/kimi-k2.6:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-      order: 1
-    model_info: *zero
-  - model_name: coding
-    litellm_params:
-      # Llama 4 Maverick 17B/128E MoE on SambaNova — fresh Llama 4, 131k ctx.
-      model: openai/Llama-4-Maverick-17B-128E-Instruct
-      api_base: https://api.sambanova.ai/v1
-      api_key: os.environ/SAMBANOVA_API_KEY
-      order: 2
-    model_info: *zero
-  - model_name: coding
-    litellm_params:
-      # GLM-4.5-Air via OpenRouter free — independent quota from native `glm`.
-      model: openai/z-ai/glm-4.5-air:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-      order: 2
-    model_info: *zero
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
@@ -904,17 +878,6 @@ model_list:
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
     model_info: *zero
-  - model_name: reasoning
-    litellm_params:
-      # Moonshot Kimi K2.6 — large MoE, strong long-form reasoning.
-      # Independent quota from `nvidia-kimi` (same upstream on NIM).
-      model: openai/moonshotai/kimi-k2.6:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-      order: 1
-    model_info: *zero
-
-  # fast — latency-critical. Cerebras (~2 600 tok/s) first, Groq (~300-500 tok/s) fallback.
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
