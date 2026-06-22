@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ableton": {
+      "type": "stdio",
+      "command": "/Users/servitola/.local/bin/ableton-mcp-extended",
+      "args": [],
+      "env": {}
+    }
+  }
+}
