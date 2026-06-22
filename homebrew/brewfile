@@ -380,6 +380,8 @@ cask "sloth"
 cask "steam"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Unpacks archive files
+cask "the-unarchiver"
 # Open-source BitTorrent client
 cask "transmission"
 # Unicode keyboard layout editor
