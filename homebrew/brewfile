@@ -1,4 +1,4 @@
-tap "charmbracelet/tap"
+tap "charmbracelet/tap", trusted: true
 tap "facebook/fb", trusted: true
 # All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
