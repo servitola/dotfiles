@@ -8,7 +8,7 @@
 - **Editor**: VSCode (`code`). nvim installed for fun only — don't suggest nvim workflows
 - **Theme**: Gruvbox Dark Hard everywhere (terminals, editors, eza, bat, git, btop)
 - **Font**: JetBrainsMono Nerd Font / MesloLGS NF
-- **Terminal**: Warp (daily driver, Hyper+B), Ghostty, iTerm2 (legacy)
+- **Terminal**: Zap (daily driver, Hyper+B), Ghostty, iTerm2 (legacy)
 - **Browser**: Yandex (default), Safari (work URLs), Firefox/Chrome (testing)
 - **Git client**: Fork. Visual diff via Fork or opendiff (FileMerge)
 - **Git pager**: diff-so-fancy (NOT delta — delta is not installed)
