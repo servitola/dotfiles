@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "flights": {
+      "type": "stdio",
+      "command": "/Users/servitola/.local/bin/fli-mcp",
+      "args": [],
+      "env": {}
+    }
+  }
+}
