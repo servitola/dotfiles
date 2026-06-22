@@ -281,6 +281,8 @@ cask "aldente"
 cask "alisma"
 # Enable Windows-like alt-tab
 cask "alt-tab"
+# Terminal interface for Antigravity agents
+cask "antigravity-cli"
 # Application uninstaller
 cask "appcleaner"
 # Online gaming platform
