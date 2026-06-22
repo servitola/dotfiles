@@ -1,0 +1,189 @@
+#!/bin/zsh
+# perfcheck — one-shot macOS performance diagnostic for this machine.
+#
+# Encodes the playbook from the 2026-06 perf investigation. Full context,
+# root causes and gotchas live in:
+#   ~/projects/serho_topics/перформанс-макбука/AGENTS.md
+#
+# Philosophy (learned the hard way):
+#   * The #1 cause of "feels slow" here is SWAP THRASHING, not CPU. Watch swap.
+#   * "free memory %" lies (counts compressible). Trust swap-used + pressure.
+#   * High WindowServer/loginwindow over long uptime = creep → a reboot resets it.
+#   * WindowServer CPU is fed by live on-screen surfaces (Telegram animations,
+#     browser tabs, IDEs) — it is CPU compositing, NOT the GPU and NOT Liquid Glass.
+#   * Find hidden hogs via LIFETIME cpu% (cputime/elapsed), not just the snapshot.
+#
+# No sudo needed — fast read-only check. For GPU/wakeup attribution run:
+#   sudo powermetrics --samplers gpu_power,tasks --show-process-gpu -i 1000 -n 3
+#
+# Usage: perfcheck            # full report
+#        perfcheck --top N    # show N rows in CPU/RAM/lifetime tables (default 8)
+
+emulate -L zsh
+setopt no_unset pipe_fail
+
+TOPN=8
+[[ "${1:-}" == "--top" && -n "${2:-}" ]] && TOPN="$2"
+
+# --- gruvbox palette ---
+G=$'\033[0;92m'; Y=$'\033[0;33m'; R=$'\033[0;91m'; B=$'\033[0;94m'
+DIM=$'\033[2m'; BOLD=$'\033[1m'; NC=$'\033[0m'
+
+section() { printf "\n${B}${BOLD}━━━ %s ━━━${NC}\n" "$1"; }
+# status N: ok/warn/bad colored bullet + label + detail
+ok()   { printf "  ${G}●${NC} %-22s %s\n" "$1" "$2"; }
+warn() { printf "  ${Y}▲${NC} %-22s ${Y}%s${NC}\n" "$1" "$2"; }
+bad()  { printf "  ${R}✖${NC} %-22s ${R}%s${NC}\n" "$1" "$2"; }
+note() { printf "    ${DIM}%s${NC}\n" "$1"; }
+
+CORES=$(sysctl -n hw.ncpu 2>/dev/null || echo 8)
+REDS=0; YELLOWS=0
+flag_bad()  { REDS=$((REDS+1)); }
+flag_warn() { YELLOWS=$((YELLOWS+1)); }
+
+printf "${BOLD}perfcheck${NC} ${DIM}— %s${NC}\n" "$(date '+%Y-%m-%d %H:%M:%S')"
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "System"
+UP=$(uptime)
+UPDAYS=$(sysctl -n kern.boottime 2>/dev/null | grep -oE 'sec = [0-9]+' | head -1 | grep -oE '[0-9]+')
+if [[ -n "$UPDAYS" ]]; then
+    NOW=$(date +%s); UPDAYS=$(( (NOW - UPDAYS) / 86400 ))
+else UPDAYS=0; fi
+LOAD=$(echo "$UP" | sed -n 's/.*load averages*: *\([0-9.]*\).*/\1/p')
+printf "  ${DIM}%s${NC}\n" "$(echo "$UP" | sed 's/^ *//')"
+printf "  macOS %s · %s cores\n" "$(sw_vers -productVersion 2>/dev/null)" "$CORES"
+if (( UPDAYS >= 7 )); then
+    warn "uptime ${UPDAYS}d" "≥7d — reboot resets WindowServer/loginwindow creep"; flag_warn
+else
+    ok "uptime" "${UPDAYS}d (fresh enough)"
+fi
+# battery
+BATT=$(pmset -g batt 2>/dev/null | tail -1)
+if echo "$BATT" | grep -q "AC Power"; then
+    ok "power" "on AC"
+else
+    PCT=$(echo "$BATT" | sed -n 's/.*	\([0-9]*\)%.*/\1/p')
+    REM=$(echo "$BATT" | grep -oE '[0-9]+:[0-9]+ remaining' | head -1)
+    warn "on battery" "${PCT}% ${REM:-} — plug in for heavy work"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "Memory & Swap  (the headline metric)"
+SWAP=$(sysctl -n vm.swapusage 2>/dev/null)
+SWAP_USED=$(echo "$SWAP" | sed -n 's/.*used = \([0-9.]*\)M.*/\1/p')
+SWAP_USED=${SWAP_USED%.*}; SWAP_USED=${SWAP_USED:-0}
+FREEPCT=$(memory_pressure 2>/dev/null | sed -n 's/.*free percentage: *\([0-9]*\)%.*/\1/p')
+if (( SWAP_USED > 1024 )); then
+    bad "swap used" "${SWAP_USED} MB — THRASHING: this is what makes the machine feel slow"; flag_bad
+    note "close heavy stacks (simulator/emulator, extra browsers, idle IDEs)"
+elif (( SWAP_USED > 0 )); then
+    warn "swap used" "${SWAP_USED} MB — light pressure, watch it"; flag_warn
+else
+    ok "swap used" "0 MB — no thrashing"
+fi
+[[ -n "$FREEPCT" ]] && ok "memory free" "${FREEPCT}% (note: % is optimistic — swap is the real signal)"
+printf "  ${DIM}top RAM:${NC}\n"
+ps -Aceo rss,comm 2>/dev/null | sort -rn | sed -n "2,$((TOPN+1))p" \
+    | awk '{printf "    %6.0f MB  %s\n",$1/1024,substr($0,index($0,$2))}'
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "CPU — now"
+ps -Aceo pcpu,comm -r 2>/dev/null | sed -n "2,$((TOPN+1))p" \
+    | awk '{printf "  %5.1f%%  %s\n",$1,substr($0,index($0,$2))}'
+
+section "CPU — silent burners  (lifetime %% = cputime/uptime)"
+note "high % = process steadily eats CPU the whole time, even if not in the snapshot"
+ps -axo etime,time,comm 2>/dev/null | awk '
+  function tosec(t,a,n,s){n=split(t,a,/[-:]/);s=0;if(n==4)return a[1]*86400+a[2]*3600+a[3]*60+a[4];for(i=1;i<=n;i++)s=s*60+a[i];return s}
+  NR>1{et=tosec($1);ct=tosec($2); if(et>300 && ct>30){printf "%5.1f%%  cpu_t=%-9s up=%-11s %s\n",100*ct/et,$2,$1,substr($0,index($0,$3))}}' \
+  | sort -rn | head -"$TOPN" | sed 's/^/  /'
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "WindowServer & loginwindow"
+WS=$(pgrep -x WindowServer | head -1)
+LW=$(pgrep -x loginwindow | head -1)
+WSCPU=$(ps -p "${WS:-1}" -o pcpu= 2>/dev/null | tr -d ' '); WSCPU=${WSCPU:-0}
+LWCPU=$(ps -p "${LW:-1}" -o pcpu= 2>/dev/null | tr -d ' '); LWCPU=${LWCPU:-0}
+if (( ${WSCPU%.*} > 30 )); then
+    warn "WindowServer" "${WSCPU}% — fed by live surfaces (Telegram anims, browser tabs, IDEs)"; flag_warn
+    note "it is CPU compositing, NOT the GPU and NOT Liquid Glass (verified). Lever: fewer animated windows."
+else
+    ok "WindowServer" "${WSCPU}%"
+fi
+if (( ${LWCPU%.*} > 10 )); then
+    warn "loginwindow" "${LWCPU}% — uptime creep; a logout/login or reboot resets it"; flag_warn
+else
+    ok "loginwindow" "${LWCPU}%"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "Claude sessions  (serho bot warm tmux — reaper health)"
+CC_N=$(ps -axo comm 2>/dev/null | grep -c '^claude$')
+CC_GB=$(ps -axo rss,comm 2>/dev/null | awk '$2=="claude"{s+=$1} END{printf "%.2f",s/1024/1024}')
+if (( CC_N > 12 )); then
+    warn "claude sessions" "${CC_N} (${CC_GB} GB) — many; reaper threshold may be too high"; flag_warn
+    note "reaper: ~/projects/dotfiles/cron/scripts/serho-tmux-reaper.py (THRESHOLD_SEC)"
+else
+    ok "claude sessions" "${CC_N} (${CC_GB} GB)"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "Cron / phone watchers"
+LOCKS=$(ls -1 /tmp/*-watch.lock 2>/dev/null)
+if [[ -n "$LOCKS" ]]; then
+    # a lock older than ~5 min is almost certainly stale (watcher cycles are short)
+    STALE=$(find /tmp -maxdepth 1 -name '*-watch.lock' -mmin +5 2>/dev/null)
+    if [[ -n "$STALE" ]]; then
+        bad "stuck watcher locks" "$(echo "$STALE" | tr '\n' ' ')"; flag_bad
+        note "stale lock blocks the watcher every cron tick. Cause class: 'exec python' kills the EXIT-trap."
+        note "fix: rmdir the lock; ensure wrappers run python WITHOUT exec so the trap releases it."
+    else
+        ok "watcher locks" "present but fresh (watchers running)"
+    fi
+else
+    ok "watcher locks" "none stuck"
+fi
+# broken cron entries (scripts that no longer exist) — check last-hour log spam
+CRONLOG=~/projects/dotfiles/cron/logs
+if [[ -d "$CRONLOG" ]]; then
+    BROKEN=$(grep -l 'no such file or directory' "$CRONLOG"/*.log 2>/dev/null | wc -l | tr -d ' ')
+    (( BROKEN > 0 )) && note "${BROKEN} cron log(s) contain 'no such file' — verify crontab paths after any migration"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "Disk"
+df -h /System/Volumes/Data 2>/dev/null | awk 'NR==2{print "  " $4 " free, " $5 " used"}'
+DATAPCT=$(df /System/Volumes/Data 2>/dev/null | awk 'NR==2{gsub("%","",$5);print $5}')
+(( ${DATAPCT:-0} >= 85 )) && { warn "disk ≥85%" "tidy up below"; flag_warn; }
+SIMS=$(du -sh ~/Library/Developer/CoreSimulator/Devices 2>/dev/null | cut -f1)
+[[ -n "$SIMS" ]] && note "iOS simulators: ${SIMS}  (wipe: xcrun simctl delete all)"
+# WKWebView cache bloat — known tripwire (claudecounter once hit 700 MB)
+for cdir in ~/Library/Caches/*/WebKit/NetworkCache(N); do
+    [[ -d "$cdir" ]] || continue
+    sz=$(du -sm "$cdir" 2>/dev/null | cut -f1)
+    (( ${sz:-0} > 300 )) && { warn "WebView cache bloat" "${sz} MB  ${cdir:h:h:t}"; flag_warn
+        note "app embeds a WKWebView with no disk-cache cap — clear it / cap it in the app"; }
+done
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "OrbStack  (containers — wakeups are intrinsic VM cost, harmless)"
+if command -v docker &>/dev/null && docker info &>/dev/null 2>&1; then
+    DN=$(docker ps -q 2>/dev/null | wc -l | tr -d ' ')
+    ok "containers running" "${DN}"
+    UNHEALTHY=$(docker ps --filter health=unhealthy --format '{{.Names}}' 2>/dev/null | tr '\n' ' ')
+    [[ -n "$UNHEALTHY" ]] && note "unhealthy (expected if a server is down): ${UNHEALTHY}"
+else
+    ok "OrbStack" "docker not responding / not running"
+fi
+
+# ─────────────────────────────────────────────────────────────────────────────
+section "Verdict"
+if (( REDS == 0 && YELLOWS == 0 )); then
+    printf "  ${G}${BOLD}✓ Healthy — nothing to act on.${NC}\n"
+elif (( REDS == 0 )); then
+    printf "  ${Y}${BOLD}~ OK with %d watch-item(s).${NC} Yellow = cost-of-workload, not a bug.\n" "$YELLOWS"
+else
+    printf "  ${R}${BOLD}✖ %d red flag(s)${NC} + %d yellow. Address reds first (likely swap or stuck lock).\n" "$REDS" "$YELLOWS"
+fi
+printf "  ${DIM}deep GPU/wakeup attribution: sudo powermetrics --samplers gpu_power,tasks --show-process-gpu -i 1000 -n 3${NC}\n"
