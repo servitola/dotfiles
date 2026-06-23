@@ -517,11 +517,7 @@
       },
       "to": [
         {
-          "key_code": "page_up",
-          "modifiers": [
-            "left_command",
-            "left_control"
-          ]
+          "key_code": "keypad_2"
         }
       ],
       "type": "basic"
