@@ -14,5 +14,4 @@
 -Dkotlinx.coroutines.debug=off
 -XX:+UseCompressedOops
 -Dide.managed.by.toolbox=/Applications/JetBrains Toolbox.app/Contents/MacOS/jetbrains-toolbox
--Dtoolbox.notification.token=REDACTED-TOOLBOX-TOKEN
 -Dtoolbox.notification.portFile=/Users/servitola/Library/Caches/JetBrains/Toolbox/ports/e95a0164-774b-41d5-b7cc-b35f27dfaad2.port
