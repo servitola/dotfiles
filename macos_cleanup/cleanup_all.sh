@@ -15,6 +15,7 @@ setopt no_unset pipe_fail
 : "${CLEANUP_DIR:=$(dirname "$0")}"
 source "$CLEANUP_DIR/helpers.sh"
 source "$CLEANUP_DIR/try_clean.sh"
+source "$CLEANUP_DIR/relock_autostart.sh"
 
 # --- Environment ---
 
@@ -209,6 +210,9 @@ if [ -d "$DRIVEFS_LOGS" ]; then
 else
     printf "  ${DIM}* DriveFS Logs: not installed${NC}\n"
 fi
+
+print_task "Re-locking Steam/Google autostart agents"
+relock_autostart_agents
 
 print_task "Palo Alto GlobalProtect logs (older than 7 days)"
 GP_LOG_DIR="/Library/Logs/PaloAltoNetworks/GlobalProtect"
