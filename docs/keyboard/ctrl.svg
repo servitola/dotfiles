@@ -585,13 +585,12 @@
 <text x="243.5" y="245.0" text-anchor="middle" class="key-label">X</text>
 <title>X</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="123.5" y="270" width="240" height="46" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="123.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="238.5,270 248.5,270 243.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="239.5,270 247.5,270 243.5,266" fill="white"/>
 <use href="#icon-raycast" x="133.5" y="279" width="13" height="13"/>
 <text x="149.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Raycast</text>
 <text x="192.0" y="290" font-size="8px" fill="#1d1d1f">dismiss</text>
-<text x="149.5" y="302" font-size="7px" fill="#86868b" font-style="italic">Control your tools with a few keystrokes</text>
 </g>
 </g>
 <g class="key-group">
