@@ -1,0 +1,20 @@
+# Manifest of external skill repos to clone + pull on update.
+#
+# Format: url|branch|path
+#   url:    git remote (https or ssh)
+#   branch: branch to check out at initial clone time (install.sh only)
+#   path:   directory name under skills-repos/
+#
+# install.sh clones missing repos at the configured branch, skips existing.
+# update.sh pulls the CURRENTLY checked-out branch with --ff-only,
+# so it's safe even if you have uncommitted local edits — it just skips
+# with a warning instead of clobbering work.
+#
+# Lines starting with # and blank lines are ignored.
+
+https://github.com/borski/travel-hacking-toolkit.git|main|travel-hacking-toolkit
+
+# Private mirror of van4oza/gflights-mcp-skill with RU/CIS additions.
+# Upstream is kept as the `upstream` remote inside the clone for periodic
+# rebase: `git fetch upstream && git rebase upstream/main` on the branch below.
+https://github.com/servitola/gflights-mcp-skill.git|servitola/ru-additions|gflights-mcp-skill
