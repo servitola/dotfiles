@@ -7,34 +7,29 @@ orients agents, without polluting the tree with volatile detail. It describes
 enumerable mutable content (no "contains 510 packages: …"). Short summaries of
 invariants stay accurate across edits.
 
-Staleness: a `struct_hash` of the directory's file/subdir *names* is embedded as
-an HTML comment. Adding/removing/renaming a file changes the hash → the summary
-is stale and gets regenerated with --stale-only. Editing a file's *contents*
-does not (a role-level summary usually still holds).
-
 Generation goes through the `claude` CLI (subscription auth) with the strongest
-model — quality matters here, a wrong summary is worse than none.
+model — quality matters here, a wrong summary is worse than none. Summaries are
+short and role-level, so they stay accurate across edits; regenerate by hand with
+--force when a directory's purpose actually changes.
 
 Usage:
   gen-dir-summary.py homebrew litellm hammerspoon   # write if missing
   gen-dir-summary.py --preview homebrew             # print, don't write
-  gen-dir-summary.py --stale-only <dirs...>         # regen only if struct changed
   gen-dir-summary.py --force <dirs...>              # always regenerate
   gen-dir-summary.py --model claude-opus-4-8 --budget 1.0 <dirs...>
 
-Skips a directory that already has AGENTS.md unless --force/--stale-only.
+Skips a directory that already has AGENTS.md unless --force.
 """
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 import re
 import subprocess
 import sys
 from pathlib import Path
 
-MARKER = "<!-- gen-dir-summary struct_hash:"  # frontmatter marker (HTML comment)
+REPO_MAP = Path(__file__).resolve().parent.parent.parent / "docs" / "repo-map.md"
 SKIP_NAMES = {".git", ".DS_Store", "node_modules", "__pycache__", ".venv"}
 # Files we read a head of, in priority order, to give the model real context.
 PREFERRED = ("README.md", "AGENTS.md", "CLAUDE.md", "Makefile", "install.sh",
@@ -43,18 +38,22 @@ HEAD_CHARS = 500
 MAX_HEAD_FILES = 8
 
 
-def struct_hash(d: Path) -> str:
-    """Hash of immediate file + subdir names (not contents) — structural signature."""
-    names = sorted(p.name + ("/" if p.is_dir() else "")
-                   for p in d.iterdir() if p.name not in SKIP_NAMES)
-    return hashlib.sha1("\n".join(names).encode()).hexdigest()[:12]
+def repo_role(dirname: str) -> str:
+    """The directory's tier/role line from docs/repo-map.md, if present.
 
-
-def read_hash_from(agents: Path) -> str | None:
-    if not agents.exists():
-        return None
-    m = re.search(re.escape(MARKER) + r"\s*([0-9a-f]{12})", agents.read_text(encoding="utf-8"))
-    return m.group(1) if m else None
+    Lets a regenerated summary preserve its place in the whole repo (e.g. a
+    directory marked as an experiment keeps that status). Returns '' if absent.
+    """
+    if not REPO_MAP.exists():
+        return ""
+    tier = ""
+    for line in REPO_MAP.read_text(encoding="utf-8").splitlines():
+        if line.startswith("## "):
+            tier = line[3:].split("—")[0].strip()
+        if line.lstrip().startswith(f"- **{dirname}**") or line.lstrip().startswith(f"- **{dirname} "):
+            desc = line.split("—", 1)[1].strip() if "—" in line else ""
+            return f"{tier}: {desc}".strip(": ")
+    return ""
 
 
 def build_context(d: Path) -> str:
@@ -79,19 +78,26 @@ def build_context(d: Path) -> str:
             continue
         heads.append(f"--- {p.name} (head) ---\n{txt}")
         used += 1
-    return f"Directory: {d}\n\nEntries:\n" + "\n".join(listing) + "\n\n" + "\n\n".join(heads)
+    role = repo_role(d.name)
+    role_line = f"Repo role (from docs/repo-map.md): {role}\n\n" if role else ""
+    return f"Directory: {d}\n\n{role_line}Entries:\n" + "\n".join(listing) + "\n\n" + "\n\n".join(heads)
 
 
 PROMPT = """You are documenting one directory of a personal macOS dotfiles repo
 so an AI retrieval system and coding agents can orient quickly.
 
-Write a SHORT `AGENTS.md` (8-15 lines of markdown) for the directory below.
+Write a SHORT `AGENTS.md` (6-12 lines of markdown) for the directory below.
 Rules:
 - Describe DURABLE facts: the directory's purpose, what each key file/subdir is
   FOR (its role), the entry points, and how it relates to other parts of the
   repo. These should stay true across ordinary edits.
 - Do NOT enumerate volatile content (no listing every package/setting/line).
 - No preamble, no closing remarks. Start with `# <dirname> — <one-line purpose>`.
+- If a "Repo role" line below marks this as an Experiment or Peripheral, add a
+  second line `> **Status:** <experiment/peripheral note>. See docs/repo-map.md.`
+  so its low importance is obvious at a glance.
+- Keep it tight — a secondary/convenience tool deserves 3-5 lines, not 12. Only
+  core systems with real complexity earn the upper length.
 - Be concrete and specific to THIS directory; never generic boilerplate.
 - Plain markdown, no code fences unless quoting one short command.
 
@@ -122,13 +128,22 @@ def generate(d: Path, model: str, budget: float) -> str | None:
     text = text.strip()
     # Strip stray fences if the model wrapped the whole thing.
     text = re.sub(r"^```(?:markdown)?\s*\n?|\n?```\s*$", "", text).strip()
-    return text or None
+    # The model sometimes prepends a "## Plan" preamble or wraps the doc in a
+    # fenced block. The real doc starts at the first `# <dirname>` H1 — discard
+    # anything before it, and cut a trailing fence/commentary after the body.
+    lines = text.splitlines()
+    start = next((i for i, l in enumerate(lines) if l.startswith("# ")), None)
+    if start is None:
+        return None  # no real H1 → unusable, skip rather than write garbage
+    body = lines[start:]
+    end = next((i for i, l in enumerate(body) if i and l.strip() in ("```", "```markdown")), None)
+    if end is not None:
+        body = body[:end]
+    return "\n".join(body).strip() or None
 
 
 def write_agents(d: Path, body: str) -> None:
-    h = struct_hash(d)
-    content = f"{MARKER} {h} -->\n\n{body.rstrip()}\n"
-    (d / "AGENTS.md").write_text(content, encoding="utf-8")
+    (d / "AGENTS.md").write_text(f"{body.rstrip()}\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -138,8 +153,6 @@ def main() -> int:
     ap.add_argument("--budget", type=float, default=0.50, help="max USD per directory")
     ap.add_argument("--preview", action="store_true", help="print, don't write")
     ap.add_argument("--force", action="store_true", help="regenerate even if AGENTS.md exists")
-    ap.add_argument("--stale-only", action="store_true",
-                    help="regenerate only if the directory structure changed since last gen")
     args = ap.parse_args()
 
     for raw in args.dirs:
@@ -150,14 +163,8 @@ def main() -> int:
         agents = d / "AGENTS.md"
 
         if agents.exists() and not (args.force or args.preview):
-            if args.stale_only:
-                if read_hash_from(agents) == struct_hash(d):
-                    print(f"fresh, skip: {raw}")
-                    continue
-                print(f"stale (structure changed), regenerating: {raw}")
-            else:
-                print(f"exists, skip: {raw}  (use --force / --stale-only / --preview)")
-                continue
+            print(f"exists, skip: {raw}  (use --force / --preview)")
+            continue
 
         print(f"generating ({args.model}): {raw} …", file=sys.stderr)
         body = generate(d, args.model, args.budget)
@@ -168,7 +175,7 @@ def main() -> int:
             print(f"\n===== {raw}/AGENTS.md (preview) =====\n{body}\n")
         else:
             write_agents(d, body)
-            print(f"wrote {raw}/AGENTS.md (struct_hash {struct_hash(d)})")
+            print(f"wrote {raw}/AGENTS.md")
     return 0
 
 
