@@ -10,7 +10,9 @@ local function setupAppHotkeys(appName, remaps)
 
     for _, remap in pairs(remaps) do
         local hotkey = hs.hotkey.new(remap.from, remap.key, function()
-            if remap.sendText then
+            if remap.url then
+                hs.urlevent.openURL(remap.url)
+            elseif remap.sendText then
                 hs.eventtap.keyStrokes(remap.sendText)
             else
                 hs.eventtap.keyStroke(remap.to, remap.target_key, 0)
