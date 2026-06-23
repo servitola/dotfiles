@@ -25,4 +25,4 @@ Add to `install` target:
 - **App Support**: `@$(LINK) ~/projects/dotfiles/app/config.plist ~/Library/Application\ Support/App/config.plist`
 
 **Examples:**
-See @./Makefile for real working examples from your current setup.
+See `Makefile` for real working examples from your current setup.
