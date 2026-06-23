@@ -3,7 +3,7 @@
 @immich/cli
 @modelcontextprotocol/server-brave-search
 @modelcontextprotocol/server-filesystem
-@sourcegraph/amp
+@webosose/ares-cli
 appium
 figma-developer-mcp
 opencode-ai
