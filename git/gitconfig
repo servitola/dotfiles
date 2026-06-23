@@ -7,12 +7,14 @@
 
 [core]
 	editor = code -w
+	excludesfile = ~/projects/dotfiles/git/global_ignore
 
 [credential]
   helper = osxkeychain
 
 [diff]
     renames = copies
+    algorithm = histogram
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
@@ -33,14 +35,22 @@
 [pull]
   	rebase = true
 
+[merge]
+	conflictstyle = zdiff3
+
 [push]
   	followTags = true
+	autoSetupRemote = true
+
 [fetch]
 	prune = true
 
+[commit]
+	verbose = true
 
 [rebase]
 	autoStash = true
+	updateRefs = true
 
 [rerere]
 	enabled = true
@@ -60,3 +70,11 @@
 	proxy =
 [https]
 	proxy =
+[credential "https://github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper =
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://dev.azure.com"]
+	useHttpPath = true
