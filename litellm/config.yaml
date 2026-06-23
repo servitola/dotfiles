@@ -107,6 +107,13 @@ model_list:
       api_key: os.environ/OPENROUTER_API_KEY
       num_retries: 3
       timeout: 90
+      # OpenRouter load-balances this :free slug across several backend providers;
+      # some reject `encoding_format` → intermittent 400 that num_retries can't
+      # escape and (no fallback for `embed`) aborts the whole RAG refresh. Pin
+      # routing to backends that accept every param we send.
+      extra_body:
+        provider:
+          require_parameters: true
     model_info: *zero
 
   # === New OpenRouter :free (discovered 2026-06-07 via check-models --discover) ==
@@ -147,6 +154,24 @@ model_list:
       model: openai/openai/gpt-oss-20b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+    model_info: *zero
+
+  # === New OpenRouter :free (discovered 2026-06-23 via check-models --discover) ==
+  # Cohere North Mini Code — coding-focused model. Verified live 2026-06-23
+  # (200, $0). NOTE: it's a *reasoning* model — emits chain-of-thought into the
+  # `reasoning` field and only fills `content` after it finishes thinking, so
+  # callers need a generous max_tokens or `content` comes back empty
+  # (finish_reason=length). require_parameters pins routing to param-compatible
+  # backends (avoids the intermittent-400 trap).
+  - model_name: cohere-north-code
+    litellm_params:
+      model: openai/cohere/north-mini-code:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      extra_body:
+        provider:
+          require_parameters: true
     model_info: *zero
 
   # === Groq direct (free: 30 RPM / 6K TPM / 14 400 RPD) ===
@@ -749,6 +774,19 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
+    model_info: *zero
+  - model_name: coding
+    litellm_params:
+      # Cohere North Mini Code — coding reasoner, free on OpenRouter. New 2026-06-23.
+      # require_parameters pins routing to param-compatible backends.
+      model: openai/cohere/north-mini-code:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      order: 2
+      extra_body:
+        provider:
+          require_parameters: true
     model_info: *zero
   - model_name: reasoning
     litellm_params:

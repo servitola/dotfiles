@@ -16,6 +16,21 @@
 - Port stays `127.0.0.1:4000`. UI creds stay `${LITELLM_UI_*:?...}` — never hardcoded.
 - `embed` alias uses `nvidia/llama-nemotron-embed-vl-1b-v2:free` (2048-dim, verified live via `/v1/embeddings`). Changing the model breaks every Qdrant collection that used it — coordinate with `../rag/`.
 
+### Adding/removing OpenRouter models — avoid the intermittent-400 trap
+
+A `:free` OpenRouter slug is load-balanced across MANY backend providers, and they don't all accept the same request params — some reject `encoding_format`, `response_format`, `tools`, etc. → **sporadic** `400`/`422` that come and go on retry and that `num_retries` can't escape (it re-hits the same bad routing). This bit `embed` (RAG refresh aborted on `encoding_format`). Rules:
+
+- **Pin every OpenRouter deployment to param-compatible backends.** Add to its `litellm_params`:
+  ```yaml
+      extra_body:
+        provider:
+          require_parameters: true   # only route to backends that support all sent params
+  ```
+  Optional steering: `provider: {sort: throughput}`, or `order: [...]` / `ignore: [...]` to avoid known slow/bad backends.
+- **Symptom to recognise:** `BadRequestError ... "code":"invalid_value" ... "path":["encoding_format"]` (or any param) — and especially when it's intermittent (some calls 200, some 400). That's backend roulette, not your config or the caller. Diagnose by probing `/v1/embeddings` (or `/chat/completions`) several times; a healthy model is 200 every time.
+- **Router `fallbacks` exist ONLY for `tts`.** `embed` and every chat alias have NO fallback — a broken primary fails hard and takes the caller down. So harden the primary (`require_parameters`, or a 2nd deployment under the same `model_name` so LiteLLM balances/retries across backends). If you ever add an `embed` fallback it MUST be the same model + dimension, or Qdrant queries return garbage.
+- **`/v1/models` lists the alias, NOT health.** A model can be listed and still 400 at call time. Always probe the actual endpoint after adding/swapping, not just `models`.
+
 ## Consumers — what routes through this proxy
 
 This is the **free-tier hub**: the things that talk to an LLM but shouldn't burn
