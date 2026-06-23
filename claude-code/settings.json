@@ -1,99 +1,17 @@
 {
-  "alwaysThinkingEnabled": true,
+  "cleanupPeriodDays": 60,
+  "env": {
+    "BASH_MAX_TIMEOUT_MS": "480000",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
+    "DISABLE_AUTOUPDATER": "1",
+    "DISABLE_BUG_COMMAND": "1",
+    "DISABLE_ERROR_REPORTING": "1",
+    "DISABLE_TELEMETRY": "1"
+  },
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "autoMemoryEnabled": false,
-  "cleanupPeriodDays": 60,
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true,
-    "warp@claude-code-warp": true
-  },
-  "env": {
-    "BASH_MAX_TIMEOUT_MS": "480000",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "0",
-    "CLAUDE_MODEL": "claude-opus-4-6",
-    "CLAUDE_SMALL_FAST_MODEL": "claude-haiku-4-5-20251001",
-    "DISABLE_AUTOUPDATER": "1",
-    "DISABLE_ERROR_REPORTING": "1",
-    "DOTNET_SKIP_FIRST_TIME_EXPERIENCE": "1",
-    "DISABLE_TELEMETRY": "1"
-  },
-  "extraKnownMarketplaces": {
-    "claude-code-warp": {
-      "source": {
-        "repo": "warpdotdev/claude-code-warp",
-        "source": "github"
-      }
-    }
-  },
-  "hooks": {
-    "ElicitationResult": [
-      {
-        "hooks": [
-          {
-            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Notification": [
-      {
-        "hooks": [
-          {
-            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf waiting > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'",
-            "type": "command"
-          }
-        ],
-        "matcher": "permission_prompt|elicitation_dialog"
-      }
-    ],
-    "PostToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "FILE=$(jq -r '.tool_input.file_path'); if [[ $FILE == *.go ]]; then cd \"$(git rev-parse --show-toplevel)\" && go vet ./...; elif [[ $FILE == *.ts ]]; then npx tsc --noEmit 2>&1 | head -20; fi",
-            "type": "command"
-          }
-        ],
-        "matcher": "Edit|Write|MultiEdit"
-      }
-    ],
-    "PreToolUse": [
-      {
-        "hooks": [
-          {
-            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf idle > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'",
-            "type": "command"
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'",
-            "type": "command"
-          }
-        ]
-      }
-    ]
-  },
-  "model": "opus[1m]",
   "permissions": {
     "allow": [
       "Bash",
@@ -107,10 +25,139 @@
       "WebFetch",
       "WebSearch",
       "Write",
-      "mcp__youtrack-mcp-server__*",
       "Skill(superpowers:brainstorming)"
     ],
-    "defaultMode": "plan",
-    "deny": []
-  }
+    "deny": [],
+    "defaultMode": "plan"
+  },
+  "model": "opus[1m]",
+  "hooks": {
+    "ElicitationResult": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf waiting > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/compress-bash-output.py",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path'); if [[ $FILE == *.go ]]; then cd \"$(git rev-parse --show-toplevel)\" && go vet ./...; elif [[ $FILE == *.ts ]]; then rtk tsc --noEmit; fi"
+          }
+        ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/skill-usage/skill-usage-log.sh"
+          }
+        ]
+      }
+    ],
+    "UserPromptExpansion": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/skill-usage/skill-usage-log.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/post-compact-restore.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf idle > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "sh -c '[ -n \"$AOE_INSTANCE_ID\" ] || exit 0; mkdir -p /tmp/aoe-hooks/$AOE_INSTANCE_ID && printf running > /tmp/aoe-hooks/$AOE_INSTANCE_ID/status'"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 $HOME/.claude/hooks/rag-context-inject.py",
+            "timeout": 8
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true
 }
