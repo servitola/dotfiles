@@ -834,13 +834,12 @@
 <text x="410.25" y="297.0" text-anchor="middle" class="key-label"></text>
 <title></title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="290.25" y="322" width="240" height="46" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="290.25" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="405.25,322 415.25,322 410.25,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="406.25,322 414.25,322 410.25,318" fill="white"/>
 <use href="#icon-raycast" x="300.25" y="331" width="13" height="13"/>
 <text x="316.25" y="342" font-size="9px" font-weight="600" fill="#007aff">Raycast</text>
 <text x="358.75" y="342" font-size="8px" fill="#1d1d1f">open Raycast</text>
-<text x="316.25" y="354" font-size="7px" fill="#86868b" font-style="italic">Control your tools with a few keystrokes</text>
 </g>
 </g>
 <g class="key-group">

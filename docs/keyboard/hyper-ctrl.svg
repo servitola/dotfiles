@@ -264,19 +264,10 @@
 </g>
 <g class="key-group">
 <rect x="347.0" y="114" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="347.0" y="116" width="3" height="44" rx="1.5" fill="#5ac8fa"/>
-<text x="374.0" y="142.0" text-anchor="middle" class="bind-label" fill="#5ac8fa" font-size="12px">→  ⌃F16</text>
+<rect x="347.0" y="116" width="3" height="44" rx="1.5" fill="#a2845e"/>
+<text x="374.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌃F16</text>
 <text x="396.0" y="157" text-anchor="end" class="key-label">T</text>
-<title>T: →  ⌃F16</title>
-<g class="key-tip" opacity="0" pointer-events="none">
-<rect x="254.0" y="166" width="240" height="46" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
-<polygon points="369.0,166 379.0,166 374.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
-<polygon points="370.0,166 378.0,166 374.0,162" fill="white"/>
-<use href="#icon-telegram" x="264.0" y="175" width="13" height="13"/>
-<text x="280.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="328.0" y="186" font-size="8px" fill="#1d1d1f">open chat REDACTED</text>
-<text x="280.0" y="198" font-size="7px" fill="#86868b" font-style="italic">Messaging app with a focus on speed and security</text>
-</g>
+<title>T: ⌃F16</title>
 </g>
 <g class="key-group">
 <rect x="405.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -593,8 +584,6 @@
 <line x1="20" y1="994" x2="906" y2="994" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1002" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
 <text x="56" y="1002" font-size="12px" fill="#a2845e">⌃F16</text>
-<use href="#icon-telegram" x="291" y="990" width="14" height="14"/>
-<text x="309" y="1002" font-size="11px" fill="#48484a">Telegram — open chat REDACTED</text>
 <line x1="20" y1="1024" x2="906" y2="1024" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1032" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
 <text x="56" y="1032" font-size="12px" fill="#a2845e">⌃↑</text>

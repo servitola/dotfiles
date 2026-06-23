@@ -20,7 +20,7 @@ The keyboard setup consists of three main components:
 
 ## Karabiner-Elements Configuration
 
-Source of truth: per-rule JSON files in @./karabiner/rules/. Each file is one logical concern (e.g. `09-hyper-command.json`, `05-grave-to-escape.json`). The combined `karabiner.json` consumed by Karabiner-Elements is **generated** — run `karabiner/build.sh` after editing rules.
+Source of truth: per-rule JSON files in `karabiner/rules/`. Each file is one logical concern (e.g. `09-hyper-command.json`, `05-grave-to-escape.json`). The combined `karabiner.json` consumed by Karabiner-Elements is **generated** — run `karabiner/build.sh` after editing rules.
 
 ### Caps Lock → Hyper
 Caps Lock sends Right Shift + Right Command + Right Control + Right Option simultaneously. Hammerspoon binds chords against this 4-mod set, so it never collides with real left-modifier shortcuts.
@@ -32,7 +32,7 @@ Many Hyper+letter chords (B, F, G, H, P, R, T, V, Y) are not bound directly — 
 
 The full set of bindings is the **per-key Lua files** in `hammerspoon/Spoons/HotKeys.spoon/layout/60%/`. Trying to maintain an ASCII keyboard picture in this doc has rotted twice — instead use:
 
-- **Visual**: rendered SVGs in @./keyboard/ (regenerated from sources, always current). Start with [hyper.svg](keyboard/hyper.svg) for the main layer or [by-action.svg](keyboard/by-action.svg) for a category-grouped view.
+- **Visual**: rendered SVGs in `docs/keyboard/` (regenerated from sources, always current). Start with [hyper.svg](keyboard/hyper.svg) for the main layer or [by-action.svg](keyboard/by-action.svg) for a category-grouped view.
 - **Text/grep**: `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index (`Hyper+B → fn zap.launch_default`, etc.) regenerated on each edit. Best target for «what does Hyper+X do» searches.
 - **Source**: open the per-key file directly (e.g. `g.lua` for everything on G).
 
@@ -184,7 +184,7 @@ Use `from`+`to`+`target_key` for chord remaps, or `from`+`sendText` to type a st
 ## Customization
 
 ### Adding a new shortcut
-1. Edit the per-key file in @./hammerspoon/Spoons/HotKeys.spoon/layout/60%/
+1. Edit the per-key file in `hammerspoon/Spoons/HotKeys.spoon/layout/60%/`
 2. Add a new chord entry to the returned array.
 
 **Example — Slack on Hyper+S:**
@@ -203,24 +203,24 @@ Use `from`+`to`+`target_key` for chord remaps, or `from`+`sendText` to type a st
 
 ## Visual reference
 
-See **@./keyboard/** for auto-generated SVG diagrams of all 24 shortcut layers plus the action-grouped `by-action.svg`. Index with category legend lives at @./keyboard/README.md.
+See **`docs/keyboard/`** for auto-generated SVG diagrams of all 24 shortcut layers plus the action-grouped `by-action.svg`. Index with category legend lives at `docs/keyboard/README.md.`
 
 Regenerate everything: `python3 docs/keyboard/generate.py`
 
 ## Files reference
 
-- @./karabiner/rules/ — Karabiner rule files (source of truth; `karabiner.json` is generated via `karabiner/build.sh`)
-- @./hammerspoon/init.lua — main Hammerspoon entry point
-- @./hammerspoon/Spoons/HotKeys.spoon/ — shortcut Spoon (capital K)
-- @./hammerspoon/Spoons/HotKeys.spoon/init.lua — chord parser + `fn` dispatch
-- @./hammerspoon/Spoons/HotKeys.spoon/app_specific_hotkeys.lua — per-app rebind helper
-- @./hammerspoon/Spoons/HotKeys.spoon/layout/60%/ — per-key layout files (active)
-- @./hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md — auto-generated chord index for grep / AI agents
-- @./hammerspoon/Spoons/HotKeys.spoon/layout/extra/ — F-key placeholder files
-- @./hammerspoon/Spoons/HotKeys.spoon/old/ — legacy 30 numbered layout files (not loaded)
-- @./keyboard-layout/Birman.bundle/ — custom keyboard layout (Ukelele bundle)
-- @./keyboard-layout/Birman.bundle/Contents/Resources/*.keylayout — Ukelele XML source files
-- @./keyboard/ — auto-generated SVG keyboard shortcut diagrams
-- @./keyboard/tools/lint.py — canonical-format validator
-- @./keyboard/tools/normalize.py — auto-formatter / missing-row inserter
-- @./../.git-hooks/lint-keyboard-layout.sh — pre-commit hook wiring `lint.py` into git
+- `karabiner/rules/` — Karabiner rule files (source of truth; `karabiner.json` is generated via `karabiner/build.sh`)
+- `hammerspoon/init.lua` — main Hammerspoon entry point
+- `hammerspoon/Spoons/HotKeys.spoon/` — shortcut Spoon (capital K)
+- `hammerspoon/Spoons/HotKeys.spoon/init.lua` — chord parser + `fn` dispatch
+- `hammerspoon/Spoons/HotKeys.spoon/app_specific_hotkeys.lua` — per-app rebind helper
+- `hammerspoon/Spoons/HotKeys.spoon/layout/60%/` — per-key layout files (active)
+- `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index for grep / AI agents
+- `hammerspoon/Spoons/HotKeys.spoon/layout/extra/` — F-key placeholder files
+- `hammerspoon/Spoons/HotKeys.spoon/old/` — legacy 30 numbered layout files (not loaded)
+- `keyboard-layout/Birman.bundle/` — custom keyboard layout (Ukelele bundle)
+- `keyboard-layout/Birman.bundle/Contents/Resources/`*.keylayout — Ukelele XML source files
+- `docs/keyboard/` — auto-generated SVG keyboard shortcut diagrams
+- `docs/keyboard/tools/lint.py` — canonical-format validator
+- `docs/keyboard/tools/normalize.py` — auto-formatter / missing-row inserter
+- `.git-hooks/lint-keyboard-layout.sh` — pre-commit hook wiring `lint.py` into git
