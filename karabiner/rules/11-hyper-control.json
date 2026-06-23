@@ -3,6 +3,29 @@
     "manipulators": [
         {
             "from": {
+                "key_code": "t",
+                "modifiers": {
+                    "mandatory": [
+                        "left_control",
+                        "right_command",
+                        "right_control",
+                        "right_option",
+                        "right_shift"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "f16",
+                    "modifiers": [
+                        "left_control"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
                 "key_code": "v",
                 "modifiers": {
                     "mandatory": [
