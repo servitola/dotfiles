@@ -84,8 +84,8 @@ local function unminimize_if_needed(app)
             if win:isMinimized() then
                 win:unminimize()
                 unminimized = true
+            end
         end
-    end
         return unminimized
     end
     return true
@@ -504,8 +504,6 @@ function obj:init()
                     hs.hotkey.bind(modifiers, key, function()
                         if appUsageAnalytics then appUsageAnalytics.toggle() end
                     end)
-                    hs.hotkey.bind(modifiers, key, function()
-                    end)
                 elseif functionName == "window.hide_all_except_work"
                     or functionName == "window.focus_work"
                     or functionName == "window.focus_personal"
@@ -563,10 +561,10 @@ function obj:init()
                                             for _, win in ipairs(yandexApp:allWindows()) do
                                                 if win == popupWin then
                                                     set_window_left(win)
-                                        else
-                                            win:minimize()
-                                        end
-                                    end
+                                                else
+                                                    win:minimize()
+                                                end
+                                            end
                                         elseif keepVisibleNoVideo then
                                             if yandexApp:isHidden() then yandexApp:unhide() end
                                             for _, win in ipairs(yandexApp:allWindows()) do
@@ -675,7 +673,7 @@ function obj:init()
                         if not unminimize_if_needed(app) then
                             hs.application.launchOrFocus(chord_entry.app)
                         else
-                        app:activate()
+                            app:activate()
                         end
                     else
                         local hasVisibleWindow = false
