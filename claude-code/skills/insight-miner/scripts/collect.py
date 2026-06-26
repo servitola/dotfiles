@@ -64,6 +64,9 @@ def err_class(text):
     m = re.search(r"permission to use \w+ with command (\S+)", low)
     if m: return "PERM " + m.group(1)
     if "string to replace not found" in low: return "Edit: string not found (stale read)"
+    if "refusing to write through symlink" in low: return "Edit: write through symlink"
+    if "file does not exist" in low: return "Read: file does not exist (wrong cwd?)"
+    if "eisdir" in low: return "Read on a directory (EISDIR)"
     if "command not found" in low or "not found" in first.lower(): return "command/file not found"
     if "no such file" in low: return "no such file or directory"
     if "permission denied" in low: return "permission denied (fs)"
@@ -71,7 +74,7 @@ def err_class(text):
     if m: return f"exit code {m.group(1)}"
     if "timed out" in low or "timeout" in low: return "timeout"
     if "<tool_use_error>" in low: return "tool_use_error (generic)"
-    return first[:48]
+    return re.sub(r"\s+", " ", first)[:48]
 
 def text_of(content):
     if isinstance(content, str): return content
@@ -198,14 +201,15 @@ def report(days):
     print(f"# insight-miner · report · last {days}d")
     for sc in ("own","work","serho"):
         if sc not in out: continue
-        print(f"\n===== {LABEL[sc]} =====")
+        skipped = sum(1 for k in out[sc] for i in out[sc][k] if i["known"])
+        hdr = f"\n===== {LABEL[sc]} ====="
+        print(hdr + (f"  ({skipped} known, hidden)" if skipped else ""))
         for kind in ("cmd","perm","err","corr"):
             items=[i for i in out[sc].get(kind,[]) if not i["known"]]
             if not items: continue
             lab = KLAB[kind] if sc!="serho" or kind!="corr" else "friend/bot corrections (serho UX candidates)"
             print(f"-- {lab} --")
             for i in items[:10]:
-                tag = ""  # all shown are new
                 print(f"  {i['n']:4}×  {i['sig']}")
             print()
 
