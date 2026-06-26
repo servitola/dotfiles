@@ -1,5 +1,5 @@
 #!/bin/zsh
-source zsh/functions.sh
+source ~/projects/dotfiles/zsh/functions.sh
 
 echo "installing XCode if needed"
 
