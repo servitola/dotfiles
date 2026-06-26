@@ -211,7 +211,7 @@ install:
 	@echo "setup Fork custom commands symlink"
 	@mkdir -p ~/Library/Application\ Support/com.DanPristupov.Fork
 	@$(REMOVE) ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
-	@$(LINK) ~/projects/dotfiles/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
+	@$(LINK) ~/projects/dotfiles_private/fork/custom-commands.json ~/Library/Application\ Support/com.DanPristupov.Fork/custom-commands.json
 
 	@echo "setup agent-of-empires (aoe) symlink"
 	@$(REMOVE) ~/Library/Application\ Support/agent-of-empires
