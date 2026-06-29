@@ -81,6 +81,47 @@ Hard rule: do **not** call `edit_hfspace.py` / `edit_fal.py` on a
 correction request that names a specific region. The drift on untouched
 areas is exactly what frustrates the user.
 
+## Inspect cheaply — preview, don't re-read full-res
+
+Reading a full-res image into context to *look* at it is the single biggest
+token cost in long editing topics (every cached image is re-read on every
+later turn — over hundreds of iterations that dominates the bill). The output
+file the user gets is unaffected by how *you* inspect it, so inspect cheaply:
+
+- To judge a result and decide the next tweak («повыше», «правее», «листья
+  поближе»), **Read a ≤768 px preview, never the full-res file**. Every local
+  script below writes one with `--preview /tmp/preview.png`; for any other
+  image use `view.py --input X --output /tmp/preview.png`. RGBA cutouts are
+  shown on a checkerboard so halos/leftover background are visible.
+- Do **one** full-res Read as the final quality check right before sending —
+  not on every iteration.
+- Read each source image **once** per topic, then reuse it; don't re-Read the
+  same file each turn. Don't re-read the pipeline reference `.md` files either.
+- When the topic has drifted into a 100+ message marathon on a *new* scene,
+  finish the current image and start fresh rather than dragging the whole
+  accumulated context (all prior images + code) forward.
+
+## Local deterministic helpers — use these, never inline PIL
+
+The recurring "resize + paste onto wall", "match colour back", "compare
+variants" steps already exist as bundled `uv run --script` tools (deps cached
+by uv). **Call them — do not write `uv run --with pillow … <<EOF` heredocs.**
+Inline PIL is slower, re-derived each time, inconsistent, and it bloats the
+context that every later turn pays to re-read.
+
+| Need | Tool |
+|---|---|
+| place a cutout onto a background / flat colour / sampled wall colour | `composite.py` |
+| restore colour & sharpness after Kontext bleached/softened/shrank it (histogram-match to the original + UnsharpMask + LANCZOS upscale) | `restore.py` |
+| ≤768 px preview for inspection (RGBA → checkerboard) | `view.py` |
+| compare N variants in one labelled grid to send the user | `collage.py` |
+| texture-fill a region AI keeps redrawing | `patch_fill.py` |
+| overlay caption text | `compose_text.py` |
+
+Generate variants as **one `collage.py` contact sheet** and Read a single
+preview of it — do not spawn parallel reroll subagents that each carry the
+full image context (that multiplies cost N×).
+
 ## Free-first, paid on request
 
 Default routing is **always free**. Run the free script, send the result
@@ -113,10 +154,12 @@ error: surface the actual stderr to the user, do not pretend it worked.
 
 ## What this skill does NOT do
 
-- Does not edit pixels locally with PIL/cv2 beyond (a) resize for upload
-  and (b) rasterising a `--bbox` into an inpaint mask. Actual repaint
-  always goes through rembg/Kontext/Fill pipelines — local PIL edits
-  would look like Photoshop circa 2003.
+- Does not **repaint or generate** content locally with PIL/cv2 — that
+  always goes through rembg/Kontext/Fill pipelines (local repaint would look
+  like Photoshop circa 2003). Deterministic compositing is fine and expected
+  via the bundled helpers above (`composite.py` paste, `restore.py` colour/
+  sharpness, `collage.py`, `compose_text.py`, masks) — just never hand-rolled
+  inline PIL heredocs.
 - Does not call paid APIs on the first attempt. Free path runs first;
   paid fal.ai (~$0.04-0.05) only after the user accepts the upgrade
   offer or asks for higher quality directly.

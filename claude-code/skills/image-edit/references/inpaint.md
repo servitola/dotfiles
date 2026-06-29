@@ -21,9 +21,14 @@ inpaint doesn't.
 ## Iterate workflow (refining a previous generation)
 
 Workflow per iteration:
-1. Read the previous output image (use the Read tool — you can see it).
+1. Read a **≤768 px preview** of the previous output to locate the region —
+   `view.py --input prev.png --output /tmp/preview.png`, then Read the preview,
+   not the full-res file. Placement is fully legible at that size and costs a
+   fraction of the vision tokens (which you pay again every later turn).
 2. Identify the region the user named. Look at the pixels and pick
    coordinates — the model is doing this visually, no extra service needed.
+   Coordinates scale: a bbox read off a 768 px preview must be multiplied back
+   to full-res before passing to `--bbox` (preview_scale = full_width / 768).
 3. If the region is a clean rectangle → call `edit_inpaint.py --bbox …`
    directly. Otherwise build a proper mask with `make_mask.py` (see
    [Picking a mask](#picking-a-mask-auto-first-then-refine) below),
