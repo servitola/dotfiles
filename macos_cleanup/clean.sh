@@ -13,6 +13,7 @@ printf '\033[0;92m\033[1mwhere_is_my_space\033[0m — downloading cleanup script
 curl -fsSL "$REPO_BASE/helpers.sh"          -o "$TMPDIR_CLEANUP/helpers.sh"
 curl -fsSL "$REPO_BASE/try_clean.sh"        -o "$TMPDIR_CLEANUP/try_clean.sh"
 curl -fsSL "$REPO_BASE/relock_autostart.sh" -o "$TMPDIR_CLEANUP/relock_autostart.sh"
+curl -fsSL "$REPO_BASE/broken_links.sh"     -o "$TMPDIR_CLEANUP/broken_links.sh"
 curl -fsSL "$REPO_BASE/cleanup_targets.sh"  -o "$TMPDIR_CLEANUP/cleanup_targets.sh"
 curl -fsSL "$REPO_BASE/cleanup_all.sh"      -o "$TMPDIR_CLEANUP/cleanup_all.sh"
 
