@@ -16,6 +16,7 @@ setopt no_unset pipe_fail
 source "$CLEANUP_DIR/helpers.sh"
 source "$CLEANUP_DIR/try_clean.sh"
 source "$CLEANUP_DIR/relock_autostart.sh"
+source "$CLEANUP_DIR/broken_links.sh"
 
 # --- Environment ---
 
@@ -233,6 +234,9 @@ if [ -d "$GP_LOG_DIR" ]; then
 else
     printf "  ${DIM}* GlobalProtect: log directory not found${NC}\n"
 fi
+
+print_section "Dangling Symlinks"
+report_broken_links
 
 if [ "${AGGRESSIVE:-}" = "true" ]; then
     print_section "Aggressive Cleanup"
