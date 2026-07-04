@@ -79,8 +79,6 @@ brew "figlet"
 brew "findutils"
 # Firebase command-line tools
 brew "firebase-cli"
-# Interact with Google Gemini AI models from the command-line
-brew "gemini-cli"
 # GitHub command-line tool
 brew "gh"
 # Framework for layout and rendering of i18n text
