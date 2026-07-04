@@ -14,9 +14,10 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 - Launch as many agents concurrently as possible — work in parallel rather than sequentially. The more independent agents running simultaneously, the better.
 - Codex will review your output once you are done
 - When creating a git worktree branch from a remote ref (e.g. `origin/Development`, `origin/main`, `origin/master`), ALWAYS pass `--no-track` so the new branch does not set the protected upstream as its push target. Example: `git worktree add <path> -b <new-branch> --no-track origin/Development`. Never let a feature/fix branch track a primary upstream — a stray `git push` could land work on the protected branch by accident.
+- NEVER `git push` and NEVER create merge requests / pull requests unless the user explicitly asks for it in the current conversation. Local commits are fine; everything that leaves the machine (push, MR/PR, ticket updates that publish links) waits for an explicit go-ahead.
+- NEVER turn the VPN on/off yourself (e.g. `scutil --nc start/stop "awg-client"`, AmneziaWG, any VPN service). If something seems to need the VPN, tell the user and let them connect it
 
 # Shared AI Coding Tools
 
 This `claude-code/` directory is the single source of truth for commands, agents, and skills.
-Amp (`~/.config/amp/`) and Qwen Code (`~/.qwen/`) symlink their `commands/`, `agents/`, and `skills/` directories here.
 When adding or editing commands/agents/skills — do it here. All tools pick up changes automatically.
