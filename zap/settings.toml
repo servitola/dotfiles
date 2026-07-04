@@ -1007,3 +1007,11 @@ providers = [
 
 [agents.warp_agent.other]
 should_render_use_agent_toolbar_for_user_commands = true
+
+[agents.third_party]
+
+[agents.third_party.per_agent]
+Antigravity = { tabmenu = true, titlebar = true, toolbar = true }
+Claude = { tabmenu = true, titlebar = true, toolbar = true }
+Codex = { tabmenu = true, titlebar = true, toolbar = true }
+OpenCode = { tabmenu = true, titlebar = false, toolbar = true }
