@@ -8,6 +8,9 @@ models = [
     { name = "nemotron", provider = "litellm", alias = "nemotron" },
     { name = "fast", provider = "litellm", alias = "fast" },
 ]
+applied_migrations = [
+    "bash_read_only_defaults_v1",
+]
 
 [[providers]]
 name = "mistral"
@@ -24,5 +27,42 @@ backend = "generic"
 
 [tools.bash]
 allowlist = [
+    "basename",
+    "cat",
+    "comm",
+    "cut",
+    "date",
+    "diff",
+    "dirname",
+    "du",
+    "file",
+    "find",
+    "fmt",
+    "fold",
+    "grep",
+    "head",
+    "join",
+    "less",
+    "ls",
+    "md5sum",
+    "more",
+    "nl",
+    "od",
+    "paste",
+    "pwd",
     "python -m",
+    "readlink",
+    "sha1sum",
+    "sha256sum",
+    "shasum",
+    "sort",
+    "stat",
+    "sum",
+    "tac",
+    "tail",
+    "tr",
+    "uname",
+    "uniq",
+    "wc",
+    "which",
 ]
