@@ -344,6 +344,8 @@ cask "jordanbaird-ice"
 # Keyboard customiser
 cask "karabiner-elements"
 cask "kegworks"
+# Free cross-platform office suite, fresh version
+cask "libreoffice"
 # Open-source firewall to block unknown outgoing connections
 cask "lulu"
 # Adaptive brightness for external displays
