@@ -207,6 +207,8 @@ brew "pyenv"
 brew "pygments"
 # Python interface to Tcl/Tk
 brew "python-tk@3.11"
+# QR Code generation
+brew "qrencode"
 # AI-powered command-line workflow tool for developers
 brew "qwen-code"
 # Utility that provides fast incremental file transfer
