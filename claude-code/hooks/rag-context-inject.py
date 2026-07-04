@@ -37,9 +37,12 @@ MAX_PROMPT_CHARS = 600   # very long prompts are usually pasted code/logs, skip
 # Relevance gate. We query in `vector` mode so the printed `score=` is a real
 # cosine similarity (hybrid mode prints RRF rank scores ~0.5 that DON'T
 # discriminate relevance). Calibrated on real queries: genuine env/project
-# lookups score ~0.34-0.56, irrelevant/chatty prompts ~0.17-0.24. 0.30 sits in
-# the gap with margin on both sides. If the TOP source is below this -> skip.
-MIN_SCORE = 0.30
+# Specific technical lookups score high (e.g. "как настроен hyper key" ~0.55);
+# vague/chatty prompts can spuriously clear a low bar (observed: "Как у нас
+# дела?" injected at 0.30). Favour PRECISION over recall — only inject when the
+# top chunk is a strong, specific match. Better to miss a borderline lookup than
+# to dump irrelevant context into a normal chat turn.
+MIN_SCORE = 0.45
 SCORE_RE = re.compile(r"\bscore=([0-9]*\.?[0-9]+)")
 
 # cwd basename under ~/projects -> collection. Anything not listed and not a
@@ -97,6 +100,18 @@ ACTION_PREFIX_RE = re.compile(
     re.IGNORECASE,
 )
 
+# Short status-check / meta chit-chat that OPENS like a question ("как у нас
+# дела?", "что делать?", "how are we?") but asks nothing retrievable. These
+# slipped past the interrogative-opener signal and injected noise into normal
+# conversation. Only applied to short prompts (see should_retrieve).
+CONVERSATIONAL_RE = re.compile(
+    r"(как\s+(у\s+(нас|тебя|вас)\s+)?дела|как\s+(оно|жизнь|успехи|настроение)|"
+    r"как\s+там\b|что\s+(нужно\s+)?(делать|сделать)\b|что\s+(дальше|теперь|нового)\b|"
+    r"how\s+(are|'?s)\s+(you|we|it|things)|how('?s| is)\s+it\s+going|"
+    r"what\s+(should|do)\s+(we|i)\s+do|what('?s| is)\s+(up|next|new)|what\s+now)\b",
+    re.IGNORECASE,
+)
+
 # Greetings / chit-chat / acks — never retrieve.
 TRIVIAL_RE = re.compile(
     r"^\s*(hi|hey|hello|yo|thanks|thank\s+you|thx|ok|okay|yes|no|yep|nope|"
@@ -148,6 +163,10 @@ def should_retrieve(prompt):
     if TRIVIAL_RE.match(p):
         return False
     if len(p.split()) < MIN_WORDS:
+        return False
+    # Short status-check / meta prompts ("как у нас дела?", "что делать?") open
+    # like a question but retrieve nothing useful — skip when short.
+    if len(p.split()) <= 7 and CONVERSATIONAL_RE.search(p):
         return False
 
     ends_q = p.rstrip().endswith("?")
