@@ -278,6 +278,7 @@ install:
 		macos_cleanup/cleanup_all.sh \
 		macos_cleanup/helpers.sh \
 		macos_cleanup/try_clean.sh \
+		macos_cleanup/relock_autostart.sh \
 		macos_cleanup/cleanup_targets.sh \
 		macos_update/update_all.sh \
 		macos/set_defaults.sh \
