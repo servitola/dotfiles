@@ -27,17 +27,17 @@ curl -s http://localhost:4000/v1/models -H "Authorization: Bearer sk-local-workb
 
 | kind | names |
 |---|---|
-| direct (OpenRouter) | `nemotron`, `nemotron-ultra`, `nemotron-omni`, `gpt`, `gpt-oss-20b`, `glm`, `glm-air`, `poolside-laguna`, `uncensored`, `vision`, `embed` |
+| direct (OpenRouter) | `nemotron`, `nemotron-ultra`, `nemotron-omni`, `nemotron-nano`, `gpt`, `gpt-oss-20b`, `glm`, `poolside-laguna`, `uncensored`, `vision`, `embed`, `moderation` |
 | direct (Mistral) | `mistral-codestral`, `mistral-small`, `mistral-large`, `mistral-magistral`, `mistral-magistral-small` |
 | direct (Cerebras) | `cerebras-glm`, `cerebras-gpt-oss` |
 | direct (NVIDIA NIM) | `nvidia-nemotron`, `nvidia-nemotron-120b`, `nvidia-kimi`, `nvidia-deepseek`, `nvidia-deepseek-flash` |
 | direct (Groq) | `groq-llama`, `groq-gpt-oss`, `groq-compound`, `groq-compound-mini` |
 | direct (GitHub) | `github-gpt4o-mini`, `github-deepseek-r1` |
 | direct (Gemini) | `gemini`, `gemini-flash-lite`, `gemini-search` |
-| direct (SambaNova) | `sambanova-deepseek`, `sambanova-llama`, `sambanova-maverick`, `sambanova-minimax`, `sambanova-gpt-oss` |
+| direct (SambaNova) | `sambanova-deepseek`, `sambanova-llama`, `sambanova-minimax`, `sambanova-gpt-oss` |
 | direct (Chutes) | `chutes-qwen-thinking`, `chutes-qwen-coder`, `chutes-qwen-small`, `chutes-deepseek`, `chutes-kimi`, `chutes-glm`, `chutes-minimax` |
 | direct (Together, trial) | `together-magistral`, `together-qwen-thinking`, `together-qwen-coder`, `together-deepseek`, `together-llama`, `together-minimax` |
-| direct (LLM7, anon) | `llm7-qwen`, `llm7-mistral`, `llm7-codestral` |
+| direct (LLM7, anon) | `llm7-devstral`, `llm7-codestral` |
 | rotation (shuffle + cooldown) | `coding` (default for `auto`), `reasoning`, `fast`, `vision`, `web-search` |
 | web search | `gemini-search`, `groq-compound`, `web-search` |
 | TTS | `tts`, `tts-pro`, `tts-piper`, `tts-azure`, `tts-azure-ru` |

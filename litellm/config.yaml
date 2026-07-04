@@ -140,14 +140,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
     model_info: *zero
-  # Z.AI GLM-4.5-Air via OpenRouter free — independent quota from the native
-  # `glm` (zai key), good all-rounder backup.
-  - model_name: glm-air
-    litellm_params:
-      model: openai/z-ai/glm-4.5-air:free
-      api_base: https://openrouter.ai/api/v1
-      api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+  # (glm-air removed 2026-07-01: OpenRouter dropped the `:free` variant of every
+  # z-ai/glm slug — no free GLM on OpenRouter anymore. Native `glm` (zai key,
+  # zai/glm-4.7-flash) covers GLM.)
   # OpenAI gpt-oss 20B — lighter/faster sibling of the 120b.
   - model_name: gpt-oss-20b
     litellm_params:
@@ -166,6 +161,38 @@ model_list:
   - model_name: cohere-north-code
     litellm_params:
       model: openai/cohere/north-mini-code:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      extra_body:
+        provider:
+          require_parameters: true
+    model_info: *zero
+
+  # === New OpenRouter :free (discovered 2026-07-01 via check-models) ==========
+  # NVIDIA Nemotron Nano 9B v2 — compact general/reasoning model, sibling of the
+  # bigger nemotron-* aliases. Slug validated live (routes; a 200 could not be
+  # captured on add-day because the account's shared OpenRouter free-per-day
+  # quota was exhausted — 429, not a config fault). require_parameters pins
+  # routing to param-compatible backends.
+  - model_name: nemotron-nano
+    litellm_params:
+      model: openai/nvidia/nemotron-nano-9b-v2:free
+      api_base: https://openrouter.ai/api/v1
+      api_key: os.environ/OPENROUTER_API_KEY
+      timeout: 90
+      extra_body:
+        provider:
+          require_parameters: true
+    model_info: *zero
+  # NVIDIA Nemotron 3.5 Content-Safety — guard/moderation classifier (Llama-Guard
+  # style). Fills a capability gap (no moderation lane existed). Expects a
+  # content-to-classify prompt; returns a safety verdict, not free chat. Slug
+  # validated live (routes; 429 quota on add-day — verify a 200 after the daily
+  # OpenRouter free quota resets, ~00:00 UTC).
+  - model_name: moderation
+    litellm_params:
+      model: openai/nvidia/nemotron-3.5-content-safety:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       timeout: 90
@@ -441,8 +468,9 @@ model_list:
   # Model IDs below verified live against the account's catalog 2026-06-05.
   - model_name: sambanova-deepseek
     litellm_params:
-      # DeepSeek V3.1 — 131k ctx, fastest DeepSeek deployment per SN's claims.
-      model: openai/DeepSeek-V3.1
+      # DeepSeek V3.2 — 131k ctx, current SN DeepSeek (upgraded from V3.1
+      # 2026-07-01: V3.2 now in catalog, verified live 200). V3.1 still listed too.
+      model: openai/DeepSeek-V3.2
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
     model_info: *zero
@@ -453,13 +481,10 @@ model_list:
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
     model_info: *zero
-  - model_name: sambanova-maverick
-    litellm_params:
-      # Llama 4 Maverick 17B/128E MoE — fresh Llama 4 generation, 131k ctx.
-      model: openai/Llama-4-Maverick-17B-128E-Instruct
-      api_base: https://api.sambanova.ai/v1
-      api_key: os.environ/SAMBANOVA_API_KEY
-    model_info: *zero
+  # (sambanova-maverick removed 2026-07-01: Llama-4-Maverick-17B-128E gone from
+  # the SambaNova catalog. SN free tier now: DeepSeek-V3.1/V3.2, Llama-3.3-70B,
+  # MiniMax-M2.7, gemma-4-31B-it, gpt-oss-120b — all still covered by other
+  # sambanova-* aliases.)
   - model_name: sambanova-minimax
     litellm_params:
       # MiniMax M2.7 — 196k ctx, biggest context window on SN free tier.
@@ -625,22 +650,17 @@ model_list:
 
   # === LLM7.io (anonymous free tier — no key, no registration) ==============
   # Public free aggregator at api.llm7.io/v1. Anonymous lim: 60/hour, 10/min,
-  # 1/sec ACROSS the entire account/IP — extremely tight. Only the 3 models
-  # below stay on the free plan (Kimi/MiniMax/GLM/DeepSeek require Pro
-  # subscription as of 2026-06-05). Direct aliases ONLY — NOT wired into
-  # rotation groups, since the 60/hr cap would be drained by router shuffles
-  # before any caller benefits.
-  - model_name: llm7-qwen
+  # 1/sec ACROSS the entire account/IP — extremely tight. Only the 2 models
+  # below stay on the free plan (Kimi/MiniMax/DeepSeek/Qwen require Pro or auth
+  # as of 2026-07-01: qwen3-235b + mistral-small-3.2 dropped off the free tier,
+  # deepseek-v4-flash→401, kimi-k2.6→503, minimax-m2.7→402). Direct aliases
+  # ONLY — NOT wired into rotation groups, since the 60/hr cap would be drained
+  # by router shuffles before any caller benefits.
+  # (llm7-qwen removed 2026-07-01: qwen3-235b no longer on llm7's free plan.)
+  - model_name: llm7-devstral
     litellm_params:
-      model: openai/qwen3-235b
-      api_base: https://api.llm7.io/v1
-      api_key: "anonymous"
-      timeout: 60
-      num_retries: 0
-    model_info: *zero
-  - model_name: llm7-mistral
-    litellm_params:
-      model: openai/mistral-small-3.2
+      # Devstral Small 2 24B (Mistral) — coding model, verified free+200 live.
+      model: openai/devstral-small-2:24b
       api_base: https://api.llm7.io/v1
       api_key: "anonymous"
       timeout: 60

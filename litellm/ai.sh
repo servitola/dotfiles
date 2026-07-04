@@ -8,19 +8,19 @@
 #   ai -f screenshot.png "what's in this image"
 #
 # Flags:
-#   -m, --model   model alias from config.yaml. Direct: coder | nemotron | gpt | glm | vision | embed.
+#   -m, --model   model alias from config.yaml. Direct: coder | nemotron | nemotron-nano | gpt | glm | vision | embed | moderation.
 #                 Rotation groups: auto (default → coding) | coding | reasoning | fast.
 #                 Provider-specific: groq-llama | groq-gpt-oss | groq-compound |
 #                                    nvidia-nemotron | nvidia-nemotron-120b | nvidia-kimi | nvidia-deepseek |
 #                                    github-gpt4o-mini | github-deepseek-r1 |
-#                                    sambanova-deepseek | sambanova-llama | sambanova-maverick |
+#                                    sambanova-deepseek | sambanova-llama |
 #                                    sambanova-minimax | sambanova-gpt-oss |
 #                                    chutes-qwen-thinking | chutes-qwen-coder | chutes-deepseek |
 #                                    chutes-kimi | chutes-glm | chutes-minimax | chutes-qwen-small |
 #                                    together-magistral | together-qwen-thinking | together-qwen-coder |
 #                                    together-deepseek | together-llama | together-minimax |
 #                                    mistral-magistral | mistral-magistral-small | gemini-flash-lite |
-#                                    llm7-qwen | llm7-mistral | llm7-codestral.
+#                                    llm7-devstral | llm7-codestral.
 #   -t, --tokens  max_tokens (default 1500)
 #   -s, --system  system prompt
 #   -f, --file    image file (png/jpg/gif/webp) — auto-selects vision model
