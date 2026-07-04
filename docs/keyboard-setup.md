@@ -41,7 +41,7 @@ The most-used chords on the Hyper layer (Caps Lock + key). For the complete list
 
 | Chord | Action | Notes |
 |---|---|---|
-| `⇪B` | Zap (custom launcher) | `fn zap.launch_default` |
+| `⇪B` | Zap |
 | `⇪F` | Finder | direct binding |
 | `⇪G` | Fork | + `⌥G` browser GitHub, `⌥F13` Fork in cTraderDev |
 | `⇪H` | Firefox | + `F16` Safari, `⇧F13` hide current window |
@@ -160,7 +160,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 - **Translate (PopupTranslateSelection)**: `translate_to_russian` `translate_to_english` `translate_to_greek`
 - **Browser (BrowserTabOpener)**: `browser_git` `browser_git_dotfiles` `browser_youtube` `browser_youtube_playing` `browser_search_selected`
 - **System**: `hammerspoon_reload` `wallpaper_refresh` `apps.close_unnecessary` `system_health` `vpn.toggle_globalprotect` `info.show_shortcuts` `app_usage_stats`
-- **Apps (custom launchers)**: `vscode.dotfiles` `fork.dotfiles` `fork.ctraderdev` `zap.launch_default`
+- **Apps (custom launchers)**: `vscode.dotfiles` `fork.dotfiles` `fork.ctraderdev`
 - **Misc**: `paste_bypass` `musicapp.play_pause` `press_return` `android.show_all` `set_russian_language` `set_english_language` `clipboard_llm` `screenshot_ai` `show_youtrack` `show_youtrack_tasks` `youtube_stream`
 
 Adding a new `fn` requires both a chord entry and a matching `elseif functionName == "..."` branch in `init.lua:init()`.

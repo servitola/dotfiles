@@ -8,7 +8,7 @@ return {
 --           b   │              │ b    и    β  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪b   │              │              │   │ Zap
-{ chord =  "⇪b",                                                fn = "zap.launch_default" },
+{ chord =  "⇪b",                                                app = "Zap" },
 --          ⇧b   │              │ B    И    Β  │   │
 --          ⌃b   │              │              │   │ Unix Terminal — forward one letter
 --          ⌥b   │              │ ß    ß    ß  │   │
