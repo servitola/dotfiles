@@ -251,6 +251,8 @@ brew "uv"
 brew "wget"
 # Network analyzer and capture tool - without graphical user interface
 brew "wireshark"
+# Generate your Xcode project from a spec file and your folder structure
+brew "xcodegen"
 # JavaScript package manager
 brew "yarn"
 # Feature-rich command-line audio/video downloader
