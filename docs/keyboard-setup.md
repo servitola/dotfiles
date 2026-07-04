@@ -33,7 +33,7 @@ Many Hyper+letter chords (B, F, G, H, P, R, T, V, Y) are not bound directly — 
 The full set of bindings is the **per-key Lua files** in `hammerspoon/Spoons/HotKeys.spoon/layout/60%/`. Trying to maintain an ASCII keyboard picture in this doc has rotted twice — instead use:
 
 - **Visual**: rendered SVGs in `docs/keyboard/` (regenerated from sources, always current). Start with [hyper.svg](keyboard/hyper.svg) for the main layer or [by-action.svg](keyboard/by-action.svg) for a category-grouped view.
-- **Text/grep**: `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index (`Hyper+B → fn zap.launch_default`, etc.) regenerated on each edit. Best target for «what does Hyper+X do» searches.
+- **Text/grep**: `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index regenerated on each edit. Best target for «what does Hyper+X do» searches.
 - **Source**: open the per-key file directly (e.g. `g.lua` for everything on G).
 
 ### Hyper layer cheatsheet
