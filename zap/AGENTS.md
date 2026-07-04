@@ -1,6 +1,6 @@
 # zap — config for Zap, the primary terminal (open-source Warp fork)
 
-- Zap is the everyday terminal here; this dir holds its full config. Launched via Hammerspoon `Hyper+B` (`fn zap.launch_default`); shell behavior lives in `zsh/` (Zsh + oh-my-zsh + p10k), this dir is terminal-app config only.
+- Zap is the everyday terminal here; shell behavior lives in `zsh/` (Zsh + oh-my-zsh + p10k), this dir is terminal-app config only.
 - Symlinked by the Makefile: `~/.zap → ~/projects/dotfiles/zap` (single directory link). There is no `warp/` dir and no `~/.warp` symlink — Zap reads `~/.zap`.
 - `settings.toml` — main settings: appearance (Gruvbox Dark theme, `override_opacity`/`override_blur`, JetBrainsMono Nerd Font, vertical tabs, dim-inactive-panes), notifications, external editor (VS Code), and the large `[agents.warp_agent]` provider/model catalog (302.AI OpenAI-compatible endpoint). The model list is volatile — do not treat specific model entries as durable.
 - `themes/` — custom color themes (`gruvbox_dark.yaml`); the active theme is selected by `appearance.themes.theme` in settings.toml.
