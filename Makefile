@@ -69,6 +69,11 @@ install:
 	@$(REMOVE) ~/.agents/skills
 	@$(LINK) ~/projects/dotfiles/claude-code/skills ~/.agents/skills
 
+	@echo "setup Hermes"
+	@mkdir -p ~/.hermes
+	@$(REMOVE) ~/.hermes/config.yaml
+	@$(LINK) ~/projects/dotfiles/hermes/config.yaml ~/.hermes/config.yaml
+
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
 
