@@ -1,71 +1,143 @@
-default_profile = ""
+default_profile = "default"
 
-[theme]
-name = "gruvbox-dark"
-color_mode = "truecolor"
-idle_decay_minutes = 0
+[acp]
+allow_agent_install = false
+auto_stop_idle_secs = 0
+default_agent = "aoe-agent"
+force_end_turn_threshold_secs = 30
+max_concurrent_resumes = 4
+max_concurrent_workers = 5
+node_path = ""
+queue_drain_mode = "combined"
+rate_limit_auto_resume = false
+rate_limit_auto_resume_grace_secs = 15
+replay_bytes = 5242880
+replay_events = 0
+show_tool_durations = true
+silent_orphan_fast_grace_secs = 20
+silent_orphan_grace_secs = 120
 
-[claude]
+[app_state]
+has_acknowledged_agent_hooks = true
+has_acknowledged_volume_ignores_globs = false
+has_responded_to_telemetry = false
+has_seen_custom_instruction_warning = false
+has_seen_non_git_project_warning = false
+has_seen_web_tour = false
+has_seen_welcome = true
+home_list_width = 35
+last_seen_version = "1.12.0"
+new_session_with_selection_count = 0
+used_new_from_selection = false
 
-[updates]
-check_enabled = false
-check_interval_hours = 24
-notify_in_cli = true
+[auth]
+persist_sessions = true
 
-[worktree]
-enabled = false
-path_template = "../{repo-name}-worktrees/{branch}"
-bare_repo_path_template = "./{branch}"
-auto_cleanup = true
-show_branch_in_tui = true
-delete_branch_on_cleanup = false
-workspace_path_template = "../{branch}-workspace-{session-id}"
+[diff]
+context_lines = 3
+split_view = false
+
+[hooks]
+
+[host_hooks]
+
+[logging]
+default_level = "info"
+file_path = "debug.log"
+keep_count = 5
+max_size_mib = 50
+output = "file"
+rotation = "size"
+show_spans = false
+
+[logging.targets]
 
 [sandbox]
+auto_cleanup = true
+container_runtime = "docker"
+default_image = "ghcr.io/agent-of-empires/aoe-sandbox:latest"
+default_terminal_mode = "host"
 enabled_by_default = false
-default_image = "ghcr.io/njbrake/aoe-sandbox:latest"
-extra_volumes = []
 environment = [
     "TERM",
     "COLORTERM",
     "FORCE_COLOR",
     "NO_COLOR",
 ]
-auto_cleanup = true
-default_terminal_mode = "host"
-volume_ignores = []
+extra_volumes = []
 mount_ssh = false
-container_runtime = "docker"
-
-[tmux]
-status_bar = "auto"
-mouse = "auto"
-clipboard = "auto"
+selinux_relabel = false
+volume_ignores = []
+volume_ignores_strategy = "anonymous"
 
 [session]
-default_tool = "claude"
-yolo_mode_default = false
 agent_status_hooks = true
+auto_stop_idle_secs = 0
+click_action = "live_send"
+confirm_before_quit = true
+confirm_delete = false
+default_attach_mode = "tmux"
+default_tool = "claude"
+delete_to_trash = true
+live_send_exit_chord = "C-q"
+live_send_leader = "C-b"
+merge_hooks_into_selected_agent = true
+mouse_capture = true
+new_session_attach_mode = "tmux"
+restart_wake_message = "wake up: pick up what you were doing"
+row_tag = "none"
+session_id_poller_max_threads = 50
+show_tips = true
+smart_rename = true
+smart_rename_agent = ""
+snooze_duration_minutes = 30
 strict_hotkeys = false
-
-[diff]
-context_lines = 3
-
-[hooks]
+tie_workdir_to_name = true
+trash_retention_days = 30
+unread_indicator = true
+yolo_mode_default = false
 
 [sound]
 enabled = false
 mode = "random"
 
-[app_state]
-has_seen_welcome = true
-last_seen_version = "1.5.2"
-home_list_width = 35
-has_seen_custom_instruction_warning = false
-has_acknowledged_agent_hooks = true
+[status_hooks]
+debounce_ms = 100
+enabled = false
+
+[telemetry]
+enabled = false
+
+[theme]
+color_mode = "truecolor"
+idle_decay_minutes = 0
+name = "gruvbox-dark"
+
+[tmux]
+clipboard = "auto"
+mouse = "auto"
+status_bar = "auto"
+
+[updates]
+auto_update_plugins = false
+check_interval_hours = 24
+notify_in_cli = true
+update_check_mode = "off"
+web_poll_interval_minutes = 60
 
 [web]
 notifications_enabled = true
-notify_on_waiting = true
-notify_on_idle = false
 notify_on_error = true
+notify_on_idle = false
+notify_on_waiting = true
+notify_on_wake_fire = true
+
+[worktree]
+auto_cleanup = true
+bare_repo_path_template = "./{branch}"
+delete_branch_on_cleanup = false
+enabled = false
+init_submodules = true
+path_template = "../{repo-name}-worktrees/{branch}"
+show_branch_in_tui = true
+workspace_path_template = "../{branch}-workspace-{session-id}"

@@ -2,3 +2,6 @@ update_cache.json
 profiles/default/sessions.json*
 .schema_version
 tui.active
+.storage.lock
+.recovery.lock
+*.log
