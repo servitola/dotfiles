@@ -43,6 +43,8 @@ brew "cowsay"
 brew "ddgr"
 # Good-lookin' diffs with diff-highlight and more
 brew "diff-so-fancy"
+# DjVu viewer
+brew "djvulibre"
 # Pack, ship and run any application as a lightweight container
 brew "docker"
 # Docker CLI plugin for extended build capabilities with BuildKit
