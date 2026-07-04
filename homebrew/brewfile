@@ -287,8 +287,6 @@ cask "antigravity-cli"
 cask "appcleaner"
 # Online gaming platform
 cask "battle-net"
-# Virtual Audio Driver
-cask "blackhole-2ch"
 # 3D creation suite
 cask "blender"
 # Terminal-based AI coding assistant
