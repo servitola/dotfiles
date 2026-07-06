@@ -9,7 +9,7 @@ model_list:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: &zero
+    model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
@@ -20,7 +20,9 @@ model_list:
       model: openai/openai/gpt-oss-120b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # Z.AI GLM-4.7-Flash — 31.2B MoE (3B active), 202k context.
   # Native Z.AI provider, free tier. Strong tool-use, vision, coding.
@@ -28,7 +30,9 @@ model_list:
     litellm_params:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # `deepseek` direct alias dropped 2026-06-02. OpenRouter pulled every
   # DeepSeek `:free` slug, and the NIM v4-flash/v4-pro endpoints hang on
@@ -54,7 +58,9 @@ model_list:
       timeout: 60
       num_retries: 0
       order: 1
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: uncensored
     litellm_params:
       model: openai/nousresearch/hermes-3-llama-3.1-405b:free
@@ -63,7 +69,9 @@ model_list:
       timeout: 90
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # Vision pool — three models under the same name for reliability on
   # image tasks. Shuffle is justified here because vision models rarely
@@ -73,24 +81,32 @@ model_list:
       model: openai/nvidia/nemotron-nano-12b-v2-vl:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: vision
     litellm_params:
       model: openai/google/gemma-4-31b-it:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: vision
     litellm_params:
       model: openai/google/gemma-4-26b-a4b-it:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: vision
     litellm_params:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # OCR — removed 2026-05-16: baidu/qianfan-ocr-fast:free pulled from
   # OpenRouter and no free OCR-tuned replacement is currently available.
@@ -114,7 +130,9 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === New OpenRouter :free (discovered 2026-06-07 via check-models --discover) ==
   # NVIDIA Nemotron 3 Ultra 550B-A55B — flagship free reasoner, upgrade over
@@ -125,21 +143,27 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       timeout: 120
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   # NVIDIA Nemotron 3 Nano Omni 30B-A3B reasoning — fast multimodal-ish reasoner.
   - model_name: nemotron-omni
     litellm_params:
       model: openai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   # Poolside Laguna M.1 — coding-focused model, free on OpenRouter.
   - model_name: poolside-laguna
     litellm_params:
       model: openai/poolside/laguna-m.1:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   # (glm-air removed 2026-07-01: OpenRouter dropped the `:free` variant of every
   # z-ai/glm slug — no free GLM on OpenRouter anymore. Native `glm` (zai key,
   # zai/glm-4.7-flash) covers GLM.)
@@ -149,7 +173,9 @@ model_list:
       model: openai/openai/gpt-oss-20b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === New OpenRouter :free (discovered 2026-06-23 via check-models --discover) ==
   # Cohere North Mini Code — coding-focused model. Verified live 2026-06-23
@@ -167,7 +193,9 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === New OpenRouter :free (discovered 2026-07-01 via check-models) ==========
   # NVIDIA Nemotron Nano 9B v2 — compact general/reasoning model, sibling of the
@@ -184,7 +212,9 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   # NVIDIA Nemotron 3.5 Content-Safety — guard/moderation classifier (Llama-Guard
   # style). Fills a capability gap (no moderation lane existed). Expects a
   # content-to-classify prompt; returns a safety verdict, not free chat. Slug
@@ -199,7 +229,9 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Groq direct (free: 30 RPM / 6K TPM / 14 400 RPD) ===
   # `groq/` prefix — LiteLLM has native provider integration for Groq,
@@ -239,35 +271,45 @@ model_list:
       model: openai/nvidia/llama-3.3-nemotron-super-49b-v1.5
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: nvidia-nemotron-120b
     litellm_params:
       # 120B Mamba-Transformer hybrid flagship for heavier reasoning.
       model: openai/nvidia/nemotron-3-super-120b-a12b
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: nvidia-kimi
     litellm_params:
       # k2.5 was bumped to k2.6 on NIM on 2026-04-30.
       model: openai/moonshotai/kimi-k2.6
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: nvidia-deepseek
     litellm_params:
       # v3.2 retired on NIM; v4-pro is the current flagship.
       model: openai/deepseek-ai/deepseek-v4-pro
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: nvidia-deepseek-flash
     litellm_params:
       # Lighter v4 sibling — faster, still 1M context.
       model: openai/deepseek-ai/deepseek-v4-flash
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === GitHub Models (free 10-15 RPM / 50-150 RPD) ===
   # Tiny quota — only useful for smoke tests, not continuous pipeline.
@@ -277,13 +319,17 @@ model_list:
       model: openai/openai/gpt-4o-mini
       api_base: https://models.github.ai/inference
       api_key: os.environ/GITHUB_MODELS_TOKEN
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: github-deepseek-r1
     litellm_params:
       model: openai/deepseek/DeepSeek-R1
       api_base: https://models.github.ai/inference
       api_key: os.environ/GITHUB_MODELS_TOKEN
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Mistral direct (free: ~1 RPS, 500K TPM, ~1B tokens/month) ============
   # Phone verification required. OpenAI-compatible endpoint. Free tier
@@ -451,14 +497,18 @@ model_list:
       model: openai/zai-glm-4.7
       api_base: https://api.cerebras.ai/v1
       api_key: os.environ/CEREBRAS_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: cerebras-gpt-oss
     litellm_params:
       # gpt-oss-120b on Cerebras — fastest path to gpt-oss outputs.
       model: openai/gpt-oss-120b
       api_base: https://api.cerebras.ai/v1
       api_key: os.environ/CEREBRAS_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === SambaNova Cloud (persistent free tier, no CC, $5 initial credits) ====
   # OpenAI-compatible at api.sambanova.ai/v1. Wafer-scale RDU hardware,
@@ -473,14 +523,18 @@ model_list:
       model: openai/DeepSeek-V3.2
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: sambanova-llama
     litellm_params:
       # Llama 3.3 70B — universal instruct, 131k ctx.
       model: openai/Meta-Llama-3.3-70B-Instruct
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   # (sambanova-maverick removed 2026-07-01: Llama-4-Maverick-17B-128E gone from
   # the SambaNova catalog. SN free tier now: DeepSeek-V3.1/V3.2, Llama-3.3-70B,
   # MiniMax-M2.7, gemma-4-31B-it, gpt-oss-120b — all still covered by other
@@ -491,14 +545,18 @@ model_list:
       model: openai/MiniMax-M2.7
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: sambanova-gpt-oss
     litellm_params:
       # gpt-oss-120b — cheapest model on SN, second fast path after Cerebras.
       model: openai/gpt-oss-120b
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Chutes (decentralised Bittensor, free tier, no CC) ===================
   # OpenAI-compatible at llm.chutes.ai/v1. All endpoints run in TEE
@@ -515,7 +573,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-qwen-coder
     litellm_params:
       # Qwen3.5-397B-A17B — massive MoE, top coding/logic per Chutes notes.
@@ -524,7 +584,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-deepseek
     litellm_params:
       model: openai/deepseek-ai/DeepSeek-V3.2-TEE
@@ -532,7 +594,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-kimi
     litellm_params:
       model: openai/moonshotai/Kimi-K2.6-TEE
@@ -540,7 +604,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-glm
     litellm_params:
       model: openai/zai-org/GLM-5.1-TEE
@@ -548,7 +614,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-minimax
     litellm_params:
       # MiniMax M2.5 — "hidden gem" per Chutes, rarely hits 429 on peak hours.
@@ -557,7 +625,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 90
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: chutes-qwen-small
     litellm_params:
       # Qwen3-32B — small/fast, for cheap calls when big models throttle.
@@ -566,7 +636,9 @@ model_list:
       api_key: os.environ/CHUTES_API_KEY
       timeout: 60
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Together AI (trial credits, $25-$100, EXPIRES) =======================
   # OpenAI-compatible at api.together.xyz/v1. 263-model catalogue, top
@@ -580,42 +652,54 @@ model_list:
       model: openai/mistralai/Magistral-Small-2506
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: together-qwen-thinking
     litellm_params:
       # Qwen3-Next 80B Thinking — dedicated reasoning MoE.
       model: openai/Qwen/Qwen3-Next-80B-A3B-Thinking
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: together-qwen-coder
     litellm_params:
       # Qwen3-Coder 480B — top-tier coding MoE, only on Together at this scale.
       model: openai/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: together-deepseek
     litellm_params:
       # DeepSeek V4-Pro — frontier reasoning, separate quota from NIM.
       model: openai/deepseek-ai/DeepSeek-V4-Pro
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: together-llama
     litellm_params:
       # Llama 3.3 70B Turbo — Together-optimised throughput variant.
       model: openai/meta-llama/Llama-3.3-70B-Instruct-Turbo
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: together-minimax
     litellm_params:
       # MiniMax M2.7 — biggest MiniMax on Together.
       model: openai/MiniMaxAI/MiniMax-M2.7
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Mistral Magistral (reasoning, free Experiment tier) ==================
   # Mistral's o-series-class reasoning models with chain-of-thought.
@@ -665,7 +749,9 @@ model_list:
       api_key: "anonymous"
       timeout: 60
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: llm7-codestral
     litellm_params:
       model: openai/codestral-latest
@@ -673,7 +759,9 @@ model_list:
       api_key: "anonymous"
       timeout: 60
       num_retries: 0
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
@@ -703,14 +791,18 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       model: openai/qwen/qwen3-coder:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Qwen3-Next 80B MoE (3B active) — fresh free model, strong coding/general.
@@ -718,13 +810,17 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       model: zai/glm-4.7-flash
       api_key: os.environ/ZAI_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       model: gemini/gemini-2.5-flash
@@ -741,7 +837,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # gpt-oss-120b on SambaNova — second fast bucket after Cerebras.
@@ -749,7 +847,9 @@ model_list:
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Qwen3.5-397B on Chutes — massive MoE, top-tier coding model.
@@ -759,7 +859,9 @@ model_list:
       timeout: 90
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Kimi K2.6 on Chutes — independent quota from nvidia-kimi / OpenRouter.
@@ -769,7 +871,9 @@ model_list:
       timeout: 90
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Qwen3-Coder 480B on Together — frontier coding MoE, expiring credits.
@@ -777,7 +881,9 @@ model_list:
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Gemini Flash-Lite — independent quota bucket from gemini-2.5-flash.
@@ -794,7 +900,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: coding
     litellm_params:
       # Cohere North Mini Code — coding reasoner, free on OpenRouter. New 2026-06-23.
@@ -807,28 +915,36 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 1
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       model: openai/nvidia/nemotron-3-super-120b-a12b
       api_base: https://integrate.api.nvidia.com/v1
       api_key: os.environ/NVIDIA_API_KEY
       order: 1
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       model: openai/nousresearch/hermes-3-llama-3.1-405b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       model: mistral/mistral-large-latest
@@ -854,7 +970,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # DeepSeek V3.1 on SambaNova — independent quota from OpenRouter/NIM,
@@ -863,7 +981,9 @@ model_list:
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
       order: 1
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # MiniMax M2.7 on SambaNova — 196k ctx, useful for long-doc reasoning.
@@ -871,7 +991,9 @@ model_list:
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # Qwen3-235B Thinking on Chutes — dedicated reasoning model, TEE pool.
@@ -881,7 +1003,9 @@ model_list:
       timeout: 90
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # DeepSeek V3.2 on Chutes — independent quota from SN/NIM/OpenRouter.
@@ -891,7 +1015,9 @@ model_list:
       timeout: 90
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # Magistral Medium — Mistral's dedicated reasoning model on free tier.
@@ -909,7 +1035,9 @@ model_list:
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # Qwen3-Next 80B Thinking on Together — dedicated reasoning MoE.
@@ -917,7 +1045,9 @@ model_list:
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # Nemotron 3 Ultra 550B — flagship free reasoner (OpenRouter). New 2026-06-07.
@@ -927,7 +1057,9 @@ model_list:
       api_key: os.environ/OPENROUTER_API_KEY
       timeout: 120
       order: 1
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: reasoning
     litellm_params:
       # Nemotron 3 Nano Omni 30B reasoning — fast order-2 cushion (OpenRouter).
@@ -935,7 +1067,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
@@ -968,7 +1102,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       # gpt-oss-120b on SambaNova — RDU wafer-scale, independent quota.
@@ -977,7 +1113,9 @@ model_list:
       api_base: https://api.sambanova.ai/v1
       api_key: os.environ/SAMBANOVA_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       # Qwen3-32B on Chutes — small/fast, TEE pool, last-resort cushion.
@@ -987,7 +1125,9 @@ model_list:
       timeout: 60
       num_retries: 0
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       # Gemini Flash-Lite — 30 RPM / 1500 RPD, independent from gemini bucket.
@@ -1004,7 +1144,9 @@ model_list:
       api_base: https://api.together.xyz/v1
       api_key: os.environ/TOGETHER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       # gpt-oss 20B via OpenRouter free — lighter sibling of 120b. New 2026-06-07.
@@ -1012,7 +1154,9 @@ model_list:
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
       order: 2
-    model_info: *zero
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Web Search (free tier) ==================================================
   # Gemini 2.5 Flash with Google Search grounding (free: 500 search RPD).
