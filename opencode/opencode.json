@@ -19,7 +19,7 @@
           "name": "Rotation: coding (gpt-oss / Kimi / DeepSeek)",
           "limit": {
             "context": 131072,
-            "output": 16384
+            "output": 8192
           }
         },
         "reasoning": {
@@ -107,10 +107,17 @@
           }
         },
         "nvidia-deepseek": {
-          "name": "NVIDIA DeepSeek V3.2",
+          "name": "NVIDIA DeepSeek V4 Pro (1M ctx)",
           "limit": {
-            "context": 131072,
+            "context": 1000000,
             "output": 16384
+          }
+        },
+        "mistral-large": {
+          "name": "Mistral Large (direct, free tier)",
+          "limit": {
+            "context": 128000,
+            "output": 8192
           }
         },
         "nvidia-nemotron-120b": {
