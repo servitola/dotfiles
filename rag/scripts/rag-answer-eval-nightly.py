@@ -197,8 +197,12 @@ def main() -> int:
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--sample", type=int, default=8,
                     help="cases per collection (default 8)")
-    ap.add_argument("--answer-model", default=os.environ.get("RAG_ANSWER_MODEL", "fast"))
-    ap.add_argument("--judge-model", default=os.environ.get("RAG_JUDGE_MODEL", "fast"))
+    # Match the tool's defaults (A/B-chosen): a reliable non-reasoning judge and
+    # the answer model `rag ask` actually serves. `fast/fast` was a broken grader
+    # (leaks <think>, self-grades, rate-limit SKIPs) → noisy low scores that look
+    # like "quality regressed" when only the gauge was miscalibrated.
+    ap.add_argument("--answer-model", default=os.environ.get("RAG_ANSWER_MODEL", "gpt"))
+    ap.add_argument("--judge-model", default=os.environ.get("RAG_JUDGE_MODEL", "github-gpt4o-mini"))
     ap.add_argument("--collections", default="",
                     help="comma list to override tonight's rotation")
     ap.add_argument("--all", action="store_true", help="run every collection")
