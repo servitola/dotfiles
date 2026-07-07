@@ -1006,7 +1006,7 @@ providers = [
 ]
 
 [agents.warp_agent.other]
-should_render_use_agent_toolbar_for_user_commands = true
+should_render_use_agent_toolbar_for_user_commands = false
 
 [agents.third_party]
 
