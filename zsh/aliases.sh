@@ -42,8 +42,6 @@ alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 alias sudo='sudo '
-alias rm="trash"
-alias realrm="/bin/rm"
 alias cat=bat
 alias mkdir="mkdir -pv"
 alias search=rg
