@@ -161,6 +161,8 @@ brew "mods"
 brew "mole"
 # Collection of tools that nobody wrote when UNIX was young
 brew "moreutils"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # Free (GNU) replacement for the Pico text editor
 brew "nano"
 # Small build system for use with gyp or CMake
@@ -259,8 +261,6 @@ brew "wireshark"
 brew "xcodegen"
 # JavaScript package manager
 brew "yarn"
-# Feature-rich command-line audio/video downloader
-brew "yt-dlp"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Shell extension to navigate your filesystem faster
