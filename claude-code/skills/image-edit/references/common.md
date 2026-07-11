@@ -4,6 +4,7 @@ Contents:
 - [Paid-offer protocol](#paid-offer-protocol)
 - [Paid-engine errors (fal.ai)](#paid-engine-errors-falai)
 - [Compose multiple steps when one pass is not enough](#compose-multiple-steps-when-one-pass-is-not-enough)
+- [Repositioning an object already placed in a composite](#repositioning-an-object-already-placed-in-a-composite)
 
 ## Paid-offer protocol
 
@@ -94,3 +95,37 @@ Tell the user up front you'll run N steps and why ("сначала уберу
 надпись, потом поставлю на полку — это две генерации, ~12 минут").
 Send only the final result via the bot; don't spam intermediate
 files unless the user asks to see the chain.
+
+## Repositioning an object already placed in a composite
+
+The user nudges an object that's already pasted into a flat image
+("подвинь ветку выше", "ещё левее") — not a fresh placement. Cut the
+object out and capture the clean background **once**, from the version
+before any move, then reuse both for every further nudge in that
+session:
+
+- **Cutout**: the object as RGBA (alpha keyed off a flat/white canvas,
+  or a real mask if the surroundings aren't flat).
+- **Clean background**: the same base image with the object's original
+  spot restored to what was actually there before it was placed — not
+  automatically "fill with white". If the object sat on a genuinely
+  blank/white card or canvas, white is correct because that *is* the
+  real background. If it sat on a photo (a wall, a room, a shelf), the
+  hole must show that photo — pull a version of the background from
+  before the object was composited if one exists, otherwise
+  reconstruct it with inpainting. A flat-colour patch over a photo
+  background reads as an obvious defect.
+- **Every further move** = `composite.py` with the *same* cutout onto
+  the *same* clean background, at new coordinates (current offset +
+  the requested delta). Do not take the last rendered/composited image
+  as the new background and cut a rectangle out of it — if the object
+  has drifted onto or near a border/frame/other element, a rectangular
+  erase there destroys that neighbouring content instead of just the
+  moved object, and the damage compounds with every further move.
+- Track the running total offset from the original position yourself;
+  the user only gives the next relative nudge ("ещё левее на 50"), not
+  cumulative coordinates from the start.
+
+Keep `..._cutout.png` and `..._bg_clean.png` around for the whole
+editing session (same naming principle as chaining above) instead of
+re-deriving them from an already-modified frame.

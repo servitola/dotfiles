@@ -81,6 +81,32 @@ Hard rule: do **not** call `edit_hfspace.py` / `edit_fal.py` on a
 correction request that names a specific region. The drift on untouched
 areas is exactly what frustrates the user.
 
+## Multi-object composites — treat every pasted element as its own layer
+
+A collage/composite already has several pasted elements (photos, a
+frame/border, cutout objects) and the user asks to change **one** of
+them — move it, resize it, restyle it, swap it, add a new element next
+to it. Treat each element as an independent object, not as pixels in a
+flattened image:
+
+- Work out what's actually layered there before touching pixels: which
+  regions are separate pasted photos, which is a border/frame, which
+  is a cutout object, and what the shared base background is underneath
+  everything (often one flat colour/white canvas the whole piece sits
+  on — the white you see inside a frame or between photos is usually
+  that same base canvas showing through, not a separate white patch).
+- Isolate the edit to the targeted element's own cutout plus a clean
+  copy of what's behind it — see [Repositioning an object already
+  placed in a composite](references/common.md#repositioning-an-object-already-placed-in-a-composite)
+  in common.md. Never blank/paint over a flattened image with a
+  rectangle or brush stroke that can bleed into a neighbouring photo,
+  frame line, or object — that damage is easy to cause and easy to
+  miss until the user points it out later.
+- This isn't just about moving things: swapping one photo, recolouring
+  one cutout, adding a new pasted element to an existing collage — same
+  rule, isolate to that element's own layer and leave every other
+  pasted element and the shared base background untouched.
+
 ## Inspect cheaply — preview, don't re-read full-res
 
 Reading a full-res image into context to *look* at it is the single biggest
