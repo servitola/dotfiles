@@ -18,3 +18,7 @@ https://github.com/borski/travel-hacking-toolkit.git|main|travel-hacking-toolkit
 # Upstream is kept as the `upstream` remote inside the clone for periodic
 # rebase: `git fetch upstream && git rebase upstream/main` on the branch below.
 https://github.com/servitola/gflights-mcp-skill.git|servitola/ru-additions|gflights-mcp-skill
+
+# Russian info-style editor (Макс Шишкин). Plain skill repo (infostyle/SKILL.md),
+# surfaced as a skill via symlink: skills/infostyle -> infostyle-skill/infostyle.
+https://github.com/Zoldadt/infostyle-skill.git|master|infostyle-skill
