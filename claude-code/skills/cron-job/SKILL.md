@@ -2,9 +2,11 @@
 name: cron-job
 description: |
   Add, edit, or remove scheduled tasks AND reminders (scheduled Telegram
-  messages) in ~/projects/dotfiles/cron/cron_jobs/: picks the right file,
-  validates the schedule, wires logging/locking, reinstalls crontab via
-  init-cron-jobs.sh. New entries always go into private (gitignored) files.
+  messages) in the dotfiles cron: picks the right file, validates the
+  schedule, wires logging/locking, reinstalls crontab via init-cron-jobs.sh.
+  New private entries go into the dotfiles_private overlay
+  (~/projects/dotfiles_private/cron/cron_jobs/); shareable jobs into public
+  ~/projects/dotfiles/cron/cron_jobs/.
 
   Use when: "добавь крон", "запланируй задачу", "поставь в крон", "запиши
   в крон", "убери из крона", "schedule a task", "add a cron job", "add to
@@ -14,20 +16,21 @@ description: |
 
 # Cron Job
 
-Manages scheduled tasks in `~/projects/dotfiles/cron/cron_jobs/`. Source of truth is files in that directory; the live crontab is derived from them.
+Manages scheduled tasks split across two dirs: public `~/projects/dotfiles/cron/cron_jobs/` (shareable) and the private overlay `~/projects/dotfiles_private/cron/cron_jobs/` (personal). Source of truth is the fragment files; the live crontab is derived from both.
 
 ## How the dotfiles cron works
 
 - `cron/environment.cron` — `SHELL`, `PATH` for all jobs. Loaded first.
-- `cron/cron_jobs/*.cron` — one file per topic/project. Concatenated alphabetically after `environment.cron`.
-- `cron/init-cron-jobs.sh` — pipes the merged result into `crontab -`, replacing the entire crontab. No partial updates, so a change is only live after the script runs.
+- `cron/cron_jobs/*.cron` — shareable jobs, committed to the public dotfiles repo. One file per topic/project.
+- `~/projects/dotfiles_private/cron/cron_jobs/*.private.cron` — private jobs, committed to the `dotfiles_private` overlay repo. This is where all personal entries live now (no symlinks, no gitignore trick).
+- `cron/init-cron-jobs.sh` — reads `.cron` fragments from BOTH dirs, merges them sorted by filename after `environment.cron`, and pipes the result into `crontab -`, replacing the entire crontab. No partial updates, so a change is only live after the script runs.
 - macOS `cron` runs from `/usr/sbin/cron` and needs Full Disk Access granted in System Settings → Privacy & Security if the job touches `~/Documents`, `~/Desktop`, etc. Mention this to the user only when relevant.
 
 ## Always private by default
 
-New cron entries always go into `<topic>.private.cron` files. The `*.private.cron` pattern is gitignored, so nothing leaks to git by accident. The user reviews and promotes specific entries to public files later if needed — that's not part of this skill.
+New cron entries always go into `<topic>.private.cron` files under the private overlay `~/projects/dotfiles_private/cron/cron_jobs/` — never in the public `~/projects/dotfiles/cron/cron_jobs/`, which is committed to the public repo. Committing there would leak the entry. After creating/editing a private fragment, commit it in the `dotfiles_private` repo (do not push unless asked).
 
-Existing public `<topic>.cron` files may already be in `cron_jobs/` (e.g. `audiorss.cron`, `mma.cron`). When appending to an existing topic, keep using whichever file already exists — don't migrate it. New topics always start as `.private.cron`.
+Existing public `<topic>.cron` files may already be in the public `cron_jobs/` (e.g. `audiorss.cron`, `rag-improve.cron`). When appending to an existing topic, keep using whichever file already exists (public or private) — don't migrate it. New topics always start as `.private.cron` in the overlay.
 
 ## Workflow
 
@@ -42,8 +45,8 @@ Confirm with the user (skip questions whose answers are obvious from context):
 
 ### 2. Pick the file
 
-- Existing topic with a file in `cron_jobs/` → append to it. Group related lines under the same file.
-- New topic → create `<topic>.private.cron`. `<topic>` matches the project/service name in kebab-case (match neighbour style if related: `rag-improve.cron`, `audiorss.cron`). Group multiple related entries in one file with a header comment — see `cron/cron_jobs/mma.cron`.
+- Existing topic with a file in either `cron_jobs/` dir → append to it. Group related lines under the same file.
+- New topic → create `<topic>.private.cron` in `~/projects/dotfiles_private/cron/cron_jobs/`. `<topic>` matches the project/service name in kebab-case (match neighbour style if related: `rag-improve.cron`, `audiorss.cron`). Group multiple related entries in one file with a header comment — see `~/projects/dotfiles_private/cron/cron_jobs/mma.private.cron`.
 
 ### 3. Write the entry
 
@@ -106,8 +109,8 @@ the sending (each sources the bot token from
 
 **Always confirm the destination** (chat_id / thread_id) with the user, or reuse
 an existing reminders file's target. Existing example to copy the shape from:
-any `cron_jobs/*-reminders.private.cron` (documents its chat + thread + a
-timezone-offset note in the header).
+any `~/projects/dotfiles_private/cron/cron_jobs/*-reminders.private.cron`
+(documents its chat + thread + a timezone-offset note in the header).
 
 Recurring reminder — inline the helper in the cron line:
 
