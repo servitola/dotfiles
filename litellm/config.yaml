@@ -73,9 +73,11 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
-  # Vision pool — three models under the same name for reliability on
+  # Vision pool — multimodal models under one name for reliability on
   # image tasks. Shuffle is justified here because vision models rarely
   # overlap in capabilities and rate limits park them in cooldown often.
+  # EVERY member MUST accept image_url content — a text-only model here
+  # hard-400s and takes down ~1/N of shuffled calls (see gemini block below).
   - model_name: vision
     litellm_params:
       model: openai/nvidia/nemotron-nano-12b-v2-vl:free
@@ -100,10 +102,17 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  # gemini-flash-lite in the pool: clean multimodal, no reasoning-token
+  # burn (reasoning_effort: low), reliable when OpenRouter :free hits daily
+  # caps. Replaced zai/glm-4.7-flash here 2026-07-14 — that model is
+  # TEXT-ONLY and hard-400s on images ("content.type invalid, allowed
+  # values: ['text']"), so ~1/4 of shuffled vision calls failed. glm-4.7
+  # stays available via its own text aliases.
   - model_name: vision
     litellm_params:
-      model: zai/glm-4.7-flash
-      api_key: os.environ/ZAI_API_KEY
+      model: gemini/gemini-2.5-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      reasoning_effort: low
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
@@ -728,6 +737,11 @@ model_list:
     litellm_params:
       model: gemini/gemini-2.5-flash-lite
       api_key: os.environ/GEMINI_API_KEY
+      # reasoning_effort: low — flash-lite is the fast/cheap tier; without
+      # this, thinking models can burn the whole max_tokens budget on hidden
+      # reasoning (seen reasoning_tokens:478/496 → truncated answer) at small
+      # max_tokens. Keeps short-answer/vision calls from returning fragments.
+      reasoning_effort: low
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
@@ -1272,18 +1286,28 @@ litellm_settings:
     - tts_voice_rewriter.tts_voice_rewriter_instance
   redact_messages_in_exceptions: true
   # Semantic response cache in Redis (RediSearch KNN). A prompt whose
-  # embedding is ≥ similarity_threshold (0.85) to a cached one is served
+  # embedding is ≥ similarity_threshold (0.92) to a cached one is served
   # from cache — no upstream call, no quota consumed. Cuts cooldown churn
   # on free-tier 429s. TTL 24h (86400s). The embedding model below
   # vectorizes every prompt (mistral-embed, a provider-prefixed string —
   # NOT a model_list alias, since the cache resolver runs before the router).
+  #
+  # threshold raised 0.85 → 0.92 (2026-07-14): at 0.85, semantically close
+  # but factually different prompts collided (e.g. "оцени КБЖУ гречки" vs
+  # "…риса" → same macros). CRITICAL LIMITATION: the cache embeds the TEXT
+  # of the prompt ONLY — it does NOT see image bytes. So two different food
+  # photos sent with the same template prompt hash to the SAME entry and the
+  # 2nd gets the 1st's answer. Any VISION caller MUST send per-request
+  # {"cache":{"no-cache":true}} (bin/foodai.sh in the еда topic does this).
+  # If you ever want zero-surprise correctness over free-tier savings, switch
+  # type: redis-semantic → redis (exact-match key includes image bytes+model).
   cache: true
   cache_params:
     type: redis-semantic
     host: redis
     port: 6379
     ttl: 86400
-    similarity_threshold: 0.85
+    similarity_threshold: 0.92
     redis_semantic_cache_embedding_model: mistral/mistral-embed
 
 general_settings:
