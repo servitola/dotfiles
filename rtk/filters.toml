@@ -1,0 +1,48 @@
+# User-global RTK filters — apply to all your projects.
+# Project-local .rtk/filters.toml takes precedence over these.
+# Docs: https://github.com/rtk-ai/rtk#custom-filters
+schema_version = 1
+
+# Example: suppress noise from a tool you use everywhere
+# [filters.my-global-tool]
+# description = "Compact my-global-tool output"
+# match_command = "^my-global-tool\\b"
+# strip_ansi = true
+# strip_lines_matching = ["^\\s*$"]
+# max_lines = 40
+
+# --- Added 2026-06-12: top unhandled commands from `rtk discover` ---
+
+[filters.python3-scripts]
+description = "python3 script runs: strip blanks, cap output"
+match_command = "^python3 \\S+\\.py\\b"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$"]
+max_lines = 40
+
+[filters.hammerspoon-cli]
+description = "Hammerspoon hs -c output: strip blanks, cap output"
+match_command = "^hs (-c|-A)\\b"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$"]
+max_lines = 30
+
+[filters.launchctl]
+description = "launchctl: drop empty lines, cap verbose plist dumps"
+match_command = "^launchctl (bootout|bootstrap|kickstart|list|print|load|unload)\\b"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$"]
+max_lines = 30
+
+[filters.docker-compose]
+description = "docker compose: strip pull/progress noise"
+match_command = "^docker compose\\b"
+strip_ansi = true
+strip_lines_matching = ["^\\s*$", "Pulling", "Waiting", "Downloading", "Extracting", "Pull complete", "Already exists"]
+max_lines = 40
+
+[filters.git-ls-files]
+description = "git ls-files: cap long listings"
+match_command = "^git ls-files\\b"
+strip_lines_matching = ["^\\s*$"]
+max_lines = 50
