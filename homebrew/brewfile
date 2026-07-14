@@ -245,8 +245,6 @@ brew "tealdeer"
 brew "telegram-downloader"
 # Terminal IRC client
 brew "tiny"
-# Terminal multiplexer
-brew "tmux"
 # Lightweight BitTorrent client
 brew "transmission-cli"
 # Display directories as trees (with optional color/HTML output)
