@@ -34,7 +34,12 @@ enabled = false
 
 [hooks]
 # Commands the PreToolUse auto-rewrite hook should leave untouched.
-exclude_commands = []
+# du/df have no dedicated RTK compactor → they fall into the 2000-char
+# passthrough, which silently truncates the list. For disk-cleanup that
+# corrupts the result: truncation happens BEFORE any `| sort -rh | head`,
+# so the "biggest dirs" ranking is computed over an alphabetical fragment.
+# Keep them raw.
+exclude_commands = ["du", "df"]
 # Prefixes treated as transparent (run raw, no rewrite).
 transparent_prefixes = []
 
