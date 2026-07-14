@@ -1,0 +1,46 @@
+# RTK (Rust Token Killer) — global config.
+# Symlinked by the Makefile to:
+#   ~/Library/Application Support/rtk/config.toml
+# The sibling filters.toml (also symlinked) holds custom per-command filters.
+#
+# NOTE: RTK's runtime data lives in the SAME dir but is NOT tracked here —
+# history.db (analytics), tee/ (captured failure outputs), .DS_Store.
+# Only config.toml + filters.toml are version-controlled.
+#
+# These values mirror RTK's built-in defaults (see `rtk config`); materialised
+# so any future tuning is tracked in git instead of living in an untracked file.
+
+[tracking]
+enabled = true
+history_days = 90
+
+[display]
+colors = true
+emoji = true
+max_width = 120
+
+[filters]
+ignore_dirs = [".git", "node_modules", "target", "__pycache__", ".venv", "vendor"]
+ignore_files = ["*.lock", "*.min.js", "*.min.css"]
+
+[tee]
+enabled = true
+mode = "failures"
+max_files = 20
+max_file_size = 1048576
+
+[telemetry]
+enabled = false
+
+[hooks]
+# Commands the PreToolUse auto-rewrite hook should leave untouched.
+exclude_commands = []
+# Prefixes treated as transparent (run raw, no rewrite).
+transparent_prefixes = []
+
+[limits]
+grep_max_results = 200
+grep_max_per_file = 25
+status_max_files = 15
+status_max_untracked = 10
+passthrough_max_chars = 2000

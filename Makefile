@@ -74,6 +74,13 @@ install:
 	@$(REMOVE) ~/.hermes/config.yaml
 	@$(LINK) ~/projects/dotfiles/hermes/config.yaml ~/.hermes/config.yaml
 
+	@echo "setup RTK (Rust Token Killer) config symlinks"
+	@mkdir -p ~/Library/Application\ Support/rtk
+	@$(REMOVE) ~/Library/Application\ Support/rtk/config.toml
+	@$(LINK) ~/projects/dotfiles/rtk/config.toml ~/Library/Application\ Support/rtk/config.toml
+	@$(REMOVE) ~/Library/Application\ Support/rtk/filters.toml
+	@$(LINK) ~/projects/dotfiles/rtk/filters.toml ~/Library/Application\ Support/rtk/filters.toml
+
 	@echo "setup Windsurf user settings symlinks"
 	@mkdir -p ~/Library/Application\ Support/Windsurf/User
 
