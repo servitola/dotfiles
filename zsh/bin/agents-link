@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Ensure a directory has both AGENTS.md and CLAUDE.md (symlink to AGENTS.md).
+# AGENTS.md is the Codex convention; CLAUDE.md is what Claude Code reads.
+# Relative symlink keeps things portable when folders move.
+# If AGENTS.md is missing it is created with the directory name as a heading
+# — initial seed of the topic theme, edit later as needed.
+#
+# Usage:
+#   agents-link            # current dir
+#   agents-link <path>     # specified dir
+#   agents-link -r <root>  # recurse: fix every subdir that has AGENTS.md but no CLAUDE.md
+
+set -euo pipefail
+
+recurse=0
+if [[ "${1:-}" == "-r" ]]; then
+    recurse=1
+    shift
+fi
+
+target="${1:-.}"
+
+ensure_pair() {
+    local dir="$1"
+    if [[ ! -f "$dir/AGENTS.md" ]]; then
+        printf '# %s\n' "$(basename "$(cd "$dir" && pwd)")" > "$dir/AGENTS.md"
+        echo "created  $dir/AGENTS.md"
+    fi
+    if [[ ! -e "$dir/CLAUDE.md" ]]; then
+        ln -s AGENTS.md "$dir/CLAUDE.md"
+        echo "linked   $dir/CLAUDE.md -> AGENTS.md"
+    fi
+}
+
+if (( recurse )); then
+    while IFS= read -r -d '' agents; do
+        ensure_pair "$(dirname "$agents")"
+    done < <(find "$target" -name AGENTS.md -not -path '*/.claude/*' -not -path '*/node_modules/*' -not -path '*/.git/*' -print0)
+else
+    ensure_pair "$target"
+fi
