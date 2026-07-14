@@ -29,7 +29,7 @@ Full symlink map, tool-specific configs, and Codex operational rules (1024-char 
 Never `brew uninstall --zap codex` — its zap stanza deletes `~/.codex`.
 
 ## Code Style Guidelines
-- **Theme**: Gruvbox Dark Hard
+- **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
 - **Linting**: No linting required - this is a configuration repository (shell scripts, Lua scripts, dotfiles)
 
