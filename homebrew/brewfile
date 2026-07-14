@@ -6,6 +6,8 @@ brew "aichat"
 brew "openjdk"
 # Flexible lightweight test report tool
 brew "allure"
+# Terminal multiplexer
+brew "tmux"
 # Terminal session manager for AI coding agents
 brew "aoe"
 # GNU Binutils for arm-none-eabi cross development
