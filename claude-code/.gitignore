@@ -20,6 +20,8 @@ hooks/*
 !hooks/post-compact-restore.sh
 !hooks/compress-bash-output.py
 !hooks/rag-context-inject.py
+!hooks/guard-bash.py
+!hooks/guard-agent-budget.py
 prompts/
 output-styles/
 .DS_Store
