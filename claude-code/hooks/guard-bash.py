@@ -4,7 +4,7 @@
 Enforces the hard rules from claude-code/CLAUDE.md at the harness level,
 so they hold even if the model loses them after context compaction:
 
-  deny  scutil --nc start/stop, AmneziaWG/wg-quick   (never touch the VPN)
+  ask   scutil --nc start/stop, AmneziaWG/wg-quick   (VPN only on a direct ask)
   deny  sudo rm                                       (root deletes go to the user as `! sudo \\rm ...`)
   deny  rm -rf on /, ~, $HOME                         (home/root wipe)
   ask   git push, gh pr create/merge, glab mr create/merge
@@ -77,8 +77,7 @@ def check_rm(command: str):
 def check(command: str):
     if re.search(r"scutil\s+--nc\s+(start|stop)\b", command) or \
        re.search(r"\b(amneziawg|awg-client|wg-quick)\b", command, re.IGNORECASE):
-        decision("deny", "VPN control is off-limits (CLAUDE.md hard rule). "
-                         "Tell the user what needs the VPN and let them connect it.")
+        decision("ask", "VPN control — confirm (CLAUDE.md: only on a direct ask from the user).")
 
     if re.search(r"\bsudo\s+(\\?rm|trash)\b", command):
         decision("deny", "No sudo deletes from the agent (CLAUDE.md hard rule). "

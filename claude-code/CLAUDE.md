@@ -15,7 +15,7 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 - Codex will review your output once you are done
 - When creating a git worktree branch from a remote ref (e.g. `origin/Development`, `origin/main`, `origin/master`), ALWAYS pass `--no-track` so the new branch does not set the protected upstream as its push target. Example: `git worktree add <path> -b <new-branch> --no-track origin/Development`. Never let a feature/fix branch track a primary upstream — a stray `git push` could land work on the protected branch by accident.
 - NEVER `git push` and NEVER create merge requests / pull requests unless the user explicitly asks for it in the current conversation. Local commits are fine; everything that leaves the machine (push, MR/PR, ticket updates that publish links) waits for an explicit go-ahead.
-- NEVER turn the VPN on/off yourself (e.g. `scutil --nc start/stop "awg-client"`, AmneziaWG, any VPN service). If something seems to need the VPN, tell the user and let them connect it
+- NEVER turn the VPN on/off yourself until asked directly (e.g. `scutil --nc start/stop "awg-client"`, AmneziaWG, any VPN service). If something seems to need the VPN, tell the user and let them connect it
 
 # Shared AI Coding Tools
 
