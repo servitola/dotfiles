@@ -11,6 +11,7 @@
 - Cerebras deployments use `openai/<slug>` + `api_base: https://api.cerebras.ai/v1`.
 - NVIDIA NIM deployments use `openai/<slug>` + `api_base: https://integrate.api.nvidia.com/v1`.
 - Aliases `coding reasoning fast vision embed auto coder nemotron gpt glm uncensored web-search` are referenced by `../rag/ ../aider/ ../crush/ ../opencode/ ../codex/ ../qwen-code/ ../zsh/functions/qwen.sh [ai.sh](ai.sh)`. Add — don't rename. (`deepseek` direct alias dropped 2026-06-02 — use `nvidia-deepseek`/`sambanova-deepseek`/`reasoning` instead.)
+- `extract` alias — gemini-flash-lite with `temperature: 0` for factual extraction (numbers/tables/facts from documents; 1M context, own 1500 RPD bucket). Use it instead of `fast`/`coding` when the task is "pull data out verbatim" — randomness only adds hallucination risk there.
 - TTS aliases: `tts` (Gemini, primary), `tts-piper` (local Piper Russian, always available), `tts-azure` (Greek skill), `tts-azure-ru` (Azure Russian fallback). Fallback chain: `tts → tts-piper → tts-azure-ru`. Use `tts` for Russian speech; do NOT use `tts-azure` for Russian (it's voice-agnostic, used by greek-tts skill with explicit Azure voice ids).
 - `host.docker.internal` api_base entries (`tts-piper` on `:8177`, `voiceink-local` on `:8178`) are local shims — free, no paid quota. `verify-free-only.sh` whitelists this host explicitly.
 - Port stays `127.0.0.1:4000`. UI creds stay `${LITELLM_UI_*:?...}` — never hardcoded.

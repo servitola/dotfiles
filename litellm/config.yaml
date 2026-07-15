@@ -746,6 +746,20 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
+  # === extract — factual extraction preset ==================================
+  # temperature 0: for pulling numbers/tables/facts out of documents the
+  # randomness dial adds only hallucination risk. Same flash-lite backend
+  # (1M context fits whole documents; separate 1500 RPD quota bucket).
+  - model_name: extract
+    litellm_params:
+      model: gemini/gemini-2.5-flash-lite
+      api_key: os.environ/GEMINI_API_KEY
+      temperature: 0
+      reasoning_effort: low
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
   # === LLM7.io (anonymous free tier — no key, no registration) ==============
   # Public free aggregator at api.llm7.io/v1. Anonymous lim: 60/hour, 10/min,
   # 1/sec ACROSS the entire account/IP — extremely tight. Only the 2 models
