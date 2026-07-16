@@ -817,6 +817,20 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: cloudflare-llama-guard
+    litellm_params:
+      # Llama Guard 3 8B — content-safety classifier (returns safe/unsafe +
+      # violated category). Independent moderation bucket alongside the single
+      # OpenRouter `moderation` (nemotron-3.5-content-safety), which is 429-prone.
+      # Kept a SEPARATE alias, NOT folded into the `moderation` shuffle — guard
+      # models have model-specific verdict formats and mixing them in one
+      # rotation would hand callers an inconsistent schema.
+      model: openai/@cf/meta/llama-guard-3-8b
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
 
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
@@ -1132,6 +1146,17 @@ model_list:
       model: openai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: reasoning
+    litellm_params:
+      # QwQ 32B on Cloudflare Workers AI — dedicated reasoner, own 10k-neuron/day
+      # bucket, independent of OpenRouter's shared daily cap. order:2 cushion.
+      model: openai/@cf/qwen/qwq-32b
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
       order: 2
     model_info:
       input_cost_per_token: 0
