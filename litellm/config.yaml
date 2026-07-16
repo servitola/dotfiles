@@ -791,6 +791,33 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
+  # === Cloudflare Workers AI (free: 10 000 Neurons/day, no CC) ===============
+  # OpenAI-compatible endpoint at /ai/v1 (verified live 2026-07-16: clean
+  # OpenAI-shaped JSON, 200s). Account-scoped api_base — the 32-hex account id
+  # is a non-secret identifier (appears in every dashboard URL); the token
+  # lives in CLOUDFLARE_API_KEY. Free neuron allocation resets daily; over-quota
+  # → 429 (no billing on the free plan). Independent quota bucket from every
+  # other provider. Model ids verified 200 live; glm-5.2 skipped (403, gated).
+  - model_name: cloudflare-kimi-code
+    litellm_params:
+      # Kimi K2.7 Code — coding-focused, FRESHER than nvidia-kimi/chutes-kimi
+      # (K2.6). Independent Cloudflare quota.
+      model: openai/@cf/moonshotai/kimi-k2.7-code
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: cloudflare-llama
+    litellm_params:
+      # Llama 3.3 70B fp8-fast — fast general instruct on Cloudflare silicon.
+      model: openai/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
   # router does simple-shuffle between deployments, cools down the one that
@@ -943,6 +970,17 @@ model_list:
       extra_body:
         provider:
           require_parameters: true
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: coding
+    litellm_params:
+      # Kimi K2.7 Code on Cloudflare Workers AI — fresh coding model, own
+      # 10k-neuron/day bucket, independent of every other provider. order:2.
+      model: openai/@cf/moonshotai/kimi-k2.7-code
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
+      order: 2
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
@@ -1181,6 +1219,17 @@ model_list:
       model: openai/openai/gpt-oss-20b:free
       api_base: https://openrouter.ai/api/v1
       api_key: os.environ/OPENROUTER_API_KEY
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: fast
+    litellm_params:
+      # Llama 3.3 70B fp8-fast on Cloudflare — own 10k-neuron/day bucket,
+      # survives a Groq+Cerebras+SambaNova outage. order:2.
+      model: openai/@cf/meta/llama-3.3-70b-instruct-fp8-fast
+      api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
+      api_key: os.environ/CLOUDFLARE_API_KEY
       order: 2
     model_info:
       input_cost_per_token: 0

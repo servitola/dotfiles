@@ -20,6 +20,7 @@ services:
       CEREBRAS_API_KEY: ${CEREBRAS_API_KEY}
       SAMBANOVA_API_KEY: ${SAMBANOVA_API_KEY}
       CHUTES_API_KEY: ${CHUTES_API_KEY}
+      CLOUDFLARE_API_KEY: ${CLOUDFLARE_API_KEY}
       AZURE_VOICE_TTS_GREEK_API_KEY1: ${AZURE_VOICE_TTS_GREEK_API_KEY1}
       LITELLM_MASTER_KEY: sk-local-workbot
       # Structured JSON container logs (grep-able docker logs).

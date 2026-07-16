@@ -118,6 +118,12 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
         return True, "local shim (host.docker.internal — no upstream cost)"
     if api_base and api_base.endswith(".tts.speech.microsoft.com"):
         return True, "azure speech (free tier requires F0 set on resource)"
+    if (
+        api_base
+        and api_base.startswith("https://api.cloudflare.com/")
+        and "/ai/v1" in api_base
+    ):
+        return True, "cloudflare workers ai (free 10k neurons/day, no billing on free plan)"
     if api_base == OPENROUTER_API_BASE:
         if model.endswith(":free"):
             return True, "openrouter :free"
