@@ -95,6 +95,8 @@ brew "git"
 brew "git-standup"
 # Audit git repos for secrets
 brew "gitleaks"
+# Open-source GitLab command-line tool
+brew "glab"
 # Data validation using Python type hints
 brew "pydantic"
 # Alternative to top/htop
