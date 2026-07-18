@@ -466,6 +466,22 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
+  # Kokoro-82M TTS — local ENGLISH TTS via MLX (Apple's fast engine), FastAPI
+  # shim at ~/projects/dotfiles/litellm/kokoro-shim/app.py (launchd,
+  # com.servitola.kokoro-shim, port 8179). Highest-quality small TTS on Apple
+  # Silicon; English-first (Russian stays on tts-piper). Default voice af_heart;
+  # the `voice` param accepts Kokoro voices (af_*/am_* American, bf_*/bm_*
+  # British), anything else falls back to af_heart. Always available, zero quota.
+  - model_name: tts-kokoro
+    litellm_params:
+      model: openai/tts-1
+      api_base: http://host.docker.internal:8179/v1
+      api_key: sk-no-key
+    model_info:
+      mode: audio_speech
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
   # === Speech-to-text =======================================================
   # VoiceInk fork at ~/projects/voiceink — whisper.cpp + Metal large-v3-turbo
   # running inside the always-open VoiceInk.app, with the user's dictionary
@@ -832,6 +848,81 @@ model_list:
       input_cost_per_token: 0
       output_cost_per_token: 0
 
+  # === Cohere direct (free trial key: 20 RPM, 1000 calls/MONTH, non-commercial) =
+  # Native cohere_chat/ provider (no api_base). HARD 1000-calls/month cap on
+  # trial keys → kept as a DIRECT alias only, deliberately NOT in the coding/
+  # reasoning/fast shuffle (simple-shuffle would drain the monthly cap in a day
+  # and 429 for the rest of the month). Trial keys are contractually
+  # non-commercial — personal/eval use only. command-a-03-2025 verified live
+  # 2026-07-18 ($0, "OK.").
+  - model_name: cohere-command-a
+    litellm_params:
+      model: cohere_chat/command-a-03-2025
+      api_key: os.environ/COHERE_API_KEY
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+
+  # === OVHcloud AI Endpoints (EU/France) — NOT WIRED: needs a free key ========
+  # Anonymous tier works only with NO Authorization header (verified live
+  # 2026-07-18: no header → 429 rate-limit i.e. would-be-200; ANY bogus Bearer
+  # → 403). LiteLLM ALWAYS sends `Authorization: Bearer <api_key>`, so the
+  # anonymous tier is unreachable through this proxy. To enable: create a free
+  # OVHcloud account key (no card), add OVH_AI_ENDPOINTS_KEY to docker-compose +
+  # openai_key.sh, then add deployments with
+  #   model: openai/gpt-oss-120b (or Qwen3-Coder-30B-A3B-Instruct / Qwen3.5-397B-A17B)
+  #   api_base: https://oai.endpoints.kepler.ai.cloud.ovh.net/v1
+  #   api_key: os.environ/OVH_AI_ENDPOINTS_KEY
+  # Keyed tier = 400 RPM/model → then safe to add into coding/fast rotations.
+  # (host already whitelisted in verify-free-only.sh, ready for the keyed add.)
+
+  # === io.net — IO Intelligence (ongoing free: ~500K tokens/day PER MODEL) =====
+  # OpenAI-compatible, email signup, no card/wallet. Per-model daily token
+  # buckets → each slug is an independent quota, ideal for rotation cushion.
+  # Model ids verified live 2026-07-18 via /v1/models + a 200 chat. Direct
+  # aliases here; also seeded into coding/reasoning/fast as order:2 below.
+  - model_name: ionet-deepseek
+    litellm_params:
+      model: openai/deepseek-ai/DeepSeek-V4-Pro
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: ionet-kimi-code
+    litellm_params:
+      # Kimi K2.7 Code — fresh coding model, independent io.net daily bucket.
+      model: openai/moonshotai/Kimi-K2.7-Code
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: ionet-qwen-coder
+    litellm_params:
+      # Qwen3-Next 80B-A3B — strong coding/general MoE.
+      model: openai/Qwen/Qwen3-Next-80B-A3B-Instruct
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: ionet-gpt-oss
+    litellm_params:
+      model: openai/openai/gpt-oss-120b
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 60
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  # (ionet-minimax dropped 2026-07-18: MiniMaxAI/MiniMax-M2.7 → 402 "requires a
+  # higher IO Intelligence tier" — not on the free tier. Other io.net slugs are
+  # free: DeepSeek-V4-Pro, Kimi-K2.7-Code, Qwen3-Next-80B, gpt-oss-120b.)
+
   # === Rotation groups =======================================================
   # Use these names when "any working model from the class" is fine — the
   # router does simple-shuffle between deployments, cools down the one that
@@ -994,6 +1085,28 @@ model_list:
       model: openai/@cf/moonshotai/kimi-k2.7-code
       api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
       api_key: os.environ/CLOUDFLARE_API_KEY
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: coding
+    litellm_params:
+      # Kimi K2.7 Code on io.net — fresh coder, own 500K/day bucket. order:2.
+      model: openai/moonshotai/Kimi-K2.7-Code
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: coding
+    litellm_params:
+      # Qwen3-Next 80B on io.net — strong general/coding MoE, independent quota.
+      model: openai/Qwen/Qwen3-Next-80B-A3B-Instruct
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
       order: 2
     model_info:
       input_cost_per_token: 0
@@ -1161,6 +1274,17 @@ model_list:
     model_info:
       input_cost_per_token: 0
       output_cost_per_token: 0
+  - model_name: reasoning
+    litellm_params:
+      # DeepSeek V4-Pro on io.net — frontier reasoning, own 500K/day bucket.
+      model: openai/deepseek-ai/DeepSeek-V4-Pro
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 90
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
   - model_name: fast
     litellm_params:
       model: groq/openai/gpt-oss-120b
@@ -1255,6 +1379,17 @@ model_list:
       model: openai/@cf/meta/llama-3.3-70b-instruct-fp8-fast
       api_base: https://api.cloudflare.com/client/v4/accounts/2e0a6cbfc99100fa09e28030de3b1ed7/ai/v1
       api_key: os.environ/CLOUDFLARE_API_KEY
+      order: 2
+    model_info:
+      input_cost_per_token: 0
+      output_cost_per_token: 0
+  - model_name: fast
+    litellm_params:
+      # gpt-oss-120b on io.net — extra speed bucket, independent 500K/day quota.
+      model: openai/openai/gpt-oss-120b
+      api_base: https://api.intelligence.io.solutions/api/v1
+      api_key: os.environ/IONET_API_KEY
+      timeout: 60
       order: 2
     model_info:
       input_cost_per_token: 0

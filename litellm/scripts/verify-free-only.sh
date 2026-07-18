@@ -45,6 +45,13 @@ FREE_API_BASES = {
     "https://api.sambanova.ai/v1",
     "https://llm.chutes.ai/v1",
     "https://api.llm7.io/v1",
+    # io.net IO Intelligence — ongoing free tier, ~500K tokens/day per model,
+    # email signup, no card/wallet. OpenAI-compatible.
+    "https://api.intelligence.io.solutions/api/v1",
+    # OVHcloud AI Endpoints — EU (France), OpenAI-compatible. Anonymous tier
+    # (no key) 2 RPM/IP; free account key raises it to 400 RPM/model. Over-limit
+    # → honest 429 (retriable), not a poisoned 200. Free model set is $0.
+    "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
 }
 # Together AI runs on expiring trial credits, not a recurring free tier.
 # Whitelisted separately so the reason string flags the billing risk.
@@ -114,6 +121,8 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
         return True, "gemini native (AI Studio free tier)"
     if model.startswith("mistral/"):
         return True, "mistral native (free tier)"
+    if model.startswith("cohere_chat/") or model.startswith("cohere/"):
+        return True, "cohere native (free trial key: 1000 calls/mo, non-commercial)"
     if api_base and api_base.startswith("http://host.docker.internal"):
         return True, "local shim (host.docker.internal — no upstream cost)"
     if api_base and api_base.endswith(".tts.speech.microsoft.com"):
