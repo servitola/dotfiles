@@ -118,7 +118,7 @@ print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 
 print_task "Updating Atuin db (zsh history)"
-atuin sync
+atuin sync || echo "  * atuin sync skipped (not logged in on i9)"
 
 
 print_task "Regenerating keyboard SVGs"
