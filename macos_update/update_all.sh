@@ -62,7 +62,7 @@ else
 fi
 
 print_task "Update Appium Plugins"
-appium plugin update installed
+command -v appium >/dev/null 2>&1 && appium plugin update installed || echo "  * appium not installed — skipping"
 
 print_task "Updating .NET tools"
 dotnet tool update -g dotnet-trace
