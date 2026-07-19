@@ -8,7 +8,11 @@
 typeset -U PATH path
 
 # Homebrew — must be early to take priority over system binaries
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 
 # Local dev builds — shadow Homebrew formulae with local build of aoe agent (for testing)
 path=( ~/projects/aoe/agent-of-empires/target/release $path )
