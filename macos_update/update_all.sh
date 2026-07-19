@@ -37,7 +37,7 @@ brew_unquarantine
 mas upgrade
 brew cleanup --scrub
 
-brew doctor
+brew doctor || true  # [i9] tap-trust/deprecations make doctor exit non-zero; informational only, must not abort up
 brew bundle dump --force --describe --file=~/projects/dotfiles/homebrew/brewfile
 
 print_task "Updating VSCode extensions"
