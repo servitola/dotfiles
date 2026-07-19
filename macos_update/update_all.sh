@@ -88,8 +88,8 @@ print_task "Clearing macOS aerial wallpaper downloads"
 # Currently-used aerial (if any) is locked and will be skipped silently.
 AERIAL_DIR="$HOME/Library/Application Support/com.apple.wallpaper/aerials"
 if [ -d "$AERIAL_DIR/videos" ]; then
-    rm -f "$AERIAL_DIR"/videos/*.mov 2>/dev/null
-    rm -f "$AERIAL_DIR"/thumbnails/* 2>/dev/null
+    rm -f "$AERIAL_DIR"/videos/*.mov(N) 2>/dev/null
+    rm -f "$AERIAL_DIR"/thumbnails/*(N) 2>/dev/null
 fi
 
 print_section "Final Updates"
