@@ -64,9 +64,6 @@ fi
 print_task "Update Appium Plugins"
 command -v appium >/dev/null 2>&1 && appium plugin update installed || echo "  * appium not installed — skipping"
 
-print_task "Updating .NET tools"
-dotnet tool update -g dotnet-trace
-
 print_task "Updating precommit hooks"
 pre-commit autoupdate
 
