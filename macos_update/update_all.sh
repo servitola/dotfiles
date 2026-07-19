@@ -44,6 +44,9 @@ print_task "Updating VSCode extensions"
 code --update-extensions
 
 npm config set fund false
+# [i9] Package installers self-report per-package failures; relax strict
+# mode around them (keep no_unset) so one installer hiccup can't abort up.
+unsetopt err_exit pipe_fail
 source ~/projects/dotfiles/npm/install-globals.sh
 npm cache verify
 
@@ -51,6 +54,7 @@ uv python install 3.12
 source ~/projects/dotfiles/python/install-globals.sh
 source ~/projects/dotfiles/python/install-uv-tools.sh
 source ~/projects/dotfiles/python/install-tts.sh
+setopt err_exit pipe_fail
 if pgrep -x uv > /dev/null; then
     echo "  * Skipping uv cache prune (uv is currently running)"
 else
