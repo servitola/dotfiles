@@ -87,6 +87,11 @@ local midnightTimer = hs.timer.doEvery(300, function()
     end
 end)
 
+-- Retain timers in the module table — unreferenced running timers are GC'd,
+-- which would silently stop periodic flushing.
+M._flushTimer = flushTimer
+M._midnightTimer = midnightTimer
+
 -- Aggregate stats from entries
 local function aggregateEntries(entries)
     local byApp = {}

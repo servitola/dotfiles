@@ -86,4 +86,8 @@ sleepWatcher:start()
 -- Expose as global for hs -c access from Karabiner shell_command
 toggleKeyboardLock = M.toggle
 
+-- Retain in the module table — unreferenced running watchers are GC'd,
+-- which would silently kill auto-unlock after wake.
+M.sleepWatcher = sleepWatcher
+
 return M
