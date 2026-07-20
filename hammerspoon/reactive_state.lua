@@ -50,6 +50,4 @@ screenWatcher:start()
 
 log.i("Reactive state initialized, " .. state.displayCount .. " display(s)")
 
--- Return the watcher so package.loaded retains it — unreferenced running
--- watchers are garbage collected and silently stop working.
-return { screenWatcher = screenWatcher }
+return { screenWatcher = screenWatcher }  -- referenced via package.loaded: GC kills running watchers
