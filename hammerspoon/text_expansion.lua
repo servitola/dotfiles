@@ -62,25 +62,24 @@ local function onKeyEvent(event)
     end
 
     if isTrigger(char) then
-        for abbr, _ in pairs(abbreviations) do
-            if keyBuffer:sub(-#abbr) == abbr then
-                local expansion = expandAbbreviation(abbr)
-                if expansion then
-                    expanding = true
-                    expandTimer = hs.timer.doAfter(0, function()
-                        expandTimer = nil
-                        deleteChars(#abbr)
-                        hs.eventtap.keyStrokes(expansion)
-                        cooldownTimer = hs.timer.doAfter(0.5, function()
-                            cooldownTimer = nil
-                            expanding = false
-                            keyBuffer = ""
-                        end)
-                    end)
+        -- Abbreviations all start with ";" — one hash lookup of the last
+        -- ";"-segment instead of scanning the whole dictionary per trigger.
+        local abbr = keyBuffer:match(";[^;]*$")
+        local expansion = abbr and expandAbbreviation(abbr)
+        if expansion then
+            expanding = true
+            expandTimer = hs.timer.doAfter(0, function()
+                expandTimer = nil
+                deleteChars(#abbr)
+                hs.eventtap.keyStrokes(expansion)
+                cooldownTimer = hs.timer.doAfter(0.5, function()
+                    cooldownTimer = nil
+                    expanding = false
                     keyBuffer = ""
-                    return true
-                end
-            end
+                end)
+            end)
+            keyBuffer = ""
+            return true
         end
         keyBuffer = ""
         return false
@@ -100,3 +99,7 @@ keyWatcher:start()
 local count = 0
 for _ in pairs(abbreviations) do count = count + 1 end
 log.i("Active with " .. count .. " abbreviations")
+
+-- Return the tap so package.loaded retains it — unreferenced running
+-- eventtaps are garbage collected and silently stop working.
+return { watcher = keyWatcher }
