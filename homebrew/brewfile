@@ -129,6 +129,8 @@ brew "joker"
 brew "jq"
 # Environment diagnostics for Kotlin Multiplatform Mobile app development
 brew "kdoctor"
+# AI coding agent for your terminal
+brew "kimi-code"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Lazier way to manage everything docker
