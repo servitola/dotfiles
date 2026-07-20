@@ -167,6 +167,17 @@ launch_avd() { # launch_avd <name>
   [ "$booted" = yes ] || die "boot timeout after $((SECONDS - start))s — see $logf"
   log "boot completed in $((SECONDS - start))s (serial $serial)"
 
+  # Full on-screen keyboard, like a real phone. hw.keyboard=yes gives host-keyboard
+  # passthrough (convenient for typing) but also registers a virtual ALPHAKEY device,
+  # which makes Android HIDE the soft IME — so text fields focus with no visible
+  # keyboard (esp. inside WebViews). We almost always want the real on-screen keyboard,
+  # so force it. Secure setting: persists across reboots; applied here at boot (before
+  # any input connection) so the IME honours it — setting it mid-session does NOT apply
+  # and needs a reboot.
+  "$ADB" -s "$serial" shell settings put secure show_ime_with_hard_keyboard 1 >/dev/null 2>&1 \
+    && log "on-screen keyboard forced (show_ime_with_hard_keyboard=1)" \
+    || warn "could not force on-screen keyboard (show_ime_with_hard_keyboard)"
+
   sleep 5
   local load vk
   load=$("$ADB" -s "$serial" shell cat /proc/loadavg 2>/dev/null | awk '{print $1, $2, $3}')
