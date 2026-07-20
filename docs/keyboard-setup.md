@@ -149,6 +149,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 | `python3 docs/keyboard/tools/lint.py` | Validate format, column geometry, and chord/comment coverage. `--strict` fails on errors (used by pre-commit), `--skip-drift` skips the Karabiner/Birman cross-check for speed. |
 | `python3 docs/keyboard/tools/normalize.py --insert-missing` | Auto-fix column geometry and insert missing chord rows into the ASCII comment based on the actual Lua entries. |
 | `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view) and re-emits both `SUMMARY.md` files. |
+| `python3 docs/keyboard/tools/gen_bundle_ids.py` | Regenerate `HotKeys.spoon/app_bundle_ids.lua` — the app-name → bundle-ID map used for fast exact `hs.application.get()` lookups (names in layout files stay the source of truth; unresolved names fall back to fuzzy `find`). Re-run after adding a new `app = "..."` chord. |
 | `.git-hooks/lint-keyboard-layout.sh` | Pre-commit hook — runs `lint.py --strict --skip-drift` on any staged `layout/60%/*.lua` files. |
 
 ## Custom functions
@@ -193,7 +194,7 @@ Use `from`+`to`+`target_key` for chord remaps, or `from`+`sendText` to type a st
 { chord = "⇪s", app = "Slack" },
 ```
 
-3. Run `python3 docs/keyboard/tools/normalize.py --insert-missing` to update the ASCII comment table, then `python3 docs/keyboard/generate.py` to refresh the SVGs.
+3. Run `python3 docs/keyboard/tools/normalize.py --insert-missing` to update the ASCII comment table, then `python3 docs/keyboard/generate.py` to refresh the SVGs. If the chord launches a **new app**, also run `python3 docs/keyboard/tools/gen_bundle_ids.py` to refresh the bundle-ID map (skipping this is safe — the app just uses the slower fuzzy lookup).
 4. Reload Hammerspoon. The config auto-reloads on save **only if Lua syntax is valid** — if the reload notification doesn't appear, open the console (`open -a "Hammerspoon Console"`) or force-reload with `hs -c "hs.reload()"`.
 
 ### Adding a custom function
@@ -216,6 +217,7 @@ Regenerate everything: `python3 docs/keyboard/generate.py`
 - `hammerspoon/Spoons/HotKeys.spoon/app_specific_hotkeys.lua` — per-app rebind helper
 - `hammerspoon/Spoons/HotKeys.spoon/layout/60%/` — per-key layout files (active)
 - `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index for grep / AI agents
+- `hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua` — auto-generated app-name → bundle-ID map (via `docs/keyboard/tools/gen_bundle_ids.py`)
 - `hammerspoon/Spoons/HotKeys.spoon/layout/extra/` — F-key placeholder files
 - `hammerspoon/Spoons/HotKeys.spoon/old/` — legacy 30 numbered layout files (not loaded)
 - `keyboard-layout/Birman.bundle/` — custom keyboard layout (Ukelele bundle)
