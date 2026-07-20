@@ -1,6 +1,11 @@
 -- Punto Switcher-style layout reconversion.
 -- Right Option+Space (→ F14 via Karabiner rule 26) retypes the selection, or
 -- the previous word if nothing is selected, in the other Birman layout.
+--
+-- Fully async: no usleep — the Hammerspoon main thread (and its event taps,
+-- e.g. text expansion) is never blocked. Waits are event-driven: modifier
+-- release before synthetic keystrokes, pasteboard changeCount instead of
+-- fixed sleeps.
 
 local en_ru = {
     { "q", "й" }, { "w", "ц" }, { "e", "у" }, { "r", "к" }, { "t", "е" },
@@ -42,42 +47,90 @@ local function convert(text, direction)
     return table.concat(out)
 end
 
-local function grabText()
-    local pb = hs.pasteboard
-    local saved, savedCount = pb.getContents(), pb.changeCount()
+-- Async plumbing: retain timers until they fire, guard against re-entry.
+local timers = {}
+local busy = false
+local gen = 0
 
-    hs.eventtap.keyStroke({ "cmd" }, "c", 0)
-    hs.timer.usleep(80 * 1000)
-
-    if pb.changeCount() == savedCount then
-        hs.eventtap.keyStroke({ "alt", "shift" }, "left", 0)
-        hs.timer.usleep(30 * 1000)
-        hs.eventtap.keyStroke({ "cmd" }, "c", 0)
-        hs.timer.usleep(80 * 1000)
-    end
-    return pb.getContents(), saved
+local function after(delay, fn)
+    local t
+    t = hs.timer.doAfter(delay, function() timers[t] = nil; fn() end)
+    timers[t] = true
 end
 
-local function replaceWith(newText, saved)
-    hs.pasteboard.setContents(newText)
-    hs.eventtap.keyStroke({ "cmd" }, "v", 0)
-    hs.timer.doAfter(0.25, function()
-        if saved then hs.pasteboard.setContents(saved) else hs.pasteboard.clearContents() end
+-- Poll `pred` every 20ms; done(true) when it holds, done(false) at timeout.
+local function waitFor(pred, timeout, done)
+    local deadline = hs.timer.secondsSinceEpoch() + timeout
+    local t
+    t = hs.timer.waitUntil(
+        function() return pred() or hs.timer.secondsSinceEpoch() > deadline end,
+        function() timers[t] = nil; done(pred()) end,
+        0.02)
+    timers[t] = true
+end
+
+local function finish()
+    busy = false
+end
+
+-- Copy whatever is selected; done(text) with nil if the clipboard didn't
+-- change (i.e. there was no selection to copy).
+local function copySelection(done)
+    local before = hs.pasteboard.changeCount()
+    hs.eventtap.keyStroke({ "cmd" }, "c", 0)
+    waitFor(function() return hs.pasteboard.changeCount() ~= before end, 0.4, function(ok)
+        done(ok and hs.pasteboard.getContents() or nil)
     end)
 end
 
-local function toggleLayout()
-    hs.keycodes.setLayout(hs.keycodes.currentLayout() == "En Birman" and "Ru Birman" or "En Birman")
+local function convertGrabbed(text, saved, autoSelected)
+    local direction = text and text ~= "" and detectDirection(text) or nil
+    local converted = direction and convert(text, direction) or nil
+    if not converted or converted == text then
+        -- Nothing to convert (digits/symbols, or copy failed). If we made
+        -- the selection ourselves, collapse it back to the caret.
+        if autoSelected then hs.eventtap.keyStroke({}, "right", 0) end
+        finish()
+        return
+    end
+    hs.pasteboard.setContents(converted)
+    hs.eventtap.keyStroke({ "cmd" }, "v", 0)
+    after(0.3, function()
+        if saved then hs.pasteboard.setContents(saved) else hs.pasteboard.clearContents() end
+    end)
+    -- Deterministic: match the layout to the direction we converted into,
+    -- instead of blindly toggling.
+    hs.keycodes.setLayout(direction == "en_to_ru" and "Ru Birman" or "En Birman")
+    finish()
 end
 
 local function run()
-    hs.timer.doAfter(0.12, function()
-        local text, saved = grabText()
-        if not text or text == "" then return end
-        local converted = convert(text, detectDirection(text))
-        if converted == text then return end
-        replaceWith(converted, saved)
-        toggleLayout()
+    if busy then return end
+    busy = true
+    gen = gen + 1
+    local myGen = gen
+    after(2.5, function() if gen == myGen then busy = false end end)  -- safety net
+
+    -- Wait for the physical chord (Right Option) to be released so it
+    -- doesn't contaminate the synthetic Cmd+C / Cmd+V.
+    waitFor(function()
+        local f = hs.eventtap.checkKeyboardModifiers()
+        return not (f.cmd or f.alt or f.ctrl or f.shift or f.fn)
+    end, 1, function()
+        local saved = hs.pasteboard.getContents()
+        copySelection(function(text)
+            if text then
+                convertGrabbed(text, saved, false)
+            else
+                -- No selection — grab the previous word.
+                hs.eventtap.keyStroke({ "alt", "shift" }, "left", 0)
+                after(0.05, function()
+                    copySelection(function(word)
+                        convertGrabbed(word, saved, true)
+                    end)
+                end)
+            end
+        end)
     end)
 end
 
