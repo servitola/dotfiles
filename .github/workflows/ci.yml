@@ -19,3 +19,34 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y -qq zsh
       - name: Run all hooks on all files
         run: pre-commit run --all-files --show-diff-on-failure
+
+  # Fresh-Mac bootstrap test: does `make` converge on a machine that has
+  # never seen this setup? Expected to fail at first — we teach it step by step.
+  macos-install:
+    runs-on: macos-15
+    timeout-minutes: 45
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+      HOMEBREW_NO_INSTALL_CLEANUP: "1"
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Put repo at the path the Makefile hardcodes
+        run: |
+          mkdir -p ~/projects
+          ln -s "$GITHUB_WORKSPACE" ~/projects/dotfiles
+
+      - name: Run make install
+        run: cd ~/projects/dotfiles && make install
+
+      - name: Report dangling symlinks in $HOME (informational)
+        if: always()
+        run: |
+          echo "Dangling symlinks after install:"
+          find ~ ~/.config ~/Library/Application\ Support \
+            -maxdepth 2 -type l ! -exec test -e {} \; -print 2>/dev/null || true
+
+      - name: Interactive zsh boots (informational)
+        if: always()
+        continue-on-error: true
+        run: zsh -ic 'echo ZSH_BOOTED_OK'
