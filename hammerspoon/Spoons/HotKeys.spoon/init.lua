@@ -14,6 +14,35 @@ local clipboardLlm = dofile(spoonPath .. "clipboard_llm.lua")
 
 local _launchTask = nil  -- prevent GC of hs.task used for app launching
 
+-- Generated app-name → bundle-ID map for exact lookups. App names in the
+-- layout files stay the source of truth; missing/stale entries fall back
+-- to fuzzy find. Regenerate: python3 docs/keyboard/tools/gen_bundle_ids.py
+local bundleIds = {}
+do
+    local ok, ids = pcall(dofile, spoonPath .. "app_bundle_ids.lua")
+    if ok and type(ids) == "table" then
+        bundleIds = ids
+    else
+        log.e("app_bundle_ids.lua missing/invalid — using fuzzy find only")
+    end
+end
+
+-- Exact native lookup by bundle ID (~0.03-0.3ms), falling back to
+-- hs.application.find() by name (which also scans window titles — slow).
+local function getApp(name)
+    local id = bundleIds[name]
+    if id then
+        local apps = hs.application.applicationsForBundleID(id)
+        if apps and #apps > 0 then return apps[1] end
+        return nil  -- exact miss: app not running, skip the fuzzy scan
+    end
+    local found = hs.application.find(name)
+    if found and tostring(found):match("hs.window:") then
+        return found:application()
+    end
+    return found
+end
+
 -- Generic helper: focus a specific window of an app, or launch it with a path
 -- appNameOrId: bundle ID (e.g. "com.microsoft.VSCode") or app name (e.g. "Fork")
 -- appDisplayName: name for "open -a" launch (required for bundle IDs)
@@ -23,12 +52,7 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
     if isBundleId then
         app = hs.application.get(appNameOrId)
     else
-        local found = hs.application.find(appNameOrId)
-        if found and tostring(found):match("hs.window:") then
-            app = found:application()
-        else
-            app = found
-        end
+        app = getApp(appNameOrId)
     end
 
     if not app then
@@ -650,23 +674,13 @@ function obj:init()
                     local modifierStr = table.concat(modifiers, "+")
                     log.d("Hotkey triggered: " .. modifierStr .. "+" .. key .. " → " .. chord_entry.app)
 
-                    local app
-                    if chord_entry.app == "Visual Studio Code" then
-                        app = hs.application.get("com.microsoft.VSCode")
-                    else
-                        local found = hs.application.find(chord_entry.app)
-                        app = found
-                        if found and tostring(found):match("hs.window:") then
-                            app = found:application()
-                            log.d("Found window, getting application: " .. tostring(app))
-                        end
-                    end
+                    local app = getApp(chord_entry.app)
 
                     if not app or (app and app.isHidden and app:isHidden()) then
                         log.d("Launching/focusing app: " .. chord_entry.app)
                         hs.application.launchOrFocus(chord_entry.app)
                         hs.timer.doAfter(0.15, function()
-                            unminimize_if_needed(hs.application.find(chord_entry.app))
+                            unminimize_if_needed(getApp(chord_entry.app))
                         end)
                     elseif hs.application.frontmostApplication() ~= app then
                         log.d("Activating app: " .. chord_entry.app)
