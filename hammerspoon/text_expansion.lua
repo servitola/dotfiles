@@ -62,9 +62,7 @@ local function onKeyEvent(event)
     end
 
     if isTrigger(char) then
-        -- Abbreviations all start with ";" — one hash lookup of the last
-        -- ";"-segment instead of scanning the whole dictionary per trigger.
-        local abbr = keyBuffer:match(";[^;]*$")
+        local abbr = keyBuffer:match(";[^;]*$")  -- every abbreviation starts with ";"
         local expansion = abbr and expandAbbreviation(abbr)
         if expansion then
             expanding = true
@@ -100,6 +98,4 @@ local count = 0
 for _ in pairs(abbreviations) do count = count + 1 end
 log.i("Active with " .. count .. " abbreviations")
 
--- Return the tap so package.loaded retains it — unreferenced running
--- eventtaps are garbage collected and silently stop working.
-return { watcher = keyWatcher }
+return { watcher = keyWatcher }  -- referenced via package.loaded: GC kills running taps
