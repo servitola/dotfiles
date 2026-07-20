@@ -189,9 +189,9 @@ install:
 	@$(REMOVE) ~/.config/opencode/opencode.json
 	@$(LINK) ~/projects/dotfiles/opencode/opencode.json ~/.config/opencode/opencode.json
 	@$(REMOVE) ~/.config/opencode/commands
-	@$(LINK) ~/projects/dotfiles/opencode/commands ~/.config/opencode/commands
+	@$(LINK) ~/projects/dotfiles/claude-code/commands ~/.config/opencode/commands
 	@$(REMOVE) ~/.config/opencode/agents
-	@$(LINK) ~/projects/dotfiles/opencode/agents ~/.config/opencode/agents
+	@$(LINK) ~/projects/dotfiles/claude-code/agents ~/.config/opencode/agents
 
 	@echo "setup Crush symlinks"
 	@mkdir -p ~/.config/crush
