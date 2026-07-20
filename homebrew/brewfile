@@ -219,6 +219,8 @@ brew "python-tk@3.11"
 brew "qrencode"
 # AI-powered command-line workflow tool for developers
 brew "qwen-code"
+# Rsync for cloud storage
+brew "rclone"
 # Utility that provides fast incremental file transfer
 brew "rsync"
 # CLI proxy to minimize LLM token consumption
