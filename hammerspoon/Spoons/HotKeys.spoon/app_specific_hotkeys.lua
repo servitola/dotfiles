@@ -2,7 +2,7 @@
 local M = {}
 
 local appHotkeys = {}
-local enabledApp = nil  -- whose hotkeys are currently enabled
+local enabledApp = nil
 
 local function setupAppHotkeys(appName, remaps)
     if not appHotkeys[appName] then
@@ -56,9 +56,7 @@ function M.init(appSpecificHotkeys)
         end
     end
 
-    -- Register with centralized app watcher hub (no own watcher).
-    -- Only touch the hotkeys of the app we actually enabled last time,
-    -- instead of disabling every registered app on each switch.
+    -- Register with centralized app watcher hub (no own watcher)
     appWatcherHub.register(function(appName, eventType, appObject)
         if eventType == hs.application.watcher.activated then
             if appName == enabledApp then return end
