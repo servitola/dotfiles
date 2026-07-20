@@ -1,8 +1,30 @@
 local lastApp = nil
 local switchTimer = nil
 
+local karabinerCli = "/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli"
+
+-- Cache the active profile so app switches don't spawn karabiner_cli
+-- unless the profile actually changes (games ↔ everything else).
+local currentProfile = nil
+local profileTask = nil  -- prevent GC
+
+-- Seed the cache from Karabiner so a pre-reload manual profile choice
+-- doesn't leave the cache lying. Reuses profileTask so the task object
+-- stays referenced (unreferenced running tasks are GC'd).
+profileTask = hs.task.new(karabinerCli, function(_, stdOut)
+    profileTask = nil
+    if stdOut and not currentProfile then
+        currentProfile = stdOut:gsub("%s+$", "")
+    end
+end, { "--show-current-profile-name" })
+profileTask:start()
+
 local function setKarabinerProfile(profile)
-    hs.execute(string.format('"/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli" --select-profile "%s"', profile))
+    if profile == currentProfile then return end
+    currentProfile = profile
+    profileTask = hs.task.new(karabinerCli, function() profileTask = nil end,
+        { "--select-profile", profile })
+    profileTask:start()
 end
 
 local function setLanguageForApp(bundleId, layout)
@@ -14,6 +36,7 @@ local function setLanguageForApp(bundleId, layout)
         if lastApp == bundleId then return end
         lastApp = bundleId
 
+        if hs.keycodes.currentLayout() == layout then return end
         hs.keycodes.setLayout(layout)
 
         hs.timer.doAfter(0.02, function()
