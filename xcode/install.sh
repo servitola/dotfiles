@@ -20,5 +20,6 @@ if ! xcode-select --print-path &> /dev/null; then
 fi
 
 echo "setup xcode symlinks"
+mkdir -p ~/Library/Developer/Xcode/UserData
 rm -rf ~/Library/Developer/Xcode/UserData/KeyBindings
 ln -sfvh ~/projects/dotfiles/xcode/KeyBindings ~/Library/Developer/Xcode/UserData/KeyBindings
