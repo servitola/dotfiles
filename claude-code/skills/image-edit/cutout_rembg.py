@@ -1,6 +1,6 @@
 #!/usr/bin/env -S uv run --script
 # /// script
-# requires-python = ">=3.10"
+# requires-python = ">=3.11,<3.12"
 # dependencies = ["rembg[cpu]>=2.0.75", "Pillow>=10"]
 # ///
 """Background removal via local rembg with BiRefNet-general.
