@@ -178,6 +178,12 @@ Each pipeline reference carries its own fallback chain; paid-engine
 (fal.ai) errors are in [common.md](references/common.md). Any script
 error: surface the actual stderr to the user, do not pretend it worked.
 
+`edit_hfspace.py` ending with **"ZeroGPU quota/capacity is exhausted"**
+means the free daily allowance is spent (resets ~24h later). Do not
+retry the free path and do not tell the user to "try again later" —
+say the free engine is out of quota today and offer the paid retry per
+the offer protocol in [common.md](references/common.md).
+
 ## What this skill does NOT do
 
 - Does not **repaint or generate** content locally with PIL/cv2 — that
