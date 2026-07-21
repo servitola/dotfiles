@@ -13,7 +13,7 @@ Swap with --model to use Pro / Hailuo / Wan / LTX — see references/models.md.
 Requires FAL_KEY in env or in ~/.config/openai_key.sh.
 """
 from __future__ import annotations
-import argparse, os, re, sys, urllib.request
+import argparse, os, re, shutil, sys, tempfile, urllib.request
 from pathlib import Path
 import fal_client
 
@@ -33,6 +33,20 @@ def _load_key() -> None:
                 os.environ["FAL_KEY"] = m.group(1)
                 return
     sys.exit("FAL_KEY not set and not found in ~/.config/openai_key.sh")
+
+
+def _upload(path: Path) -> str:
+    """Upload to fal storage from an ASCII-named copy when needed.
+
+    fal-client sends the file name in an HTTP header (ASCII only); a
+    Cyrillic name fails there and 1.x reports it as "Invalid storage type".
+    """
+    if path.name.isascii():
+        return fal_client.upload_file(str(path))
+    with tempfile.TemporaryDirectory() as tmp:
+        safe = Path(tmp) / f"upload{path.suffix or '.png'}"
+        shutil.copyfile(path, safe)
+        return fal_client.upload_file(str(safe))
 
 
 def _check_balance() -> float | None:
@@ -57,7 +71,7 @@ def _check_balance() -> float | None:
 
 def run(args) -> None:
     _load_key()
-    image_url = fal_client.upload_file(str(args.input))
+    image_url = _upload(args.input)
     payload = {
         "prompt": args.prompt,
         "image_url": image_url,

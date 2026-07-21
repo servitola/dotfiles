@@ -11,10 +11,24 @@ Outputs are written as <output>, <output_stem>-2.png, -3.png, -4.png.
 Requires FAL_KEY in env or ~/.config/openai_key.sh.
 """
 from __future__ import annotations
-import argparse, os, re, sys, tempfile, urllib.request
+import argparse, os, re, shutil, sys, tempfile, urllib.request
 from pathlib import Path
 import fal_client
 from PIL import Image, ImageDraw
+
+
+def _upload(path: Path) -> str:
+    """Upload to fal storage from an ASCII-named copy when needed.
+
+    fal-client sends the file name in an HTTP header (ASCII only); a
+    Cyrillic name fails there and 1.x reports it as "Invalid storage type".
+    """
+    if path.name.isascii():
+        return fal_client.upload_file(str(path))
+    with tempfile.TemporaryDirectory() as tmp:
+        safe = Path(tmp) / f"upload{path.suffix or '.png'}"
+        shutil.copyfile(path, safe)
+        return fal_client.upload_file(str(safe))
 
 
 def _load_key():
@@ -40,7 +54,7 @@ def _bbox_mask(input_path, bbox):
 
 def inpaint(input_path, mask_path, prompt, output, variants):
     _load_key()
-    iu = fal_client.upload_file(str(input_path)); mu = fal_client.upload_file(str(mask_path))
+    iu = _upload(input_path); mu = _upload(mask_path)
     res = fal_client.subscribe("fal-ai/flux-pro/v1/fill", with_logs=False,
         arguments={"prompt": prompt, "image_url": iu, "mask_url": mu, "num_images": variants})
     images = res.get("images", []) if isinstance(res, dict) else []

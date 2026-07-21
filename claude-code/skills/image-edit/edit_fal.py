@@ -17,19 +17,37 @@ from __future__ import annotations
 import argparse
 import os
 import re
+import shutil
 import sys
+import tempfile
 import urllib.request
 from pathlib import Path
 
 import fal_client
 
 
+def _upload(path: Path) -> str:
+    """Upload to fal storage, working around non-ASCII file names.
+
+    fal-client puts the file name into an HTTP header, which must be
+    ASCII. A Cyrillic name raises UnicodeEncodeError inside the client;
+    1.x swallows it per storage backend and reports the misleading
+    "Invalid storage type". Upload from an ASCII-named temp copy.
+    """
+    if path.name.isascii():
+        return fal_client.upload_file(str(path))
+    with tempfile.TemporaryDirectory() as tmp:
+        safe = Path(tmp) / f"upload{path.suffix or '.png'}"
+        shutil.copyfile(path, safe)
+        return fal_client.upload_file(str(safe))
+
+
 def edit(input_path: Path, ref_paths: list[Path], prompt: str, output_path: Path) -> None:
     _load_fal_key()
 
-    input_url = fal_client.upload_file(str(input_path))
+    input_url = _upload(input_path)
     if ref_paths:
-        ref_urls = [fal_client.upload_file(str(p)) for p in ref_paths]
+        ref_urls = [_upload(p) for p in ref_paths]
         endpoint = "fal-ai/flux-pro/kontext/multi"
         arguments = {
             "prompt": prompt,
