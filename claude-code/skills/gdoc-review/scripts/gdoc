@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Thin wrapper: loads Google OAuth client creds, then runs gdoc.py via uv.
+set -euo pipefail
+[ -f "$HOME/.config/openai_key.sh" ] && source "$HOME/.config/openai_key.sh"
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec uv run --quiet --script "$DIR/gdoc.py" "$@"
