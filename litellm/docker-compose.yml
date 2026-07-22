@@ -1,6 +1,19 @@
 services:
   litellm:
-    image: ghcr.io/berriai/litellm:main-latest
+    # Pinned to a digest 2026-07-22 (was the floating `:main-latest`).
+    # LiteLLM's PyPI package was supply-chain compromised in March 2026
+    # (CVE-2026-33634, CVSS 9.4): a compromised CI action leaked their publish
+    # token and two malicious versions shipped for ~3h, exfiltrating env vars.
+    # The Docker image is built by a different pipeline, but `:main-latest`
+    # means every `docker compose up` silently pulls whatever is newest, with
+    # no reproducibility and nothing to roll back to. This digest is the image
+    # that is running and verified working.
+    # To bump deliberately:
+    #   docker pull ghcr.io/berriai/litellm:main-latest
+    #   docker image inspect ghcr.io/berriai/litellm:main-latest \
+    #     --format '{{index .RepoDigests 0}}'
+    # then paste the new digest here and re-run scripts/smoke-test.py.
+    image: ghcr.io/berriai/litellm@sha256:7c311546c25e7bb6e8cafede9fcd3d0d622ac636b5c9418befaa32e85dfb0186
     container_name: litellm
     restart: unless-stopped
     ports:

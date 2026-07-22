@@ -13,13 +13,14 @@ points at a free-tier upstream. Whitelist:
   NVIDIA NIM (https://integrate.api.nvidia.com/v1) — free credits
   GitHub Models (https://models.github.ai/inference) — free quota
   SambaNova (https://api.sambanova.ai/v1)          — persistent free tier
-  Chutes (https://llm.chutes.ai/v1)                — decentralised free tier
+  Chutes (https://llm.chutes.ai/v1)                — decentralised free tier.
+    NOTE: as of 2026-07-22 this account is at $0.0 and every call 402s; all
+    chutes-* deployments were removed. Host left whitelisted (it IS a free
+    tier when funded//allowanced) — but check the balance before re-adding.
   LLM7 (https://api.llm7.io/v1)                     — anonymous free tier
-  Together AI (https://api.together.xyz/v1)        — trial credits, EXPIRE.
-    NOT a recurring free tier — once the $25-$100 trial credit is spent,
-    calls start billing. Whitelisted because all Together deployments are
-    order:2 fallbacks / power-call aliases used deliberately. Operator must
-    watch the credit balance; this script can't see it.
+  Together AI (https://api.together.xyz/v1)        — REJECTED as of 2026-07-22.
+    The free trial ended in July 2025; it is now a $5-minimum prepaid balance
+    that bills silently. No longer whitelisted — see TRIAL_API_BASES below.
   Azure AI Speech (https://<region>.tts.speech.microsoft.com) — F0 pricing
     tier on the resource gives 500K chars/month free; this script can't see
     the Azure-side tier, so the operator must verify F0 is set in the portal.
@@ -53,8 +54,11 @@ FREE_API_BASES = {
     # → honest 429 (retriable), not a poisoned 200. Free model set is $0.
     "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
 }
-# Together AI runs on expiring trial credits, not a recurring free tier.
-# Whitelisted separately so the reason string flags the billing risk.
+# NOT free — these now BILL. Kept as an explicit denylist (rather than just
+# deleted) so that re-adding one of these hosts to config.yaml fails loudly with
+# a useful reason instead of the generic "unknown/paid api_base".
+#   Together AI — free trial ended July 2025; now a $5-minimum prepaid balance
+#   that silently starts billing. All together-* deployments dropped 2026-07-22.
 TRIAL_API_BASES = {
     "https://api.together.xyz/v1",
 }
@@ -140,7 +144,10 @@ def classify(model: str, api_base: str | None) -> tuple[bool, str]:
     if api_base in FREE_API_BASES:
         return True, f"whitelisted api_base ({api_base})"
     if api_base in TRIAL_API_BASES:
-        return True, f"trial credits — EXPIRE, watch balance ({api_base})"
+        return False, (
+            f"NOT a free tier — prepaid/trial balance that bills once spent ({api_base}). "
+            "Removed from the whitelist 2026-07-22; re-add deliberately or not at all."
+        )
     if api_base is None:
         return False, "non-groq deployment has no api_base (unknown provider)"
     return False, f"unknown/paid api_base: {api_base}"
