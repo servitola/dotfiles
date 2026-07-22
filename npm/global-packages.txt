@@ -7,6 +7,7 @@
 appium
 figma-developer-mcp
 opencode-ai
+pptxgenjs
 react-devtools
 typescript
 youtrack-mcp-server
