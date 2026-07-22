@@ -651,6 +651,34 @@ def discover_new_openrouter(
 
 # ── report ───────────────────────────────────────────────────────────────────
 
+def _report_smoke_disagreement() -> None:
+    """Warn when the catalog says fine but the last live smoke test disagreed.
+
+    `status: available` in model-health.json only ever meant "the provider lists
+    this slug". scripts/smoke-test.py records what actually happened when the
+    model was CALLED, under the separate `smoke` key. Where the two disagree,
+    the live result is the truth.
+    """
+    state = load_state()
+    smoke = state.get("smoke") or {}
+    aliases = smoke.get("aliases") or {}
+    if not aliases:
+        print(f"{DIM}  note: catalog-only check. Run scripts/smoke-test.py to "
+              f"verify the models actually answer.{NC}")
+        return
+
+    broken = {a: v for a, v in aliases.items() if v.get("state") == "permanent"}
+    stale = smoke.get("last_run", "?")
+    if broken:
+        print(f"\n  {RED}{BOLD}Catalog says OK, live calls disagree "
+              f"({len(broken)}, smoke run {stale}):{NC}")
+        for alias, v in sorted(broken.items()):
+            print(f"{RED}    ✗ {alias}{NC} {DIM}{v.get('detail', '')[:90]}{NC}")
+        print(f"{DIM}    These need a config.yaml change — they will not self-heal.{NC}")
+    else:
+        print(f"{DIM}  live smoke test ({stale}): no permanently-broken aliases.{NC}")
+
+
 def print_report(
     deployments: list[Deployment],
     check_results: dict[str, str],
@@ -716,6 +744,14 @@ def print_report(
         verb = "would remove" if dry_run else "removed"
         parts.append(f"{RED}{len(removals)} {verb}{NC}")
     print(f"\n  {BOLD}{n_total} models checked:{NC} {', '.join(parts)}")
+
+    # "available" here means CATALOG-PRESENT, not working. The gap is large and
+    # was silently misleading before 2026-07-22, when a config this script
+    # reported as healthy had 26 of 65 aliases failing every live call
+    # (dead keys, $0 balances, exhausted quotas, a permanent 400 on `embed`).
+    # None of that is visible from a /v1/models listing. Cross-reference the
+    # live results if smoke-test.py has run.
+    _report_smoke_disagreement()
 
     if removals and not dry_run:
         print(f"  {YELLOW}config.yaml updated — restarting LiteLLM...{NC}")

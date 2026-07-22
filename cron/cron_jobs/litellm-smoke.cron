@@ -1,0 +1,23 @@
+# litellm-smoke: prove every model in the proxy actually ANSWERS.
+#
+# Complements scripts/check-models.py, which only asks each provider "is this
+# slug in your catalog?". That check reported a healthy config on 2026-07-22
+# while 26 of 65 aliases failed every live call — dead keys, $0 balances,
+# exhausted quotas, and a permanent 400 that had frozen every RAG collection.
+# A catalog cannot see any of that. This one calls the models.
+#
+# Daily at 06:40 — before the workday, and early enough that OpenRouter/Gemini
+# daily buckets have rolled over so a 429 here means something real. Off the
+# hour to avoid the rag-improve runs at :00/:30.
+#
+# Cost per run: ~60 chat calls + 1 embedding + 2 TTS, all on free tiers, all
+# cache-bypassed (a cached probe measures Redis, not the provider).
+#
+# Exit 1 = a PERMANENT failure (dead slug / dead key / needs payment) or a
+# rotation group below its coverage floor. Those never self-heal — they need a
+# config.yaml edit. Rate-limited models exit 0: on a free-tier pool 429 is the
+# normal steady state, not a fault.
+#
+# Log: /tmp/litellm-smoke.log (last run's full report; JSON snapshot of every
+# run is appended to model-health.json under the `smoke` key).
+40 6 * * * /usr/bin/env NO_COLOR=1 /usr/bin/python3 /Users/servitola/projects/dotfiles/litellm/scripts/smoke-test.py > /tmp/litellm-smoke.log 2>&1
