@@ -351,7 +351,7 @@ set_macos_default_if_different \
     'org.m0k.transmission' \
     'IncompleteDownloadFolder' \
     '-string' \
-    'Users/servitola/Documents/Torrents'
+    "$HOME/Documents/Torrents"
 
 set_macos_default_if_different \
 	"Use ~/Downloads to store completed downloads" \
