@@ -2,3 +2,4 @@
 model-health.json
 __pycache__/
 *.pyc
+*-shim/logs/
