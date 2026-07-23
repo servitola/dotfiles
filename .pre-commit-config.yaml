@@ -38,6 +38,13 @@ repos:
         language: system
         files: (\.sh$|^zsh/bin/[^/.]+$)
         stages: [pre-commit]
+      - id: normalize-voiceink-json
+        name: Normalize VoiceInk settings backup (jq -S, staged-only, non-lossy)
+        entry: git-format-staged --formatter 'jq -S .'
+        language: node
+        additional_dependencies: ['git-format-staged']
+        files: ^voiceink/VoiceInk_Settings_Backup\.json$
+        stages: [pre-commit]
   # - repo: local
     # hooks:
       # - id: regenerate-agents-md
