@@ -3,26 +3,38 @@
 **Checklist:**
 1. Create `~/projects/dotfiles/{app-name}/` directory (lowercase, hyphen-separated)
 2. Add/copy config files to the directory
-3. Add Makefile symlink commands using patterns below
-4. Test symlinks manually (don't run full `make install`)
+3. Add a `link` line to the right installer step (see below)
+4. Test the symlink manually (don't run full `make install`)
 
-**Makefile Integration:**
-Add to `install` target:
-```makefile
-@echo "setup {app description}"
-@mkdir -p {target_parent}
-@$(REMOVE) {target_path}
-@$(LINK) ~/projects/dotfiles/{app-dir}/{config_file} {target_path}
+**Installer Integration:**
+The install logic is plain zsh (`install.sh` runs the numbered
+`install/[0-9]*.sh` steps), not make. Add a `source -> destination` pair to
+the right `link_all` table — usually `install/07-config-links.sh` (app
+configs) or `install/08-ai-tools-links.sh` (AI tools):
+
+```zsh
+link_all \
+    "$DOTFILES/{app-dir}/{config_file}" "{target_path}" \
+    ...
 ```
 
-**Variables:** `REMOVE := sudo rm -rf`, `LINK := sudo ln -sfvh`, `COPY := sudo cp -r`
+`link_all` (and `link` for a one-off) is defined in `install/lib.sh` and does
+mkdir-parent + `sudo rm -rf` + `sudo ln -sfvh`, so you don't repeat those.
+Use `copy_dir` instead when a real copy is needed (e.g. the Birman layout in
+`install/05-system-links.sh`).
 
-**Testing:** After adding to Makefile, test symlinks manually with the commands you added before running full `make install`.
+**Path vars (from `install/lib.sh`):** `$DOTFILES`, `$PRIVATE`,
+`$APP_SUPPORT` (= `~/Library/Application Support`), `$CONFIG` (= `~/.config`),
+`$CLAUDE_CODE`, `$LAUNCH_AGENTS`.
 
-**Common Patterns:**
-- **Single file**: `@$(LINK) ~/projects/dotfiles/app/config.json ~/.config/app/config.json`
-- **Directory**: `@$(LINK) ~/projects/dotfiles/app ~/.config/app`
-- **App Support**: `@$(LINK) ~/projects/dotfiles/app/config.plist ~/Library/Application\ Support/App/config.plist`
+**Testing:** run just the one step (`zsh install/07-config-links.sh`), then
+check the symlink resolves, before a full `make install`.
+
+**Common Patterns** (each is one `src dst` pair inside a `link_all` table):
+- **Single file**: `"$DOTFILES/app/config.json" "$CONFIG/app/config.json"`
+- **Directory**:   `"$DOTFILES/app" "$CONFIG/app"`
+- **App Support**: `"$DOTFILES/app/config.plist" "$APP_SUPPORT/App/config.plist"`
+  (quote the whole path — spaces in "Application Support" are handled by the quotes)
 
 **Examples:**
-See `Makefile` for real working examples from your current setup.
+See `install/07-config-links.sh` for real working examples from your current setup.

@@ -1,5 +1,8 @@
 # Dotfiles Project Memory
 
+## Vision
+See [vision.md](vision.md) — north star for all dotfiles evolution.
+
 ## Hardware
 - **3 Macs**: Mac Studio M1 Pro, MacBook Pro 16" M3 Pro, MacBook Pro 16" Intel i9 2019
 - Dotfiles must work on both Apple Silicon (`/opt/homebrew/`) and Intel (`/usr/local/`). Use `$HOMEBREW_PREFIX` not hardcoded paths
@@ -42,8 +45,8 @@
 ## Don't Touch These (intentional quirks)
 - Window split 73%/27% — It's perfect
 - **hs.itunes**: Use `hs.itunes` for music control in Hammerspoon. `hs.music` does NOT work despite being the "replacement" — it's broken
-- **Makefile sudo rm -rf**: The `REMOVE := sudo rm -rf` in Makefile is intentional. Needed for system-level symlinks. Don't change
-- **duti**: Still works for setting default apps on macOS despite being unmaintained (last update 2019). No need to replace
+- **Installer sudo rm -rf**: The `sudo rm -rf` / `sudo ln` inside `link` (`install/lib.sh`) is intentional. Needed for system-level symlinks and for re-linking $HOME targets that prior runs left root-owned. Don't change. (Install logic moved from `Makefile` to `install.sh` + numbered `install/*.sh`; `Makefile` is now a one-line wrapper.)
+- **Default apps**: `macos/set_default_apps.sh` writes `LSHandlers` entries straight into `com.apple.launchservices.secure.plist`, NOT via `duti`. On macOS 15+ `duti -s` prompts a dialog per type and fails (`error -50`) on extensions with no UTI. `duti` stays installed only for read-only `duti -x` queries
 ## Code Organization
 - **aliases.sh**: Contains both aliases AND small functions (rec, android_*, whisper_*, ppp). Don't reorganize — mixing aliases and related functions in one file is intentional
 - **yandex_search.lua**: Searches Perplexity AI, opened in Yandex browser. Name refers to browser, not search engine
@@ -60,8 +63,3 @@
 hs -c 'return hs.console.getConsole()' 2>&1 | tail -50
 ```
 Hammerspoon does NOT write logs to a file. The `hs` CLI may timeout if Hammerspoon is busy loading.
-
-## Memory Location
-Files live in `~/projects/dotfiles/claude-code-memory/` (git-tracked).
-Symlinked from `~/.claude/projects/-Users-servitola-projects-dotfiles/memory`.
-Makefile recreates the symlink on `make install`.
