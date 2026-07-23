@@ -7,6 +7,7 @@ source 'macos/helpers/set_plist_value_if_different.sh'
 # Initialize counters
 CHANGES_MADE=0
 SKIPPED_COUNT=0
+FAILED_COUNT=0
 
 sudo -v
 echo ''
@@ -605,8 +606,11 @@ echo ''
 echo "${BOLD}${CYAN}───────────────────────────────────────────────────────────${NC}"
 echo "${BOLD}Summary${NC}"
 echo "${CYAN}───────────────────────────────────────────────────────────${NC}"
-echo "  Total settings processed: ${DIM}$((CHANGES_MADE + SKIPPED_COUNT))${NC}"
+echo "  Total settings processed: ${DIM}$((CHANGES_MADE + SKIPPED_COUNT + FAILED_COUNT))${NC}"
 echo "  ${GREEN}Changes made:${NC} ${BOLD}${GREEN}$CHANGES_MADE${NC}"
 echo "  ${YELLOW}Already set:${NC} ${BOLD}${YELLOW}$SKIPPED_COUNT${NC}"
+if (( FAILED_COUNT > 0 )); then
+    echo "  ${RED}Failed:${NC} ${BOLD}${RED}$FAILED_COUNT${NC}"
+fi
 echo "${CYAN}───────────────────────────────────────────────────────────${NC}"
 echo ''
