@@ -51,7 +51,7 @@ The most-used chords on the Hyper layer (Caps Lock + key). For the complete list
 | `⇪N` | VSCode | |
 | `⇪P` | Music | |
 | `⇪R` (=F17) | Rider | + `⇧F17` Android Studio, `⌘F17` OrbStack |
-| `⇪T` (=F18) | Telegram | window: right |
+| `⇪T` (=F18) | Forkgram | window: right |
 | `⇪V` (=F19) | Yandex Browser | + `⇧F19` Chrome, `⌃F19` VPN toggle |
 | `⇪Y` | IINA | window: bottom |
 | `⇪Z` (=F20) | toggle Android emulator window | |
