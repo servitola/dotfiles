@@ -175,6 +175,8 @@ brew "nano"
 brew "ninja"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node@22", link: true
+# Port scanning utility for large networks
+brew "nmap"
 # Trigger notifications when a process completes
 brew "noti"
 # Retrieves currently playing media, and simulates media actions
