@@ -1,8 +1,24 @@
 """Extract app icons from macOS as base64 PNG for SVG embedding."""
-import base64, os, re, subprocess as sp, tempfile
+import base64, json, os, re, subprocess as sp, tempfile
 
 
 _SLUG_RE = re.compile(r"[^a-z0-9]+")
+
+_CACHE_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "icons_cache.json")
+
+
+def _load_cache():
+    try:
+        with open(_CACHE_PATH, encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return {}
+
+
+def _save_cache(cache):
+    with open(_CACHE_PATH, "w", encoding="utf-8") as f:
+        json.dump(cache, f, sort_keys=True, indent=1)
+        f.write("\n")
 
 def icon_slug(name):
     """Stable SVG-id-safe slug for an app name. `IINA`→`iina`, `zoom.us`→`zoom-us`."""
@@ -23,9 +39,6 @@ _JXA = ('ObjC.import("AppKit");var ws=$.NSWorkspace.sharedWorkspace,'
     'r.representationUsingTypeProperties($.NSBitmapImageFileTypePNG,$())'
     '.writeToFileAtomically("OUT",true);')
 
-# Standard macOS application locations, searched directly when Spotlight is off.
-# `~/Applications` covers JetBrains Toolbox apps (Rider) and other per-user installs;
-# CoreServices covers Finder and friends.
 _APP_DIRS = [
     "/Applications",
     "/Applications/Utilities",
@@ -131,25 +144,26 @@ def _real_symbol(name, slug, b64):
     )
 
 
-def extract_icons(names):
-    """Return {name: <symbol>…</symbol>} for every requested name.
-
-    Real .app bundles produce PNG-backed symbols (extracted via icns or AppKit).
-    Apps that aren't installed get a synthetic coloured initial-disc — guarantees
-    every name in the input is renderable as `<use href="#icon-<slug>">` even
-    when the app is uninstalled or unindexed by Spotlight.
-    """
+def extract_icons(names, refresh=False):
+    cache = {} if refresh else _load_cache()
+    changed = refresh
     out = {}
     for name in names:
         if not name: continue
         slug = icon_slug(name)
-        b64 = None
-        try:
-            app = _find(name)
-            if app:
-                ic = _icns(app)
-                b64 = _sips_b64(ic) if ic else _jxa_b64(app)
-        except (sp.TimeoutExpired, OSError):
-            pass
+        b64 = cache.get(slug)
+        if b64 is None:
+            try:
+                app = _find(name)
+                if app:
+                    ic = _icns(app)
+                    b64 = _sips_b64(ic) if ic else _jxa_b64(app)
+            except (sp.TimeoutExpired, OSError):
+                pass
+            if b64:
+                cache[slug] = b64
+                changed = True
         out[name] = _real_symbol(name, slug, b64) if b64 else _synth_symbol(name, slug)
+    if changed:
+        _save_cache(cache)
     return out
