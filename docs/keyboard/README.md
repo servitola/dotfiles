@@ -158,3 +158,6 @@ Tab/pane navigation in IDEs and terminals.
 ---
 
 *To regenerate all diagrams: `python3 docs/keyboard/generate.py`*
+
+App icons are embedded as base64 PNGs and cached in `icons_cache.json`, which is
+**gitignored**
