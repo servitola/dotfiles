@@ -333,8 +333,6 @@ cask "font-jetbrains-mono-nerd-font"
 cask "fork"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Cross-platform Git credential storage for multiple hosting providers
-cask "git-credential-manager"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
