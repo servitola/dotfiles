@@ -5,6 +5,7 @@ return {
     ["Finder"] = "com.apple.finder",
     ["Firefox"] = "org.mozilla.firefox",
     ["Fork"] = "com.DanPristupov.Fork",
+    ["Forkgram"] = "com.tdesktop.Telegram",
     ["Google Chrome"] = "com.google.Chrome",
     ["Hammerspoon"] = "org.hammerspoon.Hammerspoon",
     ["Heroes of the Storm"] = "com.blizzard.heroesofthestorm",

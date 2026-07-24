@@ -527,18 +527,18 @@ function obj:init()
                             ["Workbot"] = true
                         },
                         ["window.focus_personal"] = {
-                            ["Telegram"] = true, ["Yandex"] = true
+                            ["Forkgram"] = true, ["Yandex"] = true
                         },
                         ["window.focus_comms"] = {
-                            ["Telegram"] = true, ["Messages"] = true,
+                            ["Forkgram"] = true, ["Messages"] = true,
                             ["zoom.us"] = true, ["Yandex Telemost"] = true
                         },
                     }
                     local focusApps = {
                         ["window.hide_all_except_work"] = { "Zap" },
                         ["window.focus_work"] = { "Firefox" },
-                        ["window.focus_personal"] = { "Telegram" },
-                        ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Telegram" },
+                        ["window.focus_personal"] = { "Forkgram" },
+                        ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Forkgram" },
                     }
                     local exceptions = exceptionSets[functionName]
                     local focusList = focusApps[functionName]
@@ -610,7 +610,7 @@ function obj:init()
                                                 hs.eventtap.keyStroke({"cmd", "alt"}, "right", 0)
                                                 hs.timer.doAfter(0.35, function()
                                                     apply_yandex_layout()
-                                                    local tg = hs.application.get("Telegram")
+                                                    local tg = hs.application.get("Forkgram")
                                                     if tg then tg:activate() end
                                                     if fnNameLocal == "window.focus_personal" then
                                                         telegram_select_personal_folder(0.15)
@@ -621,7 +621,7 @@ function obj:init()
                                     else
                                         apply_yandex_layout()
                                     end
-                                elseif appName == "Telegram" then
+                                elseif appName == "Forkgram" then
                                     local hasVideo = false
                                     for _, win in ipairs(app:allWindows()) do
                                         if not win:isStandard() then
