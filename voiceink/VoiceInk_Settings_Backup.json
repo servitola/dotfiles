@@ -277,6 +277,9 @@
     },
     {
       "word": "RTK"
+    },
+    {
+      "word": "Hammerspoon"
     }
   ],
   "wordReplacements": {
@@ -310,6 +313,7 @@
     "Ctrader Dev": "cTraderDev",
     "Ctrader.dev": "cTraderDev",
     "Curren Sprint.": "Current Sprint",
+    "DOTFILS": "dotfiles",
     "DeepLin": "DeepLink",
     "DeepLinKi": "deeplink",
     "DeepLinQ": "deeplink",
@@ -379,7 +383,9 @@
     "clod-кодом": "claude-кодом",
     "cloude code": "Claude Code",
     "dot файлы": "dotfiles",
+    "dotфайлс": "dotfiles",
     "encryption отрест": "encryption at rest",
+    "hamмерспун": "Hammerspoon",
     "kven": "qwen",
     "light.llm": "LiteLLM",
     "my own email": "servitola@gmail.com",
@@ -463,6 +469,7 @@
     "вуаламу": "в ollama",
     "вычлист": "watchlist",
     "гид автокоммит": "git autocommit",
+    "гид игнора": "gitignore",
     "гид-репозиторию,": "git-репозиторий",
     "гид-репозиториями": "git репозиторями",
     "гипер лейауте.": "hyper layout",
@@ -509,6 +516,7 @@
     "лаблетон": "ableton",
     "лази гид": "LazyGit",
     "лази докер": "LazyDocker",
+    "лайбрери": "library",
     "лайтлм": "liteLLLM",
     "лод-коду": "claude-code",
     "макос": "macOS",
@@ -519,6 +527,7 @@
     "мой личный email": "servitola@gmail.com",
     "настройок": "настроек",
     "не Matron,": "nemotron",
+    "недостача": "недосдача",
     "нейм": "name",
     "облитон": "Ableton",
     "окометь": "коммить",
