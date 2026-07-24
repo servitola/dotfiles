@@ -1,3 +1,0 @@
-# AudioRSS: download new videos, remove ads, send to Telegram
-# Runs every 30 minutes; run-once.sh handles lock to prevent parallel runs
-*/30 * * * * /Users/servitola/projects/services/AudioRSS/scripts/run-once.sh
