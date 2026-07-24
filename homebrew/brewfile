@@ -265,6 +265,8 @@ brew "wget"
 brew "wireshark"
 # Generate your Xcode project from a spec file and your folder structure
 brew "xcodegen"
+# Command-line tool to install and switch between multiple versions of Xcode
+brew "xcodes"
 # JavaScript package manager
 brew "yarn"
 # General-purpose lossless data-compression library
