@@ -50,7 +50,7 @@ appWatcherHub.register(function(appName, eventType, appObject)
     if not bundleId then return end
 
     if eventType == hs.application.watcher.activated or eventType == hs.application.watcher.unhidden then
-        if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" then
+        if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" or bundleId == "com.tdesktop.Telegram" then
             setLanguageForApp(bundleId, "Ru Birman")
             setKarabinerProfile("Default")
         elseif bundleId == "com.blizzard.heroesofthestorm" or bundleId == "com.nvidia.gfnpc.mall" then
@@ -61,7 +61,7 @@ appWatcherHub.register(function(appName, eventType, appObject)
             setKarabinerProfile("Default")
         end
     elseif eventType == hs.application.watcher.deactivated then
-        if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" then
+        if bundleId == "ru.keepcoder.Telegram" or bundleId == "one.ayugram.AyuGramDesktop" or bundleId == "com.tdesktop.Telegram" then
             lastApp = nil
         end
     end

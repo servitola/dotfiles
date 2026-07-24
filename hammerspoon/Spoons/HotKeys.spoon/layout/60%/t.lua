@@ -7,8 +7,8 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           t   │              │ t    е    τ  │   │       YouTube — Theatre mode
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪t   │              │              │   │ Telegram
-{ chord =  "⇪t",                            app = "Telegram", window_default_position = "right" },
+--          ⇪t   │              │              │   │ Forkgram
+{ chord =  "⇪t",                            app = "Forkgram", window_default_position = "right" },
 --          ⇧t   │              │ T    Е    Τ  │   │
 --          ⌃t   │              │              │   │         Rider — refactor this
 --               │              │              │   │   Claude Code — show todos
