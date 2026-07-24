@@ -392,6 +392,8 @@ cask "sloth"
 cask "steam"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# Desktop client for Telegram messenger
+cask "telegram-desktop"
 # Unpacks archive files
 cask "the-unarchiver"
 # Open-source BitTorrent client
