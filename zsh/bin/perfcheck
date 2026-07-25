@@ -123,7 +123,7 @@ CC_N=$(ps -axo comm 2>/dev/null | grep -c '^claude$')
 CC_GB=$(ps -axo rss,comm 2>/dev/null | awk '$2=="claude"{s+=$1} END{printf "%.2f",s/1024/1024}')
 if (( CC_N > 12 )); then
     warn "claude sessions" "${CC_N} (${CC_GB} GB) — many; reaper threshold may be too high"; flag_warn
-    note "reaper: ~/projects/dotfiles/cron/scripts/serho-tmux-reaper.py (THRESHOLD_SEC)"
+    note "reaper: ~/projects/dotfiles_private/cron/scripts/serho-tmux-reaper.py (THRESHOLD_SEC)"
 else
     ok "claude sessions" "${CC_N} (${CC_GB} GB)"
 fi
