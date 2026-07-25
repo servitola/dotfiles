@@ -16,14 +16,14 @@
       },
       "models": {
         "coding": {
-          "name": "Rotation: coding (gpt-oss / Kimi / DeepSeek)",
+          "name": "Rotation: coding (Codestral / GLM-4.7 / Gemini 2.5 Flash / Kimi K2.7)",
           "limit": {
             "context": 131072,
             "output": 8192
           }
         },
         "reasoning": {
-          "name": "Rotation: reasoning (Nemotron 120B / DeepSeek / Llama)",
+          "name": "Rotation: reasoning (Nemotron 3 Super/Ultra / Mistral Large / DeepSeek V4 Pro)",
           "limit": {
             "context": 262144,
             "output": 16384
@@ -31,13 +31,6 @@
         },
         "fast": {
           "name": "Rotation: fast (Groq-only, ~1-3s)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
-        "qwen-local": {
-          "name": "Qwen3.5 35B-A3B Local (MoE, ~3B active)",
           "limit": {
             "context": 131072,
             "output": 8192
@@ -61,13 +54,6 @@
           "name": "Rotation: uncensored",
           "limit": {
             "context": 131072,
-            "output": 8192
-          }
-        },
-        "premium": {
-          "name": "Rotation: premium (Polza Claude Sonnet 4 / GPT-4o)",
-          "limit": {
-            "context": 200000,
             "output": 8192
           }
         },
@@ -113,13 +99,6 @@
             "output": 8192
           }
         },
-        "nvidia-kimi": {
-          "name": "NVIDIA Moonshot Kimi K2.5",
-          "limit": {
-            "context": 131072,
-            "output": 16384
-          }
-        },
         "nvidia-deepseek": {
           "name": "NVIDIA DeepSeek V4 Pro (1M ctx)",
           "limit": {
@@ -138,20 +117,6 @@
           "name": "NVIDIA Nemotron 120B (direct)",
           "limit": {
             "context": 131072,
-            "output": 16384
-          }
-        },
-        "polza-claude": {
-          "name": "Polza → Claude Sonnet 4 (paid, best)",
-          "limit": {
-            "context": 200000,
-            "output": 8192
-          }
-        },
-        "polza-gpt4o": {
-          "name": "Polza → GPT-4o (paid)",
-          "limit": {
-            "context": 128000,
             "output": 16384
           }
         }
