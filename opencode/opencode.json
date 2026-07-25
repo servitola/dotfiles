@@ -50,6 +50,20 @@
             "output": 8192
           }
         },
+        "web-search": {
+          "name": "Rotation: web-search (Gemini search / Groq Compound)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "uncensored": {
+          "name": "Rotation: uncensored",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
         "premium": {
           "name": "Rotation: premium (Polza Claude Sonnet 4 / GPT-4o)",
           "limit": {
