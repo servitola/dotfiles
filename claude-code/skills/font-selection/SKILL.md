@@ -47,10 +47,10 @@ Load the smallest set of references that fits the request.
 - **"What can I use instead of X?"** / "X costs too much" → [catalog.md](references/catalog.md);
   every face there has a closest free substitute.
 
-The tree is a poster by Julian Hansen — deliberately witty and deliberately loose. Use it to
-get to a strong candidate fast, then defend or replace that candidate with the catalog and the
-practical layer. When the tree's answer is unlicensable or wrong for the medium, say so and
-name what it stands for ("Bodoni-style high-contrast didone") before offering the substitute.
+The tree is Julian Hansen's 2010 poster — witty, opinionated, and print-era. Use it to reach a
+strong candidate fast, then defend or replace that candidate with the catalog and the practical
+layer. When the tree's answer is unlicensable or wrong for the medium, say so and name what it
+stands for ("Bodoni-style high-contrast didone") before offering the substitute.
 
 ## Verify the pick
 
@@ -75,6 +75,6 @@ Keep it to this shape — a recommendation, not a survey:
 **Runner-up:** <face> — <when it would win instead>
 ```
 
-Name the path taken through the tree in one line when the tree was used ("book → not clueless →
-not the comfort champion → everybody loves Garamond → something bigger → Sabon"). It shows the
+Name the path taken through the tree in one line when the tree was used ("book → not in doubt →
+not the usability champion → everybody loves Garamond → wants a larger eye → Sabon"). It shows the
 reasoning and lets the user re-answer one question to get a different result.

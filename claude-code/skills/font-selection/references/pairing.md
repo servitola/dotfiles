@@ -3,13 +3,30 @@
 Two faces is the working default: one with a voice, one that gets out of the way. Three is a
 system decision and needs a reason (a mono for data, a script for one line).
 
+Before adding a face, map the roles that already exist — heading, body, label, button, table,
+chart, code — and note which face does which. Most "we need a second font" requests are solved by
+giving an existing face a level it was not being used at.
+
+## Start inside a superfamily
+
+The lowest-risk pairing is two members of one superfamily: they share skeleton, cap-height,
+x-height, spacing and motifs by construction, so the pair cannot clash. IBM Plex (Sans / Serif /
+Mono), Source (Sans 3 / Serif 4 / Code), PT (Sans / Serif), Noto, Alegreya (Sans / Serif) all
+qualify and are free.
+
+The cost is a slightly quiet result — the contrast has to come from size, weight and case instead
+of from character. Move to a cross-family pairing when the design needs a voice the superfamily
+cannot produce.
+
 ## The rule that does most of the work
 
 **Contrast the class, share the skeleton.** The pair should differ in category — serif vs sans,
 display vs text, high-contrast vs low — while agreeing on the things the eye measures:
 
 - **x-height** — the lowercase should look the same size at the same point size. Mismatched
-  x-heights make one face look shrunken next to the other.
+  x-heights make one face look shrunken next to the other. In families with an optical-size axis
+  the x-height changes per optical size, so compare display cut against display cut and text
+  against text.
 - **width and rhythm** — a condensed display face over a wide body face reads as two projects.
 - **weight of the stems** — the "colour" of a paragraph should not jump between roles.
 - **era and intent** — a 1780 didone with a 2020 UI grotesque needs a deliberate reason.
