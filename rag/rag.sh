@@ -353,8 +353,8 @@ _rag() {
       _arguments \
         '--collection[source collection]:collection:_rag_collections' \
         '--top-k[retrieved chunks]:n' \
-        '--model[chat model alias]:model:(coder nemotron gpt glm vision groq-llama groq-gpt-oss nvidia-nemotron nvidia-kimi nvidia-deepseek polza-gpt4o polza-claude)' \
-        '-m[chat model alias]:model:(coder nemotron gpt glm vision groq-llama groq-gpt-oss nvidia-nemotron nvidia-kimi nvidia-deepseek polza-gpt4o polza-claude)' \
+        '--model[chat model alias]:model:(coder nemotron gpt glm vision groq-llama groq-gpt-oss nvidia-nemotron nvidia-deepseek nvidia-nemotron-120b sambanova-deepseek coding reasoning fast)' \
+        '-m[chat model alias]:model:(coder nemotron gpt glm vision groq-llama groq-gpt-oss nvidia-nemotron nvidia-deepseek nvidia-nemotron-120b sambanova-deepseek coding reasoning fast)' \
         '--mode[search mode]:mode:(vector fts hybrid)' \
         '--show-context[print retrieved chunks]' \
         '--json[print raw JSON response]' \
