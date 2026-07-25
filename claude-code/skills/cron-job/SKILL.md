@@ -46,7 +46,7 @@ Confirm with the user (skip questions whose answers are obvious from context):
 ### 2. Pick the file
 
 - Existing topic with a file in either `cron_jobs/` dir → append to it. Group related lines under the same file.
-- New topic → create `<topic>.private.cron` in `~/projects/dotfiles_private/cron/cron_jobs/`. `<topic>` matches the project/service name in kebab-case (match neighbour style if related: `rag-improve.cron`, `litellm-smoke.cron`). Group multiple related entries in one file with a header comment — see `~/projects/dotfiles_private/cron/cron_jobs/mma.private.cron`.
+- New topic → create `<topic>.private.cron` in `~/projects/dotfiles_private/cron/cron_jobs/`. `<topic>` matches the project/service name in kebab-case (match neighbour style if related: `rag-improve.cron`, `litellm-smoke.cron`). Group multiple related entries in one file with a header comment — see any `~/projects/dotfiles_private/cron/cron_jobs/<topic>.private.cron`.
 
 ### 3. Write the entry
 
@@ -60,7 +60,7 @@ Format:
 Rules for the entry:
 - Use absolute paths for binaries and scripts. `cron` runs with a minimal `PATH`; `environment.cron` adds `/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin` but anything outside that needs full path or a wrapper.
 - Redirect output unless the script already does it: `>> /path/to/log 2>&1` (inline pattern in `cron/cron_jobs/rag-improve.cron`). Without redirection, cron mails output to a local mailbox the user never reads.
-- For long-running or overlap-sensitive jobs, prefer a wrapper script that does its own `flock` rather than inlining `flock` in the cron line — `~/projects/dotfiles_private/cron/cron_jobs/audiorss.private.cron` calls `run-once.sh` which handles the lock internally.
+- For long-running or overlap-sensitive jobs, prefer a wrapper script that does its own `flock` rather than inlining `flock` in the cron line — a private fragment (`<topic>.private.cron`) can call a `run-once.sh` wrapper that handles the lock internally.
 - Comment above each entry explaining purpose in one line — future-you will thank you.
 
 Cron schedule cheatsheet (5 fields: minute hour day-of-month month day-of-week):
@@ -122,7 +122,7 @@ Recurring reminder — inline the helper in the cron line:
 For reminders with logic (rotation, conditions, dynamic text), write a script for
 the **personal** job in `~/projects/dotfiles_private/cron/scripts/` (only shared
 helpers/infra live in the public `cron/scripts/`) and call it by absolute path from
-the private fragment — see `~/projects/dotfiles_private/cron/scripts/greek-daily-reminder.sh`
+the private fragment — see any `~/projects/dotfiles_private/cron/scripts/<topic>-reminder.sh`
 for the pattern.
 
 **One-shot reminders** ("напомни завтра в 15:00"): cron is recurring by nature,
