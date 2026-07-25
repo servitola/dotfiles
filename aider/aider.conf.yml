@@ -8,8 +8,10 @@
 # ~/projects/dotfiles/litellm/config.yaml.
 #
 # Switch model at invocation time:
-#   aider --model openai/coding          # rotation: Kimi K2.5, DeepSeek V3.2, gpt-oss, GLM
-#   aider --model openai/plus            # huge context (qwen3.6-plus 1M)
+# Aliases below verified against the live proxy 2026-07-25
+# (`curl -s localhost:4000/v1/models`) — re-check there, not here, if one 404s.
+#   aider --model openai/coding          # rotation: Codestral, GLM-4.7-flash, Gemini 2.5 Flash, Kimi K2.7 Code, …
+#   aider --model openai/nvidia-deepseek # huge context (DeepSeek V4 Pro, 1M)
 #   aider --model openai/nemotron        # reasoning (nemotron 120B)
 #   aider --model openai/glm             # fast small tasks
 #   aider --model openai/auto            # rotation across the whole pool
