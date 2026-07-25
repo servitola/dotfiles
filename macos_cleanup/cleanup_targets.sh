@@ -36,6 +36,8 @@ else
 fi
 
 try_clean ~/Library/Application\ Support/Battle.net/Logs "Battle.net Logs"
+try_clean ~/Library/Application\ Support/Blizzard/Heroes\ of\ the\ Storm/Accounts/402727171/2-Hero-1-863611/Replays/Multiplayer "Heroes of the Storm Replays"
+try_clean ~/Library/Application\ Support/Ableton/Live Reports "Live Reports"
 try_clean ~/Library/Application\ Support/Blizzard/Heroes\ of\ the\ Storm/GameLogs "HOTS Logs"
 try_clean ~/Library/Application\ Support/heroic/Cache "Heroic Cache"
 try_clean ~/Library/Application\ Support/heroic/images-cache "Heroic Images Cache"
@@ -79,6 +81,7 @@ try_clean ~/Library/Application\ Support/Claude/Cache/Cache_Data "Claude Cache"
 try_clean ~/Library/Application\ Support/Claude/vm_bundles "Claude Cowork Virtual Machine"
 try_clean ~/Library/Application\ Support/Moises/Cache/Cache_Data "Moises Cache"
 try_clean ~/Library/Application\ Support/Yandex/YandexBrowser/Resources/extension/cache_2 "Yandex Browser Extension Cache"
+try_clean ~/Library/Application\ Support/Yandex.Telemost/log "Yandex Telemost Logs"
 try_clean ~/Library/Application\ Support/Google/GoogleUpdater/crx_cache "Google Updater Cache"
 try_clean ~/Library/Application\ Support/Adobe/Common/Media\ Cache\ Files "Adobe Media Cache"
 
