@@ -17,7 +17,7 @@
 #            knob below has effect; do not pre-wrap unless you want full
 #            control (see "raw SSML" below).
 #   rate   — optional. SSML prosody rate, default "$RATE_DEFAULT" (slightly
-#            slower than natural — feels good for learning material).
+#            slower than natural).
 #            Examples: "-25%", "+10%", "slow", "x-slow", "fast".
 #   ssml   — optional bool. If true, "text" is treated as raw SSML and passed
 #            through unchanged (voice/rate fields ignored). Use this for
