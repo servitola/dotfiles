@@ -187,6 +187,29 @@ Use the Hub page first, generic heuristics second.
 - For multimodal repos, mention `mmproj-*.gguf` separately. The projector is not the main model file.
 - Do not normalize repo-native labels. If the page says `UD-Q4_K_M`, report `UD-Q4_K_M`.
 
+## Will it fit this machine? (offline)
+
+Before recommending a model, check it against the user's actual RAM/VRAM — the Hub tells
+you what *exists*, not what *runs here*. Two facts drive everything:
+
+- **Apple Silicon / unified memory**: plan against **~55% of RAM**, not 100% — macOS, apps,
+  weights and the KV cache all share it. On a 64 GB Mac that's ~35 GB usable.
+- **KV cache grows with context** and is charged *on top of* the weights. Long context on a
+  big model can cost more than the weights themselves (e.g. a 30B at 32K ≈ 14 GB of KV).
+
+Run the offline checker instead of guessing:
+
+```bash
+# capacity + what-fits guide for this machine
+scripts/fit.py --backend apple --ram-gb 64
+
+# rank real candidates (sizes from the HF tree API, step 5) for a code task
+scripts/fit.py --backend apple --ram-gb 64 --models candidates.json --task code
+```
+
+See **[hardware-fit.md](references/hardware-fit.md)** for the formulas (usable memory,
+required memory, fit check, ranking).
+
 ## Extracting available GGUFs from a repo
 
 When the user asks what GGUFs exist, return:
@@ -239,6 +262,7 @@ Source URLs:
 
 ## References
 
+- **[hardware-fit.md](references/hardware-fit.md)** — offline "what runs on this machine": usable-memory heuristics (Apple 55% rule), KV-cache sizing, fit check and candidate ranking (companion script `scripts/fit.py`)
 - **[hub-discovery.md](references/hub-discovery.md)** - URL-only Hugging Face workflows, search patterns, GGUF extraction, and command reconstruction
 - **[advanced-usage.md](references/advanced-usage.md)** — speculative decoding, batched inference, grammar-constrained generation, LoRA, multi-GPU, custom builds, benchmark scripts
 - **[quantization.md](references/quantization.md)** — quant quality tradeoffs, when to use Q4/Q5/Q6/IQ, model size scaling, imatrix
