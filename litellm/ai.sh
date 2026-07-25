@@ -11,16 +11,17 @@
 #   -m, --model   model alias from config.yaml. Direct: coder | nemotron | nemotron-nano | gpt | glm | vision | embed | moderation.
 #                 Rotation groups: auto (default → coding) | coding | reasoning | fast.
 #                 Provider-specific: groq-llama | groq-gpt-oss | groq-compound |
-#                                    nvidia-nemotron | nvidia-nemotron-120b | nvidia-kimi | nvidia-deepseek |
+#                                    nvidia-nemotron | nvidia-nemotron-120b | nvidia-deepseek |
 #                                    github-gpt4o-mini | github-deepseek-r1 |
-#                                    sambanova-deepseek | sambanova-llama |
-#                                    sambanova-minimax | sambanova-gpt-oss |
-#                                    chutes-qwen-thinking | chutes-qwen-coder | chutes-deepseek |
-#                                    chutes-kimi | chutes-glm | chutes-minimax | chutes-qwen-small |
-#                                    together-magistral | together-qwen-thinking | together-qwen-coder |
-#                                    together-deepseek | together-llama | together-minimax |
+#                                    sambanova-deepseek | sambanova-llama | sambanova-gpt-oss |
+#                                    cloudflare-kimi-code | cloudflare-llama | cloudflare-llama-guard |
+#                                    ionet-deepseek | ionet-gpt-oss | ionet-kimi-code | ionet-qwen-coder |
+#                                    cohere-command-a | cohere-north-code |
 #                                    mistral-magistral | mistral-magistral-small | gemini-flash-lite |
-#                                    llm7-devstral | llm7-codestral.
+#                                    llm7-codestral.
+#                 This list drifts. Ground truth is the running proxy:
+#                   curl -s localhost:4000/v1/models -H "Authorization: Bearer $LITELLM_MASTER_KEY"
+#                 (Chutes + Together dropped 2026-07-22, see config.yaml.)
 #   -t, --tokens  max_tokens (default 1500)
 #   -s, --system  system prompt
 #   -f, --file    image file (png/jpg/gif/webp) — auto-selects vision model

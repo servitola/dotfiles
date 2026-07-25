@@ -96,7 +96,7 @@ experimental coding agents. If you change an alias, port, or the `embed` model,
 these break:
 
 - **`ai` CLI + RAG (the real daily consumers):** `ai.sh` (the `ai` command) and `../rag/` — `embed` for every Qdrant collection + chat models for `rag ask/improve/answer-eval`. These two matter day-to-day; everything below is experimental.
-- **Experimental coding agents — default model each picks:** `../opencode/` → `coding` (small `fast`); `../qwen-code/` → `coder-model`; `../aider/` → `coding` (weak `glm`). The `auto` model-group and the `coder`/`coder-model`/`qwen-code` aliases all resolve to **`coding`**. Exceptions: `../mistral-vibe/` defaults to its own `devstral-small`; `../codex/` defaults to its own `gpt-5.4-mini` (litellm only via `-c model_provider=litellm -c model=gpt`). All experiments — not used for real coding work; Claude Code is.
+- **Experimental coding agents — default model each picks:** `../opencode/` → `coding` (small `fast`); `../qwen-code/` → `coder-model`; `../aider/` → `coding` (weak `glm`). The `auto` model-group and the `coder`/`coder-model`/`qwen-code` aliases all resolve to **`coding`**. Exceptions: `../mistral-vibe/` defaults to its own `devstral-small`; `../codex/` defaults to its own `gpt-5.6-terra` (litellm only via `-c model_provider=litellm -c model=gpt`). All experiments — not used for real coding work; Claude Code is.
 - **Other CLIs / shell:** `../zsh/` `functions/qwen.sh` (`qm`), `../mistral-vibe/` (`vibe`), `../aichat/`.
 - **Voice/TTS:** `../voiceink/` via the `voiceink-local` shim (:8178), the `greek-tts` skill via `tts-azure`, `piper-shim/` via `tts-piper` (:8177).
 
