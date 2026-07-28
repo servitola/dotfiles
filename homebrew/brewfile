@@ -123,6 +123,8 @@ brew "id3v2"
 brew "ideviceinstaller"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
+# Enhanced version of john, a UNIX password cracker
+brew "john-jumbo"
 # Small Clojure interpreter, linter and formatter
 brew "joker"
 # Lightweight and flexible command-line JSON processor
