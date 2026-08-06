@@ -8,7 +8,7 @@ hyper = { "right_command", "right_control", "right_option", "right_shift" }
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 local log = hs.logger.new('HotKeys', 'info')
 local vpnGlobalProtect = dofile(spoonPath .. "vpn_globalprotect.lua")
-local yandexSearch = dofile(spoonPath .. "yandex_search.lua")
+local browserSearch = dofile(spoonPath .. "browser_search.lua")
 local systemHealth = dofile(spoonPath .. "system_health.lua")
 local clipboardLlm = dofile(spoonPath .. "clipboard_llm.lua")
 
@@ -72,9 +72,9 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
     end
 end
 
-local function yandex_title_has_video(title)
+local function browser_title_has_video(title)
     if not title or title == "" then return false end
-    for _, m in ipairs(yandex_video_title_markers) do
+    for _, m in ipairs(browser_video_title_markers) do
         if title:find(m, 1, true) then return true end
     end
     return false
