@@ -410,6 +410,8 @@ cask "ukelele"
 cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
+# Web browser with built-in email client focusing on customization and control
+cask "vivaldi"
 # Multimedia player
 cask "vlc"
 # Network protocol analyzer
