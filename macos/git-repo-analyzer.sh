@@ -1,9 +1,6 @@
 #!/bin/zsh
-# Git Repository Finder and Pruner - Aggressive Mode
-# Finds ALL git repositories on your Mac, shows sizes, and offers cleanup options
-# No size limits, no timeouts - comprehensive scan with AGGRESSIVE pruning
+# Run with --help for what this does and what aggressive pruning removes.
 
-# Colors
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -12,7 +9,6 @@ CYAN='\033[0;36m'
 BOLD='\033[1m'
 NC='\033[0m'
 
-# Configuration - Search ALL common locations
 SEARCH_DIRS=(
     "$HOME"
     "$HOME/projects"
@@ -28,7 +24,7 @@ SEARCH_DIRS=(
     "/Users/servitola/projects"
 )
 
-MIN_SIZE_MB=0  # No minimum - show ALL repos
+MIN_SIZE_MB=0
 
 print_header() {
     printf "\n${BLUE}${BOLD}━━━ %s ━━━${NC}\n" "$1"
@@ -50,7 +46,6 @@ print_section() {
     printf "\n${CYAN}${BOLD}%s${NC}\n" "$1"
 }
 
-# Find all git repositories
 find_git_repos() {
     local repos=()
 
@@ -69,20 +64,16 @@ find_git_repos() {
         fi
     done
 
-    # Remove duplicates and print
     printf "%s\n" "${repos[@]}" | sort -u
 }
 
-# Get repository size
 get_repo_size() {
     local git_dir="$1"
     local repo_path="${git_dir%/.git}"
 
-    # Calculate .git folder size
     local git_size=$(du -sm "$git_dir" 2>/dev/null | cut -f1)
     [ -z "$git_size" ] && git_size=0
 
-    # Calculate working tree size (excluding .git)
     local working_size=$(du -sm "$repo_path" --exclude='.git' 2>/dev/null | cut -f1)
     [ -z "$working_size" ] && working_size=0
 
@@ -91,42 +82,33 @@ get_repo_size() {
     echo "$total_size $git_size $working_size"
 }
 
-# Get git status info
 get_repo_status() {
     local repo_path="$1"
 
     cd "$repo_path" 2>/dev/null || return
 
-    # Check if valid git repo
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         echo "invalid"
         return
     fi
 
-    # Get branch info
     local branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
 
-    # Check for uncommitted changes
     local changes=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
 
-    # Get last commit date
     local last_commit=$(git log -1 --format="%cr" 2>/dev/null || echo "unknown")
     local last_commit_date=$(git log -1 --format="%ci" 2>/dev/null | cut -d' ' -f1)
 
-    # Count branches
     local branch_count=$(git branch 2>/dev/null | wc -l | tr -d ' ')
 
-    # Get remote count
     local remote_count=$(git remote 2>/dev/null | wc -l | tr -d ' ')
 
-    # Get remote URL (first one)
     local remote_url=$(git remote get-url origin 2>/dev/null | sed 's/.*github.com[:/]/github.com\//' | cut -d'/' -f1-2)
     [ -z "$remote_url" ] && remote_url="no-remote"
 
     echo "$branch|$changes|$last_commit|$branch_count|$remote_count|$remote_url|$last_commit_date"
 }
 
-# Aggressive prune git repository
 prune_repo_aggressive() {
     local repo_path="$1"
     local dry_run="${2:-false}"
@@ -140,42 +122,28 @@ prune_repo_aggressive() {
 
     print_info "Aggressively pruning: $repo_path"
 
-    # Step 1: Expire ALL reflog entries immediately (aggressive)
     git reflog expire --expire=now --expire-unreachable=now --all > /dev/null 2>&1
-
-    # Step 2: Aggressive garbage collection
     git gc --aggressive --prune=now > /dev/null 2>&1
-
-    # Step 3: Prune stale remotes
     git remote prune origin > /dev/null 2>&1
     git fetch --prune > /dev/null 2>&1
-
-    # Step 4: Clean packed refs
     git pack-refs --all > /dev/null 2>&1
-
-    # Step 5: Repack with best compression (aggressive)
     git repack -a -d --depth=250 --window=250 > /dev/null 2>&1
-
-    # Step 6: Prune again after repack
     git prune --expire=now > /dev/null 2>&1
 
     print_info "✓ Aggressively pruned: $repo_path"
 }
 
-# Clean git LFS cache aggressively
 clean_lfs_cache_aggressive() {
     local repo_path="$1"
 
     cd "$repo_path" 2>/dev/null || return 1
 
     if git lfs version > /dev/null 2>&1; then
-        # Aggressive LFS prune - remove all unreferenced LFS objects
         git lfs prune --verify --recent "never" --verbose > /dev/null 2>&1
         print_info "  LFS cache aggressively cleaned"
     fi
 }
 
-# Main analysis
 analyze_repos() {
     local repos=("$@")
     local total_size=0
@@ -194,13 +162,11 @@ analyze_repos() {
         local repo_path="${git_dir%/.git}"
         local repo_name="${repo_path#$HOME}"
 
-        # Get sizes
         local sizes=($(get_repo_size "$git_dir"))
         local total=${sizes[0]}
         local git_size=${sizes[1]}
         local working_size=${sizes[2]}
 
-        # Get status
         local repo_status=$(get_repo_status "$repo_path")
         if [ "$repo_status" = "invalid" ]; then
             continue
@@ -208,15 +174,12 @@ analyze_repos() {
 
         IFS='|' read -r branch changes last_commit branch_count remote_count remote_url last_commit_date <<< "$repo_status"
 
-        # Add to totals
         total_size=$((total_size + total))
         total_git_size=$((total_git_size + git_size))
         valid_count=$((valid_count + 1))
 
-        # Store data for sorting
         repo_data+=("$total|$repo_name|$total|$git_size|$working_size|$last_commit|$branch_count|$remote_count|$remote_url|$last_commit_date")
 
-        # Print row (truncate long paths)
         local display_name="${repo_name:0:64}"
         local display_url="${remote_url:0:24}"
         printf "%-65s %10s %10s %10s %12s %8s %15s %25s\n" \
@@ -235,7 +198,6 @@ analyze_repos() {
     print_warning "Estimated space savings (aggressive): ~$((total_git_size * 40 / 100))MB (40% of .git size)"
     echo
 
-    # Sort by size and show top 20
     if [ ${#repo_data[@]} -gt 0 ]; then
         print_header "Top 20 Largest Repositories (by .git size)"
         printf "${BOLD}%-65s %10s %10s %15s %25s${NC}\n" "Repository" "Total" ".git" "Last Commit" "Remote"
@@ -250,14 +212,12 @@ analyze_repos() {
         echo
     fi
 
-    # Sort by last commit date to show stale repos
     print_header "Potentially Stale Repositories (no commits in >6 months)"
     printf "${BOLD}%-65s %10s %15s %25s${NC}\n" "Repository" ".git" "Last Commit" "Remote"
     printf "%s\n" "$(printf '=%.0s' {120})"
 
     local stale_count=0
     printf "%s\n" "${repo_data[@]}" | sort -t'|' -k10 | head -20 | while IFS='|' read -r size name total git_size working last_commit branch_count remote_count remote_url last_commit_date; do
-        # Check if older than 6 months (approx 180 days)
         local commit_epoch=$(date -d "$last_commit_date" +%s 2>/dev/null || echo "0")
         local now_epoch=$(date +%s)
         local days_old=$(( (now_epoch - commit_epoch) / 86400 ))
@@ -272,7 +232,6 @@ analyze_repos() {
     done
     echo
 
-    # Show repos with no remote
     print_header "Repositories Without Remote (local only)"
     printf "${BOLD}%-65s %10s %10s${NC}\n" "Repository" "Total" ".git"
     printf "%s\n" "$(printf '=%.0s' {90})"
@@ -285,7 +244,6 @@ analyze_repos() {
     echo
 }
 
-# Aggressive prune all repositories
 prune_all_repos_aggressive() {
     local repos=("$@")
     local dry_run="${1:-false}"
@@ -310,7 +268,6 @@ prune_all_repos_aggressive() {
             clean_lfs_cache_aggressive "$repo_path"
             pruned_count=$((pruned_count + 1))
 
-            # Calculate new size
             local new_sizes=($(get_repo_size "$git_dir"))
             local new_git_size=${new_sizes[1]}
             space_after=$((space_after + new_git_size))
@@ -335,7 +292,6 @@ prune_all_repos_aggressive() {
     fi
 }
 
-# Show help
 show_help() {
     cat << EOF
 ${BOLD}Git Repository Finder and Pruner - Aggressive Mode${NC}
@@ -385,7 +341,6 @@ ${BOLD}Search Locations:${NC}
 EOF
 }
 
-# Parse arguments
 DRY_RUN=false
 DO_PRUNE=false
 TOP_N=0
@@ -420,14 +375,12 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-# Main execution
 main() {
     print_header "Git Repository Analyzer - Aggressive Mode"
     print_info "Comprehensive scan of all git repositories"
     print_info "This may take several minutes..."
     echo
 
-    # Find all repositories
     local repos=($(find_git_repos))
 
     if [ ${#repos[@]} -eq 0 ]; then
@@ -438,10 +391,8 @@ main() {
     print_info "Found ${#repos[@]} git repositories"
     echo
 
-    # Analyze repositories
     analyze_repos "${repos[@]}"
 
-    # Prune if requested
     if [ "$DO_PRUNE" = "true" ]; then
         echo
         prune_all_repos_aggressive "${repos[@]}" "$DRY_RUN"
