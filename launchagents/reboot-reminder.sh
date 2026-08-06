@@ -1,7 +1,7 @@
 #!/bin/zsh
 # reboot-reminder — native macOS notification nudging a reboot when uptime is high.
 # A reboot resets the WindowServer/loginwindow creep that builds up over long
-# uptimes (see ~/projects/serho_topics/перформанс-макбука/AGENTS.md).
+# uptimes.
 #
 # Run daily by the com.servitola.reboot-reminder LaunchAgent; self-gates on uptime
 # so it only fires when there's actually something to gain (≥ THRESHOLD_DAYS).
