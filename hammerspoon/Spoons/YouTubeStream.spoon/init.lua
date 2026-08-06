@@ -1,7 +1,6 @@
 local obj = {}
 obj.__index = obj
 
--- Metadata
 obj.name = "YouTubeStream"
 obj.version = "1.0"
 obj.author = "servitola"
@@ -9,7 +8,6 @@ obj.homepage = "https://github.com/Hammerspoon/Spoons"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.videoId = "jfKfPfyJRdk"
 
--- Store webview object
 obj.webview = nil
 
 -- Window positioning constants from Windows.spoon/config.lua
@@ -19,7 +17,6 @@ local vertical_line = 0.73
 local horizontal_line = 0.70
 local rightX = 1 - margin / 1.5
 
--- HTML template for the embedded YouTube player
 local function getHtmlContent(videoId)
     return [[<!DOCTYPE html>
 <html>
@@ -95,7 +92,6 @@ local function getHtmlContent(videoId)
 </html>]]
 end
 
--- Internal function to create the webview
 function obj:createWebview()
     local screen = hs.screen.mainScreen()
     local frame = screen:frame()
@@ -106,11 +102,9 @@ function obj:createWebview()
     local width = frame.w * (rightX - vertical_line)
     local height = frame.h * (1 - horizontal_line - spacing)
 
-    -- Calculate aspect ratio for video (16:9)
     local aspect_ratio = 9/16
     local max_available_height = frame.h * (1 - horizontal_line - spacing * 2)
 
-    -- Adjust height and width based on aspect ratio
     if height > max_available_height then
         height = max_available_height
         width = height / aspect_ratio
@@ -120,14 +114,12 @@ function obj:createWebview()
         return self.webview
     end
 
-    -- Create and configure webview
     self.webview = hs.webview.new({x = x, y = y, w = width, h = height})
     self.webview:windowStyle({"titled", "closable", "resizable"})
     self.webview:shadow(true)
     self.webview:allowTextEntry(true)
     self.webview:windowTitle("YouTube Stream")
 
-    -- Handle window closing
     self.webview:windowCallback(function(action)
         if action == "closing" then
             -- Stop the stream by loading a blank page before destroying
@@ -143,16 +135,13 @@ function obj:createWebview()
         return false
     end)
 
-    -- Load the embedded YouTube player HTML
     self.webview:html(getHtmlContent(self.videoId))
 
     return self.webview
 end
 
--- Toggle the webview visibility
 function obj:toggle()
     if self.webview and self.webview:hswindow() and self.webview:hswindow():isVisible() then
-        -- If window is visible, hide it and pause the stream
         self.webview:evaluateJavaScript("document.querySelector('iframe').contentWindow.postMessage('{\"event\":\"command\",\"func\":\"pauseVideo\",\"args\":[]}', '*')")
         hs.timer.doAfter(0.1, function()
             if self.webview then
@@ -160,10 +149,8 @@ function obj:toggle()
             end
         end)
     else
-        -- If window is hidden or doesn't exist, show it
         self:show()
 
-        -- If window exists and was previously hidden, resume playback
         local hswin = self.webview and self.webview:hswindow()
         if hswin and not hswin:isVisible() then
             hs.timer.doAfter(0.5, function()
@@ -175,7 +162,6 @@ function obj:toggle()
     end
 end
 
--- Show the webview
 function obj:show()
     if self.webview then
         self.webview:show()
@@ -185,7 +171,6 @@ function obj:show()
     end
 end
 
--- Main function to open or focus the YouTube stream
 function obj:openYouTubeStream()
     self:show()
 end
