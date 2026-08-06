@@ -29,7 +29,7 @@ return {
 --               │              │              │   │        VSCode — open command palette
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
---         ⌥⌘p   │              │              │   │        Yandex — print using system dialog
+--         ⌥⌘p   │              │              │   │        Vivaldi — print using system dialog
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃p   │              │              │   │
 --        ⇪⇧⌥p   │              │              │   │

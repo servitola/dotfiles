@@ -38,7 +38,7 @@ return {
 --        ⇪⌃⌥g   │              │              │   │
 --        ⇪⌃⌘g   │              │              │   │
 --        ⇪⌥⌘g   │              │              │   │
---        ⇧⌃⌥g   │              │              │   │ 🌐 Yandex — focus dotfiles GitHub tab
+--        ⇧⌃⌥g   │              │              │   │ 🌐 Vivaldi — focus dotfiles GitHub tab
 --        ⇧⌃⌘g   │              │              │   │
 --        ⇧⌥⌘g   │              │              │   │
 --        ⌃⌥⌘g   │              │              │   │

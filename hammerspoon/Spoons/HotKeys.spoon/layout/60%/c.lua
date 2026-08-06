@@ -34,7 +34,7 @@ return {
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
 --               │              │              │   │        Finder — copy the path of the file
 --               │              │              │   │        VSCode — introduce constant
---               │              │              │   │        Yandex — inspect elements
+--               │              │              │   │        Vivaldi — inspect elements
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃c   │              │              │   │
 --        ⇪⇧⌥c   │              │              │   │

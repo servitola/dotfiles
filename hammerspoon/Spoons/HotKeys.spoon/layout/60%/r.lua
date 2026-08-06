@@ -33,7 +33,7 @@ return {
 --     ⇧⌥r ⇧⌥r   │              │s̊    ы̊    no│   │ double to add sign to previous symbol
 --         ⇧⌘r   │              │              │   │         Mail — reply all to email
 --               │              │              │   │        Rider — replace in files
---               │              │              │   │       Yandex — clear cache and reload page
+--               │              │              │   │       Vivaldi — clear cache and reload page
 --         ⌃⌥r   │              │              │   │ WebStorm
 { chord =  "⌃⌥r",                           app = "WebStorm" },
 --         ⌃⌘r   │              │              │   │        Rider — rerun tests

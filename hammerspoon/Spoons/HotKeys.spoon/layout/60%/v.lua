@@ -8,7 +8,7 @@ return {
 --           v   │              │ v    м    ω  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪v   │     F19      │              │   │          ↓
-{ chord =  "F19",                    app = "Yandex" },
+{ chord =  "F19",                    app = "Vivaldi" },
 --          ⇧v   │              │ V    М    Ω  │   │
 --          ⌃v   │              │              │   │      Terminal — paste
 --               │              │              │   │   Claude Code — paste
@@ -40,7 +40,7 @@ return {
 --        ⇪⌃⌥v   │              │              │   │
 --        ⇪⌃⌘v   │              │              │   │
 --        ⇪⌥⌘v   │              │              │   │
---        ⇧⌃⌥v   │              │              │   │      🌐 Yandex — focus playing YouTube tab
+--        ⇧⌃⌥v   │              │              │   │      🌐 Vivaldi — focus playing YouTube tab
 --        ⇧⌃⌘v   │              │              │   │
 --        ⇧⌥⌘v   │              │              │   │
 --        ⌃⌥⌘v   │              │              │   │

@@ -23,7 +23,7 @@ return {
 --         ⇧⌘j   │              │              │   │      Mail — move to Junk
 --         ⌃⌥j   │              │              │   │
 --         ⌃⌘j   │              │              │   │
---         ⌥⌘j   │              │              │   │    Yandex — JavaScript console
+--         ⌥⌘j   │              │              │   │    Vivaldi — JavaScript console
 --               │              │              │   │      Mail — erase junk mail
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃j   │              │              │   │

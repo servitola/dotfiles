@@ -25,7 +25,7 @@ return {
 --         ⌃⌥u   │              │              │   │
 --         ⌃⌘u   │              │              │   │         Music — show/hide lyrics panel
 --         ⌥⌘u   │              │              │   │         Music — Show playing next queue
---               │              │              │   │        Yandex — view source code
+--               │              │              │   │        Vivaldi — view source code
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃u   │              │              │   │
 --        ⇪⇧⌥u   │              │              │   │

@@ -19,6 +19,7 @@ return {
     ["System Settings"] = "com.apple.systempreferences",
     ["Telegram"] = "ru.keepcoder.Telegram",
     ["Visual Studio Code"] = "com.microsoft.VSCode",
+    ["Vivaldi"] = "com.vivaldi.Vivaldi",
     ["VoiceInk"] = "com.prakashjoshipax.VoiceInk",
     ["WebStorm"] = "com.jetbrains.WebStorm",
     ["Workbot"] = "com.workbot2.app",
