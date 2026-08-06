@@ -37,7 +37,6 @@ from config import FKEY_MAPPING, MOD_DISPLAY
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
 
-# Canonical format
 CANONICAL_COLS = [17, 32, 47, 51]   # positions of │ separators on chord rows
 CANONICAL_HDR_TAIL_DASHES = 36       # dashes after "app — function "
 CANONICAL_BOX_CAP_DASHES = 5         # ╭—————╮
@@ -46,12 +45,10 @@ CANONICAL_BOX_CAP_DASHES = 5         # ╭—————╮
 STUB_FILES = {"shift.lua", "command.lua", "control.lua", "option.lua",
               "capslock.lua", "backslash.lua", "backspace.lua"}
 
-# Severities
 ERROR, WARN, INFO = "ERROR", "WARN", "INFO"
 COLOR = {ERROR: "\033[31m", WARN: "\033[33m", INFO: "\033[36m", "_": "\033[0m",
          "dim": "\033[90m", "bold": "\033[1m"}
 
-# ─── regex ──────────────────────────────────────────────────────────────────
 CHORD_ROW_RE = re.compile(
     # `\s*` (not `\s+`): max-width 12-char chords leave no padding after `--`
     r'^--\s*([⇪⇧⌃⌥⌘⇥]*(?:[a-zA-Z0-9~\-=\[\]\;\',./` ⎋↩␣←→↑↓]|F\d+|num\d+)+)'
@@ -66,7 +63,6 @@ BOX_CAP_RE = re.compile(r'^--\s+╭([—\-]+)╮')
 # F-key/num convention: ⇪key in ASCII row's karabiner column = F-key sent
 F_CHORD = re.compile(r'^(⇧?⌃?⌥?⌘?)(F\d+|num\d+)$')
 
-# ─── findings ──────────────────────────────────────────────────────────────
 class Findings:
     def __init__(self):
         self.items = []  # (severity, file, line, code, msg, fix_hint)
@@ -79,7 +75,6 @@ class Findings:
     def has_errors(self): return any(s == ERROR for s, *_ in self.items)
 
 
-# ─── per-file parsing ──────────────────────────────────────────────────────
 def parse_file(path):
     """Return dict: {lines, header_idx, ascii_rows, actives, header_cols}."""
     with open(path, encoding="utf-8") as f:
@@ -112,7 +107,6 @@ def parse_file(path):
             "header_cols": header_cols, "ascii_rows": ascii_rows, "actives": actives}
 
 
-# ─── checks ────────────────────────────────────────────────────────────────
 def check_format(state, findings):
     f = state["path"]
     name = os.path.basename(f)
@@ -187,7 +181,6 @@ def check_coverage(state, findings):
                 mod_str = "".join(MOD_DISPLAY[m] for m in ("hyper", "shift", "ctrl", "alt", "cmd")
                                   if m in implicit_mods) + mod_prefix
                 src_chord = mod_str + src_key
-                # Hint with concrete chord
                 hint = (f"add `-- {src_chord} │ {chord} │ … │ … │ ↓` row "
                         f"in {src_key}.lua (or this file if same key)")
             else:
@@ -201,7 +194,6 @@ def check_coverage(state, findings):
                          f"with `{chord}` in karabiner column",
                          hint)
             continue
-        # Exact match
         if chord in ascii_chords:
             continue
         # Try whitespace-insensitive match
@@ -235,7 +227,6 @@ def _normalize_karabiner_value(s):
     """Canonical form for comparing ASCII karabiner col with karabiner.json output."""
     if not s: return ""
     s = re.sub(r"\s+", "", s.strip())
-    # Whole-token alias
     if s in _CONSUMER_NAME_TO_SYM:
         return _CONSUMER_NAME_TO_SYM[s]
     # Split modifier prefix from key body, then alias the body
@@ -402,7 +393,6 @@ def check_dead_bindings(state, findings, karabiner_strict):
                      "move binding to a non-intercepted chord OR remove the Karabiner rule")
 
 
-# ─── output ────────────────────────────────────────────────────────────────
 def _color(s, c): return f"{COLOR[c]}{s}{COLOR['_']}" if sys.stdout.isatty() else s
 
 
@@ -416,7 +406,6 @@ def render_report(findings):
     summary = defaultdict(int)
     for sev, *_ in findings.items:
         summary[sev] += 1
-    # Per-file
     for path, items in sorted(by_file.items()):
         rel = os.path.relpath(path)
         items.sort(key=lambda x: (x[1], x[2]))
@@ -427,7 +416,6 @@ def render_report(findings):
             print(f"  {tag} [{code}] {loc}  {msg}")
             if hint:
                 print(_color(f"         ↳ {hint}", "dim"))
-    # Footer
     parts = []
     if summary[ERROR]: parts.append(_color(f"{summary[ERROR]} errors", ERROR))
     if summary[WARN]:  parts.append(_color(f"{summary[WARN]} warnings", WARN))
@@ -435,7 +423,6 @@ def render_report(findings):
     print("\n" + ", ".join(parts) if parts else "")
 
 
-# ─── main ──────────────────────────────────────────────────────────────────
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--files", nargs="*", help="specific *.lua basenames (default: all)")
