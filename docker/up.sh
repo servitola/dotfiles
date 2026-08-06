@@ -14,7 +14,7 @@ if [ -f "$HOME/.config/openai_key.sh" ]; then
 fi
 
 REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.txt"
-# Optional gitignored overlay (symlink into dotfiles_private) for stacks
+# Optional local overlay for stacks
 # that should not be listed in the public registry.
 PRIVATE_REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.private.txt"
 
