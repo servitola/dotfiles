@@ -85,9 +85,13 @@
       "selectedAIModel": "openai/gpt-oss-120b",
       "selectedAIProvider": "Groq",
       "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
+      "selectedPrompt": "00000000-0000-0000-0000-000000000001",
       "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
       "useClipboardContext": false,
-      "useScreenCapture": false,
+      "useScreenCapture": true,
       "useSelectedTextContext": false
     },
     {
@@ -107,6 +111,9 @@
       "selectedAIModel": "openai/gpt-oss-120b",
       "selectedAIProvider": "Groq",
       "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
       "selectedPrompt": "00000000-0000-0000-0000-000000000001",
       "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
       "useClipboardContext": false,
@@ -130,6 +137,9 @@
       "selectedAIModel": "openai/gpt-oss-120b",
       "selectedAIProvider": "Groq",
       "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
       "selectedPrompt": "00000000-0000-0000-0000-000000000003",
       "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
       "triggerGroups": [
@@ -213,6 +223,9 @@
       "selectedAIModel": "openai/gpt-oss-120b",
       "selectedAIProvider": "Groq",
       "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
       "selectedPrompt": "00000000-0000-0000-0000-000000000004",
       "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
       "useClipboardContext": false,
@@ -236,8 +249,42 @@
       "selectedAIModel": "openai/gpt-oss-120b",
       "selectedAIProvider": "Groq",
       "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
       "selectedPrompt": "00000000-0000-0000-0000-000000000005",
       "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
+      "useClipboardContext": false,
+      "useScreenCapture": false,
+      "useSelectedTextContext": false
+    },
+    {
+      "autoSendKey": "none",
+      "customCommand": {
+        "command": "source ~/.config/openai_key.sh >/dev/null 2>&1; /opt/homebrew/bin/uv run --directory /Users/servitola/projects/serho python scripts/say.py"
+      },
+      "icon": {
+        "kind": "symbol",
+        "value": "paperplane.fill"
+      },
+      "id": "10000000-0000-0000-0000-000000000010",
+      "isAIEnhancementEnabled": false,
+      "isDefault": false,
+      "isEnabled": true,
+      "isRealtimeTranscriptionEnabled": true,
+      "isTextFormattingEnabled": false,
+      "name": "Серго",
+      "outputMode": "customCommand",
+      "selectedAIModel": "openai/gpt-oss-120b",
+      "selectedAIProvider": "Groq",
+      "selectedLanguage": "auto",
+      "selectedLanguages": [
+        "auto"
+      ],
+      "selectedTranscriptionModelName": "parakeet-tdt-0.6b-v3",
+      "triggerWords": [
+        "серго"
+      ],
       "useClipboardContext": false,
       "useScreenCapture": false,
       "useSelectedTextContext": false
@@ -255,7 +302,7 @@
       "modifierFlagsRawValue": 655360
     }
   },
-  "version": "2.0",
+  "version": "2.1",
   "vocabularyWords": [
     {
       "word": "tmux"
@@ -280,6 +327,33 @@
     },
     {
       "word": "Hammerspoon"
+    },
+    {
+      "word": "Рената"
+    },
+    {
+      "word": "OpenCode"
+    },
+    {
+      "word": "Ableton"
+    },
+    {
+      "word": "VoiceInk"
+    },
+    {
+      "word": "Cloudflare WARP"
+    },
+    {
+      "word": "Gitea"
+    },
+    {
+      "word": "Forgejo"
+    },
+    {
+      "word": "SeaweedFS"
+    },
+    {
+      "word": "Headscale"
     }
   ],
   "wordReplacements": {
@@ -310,6 +384,7 @@
     "Cload desktop": "Claude Desktop",
     "Cloud Code": "cloude code",
     "Cloud.md": "Claude.md",
+    "CloudMD": "claude.md",
     "workproject Dev": "workprojectDev",
     "workproject.dev": "workprojectDev",
     "Curren Sprint.": "Current Sprint",
@@ -318,13 +393,17 @@
     "DeepLinKi": "deeplink",
     "DeepLinQ": "deeplink",
     "DeepLinx": "deeplink",
+    "DeepSick": "DeepSeek",
     "DevYenv": "DevEnv",
+    "Dotfile": "dotfiles",
     "EILM": "AI/LLM",
     "ENIT": "init",
     "ETDLP": "yt-dlp",
     "FZESH": "в zsh",
+    "Fabl": "Fable",
     "Fall.ai": "fal.ai",
     "Firmerspoon": "Hammerspoon",
+    "GPY": "JPY",
     "GrooveBox": "GruvBox",
     "Hammer Spoon": "Hammerspoon",
     "Hammer, Spoon": "Hammerspoon",
@@ -340,9 +419,12 @@
     "N8M": "N8N",
     "NoGet": "NuGet",
     "Nougat": "Nuget",
+    "O-Lama": "Ollama",
+    "OpenRotory": "OpenRouter",
     "OrpStack": "OrbStack",
     "PACE-САЖ": "по ssh",
     "PSAGE": "по SSH",
+    "Pastgress": "Postgres",
     "Punta Switcher": "Punto Switcher",
     "QN": "qwen",
     "QN1": "qwen 1",
@@ -368,6 +450,8 @@
     "UTDLP": "yt-dlp",
     "UTrack": "YoutTrack",
     "Utrek": "YouTrack",
+    "V-Waldi": "Vivaldi",
+    "VD-сины": "vdsina",
     "VintSurf": "Windsurf",
     "Visper": "Whisper",
     "Voice Inc.": "VoiceInk",
@@ -385,42 +469,58 @@
     "dot файлы": "dotfiles",
     "dotфайлс": "dotfiles",
     "encryption отрест": "encryption at rest",
+    "forgeo-runner": "forgejo-runner",
     "hamмерспун": "Hammerspoon",
     "kven": "qwen",
     "light.llm": "LiteLLM",
+    "liteLLLM": "LiteLLM",
     "my own email": "servitola@gmail.com",
     "nematron": "nemotron",
+    "open code": "OpenCode",
+    "open код": "OpenCode",
     "qwen кодер": "qwen code",
     "shelly-команда": "shell-команда",
     "slash": "/",
     "voice inc": "VoiceInk",
+    "voice ink": "VoiceInk",
     "АУС токен": "auth token",
     "АФДВИД": "affidavit",
     "Абблетоне": "Ableton",
+    "Адбшл": "adb shell",
     "Апк": "apk",
     "Асинг": "async",
     "Бод": "Бот",
+    "ВПС": "VPS",
+    "Варп Claude Флэр": "Cloudflare WARP",
     "Варпом": "Warp",
     "Венус 11": "Windows 11",
     "Выйдай": "Выдай",
+    "ГИТ": "git",
     "ГИТу": "git",
     "ГУИ": "GUI",
     "Генелек": "Genelec",
     "Димукс": "Demucs",
+    "Дотфайлс Прайвот": "dotfiles_private",
     "Евробанк": "Eurobank",
     "Еза": "Eza",
+    "КПУ": "CPU",
     "Квен": "qwen",
     "Квена": "Qwen",
+    "Клауд Флэр Варп": "Cloudflare WARP",
     "Клод": "Claude",
     "Клода": "Claude",
     "Клоде": "Claude",
     "Клодом": "Claude",
+    "Крион": "Креон",
     "Макуайсовская": "macos",
     "Мистраль Вайп": "Mistral Vibe",
     "НуГет": "NuGet",
     "Предиагностируй": "Продиагностируй",
     "ССАЖ": "ssh",
+    "Серхо": "serho",
     "Сибралтар": "cBraltar",
+    "ТЛС": "TLS",
+    "ТМУКС": "tmux",
     "Тимукс": "tmux",
     "Туи": "tui",
     "Хаммерспун": "Hammerspoon",
@@ -429,6 +529,7 @@
     "Хероик": "Heroic",
     "Хомбрю": "Homebrew",
     "Хоумбрю": "Homebrew",
+    "Шварца-Леона": "Шварца-Лиона",
     "Эблтон": "Ableton",
     "Энит": "init",
     "Ютрек": "YouTrack",
@@ -441,6 +542,8 @@
     "аидер": "aider",
     "аичат": "aichat",
     "айтерм": "iTerm",
+    "альхомедии": "AlfaMega",
+    "амалет": "amoled",
     "аннипро 2": "AnnePro2",
     "афодавид": "affidavit",
     "безиндикатор": "busy indicator",
@@ -460,10 +563,12 @@
     "вводали": "попадали",
     "веб шторм": "WebStorm",
     "веб-серч-интерцепшн": "web-search-interception",
+    "вивальди браузер": "Vivaldi браузер",
     "виндсерф": "Windsurf",
     "винсерф": "Windsurf",
     "войс инк": "voiceInk",
     "ворк 3": "worktree",
+    "ворк три": "worktree",
     "воркбот": "workbot",
     "ворсии": "версии",
     "вуаламу": "в ollama",
@@ -481,6 +586,7 @@
     "гуй": "GUI",
     "дбринс": "JetBrains",
     "дбрыз": "JetBrains",
+    "диуреть": "диуретик",
     "доггер контейнера": "docker контейнера",
     "докер": "docker",
     "докер контейнером": "docker контейнером",
@@ -500,7 +606,10 @@
     "залогинин": "залогинен",
     "зэш": "zsh",
     "иина": "IINA",
+    "икопорт": "ИК-порт",
+    "икутии": "Якутии",
     "казино для белья": "корзину для белья",
+    "камить": "коммить",
     "карабинер": "karabiner",
     "карабинера": "karabiner",
     "карабинере": "karabiner",
@@ -530,8 +639,11 @@
     "недостача": "недосдача",
     "нейм": "name",
     "облитон": "Ableton",
+    "облитоне": "Ableton",
     "окометь": "коммить",
     "оллама": "ollama",
+    "опенкод": "OpenCode",
+    "основинский": "Основинский",
     "отгард": "AdGuard",
     "отсете": "отчете",
     "пapkе": "папке",
@@ -547,35 +659,44 @@
     "приотачивал": "приаттачивал",
     "райдера": "Rider",
     "рак-система": "rag-система",
+    "расслабки": "раскладки",
     "ребейзнул": "сделал rebase",
     "ребейс": "rebase",
     "редми": "readme",
     "ретро-таскс": "retro-tasks",
     "ридми": "ReadMe",
+    "ринату": "Ренату",
     "саммари": "summary",
     "санитайс": "sanitize",
     "сервитола": "servitola",
     "серго": "serho",
     "сергобота": "serho-бота",
     "сергос": "serho",
+    "сиблинка": "симлинка",
     "скапывается": "схлапывается",
     "сквен": "qwen",
+    "скейл": "scale",
     "слэш-команда": "slash-комманда",
     "соболен": "свободен",
     "сошитых": "зашитых",
     "спун": "spoon",
     "стартинг": "starting",
+    "стучился": "случился",
     "таргет": "target",
     "текст экспаншн": "text expansion",
     "темукс": "tmux",
     "темуксы": "tmux",
     "тест generation": "test generation",
+    "ти-мукс": "tmux",
     "тоггл": "toggle",
     "ту тест": "to test",
+    "туй": "TUI",
     "тул-тип": "tooltip",
     "тултип": "tooltip",
     "ути длп": "yt-dlp",
+    "фабазолу": "афобазолу",
     "файндер": "Finder",
+    "фейбл": "Fable",
     "фокус райде": "focusrite",
     "фолдбэк": "fallback",
     "фри-модели": "free-модели",
@@ -589,6 +710,7 @@
     "шоу Windows": "show windows",
     "ютреке": "YouTrack",
     "ютуб": "YouTube",
-    "ютуба": "YouTube"
+    "ютуба": "YouTube",
+    "ярм dev": "yarn dev"
   }
 }
