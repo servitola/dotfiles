@@ -404,8 +404,6 @@ cask "the-unarchiver"
 cask "transmission"
 # Unicode keyboard layout editor
 cask "ukelele"
-# Virtual machines UI using QEMU
-cask "utm"
 # Open-source code editor
 cask "visual-studio-code"
 # Web browser with built-in email client focusing on customization and control
