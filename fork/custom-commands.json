@@ -1,0 +1,363 @@
+[
+  {
+    "version": 2
+  },
+  {
+    "action": {
+      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Rider",
+    "referenceTargets": [
+      "localBranch",
+      "remoteBranch"
+    ],
+    "target": "reference"
+  },
+  {
+    "action": {
+      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Rider",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Rider",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-youtrack.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Open in YouTrack",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash \"$name\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Rebase with Autosquash",
+    "referenceTargets": [
+      "localBranch",
+      "remoteBranch"
+    ],
+    "target": "reference"
+  },
+  {
+    "action": {
+      "script": "GIT_SEQUENCE_EDITOR=\"perl -i -pe 's\/^pick \/fixup \/ if \\$.==2'\" git rebase -i --autostash \"$sha~2\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Fixup into Parent",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "git add -A && git commit -m \"1\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Commit All as '1'",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "git reset --mixed \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Reset Mixed",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/merge-into-development.sh\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Merge into Development",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "open -a Warp \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Warp",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "git reset --soft HEAD~1",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Undo Last Commit",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/undo-last-rebase-reset.sh\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Undo Last Rebase\/Reset",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/clean-merged-branches.sh\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Clean Merged Branches",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "git rev-parse --abbrev-ref HEAD | tr -d '\\n' | pbcopy",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Copy Branch Name",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "git branch -a --contains \"$sha\"",
+      "showOutput": true,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Show Branches Containing Commit",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/push-branch-up-to-here.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Push Branch up to Here",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/extract-commit-to-working-tree.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Extract Commit to Working Tree",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "code \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in VSCode",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "open -na WebStorm --args \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in WebStorm",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "printf '%s' \"${repo:path}\" | pbcopy",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Copy Repo Path",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "open -na Ghostty --args --working-directory=\"${repo:path}\" -e claude",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Claude",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "open -na Ghostty --args --working-directory=\"${repo:path}\" -e claude",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in Claude",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "printf '%s' \"${repo:path}\" | pbcopy",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Copy Repo Path",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "code \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in VSCode",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "open -na WebStorm --args \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": false
+    },
+    "name": "Open in WebStorm",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/update-from-main-branch.sh\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Update from Main Branch",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/push-open-mr.sh\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Push & Open MR",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/amend-changes-into-head.sh\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Amend Changes into HEAD",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/force-drop-this-commit.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Force-Drop This Commit",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/reword-this-commit.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Reword This Commit",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/new-worktree-from-ticket.sh\" \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "New Worktree from Ticket",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/move-changes-to-new-branch.sh\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Move Changes to New Branch",
+    "target": "repository"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/set-commit-time.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Set Commit Time",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-worktree.sh\" \"$sha\" \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Open In Worktree",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/make-this-the-next-push.sh\" \"$sha\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Make This the Next Push",
+    "target": "revision"
+  }
+]
