@@ -3,9 +3,11 @@ obj.__index = obj
 
 obj._task = nil  -- prevent GC of running hs.task
 
+local browser = require("browsers").main
+
 function obj:openTab(urlPattern)
     local script = string.format([[
-        tell application "Yandex"
+        tell application "%s"
             set matchedTabs to {}
             set currentMatchPos to 0
             set currentActive to active tab index of front window
@@ -36,7 +38,7 @@ function obj:openTab(urlPattern)
             activate
             return "ok"
         end tell
-    ]], urlPattern:gsub('"', '\\"'))
+    ]], browser.app, urlPattern:gsub('"', '\\"'))
 
     self._task = hs.task.new("/usr/bin/osascript", function(exitCode, stdout, stderr)
         self._task = nil
@@ -49,9 +51,9 @@ function obj:openTab(urlPattern)
         if result == "ok" then
             -- Tab found and switched
         else
-            hs.application.launchOrFocus("Yandex")
+            hs.application.launchOrFocus(browser.app)
             hs.timer.doAfter(0.1, function()
-                hs.urlevent.openURLWithBundle("https://" .. urlPattern, "ru.yandex.desktop.yandex-browser")
+                hs.urlevent.openURLWithBundle("https://" .. urlPattern, browser.bundle)
             end)
         end
     end, {"-e", script})
@@ -60,7 +62,7 @@ end
 
 function obj:focusPlayingTab(urlPattern)
     local script = string.format([[
-        tell application "Yandex"
+        tell application "%s"
             set firstMatchTab to 0
             set playingTab to 0
 
@@ -93,7 +95,7 @@ function obj:focusPlayingTab(urlPattern)
                 return "none"
             end if
         end tell
-    ]], urlPattern:gsub('"', '\\"'))
+    ]], browser.app, urlPattern:gsub('"', '\\"'))
 
     self._task = hs.task.new("/usr/bin/osascript", function(exitCode, stdout, stderr)
         self._task = nil
@@ -106,9 +108,9 @@ function obj:focusPlayingTab(urlPattern)
         if result == "ok" then
             -- Tab found and switched
         else
-            hs.application.launchOrFocus("Yandex")
+            hs.application.launchOrFocus(browser.app)
             hs.timer.doAfter(0.1, function()
-                hs.urlevent.openURLWithBundle("https://youtube.com", "ru.yandex.desktop.yandex-browser")
+                hs.urlevent.openURLWithBundle("https://youtube.com", browser.bundle)
             end)
         end
     end, {"-e", script})
