@@ -16,12 +16,6 @@ session-env/
 ide/
 plugins/
 usage-data/
-hooks/*
-!hooks/post-compact-restore.sh
-!hooks/compress-bash-output.py
-!hooks/rag-context-inject.py
-!hooks/guard-bash.py
-!hooks/guard-agent-budget.py
 prompts/
 output-styles/
 .DS_Store
@@ -31,8 +25,9 @@ mcp-needs-auth-cache.json
 claude-office-config.env
 memory/
 image-cache
-/scripts/
+/scripts/__pycache__/
 skill-tests/*/reports/
 skill-tests/*/runs/
 toolbox-env.sh
 telemetry/
+debug/
