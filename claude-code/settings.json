@@ -5,7 +5,7 @@
     "pr": ""
   },
   "autoMemoryEnabled": false,
-  "cleanupPeriodDays": 60,
+  "cleanupPeriodDays": 120,
   "effortLevel": "high",
   "enabledPlugins": {
     "superpowers@superpowers-marketplace": true
