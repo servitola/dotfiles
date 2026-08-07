@@ -52,5 +52,6 @@
     "telemetry.telemetryLevel": "off",
     "dotnetAcquisitionExtension.enableTelemetry": false,
     "claudeCode.preferredLocation": "panel",
-    "claudeCode.initialPermissionMode": "plan"
+    "claudeCode.initialPermissionMode": "plan",
+    "update.showReleaseNotes": false
 }
