@@ -4,9 +4,9 @@
 
 # --- Caches ---
 
-try_clean ~/Library/Caches "Library Caches" "tealdeer"
-try_clean /Library/Caches "System Caches"
-try_clean ~/Library/Application\ Support/Caches "Application Support Caches"
+try_clean_aged ~/Library/Caches "Library Caches" "tealdeer"
+try_clean_aged /Library/Caches "System Caches"
+try_clean_aged ~/Library/Application\ Support/Caches "Application Support Caches"
 
 # --- Gaming ---
 
@@ -45,29 +45,29 @@ try_clean ~/Library/Application\ Support/Steam/logs "Steam Logs"
 try_clean ~/Library/Application\ Support/Steam/appcache "Steam App Cache"
 try_clean ~/Library/Application\ Support/Steam/depotcache "Steam Depot Cache"
 try_clean ~/Library/Application\ Support/Steam/steamapps/shadercache "Steam Shader Cache"
-try_clean ~/Library/Application\ Support/Steam/steamapps/temp "Steam Temp"
-try_clean ~/Library/Application\ Support/Steam/steamapps/download "Steam Downloads"
+try_clean_aged ~/Library/Application\ Support/Steam/steamapps/temp "Steam Temp"
+try_clean_aged ~/Library/Application\ Support/Steam/steamapps/download "Steam Downloads"
 
 # --- Development ---
 
-try_clean ~/Library/Caches/JetBrains "JetBrains IDE Caches"
+try_clean_aged ~/Library/Caches/JetBrains "JetBrains IDE Caches"
 try_clean ~/Library/Logs/JetBrains "JetBrains IDE Logs"
 try_clean ~/Library/Developer/Xcode/Archives "Xcode Archives (old builds)"
-try_clean ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
+try_clean_aged ~/Library/Developer/Xcode/DerivedData "Xcode DerivedData"
 try_clean ~/Library/Logs/CoreSimulator "Xcode CoreSimulator Logs"
 try_clean ~/Library/Application\ Support/Code/logs "VSCode Logs"
 try_clean ~/Library/Application\ Support/Code/CachedData "VSCode Cached Data"
 try_clean ~/Library/Application\ Support/Windsurf/CachedData "Windsurf Cached Data"
 try_clean ~/Library/Application\ Support/Windsurf/logs "Windsurf Logs"
-try_clean ~/.android/cache "Android SDK Cache"
-try_clean ~/.gradle/caches "Gradle Cache"
-try_clean ~/.local/share/NuGet/v3-cache "NuGet Cache"
+try_clean_aged ~/.android/cache "Android SDK Cache"
+try_clean_aged_files ~/.gradle/caches "Gradle Cache"
+try_clean_aged_files ~/.local/share/NuGet/v3-cache "NuGet Cache"
 try_clean ~/.npm/_logs "NPM Logs"
-try_clean ~/.npm/_npx "NPX Cache"
-try_clean ~/.cache/pre-commit "pre-commit Cache"
+try_clean_aged ~/.npm/_npx "NPX Cache"
+try_clean_aged ~/.cache/pre-commit "pre-commit Cache"
 try_clean ~/.cache/puppeteer "Puppeteer Cache"
-try_clean ~/projects/workprojectDev/workproject/Mobile.Touch.workproject/bin "Work bins"
-try_clean /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
+try_clean_aged ~/projects/workprojectDev/workproject/Mobile.Touch.workproject/bin "Work bins"
+try_clean_aged_files /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
 
 # --- Applications ---
 
@@ -80,6 +80,8 @@ try_clean ~/Library/Application\ Support/obsidian/DawnWebGPUCache "Obsidian WebG
 try_clean ~/Library/Application\ Support/Claude/Cache/Cache_Data "Claude Cache"
 try_clean ~/Library/Application\ Support/Claude/vm_bundles "Claude Cowork Virtual Machine"
 try_clean ~/Library/Application\ Support/Moises/Cache/Cache_Data "Moises Cache"
+try_clean ~/Library/Application\ Support/Vivaldi/component_crx_cache "Vivaldi Component Cache"
+try_clean ~/Library/Application\ Support/Vivaldi/extensions_crx_cache "Vivaldi Extension Cache"
 try_clean ~/Library/Application\ Support/Yandex/YandexBrowser/Resources/extension/cache_2 "Yandex Browser Extension Cache"
 try_clean ~/Library/Application\ Support/Yandex.Telemost/log "Yandex Telemost Logs"
 try_clean ~/Library/Application\ Support/Google/GoogleUpdater/crx_cache "Google Updater Cache"
@@ -145,4 +147,4 @@ else
 fi
 
 rm -f "$_DS_TMPFILE"
-try_clean_pattern . d ".AppleD*" "Apple Double files"
+# try_clean_pattern . d ".AppleD*" "Apple Double files"
