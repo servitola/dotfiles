@@ -16,9 +16,5 @@ section "LiteLLM (LLM proxy)"
 section "docker-logger (container log collection)"
 ( cd "$DOTFILES/docker-logger" && docker compose up -d )
 
-section "ensure dotfiles_private overlay present"
-test -d "$PRIVATE" || \
-    git clone https://github.com/servitola/dotfiles_private.git "$PRIVATE"
-
 section "cron jobs"
 "$DOTFILES/cron/init-cron-jobs.sh"

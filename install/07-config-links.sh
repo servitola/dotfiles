@@ -33,7 +33,7 @@ link_all \
     "$DOTFILES/iina/servitola.conf"    "$APP_SUPPORT/com.colliderli.iina/input_conf/servitola.conf" \
     "$DOTFILES/lazydocker/config.yml"  "$APP_SUPPORT/lazydocker/config.yml" \
     "$DOTFILES/lazygit/config.yml"     "$APP_SUPPORT/lazygit/config.yml" \
-    "$PRIVATE/fork/custom-commands.json" "$APP_SUPPORT/com.DanPristupov.Fork/custom-commands.json" \
+    "$DOTFILES/fork/custom-commands.json" "$APP_SUPPORT/com.DanPristupov.Fork/custom-commands.json" \
     "$DOTFILES/ghostty/config"         "$APP_SUPPORT/com.mitchellh.ghostty/config" \
     "$DOTFILES/marta/conf.marco"       "$APP_SUPPORT/org.yanex.marta/conf.marco" \
     "$DOTFILES/marta/favorites.marco"  "$APP_SUPPORT/org.yanex.marta/favorites.marco" \
