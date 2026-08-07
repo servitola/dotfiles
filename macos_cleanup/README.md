@@ -34,6 +34,7 @@ curl -fsSL https://raw.githubusercontent.com/servitola/dotfiles/master/cleanup/c
 - Heroic launcher cache
 - Adobe media cache
 - Google Updater cache
+- Vivaldi component/extension caches
 - Yandex Browser extension cache
 - Claude Desktop cache
 - IINA, Moises, Messages attachments
