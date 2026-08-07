@@ -56,7 +56,7 @@ Then use conditions: `{"name": "tab_modifier", "type": "variable_if", "value": 1
 ## Hyper Layer Pattern (Remap to F-keys)
 - Hyper + letter keys remap to F13-F19
 - Hammerspoon catches F-keys and launches apps/functions
-- Example: Hyper+V → F19 → Hammerspoon launches Yandex
+- Example: Hyper+V → F19 → Hammerspoon launches Vivaldi
 
 ## References
 - Full keyboard system: @../docs/keyboard-setup.md
