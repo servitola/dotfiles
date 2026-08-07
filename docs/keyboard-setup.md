@@ -52,7 +52,7 @@ The most-used chords on the Hyper layer (Caps Lock + key). For the complete list
 | `⇪P` | Music | |
 | `⇪R` (=F17) | Rider | + `⇧F17` Android Studio, `⌘F17` OrbStack |
 | `⇪T` (=F18) | Forkgram | window: right |
-| `⇪V` (=F19) | Yandex Browser | + `⇧F19` Chrome, `⌃F19` VPN toggle |
+| `⇪V` (=F19) | Vivaldi | + `⇧F19` Chrome, `⌃F19` VPN toggle |
 | `⇪Y` | IINA | window: bottom |
 | `⇪Z` (=F20) | toggle Android emulator window | |
 
@@ -90,7 +90,6 @@ The shortcut system uses a **per-key architecture** in `HotKeys.spoon/layout/60%
 
 - **`layout/60%/`** — active per-key files. Every physical key on a 60% keyboard has one file.
 - **`layout/extra/`** — placeholder files for F-keys, escape, fn, power. Currently no active chords (F-keys are remapped from Hyper letters in Karabiner instead).
-- **`old/`** — 30 numbered legacy layout files (`01. English.lua` … `30. Shift_Alt_Command.lua`) from the pre-per-key architecture. **Not loaded.** Kept for reference only.
 
 ### Key file format
 
@@ -219,7 +218,6 @@ Regenerate everything: `python3 docs/keyboard/generate.py`
 - `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index for grep / AI agents
 - `hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua` — auto-generated app-name → bundle-ID map (via `docs/keyboard/tools/gen_bundle_ids.py`)
 - `hammerspoon/Spoons/HotKeys.spoon/layout/extra/` — F-key placeholder files
-- `hammerspoon/Spoons/HotKeys.spoon/old/` — legacy 30 numbered layout files (not loaded)
 - `keyboard-layout/Birman.bundle/` — custom keyboard layout (Ukelele bundle)
 - `keyboard-layout/Birman.bundle/Contents/Resources/`*.keylayout — Ukelele XML source files
 - `docs/keyboard/` — auto-generated SVG keyboard shortcut diagrams
