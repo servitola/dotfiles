@@ -1,0 +1,7 @@
+[http "https://gitea.example.com/"]
+	sslCert = /Users/servitola/.config/gitea-ca/client.crt
+	sslKey = /Users/servitola/.config/gitea-ca/client.key
+
+[credential "https://gitea.example.com"]
+	helper =
+	helper = "!f(){ . \"$HOME/.config/gitea_token.sh\"; echo username=servitola; echo \"password=$GITEA_TOKEN\"; }; f"

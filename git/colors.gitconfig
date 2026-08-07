@@ -6,9 +6,9 @@
 
 [color "diff"]
 	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+	frag = magenta bold
+	old = red
+	new = green
 	whitespace = red reverse
 
 [color "status"]
