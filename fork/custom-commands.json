@@ -172,6 +172,16 @@
   },
   {
     "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/push-branch-up-to-here.sh\" \"$sha\" --force",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Force Push Branch up to Here",
+    "target": "revision"
+  },
+  {
+    "action": {
       "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/extract-commit-to-working-tree.sh\" \"$sha\"",
       "showOutput": false,
       "type": "sh",
