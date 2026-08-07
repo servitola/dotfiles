@@ -16,7 +16,7 @@ Single source of truth for `commands/`, `agents/`, `skills/` shared across Claud
 - `codex/config.toml` — Codex's own global config
 
 ## Detached skills & MCP (opt-in, zero always-loaded context cost)
-- `detached_skills/` (+ same dir in `dotfiles_private`) — skills excluded from the always-loaded global set so their descriptions don't cost context in every session. Attach per folder: `skill-attach <name> [dir]` (symlinks into `<dir>/.claude/skills/`), list with `skill-attach`, remove with `skill-attach --detach <name> [dir]`.
+- `detached_skills/` — skills excluded from the always-loaded global set so their descriptions don't cost context in every session. Attach per folder: `skill-attach <name> [dir]` (symlinks into `<dir>/.claude/skills/`), list with `skill-attach`, remove with `skill-attach --detach <name> [dir]`.
 - `detached_mcp/` — MCP server snippets removed from global `~/.claude.json`. Attach per folder: `mcp-attach <name> [dir]` (merges into `<dir>/.mcp.json`).
 
 ## Codex operational notes
