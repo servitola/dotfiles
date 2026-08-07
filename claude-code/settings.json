@@ -109,7 +109,7 @@
       }
     ]
   },
-  "model": "opus[1m]",
+  "model": "sonnet[1m]",
   "permissions": {
     "allow": [
       "Bash",
