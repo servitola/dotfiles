@@ -6,7 +6,6 @@
 
 # --- Paths (full words, no $(D)/$(H)/$(A) shorthands) --------------------
 DOTFILES="$HOME/projects/dotfiles"
-PRIVATE="$HOME/projects/dotfiles_private"
 APP_SUPPORT="$HOME/Library/Application Support"
 CONFIG="$HOME/.config"
 CLAUDE_CODE="$DOTFILES/claude-code"
