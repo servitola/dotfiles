@@ -1,7 +1,5 @@
--- App Usage Analytics
--- Silently tracks which app is focused and for how long
--- Writes daily JSON logs to ~/.local/share/hammerspoon/app-usage/
--- Toggle stats viewer via HotKeys fn handler
+-- Tracks focused app + duration into daily JSON at ~/.local/share/hammerspoon/app-usage/.
+-- Stats viewer toggles via the HotKeys fn handler.
 
 local M = {}
 local log = hs.logger.new('AppUsage', 'info')
@@ -14,7 +12,6 @@ local flushTimer = nil
 local statsWebview = nil
 local statsEscHotkey = nil
 
--- Ensure data directory exists
 hs.fs.mkdir(os.getenv("HOME") .. "/.local/share/hammerspoon")
 hs.fs.mkdir(dataDir)
 
@@ -42,7 +39,6 @@ end
 local function recordSwitch(appName, bundleId)
     local now = os.time()
 
-    -- Close previous entry
     if currentApp and currentStart then
         local duration = now - currentStart
         if duration >= 2 then  -- ignore < 2s switches
@@ -59,10 +55,8 @@ local function recordSwitch(appName, bundleId)
     currentStart = now
 end
 
--- Load existing data on init
 todayEntries = loadToday()
 
--- Register with centralized app watcher
 appWatcherHub.register(function(appName, eventType, appObject)
     if eventType ~= hs.application.watcher.activated then return end
     if not appObject then return end
@@ -70,7 +64,6 @@ appWatcherHub.register(function(appName, eventType, appObject)
     recordSwitch(appName or "unknown", bundleId)
 end)
 
--- Flush to disk every 60 seconds
 flushTimer = hs.timer.doEvery(60, flushToday)
 
 -- Also flush on midnight rollover
@@ -90,7 +83,6 @@ end)
 M._flushTimer = flushTimer  -- referenced in M: GC kills running timers
 M._midnightTimer = midnightTimer
 
--- Aggregate stats from entries
 local function aggregateEntries(entries)
     local byApp = {}
     local totalTime = 0
@@ -156,11 +148,9 @@ local function escapeHtml(str)
 end
 
 local function buildHtml()
-    -- Today stats
     local todayAll = loadDaysBack(1)
     local todayApps, todayTotal = aggregateEntries(todayAll)
 
-    -- 7-day stats
     local weekAll = loadDaysBack(7)
     local weekApps, weekTotal = aggregateEntries(weekAll)
 
@@ -225,7 +215,6 @@ function M.toggle()
         return
     end
 
-    -- Flush current data first
     recordSwitch(currentApp and currentApp.name or "unknown",
                  currentApp and currentApp.bundle or "unknown")
     flushToday()
