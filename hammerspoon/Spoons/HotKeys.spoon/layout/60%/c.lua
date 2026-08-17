@@ -10,8 +10,8 @@ return {
 --          ⇪c   │      ⌘→      │              │   │              → end
 --          ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
---          ⌥c   │              │              │   │ Claude
-{ chord = "⌥c",                            app = "Claude" },
+--          ⌥c   │              │              │   │      Forkgram — open chat 3172923198
+{ chord = "⌥c",                            fn = "forkgram.chat" },
 --          ⌘c   │              │              │ ✓ │              — copy
 --          ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
 --               │              │              │   │        VSCode — toggle comment line
