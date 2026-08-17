@@ -44,6 +44,8 @@
     "enableHDR": false,
     "enableWoW64": false,
     "eacRuntime": false,
+    "gamepadRepeatDelay": 50,
+    "gamepadInitialRepeatDelay": 300,
     "battlEyeRuntime": false,
     "framelessWindow": true,
     "hideWindowOnProtocolLaunch": false,
@@ -55,13 +57,14 @@
     "advertiseAvxForRosetta": false,
     "noTrayIcon": false,
     "showValveProton": false,
-    "steamGridDbApiKey": "",
+    "steamGridDbApiKey": "sgdb:v1:djEwOd6mm0+qWv7skiCQKiLt9yfuJnD3dWKNU9Elkhzi0PDI2wTtj5GgLE575h/Z/X9a",
     "disableGOGPresence": false,
     "customThemesPath": "",
     "darkTrayIcon": false,
     "allowInstallationBrokenAnticheat": true,
     "disableController": false,
-    "maxRecentGames": 10
+    "maxRecentGames": 10,
+    "altLegendaryBin": ""
   },
   "version": "v0"
 }
