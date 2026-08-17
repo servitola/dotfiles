@@ -307,7 +307,7 @@
       "type": "sh",
       "waitForExit": true
     },
-    "name": "Force-Drop This Commit",
+    "name": "Force Drop This Commit",
     "target": "revision"
   },
   {
