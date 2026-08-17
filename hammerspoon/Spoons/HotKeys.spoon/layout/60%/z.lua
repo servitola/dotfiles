@@ -14,6 +14,7 @@ return {
 --          ⌥z   │              │              │   │        VSCode — toggle wordwrap
 --               │              │              │   │           Zap — type "/new" (Claude Code shortcut) HAMMERSPOON CUSTOM
 --               │              │              │   │        Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM
+--               │              │              │   │         Music — go to current song (⌘L) HAMMERSPOON CUSTOM
 --          ⌘z   │              │              │ ✓ │              — undo
 --          ⇥z   │      ⌘/      │              │   │         Rider — comment line
 --               │              │              │   │        VSCode — toggle comment line

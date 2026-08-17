@@ -229,6 +229,7 @@ local appSpecificHotkeys = {
     },
     ["Music"] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
+        { from = {"alt"}, key = "z", to = {"cmd"}, target_key = "l" },
     },
     ["Zap"] = {
         { from = {"alt"}, key = "z", sendText = "/new" },
