@@ -5,8 +5,7 @@ set -euo pipefail
 
 if [[ -n "${CI:-}" ]]; then   # ${CI:-} so set -u doesn't trip when CI is unset
     section "CI: skip docker compose (no Docker on macOS runners)"
-    section "CI: skip private overlay clone (no auth on runners)"
-    section "CI: skip cron install (needs private overlay)"
+    section "CI: skip cron install (no crontab on runners)"
     exit 0
 fi
 
