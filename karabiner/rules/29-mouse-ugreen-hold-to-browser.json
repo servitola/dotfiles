@@ -1,0 +1,35 @@
+{
+    "description": "UGREEN BLE Mouse — hold forward side button to focus/launch Vivaldi (same F19 as Hyper+V), tap stays native forward",
+    "manipulators": [
+        {
+            "type": "basic",
+            "from": {
+                "pointing_button": "button5"
+            },
+            "to_if_alone": [
+                {
+                    "pointing_button": "button5"
+                }
+            ],
+            "to_if_held_down": [
+                {
+                    "key_code": "f19"
+                }
+            ],
+            "parameters": {
+                "basic.to_if_held_down_threshold_milliseconds": 200
+            },
+            "conditions": [
+                {
+                    "type": "device_if",
+                    "identifiers": [
+                        {
+                            "vendor_id": 11145,
+                            "product_id": 26145
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
