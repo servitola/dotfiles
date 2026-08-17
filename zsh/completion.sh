@@ -1,7 +1,5 @@
-# =============================================================================
 # Zsh Completion Configuration
 # Loaded AFTER oh-my-zsh calls compinit
-# =============================================================================
 
 # Load the zsh/complist module for advanced menu selection features
 zmodload zsh/complist
