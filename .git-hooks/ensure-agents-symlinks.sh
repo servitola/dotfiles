@@ -1,11 +1,7 @@
 #!/bin/bash
-# Pre-commit: every AGENTS.md must have sibling CLAUDE.md and WARP.md symlinks
-# pointing at it, so Claude Code / Warp pick up the same per-directory guide.
-#
-# Receives staged filenames from pre-commit. For each staged AGENTS.md whose
-# sibling symlink is missing or wrong, it creates the symlink AND `git add`s it,
-# so the link lands in the same commit (a pre-commit hook that only touched the
-# worktree would leave the symlink uncommitted).
+# Every AGENTS.md must have sibling CLAUDE.md and WARP.md symlinks
+# pointing at it
+
 set -euo pipefail
 
 for f in "$@"; do
