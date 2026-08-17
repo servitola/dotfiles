@@ -12,6 +12,7 @@ return {
 --          ⇧f   │              │ F    А    Φ  │   │
 --          ⌃f   │              │              │   │        Rider — focus Find panel
 --               │              │              │   │       VSCode — move cursor right
+--               │              │              │   │     Forkgram — global search (⌘K) HAMMERSPOON CUSTOM
 --          ⌥f   │              │ f    £    ≠  │   │         Fork — toggle Force Push on Push dialog
 --          ⌘f   │              │              │ ✓ │             — find
 --          ⇥f   │              │              │   │ ???

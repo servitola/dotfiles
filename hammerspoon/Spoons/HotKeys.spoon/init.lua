@@ -236,6 +236,9 @@ local appSpecificHotkeys = {
     ["Finder"] = {
         { from = {"alt"}, key = "z", to = {"cmd", "alt"}, target_key = "l" },
 	},
+    ["Forkgram"] = {
+        { from = {"ctrl"}, key = "f", to = {"cmd"}, target_key = "k" },
+    },
     ["*"] = {
         { from = {"left_control", "alt", "cmd"}, key = "x", to = {"cmd"}, target_key = "[" },
         { from = {"left_control", "alt", "cmd"}, key = "c", to = {"cmd"}, target_key = "]" }
