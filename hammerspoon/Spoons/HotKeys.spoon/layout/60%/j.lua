@@ -7,8 +7,7 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           j   │              │ j    о    ξ  │   │   YouTube — 10sec back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪j   │              │              │   │   WorkBot — toggle (workbot://toggle)
-{ chord = "⇪j", app = "Workbot", window_default_position = "right" },
+--          ⇪j   │              │              │   │   Day One — open journal entry
 --          ⇧j   │              │ J    О    Ξ  │   │
 --          ⌃j   │              │              │   │
 --          ⌥j   │              │ „    „    ≤  │   │
