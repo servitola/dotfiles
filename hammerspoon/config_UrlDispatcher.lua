@@ -1,8 +1,10 @@
+local browsers = require "browsers"
+
 Firefox = "org.mozilla.firefox"
 Yandex = "ru.yandex.desktop.yandex-browser"
 Chrome = "com.google.Chrome"
 
-spoon.URLDispatcher.default_handler = Yandex
+spoon.URLDispatcher.default_handler = browsers.main.bundle
 
 spoon.URLDispatcher.url_patterns = {
     { "https?://localhost[:/]",           Chrome },
