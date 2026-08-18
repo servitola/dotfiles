@@ -11,7 +11,7 @@ function set_window(x, y, width, height, window)
     local app_title = app and app:title() or ""
     local window_title = window:title()
 
-    if app_title == "Yandex" and string.find(window_title, "video") then
+    if require("browsers").by_app(app_title) and string.find(window_title, "video") then
         window:moveToUnit({x, y, width, height})
         return
     end

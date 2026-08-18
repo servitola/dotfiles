@@ -56,8 +56,10 @@ function is_firefox_video_player(app_title, window_title)
     return app_title == "Firefox" and window_title == "Picture-in-Picture"
 end
 
-function is_yandex_extra_panel(app_title, window_title, window)
-    if not (app_title == "Yandex" and window_title) then
+local browsers = require "browsers"
+
+function is_browser_extra_panel(app_title, window_title, window)
+    if not (browsers.by_app(app_title) and window_title) then
         return false
     end
 
@@ -68,8 +70,9 @@ function is_yandex_extra_panel(app_title, window_title, window)
     return false
 end
 
-function is_yandex_video_player(app_title, window_title, window)
-    if not (app_title == "Yandex" and window_title) then
+function is_browser_video_player(app_title, window_title, window)
+    local browser = browsers.by_app(app_title)
+    if not (browser and window_title) then
         return false
     end
 
@@ -77,12 +80,21 @@ function is_yandex_video_player(app_title, window_title, window)
         return false
     end
 
-    local suffix = string.char(226, 128, 148, 32, 89, 97, 110, 100, 101, 120, 194, 160, 66, 114, 111, 119, 115, 101, 114)
+    -- Regular window ends with «— Yandex Browser» / « - Vivaldi»;
+    -- All the rest are video players
+    local suffix = browser.title_suffix
     local title_end = window_title:sub(-#suffix)
 
     local is_video = title_end ~= suffix
 
     return is_video
+end
+
+function is_video_player_window(app_title, window_title, window)
+    return is_browser_video_player(app_title, window_title, window) or
+           is_firefox_video_player(app_title, window_title) or
+           is_telegram_video_player(app_title, window_title) or
+           app_title == "IINA"
 end
 
 function is_finder_copy_dialog(app_title, window_title, window)

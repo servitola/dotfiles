@@ -25,7 +25,7 @@ function set_window_default(window)
         set_window_bottom(window)
     elseif is_telegram_video_player(app_title, window_title) then
         set_window_bottom(window)
-    elseif is_yandex_video_player(app_title, window_title, window) then
+    elseif is_browser_video_player(app_title, window_title, window) then
         set_window_bottom(window)
     elseif is_activity_monitor_cpu_window(app_title, window_title) then
         set_window_right(window)
@@ -33,7 +33,7 @@ function set_window_default(window)
         set_window_bottom(window)
     elseif is_winflow_recording_panel(app_title, window_title) then
         -- nothing
-    elseif is_yandex_extra_panel(app_title, window_title) then
+    elseif is_browser_extra_panel(app_title, window_title) then
         -- nothing
     else
         set_window_left(window)

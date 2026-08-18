@@ -6,7 +6,6 @@ animation_duration = 0.044
 horizontal_line = 0.70
 vertical_line = 0.73
 
------------------------------------------
 
 top_bar_height = 25
 spacing = margin * 2
