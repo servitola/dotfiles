@@ -1,39 +1,17 @@
-# Aider → LiteLLM → OpenRouter free models
-#
-# All routed through the local LiteLLM proxy at http://localhost:4000. Models
-# are free-tier OpenRouter slugs (no dollar cost). Aider uses the OpenAI
-# provider path because LiteLLM exposes an OpenAI-compatible /v1 endpoint;
-# the "openai/" prefix tells aider's internal litellm wrapper which provider
-# driver to use, and the slug after it is the model_name defined in
-# ~/projects/dotfiles/litellm/config.yaml.
-#
-# Switch model at invocation time:
-# Aliases below verified against the live proxy 2026-07-25
-# (`curl -s localhost:4000/v1/models`) — re-check there, not here, if one 404s.
-#   aider --model openai/coding          # rotation: Codestral, GLM-4.7-flash, Gemini 2.5 Flash, Kimi K2.7 Code, …
-#   aider --model openai/nvidia-deepseek # huge context (DeepSeek V4 Pro, 1M)
-#   aider --model openai/nemotron        # reasoning (nemotron 120B)
-#   aider --model openai/glm             # fast small tasks
-#   aider --model openai/auto            # rotation across the whole pool
+# Aider → LiteLLM
+# All routed through the local LiteLLM
 
 openai-api-base: http://localhost:4000/v1
 openai-api-key: sk-local-workbot
-
-# Default model for edits and main reasoning.
 model: openai/coding
-
-# Cheap/fast model for auto-commits, summaries, and internal bookkeeping.
 weak-model: openai/glm
 
-# Git behavior — aider commits each edit automatically.
 auto-commits: true
 dirty-commits: true
 
-# Safety — never push, never run shell commands without confirm.
 auto-lint: false
 auto-test: false
 
-# UI preferences.
 dark-mode: true
 pretty: true
 stream: true
