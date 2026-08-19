@@ -14,7 +14,7 @@ All Spoons loaded in init.lua before scripts are required
 ## Auto-Switching Features
 - **Language per app**: Forkgram/Telegram/AyuGram → Russian, Games → ABC, Everything else → English
 - **Karabiner profiles**: Games use "Empty" profile (disables shortcuts), others use "Default"
-- **URL routing**: Work domains open in Safari, everything else in Yandex
+- **URL routing**: Work domains open in Safari, everything else in Vivaldi browser
 
 ## Application Watcher Pattern
 Uses `hs.application.watcher` to detect app focus changes:
