@@ -4,7 +4,6 @@ source 'macos/helpers/colors.sh'
 source 'macos/helpers/set_macos_default_if_different.sh'
 source 'macos/helpers/set_plist_value_if_different.sh'
 
-# Initialize counters
 CHANGES_MADE=0
 SKIPPED_COUNT=0
 FAILED_COUNT=0
@@ -136,9 +135,7 @@ set_macos_default_if_different \
     '-string' \
     "$HOME/Pictures/Screenshots"
 
-###############################################################################
 echo 'Finder' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Show Volumes on Desktop' \
@@ -202,9 +199,7 @@ defaults write com.apple.finder \
     OpenWith -bool true \
     Privileges -bool true
 
-###############################################################################
 echo 'Activity Monitor' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Show the main window when launching Activity Monitor' \
@@ -233,18 +228,14 @@ set_macos_default_if_different \
     '-int' \
     0
 
-###############################################################################
 echo 'Photos' #
-###############################################################################
 
 defaults -currentHost write \
     com.apple.ImageCapture \
     disableHotPlug \
     -bool true
 
-###############################################################################
 echo 'Keyboard' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)' \
@@ -306,9 +297,7 @@ set_macos_default_if_different \
     '-bool' \
     false
 
-###############################################################################
 echo 'Safari' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Prevent Safari from opening safe files automatically after downloading' \
@@ -337,9 +326,7 @@ set_macos_default_if_different \
     '-bool' \
     true
 
-###############################################################################
 echo 'Transmission.app' #
-###############################################################################
 
 set_macos_default_if_different \
 	"Use ~/Documents/Torrents to store incomplete downloads" \
@@ -431,9 +418,7 @@ set_macos_default_if_different \
     '-bool' \
     true
 
-###############################################################################
 echo 'Mac App Store' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Enable the WebKit Developer Tools in the Mac App Store' \
@@ -470,9 +455,7 @@ set_macos_default_if_different \
     '-int' \
     0
 
-###############################################################################
 echo 'System Services and Memory Optimization' #
-###############################################################################
 
 echo 'Disable automatic software updates'
 set_macos_default_if_different \
@@ -543,9 +526,7 @@ set_macos_default_if_different \
 	'-string' \
 	'Pro'
 
-###############################################################################
 echo 'Google Chrome' #
-###############################################################################
 
 # Disable on-device AI / Gemini Nano model (~4 GB in
 # ~/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/).
@@ -558,9 +539,7 @@ set_macos_default_if_different \
     '-int' \
     1
 
-###############################################################################
 echo 'Dock' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Don'\''t automatically rearrange Spaces based on most recent use' \
@@ -601,7 +580,6 @@ set_macos_default_if_different \
 echo 'Scrolling settings (traditional)'
 defaults write -g com.apple.swipescrolldirection -bool false
 
-# Print summary
 echo ''
 echo "${BOLD}${CYAN}───────────────────────────────────────────────────────────${NC}"
 echo "${BOLD}Summary${NC}"
