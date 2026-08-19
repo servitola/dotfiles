@@ -105,6 +105,8 @@ brew "glab"
 brew "pydantic"
 # Alternative to top/htop
 brew "glances"
+# GNU version of the tar archiving utility
+brew "gnu-tar"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Ping, but with a graph
