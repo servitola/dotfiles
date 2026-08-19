@@ -23,7 +23,7 @@ return {
 --         ⇧⌃↑   │              │              │   │ FIX!!! should up volume up
 --         ⇧⌥↑   │              │              │   │        VSCode — move line up
 --         ⇧⌘↑   │ key_light_up │              │ ✓ │  — increase keyboard light (illumination_increment)
---         ⌃⌥↑   │              │              │   │ Fullscr
+--         ⌃⌥↑   │              │              │   │ Fullscr, 2nd press native fullscreen
 { chord = "⌃⌥↑",                             fn = "window.fullscreen" },
 --         ⌃⌘↑   │              │              │   │
 --         ⌥⌘↑   │              │              │   │        VSCode — create cursor up

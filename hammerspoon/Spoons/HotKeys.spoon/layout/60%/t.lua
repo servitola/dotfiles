@@ -25,7 +25,8 @@ return {
 --         ⇧⌥t   │              │              │   │
 --         ⇧⌘t   │              │              │   │          Mail — format as Plain Text or Rich Format
 --               │              │              │ ✓ │              — reopen closed tab
---         ⌃⌥t   │              │              │   │
+--         ⌃⌥t   │              │              │   │              — this window to TV / back
+{ chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv" },
 --         ⌃⌘t   │              │              │   │
 --         ⌥⌘t   │              │              │   │          Fork — hide/search toolbar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -35,7 +36,8 @@ return {
 --        ⇪⌃⌥t   │              │              │   │
 --        ⇪⌃⌘t   │              │              │   │
 --        ⇪⌥⌘t   │              │              │   │
---        ⇧⌃⌥t   │              │              │   │
+--        ⇧⌃⌥t   │              │              │   │              — display mode: mirror / extend
+{ chord = "⇧⌃⌥t",                           fn = "display.toggle_mirror" },
 --        ⇧⌃⌘t   │              │              │   │
 --        ⇧⌥⌘t   │              │              │   │
 --        ⌃⌥⌘t   │              │              │   │

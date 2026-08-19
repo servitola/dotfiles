@@ -23,7 +23,7 @@ return {
 --         ⇧⌃↓   │              │              │   │
 --         ⇧⌥↓   │              │              │   │        VSCode — move line down
 --         ⇧⌘↓   │              │ key_light_dn │   │ illumination_decrement
---         ⌃⌥↓   │              │              │   │ Win Reset
+--         ⌃⌥↓   │              │              │   │ Win Reset, or exit native fullscreen
 { chord = "⌃⌥↓",                             fn = "window.set_all_to_default" },
 --         ⌃⌘↓   │              │              │   │
 --         ⌥⌘↓   │              │              │   │        VSCode — create cursor down

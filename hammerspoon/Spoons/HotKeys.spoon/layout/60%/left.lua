@@ -21,7 +21,7 @@ return {
 --         ⇧⌃←   │              │              │   │
 --         ⇧⌥←   │              │              │   │         📝 — move line left
 --         ⇧⌘←   │              │              │ ✓ │           — select text to start of line
---         ⌃⌥←   │              │              │   │ Window ←
+--         ⌃⌥←   │              │              │   │ Window ←, 2nd press ½ ←
 { chord = "⌃⌥←",                          fn = "window.left" },
 --         ⌃⌘←   │              │              │   │          📝 — move editor to previous group
 --         ⌥⌘←   │              │              │   │          📝 — navigate to tab to the left

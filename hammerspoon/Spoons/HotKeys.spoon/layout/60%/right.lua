@@ -21,7 +21,7 @@ return {
 --         ⇧⌃→   │              │              │   │
 --         ⇧⌥→   │              │              │   │       VSCode — move line right
 --         ⇧⌘→   │              │              │ ✓ │             — select line till the end
---         ⌃⌥→   │              │              │   │ Window →
+--         ⌃⌥→   │              │              │   │ Window →, 2nd press ½ →
 { chord = "⌃⌥→",                            fn = "window.right" },
 --         ⌃⌘→   │              │              │   │       VSCode — move editor to next group
 --         ⌥⌘→   │              │              │   │       VSCode — navigate next tab
