@@ -169,6 +169,8 @@ brew "python@3.13"
 brew "midnight-commander"
 # Minimal CLI coding agent
 brew "mistral-vibe"
+# Matroska media files manipulation tools
+brew "mkvtoolnix"
 # AI on the command-line
 brew "mods"
 # Deep clean and optimize your Mac
