@@ -1,16 +1,9 @@
--- Text Expansion Dictionary
--- Abbreviations for text_expansion.lua engine
--- Value: string (literal) or function (dynamic, called on each expansion)
--- Prefix convention: ; + category letter + keyword
---   ;d = date/time, ;g = git, ;r = review, ;c = commit, ;y = youtrack
---   ;s = standup, ;m = meeting, ;a = architecture, ;e = email/communication
---   ;cs = C#, ;ts = TypeScript, ;md = markdown, ;sym = symbols, ;u = utility
+-- Abbreviations for the text_expansion.lua engine.
+-- Value is a string (literal) or a function (dynamic, called on each expansion).
 
 return {
 
-    ---------------------------------------------------------------------------
     -- Date / Time                                                        ;d*
-    ---------------------------------------------------------------------------
     [";date"]     = function() return os.date("%Y-%m-%d") end,
     [";time"]     = function() return os.date("%H:%M") end,
     [";now"]      = function() return os.date("%Y-%m-%d %H:%M") end,
@@ -33,9 +26,7 @@ return {
         return os.date("%Y-%m-%d", t + diff * 86400)
     end,
 
-    ---------------------------------------------------------------------------
     -- Git                                                                ;g*
-    ---------------------------------------------------------------------------
     [";branch"]   = function()
         local out = hs.execute("cd ~/projects/workname/workprojectDev && git branch --show-current 2>/dev/null")
         return out and out:gsub("%s+$", "") or "unknown"
@@ -49,9 +40,7 @@ return {
         return out and out:gsub("%s+$", "") or ""
     end,
 
-    ---------------------------------------------------------------------------
     -- Code Review                                                        ;r*
-    ---------------------------------------------------------------------------
     [";suggest"]  = "Suggestion (non-blocking): ",
     [";question"] = "Question: ",
     [";ood"]      = "Out of scope for this PR, but worth tracking as a follow-up.",
@@ -71,9 +60,7 @@ return {
     [";revert"]   = "Let's revert this and discuss the approach first.",
     [";wip"]      = "This looks like WIP — should it be in this PR?",
 
-    ---------------------------------------------------------------------------
     -- PR / Commit Messages                                               ;c*
-    ---------------------------------------------------------------------------
     [";feat"]     = "feat: ",
     [";fix"]      = "fix: ",
     [";refactor"] = "refactor: ",
@@ -85,9 +72,7 @@ return {
     [";wontfix"]  = "Won't fix — ",
     [";reopen"]   = "Reopening — ",
 
-    ---------------------------------------------------------------------------
     -- YouTrack / Issue Tracking                                          ;y*
-    ---------------------------------------------------------------------------
     [";inprog"]   = "State: In Progress",
     [";done"]     = "State: Done",
     [";blocked"]  = "State: Blocked\nBlocked by: ",
@@ -96,25 +81,19 @@ return {
     [";impact"]   = "Impact: \nAffected users: \nSeverity: ",
     [";rootcause"]= "Root cause: \nFix: \nPrevention: ",
 
-    ---------------------------------------------------------------------------
     -- Standup / Status Updates                                           ;s*
-    ---------------------------------------------------------------------------
     [";standup"]  = function() return os.date("%Y-%m-%d") .. " Standup\n\nDone:\n- \n\nToday:\n- \n\nBlockers:\n- none" end,
     [";eod"]      = function() return os.date("%Y-%m-%d") .. " EOD\n\nCompleted:\n- \n\nIn Progress:\n- \n\nNotes:\n- " end,
     [";weekly"]   = function() return "Week " .. os.date("%V") .. " Summary\n\nKey achievements:\n- \n\nNext week:\n- \n\nRisks:\n- " end,
 
-    ---------------------------------------------------------------------------
     -- Meeting Notes                                                      ;m*
-    ---------------------------------------------------------------------------
     [";meeting"]  = function() return os.date("%Y-%m-%d") .. " Meeting Notes\n\nAttendees: \nTopic: \n\nDiscussion:\n- \n\nAction Items:\n- [ ] \n- [ ] " end,
     [";1on1"]     = function() return os.date("%Y-%m-%d") .. " 1:1\n\nCheckin:\n- \n\nTopics:\n- \n\nAction items:\n- [ ] " end,
     [";retro"]    = function() return "Sprint Retrospective " .. os.date("%Y-%m-%d") .. "\n\nWent well:\n- \n\nCould improve:\n- \n\nAction items:\n- [ ] " end,
     [";agenda"]   = function() return "Agenda — " .. os.date("%Y-%m-%d") .. "\n\n1. \n2. \n3. \n\nNotes:\n" end,
     [";decision"] = "Decision: \nContext: \nAlternatives considered: \nRationale: ",
 
-    ---------------------------------------------------------------------------
     -- Architecture / Technical                                           ;a*
-    ---------------------------------------------------------------------------
     [";adr"]      = function() return "# ADR: \n\n## Status\nProposed\n\n## Context\n\n\n## Decision\n\n\n## Consequences\n\n" end,
     [";tradeoff"] = "Trade-off: \nPros: \nCons: \nDecision: ",
     [";techdebt"] = "Technical debt: \nImpact: \nEffort to fix: \nPriority: ",
@@ -123,9 +102,7 @@ return {
     [";postmortem"]= function() return "Incident Post-Mortem " .. os.date("%Y-%m-%d") .. "\n\nSummary: \nImpact: \nTimeline:\n- \n\nRoot cause: \nFix: \nAction items:\n- [ ] " end,
     [";deploy"]   = function() return "Deploy " .. os.date("%Y-%m-%d %H:%M") .. "\n\nVersion: \nChanges:\n- \n\nRollback: \nMonitoring: " end,
 
-    ---------------------------------------------------------------------------
     -- Communication / Email                                              ;e*
-    ---------------------------------------------------------------------------
     [";regards"]  = "Best regards",
     [";ty"]       = "Thank you",
     [";tyvm"]     = "Thank you very much!",
@@ -148,9 +125,7 @@ return {
     [";escalate"] = "Escalating this because: ",
     [";ooo"]      = function() return "I'll be OOO on " .. os.date("%Y-%m-%d", os.time() + 86400) .. ". Back on " end,
 
-    ---------------------------------------------------------------------------
     -- Markdown                                                          ;md*
-    ---------------------------------------------------------------------------
     [";h1"]       = "# ",
     [";h2"]       = "## ",
     [";h3"]       = "### ",
@@ -168,9 +143,7 @@ return {
     [";warn"]     = "> **Warning:** ",
     [";collapse"] = "<details>\n<summary>Click to expand</summary>\n\n\n</details>",
 
-    ---------------------------------------------------------------------------
     -- Dev Utilities                                                      ;u*
-    ---------------------------------------------------------------------------
     [";todo"]     = "// TODO: ",
     [";fixme"]    = "// FIXME: ",
     [";uuid"]     = function()
