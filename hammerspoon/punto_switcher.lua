@@ -1,5 +1,5 @@
 -- Punto Switcher-style layout reconversion.
--- Right Option+Space (→ F14 via Karabiner rule 26) retypes the selection, or
+-- Right Option+Space (→ Control+F14 via Karabiner) retypes the selection, or
 -- the previous word if nothing is selected, in the other Birman layout.
 
 local en_ru = {
@@ -111,4 +111,4 @@ local function run()
     end)
 end
 
-hs.hotkey.bind({}, "f14", run)
+hs.hotkey.bind({"ctrl"}, "f14", run)
