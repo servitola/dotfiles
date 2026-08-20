@@ -502,6 +502,10 @@ function obj:init()
                             zap:activate()
                         end
                     end)
+                elseif functionName == "forkgram.chat" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        hs.urlevent.openURLWithBundle("tg://privatepost?channel=3172923198", "com.tdesktop.Telegram")
+                    end)
                 elseif functionName == "fork.workprojectdev" then
                     hs.hotkey.bind(modifiers, key, function()
                         focusAppWindow("Fork", "workprojectDev",
