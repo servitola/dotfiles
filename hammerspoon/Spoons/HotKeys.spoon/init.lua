@@ -425,7 +425,7 @@ function obj:init()
                     end)
                 elseif functionName == "browser_search_selected" then
                     hs.hotkey.bind(modifiers, key, function()
-                        yandexSearch.searchSelectedText()
+                        browserSearch.searchSelectedText()
                     end)
                 elseif functionName == "paste_bypass" then
                     hs.hotkey.bind(modifiers, key, function()
