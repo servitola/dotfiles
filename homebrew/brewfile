@@ -315,8 +315,6 @@ cask "antigravity-cli"
 cask "appcleaner"
 # Online gaming platform
 cask "battle-net"
-# 3D creation suite
-cask "blender"
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # Tool to show live information about the batteries in various devices
