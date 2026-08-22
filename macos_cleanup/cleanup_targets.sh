@@ -4,6 +4,7 @@
 
 # --- Caches ---
 
+try_clean_aged_files ~/projects/services/lgtv/dl "Converted TV Videos"
 try_clean_aged ~/Library/Caches "Library Caches" "tealdeer"
 try_clean_aged /Library/Caches "System Caches"
 try_clean_aged ~/Library/Application\ Support/Caches "Application Support Caches"
@@ -37,6 +38,7 @@ fi
 
 try_clean ~/Library/Application\ Support/Battle.net/Logs "Battle.net Logs"
 try_clean ~/Library/Application\ Support/Blizzard/Heroes\ of\ the\ Storm/Accounts/402727171/2-Hero-1-863611/Replays/Multiplayer "Heroes of the Storm Replays"
+try_clean /Users/Shared/Blizzard/Battle.net/Cache "Heroes of the Storm Shared"
 try_clean ~/Library/Application\ Support/Ableton/Live Reports "Live Reports"
 try_clean ~/Library/Application\ Support/Blizzard/Heroes\ of\ the\ Storm/GameLogs "HOTS Logs"
 try_clean ~/Library/Application\ Support/heroic/Cache "Heroic Cache"
@@ -91,7 +93,7 @@ try_clean ~/Library/Application\ Support/Adobe/Common/Media\ Cache\ Files "Adobe
 
 try_clean ~/Library/Application\ Support/CrashReporter "Crash reports"
 try_clean ~/Library/Metadata/SpotlightKnowledgeEvents "Spotlight Knowledge Events"
-try_clean ~/Library/Logs "Library Logs"
+try_clean ~/Library/Logs "Library Logs" "serho"
 try_clean ~/Library/Messages/Attachments "Messages Attachments"
 try_clean /System/Volumes/Data/.PreviousSystemInformation "Previous System Information"
 try_clean /Library/Logs/DiagnosticReports "System Diagnostic Reports"

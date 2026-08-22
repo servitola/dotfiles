@@ -119,6 +119,26 @@ else
     printf "  ${DIM}* Atuin: not installed or sqlite3 missing${NC}\n"
 fi
 
+print_task "mma HTTP cache (APFS-compress new entries)"
+MMA_CACHE="$HOME/projects/serho_topics/mma/data/cache"
+MMA_AFSC_STAMP="$MMA_CACHE/.afsc-stamp"
+if ! command -v afsctool &>/dev/null || [ ! -d "$MMA_CACHE" ]; then
+    printf "  ${DIM}* mma cache: afsctool or cache dir missing, skipping${NC}\n"
+elif [ -n "$(find "$MMA_AFSC_STAMP" -mtime -14 2>/dev/null)" ]; then
+    printf "  ${DIM}* mma cache: compressed less than 14 days ago${NC}\n"
+else
+    spinner_start "mma cache compression"
+    if [ -f "$MMA_AFSC_STAMP" ]; then
+        find "$MMA_CACHE" -type f -name '*.html' -newer "$MMA_AFSC_STAMP" -print0 2>/dev/null \
+            | xargs -0 -n 200 afsctool -c 2>/dev/null
+    else
+        afsctool -c "$MMA_CACHE" &>/dev/null
+    fi
+    touch "$MMA_AFSC_STAMP"
+    spinner_stop
+    printf "  ${GREEN}* mma cache: new entries APFS-compressed${NC}\n"
+fi
+
 print_task "Mole cache (older than 14 days)"
 MOLE_DIR="$HOME/.cache/mole"
 if [ -d "$MOLE_DIR" ]; then
