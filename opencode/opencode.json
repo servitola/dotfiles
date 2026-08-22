@@ -1,6 +1,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
+  "share": "disabled",
+  "snapshot": true,
   "instructions": [
     "~/projects/dotfiles/claude-code/CLAUDE.md"
   ],
@@ -113,12 +115,61 @@
             "output": 8192
           }
         },
+        "mistral-medium": {
+          "name": "Mistral Medium (direct, free tier — what Vibe CLI uses for tools)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "mistral-codestral": {
+          "name": "Mistral Codestral (direct, free tier)",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "mistral-devstral": {
+          "name": "Mistral Devstral 2512 (direct, free tier — deprecates 2026-08-31)",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
         "nvidia-nemotron-120b": {
           "name": "NVIDIA Nemotron 120B (direct)",
           "limit": {
             "context": 131072,
             "output": 16384
           }
+        },
+        "gemini": {
+          "name": "Gemini 2.5 Flash (direct)",
+          "limit": { "context": 1000000, "output": 8192 }
+        },
+        "gemini-flash-lite": {
+          "name": "Gemini 2.5 Flash-Lite (direct)",
+          "limit": { "context": 1000000, "output": 8192 }
+        },
+        "cloudflare-gpt-oss": {
+          "name": "gpt-oss-120b (Cloudflare)",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "ionet-kimi-code": {
+          "name": "Kimi K2.7 Code (io.net — slow/flaky, seen hanging in testing)",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "ionet-qwen-coder": {
+          "name": "Qwen3-Next-80B (io.net)",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "poolside-laguna": {
+          "name": "Poolside Laguna (OpenRouter)",
+          "limit": { "context": 131072, "output": 8192 }
+        },
+        "cohere-north-code": {
+          "name": "Cohere North Mini Code (OpenRouter — reasoning model, can return empty content on tight max_tokens)",
+          "limit": { "context": 131072, "output": 8192 }
         }
       }
     }
@@ -131,6 +182,23 @@
     "openrouter",
     "github-copilot"
   ],
+  "mcp": {
+    "rag": {
+      "type": "local",
+      "command": ["/Users/servitola/projects/dotfiles/rag/mcp-server.py"],
+      "enabled": true
+    },
+    "playwright": {
+      "type": "local",
+      "command": ["npx", "-y", "@playwright/mcp@0.0.78"],
+      "enabled": true
+    },
+    "youtrack": {
+      "type": "local",
+      "command": ["/Users/servitola/.claude/scripts/youtrack-mcp-proxied.sh"],
+      "enabled": true
+    }
+  },
   "permission": {
     "edit": "allow",
     "webfetch": "allow",
