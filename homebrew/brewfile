@@ -79,6 +79,8 @@ brew "fclones"
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Play, record, convert, and stream audio and video
+brew "ffmpeg@7"
 # Banner-like program prints strings as ASCII art
 brew "figlet"
 # Collection of GNU find, xargs, and locate
