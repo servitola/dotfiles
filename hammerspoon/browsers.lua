@@ -23,6 +23,7 @@ function M.by_app(app_title)
     return nil
 end
 
-M.main = M.known.Vivaldi
+local chosen = require("constants").APP_BROWSER
+M.main = assert(M.by_app(chosen), "browsers: APP_BROWSER is not in M.known: " .. tostring(chosen))
 
 return M
