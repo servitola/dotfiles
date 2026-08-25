@@ -22,12 +22,8 @@ source ~/projects/dotfiles/zsh/plugins.sh
 # Oh My Zsh Initialization
 source ~/.oh-my-zsh/oh-my-zsh.sh
 
-# -----------------------------------------------------------------------------
-# Custom Completion Configuration
-# -----------------------------------------------------------------------------
-# Load AFTER oh-my-zsh called compinit
-# This file only configures completion behavior (menu selection, caching, etc.)
-# It does NOT initialize the completion system
+# Must load AFTER oh-my-zsh ran compinit: completion.sh only configures behavior
+# (menu selection, caching), it does NOT initialize the completion system.
 source ~/projects/dotfiles/zsh/completion.sh
 source ~/projects/dotfiles/zsh/history_settings.sh
 source ~/projects/dotfiles/zsh/functions.sh
