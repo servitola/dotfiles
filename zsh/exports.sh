@@ -8,6 +8,9 @@
 [[ -n "$_EXPORTS_LOADED" ]] && return 0
 export _EXPORTS_LOADED=1
 
+# Constants of this machine (paths, chat ids, chosen apps) — see constants/AGENTS.md
+source ~/projects/dotfiles/constants/load.zsh
+
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
 
