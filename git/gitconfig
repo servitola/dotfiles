@@ -1,8 +1,5 @@
-[user]
-	name = servitola
-	email = servitola@gmail.com
-
 [include]
+	path = "~/.local/state/dotfiles/generated/identity.gitconfig"
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
 	path = "~/projects/dotfiles/git/gitea.gitconfig"

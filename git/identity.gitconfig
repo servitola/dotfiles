@@ -1,0 +1,3 @@
+[user]
+	name = ${ME_NAME}
+	email = ${ME_EMAIL}
