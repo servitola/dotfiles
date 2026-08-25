@@ -79,6 +79,8 @@ brew "fclones"
 brew "fd"
 # Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Framework for layout and rendering of i18n text
+brew "pango"
 # Play, record, convert, and stream audio and video
 brew "ffmpeg@7"
 # Banner-like program prints strings as ASCII art
@@ -91,8 +93,6 @@ brew "firebase-cli"
 brew "flock"
 # GitHub command-line tool
 brew "gh"
-# Framework for layout and rendering of i18n text
-brew "pango"
 # Interpreter for PostScript and PDF
 brew "ghostscript"
 # Distributed revision control system
