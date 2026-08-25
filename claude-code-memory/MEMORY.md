@@ -7,12 +7,12 @@ See [vision.md](vision.md) — north star for all dotfiles evolution.
 - **3 Macs**: Mac Studio M1 Pro, MacBook Pro 16" M3 Pro, MacBook Pro 16" Intel i9 2019
 - Dotfiles must work on both Apple Silicon (`/opt/homebrew/`) and Intel (`/usr/local/`). Use `$HOMEBREW_PREFIX` not hardcoded paths
 
-## Vlad's Preferences
+## Owner Preferences
 - **Editor**: VSCode (`code`)
 - **Theme**: Gruvbox Dark Hard everywhere (terminals, editors, eza, bat, git, btop)
 - **Font**: JetBrainsMono Nerd Font / MesloLGS NF
 - **Terminal**: Zap (daily driver, Hyper+B), Ghostty, iTerm2 (legacy)
-- **Browser**: Yandex (default), Safari (work URLs), Firefox/Chrome (testing)
+- **Browser**: Vivaldi (default, Hyper+V), Firefox (work URLs), Chrome (testing)
 - **Git client**: Fork. Visual diff via Fork or opendiff (FileMerge)
 - **Git pager**: diff-so-fancy (NOT delta — delta is not installed)
 - **Aliases**: `a`=claude -c, `c`=claude, `q`=qwen — all actively used, don't rename
@@ -49,7 +49,7 @@ See [vision.md](vision.md) — north star for all dotfiles evolution.
 - **Default apps**: `macos/set_default_apps.sh` writes `LSHandlers` entries straight into `com.apple.launchservices.secure.plist`, NOT via `duti`. On macOS 15+ `duti -s` prompts a dialog per type and fails (`error -50`) on extensions with no UTI. `duti` stays installed only for read-only `duti -x` queries
 ## Code Organization
 - **aliases.sh**: Contains both aliases AND small functions (rec, android_*, whisper_*, ppp). Don't reorganize — mixing aliases and related functions in one file is intentional
-- **yandex_search.lua**: Searches Perplexity AI, opened in Yandex browser. Name refers to browser, not search engine
+- **browser_search.lua**: Searches Perplexity AI, opens in the default browser
 - **AudioSwitcher blueutil**: Hardcoded `/opt/homebrew/bin/blueutil` path is known. Only used on Apple Silicon Macs
 
 ## Repo Conventions
