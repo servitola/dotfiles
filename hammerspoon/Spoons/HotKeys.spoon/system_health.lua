@@ -1,7 +1,5 @@
--- System Health Dashboard
--- Shows macOS system status in a Gruvbox-themed webview panel
--- Dismissed with Escape key
--- Fast data shown instantly; slow data (public IP, docker, VPN) loaded async
+-- Gruvbox webview panel of macOS system status; Escape dismisses.
+-- Fast data renders instantly, slow data (public IP, docker, VPN) fills in async.
 
 local M = {}
 
