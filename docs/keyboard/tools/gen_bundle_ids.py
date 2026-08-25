@@ -11,6 +11,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from app_constants import resolve  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parents[3]
 LAYOUT_DIR = REPO_ROOT / "hammerspoon/Spoons/HotKeys.spoon/layout/60%"
 OUTPUT = REPO_ROOT / "hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua"
@@ -27,7 +31,13 @@ OVERRIDES = {
 def collect_app_names() -> list[str]:
     names = set()
     for lua in sorted(LAYOUT_DIR.glob("*.lua")):
-        names.update(APP_RE.findall(lua.read_text()))
+        for target in APP_RE.findall(lua.read_text()):
+            # `@APP_BROWSER` and friends name a constant, not an app
+            name = resolve(target)
+            if name is None:
+                sys.exit(f"{lua.name}: {target} names no constant "
+                         f"(see constants.env)")
+            names.add(name)
     return sorted(names)
 
 

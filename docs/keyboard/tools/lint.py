@@ -8,6 +8,7 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   F2  header line uses canonical box-cap and dash counts
   F3  modifier-rows are present in canonical order (base, single, double, …)
   C1  every active {chord=…, app|fn=…} has a matching ASCII row
+  C2  `app = "@KEY"` resolves against constants, and its ASCII row agrees
   D1  ASCII karabiner column matches karabiner/rules/*.json
   D2  ASCII birman column matches Birman.bundle/*.keylayout
   K1  Hammerspoon binding is not dead (Karabiner does not intercept same chord)
@@ -33,6 +34,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 from parse_karabiner import parse_karabiner, _TO_PHYS, _to_display, _from_mods_to_layer
 from parse_birman import parse_birman, LAYER_TO_STATE
 from config import FKEY_MAPPING, MOD_DISPLAY
+from app_constants import resolve
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
@@ -203,6 +205,31 @@ def check_coverage(state, findings):
         findings.add(ERROR, f, a["line"], "C1",
                      f"active `{chord} → {target}` has no ASCII row",
                      "run normalize.py --insert-missing to insert canonical row")
+
+
+def check_app_constants(state, findings):
+    """C2: `app = "@KEY"` resolves, and the ASCII row still names the real app."""
+    f = state["path"]
+    ascii_desc = {r["chord"]: r for r in state["ascii_rows"]}
+    for a in state["actives"]:
+        if a["kind"] != "app" or not a["target"].startswith("@"):
+            continue
+        name = resolve(a["target"])
+        if name is None:
+            findings.add(ERROR, f, a["line"], "C2",
+                         f"`{a['target']}` names no constant",
+                         "add it to constants.env or use a literal app name")
+            continue
+        row = ascii_desc.get(a["chord"])
+        # A bare app name in the description column is documentation of this
+        # binding; "↓", tags and `App — action` rows describe something else.
+        if row and row["desc"] and row["desc"] not in ("↓", "???") \
+                and "—" not in row["desc"] and ":" not in row["desc"] \
+                and row["desc"] != name:
+            findings.add(WARN, f, row["line"], "C2",
+                         f"ASCII row says `{row['desc']}` but "
+                         f"{a['target']} is `{name}`",
+                         f"replace the description with `{name}`")
 
 
 _MOD_ORDER_RE = re.compile(r"[⇪⇧⌃⌥⌘]+")
@@ -448,6 +475,7 @@ def main():
         state = parse_file(path)
         check_format(state, findings)
         check_coverage(state, findings)
+        check_app_constants(state, findings)
         if not args.skip_drift:
             check_karabiner_drift(state, findings, karabiner_strict)
             check_birman_drift(state, findings, birman_data)

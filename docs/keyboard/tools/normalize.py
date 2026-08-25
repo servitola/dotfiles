@@ -29,6 +29,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 from labels import get_label, FN_LABELS
 from config import FKEY_MAPPING, MOD_DISPLAY, KEY_DISPLAY
+from app_constants import resolve
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
@@ -194,7 +195,7 @@ def normalize_line(line):
 def _default_desc_for_active(target, kind):
     """Generate description text for an inserted ASCII row from active binding."""
     if kind == "app":
-        return target
+        return resolve(target) or target
     return FN_LABELS.get(target, target)
 
 
