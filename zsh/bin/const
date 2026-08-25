@@ -1,0 +1,81 @@
+#!/bin/zsh
+# Read the constants of this machine.
+# Source of truth: ~/projects/dotfiles/constants.env
+#
+#   const                       list everything
+#   const APP_BROWSER           print one value
+#   const app.browser           same — dots and case are normalised
+#   const get APP_BROWSER       explicit form
+#   const list DIR_             list a namespace
+#   const keys                  key names only
+#   const file                  where the values live
+#   const check                 verify every DIR_/FILE_ path exists
+#   const sync                  re-render generated files (constants/render/)
+#   const edit                  open it in $EDITOR
+set -euo pipefail
+
+FILE="$HOME/projects/dotfiles/constants.env"
+
+typeset -A CONST
+typeset -a ORDER
+_read() {
+    local key value
+    while IFS='=' read -r key value; do
+        [[ -z $key || $key == \#* ]] && continue
+        [[ -n ${CONST[$key]:-} ]] || ORDER+=( "$key" )
+        CONST[$key]="${value//\$HOME/$HOME}"
+    done < "$1"
+}
+_read "$FILE"
+
+_normalise() { print -r -- "${${1:u}//./_}" }
+_get() {
+    local key="$(_normalise "$1")"
+    (( ${+CONST[$key]} )) || { print -u2 -r -- "const: unknown constant: $1"; exit 1 }
+    print -r -- "${CONST[$key]}"
+}
+
+case "${1:-list}" in
+    list|"")
+        local prefix="$(_normalise "${2:-}")"
+        for key in $ORDER; do
+            # `if`, not `&&`: a non-matching last key would make the loop —
+            # and with `set -e` the whole command — exit non-zero
+            if [[ $key == ${prefix}* ]]; then
+                printf '%-24s %s\n' "$key" "${CONST[$key]}"
+            fi
+        done
+        ;;
+    keys)
+        print -l -- $ORDER
+        ;;
+    file|files)
+        print -r -- "$FILE"
+        ;;
+    check)
+        local bad=0
+        for key in $ORDER; do
+            [[ $key == (DIR_|FILE_)* ]] || continue
+            [[ -e ${CONST[$key]} ]] && continue
+            print -u2 -r -- "missing: $key → ${CONST[$key]}"
+            bad=1
+        done
+        (( bad )) && exit 1
+        print "all DIR_/FILE_ constants point at something that exists"
+        ;;
+    sync)
+        zsh "$HOME/projects/dotfiles/constants/render-all.zsh"
+        ;;
+    edit)
+        $EDITOR "$FILE"
+        ;;
+    get)
+        _get "$2"
+        ;;
+    -h|--help)
+        sed -n '2,14p' "$0" | cut -c3-
+        ;;
+    *)
+        _get "$1"
+        ;;
+esac
