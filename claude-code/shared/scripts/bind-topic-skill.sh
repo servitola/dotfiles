@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
-# bind-topic-skill — give a single topic exclusive access to one skill.
-#
-# Replaces the bot-managed `<topic>/.claude -> ../.claude` symlink with a
-# real `.claude/` dir that contains only the requested skill, isolating
-# it from other topics in the same bot.
-#
-# Usage:
-#   bind-topic-skill.sh <topic-dir> <skill-name>
+# Give a single topic exclusive access to one skill: replaces the bot-managed
+# `<topic>/.claude -> ../.claude` symlink with a real `.claude/` dir containing
+# only that skill, isolating it from other topics in the same bot.
 #
 # Examples:
 #   bind-topic-skill.sh ~/projects/serho_topics/картинодел image-edit
 #   bind-topic-skill.sh ~/projects/serho_topics/powerpoint  powerpoint
-#
-# The skill must exist in one of the four skill sources (resolved in order):
-#   ~/projects/dotfiles/claude-code/skills/<name>            (public global)
-#   ~/projects/dotfiles/claude-code/detached_skills/<name>   (public detached)
-#   ~/projects/dotfiles_private/claude-code/skills/<name>    (private global)
-#   ~/projects/dotfiles_private/claude-code/detached_skills/<name> (private detached)
 
 set -euo pipefail
 
@@ -33,13 +22,10 @@ if [[ ! -d "$TOPIC" ]]; then
   exit 1
 fi
 
-# Resolve the skill across the four sources.
 SRC=""
 for base in \
   "$HOME/projects/dotfiles/claude-code/skills" \
-  "$HOME/projects/dotfiles/claude-code/detached_skills" \
-  "$HOME/projects/dotfiles_private/claude-code/skills" \
-  "$HOME/projects/dotfiles_private/claude-code/detached_skills"; do
+  "$HOME/projects/dotfiles/claude-code/detached_skills"; do
   if [[ -d "$base/$SKILL" ]]; then SRC="$base/$SKILL"; break; fi
 done
 
