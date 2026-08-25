@@ -15,7 +15,7 @@ gone. What the markers cannot see are chords with no Karabiner rule at all
 (⇪t, ⇪f, ⇪g, ⇪h, ⇪b pass straight through) — those still come from combos, where
 they arrive carrying all four modifiers.
 """
-import argparse, bisect, collections, datetime, glob, json, os, re
+import argparse, bisect, collections, datetime, glob, json, math, os, re, subprocess
 
 HOME = os.path.expanduser("~")
 DATA = f"{HOME}/Library/Application Support/Hammerspoon/InputLogger"
@@ -73,6 +73,13 @@ def load(pattern, days, anchor=None):
     return rows
 
 
+def resolve_const(name):
+    """Layout files may name an app by constant (@APP_BROWSER) — ask the registry."""
+    if not name.startswith("@"):
+        return name
+    out = subprocess.run(["const", name[1:].lower().replace("_", ".")],
+                         capture_output=True, text=True)
+    return out.stdout.strip() or name
 def bound_chords():
     out = {}
     for path in sorted(glob.glob(f"{LAYOUT}/*.lua")):
