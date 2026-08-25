@@ -1,0 +1,19 @@
+#!/bin/zsh
+# Regenerate and open the cron calendar (static HTML in dotfiles).
+#
+#   cron-cal            regenerate + open in browser
+#   cron-cal --quiet    regenerate only, no browser
+#   cron-cal --report   print the weekly Telegram report text to stdout
+set -e
+
+CRON_DIR="$HOME/projects/dotfiles/cron"
+
+if [[ "$1" == "--report" ]]; then
+    exec python3 "$CRON_DIR/scripts/cron-report.py"
+fi
+
+if [[ "$1" == "--quiet" ]]; then
+    exec python3 "$CRON_DIR/scripts/cron-calendar.py"
+fi
+
+exec python3 "$CRON_DIR/scripts/cron-calendar.py" --open
