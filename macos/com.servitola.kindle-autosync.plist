@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.servitola.kindle-autosync</string>
+
+    <!-- StartOnMount — штатный ключ launchd: срабатывает при монтировании ЛЮБОГО тома.
+         (WatchPaths /var/run, как в android-automount, для дисков НЕ работает: mtime
+         /var/run при монтировании не меняется — проверено 2026-07-26.)
+         Скрипт за миллисекунды выходит, если Kindle или SanDisk не подключены. -->
+    <key>StartOnMount</key>
+    <true/>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/zsh</string>
+        <string>/Users/servitola/projects/dotfiles/cron/scripts/kindle-autosync.sh</string>
+    </array>
+
+    <!-- RunAtLoad=false: не синкать при каждом логине, только по факту подключения -->
+    <key>RunAtLoad</key>
+    <false/>
+    <key>KeepAlive</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/servitola/Library/Logs/kindle-autosync-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/servitola/Library/Logs/kindle-autosync-stderr.log</string>
+</dict>
+</plist>
