@@ -2,6 +2,7 @@
 import os
 import re
 from config import LAYOUT_DIR, BUTTON_FILES
+from app_constants import resolve
 
 _ENTRY_RE = re.compile(
     r'\{\s*chord\s*=\s*"([^"]+)"'
@@ -26,7 +27,7 @@ def parse_active_entries():
                     continue
                 entry = {"chord": m.group(1), "source_key": key_name}
                 if m.group(2):
-                    entry["app"] = m.group(2)
+                    entry["app"] = resolve(m.group(2)) or m.group(2)
                 elif m.group(3):
                     entry["fn"] = m.group(3)
                 entries.append(entry)
