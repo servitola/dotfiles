@@ -80,6 +80,13 @@ def resolve_const(name):
     out = subprocess.run(["const", name[1:].lower().replace("_", ".")],
                          capture_output=True, text=True)
     return out.stdout.strip() or name
+
+
+def bundle_ids():
+    path = f"{HOME}/projects/dotfiles/hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua"
+    return dict(re.findall(r'\["([^"]+)"\]\s*=\s*"([^"]+)"', open(path).read()))
+
+
 def bound_chords():
     out = {}
     for path in sorted(glob.glob(f"{LAYOUT}/*.lua")):
