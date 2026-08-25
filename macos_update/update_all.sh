@@ -120,6 +120,9 @@ print_task "Updating Atuin db (zsh history)"
 atuin sync
 
 
+print_task "Re-rendering configs generated from constants"
+zsh ~/projects/dotfiles/constants/render-all.zsh
+
 print_task "Regenerating keyboard SVGs"
 python3 ~/projects/dotfiles/docs/keyboard/generate.py 2>&1 | tail -3
 
