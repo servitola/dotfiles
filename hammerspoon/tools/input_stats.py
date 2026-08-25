@@ -112,7 +112,10 @@ def hs_chord(key, flags):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--days", type=float, default=0)
+    ap.add_argument("--full", action="store_true",
+                    help="ничего не обрезать: каждый список целиком, по убыванию")
     args = ap.parse_args()
+    lim = (lambda c, n: c.most_common()) if args.full else (lambda c, n: c.most_common(n))
 
     combos = load("combos-*.jsonl", args.days)
     phys = load("physical-*.jsonl", args.days, anchor=combos[-1]["ts"] if combos else None)
@@ -141,24 +144,52 @@ def main():
         return app_at[i] if i >= 0 else None
 
     print("\n== чорды: что нажато физически ==")
+    bound, ids = bound_chords(), bundle_ids()
     chords = collections.Counter()
     chord_app = collections.defaultdict(collections.Counter)
+    # a launcher chord toggles: pressing it inside its own app hides that app,
+    # pressing it anywhere else switches to it — the app timeline tells which
+    toggles = collections.defaultdict(collections.Counter)
+
+    def action_for(chord, sent):
+        act = bound.get(chord) or bound.get(sent)
+        return act
+
+    def note_toggle(chord, sent, ts):
+        act = action_for(chord, sent)
+        if not act or not act.startswith("app:"):
+            return
+        target = ids.get(resolve_const(act[4:]))
+        if target:
+            toggles[chord]["скрыл" if app_for(ts) == target else "перешёл"] += 1
+
     for r in phys:
         c = pretty(r["chord"])
-        chords[(c, pretty(r["sent"]) if "+" not in r["sent"] else pretty(r["sent"]))] += 1
+        chords[(c, pretty(r["sent"]))] += 1
         chord_app[c][app_for(r["ts"])] += 1
+        note_toggle(c, pretty(r["sent"]), r["ts"])
     # chords Karabiner never touches arrive intact, all four modifiers attached
     passthrough = collections.Counter()
     for r in downs:
         fl = {f for f in (r.get("modifiers") or []) if f in ("cmd", "alt", "ctrl", "shift")}
         if fl == {"cmd", "alt", "ctrl", "shift"}:
-            passthrough[("⇪" + VK.get(r["code"], f"vk{r['code']}"), "—")] += 1
+            c = "⇪" + VK.get(r["code"], f"vk{r['code']}")
+            passthrough[(c, "—")] += 1
+            chord_app[c][r.get("app")] += 1
+            note_toggle(c, "—", r["ts"])
     merged = chords + passthrough
-    for (c, sent), n in merged.most_common(30):
-        top = chord_app[c].most_common(1)
-        where = f"  ·  {top[0][0].split('.')[-1]}" if top and top[0][0] else ""
-        note = f"  → {MEANING.get(sent, sent)}" if sent != "—" else "  (без правила)"
-        print(f"  {n:5d}  {c:10s}{note}{where}")
+    for (c, sent), n in lim(merged, 30):
+        act = action_for(c, sent)
+        if act:
+            what = resolve_const(act.split(":", 1)[1])
+            t = toggles.get(c)
+            extra = (f"  (перешёл {t['перешёл']}, скрыл {t['скрыл']})"
+                     if t else f"  ·  {((chord_app[c].most_common(1) or [(None,)])[0][0] or '').split('.')[-1]}")
+        else:
+            what = MEANING.get(sent, sent) if sent != "—" else "не привязан"
+            top = chord_app[c].most_common(1)
+            extra = f"  ·  {top[0][0].split('.')[-1]}" if top and top[0][0] else ""
+        print(f"  {n:5d}  {c:10s} → {what:22s}{extra}")
 
     print("\n== привязанные чорды HotKeys, не сработавшие ни разу ==")
     seen = {c for c, _ in merged}
@@ -168,7 +199,6 @@ def main():
         seen.add(hs_chord(VK.get(r["code"], f"vk{r['code']}"),
                           {f for f in (r.get("modifiers") or [])
                            if f in ("cmd", "shift", "alt", "ctrl")}))
-    bound = bound_chords()
     dead = sorted(f"{c:12s} {a}" for c, a in bound.items() if c not in seen)
     print(f"мёртвых {len(dead)} из {len(bound)}")
     for line in dead:
@@ -185,7 +215,7 @@ def main():
         nav[("+".join(fl) + " " if fl else "") + key] += 1
     hyper_nav = sum(n for (c, s), n in chords.items()
                     if s in ("←", "→", "↑", "↓", "pageup", "pagedown"))
-    for k, v in nav.most_common(10):
+    for k, v in lim(nav, 10):
         print(f"  {v:5d}  {k}")
     total_arrows = sum(v for k, v in nav.items() if k.endswith(("←", "→", "↑", "↓")))
     if total_arrows:
@@ -205,13 +235,89 @@ def main():
         prev = (r["code"], bare(r))
     rates = sorted(((100 * deleted.get(c, 0) / n, VK.get(c, c), deleted.get(c, 0), n)
                     for c, n in typed.items() if n >= 150 and c != 51), reverse=True)
-    for rate, name, d, n in rates[:8]:
+    for rate, name, d, n in (rates if args.full else rates[:8]):
         print(f"  {str(name):8s} {d:5d} из {n:6d}  {rate:5.1f}%")
+
+    print("\n== что набрано вместо стёртого ==")
+    text = load("text-*.jsonl", args.days, anchor=combos[-1]["ts"] if combos else None)
+    if not text:
+        print("  текстового слоя нет за это окно")
+    else:
+        # keyboard geometry, to tell a neighbouring-key slip from a change of mind
+        GRID = [[50, 18, 19, 20, 21, 23, 22, 26, 28, 25, 29, 27, 24],
+                [48, 12, 13, 14, 15, 17, 16, 32, 34, 31, 35, 33, 30, 42],
+                [0, 1, 2, 3, 5, 4, 38, 40, 37, 41, 39],
+                [6, 7, 8, 9, 11, 45, 46, 43, 47, 44],
+                [49]]
+        pos = {kc: (ci + off, ri)
+               for ri, (row, off) in enumerate(zip(GRID, (0, 0.5, 0.75, 1.25, 4.5)))
+               for ci, kc in enumerate(row)}
+
+        def far(a, b):
+            if a not in pos or b not in pos:
+                return "?"
+            d = math.hypot(pos[a][0] - pos[b][0], pos[a][1] - pos[b][1])
+            return "соседняя" if d < 1.3 else "через одну" if d < 2.3 else "далёкая"
+
+        SKIP = {"com.nvidia.gfnpc.mall", "com.blizzard.heroesofthestorm",
+                "com.apple.finder", "com.colliderli.iina"}
+        buf, pending, pairs, deleted_total = [], None, collections.defaultdict(collections.Counter), collections.Counter()
+        for r in text:
+            if r["app"] in SKIP or [m for m in (r.get("modifiers") or [])
+                                    if m in ("cmd", "alt", "ctrl")]:
+                buf, pending = [], None
+                continue
+            ch = r["char"]
+            if ch == "\x7f":
+                if buf:
+                    pending = buf.pop()
+                    deleted_total[pending] += 1
+                continue
+            if len(ch) != 1 or ord(ch) > 0xF000:
+                buf, pending = [], None
+                continue
+            if pending:
+                pairs[pending][(ch, r["code"])] += 1
+                pending = None
+            buf.append((ch, r["code"]))
+
+        print(f"  {'стёрто':8s} {'всего':>6s}   чем заменено")
+        for (dch, dcode), n in lim(deleted_total, 25):
+            if n < 5:
+                continue
+            top = ", ".join(f"{c}×{k} ({far(dcode, code)})"
+                            for (c, code), k in pairs[(dch, dcode)].most_common(4))
+            print(f"  {repr(dch):8s} {n:6d}   {top or '—'}")
+
+    print("\n== все клавиши по убыванию ==")
+    press = collections.Counter()
+    for r in downs:
+        press[VK.get(r["code"], f"vk{r['code']}")] += 1
+    rep = collections.Counter(r["code"] for r in combos
+                              if r.get("type") == "key" and r["state"] == "down"
+                              and r.get("autorepeat"))
+    for name, n in lim(press, 40):
+        code = next((c for c, v in VK.items() if v == name), None)
+        extra = f"   (+{rep[code]} автоповторов)" if code and rep.get(code) else ""
+        print(f"  {n:7d}  {name}{extra}")
+
+    print("\n== мышь ==")
+    for code, n in lim(collections.Counter(r["code"] for r in clicks), 10):
+        print(f"  {n:7d}  {code}")
+
+    print("\n== по дням ==")
+    per = collections.Counter()
+    DN = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"]
+    for r in downs:
+        d = datetime.datetime.fromtimestamp(r["ts"] / 1000)
+        per[f"{d:%d.%m} {DN[d.weekday()]}"] += 1
+    for k, n in sorted(per.items(), key=lambda x: -x[1]):
+        print(f"  {n:7d}  {k}")
 
     print("\n== по приложениям ==")
     kb = collections.Counter(r.get("app") for r in downs)
     ms = collections.Counter(r.get("app") for r in clicks)
-    for app, _ in (kb + ms).most_common(12):
+    for app, _ in lim(kb + ms, 12):
         k, m = kb.get(app, 0), ms.get(app, 0)
         print(f"  {(app or '?').split('.')[-1]:24s} клавиш {k:7d}  кликов {m:6d}"
               f"  {k/m:6.1f}" if m else
