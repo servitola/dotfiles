@@ -1,9 +1,6 @@
 #!/bin/zsh
 # perfcheck — one-shot macOS performance diagnostic for this machine.
 #
-# Encodes the playbook from the 2026-06 perf investigation. Full context,
-# root causes and gotchas live in:
-#   ~/projects/serho_topics/перформанс-макбука/AGENTS.md
 #
 # Philosophy (learned the hard way):
 #   * The #1 cause of "feels slow" here is SWAP THRASHING, not CPU. Watch swap.
@@ -123,7 +120,6 @@ CC_N=$(ps -axo comm 2>/dev/null | grep -c '^claude$')
 CC_GB=$(ps -axo rss,comm 2>/dev/null | awk '$2=="claude"{s+=$1} END{printf "%.2f",s/1024/1024}')
 if (( CC_N > 12 )); then
     warn "claude sessions" "${CC_N} (${CC_GB} GB) — many; reaper threshold may be too high"; flag_warn
-    note "reaper: ~/projects/dotfiles_private/cron/scripts/serho-tmux-reaper.py (THRESHOLD_SEC)"
 else
     ok "claude sessions" "${CC_N} (${CC_GB} GB)"
 fi
