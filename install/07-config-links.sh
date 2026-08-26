@@ -4,12 +4,15 @@
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
+section "constants -> generated files"
+zsh "$DOTFILES/constants/render-all.zsh"
+
 section "home dotfiles (~)"
 link_all \
     "$DOTFILES/git/gitconfig"          "$HOME/.gitconfig" \
     "$DOTFILES/tmux/tmux.conf"         "$HOME/.tmux.conf" \
     "$DOTFILES/nano/nanorc"            "$HOME/.nanorc" \
-    "$DOTFILES/nuget/NuGet.Config"     "$HOME/.nuget/NuGet/NuGet.Config" \
+    "$STATE/generated/NuGet.Config"    "$HOME/.nuget/NuGet/NuGet.Config" \
     "$DOTFILES/zap"                    "$HOME/.zap"
 
 section "XDG config (~/.config)"
