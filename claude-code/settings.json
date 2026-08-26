@@ -1,15 +1,5 @@
 {
-  "alwaysThinkingEnabled": true,
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
-  "autoMemoryEnabled": false,
   "cleanupPeriodDays": 120,
-  "effortLevel": "high",
-  "enabledPlugins": {
-    "superpowers@superpowers-marketplace": true
-  },
   "env": {
     "BASH_MAX_TIMEOUT_MS": "480000",
     "CLAUDE_CODE_SUBAGENT_MODEL": "sonnet",
@@ -20,6 +10,29 @@
     "DISABLE_TELEMETRY": "1",
     "ENABLE_TOOL_SEARCH": "auto:0"
   },
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "allow": [
+      "Bash",
+      "Edit",
+      "Glob",
+      "Grep",
+      "MultiEdit",
+      "Read",
+      "Task",
+      "TodoWrite",
+      "WebFetch",
+      "WebSearch",
+      "Write",
+      "Skill(superpowers:brainstorming)"
+    ],
+    "deny": [],
+    "defaultMode": "plan"
+  },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -110,27 +123,9 @@
       }
     ]
   },
-  "model": "sonnet[1m]",
-  "permissions": {
-    "allow": [
-      "Bash",
-      "Edit",
-      "Glob",
-      "Grep",
-      "MultiEdit",
-      "Read",
-      "Task",
-      "TodoWrite",
-      "WebFetch",
-      "WebSearch",
-      "Write",
-      "Skill(superpowers:brainstorming)"
-    ],
-    "defaultMode": "plan",
-    "deny": []
+  "enabledPlugins": {
+    "superpowers@superpowers-marketplace": true
   },
-  "skipDangerousModePermissionPrompt": true,
-  "switchModelsOnFlag": false,
   "extraKnownMarketplaces": {
     "superpowers-marketplace": {
       "source": {
@@ -138,5 +133,11 @@
         "repo": "obra/superpowers-marketplace"
       }
     }
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high",
+  "autoMemoryEnabled": false,
+  "skipDangerousModePermissionPrompt": true,
+  "switchModelsOnFlag": false,
+  "tui": "fullscreen"
 }
