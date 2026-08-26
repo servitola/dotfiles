@@ -157,6 +157,8 @@ brew "libnotify"
 brew "links"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Curses-based tool for viewing and analyzing log files
+brew "lnav"
 # Text-based web browser
 brew "lynx"
 # Swiss Army Knife for macOS
