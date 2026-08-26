@@ -25,6 +25,7 @@ link_all \
     "$DOTFILES/atuin/config.toml"      "$CONFIG/atuin/config.toml" \
     "$DOTFILES/noti"                   "$CONFIG/noti" \
     "$DOTFILES/yt-dlp/config"          "$CONFIG/yt-dlp/config" \
+    "$DOTFILES/yt-dlp/plugins/puzzlemovies" "$CONFIG/yt-dlp/plugins/puzzlemovies" \
     "$DOTFILES/midnight commander"     "$CONFIG/mc"
 
 section "Application Support"
