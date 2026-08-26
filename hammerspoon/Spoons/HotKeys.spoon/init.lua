@@ -81,6 +81,13 @@ local function browser_title_has_video(title)
     end
     return false
 end
+-- Раскладки фокуса вынесены в отдельный модуль: их дёргает и хоткей, и голос.
+-- Публикуем на obj, чтобы VoiceCtl звал функцию напрямую (синтез чорда не ловится).
+local windowFocusSets = dofile(spoonPath .. "window_focus_sets.lua")({
+    browser_title_has_video = browser_title_has_video,
+})
+obj.windowFocusSets = windowFocusSets
+
 local function unminimize_if_needed(app)
     if not app then return false end
     if app.isHidden and app:isHidden() then app:unhide() end
@@ -536,127 +543,9 @@ function obj:init()
                     or functionName == "window.focus_work"
                     or functionName == "window.focus_personal"
                     or functionName == "window.focus_comms" then
-                    local exceptionSets = {
-                        ["window.hide_all_except_work"] = { ["Zap"] = true, ["Workbot"] = true },
-                        ["window.focus_work"] = {
-                            ["Rider"] = true, ["Fork"] = true, ["Firefox"] = true,
-                            ["Zap"] = true, ["Code"] = true,
-                            ["Workbot"] = true
-                        },
-                        ["window.focus_personal"] = {
-                            ["Forkgram"] = true, ["Yandex"] = true
-                        },
-                        ["window.focus_comms"] = {
-                            ["Forkgram"] = true, ["Messages"] = true,
-                            ["zoom.us"] = true, ["Yandex Telemost"] = true
-                        },
-                    }
-                    local focusApps = {
-                        ["window.hide_all_except_work"] = { "Zap" },
-                        ["window.focus_work"] = { "Firefox" },
-                        ["window.focus_personal"] = { "Forkgram" },
-                        ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Forkgram" },
-                    }
-                    local exceptions = exceptionSets[functionName]
-                    local focusList = focusApps[functionName]
+                    local setName = functionName
                     hs.hotkey.bind(modifiers, key, function()
-                        hs.closeConsole()
-                        local yandexPopupAsync = false
-                        for _, app in ipairs(hs.application.runningApplications()) do
-                            if app:kind() == 1 then
-                                local appName = app:name()
-                                local isException = exceptions[appName]
-                                if isException then
-                                    if app:isHidden() then app:unhide() end
-                                    for _, win in ipairs(app:allWindows()) do
-                                        if win:isMinimized() then win:unminimize() end
-                                        set_window_default(win)
-                                    end
-                                elseif appName == "Yandex" then
-                                    local yandexApp = app
-                                    local keepVisibleNoVideo = (functionName == "window.focus_personal")
-
-                                    local function apply_yandex_layout()
-                                        local popupWin = nil
-                                        for _, win in ipairs(yandexApp:allWindows()) do
-                                            if is_yandex_video_player("Yandex", win:title(), win) then
-                                                popupWin = win
-                                                break
-                                            end
-                                        end
-
-                                        if popupWin then
-                                            for _, win in ipairs(yandexApp:allWindows()) do
-                                                if win == popupWin then
-                                                    set_window_left(win)
-                                                else
-                                                    win:minimize()
-                                                end
-                                            end
-                                        elseif keepVisibleNoVideo then
-                                            if yandexApp:isHidden() then yandexApp:unhide() end
-                                            for _, win in ipairs(yandexApp:allWindows()) do
-                                                if win:isMinimized() then win:unminimize() end
-                                                set_window_default(win)
-                                            end
-                                        else
-                                            for _, win in ipairs(yandexApp:allWindows()) do
-                                                win:minimize()
-                                            end
-                                            if not yandexApp:isHidden() then yandexApp:hide() end
-                                        end
-                                    end
-
-                                    local hasPopup = false
-                                    for _, win in ipairs(yandexApp:allWindows()) do
-                                        if is_yandex_video_player("Yandex", win:title(), win) then
-                                            hasPopup = true
-                                            break
-                                        end
-                                    end
-
-                                    local frontWin = yandexApp:focusedWindow() or yandexApp:mainWindow()
-                                    local frontTitle = frontWin and frontWin:title() or ""
-
-                                    if not hasPopup and yandex_title_has_video(frontTitle) then
-                                        yandexPopupAsync = true
-                                        local fnNameLocal = functionName
-                                        hs.timer.doAfter(0.18, function()
-                                            yandexApp:activate()
-                                            hs.timer.doAfter(0.08, function()
-                                                hs.eventtap.keyStroke({"cmd", "alt"}, "right", 0)
-                                                hs.timer.doAfter(0.35, function()
-                                                    apply_yandex_layout()
-                                                    local tg = hs.application.get("Forkgram")
-                                                    if tg then tg:activate() end
-                                                    if fnNameLocal == "window.focus_personal" then
-                                                        telegram_select_personal_folder(0.15)
-                                                    end
-                                                end)
-                                            end)
-                                        end)
-                                    else
-                                        apply_yandex_layout()
-                                    end
-                                elseif appName == "Forkgram" then
-                                    local hasVideo = false
-                                    for _, win in ipairs(app:allWindows()) do
-                                        if not win:isStandard() then
-                                            hasVideo = true
-                                        else
-                                            win:minimize()
-                                        end
-                                    end
-                                    if not hasVideo and not app:isHidden() then app:hide() end
-                                else
-                                    if not app:isHidden() then app:hide() end
-                                end
-                            end
-                        end
-                        for _, name in ipairs(focusList) do
-                            local a = hs.application.get(name)
-                            if a then a:activate(); break end
-                        end
+                        windowFocusSets.apply(setName)
                     end)
                 elseif functionName == "window.hide_current" then
                     hs.hotkey.bind(modifiers, key, function()
@@ -666,6 +555,14 @@ function obj:init()
                 elseif functionName == "hammerspoon_reload" then
                     hs.hotkey.bind(modifiers, key, function()
                         hs.reload()
+                    end)
+                elseif functionName == "display.toggle_window_to_tv" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.Displays:toggle_window_to_tv()
+                    end)
+                elseif functionName == "display.toggle_mirror" then
+                    hs.hotkey.bind(modifiers, key, function()
+                        spoon.Displays:toggle_mirror()
                     end)
                 elseif functionName == "wallpaper_refresh" then
                     hs.hotkey.bind(modifiers, key, function()
