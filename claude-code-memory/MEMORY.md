@@ -46,7 +46,7 @@ See [vision.md](vision.md) — north star for all dotfiles evolution.
 - Window split 73%/27% — It's perfect
 - **hs.itunes**: Use `hs.itunes` for music control in Hammerspoon. `hs.music` does NOT work despite being the "replacement" — it's broken
 - **Installer sudo rm -rf**: The `sudo rm -rf` / `sudo ln` inside `link` (`install/lib.sh`) is intentional. Needed for system-level symlinks and for re-linking $HOME targets that prior runs left root-owned. Don't change. (Install logic moved from `Makefile` to `install.sh` + numbered `install/*.sh`; `Makefile` is now a one-line wrapper.)
-- **Default apps**: `macos/set_default_apps.sh` writes `LSHandlers` entries straight into `com.apple.launchservices.secure.plist`, NOT via `duti`. On macOS 15+ `duti -s` prompts a dialog per type and fails (`error -50`) on extensions with no UTI. `duti` stays installed only for read-only `duti -x` queries
+- **Default apps**: `macos/set_default_apps.sh` writes the `LSHandlers` entries of `com.apple.launchservices.secure` through `defaults import` — a raw write to that `.plist` is silently reverted by cfprefsd
 ## Code Organization
 - **aliases.sh**: Contains both aliases AND small functions (rec, android_*, whisper_*, ppp). Don't reorganize — mixing aliases and related functions in one file is intentional
 - **browser_search.lua**: Searches Perplexity AI, opens in the default browser

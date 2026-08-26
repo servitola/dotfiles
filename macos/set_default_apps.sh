@@ -1,194 +1,130 @@
 #!/bin/zsh
+# Bind file types to apps via LaunchServices. Applies after the next login.
+set -e
+echo 'Setting default applications'
 
-source "$HOME/projects/dotfiles/zsh/functions.sh"
-echo 'Check the link for MacOS types identifiers:'
-echo 'https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html'
+python3 <<'PYEOF'
+import os, plistlib, subprocess, sys, time
 
-echo "Setting text editor"
-duti -s com.microsoft.VSCode com.netscape.javascript-source all
-duti -s com.microsoft.VSCode net.daringfireball.markdown all
-duti -s com.microsoft.VSCode public.css all
-duti -s com.microsoft.VSCode public.json all
-duti -s com.microsoft.VSCode public.php-script all
-duti -s com.microsoft.VSCode public.plain-text all
-duti -s com.microsoft.VSCode public.python-script all
-duti -s com.microsoft.VSCode public.ruby-script all
-duti -s com.microsoft.VSCode public.shell-script all
-duti -s com.microsoft.VSCode public.source-code all
-duti -s com.microsoft.VSCode public.text all
-duti -s com.microsoft.VSCode public.unix-executable all
-duti -s com.microsoft.VSCode public.xml all
-duti -s com.microsoft.VSCode .asc all
-duti -s com.microsoft.VSCode .applescript all
-duti -s com.microsoft.VSCode .bashrc all
-duti -s com.microsoft.VSCode .bat all
-duti -s com.microsoft.VSCode .bib all
-duti -s com.microsoft.VSCode Brewfile all
-duti -s com.microsoft.VSCode .c all
-duti -s com.microsoft.VSCode .cake all
-duti -s com.microsoft.VSCode .coffee all
-duti -s com.microsoft.VSCode .conf all
-duti -s com.microsoft.VSCode .config all
-duti -s com.microsoft.VSCode .cpp all
-duti -s com.microsoft.VSCode .css all
-duti -s com.microsoft.VSCode .csv all
-duti -s com.microsoft.VSCode .dart all
-duti -s com.microsoft.VSCode .dat all
-duti -s com.microsoft.VSCode .eslintrc all
-duti -s com.microsoft.VSCode .gitconfig all
-duti -s com.microsoft.VSCode .gitignore all
-duti -s com.microsoft.VSCode .go all
-duti -s com.microsoft.VSCode .gradle all
-duti -s com.microsoft.VSCode .h all
-duti -s com.microsoft.VSCode .hpp all
-duti -s com.microsoft.VSCode .hs all
-duti -s com.microsoft.VSCode .ini all
-duti -s com.microsoft.VSCode .java all
-duti -s com.microsoft.VSCode .jl all
-duti -s com.microsoft.VSCode .js all
-duti -s com.microsoft.VSCode .json all
-duti -s com.microsoft.VSCode .jsx all
-duti -s com.microsoft.VSCode .key all
-duti -s com.microsoft.VSCode .kt all
-duti -s com.microsoft.VSCode .kts all
-duti -s com.microsoft.VSCode .less all
-duti -s com.microsoft.VSCode LICENSE all
-duti -s com.microsoft.VSCode .lock all
-duti -s com.microsoft.VSCode .log all
-duti -s com.microsoft.VSCode .lua all
-duti -s com.microsoft.VSCode .m all
-duti -s com.microsoft.VSCode .markdown all
-duti -s com.microsoft.VSCode .md all
-duti -s com.microsoft.VSCode .mdx all
-duti -s com.microsoft.VSCode Podfile all
-duti -s com.microsoft.VSCode .php all
-duti -s com.microsoft.VSCode .phpt all
-duti -s com.microsoft.VSCode .pl all
-duti -s com.microsoft.VSCode .plist all
-duti -s com.microsoft.VSCode .pom all
-duti -s com.microsoft.VSCode .prettierrc all
-duti -s com.microsoft.VSCode .properties all
-duti -s com.microsoft.VSCode .proto all
-duti -s com.microsoft.VSCode .py all
-duti -s com.microsoft.VSCode .R all
-duti -s com.microsoft.VSCode .rb all
-duti -s com.microsoft.VSCode .rs all
-duti -s com.microsoft.VSCode .sass all
-duti -s com.microsoft.VSCode .scss all
-duti -s com.microsoft.VSCode .sh all
-duti -s com.microsoft.VSCode .srt all
-duti -s com.microsoft.VSCode .stub all
-duti -s com.microsoft.VSCode .svg all
-duti -s com.microsoft.VSCode .swift all
-duti -s com.microsoft.VSCode .tex all
-duti -s com.microsoft.VSCode .toml all
-duti -s com.microsoft.VSCode .tf all
-duti -s com.microsoft.VSCode .ts all
-duti -s com.microsoft.VSCode .tsv all
-duti -s com.microsoft.VSCode .tsx all
-duti -s com.microsoft.VSCode .txt all
-duti -s com.microsoft.VSCode .vue all
-duti -s com.microsoft.VSCode .xml all
-duti -s com.microsoft.VSCode .v all
-duti -s com.microsoft.VSCode .wkt all
-duti -s com.microsoft.VSCode .wxml all
-duti -s com.microsoft.VSCode .wxss all
-duti -s com.microsoft.VSCode .yaml all
-duti -s com.microsoft.VSCode .yml all
-duti -s com.microsoft.VSCode .zsh all
-duti -s com.microsoft.VSCode .zshrc all
-duti -s com.microsoft.VSCode Makefile all
-duti -s com.microsoft.VSCode .settings all
-duti -s com.microsoft.VSCode .opml all
-duti -s com.microsoft.VSCode .keylayout all
-duti -s com.microsoft.VSCode .patch all
-duti -s com.microsoft.VSCode .cron all
-duti -s com.microsoft.VSCode .cs all
-duti -s com.microsoft.VSCode .csproj all
-duti -s com.microsoft.VSCode .props all
-duti -s com.microsoft.VSCode .resx all
-duti -s com.microsoft.VSCode .runsettings all
-duti -s com.microsoft.VSCode .dotsettings all
-duti -s com.microsoft.VSCode .xaml all
-duti -s com.microsoft.VSCode .html all
-duti -s com.microsoft.VSCode .mjs all
-duti -s com.microsoft.VSCode .cmake all
-duti -s com.microsoft.VSCode .env all
-duti -s com.microsoft.VSCode .cfg all
-duti -s com.microsoft.VSCode .mk all
-duti -s com.microsoft.VSCode .jsonl all
-duti -s com.microsoft.VSCode .diff all
-duti -s com.microsoft.VSCode .groovy all
-duti -s com.microsoft.VSCode .ps1 all
-duti -s com.microsoft.VSCode .cu all
-duti -s com.microsoft.VSCode .cuh all
-duti -s com.microsoft.VSCode .mm all
-duti -s com.microsoft.VSCode .metal all
-duti -s com.microsoft.VSCode .nix all
-duti -s com.microsoft.VSCode .mod all
-duti -s com.microsoft.VSCode .sum all
-duti -s com.microsoft.VSCode .strings all
-duti -s com.microsoft.VSCode .entitlements all
-duti -s com.microsoft.VSCode .storyboard all
-duti -s com.microsoft.VSCode .pem all
-duti -s com.microsoft.VSCode .crt all
-duti -s com.microsoft.VSCode .ipynb all
+HANDLERS = {
+    'com.microsoft.VSCode': {  # VS Code
+        'utis': ['com.netscape.javascript-source', 'net.daringfireball.markdown', 'public.css', 'public.json', 'public.php-script', 'public.plain-text', 'public.python-script', 'public.ruby-script', 'public.shell-script', 'public.source-code', 'public.text', 'public.unix-executable', 'public.xml'],
+        'exts': ['applescript', 'c', 'conf', 'config', 'cpp', 'css', 'csv', 'h', 'hpp',
+                 'ini', 'java', 'js', 'json', 'key', 'log', 'm', 'markdown', 'md', 'php',
+                 'pl', 'plist', 'proto', 'py', 'r', 'rb', 'sh', 'svg', 'swift', 'toml', 'ts',
+                 'tsv', 'tsx', 'txt', 'xml', 'yaml', 'yml', 'zsh', 'keylayout', 'patch',
+                 'html', 'mjs', 'cfg', 'mk', 'diff', 'mm', 'metal', 'mod', 'strings',
+                 'entitlements', 'storyboard', 'pem', 'crt', 'asc', 'bashrc', 'bat', 'bib',
+                 'cake', 'coffee', 'dart', 'dat', 'eslintrc', 'gitconfig', 'gitignore', 'go',
+                 'gradle', 'hs', 'jl', 'jsx', 'kt', 'kts', 'less', 'lock', 'lua', 'mdx',
+                 'phpt', 'pom', 'prettierrc', 'properties', 'rs', 'sass', 'scss', 'srt',
+                 'stub', 'tex', 'tf', 'vue', 'v', 'wkt', 'wxml', 'wxss', 'zshrc', 'settings',
+                 'opml', 'cron', 'cs', 'csproj', 'props', 'resx', 'runsettings',
+                 'dotsettings', 'xaml', 'cmake', 'env', 'jsonl', 'groovy', 'ps1', 'cu',
+                 'cuh', 'nix', 'sum', 'ipynb'],
+    },
+    'com.colliderli.iina': {  # IINA
+        'utis': ['public.audio', 'public.movie'],
+        'exts': ['3gp', 'avi', 'flac', 'flv', 'm4a', 'm4v', 'mka', 'mkv', 'mov', 'mp3',
+                 'mpeg', 'mpg', 'mp4', 'ogg', 'ogm', 'ogv', 'opus', 'wav', 'webm', 'wmv',
+                 'aac', 'aif', 'mid', 'mks'],
+    },
+    'cc.ffitch.shottr': {  # Shottr
+        'utis': ['public.image'],
+        'exts': ['bmp', 'gif', 'jpg', 'jpeg', 'png', 'tif', 'tiff', 'heic', 'avif', 'ico',
+                 'icns'],
+    },
+    'com.apple.Preview': {
+        'utis': [],
+        'exts': ['pdf'],
+    },
+    'com.apple.Pages': {
+        'utis': [],
+        'exts': ['doc', 'docx'],
+    },
+    'com.firmshell.djvureader': {  # DjVu Reader
+        'utis': [],
+        'exts': ['djvu'],
+    },
+    'com.apple.iBooksX': {  # Books
+        'utis': [],
+        'exts': ['epub'],
+    },
+    'com.jetbrains.rider': {  # Rider
+        'utis': [],
+        'exts': ['sln', 'slnx'],
+    },
+    'com.ableton.live': {  # Ableton Live
+        'utis': [],
+        'exts': ['alp', 'als'],
+    },
+}
 
-echo "Setting audio/video player"
-duti -s com.colliderli.iina public.audio all
-duti -s com.colliderli.iina public.movie all
+# A handler pointing at a bundle id no app carries is worse than no handler:
+# LaunchServices falls back to whatever else claims the type, and Finder starts
+# asking which app to use.
+def installed_bundle_ids():
+    ids = set()
+    for root in ('/Applications', '/System/Applications', os.path.expanduser('~/Applications')):
+        for dirpath, dirnames, _ in os.walk(root):
+            for d in list(dirnames):
+                if not d.endswith('.app'):
+                    continue
+                dirnames.remove(d)
+                try:
+                    with open(os.path.join(dirpath, d, 'Contents', 'Info.plist'), 'rb') as fh:
+                        bid = plistlib.load(fh).get('CFBundleIdentifier')
+                except Exception:
+                    continue
+                if bid:
+                    ids.add(bid.lower())
+    return ids
 
-duti -s com.colliderli.iina .3gp all
-duti -s com.colliderli.iina .avi all
-duti -s com.colliderli.iina .flac all
-duti -s com.colliderli.iina .flv all
-duti -s com.colliderli.iina .m4a all
-duti -s com.colliderli.iina .m4v all
-duti -s com.colliderli.iina .mka all
-duti -s com.colliderli.iina .mkv all
-duti -s com.colliderli.iina .mks all
-duti -s com.colliderli.iina .mov all
-duti -s com.colliderli.iina .mp3 all
-duti -s com.colliderli.iina .mpeg all
-duti -s com.colliderli.iina .mpg all
-duti -s com.colliderli.iina .mp4 all
-duti -s com.colliderli.iina .ogg all
-duti -s com.colliderli.iina .ogm all
-duti -s com.colliderli.iina .ogv all
-duti -s com.colliderli.iina .opus all
-duti -s com.colliderli.iina .wav all
-duti -s com.colliderli.iina .webm all
-duti -s com.colliderli.iina .wmv all
-duti -s com.colliderli.iina .aac all
-duti -s com.colliderli.iina .aif all
-duti -s com.colliderli.iina .mid all
+present = installed_bundle_ids()
+unknown = [app for app in HANDLERS if app.lower() not in present]
+if unknown:
+    sys.exit(f'  no app installed with bundle id: {", ".join(unknown)}')
 
-echo "Setting image preview"
-duti -s cc.ffitch.shottr public.image all
-duti -s cc.ffitch.shottr .bmp all
-duti -s cc.ffitch.shottr .gif all
-duti -s cc.ffitch.shottr .jpg all
-duti -s cc.ffitch.shottr .jpeg all
-duti -s cc.ffitch.shottr .png all
-duti -s cc.ffitch.shottr .tif all
-duti -s cc.ffitch.shottr .tiff all
-duti -s cc.ffitch.shottr .heic all
-duti -s cc.ffitch.shottr .avif all
-duti -s cc.ffitch.shottr .ico all
-duti -s cc.ffitch.shottr .icns all
+DOMAIN = 'com.apple.LaunchServices/com.apple.launchservices.secure'
+prefs = plistlib.loads(subprocess.run(['defaults', 'export', DOMAIN, '-'],
+                                      capture_output=True, check=True).stdout)
+lshandlers = prefs.setdefault('LSHandlers', [])
 
-echo "Setting docs preview"
-duti -s com.apple.Preview .pdf all
+by_uti = {e['LSHandlerContentType']: e for e in lshandlers if 'LSHandlerContentType' in e}
+by_ext = {e['LSHandlerContentTag']: e for e in lshandlers
+          if e.get('LSHandlerContentTagClass') == 'public.filename-extension'}
+stamp = int(time.time() - 978307200)   # LaunchServices epoch is 2001-01-01
+added = retargeted = unchanged = 0
 
-duti -s com.jetbrains.rider .sln all
+def bind(index, key, template, app):
+    global added, retargeted, unchanged
+    entry = index.get(key)
+    if entry is None:
+        entry = {**template, 'LSHandlerRoleAll': app,
+                 'LSHandlerPreferredVersions': {'LSHandlerRoleAll': '-'},
+                 'LSHandlerModificationDate': stamp}
+        lshandlers.append(entry); index[key] = entry
+        added += 1
+    elif entry.get('LSHandlerRoleAll') != app:
+        entry['LSHandlerRoleAll'] = app
+        entry['LSHandlerModificationDate'] = stamp
+        retargeted += 1
+    else:
+        unchanged += 1
 
-duti -s com.ableton.AbletonLive12 .alp all
-duti -s com.ableton.AbletonLive12 .als all
+for app, types in HANDLERS.items():
+    for uti in types['utis']:
+        bind(by_uti, uti, {'LSHandlerContentType': uti}, app)
+    for ext in types['exts']:
+        bind(by_ext, ext, {'LSHandlerContentTag': ext,
+                           'LSHandlerContentTagClass': 'public.filename-extension'}, app)
 
-echo "Setting document viewers"
-duti -s com.apple.iWork.Pages .doc all
-duti -s com.apple.iWork.Pages .docx all
+if added or retargeted:
+    # Through cfprefsd — it holds this domain in memory and flushes its own copy
+    # over a raw write to the .plist, silently dropping what was just added.
+    subprocess.run(['defaults', 'import', DOMAIN, '-'],
+                   input=plistlib.dumps(prefs), check=True)
+print(f'  added {added}, retargeted {retargeted}, unchanged {unchanged}')
+PYEOF
 
-echo "Setting ebook readers"
-duti -s com.firmshell.djvureader .djvu all
-duti -s com.apple.iBooksX .epub all
+echo '  done (applies after next login)'

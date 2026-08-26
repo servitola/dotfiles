@@ -78,19 +78,16 @@ literal. In a `for` header it **aborts the whole script** (even without
 loop in `install/config-links.sh`. This class of bug once took down
 `make install` via `ableton/setup-mcp.sh` when Ableton was absent.
 
-## Default apps: written straight to the LaunchServices plist, no duti
+## Default apps
 
-`macos/set_default_apps.sh` sets default apps by writing `LSHandlers` entries
-directly into `com.apple.launchservices.secure.plist` (extensions keyed by
-`LSHandlerContentTag`, UTIs by `LSHandlerContentType`) then `lsregister -r`.
-It does **not** use `duti`: on macOS 15+ every `duti -s` pops a per-type
-confirmation dialog (running the whole list = dozens of dialogs) and errors
-`-50` on any extension with no registered UTI. The direct write has neither
-problem, and a user default set this way overrides an app's own Info.plist
-claim — e.g. Rider declares `.cs`/`.csproj`/`.xaml`/`.sln`/`.slnx` as Editor,
-but we send the source files to VSCode and keep only `.sln`/`.slnx` on Rider.
-Bindings apply after the next login. Full filenames (Brewfile/Makefile/…) have
-no by-filename mechanism and are intentionally absent.
+`macos/set_default_apps.sh` binds extensions and UTIs to apps from one
+`HANDLERS` dict — that dict is the only thing to edit. Two constraints are
+baked in: the write goes through `defaults import`, because a raw write to
+`com.apple.launchservices.secure.plist` is silently reverted by cfprefsd; and
+every bundle id must belong to an installed app, because a dead id makes macOS
+start asking which app to open a file with. Verify a binding by asking
+`NSWorkspace.urlForApplication(toOpen:)` about a real file — anything that
+resolves by UTI cannot see the extension bindings.
 
 Safari is deliberately not configured: its prefs live in a sandboxed container
 that `defaults` cannot write without Full Disk Access (which we don't grant),
@@ -124,25 +121,6 @@ skips (now `if [[ -n "$CI" ]]` in `install/ci-guarded.sh`). Verified with
 end-to-end here — the link steps need `sudo`/TTY; `make install` on a machine
 or the CI `macos-install` job is the real test.
 
-**State.** Default-app handling was fully reworked. `macos/set_default_apps.sh`
-no longer uses `duti` (on macOS 15+ every `duti -s` pops a per-type confirm
-dialog — dozens of them — and errors `-50` on UTI-less extensions). It now writes
-`LSHandlers` straight into `com.apple.launchservices.secure.plist` (extensions
-via `LSHandlerContentTag`, UTIs via `LSHandlerContentType`) then `lsregister -r`
-— no dialogs, no errors, and a user default written this way overrides an app's
-own Info.plist claim. The old `set_extension_handlers.sh` was folded into it (one
-`HANDLERS` map). Bare filenames (Brewfile/Makefile/…) dropped — macOS has no
-by-filename mechanism. Last run: `added 0, retargeted 0, unchanged 171`, clean.
-`duti` stays installed only for read-only `duti -x` queries.
-
-Also this session: aoe (Agent of Empires) fully removed — its hooks, config dir,
-brewfile/cargo entries, Makefile symlink, zap launcher, and all 3 binaries.
-
-**Next steps.**
-1. **Log out / in**, then verify resolution (LaunchServices reloads the plist at
-   session start):
-   `for e in cs csproj xaml sln slnx go rs vue txt docx pdf mp4 png als; do printf "%-8s -> %s\n" ".$e" "$(duti -x $e | head -1)"; done`
-   Expected: `sln`/`slnx` → Rider; everything else → its `HANDLERS` app.
 
 **Open questions.**
 - If after login `.cs` still opens in Rider, the user default did NOT beat
