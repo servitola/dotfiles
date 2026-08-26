@@ -133,6 +133,8 @@ brew "id3v2"
 brew "ideviceinstaller"
 # Tool to capture still images from an iSight or other video source
 brew "imagesnap"
+# Alternative to the official immich-CLI command written in Go
+brew "immich-go"
 # Enhanced version of john, a UNIX password cracker
 brew "john-jumbo"
 # Small Clojure interpreter, linter and formatter
