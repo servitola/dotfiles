@@ -15,7 +15,7 @@ export NODE_TLS_REJECT_UNAUTHORIZED=0
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Server address lives in the gitignored immich.private.env overlay
-# (symlink into ~/projects/dotfiles_private) so the public repo does not
+# so the repo does not
 # expose it. Soft-exit keeps `up` runs green on machines without it.
 ENV_FILE="${0:A:h}/immich.private.env"
 if [ ! -f "$ENV_FILE" ]; then
