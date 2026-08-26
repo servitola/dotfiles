@@ -15,7 +15,7 @@
 
 ## Valid Chord Attributes
 - `chord` - Required: Key combination (emoji symbols or Fn key)
-- `app` - Launch/focus application (must match macOS name exactly, case-sensitive)
+- `app` - Launch/focus application (must match macOS name exactly, case-sensitive), or `"@APP_BROWSER"` / `"@APP_TERMINAL"` — a key from `constants.env`, resolved at load. Use the constant when the chord means a role ("my browser") rather than one specific app; lint rule C2 fails on an unknown key.
 - `fn` - Custom function name (must be defined in init.lua:232-365)
 - `window_default_position` - Optional: "left", "right", or "bottom"
 - `sendKey` - Type text string when pressed

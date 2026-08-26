@@ -113,7 +113,7 @@ return {
 - `F13`–`F20`, `num0`–`num9` — raw Karabiner output (used when Karabiner translates a chord before Hammerspoon sees it)
 
 #### Entry types
-- **`app`**: macOS app name to launch / focus / hide (case-sensitive — must match `.app` bundle name).
+- **`app`**: macOS app name to launch / focus / hide (case-sensitive — must match `.app` bundle name). `"@APP_BROWSER"`, `"@APP_TERMINAL"` and other `@KEY` forms read `constants.env` instead — the chord then follows whatever app currently holds that role. `⇪B` and `⇪V` work this way; the SVGs, the bundle-ID map and the ASCII tables all show the resolved name.
 - **`fn`**: name of a custom function. Handler must exist in `init.lua` dispatch (`init.lua:232-365`). See [Custom functions](#custom-functions) below.
 - **`sendKey`**: literal string typed via `hs.eventtap.keyStrokes` (used to inject text).
 - **`window_default_position`**: optional, registers the app with `spoon.Windows`. Only `"right"` and `"bottom"` are implemented — `"left"` is silently ignored.

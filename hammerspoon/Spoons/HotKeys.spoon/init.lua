@@ -210,6 +210,13 @@ for _, filename in ipairs(buttonFiles) do
     end
     for _, chord_entry in ipairs(buttonData) do
         if chord_entry then
+            -- `app = "@APP_BROWSER"` binds the role, not the app: the name comes
+            -- from constants.env, so switching browser is one line there.
+            local key = chord_entry.app and chord_entry.app:match("^@([%u_]+)$")
+            if key then
+                chord_entry.app = assert(constants[key],
+                    "unknown constant @" .. key .. " in " .. filePath)
+            end
             table.insert(allChords, chord_entry)
         end
     end

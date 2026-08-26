@@ -2,6 +2,12 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
 
 # Environment Configuration
 
+- **Constants of this machine** (paths, chosen browser/terminal/editor, Telegram
+  chat ids, hosts): `const <key>` — e.g. `const app.browser`, `const DIR_WORK`,
+  `const list TG_`. Bare `const` lists everything. They are also exported into
+  every shell (`$APP_BROWSER`, `$DIR_WORK`). Never hardcode such a value in a
+  new script or ask the user for it — read it, and add it there when it is
+  missing (`~/projects/dotfiles/constants/AGENTS.md`).
 - Work: ~/projects/workname
 - Dotfiles: ~/projects/dotfiles
 - List of apps ~/projects/dotfiles/homebrew/brewfile

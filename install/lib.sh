@@ -11,6 +11,7 @@ CONFIG="$HOME/.config"
 CLAUDE_CODE="$DOTFILES/claude-code"
 LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 CLAUDE_PROJECT="$HOME/.claude/projects/-Users-servitola-projects-dotfiles"
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles"   # install logs + rendered configs
 
 # --- Colors -------------------------------------------------------------
 _reset=$'\e[0m'; _dim=$'\e[2m'; _bold=$'\e[1m'
@@ -31,9 +32,8 @@ step_fail()  { print -r -- "  ${_red}${_bold}✗ FAILED: $1${_reset}" >&2; }
 # Tee everything to a timestamped logfile: console keeps color, file is plain.
 LOGFILE=""
 log_init() {
-    local dir="$HOME/.local/state/dotfiles"
-    mkdir -p "$dir"
-    LOGFILE="$dir/install-$(date +%Y%m%d-%H%M%S).log"
+    mkdir -p "$STATE"
+    LOGFILE="$STATE/install-$(date +%Y%m%d-%H%M%S).log"
     exec > >(tee >(sed -E 's/\x1b\[[0-9;]*m//g' >> "$LOGFILE")) 2>&1
 }
 
