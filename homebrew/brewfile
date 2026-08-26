@@ -1,5 +1,7 @@
 tap "charmbracelet/tap", trusted: true
 tap "facebook/fb", trusted: true
+# Utility for manipulating APFS and ZFS compressed files
+brew "afsctool"
 # All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
 # Development kit for the Java programming language
