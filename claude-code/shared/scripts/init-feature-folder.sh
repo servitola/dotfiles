@@ -1,27 +1,10 @@
 #!/usr/bin/env bash
-#
-# init-feature-folder.sh — Create full feature folder structure
-#
 # Usage: ./init-feature-folder.sh <feature-name> [work-dir]
 #   feature-name  — required, kebab-case slug (e.g., "add-auth", "fix-login-bug")
 #   work-dir      — optional, path to work directory (default: ./work)
-#
-# Creates:
-#   work/{feature-name}/
-#     user-spec.md          (from template)
-#     tech-spec.md          (from template, if available)
-#     decisions.md          (from template or header)
-#     tasks/
-#     logs/userspec/
-#       interview.yml       (from template)
-#     logs/techspec/
-#     logs/tasks/
-#     logs/working/
-#     logs/checkpoint.yml   (from template, for feature-execution recovery)
 
 set -euo pipefail
 
-# --- Arguments ---
 FEATURE_NAME="${1:-}"
 WORK_DIR="${2:-./work}"
 
@@ -31,13 +14,11 @@ if [[ -z "$FEATURE_NAME" ]]; then
   exit 1
 fi
 
-# --- Paths ---
 TEMPLATES_DIR="$HOME/.claude/shared/work-templates"
 INTERVIEW_TEMPLATE="$HOME/.claude/shared/interview-templates/feature.yml"
 FEATURE_DIR="$WORK_DIR/$FEATURE_NAME"
 TODAY=$(date +%Y-%m-%d)
 
-# --- Validation ---
 if [[ ! -f "$TEMPLATES_DIR/user-spec.md.template" ]]; then
   echo "Error: template not found: $TEMPLATES_DIR/user-spec.md.template" >&2
   exit 1
@@ -48,14 +29,14 @@ if [[ -d "$FEATURE_DIR" ]]; then
   EXISTED=true
 fi
 
-# --- Create directory structure (mkdir -p is safe for existing dirs) ---
+# mkdir -p is safe for existing dirs.
 mkdir -p "$FEATURE_DIR/tasks"
 mkdir -p "$FEATURE_DIR/logs/userspec"
 mkdir -p "$FEATURE_DIR/logs/techspec"
 mkdir -p "$FEATURE_DIR/logs/tasks"
 mkdir -p "$FEATURE_DIR/logs/working"
 
-# --- Copy and fill templates (only if file doesn't already exist) ---
+# Only fill templates whose target file doesn't already exist.
 
 # user-spec.md
 if [[ ! -f "$FEATURE_DIR/user-spec.md" ]]; then
