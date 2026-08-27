@@ -1,0 +1,17 @@
+#!/bin/zsh
+# broken-links — report (or prune) dangling symlinks in $HOME + system bin dirs.
+#
+# Thin PATH wrapper around report_broken_links (macos_cleanup/broken_links.sh),
+# so it runs standalone from any shell/tool without a full `up`/cleanup pass.
+# Foreign filesystems (OrbStack, */etc/ssl/certs, Wine dosdevices) are pruned —
+# see broken_links.sh for why.
+#
+#   broken-links                          # report only
+#   PRUNE_BROKEN_LINKS=true broken-links  # also rm the dangling links
+set -u
+_MC="$HOME/projects/dotfiles/macos_cleanup"
+source "$_MC/helpers.sh"
+RM_CMD="/bin/rm"
+print_task() { printf "\n${_S_GREEN}${_S_BOLD}⚡${_S_NC} ${_S_BOLD}%s${_S_NC}\n" "$1"; }
+source "$_MC/broken_links.sh"
+report_broken_links
