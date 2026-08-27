@@ -110,7 +110,7 @@ set_macos_default_if_different \
     '/Library/Preferences/com.apple.loginwindow' \
     'LoginwindowText' \
     '-string' \
-    'Found this computer? Please contact me at: servitola@gmail.com'
+    "${LOGIN_WINDOW_TEXT:-Found this computer? Please return it to its owner.}"
 
 set_macos_default_if_different \
 	'Set highlight color to green' \
