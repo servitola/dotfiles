@@ -193,10 +193,10 @@ brew "yt-dlp"
 brew "nano"
 # Small build system for use with gyp or CMake
 brew "ninja"
-# Open-source, cross-platform JavaScript runtime environment
-brew "node@22", link: true
 # Port scanning utility for large networks
 brew "nmap"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node@22"
 # Trigger notifications when a process completes
 brew "noti"
 # Retrieves currently playing media, and simulates media actions
