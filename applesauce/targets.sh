@@ -30,4 +30,5 @@ COMPRESS_APPS=(
     "/Applications/JetBrains Toolbox.app"
     "/Applications/DB Browser for SQLite.app"
     "/Applications/VLC.app"
+    "/Applications/KiCad/KiCad.app"
 )
