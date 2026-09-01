@@ -362,6 +362,20 @@
   },
   {
     "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-worktree.sh\" \"$sha\" \"${repo:path}\" \"$name\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Open In Worktree",
+    "referenceTargets": [
+      "localBranch",
+      "remoteBranch"
+    ],
+    "target": "reference"
+  },
+  {
+    "action": {
       "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/make-this-the-next-push.sh\" \"$sha\"",
       "showOutput": false,
       "type": "sh",
