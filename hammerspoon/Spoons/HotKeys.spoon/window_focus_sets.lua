@@ -6,33 +6,35 @@
 -- (проверено — ни с нулевой задержкой, ни с дефолтной, ни через osascript).
 --
 -- Зависимости-глобали (Windows.spoon): set_window_default, set_window_left,
--- is_browser_video_player. Локальные хелперы init.lua приходят через deps.
-return function(deps)
+-- is_browser_video_player.
+return function()
     local browsers = require "browsers"
-    local browser_title_has_video = deps.browser_title_has_video
+    local telegrams = require "telegrams"
+    local TELEGRAM = telegrams.main.app
 
     local exceptionSets = {
-        ["window.hide_all_except_work"] = { ["Zap"] = true, ["Workbot"] = true },
+        ["window.hide_all_except_work"] = { ["Zap"] = true, [TELEGRAM] = true },
         ["window.focus_work"] = {
-            ["Rider"] = true, ["Fork"] = true, ["Firefox"] = true,
-            ["Zap"] = true, ["Code"] = true,
-            ["Workbot"] = true
+            ["Rider"] = true, ["Fork"] = true, ["Zap"] = true, ["Code"] = true,
+            ["WebStorm"] = true, ["Xcode"] = true,
+            -- Firefox, а не основной браузер: config_UrlDispatcher уводит туда
+            -- workname/workproject, так что рабочие страницы живут именно в нём.
+            ["Firefox"] = true,
+            [TELEGRAM] = true,
         },
-        -- Оба браузера сразу: основной сейчас Vivaldi, Yandex оставлен на случай возврата.
         ["window.focus_personal"] = {
-            ["Forkgram"] = true, ["Vivaldi"] = true, ["Yandex"] = true
+            [TELEGRAM] = true, [browsers.main.app] = true,
         },
         ["window.focus_comms"] = {
-            ["Forkgram"] = true, ["Messages"] = true,
-            ["zoom.us"] = true, ["Yandex Telemost"] = true
+            [TELEGRAM] = true, ["zoom.us"] = true, ["Yandex.Telemost"] = true,
         },
     }
 
     local focusApps = {
         ["window.hide_all_except_work"] = { "Zap" },
-        ["window.focus_work"] = { "Firefox" },
-        ["window.focus_personal"] = { "Forkgram" },
-        ["window.focus_comms"] = { "zoom.us", "Yandex Telemost", "Forkgram" },
+        ["window.focus_work"] = { "Firefox", "Rider", "Zap" },
+        ["window.focus_personal"] = { TELEGRAM },
+        ["window.focus_comms"] = { "zoom.us", "Yandex.Telemost", TELEGRAM },
     }
 
     local M = {}
@@ -48,7 +50,6 @@ return function(deps)
         if not exceptions then return false end
 
         hs.closeConsole()
-        local browserPopupAsync = false
         for _, app in ipairs(hs.application.runningApplications()) do
             if app:kind() == 1 then
                 local appName = app:name()
@@ -60,6 +61,7 @@ return function(deps)
                         set_window_default(win)
                     end
                 elseif browsers.by_app(appName) then
+                    local browser = browsers.by_app(appName)
                     local browserApp = app
                     local keepVisibleNoVideo = (functionName == "window.focus_personal")
 
@@ -105,27 +107,29 @@ return function(deps)
                     local frontWin = browserApp:focusedWindow() or browserApp:mainWindow()
                     local frontTitle = frontWin and frontWin:title() or ""
 
-                    if not hasPopup and browser_title_has_video(frontTitle) then
-                        browserPopupAsync = true
-                        local fnNameLocal = functionName
+                    -- Видео играет во вкладке, а попапа ещё нет: просим браузер
+                    -- вынести его своим же чордом и раскладываем уже после —
+                    -- окно появляется не мгновенно. Браузер без pip_chord
+                    -- (весь Chromium: своего дефолтного чорда у него нет)
+                    -- раскладывается сразу, без попытки вынести видео.
+                    if not hasPopup and browser.pip_chord
+                        and browsers.title_looks_like_video(frontTitle) then
+                        local chord = browser.pip_chord
                         hs.timer.doAfter(0.18, function()
                             browserApp:activate()
                             hs.timer.doAfter(0.08, function()
-                                hs.eventtap.keyStroke({"cmd", "alt"}, "right", 0)
+                                hs.eventtap.keyStroke(chord.mods, chord.key, 0)
                                 hs.timer.doAfter(0.35, function()
                                     apply_browser_layout()
-                                    local tg = hs.application.get("Forkgram")
+                                    local tg = hs.application.get(TELEGRAM)
                                     if tg then tg:activate() end
-                                    if fnNameLocal == "window.focus_personal" then
-                                        telegram_select_personal_folder(0.15)
-                                    end
                                 end)
                             end)
                         end)
                     else
                         apply_browser_layout()
                     end
-                elseif appName == "Forkgram" then
+                elseif telegrams.by_app(appName) then
                     local hasVideo = false
                     for _, win in ipairs(app:allWindows()) do
                         if not win:isStandard() then
