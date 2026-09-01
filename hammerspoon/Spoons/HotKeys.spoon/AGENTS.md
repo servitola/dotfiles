@@ -9,7 +9,7 @@
 
 ## Chord Definition Format
 ```lua
-{ chord = "⇪v", app = "Vivaldi" }
+{ chord = "⇪v", app = "@APP_BROWSER" }
 { chord = "⌃F19", fn = "vpn.toggle_globalprotect" }
 ```
 
