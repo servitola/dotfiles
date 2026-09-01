@@ -1,5 +1,5 @@
 {
-    "description": "UGREEN BLE Mouse — hold forward side button to focus/launch Vivaldi (same F19 as Hyper+V), tap stays native forward",
+    "description": "UGREEN BLE Mouse — hold forward side button to focus/launch the main browser (same F19 as Hyper+V), tap stays native forward",
     "manipulators": [
         {
             "type": "basic",
