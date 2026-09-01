@@ -43,6 +43,8 @@ brew "ruby"
 brew "cocoapods"
 # Apjanke's fork of the classic cowsay project
 brew "cowsay"
+# Shell script to build fancy DMGs
+brew "create-dmg"
 # DuckDuckGo from the terminal
 brew "ddgr"
 # Good-lookin' diffs with diff-highlight and more
