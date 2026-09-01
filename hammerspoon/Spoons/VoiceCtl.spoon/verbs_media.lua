@@ -10,7 +10,7 @@ return function(V)
     -- браузере отвечает на системную клавишу через MediaSession нестабильно,
     -- когда рядом запущена Music.app — она перехватывает.
     local SPACE_APPS = {
-        ["Vivaldi"] = true, ["Yandex"] = true, ["Google Chrome"] = true,
+        ["Zen"] = true, ["Vivaldi"] = true, ["Yandex"] = true, ["Google Chrome"] = true,
         ["Firefox"] = true, ["Safari"] = true, ["IINA"] = true, ["Iina"] = true,
         ["Forkgram"] = true,
     }
