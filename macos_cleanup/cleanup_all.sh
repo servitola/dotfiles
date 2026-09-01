@@ -81,6 +81,43 @@ fi
 
 print_task "Cleaning unused Docker images"
 docker image prune -f
+print_task "LiteLLM spend logs (reclaim if bloated)"
+# maximum_spend_logs_retention_period in litellm/config.yaml deletes old rows
+# daily, but a plain DELETE leaves the table file at its high-water mark, so
+# litellm_postgres_data never shrinks on its own. Only VACUUM FULL returns the
+# space, and it takes an ACCESS EXCLUSIVE lock (~3 min for 8 GB) during which
+# litellm cannot write spend logs — hence threshold + weekly rate limit rather
+# than running it on every `up`. 7d of traffic is ~8.4 GB, so 11 GiB means
+# genuine bloat, not normal growth.
+LITELLM_SL_MAX=11811160064
+LITELLM_SL_STAMP="$HOME/.cache/litellm-spendlogs-vacuum"
+if command -v docker &>/dev/null && docker info &>/dev/null \
+   && docker ps --format '{{.Names}}' 2>/dev/null | grep -qx litellm-db; then
+    _sl_size=$(print -r -- "select pg_total_relation_size(oid) from pg_class where relname = 'LiteLLM_SpendLogs';" \
+        | docker exec -i litellm-db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -tA' 2>/dev/null \
+        | tr -cd '0-9')
+    if [ -z "$_sl_size" ]; then
+        printf "  ${DIM}* LiteLLM spend logs: could not read table size, skipping${NC}\n"
+    elif [ "$_sl_size" -le "$LITELLM_SL_MAX" ]; then
+        printf "  ${DIM}* LiteLLM spend logs: $(format_size $(( _sl_size / 1024 ))), under threshold${NC}\n"
+    elif [ -n "$(find "$LITELLM_SL_STAMP" -mtime -7 2>/dev/null)" ]; then
+        printf "  ${DIM}* LiteLLM spend logs: bloated but vacuumed less than 7 days ago${NC}\n"
+    else
+        spinner_start "LiteLLM_SpendLogs VACUUM FULL"
+        if print -r -- 'VACUUM (FULL, ANALYZE) "LiteLLM_SpendLogs";' \
+            | docker exec -i litellm-db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -v ON_ERROR_STOP=1' &>/dev/null; then
+            _sl_after=$(print -r -- "select pg_total_relation_size(oid) from pg_class where relname = 'LiteLLM_SpendLogs';" \
+                | docker exec -i litellm-db sh -c 'psql -U "$POSTGRES_USER" -d "$POSTGRES_DB" -tA' 2>/dev/null \
+                | tr -cd '0-9')
+            touch "$LITELLM_SL_STAMP"
+            spinner_stop "LiteLLM spend logs: freed $(format_size $(( (_sl_size - ${_sl_after:-$_sl_size}) / 1024 )))"
+        else
+            spinner_stop_error "LiteLLM spend logs: VACUUM FULL failed"
+        fi
+    fi
+else
+    printf "  ${DIM}* LiteLLM spend logs: litellm-db not running, skipping${NC}\n"
+fi
 
 print_task "Cleaning Trash"
 try_clean_pattern /Volumes d ".Trashes" "Volume Trashes"
