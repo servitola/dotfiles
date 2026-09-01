@@ -1,10 +1,12 @@
 #!/bin/zsh
 # Sync local folders to Immich photo server (mir1 on i9, behind Caddy).
 # Idempotent: dedup by hash on server, won't re-upload existing assets.
-# Non-destructive: never deletes local files.
 #
 # Add new folders by appending to SYNC_MAP below.
-# Format: "<album-name>::<absolute-path>"
+# Format: "<album-name>::<absolute-path>[::delete]"
+# Without the third field the folder is upload-only. With "delete" the local
+# copies are removed once the server confirms them by hash — but only for files
+# whose capture date is known; see classify_folder.
 
 set -u
 
@@ -29,7 +31,7 @@ if ! command -v immich >/dev/null 2>&1; then
     exit 0
 fi
 
-code=$(curl -ks --max-time 5 -o /dev/null -w "%{http_code}" "$IMMICH_URL/api/server/ping" 2>/dev/null)
+code=$(curl -s --max-time 5 -o /dev/null -w "%{http_code}" "$IMMICH_URL/api/server/ping" 2>/dev/null)
 if [ "$code" != "200" ]; then
     echo "  * Skip: Immich server unreachable at $IMMICH_URL (HTTP $code)"
     exit 0
@@ -37,6 +39,7 @@ fi
 
 SYNC_MAP=(
     "Photo Booth::$HOME/Pictures/Photo Booth Library/Pictures"
+    "Photos::$HOME/Pictures/Photos::delete"
 )
 
 IGNORE_PATTERNS=(
