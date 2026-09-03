@@ -314,6 +314,8 @@ function obj:init()
                     spoon.Windows:bind_window_bottom_40(modifiers, key)
                 elseif functionName == "window.center" then
                     spoon.Windows:bind_window_center(modifiers, key)
+                elseif functionName == "window.swap_sides" then
+                    spoon.Windows:bind_window_swap_sides(modifiers, key)
                 elseif functionName == "android.show_all" then
                     hs.hotkey.bind(modifiers, key, function()
                         local matching_windows = {}
