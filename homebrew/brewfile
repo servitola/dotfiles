@@ -313,8 +313,6 @@ cask "adguard"
 cask "aldente"
 # Command tool to create Finder aliases, and to resolve them to full paths
 cask "alisma"
-# Enable Windows-like alt-tab
-cask "alt-tab"
 # Terminal interface for Antigravity agents
 cask "antigravity-cli"
 # Application uninstaller
