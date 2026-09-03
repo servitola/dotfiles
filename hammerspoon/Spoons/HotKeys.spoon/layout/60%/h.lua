@@ -12,7 +12,8 @@ return {
 --          ⇧h   │              │ H    Р    Η  │   │
 --          ⌃h   │              │              │ ✓ │             — cut letter to the left
 --          ⌥h   │              │ ₽    ₽    ₽  │   │
---          ⌘h   │              │              │ ✓ │             — hide current app
+--          ⌘h   │              │              │ ✓ │ — minimize window, focus next (ours, replaces Hide)
+{ chord = "⌘h",                                 fn = "window.minimize_and_focus_next" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --   ⇪⇧h → F16   │              │              │   │  ↓
 { chord = "F16",                           app = "Safari" },
