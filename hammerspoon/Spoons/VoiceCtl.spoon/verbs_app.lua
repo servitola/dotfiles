@@ -1,5 +1,5 @@
--- Глагол app: фокус, запуск, скрытие, выход.
--- Фраза может начинаться со слова действия: «закрой зум», «спрячь музыку».
+-- Verb app: focus, launch, hide, quit.
+-- The phrase may start with an action word: «закрой зум», «спрячь музыку».
 return function(V)
     local ACTIONS = {
         focus = { "перейди", "открой", "покажи", "запусти", "включи", "переключись",
@@ -8,8 +8,8 @@ return function(V)
         quit  = { "закрой", "выключи", "убей", "quit", "close" },
     }
 
-    -- Предлоги после слова-действия: «перейди НА форк», «перейди В код».
-    -- Ключи в транслите, потому что сравниваем с translit(), а не с сырым словом.
+    -- Prepositions after the action word: «перейди НА форк», «перейди В код».
+    -- Keys are transliterated, because we compare against translit(), not the raw word.
     local PREPOSITIONS = { ["na"] = true, ["v"] = true, ["k"] = true, ["vo"] = true, ["to"] = true }
 
     local function stripPreposition(phrase)
@@ -32,8 +32,8 @@ return function(V)
         return "focus", stripPreposition(phrase)
     end
 
-    -- hs.application.get матчит имя ПОДСТРОКОЙ: get("Fork") достоверно возвращает
-    -- Forkgram. Поэтому ищем строго — сначала по bundleID, потом по точному имени.
+    -- hs.application.get matches the name as a SUBSTRING: get("Fork") reliably returns
+    -- Forkgram. So we search strictly — first by bundleID, then by exact name.
     local function findRunning(name, bundleID)
         if bundleID then
             local byId = hs.application.applicationsForBundleID(bundleID)
@@ -54,7 +54,7 @@ return function(V)
         local best, answer = V:resolveOr("app", target, V:appCandidates())
         if not best then return answer end
         if ctx.dry then return "DRY app " .. best.key end
-        if answer then return answer end   -- неоднозначно: не действуем, спрашиваем
+        if answer then return answer end   -- ambiguous: don't act, ask
 
         local app = findRunning(best.key, best.value)
 
@@ -70,7 +70,7 @@ return function(V)
             return "OK спрятал " .. best.key
         end
 
-        -- focus: запустить если нужно, развернуть свёрнутое, поднять.
+        -- focus: launch if needed, unminimize what's minimized, raise it.
         if not app then
             local launched = hs.application.open(best.value or best.key, 5, true)
             if not launched then return "ERR не смог запустить " .. best.key end
@@ -83,8 +83,8 @@ return function(V)
         if app:isHidden() then app:unhide() end
         app:activate()
 
-        -- Докладываем то, что реально вышло вперёд, а не то, что разрешил
-        -- резолвер: расхождение здесь — единственный признак промаха.
+        -- Report what actually ended up in front, not what the resolver
+        -- resolved to: a mismatch here is the only sign of a miss.
         local front = hs.application.frontmostApplication()
         local frontName = front and front:name()
         if frontName and frontName ~= app:name() then

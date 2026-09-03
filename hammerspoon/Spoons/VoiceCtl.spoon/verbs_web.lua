@@ -1,4 +1,4 @@
--- Глаголы web и tg.
+-- web and tg verbs.
 return function(V)
     ---------------------------------------------------------------- web
     local SPECIAL = {
@@ -18,7 +18,7 @@ return function(V)
     local SEARCH_PREFIX = { "найди", "поищи", "загугли", "найти", "search", "google" }
 
     V:register("web", function(phrase, ctx)
-        -- Поиск: «найди рецепт борща».
+        -- Search: «найди рецепт борща».
         local first, rest = phrase:match("^%s*(%S+)%s+(.+)$")
         if first then
             for _, w in ipairs(SEARCH_PREFIX) do
@@ -31,7 +31,7 @@ return function(V)
             end
         end
 
-        -- «что играет» — поднять играющую вкладку.
+        -- «что играет» — bring up the playing tab.
         local special = V.resolve.pick(phrase, SPECIAL)
         if special and special.score >= 80 then
             if ctx.dry then return "DRY web playing" end
@@ -40,8 +40,8 @@ return function(V)
             return "OK поднял играющую вкладку"
         end
 
-        -- Голый домен проверяем ДО фаззи-матча по алиасам: «wikipedia.org» иначе
-        -- цепляется за похожий по буквам сайт из таблицы и уезжает не туда.
+        -- We check a bare domain BEFORE the fuzzy alias match: otherwise «wikipedia.org»
+        -- latches onto a letter-similar site from the table and goes to the wrong place.
         local domain = phrase:match("^%s*([%w%.%-]+%.[a-z][a-z]+)%s*$")
         if domain then
             if ctx.dry then return "DRY web " .. domain end
@@ -49,7 +49,7 @@ return function(V)
             return "OK открыл " .. domain
         end
 
-        -- Сайт по алиасу.
+        -- Site by alias.
         local best, answer = V:resolveOr("web", phrase, siteCandidates())
         if not best then return answer end
         if ctx.dry then return "DRY web " .. best.key end
@@ -64,8 +64,8 @@ return function(V)
     end)
 
     ---------------------------------------------------------------- tg
-    -- Дефолтный обработчик tg: спорит между Forkgram и браузером, поэтому
-    -- адресуем клиент явно по bundleID (проверено: Forkgram = com.tdesktop.Telegram).
+    -- Default tg handler: contended between Forkgram and the browser, so
+    -- we address the client explicitly by bundleID (verified: Forkgram = com.tdesktop.Telegram).
     local TG_BUNDLE = "com.tdesktop.Telegram"
 
     V:register("tg", function(phrase, ctx)
@@ -77,7 +77,7 @@ return function(V)
         end
 
         local best = V.resolve.pick(phrase, chats)
-        -- Неизвестное имя — всё равно ищем по нему внутри клиента.
+        -- Unknown name — still search for it inside the client.
         local query = best and best.key or (phrase:gsub("^%s+", ""):gsub("%s+$", ""))
         if query == "" then return "NOTFOUND tg: пустое имя" end
         if ctx.dry then return "DRY tg " .. query end
@@ -94,14 +94,14 @@ return function(V)
         if app:isHidden() then app:unhide() end
         app:activate()
 
-        -- Поиск внутри клиента: cmd+f и имя. Enter НЕ жмём — осознанно.
+        -- Search inside the client: cmd+f and the name. We do NOT press Enter — deliberately.
         --
-        -- В плане тут стояло ещё Down+Enter «открыть первый результат». Это
-        -- нельзя держать в коде: если cmd+f по любой причине не откроет поиск
-        -- (другая сборка, модалка, окно не успело выйти вперёд), то имя уходит
-        -- в поле ввода открытого чата, а Enter его ОТПРАВЛЯЕТ. Отправка чего-либо
-        -- от имени хозяина в DESIGN.md значится как отсутствующая функция, а не
-        -- как риск, который можно принять. Поэтому последний шаг делает человек.
+        -- The plan originally also had Down+Enter "open the first result". That
+        -- can't live in code: if cmd+f fails to open search for any reason
+        -- (different build, a modal, the window hasn't come to front yet), the name lands
+        -- in the input field of whatever chat is open, and Enter SENDS it. Sending anything
+        -- on the owner's behalf is listed in DESIGN.md as a missing feature, not
+        -- as an acceptable risk. So the last step is left to the human.
         hs.timer.doAfter(0.25, function()
             hs.eventtap.keyStroke({ "cmd" }, "f", 0)
             hs.timer.doAfter(0.15, function()

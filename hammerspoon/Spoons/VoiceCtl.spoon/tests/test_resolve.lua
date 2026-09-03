@@ -1,4 +1,4 @@
--- Запуск: hs -c 'return dofile(os.getenv("HOME") .. "/projects/dotfiles/hammerspoon/Spoons/VoiceCtl.spoon/tests/test_resolve.lua")'
+-- Run: hs -c 'return dofile(os.getenv("HOME") .. "/projects/dotfiles/hammerspoon/Spoons/VoiceCtl.spoon/tests/test_resolve.lua")'
 local here = debug.getinfo(1, "S").source:match("@(.*/)")
 local R = dofile(here .. "../resolve.lua")
 
@@ -10,8 +10,8 @@ local function eq(got, want, label)
     end
 end
 
--- Заглавная кириллица должна опускаться в нижний регистр по codepoint:
--- ch:lower() на многобайтном символе не работает.
+-- Uppercase Cyrillic must be lowercased by codepoint:
+-- ch:lower() doesn't work on a multibyte character.
 eq(R.translit("Форк"), "fork", "translit Форк")
 eq(R.translit("ФОРК"), "fork", "translit ФОРК caps")
 eq(R.translit("Войсинк"), "voysink", "translit Войсинк")
@@ -23,37 +23,37 @@ eq(R.dist("fork", "forkk"), 1, "dist insert")
 local apps = {
     { key = "Fork",               aliases = { "Fork" } },
     { key = "Forkgram",           aliases = { "Forkgram", "Telegram" } },
-    -- «войсинк» и «вскод» фаззи-матчем не берутся: транслит даёт voysink/vskod,
-    -- расстояние до voiceink/vscode слишком велико. Это работа алиасов —
-    -- ровно то, для чего существует aliases.json.
+    -- «войсинк» and «вскод» aren't caught by fuzzy matching: translit gives voysink/vskod,
+    -- and the distance to voiceink/vscode is too large. That's what aliases are for —
+    -- exactly the reason aliases.json exists.
     { key = "VoiceInk",           aliases = { "VoiceInk", "войсинк" } },
     { key = "Visual Studio Code", aliases = { "Visual Studio Code", "VSCode", "Code", "вскод" } },
     { key = "Simulator",          aliases = { "Simulator" } },
 }
 
--- Русская диктовка английских имён.
+-- Russian dictation of English names.
 eq(R.pick("форк", apps).key, "Fork", "pick форк")
 eq(R.pick("форкграм", apps).key, "Forkgram", "pick форкграм")
 eq(R.pick("войсинк", apps).key, "VoiceInk", "pick войсинк")
 eq(R.pick("вскод", apps).key, "Visual Studio Code", "pick вскод")
 eq(R.pick("симулятор", apps).key, "Simulator", "pick симулятор")
--- Английская диктовка.
+-- English dictation.
 eq(R.pick("code", apps).key, "Visual Studio Code", "pick code")
--- Опечатка ASR.
+-- ASR typo.
 eq(R.pick("форкк", apps).key, "Fork", "pick форкк typo")
--- Ничего похожего.
+-- Nothing that matches.
 eq(R.pick("абракадабра", apps), nil, "pick nonsense -> nil")
 
--- «форк» точно равен Fork (100), но является префиксом Forkgram (90).
--- Разрыв 10 меньше порога, поэтому нужно отдельное правило: точное совпадение
--- уверенно само по себе. Иначе «перейди на форк» вечно отвечает AMBIGUOUS.
+-- «форк» is an exact match for Fork (100), but also a prefix of Forkgram (90).
+-- The gap of 10 is below the threshold, so a separate rule is needed: an exact match
+-- is confident on its own. Otherwise «перейди на форк» would forever answer AMBIGUOUS.
 local best, list = R.pick("форк", apps)
 eq(best.key, "Fork", "exact match wins")
 eq(best.confident, true, "exact match is confident despite small gap")
 eq(#list >= 2, true, "candidate list still returned")
 
--- А вот когда оба кандидата — префиксные совпадения с одинаковым счётом,
--- уверенности быть не должно: это честная неоднозначность.
+-- But when both candidates are prefix matches with the same score,
+-- there must be no confidence: that's a genuine ambiguity.
 local two = {
     { key = "Music",  aliases = { "Music" } },
     { key = "Museum", aliases = { "Museum" } },

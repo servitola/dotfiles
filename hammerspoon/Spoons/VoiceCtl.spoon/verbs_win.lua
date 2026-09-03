@@ -1,10 +1,10 @@
--- Глагол win: позиция активного окна и готовые раскладки рабочего стола.
+-- Verb win: active-window position and ready-made desktop layouts.
 return function(V)
-    -- Раскладки живут в HotKeys.spoon/window_focus_sets.lua и вызываются напрямую.
-    -- Синтез чорда (первоначальный план) не работает: hs.eventtap.keyStroke
-    -- Carbon-хоткеем не ловится — проверено с нулевой и дефолтной задержкой,
-    -- osascript отпадает по правам Accessibility. Поэтому раскладки вынесены
-    -- в модуль и зовутся функцией.
+    -- Layouts live in HotKeys.spoon/window_focus_sets.lua and are called directly.
+    -- Synthesizing a chord (the original plan) doesn't work: hs.eventtap.keyStroke
+    -- isn't caught by the Carbon hotkey — verified with zero and default delay,
+    -- osascript is out due to Accessibility permissions. So the layouts are moved
+    -- into a module and invoked as a function.
     local function focusSet(setName)
         return function()
             local hk = spoon.HotKeys

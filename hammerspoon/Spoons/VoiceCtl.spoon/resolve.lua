@@ -1,9 +1,9 @@
--- Фаззи-сопоставление сырой ASR-фразы со списком кандидатов.
--- Чистые функции, никаких обращений к hs.* — тестируется без UI.
+-- Fuzzy matching of the raw ASR phrase against a list of candidates.
+-- Pure functions, no hs.* calls — testable without the UI.
 local M = {}
 
--- Кириллица → латиница. Ключи длиной 1 codepoint, поэтому порядок в таблице
--- не важен, важна полнота.
+-- Cyrillic → Latin. Keys are 1 codepoint long, so table order
+-- doesn't matter, completeness does.
 local RU = {
     ["а"]="a", ["б"]="b", ["в"]="v", ["г"]="g", ["д"]="d", ["е"]="e",
     ["ё"]="e", ["ж"]="zh", ["з"]="z", ["и"]="i", ["й"]="y", ["к"]="k",
@@ -13,8 +13,8 @@ local RU = {
     ["э"]="e", ["ю"]="yu", ["я"]="ya",
 }
 
--- Опускать регистр приходится по codepoint: ch:lower() работает только на ASCII,
--- на многобайтной кириллице он молча возвращает исходный символ.
+-- Case must be lowered by codepoint: ch:lower() only works on ASCII,
+-- on multibyte Cyrillic it silently returns the original character.
 local function lowerCodepoint(cp)
     if cp >= 0x410 and cp <= 0x42F then return cp + 32 end  -- А-Я → а-я
     if cp == 0x401 then return 0x451 end                    -- Ё → ё
@@ -55,7 +55,7 @@ function M.dist(a, b)
     return prev[#b]
 end
 
--- 100 точное, 90 префикс, 80 подстрока, иначе штраф за расстояние.
+-- 100 exact, 90 prefix, 80 substring, otherwise penalize by distance.
 function M.score(query, candidate)
     local q, c = M.norm(query), M.norm(candidate)
     if #q == 0 or #c == 0 then return 0 end
@@ -69,11 +69,11 @@ function M.score(query, candidate)
     return s > 0 and s or 0
 end
 
-local MIN_SCORE = 55   -- ниже — считаем, что не нашли
-local GAP       = 15   -- разрыв с вторым местом, дающий уверенность
+local MIN_SCORE = 55   -- below this — treat as not found
+local GAP       = 15   -- gap from second place needed for confidence
 
 -- candidates: { {key=string, aliases={string,...}}, ... }
--- Возвращает best|nil, top3
+-- Returns best|nil, top3
 function M.pick(query, candidates)
     local scored = {}
     for _, cand in ipairs(candidates) do
@@ -98,8 +98,8 @@ function M.pick(query, candidates)
     if not first or first.score < MIN_SCORE then return nil, top end
 
     local second = scored[2]
-    -- Точное совпадение уверенно само по себе. Без этого правила «форк» вечно
-    -- отвечает AMBIGUOUS: Fork даёт 100, а Forkgram 90 как префикс, разрыв 10.
+    -- An exact match is confident on its own. Without this rule «форк» would always
+    -- answer AMBIGUOUS: Fork scores 100, Forkgram scores 90 as a prefix, gap 10.
     if first.score >= 100 then
         first.confident = true
     else

@@ -1,4 +1,4 @@
--- Запуск: hs -c 'return dofile(os.getenv("HOME") .. "/projects/dotfiles/hammerspoon/Spoons/VoiceCtl.spoon/tests/test_app.lua")'
+-- Run: hs -c 'return dofile(os.getenv("HOME") .. "/projects/dotfiles/hammerspoon/Spoons/VoiceCtl.spoon/tests/test_app.lua")'
 local failures, checks = {}, 0
 local function like(got, pattern, label)
     checks = checks + 1

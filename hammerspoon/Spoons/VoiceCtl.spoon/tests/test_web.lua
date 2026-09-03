@@ -16,7 +16,7 @@ like(V:run("web", "что играет"), "^DRY web playing$", "что игра�
 like(V:run("web", "найди рецепт борща"), "^DRY web search:рецепт борща$", "поиск")
 like(V:run("tg", "настя"), "^DRY tg ", "чат настя")
 
--- Голый домен, которого нет в алиасах, должен открываться как есть.
+-- A bare domain not in aliases must open as-is.
 like(V:run("web", "wikipedia.org"), "^DRY web wikipedia%.org$", "голый домен")
 V.dry = false
 

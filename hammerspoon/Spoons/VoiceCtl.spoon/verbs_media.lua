@@ -1,4 +1,4 @@
--- Глаголы media / vol / audio.
+-- media / vol / audio verbs.
 return function(V)
     ---------------------------------------------------------------- media
     local function systemKey(name)
@@ -6,9 +6,9 @@ return function(V)
         hs.eventtap.event.newSystemKeyEvent(name, false):post()
     end
 
-    -- Видеоплееры, которым пробел понятнее медиа-клавиши. Причина: YouTube в
-    -- браузере отвечает на системную клавишу через MediaSession нестабильно,
-    -- когда рядом запущена Music.app — она перехватывает.
+    -- Video players that understand space better than a media key. Reason: YouTube in
+    -- a browser responds to the system key via MediaSession unreliably
+    -- when Music.app is running alongside — it steals the key.
     local SPACE_APPS = {
         ["Zen"] = true, ["Vivaldi"] = true, ["Yandex"] = true, ["Google Chrome"] = true,
         ["Firefox"] = true, ["Safari"] = true, ["IINA"] = true, ["Iina"] = true,
@@ -58,10 +58,10 @@ return function(V)
         ["девяносто"] = 90, ["сто"] = 100, ["половину"] = 50, ["максимум"] = 100,
     }
 
-    -- Порядок обхода pairs() не определён, а «двадцать пять» матчится и на
-    -- «двадцать» (подстрока = 75 очков). Без фиксированного порядка громкость
-    -- уезжала бы то в 25, то в 20. Считаем лучший счёт, при равенстве побеждает
-    -- более длинное числительное — оно всегда конкретнее.
+    -- pairs() iteration order is undefined, and «двадцать пять» also matches
+    -- «двадцать» (substring = 75 points). Without a fixed order the volume
+    -- would land on 25 sometimes and 20 other times. We take the best score; on a tie
+    -- the longer numeral wins — it's always more specific.
     local WORD_ORDER = {}
     for word in pairs(WORD_NUMBERS) do WORD_ORDER[#WORD_ORDER + 1] = word end
     table.sort(WORD_ORDER, function(a, b)
@@ -83,11 +83,11 @@ return function(V)
     end
 
     V:register("vol", function(phrase, ctx)
-        -- Сначала цифра: «30», «на 30 процентов».
+        -- Digit first: «30», «на 30 процентов».
         local n = phrase:match("(%d+)")
         if not n then
-            -- Порог 75, а не 80: «тридцать процентов» относительно «тридцать» —
-            -- это совпадение-подстрока, которое score оценивает ровно в 75.
+            -- Threshold 75, not 80: «тридцать процентов» against «тридцать» —
+            -- is a substring match, which score rates at exactly 75.
             local bestWord, bestScore = nil, 0
             for _, word in ipairs(WORD_ORDER) do
                 local s = V.resolve.score(phrase, word)
@@ -125,7 +125,7 @@ return function(V)
     end)
 
     ---------------------------------------------------------------- audio
-    -- Клички устройств берём из aliases.json (персональное), ключи — фиксированные.
+    -- Device nicknames come from aliases.json (personal), the keys are fixed.
     local LABEL = {
         internal = "ноутбук", external = "Scarlett",
         marshall = "Marshall", bt = "гостиная",
@@ -153,9 +153,9 @@ return function(V)
         local A = spoon.AudioSwitcher
         if not A then return "ERR AudioSwitcher не загружен" end
 
-        -- internal/external переключаются синхронно и при отсутствии устройства
-        -- молча рисуют баннер «not found». Поэтому не верим на слово, а читаем
-        -- фактическое устройство вывода: иначе голос отвечает OK на несделанное.
+        -- internal/external switch synchronously and, when the device is absent,
+        -- silently draw a "not found" banner. So we don't take it on faith — we read
+        -- the actual output device: otherwise voice reports OK for something that never happened.
         if best.key == "internal" or best.key == "external" then
             local was = hs.audiodevice.defaultOutputDevice()
             was = was and was:name()
@@ -163,13 +163,13 @@ return function(V)
             local now = hs.audiodevice.defaultOutputDevice()
             now = now and now:name()
             if now == was and best.key ~= nil and was ~= nil then
-                -- Устройство не сменилось: либо уже было выбрано, либо не найдено.
+                -- Device didn't change: either it was already selected, or it wasn't found.
                 return "OK вывод " .. (now or "?") .. " (без изменений)"
             end
             return "OK вывод " .. (now or LABEL[best.key])
         end
 
-        -- marshall/bt ждут появления устройства в фоне — обещать готовность нельзя.
+        -- marshall/bt wait for the device to appear in the background — can't promise readiness.
         if best.key == "marshall" then A:connectAndSwitchToMarshall()
         else A:connectAndSwitchToBT() end
         return "OK переключаю на " .. LABEL[best.key]

@@ -1,6 +1,6 @@
--- VoiceCtl — единая точка управления маком из голосового топика.
--- Вся сообразительность живёт здесь, чтобы модели оставался один шаг:
--- выбрать глагол и передать сырую фразу.
+-- VoiceCtl — single point of control for the Mac from the voice topic.
+-- All the smarts live here, so the model has only one step left:
+-- pick a verb and pass the raw phrase.
 local obj = {}
 obj.dry = false
 
@@ -27,9 +27,9 @@ function obj:register(verb, fn)
     self._verbs[verb] = fn
 end
 
--- Кандидаты приложений: карта bundleID из HotKeys (авторитетные имена),
--- плюс запущенное, плюс установленное. Кэш 60 с — enumerate /Applications
--- стоит десятки миллисекунд, а на горячем пути это заметно.
+-- App candidates: bundleID map from HotKeys (authoritative names),
+-- plus running apps, plus installed apps. 60s cache — enumerating /Applications
+-- costs tens of milliseconds, and that's noticeable on the hot path.
 local appCache, appCacheAt = nil, 0
 
 function obj:appCandidates()
@@ -60,8 +60,8 @@ function obj:appCandidates()
     end
 
     for _, dir in ipairs({ "/Applications", os.getenv("HOME") .. "/Applications" }) do
-        -- hs.fs.dir возвращает итератор И объект-состояние. Присвоить только
-        -- первое значение нельзя: generic-for останется без состояния и упадёт.
+        -- hs.fs.dir returns an iterator AND a state object. Assigning only
+        -- the first value breaks it: generic-for is left without state and crashes.
         if hs.fs.attributes(dir, "mode") == "directory" then
             for entry in hs.fs.dir(dir) do
                 local name = entry:match("^(.*)%.app$")
@@ -70,7 +70,7 @@ function obj:appCandidates()
         end
     end
 
-    -- Персональные алиасы приложений поверх: «код» → Visual Studio Code.
+    -- Personal app aliases layered on top: «код» → Visual Studio Code.
     for name, list in pairs(self.aliases.apps or {}) do
         local entry = byKey[name]
         if entry then
@@ -84,7 +84,7 @@ function obj:appCandidates()
     return appCache
 end
 
--- Единственная точка входа. Возвращает ровно одну строку.
+-- The single entry point. Returns exactly one string.
 function obj:run(verb, phrase)
     local fn = self._verbs[verb]
     if not fn then
@@ -103,8 +103,8 @@ function obj:run(verb, phrase)
     return tostring(result)
 end
 
--- Хелпер для глаголов: разрешить цель или вернуть готовую строку-ответ.
--- Возвращает entry, nil при успехе либо nil, "AMBIGUOUS ..."/"NOTFOUND ...".
+-- Helper for verbs: resolve the target or return a ready-made response string.
+-- Returns entry, nil on success, or nil, "AMBIGUOUS ..."/"NOTFOUND ..." otherwise.
 function obj:resolveOr(verb, phrase, candidates)
     local best, top = self.resolve.pick(phrase, candidates)
     if not best then

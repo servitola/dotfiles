@@ -19,16 +19,16 @@ like(V:run("text", "переведи на английский"), "^DRY text tra
 like(V:run("tv", "громче"), "^DRY tv ", "tv passthrough")
 V.dry = false
 
--- info безопасен и обязан работать живьём.
--- Проверяем структуру, а не конкретное приложение: набор запущенного меняется.
+-- info is safe and must work live.
+-- We check structure, not a specific app: the set of running apps changes.
 local out = V:run("info", "")
 like(out, "^OK front=", "info живой и начинается с фронта")
 like(out, "%[", "info перечисляет окна")
--- Одна строка, без переводов.
+-- One line, no newlines.
 checks = checks + 1
 if out:find("\n") then table.insert(failures, "info вернул многострочный вывод") end
 
--- Запрещённое не должно существовать.
+-- The forbidden verb must not exist.
 checks = checks + 1
 local vpn = V:run("vpn", "включи")
 if not vpn:find("^ERR unknown verb") then

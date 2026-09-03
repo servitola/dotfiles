@@ -1,6 +1,6 @@
--- Глаголы sys / text / info / tv.
--- Переключение VPN здесь отсутствует намеренно: глобальное правило запрещает
--- трогать VPN без прямой просьбы, а голосовой топик работает на быстрой модели.
+-- sys / text / info / tv verbs.
+-- VPN switching is deliberately absent here: the global rule forbids
+-- touching the VPN without a direct request, and this voice topic runs on a fast model.
 return function(V)
     local function systemKey(name)
         hs.eventtap.event.newSystemKeyEvent(name, true):post()
@@ -8,11 +8,11 @@ return function(V)
     end
 
     ---------------------------------------------------------------- sys
-    -- Яркость: план читал hs.brightness.get() и при nil подставлял 50, из-за чего
-    -- «яркость больше» прыгала на фиксированные 65 и рапортовала невиданное число.
-    -- На этой машине get() = nil всегда (единственный экран — LG TV, встроенный
-    -- дисплей в кламшелле). Поэтому шлём системную клавишу — ровно то же, что
-    -- нажатие F1/F2 — и докладываем реальное значение, если оно вообще читается.
+    -- Brightness: the plan read hs.brightness.get() and substituted 50 on nil, so
+    -- «яркость больше» jumped to a fixed 65 and reported a number never actually seen.
+    -- On this machine get() = nil always (the only screen is an LG TV, the built-in
+    -- display is in clamshell). So we send the system key — exactly what pressing
+    -- F1/F2 does — and report the real value if it's readable at all.
     local function brightnessStep(keyName)
         systemKey(keyName)
         local level = hs.brightness.get()
@@ -29,9 +29,9 @@ return function(V)
           fn = function() hs.caffeinate.lockScreen() return "экран заблокирован" end },
         { key = "sleep",          aliases = { "спи", "усни", "в сон", "sleep" },
           fn = function() hs.caffeinate.systemSleep() return "ушёл в сон" end },
-        -- Именно погасить экран, не заблокировать: «погаси экран» и «заблокируй» —
-        -- разные просьбы, и подменять одну другой нельзя. hs.caffeinate
-        -- гасить дисплей не умеет, поэтому pmset.
+        -- Specifically turn off the screen, not lock it: «погаси экран» and «заблокируй» —
+        -- are different requests, and one must not substitute for the other. hs.caffeinate
+        -- can't turn off the display, hence pmset.
         { key = "display-sleep",  aliases = { "погаси экран", "выключи экран", "экран спать", "display sleep" },
           fn = function()
               hs.execute("/usr/bin/pmset displaysleepnow")
@@ -90,16 +90,16 @@ return function(V)
     end)
 
     ---------------------------------------------------------------- info
-    -- Одна строка: что запущено с окнами и что спереди. Нужен модели,
-    -- чтобы понять «включи видео дальше», не переспрашивая.
+    -- One line: what's running with windows and what's frontmost. The model needs
+    -- this to understand «включи видео дальше» without asking back.
     V:register("info", function(_phrase, _ctx)
         local front = hs.application.frontmostApplication()
         local parts = {}
         for _, app in ipairs(hs.application.runningApplications()) do
-            -- Только обычные приложения из дока (kind == 1). Фоновые хелперы
-            -- вроде CursorUIViewService и «* Web Content» окон не имеют, но
-            -- каждый съедает 1.5 с таймаута accessibility: три таких процесса
-            -- уводили info за 4 с и роняли hs CLI по receive timeout.
+            -- Only regular dock apps (kind == 1). Background helpers
+            -- like CursorUIViewService and "* Web Content" have no windows, but
+            -- each eats 1.5s of accessibility timeout: three such processes
+            -- pushed info past 4s and made the hs CLI fail with a receive timeout.
             if app:kind() == 1 then
             local wins = app:allWindows()
             if #wins > 0 then
@@ -117,13 +117,13 @@ return function(V)
     end)
 
     ---------------------------------------------------------------- tv
-    -- Тонкий проброс в ./tv: телевизор живёт в отдельном проекте, дублировать
-    -- его протокол здесь нечего.
+    -- Thin passthrough to ./tv: the TV lives in a separate project, no reason
+    -- to duplicate its protocol here.
     local TV = os.getenv("HOME") .. "/projects/services/lgtv/tv"
 
-    -- Фраза приезжает сырой из распознавания и уходит в шелл. Без кавычек любой
-    -- «;» или бэктик в транскрипте — это выполненная команда, поэтому каждое
-    -- слово экранируем отдельно, а не склеиваем строку.
+    -- The phrase arrives raw from speech recognition and goes into the shell. Without quoting, any
+    -- «;» or backtick in the transcript is an executed command, so we
+    -- escape each word separately instead of concatenating one string.
     local function shellQuote(s)
         return "'" .. (tostring(s):gsub("'", "'\\''")) .. "'"
     end
