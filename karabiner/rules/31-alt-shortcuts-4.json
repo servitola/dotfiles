@@ -1,0 +1,24 @@
+{
+    "description": "Alt + 4 = Command + H (hide the front app; unlike minimize, this hands focus to the app behind)",
+    "manipulators": [
+        {
+            "from": {
+                "key_code": "4",
+                "modifiers": {
+                    "mandatory": [
+                        "left_option"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "key_code": "h",
+                    "modifiers": [
+                        "left_command"
+                    ]
+                }
+            ],
+            "type": "basic"
+        }
+    ]
+}

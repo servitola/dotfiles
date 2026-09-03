@@ -11,7 +11,7 @@ return {
 --               │              │              │ ✓ │                 — open to edit
 --          ⇧4   │              │ $    ;    $  │   │
 --          ⌃4   │              │              │   │           VSCode — go to tab 4
---          ⌥4   │              │              │   │ ???
+--          ⌥4   │      ⌘h      │              │   │                 — hide current app
 --          ⌘4   │              │              │   │            Rider — focus build window
 --               │              │              │   │           Finder — View in gallery
 --               │              │              │   │          Browser — Open 4th tab

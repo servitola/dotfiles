@@ -38,7 +38,7 @@ return {
 { chord= "⇧⌃⌥↓",                              fn = "window.bottom_40" },
 --        ⇧⌃⌘↓   │              │              │   │
 --        ⇧⌥⌘↓   │              │              │   │
---⇧⌃⌥⌘↓ → ⇧F13   │              │              │ ✓ │              — hide all except Zap & WorkBot
+--⇧⌃⌥⌘↓ → ⇧F13   │              │              │ ✓ │              — hide all except Zap & Telegram
 { chord = "⇧F13",                               fn = "window.hide_all_except_work" },
 --               ┴              ┴              ┴   ┴
 }

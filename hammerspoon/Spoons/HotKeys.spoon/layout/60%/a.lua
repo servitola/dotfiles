@@ -33,7 +33,7 @@ return {
 --               │              │              │   │        Mail — attach files
 --               │              │              │   │      Finder — go to Applications
 --               │              │              │   │       Music — deselect all songs
---         ⌃⌥a   │              │              │   │ Window ←
+--         ⌃⌥a   │              │              │   │ Hammerspoon — Window ←
 { chord = "⌃⌥a",                                              fn = "window.left" },
 --         ⌃⌘a   │              │              │   │       Rider — show all affected files in source control
 --               │              │              │   │        Mail — archive message
