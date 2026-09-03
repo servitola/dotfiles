@@ -1,7 +1,4 @@
-# rtk/ — Rust Token Killer config
-
-RTK is a CLI proxy that filters/compacts command output before it reaches the
-LLM context (60–90% token savings on dev ops). Installed via Homebrew.
+# rtk — Rust Token Killer config
 
 ## What lives here (version-controlled)
 - `config.toml`  — global RTK config (mirrors built-in defaults; tune here).
