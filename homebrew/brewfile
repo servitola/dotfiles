@@ -67,8 +67,6 @@ brew "portaudio"
 brew "sdl2"
 # DOSBox with accurate emulation and wide testing
 brew "dosbox-x"
-# Select default apps for documents and URL schemes on macOS
-brew "duti"
 # Utility to bundle libraries into executables for macOS
 brew "dylibbundler"
 # Perl lib for reading and writing EXIF metadata
