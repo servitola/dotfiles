@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 sha="$1"
 repo="$2"
-# Третий аргумент приходит только от reference-варианта команды: там Fork уже
-# знает ветку ($name, «origin/foo» для удалённой), и гадать по коммиту не надо.
+# The third argument only comes from the reference variant of the command: there
+# Fork already knows the branch ($name, "origin/foo" for a remote one), no need
+# to guess from the commit.
 ref="$3"
 
 name=$(basename "$repo")
@@ -43,8 +44,8 @@ if [ -e "$dest" ]; then
 fi
 mkdir -p "$wtroot"
 if [ -n "$remoteref" ] && ! git -C "$repo" show-ref --verify --quiet "refs/heads/$branch"; then
-  # Защищённую ветку никогда не делаем upstream'ом: случайный `git push` из
-  # воркдерева ушёл бы прямо в неё.
+  # Never make a protected branch the upstream: a stray `git push` from the
+  # worktree would land straight on it.
   case "$branch" in
     Development|development|main|master|trunk) track="--no-track" ;;
     *) track="--track" ;;
