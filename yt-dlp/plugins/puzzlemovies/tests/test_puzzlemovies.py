@@ -6,6 +6,9 @@ from yt_dlp.utils import ExtractorError
 from yt_dlp_plugins.extractor.puzzlemovies import (
     PuzzleMoviesIE,
     build_manifest_url,
+    build_movie_manifest_url,
+    extract_media_type,
+    extract_movie_meta,
     extract_seasons_json,
     select_episodes,
 )
@@ -19,6 +22,21 @@ SAMPLE_WEBPAGE = '''
   ]},{"season":2,"episodes":[
     {"ID":30500,"post_name":"the-mentalist-s2e1","episode":1,"season":2,"title_en":"Pretty Red Balloon","duration":2610}
   ]}];
+</script>
+</body></html>
+'''
+
+
+SAMPLE_FILM_WEBPAGE = '''
+<html><head>
+<script type="application/ld+json">{"@type":"Movie","name":"Only the Brave","duration":"PT134M"}</script>
+</head><body>
+<script>
+  var media_type = "films";
+  var movieID = 3071;
+  var movieSlug = "only-the-brave-2017";
+  var posterUrl = "https://cdn2.puzzle-movies.com/img400x600/movies/only-the-brave-2017/poster_orig.jpg";
+  var movieTitle = "Only the Brave";
 </script>
 </body></html>
 '''
@@ -92,6 +110,58 @@ def test_valid_url_episode():
 
 def test_valid_url_rejects_other_domain():
     assert PuzzleMoviesIE._match_valid_url('https://example.com/the-mentalist') is None
+
+
+def test_build_movie_manifest_url():
+    assert build_movie_manifest_url('only-the-brave-2017') == (
+        'https://cdn3.puzzle-movies.com/1568697914/movies/'
+        'only-the-brave-2017/video_hd.mp4/master.m3u8'
+    )
+
+
+def test_extract_media_type():
+    assert extract_media_type(SAMPLE_FILM_WEBPAGE) == 'films'
+    assert extract_media_type("var media_type = 'serials-light';") == 'serials-light'
+    assert extract_media_type('<html>nothing</html>') is None
+
+
+def test_extract_movie_meta():
+    meta = extract_movie_meta(SAMPLE_FILM_WEBPAGE)
+    assert meta['id'] == '3071'
+    assert meta['title'] == 'Only the Brave'
+    assert meta['duration'] == 134 * 60
+    assert meta['thumbnail'].endswith('/poster_orig.jpg')
+
+
+def test_extract_movie_meta_missing_id_raises():
+    with pytest.raises(ValueError):
+        extract_movie_meta('<html>no movieID here</html>')
+
+
+def test_valid_url_film():
+    m = PuzzleMoviesIE._match_valid_url(
+        'https://puzzle-movies.com/films/only-the-brave-2017')
+    assert m.group('kind') == 'films'
+    assert m.group('slug') == 'only-the-brave-2017'
+
+
+def test_real_extract_film():
+    ie = PuzzleMoviesIE()
+    with mock.patch.object(PuzzleMoviesIE, '_download_webpage', return_value=SAMPLE_FILM_WEBPAGE) as mock_page, \
+         mock.patch.object(PuzzleMoviesIE, '_extract_m3u8_formats', return_value=[{'format_id': 'hls-0'}]) as mock_formats:
+        info = ie._real_extract('https://puzzle-movies.com/films/only-the-brave-2017')
+
+    mock_page.assert_called_once_with(
+        'https://puzzle-movies.com/films/only-the-brave-2017', 'only-the-brave-2017')
+    mock_formats.assert_called_once_with(
+        build_movie_manifest_url('only-the-brave-2017'), '3071', 'mp4',
+        headers={'Referer': 'https://puzzle-movies.com/'})
+
+    assert info['id'] == '3071'
+    assert info['title'] == 'Only the Brave'
+    assert info['duration'] == 8040
+    assert info['formats'] == [{'format_id': 'hls-0'}]
+    assert 'season_number' not in info
 
 
 def test_real_extract_single_episode():
