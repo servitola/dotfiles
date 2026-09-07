@@ -31,4 +31,11 @@ COMPRESS_APPS=(
     "/Applications/DB Browser for SQLite.app"
     "/Applications/VLC.app"
     "/Applications/KiCad/KiCad.app"
+    "/Applications/Google Chrome.app"
+    "/Applications/zoom.us.app"
+    "/Applications/Yandex.app"
+    "/Applications/Zap.app"
+    "/Applications/Google Drive.app"
+    "/Applications/Moises.app"
+    "/Applications/ObinsKit.app"
 )
