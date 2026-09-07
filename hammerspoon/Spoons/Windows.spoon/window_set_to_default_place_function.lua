@@ -21,8 +21,6 @@ function set_window_default(window)
         set_window_right(window)
     elseif is_music_mini_player(app_title, window_title) then
         set_window_bottom(window)
-    elseif is_firefox_video_player(app_title, window_title) then
-        set_window_bottom(window)
     elseif is_telegram_video_player(app_title, window_title) then
         set_window_bottom(window)
     elseif is_browser_video_player(app_title, window_title, window) then

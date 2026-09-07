@@ -18,7 +18,6 @@ function set_window_bottom(window)
     local height = screen_frame.h * (1 - horizontal_line - spacing)
 
     local is_video = is_browser_video_player(app_title, window_title, window) or
-                    is_firefox_video_player(app_title, window_title) or
                     app_title == "IINA" or
                      (window_title and (
                          string.find(window_title, "YouTube") or
