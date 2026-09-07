@@ -142,3 +142,9 @@ Antigravity = { tabmenu = true, titlebar = false, toolbar = true }
 Claude = { tabmenu = true, titlebar = false, toolbar = true }
 Codex = { tabmenu = true, titlebar = false, toolbar = true }
 OpenCode = { tabmenu = true, titlebar = false, toolbar = true }
+
+[updates]
+# The built-in updater (warp::autoupdate::mac) copies a downloaded release
+# straight into /Applications/Zap.app, which would silently overwrite the
+# locally built version installed by cron/scripts/zap-sync.sh.
+automatic_updates_enabled = false
