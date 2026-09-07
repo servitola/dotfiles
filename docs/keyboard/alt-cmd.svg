@@ -32,7 +32,6 @@
   <symbol id="icon-browser-vim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(2, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
   <symbol id="icon-browser-vimt" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(82, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
   <symbol id="icon-browservim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(298, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">B</text></symbol>
-  <symbol id="icon-chrome" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(306, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">C</text></symbol>
   <symbol id="icon-claude-code" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(103, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">CC</text></symbol>
   <symbol id="icon-day-one" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-finder" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
@@ -345,15 +344,16 @@
 <text x="490.0" y="141.0" text-anchor="middle" class="key-label">U</text>
 <title>U</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="370.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="370.0" y="166" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="485.0,166 495.0,166 490.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="486.0,166 494.0,166 490.0,162" fill="white"/>
 <use href="#icon-music" x="380.0" y="175" width="13" height="13"/>
 <text x="396.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Music</text>
 <text x="427.5" y="186" font-size="8px" fill="#1d1d1f">Show playing next queue</text>
-<use href="#icon-zen" x="380.0" y="193" width="13" height="13"/>
-<text x="396.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Zen</text>
-<text x="416.5" y="204" font-size="8px" fill="#1d1d1f">view source code</text>
+<use href="#icon-vivaldi" x="380.0" y="193" width="13" height="13"/>
+<text x="396.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Vivaldi</text>
+<text x="438.5" y="204" font-size="8px" fill="#1d1d1f">view source code</text>
+<text x="396.0" y="216" font-size="7px" fill="#86868b" font-style="italic">Web browser with built-in email client focusing on customization and control</text>
 </g>
 </g>
 <g class="key-group">
@@ -379,12 +379,13 @@
 <text x="664.0" y="141.0" text-anchor="middle" class="key-label">P</text>
 <title>P</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="544.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="544.0" y="166" width="240" height="46" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="659.0,166 669.0,166 664.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="660.0,166 668.0,166 664.0,162" fill="white"/>
-<use href="#icon-chrome" x="554.0" y="175" width="13" height="13"/>
-<text x="570.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Chrome</text>
-<text x="607.0" y="186" font-size="8px" fill="#1d1d1f">print using system dialog</text>
+<use href="#icon-vivaldi" x="554.0" y="175" width="13" height="13"/>
+<text x="570.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Vivaldi</text>
+<text x="612.5" y="186" font-size="8px" fill="#1d1d1f">print using system dialog</text>
+<text x="570.0" y="198" font-size="7px" fill="#86868b" font-style="italic">Web browser with built-in email client focusing on customization and control</text>
 </g>
 </g>
 <g class="key-group">
@@ -450,15 +451,16 @@
 <text x="504.5" y="193.0" text-anchor="middle" class="key-label">J</text>
 <title>J</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="384.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="384.5" y="218" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="499.5,218 509.5,218 504.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="500.5,218 508.5,218 504.5,214" fill="white"/>
-<use href="#icon-chrome" x="394.5" y="227" width="13" height="13"/>
-<text x="410.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Chrome</text>
-<text x="447.5" y="238" font-size="8px" fill="#1d1d1f">JavaScript console</text>
-<use href="#icon-mail" x="394.5" y="245" width="13" height="13"/>
-<text x="410.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Mail</text>
-<text x="436.5" y="256" font-size="8px" fill="#1d1d1f">erase junk mail</text>
+<use href="#icon-vivaldi" x="394.5" y="227" width="13" height="13"/>
+<text x="410.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Vivaldi</text>
+<text x="453.0" y="238" font-size="8px" fill="#1d1d1f">JavaScript console</text>
+<text x="410.5" y="250" font-size="7px" fill="#86868b" font-style="italic">Web browser with built-in email client focusing on customization and control</text>
+<use href="#icon-mail" x="394.5" y="257" width="13" height="13"/>
+<text x="410.5" y="268" font-size="9px" font-weight="600" fill="#007aff">Mail</text>
+<text x="436.5" y="268" font-size="8px" fill="#1d1d1f">erase junk mail</text>
 </g>
 </g>
 <g class="key-group">
@@ -540,7 +542,7 @@
 <text x="301.5" y="245.0" text-anchor="middle" class="key-label">C</text>
 <title>C</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="181.5" y="270" width="240" height="88" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="181.5" y="270" width="240" height="100" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="296.5,270 306.5,270 301.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="297.5,270 305.5,270 301.5,266" fill="white"/>
 <use href="#icon-rider" x="191.5" y="279" width="13" height="13"/>
@@ -552,9 +554,10 @@
 <use href="#icon-visual-studio-code" x="191.5" y="315" width="13" height="13"/>
 <text x="207.5" y="326" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="244.5" y="326" font-size="8px" fill="#1d1d1f">introduce constant</text>
-<use href="#icon-zen" x="191.5" y="333" width="13" height="13"/>
-<text x="207.5" y="344" font-size="9px" font-weight="600" fill="#007aff">Zen</text>
-<text x="228.0" y="344" font-size="8px" fill="#1d1d1f">inspect elements</text>
+<use href="#icon-vivaldi" x="191.5" y="333" width="13" height="13"/>
+<text x="207.5" y="344" font-size="9px" font-weight="600" fill="#007aff">Vivaldi</text>
+<text x="250.0" y="344" font-size="8px" fill="#1d1d1f">inspect elements</text>
+<text x="207.5" y="356" font-size="7px" fill="#86868b" font-style="italic">Web browser with built-in email client focusing on customization and control</text>
 </g>
 </g>
 <g class="key-group">
@@ -815,8 +818,8 @@
 <text x="20" y="1032" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
 <use href="#icon-music" x="291" y="1020" width="14" height="14"/>
 <text x="309" y="1032" font-size="11px" fill="#48484a">Music — Show playing next queue</text>
-<use href="#icon-zen" x="291" y="1044" width="14" height="14"/>
-<text x="309" y="1056" font-size="11px" fill="#48484a">Zen — view source code</text>
+<use href="#icon-vivaldi" x="291" y="1044" width="14" height="14"/>
+<text x="309" y="1056" font-size="11px" fill="#48484a">Vivaldi — view source code</text>
 <line x1="20" y1="1078" x2="906" y2="1078" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1086" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
 <use href="#icon-vivaldi" x="291" y="1074" width="14" height="14"/>
@@ -825,8 +828,8 @@
 <text x="309" y="1110" font-size="11px" fill="#48484a">Mail — append selected emails to email</text>
 <line x1="20" y1="1132" x2="906" y2="1132" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1140" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
-<use href="#icon-chrome" x="291" y="1128" width="14" height="14"/>
-<text x="309" y="1140" font-size="11px" fill="#48484a">Chrome — print using system dialog</text>
+<use href="#icon-vivaldi" x="291" y="1128" width="14" height="14"/>
+<text x="309" y="1140" font-size="11px" fill="#48484a">Vivaldi — print using system dialog</text>
 <line x1="20" y1="1162" x2="906" y2="1162" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1170" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
 <text x="56" y="1170" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_command</text>
@@ -838,8 +841,8 @@
 <text x="309" y="1224" font-size="11px" fill="#48484a">VSCode — extract field</text>
 <line x1="20" y1="1246" x2="906" y2="1246" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1254" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
-<use href="#icon-chrome" x="291" y="1242" width="14" height="14"/>
-<text x="309" y="1254" font-size="11px" fill="#48484a">Chrome — JavaScript console</text>
+<use href="#icon-vivaldi" x="291" y="1242" width="14" height="14"/>
+<text x="309" y="1254" font-size="11px" fill="#48484a">Vivaldi — JavaScript console</text>
 <use href="#icon-mail" x="291" y="1266" width="14" height="14"/>
 <text x="309" y="1278" font-size="11px" fill="#48484a">Mail — erase junk mail</text>
 <line x1="20" y1="1300" x2="906" y2="1300" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
@@ -870,8 +873,8 @@
 <text x="309" y="1500" font-size="11px" fill="#48484a">Finder — copy the path of the file</text>
 <use href="#icon-visual-studio-code" x="291" y="1512" width="14" height="14"/>
 <text x="309" y="1524" font-size="11px" fill="#48484a">VSCode — introduce constant</text>
-<use href="#icon-zen" x="291" y="1536" width="14" height="14"/>
-<text x="309" y="1548" font-size="11px" fill="#48484a">Zen — inspect elements</text>
+<use href="#icon-vivaldi" x="291" y="1536" width="14" height="14"/>
+<text x="309" y="1548" font-size="11px" fill="#48484a">Vivaldi — inspect elements</text>
 <line x1="20" y1="1570" x2="906" y2="1570" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1578" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
 <use href="#icon-rider" x="291" y="1566" width="14" height="14"/>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1290" viewBox="0 0 922 1290">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1314" viewBox="0 0 922 1314">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -32,7 +32,6 @@
   <symbol id="icon-browser-vim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(2, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
   <symbol id="icon-browser-vimt" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(82, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
   <symbol id="icon-browservim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(298, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">B</text></symbol>
-  <symbol id="icon-chrome" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(306, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">C</text></symbol>
   <symbol id="icon-claude-code" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(103, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">CC</text></symbol>
   <symbol id="icon-day-one" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-finder" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
@@ -87,7 +86,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1290" fill="none"/>
+<rect width="922" height="1314" fill="none"/>
 <text x="28" y="30" class="title">Ctrl + Alt — Window Management</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -351,11 +350,15 @@
 <text x="178.5" y="209" text-anchor="end" class="key-label">A</text>
 <title>A: Window ← — Window: Left</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="36.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="36.5" y="218" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="151.5,218 161.5,218 156.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="152.5,218 160.5,218 156.5,214" fill="white"/>
 <text x="46.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Window ←</text>
 <text x="94.5" y="238" font-size="8px" fill="#1d1d1f">window: left</text>
+<use href="#icon-hammerspoon" x="46.5" y="245" width="13" height="13"/>
+<text x="62.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="127.0" y="256" font-size="8px" fill="#1d1d1f">Window ←</text>
+<text x="62.5" y="268" font-size="7px" fill="#86868b" font-style="italic">Desktop automation application</text>
 </g>
 </g>
 <g class="key-group">
@@ -618,7 +621,7 @@
 <text x="805.0" y="342" font-size="8px" fill="#1d1d1f">window: right</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="926" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="950" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <circle cx="85.8" cy="354" r="4" fill="#34c759"/>
@@ -693,7 +696,8 @@
 <line x1="20" y1="820" x2="906" y2="820" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="828" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
 <text x="136" y="828" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
-<text x="291" y="828" font-size="11px" fill="#48484a">Window ←</text>
+<use href="#icon-hammerspoon" x="291" y="816" width="14" height="14"/>
+<text x="309" y="828" font-size="11px" fill="#48484a">Hammerspoon — Window ←</text>
 <line x1="20" y1="850" x2="906" y2="850" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
 <text x="136" y="858" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
@@ -734,20 +738,22 @@
 <text x="20" y="1098" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
 <text x="136" y="1098" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
 <text x="291" y="1098" font-size="11px" fill="#48484a">Window ←, 2nd press ½ ←</text>
-<line x1="20" y1="1120" x2="906" y2="1120" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1128" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="136" y="1128" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
-<text x="291" y="1128" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
-<use href="#icon-rider" x="291" y="1140" width="14" height="14"/>
-<text x="309" y="1152" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
-<line x1="20" y1="1174" x2="906" y2="1174" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1182" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="136" y="1182" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
-<text x="291" y="1182" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
-<use href="#icon-rider" x="291" y="1194" width="14" height="14"/>
-<text x="309" y="1206" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
-<line x1="20" y1="1228" x2="906" y2="1228" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1236" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="136" y="1236" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
-<text x="291" y="1236" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
+<text x="56" y="1122" font-size="12px" fill="#a2845e">⌃⌥F14</text>
+<text x="291" y="1122" font-size="11px" fill="#48484a">Swap two top windows (both arrows at once)</text>
+<line x1="20" y1="1144" x2="906" y2="1144" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1152" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="136" y="1152" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
+<text x="291" y="1152" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
+<use href="#icon-rider" x="291" y="1164" width="14" height="14"/>
+<text x="309" y="1176" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
+<line x1="20" y1="1198" x2="906" y2="1198" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1206" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="136" y="1206" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
+<text x="291" y="1206" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
+<use href="#icon-rider" x="291" y="1218" width="14" height="14"/>
+<text x="309" y="1230" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
+<line x1="20" y1="1252" x2="906" y2="1252" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1260" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="136" y="1260" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
+<text x="291" y="1260" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
 </svg>
