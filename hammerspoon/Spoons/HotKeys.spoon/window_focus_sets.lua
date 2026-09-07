@@ -1,11 +1,12 @@
--- Раскладки фокуса рабочего стола: work / personal / comms / only-work.
+-- Desktop focus layouts: work / personal / comms / only-work.
 --
--- Вынесено из init.lua дословно, чтобы раскладку можно было применить не только
--- с хоткея, но и вызовом функции (голосовой глагол VoiceCtl `win`). Синтез
--- чорда для этого не годится: hs.eventtap.keyStroke Carbon-хоткеем не ловится
--- (проверено — ни с нулевой задержкой, ни с дефолтной, ни через osascript).
+-- Moved out of init.lua verbatim, so the layout can be applied not only
+-- from a hotkey but also by calling the function directly (VoiceCtl voice
+-- verb `win`). Synthesizing a chord doesn't work for this: hs.eventtap.keyStroke
+-- isn't caught by a Carbon hotkey (verified — zero delay, default delay, and
+-- via osascript all failed).
 --
--- Зависимости-глобали (Windows.spoon): set_window_default, set_window_left,
+-- Global dependencies (Windows.spoon): set_window_default, set_window_left,
 -- is_browser_video_player.
 return function()
     local browsers = require "browsers"
@@ -107,11 +108,12 @@ return function()
                     local frontWin = browserApp:focusedWindow() or browserApp:mainWindow()
                     local frontTitle = frontWin and frontWin:title() or ""
 
-                    -- Видео играет во вкладке, а попапа ещё нет: просим браузер
-                    -- вынести его своим же чордом и раскладываем уже после —
-                    -- окно появляется не мгновенно. Браузер без pip_chord
-                    -- (весь Chromium: своего дефолтного чорда у него нет)
-                    -- раскладывается сразу, без попытки вынести видео.
+                    -- Video is playing in a tab and there's no popup yet: ask the
+                    -- browser to pop it out with its own chord and lay out only
+                    -- after — the window doesn't appear instantly. A browser
+                    -- without pip_chord (every Chromium one: it has no default
+                    -- chord of its own) is laid out immediately, without trying
+                    -- to pop the video out.
                     if not hasPopup and browser.pip_chord
                         and browsers.title_looks_like_video(frontTitle) then
                         local chord = browser.pip_chord
