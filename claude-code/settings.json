@@ -32,7 +32,7 @@
     "deny": [],
     "defaultMode": "plan"
   },
-  "model": "claude-fable-5[1m]",
+  "model": "fable[1m]",
   "hooks": {
     "PostToolUse": [
       {
@@ -121,6 +121,17 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "hs -c 'spoon.ScreenGlow:stop()' >/dev/null 2>&1; exit 0",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {
@@ -136,8 +147,8 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "tui": "fullscreen",
   "autoMemoryEnabled": false,
   "skipDangerousModePermissionPrompt": true,
-  "switchModelsOnFlag": false,
-  "tui": "fullscreen"
+  "switchModelsOnFlag": false
 }
