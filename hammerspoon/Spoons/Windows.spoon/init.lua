@@ -15,6 +15,8 @@ dofile(spoonPath .. "adjust_right_panel_for_dialogs.lua")
 dofile(spoonPath .. "window_set_full_size_function.lua")
 dofile(spoonPath .. "window_set_half_function.lua")
 dofile(spoonPath .. "window_set_to_default_place_function.lua")
+dofile(spoonPath .. "window_cycle_functions.lua")
+dofile(spoonPath .. "window_minimize_and_focus_next_function.lua")
 
 local active_small_dialogs = {}
 local right_panel_windows_adjusted = false
@@ -150,14 +152,13 @@ function set_all_windows_positions()
         elseif hs.fnutils.contains(right_side_app_titles, app_title) then
             set_window_right(window)
         elseif is_music_mini_player(app_title, window_title) or
-                is_firefox_video_player(app_title, window_title) or
-                is_yandex_video_player(app_title, window_title, window) or
+                is_browser_video_player(app_title, window_title, window) or
                 is_finder_copy_dialog(app_title, window_title, window) or
                 is_activity_monitor_small_window(app_title, window_title, window) or
                 is_activity_monitor_cpu_window(app_title, window_title) then
             set_window_bottom(window)
         elseif is_winflow_recording_panel(app_title, window_title) or
-                is_yandex_extra_panel(app_title, window_title, window) or
+                is_browser_extra_panel(app_title, window_title, window) or
                 app_title == "Raycast" then
             -- nothing
         else
