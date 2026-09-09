@@ -34,15 +34,48 @@ The build script uses `jq` to merge the template with all rule files in sorted o
 21-alt-shortcuts-3.json      — Alt+3 = Cmd+N
 22-custom-right-cmd.json     — Right Command remappings
 23-left-hand-delete.json     — Ctrl+Shift+A/D for delete/backspace
-24-fn-to-control.json        — Fn → Left Control (internal keyboard)
 25-music-control.json        — Hyper+Shift+Space → Keypad 0
+26-right-option-space-punto.json — Right Option + Space → Ctrl+F14 (Punto reconversion)
+27-left-all-hide.json        — All left modifiers + arrows → focus modes
+28-ctrl-opt-cmd-h-hide-current.json — Ctrl+Alt+Cmd+H → F13 (hide current window)
+29-mouse-ugreen-hold-to-browser.json — UGREEN mouse forward button held → browser
+30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
+31-alt-shortcuts-4.json      — Alt+4 = Cmd+H (hide front app; focus falls to the one behind)
+32-swap-sides.json           — Ctrl+Alt + both arrows at once → Ctrl+Alt+F14 (swap two top windows)
 ```
 
 ## Core Remappings (Don't Break These)
 - **Caps Lock → Hyper**: Maps to all 4 right modifiers (right_command, right_control, right_option, right_shift)
 - **Tab as modifier layer**: Hold Tab + key for shortcuts, tap alone sends Tab
-- **Fn → Left Control**: On internal keyboard only (for 60% keyboard compatibility)
+- **`fn` is left alone**: it used to be remapped to Left Control so the bottom-left key matched
+  the 60% keyboard, and briefly it was swapped with Control. Both are gone — `fn` is the layer
+  key now (see below) and has to stay a real `fn` on its own key. Cost of that: on the built-in
+  keyboard `⌃` sits one key further right than on the 60% board.
 - **Grave/Tilde → Escape**: Except when Hyper is held
+
+## fn Layer (Mirror the Left Half onto the Right)
+`30-fn-layer-mirror.json`: holding `fn`, the i-th key of a row's left half sends the i-th key
+of that row's right half, so the right hand's territory is typeable from the home position.
+
+```json
+"from": {"key_code": "1", "modifiers": {"mandatory": ["fn"], "optional": ["any"]}},
+"to":   [{"key_code": "7"}]
+```
+
+`mandatory` consumes the `fn` so it never reaches the app; `optional: ["any"]` is what keeps
+`fn`+`⌘`+`1` working as `⌘7`.
+
+Not a uniform shift — the rows are different lengths, and they do not balance row by row:
+number row 12 keys (6→6), bottom row 10 (5→5), but the top row has 13 (`qwerty` → `uiop[]\`,
+seven targets for six sources) and the home row 11 (`asdfgh` → `jkl;'`, six sources for five
+targets). The home row's spare `h` covers the top row's orphan, so `fn`+`h` sends `backslash`.
+That is what makes the layer complete: every letter and symbol of the right-hand block is
+reachable from the left hand.
+
+All four rows are live. This deliberately eats the macOS 🌐-combos that land on mapped letters
+(🌐+E emoji, 🌐+F fullscreen, 🌐+C Control Center, 🌐+Q Quick Note, 🌐+A, 🌐+D) — the owner
+tried them and uses none. Do not "restore" them without asking. `fn`+`h`, arrows, delete and
+the F-row stay untouched, as do 🌐+N and 🌐+M (right half, never mapped).
 
 ## Tab Modifier Pattern (Variable-Based Layer)
 ```json
