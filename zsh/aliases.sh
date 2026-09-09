@@ -32,6 +32,9 @@ alias ytv=ytvideo
 alias ytaudio="noglob yt-dlp --config-location ~/projects/dotfiles/yt-dlp/audioConfig"
 alias yta=ytaudio
 
+# Rutube: same video config, retried through the Moscow exit when geo-blocked
+alias ytrutube="noglob yt-rutube"
+alias ytr=ytrutube
 alias cl=clear
 alias cd='z'
 

@@ -1,0 +1,32 @@
+#!/bin/zsh
+# Download from Rutube, retrying through the Moscow proxy exit when blocked.
+#
+#   yt-rutube <url> [yt-dlp flags…]
+#
+# Rutube geo-blocks non-RU clients at the *options JSON* step and answers 404,
+# not 403 — so a direct run dies with "Unable to download options JSON" and
+# nothing in the message points at geography.
+set -euo pipefail
+
+(( $# )) || { print -u2 "usage: yt-rutube <url> [yt-dlp flags…]"; exit 2 }
+
+VIDEO_CONFIG="$HOME/projects/dotfiles/yt-dlp/videoConfig"
+
+if yt-dlp --config-location "$VIDEO_CONFIG" "$@"; then
+    exit 0
+fi
+
+# socks5h, not the constant's plain socks5: DNS resolves at the Moscow exit too.
+proxy=$(const PROXY_BLANC_MOSCOW)
+proxy=${proxy/socks5:/socks5h:}
+
+print -u2 "\n── direct attempt failed, retrying through $proxy ──\n"
+
+if yt-dlp --config-location "$VIDEO_CONFIG" --proxy "$proxy" "$@"; then
+    exit 0
+fi
+
+print -u2 "\nProxy attempt failed too. Check the tunnel is up:" \
+          "\n  docker compose ls | grep withblancvpn" \
+          "\n  lsof -nP -iTCP:${proxy##*:} -sTCP:LISTEN"
+exit 1
