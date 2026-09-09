@@ -1,5 +1,6 @@
 tap "charmbracelet/tap", trusted: true
 tap "facebook/fb", trusted: true
+tap "servitola/tap"
 # Utility for manipulating APFS and ZFS compressed files
 brew "afsctool"
 # All-in-one AI-Powered CLI Chat & Copilot
@@ -345,8 +346,12 @@ cask "font-fira-code"
 cask "font-jetbrains-mono-nerd-font"
 # GIT client
 cask "fork"
+# Telegram Desktop (Forkgram base) with personal patches
+cask "servitola/tap/forkgram", trusted: true
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Liquid Glass notification banners: resident daemon plus CLI
+cask "servitola/tap/glasswings", trusted: true
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
@@ -408,8 +413,8 @@ cask "sloth"
 cask "steam"
 # Unpacks archive files
 cask "the-unarchiver"
-# Open-source BitTorrent client
-cask "transmission"
+# BitTorrent client, personal fork with native Liquid Glass UI
+cask "servitola/tap/transmission", trusted: true
 # Unicode keyboard layout editor
 cask "ukelele"
 # Open-source code editor
@@ -420,6 +425,8 @@ cask "vivaldi"
 cask "vlc"
 # Network protocol analyzer
 cask "wireshark-chmodbpf"
+# Voice to text app, personal fork built nightly from Beingpax/VoiceInk
+cask "servitola/tap/voiceink", trusted: true
 # Notetaking tool
 cask "workflowy"
 # Install and switch between multiple versions of Xcode
@@ -428,6 +435,10 @@ cask "xcodes-app"
 cask "yandex"
 # Yandex video calls and meetings platform
 cask "yandextelemost"
+# Terminal with AI and agent support, open-source Warp fork, nightly build
+cask "servitola/tap/zap-terminal", trusted: true
+# Web browser built weekly from source with auto-update disabled
+cask "servitola/tap/zen", trusted: true
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "AmneziaWG", id: 6478942365
