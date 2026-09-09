@@ -23,7 +23,7 @@
 		<key>Hour</key>
 		<integer>5</integer>
 		<key>Minute</key>
-		<integer>20</integer>
+		<integer>50</integer>
 	</dict>
 	<key>RunAtLoad</key>
 	<false/>
