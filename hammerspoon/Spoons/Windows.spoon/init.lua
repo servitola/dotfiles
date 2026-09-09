@@ -30,19 +30,19 @@ function obj:add_bottom_window_type_app(title)
 end
 
 function obj:bind_window_left(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_left)
+    hs.hotkey.bind(modifier, key, set_window_left_cycle)
 end
 
 function obj:bind_window_right(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_right)
+    hs.hotkey.bind(modifier, key, set_window_right_cycle)
 end
 
 function obj:bind_window_fullscreen(modifier, key)
-    hs.hotkey.bind(modifier, key, set_window_fullscreen)
+    hs.hotkey.bind(modifier, key, set_window_fullscreen_cycle)
 end
 
 function obj:bind_all_windows_to_default(modifier, key)
-    hs.hotkey.bind(modifier, key, set_all_windows_positions)
+    hs.hotkey.bind(modifier, key, set_all_windows_positions_cycle)
 end
 
 function obj:bind_window_half_left(modifier, key)
