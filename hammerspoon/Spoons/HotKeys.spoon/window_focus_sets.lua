@@ -18,8 +18,8 @@ return function()
         ["window.focus_work"] = {
             ["Rider"] = true, ["Fork"] = true, ["Zap"] = true, ["Code"] = true,
             ["WebStorm"] = true, ["Xcode"] = true,
-            -- Firefox, а не основной браузер: config_UrlDispatcher уводит туда
-            -- workname/workproject, так что рабочие страницы живут именно в нём.
+            -- Firefox, not the main browser: config_UrlDispatcher routes
+            -- workname/workproject there, so work pages live in it specifically.
             ["Firefox"] = true,
             [TELEGRAM] = true,
         },
