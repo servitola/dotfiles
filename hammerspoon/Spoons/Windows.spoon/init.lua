@@ -17,10 +17,32 @@ dofile(spoonPath .. "window_set_half_function.lua")
 dofile(spoonPath .. "window_set_to_default_place_function.lua")
 dofile(spoonPath .. "window_cycle_functions.lua")
 dofile(spoonPath .. "window_minimize_and_focus_next_function.lua")
+dofile(spoonPath .. "window_swap_sides_function.lua")
 
 local active_small_dialogs = {}
 local right_panel_windows_adjusted = false
 
+-- External "don't touch this window" predicates. Registered by other spoons
+-- so Windows doesn't need to know their domain (see Displays.spoon).
+local skip_predicates = {}
+
+function obj:add_skip_predicate(fn)
+    table.insert(skip_predicates, fn)
+end
+
+local function should_skip(window)
+    for _, fn in ipairs(skip_predicates) do
+        local ok, result = pcall(fn, window)
+        if ok and result then return true end
+    end
+    return false
+end
+
+-- Public wrapper: set_window_left is declared globally, but relying on
+-- a global from another spoon isn't safe.
+function obj:place_left(window)
+    set_window_left(window)
+end
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
 end
@@ -61,6 +83,13 @@ function obj:bind_window_bottom_40(modifier, key)
     hs.hotkey.bind(modifier, key, set_window_bottom_40)
 end
 
+function obj:bind_window_minimize_and_focus_next(modifier, key)
+    hs.hotkey.bind(modifier, key, minimize_and_focus_next)
+end
+
+function obj:bind_window_swap_sides(modifier, key)
+    hs.hotkey.bind(modifier, key, swap_side_windows)
+end
 function obj:bind_window_center(modifier, key)
     hs.hotkey.bind(modifier, key, function()
         local win = hs.window.frontmostWindow()
@@ -134,6 +163,7 @@ function set_all_windows_positions()
         local window_title = window:title()
         local app = window:application()
         if not app then goto continue end
+        if should_skip(window) then goto continue end
         local app_title = app:title()
         log.d(string.format("Window: '%s', App: '%s'", window_title, app_title))
 
