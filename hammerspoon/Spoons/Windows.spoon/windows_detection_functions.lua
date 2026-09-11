@@ -52,11 +52,8 @@ function is_music_mini_player(app_title, window_title)
     return app_title == "Music" and window_title == "Mini Player"
 end
 
-function is_firefox_video_player(app_title, window_title)
-    return app_title == "Firefox" and window_title == "Picture-in-Picture"
-end
-
 local browsers = require "browsers"
+local telegrams = require "telegrams"
 
 function is_browser_extra_panel(app_title, window_title, window)
     if not (browsers.by_app(app_title) and window_title) then
@@ -71,28 +68,11 @@ function is_browser_extra_panel(app_title, window_title, window)
 end
 
 function is_browser_video_player(app_title, window_title, window)
-    local browser = browsers.by_app(app_title)
-    if not (browser and window_title) then
-        return false
-    end
-
-     if window_title == "" then
-        return false
-    end
-
-    -- Regular window ends with «— Yandex Browser» / « - Vivaldi»;
-    -- All the rest are video players
-    local suffix = browser.title_suffix
-    local title_end = window_title:sub(-#suffix)
-
-    local is_video = title_end ~= suffix
-
-    return is_video
+    return browsers.is_video_window(app_title, window_title)
 end
 
 function is_video_player_window(app_title, window_title, window)
     return is_browser_video_player(app_title, window_title, window) or
-           is_firefox_video_player(app_title, window_title) or
            is_telegram_video_player(app_title, window_title) or
            app_title == "IINA"
 end
@@ -111,7 +91,17 @@ function is_finder_copy_dialog(app_title, window_title, window)
 end
 
 function is_telegram_video_player(app_title, window_title)
-    return (app_title == "Forkgram" or app_title == "Telegram") and window_title == ""
+    return telegrams.by_app(app_title) ~= nil and window_title == ""
+end
+
+-- The floating player and an empty browser panel pass isStandard, but aren't real
+-- windows: measured on a live Vivaldi — focus kept drifting into Picture in Picture.
+function is_decoration_window(window)
+    local app = window:application()
+    if not app then return true end
+    local app_title, window_title = app:title(), window:title()
+    return is_video_player_window(app_title, window_title, window)
+        or is_browser_extra_panel(app_title, window_title, window)
 end
 
 function is_full_screen(window)
