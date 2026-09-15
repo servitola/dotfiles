@@ -43,6 +43,7 @@ end
 function obj:place_left(window)
     set_window_left(window)
 end
+
 function obj:add_right_window_type_app(title)
     table.insert(right_side_app_titles, title)
 end
@@ -90,6 +91,7 @@ end
 function obj:bind_window_swap_sides(modifier, key)
     hs.hotkey.bind(modifier, key, swap_side_windows)
 end
+
 function obj:bind_window_center(modifier, key)
     hs.hotkey.bind(modifier, key, function()
         local win = hs.window.frontmostWindow()
