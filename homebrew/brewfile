@@ -348,6 +348,8 @@ cask "font-jetbrains-mono-nerd-font"
 cask "fork"
 # Telegram Desktop (Forkgram base) with personal patches
 cask "servitola/tap/forkgram", trusted: true
+# 3D parametric modeller
+cask "freecad"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Liquid Glass notification banners: resident daemon plus CLI
