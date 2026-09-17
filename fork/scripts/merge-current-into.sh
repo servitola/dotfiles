@@ -22,17 +22,29 @@ fi
 # would desync that worktree — merge there instead (only when it is clean).
 wt=$(git worktree list --porcelain | awk -v b="branch refs/heads/$target" '/^worktree /{w=substr($0,10)} $0==b{print w}')
 if [ -n "$wt" ]; then
+  stashed=0
   if [ -n "$(git -C "$wt" status --porcelain)" ]; then
-    alert "Fork: worktree dirty" "$target is checked out in $wt with uncommitted changes. Commit or stash them there first."
-    exit 1
+    waitlock
+    if git -C "$wt" stash push -u -m "fork:merge-current-into" >/dev/null 2>&1; then
+      stashed=1
+    else
+      alert "Fork: cannot merge" "Could not stash the uncommitted changes in $wt — nothing was changed."
+      exit 1
+    fi
   fi
+  waitlock
   out=$(git -C "$wt" merge --no-ff --no-edit "$current" 2>&1) || {
     git -C "$wt" merge --abort >/dev/null 2>&1
+    [ "$stashed" = 1 ] && git -C "$wt" stash pop >/dev/null 2>&1
     alert "Fork: merge conflict" "Merging $current into $target (worktree $wt) hit a conflict. Aborted — nothing changed.
 
 $out"
     exit 1
   }
+  if [ "$stashed" = 1 ]; then
+    waitlock
+    git -C "$wt" stash pop >/dev/null 2>&1 || alert "Fork: heads up" "Merged $current into $target, but re-applying the uncommitted changes in $wt hit conflicts — resolve them there. The stash entry is kept (git stash list)."
+  fi
   notify "Merged $current into $target (worktree $wt)"
   exit 0
 fi
