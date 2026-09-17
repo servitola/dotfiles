@@ -383,5 +383,18 @@
     },
     "name": "Make This the Next Push",
     "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/merge-current-into.sh\" \"$name\" \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Merge Current Branch into This",
+    "referenceTargets": [
+      "localBranch"
+    ],
+    "target": "reference"
   }
 ]
