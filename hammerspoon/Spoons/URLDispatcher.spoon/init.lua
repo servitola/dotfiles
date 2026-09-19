@@ -23,6 +23,15 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Bundle ID for default URL handler. (Defaults to `"com.apple.Safari"`)
 obj.default_handler = "com.apple.Safari"
 
+local _openTasks = {}
+local function open_in_bundle(url, bundle_id)
+    local task
+    task = hs.task.new("/usr/bin/open", function() _openTasks[task] = nil end,
+        { "-b", bundle_id, url })
+    _openTasks[task] = true
+    task:start()
+end
+
 --- URLDispatcher.decode_slack_redir_urls
 --- Variable
 --- If true, handle Slack-redir URLs to apply the rule on the destination URL. Defaults to `true`
@@ -136,8 +145,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl)
          id = app
          if id ~= nil then
             self.logger.df("    Match found, opening with '%s'", id)
-            hs.application.launchOrFocusByBundleID(id)
-            hs.urlevent.openURLWithBundle(url, id)
+            open_in_bundle(url, id)
             return
          end
          if func ~= nil then
@@ -149,8 +157,7 @@ function obj:dispatchURL(scheme, host, params, fullUrl)
       end
    end
    self.logger.df("No match found, opening with default handler '%s'", self.default_handler)
-   hs.application.launchOrFocusByBundleID(self.default_handler)
-   hs.urlevent.openURLWithBundle(url, self.default_handler)
+   open_in_bundle(url, self.default_handler)
 end
 
 --- URLDispatcher:start()
