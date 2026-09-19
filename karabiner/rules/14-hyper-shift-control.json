@@ -629,10 +629,15 @@
       },
       "to": [
         {
-          "consumer_key_code": "fast_forward"
+          "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) forward down\" >>$l; /opt/homebrew/bin/nowplayingseek forward --hold --progressive >>$l 2>&1; echo \"$(date +%T) forward exit $?\" >>$l"
         }
       ],
-      "type": "basic"
+      "type": "basic",
+      "to_after_key_up": [
+        {
+          "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) forward up\" >>$l; /opt/homebrew/bin/nowplayingseek release forward 2>>$l"
+        }
+      ]
     },
     {
       "from": {
@@ -650,10 +655,15 @@
       },
       "to": [
         {
-          "consumer_key_code": "rewind"
+          "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) backward down\" >>$l; /opt/homebrew/bin/nowplayingseek backward --hold --progressive >>$l 2>&1; echo \"$(date +%T) backward exit $?\" >>$l"
         }
       ],
-      "type": "basic"
+      "type": "basic",
+      "to_after_key_up": [
+        {
+          "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) backward up\" >>$l; /opt/homebrew/bin/nowplayingseek release backward 2>>$l"
+        }
+      ]
     }
   ]
 }
