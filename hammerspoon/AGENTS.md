@@ -29,6 +29,7 @@ Uses `hs.application.watcher` to detect app focus changes:
 - HotKeys
 - KSheet
 - PopupTranslateSelection
+- ScreenGlow — edge glow while an agent drives the desktop; `hs -c 'spoon.ScreenGlow:pulse(45)'` / `:stop()`
 - URLDispatcher
 - Windows
 - YouTrackTasks
