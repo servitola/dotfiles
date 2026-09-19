@@ -19,8 +19,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Homebrew environment variables (constants on Apple Silicon)
-# PATH is properly set via brew shellenv in exports-path.sh/zprofile.sh
+# Constants on Apple Silicon; PATH itself comes from brew shellenv in exports-path.sh.
 export HOMEBREW_PREFIX="/opt/homebrew"
 export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
 export HOMEBREW_REPOSITORY="/opt/homebrew"
@@ -68,5 +67,6 @@ launchctl setenv MOZ_DISABLE_SAFE_MODE_KEY 1
 # macOS doesn't read ~/.config/eza by default.
 export EZA_CONFIG_DIR="$HOME/.config/eza"
 
-# ripgrep config
 export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
+
+export AICHAT_ROLES_DIR="$HOME/projects/dotfiles/aichat/roles"
