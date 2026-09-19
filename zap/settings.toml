@@ -143,6 +143,9 @@ Claude = { tabmenu = true, titlebar = false, toolbar = true }
 Codex = { tabmenu = true, titlebar = false, toolbar = true }
 OpenCode = { tabmenu = true, titlebar = false, toolbar = true }
 
+[agents.byop]
+last_used_model_id = "byop:aac134fe-dd9b-4308-94a6-b85454d79e3d:auto"
+
 [updates]
 # The built-in updater (warp::autoupdate::mac) copies a downloaded release
 # straight into /Applications/Zap.app, which would silently overwrite the
