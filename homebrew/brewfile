@@ -304,6 +304,8 @@ brew "charmbracelet/tap/crush", trusted: true
 # Apple simulator utilities
 brew "wix/brew/applesimutils"
 brew "facebook/fb/idb-companion", trusted: true
+# Seek, skip and control whatever is Now Playing on macOS
+brew "servitola/tap/nowplayingseek", trusted: true
 # Stand alone ad blocker
 cask "adguard"
 # Menu bar tool to limit maximum charging percentage
