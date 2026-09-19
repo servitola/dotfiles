@@ -18,28 +18,28 @@
       },
       "models": {
         "coding": {
-          "name": "Rotation: coding (Codestral / GLM-4.7 / Gemini 2.5 Flash / Kimi K2.7)",
+          "name": "Rotation: coding (GLM-4.5/4.7-Flash / Gemini 3.x / Poolside Laguna / Qwen2.5-Coder)",
           "limit": {
             "context": 131072,
             "output": 8192
           }
         },
         "reasoning": {
-          "name": "Rotation: reasoning (Nemotron 3 Super/Ultra / Mistral Large / DeepSeek V4 Pro)",
+          "name": "Rotation: reasoning (Nemotron 3 Super/Ultra / GLM-5.2 / Gemini 3.7 / QwQ)",
           "limit": {
             "context": 262144,
             "output": 16384
           }
         },
         "fast": {
-          "name": "Rotation: fast (Groq-only, ~1-3s)",
+          "name": "Rotation: fast (Groq gpt-oss / Cloudflare / Gemini flash-lite / Ministral)",
           "limit": {
             "context": 131072,
             "output": 8192
           }
         },
         "vision": {
-          "name": "Rotation: vision (Nemotron-VL / Gemma)",
+          "name": "Rotation: vision (Gemma-4 / MiniMax-M3 / GLM-4.6V / Llama-3.2-Vision)",
           "limit": {
             "context": 131072,
             "output": 8192
@@ -80,13 +80,6 @@
             "output": 8192
           }
         },
-        "groq-llama": {
-          "name": "Groq Llama 3.3 70B (direct, fast)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
         "groq-gpt-oss": {
           "name": "Groq gpt-oss 120B (direct, fast)",
           "limit": {
@@ -101,36 +94,8 @@
             "output": 8192
           }
         },
-        "nvidia-deepseek": {
-          "name": "NVIDIA DeepSeek V4 Pro (1M ctx)",
-          "limit": {
-            "context": 1000000,
-            "output": 16384
-          }
-        },
-        "mistral-large": {
-          "name": "Mistral Large (direct, free tier)",
-          "limit": {
-            "context": 128000,
-            "output": 8192
-          }
-        },
-        "mistral-medium": {
-          "name": "Mistral Medium (direct, free tier — what Vibe CLI uses for tools)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
         "mistral-codestral": {
           "name": "Mistral Codestral (direct, free tier)",
-          "limit": {
-            "context": 262144,
-            "output": 8192
-          }
-        },
-        "mistral-devstral": {
-          "name": "Mistral Devstral 2512 (direct, free tier — deprecates 2026-08-31)",
           "limit": {
             "context": 262144,
             "output": 8192
@@ -144,32 +109,60 @@
           }
         },
         "gemini": {
-          "name": "Gemini 2.5 Flash (direct)",
-          "limit": { "context": 1000000, "output": 8192 }
+          "name": "Gemini 3.8 Flash (direct)",
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
         },
         "gemini-flash-lite": {
           "name": "Gemini 2.5 Flash-Lite (direct)",
-          "limit": { "context": 1000000, "output": 8192 }
+          "limit": {
+            "context": 1000000,
+            "output": 8192
+          }
         },
         "cloudflare-gpt-oss": {
           "name": "gpt-oss-120b (Cloudflare)",
-          "limit": { "context": 131072, "output": 8192 }
-        },
-        "ionet-kimi-code": {
-          "name": "Kimi K2.7 Code (io.net — slow/flaky, seen hanging in testing)",
-          "limit": { "context": 131072, "output": 8192 }
-        },
-        "ionet-qwen-coder": {
-          "name": "Qwen3-Next-80B (io.net)",
-          "limit": { "context": 131072, "output": 8192 }
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         },
         "poolside-laguna": {
           "name": "Poolside Laguna (OpenRouter)",
-          "limit": { "context": 131072, "output": 8192 }
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         },
         "cohere-north-code": {
-          "name": "Cohere North Mini Code (OpenRouter — reasoning model, can return empty content on tight max_tokens)",
-          "limit": { "context": 131072, "output": 8192 }
+          "name": "Cohere North Mini Code (OpenRouter \u2014 reasoning model, can return empty content on tight max_tokens)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "mistral-14b": {
+          "name": "Ministral 14B (direct, free tier)",
+          "limit": {
+            "context": 262144,
+            "output": 8192
+          }
+        },
+        "ionet-glm": {
+          "name": "GLM-4.5-Air (io.net)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
+        },
+        "ionet-llama": {
+          "name": "Llama 3.3 70B (io.net)",
+          "limit": {
+            "context": 131072,
+            "output": 8192
+          }
         }
       }
     }
@@ -185,17 +178,25 @@
   "mcp": {
     "rag": {
       "type": "local",
-      "command": ["/Users/servitola/projects/dotfiles/rag/mcp-server.py"],
+      "command": [
+        "/Users/servitola/projects/dotfiles/rag/mcp-server.py"
+      ],
       "enabled": true
     },
     "playwright": {
       "type": "local",
-      "command": ["npx", "-y", "@playwright/mcp@0.0.78"],
+      "command": [
+        "npx",
+        "-y",
+        "@playwright/mcp@0.0.78"
+      ],
       "enabled": true
     },
     "youtrack": {
       "type": "local",
-      "command": ["/Users/servitola/.claude/scripts/youtrack-mcp-proxied.sh"],
+      "command": [
+        "/Users/servitola/.claude/scripts/youtrack-mcp-proxied.sh"
+      ],
       "enabled": true
     }
   },
