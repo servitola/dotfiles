@@ -320,6 +320,8 @@ cask "appcleaner"
 cask "battle-net"
 # 3D creation suite
 cask "blender"
+# Notch companion, personal fork built nightly from TheBoredTeam/boring.notch
+cask "servitola/tap/boring-notch", trusted: true
 # Terminal-based AI coding assistant
 cask "claude-code@latest"
 # Menu-bar indicator of Claude.ai usage limits
