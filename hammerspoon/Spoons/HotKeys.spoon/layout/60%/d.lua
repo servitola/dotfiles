@@ -38,6 +38,7 @@ return {
 --               │              │              │   │          Mail — send emails
 --         ⌃⌥d   │              │              │   │        VSCode — focus Run and Debug panel
 { chord = "⌃⌥d",                             fn = "window.right" },
+--        ⌃⌥ad   │    ⌃⌥F14     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
 --         ⌥⌘d   │              │              │ ✓ │              — show/hide Dock
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

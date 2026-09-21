@@ -1,4 +1,4 @@
--- ⌃⌥ + ← and → at the same time: the two top windows swap sides. Catching that
+-- ⌃⌥ + ← and → (or A and D) at the same time: the two top windows swap sides. Catching that
 -- "at the same time" is Karabiner's job (rules/32-swap-sides.json), which sends ⌃⌥F14 here —
 -- hs.hotkey fires on the first key pressed and can't parse a chord like that.
 

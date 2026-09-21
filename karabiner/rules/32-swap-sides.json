@@ -1,6 +1,37 @@
 {
-    "description": "Ctrl+Alt + Left and Right pressed together = Ctrl+Alt+F14 (Hammerspoon swaps the two top windows)",
+    "description": "Ctrl+Alt + Left and Right (or A and D) pressed together = Ctrl+Alt+F14 (Hammerspoon swaps the two top windows)",
     "manipulators": [
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "left_control",
+                        "left_option"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "a"
+                    },
+                    {
+                        "key_code": "d"
+                    }
+                ]
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 50
+            },
+            "to": [
+                {
+                    "key_code": "f14",
+                    "modifiers": [
+                        "left_control",
+                        "left_option"
+                    ]
+                }
+            ],
+            "type": "basic"
+        },
         {
             "from": {
                 "modifiers": {

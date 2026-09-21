@@ -41,7 +41,7 @@ The build script uses `jq` to merge the template with all rule files in sorted o
 29-mouse-ugreen-hold-to-browser.json — UGREEN mouse forward button held → browser
 30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
 31-alt-shortcuts-4.json      — Alt+4 = Cmd+H (hide front app; focus falls to the one behind)
-32-swap-sides.json           — Ctrl+Alt + both arrows at once → Ctrl+Alt+F14 (swap two top windows)
+32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Ctrl+Alt+F14 (swap two top windows)
 ```
 
 ## Core Remappings (Don't Break These)

@@ -35,6 +35,7 @@ return {
 --               │              │              │   │       Music — deselect all songs
 --         ⌃⌥a   │              │              │   │ Hammerspoon — Window ←
 { chord = "⌃⌥a",                                              fn = "window.left" },
+--        ⌃⌥ad   │    ⌃⌥F14     │              │   │ Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘a   │              │              │   │       Rider — show all affected files in source control
 --               │              │              │   │        Mail — archive message
 --         ⌥⌘a   │              │              │   │
