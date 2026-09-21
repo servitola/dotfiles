@@ -11,31 +11,14 @@ COMPRESS_TARGETS=(
     "$HOME/Library/Application Support/MstyStudio"
 )
 
-# Bundles: skipped while the app runs, and need App Management on the terminal.
-COMPRESS_APPS=(
-    "$HOME/Applications/Rider.app"
-    "$HOME/Applications/WebStorm.app"
-    "$HOME/Applications/Forkgram.app"
-    "/Applications/Ableton Live 12 Suite.app"
-    "/Applications/Visual Studio Code.app"
-    "/Applications/GeForceNOW.app"
-    "/Applications/Blender.app"
-    "/Applications/OrbStack.app"
-    "/Applications/Yandex.Telemost.app"
-    "/Applications/Guitar Pro 8.app"
-    "/Applications/Pages.app"
-    "/Applications/LibreOffice.app"
-    "/Applications/WorkFlowy.app"
-    "/Applications/Discord.app"
-    "/Applications/JetBrains Toolbox.app"
-    "/Applications/DB Browser for SQLite.app"
-    "/Applications/VLC.app"
-    "/Applications/KiCad/KiCad.app"
-    "/Applications/Google Chrome.app"
-    "/Applications/zoom.us.app"
-    "/Applications/Yandex.app"
-    "/Applications/Zap.app"
-    "/Applications/Google Drive.app"
-    "/Applications/Moises.app"
-    "/Applications/ObinsKit.app"
-)
+# Compress All Apps in Application folder
+#   {,*/}  also one level down
+#   N      an empty match is fine
+#   /      real directories, so a symlinked .app never matches
+#   U      owned by me — root-owned wants sudo, not the App Management grant
+#   :A     the path with every symlink resolved
+COMPRESS_APPS=()
+for app in /Applications/{,*/}*.app(N/U) ~/Applications/{,*/}*.app(N/U); do
+    [[ ${app:A} == $app ]] || continue
+    COMPRESS_APPS+=( $app )
+done
