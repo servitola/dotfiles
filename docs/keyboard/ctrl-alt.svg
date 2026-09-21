@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1314" viewBox="0 0 922 1314">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1362" viewBox="0 0 922 1362">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -86,7 +86,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1314" fill="none"/>
+<rect width="922" height="1362" fill="none"/>
 <text x="28" y="30" class="title">Ctrl + Alt — Window Management</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -621,7 +621,7 @@
 <text x="805.0" y="342" font-size="8px" fill="#1d1d1f">window: right</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="950" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="998" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <circle cx="85.8" cy="354" r="4" fill="#34c759"/>
@@ -698,62 +698,68 @@
 <text x="136" y="828" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
 <use href="#icon-hammerspoon" x="291" y="816" width="14" height="14"/>
 <text x="309" y="828" font-size="11px" fill="#48484a">Hammerspoon — Window ←</text>
-<line x1="20" y1="850" x2="906" y2="850" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="136" y="858" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
-<text x="291" y="858" font-size="11px" fill="#48484a">Win Reset</text>
-<line x1="20" y1="880" x2="906" y2="880" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="888" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="136" y="888" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
-<use href="#icon-visual-studio-code" x="291" y="876" width="14" height="14"/>
-<text x="309" y="888" font-size="11px" fill="#48484a">VSCode — focus Run and Debug panel</text>
-<line x1="20" y1="910" x2="906" y2="910" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="918" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<text x="136" y="918" font-size="12px" font-weight="500" fill="#af52de">→ RU</text>
-<text x="291" y="918" font-size="11px" fill="#48484a">→ RU</text>
-<line x1="20" y1="940" x2="906" y2="940" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="948" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-vivaldi" x="136" y="935" width="16" height="16"/>
-<text x="156" y="948" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
-<text x="291" y="948" font-size="11px" fill="#48484a">GitHub</text>
-<line x1="20" y1="970" x2="906" y2="970" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="978" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<use href="#icon-hammerspoon" x="136" y="965" width="16" height="16"/>
-<text x="156" y="978" font-size="12px" font-weight="500" fill="#007aff">Hammerspoon — show/hide</text>
-<text x="291" y="978" font-size="11px" fill="#48484a">Hammerspoon</text>
-<line x1="20" y1="1000" x2="906" y2="1000" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1008" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<use href="#icon-simulator" x="136" y="995" width="16" height="16"/>
-<text x="156" y="1008" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
-<text x="291" y="1008" font-size="11px" fill="#48484a">Simulator</text>
-<line x1="20" y1="1030" x2="906" y2="1030" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1038" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<text x="291" y="1038" font-size="11px" fill="#48484a">itsycal Calendar (custom in app)</text>
-<line x1="20" y1="1060" x2="906" y2="1060" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1068" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<use href="#icon-vivaldi" x="136" y="1055" width="16" height="16"/>
-<text x="156" y="1068" font-size="12px" font-weight="500" fill="#af52de">YouTube</text>
-<text x="291" y="1068" font-size="11px" fill="#48484a">YouTube</text>
-<line x1="20" y1="1090" x2="906" y2="1090" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1098" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="136" y="1098" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
-<text x="291" y="1098" font-size="11px" fill="#48484a">Window ←, 2nd press ½ ←</text>
-<text x="56" y="1122" font-size="12px" fill="#a2845e">⌃⌥F14</text>
-<text x="291" y="1122" font-size="11px" fill="#48484a">Swap two top windows (both arrows at once)</text>
-<line x1="20" y1="1144" x2="906" y2="1144" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1152" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="136" y="1152" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
-<text x="291" y="1152" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
-<use href="#icon-rider" x="291" y="1164" width="14" height="14"/>
-<text x="309" y="1176" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
-<line x1="20" y1="1198" x2="906" y2="1198" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1206" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="136" y="1206" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
-<text x="291" y="1206" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
-<use href="#icon-rider" x="291" y="1218" width="14" height="14"/>
-<text x="309" y="1230" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
-<line x1="20" y1="1252" x2="906" y2="1252" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1260" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="136" y="1260" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
-<text x="291" y="1260" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
+<text x="56" y="852" font-size="12px" fill="#a2845e">⌃⌥F14</text>
+<use href="#icon-hammerspoon" x="291" y="840" width="14" height="14"/>
+<text x="309" y="852" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
+<line x1="20" y1="874" x2="906" y2="874" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="882" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<text x="136" y="882" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
+<text x="291" y="882" font-size="11px" fill="#48484a">Win Reset</text>
+<line x1="20" y1="904" x2="906" y2="904" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="912" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="136" y="912" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
+<use href="#icon-visual-studio-code" x="291" y="900" width="14" height="14"/>
+<text x="309" y="912" font-size="11px" fill="#48484a">VSCode — focus Run and Debug panel</text>
+<text x="56" y="936" font-size="12px" fill="#a2845e">⌃⌥F14</text>
+<use href="#icon-hammerspoon" x="291" y="924" width="14" height="14"/>
+<text x="309" y="936" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
+<line x1="20" y1="958" x2="906" y2="958" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="966" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
+<text x="136" y="966" font-size="12px" font-weight="500" fill="#af52de">→ RU</text>
+<text x="291" y="966" font-size="11px" fill="#48484a">→ RU</text>
+<line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<use href="#icon-vivaldi" x="136" y="983" width="16" height="16"/>
+<text x="156" y="996" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
+<text x="291" y="996" font-size="11px" fill="#48484a">GitHub</text>
+<line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<use href="#icon-hammerspoon" x="136" y="1013" width="16" height="16"/>
+<text x="156" y="1026" font-size="12px" font-weight="500" fill="#007aff">Hammerspoon — show/hide</text>
+<text x="291" y="1026" font-size="11px" fill="#48484a">Hammerspoon</text>
+<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
+<use href="#icon-simulator" x="136" y="1043" width="16" height="16"/>
+<text x="156" y="1056" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
+<text x="291" y="1056" font-size="11px" fill="#48484a">Simulator</text>
+<line x1="20" y1="1078" x2="906" y2="1078" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1086" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<text x="291" y="1086" font-size="11px" fill="#48484a">itsycal Calendar (custom in app)</text>
+<line x1="20" y1="1108" x2="906" y2="1108" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1116" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<use href="#icon-vivaldi" x="136" y="1103" width="16" height="16"/>
+<text x="156" y="1116" font-size="12px" font-weight="500" fill="#af52de">YouTube</text>
+<text x="291" y="1116" font-size="11px" fill="#48484a">YouTube</text>
+<line x1="20" y1="1138" x2="906" y2="1138" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1146" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="136" y="1146" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
+<text x="291" y="1146" font-size="11px" fill="#48484a">Window ←, 2nd press ½ ←</text>
+<text x="56" y="1170" font-size="12px" fill="#a2845e">⌃⌥F14</text>
+<text x="291" y="1170" font-size="11px" fill="#48484a">Swap two top windows (both arrows at once, or ⌃⌥ + A and D)</text>
+<line x1="20" y1="1192" x2="906" y2="1192" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1200" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="136" y="1200" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
+<text x="291" y="1200" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
+<use href="#icon-rider" x="291" y="1212" width="14" height="14"/>
+<text x="309" y="1224" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
+<line x1="20" y1="1246" x2="906" y2="1246" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1254" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="136" y="1254" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
+<text x="291" y="1254" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
+<use href="#icon-rider" x="291" y="1266" width="14" height="14"/>
+<text x="309" y="1278" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
+<line x1="20" y1="1300" x2="906" y2="1300" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1308" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="136" y="1308" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
+<text x="291" y="1308" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
 </svg>
