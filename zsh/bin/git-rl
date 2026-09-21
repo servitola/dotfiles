@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+# `git reflog` showing the entry's absolute time, its age, and its index at once.
+#
+# The builtin can show only one of those: --date= rewrites the HEAD@{N} selector
+# in place, so you get either the index or a date, never both — and `log.date`
+# in gitconfig is ignored by reflog entirely (verified: `git -c log.date=iso-local
+# reflog` still prints HEAD@{0}). Two walks of the same reflog, merged by line,
+# are cheaper than parsing dates in awk: BWK awk on macOS has neither strftime
+# nor mktime.
+#
+# %ad is NOT the entry time — for a `reset`/`checkout` entry it is the author
+# date of an old commit. Only %gd carries when the reflog entry was written.
+#
+# Usage:
+#   git rl              # HEAD reflog
+#   git rl -n 20        # any `git log -g` / `git reflog` argument
+#   git rl master
+
+# No pipefail: quitting the pager early SIGPIPEs awk, and that is not an error.
+set -eu
+
+if [[ -t 1 ]]; then
+    c_idx=$'\033[36m' c_date=$'\033[34m' c_age=$'\033[32m' c_hash=$'\033[33m' c_off=$'\033[0m'
+else
+    c_idx='' c_date='' c_age='' c_hash='' c_off=''
+fi
+
+render() {
+    paste \
+        <(git log -g --date=format-local:'%Y-%m-%d %H:%M:%S' --pretty=tformat:'%h%x09%gd%x09%gs' "$@") \
+        <(git log -g --date=relative --pretty=tformat:'%gd' "$@") |
+    awk -F'\t' -v ci="$c_idx" -v cd="$c_date" -v ca="$c_age" -v ch="$c_hash" -v off="$c_off" '
+    function inside(s) { sub(/^[^@]*@\{/, "", s); sub(/\}$/, "", s); return s }
+    function refname(s) { sub(/@\{.*/, "", s); return s }
+    {
+        idx = refname($2) "@{" NR - 1 "}"
+        printf "%s%-12s%s %s%-19s%s %s%-16s%s %s%s%s %s\n",
+            ci, idx, off, cd, inside($2), off, ca, inside($4), off, ch, $1, off, $3
+    }'
+}
+
+# A dashed external gets no pager from git, so without this the newest entries —
+# the whole point of reading a reflog — scroll off the top of the terminal.
+if [[ -t 1 ]]; then
+    pager=$(git config --get core.pager || true)
+    pager=${GIT_PAGER:-${pager:-${PAGER:-less}}}
+    export LESS=${LESS:-FRX}
+    render "$@" | eval "$pager"
+else
+    render "$@"
+fi

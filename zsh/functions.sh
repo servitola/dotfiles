@@ -84,3 +84,17 @@ function wt() {
     }
     echo "Переход в: $(pwd)"
 }
+
+# `git reflog` prints either the HEAD@{N} index or a date, never both, and the
+# builtin cannot be taught a default: reflog ignores log.date, and git silently
+# drops an alias that shadows a builtin. The shell is the only layer left, so
+# plain `git reflog` is routed to git-rl. Scripts and non-interactive shells
+# never load this file, so they keep the stock output.
+function git() {
+    if [[ "$1" == reflog && "$2" != (expire|delete|exists|-h|--help) && "$*" != *--date=* ]]; then
+        shift
+        git-rl "$@"
+    else
+        command git "$@"
+    fi
+}
