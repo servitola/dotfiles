@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
-  VoiceInk fork: daily upstream sync. A LaunchAgent, NOT a crontab entry.
+  VoiceInk fork: upstream sync. A LaunchAgent, NOT a crontab entry.
 
   The sync ends in `make local-stable`, which signs the app with the self-signed
   "VoiceInk Local Signing" identity in the login keychain — an ad-hoc signature
@@ -33,12 +33,32 @@
 		<string>/Users/servitola/projects/dotfiles/launchagents/helper/voiceink-sync-runner</string>
 	</array>
 	<key>StartCalendarInterval</key>
-	<dict>
-		<key>Hour</key>
-		<integer>4</integer>
-		<key>Minute</key>
-		<integer>30</integer>
-	</dict>
+	<array>
+		<dict>
+			<key>Weekday</key>
+			<integer>1</integer>
+			<key>Hour</key>
+			<integer>4</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>4</integer>
+			<key>Hour</key>
+			<integer>4</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>6</integer>
+			<key>Hour</key>
+			<integer>4</integer>
+			<key>Minute</key>
+			<integer>30</integer>
+		</dict>
+	</array>
 	<key>RunAtLoad</key>
 	<false/>
 	<key>KeepAlive</key>

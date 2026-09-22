@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  OpenTracks fork: upstream sync + APK rebuild + push to the phone.
+
+  A LaunchAgent, NOT a crontab entry — it was the last fork sync left in cron, and on
+  18.09 that cost the v4.28.3 build: cron cannot exec anything on /Volumes/SanDisk, so
+  the job died on `./gradlew: Operation not permitted` right after a clean rebase. The
+  TCC grant lives on helper/opentracks-sync-runner.
+
+  System Settings → Privacy & Security → Full Disk Access → + the runner binary.
+-->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>com.servitola.opentracks-sync</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/servitola/projects/dotfiles/launchagents/helper/opentracks-sync-runner</string>
+	</array>
+	<key>StartCalendarInterval</key>
+	<array>
+		<dict>
+			<key>Weekday</key>
+			<integer>1</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>41</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>4</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>41</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>6</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>41</integer>
+		</dict>
+	</array>
+	<key>RunAtLoad</key>
+	<false/>
+	<key>KeepAlive</key>
+	<false/>
+	<key>StandardOutPath</key>
+	<string>/Users/servitola/projects/dotfiles/cron/logs/opentracks-sync.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/servitola/projects/dotfiles/cron/logs/opentracks-sync.log</string>
+</dict>
+</plist>

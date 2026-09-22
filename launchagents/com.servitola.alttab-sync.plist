@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
-  AltTab community fork (TroopJostle/alt-tab-community): daily upstream sync + rebuild +
+  AltTab community fork (TroopJostle/alt-tab-community): upstream sync + rebuild +
   install over /Applications/AltTab.app.
 
   A LaunchAgent, NOT a crontab entry — same rationale as telegram-desktop-sync: cron cannot
@@ -19,12 +19,32 @@
 		<string>/Users/servitola/projects/dotfiles/launchagents/helper/alttab-sync-runner</string>
 	</array>
 	<key>StartCalendarInterval</key>
-	<dict>
-		<key>Hour</key>
-		<integer>5</integer>
-		<key>Minute</key>
-		<integer>50</integer>
-	</dict>
+	<array>
+		<dict>
+			<key>Weekday</key>
+			<integer>1</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>50</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>4</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>50</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>6</integer>
+			<key>Hour</key>
+			<integer>5</integer>
+			<key>Minute</key>
+			<integer>50</integer>
+		</dict>
+	</array>
 	<key>RunAtLoad</key>
 	<false/>
 	<key>KeepAlive</key>

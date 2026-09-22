@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
-  Telegram-Desktop fork (Forkgram base): daily upstream sync + rebuild + install.
+  Telegram-Desktop fork (Forkgram base): upstream sync + rebuild + install.
   A LaunchAgent, NOT a crontab entry — same rationale as voiceink-upstream-sync:
   cron cannot exec files on /Volumes/SanDisk (EPERM, verified nightly 04-12.08.2026
   in telegram-desktop-sync.log) and cannot reach the login keychain for the
@@ -18,12 +18,32 @@
 		<string>/Users/servitola/projects/dotfiles/launchagents/helper/telegram-desktop-sync-runner</string>
 	</array>
 	<key>StartCalendarInterval</key>
-	<dict>
-		<key>Hour</key>
-		<integer>0</integer>
-		<key>Minute</key>
-		<integer>10</integer>
-	</dict>
+	<array>
+		<dict>
+			<key>Weekday</key>
+			<integer>1</integer>
+			<key>Hour</key>
+			<integer>0</integer>
+			<key>Minute</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>4</integer>
+			<key>Hour</key>
+			<integer>0</integer>
+			<key>Minute</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>6</integer>
+			<key>Hour</key>
+			<integer>0</integer>
+			<key>Minute</key>
+			<integer>10</integer>
+		</dict>
+	</array>
 	<key>RunAtLoad</key>
 	<false/>
 	<key>KeepAlive</key>

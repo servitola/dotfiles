@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <!--
-  Zap (open-source Warp fork): nightly upstream sync + rebuild + install.
+  Zap (open-source Warp fork): upstream sync + rebuild + install.
 
   A LaunchAgent, NOT a crontab entry — same rationale as voiceink-upstream-sync and
   telegram-desktop-sync: the checkout may live on /Volumes/SanDisk (cron cannot exec
@@ -10,8 +10,14 @@
   on helper/zap-sync-runner.
 
   02:00. Since 2026-09-09 every build runs under background QoS on the efficiency cores
-  (~1.5 hours for Zap), so the nightly starts are spread: telegram-desktop 00:10, zap
-  02:00, transmission 03:30, voiceink 04:30, alttab 05:50, telegram-android 06:20.
+  (~1.5 hours for Zap), so the starts are spread: telegram-desktop 00:10, zap 02:00,
+  transmission 03:30, voiceink 04:30, boring-notch 05:10, opentracks 05:41, alttab
+  05:50, telegram-android 06:20.
+
+  Mondays, Thursdays and Saturdays, not every night (2026-09-22). Every fork sync
+  shares that weekday set; Wednesday is excluded on purpose, so no build ever runs
+  in the night from Tuesday to Wednesday. launchd cannot express "every N days",
+  so the cadence is three fixed weekdays — gaps of 3, 2 and 2 days.
 
   System Settings → Privacy & Security → Full Disk Access → + the runner binary.
 -->
@@ -24,12 +30,32 @@
 		<string>/Users/servitola/projects/dotfiles/launchagents/helper/zap-sync-runner</string>
 	</array>
 	<key>StartCalendarInterval</key>
-	<dict>
-		<key>Hour</key>
-		<integer>2</integer>
-		<key>Minute</key>
-		<integer>0</integer>
-	</dict>
+	<array>
+		<dict>
+			<key>Weekday</key>
+			<integer>1</integer>
+			<key>Hour</key>
+			<integer>2</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>4</integer>
+			<key>Hour</key>
+			<integer>2</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>Weekday</key>
+			<integer>6</integer>
+			<key>Hour</key>
+			<integer>2</integer>
+			<key>Minute</key>
+			<integer>0</integer>
+		</dict>
+	</array>
 	<key>RunAtLoad</key>
 	<false/>
 	<key>KeepAlive</key>
