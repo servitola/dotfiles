@@ -32,7 +32,7 @@ return {
 --               │              │              │   │       YouTube — jump to chapter to the right
 --         ⇪⌘d   │      ⌘→      │              │ ✓ │              — end/jump to end of line
 --         ⇧⌃d   │              │              │   │
---         ⇧⌥d   │              │              │   │
+--         ⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right
 --         ⇧⌘d   │              │              │   │        VSCode — focus Run and Debug panel
 --               │              │              │   │        Finder — go to Desktop
 --               │              │              │   │          Mail — send emails
