@@ -336,6 +336,8 @@ cask "db-browser-for-sqlite"
 cask "dbeaver-community"
 # Voice and text chat software
 cask "discord"
+# Emulator for x86 with DOS
+cask "dosbox"
 # System-wide audio equaliser
 cask "eqmac"
 # Utility to finds and fix problems on computer systems
