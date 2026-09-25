@@ -396,5 +396,15 @@
       "localBranch"
     ],
     "target": "reference"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/restore-missing-files.sh\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Restore Missing Files",
+    "target": "repository"
   }
 ]
