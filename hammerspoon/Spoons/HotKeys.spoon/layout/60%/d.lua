@@ -19,12 +19,12 @@ return {
 --               │              │              │   │         Rider — duplicate line
 --               │              │              │   │        VSCode — duplicate line
 --               │              │              │   │   GoogleMeets — toggle microphone
---          ⇥d   │      ⌘l      │              │   │          IINA — ab-loop (A-B loop)
---               │              │              │   │         Rider — goto line,
+--          ⇥d   │      ⌘l      │              │   │         Rider — goto line,
 --               │              │              │   │        VSCode — goto line
---               │              │              │   │       Browser — focus Url Line,
 --               │              │              │   │         Music — go to Current song,
---               │              │              │   │      Telegram — lock Telegram
+--               │              │              │   │       Browser — focus Url Line,
+--               │              │              │   │      Telegram — lock Telegram
+--               │              │              │   │          IINA — ab-loop (A-B loop)
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧d   │      ⇧→      │              │ ✓ │              — select letter to the right
 --         ⇪⌃d   │      ⌃→      │              │ ✓ │              — jump to workspace to the right
@@ -42,18 +42,19 @@ return {
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
 --         ⌥⌘d   │              │              │ ✓ │              — show/hide Dock
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃d   │  next_track  │              │ ✓ │              — go to next track
+--        ⇪⇧⌃d   │      ⏭       │              │ ✓ │              — go to next track
 --        ⇪⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right
 --        ⇪⇧⌘d   │     ⇧⌘→      │              │ ✓ │              — select line till the end
 --        ⇪⌃⌥d   │     ⌃⌥→      │              │   │
 --        ⇪⌃⌘d   │     ⌃⌘→      │              │   │        VSCode — move editor to next group
---        ⇪⌥⌘d   │     ⌥⌘→      │              │   │         Music — seek forward;
---               │              │              │   │        VSCode — go to next tab;
+--        ⇪⌥⌘d   │     ⌥⌘→      │              │   │        VSCode — go to next tab;
+--               │              │              │   │         Music — seek forward;
 --               │              │              │   │         iTerm — focus pane to the right
 --        ⇧⌃⌥d   │              │              │   │ ½ Right
 { chord= "⇧⌃⌥d",                             fn = "window.half_right" },
 --        ⇧⌃⌘d   │              │              │   │
 --        ⇧⌥⌘d   │              │              │   │
 --        ⌃⌥⌘d   │              │              │   │
+--       ⇧⌃⌥⌘d   │    ⇧⌃⌥⌘→     │              │   │
 --               ┴              ┴              ┴   ┴
 }
