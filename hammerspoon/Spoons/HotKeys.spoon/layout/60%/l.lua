@@ -5,8 +5,8 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           l   │              │ l    д    λ  │   │       YouTube — 10sec forward
---               │              │              │   │          IINA — 10sec forward
+--           l   │              │ l    д    λ  │   │          IINA — 10sec forward
+--               │              │              │   │       YouTube — 10sec forward
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪l   │      ↓       │              │   │
 --          ⇧l   │              │ L    Д    Λ  │   │
