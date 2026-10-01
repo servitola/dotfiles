@@ -149,5 +149,5 @@ last_used_model_id = "byop:aac134fe-dd9b-4308-94a6-b85454d79e3d:auto"
 [updates]
 # The built-in updater (warp::autoupdate::mac) copies a downloaded release
 # straight into /Applications/Zap.app, which would silently overwrite the
-# locally built version installed by cron/scripts/zap-sync.sh.
+# locally built version installed by ~/projects/forks/jobs/zap/sync.sh.
 automatic_updates_enabled = false
