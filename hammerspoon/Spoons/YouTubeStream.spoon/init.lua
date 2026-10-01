@@ -10,13 +10,6 @@ obj.videoId = "jfKfPfyJRdk"
 
 obj.webview = nil
 
--- Window positioning constants from Windows.spoon/config.lua
-local margin = 0.005
-local spacing = margin * 2
-local vertical_line = 0.73
-local horizontal_line = 0.70
-local rightX = 1 - margin / 1.5
-
 local function getHtmlContent(videoId)
     return [[<!DOCTYPE html>
 <html>
@@ -94,19 +87,13 @@ end
 
 function obj:createWebview()
     local screen = hs.screen.mainScreen()
-    local frame = screen:frame()
-
-    -- Position window at the bottom right according to Windows.spoon logic
-    local x = frame.x + (frame.w * vertical_line)
-    local y = frame.y + (frame.h * (horizontal_line + spacing))
-    local width = frame.w * (rightX - vertical_line)
-    local height = frame.h * (1 - horizontal_line - spacing)
+    local corner = spoon.PowerWindows:slotRect("corner", screen)
+    local video = spoon.PowerWindows:slotRect("video", screen)
+    local x, y, width, height = corner.x, corner.y, corner.w, corner.h
 
     local aspect_ratio = 9/16
-    local max_available_height = frame.h * (1 - horizontal_line - spacing * 2)
-
-    if height > max_available_height then
-        height = max_available_height
+    if height > video.h then
+        height = video.h
         width = height / aspect_ratio
     end
 

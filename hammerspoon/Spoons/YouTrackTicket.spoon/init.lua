@@ -9,24 +9,11 @@ obj.homepage = "https://github.com/Hammerspoon/Spoons"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.youTrackUrl = "https://REDACTED-TRACKER"
 
--- Window positioning constants
-local margin = 0.005
-local spacing = margin * 2
-local leftX = margin
-local topY = margin
-local vertical_line = 0.73
-local bottomY = 1 - margin * 1.5
-
 -- Internal function to create the webview
 function obj:createWebview()
     local screen = hs.screen.mainScreen()
-    local frame = screen:frame()
-
-    -- Position window on the left side like Windows.spoon
-    local width = frame.w * vertical_line - frame.w * spacing
-    local height = frame.h * (bottomY - topY)
-    local x = frame.x + frame.w * leftX
-    local y = frame.y + frame.h * topY
+    local main = spoon.PowerWindows:slotRect("main", screen)
+    local x, y, width, height = main.x, main.y, main.w, main.h
 
     if self.webview then
         return self.webview
