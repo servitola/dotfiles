@@ -5,21 +5,21 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           0   │              │      0       │   │     YouTube — Navigate to 0% of video
+--           0   │              │      0       │   │       YouTube — Navigate to 0% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪0   │     F10      │              │   │
---          ⇧0   │              │ )    )    )  │   │
---          ⌃0   │              │              │   │      VSCode — go to last tab
---          ⌥0   │ →    →    →  │              │   │
---          ⌘0   │              │              │   │     Browser — Reset zoom
---               │              │              │   │      VSCode — focus into primary sidebar
---               │              │              │   │    Telegram — focus Saved Messages
---               │              │              │   │       Music — Show/Hide Music window
---               │              │              │   │        Fork — navigate to HEAD
---               │              │              │   │        IINA — set window-scale 0.5
---               │              │              │   │        Mail — show the Mail viewer window
+--          ⇧0   │              │      )       │   │
+--          ⌃0   │              │              │   │        VSCode — go to last tab
+--          ⌥0   │              │      →       │   │
+--          ⌘0   │              │              │   │        VSCode — focus into primary sidebar
+--               │              │              │   │         Music — Show/Hide Music window
+--               │              │              │   │       Browser — Reset zoom
+--               │              │              │   │      Telegram — focus Saved Messages
+--               │              │              │   │          IINA — set window-scale 0.5
+--               │              │              │   │          Mail — show the Mail viewer window
+--               │              │              │   │          Fork — navigate to HEAD
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧0   │     ⇧F10     │              │   │      VSCode — show editor context menu
+--         ⇪⇧0   │     ⇧F10     │              │   │        VSCode — show editor context menu
 --         ⇪⌃0   │     ⌃F10     │              │   │
 --         ⇪⌥0   │     ⌥F10     │              │   │
 --         ⇪⌘0   │     ⌘F10     │              │   │
@@ -27,8 +27,8 @@ return {
 --         ⇧⌥0   │              │ ›    ›    ύ  │   │
 --         ⇧⌘0   │              │              │   │
 --         ⌃⌥0   │              │              │   │
---         ⌃⌘0   │              │              │   │        Mail — show the Mail Activity window
---         ⌥⌘0   │              │              │   │    Telegram — focus Saved Messages
+--         ⌃⌘0   │              │              │   │          Mail — show the Mail Activity window
+--         ⌥⌘0   │              │              │   │      Telegram — focus Saved Messages
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃0   │    ⇧⌃F10     │              │   │
 --        ⇪⇧⌥0   │    ⇧⌥F10     │              │   │
