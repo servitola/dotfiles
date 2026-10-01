@@ -22,7 +22,9 @@ local function safeLoadSpoon(name)
     end
 end
 
-safeLoadSpoon("GruvboxWallpapers") -- set new wallpaper
+safeLoadSpoon("Fresh4kWallpaper") -- new wallpaper on every load
+spoon.Fresh4kWallpaper.token = require "secret" ("GITHUB_API_TOKEN")
+spoon.Fresh4kWallpaper:start()
 safeLoadSpoon("PowerWindows") -- window layout
 spoon.PowerWindows:configure(require "window_rules"):start()
 
