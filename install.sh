@@ -2,7 +2,7 @@
 #
 # Dotfiles installer (run by `make` and CI). Runs the numbered steps in
 # install/ in order, aborting on the first failure. `ls install/` = the whole
-# installation as a list, 01 to 16. Each step runs in its own subshell, and
+# installation as a list, 01 to 17. Each step runs in its own subshell, and
 # everything is also written to a timestamped logfile.
 cd "$HOME/projects/dotfiles" || exit 1
 source install/lib.sh
