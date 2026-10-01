@@ -23,7 +23,9 @@ local function safeLoadSpoon(name)
 end
 
 safeLoadSpoon("GruvboxWallpapers") -- set new wallpaper
-safeLoadSpoon("Windows") -- window management
+safeLoadSpoon("PowerWindows") -- window layout
+spoon.PowerWindows:configure(require "window_rules"):start()
+
 safeLoadSpoon("KSheet") -- shortcuts cheatsheet
 safeLoadSpoon("PopupTranslateSelection") -- translate selected text
 safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
