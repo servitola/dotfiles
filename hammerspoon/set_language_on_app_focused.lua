@@ -1,4 +1,11 @@
 local telegrams = require "telegrams"
+local constants = require "constants"
+
+-- Games and cloud gaming: LAYOUT_EN plus the Karabiner "Empty" profile. BirmanLayer.spoon stays silent here too.
+local ASCII_BUNDLES = {
+    ["com.blizzard.heroesofthestorm"] = true,
+    ["com.nvidia.gfnpc.mall"] = true,
+}
 
 local lastApp = nil
 local switchTimer = nil
@@ -53,13 +60,13 @@ appWatcherHub.register(function(appName, eventType, appObject)
 
     if eventType == hs.application.watcher.activated or eventType == hs.application.watcher.unhidden then
         if telegrams.is_bundle(bundleId) then
-            setLanguageForApp(bundleId, "Ru Birman")
+            setLanguageForApp(bundleId, constants.LAYOUT_RU)
             setKarabinerProfile("Default")
-        elseif bundleId == "com.blizzard.heroesofthestorm" or bundleId == "com.nvidia.gfnpc.mall" then
-            setLanguageForApp(bundleId, "ABC")
+        elseif ASCII_BUNDLES[bundleId] then
+            setLanguageForApp(bundleId, constants.LAYOUT_EN)
             setKarabinerProfile("Empty")
         else
-            setLanguageForApp(bundleId, "En Birman")
+            setLanguageForApp(bundleId, constants.LAYOUT_EN)
             setKarabinerProfile("Default")
         end
     elseif eventType == hs.application.watcher.deactivated then
@@ -68,3 +75,5 @@ appWatcherHub.register(function(appName, eventType, appObject)
         end
     end
 end)
+
+return { ascii_bundles = ASCII_BUNDLES }
