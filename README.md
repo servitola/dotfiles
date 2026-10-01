@@ -16,12 +16,12 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Look at the [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh). Add an extension or UTI to the `HANDLERS` map under the app's bundle id, then run it. Get your [app's bundle id](https://stackoverflow.com/a/39464824/817396).
 
 * Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> to turn on <ins>automatically everywhere</ins> except in my messenger (I use [Telegram](https://telegram.org/))
-* A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use `Ilya Birman En and Ru layouts`. There is an app for the switching: **Keyboard Pilot** but it conflicts with Ilya's layouts.
+* A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use Apple's `ABC` / `Russian – PC` with Ilya Birman's ⌥ layers reproduced on the right Option key by Hammerspoon ([BirmanLayer.spoon](https://github.com/servitola/BirmanLayer.spoon)). There is an app for the switching: **Keyboard Pilot** but it conflicts with Ilya's layouts.
 
 * Q: I want to <ins>manipulate my windows</ins> from my keyboard and I want only 4 or fewer easy positions
-* A: The easiest window management: `ctrl + alt + arrow keys`
+* A: The easiest window management: `ctrl + alt + arrow keys`. It is a Spoon of its own now: [PowerWindows.spoon](https://github.com/servitola/PowerWindows.spoon) — every window in its place, one key.
 
-     ![Video of my window management](https://i.imgur.com/crdP0bi.gif)
+     ![Video of my window management](https://raw.githubusercontent.com/servitola/PowerWindows.spoon/main/docs/demo.gif)
 
 * Q: I want my <ins>Terminal to assist me</ins> and I know almost nothing
 * A: I use [Zap](https://github.com/zerx-lab/zap) (open-source Warp fork) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
