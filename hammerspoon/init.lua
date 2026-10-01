@@ -41,6 +41,12 @@ safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop (hs -
 require "reactive_state"  -- shared state (must load before modules that use it)
 require "config_UrlDispatcher"
 require "set_language_on_app_focused"
+
+safeLoadSpoon("AutoKeyboardLayout") -- a layout per app
+spoon.AutoKeyboardLayout.primary = constants.LAYOUT_PRIMARY
+spoon.AutoKeyboardLayout.secondary = constants.LAYOUT_SECONDARY
+spoon.AutoKeyboardLayout:start()
+
 require "punto_switcher"
 appUsageAnalytics = require "app_usage_analytics"
 require "input_logger"
