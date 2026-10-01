@@ -17,9 +17,7 @@ zsh "$HOME/projects/dotfiles/macos_update/update_all.sh" || {
 echo
 
 echo "${YELLOW}🧹 Running cleanup...${NC}"
-# AGGRESSIVE is passed explicitly: `AGGRESSIVE=true up` sets it as a shell
-# parameter of the sourcing shell, which child processes don't inherit
-AGGRESSIVE="${AGGRESSIVE:-}" zsh "$HOME/projects/dotfiles/macos_cleanup/cleanup_all.sh" || {
+zsh "$HOME/projects/dotfiles/macos_cleanup/cleanup_all.sh" || {
     echo "${RED}${BOLD}✗ Cleanup failed — skipping shell reload.${NC}"
     return 1
 }
