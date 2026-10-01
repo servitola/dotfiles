@@ -5,8 +5,8 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           →   │      →       │              │   │      YouTube — seek forward 5sec
---               │              │              │   │         IINA — seek forward 5sec
+--           →   │              │              │   │          IINA — seek forward 5sec
+--               │              │              │   │       YouTube — seek forward 5sec
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪→   │              │              │   │
 --          ⇧→   │              │              │ ✓ │             — select one letter right
