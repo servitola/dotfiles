@@ -212,6 +212,16 @@
   },
   {
     "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-xcode.sh\" \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Open in Xcode",
+    "target": "repository"
+  },
+  {
+    "action": {
       "script": "printf '%s' \"${repo:path}\" | pbcopy",
       "showOutput": false,
       "type": "sh",
@@ -268,6 +278,16 @@
       "waitForExit": false
     },
     "name": "Open in WebStorm",
+    "target": "revision"
+  },
+  {
+    "action": {
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-xcode.sh\" \"${repo:path}\"",
+      "showOutput": false,
+      "type": "sh",
+      "waitForExit": true
+    },
+    "name": "Open in Xcode",
     "target": "revision"
   },
   {
