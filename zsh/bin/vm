@@ -1,0 +1,233 @@
+#!/bin/zsh
+# Disposable macOS VMs on the external drive (tart, TART_HOME in constants.env).
+# A base VM is pulled once and never booted; every run boots a copy-on-write clone
+# of it and deletes the clone on exit, failure or Ctrl-C — nothing keeps running or growing.
+#
+#   vm status                         drive, space, VMs, anything still running
+#   vm pull <name> <image>            pull a base, e.g. vm pull gg27 ghcr.io/cirruslabs/macos-golden-gate-base:latest
+#   vm run <base> [-d path]... -- <command>   run a command in a fresh clone, then throw it away
+#   vm shell <base> [-d path]...      interactive shell in a fresh clone, thrown away on exit
+#   vm bake <base> <new> [-d path]... -- <setup>   derive a base: run setup in a clone, keep it
+#   vm stop                           stop and delete every clone left behind
+#   vm rm <name>                      delete a base
+#   vm log                            recent runs
+set -euo pipefail
+
+: "${TART_HOME:?TART_HOME unset — see constants.env}"
+export TART_HOME
+CPU=${VM_CPU:-4}
+MEMORY=${VM_MEMORY:-8192}
+BOOT_TIMEOUT=${VM_BOOT_TIMEOUT:-240}
+STATE="$HOME/.local/state/vm"
+LOG="$STATE/runs.log"
+PREFIX=eph-
+mkdir -p "$STATE"
+
+die() { print -u2 "vm: $*"; exit 1; }
+
+# Pointing TART_HOME at an unmounted drive would make tart fail deep inside a pull;
+# say it up front instead.
+require_drive() {
+    local volume=${TART_HOME#/Volumes/}; volume=/Volumes/${volume%%/*}
+    [[ $TART_HOME == /Volumes/* ]] || return 0
+    mount | grep -q " on $volume " || die "$volume is not mounted"
+    mkdir -p "$TART_HOME"
+}
+
+free_gb() { df -g "$TART_HOME" | awk 'NR==2 {print $4}'; }
+
+image_gb() {
+    local image=$1 repo tag token
+    [[ $image == ghcr.io/* ]] || { print 0; return; }
+    repo=${${image#ghcr.io/}%:*}; tag=${image##*:}
+    token=$(curl -fsS "https://ghcr.io/token?scope=repository:$repo:pull" | python3 -c 'import sys,json; print(json.load(sys.stdin)["token"])')
+    curl -fsS -H "Authorization: Bearer $token" -H 'Accept: application/vnd.oci.image.manifest.v1+json' \
+        "https://ghcr.io/v2/$repo/manifests/$tag" |
+        python3 -c 'import sys,json; m=json.load(sys.stdin); print(round(int(m["annotations"]["org.cirruslabs.tart.uncompressed-disk-size"])/1e9+0.5))'
+}
+
+# Not `tart list`: it fails outright while any VM with an ASIF disk is running.
+clones() { print -l "$TART_HOME"/vms/$PREFIX*(N:t); }
+
+cmd_status() {
+    print "TART_HOME  $TART_HOME"
+    if [[ $TART_HOME == /Volumes/* ]] && ! mount | grep -q " on /Volumes/${${TART_HOME#/Volumes/}%%/*} "; then
+        print "drive      not mounted"; return
+    fi
+    mkdir -p "$TART_HOME"
+    print "free       $(free_gb) GB"
+    print "used       $(du -sh "$TART_HOME" 2>/dev/null | cut -f1)"
+    print
+    tart list
+    local left; left=$(clones)
+    [[ -z $left ]] || print "\nleft behind (vm stop removes them):\n$left"
+}
+
+cmd_pull() {
+    (( $# == 2 )) || die "usage: vm pull <name> <image>"
+    local name=$1 image=$2 need free
+    require_drive
+    tart get "$name" >/dev/null 2>&1 && die "$name exists — vm rm $name first"
+    need=$(image_gb "$image"); free=$(free_gb)
+    # Download and unpacked disk share blocks on APFS, so one disk size plus slack.
+    (( free >= need + 5 )) || die "$image needs ~$((need + 5)) GB, $free GB free on $TART_HOME"
+    print "pulling $image (~$need GB) into $name, $free GB free"
+    tart clone "$image" "$name"
+    tart set "$name" --cpu "$CPU" --memory "$MEMORY"
+    # The cached download is a second copy that nothing boots.
+    tart prune --entries caches --older-than 0 >/dev/null 2>&1 || true
+    print "$(date '+%F %T') pull $name $image" >> "$LOG"
+}
+
+boot() {
+    local base=$1 name=$2; shift 2
+    tart get "$base" >/dev/null 2>&1 || die "no base VM $base — vm pull first"
+    tart get "$name" >/dev/null 2>&1 && die "$name exists"
+    require_drive
+    STARTED=$SECONDS
+    # A sleeping host freezes the guest mid-download; the assertion ends with this script.
+    caffeinate -i -w $$ &
+    CAFFEINATE_PID=$!
+    # A local clone on APFS is copy-on-write: instant, and only what the guest writes costs space.
+    tart clone "$base" "$name"
+    VM_NAME=$name
+    tart set "$name" --cpu "$CPU" --memory "$MEMORY"
+    tart run --no-graphics "$@" "$VM_NAME" > "$STATE/$VM_NAME.console" 2>&1 &
+    VM_PID=$!
+    local since=$SECONDS
+    until probe; do
+        kill -0 $VM_PID 2>/dev/null || die "VM exited while booting — $STATE/$VM_NAME.console"
+        (( SECONDS - since >= BOOT_TIMEOUT )) && die "guest agent silent after ${BOOT_TIMEOUT}s"
+        sleep 3
+    done
+    # The DNS proxy tart hands out (192.168.64.1) does not answer on this host — OrbStack
+    # holds UDP 53 on every interface (2026-09-30) — so guests ask the public resolver directly.
+    tart exec "$VM_NAME" /bin/zsh -c 'sudo networksetup -setdnsservers "$(networksetup -listnetworkserviceorder | awk -F": |," "/Device: en0/ {print \$2; exit}")" 1.1.1.1 1.0.0.1' ||
+        die "could not set DNS in the guest"
+}
+
+# `tart exec` sent before the guest agent is up can hang for good (seen for 10 min, 2026-10-01).
+probe() {
+    tart exec "$VM_NAME" true >/dev/null 2>&1 &
+    local pid=$! left=10
+    while kill -0 $pid 2>/dev/null; do
+        (( left-- <= 0 )) && { kill $pid 2>/dev/null; wait $pid 2>/dev/null; return 1; }
+        sleep 1
+    done
+    wait $pid
+}
+
+teardown() {
+    # `exit` below fires the top-level EXIT trap again; `trap -` in a function would not remove it.
+    [[ -n ${TORN_DOWN:-} ]] && exit $1
+    TORN_DOWN=1
+    local code=$1
+    [[ -n ${VM_NAME:-} ]] || exit $code
+    [[ -n ${EXEC_PID:-} ]] && kill $EXEC_PID 2>/dev/null || true
+    tart stop --timeout "${STOP_TIMEOUT:-20}" "$VM_NAME" >/dev/null 2>&1 || true
+    # `tart stop` returns once the guest is asked to power off, not once it has; killing
+    # `tart run` right after it lost every write of a bake (2026-10-01).
+    local left=${STOP_TIMEOUT:-20}
+    while [[ -n ${VM_PID:-} ]] && kill -0 $VM_PID 2>/dev/null && (( left-- > 0 )); do sleep 1; done
+    if [[ -n ${VM_PID:-} ]] && kill -0 $VM_PID 2>/dev/null; then
+        kill $VM_PID 2>/dev/null || true
+        [[ -n ${KEEP:-} && $code == 0 ]] && { print -u2 "vm: $VM_NAME did not shut down cleanly, not kept"; code=1; }
+    fi
+    # A bare `wait` would also wait for caffeinate, which waits for us.
+    [[ -n ${CAFFEINATE_PID:-} ]] && kill $CAFFEINATE_PID 2>/dev/null || true
+    [[ -n ${VM_PID:-} ]] && wait $VM_PID 2>/dev/null || true
+    if [[ -n ${KEEP:-} && $code == 0 ]]; then
+        print "kept $VM_NAME"
+    else
+        tart delete "$VM_NAME" >/dev/null 2>&1 || print -u2 "vm: could not delete $VM_NAME — vm stop"
+    fi
+    rm -f "$STATE/$VM_NAME.console"
+    print "$(date '+%F %T') ${RUN_KIND:-run} $VM_NAME exit=$code $(( SECONDS - ${STARTED:-$SECONDS} ))s ${RUN_WHAT:-}" >> "$LOG"
+    exit $code
+}
+
+share_args() {
+    SHARES=()
+    while (( $# )); do
+        case $1 in
+            -d) [[ -d $2 ]] || die "no directory $2"; SHARES+=( --dir "${2:A:t}:${2:A}" ); shift 2 ;;
+            --) shift; REST=( "$@" ); return ;;
+            *) die "unexpected $1" ;;
+        esac
+    done
+    REST=()
+}
+
+cmd_run() {
+    local base=${1:?usage: vm run <base> [-d path]... -- <command>}; shift
+    share_args "$@"
+    (( ${#REST} )) || die "nothing to run after --"
+    RUN_KIND=run RUN_WHAT="$REST[*]"
+    boot "$base" "$PREFIX$base-$(date +%s)-$$" "${SHARES[@]}"
+    # Shares appear in the guest under /Volumes/My Shared Files/<directory name>.
+    guest "$REST[*]"
+}
+
+# zsh holds a trapped signal until a foreground child exits; `wait` is interrupted at once.
+guest() {
+    tart exec "$VM_NAME" /bin/zsh -lc "$1" &
+    EXEC_PID=$!
+    local code=0
+    wait $EXEC_PID || code=$?
+    teardown $code
+}
+
+cmd_shell() {
+    local base=${1:?usage: vm shell <base> [-d path]...}; shift
+    share_args "$@"
+    RUN_KIND=shell
+    boot "$base" "$PREFIX$base-$(date +%s)-$$" "${SHARES[@]}"
+    local code=0
+    tart exec -i -t "$VM_NAME" /bin/zsh -l || code=$?
+    teardown $code
+}
+
+cmd_bake() {
+    local base=${1:?usage: vm bake <base> <new> [-d path]... -- <setup command>} new=${2:?usage: vm bake <base> <new> [-d path]... -- <setup command>}
+    shift 2
+    share_args "$@"
+    (( ${#REST} )) || die "nothing to run after --"
+    [[ $new == $PREFIX* ]] && die "$PREFIX is reserved for disposable clones"
+    RUN_KIND=bake RUN_WHAT="$new: $REST[*]" KEEP=1 STOP_TIMEOUT=90
+    boot "$base" "$new" "${SHARES[@]}"
+    guest "$REST[*]"
+}
+
+cmd_stop() {
+    local name
+    for name in $(clones); do
+        tart stop --timeout 20 "$name" >/dev/null 2>&1 || true
+        tart delete "$name" && print "deleted $name"
+    done
+    pkill -f "tart run --no-graphics.* $PREFIX" 2>/dev/null || true
+}
+
+cmd_rm() {
+    local name=${1:?usage: vm rm <name>}
+    [[ $name == $PREFIX* ]] && die "clones go with vm stop"
+    tart delete "$name"
+    print "$(date '+%F %T') rm $name" >> "$LOG"
+}
+
+# At top level: zsh runs an EXIT trap set inside a function as soon as that function returns.
+trap 'teardown $?' EXIT
+trap 'teardown 130' INT
+trap 'teardown 143' TERM
+
+case ${1:-status} in
+    status) cmd_status ;;
+    pull) shift; cmd_pull "$@" ;;
+    run) shift; cmd_run "$@" ;;
+    shell) shift; cmd_shell "$@" ;;
+    bake) shift; cmd_bake "$@" ;;
+    stop) cmd_stop ;;
+    rm) shift; cmd_rm "$@" ;;
+    log) [[ -f $LOG ]] && tail -n 20 "$LOG" || print "no runs yet" ;;
+    -h|--help|help) sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//' ;;
+    *) die "unknown command $1 — vm help" ;;
+esac
