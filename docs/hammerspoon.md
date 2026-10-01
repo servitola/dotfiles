@@ -8,7 +8,7 @@ Hammerspoon uses "Spoons" - modular extensions:
 
 ```lua
 hs.loadSpoon("HotKeys")        -- Custom keyboard shortcuts
-hs.loadSpoon("Windows")        -- Window management
+hs.loadSpoon("PowerWindows")   -- Window layout
 hs.loadSpoon("KSheet")         -- Shortcut reference
 hs.loadSpoon("PopupTranslateSelection") -- Translation
 ```
