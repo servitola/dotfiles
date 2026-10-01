@@ -129,4 +129,7 @@ python3 ~/projects/dotfiles/docs/keyboard/generate.py 2>&1 | tail -3
 print_task "Setting macOS appearance"
 m appearance --highlightcolor grape
 
+print_section "Static Data Compression (APFS/LZFSE)"
+~/projects/dotfiles/applesauce/compress.sh
+
 printf '\n%b✨ All updates completed!%b\n' "${YELLOW}${BOLD}" "${NC}"
