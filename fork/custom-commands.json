@@ -177,7 +177,7 @@
       "type": "sh",
       "waitForExit": true
     },
-    "name": "Force Push Branch up to Here",
+    "name": "Force Push Branch to Here",
     "target": "revision"
   },
   {
