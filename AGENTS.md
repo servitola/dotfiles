@@ -47,7 +47,7 @@ The installer is plain zsh, not make. `Makefile` is a one-line wrapper
   script elsewhere (defaults, xcode, zsh, dock, iterm, ableton) are one-line
   `exec zsh "$DOTFILES/…"` files, so the ladder stays complete.
 - **`install.sh`** is a trivial loop: `for step in install/[0-9]*.sh` → run in
-  order (numbered `━━ [NN/15]` framing + per-step timing), abort on the first
+  order (numbered `━━ [NN/18]` framing + per-step timing), abort on the first
   failure. Each step runs in its own subshell (`zsh "$step"`), reproducing the
   old Makefile model. Everything is tee'd to a timestamped logfile under
   `~/.local/state/dotfiles/`. `lib.sh` (no number prefix) is excluded by the
