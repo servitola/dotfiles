@@ -1,7 +1,7 @@
 --- === ScreenGlow ===
 ---
 --- Soft pulsing glow along every screen edge while an agent drives the desktop.
---- `pulse(seconds, phase)` starts or extends it (phase = think | act | wait),
+--- `pulse(seconds, phase, text)` starts or extends it (phase = think | act | wait),
 --- `beat()` flashes on activity, `stop()` fades it out; a watchdog stops it at
 --- the deadline so a dead agent never leaves the screen glowing.
 
@@ -13,6 +13,10 @@ obj.__index = obj
 local _ = { hs.canvas, hs.image, hs.sound, hs.menubar, hs.styledtext, hs.eventtap, hs.window, hs.screen, hs.timer }
 
 obj.name = "ScreenGlow"
+obj.version = "0.1.0"
+obj.author = "servitola"
+obj.homepage = "https://github.com/servitola/ScreenGlow.spoon"
+obj.license = "MIT - https://opensource.org/licenses/MIT"
 obj.phases = {
     think = { hex = "#fe8019" },
     act   = { hex = "#8ec07c" },
@@ -271,6 +275,7 @@ end
 
 -- hs.sound must stay referenced until playback ends or GC cuts it short.
 function obj:_play(name)
+    if not name then return end
     self._sound = hs.sound.getByName(name)
     if self._sound then self._sound:volume(1):play() end
 end
