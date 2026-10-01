@@ -1,0 +1,64 @@
+#!/bin/zsh
+# Send a message, a document or an audio file to Telegram as the bot.
+#
+#   tg [-c chat] [-t thread] [--html | --parse-mode MODE] [--file PATH | --audio PATH] [--] [text]
+#
+# The chat is a name — `main` (default), `notify`, anything with a TG_CHAT_<NAME>
+# constant — or a numeric id. Text comes from the argument, or from stdin when
+# there is none; with --file / --audio it is the caption and may be omitted.
+# Prints the Bot API response; a rejected request is a non-zero exit.
+set -euo pipefail
+
+usage() { print -u2 "usage: tg [-c chat] [-t thread] [--html | --parse-mode MODE] [--file PATH | --audio PATH] [--] [text]" }
+
+chat=main thread= mode= method=sendMessage field= attach=
+while (( $# )); do
+  case $1 in
+    -c|--chat)    chat=${2:?$1 needs a value}; shift 2 ;;
+    -t|--thread)  thread=${2:?$1 needs a value}; shift 2 ;;
+    --html)       mode=HTML; shift ;;
+    --parse-mode) mode=${2:?$1 needs a value}; shift 2 ;;
+    --file)       method=sendDocument field=document attach=${2:?$1 needs a value}; shift 2 ;;
+    --audio)      method=sendAudio field=audio attach=${2:?$1 needs a value}; shift 2 ;;
+    -h|--help)    usage; exit 0 ;;
+    --)           shift; break ;;
+    -*)           usage; exit 2 ;;
+    *)            break ;;
+  esac
+done
+(( $# <= 1 )) || { usage; exit 2 }
+
+if (( $# )); then
+  text=$1
+elif [[ ! -t 0 ]]; then
+  text=$(cat)
+else
+  text=
+fi
+[[ -n $text || -n $attach ]] || { print -u2 "tg: no text"; usage; exit 2 }
+
+if [[ $chat != (-|)<-> ]]; then
+  name=TG_CHAT_${chat:u}
+  (( ${+parameters[$name]} )) || { print -u2 "tg: no chat '$chat' — there is no $name constant (const list TG_CHAT_)"; exit 2 }
+  chat=${(P)name}
+fi
+
+source "${FILE_TG_BOT_ENV:?}"
+url=${TG_BOT_API:?}/bot${TELEGRAM_BOT_TOKEN:?}/$method
+
+# Nothing here is hand-escaped: --data-urlencode and --form-string take the text
+# verbatim. A plain -F would read a caption starting with "@" as a file to upload.
+args=( -sS --fail-with-body )
+if [[ -n $attach ]]; then
+  quoted=${attach//\\/\\\\}
+  args+=( --form-string "chat_id=$chat" -F "$field=@\"${quoted//\"/\\\"}\"" )
+  [[ -n $thread ]] && args+=( --form-string "message_thread_id=$thread" )
+  [[ -n $text ]]   && args+=( --form-string "caption=$text" )
+  [[ -n $mode ]]   && args+=( --form-string "parse_mode=$mode" )
+else
+  args+=( --data-urlencode "chat_id=$chat" --data-urlencode "text=$text" )
+  [[ -n $thread ]] && args+=( --data-urlencode "message_thread_id=$thread" )
+  [[ -n $mode ]]   && args+=( --data-urlencode "parse_mode=$mode" )
+fi
+
+curl "${args[@]}" "$url"
