@@ -4,10 +4,10 @@ return {
 --    ╰—————╯
 --
 --
---——————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————— app — function ————————————————————
---       ⌥      │              │              │   │
---       ⌥drag  │              │              │   │ select non-linear areas
---       ⌥hold  │              │              │   │ see additional options
---       ⌥⇧     │              │              │   │ VSCode — select non-linear areas
---              ┴              ┴              ┴   ┴
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
+--           ⌥   │              │              │   │
+--       ⌥drag   │              │              │ ✓ │              — select non-linear areas
+--       ⌥hold   │              │              │ ✓ │              — see additional options
+--      ⇧⌥drag   │              │              │   │        VSCode — select non-linear areas
+--               ┴              ┴              ┴   ┴
 }

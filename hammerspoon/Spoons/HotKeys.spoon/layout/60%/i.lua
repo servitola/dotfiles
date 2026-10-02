@@ -7,11 +7,11 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           i   │              │ i    ш    ι  │   │          YouTube — Minimize video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪i   │              │              │ ✓ │              — system health dashboard
-{ chord = "⇪i",                                  fn = "system_health" },
+--          ⇪i   │              │              │ ✓ │                 — system health dashboard
+{ chord =  "⇪i",                            fn = "system_health" },
 --          ⇧i   │              │ I    Ш    Ι  │   │
 --          ⌃i   │              │              │   │
---          ⌥i   │              │ і    і    †  │   │
+--          ⌥i   │              │      і       │   │
 --          ⌘i   │              │              │   │ Activity Manager — Inspect process
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧i   │              │              │   │
@@ -19,10 +19,10 @@ return {
 --         ⇪⌥i   │              │              │   │
 --         ⇪⌘i   │              │              │   │
 --         ⇧⌃i   │              │              │   │
---         ⇧⌥i   │              │              │   │
+--         ⇧⌥i   │              │ І    І    Ν  │   │
 --         ⇧⌘i   │              │              │   │           VSCode — open agent chat
 --         ⌃⌥i   │              │              │   │ Shortcuts
-{ chord = "⌃⌥i",                                fn = "info.show_shortcuts" },
+{ chord = "⌃⌥i",                            fn = "info.show_shortcuts" },
 --         ⌃⌘i   │              │              │   │           VSCode — open chat
 --         ⌥⌘i   │              │              │   │          Browser — open Developer Tools
 --               │              │              │   │             Mail — append selected emails to email

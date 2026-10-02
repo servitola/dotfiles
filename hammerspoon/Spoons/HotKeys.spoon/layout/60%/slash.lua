@@ -7,7 +7,7 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           /   │              │ /    .    /  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪/   │ volume down  │              │   │
+--          ⇪/   │     Vol↓     │              │   │
 --          ⇧/   │              │ ?    ,    ?  │   │
 --          ⌃/   │              │              │   │
 --          ⌥/   │              │      …       │   │
@@ -20,8 +20,8 @@ return {
 --         ⇪⌥/   │              │              │   │
 --         ⇪⌘/   │              │              │   │
 --         ⇧⌃/   │              │              │   │
---         ⇧⌥/   │              │      ´       │   │ Birman Layout — set accent to previous letter (Birman's keyboard layout)
---               │              │              │   │                 double tap to apply
+--         ⇧⌥/   │              │ ´    ´    ?  │   │ Birman Layout — set accent to previous letter (Birman's keyboard layout)
+--               │              │              │   │ Birman Layout — double tap to apply
 --         ⇧⌘/   │              │              │   │         Rider — comment
 --         ⌃⌥/   │              │              │   │
 --         ⌃⌘/   │              │              │   │

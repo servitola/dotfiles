@@ -7,37 +7,37 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           t   │              │ t    е    τ  │   │       YouTube — Theatre mode
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪t   │              │              │   │ Forkgram
-{ chord =  "⇪t",                            app = "Forkgram", window_default_position = "right" },
+--          ⇪t   │     F17      │              │   │               ↓
+{ chord = "F17",                           app = "@APP_TELEGRAM", window_default_position = "right" },
 --          ⇧t   │              │ T    Е    Τ  │   │
 --          ⌃t   │              │              │   │         Rider — refactor this
 --               │              │              │   │   Claude Code — show todos
---          ⌥t   │              │ ™    ™    ™  │   │
+--          ⌥t   │              │      ™       │   │
 --          ⌘t   │              │              │ ✓ │              — new tab
 --               │              │              │   │         Music — turn visualizer on or off
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---   ⇪⇧t → F18   │     F18      │              │   │
-{ chord = "F18",                            app = "zoom.us" },
---         ⇪⌃t   │              │              │   │
---         ⇪⌥t   │              │              │   │
---         ⇪⌘t   │              │              │   │
+--         ⇪⇧t   │     ⇧F17     │              │   │               ↓
+{ chord= "⇧F17",                           app = "zoom.us" },
+--         ⇪⌃t   │     ⌃F17     │              │   │
+--         ⇪⌥t   │     ⌥F17     │              │   │
+--         ⇪⌘t   │     ⌘F17     │              │   │
 --         ⇧⌃t   │              │              │   │
---         ⇧⌥t   │              │              │   │
---         ⇧⌘t   │              │              │   │          Mail — format as Plain Text or Rich Format
---               │              │              │ ✓ │              — reopen closed tab
---         ⌃⌥t   │              │              │   │              — this window to TV / back
+--         ⇧⌥t   │              │    #    #    │   │
+--         ⇧⌘t   │              │              │ ✓ │              — reopen closed tab
+--               │              │              │   │          Mail — format as Plain Text or Rich Format
+--         ⌃⌥t   │              │              │ ✓ │              — this window to TV / back
 { chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv" },
 --         ⌃⌘t   │              │              │   │
 --         ⌥⌘t   │              │              │   │          Fork — hide/search toolbar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃t   │              │              │   │
---        ⇪⇧⌥t   │              │              │   │
---        ⇪⇧⌘t   │              │              │   │
---        ⇪⌃⌥t   │              │              │   │
---        ⇪⌃⌘t   │              │              │   │
---        ⇪⌥⌘t   │              │              │   │
---        ⇧⌃⌥t   │              │              │   │              — display mode: mirror / extend
-{ chord = "⇧⌃⌥t",                           fn = "display.toggle_mirror" },
+--        ⇪⇧⌃t   │    ⇧⌃F17     │              │   │
+--        ⇪⇧⌥t   │    ⇧⌥F17     │              │   │
+--        ⇪⇧⌘t   │    ⇧⌘F17     │              │   │
+--        ⇪⌃⌥t   │    ⌃⌥F17     │              │   │
+--        ⇪⌃⌘t   │    ⌃⌘F17     │              │   │
+--        ⇪⌥⌘t   │    ⌥⌘F17     │              │   │
+--        ⇧⌃⌥t   │              │              │ ✓ │              — display mode: mirror / extend
+{ chord= "⇧⌃⌥t",                            fn = "display.toggle_mirror" },
 --        ⇧⌃⌘t   │              │              │   │
 --        ⇧⌥⌘t   │              │              │   │
 --        ⌃⌥⌘t   │              │              │   │

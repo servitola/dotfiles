@@ -11,18 +11,18 @@ return {
 --          ⇪l   │      ↓       │              │   │
 --          ⇧l   │              │ L    Д    Λ  │   │
 --          ⌃l   │              │              │   │ Unix Terminal — clear window
---          ⌥l   │              │ ”    ”    ¬  │   │
---          ⌘l   │              │              │   │          IINA — ab-loop (A-B loop)
---               │              │              │   │         Rider — goto line,
+--          ⌥l   │              │      ”       │   │
+--          ⌘l   │              │              │   │         Rider — goto line,
 --               │              │              │   │        VSCode — goto line
---               │              │              │   │       Browser — focus Url Line,
 --               │              │              │   │         Music — go to Current song,
---               │              │              │   │      Telegram — lock Telegram
+--               │              │              │   │       Browser — focus Url Line,
+--               │              │              │   │      Telegram — lock Telegram
+--               │              │              │   │          IINA — ab-loop (A-B loop)
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧l   │      ⇧↓      │              │ ✓ │              — select line down
 --         ⇪⌃l   │      ⌃↓      │              │ ✓ │              — show all windows of current app
---         ⇪⌥l   │              │              │   │
---         ⇪⌘l   │              │              │   │
+--         ⇪⌥l   │      ⌥↓      │              │   │
+--         ⇪⌘l   │      ⌘↓      │              │   │
 --         ⇧⌃l   │              │              │   │         Rider — focus in Solution explorer
 --         ⇧⌥l   │              │ ’    ’    ·  │   │
 --         ⇧⌘l   │              │              │   │          Fork — open Pull dialog
@@ -30,12 +30,12 @@ return {
 --         ⌃⌘l   │              │              │   │          Mail — apply active Mail rules
 --         ⌥⌘l   │              │              │   │        Finder — downloads
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃l   │ volume_down  │              │ ✓ │              — volume_decrement
---        ⇪⇧⌥l   │              │              │   │
---        ⇪⇧⌘l   │   light_dn   │              │ ✓ │              — keyboard illumination decrement
---        ⇪⌃⌥l   │              │              │   │
---        ⇪⌃⌘l   │              │              │   │         Rider — navigate to down method
---        ⇪⌥⌘l   │              │              │   │        VSCode — clone caret down;
+--        ⇪⇧⌃l   │     Vol↓     │              │ ✓ │              — volume_decrement
+--        ⇪⇧⌥l   │     ⇧⌥↓      │              │   │
+--        ⇪⇧⌘l   │      🔅       │              │ ✓ │              — keyboard illumination decrement
+--        ⇪⌃⌥l   │     ⌃⌥↓      │              │   │
+--        ⇪⌃⌘l   │     ⌃⌘↓      │              │   │         Rider — navigate to down method
+--        ⇪⌥⌘l   │     ⌥⌘↓      │              │   │        VSCode — clone caret down;
 --               │              │              │   │         iTerm — focus pane below
 --        ⇧⌃⌥l   │              │              │   │
 --        ⇧⌃⌘l   │              │              │   │

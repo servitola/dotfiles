@@ -10,7 +10,7 @@ return {
 --          ⇪9   │      F9      │              │   │         Rider — resume program (debugging)
 --          ⇧9   │              │      (       │   │
 --          ⌃9   │              │              │   │        VSCode — go to tab 9
---          ⌥9   │ ←    ←    ←  │              │   │
+--          ⌥9   │              │      ←       │   │
 --          ⌘9   │              │              │   │       Browser — open last tab
 --               │              │              │   │      Telegram — focus 9th folder or chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -19,7 +19,7 @@ return {
 --         ⇪⌥9   │     ⌥F9      │              │   │         Rider — run till cursor (debugging)
 --         ⇪⌘9   │     ⌘F9      │              │   │
 --         ⇧⌃9   │              │              │   │
---         ⇧⌥9   │              │              │   │
+--         ⇧⌥9   │              │ ‹    ‹    Κ  │   │
 --         ⇧⌘9   │              │              │   │
 --         ⌃⌥9   │              │              │   │
 --         ⌃⌘9   │              │              │   │

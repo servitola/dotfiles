@@ -5,25 +5,25 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           j   │              │ j    о    ξ  │   │   YouTube — 10sec back
+--           j   │              │ j    о    ξ  │   │       YouTube — 10sec back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪j   │              │              │   │   Day One — open journal entry
+--          ⇪j   │              │              │   │       Day One — open journal entry
 --          ⇧j   │              │ J    О    Ξ  │   │
 --          ⌃j   │              │              │   │
---          ⌥j   │              │ „    „    ≤  │   │
---          ⌘j   │              │              │   │     Music — open View Options window
+--          ⌥j   │              │      „       │   │
+--          ⌘j   │              │              │   │         Music — open View Options window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧j   │              │              │   │
 --         ⇪⌃j   │              │              │   │
 --         ⇪⌥j   │              │              │   │
 --         ⇪⌘j   │              │              │   │
 --         ⇧⌃j   │              │              │   │
---         ⇧⌥j   │              │              │   │
---         ⇧⌘j   │              │              │   │      Mail — move to Junk
+--         ⇧⌥j   │              │      ≥       │   │
+--         ⇧⌘j   │              │              │   │          Mail — move to Junk
 --         ⌃⌥j   │              │              │   │
 --         ⌃⌘j   │              │              │   │
---         ⌥⌘j   │              │              │   │    Vivaldi — JavaScript console
---               │              │              │   │      Mail — erase junk mail
+--         ⌥⌘j   │              │              │   │          Mail — erase junk mail
+--               │              │              │   │       Vivaldi — JavaScript console
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃j   │              │              │   │
 --        ⇪⇧⌥j   │              │              │   │

@@ -5,24 +5,24 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           ]   │              │ ]    э    ]  │   │
+--           ]   │              │ ]    ъ    ]  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪]   │  next_track  │              │   │ vk_consumer_next
---          ⇧]   │              │ }    Э    }  │   │
+--          ⇪]   │      ⏭       │              │   │
+--          ⇧]   │              │ }    Ъ    }  │   │
 --          ⌃]   │              │              │   │
---          ⌥]   │              │              │   │
---          ⌘]   │              │              │   │ IINA — multiply speed 2.0
---               │              │              │   │ Rider — navigate forward
---               │              │              │   │ Finder — navigate forwardq
---               │              │              │   │ Browser — navigate forward
---               │              │              │   │ Music — navigate forward
+--          ⌥]   │              │ ]    ]    »  │   │
+--          ⌘]   │              │              │   │         Rider — navigate forward
+--               │              │              │   │         Music — navigate forward
+--               │              │              │   │       Browser — navigate forward
+--               │              │              │   │          IINA — multiply speed 2.0
+--               │              │              │   │        Finder — navigate forwardq
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧]   │              │              │   │
 --         ⇪⌃]   │              │              │   │
 --         ⇪⌥]   │              │              │   │
 --         ⇪⌘]   │              │              │   │
 --         ⇧⌃]   │              │              │   │
---         ⇧⌥]   │              │              │   │
+--         ⇧⌥]   │              │      }       │   │
 --         ⇧⌘]   │              │              │   │
 --         ⌃⌥]   │              │              │   │
 --         ⌃⌘]   │              │              │   │

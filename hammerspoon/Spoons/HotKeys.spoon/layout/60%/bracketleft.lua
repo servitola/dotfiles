@@ -7,23 +7,23 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           [   │              │ [    х    [  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪[   │  prev_track  │              │   │ vk_consumer_previous
+--          ⇪[   │      ⏮       │              │   │
 --          ⇧[   │              │ {    Х    {  │   │
 --          ⌃[   │              │              │   │
---          ⌥[   │              │              │   │ zoom.us
-{ chord = "⌥[",                            app = "zoom.us" },
---          ⌘[   │              │              │   │          IINA — multiply speed 0.5
---               │              │              │   │         Rider — navigate back
---               │              │              │   │        Finder — navigate back
---               │              │              │   │       Browser — navigate back
+--          ⌥[   │              │ [    [    «  │   │ zoom.us
+{ chord =  "⌥[",                           app = "zoom.us" },
+--          ⌘[   │              │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
+--               │              │              │   │       Browser — navigate back
+--               │              │              │   │          IINA — multiply speed 0.5
+--               │              │              │   │        Finder — navigate back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧[   │              │              │   │
 --         ⇪⌃[   │              │              │   │
 --         ⇪⌥[   │              │              │   │
 --         ⇪⌘[   │              │              │   │
 --         ⇧⌃[   │              │              │   │
---         ⇧⌥[   │              │              │   │
+--         ⇧⌥[   │              │      {       │   │
 --         ⇧⌘[   │              │              │   │
 --         ⌃⌥[   │              │              │   │
 --         ⌃⌘[   │              │              │   │

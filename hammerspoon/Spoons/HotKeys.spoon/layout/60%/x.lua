@@ -11,29 +11,29 @@ return {
 --          ⇧x   │              │ X    Ч    Χ  │   │          IINA — add sub-delay 0.5
 --          ⌃x   │              │              │ ✓ │              — used sometimes
 --               │              │              │   │       Raycast — dismiss
---          ⌥x   │              │              │   │ XCode
-{ chord =  "⌥x",                                               app = "XCode" },
+--          ⌥x   │              │      ×       │   │ XCode
+{ chord =  "⌥x",                           app = "XCode" },
 --          ⌘x   │              │              │ ✓ │              — cut
 --          ⇥x   │      ⌘,      │              │ ✓ │              — show settings ⚙️ of current app
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧x   │              │              │   │ ???
---         ⇪⌃x   │              │              │   │ ???
+--         ⇪⇧x   │     ⇧⌘←      │              │   │
+--         ⇪⌃x   │              │              │   │
 --         ⇪⌥x   │     ⌥⌘←      │              │   │        VSCode — navigate to tab to the left
 --               │              │              │   │         Music — seek backward
---         ⇪⌘x   │      ⌘[      │              │   │          IINA — multiply speed 0.5
---               │              │              │   │         Rider — navigate back
---               │              │              │   │        Finder — navigate back
---               │              │              │   │       Browser — navigate back
+--         ⇪⌘x   │      ⌘[      │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
+--               │              │              │   │       Browser — navigate back
+--               │              │              │   │          IINA — multiply speed 0.5
+--               │              │              │   │        Finder — navigate back
 --         ⇧⌃x   │              │              │   │
 --         ⇧⌥x   │     ⇧⌘←      │              │ ✓ │              — select text to the left till the start of string
 --         ⇧⌘x   │              │              │   │        VSCode — open Extensions
 --         ⌃⌥x   │              │              │   │ Simulator
-{ chord = "⌃⌥x",                                               app = "Simulator" },
+{ chord = "⌃⌥x",                           app = "Simulator" },
 --         ⌃⌘x   │              │              │   │         Rider — scroll to Top
 --         ⌥⌘x   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃x   │ fast_forward │              │ ✓ │              — fast_forward
+--        ⇪⇧⌃x   │              │              │ ✓ │              — fast_forward
 --        ⇪⇧⌥x   │              │              │   │
 --        ⇪⇧⌘x   │              │              │   │
 --        ⇪⌃⌥x   │              │              │   │

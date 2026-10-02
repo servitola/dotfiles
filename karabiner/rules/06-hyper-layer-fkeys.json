@@ -1,5 +1,5 @@
 {
-    "description": "Hyper Layer",
+    "description": "Hyper + non-US backslash passes through; modifier + grave → modifier + Escape",
     "manipulators": [
         {
             "from": {

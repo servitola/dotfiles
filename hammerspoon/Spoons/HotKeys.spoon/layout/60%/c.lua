@@ -7,11 +7,11 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           c   │              │ c    с    ψ  │   │       YouTube — subtitles
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪c   │      ⌘→      │              │   │              → end
+--          ⇪c   │      ⌘→      │              │   │
 --          ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
---          ⌥c   │              │              │   │      Forkgram — open chat 3172923198
-{ chord = "⌥c",                            fn = "forkgram.chat" },
+--          ⌥c   │              │      ©       │   │      Forkgram — open chat 3172923198
+{ chord =  "⌥c",                            fn = "forkgram.chat" },
 --          ⌘c   │              │              │ ✓ │              — copy
 --          ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
 --               │              │              │   │        VSCode — toggle comment line
@@ -21,20 +21,20 @@ return {
 --         ⇪⌃c   │     ⌃⌘→      │              │   │        VSCode — move editor to next group
 --         ⇪⌥c   │     ⌥⌘→      │              │   │        VSCode — navigate to tab to the right
 --               │              │              │   │         Music — seek forward
---         ⇪⌘c   │      ⌘]      │              │   │          IINA — multiply speed 2.0
---               │              │              │   │         Rider — navigate forward
---               │              │              │   │        Finder — navigate forwardq
---               │              │              │   │       Browser — navigate forward
+--         ⇪⌘c   │      ⌘]      │              │   │         Rider — navigate forward
 --               │              │              │   │         Music — navigate forward
+--               │              │              │   │       Browser — navigate forward
+--               │              │              │   │          IINA — multiply speed 2.0
+--               │              │              │   │        Finder — navigate forwardq
 --         ⇧⌃c   │              │              │   │ Unix Terminal — used sometimes
 --         ⇧⌥c   │     ⇧⌘→      │              │ ✓ │              — select line till the end
 --         ⇧⌘c   │              │              │   │        Finder — go to Computer
---         ⌃⌥c   │              │              │   │ itsycal Calendar (custom in app)
+--         ⌃⌥c   │              │              │   │       Itsycal — Calendar (custom in app)
 --         ⌃⌘c   │              │              │   │         Rider — scroll to Bottom
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
---               │              │              │   │        Finder — copy the path of the file
 --               │              │              │   │        VSCode — introduce constant
---               │              │              │   │        Vivaldi — inspect elements
+--               │              │              │   │        Finder — copy the path of the file
+--               │              │              │   │       Vivaldi — inspect elements
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃c   │              │              │   │
 --        ⇪⇧⌥c   │              │              │   │

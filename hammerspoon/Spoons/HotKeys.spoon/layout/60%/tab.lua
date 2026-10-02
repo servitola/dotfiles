@@ -5,7 +5,7 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           ⇥   │              │      ⇥       │   │ Unix Terminal — complete
+--           ⇥   │              │              │   │ Unix Terminal — complete
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪⇥   │      ↩       │              │ ✓ │              — enter / return
 --          ⇧⇥   │              │              │ ✓ │              — select previous element or move text block left
@@ -23,16 +23,16 @@ return {
 --         ⇧⌥⇥   │              │              │   │
 --         ⇧⌘⇥   │              │              │ ✓ │              — switch between open windows backwards
 --         ⌃⌥⇥   │              │              │   │ → EN
-{ chord = "⌃⌥⇥",                             fn = "translate_to_english" },
+{ chord = "⌃⌥⇥",                            fn = "translate_to_english" },
 --         ⌃⌘⇥   │              │              │   │
 --         ⌥⌘⇥   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃⇥   │              │              │   │
---        ⇪⇧⌥⇥   │              │              │   │
---        ⇪⇧⌘⇥   │              │              │   │
---        ⇪⌃⌥⇥   │              │              │   │
---        ⇪⌃⌘⇥   │              │              │   │
---        ⇪⌥⌘⇥   │     ⌥⌘↩      │              │   │           Fork — commit and push changes
+--        ⇪⇧⌃⇥   │     ⇧⌃↩      │              │   │
+--        ⇪⇧⌥⇥   │     ⇧⌥↩      │              │   │
+--        ⇪⇧⌘⇥   │     ⇧⌘↩      │              │   │
+--        ⇪⌃⌥⇥   │     ⌃⌥↩      │              │   │
+--        ⇪⌃⌘⇥   │     ⌃⌘↩      │              │   │
+--        ⇪⌥⌘⇥   │     ⌥⌘↩      │              │   │          Fork — commit and push changes
 --        ⇧⌃⌥⇥   │              │              │   │
 --        ⇧⌃⌘⇥   │              │              │   │
 --        ⇧⌥⌘⇥   │              │              │   │

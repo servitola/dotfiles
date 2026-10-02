@@ -7,11 +7,11 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           y   │              │ y    н    υ  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪y   │              │              │   │ Iina
-{ chord =  "⇪y",                                               app = "Iina", window_default_position = "bottom" },
+--          ⇪y   │              │              │   │ IINA
+{ chord =  "⇪y",                           app = "@APP_VIDEO", window_default_position = "bottom" },
 --          ⇧y   │              │ Y    Н    Υ  │   │
 --          ⌃y   │              │              │   │ Unix Terminal — paste what was cut in terminal
---          ⌥y   │              │ ѣ    ѣ    ¥  │   │
+--          ⌥y   │              │      ѣ       │   │
 --          ⌘y   │              │              │   │       Browser — show all history
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧y   │              │              │   │
@@ -19,10 +19,11 @@ return {
 --         ⇪⌥y   │              │              │   │
 --         ⇪⌘y   │              │              │   │
 --         ⇧⌃y   │              │              │   │
---         ⇧⌥y   │              │ Ѣ    Ѣ    no │   │
+--         ⇧⌥y   │              │    Ѣ    Ѣ    │   │
 --         ⇧⌘y   │              │              │   │
 --         ⌃⌥y   │              │              │   │ YT Stream
-{ chord = "⌃⌥y",                                               fn = "youtube_stream" },
+{ chord = "⌃⌥y",                            fn = "youtube_stream" },
+--         ⌃⌘y   │              │              │   │
 --         ⌥⌘y   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃y   │              │              │   │

@@ -9,34 +9,34 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪o   │      ↑       │              │   │
 --          ⇧o   │              │ O    Щ    Ο  │   │
---          ⌃o   │              │              │   │        Rider — override
---               │              │              │   │  Claude Code — verbose output
---          ⌥o   │              │ °    °    œ  │   │
---          ⌘o   │              │              │ ✓ │             — open file
+--          ⌃o   │              │              │   │         Rider — override
+--               │              │              │   │   Claude Code — verbose output
+--          ⌥o   │              │      ѳ       │   │
+--          ⌘o   │              │              │ ✓ │              — open file
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧o   │      ⇧↑      │              │ ✓ │             — select text up one line
---         ⇪⌃o   │      ⌃↑      │              │ ✓ │             — show windows of current app
---         ⇪⌥o   │      ⌥↑      │              │   │        Rider — extend selection
---         ⇪⌘o   │      ⌘↑      │              │   │       VSCode — jump to breadcumbs
+--         ⇪⇧o   │      ⇧↑      │              │ ✓ │              — select text up one line
+--         ⇪⌃o   │      ⌃↑      │              │ ✓ │              — show windows of current app
+--         ⇪⌥o   │      ⌥↑      │              │   │         Rider — extend selection
+--         ⇪⌘o   │      ⌘↑      │              │   │        VSCode — jump to breadcumbs
 --         ⇧⌃o   │              │              │   │
 --         ⇧⌥o   │              │ Ѳ    Ѳ    Τ  │   │
---         ⇧⌘o   │              │              │   │       VSCode — Search file by name
---               │              │              │   │         Fork — command palette
---               │              │              │   │        Rider — go to file
+--         ⇧⌘o   │              │              │   │         Rider — go to file
+--               │              │              │   │        VSCode — Search file by name
+--               │              │              │   │          Fork — command palette
 --         ⌃⌥o   │              │              │   │
 --         ⌃⌘o   │              │              │   │
 --         ⌥⌘o   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃o   │  volume_up   │              │ ✓ │             — volume_increment
---        ⇪⇧⌥o   │              │              │   │
---        ⇪⇧⌘o   │ key_light_up │              │ ✓ │             — keyboard light increment
---        ⇪⌃⌥o   │              │              │   │
---        ⇪⌃⌘o   │              │              │   │        Rider — navigate to up method
---        ⇪⌥⌘o   │              │              │   │       VSCode — clone caret up;
---               │              │              │   │        iTerm — focus pane above
+--        ⇪⇧⌃o   │     Vol↑     │              │ ✓ │              — volume_increment
+--        ⇪⇧⌥o   │     ⇧⌥↑      │              │   │
+--        ⇪⇧⌘o   │      🔆       │              │ ✓ │              — keyboard light increment
+--        ⇪⌃⌥o   │     ⌃⌥↑      │              │   │
+--        ⇪⌃⌘o   │     ⌃⌘↑      │              │   │         Rider — navigate to up method
+--        ⇪⌥⌘o   │     ⌥⌘↑      │              │   │        VSCode — clone caret up;
+--               │              │              │   │         iTerm — focus pane above
 --        ⇧⌃⌥o   │              │              │   │
 --        ⇧⌃⌘o   │              │              │   │
---        ⇧⌥⌘o   │              │              │   │         Fork — open file
---        ⌃⌥⌘o   │              │              │   │        Rider — Recent projects popup
+--        ⇧⌥⌘o   │              │              │   │          Fork — open file
+--        ⌃⌥⌘o   │              │              │   │         Rider — Recent projects popup
 --               ┴              ┴              ┴   ┴
 }

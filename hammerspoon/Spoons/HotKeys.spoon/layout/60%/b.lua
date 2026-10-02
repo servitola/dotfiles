@@ -7,22 +7,22 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           b   │              │ b    и    β  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪b   │              │              │   │ Zap
-{ chord =  "⇪b",                                                app = "@APP_TERMINAL" },
+--          ⇪b   │     F19      │              │   │               ↓
+{ chord = "F19",                           app = "@APP_TERMINAL" },
 --          ⇧b   │              │ B    И    Β  │   │
 --          ⌃b   │              │              │   │ Unix Terminal — forward one letter
---          ⌥b   │              │ ß    ß    ß  │   │
+--          ⌥b   │              │      ß       │   │
 --          ⌘b   │              │              │   │         Rider — go to declaration
 --               │              │              │   │         Music — show or hide column browser
 --               │              │              │   │           Zap — show/hide tabs bar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---   ⇪⇧b → F14   │     F14      │              │   │                  ↓
-{ chord = "F14",                                               app = "iTerm" },
---         ⇪⌃b   │              │              │   │
---         ⇪⌥b   │              │              │   │
---         ⇪⌘b   │              │              │   │
+--         ⇪⇧b   │     ⇧F19     │              │   │               ↓
+{ chord= "⇧F19",                           app = "@APP_TERMINAL_ALT" },
+--         ⇪⌃b   │     ⌃F19     │              │   │
+--         ⇪⌥b   │     ⌥F19     │              │   │
+--         ⇪⌘b   │     ⌘F19     │              │   │
 --         ⇧⌃b   │              │              │   │ Unix Terminal — backward one letter
---         ⇧⌥b   │              │ ẞ    ẞ    ẞ  │   │
+--         ⇧⌥b   │              │    ẞ    ẞ    │   │
 --         ⇧⌘b   │              │              │   │         Rider — go to definition
 --               │              │              │   │        VSCode — select build task to run
 --               │              │              │   │          Fork — open Create Branch dialog
@@ -31,12 +31,12 @@ return {
 --         ⌥⌘b   │              │              │   │        VSCode — focus chat
 --               │              │              │   │          Mail — show Bcc field
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃b   │              │              │   │
---        ⇪⇧⌥b   │              │              │   │
---        ⇪⇧⌘b   │              │              │   │
---        ⇪⌃⌥b   │              │              │   │
---        ⇪⌃⌘b   │              │              │   │
---        ⇪⌥⌘b   │              │              │   │
+--        ⇪⇧⌃b   │    ⇧⌃F19     │              │   │
+--        ⇪⇧⌥b   │    ⇧⌥F19     │              │   │
+--        ⇪⇧⌘b   │    ⇧⌘F19     │              │   │
+--        ⇪⌃⌥b   │    ⌃⌥F19     │              │   │
+--        ⇪⌃⌘b   │    ⌃⌘F19     │              │   │
+--        ⇪⌥⌘b   │    ⌥⌘F19     │              │   │
 --        ⇧⌃⌥b   │              │              │   │
 --        ⇧⌃⌘b   │              │              │   │
 --        ⇧⌥⌘b   │              │              │   │

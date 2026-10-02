@@ -11,36 +11,36 @@ return {
 --          ⇧3   │              │ #    №    #  │   │
 --          ⌃3   │              │              │   │           VSCode — go to tab 3
 --          ⌥3   │      ⌘n      │              │ ✓ │                 — new window
+--               │              │              │   │           VSCode — new file
 --               │              │              │   │            Music — create a new playlist
 --               │              │              │   │             Mail — start a new email
---               │              │              │   │           VSCode — new file
 --          ⌘3   │              │              │   │            Rider — focus unit tests explorer
---               │              │              │   │           Finder — view in columns
 --               │              │              │   │          Browser — open 3rd tab
---               │              │              │   │ Activity Manager — open/focus CPU history window
 --               │              │              │   │         Telegram — focus 3rd folder or chat
---          ⇥3   │      ⌘-      │              │   │          Browser — zoom out
---               │              │              │   │            Rider — collapse code block
+--               │              │              │   │           Finder — view in columns
+--               │              │              │   │ Activity Manager — open/focus CPU history window
+--          ⇥3   │      ⌘-      │              │   │            Rider — collapse code block
+--               │              │              │   │          Browser — zoom out
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧3   │     ⇧F3      │              │   │ ???
+--         ⇪⇧3   │     ⇧F3      │              │   │
 --         ⇪⌃3   │     ⌃F3      │              │ ✓ │                 — move focus to Dock
 --         ⇪⌥3   │     ⌥F3      │              │   │           VSCode — show next change file changes
---         ⇪⌘3   │     ⌘F3      │              │   │ ???
+--         ⇪⌘3   │     ⌘F3      │              │   │
 --         ⇧⌃3   │              │              │   │            Rider — toggle bookmark 3
---         ⇧⌥3   │              │ ¹⁄₃ ¹⁄₃   ή  │   │
+--         ⇧⌥3   │              │ ¹⁄₃  ¹⁄₃  ή  │   │
 --         ⇧⌘3   │              │              │   │            Shotr — save screenshot of window
 --         ⌃⌥3   │              │              │   │ Marshall
-{ chord = "⌃⌥3",                                fn = "audio.connect_marshall" },
---         ⌃⌘3   │              │              │   │ ???
---         ⌥⌘3   │              │              │   │             Fork — show commit filetree
+{ chord = "⌃⌥3",                            fn = "audio.connect_marshall" },
+--         ⌃⌘3   │              │              │   │
 --         ⌥⌘3   │              │              │   │         Telegram — focus 3rd chat
+--               │              │              │   │             Fork — show commit filetree
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃3   │              │              │   │
---        ⇪⇧⌥3   │              │              │   │
---        ⇪⇧⌘3   │              │              │   │
---        ⇪⌃⌥3   │              │              │   │
---        ⇪⌃⌘3   │              │              │   │
---        ⇪⌥⌘3   │              │              │   │
+--        ⇪⇧⌃3   │     ⇧⌃F3     │              │   │
+--        ⇪⇧⌥3   │     ⇧⌥F3     │              │   │
+--        ⇪⇧⌘3   │     ⇧⌘F3     │              │   │
+--        ⇪⌃⌥3   │     ⌃⌥F3     │              │   │
+--        ⇪⌃⌘3   │     ⌃⌘F3     │              │   │
+--        ⇪⌥⌘3   │     ⌥⌘F3     │              │   │
 --        ⇧⌃⌥3   │              │              │   │
 --        ⇧⌃⌘3   │              │              │   │
 --        ⇧⌥⌘3   │              │              │   │

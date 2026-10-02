@@ -7,28 +7,28 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           4   │              │      4       │   │          YouTube — navigate to 40% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪4   │      F4      │              │   │           VSCode — go to next found occurrence
---               │              │              │ ✓ │                 — open to edit
+--          ⇪4   │      F4      │              │ ✓ │                 — open to edit
+--               │              │              │   │           VSCode — go to next found occurrence
 --          ⇧4   │              │ $    ;    $  │   │
 --          ⌃4   │              │              │   │           VSCode — go to tab 4
---          ⌥4   │      ⌘h      │              │   │                 — hide current app
+--          ⌥4   │      ⌘h      │              │ ✓ │                 — minimize window, focus next (Hammerspoon)
 --          ⌘4   │              │              │   │            Rider — focus build window
---               │              │              │   │           Finder — View in gallery
 --               │              │              │   │          Browser — Open 4th tab
---               │              │              │   │ Activity Manager — Open/focus GPU history window
 --               │              │              │   │         Telegram — focus 4th folder or chat
---          ⇥4   │      ⌘=      │              │   │          Browser — Zoom in
---               │              │              │   │            Rider — expand code block
+--               │              │              │   │           Finder — View in gallery
+--               │              │              │   │ Activity Manager — Open/focus GPU history window
+--          ⇥4   │      ⌘=      │              │   │            Rider — expand code block
+--               │              │              │   │          Browser — Zoom in
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧4   │     ⇧F4      │              │   │
 --         ⇪⌃4   │     ⌃F4      │              │   │
 --         ⇪⌥4   │     ⌥F4      │              │   │
 --         ⇪⌘4   │     ⌘F4      │              │   │
 --         ⇧⌃4   │              │              │   │
---         ⇧⌥4   │              │              │   │
+--         ⇧⌥4   │              │ ¹⁄₄  ¹⁄₄  ό  │   │
 --         ⇧⌘4   │              │              │   │            Shotr — start getting screenshot
 --         ⌃⌥4   │              │              │   │ Audio Ext
-{ chord = "⌃⌥4",                                fn = "audio.external" },
+{ chord = "⌃⌥4",                            fn = "audio.external" },
 --         ⌃⌘4   │              │              │   │
 --         ⌥⌘4   │              │              │   │         Telegram — focus 4th chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

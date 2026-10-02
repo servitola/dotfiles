@@ -5,29 +5,29 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           ␣   │              │      ␣       │   │        Finder — Show Preview
---               │              │              │   │         Music — Play/Pause
+--           ␣   │              │              │   │         Music — Play/Pause
 --               │              │              │   │          Fork — Show changes Preview
+--               │              │              │   │        Finder — Show Preview
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪␣   │play_or_pause │              │   │
+--          ⇪␣   │     ▶/⏸      │              │   │
 --          ⇧␣   │              │              │   │
 --          ⌃␣   │              │              │ ✓ │              — change language layout
---          ⌥␣   │              │     nbsp     │   │         Music — Start Genius Shuffle
+--          ⌥␣   │              │              │   │         Music — Start Genius Shuffle
 --          ⌘␣   │              │              │   │       Raycast — open Raycast
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧␣   │     num0     │              │   │
-{ chord = "num0",                           fn = "musicapp.play_pause" },
+--         ⇪⇧␣   │              │              │   │         Music — play / pause
+{ chord = "⇪⇧␣",                            fn = "musicapp.play_pause" },
 --         ⇪⌃␣   │              │              │   │
 --         ⇪⌥␣   │              │              │   │
 --         ⇪⌘␣   │              │              │   │
 --         ⇧⌃␣   │              │              │   │
 --         ⇧⌥␣   │              │              │   │
 --         ⇧⌘␣   │              │              │   │
---         ⌃⌥␣   │              │              │   │
+--         ⌃⌥␣   │              │              │ ✓ │
 --         ⌃⌘␣   │              │              │ ✓ │              — emojis
 --         ⌥⌘␣   │              │              │ ✓ │              — open Finder and focus Search this Mac
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃␣   │play_or_pause │              │   │
+--        ⇪⇧⌃␣   │     ▶/⏸      │              │   │
 --        ⇪⇧⌥␣   │              │              │   │
 --        ⇪⇧⌘␣   │              │              │   │
 --        ⇪⌃⌥␣   │              │              │   │

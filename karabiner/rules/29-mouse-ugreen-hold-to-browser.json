@@ -1,5 +1,5 @@
 {
-    "description": "UGREEN BLE Mouse — hold forward side button to focus/launch the main browser (same F19 as Hyper+V), tap stays native forward",
+    "description": "UGREEN BLE Mouse — hold forward side button to focus/launch the main browser (same F16 as Hyper+V), tap stays native forward",
     "manipulators": [
         {
             "type": "basic",
@@ -13,7 +13,7 @@
             ],
             "to_if_held_down": [
                 {
-                    "key_code": "f19"
+                    "key_code": "f16"
                 }
             ],
             "parameters": {

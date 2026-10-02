@@ -5,14 +5,14 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           u   │              │ u    г    υ  │   │
+--           u   │              │ u    г    θ  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪u   │              │              │   │
---          ⇧u   │              │ U    Г    Υ  │   │
+--          ⇧u   │              │ U    Г    Θ  │   │
 --          ⌃u   │              │              │   │
---          ⌥u   │              │ѵ    ѵ­­    no│   │
---          ⌘u   │              │              │   │      Telegram — toggle underline for text
---               │              │              │   │         Music — open 'stream audio file at a specific URL' dialog
+--          ⌥u   │              │      ѵ       │   │
+--          ⌘u   │              │              │   │         Music — open 'stream audio file at a specific URL' dialog
+--               │              │              │   │      Telegram — toggle underline for text
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧u   │              │              │   │
 --         ⇪⌃u   │              │              │   │
@@ -20,12 +20,12 @@ return {
 --         ⇪⌘u   │              │              │   │
 --         ⇧⌃u   │              │              │   │
 --         ⇧⌥u   │              │ Ѵ    Ѵ    Ξ  │   │         Rider — show unit testing quick panel
---         ⇧⌘u   │              │              │   │          Mail — mark emails as read or unread
---               │              │              │   │         Rider — toggle case of text
+--         ⇧⌘u   │              │              │   │         Rider — toggle case of text
+--               │              │              │   │          Mail — mark emails as read or unread
 --         ⌃⌥u   │              │              │   │
 --         ⌃⌘u   │              │              │   │         Music — show/hide lyrics panel
 --         ⌥⌘u   │              │              │   │         Music — Show playing next queue
---               │              │              │   │        Vivaldi — view source code
+--               │              │              │   │       Vivaldi — view source code
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃u   │              │              │   │
 --        ⇪⇧⌥u   │              │              │   │

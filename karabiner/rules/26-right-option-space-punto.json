@@ -1,5 +1,5 @@
 {
-    "description": "Right Option + Space → Control+F14 (Punto Switcher reconversion)",
+    "description": "Right Option + Space → Keypad 9 (Punto Switcher reconversion)",
     "manipulators": [
         {
             "type": "basic",
@@ -17,10 +17,7 @@
                     "hold_down_milliseconds": 50
                 },
                 {
-                    "key_code": "f14",
-                    "modifiers": [
-                        "left_control"
-                    ]
+                    "key_code": "keypad_9"
                 }
             ]
         }

@@ -472,25 +472,6 @@
                 }
             ],
             "type": "basic"
-        },
-        {
-            "from": {
-                "key_code": "h",
-                "modifiers": {
-                    "mandatory": [
-                        "left_shift",
-                        "left_control",
-                        "left_option",
-                        "left_command"
-                    ]
-                }
-            },
-            "to": [
-                {
-                    "key_code": "keypad_1"
-                }
-            ],
-            "type": "basic"
         }
     ]
 }

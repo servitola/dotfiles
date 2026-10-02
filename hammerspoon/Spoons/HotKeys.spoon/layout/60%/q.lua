@@ -8,7 +8,7 @@ return {
 --           q   │              │ q    й    ;  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪q   │     PgUp     │              │   │
---          ⇧q   │              │ Q    Й    :  │   │   Browser Vimt — go to root domain
+--          ⇧q   │              │ Q    Й    :  │   │  Browser Vimt — go to root domain
 --          ⌃q   │              │              │   │         Rider — stop all/build
 --               │              │              │   │        VSCode — quick view popup
 --          ⌥q   │      ⌫       │              │ ✓ │              — delete letter to the left
@@ -27,25 +27,24 @@ return {
 --               │              │              │   │         Rider — delete line
 --               │              │              │   │        VSCode — delete line
 --         ⇧⌃q   │      ⌫       │              │ ✓ │              — delete symbol to the left
---         ⇧⌥q   │      ⇧⌫      │              │   │         Rider — delete line
+--         ⇧⌥q   │      ⇧⌦      │              │   │         Rider — delete line
 --         ⇧⌘q   │              │              │ ✓ │              — log out from account with closing of all apps
 --         ⌃⌥q   │              │              │   │ Music
-{ chord = "⌃⌥q",                            app = "Music" },
+{ chord = "⌃⌥q",                           app = "@APP_MUSIC" },
 --         ⌃⌘q   │              │              │ ✓ │              — lock screen
 --         ⌥⌘q   │      ⌘⌫      │              │ ✓ │              — delete
 --               │              │              │   │         Rider — delete line
 --               │              │              │   │        VSCode — delete line
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃q   │      ⇪p      │              │   │ H — open Music app
---        ⇪⇧⌥q   │              │              │   │
+--        ⇪⇧⌃q   │      ⇪p      │              │   │             H — open Music app
+--        ⇪⇧⌥q   │    ⇧⌥PgUp    │              │   │
 --        ⇪⇧⌘q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
---        ⇪⌃⌥q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
+--        ⇪⌃⌥q   │    ⌃⌥PgUp    │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
-{ chord = "num2",                                fn  = "apps.close_unnecessary" },
--- ⇪⌃⌘q → num2   │              │              │   │ H — close unnecessary apps
---        ⇪⌥⌘q   │              │              │   │
---        ⇧⌃⌥q   │              │              │   │
+--        ⇪⌃⌘q   │              │              │   │
+--        ⇪⌥⌘q   │    ⌥⌘PgUp    │              │   │
+--        ⇧⌃⌥q   │      ⌘[      │              │   │
 --        ⇧⌃⌘q   │              │              │   │
 --        ⇧⌥⌘q   │              │              │ ✓ │              — close all other apps
 --        ⌃⌥⌘q   │              │              │   │

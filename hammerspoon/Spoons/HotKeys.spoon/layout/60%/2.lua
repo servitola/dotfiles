@@ -10,32 +10,32 @@ return {
 --          ⇪2   │      F2      │              │   │            Rider — next error in file
 --          ⇧2   │              │ @    "    @  │   │
 --          ⌃2   │              │              │   │           VSCode — go to tab 2
---          ⌥2   │     ⇧⌃z      │              │ ✓ │         VoiceInk — start/stop recoding (CUSTOM)
+--          ⌥2   │     ⇧⌃z      │              │   │         VoiceInk — start/stop recoding (CUSTOM)
 --          ⌘2   │              │              │   │            Rider — focus debug window
---               │              │              │   │           Finder — View as list
 --               │              │              │   │          Browser — Open 2nd tab
---               │              │              │   │             Fork — Focus All commits window
---               │              │              │   │ Activity Manager — Open/focus CPU usage window
 --               │              │              │   │         Telegram — focus 2nd folder or chat
 --               │              │              │   │             IINA — set window-scale 2
---          ⇥2   │      ⌘0      │              │   │          Browser — Reset zoom
---               │              │              │   │           VSCode — focus into primary sidebar
---               │              │              │   │         Telegram — focus Saved Messages
+--               │              │              │   │             Fork — Focus All commits window
+--               │              │              │   │           Finder — View as list
+--               │              │              │   │ Activity Manager — Open/focus CPU usage window
+--          ⇥2   │      ⌘0      │              │   │           VSCode — focus into primary sidebar
 --               │              │              │   │            Music — Show/Hide Music window
---               │              │              │   │             Fork — navigate to HEAD
+--               │              │              │   │          Browser — Reset zoom
+--               │              │              │   │         Telegram — focus Saved Messages
 --               │              │              │   │             IINA — set window-scale 0.5
 --               │              │              │   │             Mail — show the Mail viewer window
+--               │              │              │   │             Fork — navigate to HEAD
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧2   │     ⇧F2      │              │   │ ???
+--         ⇪⇧2   │     ⇧F2      │              │   │
 --         ⇪⌃2   │     ⌃F2      │              │ ✓ │                 — move focus to the menu bar
 --         ⇪⌥2   │     ⌥F2      │              │   │             Fork — show commit changes
---         ⇪⌘2   │     ⌘F2      │              │   │ ???
+--         ⇪⌘2   │     ⌘F2      │              │   │
 --         ⇧⌃2   │              │              │   │            Rider — toggle bookmark 2
---         ⇧⌥2   │              │              │   │ VoiceInk
-{ chord = "⇧⌥2",                               app = "VoiceInk" },
+--         ⇧⌥2   │              │ ¹⁄₂  ¹⁄₂  ί  │   │ VoiceInk
+{ chord = "⇧⌥2",                           app = "VoiceInk" },
 --         ⇧⌘2   │              │              │   │            Shotr — OCR from screen
 --         ⌃⌥2   │              │              │   │ Audio BT
-{ chord = "⌃⌥2",                                fn = "audio.bt" },
+{ chord = "⌃⌥2",                            fn = "audio.bt" },
 --         ⌃⌘2   │              │              │   │
 --         ⌥⌘2   │              │              │   │         Telegram — focus 2nd chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

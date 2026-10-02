@@ -5,20 +5,20 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           w   │              │ w    ц    ω  │   │   Browser Vim — toggle pin tab
+--           w   │              │ w    ц    ς  │   │   Browser Vim — toggle pin tab
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪w   │      ↑       │              │ ✓ │              — up
---          ⇧w   │              │ W    Ц    Ω  │   │
+--          ⇧w   │              │ W    Ц    ΅  │   │
 --          ⌃w   │              │              │   │         Rider — close all notifications
 --               │              │              │   │        VSCode — select window to switch
 --          ⌥w   │      ⌥↑      │              │ ✓ │              — move line up
 --               │              │              │   │         Rider — extend selection
 --          ⌘w   │              │              │ ✓ │              — close current tab
---          ⇥w   │      ⌘[      │              │   │          IINA — multiply speed 0.5
---               │              │              │   │         Rider — navigate back
---               │              │              │   │        Finder — navigate back
---               │              │              │   │       Browser — navigate back
+--          ⇥w   │      ⌘[      │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
+--               │              │              │   │       Browser — navigate back
+--               │              │              │   │          IINA — multiply speed 0.5
+--               │              │              │   │        Finder — navigate back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧w   │      ⇧↑      │              │ ✓ │              — select line up
 --         ⇪⌃w   │      ⌃↑      │              │ ✓ │              — show all windows
@@ -27,25 +27,26 @@ return {
 --         ⇪⌘w   │      ⌘↑      │              │   │        VSCode — jump to breadcumbs
 --         ⇧⌃w   │      ⌘m      │              │ ✓ │              — minimize window
 --         ⇧⌥w   │     ⇧⌥↑      │              │   │        VSCode — move line up
---         ⇧⌘w   │              │              │   │         Rider — close other tabs
---               │              │              │ ✓ │              — close window
+--         ⇧⌘w   │              │              │ ✓ │              — close window
+--               │              │              │   │         Rider — close other tabs
 --         ⌃⌥w   │              │              │   │ Fullscr
-{ chord = "⌃⌥w",                             fn = "window.fullscreen" },
---         ⌃⌘w   │              │              │   │ ???
---         ⌥⌘w   │              │              │   │          Mail — close all Mail windows
---               │              │              │   │        VSCode — toggle search whole word
+{ chord = "⌃⌥w",                            fn = "window.fullscreen" },
+--         ⌃⌘w   │              │              │   │
+--         ⌥⌘w   │              │              │   │        VSCode — toggle search whole word
+--               │              │              │   │          Mail — close all Mail windows
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃w   │  volume_up   │              │ ✓ │              — volume_increment
---        ⇪⇧⌥w   │              │              │   │
---        ⇪⇧⌘w   │ key_light_up │              │ ✓ │              — illumination_increment
---        ⇪⌃⌥w   │              │              │   │
+--        ⇪⇧⌃w   │     Vol↑     │              │ ✓ │              — volume_increment
+--        ⇪⇧⌥w   │     ⇧⌥↑      │              │   │
+--        ⇪⇧⌘w   │      🔆       │              │ ✓ │              — illumination_increment
+--        ⇪⌃⌥w   │     ⌃⌥↑      │              │   │
 --        ⇪⌃⌘w   │     ⌃⌘↑      │              │   │         Rider — navigate to up method
 --        ⇪⌥⌘w   │     ⌥⌘↑      │              │   │        VSCode — clone caret up;
 --               │              │              │   │         iTerm — focus pane above
 --        ⇧⌃⌥w   │              │              │   │ Top 60%
-{ chord= "⇧⌃⌥w",                             fn = "window.top_60" },
+{ chord= "⇧⌃⌥w",                            fn = "window.top_60" },
 --        ⇧⌃⌘w   │              │              │   │
 --        ⇧⌥⌘w   │              │              │   │
 --        ⌃⌥⌘w   │              │              │   │
+--       ⇧⌃⌥⌘w   │    ⇧⌃⌥⌘↑     │              │   │
 --               ┴              ┴              ┴   ┴
 }

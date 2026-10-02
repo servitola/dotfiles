@@ -8,14 +8,14 @@ return {
 --           n   │              │ n    т    ν  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪n   │              │              │   │ Visual Studio Code
-{ chord =  "⇪n",                           app = "Visual Studio Code" },
+{ chord =  "⇪n",                           app = "@APP_EDITOR" },
 --          ⇧n   │              │ N    Т    Ν  │   │
 --          ⌃n   │              │              │   │
---          ⌥n   │              │ ‘    ‘    ‘  │   │         Mail — open a new Mail viewer window
---          ⌘n   │              │              │ ✓ │             — new window
---               │              │              │   │        Music — create a new playlist
---               │              │              │   │         Mail — start a new email
---               │              │              │   │       VSCode — new file
+--          ⌥n   │              │      ‘       │   │          Mail — open a new Mail viewer window
+--          ⌘n   │              │              │ ✓ │              — new window
+--               │              │              │   │        VSCode — new file
+--               │              │              │   │         Music — create a new playlist
+--               │              │              │   │          Mail — start a new email
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧n   │              │              │   │
 --         ⇪⌃n   │              │              │   │
@@ -23,14 +23,14 @@ return {
 --         ⇪⌘n   │              │              │   │
 --         ⇧⌃n   │              │              │   │
 --         ⇧⌥n   │              │ ˜    ˜    Ό  │   │
---         ⇧⌘n   │              │              │   │         Mail — get new emails
---               │              │              │   │      Browser — open new Private Window
---               │              │              │   │        Music — create a playlist from selection
+--         ⇧⌘n   │              │              │   │         Music — create a playlist from selection
+--               │              │              │   │       Browser — open new Private Window
+--               │              │              │   │          Mail — get new emails
 --         ⌃⌥n   │              │              │   │
 --         ⌃⌘n   │              │              │   │
---         ⌥⌘n   │              │              │   │        Music — create a Smart Playlist
---                              │         Mail — open a new tab in Mail viewer
---                              │        Rider — inline
+--         ⌥⌘n   │              │              │   │         Rider — inline
+--               │              │              │   │         Music — create a Smart Playlist
+--               │              │              │   │          Mail — open a new tab in Mail viewer
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃n   │              │              │   │
 --        ⇪⇧⌥n   │              │              │   │

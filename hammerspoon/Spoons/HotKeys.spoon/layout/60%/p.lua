@@ -8,15 +8,15 @@ return {
 --           p   │              │ p    з    π  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪p   │              │              │   │ Music
-{ chord =  "⇪p",                            app = "Music" },
+{ chord =  "⇪p",                           app = "@APP_MUSIC" },
 --          ⇧p   │              │ P    З    Π  │   │
---          ⌃p   │              │              │   │ Unix Terminal — cycle through last commands forward
---               │              │              │   │        VSCode — cursor up
+--          ⌃p   │              │              │   │        VSCode — cursor up
+--               │              │              │   │ Unix Terminal — cycle through last commands forward
 --               │              │              │   │   Claude Code — cycle through last commands forward
---          ⌥p   │              │ ′    ′    ≈  │   │
---          ⌘p   │              │              │ ✓ │  — print
---               │              │              │   │ Music — play
---               │              │              │   │ Fork — Show Command Palette
+--          ⌥p   │              │      ′       │   │
+--          ⌘p   │              │              │ ✓ │              — print
+--               │              │              │   │         Music — play
+--               │              │              │   │          Fork — Show Command Palette
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧p   │              │              │   │
 --         ⇪⌃p   │              │              │   │
@@ -24,12 +24,12 @@ return {
 --         ⇪⌘p   │              │              │   │
 --         ⇧⌃p   │              │              │   │ Unix Terminal — cycle through last commands back
 --               │              │              │   │   Claude Code — cycle through last commands back
---         ⇧⌥p   │              │              │   │
---         ⇧⌘p   │              │              │   │          Fork — open Push dialog
---               │              │              │   │        VSCode — open command palette
+--         ⇧⌥p   │              │    ″    ″    │   │
+--         ⇧⌘p   │              │              │   │        VSCode — open command palette
+--               │              │              │   │          Fork — open Push dialog
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
---         ⌥⌘p   │              │              │   │        Vivaldi — print using system dialog
+--         ⌥⌘p   │              │              │   │       Vivaldi — print using system dialog
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃p   │              │              │   │
 --        ⇪⇧⌥p   │              │              │   │

@@ -5,14 +5,14 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           m   │              │ m    ь    μ  │   │   Browser Vim — Mute Tab
---               │              │              │   │          IINA — cycle mute
+--           m   │              │ m    ь    μ  │   │          IINA — cycle mute
+--               │              │              │   │   Browser Vim — Mute Tab
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪m   │              │              │ ✓ │              — center window on screen
-{ chord = "⇪m",                                 fn = "window.center" },
+{ chord =  "⇪m",                            fn = "window.center" },
 --          ⇧m   │              │ M    Ь    Μ  │   │
 --          ⌃m   │              │              │   │
---          ⌥m   │              │ −    −    ’  │   │
+--          ⌥m   │              │      −       │   │
 --          ⌘m   │              │              │ ✓ │              — minimize window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧m   │              │              │   │
@@ -24,8 +24,8 @@ return {
 --         ⇧⌘m   │              │              │   │         Rider — new project window
 --         ⌃⌥m   │              │              │   │
 --         ⌃⌘m   │              │              │   │
---         ⌥⌘m   │              │              │   │         Music — open/close MiniPlayer
---               │              │              │   │         Rider — extract method
+--         ⌥⌘m   │              │              │   │         Rider — extract method
+--               │              │              │   │         Music — open/close MiniPlayer
 --               │              │              │   │          Mail — move to predicted mailbox
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃m   │              │              │   │

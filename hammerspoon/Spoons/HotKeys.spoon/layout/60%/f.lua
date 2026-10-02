@@ -5,42 +5,41 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           f   │              │ f    а    φ  │   │      Browser — Go Full Screen Video
+--           f   │              │ f    а    φ  │   │       Browser — Go Full Screen Video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪f   │              │              │   │ Finder
-{ chord =   "⇪f",                                              app = "Finder" },
+--          ⇪f   │     F15      │              │   │               ↓
+{ chord = "F15",                           app = "Finder" },
 --          ⇧f   │              │ F    А    Φ  │   │
---          ⌃f   │              │              │   │        Rider — focus Find panel
---               │              │              │   │       VSCode — move cursor right
---               │              │              │   │     Forkgram — global search (⌘K) HAMMERSPOON CUSTOM
---          ⌥f   │              │ f    £    ≠  │   │         Fork — toggle Force Push on Push dialog
---          ⌘f   │              │              │ ✓ │             — find
---          ⇥f   │              │              │   │ ???
+--          ⌃f   │              │              │   │         Rider — focus Find panel
+--               │              │              │   │        VSCode — move cursor right
+--               │              │              │   │      Forkgram — global search (⌘K) HAMMERSPOON CUSTOM
+--          ⌥f   │              │      £       │   │          Fork — toggle Force Push on Push dialog
+--          ⌘f   │              │              │ ✓ │              — find
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧f   │     F15      │              │   │
-{ chord =  "F15",                                              app = "Marta" },
---         ⇪⌃f   │              │              │   │ ???
---         ⇪⌥f   │              │              │   │ ???
---         ⇪⌘f   │      ⌘o      │              │ ✓ │             — open file
---         ⇧⌃f   │              │              │   │ ???
---         ⇧⌥f   │              │              │   │       VSCode — format
---         ⇧⌘f   │              │              │   │        Music — open/close Full Screen Player
---               │              │              │   │         Fork — quick Fetch
---               │              │              │   │         Fork — toggle Force Push on Push dialog
---               │              │              │   │         Mail — forward email
---               │              │              │   │        Rider — search in files
+--         ⇪⇧f   │     ⇧F15     │              │   │               ↓
+{ chord= "⇧F15",                           app = "@APP_FILES" },
+--         ⇪⌃f   │     ⌃F15     │              │   │
+--         ⇪⌥f   │     ⌥F15     │              │   │
+--         ⇪⌘f   │      ⌘o      │              │ ✓ │              — open file
+--         ⇧⌃f   │              │              │   │
+--         ⇧⌥f   │              │      Π       │   │        VSCode — format
+--         ⇧⌘f   │              │              │   │         Rider — search in files
+--               │              │              │   │         Music — open/close Full Screen Player
+--               │              │              │   │          Mail — forward email
+--               │              │              │   │          Fork — quick Fetch
+--               │              │              │   │          Fork — toggle Force Push on Push dialog
 --         ⌃⌥f   │              │              │   │ → RU
-{ chord =  "⌃⌥f",                            fn = "translate_to_russian" },
---         ⌃⌘f   │              │              │ ✓ │             — toggle fullscreen of current app
---         ⌥⌘f   │              │              │   │        Rider — extract field
---               │              │              │   │       VSCode — extract field
+{ chord = "⌃⌥f",                            fn = "translate_to_russian" },
+--         ⌃⌘f   │              │              │ ✓ │              — toggle fullscreen of current app
+--         ⌥⌘f   │              │              │   │         Rider — extract field
+--               │              │              │   │        VSCode — extract field
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---        ⇪⇧⌃f   │              │              │   │
---        ⇪⇧⌥f   │              │              │   │
---        ⇪⇧⌘f   │              │              │   │
---        ⇪⌃⌥f   │              │              │   │
---        ⇪⌃⌘f   │              │              │   │
---        ⇪⌥⌘f   │              │              │   │
+--        ⇪⇧⌃f   │    ⇧⌃F15     │              │   │
+--        ⇪⇧⌥f   │    ⇧⌥F15     │              │   │
+--        ⇪⇧⌘f   │    ⇧⌘F15     │              │   │
+--        ⇪⌃⌥f   │    ⌃⌥F15     │              │   │
+--        ⇪⌃⌘f   │    ⌃⌘F15     │              │   │
+--        ⇪⌥⌘f   │    ⌥⌘F15     │              │   │
 --        ⇧⌃⌥f   │              │              │   │
 --        ⇧⌃⌘f   │              │              │   │
 --        ⇧⌥⌘f   │              │              │   │

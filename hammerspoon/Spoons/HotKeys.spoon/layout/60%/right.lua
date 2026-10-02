@@ -9,9 +9,9 @@ return {
 --               │              │              │   │       YouTube — seek forward 5sec
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪→   │              │              │   │
---          ⇧→   │              │              │ ✓ │             — select one letter right
---          ⌃→   │              │              │ ✓ │             — jump to workspace to the right
---          ⌥→   │              │              │ ✓ │             — jump to next word
+--          ⇧→   │              │              │ ✓ │              — select one letter right
+--          ⌃→   │              │              │ ✓ │              — jump to workspace to the right
+--          ⌥→   │              │              │ ✓ │              — jump to next word
 --          ⌘→   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧→   │              │              │   │
@@ -19,13 +19,14 @@ return {
 --         ⇪⌥→   │              │              │   │
 --         ⇪⌘→   │              │              │   │
 --         ⇧⌃→   │              │              │   │
---         ⇧⌥→   │              │              │   │       VSCode — move line right
---         ⇧⌘→   │              │              │ ✓ │             — select line till the end
+--         ⇧⌥→   │              │              │   │        VSCode — move line right
+--         ⇧⌘→   │              │              │ ✓ │              — select line till the end
 --         ⌃⌥→   │              │              │   │ Window →, 2nd press ½ →
 { chord = "⌃⌥→",                            fn = "window.right" },
---         ⌃⌘→   │              │              │   │       VSCode — move editor to next group
---         ⌥⌘→   │              │              │   │       VSCode — navigate next tab
---               │              │              │   │        Music — seek forward
+--        ⌃⌥←→   │     num8     │              │   │
+--         ⌃⌘→   │              │              │   │        VSCode — move editor to next group
+--         ⌥⌘→   │              │              │   │        VSCode — navigate next tab
+--               │              │              │   │         Music — seek forward
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃→   │              │              │   │
 --        ⇪⇧⌥→   │              │              │   │
@@ -37,7 +38,9 @@ return {
 { chord= "⇧⌃⌥→",                            fn = "window.half_right" },
 --        ⇧⌃⌘→   │              │              │   │
 --        ⇧⌥⌘→   │              │              │   │
---⇧⌃⌥⌘→ → ⌃⌥F13  │              │              │ ✓ │              — focus comms apps (hide non-comms)
-{ chord = "⌃⌥F13",                               fn = "window.focus_comms" },
+--        ⌃⌥⌘→   │              │              │   │ Window to next screen
+{ chord= "⌃⌥⌘→",                            fn = "window.screen_next" },
+--       ⇧⌃⌥⌘→   │              │              │ ✓ │              — focus comms apps (hide non-comms)
+{ chord= "⇧⌃⌥⌘→",                           fn = "window.focus_comms" },
 --               ┴              ┴              ┴   ┴
 }

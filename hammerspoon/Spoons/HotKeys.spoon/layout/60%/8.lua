@@ -8,9 +8,9 @@ return {
 --           8   │              │      8       │   │       YouTube — navigate to 80% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪8   │      F8      │              │   │         Rider — step over (debugging)
---          ⇧8   │              │ *    *    *  │   │
+--          ⇧8   │              │      *       │   │
 --          ⌃8   │              │              │   │         Rider — go to Bookmark 8
---          ⌥8   │              │ ∞    ∞    •  │   │
+--          ⌥8   │              │      ∞       │   │
 --          ⌘8   │              │              │   │         Rider — focus logcat
 --               │              │              │   │       Browser — Open 8th tab
 --               │              │              │   │      Telegram — focus 8th folder or chat
@@ -20,7 +20,7 @@ return {
 --         ⇪⌥8   │     ⌥F8      │              │   │
 --         ⇪⌘8   │     ⌘F8      │              │   │
 --         ⇧⌃8   │              │              │   │
---         ⇧⌥8   │              │              │   │
+--         ⇧⌥8   │              │      Ρ       │   │
 --         ⇧⌘8   │              │              │   │         Rider — toggle Column selection mode
 --         ⌃⌥8   │              │              │   │
 --         ⌃⌘8   │              │              │   │

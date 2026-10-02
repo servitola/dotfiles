@@ -34,11 +34,11 @@ return {
 --         ⇧⌃d   │              │              │   │
 --         ⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right
 --         ⇧⌘d   │              │              │   │        VSCode — focus Run and Debug panel
---               │              │              │   │        Finder — go to Desktop
 --               │              │              │   │          Mail — send emails
+--               │              │              │   │        Finder — go to Desktop
 --         ⌃⌥d   │              │              │   │        VSCode — focus Run and Debug panel
-{ chord = "⌃⌥d",                             fn = "window.right" },
---        ⌃⌥ad   │    ⌃⌥F14     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
+{ chord = "⌃⌥d",                            fn = "window.right" },
+--        ⌃⌥ad   │     num8     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
 --         ⌥⌘d   │              │              │ ✓ │              — show/hide Dock
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -51,7 +51,7 @@ return {
 --               │              │              │   │         Music — seek forward;
 --               │              │              │   │         iTerm — focus pane to the right
 --        ⇧⌃⌥d   │              │              │   │ ½ Right
-{ chord= "⇧⌃⌥d",                             fn = "window.half_right" },
+{ chord= "⇧⌃⌥d",                            fn = "window.half_right" },
 --        ⇧⌃⌘d   │              │              │   │
 --        ⇧⌥⌘d   │              │              │   │
 --        ⌃⌥⌘d   │              │              │   │
