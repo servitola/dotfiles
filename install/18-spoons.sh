@@ -5,7 +5,7 @@ set -euo pipefail
 
 SPOONS="$DOTFILES/hammerspoon/Spoons"
 BIRMAN_LAYER=v3.9.1   # https://github.com/servitola/BirmanLayer.spoon/releases
-POWER_WINDOWS=v0.2.0  # https://github.com/servitola/PowerWindows.spoon/releases
+POWER_WINDOWS=v0.3.0  # https://github.com/servitola/PowerWindows.spoon/releases
 SCREEN_GLOW=v0.1.0    # https://github.com/servitola/ScreenGlow.spoon/releases
 FRESH_4K_WALLPAPER=v0.2.0  # https://github.com/servitola/Fresh4kWallpaper.spoon/releases
 AUTO_KEYBOARD_LAYOUT=v0.1.0  # https://github.com/servitola/AutoKeyboardLayout.spoon/releases
