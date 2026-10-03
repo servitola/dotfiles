@@ -3,7 +3,8 @@ hs.console.darkMode(true)
 hs.console.alpha(0.99)
 hs.ipc.cliInstall()
 hs.console.consoleFont({ name = 'JetBrainsMono Nerd Font Mono', size = 11.0 })
-hs.keycodes.setLayout("En Birman")
+local constants = require "constants"
+hs.keycodes.setLayout(constants.LAYOUT_PRIMARY)
 
 require "app_watcher_hub" -- centralized app event dispatcher (must load before spoons)
 local notify = require "notify"
