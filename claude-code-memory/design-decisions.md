@@ -25,7 +25,7 @@ Build: `cd karabiner && ./build.sh` (uses jq to merge template + rule files)
 
 ## Hammerspoon Async Pattern
 
-GruvboxWallpapers.spoon and any new network/shell operations MUST use `hs.task.new()` callbacks. `io.popen()` blocks the main thread, freezing all hotkeys and window management.
+Any new network/shell operation MUST be async — `hs.http.asyncGet` or `hs.task.new()` callbacks (Fresh4kWallpaper.spoon is the example). `io.popen()` blocks the main thread, freezing all hotkeys and window management.
 
 ## BrowserTabOpener Tab Cycling
 
