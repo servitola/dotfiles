@@ -2,7 +2,7 @@
 # Pre-commit lint for hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua.
 # Validates canonical ASCII format and coverage; passes on warnings.
 # Filenames passed by pre-commit; we only check format (--strict, no drift)
-# so the hook is fast and runs without parsing karabiner.json / keylayouts.
+# so the hook is fast and runs without parsing karabiner.json / the Birman layer.
 set -e
 
 # Repo root from git so the hook also works on CI runners (pre-commit
@@ -11,18 +11,28 @@ DOTFILES_ROOT="$(git rev-parse --show-toplevel)"
 
 # Filter to only *.lua files inside layout/60%/
 files=()
+shortcuts=0
 for f in "$@"; do
     case "$f" in
         hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua)
             files+=("$(basename "$f")")
             ;;
+        macos/shortcuts.toml)
+            shortcuts=1
+            ;;
     esac
 done
+
+# S1 compares every layout file against macos/shortcuts.toml, so a change to
+# the TOML alone lints all of them.
+if [ "$shortcuts" -eq 1 ]; then
+    exec python3 "$DOTFILES_ROOT/docs/keyboard/tools/lint.py" --strict --skip-drift
+fi
 
 # Nothing to check
 [ ${#files[@]} -eq 0 ] && exit 0
 
 # Strict mode: only ERROR fails the hook (format + coverage)
-# Skip drift checks to avoid karabiner.json/keylayout parse overhead
+# Skip drift checks to avoid karabiner.json/Birman layer parse overhead
 python3 "$DOTFILES_ROOT/docs/keyboard/tools/lint.py" \
     --strict --skip-drift --files "${files[@]}"

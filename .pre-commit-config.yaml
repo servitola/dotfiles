@@ -19,7 +19,14 @@ repos:
         name: Lint Hammerspoon keyboard layout files
         entry: .git-hooks/lint-keyboard-layout.sh
         language: system
-        files: ^hammerspoon/Spoons/HotKeys\.spoon/layout/60%/.*\.lua$
+        files: ^(hammerspoon/Spoons/HotKeys\.spoon/layout/60%/.*\.lua|macos/shortcuts\.toml)$
+        stages: [pre-commit]
+      - id: hyper-layers-generated
+        name: Karabiner rules 07-17 match layers.toml (gen_layers.py --check)
+        entry: python3 docs/keyboard/tools/gen_layers.py --check
+        language: system
+        pass_filenames: false
+        files: ^(karabiner/(layers\.toml|layers\.raw/.*|rules/(0[7-9]|1[0-7])-.*\.json)|docs/keyboard/(bridges|layers|parse_karabiner|config)\.py|docs/keyboard/tools/gen_layers\.py)$
         stages: [pre-commit]
       - id: lint-skill-frontmatter
         name: Validate Claude Code skill frontmatter
