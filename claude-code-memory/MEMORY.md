@@ -15,7 +15,7 @@ See [vision.md](vision.md) — north star for all dotfiles evolution.
 - **Browser**: Vivaldi (default, Hyper+V), Firefox (work URLs), Chrome (testing)
 - **Git client**: Fork. Visual diff via Fork or opendiff (FileMerge)
 - **Git pager**: diff-so-fancy (NOT delta — delta is not installed)
-- **Aliases**: `a`=claude -c, `c`=claude, `q`=qwen — all actively used, don't rename
+- **Aliases**: `a`=claude -c, `c`=claude — all actively used, don't rename
 - **Safety**: `rm`=trash everywhere. Only `/bin/rm` or `realrm` for real deletion
 - **Updates**: Manual via `up` alias. macOS auto-updates intentionally disabled
 - **Telemetry**: Double-blocked (hosts file + env vars). Don't remove either layer
