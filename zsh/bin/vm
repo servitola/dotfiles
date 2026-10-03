@@ -1,9 +1,9 @@
 #!/bin/zsh
-# Disposable macOS VMs on the external drive (tart, TART_HOME in constants.env).
+# Disposable macOS VMs (tart) on the Mac named by TART_HOST in constants.env.
 # A base VM is pulled once and never booted; every run boots a copy-on-write clone
 # of it and deletes the clone on exit, failure or Ctrl-C — nothing keeps running or growing.
 #
-#   vm status                         drive, space, VMs, anything still running
+#   vm status                         space, VMs, anything still running
 #   vm pull <name> <image>            pull a base, e.g. vm pull gg27 ghcr.io/cirruslabs/macos-golden-gate-base:latest
 #   vm run <base> [-d path]... -- <command>   run a command in a fresh clone, then throw it away
 #   vm shell <base> [-d path]...      interactive shell in a fresh clone, thrown away on exit
@@ -11,28 +11,71 @@
 #   vm stop                           stop and delete every clone left behind
 #   vm rm <name>                      delete a base
 #   vm log                            recent runs
+#   TART_HOST=<ssh host> vm ...       on another Mac; empty runs the VMs on this one
+#   VM_CPU, VM_MEMORY, VM_DISPLAY     the clone's hardware, e.g. VM_DISPLAY=1920x1080 (points)
 set -euo pipefail
 
-: "${TART_HOME:?TART_HOME unset — see constants.env}"
-export TART_HOME
+# This script and every -d directory are copied over on each call, so the other Mac
+# needs no dotfiles checkout; its VMs live in tart's default home on its internal disk.
+# A share is a copy there; what the guest wrote into it is copied back after the run,
+# what it deleted stays here.
+remote() {
+    local dir=.local/state/vm name v code=0
+    local -a args env shares
+    ssh "$TART_HOST" "mkdir -p $dir/shares && cat > $dir/vm && chmod +x $dir/vm" < "$ZSH_ARGZERO"
+    while (( $# )); do
+        case $1 in
+            --) args+=( "$@" ); break ;;
+            -d)
+                [[ -d ${2:-} ]] || { print -u2 "vm: no directory ${2:-}"; exit 1; }
+                name=${2:A:t}
+                rsync -a --delete "${2:A}/" "$TART_HOST:$dir/shares/$name/"
+                shares+=( "${2:A}" )
+                args+=( -d "$dir/shares/$name" ); shift 2 ;;
+            *) args+=( "$1" ); shift ;;
+        esac
+    done
+    for v in VM_CPU VM_MEMORY VM_DISPLAY VM_BOOT_TIMEOUT; do
+        [[ -v $v ]] && env+=( "$v=${(q)${(P)v}}" )
+    done
+    # Without a pty the far side never hears that the connection died, and the clone ran on
+    # for as long as the command did (2026-10-02). A forced one would add \r to every line.
+    local there="PATH=/opt/homebrew/bin:\$PATH TART_HOST= $env $dir/vm ${(j: :)${(@q)args}}"
+    setopt local_options no_err_exit
+    if [[ -t 0 && -t 1 ]]; then
+        ssh -o LogLevel=error -t "$TART_HOST" "$there"
+        code=$?
+    else
+        # ssh with a forced pty never exits once its stdout is closed (`vm status | head`,
+        # 2026-10-02), so the second cat keeps reading after the first one is gone.
+        ( ssh -o LogLevel=error -tt "$TART_HOST" "stty -onlcr -echo; $there" <&0 | { cat 2>/dev/null || cat > /dev/null }
+          exit $pipestatus[1] ) &
+        # Killing this script must take ssh with it, or the far side never hears; and zsh
+        # holds a trapped signal until a foreground child exits, hence the wait.
+        trap "pkill -P $!; exit 143" TERM HUP INT
+        wait $!
+        code=$?
+    fi
+    for name in $shares; do
+        rsync -a "$TART_HOST:$dir/shares/${name:t}/" "$name/" || print -u2 "vm: could not copy ${name:t} back from $TART_HOST"
+    done
+    exit $code
+}
+# A shell started before the constant existed has no TART_HOST at all, and would quietly run here.
+[[ -z ${TART_HOST=$("${0:A:h}/const" TART_HOST)} ]] || remote "$@"
+
+# tart's own default, spelled out: shells from before 2026-10-02 still export the old
+# home on the external drive.
+export TART_HOME=$HOME/.tart
 CPU=${VM_CPU:-4}
 MEMORY=${VM_MEMORY:-8192}
 BOOT_TIMEOUT=${VM_BOOT_TIMEOUT:-240}
 STATE="$HOME/.local/state/vm"
 LOG="$STATE/runs.log"
 PREFIX=eph-
-mkdir -p "$STATE"
+mkdir -p "$STATE" "$TART_HOME"
 
 die() { print -u2 "vm: $*"; exit 1; }
-
-# Pointing TART_HOME at an unmounted drive would make tart fail deep inside a pull;
-# say it up front instead.
-require_drive() {
-    local volume=${TART_HOME#/Volumes/}; volume=/Volumes/${volume%%/*}
-    [[ $TART_HOME == /Volumes/* ]] || return 0
-    mount | grep -q " on $volume " || die "$volume is not mounted"
-    mkdir -p "$TART_HOME"
-}
 
 free_gb() { df -g "$TART_HOME" | awk 'NR==2 {print $4}'; }
 
@@ -51,10 +94,6 @@ clones() { print -l "$TART_HOME"/vms/$PREFIX*(N:t); }
 
 cmd_status() {
     print "TART_HOME  $TART_HOME"
-    if [[ $TART_HOME == /Volumes/* ]] && ! mount | grep -q " on /Volumes/${${TART_HOME#/Volumes/}%%/*} "; then
-        print "drive      not mounted"; return
-    fi
-    mkdir -p "$TART_HOME"
     print "free       $(free_gb) GB"
     print "used       $(du -sh "$TART_HOME" 2>/dev/null | cut -f1)"
     print
@@ -66,7 +105,6 @@ cmd_status() {
 cmd_pull() {
     (( $# == 2 )) || die "usage: vm pull <name> <image>"
     local name=$1 image=$2 need free
-    require_drive
     tart get "$name" >/dev/null 2>&1 && die "$name exists — vm rm $name first"
     need=$(image_gb "$image"); free=$(free_gb)
     # Download and unpacked disk share blocks on APFS, so one disk size plus slack.
@@ -83,7 +121,6 @@ boot() {
     local base=$1 name=$2; shift 2
     tart get "$base" >/dev/null 2>&1 || die "no base VM $base — vm pull first"
     tart get "$name" >/dev/null 2>&1 && die "$name exists"
-    require_drive
     STARTED=$SECONDS
     # A sleeping host freezes the guest mid-download; the assertion ends with this script.
     caffeinate -i -w $$ &
@@ -91,7 +128,7 @@ boot() {
     # A local clone on APFS is copy-on-write: instant, and only what the guest writes costs space.
     tart clone "$base" "$name"
     VM_NAME=$name
-    tart set "$name" --cpu "$CPU" --memory "$MEMORY"
+    tart set "$name" --cpu "$CPU" --memory "$MEMORY" ${VM_DISPLAY:+--display} ${VM_DISPLAY:+$VM_DISPLAY}
     tart run --no-graphics "$@" "$VM_NAME" > "$STATE/$VM_NAME.console" 2>&1 &
     VM_PID=$!
     local since=$SECONDS
@@ -218,6 +255,7 @@ cmd_rm() {
 trap 'teardown $?' EXIT
 trap 'teardown 130' INT
 trap 'teardown 143' TERM
+trap 'teardown 129' HUP
 
 case ${1:-status} in
     status) cmd_status ;;
@@ -228,6 +266,6 @@ case ${1:-status} in
     stop) cmd_stop ;;
     rm) shift; cmd_rm "$@" ;;
     log) [[ -f $LOG ]] && tail -n 20 "$LOG" || print "no runs yet" ;;
-    -h|--help|help) sed -n '2,13p' "$0" | sed 's/^# \{0,1\}//' ;;
+    -h|--help|help) sed -n '2,14p' "$0" | sed 's/^# \{0,1\}//' ;;
     *) die "unknown command $1 — vm help" ;;
 esac
