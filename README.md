@@ -52,7 +52,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: I use [Shottr](https://shottr.cc/). It is installed with all programs using homebrew here. Check out its [Tips & Tricks](https://shottr.cc/#section-tips/). They are really helpful.
 
 * Q: I use an <ins>external audiocard</ins> and I want to control its <ins>volume in a standard way</ins> and use an equalizer depending on the device
-* A: I use [eqmac](https://eqmac.app/). It is installed with all programs using homebrew here.
+* A: I use [eq](https://github.com/servitola/eq/). It is installed with all programs using homebrew here.
 
 * Q: I use Spotlight, but it's not as powerful as I want. I want to calculate numbers, use AI, search Google
 * A: I use [raycast](https://www.raycast.com/). It is installed with all programs using homebrew here. Check out its extensions
