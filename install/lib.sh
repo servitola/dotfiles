@@ -24,17 +24,32 @@ ok()      { print -r -- "      ${_green}✓${_reset} $*"; }
 warn()    { print -r -- "      ${_yellow}!${_reset} $*"; }
 err()     { print -r -- "      ${_red}✗${_reset} $*" >&2; }
 
-# Step framing, used by install.sh around each step.
-step_begin() { print -r -- ""; print -r -- "${_blue}${_bold}━━ [$1/$2] $3${_reset}"; }
-step_ok()    { print -r -- "  ${_green}✓ done${_reset} ${_dim}(${1}s)${_reset}"; }
-step_fail()  { print -r -- "  ${_red}${_bold}✗ FAILED: $1${_reset}" >&2; }
-
-# Tee everything to a timestamped logfile: console keeps color, file is plain.
+# Everything printed is also written to a log file: colored on screen, plain in the file.
 LOGFILE=""
-log_init() {
+start_logging() {
     mkdir -p "$STATE"
     LOGFILE="$STATE/install-$(date +%Y%m%d-%H%M%S).log"
     exec > >(tee >(sed -E 's/\x1b\[[0-9;]*m//g' >> "$LOGFILE")) 2>&1
+    log "logging to $LOGFILE"
+}
+
+# run_step <file> <number> <count> — runs one step in its own zsh, with a heading and its time.
+run_step() {
+    local name=${${1:t:r}#[0-9][0-9]-} started=$SECONDS
+    print -r -- ""
+    print -r -- "${_blue}${_bold}━━ [$2/$3] $name${_reset}"
+    if zsh "$1"; then
+        print -r -- "  ${_green}✓ done${_reset} ${_dim}($(( SECONDS - started ))s)${_reset}"
+    else
+        print -r -- "  ${_red}${_bold}✗ FAILED: $name${_reset} — see $LOGFILE" >&2
+        return 1
+    fi
+}
+
+finish() {
+    print -r -- ""
+    print -r -- "${_green}${_bold}✓ Installation complete${_reset} ${_dim}(${SECONDS}s · $LOGFILE)${_reset}"
+    zsh zsh/bin/random_ascii.sh
 }
 
 # --- Symlink helpers ----------------------------------------------------
@@ -54,11 +69,4 @@ link_all() {
     for (( i = 1; i <= $#; i += 2 )); do
         link "${@[i]}" "${@[i+1]}"
     done
-}
-
-# copy_dir <source> <destination> — replace a dir with a fresh copy.
-copy_dir() {
-    local source="$1" destination="$2"
-    sudo rm -rf "$destination"
-    sudo cp -r "$source" "$destination"
 }
