@@ -20,8 +20,6 @@ link_all \
 
 `link_all` (and `link` for a one-off) is defined in `install/lib.sh` and does
 mkdir-parent + `sudo rm -rf` + `sudo ln -sfvh`, so you don't repeat those.
-Use `copy_dir` instead when a real copy is needed (e.g. the Birman layout in
-`install/05-system-links.sh`).
 
 **Path vars (from `install/lib.sh`):** `$DOTFILES`, `$PRIVATE`,
 `$APP_SUPPORT` (= `~/Library/Application Support`), `$CONFIG` (= `~/.config`),
