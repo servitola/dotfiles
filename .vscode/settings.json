@@ -32,9 +32,9 @@
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.fontSize": 15,
   "files.associations": {
-    "**/karabiner/karabiner.json": "Ruby",
-    "**/*.keylayout": "Ruby",
-    "**/karabiner/**/*.json": "Ruby",
-    "karabiner.json": "Ruby"
+    "**/*.keylayout": "Ruby"
+  },
+  "[json]": {
+    "editor.formatOnSave": false
   }
 }
