@@ -239,21 +239,21 @@ function unsubscribe()
 end
 
 local appSpecificHotkeys = {
-    ["Fork"] = {
+    [constants.APP_GIT_GUI] = {
         { from = {"cmd", "shift"}, key = "e", to = {"cmd", "shift"}, target_key = "l" },
         { from = {"cmd", "shift"}, key = "r", to = {"cmd", "shift"}, target_key = "p" },
     },
-    ["Music"] = {
+    [constants.APP_MUSIC] = {
         { from = {"cmd"}, key = "e", to = {"cmd"}, target_key = "l" },
         { from = {"alt"}, key = "z", to = {"cmd"}, target_key = "l" },
     },
-    ["Zap"] = {
+    [constants.APP_TERMINAL] = {
         { from = {"alt"}, key = "z", sendText = "/new" },
     },
     ["Finder"] = {
         { from = {"alt"}, key = "z", to = {"cmd", "alt"}, target_key = "l" },
 	},
-    ["Forkgram"] = {
+    [constants.APP_TELEGRAM] = {
         { from = {"ctrl"}, key = "f", to = {"cmd"}, target_key = "k" },
     },
     ["*"] = {
