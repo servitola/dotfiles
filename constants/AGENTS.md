@@ -47,3 +47,6 @@ git asks who you are, the render never ran.
 - `app = "@APP_BROWSER"` in a keyboard chord resolves in three places that must
   stay in step: `HotKeys.spoon/init.lua`, `docs/keyboard/parse_active.py`,
   `docs/keyboard/app_constants.py`.
+- `APP_*` is the role vocabulary of the keyboard layout: a chord binds `@APP_IDE`,
+  not `Rider`. Adding a role means a chord (or another consumer) exists for it;
+  `_BUNDLE` and `_CLI` suffixes are companions of the same role, not roles.
