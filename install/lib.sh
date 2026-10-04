@@ -48,11 +48,13 @@ finish() {
 
 # link <source> <destination>: sudo because some destinations are system paths
 # and older runs left root-owned links in $HOME.
+# Every link is also listed in $STATE/links.tsv, for install/check.sh.
 link() {
     local source="$1" destination="$2"
-    mkdir -p "$(dirname "$destination")"
+    mkdir -p "$(dirname "$destination")" "$STATE"
     sudo rm -rf "$destination"
     sudo ln -sfvh "$source" "$destination"
+    print -r -- "$destination"$'\t'"$source" >> "$STATE/links.tsv"
 }
 
 # link_all <source> <destination> <source> <destination> ...

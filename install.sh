@@ -11,4 +11,5 @@ for step in $steps; do
     run_step "$step" $number ${#steps} || exit 1
 done
 
+zsh install/check.sh || exit 1
 finish
