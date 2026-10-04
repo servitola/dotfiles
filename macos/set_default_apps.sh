@@ -95,6 +95,7 @@ by_ext = {e['LSHandlerContentTag']: e for e in lshandlers
           if e.get('LSHandlerContentTagClass') == 'public.filename-extension'}
 stamp = int(time.time() - 978307200)   # LaunchServices epoch is 2001-01-01
 added = retargeted = unchanged = 0
+taken_by = {}   # app that had grabbed a binding -> how many
 
 def bind(index, key, template, app):
     global added, retargeted, unchanged
@@ -106,6 +107,8 @@ def bind(index, key, template, app):
         lshandlers.append(entry); index[key] = entry
         added += 1
     elif entry.get('LSHandlerRoleAll') != app:
+        previous = entry.get('LSHandlerRoleAll', '?')
+        taken_by[previous] = taken_by.get(previous, 0) + 1
         entry['LSHandlerRoleAll'] = app
         entry['LSHandlerModificationDate'] = stamp
         retargeted += 1
@@ -125,6 +128,8 @@ if added or retargeted:
     subprocess.run(['defaults', 'import', DOMAIN, '-'],
                    input=plistlib.dumps(prefs), check=True)
 print(f'  added {added}, retargeted {retargeted}, unchanged {unchanged}')
+for previous, count in sorted(taken_by.items(), key=lambda item: -item[1]):
+    print(f'    {count} taken back from {previous}')
 PYEOF
 
 echo '  done (applies after next login)'
