@@ -1,22 +1,13 @@
 #!/bin/zsh
-set -e
+# The Remote Script comes from the same checkout as the MCP server Claude runs
+# (uv tool ableton-mcp-extended), so the commands one sends are ones the other knows.
+set -euo pipefail
+setopt null_glob
 
-echo "🎹 Installing Ableton MCP Server..."
-curl -L -o /tmp/ableton_remote.py https://raw.githubusercontent.com/ahujasid/ableton-mcp/main/AbletonMCP_Remote_Script/__init__.py
-
-for app in "/Applications"/Ableton*; do
-    if [[ -d "$app" ]]; then
-        REMOTE_DIR="$app/Contents/App-Resources/MIDI Remote Scripts/AbletonMCP"
-        mkdir -p "$REMOTE_DIR"
-
-        cp /tmp/ableton_remote.py "$REMOTE_DIR/__init__.py"
-        echo "✅ Installed to: $app"
-
-        break
-    fi
+script=$HOME/projects/ableton_setup/ableton-mcp-extended/AbletonMCP_Remote_Script/__init__.py
+for app in /Applications/Ableton*.app; do
+    target="$app/Contents/App-Resources/MIDI Remote Scripts/AbletonMCP"
+    mkdir -p "$target"
+    cp "$script" "$target/__init__.py"
+    echo "AbletonMCP Remote Script -> $app (restart Live to load it)"
 done
-
-rm /tmp/ableton_remote.py
-
-echo "🎹 Ableton MCP setup complete"
-echo "WARN!!! Start Ableton → Preferences → Link, Tempo & MIDI → Control Surface: 'AbletonMCP'"
