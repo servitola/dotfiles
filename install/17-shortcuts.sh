@@ -1,6 +1,5 @@
 #!/bin/zsh
-# Step 17 — system, app and menu shortcuts from macos/shortcuts.toml. Runs late:
-# it needs Homebrew's python (tomllib) and the sandboxed apps already installed.
+# Late on purpose: needs Homebrew's python and the apps it configures.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -10,8 +9,7 @@ if [[ -n "${CI:-}" ]]; then
 fi
 
 section "Shortcuts: system, app and menu (macos/shortcuts.toml)"
-# tomllib needs python >= 3.11; minimum_brewfile does not install one, so a fresh
-# Mac may still be on Apple's 3.9 here. Skipping beats aborting the last step.
+# A fresh Mac may still be on Apple's python 3.9, which has no tomllib.
 if ! python3 -c 'import tomllib' 2>/dev/null; then
     echo "skipped: python3 lacks tomllib (need >= 3.11) — brew install python@3.13, then:"
     echo "  python3 $DOTFILES/docs/keyboard/tools/shortcuts.py apply"

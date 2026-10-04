@@ -1,25 +1,19 @@
 #!/bin/zsh
-#
-# Shared paths, logging, and helpers for the installer. Every step sources
-# this first, so steps stay tiny — all the formatting lives here, no per-step
-# echo tricks.
+# Sourced first by install.sh and by every step.
 
-# --- Paths (full words, no $(D)/$(H)/$(A) shorthands) --------------------
 DOTFILES="$HOME/projects/dotfiles"
 APP_SUPPORT="$HOME/Library/Application Support"
 CONFIG="$HOME/.config"
 CLAUDE_CODE="$DOTFILES/claude-code"
 LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 CLAUDE_PROJECT="$HOME/.claude/projects/-Users-servitola-projects-dotfiles"
-STATE="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles"   # install logs + rendered configs
+STATE="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles"
 
-# --- Colors -------------------------------------------------------------
 _reset=$'\e[0m'; _dim=$'\e[2m'; _bold=$'\e[1m'
 _red=$'\e[31m'; _green=$'\e[32m'; _yellow=$'\e[33m'; _blue=$'\e[34m'
 
-# --- Logging (a step just calls these) ----------------------------------
-section() { print -r -- "  ${_yellow}==>${_reset} $*"; }   # sub-heading in a step
-log()     { print -r -- "      $*"; }                       # plain detail line
+section() { print -r -- "  ${_yellow}==>${_reset} $*"; }
+log()     { print -r -- "      $*"; }
 ok()      { print -r -- "      ${_green}✓${_reset} $*"; }
 warn()    { print -r -- "      ${_yellow}!${_reset} $*"; }
 err()     { print -r -- "      ${_red}✗${_reset} $*" >&2; }
@@ -52,10 +46,8 @@ finish() {
     zsh zsh/bin/random_ascii.sh
 }
 
-# --- Symlink helpers ----------------------------------------------------
-# link <source> <destination> — replace <destination> with a symlink.
-# sudo is kept from the old Makefile: some targets are system paths, and
-# existing $HOME symlinks may be root-owned from prior runs.
+# link <source> <destination>: sudo because some destinations are system paths
+# and older runs left root-owned links in $HOME.
 link() {
     local source="$1" destination="$2"
     mkdir -p "$(dirname "$destination")"
@@ -63,7 +55,7 @@ link() {
     sudo ln -sfvh "$source" "$destination"
 }
 
-# link_all <src1> <dst1> <src2> <dst2> ... — link a flat list of pairs.
+# link_all <source> <destination> <source> <destination> ...
 link_all() {
     local i
     for (( i = 1; i <= $#; i += 2 )); do

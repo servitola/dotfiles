@@ -1,6 +1,4 @@
 #!/bin/zsh
-# Step 07 — symlink app configs. Tables of source -> destination, grouped by
-# where they land; the ones at the bottom need more than a link.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -53,7 +51,7 @@ section "hammerspoon (link; step 18 starts it once its Spoons are in place)"
 link "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
 
 section "Rider vmoptions (one per installed Rider)"
-# null_glob: zsh aborts on an unmatched glob (no Rider installed)
+# without null_glob a Mac with no Rider stops the whole step
 setopt null_glob
 for rider_dir in "$APP_SUPPORT/JetBrains"/Rider*; do
     test -d "$rider_dir" || continue

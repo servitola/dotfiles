@@ -1,5 +1,4 @@
 #!/bin/zsh
-# Step 18 — third-party Hammerspoon Spoons, installed from their GitHub releases
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -30,8 +29,7 @@ install_spoon Fresh4kWallpaper servitola/Fresh4kWallpaper.spoon "$FRESH_4K_WALLP
 install_spoon AutoKeyboardLayout servitola/AutoKeyboardLayout.spoon "$AUTO_KEYBOARD_LAYOUT"
 install_spoon BrowserTabOpener servitola/BrowserTabOpener.spoon "$BROWSER_TAB_OPENER"
 
-# Started only now: init.lua calls into these Spoons, so a first launch without them
-# fails halfway. When Hammerspoon is already running, the new .lua files under its
-# config trigger its own reload watcher.
+# Started only now: init.lua needs these Spoons. A running Hammerspoon reloads by
+# itself when the files change.
 section "Hammerspoon"
 open -g /Applications/Hammerspoon.app

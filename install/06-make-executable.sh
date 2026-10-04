@@ -1,7 +1,5 @@
 #!/bin/zsh
-# Step 06 — make every script executable. A "script" is a tracked file with a
-# #! shebang; sourced-only fragments (aliases.sh, exports.sh, …) have none and
-# stay non-exec. New scripts just work — there's no list to maintain.
+# A script is a tracked file that starts with #!; sourced fragments have none and stay plain.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -10,10 +8,10 @@ count=0
 # NB: loop var must NOT be named `path` — in zsh $path is tied to $PATH.
 while IFS= read -r -d '' rel; do
     file="$DOTFILES/$rel"
-    [[ -L $file || ! -f $file ]] && continue      # skip symlinks / deleted
-    IFS= read -r shebang < "$file" 2>/dev/null || true   # no-newline file: keep going
+    [[ -L $file || ! -f $file ]] && continue
+    IFS= read -r shebang < "$file" 2>/dev/null || true   # a one-line file without a newline still counts
     [[ ${shebang:-} == '#!'* ]] || continue
     chmod +x "$file"
-    count=$(( count + 1 ))                        # assignment, not (( c++ )): set -e safe
+    count=$(( count + 1 ))   # not (( count++ )): it returns 1 for zero and set -e would stop
 done < <(git -C "$DOTFILES" ls-files -z)
 log "$count scripts executable"

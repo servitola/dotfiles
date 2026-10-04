@@ -1,12 +1,10 @@
 #!/bin/zsh
-# Step 05 — system links that need root: /etc/hosts, dotnet.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
-section "hosts file (may need a manual redo later)"
+section "/etc/hosts"
 link "$DOTFILES/macos/hosts" /etc/hosts
 
 section "dotnet symlink on /opt/homebrew/bin"
-# dotnet lives in keg-less ~/.dotnet; link it onto /opt/homebrew/bin (always
-# on PATH) so stale-PATH shells and workbot2 (hardcoded brew path) find it.
+# dotnet lives in ~/.dotnet; tools with a hardcoded Homebrew path (workbot2) look here.
 ln -sfv "$HOME/.dotnet/dotnet" /opt/homebrew/bin/dotnet

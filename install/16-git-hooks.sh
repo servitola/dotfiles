@@ -1,6 +1,5 @@
 #!/bin/zsh
-# Step 16 — machine-wide git hook: reject AI co-author/tool footers in every
-# commit message, in every repo. Mechanism and blind spots: git/AGENTS.md.
+# Rejects AI co-author footers in every repo on this Mac (git/AGENTS.md).
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 

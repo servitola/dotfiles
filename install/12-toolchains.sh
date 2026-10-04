@@ -1,5 +1,4 @@
 #!/bin/zsh
-# Step 12 — package-manager configs + global installs: npm, uv, aichat.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -11,4 +10,4 @@ link_all \
     "$DOTFILES/aichat/dark.tmTheme"   "$APP_SUPPORT/aichat/dark.tmTheme"
 
 section "installing global npm packages"
-zsh "$DOTFILES/npm/install-globals.sh"       # subprocess: keeps its errors its own
+zsh "$DOTFILES/npm/install-globals.sh"

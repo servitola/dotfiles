@@ -1,9 +1,8 @@
 #!/bin/zsh
-# Step 15 — Docker stacks and cron. Skipped on CI ($CI set).
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
-if [[ -n "${CI:-}" ]]; then   # ${CI:-} so set -u doesn't trip when CI is unset
+if [[ -n "${CI:-}" ]]; then
     section "CI: skip docker compose (no Docker on macOS runners)"
     section "CI: skip cron install (no crontab on runners)"
     exit 0

@@ -1,5 +1,4 @@
 #!/bin/zsh
-# Step 08 — AI tools. $CLAUDE_CODE is the source of truth; others link into it.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -13,14 +12,11 @@ link_all \
     "$DOTFILES/AGENTS.md"              "$HOME/.codex/AGENTS.md" \
     "$CLAUDE_CODE/CLAUDE.md"           "$HOME/.codex/instructions.md" \
     "$CLAUDE_CODE/skills"              "$HOME/.agents/skills"
-# config.toml is materialized as a REAL file, NOT symlinked: Codex writes its
-# project-trust registry (plus plugin/notice/tui state) straight into it, which
-# — via a symlink — pushed machine-local runtime state into the dotfiles repo.
-# The script keeps the authored head from the repo, preserves Codex's managed
-# tail locally, and drops ephemeral trust (anything not under $HOME/projects).
+# A copy, not a link: Codex writes its own state into config.toml, which a link
+# would carry into this repo.
 python3 "$DOTFILES/codex/materialize-config.py" \
     "$DOTFILES/codex/config.toml" "$HOME/.codex/config.toml" "$HOME"
-ok "codex config.toml materialized (real file — trust stays local, out of git)"
+ok "codex config.toml written"
 
 section "OpenCode"
 link_all \
@@ -28,12 +24,8 @@ link_all \
     "$DOTFILES/opencode/tui.json"      "$CONFIG/opencode/tui.json" \
     "$DOTFILES/opencode/agents"        "$CONFIG/opencode/agents" \
     "$CLAUDE_CODE/commands"            "$CONFIG/opencode/commands"
-# opencode/agents/ is its OWN dotfiles dir, deliberately NOT $CLAUDE_CODE/agents:
-# opencode 1.18 validates agent frontmatter strictly (color must be hex or its
-# own enum) and hard-aborts startup on the Claude-Code files' named colors
-# ("color: yellow"), which manifested as "CC TUI start timeout". Skills still
-# flow from ~/.claude/skills (opencode scans it natively) — only agents need
-# an opencode-specific, hex-colored copy.
+# OpenCode gets its own agents: it refuses to start on Claude Code's named
+# colours ("color: yellow"). Skills it reads from ~/.claude/skills directly.
 
 section "single-file AI tools (Hermes, Crush, Mistral Vibe, Aider)"
 link_all \
