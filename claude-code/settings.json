@@ -32,7 +32,7 @@
     "deny": [],
     "defaultMode": "plan"
   },
-  "model": "fable[1m]",
+  "model": "sonnet[1m]",
   "hooks": {
     "PostToolUse": [
       {
