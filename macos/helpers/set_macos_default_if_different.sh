@@ -12,8 +12,12 @@ set_macos_default_if_different() {
     # Print bullet point
     echo "  ${DIM}•${NC} $title"
 
-    # Get current value
-    current_value=$(sudo defaults read "$domain" "$key" 2> /dev/null)
+    # Read where the write below goes: sudo reads root's preferences, not the user's.
+    if [[ "$domain" == /Library/* ]]; then
+        current_value=$(sudo defaults read "$domain" "$key" 2> /dev/null)
+    else
+        current_value=$(defaults read "$domain" "$key" 2> /dev/null)
+    fi
 
     # Handle different types
     local current_normalized=""
@@ -41,6 +45,15 @@ set_macos_default_if_different() {
             sudo defaults write "$domain" "$key" "$type" "$new_value"
         else
             defaults write "$domain" "$key" "$type" "$new_value"
+        fi
+
+        # `defaults write` fails on TCC-protected containers (Safari) while
+        # still exiting through this branch — report it instead of claiming
+        # success.
+        if (( $? != 0 )); then
+            echo "  ${RED}✗${NC} Failed to write ${CYAN}$domain${NC} $key"
+            ((FAILED_COUNT++))
+            return 1
         fi
 
         if [[ -n "$current_value" ]]; then
