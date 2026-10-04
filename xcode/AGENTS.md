@@ -1,3 +1,3 @@
 # xcode — Xcode IDE config: custom key bindings, symlinked into Xcode's UserData
 
-- `install.sh` — ensures Xcode CLI tools are present, then symlinks the whole `KeyBindings/` dir into `~/Library/Developer/Xcode/UserData/KeyBindings` (removes any existing target first). Run via the dotfiles installer, not standalone.
+- Install step 2 (`install/02-xcode.sh`) makes sure the command line tools are present, points `xcode-select` at `/Applications/Xcode.app` when Xcode is installed, accepts its license if needed, and links `KeyBindings/` into `~/Library/Developer/Xcode/UserData/KeyBindings`.
