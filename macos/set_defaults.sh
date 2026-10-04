@@ -297,34 +297,8 @@ set_macos_default_if_different \
     '-bool' \
     false
 
-echo 'Safari' #
-
-set_macos_default_if_different \
-	'Prevent Safari from opening safe files automatically after downloading' \
-    'com.apple.Safari' \
-    'AutoOpenSafeDownloads' \
-    '-bool' \
-    false
-
-set_macos_default_if_different \
-	'Remove icons from Safaris bookmarks bar' \
-    'com.apple.Safari' \
-    'ProxiesInBookmarksBar' \
-    '()'
-
-set_macos_default_if_different \
-	'Show the Develop menu in the menu bar' \
-    'com.apple.Safari' \
-    'IncludeDevelopMenu' \
-    '-bool' \
-    true
-
-set_macos_default_if_different \
-	'Show the Web Inspector in the Develop menu' \
-    'com.apple.Safari' \
-    'WebKitDeveloperExtrasEnabledPreferenceKey' \
-    '-bool' \
-    true
+# Safari is not configured here: its preferences live in a sandboxed container that
+# defaults cannot write without Full Disk Access, and IncludeDevelopMenu is dead since Safari 17.
 
 echo 'Transmission.app' #
 
@@ -548,9 +522,25 @@ set_macos_default_if_different \
     '-bool' \
     false
 
-###############################################################################
+# App Switcher (Cmd+Tab) HUD otherwise renders on whichever display the mouse
+# cursor is on, not necessarily the built-in one.
+set_macos_default_if_different \
+	'Show App Switcher on all displays' \
+    'com.apple.dock' \
+    'appswitcher-all-displays' \
+    '-bool' \
+    true
+
+# When off (spans-displays=true), a single Space spans all displays, so
+# fullscreening a window on one display blanks every other display too.
+set_macos_default_if_different \
+	'Displays have separate Spaces' \
+    'com.apple.spaces' \
+    'spans-displays' \
+    '-bool' \
+    false
+
 echo 'Dialogs' #
-###############################################################################
 
 set_macos_default_if_different \
 	'Expand save panel by default' \
