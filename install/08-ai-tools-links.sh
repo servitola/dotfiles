@@ -10,24 +10,30 @@ link_all \
 
 section "Codex"
 link_all \
-    "$DOTFILES/codex/config.toml"      "$HOME/.codex/config.toml" \
     "$DOTFILES/AGENTS.md"              "$HOME/.codex/AGENTS.md" \
     "$CLAUDE_CODE/CLAUDE.md"           "$HOME/.codex/instructions.md" \
     "$CLAUDE_CODE/skills"              "$HOME/.agents/skills"
-
-section "Qwen Code"
-link_all \
-    "$DOTFILES/qwen-code/settings.json" "$HOME/.qwen/settings.json" \
-    "$CLAUDE_CODE/CLAUDE.md"           "$HOME/.qwen/QWEN.md" \
-    "$CLAUDE_CODE/skills"              "$HOME/.qwen/skills" \
-    "$CLAUDE_CODE/agents"              "$HOME/.qwen/agents" \
-    "$CLAUDE_CODE/commands"            "$HOME/.qwen/commands"
+# config.toml is materialized as a REAL file, NOT symlinked: Codex writes its
+# project-trust registry (plus plugin/notice/tui state) straight into it, which
+# — via a symlink — pushed machine-local runtime state into the dotfiles repo.
+# The script keeps the authored head from the repo, preserves Codex's managed
+# tail locally, and drops ephemeral trust (anything not under $HOME/projects).
+python3 "$DOTFILES/codex/materialize-config.py" \
+    "$DOTFILES/codex/config.toml" "$HOME/.codex/config.toml" "$HOME"
+ok "codex config.toml materialized (real file — trust stays local, out of git)"
 
 section "OpenCode"
 link_all \
     "$DOTFILES/opencode/opencode.json" "$CONFIG/opencode/opencode.json" \
-    "$CLAUDE_CODE/commands"            "$CONFIG/opencode/commands" \
-    "$CLAUDE_CODE/agents"              "$CONFIG/opencode/agents"
+    "$DOTFILES/opencode/tui.json"      "$CONFIG/opencode/tui.json" \
+    "$DOTFILES/opencode/agents"        "$CONFIG/opencode/agents" \
+    "$CLAUDE_CODE/commands"            "$CONFIG/opencode/commands"
+# opencode/agents/ is its OWN dotfiles dir, deliberately NOT $CLAUDE_CODE/agents:
+# opencode 1.18 validates agent frontmatter strictly (color must be hex or its
+# own enum) and hard-aborts startup on the Claude-Code files' named colors
+# ("color: yellow"), which manifested as "CC TUI start timeout". Skills still
+# flow from ~/.claude/skills (opencode scans it natively) — only agents need
+# an opencode-specific, hex-colored copy.
 
 section "single-file AI tools (Hermes, Crush, Mistral Vibe, Aider)"
 link_all \
