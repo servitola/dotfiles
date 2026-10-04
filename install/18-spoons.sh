@@ -9,6 +9,7 @@ POWER_WINDOWS=v0.3.0  # https://github.com/servitola/PowerWindows.spoon/releases
 SCREEN_GLOW=v0.1.0    # https://github.com/servitola/ScreenGlow.spoon/releases
 FRESH_4K_WALLPAPER=v0.2.0  # https://github.com/servitola/Fresh4kWallpaper.spoon/releases
 AUTO_KEYBOARD_LAYOUT=v0.1.0  # https://github.com/servitola/AutoKeyboardLayout.spoon/releases
+BROWSER_TAB_OPENER=v0.1.0  # https://github.com/servitola/BrowserTabOpener.spoon/releases
 
 install_spoon() {  # <name> <owner/repo> <tag>
     local name=$1 repo=$2 tag=$3 tmp
@@ -27,3 +28,10 @@ install_spoon PowerWindows servitola/PowerWindows.spoon "$POWER_WINDOWS"
 install_spoon ScreenGlow servitola/ScreenGlow.spoon "$SCREEN_GLOW"
 install_spoon Fresh4kWallpaper servitola/Fresh4kWallpaper.spoon "$FRESH_4K_WALLPAPER"
 install_spoon AutoKeyboardLayout servitola/AutoKeyboardLayout.spoon "$AUTO_KEYBOARD_LAYOUT"
+install_spoon BrowserTabOpener servitola/BrowserTabOpener.spoon "$BROWSER_TAB_OPENER"
+
+# Started only now: init.lua calls into these Spoons, so a first launch without them
+# fails halfway. When Hammerspoon is already running, the new .lua files under its
+# config trigger its own reload watcher.
+section "Hammerspoon"
+open -g /Applications/Hammerspoon.app

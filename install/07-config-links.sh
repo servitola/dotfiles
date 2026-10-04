@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Step 07 — symlink app configs. Tables of source -> destination, grouped by
-# where they land; the three at the bottom link then do a dependent action.
+# where they land; the ones at the bottom need more than a link.
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
@@ -49,9 +49,8 @@ section "karabiner (link, then build karabiner.json from rules)"
 link "$DOTFILES/karabiner" "$CONFIG/karabiner"
 "$DOTFILES/karabiner/build.sh"
 
-section "hammerspoon (link, then launch the app)"
+section "hammerspoon (link; step 18 starts it once its Spoons are in place)"
 link "$DOTFILES/hammerspoon" "$HOME/.hammerspoon"
-open /Applications/Hammerspoon.app
 
 section "Rider vmoptions (one per installed Rider)"
 # null_glob: zsh aborts on an unmatched glob (no Rider installed)

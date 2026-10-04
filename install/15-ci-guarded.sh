@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Step 15 — Docker stacks, private overlay, cron. Skipped on CI ($CI set).
+# Step 15 — Docker stacks and cron. Skipped on CI ($CI set).
 source "${0:a:h}/lib.sh"
 set -euo pipefail
 
