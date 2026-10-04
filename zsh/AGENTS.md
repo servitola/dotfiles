@@ -1,6 +1,6 @@
 # zsh shell configuration
 
-- Three symlinked entry points (via `setup_zsh.sh` / Makefile): `~/.zshenv` → `zshenv.sh` (all shells: sources `exports.sh` + `exports-path.sh`), `~/.zprofile` → `zprofile.sh` (login: sources `exports-path.sh` after macOS `path_helper`), `~/.zshrc` → `zshrc.sh` (interactive: sources the rest below).
+- Three symlinked entry points (linked by `install/04-zsh.sh`): `~/.zshenv` → `zshenv.sh` (all shells: sources `exports.sh` + `exports-path.sh`), `~/.zprofile` → `zprofile.sh` (login: sources `exports-path.sh` after macOS `path_helper`), `~/.zshrc` → `zshrc.sh` (interactive: sources the rest below).
 - `exports.sh` — non-PATH env vars (locale, Homebrew, Go/.NET/Java/Android/Node, Claude, tool config dirs); sources `~/.config/openai_key.sh` for secrets. Guarded by `_EXPORTS_LOADED`.
 - `exports-path.sh` — PATH only (brew shellenv, language toolchains, `~/projects/dotfiles/zsh/bin`). Kept separate so login runs it after `path_helper` reorders PATH.
 - `plugins.sh` — the oh-my-zsh `plugins=(...)` array (sourced before oh-my-zsh loads). `completion.sh` — completion behavior/menu/caching (sourced AFTER oh-my-zsh's compinit, does not run compinit). `history_settings.sh` — HISTFILE/HISTSIZE + opts tuned to NOT fight atuin (no SHARE_HISTORY/INC_APPEND).

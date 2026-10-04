@@ -53,7 +53,8 @@ link() {
     local source="$1" destination="$2"
     mkdir -p "$(dirname "$destination")" "$STATE"
     sudo rm -rf "$destination"
-    sudo ln -sfvh "$source" "$destination"
+    sudo ln -sfh "$source" "$destination"
+    log "${destination/#$HOME/~} -> ${${source#$DOTFILES/}/#$HOME/~}"
     print -r -- "$destination"$'\t'"$source" >> "$STATE/links.tsv"
 }
 

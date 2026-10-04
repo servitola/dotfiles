@@ -19,9 +19,6 @@ if [[ -f $STATE/links.tsv ]]; then
 else
     warn "no $STATE/links.tsv yet: it is written by the next install"
 fi
-for file in zshrc zshenv zprofile; do
-    expect "~/.$file -> zsh/$file.sh" test "$HOME/.$file" -ef "$DOTFILES/zsh/$file.sh"
-done
 
 section "apps and tools"
 expect "minimum brewfile satisfied (brew bundle check)" brew bundle check --file homebrew/minimum_brewfile
