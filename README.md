@@ -23,6 +23,9 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 
      ![Video of my window management](https://raw.githubusercontent.com/servitola/PowerWindows.spoon/main/docs/demo.gif)
 
+* Q: I let <ins>AI agents drive my Mac</ins> and I want to <ins>see when</ins> to keep my hands off the mouse
+* A: The screen edges glow while an agent clicks and types: [ScreenGlow.spoon](https://github.com/servitola/ScreenGlow.spoon)
+
 * Q: I want my <ins>Terminal to assist me</ins> and I know almost nothing
 * A: I use [Zap](https://github.com/zerx-lab/zap) (open-source Warp fork) and I have the best setup for [ZSH](https://www.wikiwand.com/en/Z_shell) with [oh-my-zsh](https://ohmyz.sh/) and [powerlevel10k](https://github.com/romkatv/powerlevel10k) theme. It is very helpful.
 
