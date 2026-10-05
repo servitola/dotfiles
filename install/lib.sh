@@ -8,6 +8,7 @@ CLAUDE_CODE="$DOTFILES/claude-code"
 LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 CLAUDE_PROJECT="$HOME/.claude/projects/-Users-servitola-projects-dotfiles"
 STATE="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles"
+source "$DOTFILES/constants/load.zsh"
 
 _reset=$'\e[0m'; _dim=$'\e[2m'; _bold=$'\e[1m'
 _red=$'\e[31m'; _green=$'\e[32m'; _yellow=$'\e[33m'; _blue=$'\e[34m'

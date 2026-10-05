@@ -11,8 +11,8 @@ set_default() {  # <domain> <key> <type> <value>: writes only a value that diffe
     changed=1
 }
 
-section "Dock: on the right, only Apps in it"
-set_default com.apple.dock orientation -string right
+section "Dock: $DOCK_POSITION side, only Apps in it"
+set_default com.apple.dock orientation -string "$DOCK_POSITION"
 set_default com.apple.dock showhidden -bool true               # dim the icons of hidden apps
 set_default com.apple.dock minimize-to-application -bool true
 set_default com.apple.dock show-recents -bool false
