@@ -94,8 +94,7 @@ resolves by UTI cannot see the extension bindings.
 
 Safari is deliberately not configured: its prefs live in a sandboxed container
 that `defaults` cannot write without Full Disk Access (which we don't grant),
-and `IncludeDevelopMenu` is dead since Safari 17. See the comment in
-`macos/set_defaults.sh`.
+and `IncludeDevelopMenu` is dead since Safari 17.
 
 ## Adding New Applications/Tools
 
