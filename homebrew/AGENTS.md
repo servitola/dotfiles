@@ -13,9 +13,8 @@ new one, it starts here.
   machine.
 - **`install_all_homebrew_packages.sh`** — installs everything:
   `brew bundle --file=~/projects/dotfiles/homebrew/brewfile`.
-- **`install_minimum_homebrew_packages.sh`** — installs the minimal set from
-  `minimum_brewfile`.
-- **`install.sh`** — bootstraps Homebrew itself.
+- Install step 3 (`install/03-homebrew.sh`) bootstraps Homebrew itself and
+  installs `minimum_brewfile`.
 
 ## Keeping the list in sync
 

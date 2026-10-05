@@ -25,13 +25,12 @@ The Makefile handles Homebrew setup
 
 - `homebrew/brewfile` - Complete package list
 - `homebrew/minimum_brewfile` - Essential packages only
-- `homebrew/install.sh` - Installation script
 - `homebrew/install_all_homebrew_packages.sh` - Full installation
-- `homebrew/install_minimum_homebrew_packages.sh` - Minimal installation
+- `install/03-homebrew.sh` - Homebrew itself and the minimal set
 
 ## Related Files
 
 - `homebrew/brewfile` - Main package list
 - `homebrew/minimum_brewfile` - Essential packages
-- `homebrew/install.sh` - Installation script
+- `install/03-homebrew.sh` - Homebrew itself and the minimal set
 - `macos/update_all_and_cleanup_all.sh` - Update automation
