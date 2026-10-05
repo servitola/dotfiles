@@ -9,5 +9,5 @@ link_all \
     "$DOTFILES/aichat/config.yaml"    "$APP_SUPPORT/aichat/config.yaml" \
     "$DOTFILES/aichat/dark.tmTheme"   "$APP_SUPPORT/aichat/dark.tmTheme"
 
-section "installing global npm packages"
+section "global npm packages (npm/global-packages.txt)"
 zsh "$DOTFILES/npm/install-globals.sh"
