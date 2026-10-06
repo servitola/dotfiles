@@ -21,6 +21,13 @@ repos:
         language: system
         files: ^(hammerspoon/Spoons/HotKeys\.spoon/layout/60%/.*\.lua|macos/shortcuts\.toml)$
         stages: [pre-commit]
+      - id: hammerspoon-requires
+        name: Hammerspoon config loads only committed modules and installed Spoons
+        entry: .git-hooks/hammerspoon-requires.py
+        language: system
+        pass_filenames: false
+        files: ^(hammerspoon/.*\.lua|install/18-spoons\.sh)$
+        stages: [pre-commit]
       - id: hyper-layers-generated
         name: Karabiner rules 07-17 match layers.toml (gen_layers.py --check)
         entry: python3 docs/keyboard/tools/gen_layers.py --check
