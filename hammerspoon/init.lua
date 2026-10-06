@@ -32,12 +32,30 @@ safeLoadSpoon("KSheet") -- shortcuts cheatsheet
 safeLoadSpoon("PopupTranslateSelection") -- translate selected text
 safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
 safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
-safeLoadSpoon("BrowserTabOpener") -- find and cycle browser tabs by URL pattern
+if hs.fs.attributes(hs.configdir .. "/Spoons/GlobalProtectToggle.spoon") then
+    safeLoadSpoon("GlobalProtectToggle") -- GlobalProtect VPN on a key, github.com/servitola/GlobalProtectToggle.spoon
+end
+safeLoadSpoon("BrowserTabOpener") -- jump to a site's open tab, cycle, or open it, github.com/servitola/BrowserTabOpener.spoon
+spoon.BrowserTabOpener.browser = constants.APP_BROWSER_BUNDLE
 safeLoadSpoon("AudioSwitcher") -- audio device switching
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
 safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
 safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop (hs -c 'spoon.ScreenGlow:pulse(45)')
+if spoon.HotKeys then
+    local ok, err = pcall(require, "actions")  -- personal actions register into spoon.HotKeys
+    if not ok then
+        hs.logger.new('init'):e("actions: " .. tostring(err))
+        notify.show({
+            title    = "actions failed",
+            message  = tostring(err):sub(1, 80),
+            symbol   = "exclamationmark.triangle.fill",
+            tint     = "red",
+            duration = 8,
+        })
+    end
+    spoon.HotKeys:start()  -- binds chords; must follow every register()
+end
 
 require "reactive_state"  -- shared state (must load before modules that use it)
 require "config_UrlDispatcher"
