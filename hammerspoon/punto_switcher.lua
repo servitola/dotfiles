@@ -1,6 +1,8 @@
 -- Punto Switcher-style layout reconversion.
--- Right Option+Space (→ Control+F14 via Karabiner) retypes the selection, or
--- the previous word if nothing is selected, in the other Birman layout.
+-- Right Option+Space (→ Keypad 9 via Karabiner) retypes the selection, or
+-- the previous word if nothing is selected, in the other layout (LAYOUT_PRIMARY / LAYOUT_SECONDARY).
+
+local constants = require "constants"
 
 local en_ru = {
     { "q", "й" }, { "w", "ц" }, { "e", "у" }, { "r", "к" }, { "t", "е" },
@@ -29,7 +31,7 @@ local function detectDirection(text)
         if cp >= 0x0400 and cp <= 0x04FF then return "ru_to_en" end
         if (cp >= 0x41 and cp <= 0x5A) or (cp >= 0x61 and cp <= 0x7A) then return "en_to_ru" end
     end
-    return hs.keycodes.currentLayout() == "Ru Birman" and "ru_to_en" or "en_to_ru"
+    return hs.keycodes.currentLayout() == constants.LAYOUT_SECONDARY and "ru_to_en" or "en_to_ru"
 end
 
 local function convert(text, direction)
@@ -88,7 +90,7 @@ local function retype(text, saved, autoSelected)
     after(0.3, function()
         if saved then hs.pasteboard.setContents(saved) else hs.pasteboard.clearContents() end
     end)
-    hs.keycodes.setLayout(direction == "en_to_ru" and "Ru Birman" or "En Birman")
+    hs.keycodes.setLayout(direction == "en_to_ru" and constants.LAYOUT_SECONDARY or constants.LAYOUT_PRIMARY)
     busy = false
 end
 
@@ -111,4 +113,4 @@ local function run()
     end)
 end
 
-hs.hotkey.bind({"ctrl"}, "f14", run)
+hs.hotkey.bind({}, "pad9", run)
