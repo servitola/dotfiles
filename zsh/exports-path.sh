@@ -34,7 +34,7 @@ path+=( "$HOMEBREW_PREFIX/opt/sqlite/bin" )
 # JetBrains Toolbox Scripts
 path+=( ~/Library/Application\ Support/JetBrains/Toolbox/scripts )
 
-# Java (java binary found via /usr/bin/java wrapper, but add bin/ for other tools)
+# The java binary resolves via the /usr/bin/java wrapper; bin/ is for the other tools.
 path+=( "$JAVA_HOME/bin" )
 
 # Android SDK (auto-detect latest installed versions)
