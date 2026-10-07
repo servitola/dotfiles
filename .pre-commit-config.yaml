@@ -35,6 +35,20 @@ repos:
         pass_filenames: false
         files: ^(karabiner/(layers\.toml|layers\.raw/.*|rules/(0[7-9]|1[0-7])-.*\.json)|docs/keyboard/(bridges|layers|parse_karabiner|config)\.py|docs/keyboard/tools/gen_layers\.py)$
         stages: [pre-commit]
+      - id: constants
+        name: constants.env fits its schema, loaders agree, no unread or unknown keys, no new hardcoded private values
+        entry: python3 constants/check.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit]
+      - id: constants-check-tests
+        name: Tests of constants/check.py
+        entry: python3 constants/test-check.py
+        language: system
+        pass_filenames: false
+        files: ^constants/(check|test-check)\.py$
+        stages: [pre-commit]
       - id: lint-skill-frontmatter
         name: Validate Claude Code skill frontmatter
         entry: .git-hooks/lint-skill-frontmatter.sh
