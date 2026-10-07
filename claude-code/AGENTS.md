@@ -3,9 +3,6 @@
 Single source of truth for `commands/`, `agents/`, `skills/` shared across Claude Code, Qwen Code, Codex. `~/.claude` is a symlink to this directory.
 
 ## Symlink targets (created by Makefile)
-- `~/.qwen/commands` → `claude-code/commands`
-- `~/.qwen/agents` → `claude-code/agents`
-- `~/.qwen/skills` → `claude-code/skills`
 - `~/.codex/config.toml` → `codex/config.toml`
 - `~/.codex/AGENTS.md` → repo-root `AGENTS.md`
 - `~/.codex/instructions.md` → `claude-code/CLAUDE.md`
