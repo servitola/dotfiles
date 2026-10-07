@@ -212,8 +212,6 @@ brew "ripgrep"
 brew "opencode"
 # Development kit for the Java programming language
 brew "openjdk@21"
-# SSL/TLS VPN implementing OSI layer 2 or 3 secure network extension
-brew "openvpn"
 # 7-Zip (high compression file archiver) implementation
 brew "p7zip"
 # Swiss-army knife of markup format conversion
