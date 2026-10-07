@@ -11,7 +11,6 @@ alias perf=perfcheck
 
 alias a="claude -c"
 alias c="claude"
-alias q="qwen"
 
 # reload zsh settings
 alias reload="exec zsh"
