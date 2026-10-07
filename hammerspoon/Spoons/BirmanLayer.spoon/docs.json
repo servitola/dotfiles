@@ -1,0 +1,416 @@
+[
+  {
+    "Command": [],
+    "Constant": [],
+    "Constructor": [],
+    "Deprecated": [],
+    "Field": [],
+    "Function": [],
+    "Method": [
+      {
+        "def": "BirmanLayer:init()",
+        "desc": "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.",
+        "doc": "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object",
+        "name": "init",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object"
+        ],
+        "signature": "BirmanLayer:init()",
+        "stripped_doc": [
+          "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:state()",
+        "desc": "Reports whether the layer is running and which dead key, if any, is waiting.",
+        "doc": "Reports whether the layer is running and which dead key, if any, is waiting.\n\nParameters:\n * None\n\nReturns:\n * A table with `running` (boolean) and `dead` (`nil`, or a table with `state` — the dead key's\n   name, e.g. `\"acute\"`)",
+        "name": "state",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * A table with `running` (boolean) and `dead` (`nil`, or a table with `state` — the dead key's",
+          "   name, e.g. `\"acute\"`)"
+        ],
+        "signature": "BirmanLayer:state()",
+        "stripped_doc": [
+          "Reports whether the layer is running and which dead key, if any, is waiting.",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:start()",
+        "desc": "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings",
+        "doc": "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object\n\nNotes:\n * Reads `overrides`, `rightOptionOnly`, `baseFixups`, `excludedBundles`, `excludedLayouts` and `deadKeyTimeout`; a key name in\n   `overrides` that is not a QWERTY key position raises an error here\n * Hammerspoon needs the Accessibility permission, and nothing is typed while macOS secure\n   input is on (password fields, some terminals)",
+        "name": "start",
+        "notes": [
+          " * Reads `overrides`, `rightOptionOnly`, `baseFixups`, `excludedBundles`, `excludedLayouts` and `deadKeyTimeout`; a key name in",
+          "   `overrides` that is not a QWERTY key position raises an error here",
+          " * Hammerspoon needs the Accessibility permission, and nothing is typed while macOS secure",
+          "   input is on (password fields, some terminals)"
+        ],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object",
+          ""
+        ],
+        "signature": "BirmanLayer:start()",
+        "stripped_doc": [
+          "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:stop()",
+        "desc": "Stops the key tap and the application watcher and drops any pending dead key.",
+        "doc": "Stops the key tap and the application watcher and drops any pending dead key.\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object",
+        "name": "stop",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object"
+        ],
+        "signature": "BirmanLayer:stop()",
+        "stripped_doc": [
+          "Stops the key tap and the application watcher and drops any pending dead key.",
+          ""
+        ],
+        "type": "Method"
+      }
+    ],
+    "Variable": [
+      {
+        "def": "BirmanLayer.overrides",
+        "desc": "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as",
+        "doc": "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as\n`hs.keycodes.currentSourceID()` prints it. Same shape as the Spoon's own table, merged over it:\n`{ keys = { g = { opt = \"©\" } }, dead = { acute = { compose = { [\"ы\"] = \"ы́\" } } } }`.\nA cell is text, `{ dead = \"acute\" }`, `false` (types nothing) or `{ pass = true }` (Apple's own).\nSee docs/configuration.md. Defaults to `{}`. Read by `BirmanLayer:start()`.",
+        "name": "overrides",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.overrides",
+        "stripped_doc": [
+          "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as",
+          "`hs.keycodes.currentSourceID()` prints it. Same shape as the Spoon's own table, merged over it:",
+          "`{ keys = { g = { opt = \"©\" } }, dead = { acute = { compose = { [\"ы\"] = \"ы́\" } } } }`.",
+          "A cell is text, `{ dead = \"acute\" }`, `false` (types nothing) or `{ pass = true }` (Apple's own).",
+          "See docs/configuration.md. Defaults to `{}`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.baseFixups",
+        "desc": "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ",
+        "doc": "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ\nfrom him (ISO keyboards only). Defaults to `false`. Read by `BirmanLayer:start()`.",
+        "name": "baseFixups",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.baseFixups",
+        "stripped_doc": [
+          "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ",
+          "from him (ISO keyboards only). Defaults to `false`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.rightOptionOnly",
+        "desc": "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.",
+        "doc": "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.\n`false`: on both ⌥ keys, as in Birman's Mac layout. Defaults to `true`. Read by `BirmanLayer:start()`.",
+        "name": "rightOptionOnly",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.rightOptionOnly",
+        "stripped_doc": [
+          "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.",
+          "`false`: on both ⌥ keys, as in Birman's Mac layout. Defaults to `true`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.excludedBundles",
+        "desc": "List of application bundle IDs in which the layer stays silent (games, virtual machines,",
+        "doc": "List of application bundle IDs in which the layer stays silent (games, virtual machines,\nremote desktops — anything that reads key codes instead of text). Defaults to `{}`.\nRead by `BirmanLayer:start()`.",
+        "name": "excludedBundles",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.excludedBundles",
+        "stripped_doc": [
+          "List of application bundle IDs in which the layer stays silent (games, virtual machines,",
+          "remote desktops — anything that reads key codes instead of text). Defaults to `{}`.",
+          "Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.excludedLayouts",
+        "desc": "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out",
+        "doc": "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out\nand the Option keys keep that layout's own ⌥ layer, e.g. `{ \"com.apple.keylayout.Greek\" }` for Apple's\nGreek tonos letters and symbols. Defaults to `{}`. Read by `BirmanLayer:start()`.",
+        "name": "excludedLayouts",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.excludedLayouts",
+        "stripped_doc": [
+          "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out",
+          "and the Option keys keep that layout's own ⌥ layer, e.g. `{ \"com.apple.keylayout.Greek\" }` for Apple's",
+          "Greek tonos letters and symbols. Defaults to `{}`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.deadKeyTimeout",
+        "desc": "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.",
+        "doc": "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.\nRead by `BirmanLayer:start()`.",
+        "name": "deadKeyTimeout",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.deadKeyTimeout",
+        "stripped_doc": [
+          "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.",
+          "Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.logger",
+        "desc": "Logger object used within the Spoon. Can be accessed to set the default log level for the",
+        "doc": "Logger object used within the Spoon. Can be accessed to set the default log level for the\nmessages coming from the Spoon.",
+        "name": "logger",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.logger",
+        "stripped_doc": [
+          "Logger object used within the Spoon. Can be accessed to set the default log level for the",
+          "messages coming from the Spoon."
+        ],
+        "type": "Variable"
+      }
+    ],
+    "desc": "Ilya Birman's typography layout on the right Option key, over whatever keyboard layouts you use",
+    "doc": "Ilya Birman's typography layout on the right Option key, over whatever keyboard layouts you use\n(unofficial: not Ilya Birman's layout and not affiliated with him)\n\nThe ⌥ layers are positional and a dead key composes by the character the next key types, so it works\non any layout; only the opt-in `baseFixups` names layouts. The layout is Ilya Birman's work,\nhttps://ilyabirman.ru/typography-layout/",
+    "items": [
+      {
+        "def": "BirmanLayer.baseFixups",
+        "desc": "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ",
+        "doc": "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ\nfrom him (ISO keyboards only). Defaults to `false`. Read by `BirmanLayer:start()`.",
+        "name": "baseFixups",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.baseFixups",
+        "stripped_doc": [
+          "Type Birman's plain and Shift characters on the few keys where Apple's ABC and Russian – PC differ",
+          "from him (ISO keyboards only). Defaults to `false`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.deadKeyTimeout",
+        "desc": "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.",
+        "doc": "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.\nRead by `BirmanLayer:start()`.",
+        "name": "deadKeyTimeout",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.deadKeyTimeout",
+        "stripped_doc": [
+          "Seconds a dead key waits for the next key before it is dropped silently. Defaults to `3`.",
+          "Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.excludedBundles",
+        "desc": "List of application bundle IDs in which the layer stays silent (games, virtual machines,",
+        "doc": "List of application bundle IDs in which the layer stays silent (games, virtual machines,\nremote desktops — anything that reads key codes instead of text). Defaults to `{}`.\nRead by `BirmanLayer:start()`.",
+        "name": "excludedBundles",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.excludedBundles",
+        "stripped_doc": [
+          "List of application bundle IDs in which the layer stays silent (games, virtual machines,",
+          "remote desktops — anything that reads key codes instead of text). Defaults to `{}`.",
+          "Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.excludedLayouts",
+        "desc": "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out",
+        "doc": "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out\nand the Option keys keep that layout's own ⌥ layer, e.g. `{ \"com.apple.keylayout.Greek\" }` for Apple's\nGreek tonos letters and symbols. Defaults to `{}`. Read by `BirmanLayer:start()`.",
+        "name": "excludedLayouts",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.excludedLayouts",
+        "stripped_doc": [
+          "List of input source IDs, as `hs.keycodes.currentSourceID()` reports them, in which the layer stays out",
+          "and the Option keys keep that layout's own ⌥ layer, e.g. `{ \"com.apple.keylayout.Greek\" }` for Apple's",
+          "Greek tonos letters and symbols. Defaults to `{}`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.logger",
+        "desc": "Logger object used within the Spoon. Can be accessed to set the default log level for the",
+        "doc": "Logger object used within the Spoon. Can be accessed to set the default log level for the\nmessages coming from the Spoon.",
+        "name": "logger",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.logger",
+        "stripped_doc": [
+          "Logger object used within the Spoon. Can be accessed to set the default log level for the",
+          "messages coming from the Spoon."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.overrides",
+        "desc": "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as",
+        "doc": "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as\n`hs.keycodes.currentSourceID()` prints it. Same shape as the Spoon's own table, merged over it:\n`{ keys = { g = { opt = \"©\" } }, dead = { acute = { compose = { [\"ы\"] = \"ы́\" } } } }`.\nA cell is text, `{ dead = \"acute\" }`, `false` (types nothing) or `{ pass = true }` (Apple's own).\nSee docs/configuration.md. Defaults to `{}`. Read by `BirmanLayer:start()`.",
+        "name": "overrides",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.overrides",
+        "stripped_doc": [
+          "Changes to Birman's table, keyed by `\"*\"` (every input source) or one input source id as",
+          "`hs.keycodes.currentSourceID()` prints it. Same shape as the Spoon's own table, merged over it:",
+          "`{ keys = { g = { opt = \"©\" } }, dead = { acute = { compose = { [\"ы\"] = \"ы́\" } } } }`.",
+          "A cell is text, `{ dead = \"acute\" }`, `false` (types nothing) or `{ pass = true }` (Apple's own).",
+          "See docs/configuration.md. Defaults to `{}`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer.rightOptionOnly",
+        "desc": "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.",
+        "doc": "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.\n`false`: on both ⌥ keys, as in Birman's Mac layout. Defaults to `true`. Read by `BirmanLayer:start()`.",
+        "name": "rightOptionOnly",
+        "notes": [],
+        "parameters": [],
+        "returns": [],
+        "signature": "BirmanLayer.rightOptionOnly",
+        "stripped_doc": [
+          "`true`: the layer sits on the right ⌥ only, like AltGr on Windows, and the left ⌥ stays Apple's.",
+          "`false`: on both ⌥ keys, as in Birman's Mac layout. Defaults to `true`. Read by `BirmanLayer:start()`."
+        ],
+        "type": "Variable"
+      },
+      {
+        "def": "BirmanLayer:init()",
+        "desc": "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.",
+        "doc": "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object",
+        "name": "init",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object"
+        ],
+        "signature": "BirmanLayer:init()",
+        "stripped_doc": [
+          "Called by `hs.loadSpoon()`. Installs nothing: the key tap starts only in `BirmanLayer:start()`.",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:start()",
+        "desc": "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings",
+        "doc": "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object\n\nNotes:\n * Reads `overrides`, `rightOptionOnly`, `baseFixups`, `excludedBundles`, `excludedLayouts` and `deadKeyTimeout`; a key name in\n   `overrides` that is not a QWERTY key position raises an error here\n * Hammerspoon needs the Accessibility permission, and nothing is typed while macOS secure\n   input is on (password fields, some terminals)",
+        "name": "start",
+        "notes": [
+          " * Reads `overrides`, `rightOptionOnly`, `baseFixups`, `excludedBundles`, `excludedLayouts` and `deadKeyTimeout`; a key name in",
+          "   `overrides` that is not a QWERTY key position raises an error here",
+          " * Hammerspoon needs the Accessibility permission, and nothing is typed while macOS secure",
+          "   input is on (password fields, some terminals)"
+        ],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object",
+          ""
+        ],
+        "signature": "BirmanLayer:start()",
+        "stripped_doc": [
+          "Starts the key tap and the application watcher; calling it again restarts the layer with the current settings",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:state()",
+        "desc": "Reports whether the layer is running and which dead key, if any, is waiting.",
+        "doc": "Reports whether the layer is running and which dead key, if any, is waiting.\n\nParameters:\n * None\n\nReturns:\n * A table with `running` (boolean) and `dead` (`nil`, or a table with `state` — the dead key's\n   name, e.g. `\"acute\"`)",
+        "name": "state",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * A table with `running` (boolean) and `dead` (`nil`, or a table with `state` — the dead key's",
+          "   name, e.g. `\"acute\"`)"
+        ],
+        "signature": "BirmanLayer:state()",
+        "stripped_doc": [
+          "Reports whether the layer is running and which dead key, if any, is waiting.",
+          ""
+        ],
+        "type": "Method"
+      },
+      {
+        "def": "BirmanLayer:stop()",
+        "desc": "Stops the key tap and the application watcher and drops any pending dead key.",
+        "doc": "Stops the key tap and the application watcher and drops any pending dead key.\n\nParameters:\n * None\n\nReturns:\n * The BirmanLayer object",
+        "name": "stop",
+        "notes": [],
+        "parameters": [
+          " * None",
+          ""
+        ],
+        "returns": [
+          " * The BirmanLayer object"
+        ],
+        "signature": "BirmanLayer:stop()",
+        "stripped_doc": [
+          "Stops the key tap and the application watcher and drops any pending dead key.",
+          ""
+        ],
+        "type": "Method"
+      }
+    ],
+    "name": "BirmanLayer",
+    "stripped_doc": [],
+    "submodules": [],
+    "type": "Module"
+  }
+]

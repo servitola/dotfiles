@@ -1,0 +1,3 @@
+The character tables in typography_table.lua are derived from Ilya Birman's
+Typography Layout (https://ilyabirman.ru/typography-layout/) and are used with
+attribution; the MIT license in LICENSE covers this Spoon's code, not his layout.

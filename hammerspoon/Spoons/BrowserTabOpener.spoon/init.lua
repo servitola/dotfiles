@@ -1,120 +1,156 @@
+--- === BrowserTabOpener ===
+---
+--- One key for a site: jump to its open tab, press again for the next one, open it if there is none.
 local obj = {}
 obj.__index = obj
 
-obj._task = nil  -- prevent GC of running hs.task
+obj.name = "BrowserTabOpener"
+obj.version = "0.1.0"
+obj.author = "servitola"
+obj.homepage = "https://github.com/servitola/BrowserTabOpener.spoon"
+obj.license = "MIT - https://opensource.org/licenses/MIT"
 
-local browser = require("browsers").main
+local core = dofile(hs.spoons.scriptPath() .. "core.lua")
+local log = hs.logger.new("BrowserTabOpener", "info")
 
-function obj:openTab(urlPattern)
-    local script = string.format([[
-        tell application "%s"
-            set matchedTabs to {}
-            set currentMatchPos to 0
-            set currentActive to active tab index of front window
+--- BrowserTabOpener.browser
+--- Variable
+--- Bundle id of the browser (`"com.google.Chrome"`). `nil`: the system default browser.
+obj.browser = nil
 
-            set tabCounter to 0
-            repeat with t in tabs of front window
-                set tabCounter to tabCounter + 1
-                if URL of t contains "%s" then
-                    set end of matchedTabs to tabCounter
-                    if tabCounter = currentActive then
-                        set currentMatchPos to (count of matchedTabs)
-                    end if
-                end if
-            end repeat
+--- BrowserTabOpener.tabs
+--- Variable
+--- Your sites by name: `github = { pattern = "github.com", url = "https://github.com" }`,
+--- with an optional `prefer`. `open("github")` and `bindHotkeys` use the names.
+obj.tabs = {}
 
-            if (count of matchedTabs) = 0 then
-                return "none"
-            end if
+--- BrowserTabOpener.videoPlaying
+--- Constant
+--- A ready `prefer` condition: a video is playing on the page.
+obj.videoPlaying = "(video => !!video && !video.paused)(document.querySelector('video'))"
 
-            set nextPos to (count of matchedTabs)
-            if currentMatchPos > 1 then
-                set nextPos to currentMatchPos - 1
-            else if currentMatchPos = 1 then
-                set nextPos to (count of matchedTabs)
-            end if
+local running = {}  -- referenced: GC kills a running hs.task
+local told = {}     -- each warning once per load: a hotkey would repeat it on every press
 
-            set active tab index of front window to item nextPos of matchedTabs
-            activate
-            return "ok"
-        end tell
-    ]], browser.app, urlPattern:gsub('"', '\\"'))
-
-    self._task = hs.task.new("/usr/bin/osascript", function(exitCode, stdout, stderr)
-        self._task = nil
-        local result = stdout and stdout:gsub("%s+$", "") or ""
-
-        if exitCode ~= 0 then
-            hs.logger.new('BrowserTabOpener'):d("AppleScript error: " .. tostring(stderr))
-        end
-
-        if result == "ok" then
-            -- Tab found and switched
-        else
-            hs.application.launchOrFocus(browser.app)
-            hs.timer.doAfter(0.1, function()
-                hs.urlevent.openURLWithBundle("https://" .. urlPattern, browser.bundle)
-            end)
-        end
-    end, {"-e", script})
-    self._task:start()
+local function run(path, arguments, done)
+    local task
+    task = hs.task.new(path, function(exitCode, output, problem)
+        running[task] = nil
+        if done then done(exitCode, output or "", problem or "") end
+    end, arguments)
+    running[task] = true
+    task:start()
 end
 
-function obj:focusPlayingTab(urlPattern)
-    local script = string.format([[
-        tell application "%s"
-            set firstMatchTab to 0
-            set playingTab to 0
+local function tell(key, message, onScreen)
+    if told[key] then return end
+    told[key] = true
+    log.w(message)
+    if onScreen then hs.alert.show("BrowserTabOpener: " .. message, 6) end
+end
 
-            set tabCounter to 0
-            repeat with t in tabs of front window
-                set tabCounter to tabCounter + 1
-                if URL of t contains "%s" then
-                    if firstMatchTab = 0 then
-                        set firstMatchTab to tabCounter
-                    end if
-                    try
-                        set jsResult to (execute t javascript "String(!document.querySelector('video')?.paused)")
-                        if jsResult = "true" then
-                            set playingTab to tabCounter
-                            exit repeat
-                        end if
-                    end try
-                end if
-            end repeat
+local function appName(bundle)
+    return hs.application.nameForBundleID(bundle) or bundle
+end
 
-            if playingTab > 0 then
-                set active tab index of front window to playingTab
-                activate
-                return "ok"
-            else if firstMatchTab > 0 then
-                set active tab index of front window to firstMatchTab
-                activate
-                return "ok"
+function obj:_bundle()
+    return self.browser or hs.urlevent.getDefaultHandler("https")
+end
+
+local DENIED = "macOS does not let Hammerspoon control %s, so every press opens a new tab. "
+    .. "Allow it in System Settings → Privacy & Security → Automation → Hammerspoon."
+
+--- BrowserTabOpener:open(name) -> self
+--- BrowserTabOpener:open(pattern, url[, options]) -> self
+--- Method
+--- Switches to a tab whose address contains `pattern`; called again, to the next such tab.
+--- With no such tab, or in a browser without tab scripting, opens `url`. With one argument,
+--- opens the site of that name from `tabs`.
+---
+--- `options.prefer` is JavaScript: a matching tab where it is true wins over the others.
+--- The browser has to allow JavaScript from Apple Events for it; otherwise it is ignored.
+function obj:open(pattern, url, options)
+    if url == nil and options == nil then
+        local ok, site = pcall(core.site, pattern, self.tabs[pattern])
+        if not ok then error("BrowserTabOpener: " .. site .. " — open(name) takes a site from tabs, open(pattern, url) takes both", 2) end
+        pattern, url, options = site.pattern, site.url, site.options
+    end
+    local ok, problem = pcall(core.check, pattern, url, options)
+    if not ok then error("BrowserTabOpener: " .. problem, 2) end
+    local bundle = self:_bundle()
+    local scriptOk, script = pcall(core.script, bundle)
+    if not scriptOk then error("BrowserTabOpener: " .. script, 2) end
+
+    local condition = core.condition(options and options.prefer)
+    run("/usr/bin/osascript", { "-e", script, pattern, condition }, function(exitCode, output, failure)
+        local status, note = core.result(exitCode, output)
+        if note then tell("prefer", "prefer is ignored — " .. appName(bundle) .. " says: " .. note) end
+        if status == "ok" then return end
+        if status == "failed" then
+            if core.problem(failure) == "denied" then
+                tell("denied", DENIED:format(appName(bundle)), true)
             else
-                return "none"
-            end if
-        end tell
-    ]], browser.app, urlPattern:gsub('"', '\\"'))
-
-    self._task = hs.task.new("/usr/bin/osascript", function(exitCode, stdout, stderr)
-        self._task = nil
-        local result = stdout and stdout:gsub("%s+$", "") or ""
-
-        if exitCode ~= 0 then
-            hs.logger.new('BrowserTabOpener'):d("AppleScript error: " .. tostring(stderr))
+                log.d(bundle .. ": " .. failure)
+            end
         end
+        -- open, not hs.urlevent.openURLWithBundle: for Chromium browsers that one can start
+        -- a second process fighting the running one over its profile.
+        run("/usr/bin/open", { "-b", bundle, url })
+    end)
+    return self
+end
 
-        if result == "ok" then
-            -- Tab found and switched
+--- BrowserTabOpener:bindHotkeys(mapping) -> self
+--- Method
+--- A hotkey per site of `tabs`: `{ github = { { "ctrl", "alt" }, "g" } }`.
+function obj:bindHotkeys(mapping)
+    local actions = {}
+    for name in pairs(mapping) do
+        local ok, problem = pcall(core.site, name, self.tabs[name])
+        if not ok then error("BrowserTabOpener: " .. problem, 2) end
+        actions[name] = function() self:open(name) end
+    end
+    hs.spoons.bindHotkeysToSpec(actions, mapping)
+    return self
+end
+
+local CHECK = [[
+tell application id "%s"
+    set report to "tabs: " & (count of tabs of front window) & " in the front window"
+    try
+        execute active tab of front window javascript "1"
+        return report & linefeed & "prefer: JavaScript from Apple Events is allowed"
+    on error problem
+        return report & linefeed & "prefer: not available — " & problem
+    end try
+end tell
+]]
+
+--- BrowserTabOpener:check() -> self
+--- Method
+--- Prints to the Hammerspoon console what works with the current browser: tab switching,
+--- the macOS permission, JavaScript for `prefer`. Run it when a key only opens new tabs.
+function obj:check()
+    local bundle = self:_bundle()
+    local ok, problem = pcall(core.script, bundle)
+    if not ok then error("BrowserTabOpener: " .. problem, 2) end
+    local function say(line) log.i("check: " .. line) end
+
+    say("browser: " .. appName(bundle) .. " (" .. bundle .. ")" .. (self.browser and "" or ", the system default"))
+    if not hs.application.pathForBundleID(bundle) then
+        say("this browser is not installed")
+        return self
+    end
+    run("/usr/bin/osascript", { "-e", CHECK:format(bundle) }, function(exitCode, output, failure)
+        if exitCode == 0 then
+            for line in output:gmatch("[^\n]+") do say(line) end
+        elseif core.problem(failure) == "denied" then
+            say(DENIED:format(appName(bundle)))
         else
-            hs.application.launchOrFocus(browser.app)
-            hs.timer.doAfter(0.1, function()
-                hs.urlevent.openURLWithBundle("https://youtube.com", browser.bundle)
-            end)
+            say("tabs: this browser cannot switch tabs from a script; a key only opens the address (" .. failure:gsub("%s+$", "") .. ")")
         end
-    end, {"-e", script})
-    self._task:start()
+    end)
+    return self
 end
 
 return obj
