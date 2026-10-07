@@ -74,3 +74,13 @@ require "wifi_watcher"
 require "text_expansion"
 require "dismiss_fork_dialog"
 require "reload_hammerspoon_on_script_changed"
+
+hs.loadSpoon("BirmanLayer")
+local layer = spoon.BirmanLayer
+layer.excludedBundles = {}
+for bundle in pairs(require("game_mode").bundles) do
+    table.insert(layer.excludedBundles, bundle)
+end
+layer.baseFixups = true
+layer.excludedLayouts = { "com.apple.keylayout.Greek" } -- Apple's own Greek ⌥ layer: accented letters (ά έ ή), Greek symbols
+layer:start()
