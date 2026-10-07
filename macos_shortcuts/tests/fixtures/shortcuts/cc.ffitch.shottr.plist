@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeyboardShortcuts_area</key>
+	<string>{"carbonKeyCode":21,"carbonModifiers":768}</string>
+	<key>KeyboardShortcuts_fullscreen</key>
+	<integer>0</integer>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+</dict>
+</plist>

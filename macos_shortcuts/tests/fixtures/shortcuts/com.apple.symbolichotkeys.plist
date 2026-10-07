@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AppleSymbolicHotKeys</key>
+	<dict>
+		<key>30</key>
+		<dict>
+			<key>enabled</key>
+			<false/>
+			<key>value</key>
+			<dict>
+				<key>parameters</key>
+				<array>
+					<integer>52</integer>
+					<integer>21</integer>
+					<integer>1179648</integer>
+				</array>
+				<key>type</key>
+				<string>standard</string>
+			</dict>
+		</dict>
+		<key>79</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

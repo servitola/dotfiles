@@ -24,3 +24,4 @@ the keyboard lint can see what macOS would swallow before Hammerspoon does.
 - The keyboard lint (`docs/keyboard/tools/lint.py`, pre-commit) reads this file:
   S1 — a layout chord is also an enabled system shortcut; S2/S3 — collisions inside
   the file.
+- Tests: `uvx pytest macos_shortcuts/tests` — plist fixtures of real app stores, no live Mac needed.

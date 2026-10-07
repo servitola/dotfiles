@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSServicesStatus</key>
+	<dict>
+		<key>(null) - 98E57310-1031-4D81-A905-6EBF846D38C5 - runShortcutAsService</key>
+		<dict>
+			<key>key_equivalent</key>
+			<string>~^$J</string>
+		</dict>
+		<key>(null) - E0609E39-D34B-4E18-BA91-994451AF81CE - runShortcutAsService</key>
+		<dict>
+			<key>key_equivalent</key>
+			<string>~^$K</string>
+		</dict>
+		<key>com.apple.Terminal - New Terminal Tab at Folder - newTerminalAtFolder</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>key_equivalent</key>
+			<string>^$b</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.Terminal - New Terminal at Folder - newTerminalAtFolder</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.apple.finder - Finder/Reveal - reveal</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>key_equivalent</key>
+			<string>^$h</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+		<key>com.googlecode.iterm2 - New iTerm2 Tab Here - openTab</key>
+		<dict>
+			<key>enabled_context_menu</key>
+			<false/>
+			<key>enabled_services_menu</key>
+			<false/>
+			<key>key_equivalent</key>
+			<string>^$b</string>
+			<key>presentation_modes</key>
+			<dict>
+				<key>ContextMenu</key>
+				<false/>
+				<key>ServicesMenu</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AutoRehide</key>
+	<true/>
+	<key>Hotkeys</key>
+	<dict>
+		<key>EnableIceBar</key>
+		<data>
+		bnVsbA==
+		</data>
+		<key>SearchMenuBarItems</key>
+		<data>
+		bnVsbA==
+		</data>
+		<key>ShowSectionDividers</key>
+		<data>
+		bnVsbA==
+		</data>
+		<key>ToggleAlwaysHiddenSection</key>
+		<data>
+		bnVsbA==
+		</data>
+		<key>ToggleApplicationMenus</key>
+		<data>
+		bnVsbA==
+		</data>
+		<key>ToggleHiddenSection</key>
+		<data>
+		bnVsbA==
+		</data>
+	</dict>
+</dict>
+</plist>
