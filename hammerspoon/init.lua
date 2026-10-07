@@ -39,7 +39,9 @@ safeLoadSpoon("BrowserTabOpener") -- jump to a site's open tab, cycle, or open i
 spoon.BrowserTabOpener.browser = constants.APP_BROWSER_BUNDLE
 safeLoadSpoon("AudioSwitcher") -- audio device switching
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
-safeLoadSpoon("URLDispatcher") -- open urls in different browsers
+if hs.fs.attributes(hs.configdir .. "/Spoons/LinkRouter.spoon") then
+    safeLoadSpoon("LinkRouter") -- each clicked link to the browser its rule names, github.com/servitola/LinkRouter.spoon
+end
 safeLoadSpoon("HotKeys") -- all hotkeys
 safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop, github.com/servitola/ScreenGlow.spoon
 if spoon.HotKeys then
@@ -58,7 +60,7 @@ if spoon.HotKeys then
 end
 
 require "reactive_state"  -- shared state (must load before modules that use it)
-require "config_UrlDispatcher"
+require "link_router"
 
 safeLoadSpoon("AutoKeyboardLayout") -- a layout per app
 spoon.AutoKeyboardLayout.primary = constants.LAYOUT_PRIMARY
