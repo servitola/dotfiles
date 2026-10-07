@@ -9,7 +9,8 @@
 #   const list DIR_             list a namespace
 #   const keys                  key names only
 #   const file                  where the values live
-#   const check                 verify every DIR_/FILE_ path exists
+#   const check                 schema, loaders, unread and unknown keys, paths and apps exist
+#   const literals              every hardcoded private value in the repo
 #   const sync                  re-render generated files (constants/render/)
 #   const edit                  open it in $EDITOR
 set -euo pipefail
@@ -53,15 +54,10 @@ case "${1:-list}" in
         print -r -- "$FILE"
         ;;
     check)
-        local bad=0
-        for key in $ORDER; do
-            [[ $key == (DIR_|FILE_)* ]] || continue
-            [[ -e ${CONST[$key]} ]] && continue
-            print -u2 -r -- "missing: $key → ${CONST[$key]}"
-            bad=1
-        done
-        (( bad )) && exit 1
-        print "all DIR_/FILE_ constants point at something that exists"
+        python3 "$HOME/projects/dotfiles/constants/check.py" --machine
+        ;;
+    literals)
+        python3 "$HOME/projects/dotfiles/constants/check.py" --literals
         ;;
     sync)
         zsh "$HOME/projects/dotfiles/constants/render-all.zsh"
@@ -73,7 +69,7 @@ case "${1:-list}" in
         _get "$2"
         ;;
     -h|--help)
-        sed -n '2,14p' "$0" | cut -c3-
+        sed -n '2,15p' "$0" | cut -c3-
         ;;
     *)
         _get "$1"
