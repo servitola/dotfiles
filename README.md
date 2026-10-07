@@ -16,7 +16,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Look at the [Script which sets default apps](https://github.com/servitola/dotfiles/blob/master/macos/set_default_apps.sh). Add an extension or UTI to the `HANDLERS` map under the app's bundle id, then run it. Get your [app's bundle id](https://stackoverflow.com/a/39464824/817396).
 
 * Q: I want my <ins>main</ins> English <ins>keyboard layout</ins> to turn on <ins>automatically everywhere</ins> except in my messenger (I use [Telegram](https://telegram.org/))
-* A: This solution for layout switching works perfectly. Look at the [Hammerspoon script which sets language when application is focused](https://github.com/servitola/dotfiles/blob/master/hammerspoon/set_language_on_app_focused.lua). [Set up your messenger](https://stackoverflow.com/a/39464824/817396) and set your layouts. I use Apple's `ABC` / `Russian – PC` with Ilya Birman's ⌥ layers reproduced on the right Option key by Hammerspoon ([BirmanLayer.spoon](https://github.com/servitola/BirmanLayer.spoon)). There is an app for the switching: **Keyboard Pilot** but it conflicts with Ilya's layouts.
+* A: Look at the [AutoKeyboardLayout.spoon](https://github.com/servitola/AutoKeyboardLayout.spoon), a Hammerspoon Spoon that sets the layout when an application is focused
 
 * Q: I want to <ins>manipulate my windows</ins> from my keyboard and I want only 4 or fewer easy positions
 * A: The easiest window management: `ctrl + alt + arrow keys`. It is a Spoon of its own now: [PowerWindows.spoon](https://github.com/servitola/PowerWindows.spoon) — every window in its place, one key.
