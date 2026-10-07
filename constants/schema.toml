@@ -1,0 +1,82 @@
+[keys]
+ME_NAME     = { type = "text", about = "account name, git author, GitHub handle" }
+ME_EMAIL    = { type = "email", private = true, about = "git author email" }
+ME_TZ       = { type = "timezone", unread = true, private = true, about = "home timezone for schedules and digests" }
+ME_CITY     = { type = "text", unread = true, private = true, about = "home city, local spelling" }
+ME_CITY_ENG = { type = "text", unread = true, private = true, about = "home city, English spelling" }
+ME_COUNTRY  = { type = "text", unread = true, private = true, about = "home country, ISO 3166-1 alpha-2" }
+ME_ADDRESS  = { type = "text", unread = true, private = true, about = "home address for deliveries and bookings" }
+
+APP_BROWSER         = { type = "app", about = "default browser" }
+APP_BROWSER_BUNDLE  = { type = "bundle", about = "bundle id of APP_BROWSER" }
+APP_BROWSER_ALT     = { type = "app", about = "second browser" }
+APP_BROWSER_WORK    = { type = "app", about = "browser that work links are routed to" }
+APP_TERMINAL        = { type = "app", about = "main terminal" }
+APP_TERMINAL_BUNDLE = { type = "bundle", unread = true, about = "bundle id of APP_TERMINAL" }
+APP_TERMINAL_ALT    = { type = "app", about = "second terminal" }
+APP_TELEGRAM        = { type = "app", about = "Telegram client in use" }
+APP_TELEGRAM_BUNDLE = { type = "bundle", unread = true, about = "bundle id of APP_TELEGRAM" }
+APP_EDITOR          = { type = "app", about = "text editor" }
+APP_EDITOR_CLI      = { type = "cli", unread = true, about = "command that opens APP_EDITOR" }
+APP_GIT_GUI         = { type = "app", about = "git client" }
+APP_FILES           = { type = "app", about = "file manager" }
+APP_MUSIC           = { type = "app", about = "music player" }
+APP_DAW             = { type = "app", unread = true, about = "digital audio workstation" }
+APP_VIDEO           = { type = "app", about = "video player" }
+APP_IDE             = { type = "app", about = "IDE" }
+
+LAYOUT_PRIMARY   = { type = "text", about = "first input source, as macOS names it" }
+LAYOUT_SECONDARY = { type = "text", about = "second input source" }
+LAYOUT_TERTIARY  = { type = "text", about = "third input source" }
+
+DOCK_POSITION = { type = "text", about = "side of the screen the Dock sits on: left, bottom or right" }
+
+DIR_PROJECTS     = { type = "dir", about = "root of every repository" }
+DIR_DOTFILES     = { type = "dir", about = "this repository" }
+DIR_WORK         = { type = "dir", private = true, about = "employer repositories" }
+DIR_SERHO        = { type = "dir", unread = true, about = "the Telegram bot" }
+DIR_SERHO_TOPICS = { type = "dir", about = "per-topic folders of the bot" }
+DIR_SERHO_USERS  = { type = "dir", unread = true, about = "per-user folders of the bot" }
+DIR_SERVICES     = { type = "dir", unread = true, about = "docker compose services" }
+DIR_FORKS        = { type = "dir", about = "fork-sync jobs" }
+DIR_CONFIG       = { type = "dir", unread = true, about = "XDG config home" }
+DIR_EXTERNAL     = { type = "dir", removable = true, about = "external drive" }
+DIR_CRON_JOBS    = { type = "dir", unread = true, about = "cron fragments" }
+DIR_CRON_SCRIPTS = { type = "dir", about = "scripts the cron fragments run" }
+DIR_CLAUDE       = { type = "dir", unread = true, about = "Claude Code configuration" }
+TART_HOST        = { type = "host", private = true, about = "ssh alias of the machine that runs tart VMs" }
+DIR_EQ           = { type = "dir", unread = true, removable = true, about = "eq, the public repository" }
+DIR_EQ_LAB       = { type = "dir", unread = true, removable = true, about = "eq, the private lab beside it" }
+DIR_NOWPLAYINGSEEK     = { type = "dir", removable = true, about = "nowplayingseek, the public repository" }
+DIR_NOWPLAYINGSEEK_LAB = { type = "dir", removable = true, about = "nowplayingseek, the private lab beside it" }
+
+FILE_SECRETS    = { type = "file", about = "API keys, sourced by shells and jobs" }
+FILE_TG_BOT_ENV = { type = "file", private = true, about = "env file of the notification bot" }
+FILE_SERHO_ENV  = { type = "file", private = true, about = "env file of the Telegram bot" }
+
+TG_CHAT_MAIN   = { type = "chat_id", private = true, about = "supergroup for reminders and digests" }
+TG_CHAT_NOTIFY = { type = "chat_id", private = true, about = "supergroup for machine alerts" }
+TG_CHAT_PHONE3 = { type = "chat_id", private = true, about = "supergroup of the third phone" }
+TG_BOT_API     = { type = "url", about = "local Telegram Bot API server" }
+
+LITELLM_URL = { type = "url", about = "local LiteLLM proxy" }
+QDRANT_URL  = { type = "url", about = "local Qdrant" }
+
+PROXY_WORK         = { type = "url", unread = true, private = true, about = "employer VPN, SOCKS" }
+PROXY_WORK_HTTP    = { type = "url", private = true, about = "employer VPN, HTTP" }
+PROXY_WEBDOCK      = { type = "url", unread = true, private = true, about = "tunnel through the Webdock server" }
+PROXY_JELLY        = { type = "url", unread = true, private = true, about = "tunnel through the Jelly server" }
+PROXY_BLANC_MOSCOW = { type = "url", private = true, about = "Blanc tunnel, Moscow exit" }
+PROXY_BLANC_LA     = { type = "url", unread = true, private = true, about = "Blanc tunnel, Los Angeles exit" }
+
+HOST_I9    = { type = "host", unread = true, private = true, about = "ssh alias of the home server" }
+HOST_MIR5  = { type = "host", unread = true, private = true, about = "ssh alias of the mir5 machine" }
+HOST_GITEA = { type = "host", unread = true, private = true, about = "ssh alias of the Gitea host" }
+
+MODEL_CLAUDE_DEFAULT = { type = "text", unread = true, about = "Claude model the scripts ask for" }
+MODEL_CODEX_DEFAULT  = { type = "text", unread = true, about = "Codex model the scripts ask for" }
+RAG_COLLECTION       = { type = "text", about = "default RAG collection" }
+
+[literals]
+# Formats that expand nothing and are not rendered from a template.
+allow = ["*.plist", "*/*.plist", "launchagents/**"]

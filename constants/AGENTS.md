@@ -13,6 +13,8 @@ proxies — so nothing hardcodes them again.
 | `template.zsh` | `render <config>` → `~/.local/state/dotfiles/generated/<same name>`. |
 | `../<app>/render.zsh` | Two lines: source `template.zsh`, `render` that config. Today `git/`, `nuget/`. |
 | `../zsh/bin/const` | The CLI — how an AI agent reads a value. |
+| `schema.toml` | One line per key: `type`, `about`, and the flags below. |
+| `check.py` | Holds the file, the schema and the consumers to each other. Runs on every commit; `const check` adds the checks that need this machine. |
 
 `KEY=value`, no quotes, no `export`; the value is the rest of the line verbatim.
 `#` only at line start — inline it lands inside the value. `$HOME` is the one
@@ -37,11 +39,38 @@ Every `$` expands, comments included — a literal one needs `\$`; an unknown na
 aborts the render instead of writing empty. Nothing generated is in the repo: if
 git asks who you are, the render never ran.
 
+## Schema and checks
+
+A key exists in `constants.env` and in `schema.toml`, or in neither. Types:
+`text email timezone app bundle cli dir file chat_id url host`. Flags:
+
+- `private = true` — the value identifies the owner or the employer. It decides
+  which keys leave the public half of the file when the repo is published, and
+  it makes the value a forbidden literal everywhere else.
+- `unread = true` — nothing reads the key yet. A baseline, not a permission: a
+  new key without a reader fails, and the flag fails once a reader appears.
+- `removable = true` — a path that is allowed to be absent (an external drive).
+
+`check.py` fails a commit on:
+
+- a value that does not fit its type, or a line the four loaders (`load.zsh`,
+  `const`, `constants.py`, `constants.lua`) would read differently — it runs all
+  four on the real file and compares;
+- a key nobody reads, and a reference to a key that does not exist (`K["X"]`,
+  `constants.X`, `"@APP_X"`, `const x.y`, `$X` in a constants namespace);
+- a staged line that hardcodes a private value or the home path. Only added
+  lines count, so the existing ones do not block; `const literals` lists them
+  all. A format that can expand nothing goes into `[literals] allow`.
+
+`const check` adds: paths exist, apps are installed, CLIs are on `PATH`.
+Tests: `python3 constants/test-check.py`.
+
 ## Rules
 
 - A value belongs here when a second consumer needs it — not every string.
 - Secrets are fine: the repo is private and self-hosted.
-- Adding a key needs no installer step, symlink or regeneration.
+- Adding a key is two lines — the value and its schema entry — and no installer
+  step, symlink or regeneration.
 - Consumers read the constant, never copy it. `hammerspoon/browsers.lua`:
   `APP_BROWSER` picks `M.main`, unknown name fails loudly.
 - `app = "@APP_BROWSER"` in a keyboard chord resolves in three places that must
