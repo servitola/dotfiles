@@ -22,7 +22,7 @@ OUTPUT = REPO_ROOT / "hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua"
 APP_RE = re.compile(r'app\s*=\s*"([^"]+)"')
 
 # LaunchServices resolves some names to a launcher stub instead of the app
-# process that actually runs (verified against set_language_on_app_focused.lua).
+# process that actually runs (verified against game_mode.lua).
 OVERRIDES = {
     "Heroes of the Storm": "com.blizzard.heroesofthestorm",  # not net.battle.bootstrapper
 }

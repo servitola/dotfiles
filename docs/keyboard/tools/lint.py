@@ -10,8 +10,18 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   C1  every active {chord=…, app|fn=…} has a matching ASCII row
   C2  `app = "@KEY"` resolves against constants, and its ASCII row agrees
   D1  ASCII karabiner column matches karabiner/rules/*.json
-  D2  ASCII birman column matches Birman.bundle/*.keylayout
+  D2  ASCII birman column matches parse_birman.py (Apple layouts + BirmanLayer.spoon + overrides)
   K1  Hammerspoon binding is not dead (Karabiner does not intercept same chord)
+  A1  every `fn = "…"` is registered (hammerspoon/actions/**/*.lua or HotKeys.spoon/init.lua)
+  B2  every F13–F20/num# chord is a slot variant ([slots] in karabiner/layers.toml) or num8/num9
+  S1  an active chord is an enabled system shortcut in macos_shortcuts/shortcuts.toml (macOS swallows it)
+
+Once per run (also under --skip-drift):
+  S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
+  B4  a karabiner/layers.raw/ manipulator that one layers.toml row could express
+  G1  karabiner/rules/07…17 differ from what gen_layers.py generates (hand edit, or not regenerated)
+  S2  a macos_shortcuts/shortcuts.toml [[app]] or [[menu]] chord is also an enabled [[system]] one
+  S3  two [[app]]/[[menu]] rows on one chord that can be live at the same time
 
 Exit codes:
   0 — clean
@@ -36,9 +46,16 @@ from parse_karabiner import parse_karabiner, _TO_PHYS, _to_display, _from_mods_t
 from parse_birman import parse_birman, LAYER_TO_STATE
 from config import FKEY_MAPPING, MOD_DISPLAY
 from app_constants import resolve
+import bridges
+import gen_layers
+import keycodes
+import layers
+import shortcuts
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
+HAMMERSPOON_DIR = os.path.normpath(os.path.join(HERE, "..", "..", "..", "hammerspoon"))
+REGISTER_RE = re.compile(r'register\(\s*"([^"]+)"')
 
 CANONICAL_COLS = [17, 32, 47, 51]   # positions of │ separators on chord rows
 CANONICAL_HDR_TAIL_DASHES = 36       # dashes after "app — function "
@@ -65,6 +82,7 @@ BOX_CAP_RE = re.compile(r'^--\s+╭([—\-]+)╮')
 
 # F-key/num convention: ⇪key in ASCII row's karabiner column = F-key sent
 F_CHORD = re.compile(r'^(⇧?⌃?⌥?⌘?)(F\d+|num\d+)$')
+BRIDGE_CHORD = re.compile(r'^([⇪⇧⌃⌥⌘]*)(F1[3-9]|F20|num\d)$')
 
 class Findings:
     def __init__(self):
@@ -355,7 +373,7 @@ def _bir_eq(a, b):
 
 
 def check_birman_drift(state, findings, birman_data):
-    """D2: ASCII birman column vs Birman.bundle keylayouts."""
+    """D2: ASCII birman column vs what parse_birman.py says the keys type."""
     f = state["path"]
     name = os.path.basename(f)
     phys = name[:-4]
@@ -382,8 +400,8 @@ def check_birman_drift(state, findings, birman_data):
         mismatch = any(not _bir_eq(ascii_chars[i], real_chars[i]) for i in range(n))
         if mismatch:
             findings.add(WARN, f, r["line"], "D2",
-                         f"ASCII birman `{r['birman']}` ≠ keylayout `{' '.join(real_chars)}` for {r['chord']}",
-                         "update ASCII birman column to match Birman.bundle/")
+                         f"ASCII birman `{r['birman']}` ≠ typed `{' '.join(real_chars)}` for {r['chord']}",
+                         "update ASCII birman column to match parse_birman.py")
 
 
 def check_dead_bindings(state, findings, karabiner_strict):
@@ -419,6 +437,132 @@ def check_dead_bindings(state, findings, karabiner_strict):
                      f"(generic modifier, both sides blocked), "
                      f"Hammerspoon binding `{a['target']}` is dead",
                      "move binding to a non-intercepted chord OR remove the Karabiner rule")
+
+
+def _registered_actions():
+    """Names passed to register("…") across actions/ and the Spoon.
+
+    window_sets.lua registers from a list literal rather than one call per
+    name, so its names are collected from the string literals inside that
+    list as well.
+    """
+    names = set()
+    roots = [os.path.join(HAMMERSPOON_DIR, "actions"),
+             os.path.join(HAMMERSPOON_DIR, "Spoons", "HotKeys.spoon", "init.lua")]
+    paths = []
+    for root in roots:
+        if os.path.isfile(root):
+            paths.append(root)
+        else:
+            for dirpath, _, files in os.walk(root):
+                paths += [os.path.join(dirpath, f) for f in files if f.endswith(".lua")]
+    list_re = re.compile(r'ipairs\(\{([^}]*)\}\)\s*do\s*\n\s*register\(name', re.S)
+    for p in paths:
+        with open(p, encoding="utf-8") as fh:
+            src = fh.read()
+        names.update(REGISTER_RE.findall(src))
+        for block in list_re.findall(src):
+            names.update(re.findall(r'"([^"]+)"', block))
+    return names
+
+
+def check_layer_raw(findings):
+    """B4: a raw manipulator that belongs in layers.toml."""
+    for stem in layers.raw_stems():
+        name = layers.BY_STEM.get(stem)
+        for i, m in enumerate(layers.load_raw(stem)):
+            text = layers.representable(m, name) if name else None
+            if text is not None:
+                findings.add(WARN, layers.raw_path(stem), 1, "B4",
+                             f"manipulator #{i + 1} ({m['from']['key_code']} → {text}) fits the table",
+                             f"move it to [layer.{name}] in karabiner/layers.toml")
+
+
+def check_generated(findings, rules_dir=bridges.RULES_DIR):
+    """G1: the Hyper-layer rule files are exactly what the generator produces."""
+    try:
+        texts = gen_layers.render()
+    except ValueError as e:
+        findings.add(ERROR, layers.LAYERS_PATH, 1, "G1", f"gen_layers.py cannot generate: {e}")
+        return
+    for stem in gen_layers.drift(rules_dir, texts):
+        findings.add(ERROR, os.path.join(rules_dir, f"{stem}.json"), 1, "G1",
+                     "differs from layers.toml + layers.raw",
+                     "edit karabiner/layers.toml, then run karabiner/build.sh")
+
+
+def enabled_system(rows):
+    """Canonical chord → the enabled [[system]] row holding it."""
+    return {r.keys: r for r in rows["system"] if r.enabled and r.keys}
+
+
+def check_system_shortcuts(state, findings, system):
+    """S1: an active chord that an enabled symbolic hotkey takes first.
+
+    Compared as macOS receives it: a bridged key is the F-key Karabiner emits,
+    and `⇪` is the four modifiers it stands for. The physical chord behind a
+    bridge never reaches macOS, so it cannot collide.
+    """
+    for a in state["actives"]:
+        try:
+            chord = keycodes.canonical(a["chord"])
+        except ValueError:
+            continue
+        r = system.get(chord)
+        if r:
+            findings.add(ERROR, state["path"], a["line"], "S1",
+                         f"`{a['chord']}` → {a['target']} is system shortcut {r.id} ({r.name}), "
+                         f"enabled in macos_shortcuts/shortcuts.toml line {r.line}; macOS takes it first",
+                         "set that row to enabled = false and run shortcuts.py apply, or pick another chord")
+
+
+def _live_together(a, b):
+    """App hotkeys are global; menu shortcuts only fire in their app (or all apps for NSGlobalDomain)."""
+    if isinstance(a, shortcuts.App) or isinstance(b, shortcuts.App):
+        return True
+    return a.domain == b.domain or shortcuts.GLOBAL in (a.domain, b.domain)
+
+
+def check_machine_shortcuts(findings, rows):
+    """S2 / S3 over macos_shortcuts/shortcuts.toml alone."""
+    system = enabled_system(rows)
+    held = [r for r in rows["app"] + rows["menu"] if r.keys != shortcuts.NONE]
+    for r in held:
+        s = system.get(r.keys)
+        if s:
+            findings.add(WARN, shortcuts.TOML_PATH, r.line, "S2",
+                         f"{shortcuts.ident(r)} is on `{r.keys}`, which system shortcut {s.id} "
+                         f"({s.name}, line {s.line}) holds enabled",
+                         "disable the system row, or move the app shortcut")
+    for i, r in enumerate(held):
+        for other in held[:i]:
+            if other.keys == r.keys and _live_together(r, other):
+                findings.add(WARN, shortcuts.TOML_PATH, max(r.line, other.line), "S3",
+                             f"{shortcuts.ident(r)} and {shortcuts.ident(other)} are both on `{r.keys}`",
+                             "move one of them")
+
+
+def check_bridged_chords(state, findings, emitted):
+    """B2: a chord on a bridge key must be a slot variant or one of the exceptions."""
+    order = {c: i for i, c in enumerate("⇪⇧⌃⌥⌘")}
+    for a in state["actives"]:
+        m = BRIDGE_CHORD.match(a["chord"])
+        if not m:
+            continue
+        chord = "".join(sorted(m.group(1), key=order.get)) + m.group(2)
+        if chord not in emitted:
+            findings.add(ERROR, state["path"], a["line"], "B2",
+                         f"`{a['chord']}` is neither a slot variant nor num8/num9, nothing emits it",
+                         "bind a code from `docs/keyboard/tools/bridge.py` (a letter's slot with that "
+                         "layer's modifiers), or add the letter to [slots] in karabiner/layers.toml")
+
+
+def check_actions_registered(state, findings, registered):
+    """A1: every fn in a layout file must be registered somewhere."""
+    for a in state["actives"]:
+        if a["kind"] == "fn" and a["target"] not in registered:
+            findings.add(ERROR, state["path"], a["line"], "A1",
+                         f'fn "{a["target"]}" is not registered (see hammerspoon/actions/)')
 
 
 def _color(s, c): return f"{COLOR[c]}{s}{COLOR['_']}" if sys.stdout.isatty() else s
@@ -457,7 +601,7 @@ def main():
     ap.add_argument("--strict", action="store_true",
                     help="exit 1 only on ERROR (pre-commit mode); WARN/INFO are reported but don't fail")
     ap.add_argument("--skip-drift", action="store_true",
-                    help="skip karabiner.json and Birman keylayout cross-checks (faster)")
+                    help="skip karabiner.json and Birman layer cross-checks (faster)")
     args = ap.parse_args()
 
     files = args.files or sorted(
@@ -466,6 +610,20 @@ def main():
     findings = Findings()
     karabiner_strict = {} if args.skip_drift else _parse_karabiner_strict()
     birman_data = {} if args.skip_drift else parse_birman()
+    registered = _registered_actions()
+    try:
+        emitted = set(bridges.slot_variants()) | set(bridges.EXCEPTIONS)
+    except ValueError:
+        emitted = set()  # G1 reports the same error with its message
+    check_layer_raw(findings)
+    check_generated(findings)
+    try:
+        machine_rows = shortcuts.load()
+    except (ValueError, OSError) as e:
+        findings.add(ERROR, shortcuts.TOML_PATH, 1, "S0", f"cannot load: {e}")
+        machine_rows = {"system": [], "app": [], "menu": []}
+    check_machine_shortcuts(findings, machine_rows)
+    system = enabled_system(machine_rows)
 
     for name in files:
         if not name.endswith(".lua"): name += ".lua"
@@ -477,6 +635,9 @@ def main():
         check_format(state, findings)
         check_coverage(state, findings)
         check_app_constants(state, findings)
+        check_actions_registered(state, findings, registered)
+        check_bridged_chords(state, findings, emitted)
+        check_system_shortcuts(state, findings, system)
         if not args.skip_drift:
             check_karabiner_drift(state, findings, karabiner_strict)
             check_birman_drift(state, findings, birman_data)

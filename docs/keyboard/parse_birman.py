@@ -1,10 +1,31 @@
-"""Parse Birman .keylayout XML files to extract real character mappings."""
-import os, re
+"""What each key types in the three layouts this Mac uses, for the keyboard pictures and lint rule D2.
 
-_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "keyboard-layout",
-                    "Birman.bundle", "Contents", "Resources")
-_LAYOUTS = [("En Birman.keylayout", "en"), ("Ru Birman.keylayout", "ru"),
-            ("Gr Birman.keylayout", "gr")]
+Plain and Shift come from Apple's own layouts (apple-layouts/*.json, written by
+tools/dump_apple_layouts.py) with the Spoon's `fixups` on top, since init.lua turns
+`baseFixups` on. ⌥ and ⇧⌥ are what BirmanLayer.spoon types: its installed
+typography_table.lua, with the `cyrillic` overlay for Russian; in the layouts init.lua lists as
+`excludedLayouts` the Spoon stays out, so ⌥ and ⇧⌥ are Apple's own there.
+
+The Lua table is read by a small reader of literal tables rather than by running Lua:
+Lua is not a declared dependency of this repo, and Hammerspoon's own interpreter (`hs -c`)
+needs a running Hammerspoon, which the pre-commit lint cannot count on.
+"""
+import copy
+import json
+import os
+import re
+
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_REPO = os.path.dirname(os.path.dirname(_HERE))
+_APPLE = os.path.join(_HERE, "apple-layouts")
+_INIT = os.path.join(_REPO, "hammerspoon", "init.lua")
+_SPOON_TABLE = os.path.join(_REPO, "hammerspoon", "Spoons", "BirmanLayer.spoon", "typography_table.lua")
+
+# lang -> (Apple dump, input source id), the layouts constants.env names as LAYOUT_PRIMARY/SECONDARY/TERTIARY.
+_LAYOUTS = {"en": ("ABC", "com.apple.keylayout.ABC"),
+            "ru": ("RussianWin", "com.apple.keylayout.RussianWin"),
+            "gr": ("Greek", "com.apple.keylayout.Greek")}
+_CYRILLIC = {"ru"}
 
 # macOS key codes → physical key names (matching config.BUTTON_FILES)
 _CODE = {
@@ -17,93 +38,160 @@ _CODE = {
     45:"n", 46:"m", 47:"period", 49:"space",
 }
 
-# Modifier layers → keyMap indices.
-# Index 1 = shift, 3 = option, 4 = shift+option across all three.
-# Base index varies per layout (detected via _find_base_idx).
-_STATES = {"base": None, "shift": "1", "option": "3", "shift_option": "4"}
+_STATES = ("base", "shift", "option", "shift_option")
+_OPTION_FIELD = {"option": "opt", "shift_option": "shift_opt"}
 
-_KM_RE = re.compile(r'<keyMap index="(\d+)">(.*?)</keyMap>', re.S)
-_KEY_RE = re.compile(r'<key code="(\d+)"\s+(?:output="([^"]*)"|action="([^"]+)")')
-_ACT_RE = re.compile(r'<action id="([^"]+)">(.*?)</action>', re.S)
-_WHEN_RE = re.compile(r'<when state="none"\s+(?:output="([^"]*)"|next="([^"]+)")')
-_TERM_RE = re.compile(r'<when state="([^"]+)"\s+output="([^"]*)"')
-_DEF_RE = re.compile(r'defaultIndex="(\d+)"')
-_SET_RE = re.compile(r'keyMapSet id="([^"]+)"')
-_ENT = re.compile(r'&#x([0-9a-fA-F]+);')
+_TOKEN = re.compile(r"""\s+|--[^\n]*|(?P<str>"(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*')|(?P<num>\d+)
+                        |(?P<name>[A-Za-z_][A-Za-z0-9_]*)|(?P<punct>[{}\[\]=,;])""", re.X)
+_ESCAPE = re.compile(r"\\(u\{[0-9a-fA-F]+\}|x[0-9a-fA-F]{2}|\d{1,3}|.)", re.S)
+_SIMPLE_ESCAPE = {"n": "\n", "t": "\t", "r": "\r", "a": "\a", "b": "\b", "f": "\f", "v": "\v"}
 
 
-def _decode(s):
-    return _ENT.sub(lambda m: chr(int(m.group(1), 16)), s) if s else ""
+def _unescape(match):
+    esc = match.group(1)
+    if esc.startswith("u{"):
+        return chr(int(esc[2:-1], 16))
+    if esc[0] == "x":
+        return chr(int(esc[1:], 16))
+    if esc.isdigit():
+        return chr(int(esc))
+    return _SIMPLE_ESCAPE.get(esc, esc)
 
 
-_MOD_BASE = re.compile(r'<keyMapSelect mapIndex="(\d+)">\s*<modifier keys="(command\?|)"/>', re.S)
+def _lua_string(literal):
+    # Lua escapes name bytes; decoding per escape is right for everything below U+0080.
+    return _ESCAPE.sub(_unescape, literal[1:-1])
 
 
-def _find_base_idx(content):
-    """Find base keyMap index from modifierMap: keys="" (no mods) or keys="command?" (optional cmd).
-    Falls back to defaultIndex."""
-    m = _MOD_BASE.search(content)
-    if m: return m.group(1)
-    dm = _DEF_RE.search(content)
-    return dm.group(1) if dm else "0"
+def _tokens(text, path):
+    pos, out = 0, []
+    while pos < len(text):
+        m = _TOKEN.match(text, pos)
+        if not m:
+            raise ValueError(f"{path}: cannot read Lua at offset {pos}: {text[pos:pos + 30]!r}")
+        pos = m.end()
+        if m.group("str"):
+            out.append(("value", _lua_string(m.group("str"))))
+        elif m.group("num"):
+            out.append(("value", int(m.group("num"))))
+        elif m.group("name"):
+            word = m.group("name")
+            out.append(("value", {"true": True, "false": False}[word]) if word in ("true", "false") else ("name", word))
+        elif m.group("punct"):
+            out.append(("punct", m.group("punct")))
+    return out
 
 
-def _parse_one(path):
-    """Return {physical_key: {state: char}} for one keylayout file."""
-    with open(path, encoding="utf-8") as f:
-        content = f.read()
-    # Find base index from modifierMap
-    base_idx = _find_base_idx(content)
-    # Find first keyMapSet id
-    sm = _SET_RE.search(content)
-    if not sm: return {}
-    sid = sm.group(1)
-    chunk = content.split(f'<keyMapSet id="{sid}">')[1].split("</keyMapSet>")[0]
-    # Build actions → output (resolve dead keys via terminators)
-    actions = {}
-    terms = {}
-    for m in _TERM_RE.finditer(content.split("<terminators>")[-1] if "<terminators>" in content else ""):
-        terms[m.group(1)] = _decode(m.group(2))
-    for m in _ACT_RE.finditer(content):
-        wm = _WHEN_RE.search(m.group(2))
-        if not wm: continue
-        out = _decode(wm.group(1)) if wm.group(1) is not None else terms.get(wm.group(2), "")
-        if out: actions[m.group(1)] = out
-    # base_idx found from modifierMap above
-    # Extract per-state per-key
+def read_lua_table(path):
+    """The value of a Lua file that is `return <literal table>`: strings, integers, booleans, tables with
+    `[key] =` or `name =` fields. Anything else (code, positional entries) raises."""
+    with open(path, encoding="utf-8") as fh:
+        tokens = _tokens(fh.read(), path)
+    pos = 0
+
+    def take(kind, text=None):
+        nonlocal pos
+        if pos >= len(tokens) or tokens[pos][0] != kind or (text is not None and tokens[pos][1] != text):
+            got = tokens[pos] if pos < len(tokens) else "end of file"
+            raise ValueError(f"{path}: expected {text or kind}, got {got}")
+        pos += 1
+        return tokens[pos - 1][1]
+
+    def value():
+        nonlocal pos
+        if tokens[pos][0] == "value":
+            pos += 1
+            return tokens[pos - 1][1]
+        take("punct", "{")
+        table = {}
+        while tokens[pos] != ("punct", "}"):
+            if tokens[pos] == ("punct", "["):
+                pos += 1
+                key = value()
+                take("punct", "]")
+            else:
+                key = take("name")
+            take("punct", "=")
+            table[key] = value()
+            if tokens[pos] in (("punct", ","), ("punct", ";")):
+                pos += 1
+        pos += 1
+        return table
+
+    take("name", "return")
+    result = value()
+    if pos != len(tokens):
+        raise ValueError(f"{path}: unexpected {tokens[pos]} after the returned table")
+    return result
+
+
+def _is_leaf(value):
+    return not isinstance(value, dict) or isinstance(value.get("dead"), str) or value.get("pass") is True
+
+
+def _merge(into, overlay):
+    """The Spoon's merge(): tables merge key by key, a leaf (string, false, {dead}, {pass}) replaces."""
+    for key, value in overlay.items():
+        if isinstance(into.get(key), dict) and not _is_leaf(into[key]) and not _is_leaf(value):
+            _merge(into[key], value)
+        else:
+            into[key] = copy.deepcopy(value)
+
+
+def _option_table(spoon, lang):
+    table = {k: v for k, v in copy.deepcopy(spoon).items() if k not in ("cyrillic", "fixups")}
+    if lang in _CYRILLIC and spoon.get("cyrillic"):
+        _merge(table, spoon["cyrillic"])
+    return table
+
+
+def _typed(cell, terminators):
+    """A ⌥ cell as the character it shows: a dead key shows its spacing accent, false and pass nothing."""
+    if isinstance(cell, str):
+        return cell
+    if isinstance(cell, dict) and "dead" in cell:
+        return terminators.get(cell["dead"], "")
+    return ""
+
+
+def _excluded_layouts():
+    """The input source ids in init.lua's `layer.excludedLayouts = { ... }`."""
+    with open(_INIT, encoding="utf-8") as fh:
+        m = re.search(r"excludedLayouts\s*=\s*\{([^}]*)\}", fh.read())
+    return set(re.findall(r'"([^"]+)"', m.group(1))) if m else set()
+
+
+def _parse_one(lang, spoon, excluded=frozenset()):
+    """Return {physical_key: {state: char}} for one layout."""
+    dump_name, source = _LAYOUTS[lang]
+    with open(os.path.join(_APPLE, f"{dump_name}.json"), encoding="utf-8") as fh:
+        apple = json.load(fh)
+    fixups = spoon.get("fixups", {}).get(source, {})
+    table = _option_table(spoon, lang)
     result = {}
-    state_indices = {s: (idx if idx else base_idx) for s, idx in _STATES.items()}
-    for state, idx in state_indices.items():
-        for km in _KM_RE.finditer(chunk):
-            if km.group(1) != idx: continue
-            for k in _KEY_RE.finditer(km.group(2)):
-                code = int(k.group(1))
-                if code not in _CODE: continue
-                phys = _CODE[code]
-                out = _decode(k.group(2)) if k.group(2) is not None else actions.get(k.group(3), "")
-                if out and ord(out[0]) >= 32:
-                    result.setdefault(phys, {})[state] = out
+    for code, phys in _CODE.items():
+        chars = {layer: apple[layer].get(str(code), "") for layer in ("base", "shift")}
+        for layer, fixed in fixups.get(code, {}).items():
+            chars[layer] = fixed or ""
+        row = table.get("keys", {}).get(code, {})
+        for state, field in _OPTION_FIELD.items():
+            chars[state] = (apple[state].get(str(code), "") if source in excluded
+                            else _typed(row.get(field), table.get("terminators", {})))
+        for state, out in chars.items():
+            if out and ord(out[0]) >= 32:
+                result.setdefault(phys, {})[state] = out
     return result
 
 
 def parse_birman():
-    """Return {physical_key: {state: (en, ru, gr)}} from all three keylayout files."""
-    per_lang = {}
-    for fname, lang in _LAYOUTS:
-        path = os.path.join(_DIR, fname)
-        if os.path.exists(path):
-            per_lang[lang] = _parse_one(path)
-    # Merge into combined
-    all_keys = set()
-    for d in per_lang.values():
-        all_keys |= d.keys()
+    """Return {physical_key: {state: (en, ru, gr)}} for the three layouts."""
+    spoon, excluded = read_lua_table(_SPOON_TABLE), _excluded_layouts()
+    per_lang = {lang: _parse_one(lang, spoon, excluded) for lang in _LAYOUTS}
     result = {}
-    for key in all_keys:
+    for key in set().union(*per_lang.values()):
         result[key] = {}
         for state in _STATES:
-            en = per_lang.get("en", {}).get(key, {}).get(state, "")
-            ru = per_lang.get("ru", {}).get(key, {}).get(state, "")
-            gr = per_lang.get("gr", {}).get(key, {}).get(state, "")
+            en, ru, gr = (per_lang[lang].get(key, {}).get(state, "") for lang in ("en", "ru", "gr"))
             if en or ru or gr:
                 result[key][state] = (en, ru, gr)
     return result

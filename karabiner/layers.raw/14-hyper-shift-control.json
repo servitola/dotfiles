@@ -1,0 +1,54 @@
+[
+    {
+        "from": {
+            "key_code": "x",
+            "modifiers": {
+                "mandatory": [
+                    "left_shift",
+                    "left_control",
+                    "right_command",
+                    "right_control",
+                    "right_option",
+                    "right_shift"
+                ]
+            }
+        },
+        "to": [
+            {
+                "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) forward down\" >>$l; /opt/homebrew/bin/nowplayingseek forward --hold --progressive >>$l 2>&1; echo \"$(date +%T) forward exit $?\" >>$l"
+            }
+        ],
+        "type": "basic",
+        "to_after_key_up": [
+            {
+                "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) forward up\" >>$l; /opt/homebrew/bin/nowplayingseek release forward 2>>$l"
+            }
+        ]
+    },
+    {
+        "from": {
+            "key_code": "z",
+            "modifiers": {
+                "mandatory": [
+                    "left_shift",
+                    "left_control",
+                    "right_command",
+                    "right_control",
+                    "right_option",
+                    "right_shift"
+                ]
+            }
+        },
+        "to": [
+            {
+                "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) backward down\" >>$l; /opt/homebrew/bin/nowplayingseek backward --hold --progressive >>$l 2>&1; echo \"$(date +%T) backward exit $?\" >>$l"
+            }
+        ],
+        "type": "basic",
+        "to_after_key_up": [
+            {
+                "shell_command": "l=/tmp/nps-keys.log; echo \"$(date +%T) backward up\" >>$l; /opt/homebrew/bin/nowplayingseek release backward 2>>$l"
+            }
+        ]
+    }
+]

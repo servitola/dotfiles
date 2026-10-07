@@ -19,7 +19,7 @@ def collect_full_rows(layer_mods, keys, full_entries, birman_data=None, karabine
     """Return rows for unified detail table.
     Each row: {key_display, chord, karabiner, birman, is_global, hs_action, hs_app,
                hs_category, descriptions}. Ordered by keyboard position.
-    Uses real Karabiner rules and Birman keylayout data as source of truth."""
+    Uses real Karabiner rules and parse_birman.py data as source of truth."""
     from classify import _parse_modifiers
     from parse_birman import LAYER_TO_STATE
     birman_state = LAYER_TO_STATE.get(layer_mods)
@@ -63,7 +63,7 @@ def collect_full_rows(layer_mods, keys, full_entries, birman_data=None, karabine
                 kar = karabiner_data.get((layer_mods, kn), "")
             if not kar:
                 kar = e["karabiner"]
-            # Birman: real keylayout data when Karabiner doesn't intercept
+            # Birman: what the key really types when Karabiner doesn't intercept
             bir = ""
             if not kar and birman_data and birman_state and kn in birman_data:
                 chars = birman_data[kn].get(birman_state)

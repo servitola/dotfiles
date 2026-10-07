@@ -17,8 +17,8 @@ FN_LABELS = {  # fn_name → short display label
     "system_health":"Sys Health","clipboard_llm":"Clip LLM","screenshot_ai":"AI Screen",
     "hammerspoon_reload":"Reload","wallpaper_refresh":"Wallpaper",
     "paste_bypass":"Paste Raw","press_return":"Enter","browser_search_selected":"Search Sel",
-    "info.show_shortcuts":"Shortcuts","set_russian_language":"Lang RU",
-    "set_english_language":"Lang EN","vscode.dotfiles":"VS Dotfiles",
+    "info.show_shortcuts":"Shortcuts","set_secondary_layout":"Layout 2",
+    "set_primary_layout":"Layout 1","vscode.dotfiles":"VS Dotfiles",
     "fork.dotfiles":"Fork Dots","fork.workprojectdev":"Fork workproject",
     "app_usage_stats":"App Stats","interview.toggle":"Interview",
     "show_youtrack":"YouTrack","show_youtrack_tasks":"YT Tasks"}

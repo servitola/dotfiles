@@ -3,20 +3,44 @@
 ## Build System
 `karabiner.json` is **generated** — do NOT edit it directly!
 
-- **Edit**: Individual rule files in `rules/*.json`
+- **Edit**: Individual rule files in `rules/*.json` — except `07`–`17`, see below
 - **Build**: Run `./build.sh` to regenerate `karabiner.json`
 - **Template**: `karabiner-template.json` has global settings, profiles, and empty rules array
+- **Bridge slots**: `[slots]` in `layers.toml` gives eight Hyper letters an F-key each; the
+  generator sends every modifier variant of the letter as the same variant of its F-key. The only
+  other keys emitted for Hammerspoon are `keypad_8` (rule `32`) and `keypad_9` (rule `26`), plus
+  the UGREEN mouse on `f16` (rule `29`). See *Bridge Slots* below
 
-The build script uses `jq` to merge the template with all rule files in sorted order.
+The build script first runs `docs/keyboard/tools/gen_layers.py`, then uses `jq` to merge the
+template with all rule files in sorted order.
+
+## Hyper Layers (07–17) Are Generated
+`rules/07-hyper-only.json` … `rules/17-hyper-option-control.json` are written by
+`gen_layers.py` from two inputs; never edit them by hand (lint `G1` and the
+`hyper-layers-generated` pre-commit hook fail on drift):
+
+- `layers.toml` — one `[layer.<name>]` table per file, `key_code = "output"`. Output grammar:
+  `⇪⇧⌃⌥⌘` prefix + a key glyph (`↑`, `⌦`, `PgUp`, `F1`, `a`, `/`, …), a media symbol
+  (`⏮ ⏭ ▶/⏸ Vol↑ Vol↓ 🔆 🔅`), or `passthrough` (resend the pressed key, e.g. `⇧passthrough`).
+  `⇪` in an output is the four right modifiers, every other glyph a left one. The grammar
+  lives in `bridges.parse_to` / `output_entry`; a value it cannot parse stops the build and
+  names the layer and key.
+  `[slots]` (see below) adds a manipulator for every slot letter the table does not map in that
+  layer, after the table rows.
+- `layers.raw/<rule>.json` — escape hatch: a JSON list of manipulators appended verbatim, for
+  what one output cannot express. Today only `14`: the two `nowplayingseek` chords
+  (`shell_command` + `to_after_key_up`). Lint `B4` warns when a raw one would fit the table.
+
+`gen_layers.py --check` exits 1 with a diff on drift. After writing, the generator runs
+`karabiner_cli --lint-complex-modifications` on the eleven files.
 
 ## Rule Files (rules/)
 ```
 01-tab-modifier.json         — Tab as modifier layer (hold Tab + key)
 02-alt-shift-delete.json     — Alt+Shift+Q = Shift+Delete Forward
-03-right-option-symbols.json — Right Option + C/E/D/A/R = ©/€/°/≈/®
 04-caps-lock-hyper.json      — Caps Lock → all 4 right modifiers (Hyper)
 05-grave-to-escape.json      — Grave/Tilde → Escape (pass-through with Hyper)
-06-hyper-layer-fkeys.json    — Hyper+letter → F13-F19 (caught by Hammerspoon)
+06-hyper-layer-fkeys.json    — Hyper + non-US backslash passes through; ⌘/⌥/⌃/⇧ + grave → same + Escape (no F-keys despite the name)
 07-hyper-only.json           — Hyper + key (no additional modifiers)
 08-hyper-shift.json          — Hyper + Shift + key
 09-hyper-command.json        — Hyper + Command + key
@@ -34,14 +58,12 @@ The build script uses `jq` to merge the template with all rule files in sorted o
 21-alt-shortcuts-3.json      — Alt+3 = Cmd+N
 22-custom-right-cmd.json     — Right Command remappings
 23-left-hand-delete.json     — Ctrl+Shift+A/D for delete/backspace
-25-music-control.json        — Hyper+Shift+Space → Keypad 0
-26-right-option-space-punto.json — Right Option + Space → Ctrl+F14 (Punto reconversion)
-27-left-all-hide.json        — All left modifiers + arrows → focus modes
-28-ctrl-opt-cmd-h-hide-current.json — Ctrl+Alt+Cmd+H → F13 (hide current window)
+26-right-option-space-punto.json — Right Option + Space → Keypad 9 (Punto reconversion)
+27-left-all-hide.json        — All left modifiers + W A S D → the same modifiers + arrows (focus sets)
 29-mouse-ugreen-hold-to-browser.json — UGREEN mouse forward button held → browser
 30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
 31-alt-shortcuts-4.json      — Alt+4 = Cmd+H (hide front app; focus falls to the one behind)
-32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Ctrl+Alt+F14 (swap two top windows)
+32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Keypad 8 (swap two top windows)
 ```
 
 ## Core Remappings (Don't Break These)
@@ -52,6 +74,8 @@ The build script uses `jq` to merge the template with all rule files in sorted o
   key now (see below) and has to stay a real `fn` on its own key. Cost of that: on the built-in
   keyboard `⌃` sits one key further right than on the 60% board.
 - **Grave/Tilde → Escape**: Except when Hyper is held
+- **Hyper layers are generated**: edit `layers.toml`, run `./build.sh`. A second mapping of the
+  same key in one layer file is refused, because Karabiner only ever runs the first
 
 ## fn Layer (Mirror the Left Half onto the Right)
 `30-fn-layer-mirror.json`: holding `fn`, the i-th key of a row's left half sends the i-th key
@@ -86,10 +110,31 @@ the F-row stay untouched, as do 🌐+N and 🌐+M (right half, never mapped).
 ```
 Then use conditions: `{"name": "tab_modifier", "type": "variable_if", "value": 1}`
 
-## Hyper Layer Pattern (Remap to F-keys)
-- Hyper + letter keys remap to F13-F19
-- Hammerspoon catches F-keys and launches apps/functions
-- Example: Hyper+V → F19 → Hammerspoon launches Vivaldi
+## Bridge Slots (Hyper letters → F13–F20)
+`hs.hotkey` cannot tell `⇪v` from `⇪⌘v` (both carry ⌘), so a Hyper letter that Hammerspoon
+launches from and that has left-modifier variants is renamed to an F-key. Slots follow the
+left-hand keyboard columns, left to right, top to bottom, skipping letters that need none:
+
+| column | slot |
+|---|---|
+| q a z | `z = F13` |
+| r f v | `r = F14`, `f = F15`, `v = F16` |
+| t g b | `t = F17`, `g = F18`, `b = F19` |
+| y h n | `h = F20` |
+
+`⇪ [+left modifiers] X → [same modifiers] slot(X)` in every Hyper layer: `⇪v` → `F16`,
+`⇪⌘v` → `⌘F16`, `⇪⇧⌥z` → `⇧⌥F13`. A table row or a `layers.raw/` manipulator for the letter in
+that layer wins (`⇪⌘f` → `⌘o`, `⇪⌘z` → `/`, `⇪⌥z` → `⇧/`, `⇪⇧⌃z` → seek). So a new variant such
+as `⇪⌥v` needs no Karabiner edit, only the Lua binding on `⌥F16`.
+
+Two gestures no chord can express keep a code on the top keypad row: `⌃⌥a+d` / `⌃⌥←+→` (swap
+windows, rule `32`) → `keypad_8`, right `⌥␣` (Punto, rule `26`) → `keypad_9`. `keypad_0`–`7`
+stay free for the next slot letters (next columns: `e d c`, `w s x`, `q a`, `y n`).
+
+- `python3 docs/keyboard/tools/bridge.py` prints the table with the chord and binding on every code.
+- Lint `B2` fails on a layout binding of an F13–F20/keypad code that is neither a slot variant nor
+  `num8`/`num9`.
+- `build.sh` runs the generator, which needs `python3` ≥ 3.11 (`tomllib`); the Apple `/usr/bin/python3` 3.9 is not enough — Homebrew's is on PATH first.
 
 ## References
 - Full keyboard system: @../docs/keyboard-setup.md
