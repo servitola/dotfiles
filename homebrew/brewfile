@@ -338,6 +338,8 @@ cask "dbeaver-community"
 cask "discord"
 # Emulator for x86 with DOS
 cask "dosbox"
+# Matrix collaboration client
+cask "element"
 # Headless per-device system equalizer, no icon, no window
 cask "servitola/tap/eq", trusted: true
 # Utility to finds and fix problems on computer systems
