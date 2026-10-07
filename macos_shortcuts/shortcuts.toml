@@ -1,0 +1,467 @@
+# Shortcut state outside the repo, declared. `shortcuts.py capture` writes this
+# file from the running machine; `check` diffs; `apply` pushes it back.
+# Chords: ⇧⌃⌥⌘ + key glyph, 🌐 = fn/Globe (docs/keyboard/keycodes.py).
+# [[system]] com.apple.symbolichotkeys, id is the identity, name only a label;
+#            keys = "" when the entry holds no key.
+# [[app]]    an app's global hotkey; format says how it is stored (shortcuts.py
+#            docstring); keys = "none" when unset.
+# [[menu]]   NSUserKeyEquivalents; item is the menu title exactly as shown.
+
+[[system]]
+id = 7
+name = "focus.menu_bar"
+enabled = false
+keys = "⌃F2"
+
+[[system]]
+id = 8
+name = "focus.dock"
+enabled = false
+keys = "⌃F3"
+
+[[system]]
+id = 9
+name = "focus.window"
+enabled = false
+keys = "⌃F4"
+
+[[system]]
+id = 10
+name = "focus.toolbar"
+enabled = false
+keys = "⌃F5"
+
+[[system]]
+id = 11
+name = "focus.floating_window"
+enabled = false
+keys = "⌃F6"
+
+[[system]]
+id = 12
+name = "keyboard_access.toggle"
+enabled = true
+keys = "⌃F1"
+
+[[system]]
+id = 15
+name = "zoom.toggle"
+enabled = false
+keys = ""
+
+[[system]]
+id = 16
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 17
+name = "zoom.in"
+enabled = false
+keys = ""
+
+[[system]]
+id = 18
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 19
+name = "zoom.out"
+enabled = false
+keys = ""
+
+[[system]]
+id = 20
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 21
+name = "display.invert_colors"
+enabled = false
+keys = "⌃⌥⌘8"
+
+[[system]]
+id = 22
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 23
+name = "zoom.smoothing"
+enabled = false
+keys = ""
+
+[[system]]
+id = 24
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 25
+name = "display.contrast_up"
+enabled = false
+keys = ""
+
+[[system]]
+id = 26
+name = "display.contrast_down"
+enabled = false
+keys = ""
+
+[[system]]
+id = 28
+name = "screenshot.screen"
+enabled = false
+keys = "⇧⌘3"
+
+[[system]]
+id = 29
+name = "screenshot.screen_clipboard"
+enabled = false
+keys = "⇧⌃⌘3"
+
+[[system]]
+id = 30
+name = "screenshot.area"
+enabled = false
+keys = "⇧⌘4"
+
+[[system]]
+id = 31
+name = "screenshot.area_clipboard"
+enabled = false
+keys = "⇧⌘4"
+
+[[system]]
+id = 52
+name = "dock.toggle_hiding"
+enabled = true
+keys = "⌥⌘d"
+
+[[system]]
+id = 53
+name = "display.brightness_down"
+enabled = false
+keys = "F14"
+
+[[system]]
+id = 54
+name = "display.brightness_up"
+enabled = false
+keys = "F15"
+
+[[system]]
+id = 59
+name = "voiceover.toggle"
+enabled = false
+keys = "⌘F5"
+
+[[system]]
+id = 60
+name = "input_source.previous"
+enabled = true
+keys = "⌃␣"
+
+[[system]]
+id = 61
+name = "input_source.next"
+enabled = true
+keys = "⌃⌥␣"
+
+[[system]]
+id = 64
+name = "spotlight"
+enabled = false
+keys = "⌘␣"
+
+[[system]]
+id = 79
+name = "spaces.left"
+enabled = true
+keys = ""
+
+[[system]]
+id = 80
+name = "spaces.left.alt"
+enabled = true
+keys = ""
+
+[[system]]
+id = 81
+name = "spaces.right"
+enabled = true
+keys = ""
+
+[[system]]
+id = 82
+name = "spaces.right.alt"
+enabled = true
+keys = ""
+
+[[system]]
+id = 98
+name = "help_menu"
+enabled = false
+keys = "⇧⌘/"
+
+[[system]]
+id = 163
+name = "notification_center"
+enabled = false
+keys = ""
+
+[[system]]
+id = 164
+name = "do_not_disturb"
+enabled = false
+keys = ""
+
+[[system]]
+id = 175
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 179
+name = "unknown"
+enabled = false
+keys = ""
+
+[[system]]
+id = 190
+name = "quick_note"
+enabled = false
+keys = "🌐q"
+
+[[system]]
+id = 222
+name = "stage_manager"
+enabled = false
+keys = ""
+
+[[system]]
+id = 233
+name = "unknown"
+enabled = true
+keys = "⌘m"
+
+[[system]]
+id = 235
+name = "unknown"
+enabled = true
+keys = ""
+
+[[system]]
+id = 237
+name = "window.fill"
+enabled = true
+keys = "🌐⌃f"
+
+[[system]]
+id = 238
+name = "window.center"
+enabled = true
+keys = "🌐⌃c"
+
+[[system]]
+id = 239
+name = "window.restore"
+enabled = true
+keys = "🌐⌃r"
+
+[[system]]
+id = 260
+name = "unknown"
+enabled = false
+keys = "⌘⎋"
+
+[[app]]
+domain = "ChatGPTHelper"
+name = "toggleAttachedLauncher"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "ChatGPTHelper"
+name = "toggleLauncher"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "cc.ffitch.shottr"
+name = "area"
+format = "keyboardshortcuts"
+keys = "⇧⌘4"
+
+[[app]]
+domain = "cc.ffitch.shottr"
+name = "fullscreen"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "cc.ffitch.shottr"
+name = "ocr"
+format = "keyboardshortcuts"
+keys = "⇧⌘2"
+
+[[app]]
+domain = "cc.ffitch.shottr"
+name = "scrolling"
+format = "keyboardshortcuts"
+keys = "⇧⌃⌘4"
+
+[[app]]
+domain = "cc.ffitch.shottr"
+name = "window"
+format = "keyboardshortcuts"
+keys = "⇧⌘3"
+
+[[app]]
+domain = "com.mowglii.ItsycalApp"
+name = "GlobalShortcut"
+format = "masshortcut"
+keys = "⌃⌥c"
+
+[[app]]
+domain = "com.openai.chat"
+name = "toggleAttachedLauncher"
+format = "keyboardshortcuts"
+keys = "⇧⌥1"
+
+[[app]]
+domain = "com.openai.chat"
+name = "toggleLauncher"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "com.prakashjoshipax.VoiceInk"
+name = "toggleEnhancement"
+format = "keyboardshortcuts"
+keys = "⌘e"
+
+[[app]]
+domain = "org.p0deje.Maccy"
+name = "delete"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "org.p0deje.Maccy"
+name = "pin"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "org.p0deje.Maccy"
+name = "popup"
+format = "keyboardshortcuts"
+keys = "⌥F16"
+
+[[app]]
+domain = "org.p0deje.Maccy"
+name = "togglePreview"
+format = "keyboardshortcuts"
+keys = "none"
+
+[[app]]
+domain = "pbs"
+name = "(null) - 98E57310-1031-4D81-A905-6EBF846D38C5 - runShortcutAsService"
+format = "services"
+keys = "⇧⌃⌥j"
+
+[[app]]
+domain = "pbs"
+name = "(null) - E0609E39-D34B-4E18-BA91-994451AF81CE - runShortcutAsService"
+format = "services"
+keys = "⇧⌃⌥k"
+
+[[app]]
+domain = "pbs"
+name = "com.apple.Terminal - New Terminal Tab at Folder - newTerminalAtFolder"
+format = "services"
+keys = "⇧⌃b"
+
+[[app]]
+domain = "pbs"
+name = "com.apple.finder - Finder/Reveal - reveal"
+format = "services"
+keys = "⇧⌃h"
+
+[[app]]
+domain = "pbs"
+name = "com.googlecode.iterm2 - New iTerm2 Tab Here - openTab"
+format = "services"
+keys = "⇧⌃b"
+
+[[app]]
+domain = "theboringteam.boringnotch"
+name = "toggleNotchOpen"
+format = "keyboardshortcuts"
+keys = "⇧⌘i"
+
+[[app]]
+domain = "theboringteam.boringnotch"
+name = "toggleSneakPeek"
+format = "keyboardshortcuts"
+keys = "⇧⌘h"
+
+[[app]]
+domain = "~/Library/Group Containers/5U8NS4GX82.dayoneapp2/Library/Preferences/5U8NS4GX82.dayoneapp2"
+name = "DOMenuEntryGlobalShortcut"
+format = "carbon-dict"
+keys = "⇧⌃⌥⌘j"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "All"
+keys = "⌥⌘a"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Next"
+keys = "⇧⌘n"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "One"
+keys = "⌥⌘o"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Play"
+keys = "⌘p"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Previous"
+keys = "⇧⌘p"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Repeat All"
+keys = "⌥⌘a"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Repeat One"
+keys = "⌥⌘o"
+
+[[menu]]
+domain = "com.apple.Music"
+item = "Shuffle"
+keys = "⌥⌘s"
+
+[[menu]]
+domain = "com.apple.finder"
+item = "Enclosing Folder in New Window"
+keys = "⌥⌘e"

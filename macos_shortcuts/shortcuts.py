@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Machine shortcut state, declared in `macos/shortcuts.toml`.
+"""Machine shortcut state, declared in `shortcuts.toml` next to this script.
 
 Three kinds of store live outside the repo; this reads, compares and writes them:
 
@@ -88,12 +88,12 @@ from xml.parsers.expat import ExpatError
 from dataclasses import asdict, dataclass, field
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.dirname(HERE))
+ROOT = os.path.dirname(HERE)
+sys.path.insert(0, os.path.join(ROOT, "docs", "keyboard"))
 
 import keycodes
 
-ROOT = os.path.normpath(os.path.join(HERE, "..", "..", ".."))
-TOML_PATH = os.path.join(ROOT, "macos", "shortcuts.toml")
+TOML_PATH = os.path.join(HERE, "shortcuts.toml")
 
 SYMBOLIC_DOMAIN = "com.apple.symbolichotkeys"
 SYMBOLIC_KEY = "AppleSymbolicHotKeys"

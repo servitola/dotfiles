@@ -30,6 +30,7 @@ from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(os.path.dirname(HERE), "..", "..", "macos_shortcuts"))
 
 from parse_karabiner import parse_karabiner, _TO_PHYS, _to_display, _from_mods_to_layer
 from parse_birman import parse_birman, LAYER_TO_STATE

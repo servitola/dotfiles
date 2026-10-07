@@ -17,13 +17,13 @@ for f in "$@"; do
         hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua)
             files+=("$(basename "$f")")
             ;;
-        macos/shortcuts.toml)
+        macos_shortcuts/shortcuts.toml)
             shortcuts=1
             ;;
     esac
 done
 
-# S1 compares every layout file against macos/shortcuts.toml, so a change to
+# S1 compares every layout file against macos_shortcuts/shortcuts.toml, so a change to
 # the TOML alone lints all of them.
 if [ "$shortcuts" -eq 1 ]; then
     exec python3 "$DOTFILES_ROOT/docs/keyboard/tools/lint.py" --strict --skip-drift

@@ -26,7 +26,7 @@ expect "login shell is zsh" test "${SHELL:t}" = zsh
 expect "Hammerspoon running" pgrep -x Hammerspoon
 expect "Karabiner rules match layers.toml" python3 docs/keyboard/tools/gen_layers.py --check
 expect "~/.codex/config.toml is a file" test -f "$HOME/.codex/config.toml"
-expect "shortcuts match macos/shortcuts.toml" python3 docs/keyboard/tools/shortcuts.py check
+expect "shortcuts match macos_shortcuts/shortcuts.toml" python3 macos_shortcuts/shortcuts.py check
 setopt null_glob
 for app in /Applications/Ableton*.app; do
     expect "${app:t} has the ableton-mcp-extended Remote Script" cmp \
