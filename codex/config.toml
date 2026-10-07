@@ -1,5 +1,11 @@
 personality = "pragmatic"
-model = "gpt-5.5"
+# Model map lives in claude-code/CLAUDE.md ("# Models"); ground truth is
+# ~/.codex/models_cache.json. Terra is the balanced everyday tier and the
+# direct successor to gpt-5.5. Sol is the flagship (and the only tier with
+# `ultra` effort) — reach for it per-task with `codex -m gpt-5.6-sol`, not as
+# the default: its own default effort is `low`, so pinning it to the `high`
+# below would burn the ChatGPT Plus limits noticeably faster.
+model = "gpt-5.6-terra"
 model_reasoning_effort = "high"
 plan_mode_reasoning_effort = "high"
 model_instructions_file = "instructions.md"
@@ -10,6 +16,16 @@ default_mode = "plan"
 
 [sandbox_workspace_write]
 network_access = true
+# LiteLLM Local provider — points at the on-machine proxy that routes
+# free OpenRouter models. Use with:
+#   codex exec -c model_provider=litellm -c model=gpt "..."
+# Requires LITELLM_API_KEY=sk-local-workbot in the environment.
+# NOTE (verified 2026-04-16 on Codex v0.121): Codex requires
+# wire_api="responses", and free OpenRouter models don't implement the
+# /responses endpoint; tool-calls never fire. Kept for future Codex versions
+# that support /chat/completions again. For agentic LiteLLM tasks use `crush`.
+# NOT re-verified since — Codex is on 0.145.0 as of 2026-07-25, so the
+# constraint may have lifted. Re-test before assuming it still holds.
 [model_providers.litellm]
 name = "LiteLLM Local (OpenRouter free)"
 base_url = "http://localhost:4000/v1"
