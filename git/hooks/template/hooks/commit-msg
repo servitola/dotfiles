@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Materialized into .git/hooks/commit-msg by git init/clone via the global
+# init.templateDir (see git/AGENTS.md). A stub, not the logic, so fixes to
+# check-ai-footer.sh reach every repo without re-running git init anywhere.
+exec "$HOME/projects/dotfiles/git/hooks/check-ai-footer.sh" "$@"
