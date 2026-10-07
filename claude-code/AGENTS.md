@@ -9,7 +9,6 @@ Single source of truth for `commands/`, `agents/`, `skills/` shared across Claud
 - `~/.agents/skills` → `claude-code/skills` (Codex skills — current location; `~/.codex/skills` is deprecated)
 
 ## Tool-specific configs (not shared)
-- `qwen-code/settings.json` — Qwen's own settings (context comes from `claude-code/CLAUDE.md` via `~/.qwen/QWEN.md` symlink)
 - `codex/config.toml` — Codex's own global config
 
 ## Detached skills & MCP (opt-in, zero always-loaded context cost)
