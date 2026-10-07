@@ -36,7 +36,7 @@ return function(V)
         if special and special.score >= 80 then
             if ctx.dry then return "DRY web playing" end
             if not spoon.BrowserTabOpener then return "ERR BrowserTabOpener не загружен" end
-            spoon.BrowserTabOpener:focusPlayingTab("youtube.com/watch")
+            spoon.BrowserTabOpener:open("youtube.com/watch", "https://youtube.com", { prefer = spoon.BrowserTabOpener.videoPlaying })
             return "OK поднял играющую вкладку"
         end
 
@@ -56,7 +56,7 @@ return function(V)
         if answer then return answer end
 
         if spoon.BrowserTabOpener then
-            spoon.BrowserTabOpener:openTab(best.key)
+            spoon.BrowserTabOpener:open(best.key, "https://" .. best.key)
         else
             hs.urlevent.openURL("https://" .. best.key)
         end

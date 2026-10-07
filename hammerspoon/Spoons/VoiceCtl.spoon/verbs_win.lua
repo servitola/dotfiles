@@ -1,53 +1,40 @@
 -- Verb win: active-window position and ready-made desktop layouts.
 return function(V)
-    -- Layouts live in HotKeys.spoon/window_focus_sets.lua and are called directly.
-    -- Synthesizing a chord (the original plan) doesn't work: hs.eventtap.keyStroke
-    -- isn't caught by the Carbon hotkey — verified with zero and default delay,
-    -- osascript is out due to Accessibility permissions. So the layouts are moved
-    -- into a module and invoked as a function.
-    local function focusSet(setName)
+    local pw = function(method) return function() spoon.PowerWindows[method](spoon.PowerWindows) end end
+    local function focusSet(name)
         return function()
-            local hk = spoon.HotKeys
-            local sets = hk and hk.windowFocusSets
-            if not sets then error("HotKeys.windowFocusSets недоступен", 0) end
-            sets.apply(setName)
+            hs.closeConsole()
+            spoon.PowerWindows:focusSet(name)
         end
     end
 
     local LAYOUTS = {
         { key = "left",       aliases = { "влево", "лево", "left", "налево" },
-          fn = function() set_window_left() end },
+          fn = pw("moveLeft") },
         { key = "right",      aliases = { "вправо", "право", "right", "направо" },
-          fn = function() set_window_right() end },
+          fn = pw("moveRight") },
         { key = "half-left",  aliases = { "половину слева", "пол экрана слева", "половина слева", "half left" },
-          fn = function() set_window_half_left() end },
+          fn = pw("halfLeft") },
         { key = "half-right", aliases = { "половину справа", "пол экрана справа", "половина справа", "half right" },
-          fn = function() set_window_half_right() end },
+          fn = pw("halfRight") },
         { key = "full",       aliases = { "на весь экран", "весь экран", "фуллскрин", "full", "fullscreen", "развернуть" },
-          fn = function() set_window_fullscreen() end },
+          fn = pw("moveFull") },
         { key = "top60",      aliases = { "вверх", "сверху", "верхние шестьдесят", "top" },
-          fn = function() set_window_top_60() end },
+          fn = pw("top60") },
         { key = "bottom40",   aliases = { "вниз", "снизу", "нижние сорок", "bottom" },
-          fn = function() set_window_bottom_40() end },
+          fn = pw("bottom40") },
         { key = "center",     aliases = { "по центру", "центр", "center", "посередине" },
-          fn = function()
-              local win = hs.window.frontmostWindow()
-              if not win then return end
-              local screen, frame = win:screen():frame(), win:frame()
-              frame.x = screen.x + (screen.w - frame.w) / 2
-              frame.y = screen.y + (screen.h - frame.h) / 2
-              win:setFrame(frame, 0)
-          end },
+          fn = pw("center") },
         { key = "default",    aliases = { "разложи всё", "разложи все", "по местам", "как обычно", "default" },
-          fn = function() set_all_windows_positions() end },
+          fn = pw("arrangeAllNow") },
         { key = "work",       aliases = { "под работу", "работа", "рабочее", "work" },
-          fn = focusSet("window.focus_work") },
+          fn = focusSet("work") },
         { key = "personal",   aliases = { "под личное", "личное", "personal" },
-          fn = focusSet("window.focus_personal") },
+          fn = focusSet("personal") },
         { key = "comms",      aliases = { "под общение", "общение", "переписка", "comms" },
-          fn = focusSet("window.focus_comms") },
+          fn = focusSet("comms") },
         { key = "only-work",  aliases = { "только работа", "спрячь всё кроме работы", "убери лишнее" },
-          fn = focusSet("window.hide_all_except_work") },
+          fn = focusSet("only-work") },
     }
 
     V:register("win", function(phrase, ctx)
