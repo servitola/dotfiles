@@ -73,7 +73,11 @@ print_section "Docker Containers"
 print_section "Immich Sync"
 
 print_task "Syncing local folders to Immich on i9"
-~/projects/dotfiles/immich/sync.sh
+if [[ -x $DIR_SERVICES/immich/sync.sh ]]; then   # its own project, cloned only where photos are synced
+    "$DIR_SERVICES/immich/sync.sh"
+else
+    echo "  * Skip: no $DIR_SERVICES/immich on this machine"
+fi
 
 print_section "LiteLLM Model Health"
 
