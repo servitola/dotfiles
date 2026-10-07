@@ -41,7 +41,7 @@ safeLoadSpoon("AudioSwitcher") -- audio device switching
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
 safeLoadSpoon("URLDispatcher") -- open urls in different browsers
 safeLoadSpoon("HotKeys") -- all hotkeys
-safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop (hs -c 'spoon.ScreenGlow:pulse(45)')
+safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop, github.com/servitola/ScreenGlow.spoon
 if spoon.HotKeys then
     local ok, err = pcall(require, "actions")  -- personal actions register into spoon.HotKeys
     if not ok then
