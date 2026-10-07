@@ -411,6 +411,8 @@ cask "opera"
 cask "orbstack"
 # Remote desktop
 cask "parsec"
+# Glass tab strip pinned under the browser window
+cask "servitola/tap/polaska", trusted: true
 # Tool that provides consistent, highly configurable symbols for apps
 cask "sf-symbols"
 # Screenshot measurement and annotation tool
