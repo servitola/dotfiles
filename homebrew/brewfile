@@ -368,8 +368,8 @@ cask "google-chrome"
 cask "google-drive"
 # Graphically shows disk usage within a file system
 cask "grandperspective"
-# Desktop automation application
-cask "hammerspoon"
+# Desktop automation application, personal fork built from Hammerspoon/hammerspoon
+cask "servitola/tap/hammerspoon", trusted: true
 # Game launcher
 cask "heroic"
 # Free and open-source media player
