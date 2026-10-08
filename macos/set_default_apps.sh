@@ -62,7 +62,9 @@ HANDLERS = {
 
 # A handler pointing at a bundle id no app carries is worse than no handler:
 # LaunchServices falls back to whatever else claims the type, and Finder starts
-# asking which app to use.
+# asking which app to use. So an absent app is skipped, not fatal: a fresh Mac
+# with only the minimum brewfile has most of them missing, and the next
+# `make` after installing one binds it.
 def installed_bundle_ids():
     ids = set()
     for root in ('/Applications', '/System/Applications', os.path.expanduser('~/Applications')):
@@ -83,7 +85,9 @@ def installed_bundle_ids():
 present = installed_bundle_ids()
 unknown = [app for app in HANDLERS if app.lower() not in present]
 if unknown:
-    sys.exit(f'  no app installed with bundle id: {", ".join(unknown)}')
+    print(f'  skipped, not installed: {", ".join(unknown)}')
+    for app in unknown:
+        del HANDLERS[app]
 
 DOMAIN = 'com.apple.LaunchServices/com.apple.launchservices.secure'
 prefs = plistlib.loads(subprocess.run(['defaults', 'export', DOMAIN, '-'],
@@ -106,7 +110,9 @@ def bind(index, key, template, app):
                  'LSHandlerModificationDate': stamp}
         lshandlers.append(entry); index[key] = entry
         added += 1
-    elif entry.get('LSHandlerRoleAll') != app:
+    # LaunchServices lowercases the ids it writes back, so 'com.microsoft.vscode'
+    # already is 'com.microsoft.VSCode'.
+    elif entry.get('LSHandlerRoleAll', '').lower() != app.lower():
         previous = entry.get('LSHandlerRoleAll', '?')
         taken_by[previous] = taken_by.get(previous, 0) + 1
         entry['LSHandlerRoleAll'] = app
