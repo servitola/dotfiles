@@ -8,11 +8,15 @@ if [[ -n "${CI:-}" ]]; then
     exit 0
 fi
 
-section "LiteLLM (LLM proxy)"
-( cd "$DOTFILES/litellm" && docker compose up -d )
+if [[ -n "${NO_DOCKER:-}" ]]; then
+    section "NO_DOCKER: skip docker compose"
+else
+    section "LiteLLM (LLM proxy)"
+    ( cd "$DOTFILES/litellm" && docker compose up -d )
 
-section "docker-logger (container log collection)"
-( cd "$DOTFILES/docker-logger" && docker compose up -d )
+    section "docker-logger (container log collection)"
+    ( cd "$DOTFILES/docker-logger" && docker compose up -d )
+fi
 
 section "cron jobs"
 "$DOTFILES/cron/init-cron-jobs.sh"

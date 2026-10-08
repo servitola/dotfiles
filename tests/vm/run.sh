@@ -80,9 +80,9 @@ guest "mkdir -p ~/projects && git clone -q /tmp/dotfiles.bundle ~/projects/dotfi
 print "testing $(git -C "$DOTFILES" log --oneline -1)"
 
 typeset -A command=(
-    make  'cd ~/projects/dotfiles && make'
+    make  'cd ~/projects/dotfiles && NO_DOCKER=1 make'
     check 'zsh ~/projects/dotfiles/install/check.sh'
-    up    'zsh -ic up'
+    up    'NO_DOCKER=1 zsh -ic up'
 )
 failed=()
 for stage in $stages; do

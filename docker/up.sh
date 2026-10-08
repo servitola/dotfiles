@@ -6,6 +6,13 @@
 
 set -u
 
+# A tart VM on M1/M2 has no nested virtualization, so no Docker daemon can run
+# there; tests/vm/run.sh sets this.
+if [ -n "${NO_DOCKER:-}" ]; then
+    echo "  * NO_DOCKER: skip docker stacks"
+    exit 0
+fi
+
 # Make compose variable substitution work from non-interactive shells (cron,
 # launchd, Makefile). openai_key.sh lives in $HOME and is not in the repo.
 if [ -f "$HOME/.config/openai_key.sh" ]; then
