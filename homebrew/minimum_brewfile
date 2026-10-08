@@ -3,6 +3,7 @@ tap "candid82/brew"
 tap "domt4/autoupdate"
 tap "osx-cross/arm"
 tap "osx-cross/avr"
+brew "coreutils"  # timeout: install/check.sh, macos_cleanup
 brew "dockutil"   # install step 10
 brew "m-cli"
 brew "pre-commit"
