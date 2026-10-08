@@ -84,13 +84,22 @@ typeset -A command=(
     check 'zsh ~/projects/dotfiles/install/check.sh'
     up    'NO_DOCKER=1 zsh -ic up'
 )
+# A step waiting on a dialog nobody sees hangs forever (run 6 sat 4.5 h on
+# Gatekeeper's prompt), so each stage has a ceiling.
+typeset -A limit=(make 3600 check 300 up 3600)
 failed=()
 for stage in $stages; do
     print "━━ $stage"
     started=$SECONDS
-    if guest "${command[$stage]}" </dev/null 2>&1 | tee "$logs/$stage.log"; then
+    "${guest_ssh[@]}" "admin@$ip" "${command[$stage]}" </dev/null > >(tee "$logs/$stage.log") 2>&1 &
+    running=$!
+    ( sleep ${limit[$stage]}; print "━━ $stage timed out after ${limit[$stage]}s"; kill $running ) 2>/dev/null &
+    watchdog=$!
+    if wait $running; then
+        kill $watchdog 2>/dev/null || true
         print "━━ $stage passed ($(( SECONDS - started ))s)"
     else
+        kill $watchdog 2>/dev/null || true
         print "━━ $stage FAILED ($(( SECONDS - started ))s)"
         failed+=$stage
         # check and up only report the fallout of a half-done install
