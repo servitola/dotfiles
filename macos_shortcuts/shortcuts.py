@@ -529,6 +529,12 @@ def _plist_fragment(value):
     return re.sub(r">\s+<", "><", body.strip())
 
 
+def _plist_key(name):
+    """`defaults -dict-add` parses the key as a plist, so a bare `(null) - … - runShortcutAsService`
+    reads as an unterminated array and the write fails; a quoted string is stored unquoted."""
+    return '"' + name.replace("\\", "\\\\").replace('"', '\\"') + '"'
+
+
 def write_args(res):
     """The `defaults write` arguments that bring the machine to `res.row`."""
     r = res.row
@@ -539,14 +545,14 @@ def write_args(res):
         slot = slot_for(r)
         value = FORMATS[r.format].encode(r.keys, res.live_value)
         if slot.parent:
-            return [r.domain, slot.parent, "-dict-add", r.name, _plist_fragment(value)]
+            return [r.domain, slot.parent, "-dict-add", _plist_key(r.name), _plist_fragment(value)]
         key = slot.prefix + r.name
         if isinstance(value, bool):
             return [r.domain, key, "-bool", "true" if value else "false"]
         if isinstance(value, str):
             return [r.domain, key, "-string", value]
         return [r.domain, key, _plist_fragment(value)]
-    return [r.domain, MENU_KEY, "-dict-add", r.item, keycodes.chord_to_menu_combo(r.keys)]
+    return [r.domain, MENU_KEY, "-dict-add", _plist_key(r.item), keycodes.chord_to_menu_combo(r.keys)]
 
 
 def refusal(row):

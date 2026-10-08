@@ -154,6 +154,11 @@ def test_apply_system_without_keys_writes_no_value():
     assert plistlib.loads(_wrap(m.writes[0][4])) == {"enabled": False}
 
 
+def test_plist_key_is_quoted_and_escaped():
+    assert shortcuts._plist_key(SHORTCUT_J) == f'"{SHORTCUT_J}"'
+    assert shortcuts._plist_key('say "hi" \\ bye') == '"say \\"hi\\" \\\\ bye"'
+
+
 def test_apply_disables_a_bare_modifier_hotkey():
     m = FakeMachine()
     m.prefs["com.apple.symbolichotkeys"]["AppleSymbolicHotKeys"]["79"] = {
@@ -173,7 +178,7 @@ def test_apply_app_and_menu():
     assert m.writes == [
         ["cc.ffitch.shottr", "KeyboardShortcuts_area", "-string", '{"carbonKeyCode":18,"carbonModifiers":2560}'],
         ["cc.ffitch.shottr", "KeyboardShortcuts_ocr", "-bool", "false"],
-        ["com.apple.finder", "NSUserKeyEquivalents", "-dict-add", "Enclosing Folder in New Window", "^~@e"],
+        ["com.apple.finder", "NSUserKeyEquivalents", "-dict-add", '"Enclosing Folder in New Window"', "^~@e"],
         ["com.apple.universalaccess", "com.apple.custommenu.apps", "-array-add", "com.apple.finder"],
     ]
     assert m.runs == [["killall", "cfprefsd"]]
@@ -325,7 +330,7 @@ def test_apply_services_keeps_the_other_fields_and_updates_pbs():
     m, said = FakeMachine(), []
     shortcuts.apply(_only(App("pbs", TERMINAL_TAB, "⇧⌃t", "services")), m, say=said.append)
     [args] = m.writes
-    assert args[:4] == ["pbs", "NSServicesStatus", "-dict-add", TERMINAL_TAB]
+    assert args[:4] == ["pbs", "NSServicesStatus", "-dict-add", f'"{TERMINAL_TAB}"']
     entry = plistlib.loads(_wrap(args[4]))
     assert entry["key_equivalent"] == "^$t" and entry["presentation_modes"] == {
         "ContextMenu": False, "ServicesMenu": False}
