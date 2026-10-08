@@ -45,7 +45,11 @@ spawn ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyA
 expect "assword:" { send "admin\r" }
 expect eof
 EOF
-    guest "yes | sudo diskutil repairDisk disk0 && sudo diskutil apfs resizeContainer disk0s2 0 && df -H /"
+    # On 26.6 the first resize right after repairDisk fails with APFS error
+    # 49189 and rolls back; the same command again succeeds.
+    guest "yes | sudo diskutil repairDisk disk0 >/dev/null
+           sudo diskutil apfs resizeContainer disk0s2 0 || sudo diskutil apfs resizeContainer disk0s2 0
+           df -H / | tail -1"
     host "tart stop $BASE"
 }
 
