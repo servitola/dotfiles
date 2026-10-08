@@ -125,6 +125,9 @@ if [[ $(softwareupdate --schedule) != *off* ]]; then
     ok "no automatic update checks"
     changed=$(( changed + 1 ))
 fi
-[[ $(spctl --status) == *disabled* ]] || sudo spctl --master-disable   # macOS then asks to confirm in System Settings
+# Since macOS 15 this only unhides the "Anywhere" option and exits 1 until a
+# human picks it, so a fresh Mac would never get past step 1.
+[[ $(spctl --status) == *disabled* ]] || sudo spctl --master-disable 2>/dev/null ||
+    warn "Gatekeeper: pick \"Anywhere\" in System Settings → Privacy & Security"
 
 (( changed )) || log "all already set"
