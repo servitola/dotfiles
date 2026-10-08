@@ -15,6 +15,13 @@ else
     brew bundle --quiet --file "$DOTFILES/homebrew/minimum_brewfile"
 fi
 
+section "quarantine flags off the casks"
+# Otherwise step 18's `open Hammerspoon.app` waits forever on the
+# "downloaded from the Internet" dialog that nobody sees during an install.
+source "$DOTFILES/macos_update/functions.sh"
+brew_unquarantine >/dev/null
+log "cleared"
+
 section "shell completions for brew commands"
 brew completions link >/dev/null
 log "linked"
