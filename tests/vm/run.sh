@@ -93,6 +93,8 @@ for stage in $stages; do
     else
         print "━━ $stage FAILED ($(( SECONDS - started ))s)"
         failed+=$stage
+        # check and up only report the fallout of a half-done install
+        [[ $stage != make ]] || break
     fi
 done
 
