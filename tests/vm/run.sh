@@ -29,7 +29,7 @@ guest() { "${guest_ssh[@]}" "admin@$ip" "$1"; }
 boot() {
     host "nohup tart run --no-graphics $1 >/tmp/$1.log 2>&1 </dev/null &"
     ip=$(host "tart ip $1 --wait 180")
-    host "until nc -z -G 2 $ip 22; do sleep 2; done"
+    host "until nc -z -G 2 $ip 22 2>/dev/null; do sleep 2; done"
 }
 
 # Once per image: the cirruslabs image only takes the password admin/admin and
