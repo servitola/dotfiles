@@ -226,7 +226,12 @@ def _symbolic_table(machine):
 
 
 def _symbolic_keys(entry):
-    params = entry.get("value", {}).get("parameters")
+    value = entry.get("value", {})
+    params = value.get("parameters")
+    # A "modifier" hotkey fires on a bare modifier and holds [flags, mask], no key:
+    # a fresh Tahoe ships Do Not Disturb (164) as one, bound to ⌃.
+    if value.get("type") == "modifier":
+        return keycodes.render({m for m, bit in keycodes.NS.items() if params[0] & bit}, "")
     return keycodes.symbolic_to_chord(params) if params else ""
 
 

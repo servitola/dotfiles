@@ -154,6 +154,15 @@ def test_apply_system_without_keys_writes_no_value():
     assert plistlib.loads(_wrap(m.writes[0][4])) == {"enabled": False}
 
 
+def test_apply_disables_a_bare_modifier_hotkey():
+    m = FakeMachine()
+    m.prefs["com.apple.symbolichotkeys"]["AppleSymbolicHotKeys"]["79"] = {
+        "enabled": True, "value": {"parameters": [262144, 9223372036854775807], "type": "modifier"}}
+    assert _statuses(DECLARED, m)[1][1:] == ("differs", "enabled ⌃")
+    shortcuts.apply(_with("system", 1, enabled=False), m, say=lambda _: None)
+    assert plistlib.loads(_wrap(m.writes[0][4])) == {"enabled": False}
+
+
 def test_apply_app_and_menu():
     m, said = FakeMachine(), []
     rows = _with("app", 0, keys="⇧⌥1")
