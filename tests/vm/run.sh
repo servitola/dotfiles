@@ -81,7 +81,7 @@ print "testing $(git -C "$DOTFILES" log --oneline -1)"
 
 typeset -A command=(
     make  'cd ~/projects/dotfiles && NO_DOCKER=1 make'
-    check 'zsh ~/projects/dotfiles/install/check.sh'
+    check 'NO_DOCKER=1 zsh ~/projects/dotfiles/install/check.sh'
     up    'NO_DOCKER=1 zsh -ic up'
 )
 # A step waiting on a dialog nobody sees hangs forever (run 6 sat 4.5 h on

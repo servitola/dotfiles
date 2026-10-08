@@ -42,7 +42,8 @@ done
 
 section "services"
 expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
-for stack in litellm docker-logger; do
+# NO_DOCKER: a machine that cannot run Docker (a tart VM on M1/M2) has no stacks to check
+[[ -n ${NO_DOCKER:-} ]] || for stack in litellm docker-logger; do
     expect "$stack containers running" zsh -c "docker compose -f $stack/docker-compose.yml ps --status running -q | grep -q ."
 done
 expect "crontab matches cron/cron_jobs" zsh -c 'diff <(timeout 10 crontab -l) <(cron/init-cron-jobs.sh --print)'
