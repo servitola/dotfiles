@@ -6,6 +6,7 @@ tap "osx-cross/avr"
 brew "coreutils"  # timeout: install/check.sh, macos_cleanup
 brew "dockutil"   # install step 10
 brew "m-cli"
+brew "mas"         # up: mas upgrade
 brew "pre-commit"
 brew "uv"
 cask "adguard"
