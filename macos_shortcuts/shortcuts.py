@@ -34,7 +34,7 @@ REGISTRY; adding an app that uses a known format is one REGISTRY line.
 
 Usage:
   shortcuts.py capture [--write]   print (or write) the TOML from this machine
-  shortcuts.py check [--json]      ok / differs / missing / unwritable per row, exit 1 if not all ok
+  shortcuts.py check [--json]      ok / differs / missing / unwritable / absent per row, exit 1 unless all ok or absent
   shortcuts.py apply [--dry-run]   write the rows that differ
   shortcuts.py taps [--json]       list active CoreGraphics event taps (needs pyobjc via uvx)
 
@@ -493,7 +493,8 @@ def check(rows, machine):
         if live == r.keys:
             results.append(Result(r, "ok", live, value))
         elif machine.sandboxed(r.domain):
-            results.append(Result(r, "unwritable", live, value))
+            # No prefs at all: the app was never installed here, nothing to set by hand yet.
+            results.append(Result(r, "unwritable" if prefs else "absent", live, value))
         else:
             results.append(Result(r, "missing" if live is None else "differs", live, value))
     declared = {r.id for r in rows["system"]}
@@ -579,6 +580,9 @@ def apply(rows, machine, dry_run=False, say=print):
         r = res.row
         if res.status == "unwritable":
             say(f"skip       {ident(r)} → {_declared(r)}: {r.domain} is sandboxed, set it by hand")
+            continue
+        if res.status == "absent":
+            say(f"skip       {ident(r)} → {_declared(r)}: app not installed")
             continue
         why = refusal(r)
         if why:
@@ -734,7 +738,7 @@ def main(argv=None, machine=None):
         for res in results:
             counts[res.status] = counts.get(res.status, 0) + 1
         print(", ".join(f"{n} {s}" for s, n in sorted(counts.items())))
-    return 0 if all(r.status == "ok" for r in results) else 1
+    return 0 if all(r.status in ("ok", "absent") for r in results) else 1
 
 
 if __name__ == "__main__":

@@ -195,6 +195,16 @@ def test_apply_skips_sandboxed_and_dry_run_writes_nothing():
     assert said[1].startswith("would run  defaults write com.apple.finder")
 
 
+def test_sandboxed_app_that_never_ran_is_absent_and_passes_check(monkeypatch):
+    monkeypatch.setattr(shortcuts, "load", lambda: copy.deepcopy(DECLARED))
+    m, said = FakeMachine(), []
+    del m.prefs[FIXTURE_NAME[shortcuts.DAY_ONE]]
+    assert [s for _, s, _ in _statuses(DECLARED, m) if s != "ok"] == ["absent"]
+    assert shortcuts.main(["check"], machine=m) == 0
+    shortcuts.apply(DECLARED, m, say=said.append)
+    assert m.writes == [] and said[0].endswith("app not installed")
+
+
 def test_apply_reports_a_failed_write():
     m, said = FakeMachine(write_ok=False), []
     assert not shortcuts.apply(_with("menu", 0, keys="⌃⌥⌘e"), m, say=said.append)
