@@ -3,8 +3,14 @@ source "${0:a:h}/lib.sh"
 set -euo pipefail
 
 section "serho (Telegram AI agent) launchd"
-link "$DOTFILES/serho/com.servitola.serho.plist" \
-     "$LAUNCH_AGENTS/com.servitola.serho.plist"
+# The plist is local to the machine that hosts the bot and not in git,
+# so a fresh Mac has none and gets no agent.
+if [[ -f $DOTFILES/serho/com.servitola.serho.plist ]]; then
+    link "$DOTFILES/serho/com.servitola.serho.plist" \
+         "$LAUNCH_AGENTS/com.servitola.serho.plist"
+else
+    log "no serho/com.servitola.serho.plist here, skipped"
+fi
 
 section "pre-commit hooks"
 ( cd "$DOTFILES" && pre-commit install )

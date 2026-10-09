@@ -41,7 +41,7 @@ grep -oE 'install_spoon [A-Za-z0-9]+ [^ ]+ "\$[A-Z0-9_]+"' install/18-spoons.sh 
 done
 
 section "services"
-expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
+[[ ! -f serho/com.servitola.serho.plist ]] || expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
 # NO_DOCKER: a machine that cannot run Docker (a tart VM on M1/M2) has no stacks to check
 [[ -n ${NO_DOCKER:-} ]] || for stack in litellm docker-logger; do
     expect "$stack containers running" zsh -c "docker compose -f $stack/docker-compose.yml ps --status running -q | grep -q ."
