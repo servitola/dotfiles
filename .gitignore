@@ -26,3 +26,5 @@ rag/rag-retired.md
 
 # External skill clone (github.com/DenisSergeevitch/agents-best-practices)
 claude-code/skills/agents-best-practices/
+# compiled keystroke marker — rebuilt by karabiner/build.sh
+karabiner/helper/keylog
