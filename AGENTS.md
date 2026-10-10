@@ -59,6 +59,15 @@ and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
   untouched — the `ru` column of the keyboard-layout tables in `HotKeys.spoon/layout/60%/*.lua`,
   paths under `~/projects/serho_topics/`, Telegram message texts, dictation dictionaries, test
   fixtures. Translating those breaks the thing they describe.
+- **Docs are English-only too, on the same terms.** `AGENTS.md`, `CLAUDE.md`, `README.md` and
+  anything else in `docs/` is written in English even when the session that produced it ran in
+  Russian. The hook does not cover `.md` (it only knows comment markers, and Markdown has none),
+  so this one is on you. Same data carve-out, and it matters more here: skill and agent
+  descriptions under `claude-code/skills/` and `claude-code/agents/` carry Russian **trigger
+  phrases** on purpose — a skill fires on the words the user actually types, so translating a
+  `description:` silently stops it from firing. Body prose in those files is English; the trigger
+  lists are data. Same for `claude-code-memory/`, where Russian source titles and quotes are
+  content, not writing.
 - **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
 - **Linting**: No linting required - this is a configuration repository (shell scripts, Lua scripts, dotfiles)
