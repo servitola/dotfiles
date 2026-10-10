@@ -8,6 +8,9 @@ set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ENV_FILE="${HERE}/environment.cron"
 JOBS_DIR="${DIR_CRON_JOBS:?set DIR_CRON_JOBS in constants.env (see cron/AGENTS.md)}"
+# find's error inside the process substitution below would be swallowed, and an
+# empty crontab installed in place of the real one.
+[[ -d "${JOBS_DIR}" ]] || { echo "no ${JOBS_DIR}: clone the cron repository there first" >&2; exit 1; }
 
 merge_cron_files() {
     cat "${ENV_FILE}"

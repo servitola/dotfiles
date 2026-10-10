@@ -51,7 +51,7 @@ machine=$(scutil --get LocalHostName)
         wanted=\$(docker compose --project-directory '$stack' config --format json | jq '[.services[] | select((.restart // \"no\") != \"no\")] | length')
         (( \$(docker compose --project-directory '$stack' ps --status running -q | wc -l) >= wanted ))"
 done
-expect "crontab matches \$DIR_CRON_JOBS" zsh -c 'diff <(timeout 10 crontab -l) <(cron/install.sh --print)'
+[[ ! -d $DIR_CRON_JOBS ]] || expect "crontab matches \$DIR_CRON_JOBS" zsh -c 'diff <(timeout 10 crontab -l) <(cron/install.sh --print)'
 
 section "git"
 expect "init.templateDir -> git/hooks/template" test "$(git config --global init.templateDir)" = "$DOTFILES/git/hooks/template"
