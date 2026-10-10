@@ -221,7 +221,6 @@ brew "python@3.13"
 brew "midnight-commander"
 # UPnP IGD client library and daemon
 brew "miniupnpc"
-# Minimal CLI coding agent
 # Matroska media files manipulation tools
 brew "mkvtoolnix"
 # Deep clean and optimize your Mac
@@ -370,7 +369,6 @@ brew "zsh-completions"
 brew "zsh-syntax-highlighting"
 # CLI tool for interacting with iOS Simulators via accessibility and HID APIs
 brew "cameroncooke/axe/axe", trusted: true
-# A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
 # Companion server for automating iOS Simulators
 brew "facebook/fb/idb-companion", trusted: true
 # Run macOS and Linux VMs on Apple Hardware
@@ -459,6 +457,7 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Password manager app
 cask "keepassxc"
+cask "kegworks"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Open-source firewall to block unknown outgoing connections
