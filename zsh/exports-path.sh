@@ -14,8 +14,6 @@ path=( /usr/local/bin /usr/local/sbin $path )
 # Must be early to take priority over system binaries.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Local dev builds — shadow Homebrew formulae with local build of aoe agent (for testing)
-path=( ~/projects/aoe/agent-of-empires/target/release $path )
 
 # Node.js (Homebrew-managed)
 path+=( /opt/homebrew/opt/node@22/bin )
