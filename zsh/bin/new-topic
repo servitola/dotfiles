@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Create (or top up) a "topic" folder with AGENTS.md and CLAUDE.md symlink.
+# Default root: ~/projects/serho_topics
+# AGENTS.md is always ensured (template-based or "# <name>" stub);
+# people fill in details later.
+# Idempotent — safe to re-run on an existing folder; AGENTS.md is never overwritten.
+#
+# Usage:
+#   new-topic <name>              # bare "# <name>" AGENTS.md
+#   new-topic <name> -t <tpl>     # use template from
+#                                 #   ~/projects/dotfiles/claude-code/shared/agents-templates/<tpl>.md
+#                                 #   e.g. -t dual  (two-author profile: servitola + Renata)
+#   new-topic <name> -r <root>    # custom root
+#   new-topic <name> --cd         # also print cd command (eval "$(new-topic foo --cd)")
+
+set -euo pipefail
+
+if [[ $# -lt 1 ]]; then
+    echo "usage: new-topic <name> [-t <template>] [-r <root>] [--cd]" >&2
+    exit 1
+fi
+
+name="$1"; shift
+root="$HOME/projects/serho_topics"
+template=""
+print_cd=0
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -r) root="$2"; shift 2 ;;
+        -t) template="$2"; shift 2 ;;
+        --cd) print_cd=1; shift ;;
+        *) echo "unknown arg: $1" >&2; exit 1 ;;
+    esac
+done
+
+dir="$root/$name"
+mkdir -p "$dir"
+
+if [[ ! -f "$dir/AGENTS.md" ]]; then
+    if [[ -n "$template" ]]; then
+        tpl_path="$HOME/projects/dotfiles/claude-code/shared/agents-templates/$template.md"
+        if [[ ! -f "$tpl_path" ]]; then
+            echo "error: template not found: $tpl_path" >&2
+            exit 1
+        fi
+        cp "$tpl_path" "$dir/AGENTS.md"
+        echo "created  $dir/AGENTS.md  (from template: $template)"
+    else
+        printf '# %s\n' "$name" > "$dir/AGENTS.md"
+        echo "created  $dir/AGENTS.md"
+    fi
+fi
+
+if [[ ! -e "$dir/CLAUDE.md" ]]; then
+    ln -s AGENTS.md "$dir/CLAUDE.md"
+    echo "linked   $dir/CLAUDE.md -> AGENTS.md"
+fi
+
+echo "ready    $dir"
+
+if (( print_cd )); then
+    echo "cd $dir"
+fi
