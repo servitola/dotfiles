@@ -1,10 +1,6 @@
 # Repo map — what every tool is, and how central it is
 
-Importance tiers for every top-level directory in these dotfiles. This is the
-single source of truth for "what are the core tools", "is X important or just an
-experiment", and "what would actually break the setup if removed". Each
-directory also has its own `AGENTS.md` with operational detail — this file is
-the bird's-eye view.
+Importance tiers for every top-level directory in these dotfiles
 
 Tiers: **Core** (the spine — the setup isn't itself without these) ·
 **Important** (daily drivers) · **Secondary** (convenience) ·
@@ -18,22 +14,22 @@ use — safe to ignore or delete).
 - **karabiner** — keyboard remap engine: Caps Lock → Hyper; `karabiner.json` is generated from per-rule files. Always running.
 - **hammerspoon** — the keyboard brain: catches keys, launches/focuses apps, window management, language-per-app, URL routing. The signature of this setup. Always running.
 - **claude-code** — **the primary AI coding tool** (paid Claude, used daily): the harness — hooks, settings, agents, scripts. Skills, detached skills and commands moved to `~/projects/skills` (`$DIR_SKILLS`) on 2026-10-10 and are linked in (codex symlink to it).
-- **litellm** — gone: the local free LLM/TTS proxy at `:4000` and its shims live in `~/projects/services/litellm` (`$DIR_LITELLM`) since 2026-10-10; it was for CI, bulk, image gen, and `rag`. NOT used by Claude Code (which hits the paid Anthropic API directly).
-- **rag** — moved to `~/projects/rag` (`$DIR_RAG`) on 2026-10-10; dotfiles keeps the `zsh/bin/rag` wrapper, the `rag-context-inject` hook and the refresh step in `up`. Backed by qdrant + litellm here.
+- **litellm** — gone: the local free LLM/TTS proxy at `:4000` and its shims live in `~/projects/services/litellm` (`$DIR_LITELLM`) since 2026-10-10; it was for CI, bulk, image gen, and `rag`
+- **rag** — the `zsh/bin/rag` wrapper, the `rag-context-inject` hook and the refresh step in `up`. Backed by qdrant + litellm here.
 - **macos_update** — the `up` command: one-shot system-wide update + cleanup (brew/npm/python/rag/docker), and `brew bundle dump` keeps homebrew/brewfile in sync.
 - **docker** — registry-driven starter for the local compose stacks (litellm, qdrant); the engine is OrbStack.
 - **constants** — the values that are true about this machine (project paths, chosen browser/terminal/editor, Telegram chat ids), in one `constants.env` at the repo root, readable from zsh, Python, Hammerspoon and AI agents (`const <key>`).
-- **zap** — the primary terminal (open-source Warp fork), launched on Hyper+B.
+- **zap** — the primary terminal, launched on Hyper+B.
 - **(root)** — install orchestration: `install.sh` + the numbered `install/` steps (symlink every app's config; `Makefile` is a one-line wrapper that runs `./install.sh`), `AGENTS.md`/`CLAUDE.md`, `README.md`.
 
 ## Important — daily drivers
 
-- **fork** — primary Git GUI client (Hyper+G).
-- **vscode** — the general editor (Hyper+N): logs, configs, dotfiles, everything non-C#. (For C# work the IDE is **Rider**.)
+- **fork** — primary Git GUI client
+- **vscode** — the general editor: logs, configs, dotfiles, everything non-C#. (For C# work the IDE is **Rider**.)
 - **xcode** — iOS key bindings. The dir is small, but **iOS/Android mobile development is the primary work**, so Xcode + Android Studio are first-class.
 - **voiceink** — primary voice→text dictation; always running.
 - **atuin** — shell-history SQLite DB with fuzzy Ctrl-R + cross-machine sync.
-- **tmux** — terminal multiplexer (single self-contained `tmux.conf`).
+- **tmux** — terminal multiplexer
 - **cron** — the mechanism only: `install.sh` merges `$DIR_CRON_JOBS/**/*.cron` into the crontab (`cron-install`), `cron-calendar.py` / `cron-report.py` watch it (`cron-cal`). The jobs themselves are private and live in `~/projects/cron` (`$DIR_CRON`) since 2026-10-09; the fork-sync jobs in `~/projects/forks`.
 - **qdrant** — vector DB backing `rag` (embeddings from litellm's `embed` alias).
 - **npm · python · uv** — dev toolchains: tracked global package lists + installers (refreshed by `up`).
