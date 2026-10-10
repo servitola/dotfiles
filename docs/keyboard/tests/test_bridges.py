@@ -7,6 +7,7 @@ import pytest
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import bridges
+import layers
 from bridges import Bridge
 
 SLOTS = {"z": "F13", "r": "F14", "f": "F15", "v": "F16", "t": "F17", "g": "F18", "b": "F19", "h": "F20"}
@@ -53,7 +54,6 @@ def test_from_rules_renders_irregular_manipulators():
     assert Bridge("mouse.button5.hold", "F16", "29-mouse-ugreen-hold-to-browser") in rows
 
 
-FIXTURES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "fixtures", "rules-generated")
 UNSIDED = {"shift": "left_shift", "control": "left_control", "option": "left_option", "command": "left_command"}
 
 
@@ -64,12 +64,11 @@ def _normal_to(entry):
     return entry
 
 
-def _golden_outputs():
-    import glob
+def _generated_outputs():
     import json
     pairs = {}
-    for path in sorted(glob.glob(os.path.join(FIXTURES, "*.json"))):
-        with open(path, encoding="utf-8") as fh:
+    for stem, _ in layers.LAYERS.values():
+        with open(os.path.join(bridges.RULES_DIR, f"{stem}.json"), encoding="utf-8") as fh:
             for m in json.load(fh)["manipulators"]:
                 if set(m) == {"from", "to", "type"} and len(m["to"]) == 1:
                     to = m["to"][0]
@@ -112,7 +111,7 @@ def test_output_entry_rejects(to):
 
 
 def test_every_generated_output_round_trips():
-    outputs = _golden_outputs()
+    outputs = _generated_outputs()
     assert len(outputs) > 200
     for from_key, to in outputs:
         text = bridges.render_output(to, from_key)

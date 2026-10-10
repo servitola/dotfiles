@@ -1,4 +1,3 @@
-import glob
 import os
 import subprocess
 import sys
@@ -13,20 +12,12 @@ import bridges
 import gen_layers
 import layers
 
-GOLDEN = os.path.join(HERE, "fixtures", "rules-generated")
 GEN = os.path.join(os.path.dirname(HERE), "tools", "gen_layers.py")
 STEMS = [stem for stem, _ in layers.LAYERS.values()]
 
 
-def test_golden_covers_every_layer():
-    assert sorted(os.path.splitext(os.path.basename(p))[0] for p in glob.glob(os.path.join(GOLDEN, "*.json"))) \
-        == sorted(STEMS)
-
-
-@pytest.mark.parametrize("stem", STEMS)
-def test_generated_equals_golden(stem):
-    with open(os.path.join(GOLDEN, f"{stem}.json"), encoding="utf-8") as fh:
-        assert gen_layers.render()[stem] == fh.read()
+def test_generated_equals_tracked_rules():
+    assert gen_layers.drift() == []
 
 
 @pytest.mark.parametrize("name", list(layers.LAYERS))
