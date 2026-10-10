@@ -93,3 +93,42 @@ Claude Code loads into every session as an instruction. `up` used to do that on
 every run, so a false rule of this kind was always live. The step was removed
 and the file deleted; the real lever stays the same — turn recurring *inline
 heredocs* into named scripts in `zsh/bin/` (see `docs/commands.md`).
+
+## codex-hook.sh — works on 0.149, but needs an interactive trust once
+
+`codex-hook.sh` is the same shim serho's `deploy-2026-07` runs (byte-identical).
+Codex carries Claude Code's hook protocol verbatim, so `rtk hook claude` parses
+its stdin payload as native; only the reply differs — codex needs
+`hookSpecificOutput.permissionDecision`, which rtk 0.45.0 does not write, so the
+shim adds it. Verified on **codex-cli 0.149.0** (2026-08-24): with the hook
+active the agent's `git status` becomes `rtk git status`, and the log shows
+`hook: PreToolUse` → `hook: PreToolUse Completed` (no `PreToolUse Failed`, so
+`permissionDecision` is accepted).
+
+Wiring is `~/.codex/hooks.json` (already written; there the path is absolute, written out from `$HOME`):
+
+```json
+{"hooks":{"PreToolUse":[{"hooks":[{"type":"command",
+  "command":"$HOME/projects/dotfiles/rtk/codex-hook.sh"}]}]}}
+```
+
+**It is inert until the hook is trusted, and codex says nothing about it.** An
+untrusted hook is skipped *silently* — no warning, no `PreToolUse` line, the
+command just runs unrewritten. That reads exactly like a broken shim. Confirm
+which it is by re-running with `--dangerously-bypass-hook-trust`: if the rewrite
+appears, the shim is fine and only trust is missing.
+
+Trust is persisted as `HookStateToml { enabled, trusted_hash }` (strings in the
+binary) under a `[hooks]` config section. The hash is NOT the sha256 of
+`hooks.json` nor of the script — both were tried and rejected. It is written by
+the interactive TUI prompt, so granting it needs **one interactive `codex` run
+in a real terminal**, accepting the hook. After that every non-interactive and
+bot-spawned pane inherits the trust with no flag.
+
+**Do not solve this by adding `--dangerously-bypass-hook-trust` to the serho
+bot's codex argv.** `~/.codex/` is writable by every agent the bot spawns, so
+that flag would let any one topic plant a `hooks.json` whose command then runs
+inside every other topic's session — arbitrary code execution across users. The
+container deployment can afford the flag only because it mounts `hooks.json`
+read-only per tenant (`providers/_codex_hooks.py` there); there is no such mount
+on this machine.
