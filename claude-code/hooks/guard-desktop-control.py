@@ -25,6 +25,12 @@ Six matching styles are demonstrated, and they compose within one rule:
     cwd          regex over the working directory       -> only inside ~/projects/x
     unless       regex that exempts an otherwise-matched segment (the carve-out)
 
+A rule with `"glow": True` also lights the screen edges (ScreenGlow.spoon) for
+GLOW_SECONDS whenever it matches — aqua `act` when the command runs, red `wait`
+when the verdict is `ask` — so the owner sees the agent is driving the desktop
+and keeps hands off the mouse. The `Stop` hook in settings.json turns it off
+when the turn ends.
+
 Fails open — a broken guard must never wedge the session.
 """
 
@@ -32,7 +38,10 @@ import json
 import os
 import re
 import shlex
+import subprocess
 import sys
+
+GLOW_SECONDS = 45
 
 SEPARATORS = set("();<>|&`") | {"||", "&&", ";;", ">>", "<<"}
 
@@ -69,24 +78,28 @@ RULES = [
     {
         "name": "synthetic-input",
         "action": "allow",
+        "glow": True,
         "binary": "cliclick",
         "reason": "Синтетические клики и нажатия в чужих приложениях.",
     },
     {
         "name": "applescript-synthetic-input",
         "action": "allow",
+        "glow": True,
         "segment": r"osascript.*\b(keystroke|key code|click at|click UI element)\b",
         "reason": "AppleScript печатает или кликает за тебя в чужом окне.",
     },
     {
         "name": "applescript-window-geometry",
         "action": "allow",
+        "glow": True,
         "segment": r"osascript.*\bset (bounds|position|size) of\b",
         "reason": "AppleScript двигает или ресайзит окна.",
     },
     {
         "name": "yabai-window-ops",
         "action": "allow",
+        "glow": True,
         "binary": "yabai",
         "subcommand": ("-m", "window"),
         "reason": "yabai переставляет окна.",
@@ -165,13 +178,29 @@ def matches(rule, segment, cwd):
     return True
 
 
-def verdict(command, cwd):
-    """(decision, reason) for the first non-allow match, else None."""
+def lua_string(text):
+    return "'" + text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", " ") + "'"
+
+
+def glow(phase, description):
+    subprocess.Popen(
+        ["hs", "-c",
+         f"spoon.ScreenGlow:pulse({GLOW_SECONDS}, '{phase}', {lua_string(description[:90])}); "
+         "spoon.ScreenGlow:beat()"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+        start_new_session=True,
+    )
+
+
+def verdict(command, cwd, description=""):
+    """(decision, reason) for the first non-allow match, else None.
+    Side effect: glows the screen when a glow rule matches any segment."""
     try:
         tokens = lex(command)
     except ValueError:
         return None
 
+    result, glowing = None, False
     for segment in segments(tokens):
         segment = strip_prefix(segment)
         if not segment or os.path.basename(segment[0]) in READ_ONLY:
@@ -179,19 +208,24 @@ def verdict(command, cwd):
         for rule in RULES:
             if not matches(rule, segment, cwd):
                 continue
-            if rule["action"] == "allow":
-                break
-            return rule["action"], f"[{rule['name']}] {rule['reason']}"
-    return None
+            glowing = glowing or bool(rule.get("glow"))
+            if rule["action"] != "allow" and result is None:
+                result = rule["action"], f"[{rule['name']}] {rule['reason']}"
+            break
+    if glowing:
+        glow("wait" if result and result[0] == "ask" else "act", description)
+    return result
 
 
 def main():
     payload = json.load(sys.stdin)
     if payload.get("tool_name") != "Bash":
         return
+    tool_input = payload.get("tool_input", {})
     result = verdict(
-        payload.get("tool_input", {}).get("command", ""),
+        tool_input.get("command", ""),
         payload.get("cwd", ""),
+        tool_input.get("description", ""),
     )
     if not result:
         return
