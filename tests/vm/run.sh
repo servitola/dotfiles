@@ -31,7 +31,9 @@ guest_ssh=(ssh -J "$TART_HOST" -o StrictHostKeyChecking=no -o UserKnownHostsFile
 guest() { "${guest_ssh[@]}" "admin@$ip" "$1"; }
 
 boot() {
-    host "mkdir -p $CACHE_HOST && nohup tart run --no-graphics --dir homebrew:$CACHE_HOST $1 >/tmp/$1.log 2>&1 </dev/null &"
+    # Homebrew also parks files it moves aside during a link in $HOMEBREW_CACHE/Backup;
+    # one run's leftovers made the next fail with "File exists" (python@3.15).
+    host "mkdir -p $CACHE_HOST && rm -rf $CACHE_HOST/Backup && nohup tart run --no-graphics --dir homebrew:$CACHE_HOST $1 >/tmp/$1.log 2>&1 </dev/null &"
     ip=$(host "tart ip $1 --wait 180")
     host "until nc -z -G 2 $ip 22 2>/dev/null; do sleep 2; done"
 }
