@@ -32,8 +32,7 @@ Installing an app in these dotfiles is **two independent steps**:
    `brew bundle --file=~/projects/dotfiles/homebrew/brewfile`. `up` will keep it.
 
 2. **Wire up its config (separate flow):** if the app has config files you want
-   version-controlled and symlinked into `~`, follow the App Integration Guide
-   in `docs/app-integration.md` — create `dotfiles/<app>/`, copy the configs,
+   version-controlled and symlinked into `~`, create `dotfiles/<app>/`, copy the configs,
    and add a `link` line to `install/07-config-links.sh` (the installer is zsh
    now, not make) so `make`/`./install.sh` symlinks them.
 

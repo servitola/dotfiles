@@ -45,7 +45,7 @@ use — safe to ignore or delete).
 - **adguard** — system-wide ad blocker; always running (config excluded from the RAG index).
 - **noti** — desktop notification when a long command finishes.
 - **iina** — media player (Hyper+Y).
-- **docs** — human/agent reference docs (keyboard-setup, app-integration, this map).
+- **docs** — human/agent reference docs (keyboard-setup, this map).
 - **docker-logger** — centralized container log collection.
 - **claude-code-memory** — persistent knowledge base agents read to understand this system.
 - **macos_cleanup** — cache/junk cleanup (the cleanup half of `up`).
