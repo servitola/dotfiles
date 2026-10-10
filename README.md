@@ -39,7 +39,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Look at `hammerspoon/link_router.lua` (rules for [LinkRouter.spoon](https://github.com/servitola/LinkRouter.spoon)). There are some [RegEx](https://www.wikiwand.com/en/Regular_expression) to identify different types of links. Just set [Hammerspoon](https://www.hammerspoon.org/) as your default browser in `System Preferences → General → Default web browser`.
 
 * Q: I want to <ins>understand</ins> all the <ins>shortcuts</ins> I can use on macOS and <ins>with this repository</ins>
-* A: See the **[complete keyboard shortcuts reference](docs/keyboard/)** with all 24 layers visualized. Below is the main Hyper layer:
+* A: See the **[complete keyboard shortcuts reference](docs/keyboard/)** with every layer visualized. Below is the main Hyper layer:
 
 ![Hyper Layer](docs/keyboard/hyper.svg)
 

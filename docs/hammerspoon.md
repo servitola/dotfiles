@@ -117,25 +117,22 @@ Switch between audio devices:
 - Output devices (speakers, headphones)
 - System audio routing
 
-## URL Dispatching
+## URL routing
 
-Smart URL handling based on domain patterns.
-
-### Browser Routing
+Hammerspoon is the system browser; LinkRouter.spoon sends each clicked link to the browser its rule names.
+The rules are `hammerspoon/link_router.lua`:
 
 ```lua
--- Work tools open in Safari
-if string.match(url, "github%.com") then
-    return "com.apple.Safari"
-end
-
--- Personal stuff in other browsers
-if string.match(url, "youtube%.com") then
-    return "com.google.Chrome"
-end
+router.browsers = { main = browsers.main.bundle, dev = Chrome, work = Firefox }
+router.default = "main"
+router.rules = {
+    { router.localNetwork,                       "dev" },   -- localhost and private ranges
+    { { "workname", "workproject", "xd%.adobe%.com" }, "work" },
+}
 ```
 
-Configured in `config_UrlDispatcher.lua`.
+`main` is whatever `APP_BROWSER` names in `constants.env`. Check one URL with `spoon.LinkRouter:route(url)`
+in the console. Without the Spoon, `link_router.lua` hands the system-browser role back to `APP_BROWSER`.
 
 
 ## Configuration Management
