@@ -34,9 +34,9 @@ gui:
       - "#504945"
 git:
   parseEmoji: true
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: "diff-so-fancy"
+      command: "diff-so-fancy"
 os:
   editPreset: "vscode"
   open: "open {{filename}}"
