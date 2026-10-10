@@ -156,7 +156,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Quick Word Lookup</string>
 		<key>path</key>
@@ -168,7 +168,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Clear Clipboard</string>
 		<key>path</key>
@@ -180,7 +180,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -194,7 +194,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>name</key>
 		<string>Paste as File</string>
 		<key>path</key>
@@ -206,7 +206,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -220,7 +220,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<true/>
 		<key>name</key>
@@ -234,7 +234,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<true/>
 		<key>name</key>
@@ -248,7 +248,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -262,7 +262,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
@@ -276,7 +276,7 @@
 	</dict>
 	<dict>
 		<key>enabled</key>
-		<true/>
+		<false/>
 		<key>isTemplateIcon</key>
 		<integer>1</integer>
 		<key>name</key>
