@@ -17,9 +17,10 @@ All Spoons loaded in init.lua before scripts are required
 HotKeys is two-phase: `hs.loadSpoon("HotKeys")` only loads chords; `spoon.HotKeys:start()` binds them and must come after `require "actions"`.
 
 ## Auto-Switching Features
-- **Language per app**: Forkgram/Telegram/AyuGram → Russian, Games → ABC, Everything else → English
-- **Karabiner profiles**: Games use "Empty" profile (disables shortcuts), others use "Default"
-- **URL routing**: Work domains open in Safari, everything else in Vivaldi browser
+- **Layout per app** (AutoKeyboardLayout.spoon, configured in `init.lua`): every app → `LAYOUT_PRIMARY`; Telegram clients (the Spoon's built-in `secondaryApps` list) → `LAYOUT_SECONDARY`
+- **Karabiner profiles** (`game_mode.lua`): games use the "Empty" profile (disables shortcuts), others "Default"; its `bundles` list is also what BirmanLayer is told to stay out of
+- **URL routing**: work domains (workname/workproject/xd.adobe) → Firefox, localhost and
+  private ranges → Chrome, everything else → the browser named by `APP_BROWSER`
 
 ## Application Watcher Pattern
 Uses `hs.application.watcher` to detect app focus changes:
