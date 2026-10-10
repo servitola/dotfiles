@@ -90,7 +90,10 @@ Still live but legacy: `claude-opus-4-8`, `claude-opus-4-7`, `claude-opus-4-6`,
 **Note for Codex, Qwen and OpenCode:** the `@RTK.md` line below is a Claude Code
 import and does not expand for you — you receive it as literal text. Read
 `~/projects/dotfiles/claude-code/RTK.md` directly when you need those rules.
+
 # Shared AI Coding Tools
 
 This `claude-code/` directory is the single source of truth for commands, agents, and skills.
 When adding or editing commands/agents/skills — do it here. All tools pick up changes automatically.
+
+@RTK.md
