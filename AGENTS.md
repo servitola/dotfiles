@@ -40,6 +40,12 @@ expands `@RTK.md`; the other three receive it as literal text (verified
 goes **inline** in that file — a separate file plus `@import` silently reaches
 Claude Code only. `RTK.md` has this problem today and is unfixed.
 
+**`~/.claude/rules/*.md` IS auto-loaded** by Claude Code into the system prompt
+(verified on CC 2.1.220). It is gitignored, so it is the wrong home for
+hand-written knowledge, and everything there is billed on every session. It is
+empty on purpose: `up` used to fill it with `rtk learn --write-rules`, whose
+"corrections" were false (`rtk/AGENTS.md`).
+
 ## Code Style Guidelines
 - **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
