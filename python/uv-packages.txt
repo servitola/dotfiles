@@ -1,1 +1,4 @@
+ezdxf
+fb-idb
+mlx-whisper
 py-spy
