@@ -9,6 +9,7 @@ brew "dockutil"   # install step 10
 brew "m-cli"
 brew "mas"         # up: mas upgrade
 brew "pre-commit"
+brew "rtk"         # Claude Code hook, up: rtk gain
 brew "uv"
 brew "zsh-autosuggestions"      # zsh/zshrc.sh
 brew "zsh-syntax-highlighting"  # zsh/zshrc.sh
@@ -19,3 +20,4 @@ cask "font-jetbrains-mono-nerd-font"
 cask "fork"
 cask "hammerspoon"
 cask "karabiner-elements"
+cargo "applesauce-cli"  # up: applesauce/compress.sh; brew bundle installs rust for it
