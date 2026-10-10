@@ -2,6 +2,9 @@
 cd "$HOME/projects/dotfiles"
 source install/lib.sh
 start_logging
+# check.sh judges the links of this run only: a list kept across runs still
+# expected configs of tools uninstalled since.
+: > "$STATE/links.tsv"
 
 # One password prompt for the whole run: sudo forgets it after 5 minutes, and
 # the cask installers of a long brew bundle would stall on a prompt nobody sees.

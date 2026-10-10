@@ -45,7 +45,7 @@ done
 section "services"
 [[ ! -f serho/com.servitola.serho.plist ]] || expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
 machine=$(scutil --get LocalHostName)
-[[ $DOCKER == no ]] || grep -hv '^#' docker/compose-projects.txt docker/compose-projects.private.txt | while read -r stack machines; do
+[[ $DOCKER == no ]] || grep -hsv '^#' docker/compose-projects.txt docker/compose-projects.private.txt | while read -r stack machines; do
     [[ -n $stack && " $machines " == *" $machine "* ]] || continue
     [[ $stack == /* ]] || stack=$HOME/$stack
     [[ -d $stack ]] || continue   # a stack on an unplugged drive
