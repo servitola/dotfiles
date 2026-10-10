@@ -7,7 +7,8 @@ obj.version = "1.0"
 obj.author = "servitola"
 obj.homepage = "https://github.com/Hammerspoon/Spoons"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
-obj.youTrackUrl = "https://REDACTED-TRACKER"
+obj.youTrackUrl = nil  -- set by the config: the server, without a trailing slash
+obj.project = nil      -- set by the config: the project new tickets go to
 
 -- Internal function to create the webview
 function obj:createWebview()
@@ -52,7 +53,7 @@ function obj:show()
     end
 
     local webview = self:createWebview()
-    local createTicketUrl = obj.youTrackUrl .. "/newIssue?project=WORKPROJ&c=Type%20Task&c=State%20In%20Progress"
+    local createTicketUrl = obj.youTrackUrl .. "/newIssue?project=" .. obj.project .. "&c=Type%20Task&c=State%20In%20Progress"
 
     webview:url(createTicketUrl)
     webview:show()

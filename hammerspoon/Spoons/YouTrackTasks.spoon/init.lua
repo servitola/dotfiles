@@ -7,7 +7,7 @@ obj.version = "1.0"
 obj.author = "servitola"
 obj.homepage = "https://github.com/Hammerspoon/Spoons"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
-obj.youTrackUrl = "https://REDACTED-TRACKER"
+obj.youTrackUrl = nil  -- set by the config: the server, without a trailing slash
 
 -- Internal function to create the webview
 function obj:createWebview()

@@ -68,6 +68,8 @@ TG_BOT_API     = { type = "url", about = "local Telegram Bot API server" }
 
 LITELLM_URL = { type = "url", about = "local LiteLLM proxy" }
 QDRANT_URL  = { type = "url", about = "local Qdrant" }
+WORK_YOUTRACK_URL     = { type = "url", private = true, about = "the employer's YouTrack" }
+WORK_YOUTRACK_PROJECT = { type = "text", private = true, about = "project new YouTrack tickets go to" }
 
 PROXY_WORK         = { type = "url", unread = true, private = true, about = "employer VPN, SOCKS" }
 PROXY_WORK_HTTP    = { type = "url", private = true, about = "employer VPN, HTTP" }

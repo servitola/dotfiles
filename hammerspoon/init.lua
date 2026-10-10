@@ -33,6 +33,9 @@ safeLoadSpoon("KSheet") -- shortcuts cheatsheet
 safeLoadSpoon("PopupTranslateSelection") -- translate selected text
 safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
 safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
+spoon.YouTrackTicket.youTrackUrl = constants.WORK_YOUTRACK_URL
+spoon.YouTrackTicket.project = constants.WORK_YOUTRACK_PROJECT
+spoon.YouTrackTasks.youTrackUrl = constants.WORK_YOUTRACK_URL
 if hs.fs.attributes(hs.configdir .. "/Spoons/GlobalProtectToggle.spoon") then
     safeLoadSpoon("GlobalProtectToggle") -- GlobalProtect VPN on a key, github.com/servitola/GlobalProtectToggle.spoon
 end
