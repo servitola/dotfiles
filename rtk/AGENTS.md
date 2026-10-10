@@ -15,7 +15,12 @@ Both are symlinked into `~/Library/Application Support/rtk/`.
 ## How RTK is wired
 - **Auto-rewrite**: a Claude Code PreToolUse hook (`rtk hook claude`, see
   `claude-code/settings.json`) rewrites Bash commands transparently
-  (`git status` → `rtk git status`), including `&&`-chains. No manual prefixing.
+  (`git status` → `rtk git status`) via `hookSpecificOutput.updatedInput`.
+  It also rewrites an **inner** built-in inside a wrapper
+  (`uv run pytest` → `uv run rtk pytest`). Fires in main **and** subagent
+  contexts (verified: subagent Bash calls get `agent_id` + compacted output;
+  note the transcript logs the *pre*-rewrite command, so counting `rtk `
+  prefixes in transcripts undercounts real coverage — measure via `history.db`).
 - **Docs for the AI**: `claude-code/RTK.md` (imported into the global CLAUDE.md).
 
 ## Trust gate (rtk ≥0.44)
@@ -58,9 +63,20 @@ change the hook's rewrite decision. Real levers are upstream (file/upvote
 rtk-ai/rtk) or accepting built-in-only coverage.
 
 ## Useful meta commands
-- `rtk gain`     — token savings so far (global).
-- `rtk discover` — commands still bypassing RTK + est. savings.
-- `rtk learn`    — recurring CLI corrections from history (see note below).
+- `rtk gain`     — token savings so far (global). A `rtk:toml` prefix in the
+  per-command table means a TOML filter did the work — those are the *bundled*
+  ones inside the binary (ps, make, jq, du, gcloud, helm, gradle…), not
+  `filters.toml`.
+- `rtk verify`   — hook integrity + bundled filter self-tests (expect
+  `154/154 tests passed` on 0.45.0). Run after any RTK upgrade.
+- `rtk discover` — commands still bypassing RTK + est. savings. **Its "missed
+  savings" table is unreliable**: it scans transcripts, which log the
+  *pre*-rewrite command, so things the hook already rewrites (`git diff`,
+  `grep -n`, `ls -la`, `make`, `ps`, `pre-commit`) show up as "missed". Confirm
+  any line with `rtk hook check "<cmd>"` before acting on it. The
+  TOP UNHANDLED section is the honest half.
+- `rtk learn`    — "CLI corrections" from history. Not run by `up` any more (see
+  note below); never use `--write-rules`.
 
 ### Note on `rtk learn`
 For this user it currently yields **0 recurring rules** — corrections are
