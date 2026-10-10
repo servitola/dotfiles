@@ -22,24 +22,35 @@ section "packages (homebrew/brewfile)"
 # app before the App Store sign-in) must not leave the Mac unconfigured, so the
 # failures are reported and the install goes on; check.sh judges the result.
 # Upgrades are up's job, so make only fills in what is missing.
-if brew bundle check --no-upgrade --file "$DOTFILES/homebrew/brewfile" >/dev/null 2>&1; then
-    log "all installed"
-else
-    # mas waits forever, not fails, for a Store nobody signed in to (measured:
-    # 2 h in the VM test), and mas 2 can no longer tell whether anyone has. So a
-    # person confirms the sign-in, and without one the mas lines are left out.
-    brewfile=$DOTFILES/homebrew/brewfile
+# brew bundle cannot see App Store apps here: mas 2 lists them through
+# Spotlight, which is off, so it calls every one missing. An app counts as
+# installed when its bundle carries an App Store receipt (as in mas-dump.sh).
+mkdir -p "$STATE"
+brewfile=$STATE/brewfile
+grep -v '^mas ' "$DOTFILES/homebrew/brewfile" > "$brewfile"
+missing_mas=()
+for line in ${(f)"$(grep '^mas ' "$DOTFILES/homebrew/brewfile")"}; do
+    name=${${line#mas \"}%%\"*}
+    [[ -e "/Applications/$name.app/Contents/_MASReceipt/receipt" ]] || missing_mas+=$line
+done
+# mas waits forever, not fails, for a Store nobody signed in to (measured:
+# 2 h in the VM test), and it can no longer tell whether anyone has. So a
+# person confirms the sign-in; without one the missing apps are left out.
+if (( $#missing_mas )); then
     reply=s
     if [[ -t 0 ]]; then
         open -a "App Store"
-        read -r "reply?      sign in to the App Store and press Enter, or type s to skip its apps: "
+        read -r "reply?      ${#missing_mas} App Store apps to install: sign in to the App Store and press Enter, or type s to skip them: "
     fi
     if [[ $reply == s ]]; then
-        brewfile=$STATE/brewfile-without-mas
-        mkdir -p "$STATE"
-        grep -v '^mas ' "$DOTFILES/homebrew/brewfile" > "$brewfile"
-        warn "App Store apps skipped: sign in, then run make again"
+        warn "${#missing_mas} App Store apps skipped: sign in, then run make again"
+    else
+        print -l -- $missing_mas >> "$brewfile"
     fi
+fi
+if brew bundle check --no-upgrade --file "$brewfile" >/dev/null 2>&1; then
+    log "all installed"
+else
     brew bundle --no-upgrade --file "$brewfile" || warn "brew bundle: the entries above failed"
 fi
 
