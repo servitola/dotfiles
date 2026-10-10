@@ -70,7 +70,11 @@ print_task "Update Appium Plugins"
 appium plugin update installed
 
 print_task "Updating .NET tools"
-dotnet tool update -g dotnet-trace
+if command -v dotnet >/dev/null; then   # installed by hand, only where .NET work happens
+    dotnet tool update -g dotnet-trace
+else
+    echo "  * Skip: no dotnet on this machine"
+fi
 
 print_task "Updating precommit hooks"
 # autoupdate needs CWD inside the dotfiles git repo (it git-fetches hook repos);
