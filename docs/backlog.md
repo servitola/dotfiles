@@ -7,8 +7,8 @@
 ### Единое сгенерированное keyboard-приложение (вместо Karabiner + Hammerspoon + системных раскладок)
 
 Один компилированный Swift-бинарник, сгенерированный из существующих конфигов
-(`karabiner/rules/*.json`, `HotKeys.spoon/layout/60%/*.lua`, `hammerspoon/birman_extended.lua`,
-`docs/keyboard-setup.md`), который закрывает всё: Hyper, слои, лаунчеры, окна,
+(`karabiner/rules/*.json`, `karabiner/layers.toml`, `HotKeys.spoon/layout/60%/*.lua`, BirmanLayer.spoon's
+`typography_table.lua`, `docs/keyboard-setup.md`), который закрывает всё: Hyper, слои, лаунчеры, окна,
 per-app логику и — главное — **фиктивные раскладки**: системная раскладка навсегда U.S.,
 а ru/el/типографский слой Бирмана печатаются напрямую через
 `CGEventKeyboardSetUnicodeString`. Переключение «раскладки» = смена таблицы в памяти:
@@ -32,14 +32,15 @@ emoji-пикер, игры с raw input — нужен аналог профил
 у kanata есть unicode-вывод), Squirrel/Rime (надёжность IME-пути). Целиком —
 «персональное приложение из своих конфигов» — никто не делает.
 
-## Keyboard core → keylord (staged extraction)
+## Keyboard core → keylord (staged extraction, parked)
 
-Target design: `~/projects/keylord/docs/superpowers/specs/2026-09-25-keylord-design.md`.
-Step 1 (HotKeys action registry) shipped 2026-09-25. Remaining steps, in order:
-roles in `constants.env` (`APP_BROWSER_ALT`, `APP_EDITOR`, `APP_FILES`, …) →
-`bridge.lock` as the single F-key map → generate Hyper layers `07`–`17` from one
-table → app-shortcut catalog + declarative system shortcuts → one `chords.toml`
-replacing the 59 layout files.
+Target design: `~/projects/keylord/docs/superpowers/specs/2026-09-25-keylord-design.md` (parked 2026-09-27).
+Shipped: step 1 HotKeys action registry (2026-09-25); step 2 roles in `constants.env`; steps 3–4 the
+`[slots]` table in `karabiner/layers.toml` and Hyper layers `07`–`17` generated from it (there is no
+`bridge.lock` file: the slots live in the same TOML); step 5a machine shortcuts (`macos_shortcuts/`).
+Rolled back the same day they shipped (2026-09-26): 5b app-shortcut catalog and 6 `chords.toml` — see the
+note at the end of this section. What a next consolidation step would add is one read-only resolver across
+the four sources (`layers.toml`, layout `.lua`, `rules/*.json`, `shortcuts.toml`): "what is on chord X".
 
 Deferred from the step-1 final review (none blocking):
 - `focusAppWindow` in `actions/apps.lua`: both callers pass bundle ids now; drop the
@@ -55,14 +56,10 @@ Deferred from the step-1 final review (none blocking):
   extraction.
 - `appSpecificHotkeys` table still lives inside `HotKeys.spoon/init.lua` as data.
 
-Deferred from the step-3 (bridge.lock) review, none blocking:
-- `bridges.parse_from` accepts two key glyphs on non-simultaneous rows (`⇪vz` loads).
+Deferred from the step-3 (slots) review, none blocking:
 - The bridge-key set is defined three times (`lint.py` `BRIDGE_CHORD`,
   `bridges._BRIDGE_KEY_CODE`, `bridges.BRIDGE_BASES`); B2 should build on `bridges`.
-- B1 checks membership, not multiplicity; rule-side findings anchor at lock line 1.
 - `tools/bridge.py --json` drops `side` and `rule`.
-- Lock header says "never renumber"; rows have no numbers — say "never change `to`".
-- `⌃F16` (`⇪⌃t`) stays invisible to the legacy `FKEY_MAPPING` consumers until step 4.
 
 Deferred from the step-4 (Hyper-layer generation) review, none blocking:
 - `lint.py` `check_layer_raw` crashes on a malformed `layers.raw/*.json` instead of a finding.
@@ -73,45 +70,21 @@ Deferred from the step-4 (Hyper-layer generation) review, none blocking:
 - B4 findings always anchor at line 1 of the raw file (index is given).
 
 Deferred from step 5a (machine shortcuts), decisions or polish:
-- Maccy preview toggle `⌃␣` collides with enabled system hotkey 60 (input-source switch);
-  Hammerspoon does the layout switching, so `id = 60 enabled = false` in
-  `macos_shortcuts/shortcuts.toml` is the likely answer. Owner's call.
+- Maccy preview toggle `⌃␣` sits on enabled system hotkey 60 (input-source switch; lint no longer
+  reports it, the row is still `enabled = true`); Hammerspoon does the layout switching, so
+  `id = 60 enabled = false` in `macos_shortcuts/shortcuts.toml` is the likely answer. Owner's call.
 - Music menu duplicates (`⌥⌘a` All/Repeat All, `⌥⌘o` One/Repeat One) reported by S3.
 - Menu-combo encodings for arrows/F-keys/PgUp/PgDn are unverified (no live example).
-- `shortcuts.py check` is manual; wiring it into `up` / a `doctor` command is step 5b+.
+- `up` runs `shortcuts.py capture --write` and `install/check.sh` runs `check`; nothing runs `check`
+  on a schedule, so a drift is noticed only when someone runs `check.sh`.
 - 10 symbolic-hotkey ids captured as `name = "unknown"`: 16 18 20 22 24 175 179 233 235 260.
-
-Deferred from step 5b (shortcut catalog), decisions or polish:
-- `System.toml` holds ~14 rows that describe Hammerspoon, not macOS (`⌘h`, `⇪i`, `⇪m`,
-  focus sets, `⌥4`): split into `Hammerspoon.toml`; needs the `""` spelling to alias
-  Hammerspoon in those cells, i.e. a table edit.
-- Drop the per-row `spelling` field by rewriting the ~27 table cells that use an
-  icon/variant spelling to the display name; fix the typo display names
-  (`Shotr`, `Activity Manager`, `Browser Vimt`) in the same pass.
-- `4.lua` row for `⌥4` says "hide current app"; Karabiner rewrites to `⌘h` which runs
-  `window.minimize_and_focus_next`. `explain "⌥4"` shows it.
-- Importer rows (`menu`/`keymap`) never render into tables; an opt-in "promote" is the
-  missing piece if that is wanted.
-- `catalog_import.plan()` pairs two-key chords by text.
-- Pre-existing `# ──` banners in `icons.py`, `svg_by_action.py`, `parse_comments.py`.
-
-Deferred from step 6 (chords.toml):
-- `⇧⌃↑` should map to volume up; table said FIX!!!
-
-Deferred from step 6 (chords.toml), owner's call or polish:
-- `⌥drag` / `⌥hold` rows sit in `System.toml` and render `G ✓`; keep if that is what G means.
-- `keyboard/build.sh` has no `--check` mode of its own; CI uses `gen_layout --check` +
-  `gen_layers --check` + `lint --strict`.
-- Catalog grammar now accepts repeated presses and gestures (`⇧⌥r ⇧⌥r`, `⌘click`,
-  `⇧⌥drag`); the layout chord grammar (`chords.toml`) does not — intended, document if asked.
 
 Steps 5b and 6 rolled back 2026-09-26, the same day they shipped: too much machinery
 for one user. `keyboard/` (catalog, `chords.toml`, `keys.toml`, `build.sh`), `gen_layout.py`,
 `catalog_import.py`, `explain.py` and their tests are gone; `lint.py`, `normalize.py` and the
 `lint-keyboard-layout` hook are back at their step-5a state. Kept: the regenerated layout files,
 the SVGs and the Greek-column fix in `parse_birman.py`. The per-app knowledge the catalog
-collected lives only in the Lua comment tables again, so the step 5b/6 items above are moot
-unless the catalog returns.
+collected lives only in the Lua comment tables again.
 
 - boring-notch-sync (2026-09-26 12:38 run): the old `boringNotch` process (pid started
   11:29, bundle already deleted by the job) survived `stop_app` and ran next to the new
