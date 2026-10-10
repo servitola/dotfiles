@@ -1,0 +1,65 @@
+#!/bin/zsh
+# Restart the serho Telegram bot (launchd agent com.servitola.serho).
+#
+#   serho-restart           bounce the bot, wait until polling actually starts
+#   serho-restart --quiet   same, but only speak up on failure
+#
+# Exits non-zero if the bot did not reach "Start polling" — a launchctl command
+# returning 0 is NOT proof the bot came up.
+#
+# Why it picks the verb instead of always using `kickstart -k`: kickstart only
+# works on a *registered* service. A `bootout` (or a `bootout; bootstrap` pair
+# whose bootstrap silently failed — bootout is async, so the immediate
+# bootstrap hits the still-dying label) leaves the label absent, and then every
+# kickstart is a no-op. That is exactly how the bot went down on 2026-07-25:
+# unloaded, never reloaded, and KeepAlive does not help because a clean SIGTERM
+# exit is a *successful* exit.
+set -e
+
+LABEL=com.servitola.serho
+PLIST="$HOME/Library/LaunchAgents/$LABEL.plist"
+LOG_DIR="$HOME/Library/Logs/serho"
+LOG="$LOG_DIR/bot.log"
+DOMAIN="gui/$(id -u)"
+TIMEOUT=60
+
+quiet=false
+[[ "$1" == "--quiet" ]] && quiet=true
+say() { $quiet || print -r -- "$@" }
+
+# launchd refuses to spawn a job whose StandardOutPath directory is missing,
+# and fails silently. Heal it before bouncing.
+mkdir -p "$LOG_DIR"
+
+# Remember where the log ends now, so we only match a start line from THIS
+# bounce and not from some previous one.
+if [[ -f "$LOG" ]]; then
+    mark=$(wc -l < "$LOG")
+else
+    mark=0
+fi
+
+if launchctl print "$DOMAIN/$LABEL" &>/dev/null; then
+    say "→ kickstart -k $LABEL"
+    launchctl kickstart -k "$DOMAIN/$LABEL"
+else
+    say "→ service not registered, bootstrap $LABEL"
+    launchctl bootstrap "$DOMAIN" "$PLIST"
+fi
+
+say "→ waiting for polling (max ${TIMEOUT}s)…"
+for _ in {1..$TIMEOUT}; do
+    sleep 1
+    if tail -n "+$((mark + 1))" "$LOG" 2>/dev/null | grep -q "Start polling"; then
+        pid=$(launchctl print "$DOMAIN/$LABEL" | awk -F'= ' '/^\tpid = /{print $2; exit}')
+        say "✅ $LABEL is polling (pid $pid)"
+        exit 0
+    fi
+done
+
+print -ru2 -- "❌ $LABEL did not reach 'Start polling' in ${TIMEOUT}s."
+print -ru2 -- "   launchctl state:"
+launchctl print "$DOMAIN/$LABEL" 2>&1 | grep -E '^\s+(pid|state|last exit code) =' >&2 || true
+print -ru2 -- "   tail $LOG_DIR/stderr.log:"
+tail -20 "$LOG_DIR/stderr.log" >&2 || true
+exit 1
