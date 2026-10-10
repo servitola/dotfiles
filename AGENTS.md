@@ -423,6 +423,56 @@ the full `brewfile` and the weekly source-rebuild cron were left alone.
 
 ---
 
+**State (2026-08-30, focus sets rebuilt). Shipped and verified, nothing pushed.**
+The four `⇧⌃⌥⌘`+arrow desktop layouts (`window.focus_work` / `focus_personal` /
+`focus_comms` / `hide_all_except_work`) pointed at apps that no longer exist and
+crashed whenever a browser was running.
+
+- **The crash.** `browser_video_title_markers` was never defined, so
+  `browser_title_has_video()` died on `ipairs(nil)` — reached on every press with
+  a browser open and no popup. Gone: the markers now live in `browsers.lua` as
+  `M.video_page_markers` + `M.title_looks_like_video`, and the deps plumbing in
+  `HotKeys.spoon/init.lua` went with them.
+- **Workbot dropped** (no `.app` on the machine; `id of app "Workbot"` → -1728).
+  Telegram took its place in `work` and `only-work`, and *which* Telegram comes
+  from `APP_TELEGRAM` in `constants.env` via the new `hammerspoon/telegrams.lua`,
+  the exact mirror of `browsers.lua`. Forkgram / official `ru.keepcoder.Telegram`
+  / AyuGram all stay in `M.known` — switching client is one line. That registry
+  also replaced the triplicated bundle ids in `set_language_on_app_focused.lua`.
+- **`"Yandex Telemost"` never matched** — the app's name is `Yandex.Telemost`
+  (dot), so the comms set was hiding the very app it exists for. Fixed. `Messages`
+  dropped from comms; `Vivaldi`/`Yandex` dropped from personal (they stay in
+  `browsers.known`). Work set is now Rider/Fork/Zap/Code/WebStorm/Xcode/Firefox
+  + Telegram — Firefox stays because `config_UrlDispatcher` routes workname/workproject
+  there.
+- **Popup-player titles are now measured, not guessed.** Observed live on this
+  machine: Gecko `Picture-in-Picture`, Chromium `Picture in Picture` (Chrome 152,
+  fresh profile). Firefox/Chrome/Opera joined `browsers.known`; `title_suffix`
+  survives as the second net for Vivaldi/Yandex, which is also what covers a
+  localized player title. `is_firefox_video_player` was deleted — Firefox is a
+  registry entry now, and all three call sites paired it with
+  `is_browser_video_player` anyway.
+- **Gecko can pop the video out after all.** `⌘⌥⇧]` — from Firefox's own
+  `browser.xhtml` (`key_togglePictureInPicture`, `modifiers="accel,alt,shift"`),
+  confirmed on a live Zen window. It is `pip_chord` in `browsers.lua`; Chromium
+  entries have none (no default chord), so they skip that branch instead of
+  firing the old unverified `⌥⌘→`, which is plain "next tab" in Chrome.
+- Verified end to end: all four sets applied on a live desktop, console clean;
+  `focus_work` with a YouTube-titled tab really opened the PiP window, parked it
+  left and minimized the rest.
+- **`telegram_select_personal_folder` was called but never defined** — the
+  "click into the Personal folder after switching" feature is gone, only
+  `hammerspoon/.telegram_personal_offset` and its doc paragraph survived. Both
+  removed; rebuild it if the click is wanted.
+
+**Open questions / next steps (focus sets).**
+1. `⇪J` binds nothing (`j.lua` has only a comment claiming Day One). Left alone.
+2. AyuGram's app name is assumed to be `AyuGram` — not installed, unverified.
+3. Chrome/Opera have no `pip_chord`, and Vivaldi/Yandex lost the old `⌥⌘→`.
+   If a Chromium browser ever becomes `APP_BROWSER`, find its real PiP chord.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
