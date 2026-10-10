@@ -1,134 +1,58 @@
 # rtk — Rust Token Killer config
 
-## What lives here (version-controlled)
-- `config.toml`  — global RTK config (mirrors built-in defaults; tune here).
-- `filters.toml` — custom per-command output filters. Only `docker-compose`
-  survives; the rest were inert (see below).
+- `config.toml` and `filters.toml` are linked into `~/Library/Application Support/rtk/`.
+  Everything else there (`history.db`, `tee/`, `trusted_filters.json`) is machine state and
+  stays untracked.
+- **Wiring:** the Claude Code PreToolUse hook `rtk hook claude` (`claude-code/settings.json`)
+  rewrites Bash commands (`git status` → `rtk git status`), also an inner built-in inside a
+  wrapper (`uv run pytest` → `uv run rtk pytest`), in the main session and in subagents. What
+  the agent is told about it is `claude-code/RTK.md`.
+- **Transcripts log the command before the rewrite.** Counting `rtk ` prefixes in them
+  undercounts coverage, and the "missed savings" table of `rtk discover` lists commands the
+  hook already handles; its TOP UNHANDLED section is the honest half. Measure with
+  `history.db`, confirm one command with `rtk hook check "<cmd>"`.
 
-Both are symlinked into `~/Library/Application Support/rtk/`.
+## A filter in filters.toml does not make the hook rewrite a command
 
-## What is NOT tracked (runtime data, lives only in Application Support)
-- `history.db` — per-command savings analytics (large, ephemeral).
-- `tee/`       — captured stdout/stderr of failed commands.
-- `.DS_Store`, `.hook_warn_last`.
+The hook rewrites only its ~50 built-in tools (`rtk --help`) and never consults
+`filters.toml`; the only knob is `[hooks] exclude_commands`. A filter for any other command
+is inert: `rtk hook check "<cmd>"` answers `No rewrite for: …`. That is why the `python3`,
+`hs`, `launchctl` and `git ls-files` filters were deleted (2026-08-09, re-checked on 0.45.0)
+and only `docker-compose` is left — `docker` is a built-in, so the filter augments it.
 
-## How RTK is wired
-- **Auto-rewrite**: a Claude Code PreToolUse hook (`rtk hook claude`, see
-  `claude-code/settings.json`) rewrites Bash commands transparently
-  (`git status` → `rtk git status`) via `hookSpecificOutput.updatedInput`.
-  It also rewrites an **inner** built-in inside a wrapper
-  (`uv run pytest` → `uv run rtk pytest`). Fires in main **and** subagent
-  contexts (verified: subagent Bash calls get `agent_id` + compacted output;
-  note the transcript logs the *pre*-rewrite command, so counting `rtk `
-  prefixes in transcripts undercounts real coverage — measure via `history.db`).
-- **Docs for the AI**: `claude-code/RTK.md` (imported into the global CLAUDE.md).
+To cover more, the command has to be a built-in or wrap one. `uv run script.py` and `ssh`
+stay raw, and nothing local changes that.
 
-## Trust gate (rtk ≥0.44)
-`rtk gain` prints `[rtk] N untrusted custom filter(s) not applied` until you run
-`rtk trust` (`--yes` for non-interactive). Trust is stored **outside this repo**
-in `~/Library/Application Support/rtk/trusted_filters.json` (untracked machine
-state, alongside history.db) as *path + sha256 of the target*, so any edit to
-`filters.toml` un-trusts it and the banner returns. `up` re-runs
-`rtk trust --yes` from `$HOME` for exactly this reason — from `$HOME` there is no
-project-local `.rtk/filters.toml`, so it can only ever trust our own
-version-controlled file. Revoke with `rtk untrust`.
+## Trust
 
-Filters are declarative only — the schema (`TomlFilterDef`) is
-`match_command` / `strip_ansi` / `strip_lines_matching` / `keep_lines_matching`
-/ `max_lines` / head / tail / regex replace. **No command execution.** The trust
-prompt exists because a hostile project-local `.rtk/filters.toml` could silently
-*hide* lines (errors, diffs) from the agent, not because it could run code. That
-is also the only real cost of a bad filter of your own: `max_lines` truncation.
+`rtk gain` prints `N untrusted custom filter(s) not applied` until `rtk trust --yes`. Trust
+is the path plus the sha256 of `filters.toml`, so every edit revokes it. `up` re-trusts from
+`$HOME`, where no project-local `.rtk/filters.toml` exists, so it can only trust this file.
+Filters are declarative (strip, keep, truncate lines) and run no code: the prompt guards
+against a project hiding errors from the agent.
 
-## ⚠️ Custom filters.toml do NOT auto-trigger (verified rtk 0.43.0, still true 0.45.0)
-The hook only rewrites its **hardcoded ~50 built-in tools** (`rtk --help`:
-git, grep, rg, ls, find, cat/read, docker, kubectl, npm, npx, cargo, go, pip,
-pytest, ruff, mypy, tsc, lint, prettier, playwright, gradlew, mvn, gh, curl,
-wget, wc…). It does **not** consult `filters.toml` to decide what to rewrite —
-there is no include-list config, only `[hooks] exclude_commands`. So a custom
-filter for a **non-built-in** command never fires, because the hook never routes
-it into rtk. Verify any candidate with `rtk hook check "<cmd>"` — if it says
-`No rewrite for: …`, a filter is inert. The `python3` / `hs` / `launchctl` /
-`git ls-files` filters were **deleted 2026-08-09** — re-checked on 0.45.0, all
-four still `No rewrite for: …`. Only `docker compose` routes in
-(`rtk docker compose ps`). Custom filters only
-help when rtk already handles the command (they augment a built-in handler) or
-when invoked explicitly as `rtk <cmd>` — which the hook won't do for you.
+## After an upgrade
 
-**To actually cover more:** the command must be a built-in, or wrap a built-in
-so the inner rewrite fires (`uv run pytest` works; `uv run script.py` and `ssh`
-stay raw — no local fix in 0.43.0). `rtk discover` lists bypassed commands but
-its "add a filter" suggestion is misleading here — a filters.toml entry won't
-change the hook's rewrite decision. Real levers are upstream (file/upvote
-rtk-ai/rtk) or accepting built-in-only coverage.
+`rtk verify` — hook integrity and the bundled filters' self-tests.
 
-## Useful meta commands
-- `rtk gain`     — token savings so far (global). A `rtk:toml` prefix in the
-  per-command table means a TOML filter did the work — those are the *bundled*
-  ones inside the binary (ps, make, jq, du, gcloud, helm, gradle…), not
-  `filters.toml`.
-- `rtk verify`   — hook integrity + bundled filter self-tests (expect
-  `154/154 tests passed` on 0.45.0). Run after any RTK upgrade.
-- `rtk discover` — commands still bypassing RTK + est. savings. **Its "missed
-  savings" table is unreliable**: it scans transcripts, which log the
-  *pre*-rewrite command, so things the hook already rewrites (`git diff`,
-  `grep -n`, `ls -la`, `make`, `ps`, `pre-commit`) show up as "missed". Confirm
-  any line with `rtk hook check "<cmd>"` before acting on it. The
-  TOP UNHANDLED section is the honest half.
-- `rtk learn`    — "CLI corrections" from history. Not run by `up` any more (see
-  note below); never use `--write-rules`.
+## Never `rtk learn --write-rules`
 
-### Note on `rtk learn`
-It pairs a failed Bash call with the next successful one that shares its "base
-command" — the first two words — and reports the second as the fix. Agent
-commands here start with `cd <dir> && …`, so the base command is the directory
-and any two unrelated commands run in one project become a correction. Measured
-2026-10-02 on rtk 0.50.0 (`rtk learn --all`, 1316 sessions): 547 pairs, 374 of
-them keyed on `cd`, 471 typed "General Error". The only pair that passed
-`--min-occurrences 2` said to run `sed -n '90,140p' pyproject.toml` instead of
-`ruff check`.
+`rtk learn` pairs a failed command with the next successful one sharing its first two words.
+Agent commands start with `cd <dir> && …`, so two unrelated commands in one project become a
+"correction": 374 of 547 pairs on 2026-10-02 (rtk 0.50.0) were keyed on `cd`.
+`--write-rules` writes them to `~/.claude/rules/`, which Claude Code loads into every session
+as instructions. `up` no longer runs it.
 
-`--write-rules` puts the result in `~/.claude/rules/cli-corrections.md`, which
-Claude Code loads into every session as an instruction. `up` used to do that on
-every run, so a false rule of this kind was always live. The step was removed
-and the file deleted; the real lever stays the same — turn recurring *inline
-heredocs* into named scripts in `zsh/bin/` (see `docs/commands.md`).
+## codex-hook.sh
 
-## codex-hook.sh — works on 0.149, but needs an interactive trust once
+Codex speaks Claude Code's hook protocol, but needs `hookSpecificOutput.permissionDecision`
+in the reply, which rtk does not write; the shim adds it. Wired in `~/.codex/hooks.json`.
+Verified on codex-cli 0.149.0 (2026-08-24).
 
-`codex-hook.sh` is the same shim serho's `deploy-2026-07` runs (byte-identical).
-Codex carries Claude Code's hook protocol verbatim, so `rtk hook claude` parses
-its stdin payload as native; only the reply differs — codex needs
-`hookSpecificOutput.permissionDecision`, which rtk 0.45.0 does not write, so the
-shim adds it. Verified on **codex-cli 0.149.0** (2026-08-24): with the hook
-active the agent's `git status` becomes `rtk git status`, and the log shows
-`hook: PreToolUse` → `hook: PreToolUse Completed` (no `PreToolUse Failed`, so
-`permissionDecision` is accepted).
-
-Wiring is `~/.codex/hooks.json` (already written; there the path is absolute, written out from `$HOME`):
-
-```json
-{"hooks":{"PreToolUse":[{"hooks":[{"type":"command",
-  "command":"$HOME/projects/dotfiles/rtk/codex-hook.sh"}]}]}}
-```
-
-**It is inert until the hook is trusted, and codex says nothing about it.** An
-untrusted hook is skipped *silently* — no warning, no `PreToolUse` line, the
-command just runs unrewritten. That reads exactly like a broken shim. Confirm
-which it is by re-running with `--dangerously-bypass-hook-trust`: if the rewrite
-appears, the shim is fine and only trust is missing.
-
-Trust is persisted as `HookStateToml { enabled, trusted_hash }` (strings in the
-binary) under a `[hooks]` config section. The hash is NOT the sha256 of
-`hooks.json` nor of the script — both were tried and rejected. It is written by
-the interactive TUI prompt, so granting it needs **one interactive `codex` run
-in a real terminal**, accepting the hook. After that every non-interactive and
-bot-spawned pane inherits the trust with no flag.
-
-**Do not solve this by adding `--dangerously-bypass-hook-trust` to the serho
-bot's codex argv.** `~/.codex/` is writable by every agent the bot spawns, so
-that flag would let any one topic plant a `hooks.json` whose command then runs
-inside every other topic's session — arbitrary code execution across users. The
-container deployment can afford the flag only because it mounts `hooks.json`
-read-only per tenant (`providers/_codex_hooks.py` there); there is no such mount
-on this machine.
+- **An untrusted hook is skipped silently**, which looks exactly like a broken shim. Re-run
+  with `--dangerously-bypass-hook-trust`: if the rewrite appears, only trust is missing.
+- Trust is written by the interactive TUI prompt alone (it is not a hash of `hooks.json` or
+  of the script), so it takes one interactive `codex` run in a real terminal.
+- **That flag must not go into the serho bot's codex argv.** `~/.codex/` is writable by
+  every agent the bot spawns, so one topic could plant a `hooks.json` whose command then
+  runs in every other topic's session.
