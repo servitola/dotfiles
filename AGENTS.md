@@ -87,8 +87,9 @@ The installer is plain zsh, not make. `Makefile` is a one-line wrapper
 (`install: ; @./install.sh`) kept only so `make` and CI still work.
 
 - **`install/` is the whole installation as a numbered ladder** —
-  `install/01-macos-defaults.sh` … `install/15-ci-guarded.sh`. `ls install/`
-  shows first step to last. Steps that are just a wrapper around an existing
+  `install/01-macos-defaults.sh` … `install/18-spoons.sh`. `ls install/`
+  shows first step to last. `install.sh` counts them dynamically, so adding a
+  step needs no edit anywhere else. Steps that are just a wrapper around an existing
   script elsewhere (defaults, xcode, zsh, dock, iterm, ableton) are one-line
   `exec zsh "$DOTFILES/…"` files, so the ladder stays complete.
 - **`install.sh`** is a trivial loop: `for step in install/[0-9]*.sh` → run in
@@ -102,8 +103,8 @@ The installer is plain zsh, not make. `Makefile` is a one-line wrapper
   of being swallowed. Wrappers just `exec`; external scripts run as
   subprocesses so `set -e` doesn't leak into them.
 - **`install/lib.sh`** holds full-word path vars (`DOTFILES`, `APP_SUPPORT`,
-  `CONFIG`, `CLAUDE_CODE`, …) and the helpers `section`, `link`, `link_all`,
-  `copy_dir`. `link <source> <destination>` does mkdir-parent + `sudo rm -rf` +
+  `CONFIG`, `CLAUDE_CODE`, …) and the helpers `section`, `link`,
+  `link_all`. `link <source> <destination>` does mkdir-parent + `sudo rm -rf` +
   `sudo ln -sfvh` — the `sudo` is kept from the old Makefile on purpose (some
   targets are system paths; existing $HOME symlinks may be root-owned from
   prior runs). `link_all <src1> <dst1> <src2> <dst2> …` links a flat list of
