@@ -17,6 +17,12 @@ section "packages (homebrew/brewfile)"
 if brew bundle check --no-upgrade --file "$DOTFILES/homebrew/brewfile" >/dev/null 2>&1; then
     log "all installed"
 else
+    # mas installs only for a signed-in App Store, and mas 2 can no longer tell
+    # whether it is, so a person confirms before the long unattended part.
+    if [[ -t 0 ]] && grep -q '^mas ' "$DOTFILES/homebrew/brewfile"; then
+        open -a "App Store"
+        read -r "?      sign in to the App Store, then press Enter "
+    fi
     brew bundle --no-upgrade --file "$DOTFILES/homebrew/brewfile" || warn "brew bundle: the entries above failed"
 fi
 
