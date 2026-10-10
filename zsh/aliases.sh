@@ -9,6 +9,10 @@ alias u=up
 alias perfcheck='~/projects/dotfiles/zsh/bin/perfcheck'
 alias perf=perfcheck
 
+# Switch this shell's default node from brew's latest to the keg-only node@22
+# (needed by one work project). Prepend so it wins over /opt/homebrew/bin.
+alias use-node22='path=("/opt/homebrew/opt/node@22/bin" $path)'
+
 alias a="claude -c"
 alias c="claude"
 

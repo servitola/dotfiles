@@ -14,6 +14,9 @@ path=( /usr/local/bin /usr/local/sbin $path )
 # Must be early to take priority over system binaries.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Node.js: latest brew node is the default (linked into /opt/homebrew/bin).
+# node@22 stays installed keg-only for the one work project that needs it —
+# switch a shell to it with the `use-node22` alias (zsh/aliases.sh).
 
 # Node.js (Homebrew-managed)
 path+=( /opt/homebrew/opt/node@22/bin )
