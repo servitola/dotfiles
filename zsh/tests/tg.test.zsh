@@ -4,7 +4,7 @@
 set -euo pipefail
 here=${0:a:h}
 tg=$here/../bin/tg
-scripts=$here/../../cron/scripts
+scripts=${DIR_CRON_SCRIPTS:?}
 work=$(mktemp -d)
 trap 'kill $server 2>/dev/null; rm -rf "$work"' EXIT
 
