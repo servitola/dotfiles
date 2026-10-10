@@ -48,6 +48,14 @@ if (( $#missing_mas )); then
         print -l -- $missing_mas >> "$brewfile"
     fi
 fi
+# brew bundle installs uv tools with UV_PYTHON forced to the newest Homebrew
+# Python (bundle/extensions/uv.rb), over the 3.12 pin in uv/.python-version:
+# mlx-whisper then failed on 3.15. Installed here first, they keep the pin and
+# bundle finds them in place.
+[[ -x /opt/homebrew/bin/uv ]] || brew install --quiet uv
+for tool in ${(f)"$(sed -n 's/^uv "\([^"]*\)".*/\1/p' "$brewfile")"}; do
+    uv tool install --quiet "$tool" || warn "uv tool $tool did not install"
+done
 if brew bundle check --no-upgrade --file "$brewfile" >/dev/null 2>&1; then
     log "all installed"
 else
