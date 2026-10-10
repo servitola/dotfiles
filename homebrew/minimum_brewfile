@@ -3,12 +3,15 @@ tap "candid82/brew", trusted: true
 tap "domt4/autoupdate", trusted: true
 tap "osx-cross/arm", trusted: true
 tap "osx-cross/avr", trusted: true
+brew "atuin"      # zsh/zshrc.sh: shell history
 brew "coreutils"  # timeout: install/check.sh, macos_cleanup
 brew "dockutil"   # install step 10
 brew "m-cli"
 brew "mas"         # up: mas upgrade
 brew "pre-commit"
 brew "uv"
+brew "zsh-autosuggestions"      # zsh/zshrc.sh
+brew "zsh-syntax-highlighting"  # zsh/zshrc.sh
 cask "adguard"
 cask "vivaldi"
 cask "font-jetbrains-mono-nerd-font"
