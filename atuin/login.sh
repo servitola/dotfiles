@@ -1,22 +1,9 @@
 #!/bin/zsh
-
-# Atuin login check and setup script
-
+# Logs this Mac in to atuin sync. Install step 7 and up call it when no login
+# is in place; it is interactive (username, password, the encryption key from
+# another Mac). atuin 18 has no `account status`, so the session file is the
+# sign of a login.
 set -e
-
-# Check if already logged in
-if ! atuin account status &>/dev/null 2>&1; then
-    echo "📝 Atuin not logged in. Starting login..."
-    atuin login
-
-    if [ $? -eq 0 ]; then
-        echo "✓ Atuin login successful"
-    else
-        echo "⚠ Atuin login cancelled or failed"
-        exit 1
-    fi
-else
-    echo "✓ Atuin already logged in"
-fi
-
-echo "✓ Atuin setup complete"
+[[ -f $HOME/.local/share/atuin/session ]] && exit 0
+atuin login
+atuin sync

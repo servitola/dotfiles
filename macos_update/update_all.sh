@@ -171,7 +171,13 @@ print_task "Updating Oh My Zsh"
 zsh -ic "omz update"
 
 print_task "Updating Atuin db (zsh history)"
-atuin sync
+if [[ -f $HOME/.local/share/atuin/session ]]; then
+    atuin sync
+elif [[ -t 0 ]]; then
+    zsh ~/projects/dotfiles/atuin/login.sh
+else
+    printf "  ✗ atuin is not logged in: run zsh ~/projects/dotfiles/atuin/login.sh\n"
+fi
 
 
 print_task "Re-rendering configs generated from constants"

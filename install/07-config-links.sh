@@ -58,3 +58,14 @@ for rider_dir in "$APP_SUPPORT/JetBrains"/Rider*; do
     link "$DOTFILES/jetbrains rider/rider.vmoptions" \
          "$rider_dir/rider.vmoptions"
 done
+
+section "atuin sync login"
+# History is meant to be one across every Mac, so a missing login is asked for,
+# and reported loudly where nobody can answer.
+if [[ -f $HOME/.local/share/atuin/session ]]; then
+    log "logged in"
+elif [[ -t 0 ]]; then
+    zsh "$DOTFILES/atuin/login.sh"
+else
+    warn "atuin is not logged in: run zsh atuin/login.sh"
+fi
