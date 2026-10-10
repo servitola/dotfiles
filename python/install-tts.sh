@@ -8,6 +8,14 @@ VOICES_BASE="https://huggingface.co/rhasspy/piper-voices/resolve/main/ru/ru_RU/i
 echo
 echo "🔊 Setting up TTS (Piper)..."
 
+# The shim it registers lives in $DIR_LITELLM, a separate repository a fresh
+# Mac may not have; without it every step below fails and the old ending still
+# said "TTS ready".
+if [[ ! -d "${DIR_LITELLM:?}" ]]; then
+    echo "  * Skip: no $DIR_LITELLM (DIR_LITELLM in constants.env)"
+    return 0
+fi
+
 if [[ ! -d "$VENV" ]]; then
     uv venv "$VENV" --python 3.11 --quiet
 fi
