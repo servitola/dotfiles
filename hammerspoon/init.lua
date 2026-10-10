@@ -28,6 +28,7 @@ spoon.Fresh4kWallpaper:start()
 safeLoadSpoon("PowerWindows") -- window layout
 spoon.PowerWindows:configure(require "window_rules"):start()
 
+safeLoadSpoon("Displays") -- EXPERIMENTAL: external display modes, mirror/extend + window parking
 safeLoadSpoon("KSheet") -- shortcuts cheatsheet
 safeLoadSpoon("PopupTranslateSelection") -- translate selected text
 safeLoadSpoon("YouTrackTicket") -- YouTrack ticket creation
@@ -61,6 +62,7 @@ if spoon.HotKeys then
 end
 
 require "reactive_state"  -- shared state (must load before modules that use it)
+if spoon.Displays then spoon.Displays:start() end  -- subscribes to reactive_state
 require "link_router"
 
 safeLoadSpoon("AutoKeyboardLayout") -- a layout per app
