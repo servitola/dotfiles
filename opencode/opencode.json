@@ -87,13 +87,6 @@
             "output": 16384
           }
         },
-        "groq-compound": {
-          "name": "Groq Compound (agentic, web+code)",
-          "limit": {
-            "context": 131072,
-            "output": 8192
-          }
-        },
         "mistral-codestral": {
           "name": "Mistral Codestral (direct, free tier)",
           "limit": {
@@ -137,7 +130,7 @@
           }
         },
         "cohere-north-code": {
-          "name": "Cohere North Mini Code (OpenRouter \u2014 reasoning model, can return empty content on tight max_tokens)",
+          "name": "Cohere North Mini Code (Cohere direct \u2014 reasoning model, can return empty content on tight max_tokens)",
           "limit": {
             "context": 131072,
             "output": 8192
