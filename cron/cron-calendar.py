@@ -155,7 +155,7 @@ def extract_log(command):
     path = m.group(2) or m.group(3) or m.group(4)
     if path in ("/dev/null", "&1", "2>&1"):
         return None
-    path = os.path.expanduser(path.replace("$HOME", str(HOME)))
+    path = os.path.expanduser(os.path.expandvars(path))
     return Path(path)
 
 

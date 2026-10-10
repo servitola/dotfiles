@@ -22,3 +22,11 @@ def test_collect_fragments_recurses_like_the_installer(tmp_path):
     (jobs / "theme" / "notes.txt").write_text("")
     cc = load(tmp_path)
     assert [p.name for p in cc.collect_fragments()] == ["a.private.cron", "b.cron"]
+
+
+def test_extract_log_expands_constants(tmp_path, monkeypatch):
+    cc = load(tmp_path)
+    monkeypatch.setenv("DIR_CRON", "/srv/cron")
+    assert cc.extract_log("foo.sh >> $DIR_CRON/logs/foo.log 2>&1") == Path("/srv/cron/logs/foo.log")
+    assert cc.extract_log("foo.sh >> ~/x.log 2>&1") == Path.home() / "x.log"
+    assert cc.extract_log("foo.sh > /dev/null 2>&1") is None
