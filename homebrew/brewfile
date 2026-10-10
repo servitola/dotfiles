@@ -466,7 +466,6 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Password manager app
 cask "keepassxc"
-cask "kegworks"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Open-source firewall to block unknown outgoing connections
@@ -569,7 +568,6 @@ npm "@webosose/ares-cli"
 npm "appium"
 npm "figma-developer-mcp"
 npm "mcp-remote"
-npm "opencode-ai"
 npm "pptxgenjs"
 npm "react-devtools"
 npm "typescript"

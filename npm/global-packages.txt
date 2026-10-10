@@ -8,7 +8,6 @@
 appium
 figma-developer-mcp
 mcp-remote
-opencode-ai
 pptxgenjs
 react-devtools
 typescript
