@@ -30,14 +30,18 @@ Uses `hs.application.watcher` to detect app focus changes:
 
 ## Installed Spoons
 - AudioSwitcher
-- BrowserTabOpener
-- GruvboxWallpapers
+- AutoKeyboardLayout — a keyboard layout per app, applied when the app comes to the front. A third-party Spoon (git-ignored here; never edit it in place). Source: `~/projects/autokeyboardlayout/AutoKeyboardLayout.spoon`. Installed from its GitHub release by `install/18-spoons.sh`. Replaced `set_language_on_app_focused.lua` on 2026-10-01.
+- BirmanLayer — right-⌥ typographic layer (from its GitHub release, `install/18-spoons.sh`)
+- BrowserTabOpener — `open(name)` / `open(pattern, url[, { prefer = js }])`: jump to a site's open tab, cycle on repeat, open the address when there is none. A third-party Spoon (git-ignored here; never edit it in place). Source: `~/projects/browsertabopener/BrowserTabOpener.spoon`. Installed from its GitHub release by `install/18-spoons.sh`. `spoon.BrowserTabOpener:check()` in the console says what works with the current browser. `init.lua` sets its `browser` from `APP_BROWSER_BUNDLE`; the sites are in `actions/browser.lua`.
+- Displays
+- Fresh4kWallpaper — a new 4K wallpaper on every load, then daily; keeps one file in `~/Pictures/Fresh4kWallpaper`. A third-party Spoon (git-ignored here; never edit it in place). Source: `~/projects/fresh4kwallpaper/Fresh4kWallpaper.spoon`. Installed from its GitHub release by `install/18-spoons.sh`. Needs no GitHub token: file lists are cached for a week in `~/Pictures/Fresh4kWallpaper/cache`. Replaced the in-repo GruvboxWallpapers.spoon on 2026-10-01.
+- GlobalProtectToggle — GlobalProtect VPN on a key (`toggle` / `connect` / `disconnect` / `status`), by clicking its menu bar panel. A third-party Spoon (git-ignored here; never edit it in place). Source: `~/projects/globalprotecttoggle/GlobalProtectToggle.spoon`. The GitHub repository is private for now (`v0.1.0`, not verified live), so `install/18-spoons.sh` has no line for it — its unauthenticated download would 404 — and the dir here is a committed copy of the checkout's last commit (refresh with `git -C ~/projects/globalprotecttoggle/GlobalProtectToggle.spoon archive HEAD | tar -x -C hammerspoon/Spoons/GlobalProtectToggle.spoon`). Its `notify` is replaced with glasswings banners in `actions/system.lua`. Replaced `actions/lib/vpn_globalprotect.lua` on 2026-10-02; never run its `toggle` from an agent session — VPN is the owner's to switch.
 - HotKeys
 - KSheet
 - PopupTranslateSelection
-- ScreenGlow — edge glow while an agent drives the desktop; `hs -c 'spoon.ScreenGlow:pulse(45)'` / `:stop()`
+- PowerWindows — window layout, a third-party Spoon installed from its GitHub release by `install/18-spoons.sh` (git-ignored here; never edit it in place). Source: `/Volumes/SanDisk/projects/powerwindows/lab/spoon` (external drive; `~/projects/powerwindows` links there). `lab/ship.sh` turns a finished change into one commit of the public repository next to it, `lab/release.sh <version> --install` puts a release build here; the installed dir is always such a build, so Hammerspoon works with the drive unplugged. To develop, replace the installed dir with a symlink to `lab/spoon`, and install a build again when done. Configured by `window_rules.lua` + `window_focus_sets.lua`.
+- ScreenGlow — edge glow while an agent drives the desktop; `hs -c 'spoon.ScreenGlow:pulse(45)'` / `:stop()`. A third-party Spoon installed from its GitHub release by `install/18-spoons.sh` (git-ignored here; never edit it in place). Source: `~/projects/screenglow/ScreenGlow.spoon`.
 - LinkRouter — each clicked link to the browser its rule names; Hammerspoon is the system browser. A third-party Spoon; never edit it in place. Source: `~/projects/linkrouter/LinkRouter.spoon`. Not published yet, so `install/18-spoons.sh` has no line for it: the dir here is a committed copy of the checkout's last commit (refresh with `git -C ~/projects/linkrouter/LinkRouter.spoon archive HEAD | tar -x -C hammerspoon/Spoons/LinkRouter.spoon`). Without it `link_router.lua` hands the system-browser role back to `APP_BROWSER`. Rules live in `link_router.lua`; check one with `spoon.LinkRouter:route(url)` in the console. Replaced URLDispatcher on 2026-10-07.
-- Windows
 - YouTrackTasks
 - YouTrackTicket
 - YouTubeStream
