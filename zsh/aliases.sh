@@ -51,12 +51,10 @@ alias e=eza
 alias top=btop
 alias ping="prettyping -c 10 --nolegend"
 
-# screen recording
 rec() {
     ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422 -f avfoundation -i "2" -preset ultrafast -c:a pcm_s16le -probesize 100M "output_$(date +%Y%m%d_%H%M%S).mp4"
 }
 
-# ANDROID ADB
 android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
 alias android_deep_link_to_Development='android_deep_link https://ct.workname.com'
 android_run_emulator() { emulator -avd "$(emulator -list-avds | head -1)" & }
@@ -98,11 +96,9 @@ function piper_say() {
     && afplay /tmp/piper_out.wav
 }
 
-# voice to text transcription
 alias w='whisper_max'
 alias wv='whisper_voice'
 
-# quality voice to text transcription
 function whisper_max() {
     whisper-mps --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
 }
@@ -117,7 +113,6 @@ alias g="lazygit"
 alias ga="git add -A && git commit -m \"1\""
 alias ld="lazydocker"
 
-# File manager
 alias ff="open -a 'Marta' ."
 
 # copy absolute path to clipboard (file or current dir)

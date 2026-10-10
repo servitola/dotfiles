@@ -1,10 +1,6 @@
-# =============================================================================
-# PATH Configuration
-# Sourced from zprofile.sh — runs AFTER macOS path_helper reorders PATH
-# Non-PATH env vars are in exports.sh (sourced from zshenv.sh)
-# =============================================================================
+# PATH only. Sourced from zprofile.sh — runs AFTER macOS path_helper reorders PATH.
+# Non-PATH env vars are in exports.sh (sourced from zshenv.sh).
 
-# Deduplicate PATH entries (zsh built-in)
 typeset -U PATH path
 
 # Homebrew — must be early to take priority over system binaries
