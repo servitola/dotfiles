@@ -1,0 +1,70 @@
+#!/bin/zsh
+# user-skill — create a PERSONAL skill for one friend, available in ALL their
+# topics (and only to them).
+#
+# Model (see sync-friend-skills.py): real skill content lives in
+#   ~/projects/serho-users/<friend>/user-skills/<name>/
+# `sync-friend-skills` mirrors it into <friend>/.claude/skills/<name> as a
+# `../../user-skills/<name>` symlink. Since it is NOT in the owner's
+# ~/.claude/skills it never gets `skillOverrides: off` → stays ON for that
+# friend only, and topics inherit it via `<topic>/.claude -> ../.claude`.
+#
+# Usage:
+#   user-skill <skill-name> [friend-root]   # scaffold (if new) + link + sync
+#   user-skill --list [friend-root]         # list a friend's personal skills
+#
+# friend-root defaults to the serho-users/<friend> ancestor of $PWD, so a
+# friend's own session (started in any of their topic folders) can just run
+#   user-skill my-thing
+set -u
+SERHO="$HOME/projects/serho-users"
+SYNC="$HOME/.claude/scripts/sync-friend-skills.py"
+
+_resolve_root() {  # arg: explicit root or "" -> echoes friend root or nothing
+  local given="$1"
+  if [[ -n "$given" ]]; then
+    print -r -- "${given:A}"; return 0
+  fi
+  local d="${PWD:A}"
+  while [[ "$d" != "/" ]]; do
+    # friend root = a serho-users child whose .claude is a REAL dir (topics
+    # only carry a `.claude -> ../.claude` symlink).
+    if [[ "${d:h}" == "$SERHO" && -d "$d/.claude" && ! -L "$d/.claude" ]]; then
+      print -r -- "$d"; return 0
+    fi
+    d="${d:h}"
+  done
+  return 1
+}
+
+if [[ "${1:-}" == "--list" ]]; then
+  root="$(_resolve_root "${2:-}")" || { print -u2 "user-skill: can't resolve friend root; pass it explicitly"; return 1 }
+  print -r -- "personal skills of ${root:t}:"
+  for d in "$root"/user-skills/*(N/); do print -r -- "  ${d:t}"; done
+  return 0
+fi
+
+name="${1:-}"
+[[ -n "$name" ]] || { print -u2 "usage: user-skill <skill-name> [friend-root]  |  user-skill --list [friend-root]"; return 1 }
+root="$(_resolve_root "${2:-}")" || { print -u2 "user-skill: can't resolve friend root; pass it explicitly"; return 1 }
+[[ -d "$root" ]] || { print -u2 "user-skill: no such friend root: $root"; return 1 }
+
+skdir="$root/user-skills/$name"
+mkdir -p "$skdir"
+if [[ ! -f "$skdir/SKILL.md" ]]; then
+  cat > "$skdir/SKILL.md" <<EOF
+---
+name: $name
+description: <когда применять — триггеры на русском/английском>
+---
+
+# $name
+
+<инструкции скилла: что делает, шаги, примеры>
+EOF
+  print -r -- "scaffolded $skdir/SKILL.md"
+fi
+
+# Mirror into .claude/skills + refresh overrides.
+python3 "$SYNC" "$root"
+print -r -- "personal skill '$name' ready for ${root:t} (visible in all their topics)"
