@@ -66,3 +66,20 @@ link_all() {
         link "${@[i]}" "${@[i+1]}"
     done
 }
+
+# repository <dir>: a repository that lives next to this one on the same server,
+# under the same name. Present: fast-forward it. Absent: offer to clone it, on a
+# terminal only; otherwise warn and let the caller skip what needs it.
+repository() {
+    local dir=$1 url="${$(git -C "$DOTFILES" remote get-url origin):h}/${1:t}.git"
+    if [[ -d $dir/.git ]]; then
+        git -C "$dir" pull --ff-only --quiet && log "${dir/#$HOME/~}: up to date" \
+            || warn "${dir/#$HOME/~}: pull failed, left as it is"
+    elif [[ -t 0 ]] && read -q "?      clone $url into ${dir/#$HOME/~}? [y/N] "; then
+        print
+        git clone --quiet "$url" "$dir" || warn "${dir/#$HOME/~}: clone failed"
+    else
+        [[ -t 0 ]] && print
+        warn "no ${dir/#$HOME/~}: what needs it is skipped"
+    fi
+}
