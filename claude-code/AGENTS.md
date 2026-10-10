@@ -3,13 +3,12 @@
 `~/.claude` is a symlink to this directory. `skills/`, `detached_skills/` and `commands/` inside it are symlinks into `$DIR_SKILLS` (`~/projects/skills`, private; moved out on 2026-10-10), created by `install/08-ai-tools-links.sh` and git-ignored — so Claude Code, Codex (`~/.agents/skills`), OpenCode and the friends' bots keep their usual paths. To run this harness with your own skills: set `DIR_SKILLS` in `constants.env`, put `skills/`, `detached_skills/`, `commands/` there, run `zsh install/08-ai-tools-links.sh`. `agents/` stays here: it is harness, not content.
 
 ## Symlink targets (created by Makefile)
-- `~/.codex/config.toml` → `codex/config.toml`
 - `~/.codex/AGENTS.md` → repo-root `AGENTS.md`
 - `~/.codex/instructions.md` → `claude-code/CLAUDE.md`
 - `~/.agents/skills` → `claude-code/skills` (Codex skills — current location; `~/.codex/skills` is deprecated)
 
 ## Tool-specific configs (not shared)
-- `codex/config.toml` — Codex's own global config
+- `codex/config.toml` — Codex's own global config. **Materialized, not symlinked** (`codex/materialize-config.py`, run from `install/08-ai-tools-links.sh`): Codex writes its project-trust registry — plus `[notice]`/`[marketplaces]`/`[plugins]`/`[tui]` — straight into this file, so a symlink pushed that machine-local runtime state into git. The installer copies the repo's authored head into `~/.codex/config.toml`, preserves Codex's managed tail locally, and drops ephemeral trust (anything not under `$HOME/projects`). Edit the authored head in `codex/config.toml`; it re-syncs on next `up`.
 
 ## Detached skills & MCP (opt-in, zero always-loaded context cost)
 - `detached_skills/` — skills excluded from the always-loaded global set so their descriptions don't cost context in every session. Attach per folder: `skill-attach <name> [dir]` (symlinks into `<dir>/.claude/skills/`), list with `skill-attach`, remove with `skill-attach --detach <name> [dir]`.
