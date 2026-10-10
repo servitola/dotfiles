@@ -51,7 +51,7 @@ fi
 if brew bundle check --no-upgrade --file "$brewfile" >/dev/null 2>&1; then
     log "all installed"
 else
-    brew bundle --no-upgrade --file "$brewfile" || warn "brew bundle: the entries above failed"
+    brew bundle --quiet --no-upgrade --file "$brewfile" || warn "brew bundle: the entries above failed"
 fi
 
 section "quarantine flags off the casks"
