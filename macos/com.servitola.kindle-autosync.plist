@@ -15,7 +15,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/bin/zsh</string>
-        <string>/Users/servitola/projects/dotfiles/cron/scripts/kindle-autosync.sh</string>
+        <string>/Users/servitola/projects/cron/scripts/kindle-autosync.sh</string>
     </array>
 
     <!-- RunAtLoad=false: не синкать при каждом логине, только по факту подключения -->
