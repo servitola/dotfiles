@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Fresh-Mac integration test: a throwaway clone of a clean macOS VM on
 # $TART_HOST gets this repo's HEAD, then runs `make`, install/check.sh and `up`.
-#   tests/vm/run.sh [--keep] [make|check|up ...]     default: all three
+#   tests/vm/run.sh [--keep] [make|check|doctor|up ...]     default: all four
 setopt err_exit no_unset pipe_fail
 source "$HOME/projects/dotfiles/constants/load.zsh"
 
@@ -14,11 +14,11 @@ keep=0 stages=()
 for arg; do
     case $arg in
         --keep) keep=1 ;;
-        make|check|up) stages+=$arg ;;
-        *) print -u2 "usage: ${0:t} [--keep] [make|check|up ...]"; exit 2 ;;
+        make|check|doctor|up) stages+=$arg ;;
+        *) print -u2 "usage: ${0:t} [--keep] [make|check|doctor|up ...]"; exit 2 ;;
     esac
 done
-(( $#stages )) || stages=(make check up)
+(( $#stages )) || stages=(make check doctor up)
 
 host() { ssh "$TART_HOST" "export PATH=/opt/homebrew/bin:\$PATH; $1"; }
 
@@ -77,16 +77,22 @@ git -C "$DOTFILES" bundle create "$bundle" HEAD master 2>/dev/null
 scp -q -o ProxyJump="$TART_HOST" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
     "$bundle" "admin@$ip:/tmp/dotfiles.bundle"
 guest "mkdir -p ~/projects && git clone -q /tmp/dotfiles.bundle ~/projects/dotfiles"
+# M1/M2 have no nested virtualization, so no Docker daemon can run in the VM.
+guest "sed -i '' 's/^DOCKER=yes\$/DOCKER=no/' ~/projects/dotfiles/constants.env && grep -qx DOCKER=no ~/projects/dotfiles/constants.env"
+# The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
+# on every run, and the doctor stage is there to catch what make leaves behind.
+guest "sudo rm /usr/local/lib/TartMetalCapabilities.dylib"
 print "testing $(git -C "$DOTFILES" log --oneline -1)"
 
 typeset -A command=(
-    make  'cd ~/projects/dotfiles && NO_DOCKER=1 make'
-    check 'NO_DOCKER=1 zsh ~/projects/dotfiles/install/check.sh'
-    up    'NO_DOCKER=1 zsh -ic up'
+    make  'cd ~/projects/dotfiles && make'
+    check 'zsh ~/projects/dotfiles/install/check.sh'
+    doctor 'zsh -lc "brew doctor"'
+    up    'zsh -ic up'
 )
 # A step waiting on a dialog nobody sees hangs forever (run 6 sat 4.5 h on
 # Gatekeeper's prompt), so each stage has a ceiling.
-typeset -A limit=(make 3600 check 300 up 3600)
+typeset -A limit=(make 3600 check 300 doctor 300 up 3600)
 failed=()
 for stage in $stages; do
     print "━━ $stage"
