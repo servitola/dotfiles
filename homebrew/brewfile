@@ -1,7 +1,6 @@
 tap "buo/cask-upgrade", trusted: true
 tap "cameroncooke/axe"
 tap "candid82/brew", trusted: true
-tap "charmbracelet/tap", trusted: true
 tap "domt4/autoupdate", trusted: true
 tap "facebook/fb", trusted: true
 tap "openai/tools", trusted: { formulae: ["softnet"] }
@@ -373,7 +372,6 @@ brew "zsh-syntax-highlighting"
 # CLI tool for interacting with iOS Simulators via accessibility and HID APIs
 brew "cameroncooke/axe/axe", trusted: true
 # A powerful terminal-based AI assistant for developers, providing intelligent coding assistance directly in your terminal.
-brew "charmbracelet/tap/crush", trusted: true
 # Companion server for automating iOS Simulators
 brew "facebook/fb/idb-companion", trusted: true
 # Run macOS and Linux VMs on Apple Hardware

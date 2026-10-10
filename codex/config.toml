@@ -23,7 +23,7 @@ network_access = true
 # NOTE (verified 2026-04-16 on Codex v0.121): Codex requires
 # wire_api="responses", and free OpenRouter models don't implement the
 # /responses endpoint; tool-calls never fire. Kept for future Codex versions
-# that support /chat/completions again. For agentic LiteLLM tasks use `crush`.
+# that support /chat/completions again.
 # NOT re-verified since — Codex is on 0.145.0 as of 2026-07-25, so the
 # constraint may have lifted. Re-test before assuming it still holds.
 [model_providers.litellm]
