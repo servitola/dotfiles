@@ -50,12 +50,8 @@ settings=(
     "com.apple.appstore | WebKitDeveloperExtras | -bool | true | App Store web inspector"
     "com.apple.appstore | ShowDebugMenu | -bool | true | App Store debug menu"
     "com.apple.SoftwareUpdate | AutomaticDownload | -int | 0 | no background update downloads"
-    "com.apple.SoftwareUpdate | CriticalUpdateInstall | -int | 0 | no automatic security data updates"
-    "com.apple.SoftwareUpdate | ConfigDataInstall | -int | 0 | no apps bought on other Macs"
     "/Library/Preferences/com.apple.SoftwareUpdate | AutomaticDownload | -bool | false | no automatic update downloads"
     "/Library/Preferences/com.apple.SoftwareUpdate | AutomaticallyInstallMacOSUpdates | -bool | false | no automatic macOS updates"
-    "/Library/Preferences/com.apple.SoftwareUpdate | ConfigDataInstall | -bool | false | no automatic app updates"
-    "/Library/Preferences/com.apple.SoftwareUpdate | CriticalUpdateInstall | -bool | false | no automatic critical updates"
     "org.m0k.transmission | UseIncompleteDownloadFolder | -bool | true | Transmission keeps unfinished downloads apart"
     "org.m0k.transmission | IncompleteDownloadFolder | -string | $HOME/Documents/Torrents | … in ~/Documents/Torrents"
     "org.m0k.transmission | DownloadLocationConstant | -bool | true | Transmission saves to ~/Downloads"
@@ -155,9 +151,3 @@ for view in DesktopViewSettings FK_StandardViewSettings StandardViewSettings; do
     done
 done
 osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true'
-# softwareupdated drops an AutomaticCheckEnabled written by defaults; its own switch sticks.
-if [[ $(softwareupdate --schedule) != *off* ]]; then
-    sudo softwareupdate --schedule off >/dev/null
-    ok "no automatic update checks"
-    changed=$(( changed + 1 ))
-fi
