@@ -473,6 +473,45 @@ crashed whenever a browser was running.
 
 ---
 
+**State (2026-08-29, Vivaldi → Zen). Shipped and verified, nothing pushed.**
+`APP_BROWSER=Zen` / `APP_BROWSER_BUNDLE=app.zen-browser.zen` in `constants.env`.
+Unlike the Yandex→Vivaldi move, this one crosses engine families — Zen is Gecko,
+and two assumptions baked into the browser code were Chromium-only:
+
+- **No AppleScript tab dictionary.** `BrowserTabOpener.spoon` can't cycle or
+  query tabs, so `⇧⌃⌥G` / `⌃⌥V` / `⇧⌃⌥V` now just open the URL. The entries in
+  `browsers.lua` carry `applescript_tabs = true` only for the Chromium two;
+  without it the spoon skips osascript and goes straight to the fallback.
+- **No brand in the window title** — a Zen window is titled `Example Domain`,
+  not `Example Domain - Vivaldi` — so "no suffix means popup player" would have
+  called every window a video. Gecko entries carry `video_title` instead
+  (`Picture-in-Picture`, same string Firefox uses) and
+  `is_browser_video_player` branches on which field the browser has.
+  Verified for normal windows; the PiP title itself is inherited-from-Firefox
+  and was **not** observed on a real Zen popup — check it when one first appears.
+- Vivaldi and Yandex stay in `M.known` and in every list, so a move back is one
+  line in `constants.env` plus `gen_bundle_ids.py` and `generate.py`.
+- Also touched: `SPACE_APPS` (VoiceCtl), `window.focus_personal` exceptions,
+  `minimum_brewfile` (`vivaldi` → `zen`; the full `brewfile` already had it),
+  VoiceInk dictionary, keyboard SVGs + layout comment tables, MEMORY.md,
+  repo-map, keyboard-setup, karabiner rule 29 description.
+- The Chromium-only rows in the layout tables (`⌥⌘J` console, `⌥⌘P` system print
+  dialog) now say Chrome, which is what they actually describe; Zen's console is
+  `⌥⌘K` and got its own row in `k.lua`.
+- `~/Library/Caches/zen` (1 GB) needs no cleanup entry — the existing
+  `try_clean_aged ~/Library/Caches` already sweeps it.
+- Verified: `hs.reload()` clean, `default_handler = app.zen-browser.zen`, the
+  `F19` chord resolves to `Zen`, `is_browser_video_player` answers correctly for
+  Zen and both Chromium browsers, `pre-commit` green.
+
+**Open questions / next steps (Zen).**
+1. Tab-cycling chords are degraded, not broken. If it matters, the Gecko route
+   is a WebExtension with native messaging — a real project, not a config edit.
+2. ~~`browser_video_title_markers` is still nil~~ — fixed 2026-08-30, see the
+   entry above. The Zen PiP title was also confirmed on a real popup.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
