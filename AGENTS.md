@@ -111,6 +111,26 @@ See `docs/keyboard-setup.md` for complete keyboard customization documentation.
 
 ## Handoff
 
+**State (2026-10-10, litellm moved out). Committed here (not pushed); the new
+repository is pushed to Gitea (`servitola/litellm`, private).** The proxy stack
+(`docker compose`: litellm, postgres, redis), the five TTS/STT shims with their
+plists, `ai.sh`, the health and smoke scripts and `greek-tts.sh` live in
+`~/projects/services/litellm` (`$DIR_LITELLM`). Design and plan:
+`docs/superpowers/{specs,plans}/2026-10-10-litellm-extraction*.md`.
+
+- **Consumers:** `zsh/zshrc.sh` sources `$DIR_LITELLM/ai.sh`; `up` runs
+  `check-models.py` from there; `python/install-tts.sh` installs the piper plist
+  from there; `docker/compose-projects.txt` lists the new stack path;
+  `litellm-config-diff` diffs the new repository. Outside: `cron`
+  (`litellm-smoke`), `rag` (`rag.sh`, docs), `skills` (`tts`, `greek-tts`).
+- **Live move verified:** `docker compose up -d` from the new directory
+  re-adopted the stack (named volumes untouched, 54 models answer); the five
+  LaunchAgents were re-pointed (three copies rewritten, two symlinks re-created,
+  the plists inside the repository too) and re-bootstrapped; a `bootstrap`
+  right after `bootout` fails with `Input/output error` once — retry works.
+  kokoro re-downloads its `uv` environment on every cold start, so it answers
+  on 8179 only a minute later.
+
 **State (2026-10-10, skills moved out). Committed here (not pushed); the new
 repository is pushed to Gitea (`servitola/skills`, private).** `claude-code/skills`
 (87), `detached_skills` (23, 14 of them never tracked), `commands` (12),

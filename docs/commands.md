@@ -14,7 +14,7 @@ Run any with `--help`/no args for usage. When a recurring task turns into a
 | `const [KEY]` | Read the constants of this machine — `const app.browser`, `const DIR_WORK`, `const list DIR_`, bare `const` lists all. `const check` validates the file against `constants/schema.toml` and its consumers; `const literals` lists hardcoded private values. Same values are exported into every shell. Source: `constants/AGENTS.md`. |
 | `tg [-c chat] [-t thread] [text]` | Send to Telegram as the bot: `tg "text"` (main chat), `tg -c notify -t 1486 "text"`, `cmd \| tg -t 1486` (stdin), `--file PATH` / `--audio PATH` (text becomes the caption), `--html`. The chat is a name with a `TG_CHAT_<NAME>` constant (`main`, `notify`) or a numeric id; a rejected request is a non-zero exit. The one sender for every script and repository — `$DIR_CRON_SCRIPTS/tg-send*.sh` are wrappers kept for old callers. Test: `zsh zsh/tests/tg.test.zsh` (stub server, nothing is sent). |
 | `rag` | Query a RAG collection (Qdrant + LiteLLM); wrapper over `$DIR_RAG/rag.sh` from the `~/projects/rag` repository. `rag context --collection dotfiles -k 8 "<q>"`. |
-| `litellm-config-diff [ref]` | Diff `litellm/config.yaml` model_list vs HEAD (or `ref`) by model_name count. |
+| `litellm-config-diff [ref]` | Diff `$DIR_LITELLM/config.yaml` model_list vs HEAD (or `ref`) by model_name count. |
 | `broken-links` | Report dangling symlinks in `$HOME` + bin dirs (`PRUNE_BROKEN_LINKS=true` to rm). Foreign FS pruned. |
 | `perfcheck` | One-shot macOS performance diagnostic for this machine. |
 | `new-topic` | Create/top-up a "topic" folder with AGENTS.md + CLAUDE.md symlink. |

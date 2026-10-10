@@ -46,6 +46,7 @@ DIR_CRON         = { type = "dir", about = "cron jobs repository (~/projects/cro
 DIR_CRON_JOBS    = { type = "dir", about = "cron fragments" }
 DIR_CRON_SCRIPTS = { type = "dir", about = "scripts the cron fragments run" }
 DIR_RAG          = { type = "dir", about = "rag toolkit repository (~/projects/rag)" }
+DIR_LITELLM      = { type = "dir", about = "LiteLLM proxy and the TTS/STT shims (~/projects/services/litellm)" }
 DIR_CLAUDE       = { type = "dir", unread = true, about = "Claude Code configuration" }
 DIR_SKILLS       = { type = "dir", about = "Claude skills, detached skills and commands (~/projects/skills)" }
 TART_HOST        = { type = "host", private = true, about = "ssh alias of the machine that runs tart VMs" }

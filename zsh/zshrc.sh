@@ -51,7 +51,7 @@ bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2
 bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
 bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
 
-source ~/projects/dotfiles/litellm/ai.sh
+source "${DIR_LITELLM:?}/ai.sh"
 [[ -r $DIR_RAG/rag.sh ]] && source "$DIR_RAG/rag.sh"
 
 # zoxide for fast directory navigation (must be last — hooks into chpwd)

@@ -22,7 +22,7 @@ if [[ ! -f "$RU_MODEL" ]]; then
     curl -fsSL -o "$RU_MODEL.json" "$VOICES_BASE/ru_RU-irina-medium.onnx.json"
 fi
 
-PLIST_SRC="$HOME/projects/dotfiles/litellm/piper-shim/com.servitola.piper-shim.plist"
+PLIST_SRC="${DIR_LITELLM:?}/piper-shim/com.servitola.piper-shim.plist"
 PLIST_DST="$HOME/Library/LaunchAgents/com.servitola.piper-shim.plist"
 
 if [[ ! -f "$PLIST_DST" ]]; then

@@ -1,0 +1,49 @@
+#!/bin/zsh
+# litellm-config-diff — show how $DIR_LITELLM/config.yaml model_list differs from
+# the last committed version (HEAD), by model_name count.
+#
+# Replaces the recurring inline python heredoc the AI kept re-deriving (and
+# fixing) each session. One short command instead of 20 lines of YAML parsing:
+#   litellm-config-diff            # HEAD vs working tree
+#   litellm-config-diff <ref>      # <ref> vs working tree (e.g. origin/master)
+#
+# Exit 0 = no per-name count differences, 1 = differences found.
+
+set -u
+REPO="${DIR_LITELLM:?}"
+REL="config.yaml"
+REF="${1:-HEAD}"
+
+cd "$REPO" || exit 2
+
+python3 - "$REF" "$REL" <<'PY'
+import sys, subprocess, collections
+try:
+    import yaml
+except ImportError:
+    sys.exit("PyYAML not installed: pip install pyyaml")
+
+ref, rel = sys.argv[1], sys.argv[2]
+raw = subprocess.run(["git", "show", f"{ref}:{rel}"],
+                     capture_output=True, text=True)
+if raw.returncode != 0:
+    sys.exit(f"git show {ref}:{rel} failed: {raw.stderr.strip()}")
+
+old = yaml.safe_load(raw.stdout) or {}
+with open(rel) as f:
+    cur = yaml.safe_load(f) or {}
+
+on = [m["model_name"] for m in old.get("model_list", [])]
+cn = [m["model_name"] for m in cur.get("model_list", [])]
+print(f"{ref} entries: {len(on)} | working tree: {len(cn)}")
+
+oc, cc = collections.Counter(on), collections.Counter(cn)
+diff = False
+for name in sorted(set(on) | set(cn)):
+    if oc[name] != cc[name]:
+        print(f"  {name}: {ref}={oc[name]} current={cc[name]}")
+        diff = True
+if not diff:
+    print("  no per-name count differences — same deployments")
+sys.exit(1 if diff else 0)
+PY

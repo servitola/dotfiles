@@ -93,7 +93,7 @@ fi
 print_section "LiteLLM Model Health"
 
 print_task "Checking model availability across providers"
-python3 ~/projects/dotfiles/litellm/scripts/check-models.py || echo "  * model-health check failed"
+python3 "${DIR_LITELLM:?}/scripts/check-models.py" || echo "  * model-health check failed"
 
 print_section "RAG Index"
 

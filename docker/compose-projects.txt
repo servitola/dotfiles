@@ -4,5 +4,5 @@
 #
 # stack                                 machines
 projects/dotfiles/docker-logger         m3pro m1pro i9
-projects/dotfiles/litellm               m3pro
+projects/services/litellm               m3pro
 projects/dotfiles/qdrant                m3pro
