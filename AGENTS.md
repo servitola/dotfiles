@@ -53,6 +53,12 @@ the live `coder` alias as dead). Current model/context/pricing tables for Codex
 and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
 
 ## Code Style Guidelines
+- **Comments are English-only.** Every comment in this repo — Lua, shell, Python, YAML, TOML —
+  is written in English, whatever language the conversation that produced it was in. Enforced by
+  the `no-russian-comments` pre-commit hook. This is about *prose*: Cyrillic that is **data** stays
+  untouched — the `ru` column of the keyboard-layout tables in `HotKeys.spoon/layout/60%/*.lua`,
+  paths under `~/projects/serho_topics/`, Telegram message texts, dictation dictionaries, test
+  fixtures. Translating those breaks the thing they describe.
 - **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
 - **Linting**: No linting required - this is a configuration repository (shell scripts, Lua scripts, dotfiles)
