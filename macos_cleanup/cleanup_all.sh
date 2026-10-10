@@ -55,6 +55,23 @@ rm -f ~/.zcompdump* 2>/dev/null
 unsetopt nonomatch
 chmod -R go-w "$HOMEBREW_PREFIX/share" 2>/dev/null || true
 
+print_task "Keeping uv's code signature stable for TCC"
+# uv ships ad-hoc signed (no Team ID); TCC binds Full Disk Access to that
+# ad-hoc identity, so every `brew upgrade uv` silently revokes the FDA grant
+# the com.servitola.serho launchd chain depends on for /Volumes/* and
+# ~/Documents etc. Re-signing with our own Developer ID gives it a team-anchored
+# designated requirement, which TCC keeps matching across upgrades — same
+# trick as the Transmission.app re-sign in ~/projects/forks/jobs/transmission/sync.sh.
+UV_SIGN_ID="Developer ID Application: Developer Name (TEAMID1234)"
+UV_BIN=$(readlink -f "$(command -v uv)" 2>/dev/null || true)
+if [ -n "$UV_BIN" ] && [ -f "$UV_BIN" ]; then
+    if ! codesign -dv "$UV_BIN" 2>&1 | grep -q "TeamIdentifier=TEAMID1234"; then
+        codesign --force --sign "$UV_SIGN_ID" "$UV_BIN" 2>/dev/null \
+            && printf "  ${DIM}* uv re-signed with stable Developer ID (was ad-hoc after upgrade)${NC}\n" \
+            || printf "  ${DIM}* uv re-sign failed — Full Disk Access may need re-granting${NC}\n"
+    fi
+fi
+
 print_task "Flushing DNS cache"
 dscacheutil -flushcache
 sudo killall -HUP mDNSResponder 2>/dev/null </dev/null || true
@@ -79,8 +96,42 @@ else
     printf "  ${DIM}* Cask installers: Homebrew Caskroom not found${NC}\n"
 fi
 
-print_task "Cleaning unused Docker images"
-docker image prune -f
+print_task "uv cache (dangling entries + unused environments)"
+# --force skips uv's in-use check. Without it the prune aborts whenever any uv
+# process holds the cache — and the launchd shims (voiceink, piper, serho bot)
+# hold it permanently here, so a guarded prune never ran once. It does remove
+# the script environments those services run from, hence the restart below.
+if command -v uv &>/dev/null; then
+    spinner_start "uv cache prune"
+    uv_cache_dir=$(uv cache dir 2>/dev/null)
+    uv_before_kb=$(du -sk "$uv_cache_dir" 2>/dev/null | cut -f1)
+    if uv cache prune --force &>/dev/null; then
+        uv_after_kb=$(du -sk "$uv_cache_dir" 2>/dev/null | cut -f1)
+        spinner_stop "uv cache: freed $(format_size $(( uv_before_kb - uv_after_kb )))"
+        restart_services_with_deleted_uv_env "$uv_cache_dir"
+    else
+        spinner_stop_error "uv cache: prune failed"
+    fi
+else
+    printf "  ${DIM}* uv cache: uv not found${NC}\n"
+fi
+
+print_task "Cleaning Docker dangling images + build cache"
+# Safe on a live daemon: `image prune -f` drops only dangling images and
+# `builder prune -af` clears build cache (reused by future builds only).
+# Neither touches running containers, in-use images, or named volumes
+# (your data) — verified against a fleet of 15 running containers.
+# OrbStack TRIMs its data.img.raw live afterwards, so space is reclaimed
+# on the host without stopping anything. Guarded so a stopped daemon skips.
+if command -v docker &>/dev/null && docker info &>/dev/null; then
+    spinner_start "Docker image + build cache prune"
+    docker image prune -f &>/dev/null
+    _docker_reclaimed=$(docker builder prune -a -f 2>/dev/null | awk '/^Total:/ {print $2}')
+    spinner_stop "Docker: pruned dangling images + build cache${_docker_reclaimed:+ (build cache: $_docker_reclaimed)}"
+else
+    printf "  ${DIM}* Docker: daemon not running, skipping${NC}\n"
+fi
+
 print_task "LiteLLM spend logs (reclaim if bloated)"
 # maximum_spend_logs_retention_period in litellm/config.yaml deletes old rows
 # daily, but a plain DELETE leaves the table file at its high-water mark, so
@@ -157,7 +208,7 @@ else
 fi
 
 print_task "mma HTTP cache (APFS-compress new entries)"
-MMA_CACHE="$HOME/projects/serho_topics/mma/data/cache"
+MMA_CACHE="$DIR_EXTERNAL/projects/mma/data/cache"
 MMA_AFSC_STAMP="$MMA_CACHE/.afsc-stamp"
 if ! command -v afsctool &>/dev/null || [ ! -d "$MMA_CACHE" ]; then
     printf "  ${DIM}* mma cache: afsctool or cache dir missing, skipping${NC}\n"
@@ -292,66 +343,27 @@ else
     printf "  ${DIM}* GlobalProtect: log directory not found${NC}\n"
 fi
 
+print_task "eq daemon log (cap at 500 lines)"
+EQ_LOG="$HOME/Library/Logs/eq.log"
+if [ -f "$EQ_LOG" ]; then
+    eq_log_bytes=$(stat -f %z "$EQ_LOG" 2>/dev/null || echo 0)
+    if [ "$eq_log_bytes" -gt 1048576 ]; then
+        spinner_start "eq.log truncation"
+        # launchd holds eq.log open; a rename would leave the daemon writing to the orphaned inode.
+        if tail -n 500 "$EQ_LOG" > "$EQ_LOG.tmp" && cat "$EQ_LOG.tmp" > "$EQ_LOG" && rm -f "$EQ_LOG.tmp"; then
+            spinner_stop "eq.log: capped to last 500 lines (was $(format_size $(( eq_log_bytes / 1024 ))))"
+        else
+            spinner_stop_error "eq.log: truncation failed"
+        fi
+    else
+        printf "  ${DIM}* eq.log: under 1 MB, nothing to clean${NC}\n"
+    fi
+else
+    printf "  ${DIM}* eq.log: not found${NC}\n"
+fi
+
 print_section "Dangling Symlinks"
 report_broken_links
-
-if [ "${AGGRESSIVE:-}" = "true" ]; then
-    print_section "Aggressive Cleanup"
-
-    print_task "Cleaning Go module cache"
-    if command -v go &>/dev/null; then
-        spinner_start "Go module cache"
-        go clean -modcache 2>/dev/null
-        spinner_stop "Go module cache: cleaned"
-    else
-        printf "  ${DIM}* Go module cache: go not found${NC}\n"
-    fi
-
-    print_task "Cleaning all NuGet caches"
-    if command -v dotnet &>/dev/null; then
-        spinner_start "NuGet all caches"
-        dotnet nuget locals all --clear 2>/dev/null
-        spinner_stop "NuGet all caches: cleaned"
-    else
-        printf "  ${DIM}* NuGet caches: dotnet not found${NC}\n"
-    fi
-
-    print_task "Cleaning npm cache"
-    if command -v npm &>/dev/null; then
-        spinner_start "npm cache"
-        npm cache clean --force 2>/dev/null
-        spinner_stop "npm cache: cleaned"
-    else
-        printf "  ${DIM}* npm cache: npm not found${NC}\n"
-    fi
-
-    print_task "Cleaning Docker (all unused images + build cache)"
-    if command -v docker &>/dev/null && docker info &>/dev/null; then
-        spinner_start "Docker system prune"
-        docker system prune -a -f 2>/dev/null
-        docker builder prune -a -f 2>/dev/null
-        spinner_stop "Docker system + build cache: cleaned"
-    else
-        printf "  ${DIM}* Docker: not running${NC}\n"
-    fi
-
-    print_task "Aggressive git gc + prune (all repositories)"
-    _git_repo_count=0
-    while IFS= read -r -d '' git_dir; do
-        repo_path="${git_dir%/.git}"
-        cd "$repo_path" 2>/dev/null || continue
-        git rev-parse --git-dir &>/dev/null || continue
-        _git_repo_count=$(( _git_repo_count + 1 ))
-        printf "  ${DIM}* Pruning: ${repo_path/#$HOME/~}${NC}\r"
-        git reflog expire --expire=now --expire-unreachable=now --all 2>/dev/null
-        git gc --aggressive --prune=now 2>/dev/null
-        git remote prune origin 2>/dev/null
-        git fetch --prune 2>/dev/null
-        git repack -a -d --depth=250 --window=250 2>/dev/null
-        git prune --expire=now 2>/dev/null
-    done < <(find "$HOME" -type d -name ".git" -not -path "*/node_modules/*" -not -path "*/.Trash/*" -not -path "*/Library/*" -print0 2>/dev/null)
-    printf "\r\033[K  ${_S_GREEN}${_S_BOLD}* Git aggressive gc: pruned ${_git_repo_count} repositories${_S_NC}\n"
-fi
 
 _free_bytes_after=$(df -k / | awk 'NR==2 {print $4}')
 _freed_kb=$(( _free_bytes_after - _free_bytes_before ))

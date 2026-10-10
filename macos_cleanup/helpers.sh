@@ -17,6 +17,12 @@ _S_YELLOW='\033[0;33m'
 spinner_start() {
     setopt LOCAL_OPTIONS NO_MONITOR
     _SPINNER_LABEL="$1"
+    # Only animate on a real terminal — when output is captured (logs, an AI's
+    # Bash tool) the \r-based frames would flood thousands of lines of noise.
+    if [ ! -t 1 ]; then
+        _SPINNER_PID=""
+        return
+    fi
     (
         i=0
         while true; do
@@ -63,4 +69,21 @@ format_size() {
     else
         echo "${kb} KB"
     fi
+}
+
+# uv keeps the environment of a `uv run script.py` service inside its cache
+# (environments-v2), and both `uv cache prune` and `uv cache clean` delete it
+# under the live process. The process keeps serving until its next lazy import,
+# then answers 500 with ModuleNotFoundError — seen on piper-shim and kokoro-shim.
+# Restarting makes uv rebuild the environment.
+restart_services_with_deleted_uv_env() {
+    local cache_dir="$1" parent_pid python label
+    ps -axo ppid=,command= | awk -v c="$cache_dir/" 'index($2, c) == 1 {print $1, $2}' \
+        | while read -r parent_pid python; do
+            [ -e "$python" ] && continue
+            label=$(launchctl list | awk -v p="$parent_pid" '$1 == p {print $3}')
+            [ -n "$label" ] || continue
+            launchctl kickstart -k "gui/$UID/$label"
+            printf "  ${_S_DIM}* restarted $label (its uv environment was removed)${_S_NC}\n"
+        done
 }
