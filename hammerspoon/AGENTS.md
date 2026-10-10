@@ -14,6 +14,8 @@ hs.loadSpoon("SpoonName")  -- Loads from Spoons/SpoonName.spoon/
 ```
 All Spoons loaded in init.lua before scripts are required
 
+HotKeys is two-phase: `hs.loadSpoon("HotKeys")` only loads chords; `spoon.HotKeys:start()` binds them and must come after `require "actions"`.
+
 ## Auto-Switching Features
 - **Language per app**: Forkgram/Telegram/AyuGram → Russian, Games → ABC, Everything else → English
 - **Karabiner profiles**: Games use "Empty" profile (disables shortcuts), others use "Default"
