@@ -57,7 +57,9 @@ bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application m
 source "${DIR_LITELLM:?}/ai.sh"
 [[ -r $DIR_RAG/rag.sh ]] && source "$DIR_RAG/rag.sh"
 
-# zoxide for fast directory navigation (must be last — hooks into chpwd)
-# _ZO_DOCTOR=0: suppress false-positive warning caused by Warp terminal injecting hooks after .zshrc
-export _ZO_DOCTOR=0
+# Must be last — hooks into chpwd.
 eval "$(zoxide init zsh)"
+# Silence false-positive doctor warning: terminal/IDE wrappers (Warp, Claude Code)
+# can clobber chpwd_functions after .zshrc, which trips the heuristic even though
+# zoxide init IS the last line. Function override survives any env reset.
+__zoxide_doctor() { :; }
