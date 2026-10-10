@@ -42,11 +42,16 @@ done
 
 section "services"
 [[ ! -f serho/com.servitola.serho.plist ]] || expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
-# NO_DOCKER: a machine that cannot run Docker (a tart VM on M1/M2) has no stacks to check
-[[ -n ${NO_DOCKER:-} ]] || for stack in litellm docker-logger; do
-    expect "$stack containers running" zsh -c "docker compose -f $stack/docker-compose.yml ps --status running -q | grep -q ."
+machine=$(scutil --get LocalHostName)
+[[ $DOCKER == no ]] || grep -hv '^#' docker/compose-projects.txt docker/compose-projects.private.txt | while read -r stack machines; do
+    [[ -n $stack && " $machines " == *" $machine "* ]] || continue
+    [[ $stack == /* ]] || stack=$HOME/$stack
+    [[ -d $stack ]] || continue   # a stack on an unplugged drive
+    expect "${stack:t} stack running" zsh -c "
+        wanted=\$(docker compose --project-directory '$stack' config --format json | jq '[.services[] | select((.restart // \"no\") != \"no\")] | length')
+        (( \$(docker compose --project-directory '$stack' ps --status running -q | wc -l) >= wanted ))"
 done
-expect "crontab matches cron/cron_jobs" zsh -c 'diff <(timeout 10 crontab -l) <(cron/init-cron-jobs.sh --print)'
+expect "crontab matches \$DIR_CRON_JOBS" zsh -c 'diff <(timeout 10 crontab -l) <(cron/install.sh --print)'
 
 section "git"
 expect "init.templateDir -> git/hooks/template" test "$(git config --global init.templateDir)" = "$DOTFILES/git/hooks/template"

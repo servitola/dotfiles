@@ -1,10 +1,42 @@
-# cron — scheduled jobs (Telegram reminders, feeds, work snapshots, maintenance) installed into the user's crontab from versioned files
+# cron — the mechanism that turns a directory of `.cron` fragments into the user's crontab, plus the calendar and weekly report that watch it
 
-- `cron_jobs/*.cron` are crontab fragments — one concern per file. New/personal entries always go into `*.private.cron` files, which are gitignored (`.gitignore`: `cron/cron_jobs/*.private.cron`); committed `.cron` files hold shareable jobs only.
-- `init-cron-jobs.sh` is the installer: it concatenates `environment.cron` (SHELL/PATH) first, then every `cron_jobs/*.cron` alphabetically, and pipes the result to `crontab -`. It fully replaces the active crontab — editing a fragment does nothing until this script is re-run.
-- Add a job by creating/editing a `.cron` fragment (schedule + command line; put real commands in `scripts/` and append `>> logfile 2>&1`), then running `./init-cron-jobs.sh`. Keep overlap-prone jobs idempotent via a lockfile or run-once wrapper.
-- `scripts/` holds the actual job logic (shell/python) the fragments invoke; `logs/` collects per-job output (some jobs log to `~/Library/Logs/` or `/tmp` instead — see each fragment's header).
-- Telegram-posting jobs (work-snapshot, greek-daily, reminders, feeds) send via `scripts/tg-send.sh` / `tg-send-thread.sh` to specific chat/topic threads; credentials and config live under `~/.config/`.
-- **Chat ids are constants, not literals.** `$TG_CHAT_MAIN` (serho_topics — reminders and digests) and `$TG_CHAT_NOTIFY` (the «Уведомления» group — machine alerts) come from `constants/`, exported into every shell; cron reaches them because `environment.cron` sets `SHELL=/bin/zsh` and zsh always sources `~/.zshenv`. Thread ids stay literal — they belong to the one job that posts there. A new fragment writes `$TG_CHAT_MAIN`, and the senders abort loudly on an empty chat id.
-- `rag-improve.cron` lives here but drives the sibling `rag/` system: it runs `rag/scripts/rag-improve.py` hourly to expand/eval the RAG corpus, writing back into `rag/` — the cron schedule belongs to cron, the behavior belongs to rag.
-- The cron-job and reminder workflows are authored via the `cron-job` skill, which knows this layout and re-runs `init-cron-jobs.sh` after edits.
+The jobs themselves are personal and live in another repository; this directory
+holds only what is true for anyone. Point three constants at your own
+repository and everything here works:
+
+| Constant | Meaning |
+|---|---|
+| `DIR_CRON` | the jobs repository; `$DIR_CRON/logs/` collects per-job output, `$DIR_CRON/cron-calendar.html` is the rendered calendar |
+| `DIR_CRON_JOBS` | `**/*.cron` fragments, any depth of theme subfolders |
+| `DIR_CRON_SCRIPTS` | what the fragments call, written as `$DIR_CRON_SCRIPTS/foo.sh` |
+| `TG_CHAT_NOTIFY` + `TG_THREAD_CRON` | where `weekly-report.sh` posts |
+
+On this machine they point at `~/projects/cron` (private, Gitea), whose
+`AGENTS.md` describes the fragments.
+
+- `install.sh` (command `cron-install`) concatenates `environment.cron`
+  (`SHELL=/bin/zsh`, `PATH`) and every fragment under `$DIR_CRON_JOBS` sorted by
+  file name — not path, so moving a fragment between theme folders never changes
+  the merge order — and pipes the result to `crontab -`, replacing the whole
+  crontab. Editing a fragment changes nothing until it runs; `--print` shows the
+  result without installing. `crontab` needs Full Disk Access, which an agent
+  shell lacks: the owner runs `cron-install`, an agent's call hangs.
+- A fragment is a crontab excerpt: a header comment, then `<schedule> <command>
+  >> $DIR_CRON/logs/<name>.log 2>&1`. Because `SHELL` is zsh and zsh sources
+  `~/.zshenv`, every constant is exported into the job — fragments write
+  `$DIR_CRON_SCRIPTS/…` and `$TG_CHAT_MAIN`, never a literal path or id.
+- `cron-calendar.py` (command `cron-cal`) renders a static Apple-glass Gruvbox
+  dashboard of every job; `cron-report.py` (`cron-cal --report`) prints the
+  weekly health text — problems first: jobs whose log has been silent for over
+  20× their interval, jobs with no log at all, duplicated lines. Both are stdlib
+  only and read the same fragment set the installer does (`collect_fragments`
+  walks subfolders; `tests/test_cron_calendar.py` pins it). `weekly-report.sh`
+  posts the text with `tg` every Monday; the fragment that schedules it lives
+  with the other jobs. Tests: `uv run --with pytest python -m pytest -q cron/tests`.
+- A job that needs the login keychain or a mounted volume cannot be a cron job:
+  crontab runs from a LaunchDaemon without a user security session, and TCC
+  attributes a script to its interpreter. Such a job is a LaunchAgent whose
+  `ProgramArguments` names a compiled binary — see `~/projects/forks` and
+  `launchagents/`.
+- `install/15-ci-guarded.sh` runs `install.sh` as part of `make`;
+  `install/check.sh` asserts the live crontab equals `install.sh --print`.
