@@ -1,0 +1,20 @@
+#!/bin/zsh
+# sync-friend-skills — re-apply each friend's skill allowlist.
+#
+# A friend session sees the union of your ~/.claude/skills and the skills
+# symlinked into their own .claude/skills. This writes `skillOverrides: off`
+# for everything in ~/.claude/skills that the friend has NOT linked, so they
+# only get their curated set. Run it whenever you add a personal skill (so it
+# doesn't leak) or change a friend's linked set.
+#
+# Usage:
+#   sync-friend-skills                 # all friends in serho AUTO_BIND_MAP
+#   sync-friend-skills --all           # same, explicit
+#   sync-friend-skills <friend-root>   # one friend (e.g. ~/projects/serho-users/heyusocute)
+
+set -u
+script="$HOME/.claude/scripts/sync-friend-skills.py"
+if [ "$#" -eq 0 ]; then
+  exec python3 "$script" --all
+fi
+exec python3 "$script" "$@"
