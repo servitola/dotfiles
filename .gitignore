@@ -21,3 +21,8 @@ claude-code/detached_skills
 claude-code/commands
 # compiled keystroke marker — rebuilt by karabiner/build.sh
 karabiner/helper/keylog
+
+# Written at runtime: Claude Code settings lock, skill-usage hook log, keyboard SVG icon cache
+claude-code/settings.json.lock
+claude-code/skill-usage.jsonl
+docs/keyboard/icons_cache.json
