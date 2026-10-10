@@ -100,6 +100,9 @@ done
 # The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
 # on every run, and the doctor stage is there to catch what make leaves behind.
 guest "sudo rm /usr/local/lib/TartMetalCapabilities.dylib"
+# The image ships yarn and pnpm as npm globals for CI; a fresh Mac has neither,
+# and this yarn keeps the brewfile's yarn formula from linking.
+guest "npm rm -g --silent yarn pnpm && ! ls /opt/homebrew/lib/node_modules/yarn 2>/dev/null"
 print "testing $(git -C "$DOTFILES" log --oneline -1)"
 
 typeset -A command=(
