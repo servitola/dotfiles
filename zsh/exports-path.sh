@@ -3,7 +3,15 @@
 
 typeset -U PATH path
 
-# Homebrew — must be early to take priority over system binaries
+# System /usr/local — in login shells these arrive via macOS `path_helper`
+# (/etc/zprofile), but non-login `zsh -c` invocations (launchd services like
+# the serho bot, cron jobs) skip /etc/zprofile, so path_helper never runs and
+# /usr/local/{bin,sbin} silently drop out. Add them explicitly here — this
+# file is sourced from ~/.zshenv too — so tools installed to /usr/local/bin
+# (e.g. the voiceink CLI) stay visible to those processes. (2026-07-14)
+path=( /usr/local/bin /usr/local/sbin $path )
+
+# Must be early to take priority over system binaries.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Local dev builds — shadow Homebrew formulae with local build of aoe agent (for testing)
