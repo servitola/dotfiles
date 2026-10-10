@@ -111,6 +111,23 @@ See `docs/keyboard-setup.md` for complete keyboard customization documentation.
 
 ## Handoff
 
+**State (2026-10-10, launchd layer moved out). Committed here (not pushed).**
+`serho/` and `launchagents/helper/` are gone: the bot's plist, `serho-runner.c`
+and its Makefile live in `~/projects/serho/launchd/` (`$DIR_SERHO`); the ten
+`com.servitola.mma.*` agents, `mma-job.zsh`, `mma-runner` and the
+`sync-friend-skills` plist live in `~/projects/cron/launchagents/`
+(`$DIR_CRON`). `launchagents/` keeps `reboot-reminder` as the one generic
+example; `install/14` links `$DIR_SERHO/launchd/*.plist` and every plist under
+`$DIR_CRON/launchagents/`.
+
+- **Full Disk Access is bound to the runner's path.** Both runners were rebuilt
+  at their new paths with their stable identities (serho: Developer ID; mma:
+  VoiceInk Local Signing) and the owner re-granted FDA for both in System
+  Settings. The mma path was verified with a manual kickstart; the serho
+  restart was the owner's step (it kills every agent session).
+- mma stays on the external SanDisk; its launchd layer is on the internal disk on
+  purpose — a plist or runner on an unmounted volume never loads at login.
+
 **State (2026-10-10, litellm moved out). Committed here (not pushed); the new
 repository is pushed to Gitea (`servitola/litellm`, private).** The proxy stack
 (`docker compose`: litellm, postgres, redis), the five TTS/STT shims with their

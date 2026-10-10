@@ -3,18 +3,18 @@ source "${0:a:h}/lib.sh"
 set -euo pipefail
 
 section "serho (Telegram AI agent) launchd"
-# The plist is local to the machine that hosts the bot and not in git,
-# so a fresh Mac has none and gets no agent.
-if [[ -f $DOTFILES/serho/com.servitola.serho.plist ]]; then
-    link "$DOTFILES/serho/com.servitola.serho.plist" \
+# The plist lives with the bot ($DIR_SERHO/launchd); a Mac without the bot
+# checkout gets no agent.
+if [[ -f "${DIR_SERHO:?}/launchd/com.servitola.serho.plist" ]]; then
+    link "$DIR_SERHO/launchd/com.servitola.serho.plist" \
          "$LAUNCH_AGENTS/com.servitola.serho.plist"
 else
-    log "no serho/com.servitola.serho.plist here, skipped"
+    log "no $DIR_SERHO/launchd/com.servitola.serho.plist here, skipped"
 fi
 
 section "LaunchAgents of the scheduled jobs (\$DIR_CRON/launchagents)"
 # The personal schedule layer lives with the crontab fragments; reboot-reminder
-# here is the one generic example. Runners are built by make in their helper/.
+# here is the one generic example; runners are built by make next to their plists.
 link "$DOTFILES/launchagents/com.servitola.reboot-reminder.plist" \
      "$LAUNCH_AGENTS/com.servitola.reboot-reminder.plist"
 setopt null_glob
