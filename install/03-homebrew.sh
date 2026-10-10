@@ -13,7 +13,8 @@ section "npm and uv config"
 # npm globals land in /opt/homebrew, where they collide with formulae.
 link_all \
     "$DOTFILES/npm/npmrc"             "$HOME/.npmrc" \
-    "$DOTFILES/uv/uv.toml"            "$CONFIG/uv/uv.toml"
+    "$DOTFILES/uv/uv.toml"            "$CONFIG/uv/uv.toml" \
+    "$DOTFILES/uv/.python-version"    "$CONFIG/uv/.python-version"
 
 section "packages (homebrew/brewfile)"
 # Everything, not a subset: a hand-kept minimum list kept drifting from what
