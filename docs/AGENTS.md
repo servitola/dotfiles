@@ -1,7 +1,7 @@
 # docs — human/agent reference docs for the dotfiles setup, read selectively
 
 - These are reference docs, not config — read the specific file relevant to a question rather than ingesting the whole tree. The live source of truth is the actual config dirs (`hammerspoon/`, `karabiner/`, `homebrew/`, the `Makefile`); docs describe and orient.
-- `README.md` — top-level index linking every doc (shell, keyboard, editors, terminal, git, homebrew); start here to find the right page.
+- `repo-map.md` — every top-level directory ranked by importance, the default apps and the always-on services; start here.
 - `keyboard-setup.md` — the keyboard system: Karabiner-Elements remapping (Caps Lock → Hyper = all 4 right modifiers), Apple's layouts with BirmanLayer.spoon's right-⌥ typographic layer, and Hammerspoon catching key events to launch apps/run functions. Source-of-truth pipeline: karabiner → birman → hammerspoon.
 - `hammerspoon.md` — Hammerspoon automation: Spoon system, HotKeys spoon, Lua scripting against macOS APIs.
 - `app-integration.md` — checklist for wiring a new app into the repo: create `dotfiles/{app}/` dir, then add Makefile symlink commands (`REMOVE`/`LINK`/`COPY` vars) to the `install` target. Read before adding any new app config.
