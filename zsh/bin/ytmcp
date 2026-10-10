@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# ytmcp — toggle the workname YouTrack MCP server on demand.
+#
+# The YouTrack MCP (npm package: youtrack-mcp-server) is connected ONLY while
+# explicitly working on workname tasks, then removed when done — so it is not
+# always loaded into every Claude Code session.
+#
+# Security: the token is NOT written into Claude config. It is registered as the
+# literal string ${YOUTRACK_API_TOKEN} and expanded by Claude Code at server
+# launch from the shell env (set in ~/.config/openai_key.sh). Same for nothing
+# else sensitive — only the internal base URL is stored.
+#
+# Network: youtrack.workname.re is an internal host. It works without the AmneziaWG
+# VPN. If the server fails to connect (timeouts), re-run `ytmcp on --proxy` to add
+# ALL_PROXY pointing at the GlobalProtect SOCKS proxy (~/projects/services/worknamevpn,
+# localhost:1080).
+#
+# Usage:
+#   ytmcp on            register + (re)connect   [scope: user]
+#   ytmcp on --proxy    same, but route through SOCKS5 localhost:1080
+#   ytmcp off           remove
+#   ytmcp status        show current registration
+#
+# After `on`/`off`, a running Claude session picks up the change after a restart
+# or `/mcp` reconnect.
+set -euo pipefail
+
+NAME="youtrack-mcp-server"
+BASE_URL="https://youtrack.workname.re"
+ENTRY="$(npm root -g 2>/dev/null)/youtrack-mcp-server/index.js"
+
+cmd="${1:-status}"
+case "$cmd" in
+  on)
+    if [[ ! -f "$ENTRY" ]]; then
+      echo "ytmcp: server not installed at $ENTRY" >&2
+      echo "       install with: npm i -g youtrack-mcp-server" >&2
+      exit 1
+    fi
+    # Idempotent: drop any stale registration first.
+    claude mcp remove "$NAME" >/dev/null 2>&1 || true
+
+    env_args=(
+      -e "YOUTRACK_BASE_URL=${BASE_URL}"
+      -e 'YOUTRACK_TOKEN=${YOUTRACK_API_TOKEN}'
+    )
+    if [[ "${2:-}" == "--proxy" ]]; then
+      env_args+=( -e 'ALL_PROXY=socks5h://127.0.0.1:1080' )
+      echo "ytmcp: routing through SOCKS5 localhost:1080"
+    fi
+
+    claude mcp add "$NAME" -s user "${env_args[@]}" -- node "$ENTRY"
+    echo "ytmcp: ON. Restart Claude or run /mcp to connect."
+    ;;
+  off)
+    if claude mcp remove "$NAME" >/dev/null 2>&1; then
+      echo "ytmcp: OFF."
+    else
+      echo "ytmcp: was not registered."
+    fi
+    ;;
+  status)
+    claude mcp get "$NAME" 2>/dev/null || echo "ytmcp: not registered (off)."
+    ;;
+  *)
+    echo "Usage: ytmcp on|off|status   (on --proxy to use SOCKS5 1080)" >&2
+    exit 1
+    ;;
+esac
