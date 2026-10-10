@@ -12,6 +12,16 @@ else
     log "no serho/com.servitola.serho.plist here, skipped"
 fi
 
+section "LaunchAgents of the scheduled jobs (\$DIR_CRON/launchagents)"
+# The personal schedule layer lives with the crontab fragments; reboot-reminder
+# here is the one generic example. Runners are built by make in their helper/.
+link "$DOTFILES/launchagents/com.servitola.reboot-reminder.plist" \
+     "$LAUNCH_AGENTS/com.servitola.reboot-reminder.plist"
+setopt null_glob
+for plist in "${DIR_CRON:?}"/launchagents/*.plist "${DIR_CRON:?}"/launchagents/*/*.plist; do
+    link "$plist" "$LAUNCH_AGENTS/${plist:t}"
+done
+
 section "pre-commit hooks"
 ( cd "$DOTFILES" && pre-commit install )
 

@@ -23,3 +23,5 @@ claude-code/detached_skills
 claude-code/commands
 # compiled keystroke marker — rebuilt by karabiner/build.sh
 karabiner/helper/keylog
+# compiled TCC helper for the serho agent — rebuild with `make -C launchagents/helper`
+launchagents/helper/serho-runner
