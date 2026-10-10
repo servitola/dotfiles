@@ -324,6 +324,73 @@ of it, and it was keyed to the input source names `ABC` / `Russian – PC` / `Gr
 
 ---
 
+**State (2026-09-27, keyboard core reworked; 25–27 Sep). Shipped, committed,
+not pushed except `BirmanLayer.spoon`, which is public.** One principle now
+governs the whole keyboard stack: **Karabiner owns keys, Hammerspoon owns
+meaning.** If a press must become another key (arrow, F-code, media, `⌘←`),
+that is Karabiner — the only layer that sees left/right modifiers, devices and
+simultaneous presses. If the result needs state or knowledge (frontmost app,
+windows, layouts, typing Unicode, a state machine), that is Hammerspoon, at
+~1 ms in-process. A job lives in one place, never both. The owner considered and
+**rejected**: moving per-app remaps to Karabiner, Punto into Hammerspoon,
+disabling the keylog instrumentation or `input_logger`, and "Hyper as a
+Hammerspoon modal" — leave those alone unless he raises them.
+
+- **Where things live.** Chord → action: `hammerspoon/Spoons/HotKeys.spoon/layout/60%/<key>.lua`
+  (hand-maintained; a binding line plus a row in the ASCII table; the table's
+  `karabiner`/`birman`/`G` columns are lint-checked against the real data).
+  Actions: `hammerspoon/actions/*.lua` via `register("name", fn)`; the Spoon has
+  no personal code. App roles: `constants.env` `APP_*` (browser/alt/work, terminal/alt,
+  ide, editor, git_gui, files, messenger…). Hyper layers: `karabiner/layers.toml`
+  (one line per chord; `gen_layers.py` writes rules `07`–`17`, never edit those JSON
+  files). Other Karabiner rules: hand-written JSON. macOS + third-party hotkeys:
+  `macos_shortcuts/` (`shortcuts.toml` + `shortcuts.py capture|check|apply|taps`)
+  (applied by `install/17-shortcuts.sh`). Apply keyboard changes with
+  `zsh karabiner/build.sh` and `hs.reload()`; check with
+  `python3 docs/keyboard/tools/lint.py --strict` (pre-commit runs it).
+- **Bridges are a formula, not a table.** Hyper letters that are Hammerspoon
+  launchers *and* have left-modifier variants need a Karabiner rename (Hyper =
+  four right modifiers, so `hs.hotkey` cannot tell `⇪v` from `⇪⌘v`). Eight letters,
+  eight F-keys, by keyboard column: `z=F13 · r f v = F14 F15 F16 · t g b = F17 F18
+  F19 · h=F20`; `⇪⌘v → ⌘F16`. Two gestures keep out-of-formula codes: `⌃⌥a+d`
+  swap → `num8`, right-`⌥␣` Punto → `num9`. `tools/bridge.py` prints the table.
+  Everything else under Hyper is a plain key remap and needs no bridge; non-Hyper
+  chords (`⌃⌥⌘h`, `⇧⌃⌥⌘↑`) are bound directly.
+- **Layouts are Apple's now** (`ABC`, `Russian – PC`,
+  `Greek`). Everything Ilya Birman's layouts added — ⌥/⇧⌥ layers, dead keys,
+  the stress mark, plus base fixups (`Ё`, ISO `§`) — is `BirmanLayer.spoon`: an
+  event tap on the **right** Option (raw flag 0x40; Hyper is excluded via right
+  ⌘/⌃), table generated from the owner's Ukelele bundle (now in
+  `~/projects/birman/lab`). Left ⌥ is the stock macOS layer. The
+  bundle is no longer installed as a system layout (install step 05 dropped it).
+  Public repo <https://github.com/servitola/BirmanLayer.spoon> holds the Spoon dir
+  (remote `birman-spoon`; publish as in `docs/keyboard-setup.md`, "Publishing" — not
+  `git subtree push`, its history no longer matches);
+  one commit tagged `v3.9.0` (versions follow Birman's: `3.9.N`), no GitHub Action (private repos need billing) and no release page. Credit wording is plain ("Thanks to Ilya Birman", "Unofficial"): no "in his honor" phrases anywhere;
+  Ilya has not been asked yet — a draft letter exists in the session notes; the
+  Hammerspoon/Spoons PR waits for the owner.
+- **Tried and rolled back the same day:** generating the Lua layout from a
+  `chords.toml`, and a catalog of app shortcuts rendering the tables. Too much
+  machinery for one user; the regenerated (data-correct) layout files and the
+  Greek-column parser fix were kept. Specs under `docs/superpowers/specs/2026-09-2*`
+  carry status lines. The `keylord` extraction (`~/projects/keylord`) is parked;
+  BirmanLayer is the only piece that was worth sharing.
+- **Gotchas learned:** `hs -c` hangs when stdout is redirected unless stdin is
+  `</dev/null`; `hs.application.frontmostApplication()` over `hs -c` hangs the IPC;
+  `hs.hotkey.getHotkeys()` labels depend on the layout active at bind time (force
+  `En Birman`/`ABC` before `hs.reload()` when comparing); Karabiner reloads on every
+  `build.sh` (do not run it mid-keystroke storms); two Boring Notch instances with
+  active event taps froze every trackpad click on 26.09 — `shortcuts.py taps` shows
+  who sits in the input path.
+
+**Open, all optional (`docs/backlog.md`):** Maccy vs system hotkey 60 — resolved
+by itself when Maccy's preview hotkey was cleared; Music duplicate menu entries;
+`services` adapter `enabled` flag; leftover prefs of uninstalled apps in
+`shortcuts.toml`; three identical Boring Notch taps and the notch cron's kill
+order (another session owns that script).
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
