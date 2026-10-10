@@ -30,7 +30,7 @@ Uses `hs.application.watcher` to detect app focus changes:
 - KSheet
 - PopupTranslateSelection
 - ScreenGlow — edge glow while an agent drives the desktop; `hs -c 'spoon.ScreenGlow:pulse(45)'` / `:stop()`
-- LinkRouter — each clicked link to the browser its rule names; Hammerspoon is the system browser. A third-party Spoon (git-ignored here; never edit it in place). Source: `~/projects/linkrouter/LinkRouter.spoon`. Not published yet, so `install/18-spoons.sh` has no line for it and the installed dir is a symlink to the checkout; without it `link_router.lua` hands the system-browser role back to `APP_BROWSER`. Rules live in `link_router.lua`; check one with `spoon.LinkRouter:route(url)` in the console. Replaced URLDispatcher on 2026-10-07.
+- LinkRouter — each clicked link to the browser its rule names; Hammerspoon is the system browser. A third-party Spoon; never edit it in place. Source: `~/projects/linkrouter/LinkRouter.spoon`. Not published yet, so `install/18-spoons.sh` has no line for it: the dir here is a committed copy of the checkout's last commit (refresh with `git -C ~/projects/linkrouter/LinkRouter.spoon archive HEAD | tar -x -C hammerspoon/Spoons/LinkRouter.spoon`). Without it `link_router.lua` hands the system-browser role back to `APP_BROWSER`. Rules live in `link_router.lua`; check one with `spoon.LinkRouter:route(url)` in the console. Replaced URLDispatcher on 2026-10-07.
 - Windows
 - YouTrackTasks
 - YouTrackTicket
