@@ -270,6 +270,21 @@ a fork job; nothing about them is documented here any more.
 
 ---
 
+**State (2026-09-28 evening, BirmanLayer consumed like any user). Committed, nothing pushed.**
+The dotfiles now hold only what a user of the Spoon has: `install/18-spoons.sh` (pinned
+release zip into the git-ignored `hammerspoon/Spoons/BirmanLayer.spoon/`), the `init.lua`
+config (always loaded; the birman/standard layout-mode switch is gone) and the hand-maintained
+`hammerspoon/birman_extended.lua`. Everything an author has — Birman's archives, the owner's
+Ukelele bundle, the table generator and its tests, publishing notes, launch posts — moved to the
+private local repo `~/projects/birman/lab` (no remote yet; its README has the ship procedure).
+`docs/keyboard/parse_birman.py` no longer reads keylayouts: Apple dumps in
+`docs/keyboard/apple-layouts/` + the Spoon's `fixups` for plain/Shift, the installed Spoon table
++ `birman_extended.lua` for ⌥/⇧⌥; lint and SVGs came out identical. Report:
+`.superpowers/sdd/birman-lab-report.md`. Entries below predate the move; their paths into the
+old author material now live in the lab.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
