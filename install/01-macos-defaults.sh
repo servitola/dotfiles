@@ -74,6 +74,7 @@ settings=(
 # Layout ids macOS stores for the names in constants.env (LAYOUT_*).
 typeset -A layout_ids=( ABC 252 "Russian – PC" 19458 Greek -18944 )
 typeset -A layout_names=( ABC ABC "Russian – PC" RussianWin Greek Greek )
+typeset -A layout_titles=( 252 ABC 19458 "Russian – PC" -18944 Greek )
 
 changed=0
 as_sudo() { [[ $1 == /Library/* ]] && print sudo; }   # the system domain needs root, the rest are the user's
@@ -95,19 +96,54 @@ for row in $settings; do
     fields=("${(@s: | :)row}")
     set_default "${fields[@]}"
 done
+(( changed )) || log "all already as wanted"
 
-section "input sources from LAYOUT_PRIMARY, LAYOUT_SECONDARY, LAYOUT_TERTIARY"
-wanted=()
-for layout in "$LAYOUT_PRIMARY" "$LAYOUT_SECONDARY" "$LAYOUT_TERTIARY"; do
-    wanted+=("<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>${layout_ids[$layout]:?no id for layout $layout}</integer><key>KeyboardLayout Name</key><string>${layout_names[$layout]}</string></dict>")
+section "keyboard layouts from LAYOUT_PRIMARY, LAYOUT_SECONDARY, LAYOUT_TERTIARY"
+# Edited in an export and imported back: cfprefsd drops a direct plist write.
+# Entries without a layout id (emoji, dictation, input methods) are left alone.
+domain=$(mktemp)
+defaults export com.apple.HIToolbox "$domain"
+wanted_ids=(${layout_ids[$LAYOUT_PRIMARY]:?} ${layout_ids[$LAYOUT_SECONDARY]:?} ${layout_ids[$LAYOUT_TERTIARY]:?})
+count=$(plutil -extract AppleEnabledInputSources raw -o - "$domain" 2>/dev/null || print 0)
+present=() remove=()
+for (( i = count - 1; i >= 0; i-- )); do
+    id=$(plutil -extract "AppleEnabledInputSources.$i.KeyboardLayout ID" raw -o - "$domain" 2>/dev/null) || continue
+    if (( ${wanted_ids[(Ie)$id]} )); then
+        present+=$id
+        continue
+    fi
+    name=$(plutil -extract "AppleEnabledInputSources.$i.KeyboardLayout Name" raw -o - "$domain")
+    if [[ -t 0 ]] && read -q "?      remove the extra layout $name? [y/N] "; then
+        print
+        remove+=$i
+        ok "removed $name"
+    else
+        [[ -t 0 ]] && print
+        warn "extra layout $name kept"
+    fi
 done
-present=$(defaults read com.apple.HIToolbox AppleEnabledInputSources 2>/dev/null | grep -o '"KeyboardLayout ID" = [-0-9]*' | grep -o '[-0-9]*$' | sort | tr '\n' ' ')
-needed=$(print -l ${layout_ids[$LAYOUT_PRIMARY]} ${layout_ids[$LAYOUT_SECONDARY]} ${layout_ids[$LAYOUT_TERTIARY]} | sort | tr '\n' ' ')
-if [[ $present != "$needed" ]]; then
-    defaults write com.apple.HIToolbox AppleEnabledInputSources -array "${wanted[@]}"
-    ok "$LAYOUT_PRIMARY, $LAYOUT_SECONDARY, $LAYOUT_TERTIARY (after the next login)"
+for i in $remove; do   # collected from the last index down, so earlier ones keep their place
+    plutil -remove "AppleEnabledInputSources.$i" "$domain"
+done
+added=()
+for id in $wanted_ids; do
+    (( ${present[(Ie)$id]} )) && continue
+    title=${layout_titles[$id]}
+    plutil -insert AppleEnabledInputSources -json \
+        "{\"InputSourceKind\":\"Keyboard Layout\",\"KeyboardLayout ID\":$id,\"KeyboardLayout Name\":\"${layout_names[$title]}\"}" \
+        -append "$domain" 2>/dev/null ||
+        plutil -insert AppleEnabledInputSources -json \
+        "[{\"InputSourceKind\":\"Keyboard Layout\",\"KeyboardLayout ID\":$id,\"KeyboardLayout Name\":\"${layout_names[$title]}\"}]" "$domain"
+    added+=$title
+done
+if (( $#added + $#remove )); then
+    defaults import com.apple.HIToolbox "$domain"
+    (( $#added )) && ok "added ${(j:, :)added} (after the next login)"
     changed=$(( changed + 1 ))
+else
+    log "$LAYOUT_PRIMARY, $LAYOUT_SECONDARY, $LAYOUT_TERTIARY already enabled"
 fi
+rm -f "$domain"
 
 chflags nohidden "$HOME/Library"
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true   # Photos does not open for a phone
@@ -125,5 +161,3 @@ if [[ $(softwareupdate --schedule) != *off* ]]; then
     ok "no automatic update checks"
     changed=$(( changed + 1 ))
 fi
-
-(( changed )) || log "all already set"
