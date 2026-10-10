@@ -239,6 +239,37 @@ plan: `docs/superpowers/plans/2026-10-09-cron-extraction.md`.
   `zsh/exports.sh` means a long-lived shell keeps old constant values until it
   is restarted — `_EXPORTS_LOADED= zsh -c 'source ~/.zshenv; …'` for a test.
 
+**State (2026-10-01, fork-sync jobs moved out). Committed here (not pushed); the
+new repository is pushed.** Everything that keeps the forks rebased, built and
+installed — nine `*-sync.sh` jobs, `alttab-upstream-merge.sh`, `claude-agent.sh`,
+their LaunchAgent plists and the nine per-job runners — now lives in
+`~/projects/forks` (private on Gitea, with a private push mirror on GitHub). Read its `AGENTS.md` before touching
+a fork job; nothing about them is documented here any more.
+
+- **What dotfiles still owns:** the apps' own configs (`zap/`, `voiceink/`), the
+  brewfile, `launchagents/helper/{serho-runner,mma-runner}`. The forks repository
+  reads constants and the brewfile from here; nothing here calls into it.
+  `DIR_FORKS` in `constants.env` is its path.
+- **One runner, one grant.** `forks-runner <job>` replaced nine binaries. Labels
+  (`com.servitola.<job>-sync`), `~/.cache/<job>-sync` state and knobs are unchanged,
+  so every `launchctl kickstart` line in older notes still works. Logs moved to
+  `~/projects/forks/logs/`.
+- **Verified:** a launchd probe through the new runner (volume read/write/exec,
+  keychain, constants, Full Disk Access after the owner granted it); opentracks
+  no-op run; a forced full boring-notch build — build, release, `brew upgrade`,
+  exit 0. The other seven were cut over without a manual run on purpose (a
+  kickstart starts a real build when upstream moved).
+- **Open:** the first scheduled night (Sat 2026-10-03) has not been observed.
+  `telegram-android-sync` and `voiceink-upstream-sync` were already red before the
+  move (baseline in `~/projects/forks/docs/`). Nine stale Full Disk Access entries
+  for the old `dotfiles/launchagents/helper/*-sync-runner` paths can be removed in
+  System Settings. Entries below that mention `cron/scripts/*-sync.sh` or
+  `launchagents/helper/*-sync-runner` predate the move.
+- `rag/rag.eval.json` still holds ~30 auto-generated cases whose `origin` is a
+  moved file; they were left to the `rag-improve` strike mechanism.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
