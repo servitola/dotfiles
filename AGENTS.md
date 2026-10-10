@@ -553,6 +553,47 @@ gained Vivaldi, so a move back is cheap.
 
 ---
 
+**State (2026-07-25, model-knowledge refresh). Shipped, committed, nothing
+pushed.** Codex moved to the GPT-5.6 generation and Claude to Opus 5, and every
+model list in the repo described the previous generation.
+
+- **`claude-code/CLAUDE.md` gained a `# Models` section** — Codex (Sol/Terra/Luna,
+  **272k** context each, ~95% usable, ChatGPT **Plus** plan) and Claude (Opus 5 /
+  Fable 5 / Sonnet 5 all 1M, Haiku 4.5 200k) with prices, cutoffs and pick rules.
+  Inline on purpose — see the `@import` note under *AI Coding Tools* above.
+  Verified end-to-end: `codex exec` answered `gpt-5.6-terra` / `272k tokens`.
+- **`claude-code/skills/openai-docs` re-vendored** from
+  `~/.codex/skills/.system/openai-docs/` (`rsync -a --delete`; now byte-identical).
+  It was a full generation stale and missing `upgrading-to-gpt-5p6-sol.md`. This
+  re-copy is the standing maintenance task in `codex/AGENTS.md` — it had been
+  missed for a whole model generation. **Check it again after Codex updates.**
+- **`codex/config.toml`: `gpt-5.5` → `gpt-5.6-terra`**, then materialized with
+  `codex/materialize-config.py <src> ~/.codex/config.toml $HOME`. Terra not Sol
+  because Sol's native effort is `low` while this config pins `high` — on Plus
+  that burns limits fast. Sol per task: `codex -m gpt-5.6-sol` (only tier with
+  `ultra` effort).
+- **Dead LiteLLM aliases purged** against the live proxy: 5 from
+  `opencode/opencode.json` (`premium`, `nvidia-kimi`, `polza-*`),
+  16 from `litellm/ai.sh`, 15 from `litellm/README.md`, 3 from `rag/rag.sh`
+  completions, `plus` from `aider/aider.conf.yml`. Added the three undocumented
+  families `cloudflare-*`, `ionet-*`, `cohere-*`. Rotation-group descriptions
+  refreshed (`coding` is Codestral/GLM-4.7/Gemini now, not gpt-oss/Kimi/DeepSeek).
+- **`macos_update/update_all.sh`** comment corrected — it claimed
+  `~/.claude/rules/` is not auto-loaded; it is.
+
+**Deliberately NOT done:** `zap/settings.toml` still lists nothing newer than
+`claude-opus-4-7`. `zap/AGENTS.md` says the model list is a volatile 302.AI
+catalog snapshot and must not be treated as durable — hand-editing it would
+invent models that reseller may not serve. Leave it to whatever repopulates it.
+
+**Next steps.**
+1. Nothing blocking. If Codex ships another generation, re-run the `openai-docs`
+   re-vendor **and** update the `# Models` section — they drift together.
+2. Optional: `RTK.md` still never reaches Codex/Qwen/OpenCode (`@import` is
+   Claude-only). Fix by inlining it or generating a merged file on `up`.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
