@@ -16,7 +16,7 @@ must become another key is Karabiner's; a result that needs state or knowledge
 | make Hyper + key send a key (arrow, PgUp, media) | `karabiner/layers.toml`, the layer's table, one line | `zsh karabiner/build.sh` |
 | a special Karabiner rule (gesture, mouse, shell) | `karabiner/rules/NN-*.json` by hand | same |
 | a macOS / Shottr / Maccy / menu shortcut | `macos_shortcuts/shortcuts.toml` | `python3 macos_shortcuts/shortcuts.py apply` |
-| a character on the right Option layer | `layer.overrides` in `hammerspoon/init.lua` (shape: the Spoon's `docs/configuration.md`) | `hs.reload()`; `python3 docs/keyboard/generate.py` |
+| a character on the right Option layer | `layer.overrides` in `hammerspoon/init.lua` (shape: `hammerspoon/Spoons/BirmanLayer.spoon/docs/configuration.md`) | `hs.reload()`; `python3 docs/keyboard/generate.py` |
 
 The rule to remember: eight Hyper launcher letters are renamed to F-keys by
 keyboard column — `z=F13 · r f v = F14 F15 F16 · t g b = F17 F18 F19 · h=F20`,
@@ -205,8 +205,8 @@ Greek's ⌥ layer, so it was deleted and Greek excluded instead.)
   "vowel, then ⇧⌥/ twice".
 - **Karabiner rule 03** (right ⌥ + C E D A R → © € ° ≈ ® through the clipboard)
   was deleted (d7406c6f): the layer types those characters directly.
-- **Changing a character.** Set `layer.overrides` in `hammerspoon/init.lua` (the shape is the
-  Spoon's `docs/configuration.md`, "Overrides"), then `hs.reload()`.
+- **Changing a character.** Set `layer.overrides` in `hammerspoon/init.lua` (the shape is in
+  `hammerspoon/Spoons/BirmanLayer.spoon/docs/configuration.md`, "Overrides"), then `hs.reload()`.
   The Spoon's own `typography_table.lua` is Birman's and is never edited here.
 - **Keyboard pictures and lint.** `docs/keyboard/parse_birman.py` gives the `en ru el` characters
   of the SVGs and lint rule D2: plain and Shift from Apple's layouts

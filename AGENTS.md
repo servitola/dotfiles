@@ -22,7 +22,7 @@ matters and what's just an experiment. Each directory also has its own
 - **Reference**: See `README.md` for detailed setup
 
 ## AI Coding Tools — Shared Configuration
-Claude Code (`claude-code/`) is the single source of truth for `commands/`, `agents/`, `skills/`; Qwen Code, and Codex consume them via symlinks the installer creates (`install/ai-tools-links.sh`). Codex keeps its own global config in `codex/`.
+Claude Code (`claude-code/`) is the single source of truth for `commands/`, `agents/`, `skills/`; Qwen Code, and Codex consume them via symlinks the installer creates (`install/08-ai-tools-links.sh`). Codex keeps its own global config in `codex/`.
 When adding new shared commands, agents, or skills — add them to `claude-code/` only.
 Detached (opt-in, per-folder) skills and MCP servers live in `claude-code/detached_skills/` and `claude-code/detached_mcp/` — attach with `skill-attach <name> [dir]` / `mcp-attach <name> [dir]`.
 
@@ -48,7 +48,7 @@ empty on purpose: `up` used to fill it with `rtk learn --write-rules`, whose
 
 **Model lists: query the runtime, never grep a config.** Codex →
 `~/.codex/models_cache.json`. LiteLLM → `curl -s localhost:4000/v1/models`.
-Grepping `litellm/config.yaml` for `model_name:` gives false positives (it marked
+Grepping `$DIR_LITELLM/config.yaml` for `model_name:` gives false positives (it marked
 the live `coder` alias as dead). Current model/context/pricing tables for Codex
 and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
 

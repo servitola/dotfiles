@@ -4,7 +4,7 @@
 - It updates everything in one pass: Homebrew, Mac App Store (`mas`), VSCode extensions, Appium plugins, .NET tools, pre-commit hooks, Oh My Zsh, Powerlevel10k, TLDR/Bat caches, Atuin sync
 - Runs `brew bundle dump --force --describe` to sync the live Homebrew state back into `homebrew/brewfile` — so the brewfile is regenerated from the machine, not hand-edited here.
 - Refreshes the RAG index by sourcing `$DIR_RAG/rag.sh` (the `~/projects/rag` repository) and running `rag refresh` (best-effort; skipped when rag is not cloned, failures tolerated if litellm/qdrant are down).
-- Also triggers other dotfiles subsystems: `docker/up.sh`, `$DIR_SERVICES/immich/sync.sh` (skipped where that project is absent), `litellm/scripts/check-models.py`, `claude-code/shared/skills-repos/update.sh`, `docs/keyboard/generate.py`, and `rtk gain`.
+- Also triggers other dotfiles subsystems: `docker/up.sh`, `$DIR_SERVICES/immich/sync.sh` (skipped where that project is absent), `$DIR_LITELLM/scripts/check-models.py`, `$DIR_SKILLS/shared/skills-repos/update.sh`, `docs/keyboard/generate.py`, and `rtk gain`.
 - strips `com.apple.quarantine` xattrs from `/Applications/*.app` after upgrades); `update_all.sh` sources it and calls it.
 - **Static Data Compression** runs `applesauce/compress.sh` last, after every step that could rewrite an SDK — decmpfs is dropped on write, so compressing earlier would just be undone. Everything about it (tool choice, thresholds, the `.dotnet/packs` trap, app-bundle permissions) lives in `applesauce/AGENTS.md`.
 - **Security Guards** section catches silent drift on settings whose failure mode is invisible — the OS looks healthy either way, so only an explicit check surfaces them:
