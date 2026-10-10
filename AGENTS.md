@@ -31,6 +31,15 @@ Repository is private and self-hosted on Gitea (`origin`; the server itself — 
 Full symlink map, tool-specific configs, and Codex operational rules (1024-char description limit, vendored `openai-docs`, install via cask only): see `claude-code/AGENTS.md`.
 Never `brew uninstall --zap codex` — its zap stanza deletes `~/.codex`.
 
+**`@file.md` imports are Claude-Code-only.** `claude-code/CLAUDE.md` reaches four
+harnesses — Claude Code (the whole `~/.claude` dir is a **symlink** to
+`claude-code/`, made by `install/08-ai-tools-links.sh`, so edits are live with
+no sync step), Codex (`~/.codex/instructions.md` symlink) and OpenCode (`instructions[]` in `opencode.json`). But only Claude Code
+expands `@RTK.md`; the other three receive it as literal text (verified
+2026-07-25 against a Codex session transcript). Anything every harness must know
+goes **inline** in that file — a separate file plus `@import` silently reaches
+Claude Code only. `RTK.md` has this problem today and is unfixed.
+
 ## Code Style Guidelines
 - **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
