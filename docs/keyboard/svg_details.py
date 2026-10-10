@@ -2,7 +2,7 @@
 from colors import PALETTE, get_category; from config import DEFAULT_APPS
 from icons import icon_slug
 _E = lambda t: t.replace("&","&amp;").replace("<","&lt;").replace(">","&gt;")
-_AL = {"VSCode":"Visual Studio Code","IINA":"Iina","WorkBot":"Workbot",
+_AL = {"VSCode":"Visual Studio Code","IINA":"Iina",
     "Claude Code":"Claude","Activity Manager":"Activity Monitor","GoogleMeets":"zoom.us",
     "YouTube":"_browser","Browser":"_browser","Browser Vim":"_browser",
     "Unix Terminal":"_terminal","Terminal":"_terminal",
