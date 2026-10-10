@@ -79,7 +79,17 @@ rtk-ai/rtk) or accepting built-in-only coverage.
   note below); never use `--write-rules`.
 
 ### Note on `rtk learn`
-For this user it currently yields **0 recurring rules** — corrections are
-overwhelmingly unique one-off heredocs, not repeated mistakes. The real lever is
-turning recurring *inline heredocs* into named scripts in `zsh/bin/` (see
-`docs/commands.md`), so they stop being opaque one-liners RTK can't compact.
+It pairs a failed Bash call with the next successful one that shares its "base
+command" — the first two words — and reports the second as the fix. Agent
+commands here start with `cd <dir> && …`, so the base command is the directory
+and any two unrelated commands run in one project become a correction. Measured
+2026-10-02 on rtk 0.50.0 (`rtk learn --all`, 1316 sessions): 547 pairs, 374 of
+them keyed on `cd`, 471 typed "General Error". The only pair that passed
+`--min-occurrences 2` said to run `sed -n '90,140p' pyproject.toml` instead of
+`ruff check`.
+
+`--write-rules` puts the result in `~/.claude/rules/cli-corrections.md`, which
+Claude Code loads into every session as an instruction. `up` used to do that on
+every run, so a false rule of this kind was always live. The step was removed
+and the file deleted; the real lever stays the same — turn recurring *inline
+heredocs* into named scripts in `zsh/bin/` (see `docs/commands.md`).
