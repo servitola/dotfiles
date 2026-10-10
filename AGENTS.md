@@ -391,6 +391,12 @@ order (another session owns that script).
 
 ---
 
+**The 2026-09-05 note on the build-fix agent (`claude -p` in the fork-sync jobs)
+moved with the jobs** — it is the "Build-fix agent" section of
+`~/projects/forks/AGENTS.md` now.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
