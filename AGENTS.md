@@ -72,6 +72,15 @@ and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
 - **Linting**: No linting required - this is a configuration repository (shell scripts, Lua scripts, dotfiles)
 
+## Git hooks
+Two separate layers, don't confuse them:
+- **This repo's own hooks** (`no-russian-comments`, `lint-shell`, …) run only here, via
+  `.git-hooks/` + `.pre-commit-config.yaml` — see `## Code Style Guidelines` above.
+- **A machine-wide `commit-msg` hook rejects AI co-author/tool footers in every repo on this
+  machine**, dotfiles included, deployed via `init.templateDir` (not `core.hooksPath` — that
+  option breaks `pre-commit install`, see below). Full mechanism, proof, and blind spots:
+  `git/AGENTS.md`.
+
 ## Install conventions
 
 The installer is plain zsh, not make. `Makefile` is a one-line wrapper
