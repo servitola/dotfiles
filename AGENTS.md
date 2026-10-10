@@ -612,6 +612,10 @@ filenames (Brewfile/Makefile/…) dropped — macOS has no by-filename mechanism
 Last run: `added 0, retargeted 0, unchanged 171`; every binding verified on a
 real file, including `.cs`/`.csproj` → VSCode and `.sln`/`.slnx` → Rider.
 
+**aoe (Agent of Empires) is KEPT — do not remove it.** A prior session removed it
+by mistake; it has been restored: the `agent-of-empires/` config dir, the
+`- exec: aoe` zap launcher, and the Application-Support symlink in
+`install/07-config-links.sh`. It is installed via its own fork (not brewfile).
 
 **Open questions.**
 - If after login `.cs` still opens in Rider, the user default did NOT beat
