@@ -13,8 +13,6 @@ colima/default/daemon/daemon.pid
 docker-logger/logs
 claude-code/.last-cleanup
 claude-code/stats-cache.json
-litellm/piper-shim/logs
-litellm/voiceink-shim/logs
 cron/logs/
 
 # Content lives in $DIR_SKILLS; install/08 links it here.
@@ -23,5 +21,3 @@ claude-code/detached_skills
 claude-code/commands
 # compiled keystroke marker — rebuilt by karabiner/build.sh
 karabiner/helper/keylog
-# compiled TCC helper for the serho agent — rebuild with `make -C launchagents/helper`
-launchagents/helper/serho-runner
