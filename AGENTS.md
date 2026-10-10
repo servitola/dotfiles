@@ -512,6 +512,47 @@ and two assumptions baked into the browser code were Chromium-only:
 
 ---
 
+**State (2026-07-29, Yandex Browser → Vivaldi). Shipped and verified, nothing
+pushed.** The owner moved off Yandex Browser. Everything that *pointed at* a
+browser now points at Vivaldi; every *list* that mentioned Yandex kept it and
+gained Vivaldi, so a move back is cheap.
+
+- **`hammerspoon/browsers.lua` (new) is the single switch.** `M.main =
+  M.known.Vivaldi` — one line. `M.known` holds both browsers (app name, bundle
+  ID, normal-window `title_suffix`); do not delete the Yandex entry. Consumers:
+  `config_UrlDispatcher.lua`, `BrowserTabOpener.spoon`, `Windows.spoon`
+  detection, `HotKeys.spoon/window_focus_sets.lua`.
+- **Two spots the module can't cover (they are data, not code):** the `⇪V`
+  chord in `HotKeys.spoon/layout/60%/v.lua` and `SPACE_APPS` in
+  `VoiceCtl.spoon/verbs_media.lua`. Reverting = the `M.main` line + the chord,
+  then `gen_bundle_ids.py` and `generate.py`.
+- **Window heuristics are browser-agnostic now**: `is_yandex_video_player` /
+  `is_yandex_extra_panel` → `is_browser_*`, matching any browser in `known` by
+  its own title suffix (` - Vivaldi` / `— Yandex Browser` with nbsp).
+- `yandex_search.lua` → `browser_search.lua` (it always opened Perplexity in the
+  default browser; the name lied). Also touched: brewfiles (`cask "vivaldi"`
+  added, `yandex` kept), `cleanup_targets.sh` (Vivaldi crx caches), VoiceInk
+  dictation dictionary, keyboard SVGs, MEMORY.md, repo-map, keyboard-setup.
+- Verified: `hs.reload()` clean, `default_handler = com.vivaldi.Vivaldi`, tab
+  cycling really switches tabs in Vivaldi over AppleScript, the video-window
+  detector answers correctly for both browsers, `pre-commit` green, the
+  `dotfiles` RAG collection re-indexed.
+- The auto-committer ("1", `de8dbf51`) swept most of this in together with
+  unrelated spikes before it could be committed by hand — expected, see below.
+
+**Open questions / next steps (Vivaldi).**
+1. **Vivaldi blocks JS from Apple Events by default** → `⇧⌃⌥V` "focus playing
+   YouTube tab" degrades to the first matching tab. Fix is in the browser:
+   Settings → Privacy → Apple Events → allow JavaScript. Owner's call.
+2. ~~**Pre-existing bug:** `browser_video_title_markers` is never defined, so
+   `browser_title_has_video()` throws on `ipairs(nil)`.~~ Fixed 2026-08-30 —
+   markers moved into `browsers.lua`.
+3. `gen_bundle_ids.py` gained a `Google Chrome` override — LaunchServices
+   resolves that name to the absent "Google Chrome for Testing" and errors -43.
+   The stale `Telegram` entry dropped out (no chord references it).
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
