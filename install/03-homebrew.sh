@@ -61,6 +61,10 @@ if brew bundle check --no-upgrade --file "$brewfile" >/dev/null 2>&1; then
 else
     brew bundle --quiet --no-upgrade --file "$brewfile" || warn "brew bundle: the entries above failed"
 fi
+# cargo-about builds its binary only with --features cli since 0.9, and a
+# brewfile cargo line cannot pass features: bundle "installs" nothing, silently.
+cargo install --list | grep -q '^cargo-about ' ||
+    cargo install --quiet --locked cargo-about --features cli || warn "cargo-about did not install"
 
 section "quarantine flags off the casks"
 # Otherwise step 18's `open Hammerspoon.app` waits forever on the
