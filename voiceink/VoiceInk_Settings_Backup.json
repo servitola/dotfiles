@@ -309,7 +309,7 @@
       "word": "dotfiles"
     },
     {
-      "word": "workproject"
+      "word": "cTrader"
     },
     {
       "word": "LiteLLM"
@@ -357,7 +357,7 @@
       "word": "OrbStack"
     },
     {
-      "word": "workname"
+      "word": "Spotware"
     },
     {
       "word": "DeepSeek"
@@ -391,7 +391,7 @@
     "Annie Pro 2": "AnnePro2",
     "Big Night Commander": "Midnight Commander",
     "C-Sharp": "C#",
-    "workproject": "workproject",
+    "C-Trader": "cTrader",
     "C-sharp.": "C#",
     "Carabiner": "karabiner",
     "Carbiner": "Karabiner",
@@ -404,8 +404,8 @@
     "CloudCode": "Claude Code",
     "CloudMD": "claude.md",
     "Csproch": "csproj",
-    "workproject Dev": "workprojectDev",
-    "workproject.dev": "workprojectDev",
+    "Ctrader Dev": "cTraderDev",
+    "Ctrader.dev": "cTraderDev",
     "CubeCTL": "kubectl",
     "Curren Sprint.": "Current Sprint",
     "DOT файл": "dotfiles",
@@ -462,8 +462,8 @@
     "R-clone": "rclone",
     "RoTube": "RuTube",
     "Sibraltar": "cBraltar",
-    "SpotVR": "workname",
-    "workname": "workname",
+    "SpotVR": "Spotware",
+    "SpotWare": "Spotware",
     "T-Mux": "tmux",
     "TMOX": "tmux",
     "TeamUX": "tmux",
@@ -511,7 +511,7 @@
     "nematron": "nemotron",
     "open code": "OpenCode",
     "open код": "OpenCode",
-    "qtrader": "workproject",
+    "qtrader": "cTrader",
     "qwen кодер": "qwen code",
     "shelly-команда": "shell-команда",
     "slash": "/",
@@ -563,7 +563,7 @@
     "Серхо": "serho",
     "Сиае": "CI",
     "Сибралтар": "cBraltar",
-    "Спутвара": "workname",
+    "Спутвара": "Spotware",
     "ТЛС": "TLS",
     "ТМУКС": "tmux",
     "Тимукс": "tmux",
@@ -616,7 +616,6 @@
     "вайскод": "VSCode",
     "ванстейдж": "в unstaged",
     "варп терминал": "Warp терминал",
-    "варп.мd": "warp.md",
     "вводали": "попадали",
     "веб шторм": "WebStorm",
     "веб-серч-интерцепшн": "web-search-interception",
@@ -701,7 +700,7 @@
     "комиту": "коммиту",
     "крон": "cron",
     "крону": "cron",
-    "кутрейдер": "workproject",
+    "кутрейдер": "cTrader",
     "кьювин": "qwen",
     "кьювины": "qwen",
     "лаблетон": "ableton",
@@ -817,10 +816,10 @@
     "слэш-команда": "slash-комманда",
     "соболен": "свободен",
     "сошитых": "зашитых",
-    "сповари": "workname",
-    "споварий": "workname",
-    "споварье": "workname",
-    "споварья": "workname",
+    "сповари": "Spotware",
+    "споварий": "Spotware",
+    "споварье": "Spotware",
+    "споварья": "Spotware",
     "спун": "spoon",
     "стартинг": "starting",
     "стучился": "случился",
