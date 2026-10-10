@@ -16,8 +16,9 @@ path=( ~/projects/aoe/agent-of-empires/target/release $path )
 # Node.js (Homebrew-managed)
 path+=( /opt/homebrew/opt/node@22/bin )
 
-# Python (Homebrew-managed, 3.12 as default)
-path+=( /opt/homebrew/opt/python@3.12/libexec/bin )
+# Python: Homebrew keeps unversioned python3/pip3 only in libexec/bin, and only
+# python@3 (the current 3.x alias) survives upgrades. Prepended: /usr/bin has a 3.9.
+path=( /opt/homebrew/opt/python@3/libexec/bin $path )
 
 # Go
 path+=( "$GOPATH/bin" )
