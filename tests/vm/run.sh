@@ -76,11 +76,19 @@ host "tart clone $BASE $vm"
 boot $vm
 print "$vm at $ip, logs in $logs"
 
-bundle=$logs/dotfiles.bundle
-git -C "$DOTFILES" bundle create "$bundle" HEAD master 2>/dev/null
-scp -q -o ProxyJump="$TART_HOST" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
-    "$bundle" "admin@$ip:/tmp/dotfiles.bundle"
-guest "mkdir -p ~/projects && git clone -q /tmp/dotfiles.bundle ~/projects/dotfiles"
+# push_repository <dir>: its committed HEAD, cloned to the same place in the VM.
+push_repository() {
+    local name=${1:t} bundle=$logs/${1:t}.bundle
+    git -C "$1" bundle create "$bundle" HEAD "$(git -C "$1" symbolic-ref --short HEAD)" 2>/dev/null
+    scp -q -o ProxyJump="$TART_HOST" -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
+        "$bundle" "admin@$ip:/tmp/$name.bundle"
+    guest "mkdir -p ~/projects && git clone -q /tmp/$name.bundle ~/projects/$name"
+}
+# The VM cannot reach the Gitea server, so the repositories make would offer
+# to clone (install/lib.sh `repository`) come along as bundles.
+for repository in $DOTFILES $DIR_SKILLS $DIR_CRON; do
+    push_repository $repository
+done
 # M1/M2 have no nested virtualization, so no Docker daemon can run in the VM.
 guest "sed -i '' 's/^DOCKER=yes\$/DOCKER=no/' ~/projects/dotfiles/constants.env && grep -qx DOCKER=no ~/projects/dotfiles/constants.env"
 # The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
