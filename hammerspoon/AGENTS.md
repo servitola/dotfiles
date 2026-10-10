@@ -3,7 +3,10 @@
 ## Structure
 - **init.lua**: Main entry point - loads all Spoons and requires scripts
 - **Spoons/**: Custom functionality modules (*.spoon directories)
-- **Scripts**: `link_router.lua`, `set_language_on_app_focused.lua`, `reload_hammerspoon_on_script_changed.lua`
+- **Scripts**: `link_router.lua`, `game_mode.lua`, `reload_hammerspoon_on_script_changed.lua`
+- **Spoons/BirmanLayer.spoon**: right-⌥ typographic layer (Birman ⌥ / ⇧⌥ layers and dead keys over Apple's layouts), a third-party Spoon installed from its GitHub release by `install/18-spoons.sh` (git-ignored here; never edit it in place). `init.lua` always loads it and hands it `baseFixups = true`, `excludedLayouts` = Greek (Apple's own Greek ⌥ layer) and `excludedBundles` from `game_mode.lua`; no `overrides`. It knows no input source names — the ⌥ layers are positional, dead keys compose by typed character. The keyboard SVGs and lint D2 read its `typography_table.lua` (and Apple's ⌥ dumps for excluded layouts) through `docs/keyboard/parse_birman.py`.
+- **Layout names** come from `LAYOUT_PRIMARY` / `LAYOUT_SECONDARY` / `LAYOUT_TERTIARY` in `constants.env` — named by role, not by language; never write `"ABC"` in a call site.
+- **actions/**: personal hotkey actions registered into `spoon.HotKeys` (`actions/init.lua` lists the modules; `actions/lib/` holds their helpers). Loaded by `require "actions"` right before `spoon.HotKeys:start()`.
 
 ## Spoon Loading Pattern
 ```lua
