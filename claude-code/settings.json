@@ -30,7 +30,7 @@
       "Skill(superpowers:brainstorming)"
     ],
     "deny": [],
-    "defaultMode": "plan"
+    "defaultMode": "auto"
   },
   "model": "sonnet[1m]",
   "hooks": {
