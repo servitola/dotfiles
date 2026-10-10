@@ -20,7 +20,7 @@ care about; a non-zero exit is a blocked tool call.
 
 | file | hook event |
 |---|---|
-| `guard-bash.py` | PreToolUse(Bash) — deny rules |
+| `guard-bash.py` | PreToolUse(Bash) — asks before publishing (`git push`, `gh release create`, …); deletes or rewrites of published state (`gh repo delete`, `gh release delete`, `git push --force`, ref deletion, `git filter-repo`, `gh api -X DELETE`) are denied in `--dangerously-skip-permissions` sessions unless prefixed `OWNER_APPROVED=1`. Tests: `test-guard-bash.py` |
 | `compress-bash-output.py` | PostToolUse(Bash) — shrink output |
 | `post-edit-typecheck.sh` | PostToolUse(Edit\|Write\|MultiEdit) — `go vet` for `.go`, `rtk tsc --noEmit` for `.ts` |
 | `rag-context-inject.py` | UserPromptSubmit — dotfiles RAG context |

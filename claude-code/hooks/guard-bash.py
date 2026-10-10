@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
-"""PreToolUse(Bash) policy gate — one rule only.
+"""PreToolUse(Bash) policy gate — two rules.
 
   ask   commands that publish outward: `git push`, `gh pr create`,
         `docker push`, `npm publish`, ... ("explicit go-ahead" becomes a
         literal confirmation prompt)
+
+  destroy  commands that delete or rewrite what is already published:
+        `gh repo delete`, `gh release delete`, `git push --force`, a pushed
+        ref deletion, `git filter-repo`, `gh api -X DELETE`, ... In an
+        interactive session they ask like the rule above. Sessions started
+        with --dangerously-skip-permissions (the Telegram bot) never show an
+        "ask" — it passes silently — so there they are denied instead, and
+        go through only when the command carries OWNER_APPROVED=1, which the
+        agent adds after the owner said yes in the chat. Approved runs are
+        appended to APPROVED_LOG.
 
 The match is token-based, not substring-based: the command is lexed the
 way a shell would, split on operators, stripped of env-assignments and
@@ -76,8 +86,27 @@ PUBLISH_RULES = {
     "dotnet": [("nuget", "push")],
 }
 
+# Deleting or rewriting published state: stars, releases, attestations and
+# history do not come back.
+DESTRUCTIVE_RULES = {
+    "gh": [("repo", "delete"), ("repo", "archive"), ("repo", "rename"),
+           ("release", "delete"), ("release", "delete-asset"),
+           ("run", "delete")],
+    "git": [("filter-repo",), ("filter-branch",)],
+}
+
+# `git push` options that overwrite or delete refs on the remote.
+DESTRUCTIVE_PUSH_OPTIONS = {"-f", "--force", "--force-if-includes", "--mirror",
+                            "-d", "--delete", "--prune"}
+
+# `gh repo edit` options that change who can see the repository.
+DESTRUCTIVE_REPO_EDIT_OPTIONS = ("--visibility",)
+
 # `gh api -X POST ...` creates PRs and releases straight through the API.
 MUTATING_METHODS = {"POST", "PUT", "PATCH", "DELETE"}
+
+APPROVAL = re.compile(r"(?:^|[\s;&|(])OWNER_APPROVED=1(?=\s)")
+APPROVED_LOG = os.path.expanduser("~/.cache/claude-code/destructive-approved.log")
 
 ASSIGNMENT = re.compile(r"[A-Za-z_][A-Za-z_0-9]*=")
 
@@ -203,80 +232,143 @@ def positionals(args, opts_with_arg):
     return result
 
 
-def gh_api_writes(args):
+def gh_api_method(args):
     for index, token in enumerate(args):
         if token in {"-X", "--method"} and index + 1 < len(args):
-            if args[index + 1].upper() in MUTATING_METHODS:
-                return True
+            return args[index + 1].upper()
         if token.startswith(("-X", "--method=")):
-            if token.split("=")[-1].lstrip("-X").upper() in MUTATING_METHODS:
-                return True
-    return False
+            return token.split("=")[-1].lstrip("-X").upper()
+    return None
 
 
-def violation(segment):
-    """Return a human label for the publishing command, or None."""
-    segment = strip_prefix(segment)
-    if not segment:
-        return None
-    binary = os.path.basename(segment[0])
-    rules = PUBLISH_RULES.get(binary)
-    if rules is None:
-        return None
+def push_destroys(args, found):
+    """A push that force-overwrites or deletes remote refs."""
+    for token in args:
+        if token in DESTRUCTIVE_PUSH_OPTIONS or token.startswith("--force-with-lease"):
+            return True
+    # `git push origin +main` forces, `git push origin :refs/tags/v1` deletes.
+    return any(ref[:1] in {"+", ":"} for ref in found[2:])
 
-    args = segment[1:]
-    if "--dry-run" in args or (binary == "git" and "-n" in args):
-        return None
 
-    found = positionals(args, OPTS_WITH_ARG.get(binary, set()))
-    if binary == "gh" and found[:1] == ["api"] and gh_api_writes(args):
-        return "gh api -X POST/PUT/PATCH/DELETE"
-    for rule in rules:
+def destroys(binary, args, found):
+    """Return a label when the command deletes or rewrites published state."""
+    if binary == "git" and found[:1] == ["push"] and push_destroys(args, found):
+        return "git push --force / ref deletion"
+    if binary == "gh" and found[:2] == ["repo", "edit"] and any(
+            token.startswith(DESTRUCTIVE_REPO_EDIT_OPTIONS) for token in args):
+        return "gh repo edit --visibility"
+    if binary == "gh" and found[:1] == ["api"] and gh_api_method(args) == "DELETE":
+        return "gh api -X DELETE"
+    for rule in DESTRUCTIVE_RULES.get(binary, []):
         if tuple(found[:len(rule)]) == rule:
             return " ".join((binary,) + rule)
     return None
 
 
-def publishes(command, seen=()):
+def violation(segment):
+    """Return ("destroy" | "publish", human label) for a guarded command, or None."""
+    segment = strip_prefix(segment)
+    if not segment:
+        return None
+    binary = os.path.basename(segment[0])
+    if binary not in PUBLISH_RULES and binary not in DESTRUCTIVE_RULES:
+        return None
+
+    args = segment[1:]
+    found = positionals(args, OPTS_WITH_ARG.get(binary, set()))
+    label = destroys(binary, args, found)
+    if label:
+        return "destroy", label
+    if "--dry-run" in args or (binary == "git" and "-n" in args):
+        return None
+
+    if binary == "gh" and found[:1] == ["api"] and gh_api_method(args) in MUTATING_METHODS:
+        return "publish", "gh api -X POST/PUT/PATCH/DELETE"
+    for rule in PUBLISH_RULES.get(binary, []):
+        if tuple(found[:len(rule)]) == rule:
+            return "publish", " ".join((binary,) + rule)
+    return None
+
+
+def guarded(command, seen=()):
+    """Return (kind, label) for the most serious guarded command, or None."""
     try:
         tokens = lex(command)
     except ValueError:  # unbalanced quotes — fall back to the loose rule
         if re.search(r"\bgit\b[^|;&]*\bpush\b", command):
-            return "git push"
+            return "publish", "git push"
         return None
 
     commands = [strip_prefix(segment) for segment in segments(tokens)]
-    for segment in commands:
-        label = violation(segment)
-        if label:
-            return label
+    hits = [hit for hit in map(violation, commands) if hit]
 
-    if len(seen) >= MAX_EXPANSIONS:
-        return None
-    aliases, functions = shell_table()
-    for segment in commands:
-        name = segment[0] if segment else None
-        if name in functions:
-            return f"{name} → {functions[name]}"
-        if name in aliases and name not in seen:
-            expansion = " ".join([aliases[name]] + [shlex.quote(a) for a in segment[1:]])
-            label = publishes(expansion, seen + (name,))
-            if label:
-                return f"{name} → {label}"
+    if len(seen) < MAX_EXPANSIONS:
+        aliases, functions = shell_table()
+        for segment in commands:
+            name = segment[0] if segment else None
+            if name in functions:
+                hits.append(("publish", f"{name} → {functions[name]}"))
+            elif name in aliases and name not in seen:
+                expansion = " ".join([aliases[name]] + [shlex.quote(a) for a in segment[1:]])
+                hit = guarded(expansion, seen + (name,))
+                if hit:
+                    hits.append((hit[0], f"{name} → {hit[1]}"))
+
+    for kind in ("destroy", "publish"):
+        for hit in hits:
+            if hit[0] == kind:
+                return hit
     return None
+
+
+def unattended(payload):
+    """True when no one can answer an "ask": it would pass without a prompt.
+
+    The payload is not enough. A session started with
+    --dangerously-skip-permissions reports its current mode, "acceptEdits" in
+    the Telegram bot (measured 2026-09-24), while every ask still passes
+    silently. The flag itself is on the claude process's command line.
+    """
+    if payload.get("permission_mode") == "bypassPermissions":
+        return True
+    pid = os.environ.get("CLAUDE_PID")
+    if not pid:
+        return False
+    argv = subprocess.run(["ps", "-o", "command=", "-p", pid],
+                          capture_output=True, text=True, timeout=5).stdout
+    return "--dangerously-skip-permissions" in argv.split()
+
+
+def decide(kind, label, command, bypass):
+    """Hook output for a guarded command, or None to let it through."""
+    if kind == "destroy" and bypass:
+        if APPROVAL.search(command):
+            os.makedirs(os.path.dirname(APPROVED_LOG), exist_ok=True)
+            with open(APPROVED_LOG, "a") as log:
+                log.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')}\t{command}\n")
+            return None
+        return ("deny", f"`{label}` deletes or rewrites something already published, "
+                        "and this session cannot show a confirmation. Stop and ask the owner "
+                        "in the chat: name the command and what is lost for good. Only after "
+                        "an explicit yes, rerun it prefixed with OWNER_APPROVED=1.")
+    if kind == "destroy":
+        return ("ask", f"`{label}` deletes or rewrites something already published — confirm.")
+    return ("ask", f"`{label}` leaves the machine — confirm.")
 
 
 def main():
     payload = json.load(sys.stdin)
     if payload.get("tool_name") != "Bash":
         return
-    label = publishes(payload.get("tool_input", {}).get("command", ""))
-    if label:
+    command = payload.get("tool_input", {}).get("command", "")
+    hit = guarded(command)
+    decision = hit and decide(*hit, command, unattended(payload))
+    if decision:
         print(json.dumps({
             "hookSpecificOutput": {
                 "hookEventName": "PreToolUse",
-                "permissionDecision": "ask",
-                "permissionDecisionReason": f"`{label}` leaves the machine — confirm.",
+                "permissionDecision": decision[0],
+                "permissionDecisionReason": decision[1],
             }
         }))
 
