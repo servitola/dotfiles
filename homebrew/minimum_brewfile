@@ -12,6 +12,7 @@ brew "pre-commit"
 brew "uv"
 brew "zsh-autosuggestions"      # zsh/zshrc.sh
 brew "zsh-syntax-highlighting"  # zsh/zshrc.sh
+brew "zoxide"     # zsh/zshrc.sh: cd is aliased to z
 cask "adguard"
 cask "vivaldi"
 cask "font-jetbrains-mono-nerd-font"
