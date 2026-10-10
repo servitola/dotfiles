@@ -7,6 +7,10 @@ source "$HOME/projects/dotfiles/constants/load.zsh"
 
 IMAGE=ghcr.io/cirruslabs/macos-tahoe-base:latest
 BASE=dotfiles-base
+# Every run installs the whole brewfile (~30 GB); downloads land on the host
+# and are reused, so only the first run pays for them.
+CACHE_HOST='$HOME/.cache/tart-homebrew'
+CACHE_GUEST='/Volumes/My Shared Files/homebrew'
 DISK_GB=100
 DOTFILES=$HOME/projects/dotfiles
 
@@ -27,7 +31,7 @@ guest_ssh=(ssh -J "$TART_HOST" -o StrictHostKeyChecking=no -o UserKnownHostsFile
 guest() { "${guest_ssh[@]}" "admin@$ip" "$1"; }
 
 boot() {
-    host "nohup tart run --no-graphics $1 >/tmp/$1.log 2>&1 </dev/null &"
+    host "mkdir -p $CACHE_HOST && nohup tart run --no-graphics --dir homebrew:$CACHE_HOST $1 >/tmp/$1.log 2>&1 </dev/null &"
     ip=$(host "tart ip $1 --wait 180")
     host "until nc -z -G 2 $ip 22 2>/dev/null; do sleep 2; done"
 }
@@ -85,14 +89,15 @@ guest "sudo rm /usr/local/lib/TartMetalCapabilities.dylib"
 print "testing $(git -C "$DOTFILES" log --oneline -1)"
 
 typeset -A command=(
-    make  'cd ~/projects/dotfiles && make'
+    # Only make reads the shared cache: up starts with rm -rf "$(brew --cache)".
+    make  "cd ~/projects/dotfiles && HOMEBREW_CACHE='$CACHE_GUEST' make"
     check 'zsh ~/projects/dotfiles/install/check.sh'
     doctor 'zsh -lc "brew doctor"'
     up    'zsh -ic up'
 )
 # A step waiting on a dialog nobody sees hangs forever (run 6 sat 4.5 h on
 # Gatekeeper's prompt), so each stage has a ceiling.
-typeset -A limit=(make 3600 check 300 doctor 300 up 3600)
+typeset -A limit=(make 14400 check 300 doctor 300 up 3600)
 failed=()
 for stage in $stages; do
     print "━━ $stage"
