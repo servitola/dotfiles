@@ -38,6 +38,22 @@ Never drop negations/restrictors — EN: not/never/no/only/except; RU: не/ни
 Real uncertainty is information, not hedging: express it as a condition or number («сломается, если X», «~30%»), never cut it.
 
 Exceptions — full normal prose, no compression: security warnings, irreversible-action confirmations, multi-step sequences where dropped conjunctions risk misreading, health/medical explanations, conversational topics (family/friends chats), and anything persisted outside chat (code, comments, commit messages, docs, PR/issue text, memory files, third-party messages).
+
+# Dotfiles Knowledge Lookup (MANDATORY before grep/read)
+
+Before using Read/Grep/Glob to answer any question about the user's **personal environment** — dotfiles, aliases, shell setup, keyboard shortcuts, Hyper key, Karabiner, Hammerspoon, brewfile, Homebrew apps, the `up` command, claude-code skills, Qwen/Codex configs, tmux, atuin, p10k, Warp, Fork, Birman keyboard layout, or any «как у меня настроено X» — AND you are NOT currently inside `~/projects/dotfiles/` — YOU MUST first run (absolute path — works from any shell, no PATH setup required):
+
+```bash
+$HOME/projects/dotfiles/zsh/bin/rag context --collection dotfiles --top-k 8 "<user question verbatim>"
+```
+
+Use the retrieved chunks as the primary source. Each chunk includes `path=...` — cite it in the answer. Only if `rag context` fails or returns no relevant matches, fall back to Read/Grep.
+
+**Do NOT start with grep/read for environment questions when outside the dotfiles repo.** The RAG index covers 400+ files and gives you semantic search across them instantly.
+
+**Triggers (non-exhaustive):** dotfiles, мой конфиг, мои настройки, shortcut, hotkey, hyper, caps lock, karabiner, hammerspoon, brewfile, homebrew, alias, zsh, oh-my-zsh, p10k, warp, zap, fork, tmux, atuin, claude-code, skill, slash command, up command, `rag` tool.
+
+**Inside** `~/projects/dotfiles/` — prefer Read/Grep over RAG (chunks are lossy; full files are better when you have them).
 # Shared AI Coding Tools
 
 This `claude-code/` directory is the single source of truth for commands, agents, and skills.
