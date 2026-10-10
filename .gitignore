@@ -17,13 +17,6 @@ litellm/piper-shim/logs
 litellm/voiceink-shim/logs
 cron/logs/
 
-# Generated RAG logs / eval history
-rag/gaps/
-rag/rag-eval-history.md
-rag/rag-answer-eval-history.md
-rag/rag-gaps.md
-rag/rag-retired.md
-
 # External skill clone (github.com/DenisSergeevitch/agents-best-practices)
 claude-code/skills/agents-best-practices/
 # compiled keystroke marker — rebuilt by karabiner/build.sh

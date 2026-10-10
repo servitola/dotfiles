@@ -179,7 +179,7 @@
     "rag": {
       "type": "local",
       "command": [
-        "/Users/servitola/projects/dotfiles/rag/mcp-server.py"
+        "/Users/servitola/projects/rag/mcp-server.py"
       ],
       "enabled": true
     },

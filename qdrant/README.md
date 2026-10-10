@@ -22,8 +22,14 @@ Or auto-start via dotfiles: the path `projects/dotfiles/qdrant` is in [docker/co
 
 | Collection | Owner | Purpose |
 |---|---|---|
-| `dotfiles` | [rag/](../rag/) via `rag refresh` | Personal dotfiles index — Karabiner rules, Hammerspoon Spoons, zsh config, keyboard layout, etc. |
+| `dotfiles` | `~/projects/rag` (`$DIR_RAG`) via `rag refresh` | Personal dotfiles index — Karabiner rules, Hammerspoon Spoons, zsh config, keyboard layout, etc. |
+| `rag` | same | The rag toolkit itself (code and docs, eval data excluded). |
+| `services` | same | `~/projects/services` docker compose stacks. |
+| `sphere`, `glasswings` | same | App repositories under `~/projects`. |
+| `worknamevpn`, `serho` | same, `rag.private.conf` | Private project indexes. |
 | `smoke` | test harness | Used for quick health checks. |
+
+Collections and their source paths are declared in `$DIR_RAG/rag.conf` and `rag.private.conf`; `rag list` shows what the live instance holds.
 
 Add a new collection: just point any client at `http://localhost:6333` with a unique name. Qdrant auto-creates on first upsert.
 
