@@ -1,0 +1,14 @@
+#!/bin/zsh
+# skill — one entry point for the skill zoo.
+#
+#   skill where <name>            где этот скилл виден
+#   skill who <friend|me>         что видит друг (или я)
+#   skill list                    инвентарь по источникам, сироты помечены
+#   skill give <name> --to all    выдать всем друзьям (или одному / в папку)
+#   skill doctor                  битые линки, сироты, утечки, дрейф пресетов
+#   skill doctor --init           создать пресеты из текущего состояния
+#
+# Не заменяет skill-attach / skill-private / user-skill / sync-friend-skills —
+# оборачивает их. Раскладка симлинков на диске не меняется.
+set -u
+exec python3 "$HOME/.claude/scripts/skill_cli.py" "$@"
