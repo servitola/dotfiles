@@ -130,16 +130,4 @@ fi
 [[ $(spctl --status) == *disabled* ]] || sudo spctl --master-disable 2>/dev/null ||
     warn "Gatekeeper: pick \"Anywhere\" in System Settings → Privacy & Security"
 
-# Apps started from the Dock (Fork, VS Code) get launchd's PATH, which has no Homebrew,
-# so the git hooks they run picked macOS's python 3.9 and found no lua or jq.
-# Only `config user path` reaches them, from the next login on: a Fork started after
-# `launchctl setenv PATH` still had the default PATH (measured 2026-10-10).
-gui_path=/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
-launchd_config=/private/var/db/com.apple.xpc.launchd/config/user.plist
-if [[ $(plutil -extract PathEnvironmentVariable raw "$launchd_config" 2>/dev/null) != "$gui_path" ]]; then
-    sudo launchctl config user path "$gui_path" >/dev/null
-    ok "Homebrew on the PATH of apps started from the Dock (after the next login)"
-    changed=$(( changed + 1 ))
-fi
-
 (( changed )) || log "all already set"
