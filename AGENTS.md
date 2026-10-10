@@ -618,14 +618,15 @@ by mistake; it has been restored: the `agent-of-empires/` config dir, the
 `install/07-config-links.sh`. It is installed via its own fork (not brewfile).
 
 **Open questions.**
-- If after login `.cs` still opens in Rider, the user default did NOT beat
-  Rider's Info.plist Editor claim — escalate (make VSCode declare the type, or
-  strip Rider's claim). Standard LS behavior says the user default wins.
-- **pre-commit + voiceink gotcha:** the `vk-json-normalize` (`jq -S .`) clean
-  filter on `voiceink/VoiceInk_Settings_Backup.json` makes pre-commit's stash
-  unrestorable when that file is modified-but-unstaged — it silently ROLLS BACK
-  all uncommitted edits. Commit that file first (with `--no-verify`) or keep it
-  clean before committing anything else.
+- **pre-commit + voiceink (RESOLVED):** the `vk-json-normalize` (`jq -S .`) git
+  clean filter on `voiceink/VoiceInk_Settings_Backup.json` used to make
+  pre-commit's stash unrestorable when that file was modified-but-unstaged —
+  silently rolling back all uncommitted edits on a hook error. Fixed: the clean
+  filter is gone (`.gitattributes` line + git config + installer step removed),
+  and normalization now runs as the `normalize-voiceink-json` pre-commit hook
+  (`git-format-staged`, staged-only, non-lossy). Do NOT reintroduce a git
+  clean/smudge filter for it. Recovery fact: pre-commit always saves the stash
+  to `~/.cache/pre-commit/patch*` — `git apply` it if anything is ever rolled back.
 - `ableton/setup-mcp.sh` installs the **upstream** remote script, but the machine
   runs the `ableton-mcp-extended` fork (`~/projects/ableton_setup`, pinned in
   brewfile). Every `make` silently downgrades it. Owner is deciding.
