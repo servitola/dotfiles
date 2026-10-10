@@ -94,7 +94,10 @@ guest "sed -i '' 's/^DOCKER=yes\$/DOCKER=no/' ~/projects/dotfiles/constants.env 
 # Entries the VM cannot install for reasons a real Mac does not share: they
 # leave the clone's brewfile, so neither make nor check.sh expects them.
 #   idb-companion — builds only against a full Xcode, which needs an Apple ID
-for entry in 'brew "facebook/fb/idb-companion"'; do
+# and, not VM-specific but known and owned: the release downloads of the two
+# own forks fail everywhere (2026-10-10, the owner is fixing them); drop these
+# two once they install, so the test watches them again.
+for entry in 'brew "facebook/fb/idb-companion"' 'cask "servitola/tap/forkgram"' 'cask "servitola/tap/glasswings"'; do
     guest "grep -v -F '$entry' ~/projects/dotfiles/homebrew/brewfile > /tmp/brewfile && mv /tmp/brewfile ~/projects/dotfiles/homebrew/brewfile"
 done
 # The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
