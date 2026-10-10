@@ -17,53 +17,53 @@ repos:
     hooks:
       - id: lint-keyboard-layout
         name: Lint Hammerspoon keyboard layout files
-        entry: .git-hooks/lint-keyboard-layout.sh
+        entry: .git-hooks/with-brew .git-hooks/lint-keyboard-layout.sh
         language: system
         files: ^(hammerspoon/Spoons/HotKeys\.spoon/layout/60%/.*\.lua|macos_shortcuts/shortcuts\.toml)$
         stages: [pre-commit]
       - id: hammerspoon-requires
         name: Hammerspoon config loads only committed modules and installed Spoons
-        entry: .git-hooks/hammerspoon-requires.py
+        entry: .git-hooks/with-brew .git-hooks/hammerspoon-requires.py
         language: system
         pass_filenames: false
         files: ^(hammerspoon/.*\.lua|install/18-spoons\.sh)$
         stages: [pre-commit]
       - id: hyper-layers-generated
         name: Karabiner rules 07-17 match layers.toml (gen_layers.py --check)
-        entry: python3 docs/keyboard/tools/gen_layers.py --check
+        entry: .git-hooks/with-brew python3 docs/keyboard/tools/gen_layers.py --check
         language: system
         pass_filenames: false
         files: ^(karabiner/(layers\.toml|layers\.raw/.*|rules/(0[7-9]|1[0-7])-.*\.json)|docs/keyboard/(bridges|layers|parse_karabiner|config)\.py|docs/keyboard/tools/gen_layers\.py)$
         stages: [pre-commit]
       - id: constants
         name: constants.env fits its schema, loaders agree, no unread or unknown keys, no new hardcoded private values
-        entry: python3 constants/check.py
+        entry: .git-hooks/with-brew python3 constants/check.py
         language: system
         pass_filenames: false
         always_run: true
         stages: [pre-commit]
       - id: constants-check-tests
         name: Tests of constants/check.py
-        entry: python3 constants/test-check.py
+        entry: .git-hooks/with-brew python3 constants/test-check.py
         language: system
         pass_filenames: false
         files: ^constants/(check|test-check)\.py$
         stages: [pre-commit]
       - id: ensure-agents-symlinks
         name: Ensure AGENTS.md has CLAUDE.md / WARP.md symlinks
-        entry: .git-hooks/ensure-agents-symlinks.sh
+        entry: .git-hooks/with-brew .git-hooks/ensure-agents-symlinks.sh
         language: system
         files: (^|/)AGENTS\.md$
         stages: [pre-commit]
       - id: no-russian-comments
         name: Comments must be English (data in strings is fine)
-        entry: .git-hooks/lint-russian-comments.py
+        entry: .git-hooks/with-brew .git-hooks/lint-russian-comments.py
         language: system
         types: [text]
         stages: [pre-commit]
       - id: lint-shell
         name: Lint shell scripts (zsh -n / shellcheck by shebang)
-        entry: .git-hooks/lint-shell.sh
+        entry: .git-hooks/with-brew .git-hooks/lint-shell.sh
         language: system
         files: (\.sh$|^zsh/bin/[^/.]+$)
         stages: [pre-commit]

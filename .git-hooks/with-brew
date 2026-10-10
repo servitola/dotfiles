@@ -1,0 +1,5 @@
+#!/bin/sh
+# Git GUIs started from the Dock (Fork) run hooks with launchd's PATH: no Homebrew, so
+# python3 is macOS's 3.9 (no tomllib) and lua, shellcheck are missing. Homebrew keeps an
+# unversioned python3 only in python@3's libexec; /usr/local is its prefix on Intel Macs.
+PATH="/opt/homebrew/opt/python@3/libexec/bin:/opt/homebrew/bin:/usr/local/opt/python@3/libexec/bin:/usr/local/bin:$PATH" exec "$@"
