@@ -285,6 +285,45 @@ old author material now live in the lab.
 
 ---
 
+**State (2026-09-28, BirmanLayer 3.9.0: Birman's truth, no layout names). Committed
+(`874507eb`, `3bdc9cf1`), nothing pushed; the running Hammerspoon already uses it.** The
+Spoon claimed to be Ilya Birman's layout but was generated from this repo's edit
+of it, and it was keyed to the input source names `ABC` / `Russian – PC` / `Greek`.
+
+- **Truth is Birman's own build (`original/`, now in `~/projects/birman/lab`)**: Birman's Mac 3.9 (and 3.8 via Wayback, Windows
+  3.7), sha256-summed. His build is English + Russian only; `Gr` in
+  the owner's Ukelele bundle is ours (the Ukrainian experiment was deleted). Compared with an independent reader: base, Shift, dead keys
+  and terminators of the bundle's En/Ru are identical to 3.9; the ⌥ layer has **nine extra
+  cells** (`g z q 4 7 [ ] \ n` → `© § · £ ϗ » « ¦ ‘`) that the public Spoon used to type as
+  "Birman".
+- **The lab's generator now builds the Spoon table from `original/3.9-mac`** and writes the
+  difference to `hammerspoon/birman_extended.lua` (the nine cells + the Greek layer),
+  which `hammerspoon/init.lua` passes as `overrides`; typing on this Mac is unchanged. It
+  stops if the bundle differs from Birman beyond the ⌥ layers, or if the En and Ru
+  additions differ. New `tools/keylayout.py` (ElementTree
+  reader, cross-checked with `parse_birman.py` on 576 cells).
+- **The Spoon knows no layout name.** ⌥ layers are positional; a dead key composes by the
+  character `event:getCharacters()` reports (verified live on ABC, Russian – PC, Greek), so
+  any Latin/Cyrillic layout works. `layouts` is gone. `overrides` (`"*"` or an input source
+  id, key names or codes, `false`, `{pass=true}`, `dead`/`compose`/`terminators`) is the
+  configuration surface. `baseFixups` (ISO `§`/`` ` `` corrections) is opt-in and keyed by
+  source id — it is on here, off by default because on ANSI it would turn the grave key into `\`.
+- **Verified against the original:** `tests/official_cases.json` (~3 700 presses read from
+  Birman's layouts) replays through the real handler: `PASS 14629`, **no deviations**: the
+  owner wants exactly Birman, quirks included (En's doubled combining circumflex, Ru's `у`+`¨` → `ÿ`).
+  His Russian layout is a `cyrillic` overlay on the English table, chosen when kVK 0 types Cyrillic;
+  the README shows how to change any of it with `overrides`.
+- **Russian docs (owner's request, an exception to English-only docs):** the Spoon has `README.ru.md`,
+  `docs/*.ru.md`, `CHANGELOG.ru.md` and `assets/layout.ru.svg`, each linked to its English twin — keep
+  them in step. Birman's own pictures are NOT in the Spoon (removed 2026-09-28: he names the pictures as his);
+  the copies stay in the lab's `original/scheme/`.
+- **Repo state (2026-09-28):** the Spoon repository was recreated as one commit, tag `v3.9.0`, made
+  PUBLIC with a release zip; no Action; no PR to Hammerspoon/Spoons yet; launch posts drafted (now in the lab's `docs/posts/`), to go out ~2026-10-28. **Not done, owner's call:** telling Ilya Birman (his FAQ allows a derived
+  layout if credited; the archives stay out of the public repo); whether the nine extras
+  should exist at all. The Greek ⇧⌥ layer (tonos letters) is personal, not Birman-derived.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
