@@ -91,13 +91,14 @@ for repository in $DOTFILES $DIR_SKILLS $DIR_CRON; do
 done
 # M1/M2 have no nested virtualization, so no Docker daemon can run in the VM.
 guest "sed -i '' 's/^DOCKER=yes\$/DOCKER=no/' ~/projects/dotfiles/constants.env && grep -qx DOCKER=no ~/projects/dotfiles/constants.env"
+# A new user's Telegram: the owner's Forkgram releases are private.
+guest "sed -i '' -e 's/^APP_TELEGRAM=.*/APP_TELEGRAM=Telegram/' -e 's/^APP_TELEGRAM_BUNDLE=.*/APP_TELEGRAM_BUNDLE=ru.keepcoder.Telegram/' ~/projects/dotfiles/constants.env && grep -qx APP_TELEGRAM=Telegram ~/projects/dotfiles/constants.env"
 # Entries the VM cannot install for reasons a real Mac does not share: they
 # leave the clone's brewfile, so neither make nor check.sh expects them.
 #   idb-companion — builds only against a full Xcode, which needs an Apple ID
-# and, not VM-specific but known and owned: the release downloads of the two
-# own forks fail everywhere (2026-10-10, the owner is fixing them); drop these
-# two once they install, so the test watches them again.
-for entry in 'brew "facebook/fb/idb-companion"' 'cask "servitola/tap/forkgram"' 'cask "servitola/tap/glasswings"'; do
+# and, not VM-specific but known and owned: glasswings' release download fails
+# everywhere (2026-10-10, the owner is fixing it); drop it once it installs.
+for entry in 'brew "facebook/fb/idb-companion"' 'cask "servitola/tap/glasswings"'; do
     guest "grep -v -F '$entry' ~/projects/dotfiles/homebrew/brewfile > /tmp/brewfile && mv /tmp/brewfile ~/projects/dotfiles/homebrew/brewfile"
 done
 # The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
