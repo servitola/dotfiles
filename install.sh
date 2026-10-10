@@ -1,6 +1,5 @@
 #!/bin/zsh
-# Installs the dotfiles: runs every numbered step in install/
-cd "$HOME/projects/dotfiles" || exit 1
+cd "$HOME/projects/dotfiles"
 source install/lib.sh
 start_logging
 
