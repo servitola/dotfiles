@@ -226,8 +226,6 @@ brew "miniupnpc"
 brew "mistral-vibe"
 # Matroska media files manipulation tools
 brew "mkvtoolnix"
-# AI on the command-line
-brew "mods"
 # Deep clean and optimize your Mac
 brew "mole"
 # Collection of tools that nobody wrote when UNIX was young
@@ -272,8 +270,6 @@ brew "openskills"
 brew "p7zip"
 # Swiss-army knife of markup format conversion
 brew "pandoc"
-# Identify unused code in Swift projects
-brew "periphery"
 # Friendly PIL fork (Python Imaging Library)
 brew "pillow"
 # Execute binaries from Python packages in isolated environments
