@@ -17,13 +17,22 @@ section "packages (homebrew/brewfile)"
 if brew bundle check --no-upgrade --file "$DOTFILES/homebrew/brewfile" >/dev/null 2>&1; then
     log "all installed"
 else
-    # mas installs only for a signed-in App Store, and mas 2 can no longer tell
-    # whether it is, so a person confirms before the long unattended part.
-    if [[ -t 0 ]] && grep -q '^mas ' "$DOTFILES/homebrew/brewfile"; then
+    # mas waits forever, not fails, for a Store nobody signed in to (measured:
+    # 2 h in the VM test), and mas 2 can no longer tell whether anyone has. So a
+    # person confirms the sign-in, and without one the mas lines are left out.
+    brewfile=$DOTFILES/homebrew/brewfile
+    reply=s
+    if [[ -t 0 ]]; then
         open -a "App Store"
-        read -r "?      sign in to the App Store, then press Enter "
+        read -r "reply?      sign in to the App Store and press Enter, or type s to skip its apps: "
     fi
-    brew bundle --no-upgrade --file "$DOTFILES/homebrew/brewfile" || warn "brew bundle: the entries above failed"
+    if [[ $reply == s ]]; then
+        brewfile=$STATE/brewfile-without-mas
+        mkdir -p "$STATE"
+        grep -v '^mas ' "$DOTFILES/homebrew/brewfile" > "$brewfile"
+        warn "App Store apps skipped: sign in, then run make again"
+    fi
+    brew bundle --no-upgrade --file "$brewfile" || warn "brew bundle: the entries above failed"
 fi
 
 section "quarantine flags off the casks"
