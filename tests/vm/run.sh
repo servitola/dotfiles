@@ -91,6 +91,12 @@ for repository in $DOTFILES $DIR_SKILLS $DIR_CRON; do
 done
 # M1/M2 have no nested virtualization, so no Docker daemon can run in the VM.
 guest "sed -i '' 's/^DOCKER=yes\$/DOCKER=no/' ~/projects/dotfiles/constants.env && grep -qx DOCKER=no ~/projects/dotfiles/constants.env"
+# Entries the VM cannot install for reasons a real Mac does not share: they
+# leave the clone's brewfile, so neither make nor check.sh expects them.
+#   idb-companion — builds only against a full Xcode, which needs an Apple ID
+for entry in 'brew "facebook/fb/idb-companion"'; do
+    guest "grep -v -F '$entry' ~/projects/dotfiles/homebrew/brewfile > /tmp/brewfile && mv /tmp/brewfile ~/projects/dotfiles/homebrew/brewfile"
+done
 # The image's own Metal probe; brew doctor would flag it as an unbrewed dylib
 # on every run, and the doctor stage is there to catch what make leaves behind.
 guest "sudo rm /usr/local/lib/TartMetalCapabilities.dylib"
