@@ -50,7 +50,7 @@ repos:
         files: ^constants/(check|test-check)\.py$
         stages: [pre-commit]
       - id: ensure-agents-symlinks
-        name: Ensure AGENTS.md has CLAUDE.md / WARP.md symlinks
+        name: Ensure AGENTS.md has a CLAUDE.md symlink
         entry: .git-hooks/with-brew .git-hooks/ensure-agents-symlinks.sh
         language: system
         files: (^|/)AGENTS\.md$
