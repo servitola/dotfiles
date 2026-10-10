@@ -1,0 +1,6 @@
+#!/bin/zsh
+# Rebuild the crontab from the fragments in $DIR_CRON_JOBS and install it.
+#
+#   cron-install            merge + crontab -
+#   cron-install --print    only show the merged crontab
+exec "${DIR_DOTFILES:?}/cron/install.sh" "$@"
