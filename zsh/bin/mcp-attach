@@ -1,0 +1,43 @@
+#!/bin/zsh
+# mcp-attach — attach a DETACHED MCP server to a specific folder (project scope).
+#
+# Detached MCP servers are removed from the global ~/.claude.json so their
+# tool schemas don't load into every session. Snippets live in
+# ~/projects/dotfiles/claude-code/detached_mcp/<name>.mcp.json; attaching
+# merges the snippet into <target>/.mcp.json (created if absent). Claude Code
+# picks up project .mcp.json automatically (asks for approval on first use).
+#
+# Usage:
+#   mcp-attach                          # list detached MCP servers
+#   mcp-attach <name> [target-dir]      # attach to target dir (default: cwd)
+#   mcp-attach --detach <name> [dir]    # remove server from <dir>/.mcp.json
+set -u
+OPT="$HOME/projects/dotfiles/claude-code/detached_mcp"
+
+if [[ $# -eq 0 ]]; then
+  print -r -- "detached MCP servers:"
+  for f in "$OPT"/*.mcp.json(N); do print -r -- "  ${${f:t}%.mcp.json}"; done
+  return 0
+fi
+
+if [[ "$1" == "--detach" ]]; then
+  name="$2"; target="${3:-.}"
+  out="$target/.mcp.json"
+  tmp="$(mktemp)"
+  jq --arg n "$name" 'del(.mcpServers[$n])' "$out" > "$tmp" && mv "$tmp" "$out"
+  print -r -- "detached MCP: $name from $out"
+  return 0
+fi
+
+name="$1"; target="${2:-.}"
+src="$OPT/$name.mcp.json"
+[[ -f "$src" ]] || { print -u2 "mcp-attach: no detached MCP named '$name' (run with no args to list)"; return 1 }
+
+out="$target/.mcp.json"
+if [[ -f "$out" ]]; then
+  tmp="$(mktemp)"
+  jq -s '.[0] * .[1]' "$out" "$src" > "$tmp" && mv "$tmp" "$out"
+else
+  cp "$src" "$out"
+fi
+print -r -- "attached MCP: $name → $out"
