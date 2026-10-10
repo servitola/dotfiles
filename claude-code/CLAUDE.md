@@ -51,7 +51,7 @@ Use the retrieved chunks as the primary source. Each chunk includes `path=...` �
 
 **Do NOT start with grep/read for environment questions when outside the dotfiles repo.** The RAG index covers 400+ files and gives you semantic search across them instantly.
 
-**Triggers (non-exhaustive):** dotfiles, мой конфиг, мои настройки, shortcut, hotkey, hyper, caps lock, karabiner, hammerspoon, brewfile, homebrew, alias, zsh, oh-my-zsh, p10k, warp, zap, fork, tmux, atuin, claude-code, skill, slash command, up command, `rag` tool.
+**Triggers (non-exhaustive):** dotfiles, мой конфиг, мои настройки, shortcut, hotkey, hyper, caps lock, karabiner, hammerspoon, brewfile, homebrew, alias, zsh, oh-my-zsh, p10k, zap, fork, tmux, atuin, claude-code, skill, slash command, up command, `rag` tool.
 
 **Inside** `~/projects/dotfiles/` — prefer Read/Grep over RAG (chunks are lossy; full files are better when you have them).
 

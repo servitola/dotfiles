@@ -194,7 +194,7 @@ Expected: no grep hits; `skill list` prints skills; the dry run reports nothing 
 `claude-code/AGENTS.md` lines 1–8: title → `# claude-code — the Claude Code harness (hooks, settings, agents, scripts); skills and commands live in $DIR_SKILLS`; add after the symlink list: `- `skills/`, `detached_skills/`, `commands/` are symlinks into `$DIR_SKILLS` (`~/projects/skills`, private), created by `install/08-ai-tools-links.sh` and git-ignored. To use this harness with your own skills: set `DIR_SKILLS` in `constants.env`, put `skills/`, `detached_skills/`, `commands/` there, run `zsh install/08-ai-tools-links.sh`.`
 `docs/repo-map.md:16`: say the content moved to `~/projects/skills` on 2026-10-10.
 `docs/commands.md`: the `skill*` rows mention `$DIR_SKILLS`.
-`~/projects/skills/AGENTS.md` (+ `CLAUDE.md`, `WARP.md` symlinks): what is here, how dotfiles links it, the detached-skills rule, the frontmatter limits, `skill-presets.json`, `shared/skills-repos`.
+`~/projects/skills/AGENTS.md` (+ a `CLAUDE.md` symlink): what is here, how dotfiles links it, the detached-skills rule, the frontmatter limits, `skill-presets.json`, `shared/skills-repos`.
 Dotfiles `AGENTS.md` handoff: a `**State (2026-10-10, skills moved out)**` paragraph.
 
 - [ ] **Step 2: Checks and commits**
@@ -205,7 +205,7 @@ python3 constants/check.py && pre-commit run --all-files | grep -c Failed
 git add constants.env constants/schema.toml install/08-ai-tools-links.sh .gitignore claude-code/scripts/skill_cli.py claude-code/shared/scripts/bind-topic-skill.sh hammerspoon/Spoons/VoiceCtl.spoon/init.lua launchagents/com.servitola.sync-friend-skills.plist .pre-commit-config.yaml claude-code/AGENTS.md docs/repo-map.md docs/commands.md
 git commit -m "[claude-code] skills, detached skills and commands move to ~/projects/skills behind DIR_SKILLS"
 git add AGENTS.md && git commit -m "[claude-code] handoff: skills repository"
-cd ~/projects/skills && git add AGENTS.md CLAUDE.md WARP.md && git commit -m "Describe the repository"
+cd ~/projects/skills && git add AGENTS.md CLAUDE.md && git commit -m "Describe the repository"
 cd ~/projects/cron && git commit -am "insight-miner reads the skill from DIR_SKILLS" && git push -q origin master
 ```
 
