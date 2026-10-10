@@ -40,6 +40,9 @@ path+=( "$HOMEBREW_PREFIX/opt/sqlite/bin" )
 # JetBrains Toolbox Scripts
 path+=( ~/Library/Application\ Support/JetBrains/Toolbox/scripts )
 
+# Unity CLI. Its installer appends `. ~/.unity/env` to .zshrc; here the same entry reaches every shell.
+path+=( ~/.unity/bin )
+
 # The java binary resolves via the /usr/bin/java wrapper; bin/ is for the other tools.
 path+=( "$JAVA_HOME/bin" )
 
