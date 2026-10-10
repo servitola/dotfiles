@@ -17,7 +17,9 @@ litellm/piper-shim/logs
 litellm/voiceink-shim/logs
 cron/logs/
 
-# External skill clone (github.com/DenisSergeevitch/agents-best-practices)
-claude-code/skills/agents-best-practices/
+# Content lives in $DIR_SKILLS; install/08 links it here.
+claude-code/skills
+claude-code/detached_skills
+claude-code/commands
 # compiled keystroke marker — rebuilt by karabiner/build.sh
 karabiner/helper/keylog
