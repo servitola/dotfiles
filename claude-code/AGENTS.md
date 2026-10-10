@@ -1,6 +1,6 @@
 # claude-code — the Claude Code harness (hooks, settings, agents, scripts); skills and commands live in $DIR_SKILLS
 
-Single source of truth for `commands/`, `agents/`, `skills/` shared across Claude Code, Qwen Code, Codex. `~/.claude` is a symlink to this directory.
+`~/.claude` is a symlink to this directory. `skills/`, `detached_skills/` and `commands/` inside it are symlinks into `$DIR_SKILLS` (`~/projects/skills`, private; moved out on 2026-10-10), created by `install/08-ai-tools-links.sh` and git-ignored — so Claude Code, Codex (`~/.agents/skills`), OpenCode and the friends' bots keep their usual paths. To run this harness with your own skills: set `DIR_SKILLS` in `constants.env`, put `skills/`, `detached_skills/`, `commands/` there, run `zsh install/08-ai-tools-links.sh`. `agents/` stays here: it is harness, not content.
 
 ## Symlink targets (created by Makefile)
 - `~/.codex/config.toml` → `codex/config.toml`
