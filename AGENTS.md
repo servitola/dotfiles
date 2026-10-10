@@ -397,6 +397,32 @@ moved with the jobs** — it is the "Build-fix agent" section of
 
 ---
 
+**State (2026-08-30, Zen → Vivaldi). Shipped and verified, nothing pushed.**
+`APP_BROWSER=Vivaldi` / `APP_BROWSER_BUNDLE=com.vivaldi.Vivaldi`. The move itself
+is the two constants — `browsers.lua`, the `⇪V` chord (`@APP_BROWSER`) and the
+`focus_personal` set all read the role. Regenerated: `app_bundle_ids.lua`, the
+keyboard SVGs. `minimum_brewfile` went `zen` → `vivaldi`; the `cask "zen"` note in
+the full `brewfile` and the weekly source-rebuild cron were left alone.
+
+- **URLDispatcher no longer uses `hs.urlevent.openURLWithBundle`.** With Vivaldi
+  that pair (`launchOrFocusByBundleID` + `openURLWithBundle`) starts a *second*
+  browser process instead of handing the link to the running one. The two fight
+  over `SingletonLock`: no tab appears, the first instance loses its window and
+  then hangs windowless, ignoring SIGTERM (only `kill -9` clears it). Measured
+  three times on Vivaldi 7.x; Gecko never showed it. The spoon now shells out to
+  `/usr/bin/open -b <bundle> <url>`, which hands the link to the live instance —
+  verified for both the default route (Vivaldi) and a pattern route (Firefox).
+  This is a deliberate divergence from the upstream spoon; the reason is in a
+  comment next to `open_in_bundle`.
+- Vivaldi is Chromium, so `is_video_window` now matches on `Picture in Picture`
+  plus the ` - Vivaldi` suffix net. It has **no** `pip_chord`, so the focus sets
+  no longer auto-pop a playing video into its own window — that worked under Zen
+  via Gecko's `⌘⌥⇧]`. Find Vivaldi's real chord if the behaviour is wanted.
+- Still true from the Vivaldi era: Apple Events → JavaScript is off by default,
+  so `⇧⌃⌥V` "focus the playing YouTube tab" degrades to the first matching tab.
+
+---
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
