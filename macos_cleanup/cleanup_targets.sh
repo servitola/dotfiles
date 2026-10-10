@@ -8,6 +8,7 @@ try_clean_aged_files ~/projects/services/lgtv/dl "Converted TV Videos"
 try_clean_aged ~/Library/Caches "Library Caches" "tealdeer"
 try_clean_aged /Library/Caches "System Caches"
 try_clean_aged ~/Library/Application\ Support/Caches "Application Support Caches"
+try_clean_aged ~/Library/Application\ Support/Google/Chrome-headless "Chrome headless profiles" "" 1
 
 # --- Gaming ---
 
