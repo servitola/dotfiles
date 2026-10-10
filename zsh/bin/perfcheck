@@ -141,9 +141,9 @@ else
     ok "watcher locks" "none stuck"
 fi
 # broken cron entries (scripts that no longer exist) — check last-hour log spam
-CRONLOG=~/projects/dotfiles/cron/logs
+CRONLOG="${DIR_CRON:?}/logs"
 if [[ -d "$CRONLOG" ]]; then
-    BROKEN=$(grep -l 'no such file or directory' "$CRONLOG"/*.log 2>/dev/null | wc -l | tr -d ' ')
+    BROKEN=$(grep -l 'no such file or directory' "$CRONLOG"/*.log "${DIR_FORKS:?}"/logs/*.log 2>/dev/null | wc -l | tr -d ' ')
     (( BROKEN > 0 )) && note "${BROKEN} cron log(s) contain 'no such file' — verify crontab paths after any migration"
 fi
 
