@@ -43,6 +43,7 @@ if hs.fs.attributes(hs.configdir .. "/Spoons/LinkRouter.spoon") then
     safeLoadSpoon("LinkRouter") -- each clicked link to the browser its rule names, github.com/servitola/LinkRouter.spoon
 end
 safeLoadSpoon("HotKeys") -- all hotkeys
+safeLoadSpoon("VoiceCtl") -- voice-driven mac control (see detached skill voice-mac)
 safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop, github.com/servitola/ScreenGlow.spoon
 if spoon.HotKeys then
     local ok, err = pcall(require, "actions")  -- personal actions register into spoon.HotKeys
