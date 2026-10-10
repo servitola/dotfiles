@@ -38,8 +38,14 @@ alias yta=ytaudio
 # Rutube: same video config, retried through the Moscow exit when geo-blocked
 alias ytrutube="noglob yt-rutube"
 alias ytr=ytrutube
+
 alias cl=clear
-alias cd='z'
+# cd → zoxide's `z` for frecency jumps in interactive use.
+# Hidden from AI agents (Claude Code sets CLAUDECODE=1): `z` fuzzy-matches against
+# history, so a relative `cd <name>` that doesn't exist locally silently teleports
+# to a frecency match instead of erroring — agents then run in the wrong dir.
+# Agents get plain cd; you keep the frecency jumps.
+[[ -z "$CLAUDECODE" ]] && alias cd='z'
 
 # duckduckgo search
 alias d="ddgr -x -n 3"
@@ -52,8 +58,15 @@ alias cat=bat
 alias mkdir="mkdir -pv"
 alias search=rg
 alias e=eza
-alias top=btop
-alias ping="prettyping -c 10 --nolegend"
+# top → btop (rich TUI) for interactive use.
+# Hidden from AI agents (CLAUDECODE set): btop is a full-screen TUI that ignores
+# top's batch flags (-l/-b/-n) and hangs waiting for input. Agents get plain top.
+[[ -z "$CLAUDECODE" ]] && alias top=btop
+# ping → prettyping (compact unicode graph) for interactive use.
+# Hidden from AI agents (CLAUDECODE set): prettyping renders colored unicode bars
+# instead of standard ping lines and forces -c 10, so agents parsing latency/loss
+# get garbage. Agents get plain ping.
+[[ -z "$CLAUDECODE" ]] && alias ping="prettyping -c 10 --nolegend"
 
 rec() {
     ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422 -f avfoundation -i "2" -preset ultrafast -c:a pcm_s16le -probesize 100M "output_$(date +%Y%m%d_%H%M%S).mp4"
@@ -77,12 +90,17 @@ alias ips="ifconfig -a | rg -o 'inet6?\s+(addr:\s*)?(((\d+\.){3}\d+)|[a-fA-F0-9:
 alias ports='netstat -vanp tcp'
 alias ports_listeners='lsof -nP -iTCP -sTCP:LISTEN'
 
-# eza aliases (theme from ~/.config/eza/theme.yml)
-alias ls="eza --icons --group-directories-first --color=always"
-alias l="eza --icons --group-directories-first --color=always"
-alias ll="ls -l"
-alias la="ll -a"
-alias lt="ll --tree"
+# Theme lives in ~/.config/eza/theme.yml.
+# Hidden from AI agents (CLAUDECODE set): `--color=always --icons` inject ANSI
+# escapes and glyph icons even into pipes, so agents parsing `ls` output get
+# garbage. Interactive shells keep the pretty listing; agents fall back to /bin/ls.
+if [[ -z "$CLAUDECODE" ]]; then
+    alias ls="eza --icons --group-directories-first --color=always"
+    alias l="eza --icons --group-directories-first --color=always"
+    alias ll="ls -l"
+    alias la="ll -a"
+    alias lt="ll --tree"
+fi
 
 # brew
 alias bi="brew install"
