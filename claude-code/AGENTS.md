@@ -24,3 +24,12 @@
 - `skills/openai-docs` is vendored from Codex's built-in system skills (`~/.codex/skills/.system/openai-docs`); re-copy it manually if a Codex update improves it.
 - Codex is installed via Homebrew cask only (`cask "codex"`); never add the npm `@openai/codex` duplicate back. Never `brew uninstall --zap codex` — its zap stanza deletes `~/.codex`.
 
+## Handoff
+
+**`skills/project-init`** (new this session) — scaffolds fresh git repos (PoC) or hardens existing ones: detects stack → latest-stable linters/formatters/type-checkers → unit+integration tests → git hooks (gitleaks + a ≤100-logic-line file gate) → CI → verified first commit. Built from the user's real conventions (surveyed several existing repos across the stack).
+- **Structure:** `SKILL.md` (router, 2 modes) + `scripts/{detect_stack.sh, check_file_length.py}` + `references/{python,typescript,dotnet,mobile,extra,harden-existing}.md`.
+- **`check_file_length.py`** — counts *logic* lines (skips blank/comment), 100 code / 300 tests, skips generated/vendored, `project-init: allow-long` marker, plus a **ratchet**: `--write-baseline FILE` freezes current violations, `--baseline FILE` blocks growth while grandfathering legacy (the tool for Mode B on existing repos). Passes its own gate (92 logic lines) + ruff/format.
+- **Dogfooded** on a real Python PoC (`scratchpad/slugkit`, 3 green commits). The live run fixed real defects now baked in: gitleaks ignores `AKIA…EXAMPLE` keys (use `AKIAZ7XQ4PWLK9RT2VBN`), empty `ignore-words-list=""` breaks codespell, `ruff`→`ruff-check` hook rename.
+- **python.md default set** now adds codespell + check-toml/json + detect-private-key; bandit/vulture/xenon documented as opt-in "graduation tier" (overlap ruff S/C90 or noisy on young code).
+
+**Next steps:** (1) run Mode B (harden) on a real repo — a candidate side project — to see the ratchet live; (2) dogfood `.NET` and `mobile` references on a real project like Python was; (3) optionally promote `extra.md` go/rust to full references when adopted. **Open question:** whether the file-length gate should exempt docstrings (currently counts them; decided against — matches user's wc-l culture).
