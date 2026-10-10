@@ -30,6 +30,7 @@ LAYOUT_SECONDARY = { type = "text", about = "second input source" }
 LAYOUT_TERTIARY  = { type = "text", about = "third input source" }
 
 DOCK_POSITION = { type = "text", about = "side of the screen the Dock sits on: left, bottom or right" }
+DOCKER        = { type = "text", about = "yes or no: whether this Mac runs the docker stacks" }
 
 DIR_PROJECTS     = { type = "dir", about = "root of every repository" }
 DIR_DOTFILES     = { type = "dir", about = "this repository" }
@@ -41,7 +42,8 @@ DIR_SERVICES     = { type = "dir", unread = true, about = "docker compose servic
 DIR_FORKS        = { type = "dir", about = "fork-sync jobs" }
 DIR_CONFIG       = { type = "dir", unread = true, about = "XDG config home" }
 DIR_EXTERNAL     = { type = "dir", removable = true, about = "external drive" }
-DIR_CRON_JOBS    = { type = "dir", unread = true, about = "cron fragments" }
+DIR_CRON         = { type = "dir", about = "cron jobs repository (~/projects/cron)" }
+DIR_CRON_JOBS    = { type = "dir", about = "cron fragments" }
 DIR_CRON_SCRIPTS = { type = "dir", about = "scripts the cron fragments run" }
 DIR_CLAUDE       = { type = "dir", unread = true, about = "Claude Code configuration" }
 TART_HOST        = { type = "host", private = true, about = "ssh alias of the machine that runs tart VMs" }
@@ -57,6 +59,7 @@ FILE_SERHO_ENV  = { type = "file", private = true, about = "env file of the Tele
 TG_CHAT_MAIN   = { type = "chat_id", private = true, about = "supergroup for reminders and digests" }
 TG_CHAT_NOTIFY = { type = "chat_id", private = true, about = "supergroup for machine alerts" }
 TG_CHAT_PHONE3 = { type = "chat_id", private = true, about = "supergroup of the third phone" }
+TG_THREAD_CRON = { type = "text", about = "topic in TG_CHAT_NOTIFY for the weekly cron report" }
 TG_BOT_API     = { type = "url", about = "local Telegram Bot API server" }
 
 LITELLM_URL = { type = "url", about = "local LiteLLM proxy" }
