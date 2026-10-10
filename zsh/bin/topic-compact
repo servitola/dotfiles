@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+# Usage: topic-compact <topic-dir> <window|auto|show>
+#   window  e.g. 150k, 200k, 500000 (Claude Code accepts 100k..1M)
+#   auto    drop the override; restore the shared `.claude` symlink
+#   show    print the current override
+# Topic dirs get `.claude -> ../.claude`, so a per-topic value needs a real dir.
+# The override goes to settings.local.json, which Claude merges over the shared
+# settings.json — everything else stays inherited from the tenant root.
+# The topic's session must be restarted (/new) to pick it up.
+
+set -euo pipefail
+
+[[ $# -eq 2 ]] || { sed -n '2,4p' "$0" | sed 's/^# \?//' >&2; exit 1; }
+
+dir="$(cd "$1" && pwd)"
+value="$2"
+claude="$dir/.claude"
+local_file="$claude/settings.local.json"
+
+read_window() {
+    [[ -f "$local_file" ]] || return 0
+    python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("autoCompactWindow",""))' "$local_file"
+}
+
+if [[ "$value" == show ]]; then
+    current=""
+    [[ -L "$claude" ]] || current="$(read_window)"
+    echo "${current:-auto (shared)}"
+    exit 0
+fi
+
+if [[ "$value" != auto && ! "$value" =~ ^[0-9]+[kKmM]?$ ]]; then
+    echo "bad value: $value (want 150k, 200k, 500000 or auto)" >&2
+    exit 1
+fi
+
+if [[ -L "$claude" ]]; then
+    [[ "$value" == auto ]] && { echo "already auto (shared)"; exit 0; }
+    target="$(readlink "$claude")"
+    [[ "$target" == ../.claude ]] || { echo "unexpected symlink target: $target" >&2; exit 1; }
+    rm "$claude"
+    mkdir "$claude"
+    for item in settings.json hooks skills; do
+        [[ -e "$dir/../.claude/$item" ]] && ln -s "../../.claude/$item" "$claude/$item"
+    done
+fi
+
+python3 - "$local_file" "$value" <<'PY'
+import json, os, sys
+path, value = sys.argv[1], sys.argv[2]
+data = json.load(open(path)) if os.path.exists(path) else {}
+if value == "auto":
+    data.pop("autoCompactWindow", None)
+else:
+    data["autoCompactWindow"] = value
+if data:
+    json.dump(data, open(path, "w"), indent=2, ensure_ascii=False)
+    open(path, "a").write("\n")
+elif os.path.exists(path):
+    os.remove(path)
+PY
+
+if [[ "$value" == auto && ! -e "$local_file" ]]; then
+    others="$(find "$claude" -mindepth 1 -maxdepth 1 ! -name settings.json ! -name hooks ! -name skills | wc -l)"
+    if (( others == 0 )); then
+        rm -r "$claude"
+        ln -s ../.claude "$claude"
+        echo "$dir: auto (shared symlink restored)"
+        exit 0
+    fi
+fi
+echo "$dir: autoCompactWindow=$value"
