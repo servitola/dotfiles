@@ -7,7 +7,6 @@ COMPRESS_TARGETS=(
     "$HOME/.dotnet/packs"   # never $HOME/.dotnet — a compressed CoreCLR host tree SIGKILLs every dotnet run
     "$HOME/.rustup"
     "$HOME/.konan"
-    "$HOME/.hermes"
     "$HOME/Library/Application Support/MstyStudio"
 )
 
