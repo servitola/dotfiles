@@ -46,6 +46,12 @@ hand-written knowledge, and everything there is billed on every session. It is
 empty on purpose: `up` used to fill it with `rtk learn --write-rules`, whose
 "corrections" were false (`rtk/AGENTS.md`).
 
+**Model lists: query the runtime, never grep a config.** Codex →
+`~/.codex/models_cache.json`. LiteLLM → `curl -s localhost:4000/v1/models`.
+Grepping `litellm/config.yaml` for `model_name:` gives false positives (it marked
+the live `coder` alias as dead). Current model/context/pricing tables for Codex
+and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
+
 ## Code Style Guidelines
 - **Theme**: Gruvbox Dark Hard. If possible modern **Apple-glass Gruvbox**
 - **Fail-fast philosophy**: Do NOT add existence checks for dependencies, tools, or paths. If something required is missing, the script should fail loudly. This is intentional — it surfaces setup issues immediately.
