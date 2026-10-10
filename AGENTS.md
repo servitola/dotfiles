@@ -606,6 +606,12 @@ skips (now `if [[ -n "$CI" ]]` in `install/ci-guarded.sh`). Verified with
 end-to-end here — the link steps need `sudo`/TTY; `make install` on a machine
 or the CI `macos-install` job is the real test.
 
+**State.** Default-app handling was reworked into `macos/set_default_apps.sh`
+(one `HANDLERS` map; the old `set_extension_handlers.sh` folded into it). Bare
+filenames (Brewfile/Makefile/…) dropped — macOS has no by-filename mechanism.
+Last run: `added 0, retargeted 0, unchanged 171`; every binding verified on a
+real file, including `.cs`/`.csproj` → VSCode and `.sln`/`.slnx` → Rider.
+
 
 **Open questions.**
 - If after login `.cs` still opens in Rider, the user default did NOT beat
