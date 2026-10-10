@@ -632,6 +632,13 @@ by mistake; it has been restored: the `agent-of-empires/` config dir, the
   brewfile). Every `make` silently downgrades it. Owner is deciding.
 - Five taps in `homebrew/minimum_brewfile` are untrusted, so `brew cu` and
   `brew autoupdate` currently refuse to run. Owner is handling this.
-- Full Disk Access will NOT be granted — don't propose fixes that need it.
+- Full Disk Access is not granted as a rule — don't propose fixes that need it.
+  Deliberate exceptions exist, all narrow: `/opt/homebrew/bin/uv` (the agent
+  runtime), `launchagents/helper/serho-runner`, and `~/projects/forks/runner/forks-runner`
+  (since 2026-10-01; it replaced nine per-job runners that lived here). The runners
+  are fork+exec stubs that exist purely to own the grant; the alternative was
+  granting FDA to `/bin/zsh`, i.e. to every zsh script on the machine. All are
+  signed stably — an ad-hoc binary gets a new cdhash per rebuild and the grant
+  vanishes silently. Adding another exception needs the owner's say-so.
 - An external process auto-commits with the message `1`, sweeping in whatever is
   in the working tree. Don't leave junk uncommitted, and expect noisy history.
