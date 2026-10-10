@@ -139,5 +139,7 @@ alias ld="lazydocker"
 
 alias ff="open -a 'Marta' ."
 
-# copy absolute path to clipboard (file or current dir)
+# Live log viewer for serho (Telegram AI agent) — q quit, / search, ? help
+alias serho-logs="lnav $HOME/Library/Logs/serho/stdout.log $HOME/Library/Logs/serho/stderr.log"
+
 ppp() { readlink -f "${1:-.}" | tr -d '\n' | pbcopy && echo "Copied: $(pbpaste)"; }
