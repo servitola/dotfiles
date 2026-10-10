@@ -9,12 +9,12 @@ new one, it starts here.
 - **`brewfile`** — the canonical list of *everything* installed via Homebrew:
   `tap`, `brew` (CLI formulae), `cask` (GUI apps), and `mas` (Mac App Store).
   ~500 entries. This is the answer to "what apps do I have" and "is X installed".
-- **`minimum_brewfile`** — a minimal essential subset for a fresh/lightweight
-  machine.
 - **`install_all_homebrew_packages.sh`** — installs everything:
   `brew bundle --file=~/projects/dotfiles/homebrew/brewfile`.
 - Install step 3 (`install/03-homebrew.sh`) bootstraps Homebrew itself and
-  installs `minimum_brewfile`.
+  installs the whole `brewfile`. A failed entry is reported, not fatal; mas apps
+  fail until the App Store is signed in, and `install/check.sh` ignores them.
+  There is no minimum list any more: it drifted from what `make` and `up` call.
 
 ## Keeping the list in sync
 

@@ -8,11 +8,16 @@ section "Homebrew"
 eval "$(/opt/homebrew/bin/brew shellenv)"   # a fresh Mac gets brew on PATH only in step 4
 log "$(brew --version | head -1)"
 
-section "minimum packages (homebrew/minimum_brewfile)"
-if brew bundle check --file "$DOTFILES/homebrew/minimum_brewfile" >/dev/null 2>&1; then
+section "packages (homebrew/brewfile)"
+# Everything, not a subset: a hand-kept minimum list kept drifting from what
+# make and up call. One entry that cannot install (a moved cask download, a mas
+# app before the App Store sign-in) must not leave the Mac unconfigured, so the
+# failures are reported and the install goes on; check.sh judges the result.
+# Upgrades are up's job, so make only fills in what is missing.
+if brew bundle check --no-upgrade --file "$DOTFILES/homebrew/brewfile" >/dev/null 2>&1; then
     log "all installed"
 else
-    brew bundle --quiet --file "$DOTFILES/homebrew/minimum_brewfile"
+    brew bundle --no-upgrade --file "$DOTFILES/homebrew/brewfile" || warn "brew bundle: the entries above failed"
 fi
 
 section "quarantine flags off the casks"

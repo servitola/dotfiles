@@ -21,7 +21,8 @@ else
 fi
 
 section "apps and tools"
-expect "minimum brewfile satisfied (brew bundle check)" brew bundle check --file homebrew/minimum_brewfile
+# mas apps wait for an App Store sign-in that only a person can do
+expect "brewfile satisfied, mas apps aside (brew bundle check)" brew bundle check --no-upgrade --file =(grep -v '^mas ' homebrew/brewfile)
 expect "login shell is zsh" test "${SHELL:t}" = zsh
 expect "Hammerspoon running" pgrep -x Hammerspoon
 expect "Karabiner rules match layers.toml" python3 docs/keyboard/tools/gen_layers.py --check
