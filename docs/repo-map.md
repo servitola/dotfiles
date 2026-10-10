@@ -62,7 +62,7 @@ use — safe to ignore or delete).
 
 Safe to ignore. Kept for reference; could be removed without affecting the setup.
 
-- **Alternative AI coding agents** (Claude Code is the real one): **aider · opencode · codex · mistral-vibe** — all wired to the litellm proxy but not in daily use.
+- **Alternative AI coding agents** (Claude Code is the real one): **aider · opencode · codex** — all wired to the litellm proxy but not in daily use.
 - **cursor** — AI editor. Not used.
 - **aichat** — AI CLI. Experiment.
 - **lazygit · lazydocker** — TUIs; Fork + OrbStack cover everything, so unused.
@@ -83,7 +83,7 @@ are launched from the Hyper layer (see `docs/keyboard-setup.md`).
 
 - **Terminal:** Zap (Hyper+B) — `zap/`.
 - **Editors:** **Rider** for C# projects; **VS Code** (Hyper+N) for everything else (logs, configs, dotfiles — "a text editor on steroids"). `nano` for the rare quick terminal edit.
-- **AI coding:** **Claude Code** (paid) — the daily driver. The local agents (opencode/aider/qwen-code/codex/mistral-vibe) are experiments.
+- **AI coding:** **Claude Code** (paid) — the daily driver. The local agents (opencode/aider/qwen-code/codex) are experiments.
 - **Git client:** Fork (Hyper+G).
 - **Docker runtime / launcher:** OrbStack (Hyper+⌘+R). `docker/` compose stacks run on it.
 - **Browsers (split by purpose):** Vivaldi = main (Hyper+V); Chrome = technical / dev sites (Hyper+⇧+V); Firefox = work sites (Hyper+H). LinkRouter.spoon routes links by the rules in `hammerspoon/link_router.lua`; which browser is "main" is one line in `constants.env` (`APP_BROWSER`), and `hammerspoon/browsers.lua` keeps Zen, Yandex, Chrome, Firefox and Opera listed so a move is that one line. Vivaldi is Chromium, so tab cycling works over AppleScript — but only after Settings → Privacy → Apple Events allows JavaScript, otherwise `⇧⌃⌥V` falls back to the first matching tab.

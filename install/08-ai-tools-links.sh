@@ -34,7 +34,6 @@ link_all \
 # OpenCode gets its own agents: it refuses to start on Claude Code's named
 # colours ("color: yellow"). Skills it reads from ~/.claude/skills directly.
 
-section "single-file AI tools (Mistral Vibe, Aider)"
+section "Aider"
 link_all \
-    "$DOTFILES/mistral-vibe/config.toml" "$HOME/.vibe/config.toml" \
     "$DOTFILES/aider/aider.conf.yml"   "$HOME/.aider.conf.yml"

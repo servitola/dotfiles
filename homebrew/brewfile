@@ -222,7 +222,6 @@ brew "midnight-commander"
 # UPnP IGD client library and daemon
 brew "miniupnpc"
 # Minimal CLI coding agent
-brew "mistral-vibe"
 # Matroska media files manipulation tools
 brew "mkvtoolnix"
 # Deep clean and optimize your Mac
