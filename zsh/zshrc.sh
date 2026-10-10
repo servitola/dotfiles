@@ -42,17 +42,8 @@ source ~/projects/dotfiles/zsh/p10k.zsh
 # iTerm2 shell integration
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Atuin shell history (--disable-up-arrow keeps native prefix search on up/down)
-eval "$(atuin init zsh --disable-up-arrow)"
-
-# Up/down arrow: prefix-based history search (type beginning, then arrow to filter)
-autoload -U history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^[[A" history-beginning-search-backward-end  # Standard terminals
-bindkey "^[OA" history-beginning-search-backward-end  # Application mode (iTerm2)
-bindkey "^[[B" history-beginning-search-forward-end   # Down arrow standard
-bindkey "^[OB" history-beginning-search-forward-end   # Down arrow application mode
+# Atuin owns Ctrl-R and Up (prefix search, atuin/config.toml)
+eval "$(atuin init zsh)"
 
 source "${DIR_LITELLM:?}/ai.sh"
 [[ -r $DIR_RAG/rag.sh ]] && source "$DIR_RAG/rag.sh"

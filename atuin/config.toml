@@ -8,7 +8,7 @@ dialect = "uk"
 timezone = "local"
 
 ## Sync settings
-auto_sync = false
+auto_sync = true
 update_check = false
 sync_address = "https://api.atuin.sh"
 sync_frequency = "10m"
@@ -21,8 +21,10 @@ filter_mode = "global"
 workspaces = true
 
 ## Shell up-key behavior (can differ from Ctrl-R)
-# Disable up-arrow binding - use standard shell history navigation
-up_arrow = false
+# Up searches every tab and every synced Mac by what is already typed; the
+# native zsh search only saw ~/.zsh_history, which a shell writes on exit.
+search_mode_shell_up_key_binding = "prefix"
+filter_mode_shell_up_key_binding = "global"
 
 ## UI/UX settings
 style = "auto"
