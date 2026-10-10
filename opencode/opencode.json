@@ -195,7 +195,7 @@
     "youtrack": {
       "type": "local",
       "command": [
-        "/Users/servitola/.claude/scripts/youtrack-mcp-proxied.sh"
+        "/Users/servitola/projects/services/worknamevpn/youtrack-mcp/youtrack-mcp-proxied.sh"
       ],
       "enabled": true
     }

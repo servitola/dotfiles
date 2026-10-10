@@ -18,10 +18,10 @@ Read-only commands pass untouched: `grep -rn send_message`, `cat client.py`
 and friends are searches, not sends, so the first token of each shell segment
 is checked against a read-only allowlist before the patterns run.
 
-Own chat ids and any directories that should be strict (no sends at all, not
-even the ask path) are private, so they live outside this file — see
-CONFIG_PATH. Without that config the guard still works and simply asks about
-every Bot API send.
+The own chat id and the directories that are strict (no sends at all, not even
+the ask path) are machine constants: TG_CHAT_MAIN and TG_STRICT_DIRS, read from
+the environment or constants.env. Without a chat id the guard still works and
+simply asks about every Bot API send.
 
 Fails open — a broken guard must never wedge the session.
 """
@@ -32,10 +32,6 @@ import re
 import shlex
 import sys
 
-CONFIG_PATH = os.environ.get(
-    "CLAUDE_TELEGRAM_GUARD_CONFIG",
-    os.path.expanduser("~/projects/dotfiles/claude-code/telegram-guard.json"),
-)
 
 SEPARATORS = set("();<>|&`") | {"||", "&&", ";;", ">>", "<<"}
 
@@ -88,16 +84,24 @@ DENY_REASON = (
 
 
 def config():
-    """Private settings; absent config just means stricter defaults."""
+    """TG_CHAT_MAIN and TG_STRICT_DIRS from the machine constants; a missing or
+    empty chat id only makes the guard stricter (every send asks)."""
+    own = setting("TG_CHAT_MAIN")
+    strict = setting("TG_STRICT_DIRS")
+    return ([own] if own else [], [d for d in strict.split(",") if d])
+
+
+def setting(name):
+    """The environment wins (every zsh exports the constants, and tests override
+    them there); constants.env is the fallback for a process that inherited no shell."""
+    if name in os.environ:
+        return os.environ[name]
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "constants"))
     try:
-        with open(CONFIG_PATH) as handle:
-            data = json.load(handle)
-    except (OSError, ValueError):
-        return [], []
-    return (
-        [str(c) for c in data.get("own_chat_ids", [])],
-        [str(d) for d in data.get("strict_dirs", [])],
-    )
+        from constants import K
+    except Exception:
+        return ""
+    return K.get(name, "")
 
 
 def lex(command):

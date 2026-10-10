@@ -11,7 +11,8 @@ Design — cheap, dependency-light (stdlib only), and FAILS OPEN ALWAYS:
   Pure coding-action prompts, greetings, and short/ambiguous prompts are
   skipped (err toward NOT injecting to avoid noise).
 - cwd -> collection: ~/projects/<X> maps to the matching collection;
-  ~/projects/workname -> workname-code; home / dotfiles -> dotfiles.
+  the dotfiles repo -> the `dotfiles` collection; other project dirs map via
+  the private overlay map.
 - Runs `rag context` with a short timeout and small top-k.
 - On ANY problem (rag/LiteLLM/Qdrant down, timeout, error, no matches,
   disabled via env) -> exit 0, inject nothing. Never blocks or delays
@@ -47,17 +48,20 @@ SCORE_RE = re.compile(r"\bscore=([0-9]*\.?[0-9]+)")
 
 # cwd basename under ~/projects -> collection. Anything not listed and not a
 # known project falls back to `dotfiles` (home-level / personal env questions).
-DIR_TO_COLLECTION = {
-    "dotfiles": "dotfiles",
-    "services": "services",
-    "serho": "serho",
-    "sphere": "sphere",
-    "glasswings": "glasswings",
-    "workbot2": "workbot2",
-    "worknamevpn": "worknamevpn",
-    "workbot-docs": "workname-dev-docs",
-    "workname": "workname-code",
-}
+_DIR_MAP = os.path.join(os.environ.get("DIR_RAG", os.path.expanduser("~/projects/rag")), "claude-dir-map.json")
+
+
+def _load_dir_map():
+    mapping = {"dotfiles": "dotfiles"}
+    try:
+        with open(_DIR_MAP, encoding="utf-8") as f:
+            mapping.update(json.load(f))
+    except Exception:
+        pass
+    return mapping
+
+
+DIR_TO_COLLECTION = _load_dir_map()
 
 # Interrogative openers: a genuine question typically STARTS with one of
 # these (any language). Used as the primary lookup signal alongside a trailing

@@ -61,6 +61,7 @@ FILE_SERHO_ENV  = { type = "file", private = true, about = "env file of the Tele
 TG_CHAT_MAIN   = { type = "chat_id", private = true, about = "supergroup for reminders and digests" }
 TG_CHAT_NOTIFY = { type = "chat_id", private = true, about = "supergroup for machine alerts" }
 TG_CHAT_PHONE3 = { type = "chat_id", private = true, about = "supergroup of the third phone" }
+TG_STRICT_DIRS = { type = "text", private = true, about = "comma-separated cwd substrings where deny-telegram-send refuses every send" }
 TG_THREAD_CRON = { type = "text", about = "topic in TG_CHAT_NOTIFY for the weekly cron report" }
 TG_BOT_API     = { type = "url", about = "local Telegram Bot API server" }
 
