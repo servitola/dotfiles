@@ -100,11 +100,11 @@ Lint reads the file (not the machine), so it runs in pre-commit: `S1` fails when
 The full set of bindings is the **per-key Lua files** in `hammerspoon/Spoons/HotKeys.spoon/layout/60%/`. Trying to maintain an ASCII keyboard picture in this doc has rotted twice — instead use:
 
 - **Visual**: rendered SVGs in `docs/keyboard/` (regenerated from sources, always current). Start with [hyper.svg](keyboard/hyper.svg) for the main layer or [by-action.svg](keyboard/by-action.svg) for a category-grouped view.
-- **Text/grep**: `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index regenerated on each edit. Best target for «what does Hyper+X do» searches.
+- **Text/grep**: `grep -rn 'chord = "⇪g"' hammerspoon/Spoons/HotKeys.spoon/layout/60%/` — or `python3 docs/keyboard/tools/bridge.py` for the slot F-keys.
 - **Source**: open the per-key file directly (e.g. `g.lua` for everything on G).
 
 ### Hyper layer cheatsheet
-The most-used chords on the Hyper layer (Caps Lock + key). For the complete list see `SUMMARY.md` or [hyper.svg](keyboard/hyper.svg):
+The most-used chords on the Hyper layer (Caps Lock + key). For the complete list see [hyper.svg](keyboard/hyper.svg):
 
 | Chord | Action | Notes |
 |---|---|---|
@@ -204,7 +204,7 @@ Greek's ⌥ layer, so it was deleted and Greek excluded instead.)
   Birman's Russian acute composes only `ќ ѓ`, so stress on a Cyrillic vowel is always
   "vowel, then ⇧⌥/ twice".
 - **Karabiner rule 03** (right ⌥ + C E D A R → © € ° ≈ ® through the clipboard)
-  was deleted on 2026-09-27: the layer types those characters directly.
+  was deleted (d7406c6f): the layer types those characters directly.
 - **Changing a character.** Set `layer.overrides` in `hammerspoon/init.lua` (the shape is the
   Spoon's `docs/configuration.md`, "Overrides"), then `hs.reload()`.
   The Spoon's own `typography_table.lua` is Birman's and is never edited here.
@@ -216,8 +216,8 @@ Greek's ⌥ layer, so it was deleted and Greek excluded instead.)
   `python3 docs/keyboard/tools/lint.py --strict`.
 - **Where the Spoon lives.** Like any user, the dotfiles *install* BirmanLayer from its
   GitHub release: `install/18-spoons.sh` downloads the pinned tag's zip into
-  `hammerspoon/Spoons/` (the directory is git-ignored here). Update: bump `BIRMAN_LAYER` there,
-  run `zsh install/18-spoons.sh`, `hs.reload()`. Building and releasing the Spoon is not done from
+  `hammerspoon/Spoons/` (the result is committed, see `hammerspoon/AGENTS.md`). Update: bump `BIRMAN_LAYER` there,
+  run `zsh install/18-spoons.sh`, `hs.reload()`, commit the new build. Building and releasing the Spoon is not done from
   this repo.
 
 ## Layout System
@@ -239,7 +239,7 @@ Each key file returns an array of chord definitions:
 return {
   { chord = "⇪f", app = "Finder" },                          -- Hyper+F launches Finder
   { chord = "⌃⌥a", fn = "window.left" },                     -- Ctrl+Alt+A triggers window function
-  { chord = "⇪t", app = "Forkgram", window_default_position = "right" }, -- With window positioning
+  { chord = "F17", app = "@APP_TELEGRAM", window_default_position = "right" }, -- ⇪t via its slot, the role from constants.env
   { chord = "F14", app = "Rider" },                          -- ⇪r, via its bridge slot
 }
 ```
@@ -290,7 +290,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 |---|---|
 | `python3 docs/keyboard/tools/lint.py` | Validate format, column geometry, and chord/comment coverage. `--strict` fails on errors (used by pre-commit), `--skip-drift` skips the Karabiner/Birman cross-check for speed. |
 | `python3 docs/keyboard/tools/normalize.py --insert-missing` | Auto-fix column geometry and insert missing chord rows into the ASCII comment based on the actual Lua entries. |
-| `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view) and re-emits both `SUMMARY.md` files. |
+| `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view). |
 | `python3 docs/keyboard/tools/gen_layers.py` | Write `karabiner/rules/07`–`17` from `karabiner/layers.toml` (tables + `[slots]`) + `layers.raw/` (`karabiner/build.sh` runs it). `--check` exits 1 with a diff on drift (lint `G1`, pre-commit). |
 | `python3 docs/keyboard/tools/gen_bundle_ids.py` | Regenerate `HotKeys.spoon/app_bundle_ids.lua` — the app-name → bundle-ID map used for fast exact `hs.application.get()` lookups (names in layout files stay the source of truth; unresolved names fall back to fuzzy `find`). Re-run after adding a new `app = "..."` chord. |
 | `python3 docs/keyboard/tools/dump_apple_layouts.py` | Dump Apple's ABC / Russian / Russian – PC / Greek base and Shift layers (`UCKeyTranslate`) into `docs/keyboard/apple-layouts/`, the plain and Shift characters `parse_birman.py` labels keys with. |
@@ -301,7 +301,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 
 `fn` entries resolve through the action registry (`HotKeys.spoon/actions.lua`). Generic actions are registered by the Spoon itself; everything personal lives in `hammerspoon/actions/` and registers with `spoon.HotKeys:register(name, fn)`. Grouped by category:
 
-- **Window**: `window.left` `window.right` `window.fullscreen` `window.set_all_to_default` `window.half_left` `window.half_right` `window.top_60` `window.bottom_40` `window.center` `window.hide_current` `window.minimize_and_focus_next` `window.swap_sides` `window.hide_all_except_work` `window.focus_work` `window.focus_personal` `window.focus_comms`
+- **Window**: `window.left` `window.right` `window.fullscreen` `window.set_all_to_default` `window.half_left` `window.half_right` `window.top_60` `window.bottom_40` `window.center` `window.hide_current` `window.minimize_and_focus_next` `window.swap_sides` `window.screen_prev` `window.screen_next` `window.hide_all_except_work` `window.focus_work` `window.focus_personal` `window.focus_comms`
   - `window.minimize_and_focus_next` is bound to `⌘H`, replacing the macOS Hide. It minimizes the
     focused window and moves focus on: to the app's next window if it has one, otherwise to the
     topmost window of another app. A fullscreen window leaves fullscreen first. `⌥4`
@@ -325,15 +325,16 @@ A chord whose `fn` is not registered is reported by `start()` (red notification 
 
 ## App-specific hotkeys
 
-`HotKeys.spoon/app_specific_hotkeys.lua` enables per-app rebinds via an `hs.application.watcher` (centralized in `appWatcherHub`). The table lives at the top of `init.lua`:
+`HotKeys.spoon/app_specific_hotkeys.lua` enables per-app rebinds via an `hs.application.watcher` (centralized in `appWatcherHub`). The table is `appSpecificHotkeys` in `HotKeys.spoon/init.lua`, keyed by the role constants (a literal name only for apps without a role):
 
 ```lua
 local appSpecificHotkeys = {
-    ["Fork"]    = { { from = {"cmd","shift"}, key = "e", to = {"cmd","shift"}, target_key = "l" } },
-    ["Music"]   = { { from = {"cmd"},         key = "e", to = {"cmd"},         target_key = "l" } },
-    ["Zap"]     = { { from = {"alt"},         key = "z", sendText = "/new" } },
-    ["Finder"]  = { { from = {"alt"},         key = "z", to = {"cmd","alt"},   target_key = "l" } },
-    ["*"]       = { … },  -- always active
+    [constants.APP_GIT_GUI]  = { { from = {"cmd","shift"}, key = "e", to = {"cmd","shift"}, target_key = "l" }, … },
+    [constants.APP_MUSIC]    = { { from = {"cmd"},         key = "e", to = {"cmd"},         target_key = "l" }, … },
+    [constants.APP_TERMINAL] = { { from = {"alt"},         key = "z", sendText = "/new" } },
+    ["Finder"]               = { { from = {"alt"},         key = "z", to = {"cmd","alt"},   target_key = "l" } },
+    [constants.APP_TELEGRAM] = { { from = {"ctrl"},        key = "f", to = {"cmd"},         target_key = "k" } },
+    ["*"]                    = { … },  -- always active
 }
 ```
 
@@ -361,7 +362,7 @@ Use `from`+`to`+`target_key` for chord remaps, or `from`+`sendText` to type a st
 
 ## Visual reference
 
-See **`docs/keyboard/`** for auto-generated SVG diagrams of all 24 shortcut layers plus the action-grouped `by-action.svg`. Index with category legend lives at `docs/keyboard/README.md.`
+See **`docs/keyboard/`** for auto-generated SVG diagrams of every shortcut layer (27 today) plus the action-grouped `by-action.svg`. Index with category legend lives at `docs/keyboard/README.md.`
 
 Regenerate everything: `python3 docs/keyboard/generate.py`
 
@@ -374,7 +375,6 @@ Regenerate everything: `python3 docs/keyboard/generate.py`
 - `hammerspoon/Spoons/HotKeys.spoon/app_specific_hotkeys.lua` — per-app rebind helper
 - `hammerspoon/actions/` — personal hotkey actions (`register` calls) and their helpers in `actions/lib/`
 - `hammerspoon/Spoons/HotKeys.spoon/layout/60%/` — per-key layout files (active)
-- `hammerspoon/Spoons/HotKeys.spoon/layout/60%/SUMMARY.md` — auto-generated chord index for grep / AI agents
 - `hammerspoon/Spoons/HotKeys.spoon/app_bundle_ids.lua` — auto-generated app-name → bundle-ID map (via `docs/keyboard/tools/gen_bundle_ids.py`)
 - `hammerspoon/Spoons/HotKeys.spoon/layout/extra/` — F-key placeholder files
 - `docs/keyboard/` — auto-generated SVG keyboard shortcut diagrams

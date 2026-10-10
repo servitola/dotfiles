@@ -36,6 +36,7 @@ template with all rule files in sorted order.
 
 ## Rule Files (rules/)
 ```
+00-keyboard-lock.json        — Left Ctrl + Right Alt + ⌫ → `hs -c 'toggleKeyboardLock()'` (hammerspoon/keyboard_lock.lua)
 01-tab-modifier.json         — Tab as modifier layer (hold Tab + key)
 02-alt-shift-delete.json     — Alt+Shift+Q = Shift+Delete Forward
 04-caps-lock-hyper.json      — Caps Lock → all 4 right modifiers (Hyper)
@@ -98,7 +99,7 @@ reachable from the left hand.
 
 All four rows are live. This deliberately eats the macOS 🌐-combos that land on mapped letters
 (🌐+E emoji, 🌐+F fullscreen, 🌐+C Control Center, 🌐+Q Quick Note, 🌐+A, 🌐+D) — the owner
-tried them and uses none. Do not "restore" them without asking. `fn`+`h`, arrows, delete and
+tried them and uses none. Do not "restore" them without asking. Arrows, delete and
 the F-row stay untouched, as do 🌐+N and 🌐+M (right half, never mapped).
 
 ## Tab Modifier Pattern (Variable-Based Layer)

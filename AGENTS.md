@@ -15,7 +15,7 @@ matters and what's just an experiment. Each directory also has its own
 - **Dotfiles repo**: Configuration files symlinked to system locations (~/.zshrc, ~/.gitconfig, etc.)
 - **Package management**: Homebrew with brewfile for app installations and documentation in `/opt/homebrew/docs/`
 - **Automation**: Hammerspoon for window management, URL routing, keyboard layouts
-- **Keyboard**: Karabiner-Elements for advanced keyboard customization
+- **Keyboard**: Karabiner-Elements owns keys, Hammerspoon owns meaning; the whole stack and where to change what: `docs/keyboard-setup.md`
 - **Shell**: Zsh + Oh My Zsh with extensive plugin ecosystem
 - **No databases or APIs**: Pure configuration repository
 - **Symlinks**: Created by `install.sh` / `install/*.sh` (e.g., ~/.gitconfig → git/gitconfig; app configs link to respective directories)

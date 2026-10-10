@@ -87,7 +87,7 @@ are launched from the Hyper layer (see `docs/keyboard-setup.md`).
 - **AI coding:** **Claude Code** (paid) — the daily driver. The local agents (opencode/aider/qwen-code/codex/mistral-vibe) are experiments.
 - **Git client:** Fork (Hyper+G).
 - **Docker runtime / launcher:** OrbStack (Hyper+⌘+R). `docker/` compose stacks run on it.
-- **Browsers (split by purpose):** Vivaldi = main (Hyper+V); Chrome = technical / dev sites (Hyper+⇧+V); Firefox = work sites (Hyper+H). `hammerspoon/config_UrlDispatcher.lua` routes links by URL; which browser is "main" is one line in `constants.env` (`APP_BROWSER`), and `hammerspoon/browsers.lua` keeps Zen, Yandex, Chrome, Firefox and Opera listed so a move is that one line. Vivaldi is Chromium, so tab cycling works over AppleScript — but only after Settings → Privacy → Apple Events allows JavaScript, otherwise `⇧⌃⌥V` falls back to the first matching tab.
+- **Browsers (split by purpose):** Vivaldi = main (Hyper+V); Chrome = technical / dev sites (Hyper+⇧+V); Firefox = work sites (Hyper+H). LinkRouter.spoon routes links by the rules in `hammerspoon/link_router.lua`; which browser is "main" is one line in `constants.env` (`APP_BROWSER`), and `hammerspoon/browsers.lua` keeps Zen, Yandex, Chrome, Firefox and Opera listed so a move is that one line. Vivaldi is Chromium, so tab cycling works over AppleScript — but only after Settings → Privacy → Apple Events allows JavaScript, otherwise `⇧⌃⌥V` falls back to the first matching tab.
 - **Messenger:** Telegram (Hyper+T) — also the keyboard-language exception (manual switching, type Russian).
 - **Music:** Apple Music — Music.app (Hyper+P). Never Spotify/web players.
 - **Voice → text:** VoiceInk (`voiceink/`), always running. `whisper-x` via `w` for batch files.

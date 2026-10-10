@@ -1,5 +1,4 @@
 -- Passive input logger: combos (key/mouse, always on) + text (keyDown chars, toggleable).
--- See docs/superpowers/specs/2026-08-11-hammerspoon-input-logger-design.md for the design.
 
 local log = hs.logger.new('InputLogger', 'info')
 

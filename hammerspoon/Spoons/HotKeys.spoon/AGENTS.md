@@ -19,7 +19,7 @@
 - `chord` - Required: Key combination (emoji symbols or Fn key)
 - `app` - Launch/focus application (must match macOS name exactly, case-sensitive), or `"@APP_<ROLE>"` — a key from `constants.env`, resolved at load. Use the constant when the chord means a role ("my browser") rather than one specific app; lint rule C2 fails on an unknown key. Roles in use: `APP_BROWSER`, `APP_BROWSER_ALT`, `APP_BROWSER_WORK`, `APP_TERMINAL`, `APP_TERMINAL_ALT`, `APP_TELEGRAM`, `APP_EDITOR`, `APP_IDE`, `APP_GIT_GUI`, `APP_FILES`, `APP_MUSIC`, `APP_VIDEO`. A literal name is for apps without a role (Finder, Simulator, zoom.us…).
 - `fn` - Action name. Must be registered: generic ones in `init.lua` (`registerBuiltins`), personal ones in `hammerspoon/actions/*.lua`. Lint rule A1 fails on an unregistered name; at runtime `start()` shows a red notification listing them.
-- `window_default_position` - Optional: "left", "right", or "bottom"
+- `window_default_position` - Optional: `"right"` (PowerWindows side slot) or `"bottom"` (corner); anything else fails the assert in `bindChords`
 - `sendKey` - Type text string when pressed
 
 ## Modifier Symbols

@@ -2,7 +2,7 @@
 local telegram = require("telegrams").main.bundle
 
 local ZAP = "dev.zap.Zap"
-local FIREFOX = "org.mozilla.firefox" -- work pages open there (config_UrlDispatcher)
+local FIREFOX = "org.mozilla.firefox" -- work pages open there (link_router.lua)
 
 -- Telegram's main window is titled "Telegram" ("(N) Telegram" with unread messages);
 -- a detached chat carries the chat's name. The personal layout splits on that:
