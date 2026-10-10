@@ -28,6 +28,15 @@ section "packages (homebrew/brewfile)"
 mkdir -p "$STATE"
 brewfile=$STATE/brewfile
 grep -v '^mas ' "$DOTFILES/homebrew/brewfile" > "$brewfile"
+# The Telegram client follows APP_TELEGRAM. Forkgram comes from the owner's tap,
+# whose releases are private, so anyone else picks the official client there.
+typeset -A telegram_casks=( Forkgram servitola/tap/forkgram Telegram telegram )
+for client cask in ${(kv)telegram_casks}; do
+    [[ $client == "$APP_TELEGRAM" ]] && continue
+    grep -v -F "cask \"$cask\"" "$brewfile" > "$brewfile.tmp" && mv "$brewfile.tmp" "$brewfile"
+done
+grep -q -F "cask \"${telegram_casks[$APP_TELEGRAM]:?no cask for APP_TELEGRAM=$APP_TELEGRAM}\"" "$brewfile" ||
+    print -r -- "cask \"${telegram_casks[$APP_TELEGRAM]}\"" >> "$brewfile"
 missing_mas=()
 for line in ${(f)"$(grep '^mas ' "$DOTFILES/homebrew/brewfile")"}; do
     name=${${line#mas \"}%%\"*}

@@ -22,7 +22,8 @@ fi
 
 section "apps and tools"
 # mas apps wait for an App Store sign-in that only a person can do
-expect "brewfile satisfied, mas apps aside (brew bundle check)" brew bundle check --no-upgrade --file =(grep -v '^mas ' homebrew/brewfile)
+# the list install step 3 installed: this Mac's Telegram client, mas apps aside
+expect "brewfile satisfied, mas apps aside (brew bundle check)" brew bundle check --no-upgrade --file =(grep -v '^mas ' "$STATE/brewfile")
 expect "login shell is zsh" test "${SHELL:t}" = zsh
 expect "Hammerspoon running" pgrep -x Hammerspoon
 expect "Karabiner rules match layers.toml" python3 docs/keyboard/tools/gen_layers.py --check
