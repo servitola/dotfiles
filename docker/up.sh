@@ -12,10 +12,10 @@ if [ "$DOCKER" = no ]; then
 fi
 
 # Make compose variable substitution work from non-interactive shells (cron,
-# launchd, Makefile). openai_key.sh lives in $HOME and is not in the repo.
-if [ -f "$HOME/.config/openai_key.sh" ]; then
+# launchd, Makefile). $FILE_SECRETS is not in the repo.
+if [ -f "$FILE_SECRETS" ]; then
     # shellcheck disable=SC1091
-    source "$HOME/.config/openai_key.sh"
+    source "$FILE_SECRETS"
 fi
 
 REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.txt"

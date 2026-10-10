@@ -30,11 +30,11 @@ export HOMEBREW_NO_ANALYTICS=1
 export FPATH="$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 
 # Source keys
-if [ -f ~/.config/openai_key.sh ]; then
-    source ~/.config/openai_key.sh
+if [ -f "$FILE_SECRETS" ]; then
+    source "$FILE_SECRETS"
 else
     # stderr: this runs from .zshenv, and any stdout breaks scp/sftp into the machine
-    echo "\033[31mError: API key file not found at ~/.config/openai_key.sh\033[0m" >&2
+    echo "\033[31mError: API key file not found at $FILE_SECRETS\033[0m" >&2
 fi
 
 # Go

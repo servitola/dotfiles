@@ -11,6 +11,17 @@ link_all \
     "$DOTFILES/zsh/zshenv.sh"   "$HOME/.zshenv" \
     "$DOTFILES/zsh/zprofile.sh" "$HOME/.zprofile"
 
+section "secrets file (\$FILE_SECRETS)"
+# Every shell sources it. Where its keys come from on a new Mac is not settled
+# yet, so a fresh one gets an empty file to fill in by hand.
+if [[ -e $FILE_SECRETS ]]; then
+    log "present"
+else
+    mkdir -p "${FILE_SECRETS:h}"
+    install -m 600 /dev/null "$FILE_SECRETS"
+    warn "created an empty ${FILE_SECRETS/#$HOME/~}: API keys go there"
+fi
+
 section "oh-my-zsh"
 if [[ -d $HOME/.oh-my-zsh ]]; then
     log "already installed"
