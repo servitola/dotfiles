@@ -17,6 +17,7 @@ use — safe to ignore or delete).
 - **litellm** — gone: the local free LLM/TTS proxy at `:4000` and its shims live in `~/projects/services/litellm` (`$DIR_LITELLM`) since 2026-10-10; it was for CI, bulk, image gen, and `rag`
 - **rag** — the `zsh/bin/rag` wrapper, the `rag-context-inject` hook and the refresh step in `up`. Backed by qdrant + litellm here.
 - **macos_update** — the `up` command: one-shot system-wide update + cleanup (brew/npm/python/rag/docker), and `brew bundle dump` keeps homebrew/brewfile in sync.
+- **dotfiles_tests** — a new user's Mac from scratch in a tart VM on m1pro: `make`, `install/check.sh`, `brew doctor`, `up` (`dotfiles_tests/run.sh`).
 - **docker** — registry-driven starter for the local compose stacks (litellm, qdrant); the engine is OrbStack.
 - **constants** — the values that are true about this machine (project paths, chosen browser/terminal/editor, Telegram chat ids), in one `constants.env` at the repo root, readable from zsh, Python, Hammerspoon and AI agents (`const <key>`).
 - **zap** — the primary terminal, launched on Hyper+B.
