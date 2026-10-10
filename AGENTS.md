@@ -111,6 +111,24 @@ See `docs/keyboard-setup.md` for complete keyboard customization documentation.
 
 ## Handoff
 
+**State (2026-10-10, skills moved out). Committed here (not pushed); the new
+repository is pushed to Gitea (`servitola/skills`, private).** `claude-code/skills`
+(87), `detached_skills` (23, 14 of them never tracked), `commands` (12),
+`skill-presets.json`, `skill-tests/`, `shared/skills-repos/` now live in
+`~/projects/skills` (`$DIR_SKILLS`). Design and plan:
+`docs/superpowers/{specs,plans}/2026-10-10-skills-extraction*.md`.
+
+- **The three directories are git-ignored symlinks** into `$DIR_SKILLS`, made by
+  `install/08`. Every consumer going through `~/.claude/...` is untouched (Codex
+  `~/.agents/skills`, OpenCode commands, `serho-users/*/.claude/skills`). Retargeted
+  by hand: `skill_cli.py`, `skill-attach`, `bind-topic-skill.sh`, VoiceCtl
+  (`voice-mac/aliases.json`), `update_all.sh` (skills-repos update), the
+  `sync-friend-skills` LaunchAgent (WatchPaths, re-bootstrapped), the four friends'
+  `settings.json` permission paths, `cron/scripts/insight-miner-nightly.sh`.
+- The `lint-skill-frontmatter` pre-commit hook left with the skills; `~/projects/skills`
+  runs it on its own commits.
+- `agents/` stays: harness, not content.
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;

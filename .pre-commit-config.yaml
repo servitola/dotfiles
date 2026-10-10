@@ -49,12 +49,6 @@ repos:
         pass_filenames: false
         files: ^constants/(check|test-check)\.py$
         stages: [pre-commit]
-      - id: lint-skill-frontmatter
-        name: Validate Claude Code skill frontmatter
-        entry: .git-hooks/lint-skill-frontmatter.sh
-        language: system
-        files: ^claude-code/skills/[^/]+/SKILL\.md$
-        stages: [pre-commit]
       - id: ensure-agents-symlinks
         name: Ensure AGENTS.md has CLAUDE.md / WARP.md symlinks
         entry: .git-hooks/ensure-agents-symlinks.sh

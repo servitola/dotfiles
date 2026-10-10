@@ -5,7 +5,10 @@ set -euo pipefail
 section "Claude"
 link_all \
     "$CLAUDE_CODE"                     "$HOME/.claude" \
-    "$DOTFILES/claude-code-memory"     "$CLAUDE_PROJECT/memory"
+    "$DOTFILES/claude-code-memory"     "$CLAUDE_PROJECT/memory" \
+    "${DIR_SKILLS:?}/skills"           "$CLAUDE_CODE/skills" \
+    "${DIR_SKILLS:?}/detached_skills"  "$CLAUDE_CODE/detached_skills" \
+    "${DIR_SKILLS:?}/commands"         "$CLAUDE_CODE/commands"
 
 section "Codex"
 link_all \

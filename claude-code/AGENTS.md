@@ -1,4 +1,4 @@
-# claude-code — shared AI-tool assets (commands, agents, skills) + Claude Code config
+# claude-code — the Claude Code harness (hooks, settings, agents, scripts); skills and commands live in $DIR_SKILLS
 
 Single source of truth for `commands/`, `agents/`, `skills/` shared across Claude Code, Qwen Code, Codex. `~/.claude` is a symlink to this directory.
 

@@ -1,0 +1,46 @@
+#!/bin/zsh
+# skill-attach — attach a DETACHED skill to a specific folder.
+#
+# Detached skills do NOT live in the always-loaded global skills dir
+# (~/.claude/skills -> $DIR_SKILLS/skills) — there their descriptions
+# would load into every session's context in every project. Instead they sit
+# detached, and you attach them only where they are actually needed
+# (e.g. a Telegram-topic folder whose chats should order food).
+#
+# Content locations (private = just "not published to the public repo"):
+#   $DIR_SKILLS/detached_skills/<name>/
+#   $DIR_SKILLS/detached_skills/<name>/
+#
+# Attaching symlinks the skill into <target>/.claude/skills/<name>, so
+# Claude Code loads it only for sessions started in that folder.
+#
+# Usage:
+#   skill-attach                          # list detached skills + where attached
+#   skill-attach <name> [target-dir]      # attach to target dir (default: cwd)
+#   skill-attach --detach <name> [dir]    # remove the symlink
+set -u
+PRIV="${DIR_SKILLS:?}/detached_skills"
+PUB="${DIR_SKILLS:?}/detached_skills"
+
+if [[ $# -eq 0 ]]; then
+  print -r -- "detached skills:"
+  for d in "$PRIV"/*(N/) "$PUB"/*(N/); do print -r -- "  ${d:t}"; done | sort -u
+  return 0
+fi
+
+if [[ "$1" == "--detach" ]]; then
+  name="$2"; target="${3:-.}"
+  rm "$target/.claude/skills/$name"
+  print -r -- "detached: $name from $target"
+  return 0
+fi
+
+name="$1"; target="${2:-.}"
+src=""
+[[ -d "$PRIV/$name" ]] && src="$PRIV/$name"
+[[ -z "$src" && -d "$PUB/$name" ]] && src="$PUB/$name"
+[[ -n "$src" ]] || { print -u2 "skill-attach: no detached skill named '$name' (run with no args to list)"; return 1 }
+
+mkdir -p "$target/.claude/skills"
+ln -sfh "$src" "$target/.claude/skills/$name"
+print -r -- "attached: $name → $target/.claude/skills/$name"

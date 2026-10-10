@@ -24,8 +24,8 @@ fi
 
 SRC=""
 for base in \
-  "$HOME/projects/dotfiles/claude-code/skills" \
-  "$HOME/projects/dotfiles/claude-code/detached_skills"; do
+  "${DIR_SKILLS:?}/skills" \
+  "${DIR_SKILLS:?}/detached_skills"; do
   if [[ -d "$base/$SKILL" ]]; then SRC="$base/$SKILL"; break; fi
 done
 

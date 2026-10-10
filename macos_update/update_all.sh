@@ -161,7 +161,7 @@ print_task "Updating Powerlevel10k theme"
 git -C "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" pull
 
 print_task "Updating shared skill repos"
-~/projects/dotfiles/claude-code/shared/skills-repos/update.sh
+"${DIR_SKILLS:?}/shared/skills-repos/update.sh"
 
 print_task "Updating Oh My Zsh"
 zsh -ic "omz update"

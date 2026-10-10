@@ -17,7 +17,7 @@ use — safe to ignore or delete).
 - **homebrew** — source of truth for *what is installed* (`brewfile` + `brew bundle`).
 - **karabiner** — keyboard remap engine: Caps Lock → Hyper; `karabiner.json` is generated from per-rule files. Always running.
 - **hammerspoon** — the keyboard brain: catches keys, launches/focuses apps, window management, language-per-app, URL routing. The signature of this setup. Always running.
-- **claude-code** — **the primary AI coding tool** (paid Claude, used daily) AND the single source of truth for AI commands/agents/skills (codex symlink to it).
+- **claude-code** — **the primary AI coding tool** (paid Claude, used daily): the harness — hooks, settings, agents, scripts. Skills, detached skills and commands moved to `~/projects/skills` (`$DIR_SKILLS`) on 2026-10-10 and are linked in (codex symlink to it).
 - **litellm** — local **free** LLM/TTS proxy at `:4000` for CI, bulk, image gen, and `rag`. NOT used by Claude Code (which hits the paid Anthropic API directly).
 - **rag** — moved to `~/projects/rag` (`$DIR_RAG`) on 2026-10-10; dotfiles keeps the `zsh/bin/rag` wrapper, the `rag-context-inject` hook and the refresh step in `up`. Backed by qdrant + litellm here.
 - **macos_update** — the `up` command: one-shot system-wide update + cleanup (brew/npm/python/rag/docker), and `brew bundle dump` keeps homebrew/brewfile in sync.

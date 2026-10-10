@@ -10,7 +10,7 @@ local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 obj.resolve = dofile(spoonPath .. "resolve.lua")
 
 local ALIASES_PATH = os.getenv("HOME") ..
-    "/projects/dotfiles/claude-code/detached_skills/voice-mac/aliases.json"
+    "/projects/skills/detached_skills/voice-mac/aliases.json"
 
 local function loadAliases()
     local f = io.open(ALIASES_PATH, "r")

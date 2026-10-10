@@ -19,7 +19,7 @@ Run any with `--help`/no args for usage. When a recurring task turns into a
 | `perfcheck` | One-shot macOS performance diagnostic for this machine. |
 | `new-topic` | Create/top-up a "topic" folder with AGENTS.md + CLAUDE.md symlink. |
 | `agents-link` | Ensure a dir has both AGENTS.md and CLAUDE.md (symlink to AGENTS.md). |
-| `skill-attach <name> [dir]` | Attach a detached skill to a folder (project scope). |
+| `skill-attach <name> [dir]` | Attach a detached skill (`$DIR_SKILLS/detached_skills/<name>`) to a folder (project scope). |
 | `skill-stats` | Skill usage stats. |
 | `cc-usage` | Claude Code token-spend analytics from transcripts. Summary shows cost-by-token-class (cache-read/write/output/input — where the money goes); `--by day\|project\|model\|session` (⚡ flags cost spikes), `--savings` for spend vs. RTK-saved, `--digest` (weekly cron text), `--since Nd`, `--json`. |
 | `cron-cal` | Regenerate + open the static cron calendar (Apple-glass Gruvbox HTML written to `$DIR_CRON/cron-calendar.html`). Reads fragments from `$DIR_CRON_JOBS/`; splits background pollers from scheduled events, flags dead/silent/duplicate jobs. `--quiet` regenerate only, `--report` print the weekly Telegram text. |
