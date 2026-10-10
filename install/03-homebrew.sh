@@ -8,6 +8,13 @@ section "Homebrew"
 eval "$(/opt/homebrew/bin/brew shellenv)"   # a fresh Mac gets brew on PATH only in step 4
 log "$(brew --version | head -1)"
 
+section "npm and uv config"
+# Before brew bundle: its npm and uv entries read them, and without ~/.npmrc the
+# npm globals land in /opt/homebrew, where they collide with formulae.
+link_all \
+    "$DOTFILES/npm/npmrc"             "$HOME/.npmrc" \
+    "$DOTFILES/uv/uv.toml"            "$CONFIG/uv/uv.toml"
+
 section "packages (homebrew/brewfile)"
 # Everything, not a subset: a hand-kept minimum list kept drifting from what
 # make and up call. One entry that cannot install (a moved cask download, a mas
