@@ -54,6 +54,42 @@ Use the retrieved chunks as the primary source. Each chunk includes `path=...` �
 **Triggers (non-exhaustive):** dotfiles, мой конфиг, мои настройки, shortcut, hotkey, hyper, caps lock, karabiner, hammerspoon, brewfile, homebrew, alias, zsh, oh-my-zsh, p10k, warp, zap, fork, tmux, atuin, claude-code, skill, slash command, up command, `rag` tool.
 
 **Inside** `~/projects/dotfiles/` — prefer Read/Grep over RAG (chunks are lossy; full files are better when you have them).
+
+# Models (verified 2026-07-25)
+
+Never answer model questions from memory — training data is always behind. These
+two tables are the local source of truth; re-verify if the date above is stale.
+
+**Codex** — source: `~/.codex/models_cache.json` (codex-cli 0.145.0) + learn.chatgpt.com/docs/models.
+Context is **272k for every model** — not 200k, not 1M. Only ~95% (~258k) is usable.
+Account is a ChatGPT **Plus** plan: billed by plan limits, not per token.
+
+| Slug | Default effort | Effort range | Take it when |
+| --- | --- | --- | --- |
+| `gpt-5.6-sol` | low | low…max, **ultra** | Hardest coding, computer use, research. Only tier with `ultra` (auto-delegates to subagents). |
+| `gpt-5.6-terra` | medium | low…max | **Default.** Balanced everyday work. |
+| `gpt-5.6-luna` | medium | low…max | Bulk mechanical work; cheapest and fastest. |
+| `gpt-5.5` | medium | low…xhigh | Previous generation. |
+| `gpt-5.4`, `gpt-5.4-mini` | medium | low…xhigh | **Deprecated** → `terra` / `luna` respectively. |
+
+`gpt-5.3-codex-spark` exists but is Pro-only — not available on this account.
+
+**Claude** — source: platform.claude.com/docs/en/about-claude/models/overview.md.
+Context is **1M everywhere except Haiku 4.5 (200k)**. Max output 128k (Haiku: 64k).
+
+| Model ID | $/1M in | $/1M out | Knowledge cutoff | Take it when |
+| --- | --- | --- | --- | --- |
+| `claude-opus-5` | $5 | $25 | **May 2026** | **Default.** Agentic coding and complex work. |
+| `claude-fable-5` | $10 | $50 | Jan 2026 | Only on an explicit ask for maximum capability. Still Anthropic's most capable released model, but 2x the price, slower, older cutoff, and thinking cannot be disabled. |
+| `claude-sonnet-5` | $3 ($2 promo to 2026-08-31) | $15 ($10 promo) | Jan 2026 | High volume where speed matters. |
+| `claude-haiku-4-5` | $1 | $5 | Feb 2025 | Simple, latency-critical tasks. |
+
+Still live but legacy: `claude-opus-4-8`, `claude-opus-4-7`, `claude-opus-4-6`,
+`claude-sonnet-4-6`. `claude-opus-4-1` retires 2026-08-05.
+
+**Note for Codex, Qwen and OpenCode:** the `@RTK.md` line below is a Claude Code
+import and does not expand for you — you receive it as literal text. Read
+`~/projects/dotfiles/claude-code/RTK.md` directly when you need those rules.
 # Shared AI Coding Tools
 
 This `claude-code/` directory is the single source of truth for commands, agents, and skills.
