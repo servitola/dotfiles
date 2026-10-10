@@ -50,10 +50,6 @@ DIR_LITELLM      = { type = "dir", about = "LiteLLM proxy and the TTS/STT shims 
 DIR_CLAUDE       = { type = "dir", unread = true, about = "Claude Code configuration" }
 DIR_SKILLS       = { type = "dir", about = "Claude skills, detached skills and commands (~/projects/skills)" }
 TART_HOST        = { type = "host", private = true, about = "ssh alias of the machine that runs tart VMs" }
-DIR_EQ           = { type = "dir", unread = true, removable = true, about = "eq, the public repository" }
-DIR_EQ_LAB       = { type = "dir", unread = true, removable = true, about = "eq, the private lab beside it" }
-DIR_NOWPLAYINGSEEK     = { type = "dir", removable = true, about = "nowplayingseek, the public repository" }
-DIR_NOWPLAYINGSEEK_LAB = { type = "dir", removable = true, about = "nowplayingseek, the private lab beside it" }
 
 FILE_SECRETS    = { type = "file", about = "API keys, sourced by shells and jobs" }
 FILE_TG_BOT_ENV = { type = "file", private = true, about = "env file of the notification bot" }
