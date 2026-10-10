@@ -13,6 +13,9 @@ fi
 export ZSH_AUTOSUGGEST_USE_ASYNC=1
 export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=50
 
+# Prevents paste lag from URL escaping.
+DISABLE_MAGIC_FUNCTIONS=true
+
 # -----------------------------------------------------------------------------
 # Plugin Configuration (BEFORE oh-my-zsh loads)
 # -----------------------------------------------------------------------------
