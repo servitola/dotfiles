@@ -1,0 +1,494 @@
+#!/usr/bin/env python3
+"""Claude Code token-spend analytics from transcripts.
+
+Scans ~/.claude/projects/**/*.jsonl, computes list-price-equivalent cost per
+assistant response from a model price table, and aggregates to show WHAT you
+spent on and WHERE the spikes are. No cost is logged by Claude Code itself —
+this tool derives it from token counts (usage.*) × PRICES.
+
+  cc-usage                      summary: total $, tokens, cache hit-rate, main/subagent
+  cc-usage --by day             daily cost + ASCII bars, ⚡ flags spikes (mean+2σ)
+  cc-usage --by project         cost per git repo (worktrees merged)
+  cc-usage --by model           cost per model
+  cc-usage --by session         top costliest sessions (cwd + date)
+  cc-usage --savings            spend vs. RTK-saved tokens, side by side
+  --since Nd|Nh   --limit N   --json
+
+Cost basis: on a subscription this is list-price-EQUIVALENT, not literal
+billing — the right proxy for concentration and spikes. Update PRICES when
+Anthropic list prices change (see the dated comment on the table).
+"""
+import argparse
+import glob
+import json
+import math
+import os
+import subprocess
+import sys
+from collections import Counter, defaultdict
+from datetime import datetime, timedelta, timezone
+
+PROJECTS_GLOB = os.path.expanduser("~/.claude/projects/**/*.jsonl")
+
+# Anthropic list prices, $ per 1M tokens. Source: platform.claude.com/pricing +
+# anthropic.com model pages, verified 2026-07-23. Pattern: cache_write_5m =
+# 1.25× input, cache_write_1h = 2× input, cache_read = 0.1× input.
+# NOTE: sonnet = Sonnet 5 INTRODUCTORY ($2/$10) through 2026-08-31; reverts to
+# standard $3/$15 on 2026-09-01 (bump the sonnet row then).
+PRICES = {
+    "fable":  {"input": 10.0, "output": 50.0, "cw5m": 12.50, "cw1h": 20.0, "cr": 1.00},
+    "opus":   {"input":  5.0, "output": 25.0, "cw5m":  6.25, "cw1h": 10.0, "cr": 0.50},
+    "sonnet": {"input":  2.0, "output": 10.0, "cw5m":  2.50, "cw1h":  4.0, "cr": 0.20},
+    "haiku":  {"input":  1.0, "output":  5.0, "cw5m":  1.25, "cw1h":  2.0, "cr": 0.10},
+}
+
+
+def model_family(model):
+    m = (model or "").lower()
+    for fam in ("fable", "opus", "sonnet", "haiku"):
+        if fam in m:
+            return fam
+    return None  # unknown model — tokens counted, cost flagged ~
+
+
+def parse_since(s):
+    if not s:
+        return None
+    unit, n = s[-1], int(s[:-1])
+    if unit == "d":
+        return datetime.now(timezone.utc) - timedelta(days=n)
+    if unit == "h":
+        return datetime.now(timezone.utc) - timedelta(hours=n)
+    raise SystemExit(f"--since: use Nd or Nh (got {s!r})")
+
+
+def short_cwd(cwd):
+    if not cwd or cwd == "-":
+        return "-"
+    hp = os.path.expanduser("~/projects/")
+    if cwd.startswith(hp):
+        rest = cwd[len(hp):]
+        return rest.split("/", 1)[0] if rest else "projects"
+    return "/".join(cwd.rstrip("/").rsplit("/", 2)[-2:])
+
+
+_REPO_CACHE = {}
+
+
+def repo_of(cwd):
+    """Collapse a working dir to its git repo name (worktrees -> main repo).
+    Ported from insight-miner/collect.py: walk up to .git, resolve a worktree's
+    gitdir back to the main repo, realpath to dedupe symlinks."""
+    if not cwd:
+        return ""
+    if cwd in _REPO_CACHE:
+        return _REPO_CACHE[cwd]
+    p = cwd
+    for _ in range(40):
+        g = os.path.join(p, ".git")
+        if os.path.exists(g):
+            main = p
+            if os.path.isfile(g):  # worktree: '.git' is 'gitdir: <repo>/.git/worktrees/<n>'
+                try:
+                    t = open(g, encoding="utf-8", errors="ignore").read().strip()
+                    if t.startswith("gitdir:") and "/.git/worktrees/" in t:
+                        main = t.split(":", 1)[1].strip().split("/.git/worktrees/")[0]
+                except Exception:
+                    pass
+            try:
+                main = os.path.realpath(main)
+            except Exception:
+                pass
+            name = os.path.basename(main) or main
+            _REPO_CACHE[cwd] = name
+            return name
+        np = os.path.dirname(p)
+        if np == p:
+            break
+        p = np
+    name = os.path.basename(cwd.rstrip("/")) or cwd
+    _REPO_CACHE[cwd] = name
+    return name
+
+
+def fmt_tok(n):
+    return f"{n/1e6:.1f}M" if n >= 1e6 else (f"{n/1e3:.0f}k" if n >= 1000 else str(int(n)))
+
+
+def fmt_money(x):
+    return f"${x:,.2f}"
+
+
+def cost_of(usage, fam):
+    """Return ({class: dollars}, exact_bool) for one response's usage block.
+    Classes: input (fresh), output, cr (cache-read), cw (cache-write)."""
+    if fam is None:
+        return {"input": 0.0, "output": 0.0, "cr": 0.0, "cw": 0.0}, False
+    p = PRICES[fam]
+    cc = usage.get("cache_creation") or {}
+    cw1h = cc.get("ephemeral_1h_input_tokens", 0)
+    cw5m = cc.get("ephemeral_5m_input_tokens", 0)
+    # Fall back to the flat cache_creation_input_tokens (priced at 5m) when the
+    # 1h/5m split is absent.
+    if not (cw1h or cw5m):
+        cw5m = usage.get("cache_creation_input_tokens", 0)
+    d = {
+        "input": usage.get("input_tokens", 0) * p["input"] / 1e6,
+        "output": usage.get("output_tokens", 0) * p["output"] / 1e6,
+        "cr": usage.get("cache_read_input_tokens", 0) * p["cr"] / 1e6,
+        "cw": (cw5m * p["cw5m"] + cw1h * p["cw1h"]) / 1e6,
+    }
+    return d, True
+
+
+class Agg:
+    __slots__ = ("cost", "inp", "out", "cr", "cw", "msgs", "main_cost",
+                 "side_cost", "sessions", "last", "approx",
+                 "c_in", "c_out", "c_cr", "c_cw")
+
+    def __init__(self):
+        self.cost = self.inp = self.out = self.cr = self.cw = 0.0
+        self.msgs = 0
+        self.main_cost = self.side_cost = 0.0
+        self.sessions = set()
+        self.last = None
+        self.approx = False
+        self.c_in = self.c_out = self.c_cr = self.c_cw = 0.0  # cost per class
+
+
+def iter_responses(since=None):
+    """Yield one dict per assistant response line that carries usage."""
+    for path in glob.iglob(PROJECTS_GLOB, recursive=True):
+        try:
+            if since and datetime.fromtimestamp(
+                    os.path.getmtime(path), timezone.utc) < since:
+                continue
+        except OSError:
+            continue
+        cwd = ""
+        try:
+            with open(path, encoding="utf-8") as f:
+                for line in f:
+                    try:
+                        obj = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    cwd = obj.get("cwd") or cwd
+                    if obj.get("type") != "assistant":
+                        continue
+                    msg = obj.get("message")
+                    if not isinstance(msg, dict):
+                        continue
+                    usage = msg.get("usage")
+                    if not isinstance(usage, dict):
+                        continue
+                    ts_raw = obj.get("timestamp") or ""
+                    try:
+                        ts = datetime.fromisoformat(ts_raw.replace("Z", "+00:00"))
+                    except ValueError:
+                        ts = None
+                    if since and (ts is None or ts < since):
+                        continue
+                    yield {
+                        "ts": ts,
+                        "model": msg.get("model") or "",
+                        "cwd": cwd or "-",
+                        "side": bool(obj.get("isSidechain")),
+                        "session": obj.get("sessionId") or obj.get("session_id") or "",
+                        "usage": usage,
+                    }
+        except OSError:
+            continue
+
+
+def key_for(rec, axis):
+    if axis == "day":
+        return rec["ts"].strftime("%Y-%m-%d") if rec["ts"] else "-"
+    if axis == "project":
+        return repo_of(rec["cwd"] if rec["cwd"] != "-" else "")
+    if axis == "model":
+        return rec["model"] or "-"
+    if axis == "session":
+        return rec["session"] or "-"
+    return "all"
+
+
+def collect(records, axis):
+    groups = defaultdict(Agg)
+    for rec in records:
+        fam = model_family(rec["model"])
+        u = rec["usage"]
+        classes, exact = cost_of(u, fam)
+        dollars = sum(classes.values())
+        cw = (u.get("cache_creation_input_tokens", 0)
+              or (u.get("cache_creation") or {}).get("ephemeral_1h_input_tokens", 0)
+              + (u.get("cache_creation") or {}).get("ephemeral_5m_input_tokens", 0))
+        g = groups[key_for(rec, axis)]
+        g.cost += dollars
+        g.c_in += classes["input"]
+        g.c_out += classes["output"]
+        g.c_cr += classes["cr"]
+        g.c_cw += classes["cw"]
+        g.inp += u.get("input_tokens", 0)
+        g.out += u.get("output_tokens", 0)
+        g.cr += u.get("cache_read_input_tokens", 0)
+        g.cw += cw
+        g.msgs += 1
+        if rec["side"]:
+            g.side_cost += dollars
+        else:
+            g.main_cost += dollars
+        if rec["session"]:
+            g.sessions.add(rec["session"])
+        if rec["ts"] and (g.last is None or rec["ts"] > g.last):
+            g.last = rec["ts"]
+        if not exact:
+            g.approx = True
+    return groups
+
+
+def cache_hit_rate(g):
+    denom = g.cr + g.cw + g.inp
+    return (g.cr / denom * 100) if denom else 0.0
+
+
+def render_summary(groups, since):
+    tot = Agg()
+    for g in groups.values():
+        tot.cost += g.cost
+        tot.c_in += g.c_in
+        tot.c_out += g.c_out
+        tot.c_cr += g.c_cr
+        tot.c_cw += g.c_cw
+        tot.inp += g.inp
+        tot.out += g.out
+        tot.cr += g.cr
+        tot.cw += g.cw
+        tot.msgs += g.msgs
+        tot.main_cost += g.main_cost
+        tot.side_cost += g.side_cost
+        tot.sessions |= g.sessions
+        tot.approx = tot.approx or g.approx
+    hdr = "Claude Code spend"
+    if since:
+        hdr += f" since {since.strftime('%Y-%m-%d')}"
+    print(hdr)
+    print()
+    if tot.msgs == 0:
+        print("(no responses found)")
+        return
+    print(f"  total cost      {fmt_money(tot.cost)}"
+          + ("  (~ approx: some models unpriced)" if tot.approx else ""))
+    print(f"  responses       {tot.msgs:,} across {len(tot.sessions):,} sessions")
+    print(f"  main / subagent {fmt_money(tot.main_cost)} / {fmt_money(tot.side_cost)}")
+    print(f"  tokens          in {fmt_tok(tot.inp)} · out {fmt_tok(tot.out)} · "
+          f"cache-read {fmt_tok(tot.cr)} · cache-write {fmt_tok(tot.cw)}")
+    print(f"  cache hit-rate  {cache_hit_rate(tot):.0f}%  "
+          f"(read / read+write+fresh-input)")
+    print()
+    c = tot.cost or 1.0
+    print("  cost by token-class (where the money goes):")
+    for lab, v in (("cache-read ", tot.c_cr), ("cache-write", tot.c_cw),
+                   ("output     ", tot.c_out), ("input(fresh)", tot.c_in)):
+        bar = "█" * int(round(v / c * 30))
+        print(f"    {lab}  {fmt_money(v):>11}  {v/c*100:>4.0f}%  {bar}")
+    print()
+    print("  → break it down:  --by day | project | model | session   "
+          "(add --savings for RTK)")
+
+
+def render_axis(groups, axis, limit):
+    rows = sorted(groups.items(), key=lambda kv: kv[1].cost, reverse=True)
+    if axis == "day":  # chronological for a readable curve
+        rows = sorted(groups.items(), key=lambda kv: kv[0])
+    if not rows:
+        print("(no responses found)")
+        return
+    costs = [g.cost for _, g in rows]
+    mean = sum(costs) / len(costs)
+    sd = math.sqrt(sum((c - mean) ** 2 for c in costs) / len(costs)) if len(costs) > 1 else 0.0
+    spike = mean + 2 * sd
+    peak = max(costs) or 1.0
+    if axis != "day" and limit:
+        rows = rows[:limit]
+    kw = max(len(str(k)) for k, _ in rows)
+    kw = min(max(kw, 7), 40)
+    print(f"{'':<{kw}}  {'COST':>10}  {'SHARE':>5}  {'RESP':>6}  {'CACHE%':>6}  ")
+    total = sum(costs)
+    for k, g in rows:
+        bar = "█" * int(round(g.cost / peak * 18))
+        share = (g.cost / total * 100) if total else 0
+        flag = " ⚡" if (axis == "day" and g.cost >= spike and g.cost > 0) else ""
+        print(f"{str(k)[:kw]:<{kw}}  {fmt_money(g.cost):>10}  {share:>4.0f}%  "
+              f"{g.msgs:>6}  {cache_hit_rate(g):>5.0f}%  {bar}{flag}")
+    print()
+    print(f"  total {fmt_money(total)} across {len(costs)} {axis}s"
+          + (f" · ⚡ = spike (> mean+2σ = {fmt_money(spike)})" if axis == "day" else ""))
+
+
+def render_session(groups, limit):
+    # sessions want cwd/date context, not the generic axis renderer
+    rows = sorted(groups.items(), key=lambda kv: kv[1].cost, reverse=True)[:limit or 20]
+    if not rows:
+        print("(no sessions found)")
+        return
+    print(f"{'COST':>10}  {'RESP':>6}  {'LAST':<10}  SESSION")
+    for sid, g in rows:
+        last = g.last.strftime("%Y-%m-%d") if g.last else "-"
+        print(f"{fmt_money(g.cost):>10}  {g.msgs:>6}  {last:<10}  {sid[:18]}")
+
+
+def rtk_savings(since, quiet=False):
+    """Read RTK's own savings analytics as the 'saved' side of economics."""
+    try:
+        out = subprocess.run(
+            ["rtk", "gain", "--all", "--format", "json"],
+            capture_output=True, text=True, timeout=30, check=True).stdout
+        data = json.loads(out)
+    except Exception as e:
+        if not quiet:
+            print(f"(rtk savings unavailable: {e})")
+        return None
+    daily = {d["date"]: d for d in data.get("daily", [])}
+    cutoff = since.strftime("%Y-%m-%d") if since else None
+    saved = sum(d.get("saved_tokens", 0) for dt, d in daily.items()
+                if not cutoff or dt >= cutoff)
+    inp = sum(d.get("input_tokens", 0) for dt, d in daily.items()
+              if not cutoff or dt >= cutoff)
+    return {"saved_tokens": saved, "raw_input_tokens": inp, "daily": daily}
+
+
+def render_economics(groups_day, since):
+    sav = rtk_savings(since)
+    if not sav:
+        return
+    # value the saved tokens at opus input rate as an upper-bound "$ preserved"
+    saved_val = sav["saved_tokens"] * PRICES["opus"]["input"] / 1e6
+    total_spend = sum(g.cost for g in groups_day.values())
+    print()
+    print("===== spend vs. RTK savings =====")
+    print(f"  spent (transcripts)   {fmt_money(total_spend)}")
+    print(f"  RTK saved             {fmt_tok(sav['saved_tokens'])} tokens "
+          f"(≈ {fmt_money(saved_val)} at opus-input rate, not billed to you)")
+    print(f"  RTK raw input seen     {fmt_tok(sav['raw_input_tokens'])} tokens "
+          f"of command output pre-filter")
+    print()
+    print(f"{'DAY':<12}{'SPEND':>10}{'RTK SAVED':>14}")
+    days = sorted(set(list(groups_day) + [d for d in sav["daily"]]))
+    for d in days:
+        if d == "-":
+            continue
+        if since and d < since.strftime("%Y-%m-%d"):
+            continue
+        spend = fmt_money(groups_day[d].cost) if d in groups_day else "-"
+        st = sav["daily"].get(d, {}).get("saved_tokens")
+        print(f"{d:<12}{spend:>10}{(fmt_tok(st) if st else '-'):>14}")
+
+
+def render_digest(records, since):
+    """Compact one-message Telegram digest (mirrors insight-miner `tg` mode)."""
+    allg = collect(records, "all").get("all", Agg())
+    proj = collect(records, "project")
+    day = collect(records, "day")
+    ndays = max(1, round((datetime.now(timezone.utc) - since).total_seconds() / 86400)) if since else 7
+    tot = allg.cost
+    lines = [f"💰 CC spend · {ndays}д"]
+    if tot <= 0:
+        print("\n".join(lines + ["всего: $0 (нет данных)"]))
+        return
+    cache_pct = (allg.c_cr + allg.c_cw) / tot * 100
+    out_pct = allg.c_out / tot * 100
+    lines.append(f"всего: {fmt_money(tot)}  (кэш {cache_pct:.0f}% · output {out_pct:.0f}%)"
+                 + ("  ~approx" if allg.approx else ""))
+    top = sorted(proj.items(), key=lambda kv: kv[1].cost, reverse=True)[:3]
+    if top:
+        lines.append("топ: " + " · ".join(f"{k} {fmt_money(g.cost)}" for k, g in top))
+    days = sorted(day.items(), key=lambda kv: kv[0])
+    if days:
+        costs = [g.cost for _, g in days]
+        mean = sum(costs) / len(costs)
+        sd = math.sqrt(sum((c - mean) ** 2 for c in costs) / len(costs)) if len(costs) > 1 else 0.0
+        pk, pg = max(days, key=lambda kv: kv[1].cost)
+        flag = " ⚡" if pg.cost >= mean + 2 * sd and sd > 0 else ""
+        lines.append(f"пик: {pk} {fmt_money(pg.cost)}{flag}")
+    sav = rtk_savings(since, quiet=True)
+    if sav:
+        lines.append(f"RTK сэкономил: {fmt_tok(sav['saved_tokens'])} токенов")
+    lines.append("→ cc-usage --by project | day")
+    print("\n".join(lines))
+
+
+def to_json(groups, axis, since):
+    out = {
+        "axis": axis,
+        "since": since.isoformat() if since else None,
+        "total_cost_usd": round(sum(g.cost for g in groups.values()), 4),
+        "groups": [
+            {
+                "key": k,
+                "cost_usd": round(g.cost, 4),
+                "cost_by_class_usd": {
+                    "input": round(g.c_in, 4), "output": round(g.c_out, 4),
+                    "cache_read": round(g.c_cr, 4), "cache_write": round(g.c_cw, 4),
+                },
+                "main_cost_usd": round(g.main_cost, 4),
+                "subagent_cost_usd": round(g.side_cost, 4),
+                "responses": g.msgs,
+                "sessions": len(g.sessions),
+                "input_tokens": int(g.inp),
+                "output_tokens": int(g.out),
+                "cache_read_tokens": int(g.cr),
+                "cache_write_tokens": int(g.cw),
+                "cache_hit_rate_pct": round(cache_hit_rate(g), 1),
+                "approx": g.approx,
+            }
+            for k, g in sorted(groups.items(), key=lambda kv: kv[1].cost, reverse=True)
+        ],
+    }
+    json.dump(out, sys.stdout, indent=2, default=str)
+    sys.stdout.write("\n")
+
+
+def main():
+    ap = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--since", help="filter to last N days (7d) or hours (24h)")
+    ap.add_argument("--by", choices=["day", "project", "model", "session"],
+                    help="breakdown axis (default: summary)")
+    ap.add_argument("--savings", action="store_true",
+                    help="show spend vs. RTK-saved tokens")
+    ap.add_argument("--digest", action="store_true",
+                    help="compact one-message digest (for the weekly Telegram cron)")
+    ap.add_argument("--limit", type=int, default=None, help="top N rows")
+    ap.add_argument("--json", action="store_true", help="machine-readable output")
+    args = ap.parse_args()
+
+    # digest defaults to a 7d window when --since is omitted
+    since = parse_since(args.since or ("7d" if args.digest else None))
+    records = list(iter_responses(since=since))
+
+    if args.digest:
+        render_digest(records, since)
+        return
+
+    axis = args.by or "all"
+    groups = collect(records, axis)
+
+    if args.json:
+        to_json(groups, axis, since)
+        return
+
+    if args.by == "session":
+        render_session(groups, args.limit)
+    elif args.by:
+        render_axis(groups, args.by, args.limit)
+    else:
+        render_summary(groups, since)
+
+    if args.savings:
+        day_groups = collect(records, "day")
+        render_economics(day_groups, since)
+
+
+if __name__ == "__main__":
+    main()
