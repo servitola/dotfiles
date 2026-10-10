@@ -143,3 +143,5 @@ alias ff="open -a 'Marta' ."
 alias serho-logs="lnav $HOME/Library/Logs/serho/stdout.log $HOME/Library/Logs/serho/stderr.log"
 
 ppp() { readlink -f "${1:-.}" | tr -d '\n' | pbcopy && echo "Copied: $(pbpaste)"; }
+
+alias recomp='~/projects/serho_topics/видео-пережать/recompress_one.sh REPLACE'
