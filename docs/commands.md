@@ -17,7 +17,7 @@ Run any with `--help`/no args for usage. When a recurring task turns into a
 | `litellm-config-diff [ref]` | Diff `$DIR_LITELLM/config.yaml` model_list vs HEAD (or `ref`) by model_name count. |
 | `broken-links` | Report dangling symlinks in `$HOME` + bin dirs (`PRUNE_BROKEN_LINKS=true` to rm). Foreign FS pruned. |
 | `perfcheck` | One-shot macOS performance diagnostic for this machine. |
-| `new-topic` | Create/top-up a "topic" folder with AGENTS.md + CLAUDE.md symlink. |
+| `new-topic` | Create/top-up a serho topic folder by hand, laid out like the bot does: AGENTS.md + CLAUDE.md and инструкция-для-бота.md links. |
 | `agents-link` | Ensure a dir has both AGENTS.md and CLAUDE.md (symlink to AGENTS.md). |
 | `skill-attach <name> [dir]` | Attach a detached skill (`$DIR_SKILLS/detached_skills/<name>`) to a folder (project scope). |
 | `skill-stats` | Skill usage stats. |
