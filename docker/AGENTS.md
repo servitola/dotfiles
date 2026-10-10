@@ -1,9 +1,7 @@
-# docker — registry-driven starter that keeps all dotfiles docker-compose services running
+# docker — which compose stacks run on which machine
 
-- `compose-projects.txt` — the registry: one $HOME-relative dir per line (each must hold a compose file). Comments (`#`) and blanks ignored. Source of truth for "which stacks should be up".
-- `up.sh` — idempotent reconciler over the registry: skips already-fully-running projects, runs `pull → build → up -d` on down/partial ones, warns and skips missing dirs or dirs without a compose file (no auto-clone). Sources `~/.config/openai_key.sh` first so compose var substitution works from non-interactive shells (cron/launchd).
-- `sync.sh` — reverse direction: regenerates `compose-projects.txt` from `docker compose ls` (currently-running projects). Run after adding/removing a stack so the registry matches reality.
-- `up.sh` is wired into the `up` command via `macos_update/update_all.sh`, so every system update brings all registered stacks up.
-- Registered stacks living in this repo: `litellm/` (LiteLLM proxy), `qdrant/` (vector DB), `docker-logger/` — each has its own `docker-compose.yml` + `AGENTS.md`. Other stacks live outside dotfiles under `~/projects/` and are registered via the gitignored `compose-projects.private.txt` overlay.
-- Invariant: this dir only orchestrates compose; it defines no services itself. To add a stack, drop a compose file in its dir and add the $HOME-relative path to the registry (or run `sync.sh`).
-- Start everything by hand: `bash ~/projects/dotfiles/docker/up.sh`
+- `compose-projects.txt` (public) and `compose-projects.private.txt` (stacks kept out of the public dotfiles) are the registry: a stack dir per line — relative to `$HOME`, or absolute for a stack on an external drive — followed by the machines it runs on, by `scutil --get LocalHostName`. A machine named nowhere, including anyone else's, starts nothing.
+- `up.sh` brings up the stacks listed for this machine that are not fully running (pull, build, up -d). Only services with a restart policy count as "should be running", so a job service (mma's scraper, run by launchd) never triggers a start. Missing dirs, e.g. an unplugged drive, are skipped. Run by install step 15 and by `up`; sources `~/.config/openai_key.sh` so compose variables resolve outside an interactive shell.
+- `sync.sh` lists running stacks that neither registry knows. It does not edit the registry: which machines a stack belongs to is a person's call.
+- `install/check.sh` checks that every stack listed for this machine is running.
+- This dir defines no services itself; each stack keeps its own compose file and AGENTS.md (`litellm/`, `qdrant/`, `docker-logger/` here, the rest under `~/projects/services/` and elsewhere).

@@ -1,15 +1,13 @@
 #!/bin/zsh
-# Ensure all docker-compose services listed in compose-projects.txt are running.
+# Ensure the docker-compose stacks listed for this machine in compose-projects*.txt are running.
 # Already-running projects are skipped (no pull/rebuild/restart).
 # Down or partially-down projects get pull + build + up.
 # Missing paths are skipped with a warning (no auto-clone).
 
 set -u
 
-# A tart VM on M1/M2 has no nested virtualization, so no Docker daemon can run
-# there; tests/vm/run.sh sets this.
-if [ -n "${NO_DOCKER:-}" ]; then
-    echo "  * NO_DOCKER: skip docker stacks"
+if [ "$DOCKER" = no ]; then
+    echo "  * DOCKER=no in constants.env: skip docker stacks"
     exit 0
 fi
 
@@ -25,10 +23,14 @@ REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.txt"
 # that should not be listed in the public registry.
 PRIVATE_REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.private.txt"
 
+machine=$(scutil --get LocalHostName)
+running=0
 { cat "$REGISTRY"; [ -f "$PRIVATE_REGISTRY" ] && cat "$PRIVATE_REGISTRY"; true; } | \
-while IFS= read -r rel || [ -n "$rel" ]; do
+while read -r rel machines || [ -n "$rel" ]; do
     [[ -z "$rel" || "$rel" =~ ^[[:space:]]*# ]] && continue
+    [[ " $machines " == *" $machine "* ]] || continue
     dir="$HOME/$rel"
+    [[ "$rel" == /* ]] && dir="$rel"   # an absolute path: a stack on an external drive
     if [ ! -d "$dir" ]; then
         echo "  * Skip (missing dir): $rel"
         continue
@@ -38,10 +40,13 @@ while IFS= read -r rel || [ -n "$rel" ]; do
         echo "  * Skip (no compose file): $rel"
         continue
     fi
-    _total=$(docker compose --project-directory "$dir" config --services 2>/dev/null | wc -l | tr -d ' ')
+    # Only services meant to stay up count: a job service without a restart policy
+    # (mma's scraper, run by launchd) would otherwise "start" the stack on every run.
+    _total=$(docker compose --project-directory "$dir" config --format json 2>/dev/null \
+        | jq '[.services[] | select((.restart // "no") != "no")] | length')
     _running=$(docker compose --project-directory "$dir" ps --status running -q 2>/dev/null | wc -l | tr -d ' ')
     if [ "$_running" -ge "$_total" ] && [ "$_total" -gt 0 ]; then
-        echo "  * Already running: $(basename "$dir")"
+        running=$((running + 1))
         continue
     fi
     echo "  ▶ Starting $(basename "$dir")"
@@ -49,3 +54,4 @@ while IFS= read -r rel || [ -n "$rel" ]; do
     docker compose --project-directory "$dir" build --pull
     docker compose --project-directory "$dir" up -d
 done
+echo "  * $running stacks already running on $machine"

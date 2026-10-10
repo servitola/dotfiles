@@ -1,30 +1,11 @@
 #!/bin/zsh
-# Refresh compose-projects.txt from currently-running docker compose projects.
-
+# Lists running compose stacks that neither registry knows, to add by hand with
+# their machines. It no longer rewrites the registry: only a person knows where a stack belongs.
 set -eu
-REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.txt"
-# Entries listed in the gitignored private overlay are kept out of the
-# public registry (up.sh reads both files).
-PRIVATE_REGISTRY="$HOME/projects/dotfiles/docker/compose-projects.private.txt"
-TMP="$(mktemp)"
-
-echo "🔄 Syncing $REGISTRY from 'docker compose ls'"
-
-{
-    echo "# Auto-synced by docker/sync.sh. Edit by hand to add/remove services."
-    echo "# Paths are relative to \$HOME."
-    docker compose ls --format json \
-        | jq -r '.[].ConfigFiles' \
-        | tr ',' '\n' \
-        | xargs -n1 dirname \
-        | sed "s|^$HOME/||" \
-        | sort -u
-} > "$TMP"
-
-if [ -f "$PRIVATE_REGISTRY" ]; then
-    grep -vxF -f <(grep -v '^[[:space:]]*#' "$PRIVATE_REGISTRY") "$TMP" > "$TMP.pub" || true
-    mv "$TMP.pub" "$TMP"
-fi
-
-mv "$TMP" "$REGISTRY"
-echo "✅ Registry updated. Review with: git diff docker/compose-projects.txt"
+registered=$(grep -hv '^#' "$HOME/projects/dotfiles/docker/compose-projects.txt" \
+    "$HOME/projects/dotfiles/docker/compose-projects.private.txt" | awk '{print $1}')
+docker compose ls --format json | jq -r '.[].ConfigFiles' | tr ',' '\n' | xargs -n1 dirname | sort -u \
+    | while read -r dir; do
+        relative=${dir#$HOME/}
+        print -l -- $registered | grep -qxF -e "$relative" -e "$dir" || print "not registered: $relative"
+    done

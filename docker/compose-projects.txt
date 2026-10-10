@@ -1,5 +1,8 @@
-# Auto-synced by docker/sync.sh. Edit by hand to add/remove services.
-# Paths are relative to $HOME.
-projects/dotfiles/docker-logger
-projects/dotfiles/litellm
-projects/dotfiles/qdrant
+# Docker compose stacks and the machines they run on, by LocalHostName
+# (`scutil --get LocalHostName`). docker/up.sh starts the stacks listed for this
+# machine; a machine named nowhere starts none. Paths are relative to $HOME, or absolute.
+#
+# stack                                 machines
+projects/dotfiles/docker-logger         m3pro m1pro i9
+projects/dotfiles/litellm               m3pro
+projects/dotfiles/qdrant                m3pro
