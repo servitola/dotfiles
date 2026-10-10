@@ -212,6 +212,33 @@ repository is pushed to Gitea (`servitola/skills`, private).** `claude-code/skil
   runs it on its own commits.
 - `agents/` stays: harness, not content.
 
+**State (2026-10-09, cron moved out). Committed here (not pushed); the new
+repository is pushed to Gitea (`servitola/cron`, private, no GitHub mirror).** Everything that was
+`cron/` — 72 fragments (125 jobs, 24 of them never tracked), 36 scripts, the
+installer, calendar and weekly report — now lives in `~/projects/cron`
+(`$DIR_CRON`). Design: `docs/superpowers/specs/2026-10-09-cron-extraction-design.md`,
+plan: `docs/superpowers/plans/2026-10-09-cron-extraction.md`.
+
+- **Constants carry the move:** `DIR_CRON`, `DIR_CRON_JOBS`, `DIR_CRON_SCRIPTS`.
+  Fragments and scripts use them instead of 190 absolute paths; cron gets them
+  through `~/.zshenv`. The `tg-send*.sh` wrappers reach `tg` via `$DIR_DOTFILES`.
+  Verified: the installed crontab equals the new installer's output, and the
+  first jobs after the reinstall wrote to `~/projects/cron/logs`.
+- **Still in dotfiles:** `zsh/bin/cron-cal`, `zsh/bin/perfcheck`, `install/15`
+  (runs the installer from `$DIR_CRON`), `install/check.sh`, the `cron-job`
+  skill, `macos/com.servitola.kindle-autosync.plist` (launchd needs the absolute
+  path; re-bootstrapped) — all pointing at `$DIR_CRON`. The scripts in
+  `android_phone*`, `serho_topics`, `homebrew-tap` that call `tg-send-thread.sh`
+  were retargeted and committed in their repos; the bot's «Крон» topic too.
+- **Fixed on the way:** the weekly report saw 12 jobs of 126 (non-recursive
+  glob). `work-snapshot` has been timing out on every run for a long time
+  (15 000+ `urlopen error timed out` lines) — pre-existing, not touched.
+- **Open:** stale mentions in `claude-code/plans/` and `rag/gaps/` were left as history.
+  `~/projects/cron-conductor` (uninstalled Swift menu-bar app) still points its
+  Makefile at the old dotfiles path. The `_EXPORTS_LOADED` guard in
+  `zsh/exports.sh` means a long-lived shell keeps old constant values until it
+  is restarted — `_EXPORTS_LOADED= zsh -c 'source ~/.zshenv; …'` for a test.
+
 **State (install refactor).** The `Makefile` install target (298 lines of
 `$(call link,…)` + `$(D)/$(H)/$(A)` shorthands + `SHELL := /bin/zsh -c`) was
 extracted into plain zsh. `Makefile` is now a one-line wrapper `install: ;
