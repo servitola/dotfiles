@@ -5,6 +5,7 @@ export _ALIASES_LOADED=1
 # update all
 alias up='source ~/projects/dotfiles/macos/update_all_and_cleanup_all.sh'
 alias u=up
+alias deepclean='zsh ~/projects/dotfiles/macos_cleanup/deep_clean.sh'
 
 alias perfcheck='~/projects/dotfiles/zsh/bin/perfcheck'
 alias perf=perfcheck
