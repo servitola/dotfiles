@@ -36,16 +36,12 @@ safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
 spoon.YouTrackTicket.youTrackUrl = constants.WORK_YOUTRACK_URL
 spoon.YouTrackTicket.project = constants.WORK_YOUTRACK_PROJECT
 spoon.YouTrackTasks.youTrackUrl = constants.WORK_YOUTRACK_URL
-if hs.fs.attributes(hs.configdir .. "/Spoons/GlobalProtectToggle.spoon") then
-    safeLoadSpoon("GlobalProtectToggle") -- GlobalProtect VPN on a key, github.com/servitola/GlobalProtectToggle.spoon
-end
+safeLoadSpoon("GlobalProtectToggle") -- GlobalProtect VPN on a key, github.com/servitola/GlobalProtectToggle.spoon
 safeLoadSpoon("BrowserTabOpener") -- jump to a site's open tab, cycle, or open it, github.com/servitola/BrowserTabOpener.spoon
 spoon.BrowserTabOpener.browser = constants.APP_BROWSER_BUNDLE
 safeLoadSpoon("AudioSwitcher") -- audio device switching
 safeLoadSpoon("YouTubeStream") -- YouTube stream player
-if hs.fs.attributes(hs.configdir .. "/Spoons/LinkRouter.spoon") then
-    safeLoadSpoon("LinkRouter") -- each clicked link to the browser its rule names, github.com/servitola/LinkRouter.spoon
-end
+safeLoadSpoon("LinkRouter") -- each clicked link to the browser its rule names, github.com/servitola/LinkRouter.spoon
 safeLoadSpoon("HotKeys") -- all hotkeys
 safeLoadSpoon("VoiceCtl") -- voice-driven mac control (see detached skill voice-mac)
 safeLoadSpoon("ScreenGlow") -- edge glow while an agent drives the desktop, github.com/servitola/ScreenGlow.spoon
