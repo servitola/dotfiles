@@ -51,7 +51,6 @@ alias cl=clear
 # duckduckgo search
 alias d="ddgr -x -n 3"
 
-alias code2=windsurf
 alias cpwd="pwd|tr -d '\n'|pbcopy"
 
 alias sudo='sudo '

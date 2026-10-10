@@ -63,7 +63,7 @@ use — safe to ignore or delete).
 Safe to ignore. Kept for reference; could be removed without affecting the setup.
 
 - **Alternative AI coding agents** (Claude Code is the real one): **aider · opencode · codex · mistral-vibe** — all wired to the litellm proxy but not in daily use.
-- **cursor · windsurf** — AI editors. Not used.
+- **cursor** — AI editor. Not used.
 - **aichat** — AI CLI. Experiment.
 - **lazygit · lazydocker** — TUIs; Fork + OrbStack cover everything, so unused.
 - **marta** — dual-pane file manager. Experiment; only wired to a secondary Finder + Shift shortcut.

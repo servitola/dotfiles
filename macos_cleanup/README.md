@@ -21,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/servitola/dotfiles/master/cleanup/c
 **Development**
 - Xcode: DerivedData, archives, simulator logs
 - JetBrains: IDE caches and logs
-- VSCode / Windsurf: logs, cached data
+- VSCode: logs, cached data
 - Android SDK cache, Gradle cache
 - NuGet cache, NPM logs, NPX cache
 - pre-commit and Puppeteer caches

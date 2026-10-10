@@ -13,7 +13,7 @@ This dotfiles repository contains a complete development environment optimized f
 - **Shell**: [Zsh](shell-zsh.md) with extensive customization
 - **Automation**: [Hammerspoon](hammerspoon.md) for desktop automation
 - **Keyboard**: [Karabiner-Elements](karabiner-elements.md) for advanced key remapping
-- **Editors**: [VSCode](editors.md), [Cursor](editors.md), [Windsurf](editors.md)
+- **Editors**: [VSCode](editors.md), [Cursor](editors.md)
 - **Package Management**: [Homebrew](homebrew.md) with 200+ packages
 - **Terminal**: [iTerm2](terminal-emulators.md) and [Ghostty](terminal-emulators.md)
 - **Version Control**: [Git](git.md) with advanced configuration
@@ -41,7 +41,7 @@ This dotfiles repository contains a complete development environment optimized f
 
 ### Editors & Development
 
-- **[Editors](editors.md)** - VSCode, Cursor, and Windsurf configuration
+- **[Editors](editors.md)** - VSCode and Cursor configuration
 - **[Terminal Emulators](terminal-emulators.md)** - iTerm2 and Ghostty setup
 
 ### Tools & Utilities
@@ -85,7 +85,7 @@ This dotfiles repository contains a complete development environment optimized f
 - **Application launcher** with single keystrokes
 
 #### Development Workflow
-- **Multi-editor setup** (VSCode primary, Cursor for AI, Windsurf experimental)
+- **Multi-editor setup** (VSCode primary, Cursor for AI)
 - **Comprehensive Git integration** with advanced tools
 - **Automated updates** and maintenance
 
