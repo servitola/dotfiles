@@ -19,7 +19,7 @@ return {
 --         ⇪⇧v   │     ⇧F16     │              │   │               ↓
 { chord= "⇧F16",                           app = "@APP_BROWSER_ALT" },
 --         ⇪⌃v   │     ⌃F16     │              │   │               ↓
-{ chord= "⌃F16",                            fn = "vpn.toggle" },
+{ chord= "⌃F16",                            fn = "vpn.toggle_globalprotect" },
 --         ⇪⌥v   │     ⌥F16     │              │   │         maccy — show buffer
 --         ⇪⌘v   │     ⌘F16     │              │   │               ↓
 { chord= "⌘F16",                            fn = "browser_search_selected" },

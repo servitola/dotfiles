@@ -12,7 +12,7 @@
 #
 # Network: WORK_YOUTRACK_MCP_URL is an internal host. It works without the AmneziaWG
 # VPN. If the server fails to connect (timeouts), re-run `ytmcp on --proxy` to add
-# ALL_PROXY pointing at the work VPN's SOCKS proxy (PROXY_WORK).
+# ALL_PROXY pointing at the GlobalProtect SOCKS proxy (PROXY_WORK).
 #
 # Usage:
 #   ytmcp on            register + (re)connect   [scope: user]

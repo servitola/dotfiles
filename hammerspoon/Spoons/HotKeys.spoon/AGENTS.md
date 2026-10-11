@@ -12,7 +12,7 @@
 ## Chord Definition Format
 ```lua
 { chord = "⇪v", app = "@APP_BROWSER" }
-{ chord = "⌃F16", fn = "vpn.toggle" }
+{ chord = "⌃F16", fn = "vpn.toggle_globalprotect" }
 ```
 
 ## Valid Chord Attributes

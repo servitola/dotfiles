@@ -323,7 +323,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 - **Audio (AudioSwitcher)**: `audio.internal` `audio.external` `audio.marshall` `audio.connect_marshall` `audio.bt`
 - **Translate (PopupTranslateSelection)**: `translate_to_russian` `translate_to_english` `translate_to_greek`
 - **Browser (BrowserTabOpener)**: `browser_git` `browser_git_dotfiles` `browser_youtube` `browser_youtube_playing` `browser_search_selected`
-- **System**: `hammerspoon_reload` `wallpaper_refresh` `system_health` `vpn.toggle` `info.show_shortcuts` `app_usage_stats`
+- **System**: `hammerspoon_reload` `wallpaper_refresh` `system_health` `vpn.toggle_globalprotect` `info.show_shortcuts` `app_usage_stats`
 - **Apps (custom launchers)**: `vscode.dotfiles` `fork.dotfiles` `fork.work` `forkgram.chat`
 - **Misc**: `paste_bypass` `musicapp.play_pause` `press_return` `android.show_all` `set_secondary_layout` `set_primary_layout` `clipboard_llm` `show_youtrack` `show_youtrack_tasks` `youtube_stream`
 

@@ -36,7 +36,7 @@ safeLoadSpoon("YouTrackTasks") -- YouTrack tasks view
 spoon.YouTrackTicket.youTrackUrl = constants.WORK_YOUTRACK_URL
 spoon.YouTrackTicket.project = constants.WORK_YOUTRACK_PROJECT
 spoon.YouTrackTasks.youTrackUrl = constants.WORK_YOUTRACK_URL
-safeLoadSpoon(constants.WORK_VPN_SPOON) -- the work VPN on a key
+safeLoadSpoon("GlobalProtectToggle") -- GlobalProtect VPN on a key, github.com/servitola/GlobalProtectToggle.spoon
 safeLoadSpoon("BrowserTabOpener") -- jump to a site's open tab, cycle, or open it, github.com/servitola/BrowserTabOpener.spoon
 spoon.BrowserTabOpener.browser = constants.APP_BROWSER_BUNDLE
 safeLoadSpoon("AudioSwitcher") -- audio device switching
