@@ -27,6 +27,7 @@ EXCEPTIONS = {
     "num1": (("⇥v",), "01-tab-modifier"),
     "num2": (("⇥f",), "01-tab-modifier"),
     "num3": (("⇥t",), "01-tab-modifier"),
+    "num4": (("⌥4",), "31-alt-shortcuts-4"),
     "num8": (("⌃⌥ad", "⌃⌥←→"), "32-swap-sides"),
     "num9": (("⌥␣",), "26-right-option-space-punto"),
 }

@@ -54,7 +54,7 @@ def test_right_option_shows_the_birman_character():
 def test_left_only_rule_leaves_right_option_to_the_layer():
     info = where.resolve("⌥4")
     assert info["karabiner"][0]["side"] == "left"
-    assert info["emitted"] == "⌘h"
+    assert info["emitted"] == "num4"
     assert info["types"]["state"] == "option"
 
 
