@@ -43,7 +43,8 @@ print_task() {
 
 # --- Main ---
 
-sudo -v </dev/tty
+# Without a terminal (launchd, an ssh command) there is nobody to type it.
+if { : </dev/tty } 2>/dev/null; then sudo -v </dev/tty; fi
 
 _free_bytes_before=$(df -k / | awk 'NR==2 {print $4}')
 
@@ -196,7 +197,7 @@ ATUIN_DIR="$HOME/.local/share/atuin"
 if [ -d "$ATUIN_DIR" ] && command -v sqlite3 &>/dev/null; then
     spinner_start "Atuin backups + VACUUM"
     atuin_before_kb=$(du -sk "$ATUIN_DIR" 2>/dev/null | cut -f1)
-    "$RM_CMD" -rf "$ATUIN_DIR/backups/"* 2>/dev/null
+    "$RM_CMD" -rf "$ATUIN_DIR/backups/"*(N) 2>/dev/null
     for db in history.db records.db kv.db meta.db scripts.db; do
         [ -f "$ATUIN_DIR/$db" ] && sqlite3 "$ATUIN_DIR/$db" 'VACUUM;' 2>/dev/null
     done
