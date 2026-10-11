@@ -1,11 +1,12 @@
 """Shortcuts the machine holds, projected into the per-key ASCII tables.
 
-Source: `macos_shortcuts/shortcuts.toml` (what `up` captures from this Mac). Every row with a
-key becomes one description line in the table of the key it is pressed on, marked in the
-G column so the line is known to be machine-owned:
+Sources: `macos_shortcuts/shortcuts.toml` and `jetbrains rider/keymap.xml` (both captured from
+this Mac by `up`). Every shortcut becomes one description line in the table of the key it is
+pressed on, marked in the G column so the line is known to be machine-owned:
 
     ⚙  an enabled macOS symbolic hotkey        `— system 52 dock.toggle_hiding`
     ◆  an app's global hotkey or a menu item   `Shottr — area`, `Music — Repeat All`
+    ℝ  a Rider keymap customization            `Rider — Find Usages`
 
 `normalize.py --project` writes these lines and replaces the ones it wrote before; lines
 without a marker are hand-written and never touched. Lint rule P1 fails when the lines on
@@ -25,11 +26,12 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "macos_shortcuts"))
 import bridges
 import keycodes
 import parse_karabiner
+import rider
 import shortcuts
 from classify import _KM
 from config import BUTTON_FILES
 
-MARKERS = {"system": "⚙", "app": "◆", "menu": "◆"}
+MARKERS = {"system": "⚙", "app": "◆", "menu": "◆", "rider": rider.MARKER}
 MARKER_CHARS = set(MARKERS.values())
 STUB_FILES = {"shift", "command", "control", "option", "capslock", "backslash", "backspace"}
 
@@ -135,21 +137,32 @@ def expected(machine_rows=None):
             continue
         kind = "system" if isinstance(row, shortcuts.System) else "app" if isinstance(row, shortcuts.App) else "menu"
         files.setdefault(stem, {}).setdefault(chord, []).append((MARKERS[kind], describe(row)))
+    for keys, texts in rider.expected().items():
+        stem, chord = place(keys, variants, passthrough)
+        if stem is None:
+            continue
+        files.setdefault(stem, {}).setdefault(chord, []).extend((MARKERS["rider"], t) for t in texts)
     for chords in files.values():
         for chord in chords:
-            chords[chord] = sorted(set(chords[chord]), key=lambda t: (t[0] != "⚙", t[1]))
+            chords[chord] = sorted(set(chords[chord]), key=lambda t: (t[0] != "⚙", t[0] != "◆", t[1]))
     return files
 
 
 def skipped(machine_rows=None):
-    """[(row, reason)] for the rows `expected()` leaves out."""
+    """[(keys, reason)] for the shortcuts `expected()` leaves out."""
     variants = bridges.slot_variants()
     passthrough = _passthrough_hyper()
     out = []
     for row in rows_with_keys(machine_rows):
         stem, reason = place(row.keys, variants, passthrough)
         if stem is None:
-            out.append((row, reason))
+            out.append((row.keys, f"{shortcuts.ident(row)}: {reason}"))
+    for keys, texts in rider.expected().items():
+        stem, reason = place(keys, variants, passthrough)
+        if stem is None:
+            out.append((keys, f"{', '.join(texts)}: {reason}"))
+    for action_id, ks in sorted(set(rider.skipped())):
+        out.append((ks, f"Rider {action_id}: no chord glyph for that key"))
     return out
 
 

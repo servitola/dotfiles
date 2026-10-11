@@ -16,7 +16,8 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   B2  every F13–F20/num# chord is a slot variant ([slots] in karabiner/layers.toml) or num8/num9
   S1  an active chord is an enabled system shortcut in macos_shortcuts/shortcuts.toml (macOS swallows it)
   S4  an active chord is an app's global hotkey ([[app]]) or a menu shortcut ([[menu]]) in shortcuts.toml
-  P1  the ⚙ / ◆ lines (machine shortcuts projected by normalize.py --project) differ from shortcuts.toml
+  S5  an active chord without ⇪ is a Rider shortcut (effective keymap, Rider.app's parents included)
+  P1  the ⚙ / ◆ / ℝ lines (machine shortcuts projected by normalize.py --project) differ from their sources
 
 Once per run (also under --skip-drift):
   S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
@@ -46,6 +47,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(HERE), "..", "..", "macos_shortc
 
 from parse_karabiner import parse_karabiner, _TO_PHYS, _to_display, _from_mods_to_layer
 import projection
+import rider
 from parse_birman import parse_birman, LAYER_TO_STATE
 from config import FKEY_MAPPING, MOD_DISPLAY
 from app_constants import resolve
@@ -548,6 +550,24 @@ def check_app_shortcuts(state, findings, rows):
                          "pick another chord here, or move the app's shortcut and let `up` capture it")
 
 
+def check_rider_shortcuts(state, findings, effective, names):
+    """S5: a global Hammerspoon chord that Rider also uses; inside Rider the action is gone.
+    Hyper chords never reach Rider as themselves, so only chords without ⇪ are compared."""
+    for a in state["actives"]:
+        if a["chord"].startswith("⇪"):
+            continue
+        try:
+            chord = keycodes.canonical(a["chord"])
+        except ValueError:
+            continue
+        actions = effective.get(chord)
+        if actions:
+            labels = ", ".join(rider.label(x, names) for x in actions)
+            findings.add(WARN, state["path"], a["line"], "S5",
+                         f"`{a['chord']}` → {a['target']} is also Rider's {labels}; Hammerspoon takes it inside Rider",
+                         "fine if intended; otherwise move one of them (Rider: Settings ▸ Keymap, then `up`)")
+
+
 def check_projection(state, findings, expected):
     """P1: the ⚙ / ◆ lines of this file are exactly what shortcuts.toml says."""
     f = state["path"]
@@ -673,6 +693,10 @@ def main():
     check_machine_shortcuts(findings, machine_rows)
     system = enabled_system(machine_rows)
     projected = projection.expected(machine_rows)
+    rider_effective = rider.effective()
+    rider_names = rider.action_names() if rider_effective else {}
+    if rider_effective is None:
+        findings.add(INFO, rider.KEYMAP, 1, "S5", "skipped: Rider.app or jetbrains rider/keymap.xml not here")
 
     for name in files:
         if not name.endswith(".lua"): name += ".lua"
@@ -689,6 +713,8 @@ def main():
         check_system_shortcuts(state, findings, system)
         check_app_shortcuts(state, findings, machine_rows)
         check_projection(state, findings, projected.get(name.removesuffix(".lua"), {}))
+        if rider_effective:
+            check_rider_shortcuts(state, findings, rider_effective, rider_names)
         if not args.skip_drift:
             check_karabiner_drift(state, findings, karabiner_strict)
             check_birman_drift(state, findings, birman_data)

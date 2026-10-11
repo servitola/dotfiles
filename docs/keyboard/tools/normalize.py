@@ -4,9 +4,9 @@
 Modes:
   --fix-format       (default) only adjust column geometry to [17, 32, 47, 51]
   --insert-missing   additionally insert ASCII rows for active chords lacking docs
-  --project          additionally write the machine's shortcuts (macos_shortcuts/shortcuts.toml)
-                     into the tables as ⚙ / ◆ lines, replacing the ones written before
-                     (docs/keyboard/projection.py); hand-written lines are never touched
+  --project          additionally write the machine's shortcuts (macos_shortcuts/shortcuts.toml,
+                     jetbrains rider/keymap.xml) into the tables as ⚙ / ◆ / ℝ lines, replacing the
+                     ones written before (docs/keyboard/projection.py); hand-written lines are never touched
 
 Canonical row geometry:
     --          ⇪a   │      ←       │ A    Ф    Α  │ ✓ │       Rider — …
@@ -452,8 +452,8 @@ def main():
     else:
         print("all files already canonical")
     if args.project:
-        for row, why in projection.skipped():
-            print(f"  not projected: {row.keys} ({why})", file=sys.stderr)
+        for keys, why in projection.skipped():
+            print(f"  not projected: {keys} ({why})", file=sys.stderr)
 
 
 if __name__ == "__main__":
