@@ -22,9 +22,14 @@ link_all \
 [[ ! -d $DIR_SKILLS ]] || link "$CLAUDE_CODE/skills" "$HOME/.agents/skills"
 # A copy, not a link: Codex writes its own state into config.toml, which a link
 # would carry into this repo.
+before=$(md5 -q "$HOME/.codex/config.toml" 2>/dev/null || true)
 python3 "$DOTFILES/codex/materialize-config.py" \
     "$DOTFILES/codex/config.toml" "$HOME/.codex/config.toml" "$HOME"
-ok "codex config.toml written"
+if [[ $(md5 -q "$HOME/.codex/config.toml") == "$before" ]]; then
+    log "codex config.toml up to date"
+else
+    ok "codex config.toml written"
+fi
 
 section "OpenCode"
 link_all \
