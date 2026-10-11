@@ -11,7 +11,7 @@ FN_LABELS = {  # fn_name → short display label
     "youtube_stream":"YT Stream","translate_to_russian":"→ RU",
     "translate_to_english":"→ EN","translate_to_greek":"→ EL",
     "musicapp.play_pause":"▶/⏸","android.show_all":"Android",
-    "vpn.toggle_globalprotect":"VPN","audio.internal":"Audio Int",
+    "vpn.toggle":"VPN","audio.internal":"Audio Int",
     "audio.external":"Audio Ext","audio.bt":"Audio BT",
     "audio.marshall":"Marshall","audio.connect_marshall":"Marshall",
     "system_health":"Sys Health","clipboard_llm":"Clip LLM","screenshot_ai":"AI Screen",

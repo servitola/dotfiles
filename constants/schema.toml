@@ -71,6 +71,7 @@ WORK_YOUTRACK_PROJECT = { type = "text", private = true, about = "project new Yo
 WORK_YOUTRACK_MCP_URL = { type = "url", private = true, about = "the YouTrack the MCP server talks to" }
 WORK_GITLAB_URL       = { type = "url", private = true, about = "the employer's GitLab" }
 WORK_DEEPLINK_URL     = { type = "url", private = true, about = "deep link that opens the work app on Android" }
+WORK_VPN_SPOON        = { type = "text", private = true, about = "the Spoon that switches the employer VPN; absent on a Mac without it" }
 WORK_LINK_PATTERNS    = { type = "text", private = true, about = "comma-separated URL substrings (Lua patterns) routed to the work browser" }
 
 PROXY_WORK         = { type = "url", unread = true, private = true, about = "employer VPN, SOCKS" }
