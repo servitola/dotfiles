@@ -42,9 +42,6 @@ local function nextCase()
     index = index + 1
     local case = cases[index]
     if not case then report("done"); out:close(); return end
-    -- System alerts (a new login item, a blocked extension) take the front and
-    -- nobody in the VM answers them.
-    hs.execute("killall UserNotificationCenter")
     hs.application.launchOrFocusByBundleID(neutral)
     hs.timer.doAfter(1, function()
         local mods, key = hotkeys.parseChord(case.chord)
@@ -54,6 +51,12 @@ local function nextCase()
         local waited, poll = 0, nil
         poll = hs.timer.doEvery(0.5, function()
             local front = hs.application.frontmostApplication()
+            -- System alerts (a new login item, an app's first-launch request) take the
+            -- front, and nobody in the VM answers them.
+            if front and front:bundleID() == "com.apple.UserNotificationCenter" then
+                hs.execute("killall UserNotificationCenter")
+                return
+            end
             local app = hs.application.get(case.bundle)
             waited = waited + 0.5
             -- a menu-bar app (VoiceInk) runs without ever coming to the front
