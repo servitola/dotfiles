@@ -32,3 +32,6 @@ docs/keyboard/icons_cache.json
 
 # This Mac's values; constants.example.env, generated from constants/schema.toml, is the template
 constants.env
+
+# Personal topics kept out of the public repository (its own header says so)
+claude-code-memory/trusted-sources.private.md
