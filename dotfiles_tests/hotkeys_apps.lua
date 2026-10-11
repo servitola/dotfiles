@@ -42,6 +42,9 @@ local function nextCase()
     index = index + 1
     local case = cases[index]
     if not case then report("done"); out:close(); return end
+    -- System alerts (a new login item, a blocked extension) take the front and
+    -- nobody in the VM answers them.
+    hs.execute("killall UserNotificationCenter")
     hs.application.launchOrFocusByBundleID(neutral)
     hs.timer.doAfter(1, function()
         local mods, key = hotkeys.parseChord(case.chord)
