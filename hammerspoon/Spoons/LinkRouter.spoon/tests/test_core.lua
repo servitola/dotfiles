@@ -11,7 +11,7 @@ end
 
 local routes = compiled({
     { core.localNetwork, "dev" },
-    { { "workname", "workproject" }, "work" },
+    { { "initech", "acme" }, "work" },
     { "xd%.adobe%.com", FIREFOX },
     { "^https://meet%.", "work", from = TELEGRAM },
 })
@@ -32,8 +32,8 @@ eq(to("http://i9.local:2283/"), CHROME, "local: mDNS name")
 eq(to("https://localhost.example.com/"), VIVALDI, "local: a public host that starts with localhost")
 eq(to("https://example.com/?next=http://localhost"), VIVALDI, "local: localhost inside the query does not count")
 
-eq(to("https://app.workproject.com/"), FIREFOX, "list: any pattern matches")
-eq(to("https://jira.workname.com/"), FIREFOX, "list: a pattern is a substring, not a word")
+eq(to("https://app.acme.com/"), FIREFOX, "list: any pattern matches")
+eq(to("https://jira.initech.com/"), FIREFOX, "list: a pattern is a substring, not a word")
 eq(to("https://xd.adobe.com/view/1"), FIREFOX, "bundle id written in place of a name")
 eq(to("https://xdXadobe.com/"), VIVALDI, "escaped dot is a dot")
 
