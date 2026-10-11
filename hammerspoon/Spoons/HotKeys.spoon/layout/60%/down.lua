@@ -24,8 +24,9 @@ return {
 --         ⇧⌥↓   │              │              │   │        VSCode — move line down
 --         ⇧⌘↓   │      🔅       │              │   │
 --         ⌃⌥↓   │              │              │   │ Win Reset, or exit native fullscreen
---               │              │              │ ℝ │ Rider — Next Highlighted Usage
-{ chord = "⌃⌥↓",                            fn = "window.set_all_to_default" },
+--               │              │              │ℝ! │ Rider — Next Highlighted Usage
+--               │              │              │ℝ! │ Rider — Stretch to Bottom
+{ chord = "⌃⌥↓",                            fn = "window.set_all_to_default", over = "Rider" },
 --         ⌃⌘↓   │              │              │   │
 --               │              │              │ ℝ │ Rider — Next Method
 --         ⌥⌘↓   │              │              │   │        VSCode — create cursor down
@@ -38,7 +39,8 @@ return {
 --        ⇪⌃⌘↓   │              │              │   │
 --        ⇪⌥⌘↓   │              │              │   │
 --        ⇧⌃⌥↓   │              │              │   │ Bot 40%
-{ chord= "⇧⌃⌥↓",                            fn = "window.bottom_40" },
+--               │              │              │ℝ! │ Rider — Next Change
+{ chord= "⇧⌃⌥↓",                            fn = "window.bottom_40", over = "Rider" },
 --        ⇧⌃⌘↓   │              │              │   │
 --        ⇧⌥⌘↓   │              │              │   │
 --        ⌃⌥⌘↓   │              │              │   │

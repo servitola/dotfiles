@@ -25,7 +25,8 @@ return {
 --         ⇧⌥y   │              │    Ѣ    Ѣ    │   │
 --         ⇧⌘y   │              │              │   │
 --         ⌃⌥y   │              │              │   │ YT Stream
-{ chord = "⌃⌥y",                            fn = "youtube_stream" },
+--               │              │              │ℝ! │ Rider — Reload All from Disk
+{ chord = "⌃⌥y",                            fn = "youtube_stream", over = "Rider" },
 --         ⌃⌘y   │              │              │   │
 --         ⌥⌘y   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

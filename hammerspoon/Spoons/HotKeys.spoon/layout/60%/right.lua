@@ -24,8 +24,9 @@ return {
 --         ⇧⌥→   │              │              │   │        VSCode — move line right
 --         ⇧⌘→   │              │              │ ✓ │              — select line till the end
 --         ⌃⌥→   │              │              │   │ Window →, 2nd press ½ →
-{ chord = "⌃⌥→",                            fn = "window.right" },
+{ chord = "⌃⌥→",                            fn = "window.right", over = "Rider" },
 --        ⌃⌥←→   │     num8     │              │   │
+--         ⌃⌥→   │              │              │ℝ! │ Rider — Stretch to Right
 --         ⌃⌘→   │              │              │   │        VSCode — move editor to next group
 --         ⌥⌘→   │              │              │   │        VSCode — navigate next tab
 --               │              │              │   │         Music — seek forward
@@ -37,8 +38,9 @@ return {
 --        ⇪⌃⌘→   │              │              │   │
 --        ⇪⌥⌘→   │              │              │   │
 --        ⇧⌃⌥→   │              │              │   │ ½ Right
-{ chord= "⇧⌃⌥→",                            fn = "window.half_right" },
---        ⇧⌃⌥→   │              │              │ ℝ │ Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode
+{ chord= "⇧⌃⌥→",                            fn = "window.half_right", over = "Rider" },
+--        ⇧⌃⌥→   │              │              │ℝ! │ Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode
+--               │              │              │ℝ! │ Rider — Move Element Right
 --        ⇧⌃⌘→   │              │              │   │
 --        ⇧⌥⌘→   │              │              │   │
 --        ⌃⌥⌘→   │              │              │   │ Window to next screen

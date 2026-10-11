@@ -28,7 +28,8 @@ return {
 --               │              │              │   │          Mail — format as Plain Text or Rich Format
 --               │              │              │ ℝ │ Rider — Reopen Closed Tab
 --         ⌃⌥t   │              │              │ ✓ │              — this window to TV / back
-{ chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv" },
+--               │              │              │ℝ! │ Rider — Surround With
+{ chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv", over = "Rider" },
 --         ⌃⌘t   │              │              │   │
 --         ⌥⌘t   │              │              │   │          Fork — hide/search toolbar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

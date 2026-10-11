@@ -24,8 +24,9 @@ return {
 --         ⇧⌥↑   │              │              │   │        VSCode — move line up
 --         ⇧⌘↑   │      🔆       │              │ ✓ │              — increase keyboard light (illumination_increment)
 --         ⌃⌥↑   │              │              │   │ Fullscr, 2nd press native fullscreen
---               │              │              │ ℝ │ Rider — Previous Highlighted Usage
-{ chord = "⌃⌥↑",                            fn = "window.fullscreen" },
+--               │              │              │ℝ! │ Rider — Previous Highlighted Usage
+--               │              │              │ℝ! │ Rider — Stretch to Top
+{ chord = "⌃⌥↑",                            fn = "window.fullscreen", over = "Rider" },
 --         ⌃⌘↑   │              │              │   │
 --               │              │              │ ℝ │ Rider — Previous Method
 --         ⌥⌘↑   │              │              │   │        VSCode — create cursor up
@@ -38,7 +39,8 @@ return {
 --        ⇪⌃⌘↑   │              │              │   │
 --        ⇪⌥⌘↑   │              │              │   │
 --        ⇧⌃⌥↑   │              │              │   │ Top 60%
-{ chord= "⇧⌃⌥↑",                            fn = "window.top_60" },
+--               │              │              │ℝ! │ Rider — Previous Change
+{ chord= "⇧⌃⌥↑",                            fn = "window.top_60", over = "Rider" },
 --        ⇧⌃⌘↑   │              │              │   │
 --        ⇧⌥⌘↑   │              │              │   │
 --        ⌃⌥⌘↑   │              │              │   │

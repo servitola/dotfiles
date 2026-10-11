@@ -28,7 +28,8 @@ return {
 --         ⇧⌥←   │              │              │   │             📝 — move line left
 --         ⇧⌘←   │              │              │ ✓ │              — select text to start of line
 --         ⌃⌥←   │              │              │   │ Window ←, 2nd press ½ ←
-{ chord = "⌃⌥←",                            fn = "window.left" },
+--               │              │              │ℝ! │ Rider — Stretch to Left
+{ chord = "⌃⌥←",                            fn = "window.left", over = "Rider" },
 --        ⌃⌥←→   │     num8     │              │   │ Swap two top windows (both arrows at once, or ⌃⌥ + A and D)
 { chord= "num8",                            fn = "window.swap_sides" },
 --         ⌃⌘←   │              │              │   │             📝 — move editor to previous group
@@ -42,8 +43,9 @@ return {
 --        ⇪⌃⌘←   │              │              │   │
 --        ⇪⌥⌘←   │              │              │   │
 --        ⇧⌃⌥←   │              │              │   │ ½ Left
---               │              │              │ ℝ │ Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode
-{ chord= "⇧⌃⌥←",                            fn = "window.half_left" },
+--               │              │              │ℝ! │ Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode
+--               │              │              │ℝ! │ Rider — Move Element Left
+{ chord= "⇧⌃⌥←",                            fn = "window.half_left", over = "Rider" },
 --        ⇧⌃⌘←   │              │              │   │
 --        ⇧⌥⌘←   │              │              │   │
 --        ⌃⌥⌘←   │              │              │   │ Window to previous screen

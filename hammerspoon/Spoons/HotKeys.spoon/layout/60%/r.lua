@@ -14,8 +14,8 @@ return {
 --               │              │              │   │   Claude Code — reverse search history
 --               │              │              │   │         Atuin — reverse search history
 --          ⌥r   │              │      ®       │   │ WebStorm
---               │              │              │ ℝ │ Rider — Build
-{ chord =  "⌥r",                           app = "WebStorm" },
+--               │              │              │ℝ! │ Rider — Build
+{ chord =  "⌥r",                           app = "WebStorm", over = "Rider" },
 --          ⌘r   │              │              │   │         Rider — replace in current file
 --               │              │              │   │        VSCode — replace in current file
 --               │              │              │   │          Mail — reply to email
@@ -36,7 +36,8 @@ return {
 --               │              │              │   │          Mail — reply all to email
 --               │              │              │   │       Vivaldi — clear cache and reload page
 --         ⌃⌥r   │              │              │   │ WebStorm
-{ chord = "⌃⌥r",                           app = "WebStorm" },
+--               │              │              │ℝ! │ Rider — Run
+{ chord = "⌃⌥r",                           app = "WebStorm", over = "Rider" },
 --         ⌃⌘r   │              │              │   │         Rider — rerun tests
 --         ⌥⌘r   │              │              │   │         Rider — resume running (debugging)
 --               │              │              │   │        VSCode — resume running (debugging)

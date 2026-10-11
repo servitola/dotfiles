@@ -24,7 +24,8 @@ return {
 --         ⇧⌘i   │              │              │   │           VSCode — open agent chat
 --               │              │              │ ◆ │ Boring Notch — toggleNotchOpen
 --         ⌃⌥i   │              │              │   │ Shortcuts
-{ chord = "⌃⌥i",                            fn = "info.show_shortcuts" },
+--               │              │              │ℝ! │ Rider — Auto-Indent Lines
+{ chord = "⌃⌥i",                            fn = "info.show_shortcuts", over = "Rider" },
 --         ⌃⌘i   │              │              │   │           VSCode — open chat
 --         ⌥⌘i   │              │              │   │          Browser — open Developer Tools
 --               │              │              │   │             Mail — append selected emails to email

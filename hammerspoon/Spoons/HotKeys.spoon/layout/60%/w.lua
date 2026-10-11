@@ -47,7 +47,8 @@ return {
 --        ⇪⌥⌘w   │     ⌥⌘↑      │              │   │        VSCode — clone caret up;
 --               │              │              │   │         iTerm — focus pane above
 --        ⇧⌃⌥w   │              │              │   │ Top 60%
-{ chord= "⇧⌃⌥w",                            fn = "window.top_60" },
+--               │              │              │ℝ! │ Rider — Dump Lookup Element Weights to Log
+{ chord= "⇧⌃⌥w",                            fn = "window.top_60", over = "Rider" },
 --        ⇧⌃⌘w   │              │              │   │
 --        ⇧⌥⌘w   │              │              │   │
 --        ⌃⌥⌘w   │              │              │   │

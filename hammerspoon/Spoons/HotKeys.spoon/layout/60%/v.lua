@@ -29,7 +29,8 @@ return {
 --         ⇧⌥v   │              │ ˇ    ˇ    Ά  │   │
 --         ⇧⌘v   │              │              │   │          Mail — paste text into email as quotation
 --         ⌃⌥v   │              │              │   │ YouTube
-{ chord = "⌃⌥v",                            fn = "browser_youtube" },
+--               │              │              │ℝ! │ Rider — Introduce Variable
+{ chord = "⌃⌥v",                            fn = "browser_youtube", over = "Rider" },
 --         ⌃⌘v   │              │              │ ✓ │              — paste bypass (type clipboard for restricted fields)
 { chord = "⌃⌘v",                            fn = "paste_bypass" },
 --         ⌥⌘v   │              │              │   │         Rider — extract variable
@@ -41,7 +42,8 @@ return {
 --        ⇪⌃⌘v   │    ⌃⌘F16     │              │   │
 --        ⇪⌥⌘v   │    ⌥⌘F16     │              │   │
 --        ⇧⌃⌥v   │              │              │   │     🌐 Vivaldi — focus playing YouTube tab
-{ chord= "⇧⌃⌥v",                            fn = "browser_youtube_playing" },
+--               │              │              │ℝ! │ Rider — Paste as Plain Text
+{ chord= "⇧⌃⌥v",                            fn = "browser_youtube_playing", over = "Rider" },
 --        ⇧⌃⌘v   │              │              │   │
 --        ⇧⌥⌘v   │              │              │   │
 --        ⌃⌥⌘v   │              │              │   │
