@@ -6,7 +6,7 @@ local VPN_BANNERS = {
     connected    = { title = "VPN already connected", message = "GlobalProtect", symbol = "lock.shield.fill", tint = "green", duration = 2 },
     disconnected = { title = "VPN already off", message = "GlobalProtect", symbol = "lock.open.fill", tint = "gray", duration = 2 },
 }
--- GlobalProtectToggle is a private Spoon, absent on machines without the work VPN.
+-- GlobalProtectToggle is a private Spoon, absent on machines without that VPN.
 if spoon.GlobalProtectToggle then
     spoon.GlobalProtectToggle.notify = function(event, problem)
         notify.show(VPN_BANNERS[event] or { title = "VPN error", message = problem, symbol = "exclamationmark.shield.fill", tint = "red", duration = 5 })
