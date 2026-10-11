@@ -27,7 +27,7 @@
 - `⇪` = Hyper (Caps Lock remapped in Karabiner)
 - `⌘` = Command, `⌥` = Option, `⌃` = Control, `⇧` = Shift
 - Karabiner renames the eight Hyper slot letters to F-keys by keyboard column (`z r f v t g b h` → `F13`…`F20`), keeping the modifiers: `⇪v` → `F16`, `⇪⌘v` → `⌘F16`. Bind the F-key, not `⇪v`. Table: `karabiner/AGENTS.md` → *Bridge Slots*; `docs/keyboard/tools/bridge.py` lists every code
-- `num8` / `num9` are the swap-windows gesture and Punto (Punto binds `pad9` in `hammerspoon/punto_switcher.lua`); `␣` is Space
+- `num1` / `num2` / `num3` are the Tab layer's `⇥v` / `⇥f` / `⇥t` (Karabiner rule 01), `num8` / `num9` the swap-windows gesture and Punto (Punto binds `pad9` in `hammerspoon/punto_switcher.lua`); `␣` is Space
 
 ## Documentation Format (canonical 5-column)
 ```

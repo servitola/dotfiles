@@ -128,13 +128,16 @@ left-hand keyboard columns, left to right, top to bottom, skipping letters that 
 that layer wins (`⇪⌘f` → `⌘o`, `⇪⌘z` → `/`, `⇪⌥z` → `⇧/`, `⇪⇧⌃z` → seek). So a new variant such
 as `⇪⌥v` needs no Karabiner edit, only the Lua binding on `⌥F16`.
 
-Two gestures no chord can express keep a code on the top keypad row: `⌃⌥a+d` / `⌃⌥←+→` (swap
-windows, rule `32`) → `keypad_8`, right `⌥␣` (Punto, rule `26`) → `keypad_9`. `keypad_0`–`7`
-stay free for the next slot letters (next columns: `e d c`, `w s x`, `q a`, `y n`).
+Presses no `hs.hotkey` chord can express keep a code on the top keypad row: `⌃⌥a+d` / `⌃⌥←+→`
+(swap windows, rule `32`) → `keypad_8`, right `⌥␣` (Punto, rule `26`) → `keypad_9`, and the Tab
+layer (rule `01`, a held Tab sets a variable, so it is a condition rather than a modifier): `⇥v` →
+`keypad_1`, `⇥f` → `keypad_2`, `⇥t` → `keypad_3`. `keypad_0` and `4`–`7` stay free for more Tab
+chords or the next slot letters (next columns: `e d c`, `w s x`, `q a`, `y n`). Every such code is
+a row of `EXCEPTIONS` in `docs/keyboard/bridges.py`.
 
 - `python3 docs/keyboard/tools/bridge.py` prints the table with the chord and binding on every code.
 - Lint `B2` fails on a layout binding of an F13–F20/keypad code that is neither a slot variant nor
-  `num8`/`num9`.
+  one of the `EXCEPTIONS` (`num1`–`num3`, `num8`, `num9`).
 - `build.sh` runs the generator, which needs `python3` ≥ 3.11 (`tomllib`); the Apple `/usr/bin/python3` 3.9 is not enough — Homebrew's is on PATH first.
 
 ## References
