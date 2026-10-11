@@ -63,7 +63,7 @@ template with all rule files in sorted order.
 27-left-all-hide.json        — All left modifiers + W A S D → the same modifiers + arrows (focus sets)
 29-mouse-ugreen-hold-to-browser.json — UGREEN mouse forward button held → browser
 30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
-31-alt-shortcuts-4.json      — Alt+4 = Cmd+H (hide front app; focus falls to the one behind)
+31-alt-shortcuts-4.json      — Left Alt+4 → keypad 4 (Hammerspoon: minimize window, focus next)
 32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Keypad 8 (swap two top windows)
 ```
 
@@ -131,13 +131,13 @@ as `⇪⌥v` needs no Karabiner edit, only the Lua binding on `⌥F16`.
 Presses no `hs.hotkey` chord can express keep a code on the top keypad row: `⌃⌥a+d` / `⌃⌥←+→`
 (swap windows, rule `32`) → `keypad_8`, right `⌥␣` (Punto, rule `26`) → `keypad_9`, and the Tab
 layer (rule `01`, a held Tab sets a variable, so it is a condition rather than a modifier): `⇥v` →
-`keypad_1`, `⇥f` → `keypad_2`, `⇥t` → `keypad_3`. `keypad_0` and `4`–`7` stay free for more Tab
-chords or the next slot letters (next columns: `e d c`, `w s x`, `q a`, `y n`). Every such code is
+`keypad_1`, `⇥f` → `keypad_2`, `⇥t` → `keypad_3`; left `⌥4` (rule `31`) → `keypad_4`. `keypad_0` and
+`5`–`7` stay free for more such chords or the next slot letters (next columns: `e d c`, `w s x`, `q a`, `y n`). Every such code is
 a row of `EXCEPTIONS` in `docs/keyboard/bridges.py`.
 
 - `python3 docs/keyboard/tools/bridge.py` prints the table with the chord and binding on every code.
 - Lint `B2` fails on a layout binding of an F13–F20/keypad code that is neither a slot variant nor
-  one of the `EXCEPTIONS` (`num1`–`num3`, `num8`, `num9`).
+  one of the `EXCEPTIONS` (`num1`–`num4`, `num8`, `num9`).
 - `build.sh` runs the generator, which needs `python3` ≥ 3.11 (`tomllib`); the Apple `/usr/bin/python3` 3.9 is not enough — Homebrew's is on PATH first.
 
 ## References

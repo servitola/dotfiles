@@ -58,7 +58,7 @@ Caps Lock sends Right Shift + Right Command + Right Control + Right Option simul
 ### F-key remaps
 `hs.hotkey` cannot tell `⇪v` from `⇪⌘v` (both carry ⌘), so the eight Hyper letters Hammerspoon launches from and that have left-modifier variants — `z r f v t g b h` — are renamed by Karabiner to an F-key, the letter's **slot**. Slots follow the left-hand keyboard columns, left to right, top to bottom: `q a z` → `z = F13`; `r f v` → `F14 F15 F16`; `t g b` → `F17 F18 F19`; `y h n` → `h = F20`. Every Hyper layer sends `⇪ [+left modifiers] X` as `[same modifiers] slot(X)` — `⇪v` → `F16`, `⇪⌘v` → `⌘F16`, `⇪⇧t` → `⇧F17` — unless `layers.toml` (or `layers.raw/`) maps that letter in that layer itself (`⇪⌘f` → `⌘o`). A new variant therefore needs only the Lua binding. Chords without Hyper (`⌃⌥⌘h`, `⇧⌃⌥⌘←`) and `⇪⇧␣` are bound directly.
 
-Presses `hs.hotkey` cannot see keep a keypad code: `⌃⌥a+d` / `⌃⌥←+→` (swap windows) → `num8`, right `⌥␣` (Punto) → `num9`, and the Tab layer's `⇥v` / `⇥f` / `⇥t` (YouTube, translate to Russian, window to TV) → `num1` / `num2` / `num3`; `num0` and `num4`–`num7` stay free. The UGREEN mouse's held button 5 sends `F16`, the same as `⇪v`.
+Presses `hs.hotkey` cannot see keep a keypad code: `⌃⌥a+d` / `⌃⌥←+→` (swap windows) → `num8`, right `⌥␣` (Punto) → `num9`, the Tab layer's `⇥v` / `⇥f` / `⇥t` (YouTube, translate to Russian, window to TV) → `num1` / `num2` / `num3`, and left `⌥4` (minimize window, focus next) → `num4`; `num0` and `num5`–`num7` stay free. The UGREEN mouse's held button 5 sends `F16`, the same as `⇪v`.
 
 - `python3 docs/keyboard/tools/bridge.py` prints every slot with the chord and the layout binding on each code, the two exceptions, and the free codes.
 - Lint: `B2` fails when a layout binds an F13–F20/keypad code that is neither a slot variant nor `num8`/`num9`; `B4` warns when a `layers.raw/` manipulator would fit the table; `G1` fails when rules `07`–`17` differ from what `gen_layers.py` generates.
@@ -349,11 +349,11 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 `fn` entries resolve through the action registry (`HotKeys.spoon/actions.lua`). Generic actions are registered by the Spoon itself; everything personal lives in `hammerspoon/actions/` and registers with `spoon.HotKeys:register(name, fn)`. Grouped by category:
 
 - **Window**: `window.left` `window.right` `window.fullscreen` `window.set_all_to_default` `window.half_left` `window.half_right` `window.top_60` `window.bottom_40` `window.center` `window.hide_current` `window.minimize_and_focus_next` `window.swap_sides` `window.screen_prev` `window.screen_next` `window.hide_all_except_work` `window.focus_work` `window.focus_personal` `window.focus_comms`
-  - `window.minimize_and_focus_next` is bound to `⌘H`, replacing the macOS Hide. It minimizes the
-    focused window and moves focus on: to the app's next window if it has one, otherwise to the
-    topmost window of another app. A fullscreen window leaves fullscreen first. `⌥4`
-    (`karabiner/rules/31-alt-shortcuts-4.json` → `⌘H`) lands in the same handler.
-    Real macOS Hide is still on `⌥⌘H` (Hide Others).
+  - `window.minimize_and_focus_next` is on `⌥4` (left ⌥; `karabiner/rules/31-alt-shortcuts-4.json`
+    sends `num4`, which the layout binds). It minimizes the focused window and moves focus on: to
+    the app's next window if it has one, otherwise to the topmost window of another app. A
+    fullscreen window leaves fullscreen first. `⌘H` is macOS's own Hide again (until 2026-10-11 the
+    layout took it over for this function).
   - `window.swap_sides` swaps the two topmost windows left↔right. Pressed as `⌃⌥` + **both**
     arrows at once, or `⌃⌥` + **A and D** at once (the same pair that moves a window left/right
     on the letter keys) — `hs.hotkey` fires on the first key and cannot read a two-key gesture, so
