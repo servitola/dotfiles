@@ -1,7 +1,7 @@
-[http "https://gitea.example.com/"]
-	sslCert = /Users/servitola/.config/gitea-ca/client.crt
-	sslKey = /Users/servitola/.config/gitea-ca/client.key
+[http "${GITEA_URL}/"]
+	sslCert = ${HOME}/.config/gitea-ca/client.crt
+	sslKey = ${HOME}/.config/gitea-ca/client.key
 
-[credential "https://gitea.example.com"]
+[credential "${GITEA_URL}"]
 	helper =
-	helper = "!f(){ . \"$HOME/.config/gitea_token.sh\"; echo username=servitola; echo \"password=$GITEA_TOKEN\"; }; f"
+	helper = "!f(){ . \"\$HOME/.config/gitea_token.sh\"; echo username=${ME_NAME}; echo \"password=\$GITEA_TOKEN\"; }; f"

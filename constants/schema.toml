@@ -83,6 +83,7 @@ PROXY_BLANC_LA     = { type = "url", unread = true, private = true, about = "Bla
 HOST_I9    = { type = "host", unread = true, private = true, about = "ssh alias of the home server", example = "home-server" }
 HOST_MIR5  = { type = "host", unread = true, private = true, about = "ssh alias of the mir5 machine", example = "other-mac" }
 HOST_GITEA = { type = "host", unread = true, private = true, about = "ssh alias of the Gitea host", example = "gitea" }
+GITEA_URL  = { type = "url", private = true, about = "the self-hosted Gitea, origin of these repositories", example = "https://gitea.example.com" }
 
 MODEL_CLAUDE_DEFAULT = { type = "text", unread = true, about = "Claude model the scripts ask for", example = "claude-opus-5" }
 MODEL_CODEX_DEFAULT  = { type = "text", unread = true, about = "Codex model the scripts ask for", example = "gpt-5.6-terra" }
