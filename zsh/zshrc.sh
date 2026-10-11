@@ -45,7 +45,8 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Atuin owns Ctrl-R and Up (prefix search, atuin/config.toml)
 eval "$(atuin init zsh)"
 
-source "${DIR_LITELLM:?}/ai.sh"
+# ai.sh is LiteLLM's client: only where its stack lives (DIR_LITELLM)
+[[ -r $DIR_LITELLM/ai.sh ]] && source "$DIR_LITELLM/ai.sh"
 [[ -r $DIR_RAG/rag.sh ]] && source "$DIR_RAG/rag.sh"
 
 # Must be last — hooks into chpwd.
