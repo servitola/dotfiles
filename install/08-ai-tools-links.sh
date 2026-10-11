@@ -4,6 +4,8 @@ set -euo pipefail
 
 section "skills repository (\$DIR_SKILLS)"
 repository "$DIR_SKILLS"
+# Third-party skills it links to (infostyle) are clones it does not track.
+[[ ! -d $DIR_SKILLS ]] || "$DIR_SKILLS/shared/skills-repos/install.sh"
 
 section "Claude"
 link_all \
