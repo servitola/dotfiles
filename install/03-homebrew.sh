@@ -82,6 +82,12 @@ source "$DOTFILES/macos_update/functions.sh"
 brew_unquarantine >/dev/null
 log "cleared"
 
+section "apps registered with LaunchServices"
+# With Spotlight indexing off nothing registers a freshly installed app, and
+# open -a or a Hammerspoon hotkey cannot find it by name.
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -R /Applications
+log "registered"
+
 section "shell completions for brew commands"
 brew completions link >/dev/null
 log "linked"
