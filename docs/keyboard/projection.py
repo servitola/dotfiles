@@ -245,5 +245,5 @@ def marked_lines(lines):
             chord = text
         g = m.group("g").strip()
         if g.rstrip("!") in MARKER_CHARS and chord:
-            out.append((i + 1, chord, g, m.group("desc")))
+            out.append((i + 1, chord, g, m.group("desc").strip()))
     return out

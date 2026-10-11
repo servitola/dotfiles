@@ -101,6 +101,34 @@ def reorder_chord_mods(text):
 
 
 # ─── canonical row builder ──────────────────────────────────────────────────
+APP_WIDTH = 13  # `App — function`: the app name ends in one column on every row
+
+
+def canonical_desc(desc):
+    """`Rider — find usages` → the app right-aligned to APP_WIDTH, then ` — `; a description
+    without a dash is left as written."""
+    desc = desc.strip()
+    if "—" not in desc:
+        return desc
+    app, rest = desc.split("—", 1)
+    return f"{app.strip():>{APP_WIDTH}} — {rest.strip()}"
+
+
+ACTIVE_FULL_RE = re.compile(r'^(\s*)\{\s*chord\s*=\s*"([^"]+)"\s*,\s*(.*?)\s*\}\s*,?\s*$')
+TARGET_COL = 44
+
+
+def normalize_active(line):
+    """`{ chord = "⌃⌥4",   fn = "audio.external" },` with `fn`/`app` starting in TARGET_COL."""
+    m = ACTIVE_FULL_RE.match(line.rstrip("\n"))
+    if not m:
+        return line
+    fields = [f.strip() for f in re.split(r",\s*(?=\w+\s*=)", m.group(3)) if f.strip()]
+    fields = [re.sub(r"\s*=\s*", " = ", f, count=1) for f in fields]
+    head = f'{m.group(1)}{{ chord = "{m.group(2)}",'
+    return head.ljust(TARGET_COL) + ", ".join(fields) + " },\n"
+
+
 def _center(text, width):
     """Pad text to width, centered. Left-bias for odd remainders (matches existing files)."""
     text = text or ""
@@ -127,16 +155,16 @@ def build_chord_row(chord, karabiner="", birman="", g="", desc=""):
     kar_cell = _center(karabiner.strip(), W_KAR)
     bir_cell = _center(birman.strip(), W_BIR)
     g_cell = _center(g.strip(), W_G)
-    desc_tail = desc.rstrip()
-    if desc_tail and not desc_tail.startswith(" "):
+    desc_tail = canonical_desc(desc)
+    if desc_tail:
         desc_tail = " " + desc_tail
     return f"{chord_cell}│{kar_cell}│{bir_cell}│{g_cell}│{desc_tail}".rstrip() + "\n"
 
 
 def build_continuation_row(g="", desc=""):
     chord_cell = "--" + " " * W_CHORD
-    desc_tail = desc.rstrip()
-    if desc_tail and not desc_tail.startswith(" "):
+    desc_tail = canonical_desc(desc)
+    if desc_tail:
         desc_tail = " " + desc_tail
     return f"{chord_cell}│{_center('', W_KAR)}│{_center('', W_BIR)}│{_center(g, W_G)}│{desc_tail}".rstrip() + "\n"
 
@@ -195,22 +223,42 @@ def normalize_line(line):
         if chord_text:
             return build_chord_row(chord_text, karabiner, birman, g, desc)
         # Continuation row (no chord, empty cells 0-3, only desc)
-        chord_cell = "--" + " " * W_CHORD  # 2 + 15 = 17 chars total
-        kar_cell = _center(karabiner, W_KAR)
-        bir_cell = _center(birman, W_BIR)
-        g_cell = _center(g, W_G)
-        desc_tail = desc.rstrip()
-        if desc_tail and not desc_tail.startswith(" "):
-            desc_tail = " " + desc_tail
-        return f"{chord_cell}│{kar_cell}│{bir_cell}│{g_cell}│{desc_tail}".rstrip() + "\n"
+        return build_continuation_row(g, desc)
+    if ACTIVE_FULL_RE.match(stripped):
+        return normalize_active(line)
     return line
 
 
 def _default_desc_for_active(target, kind):
-    """Generate description text for an inserted ASCII row from active binding."""
+    """The table's words for a Lua entry: the app it launches, or `Hammerspoon — label`."""
     if kind == "app":
         return resolve(target) or target
-    return FN_LABELS.get(target, target)
+    return "Hammerspoon — " + FN_LABELS.get(target, target)
+
+
+def describe_bound_rows(lines):
+    """A chord row left empty or `↓` whose Lua entry follows (directly or under its
+    continuation rows) gets that entry's description, so every bound chord explains itself."""
+    out = list(lines)
+    for i, line in enumerate(out):
+        m = CHORD_TEXT_LINE_RE.match(line.rstrip("\n"))
+        if not m:
+            continue
+        cells = line.rstrip("\n").split("│")
+        chord, kar, desc = cells[0][2:].strip(), cells[1].strip(), cells[4].strip()
+        if desc not in ("", "↓"):
+            continue
+        j = i + 1
+        while j < len(out) and out[j].startswith("--") and out[j].count("│") == 4 and not out[j][2:].split("│")[0].strip():
+            j += 1
+        a = ACTIVE_RE.match(out[j]) if j < len(out) else None
+        if not a or a.group(2) not in (chord, kar):
+            continue
+        out[i] = build_chord_row(chord, cells[1], cells[2], cells[3], _default_desc_for_active(a.group(4), a.group(3)))
+    return out
+
+
+CHORD_TEXT_LINE_RE = re.compile(r"^--\s*\S[^│]*│[^│]*│[^│]*│[^│]*│")
 
 
 def _source_chord_for_fkey(fkey):
@@ -364,7 +412,7 @@ def normalize_file(path, insert_missing=False, project=None, rider_conflicts=(No
 
     lines = original.splitlines(keepends=True)
     # Pass 1: per-line format normalization
-    new_lines = [normalize_line(l) for l in lines]
+    new_lines = describe_bound_rows([normalize_line(l) for l in lines])
     inserted = 0
     if insert_missing:
         # Re-scan for ASCII chords + F-key/num documentation + actives
