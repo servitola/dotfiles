@@ -114,7 +114,7 @@ def test_lint_p1_reports_stale_and_missing_lines(tmp_path):
     assert codes == [("ERROR", "P1", True), ("ERROR", "P1", True)]
 
 
-def test_lint_s4_flags_a_global_hotkey_on_an_active_chord(tmp_path):
+def test_lint_s4_flags_a_global_hotkey_and_an_unaccepted_menu_item(tmp_path):
     path = tmp_path / "4.lua"
     path.write_text(TABLE, encoding="utf-8")
     state = lint.parse_file(str(path))
@@ -122,14 +122,62 @@ def test_lint_s4_flags_a_global_hotkey_on_an_active_chord(tmp_path):
             "app": [shortcuts.App("cc.ffitch.shottr", "x", "⌃⌥4")]}
     findings = lint.Findings()
     lint.check_app_shortcuts(state, findings, rows)
-    assert sorted(sev for sev, *_ in findings.items) == ["ERROR", "WARN"]
+    assert [code for _, _, _, code, *_ in findings.items] == ["S4", "S4"]
+
+
+def test_lint_s4_accepts_a_menu_item_named_in_over(tmp_path):
+    path = tmp_path / "4.lua"
+    path.write_text(TABLE.replace('fn = "audio.external" }', 'fn = "audio.external", over = "Music" }'), encoding="utf-8")
+    state = lint.parse_file(str(path))
+    rows = {"system": [], "menu": [shortcuts.Menu("com.apple.Music", "Four", "⌃⌥4")], "app": []}
+    findings = lint.Findings()
+    lint.check_app_shortcuts(state, findings, rows)
+    lint.check_over_used(state, findings)
+    assert not findings.items
+
+
+def test_lint_s5_errors_unless_over_rider_and_s6_on_a_stale_over(tmp_path):
+    path = tmp_path / "4.lua"
+    path.write_text(TABLE, encoding="utf-8")
+    state = lint.parse_file(str(path))
+    findings = lint.Findings()
+    lint.check_rider_shortcuts(state, findings, {"⌃⌥4": ["Debug"]}, {"Debug": "Debug"})
+    assert [(sev, code) for sev, _, _, code, *_ in findings.items] == [("ERROR", "S5")]
+    path.write_text(TABLE.replace('fn = "audio.external" }', 'fn = "audio.external", over = "Rider" }'), encoding="utf-8")
+    state = lint.parse_file(str(path))
+    findings = lint.Findings()
+    lint.check_rider_shortcuts(state, findings, {"⌃⌥4": ["Debug"]}, {})
+    lint.check_over_used(state, findings)
+    assert not findings.items
+    state = lint.parse_file(str(path))
+    findings = lint.Findings()
+    lint.check_rider_shortcuts(state, findings, {}, {})
+    lint.check_over_used(state, findings)
+    assert [code for _, _, _, code, *_ in findings.items] == ["S6"]
+
+
+def test_flag_conflicts_marks_shadowed_lines_and_adds_rider_defaults():
+    actives = [{"chord": "⌃⌥4", "kind": "fn", "target": "audio.external"},
+               {"chord": "F17", "kind": "app", "target": "x"}]
+    expected = {"⌃⌥4": [("◆", "Music — Four")], "⇪⌥t": [("◆", "Maccy — popup")], "⇧⌘4": [("◆", "Shottr — area")]}
+    out = projection.flag_conflicts(expected, actives, {"⌃⌥4": ["Debug"], "F17": ["Nope"]}, {"Debug": "Debug"})
+    assert out["⌃⌥4"] == [("◆!", "Music — Four"), ("ℝ!", "Rider — Debug")]
+    assert out["⇧⌘4"] == [("◆", "Shottr — area")]
+    assert out["⇪⌥t"] == [("◆", "Maccy — popup")]
+    assert out["⇪t"] == [("ℝ!", "Rider — Nope")]
 
 
 def test_live_tables_match_the_machine():
     """What normalize.py --project would write is on disk."""
+    import glob
+    import rider
     expected = projection.expected()
-    for stem, chords in expected.items():
-        path = os.path.join(lint.LAYOUT_DIR, stem + ".lua")
-        with open(path, encoding="utf-8") as fh:
-            have = {(c, g, d) for _, c, g, d in projection.marked_lines(fh.readlines())}
-        assert have == {(c, g, d) for c, descs in chords.items() for g, d in descs}, stem
+    effective = rider.effective()
+    names = rider.action_names() if effective else None
+    for path in glob.glob(os.path.join(lint.LAYOUT_DIR, "*.lua")):
+        stem = os.path.basename(path).removesuffix(".lua")
+        state = lint.parse_file(path)
+        want = projection.flag_conflicts(expected.get(stem, {}), state["actives"], effective, names)
+        have = {(c, g, d) for _, c, g, d in projection.marked_lines(state["lines"])
+                if effective is not None or g != "ℝ!"}
+        assert have == {(c, g, d) for c, descs in want.items() for g, d in descs}, stem

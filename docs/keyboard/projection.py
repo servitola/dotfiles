@@ -10,7 +10,8 @@ pressed on, marked in the G column so the line is known to be machine-owned:
 
 `normalize.py --project` writes these lines and replaces the ones it wrote before; lines
 without a marker are hand-written and never touched. Lint rule P1 fails when the lines on
-disk differ from `expected()`.
+disk differ from `expected()`. A marker gets `!` when Hammerspoon binds the same chord in
+that file (`ℝ!`, `◆!`): the shortcut is shadowed, see lint S4 / S5 and the `over` field.
 
 Not projected (reported by `skipped()`): chords with 🌐 (no fn rows in the tables), F1–F12
 (their files are placeholders Hammerspoon never loads) and keys without a table file.
@@ -166,6 +167,45 @@ def skipped(machine_rows=None):
     return out
 
 
+def received(chord_text):
+    """The chord macOS gets when the table's chord is pressed: a slot letter becomes its
+    emitted F-key, `⇪` the four modifiers; None when the grammar does not know the chord."""
+    emitted = {v: k for k, v in bridges.slot_variants().items()}
+    try:
+        return emitted.get(chord_text) or keycodes.canonical(chord_text)
+    except ValueError:
+        return None
+
+
+def flag_conflicts(expected_for_file, actives, rider_effective=None, names=None):
+    """`expected()[stem]` with `!` on the marker of every line whose chord Hammerspoon binds
+    in this file, plus an `ℝ!` line for each Rider *default* a binding without ⇪ shadows
+    (defaults are otherwise not projected; `rider_effective` is `rider.effective()`, None
+    without Rider.app). Same shape: {chord: [(marker, desc)]}."""
+    bound = {}
+    for a in actives:
+        try:
+            bound[keycodes.canonical(a["chord"])] = a["chord"]
+        except ValueError:
+            pass
+    out = {}
+    for chord, descs in expected_for_file.items():
+        hit = received(chord) in bound
+        out[chord] = [(g + "!" if hit else g, d) for g, d in descs]
+    variants = bridges.slot_variants()
+    for canonical, chord in bound.items():
+        if chord.startswith("⇪") or not rider_effective or canonical not in rider_effective:
+            continue
+        row = out.setdefault(variants.get(chord, chord), [])
+        have = {d for _, d in row}
+        for action_id in rider_effective[canonical]:
+            text = f"{rider.APP_LABEL} — {rider.label(action_id, names or {})}"
+            if text not in have:
+                row.append((rider.MARKER + "!", text))
+                have.add(text)
+    return out
+
+
 _ROW = re.compile(r"^--(?P<chord>[^│]*)│[^│]*│[^│]*│(?P<g>[^│]*)│\s?(?P<desc>.*?)\s*$")
 
 
@@ -183,6 +223,6 @@ def marked_lines(lines):
         if text:
             chord = text
         g = m.group("g").strip()
-        if g in MARKER_CHARS and chord:
+        if g.rstrip("!") in MARKER_CHARS and chord:
             out.append((i + 1, chord, g, m.group("desc")))
     return out

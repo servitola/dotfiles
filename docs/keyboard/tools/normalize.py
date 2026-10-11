@@ -35,6 +35,7 @@ from labels import get_label, FN_LABELS
 from config import FKEY_MAPPING, MOD_DISPLAY, KEY_DISPLAY
 from app_constants import resolve
 import projection
+import rider
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
@@ -298,7 +299,7 @@ def _without_projected(lines):
             continue
         m = _CHORD_TEXT_RE.match(line)
         g = m.group(4).strip()
-        if g in projection.MARKER_CHARS:
+        if g.rstrip("!") in projection.MARKER_CHARS:
             if chord:
                 orphan_chord = chord
             continue
@@ -351,9 +352,10 @@ def project_lines(lines, expected):
 
 
 # ─── per-file pipeline ──────────────────────────────────────────────────────
-def normalize_file(path, insert_missing=False, project=None):
+def normalize_file(path, insert_missing=False, project=None, rider_conflicts=(None, None)):
     """Return (new_content, changed, inserted_count). `project` is the expected
-    projection for this file ({chord: [(marker, desc)]}, {} to clear it), or None."""
+    projection for this file ({chord: [(marker, desc)]}, {} to clear it), or None;
+    `rider_conflicts` is (rider.effective(), rider.action_names()) for the `ℝ!` lines."""
     with open(path, encoding="utf-8") as f:
         original = f.read()
     name = os.path.basename(path)
@@ -392,7 +394,9 @@ def normalize_file(path, insert_missing=False, project=None):
         new_lines, inserted = insert_missing_rows(
             new_lines, ascii_chords, ascii_f_keys, actives)
     if project is not None:
-        new_lines = project_lines(new_lines, project)
+        actives = [{"line": i + 1, "chord": m.group(2), "kind": m.group(3), "target": m.group(4)}
+                   for i, l in enumerate(new_lines) if (m := ACTIVE_RE.match(l))]
+        new_lines = project_lines(new_lines, projection.flag_conflicts(project, actives, *rider_conflicts))
 
     new_content = "".join(new_lines)
     return new_content, (new_content != original), inserted
@@ -411,6 +415,10 @@ def main():
                     help="don't write; exit 1 if any file would change (CI mode)")
     args = ap.parse_args()
     expected = projection.expected() if args.project else None
+    rider_conflicts = (None, None)
+    if args.project:
+        effective = rider.effective()
+        rider_conflicts = (effective, rider.action_names() if effective else None)
 
     import glob
     files = args.files or sorted(
@@ -425,7 +433,7 @@ def main():
             print(f"  skip (not found): {name}", file=sys.stderr)
             continue
         project = None if expected is None else expected.get(name.removesuffix(".lua"), {})
-        new_content, changed, inserted = normalize_file(path, args.insert_missing, project)
+        new_content, changed, inserted = normalize_file(path, args.insert_missing, project, rider_conflicts)
         if changed:
             changed_files.append((name, inserted))
             if not args.check:

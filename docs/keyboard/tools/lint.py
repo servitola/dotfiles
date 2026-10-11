@@ -15,8 +15,11 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   A1  every `fn = "…"` is registered (hammerspoon/actions/**/*.lua or HotKeys.spoon/init.lua)
   B2  every F13–F20/num# chord is a slot variant ([slots] in karabiner/layers.toml) or num8/num9
   S1  an active chord is an enabled system shortcut in macos_shortcuts/shortcuts.toml (macOS swallows it)
-  S4  an active chord is an app's global hotkey ([[app]]) or a menu shortcut ([[menu]]) in shortcuts.toml
-  S5  an active chord without ⇪ is a Rider shortcut (effective keymap, Rider.app's parents included)
+  S4  an active chord is an app's global hotkey ([[app]]) or a menu shortcut ([[menu]]) in shortcuts.toml;
+      a menu shortcut is accepted by `over = "<App>"` on the Lua entry, a global hotkey never
+  S5  an active chord without ⇪ is a Rider shortcut (effective keymap, Rider.app's parents included);
+      accepted by `over = "Rider"` on the Lua entry
+  S6  `over = "…"` names an app nothing of which is on that chord any more
   P1  the ⚙ / ◆ / ℝ lines (machine shortcuts projected by normalize.py --project) differ from their sources
 
 Once per run (also under --skip-drift):
@@ -82,6 +85,7 @@ CHORD_ROW_RE = re.compile(
 ACTIVE_RE = re.compile(
     r'\{\s*chord\s*=\s*"([^"]+)"\s*,\s*(app|fn)\s*=\s*"([^"]+)"'
 )
+OVER_RE = re.compile(r'\bover\s*=\s*"([^"]*)"')
 HEADER_RE = re.compile(r'^--[—\- ]*chord\s+┬')
 BOX_CAP_RE = re.compile(r'^--\s+╭([—\-]+)╮')
 
@@ -127,8 +131,11 @@ def parse_file(path):
         s = line.lstrip()
         if s.startswith("--"): continue
         for m in ACTIVE_RE.finditer(line):
+            over = OVER_RE.search(line)
             actives.append({"line": i + 1, "chord": m.group(1),
-                            "kind": m.group(2), "target": m.group(3)})
+                            "kind": m.group(2), "target": m.group(3),
+                            "over": [x.strip() for x in over.group(1).split(",") if x.strip()] if over else [],
+                            "over_used": set()})
     return {"path": path, "lines": lines, "header_idx": header_idx,
             "header_cols": header_cols, "ascii_rows": ascii_rows, "actives": actives}
 
@@ -542,12 +549,17 @@ def check_app_shortcuts(state, findings, rows):
             continue
         for r in held.get(chord, []):
             menu_local = isinstance(r, shortcuts.Menu) and r.domain != shortcuts.GLOBAL
-            findings.add(WARN if menu_local else ERROR, state["path"], a["line"], "S4",
+            app = projection.app_name(r.domain)
+            if menu_local and app in a["over"]:
+                a["over_used"].add(app)
+                continue
+            findings.add(ERROR, state["path"], a["line"], "S4",
                          f"`{a['chord']}` → {a['target']} is also {shortcuts.ident(r)} "
                          f"(macos_shortcuts/shortcuts.toml line {r.line})"
                          + ("; Hammerspoon takes it inside that app" if menu_local
                             else "; two global hotkeys on one chord, the later one is dead"),
-                         "pick another chord here, or move the app's shortcut and let `up` capture it")
+                         f'add `over = "{app}"` to the entry if that is intended' if menu_local
+                         else "pick another chord here, or move the app's shortcut and let `up` capture it")
 
 
 def check_rider_shortcuts(state, findings, effective, names):
@@ -561,18 +573,36 @@ def check_rider_shortcuts(state, findings, effective, names):
         except ValueError:
             continue
         actions = effective.get(chord)
-        if actions:
-            labels = ", ".join(rider.label(x, names) for x in actions)
-            findings.add(WARN, state["path"], a["line"], "S5",
-                         f"`{a['chord']}` → {a['target']} is also Rider's {labels}; Hammerspoon takes it inside Rider",
-                         "fine if intended; otherwise move one of them (Rider: Settings ▸ Keymap, then `up`)")
+        if not actions:
+            continue
+        if rider.APP_LABEL in a["over"]:
+            a["over_used"].add(rider.APP_LABEL)
+            continue
+        labels = ", ".join(rider.label(x, names) for x in actions)
+        findings.add(ERROR, state["path"], a["line"], "S5",
+                     f"`{a['chord']}` → {a['target']} is also Rider's {labels}; Hammerspoon takes it inside Rider",
+                     f'add `over = "{rider.APP_LABEL}"` to the entry if that is intended, '
+                     "otherwise move one of them (Rider: Settings ▸ Keymap, then `up`)")
 
 
-def check_projection(state, findings, expected):
-    """P1: the ⚙ / ◆ lines of this file are exactly what shortcuts.toml says."""
+def check_over_used(state, findings):
+    """S6: every app named in `over` still has a shortcut on that chord."""
+    for a in state["actives"]:
+        for app in a["over"]:
+            if app not in a["over_used"]:
+                findings.add(WARN, state["path"], a["line"], "S6",
+                             f"`over = \"{app}\"` on `{a['chord']}`, but nothing of {app} is on that chord",
+                             "drop it from the entry")
+
+
+def check_projection(state, findings, expected, rider_effective=None, names=None):
+    """P1: the ⚙ / ◆ / ℝ lines of this file are exactly what the sources say. Without
+    Rider.app the `ℝ!` lines (shadowed Rider defaults) cannot be recomputed and are left alone."""
     f = state["path"]
+    expected = projection.flag_conflicts(expected, state["actives"], rider_effective, names)
     want = {(chord, g, d) for chord, descs in expected.items() for g, d in descs}
-    have = {(chord, g, d): line for line, chord, g, d in projection.marked_lines(state["lines"])}
+    have = {(chord, g, d): line for line, chord, g, d in projection.marked_lines(state["lines"])
+            if rider_effective is not None or g != rider.MARKER + "!"}
     for key in sorted(set(have) - want):
         chord, g, d = key
         findings.add(ERROR, f, have[key], "P1",
@@ -712,9 +742,11 @@ def main():
         check_bridged_chords(state, findings, emitted)
         check_system_shortcuts(state, findings, system)
         check_app_shortcuts(state, findings, machine_rows)
-        check_projection(state, findings, projected.get(name.removesuffix(".lua"), {}))
+        check_projection(state, findings, projected.get(name.removesuffix(".lua"), {}),
+                         rider_effective, rider_names)
         if rider_effective:
             check_rider_shortcuts(state, findings, rider_effective, rider_names)
+            check_over_used(state, findings)
         if not args.skip_drift:
             check_karabiner_drift(state, findings, karabiner_strict)
             check_birman_drift(state, findings, birman_data)

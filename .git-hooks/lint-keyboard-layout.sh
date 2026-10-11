@@ -17,14 +17,14 @@ for f in "$@"; do
         hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua)
             files+=("$(basename "$f")")
             ;;
-        macos_shortcuts/shortcuts.toml)
+        macos_shortcuts/shortcuts.toml|"jetbrains rider/keymap.xml")
             shortcuts=1
             ;;
     esac
 done
 
-# S1 compares every layout file against macos_shortcuts/shortcuts.toml, so a change to
-# the TOML alone lints all of them.
+# S1/S4/P1 compare every layout file against macos_shortcuts/shortcuts.toml and S5/P1
+# against jetbrains rider/keymap.xml, so a change to either source alone lints all of them.
 if [ "$shortcuts" -eq 1 ]; then
     exec python3 "$DOTFILES_ROOT/docs/keyboard/tools/lint.py" --strict --skip-drift
 fi
