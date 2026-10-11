@@ -23,6 +23,7 @@ _TO_PHYS = {
 
 # Output key_code → display symbol
 _KEY_SYM = {
+    **{f"keypad_{n}": f"num{n}" for n in range(10)},
     "up_arrow":"↑", "down_arrow":"↓", "left_arrow":"←", "right_arrow":"→",
     "page_up":"PgUp", "page_down":"PgDn",
     "return_or_enter":"↩", "escape":"⎋",

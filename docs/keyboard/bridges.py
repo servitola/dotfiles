@@ -20,9 +20,13 @@ RULES_DIR = os.path.join(ROOT, "karabiner", "rules")
 SLOT_BASES = [f"F{n}" for n in range(13, 21)]
 KEYPAD_BASES = [f"num{n}" for n in range(10)]
 TO_MODS = ("shift", "ctrl", "alt", "cmd")
-FROM_MODS = ("hyper",) + TO_MODS
-# Codes outside the formula: emitted key → (physical chords, rule). Punto's ⌥ is the right one.
+FROM_MODS = ("tab_mod", "hyper") + TO_MODS
+# Codes outside the formula: emitted key → (physical chords, rule). Punto's ⌥ is the right one;
+# ⇥ is the Tab layer (rule 01, held Tab sets a variable), the only way a Tab chord reaches Hammerspoon.
 EXCEPTIONS = {
+    "num1": (("⇥v",), "01-tab-modifier"),
+    "num2": (("⇥f",), "01-tab-modifier"),
+    "num3": (("⇥t",), "01-tab-modifier"),
     "num8": (("⌃⌥ad", "⌃⌥←→"), "32-swap-sides"),
     "num9": (("⌥␣",), "26-right-option-space-punto"),
 }
@@ -229,8 +233,9 @@ def _render_to(entry):
     return _mods_text(mods) + base
 
 
-def _render_from(fr, via, path):
+def _render_from(fr, via, path, conditions=()):
     _, key_display, _ = _glyphs()
+    tab = {"tab_mod"} if any(c.get("name") == "tab_modifier" and c.get("value") == 1 for c in conditions) else set()
     if "pointing_button" in fr:
         return f"mouse.{fr['pointing_button']}" + (".hold" if via == "to_if_held_down" else ""), None
     mandatory = set(fr.get("modifiers", {}).get("mandatory", []))
@@ -241,7 +246,7 @@ def _render_from(fr, via, path):
     if unknown:
         raise ValueError(f"{os.path.basename(path)}: no physical key for {unknown}")
     keys = "".join(key_display.get(_TO_PHYS[c], _TO_PHYS[c]) for c in codes)
-    return _mods_text(_from_mods_to_layer(mandatory)) + keys, side
+    return _mods_text(_from_mods_to_layer(mandatory) | tab) + keys, side
 
 
 def from_rules(rules_dir=RULES_DIR):
@@ -254,6 +259,6 @@ def from_rules(rules_dir=RULES_DIR):
                 for entry in m.get(via, []):
                     to = _render_to(entry)
                     if to:
-                        chord, side = _render_from(m["from"], via, path)
+                        chord, side = _render_from(m["from"], via, path, m.get("conditions", ()))
                         rows.append(Bridge(chord, to, rule, side))
     return rows

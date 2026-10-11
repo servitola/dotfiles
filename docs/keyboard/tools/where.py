@@ -88,7 +88,8 @@ def karabiner(mods, phys):
         code = layers.key_code_of(phys)
     except ValueError:
         code = phys
-    want = frozenset(mods)
+    want = frozenset(mods) - {"tab_mod"}
+    tab = "tab_mod" in mods
     hits = []
     for path in sorted(glob.glob(os.path.join(RULES_DIR, "*.json"))):
         with open(path, encoding="utf-8") as fh:
@@ -99,7 +100,8 @@ def karabiner(mods, phys):
             if code not in keys:
                 continue
             got = _mods_of(fr.get("modifiers", {}).get("mandatory", []))
-            if got != want:
+            held_tab = any(c.get("name") == "tab_modifier" and c.get("value") == 1 for c in m.get("conditions", []))
+            if got != want or held_tab != tab:
                 continue
             to = m.get("to") or m.get("to_if_held_down") or []
             hits.append({

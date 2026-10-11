@@ -16,6 +16,8 @@ SLOTS = {"z": "F13", "r": "F14", "f": "F15", "v": "F16", "t": "F17", "g": "F18",
 def test_fkey_mapping_is_bare_slots_plus_single_key_exceptions():
     expected = {base: (key, frozenset({"hyper"})) for key, base in SLOTS.items()}
     expected["num9"] = ("space", frozenset({"alt"}))
+    expected.update({"num1": ("v", frozenset({"tab_mod"})), "num2": ("f", frozenset({"tab_mod"})),
+                     "num3": ("t", frozenset({"tab_mod"}))})
     assert bridges.fkey_mapping() == expected
 
 

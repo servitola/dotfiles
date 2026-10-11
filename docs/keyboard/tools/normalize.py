@@ -221,7 +221,7 @@ def _source_chord_for_fkey(fkey):
     if fkey not in FKEY_MAPPING:
         return None, None
     src_key, src_mods = FKEY_MAPPING[fkey]
-    order = ("hyper", "shift", "ctrl", "alt", "cmd")
+    order = ("tab_mod", "hyper", "shift", "ctrl", "alt", "cmd")
     mods_str = "".join(MOD_DISPLAY[m] for m in order if m in src_mods)
     key_str = KEY_DISPLAY.get(src_key, src_key)
     return mods_str + key_str, src_key

@@ -211,7 +211,7 @@ def check_coverage(state, findings):
             if mapping:
                 src_key, implicit_mods = mapping
                 # Build canonical source chord: [implicit_mods] + [explicit modifiers] + src_key
-                mod_str = "".join(MOD_DISPLAY[m] for m in ("hyper", "shift", "ctrl", "alt", "cmd")
+                mod_str = "".join(MOD_DISPLAY[m] for m in ("tab_mod", "hyper", "shift", "ctrl", "alt", "cmd")
                                   if m in implicit_mods) + mod_prefix
                 src_chord = mod_str + src_key
                 hint = (f"add `-- {src_chord} │ {chord} │ … │ … │ ↓` row "
