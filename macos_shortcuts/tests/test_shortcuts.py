@@ -78,6 +78,27 @@ def test_capture_reads_every_store():
     assert shortcuts.capture(FakeMachine()) == DECLARED
 
 
+def test_capture_refuses_when_a_sandboxed_domain_reads_empty(tmp_path, monkeypatch, capsys):
+    path = tmp_path / "shortcuts.toml"
+    path.write_text(shortcuts.render(DECLARED), encoding="utf-8")
+    monkeypatch.setattr(shortcuts, "TOML_PATH", str(path))
+    m = FakeMachine(sandboxed=("cc.ffitch.shottr",))
+    del m.prefs["cc.ffitch.shottr"]
+    assert shortcuts.main(["capture", "--write"], machine=m) == 1
+    assert "cc.ffitch.shottr" in capsys.readouterr().err
+    assert shortcuts.load(str(path)) == DECLARED
+
+
+def test_capture_writes_when_every_sandboxed_domain_is_read(tmp_path, monkeypatch):
+    path = tmp_path / "shortcuts.toml"
+    path.write_text(shortcuts.render(DECLARED), encoding="utf-8")
+    monkeypatch.setattr(shortcuts, "TOML_PATH", str(path))
+    m = FakeMachine(sandboxed=("cc.ffitch.shottr",))
+    m.prefs["cc.ffitch.shottr"]["KeyboardShortcuts_area"] = '{"carbonKeyCode":21,"carbonModifiers":2048}'
+    assert shortcuts.main(["capture", "--write"], machine=m) == 0
+    assert shortcuts.load(str(path))["app"][0] == App("cc.ffitch.shottr", "area", "⌥4")
+
+
 def test_render_then_load_round_trips(tmp_path):
     path = tmp_path / "shortcuts.toml"
     path.write_text(shortcuts.render(DECLARED), encoding="utf-8")

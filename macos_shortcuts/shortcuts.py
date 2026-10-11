@@ -61,6 +61,12 @@ Gotchas, learned the hard way:
     CANNOT write there. `apply` never tries: set those by hand, once. Reading
     works, via `defaults export <domain> -` + plistlib, which is why every read
     here goes through export and never through the .plist file.
+  * Reading those containers needs Full Disk Access, and without it `defaults find`
+    does not fail: it simply does not list the container domains, and a Group
+    Container plist exports as an error. A plain re-capture from a terminal without
+    FDA (Zap, 2026-10-11) therefore rewrote the file minus every Shottr, Maccy and
+    Day One row. `capture` now refuses when a sandboxed domain the file declares
+    yields no rows at all; iTerm2 has FDA, so `up` from there is fine.
   * Listing an app in System Settings' "App Shortcuts" pane means writing
     com.apple.universalaccess `com.apple.custommenu.apps`, which is TCC-protected.
     It only affects what the GUI SHOWS; the shortcut fires regardless, so that
@@ -386,6 +392,15 @@ def capture(machine):
 
 
 
+def unreadable(previous, fresh, machine):
+    """Sandboxed domains the file declares that this capture saw nothing of. Without Full
+    Disk Access `defaults find` omits container domains silently, so writing `fresh` would
+    drop their rows as if the apps were gone."""
+    seen = {r.domain for r in fresh["app"]}
+    return sorted({r.domain for r in previous["app"]
+                   if machine.sandboxed(r.domain) and r.domain not in seen})
+
+
 def _toml_value(v):
     if isinstance(v, bool):
         return "true" if v else "false"
@@ -709,7 +724,14 @@ def main(argv=None, machine=None):
         return 0
 
     if args.cmd == "capture":
-        text = render(capture(machine))
+        rows = capture(machine)
+        lost = unreadable(load(), rows, machine) if os.path.exists(TOML_PATH) else []
+        if lost:
+            print(f"error: nothing read from {', '.join(lost)}: sandboxed prefs this process cannot "
+                  "see (no Full Disk Access: run from a terminal that has it), or apps that were "
+                  "uninstalled (then delete their rows by hand). Nothing written.", file=sys.stderr)
+            return 1
+        text = render(rows)
         if args.write:
             with open(TOML_PATH, "w", encoding="utf-8") as fh:
                 fh.write(text)
