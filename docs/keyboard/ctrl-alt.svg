@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1572" viewBox="0 0 922 1572">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1932" viewBox="0 0 922 1932">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1572" fill="none"/>
+<rect width="922" height="1932" fill="none"/>
 <text x="28" y="30" class="title">Ctrl + Alt — Window Management</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -224,11 +224,14 @@
 <text x="164.0" y="157" text-anchor="end" class="key-label">Q</text>
 <title>Q: Music</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="22.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="22.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="137.0,166 147.0,166 142.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="138.0,166 146.0,166 142.0,162" fill="white"/>
 <use href="#icon-music" x="32.0" y="175" width="13" height="13"/>
 <text x="48.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Music</text>
+<use href="#icon-rider" x="32.0" y="193" width="13" height="13"/>
+<text x="48.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="79.5" y="204" font-size="8px" fill="#1d1d1f">Toggle Rendered View</text>
 </g>
 </g>
 <g class="key-group">
@@ -261,11 +264,14 @@
 <text x="338.0" y="157" text-anchor="end" class="key-label">R</text>
 <title>R: WebStorm</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="196.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="196.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="311.0,166 321.0,166 316.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="312.0,166 320.0,166 316.0,162" fill="white"/>
 <use href="#icon-webstorm" x="206.0" y="175" width="13" height="13"/>
 <text x="222.0" y="186" font-size="9px" font-weight="600" fill="#007aff">WebStorm</text>
+<use href="#icon-rider" x="206.0" y="193" width="13" height="13"/>
+<text x="222.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="253.5" y="204" font-size="8px" fill="#1d1d1f">Run</text>
 </g>
 </g>
 <g class="key-group">
@@ -276,11 +282,14 @@
 <text x="396.0" y="157" text-anchor="end" class="key-label">T</text>
 <title>T: display.toggle_window_to_tv — Display: Toggle Window To Tv</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="254.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="254.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="369.0,166 379.0,166 374.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="370.0,166 378.0,166 374.0,162" fill="white"/>
 <text x="264.0" y="186" font-size="9px" font-weight="600" fill="#007aff">display.toggle_window_to_tv</text>
 <text x="416.5" y="186" font-size="8px" fill="#1d1d1f">display: toggle window to tv</text>
+<use href="#icon-rider" x="264.0" y="193" width="13" height="13"/>
+<text x="280.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="311.5" y="204" font-size="8px" fill="#1d1d1f">Surround With</text>
 </g>
 </g>
 <g class="key-group">
@@ -291,11 +300,14 @@
 <text x="454.0" y="157" text-anchor="end" class="key-label">Y</text>
 <title>Y: YT Stream — Youtube Stream</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="312.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="312.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="427.0,166 437.0,166 432.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="428.0,166 436.0,166 432.0,162" fill="white"/>
 <text x="322.0" y="186" font-size="9px" font-weight="600" fill="#007aff">YT Stream</text>
 <text x="375.5" y="186" font-size="8px" fill="#1d1d1f">youtube stream</text>
+<use href="#icon-rider" x="322.0" y="193" width="13" height="13"/>
+<text x="338.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="369.5" y="204" font-size="8px" fill="#1d1d1f">Reload All from Disk</text>
 </g>
 </g>
 <g class="key-group">
@@ -311,11 +323,14 @@
 <text x="570.0" y="157" text-anchor="end" class="key-label">I</text>
 <title>I: Shortcuts — Info: Show Shortcuts</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="428.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="428.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="543.0,166 553.0,166 548.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="544.0,166 552.0,166 548.0,162" fill="white"/>
 <text x="438.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Shortcuts</text>
 <text x="491.5" y="186" font-size="8px" fill="#1d1d1f">info: show shortcuts</text>
+<use href="#icon-rider" x="438.0" y="193" width="13" height="13"/>
+<text x="454.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="485.5" y="204" font-size="8px" fill="#1d1d1f">Auto-Indent Lines</text>
 </g>
 </g>
 <g class="key-group">
@@ -384,7 +399,7 @@
 <text x="294.5" y="209" text-anchor="end" class="key-label">D</text>
 <title>D: Window → — Window: Right</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="152.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="152.5" y="218" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="267.5,218 277.5,218 272.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="268.5,218 276.5,218 272.5,214" fill="white"/>
 <text x="162.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Window →</text>
@@ -392,6 +407,9 @@
 <use href="#icon-visual-studio-code" x="162.5" y="245" width="13" height="13"/>
 <text x="178.5" y="256" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="215.5" y="256" font-size="8px" fill="#1d1d1f">focus Run and Debug panel</text>
+<use href="#icon-rider" x="162.5" y="263" width="13" height="13"/>
+<text x="178.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="210.0" y="274" font-size="8px" fill="#1d1d1f">Debug</text>
 </g>
 </g>
 <g class="key-group">
@@ -401,11 +419,20 @@
 <text x="352.5" y="209" text-anchor="end" class="key-label">F</text>
 <title>F: → RU — Translate To Russian</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="210.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="210.5" y="218" width="240" height="88" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="325.5,218 335.5,218 330.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="326.5,218 334.5,218 330.5,214" fill="white"/>
 <text x="220.5" y="238" font-size="9px" font-weight="600" fill="#007aff">→ RU</text>
 <text x="246.5" y="238" font-size="8px" fill="#1d1d1f">translate to russian</text>
+<use href="#icon-rider" x="220.5" y="245" width="13" height="13"/>
+<text x="236.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="268.0" y="256" font-size="8px" fill="#1d1d1f">Introduce Field</text>
+<use href="#icon-rider" x="220.5" y="263" width="13" height="13"/>
+<text x="236.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="268.0" y="274" font-size="8px" fill="#1d1d1f">Move Caret to Next Word</text>
+<use href="#icon-rider" x="220.5" y="281" width="13" height="13"/>
+<text x="236.5" y="292" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="268.0" y="292" font-size="8px" fill="#1d1d1f">Show Filter Popup</text>
 </g>
 </g>
 <g class="key-group">
@@ -431,11 +458,14 @@
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Hammerspoon</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="326.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="326.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
 <use href="#icon-hammerspoon" x="336.5" y="227" width="13" height="13"/>
 <text x="352.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<use href="#icon-rider" x="336.5" y="245" width="13" height="13"/>
+<text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="384.0" y="256" font-size="8px" fill="#1d1d1f">Call Hierarchy</text>
 </g>
 </g>
 <g class="key-group">
@@ -530,11 +560,14 @@
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: YouTube — Browser Youtube</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="239.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
 <text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">YouTube</text>
 <text x="292.0" y="290" font-size="8px" fill="#1d1d1f">browser youtube</text>
+<use href="#icon-rider" x="249.5" y="297" width="13" height="13"/>
+<text x="265.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="297.0" y="308" font-size="8px" fill="#1d1d1f">Introduce Variable</text>
 </g>
 </g>
 <g class="key-group">
@@ -595,11 +628,14 @@
 <text x="773.0" y="313" text-anchor="end" class="key-label">←</text>
 <title>←: Window ← — Window: Left</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="631.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="631.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="746.0,322 756.0,322 751.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="747.0,322 755.0,322 751.0,318" fill="white"/>
 <text x="641.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Window ←</text>
 <text x="689.0" y="342" font-size="8px" fill="#1d1d1f">window: left</text>
+<use href="#icon-rider" x="641.0" y="349" width="13" height="13"/>
+<text x="657.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="688.5" y="360" font-size="8px" fill="#1d1d1f">Stretch to Left</text>
 </g>
 </g>
 <g class="key-group">
@@ -609,7 +645,7 @@
 <text x="809.0" y="303" text-anchor="middle" class="bind-label" fill="#34c759" font-size="12px">Fullscr</text>
 <title>↑: Fullscr — Window: Fullscreen</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="296" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="296" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,296 814.0,296 809.0,291" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,296 813.0,296 809.0,292" fill="white"/>
 <text x="699.0" y="316" font-size="9px" font-weight="600" fill="#007aff">Fullscr</text>
@@ -617,6 +653,9 @@
 <use href="#icon-rider" x="699.0" y="323" width="13" height="13"/>
 <text x="715.0" y="334" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="746.5" y="334" font-size="8px" fill="#1d1d1f">Previous Highlighted Usage</text>
+<use href="#icon-rider" x="699.0" y="341" width="13" height="13"/>
+<text x="715.0" y="352" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="352" font-size="8px" fill="#1d1d1f">Stretch to Top</text>
 </g>
 </g>
 <g class="key-group">
@@ -626,7 +665,7 @@
 <text x="809.0" y="329" text-anchor="middle" class="bind-label" fill="#34c759" font-size="10px">Win Reset</text>
 <title>↓: Win Reset — Window: Set All To Default</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="322" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,322 814.0,322 809.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,322 813.0,322 809.0,318" fill="white"/>
 <text x="699.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Win Reset</text>
@@ -634,6 +673,9 @@
 <use href="#icon-rider" x="699.0" y="349" width="13" height="13"/>
 <text x="715.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="746.5" y="360" font-size="8px" fill="#1d1d1f">Next Highlighted Usage</text>
+<use href="#icon-rider" x="699.0" y="367" width="13" height="13"/>
+<text x="715.0" y="378" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="378" font-size="8px" fill="#1d1d1f">Stretch to Bottom</text>
 </g>
 </g>
 <g class="key-group">
@@ -644,14 +686,17 @@
 <text x="889.0" y="313" text-anchor="end" class="key-label">→</text>
 <title>→: Window → — Window: Right</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="747.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="747.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
 <text x="757.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Window →</text>
 <text x="805.0" y="342" font-size="8px" fill="#1d1d1f">window: right</text>
+<use href="#icon-rider" x="757.0" y="349" width="13" height="13"/>
+<text x="773.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="804.5" y="360" font-size="8px" fill="#1d1d1f">Stretch to Right</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="1208" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="1568" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <circle cx="85.8" cy="354" r="4" fill="#34c759"/>
@@ -693,125 +738,155 @@
 <use href="#icon-music" x="136" y="575" width="16" height="16"/>
 <text x="156" y="588" font-size="12px" font-weight="500" fill="#007aff">Music — show/hide</text>
 <text x="291" y="588" font-size="11px" fill="#48484a">Music</text>
-<line x1="20" y1="610" x2="906" y2="610" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="618" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
-<text x="136" y="618" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
-<text x="291" y="618" font-size="11px" fill="#48484a">Fullscr</text>
-<line x1="20" y1="640" x2="906" y2="640" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="648" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
-<text x="56" y="648" font-size="12px" fill="#a2845e">⌘l</text>
-<text x="136" y="648" font-size="11px" fill="#86868b">macOS</text>
-<line x1="20" y1="670" x2="906" y2="670" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="678" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<use href="#icon-webstorm" x="136" y="665" width="16" height="16"/>
-<text x="156" y="678" font-size="12px" font-weight="500" fill="#007aff">WebStorm — show/hide</text>
-<text x="291" y="678" font-size="11px" fill="#48484a">WebStorm</text>
-<line x1="20" y1="700" x2="906" y2="700" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="708" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="136" y="708" font-size="12px" font-weight="500" fill="#ff9500">display.toggle_window_to_tv</text>
-<text x="291" y="708" font-size="11px" fill="#48484a">this window to TV</text>
-<line x1="20" y1="730" x2="906" y2="730" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="738" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
-<use href="#icon-vivaldi" x="136" y="725" width="16" height="16"/>
-<text x="156" y="738" font-size="12px" font-weight="500" fill="#007aff">YT Stream</text>
-<text x="291" y="738" font-size="11px" fill="#48484a">YT Stream</text>
-<line x1="20" y1="760" x2="906" y2="760" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="768" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
-<use href="#icon-hammerspoon" x="136" y="755" width="16" height="16"/>
-<text x="156" y="768" font-size="12px" font-weight="500" fill="#007aff">Shortcuts</text>
-<text x="291" y="768" font-size="11px" fill="#48484a">Shortcuts</text>
-<line x1="20" y1="790" x2="906" y2="790" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="798" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="798" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_control</text>
-<line x1="20" y1="820" x2="906" y2="820" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="828" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="136" y="828" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
-<use href="#icon-hammerspoon" x="291" y="816" width="14" height="14"/>
-<text x="309" y="828" font-size="11px" fill="#48484a">Hammerspoon — Window ←</text>
-<text x="56" y="852" font-size="12px" fill="#a2845e">num8</text>
-<use href="#icon-hammerspoon" x="291" y="840" width="14" height="14"/>
-<text x="309" y="852" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
-<line x1="20" y1="874" x2="906" y2="874" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="882" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="136" y="882" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
-<text x="291" y="882" font-size="11px" fill="#48484a">Win Reset</text>
-<line x1="20" y1="904" x2="906" y2="904" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="912" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="136" y="912" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
-<use href="#icon-visual-studio-code" x="291" y="900" width="14" height="14"/>
-<text x="309" y="912" font-size="11px" fill="#48484a">VSCode — focus Run and Debug panel</text>
-<text x="56" y="936" font-size="12px" fill="#a2845e">num8</text>
-<use href="#icon-hammerspoon" x="291" y="924" width="14" height="14"/>
-<text x="309" y="936" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
-<line x1="20" y1="958" x2="906" y2="958" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="966" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<text x="136" y="966" font-size="12px" font-weight="500" fill="#af52de">→ RU</text>
-<text x="291" y="966" font-size="11px" fill="#48484a">→ RU</text>
-<line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-vivaldi" x="136" y="983" width="16" height="16"/>
-<text x="156" y="996" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
-<text x="291" y="996" font-size="11px" fill="#48484a">GitHub</text>
-<line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<use href="#icon-hammerspoon" x="136" y="1013" width="16" height="16"/>
-<text x="156" y="1026" font-size="12px" font-weight="500" fill="#007aff">Hammerspoon — show/hide</text>
-<text x="291" y="1026" font-size="11px" fill="#48484a">Hammerspoon</text>
-<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<use href="#icon-rider" x="291" y="600" width="14" height="14"/>
+<text x="309" y="612" font-size="11px" fill="#48484a">Rider — Toggle Rendered View</text>
+<line x1="20" y1="634" x2="906" y2="634" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="642" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
+<text x="136" y="642" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
+<text x="291" y="642" font-size="11px" fill="#48484a">Fullscr</text>
+<line x1="20" y1="664" x2="906" y2="664" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="672" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
+<text x="56" y="672" font-size="12px" fill="#a2845e">⌘l</text>
+<text x="136" y="672" font-size="11px" fill="#86868b">macOS</text>
+<line x1="20" y1="694" x2="906" y2="694" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="702" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
+<use href="#icon-webstorm" x="136" y="689" width="16" height="16"/>
+<text x="156" y="702" font-size="12px" font-weight="500" fill="#007aff">WebStorm — show/hide</text>
+<text x="291" y="702" font-size="11px" fill="#48484a">WebStorm</text>
+<use href="#icon-rider" x="291" y="714" width="14" height="14"/>
+<text x="309" y="726" font-size="11px" fill="#48484a">Rider — Run</text>
+<line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
+<text x="136" y="756" font-size="12px" font-weight="500" fill="#ff9500">display.toggle_window_to_tv</text>
+<text x="291" y="756" font-size="11px" fill="#48484a">this window to TV</text>
+<use href="#icon-rider" x="291" y="768" width="14" height="14"/>
+<text x="309" y="780" font-size="11px" fill="#48484a">Rider — Surround With</text>
+<line x1="20" y1="802" x2="906" y2="802" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="810" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
+<use href="#icon-vivaldi" x="136" y="797" width="16" height="16"/>
+<text x="156" y="810" font-size="12px" font-weight="500" fill="#007aff">YT Stream</text>
+<text x="291" y="810" font-size="11px" fill="#48484a">YT Stream</text>
+<use href="#icon-rider" x="291" y="822" width="14" height="14"/>
+<text x="309" y="834" font-size="11px" fill="#48484a">Rider — Reload All from Disk</text>
+<line x1="20" y1="856" x2="906" y2="856" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="864" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<use href="#icon-hammerspoon" x="136" y="851" width="16" height="16"/>
+<text x="156" y="864" font-size="12px" font-weight="500" fill="#007aff">Shortcuts</text>
+<text x="291" y="864" font-size="11px" fill="#48484a">Shortcuts</text>
+<use href="#icon-rider" x="291" y="876" width="14" height="14"/>
+<text x="309" y="888" font-size="11px" fill="#48484a">Rider — Auto-Indent Lines</text>
+<line x1="20" y1="910" x2="906" y2="910" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="918" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<text x="56" y="918" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_control</text>
+<line x1="20" y1="940" x2="906" y2="940" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="948" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
+<text x="136" y="948" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
+<use href="#icon-hammerspoon" x="291" y="936" width="14" height="14"/>
+<text x="309" y="948" font-size="11px" fill="#48484a">Hammerspoon — Window ←</text>
+<text x="56" y="972" font-size="12px" fill="#a2845e">num8</text>
+<use href="#icon-hammerspoon" x="291" y="960" width="14" height="14"/>
+<text x="309" y="972" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
+<line x1="20" y1="994" x2="906" y2="994" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1002" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<text x="136" y="1002" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
+<text x="291" y="1002" font-size="11px" fill="#48484a">Win Reset</text>
+<line x1="20" y1="1024" x2="906" y2="1024" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1032" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="136" y="1032" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
+<use href="#icon-visual-studio-code" x="291" y="1020" width="14" height="14"/>
+<text x="309" y="1032" font-size="11px" fill="#48484a">VSCode — focus Run and Debug panel</text>
 <use href="#icon-rider" x="291" y="1044" width="14" height="14"/>
-<text x="309" y="1056" font-size="11px" fill="#48484a">Rider — Editor Backward Paragraph</text>
-<use href="#icon-rider" x="291" y="1068" width="14" height="14"/>
-<text x="309" y="1080" font-size="11px" fill="#48484a">Rider — Backward Paragraph</text>
+<text x="309" y="1056" font-size="11px" fill="#48484a">Rider — Debug</text>
+<text x="56" y="1080" font-size="12px" fill="#a2845e">num8</text>
+<use href="#icon-hammerspoon" x="291" y="1068" width="14" height="14"/>
+<text x="309" y="1080" font-size="11px" fill="#48484a">Hammerspoon — swap two top windows (A and D at once, bound in left.lua)</text>
 <line x1="20" y1="1102" x2="906" y2="1102" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1110" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
-<use href="#icon-rider" x="291" y="1098" width="14" height="14"/>
-<text x="309" y="1110" font-size="11px" fill="#48484a">Rider — Editor Forward Paragraph</text>
+<text x="20" y="1110" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
+<text x="136" y="1110" font-size="12px" font-weight="500" fill="#af52de">→ RU</text>
+<text x="291" y="1110" font-size="11px" fill="#48484a">→ RU</text>
 <use href="#icon-rider" x="291" y="1122" width="14" height="14"/>
-<text x="309" y="1134" font-size="11px" fill="#48484a">Rider — Forward Paragraph</text>
-<line x1="20" y1="1156" x2="906" y2="1156" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1164" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<use href="#icon-simulator" x="136" y="1151" width="16" height="16"/>
-<text x="156" y="1164" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
-<text x="291" y="1164" font-size="11px" fill="#48484a">Simulator</text>
-<line x1="20" y1="1186" x2="906" y2="1186" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1194" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<use href="#icon-itsycal" x="291" y="1182" width="14" height="14"/>
-<text x="309" y="1194" font-size="11px" fill="#48484a">Itsycal — GlobalShortcut</text>
-<line x1="20" y1="1216" x2="906" y2="1216" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1224" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<use href="#icon-vivaldi" x="136" y="1211" width="16" height="16"/>
-<text x="156" y="1224" font-size="12px" font-weight="500" fill="#af52de">YouTube</text>
-<text x="291" y="1224" font-size="11px" fill="#48484a">YouTube</text>
-<line x1="20" y1="1246" x2="906" y2="1246" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1254" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
-<text x="136" y="1254" font-size="11px" fill="#86868b">macOS</text>
-<text x="291" y="1254" font-size="11px" fill="#48484a">system 61 input_source.next</text>
-<line x1="20" y1="1276" x2="906" y2="1276" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1284" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="136" y="1284" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
-<text x="291" y="1284" font-size="11px" fill="#48484a">Window ←, 2nd press ½ ←</text>
-<text x="56" y="1308" font-size="12px" fill="#a2845e">num8</text>
-<text x="291" y="1308" font-size="11px" fill="#48484a">Swap two top windows (both arrows at once, or ⌃⌥ + A and D)</text>
-<line x1="20" y1="1330" x2="906" y2="1330" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1338" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="136" y="1338" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
-<text x="291" y="1338" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
-<use href="#icon-rider" x="291" y="1350" width="14" height="14"/>
-<text x="309" y="1362" font-size="11px" fill="#48484a">Rider — Previous Highlighted Usage</text>
-<use href="#icon-rider" x="291" y="1374" width="14" height="14"/>
-<text x="309" y="1386" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
-<line x1="20" y1="1408" x2="906" y2="1408" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1416" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="136" y="1416" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
-<text x="291" y="1416" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
-<use href="#icon-rider" x="291" y="1428" width="14" height="14"/>
-<text x="309" y="1440" font-size="11px" fill="#48484a">Rider — Next Highlighted Usage</text>
-<use href="#icon-rider" x="291" y="1452" width="14" height="14"/>
-<text x="309" y="1464" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
-<line x1="20" y1="1486" x2="906" y2="1486" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1494" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="136" y="1494" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
-<text x="291" y="1494" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
-<text x="56" y="1518" font-size="12px" fill="#a2845e">num8</text>
+<text x="309" y="1134" font-size="11px" fill="#48484a">Rider — Introduce Field</text>
+<use href="#icon-rider" x="291" y="1146" width="14" height="14"/>
+<text x="309" y="1158" font-size="11px" fill="#48484a">Rider — Move Caret to Next Word</text>
+<use href="#icon-rider" x="291" y="1170" width="14" height="14"/>
+<text x="309" y="1182" font-size="11px" fill="#48484a">Rider — Show Filter Popup</text>
+<line x1="20" y1="1204" x2="906" y2="1204" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1212" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<use href="#icon-vivaldi" x="136" y="1199" width="16" height="16"/>
+<text x="156" y="1212" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
+<text x="291" y="1212" font-size="11px" fill="#48484a">GitHub</text>
+<line x1="20" y1="1234" x2="906" y2="1234" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1242" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<use href="#icon-hammerspoon" x="136" y="1229" width="16" height="16"/>
+<text x="156" y="1242" font-size="12px" font-weight="500" fill="#007aff">Hammerspoon — show/hide</text>
+<text x="291" y="1242" font-size="11px" fill="#48484a">Hammerspoon</text>
+<use href="#icon-rider" x="291" y="1254" width="14" height="14"/>
+<text x="309" y="1266" font-size="11px" fill="#48484a">Rider — Call Hierarchy</text>
+<line x1="20" y1="1288" x2="906" y2="1288" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1296" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<use href="#icon-rider" x="291" y="1284" width="14" height="14"/>
+<text x="309" y="1296" font-size="11px" fill="#48484a">Rider — Editor Backward Paragraph</text>
+<use href="#icon-rider" x="291" y="1308" width="14" height="14"/>
+<text x="309" y="1320" font-size="11px" fill="#48484a">Rider — Backward Paragraph</text>
+<line x1="20" y1="1342" x2="906" y2="1342" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1350" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
+<use href="#icon-rider" x="291" y="1338" width="14" height="14"/>
+<text x="309" y="1350" font-size="11px" fill="#48484a">Rider — Editor Forward Paragraph</text>
+<use href="#icon-rider" x="291" y="1362" width="14" height="14"/>
+<text x="309" y="1374" font-size="11px" fill="#48484a">Rider — Forward Paragraph</text>
+<line x1="20" y1="1396" x2="906" y2="1396" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1404" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
+<use href="#icon-simulator" x="136" y="1391" width="16" height="16"/>
+<text x="156" y="1404" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
+<text x="291" y="1404" font-size="11px" fill="#48484a">Simulator</text>
+<line x1="20" y1="1426" x2="906" y2="1426" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1434" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<use href="#icon-itsycal" x="291" y="1422" width="14" height="14"/>
+<text x="309" y="1434" font-size="11px" fill="#48484a">Itsycal — GlobalShortcut</text>
+<line x1="20" y1="1456" x2="906" y2="1456" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1464" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<use href="#icon-vivaldi" x="136" y="1451" width="16" height="16"/>
+<text x="156" y="1464" font-size="12px" font-weight="500" fill="#af52de">YouTube</text>
+<text x="291" y="1464" font-size="11px" fill="#48484a">YouTube</text>
+<use href="#icon-rider" x="291" y="1476" width="14" height="14"/>
+<text x="309" y="1488" font-size="11px" fill="#48484a">Rider — Introduce Variable</text>
+<line x1="20" y1="1510" x2="906" y2="1510" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1518" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
+<text x="136" y="1518" font-size="11px" fill="#86868b">macOS</text>
+<text x="291" y="1518" font-size="11px" fill="#48484a">system 61 input_source.next</text>
+<line x1="20" y1="1540" x2="906" y2="1540" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1548" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="136" y="1548" font-size="12px" font-weight="500" fill="#34c759">Window ←</text>
+<text x="291" y="1548" font-size="11px" fill="#48484a">Window ←, 2nd press ½ ←</text>
+<use href="#icon-rider" x="291" y="1560" width="14" height="14"/>
+<text x="309" y="1572" font-size="11px" fill="#48484a">Rider — Stretch to Left</text>
+<text x="56" y="1596" font-size="12px" fill="#a2845e">num8</text>
+<text x="291" y="1596" font-size="11px" fill="#48484a">Swap two top windows (both arrows at once, or ⌃⌥ + A and D)</text>
+<line x1="20" y1="1618" x2="906" y2="1618" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1626" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="136" y="1626" font-size="12px" font-weight="500" fill="#34c759">Fullscr</text>
+<text x="291" y="1626" font-size="11px" fill="#48484a">Fullscr, 2nd press native fullscreen</text>
+<use href="#icon-rider" x="291" y="1638" width="14" height="14"/>
+<text x="309" y="1650" font-size="11px" fill="#48484a">Rider — Previous Highlighted Usage</text>
+<use href="#icon-rider" x="291" y="1662" width="14" height="14"/>
+<text x="309" y="1674" font-size="11px" fill="#48484a">Rider — Stretch to Top</text>
+<use href="#icon-rider" x="291" y="1686" width="14" height="14"/>
+<text x="309" y="1698" font-size="11px" fill="#48484a">Rider — Prev Usage Under Caret</text>
+<line x1="20" y1="1720" x2="906" y2="1720" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1728" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="136" y="1728" font-size="12px" font-weight="500" fill="#34c759">Win Reset</text>
+<text x="291" y="1728" font-size="11px" fill="#48484a">Win Reset, or exit native fullscreen</text>
+<use href="#icon-rider" x="291" y="1740" width="14" height="14"/>
+<text x="309" y="1752" font-size="11px" fill="#48484a">Rider — Next Highlighted Usage</text>
+<use href="#icon-rider" x="291" y="1764" width="14" height="14"/>
+<text x="309" y="1776" font-size="11px" fill="#48484a">Rider — Stretch to Bottom</text>
+<use href="#icon-rider" x="291" y="1788" width="14" height="14"/>
+<text x="309" y="1800" font-size="11px" fill="#48484a">Rider — Next Usage Under Caret</text>
+<line x1="20" y1="1822" x2="906" y2="1822" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1830" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="136" y="1830" font-size="12px" font-weight="500" fill="#34c759">Window →</text>
+<text x="291" y="1830" font-size="11px" fill="#48484a">Window →, 2nd press ½ →</text>
+<text x="56" y="1854" font-size="12px" fill="#a2845e">num8</text>
+<use href="#icon-rider" x="291" y="1866" width="14" height="14"/>
+<text x="309" y="1878" font-size="11px" fill="#48484a">Rider — Stretch to Right</text>
 </svg>
