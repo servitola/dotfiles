@@ -28,7 +28,7 @@ Run any with `--help`/no args for usage. When a recurring task turns into a
 | `mcp-attach <name> [dir]` | Attach a detached MCP server to a folder. |
 | `serho-restart [--quiet]` | Restart the serho bot LaunchAgent (`com.servitola.serho`). Picks `kickstart -k` vs `bootstrap` by actual launchd state, heals the missing-log-dir trap, then waits for `Start polling` in `bot.log` — exits non-zero if the bot never comes up. Use this instead of raw launchctl: a bare `bootout` leaves the label unregistered and every later `kickstart` a silent no-op. |
 | `sync-friend-skills` | Re-apply each bot user's skill allowlist (serho bot). |
-| `ytmcp` | Toggle the workname YouTrack MCP server on demand. |
+| `ytmcp` | Toggle the work YouTrack MCP server on demand. |
 | `yt-rutube <url>` | Download from Rutube with the `ytv` video config, retrying through `PROXY_BLANC_MOSCOW` (socks5h) when the geo-block hits. Interactive aliases: `ytrutube` / `ytr`. |
 
 ## Why this exists (token economics)

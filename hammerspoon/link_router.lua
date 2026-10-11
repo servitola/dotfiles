@@ -14,8 +14,12 @@ router.browsers = {
     work = browsers.known.Firefox.bundle,
 }
 router.default = "main"
+local work_patterns = { "xd%.adobe%.com" }
+for pattern in require("constants").WORK_LINK_PATTERNS:gmatch("[^,]+") do
+    table.insert(work_patterns, pattern)
+end
 router.rules = {
-    { router.localNetwork,                            "dev" },
-    { { "workname", "workproject", "xd%.adobe%.com" },      "work" },
+    { router.localNetwork, "dev" },
+    { work_patterns,       "work" },
 }
 router:start()

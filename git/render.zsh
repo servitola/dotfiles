@@ -2,3 +2,4 @@
 source ~/projects/dotfiles/constants/template.zsh
 
 render ~/projects/dotfiles/git/identity.gitconfig
+render ~/projects/dotfiles/git/work.gitconfig

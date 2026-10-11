@@ -403,15 +403,15 @@
 <rect x="361.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="361.5" y="168" width="3" height="44" rx="1.5" fill="#007aff"/>
 <use href="#icon-fork" x="379.5" y="171" width="18" height="18"/>
-<text x="388.5" y="199" text-anchor="middle" class="bind-label" fill="#007aff" font-size="9px">Fork workproject</text>
+<text x="388.5" y="199" text-anchor="middle" class="bind-label" fill="#007aff" font-size="10px">Fork Work</text>
 <text x="410.5" y="209" text-anchor="end" class="key-label">G</text>
-<title>G: Fork workproject — Fork: workprojectdev</title>
+<title>G: Fork Work — Fork: Work</title>
 <g class="key-tip" opacity="0" pointer-events="none">
 <rect x="268.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="383.5,218 393.5,218 388.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="384.5,218 392.5,218 388.5,214" fill="white"/>
-<text x="278.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Fork workproject</text>
-<text x="348.5" y="238" font-size="8px" fill="#1d1d1f">fork: workprojectdev</text>
+<text x="278.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Fork Work</text>
+<text x="332.0" y="238" font-size="8px" fill="#1d1d1f">fork: work</text>
 </g>
 </g>
 <g class="key-group">
@@ -716,7 +716,7 @@
 <text x="20" y="1206" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
 <text x="56" y="1206" font-size="12px" fill="#a2845e">⌥F18</text>
 <use href="#icon-fork" x="136" y="1193" width="16" height="16"/>
-<text x="156" y="1206" font-size="12px" font-weight="500" fill="#007aff">Fork workproject</text>
+<text x="156" y="1206" font-size="12px" font-weight="500" fill="#007aff">Fork Work</text>
 <line x1="20" y1="1228" x2="906" y2="1228" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1236" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <text x="56" y="1236" font-size="12px" fill="#a2845e">⌥F20</text>

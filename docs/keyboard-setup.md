@@ -115,7 +115,7 @@ The most-used chords on the Hyper layer (Caps Lock + key). For the complete list
 |---|---|---|
 | `⇪B` (=F19) | Zap | + `⇪⇧B` alt terminal |
 | `⇪F` (=F15) | Finder | + `⇪⇧F` files app |
-| `⇪G` (=F18) | Fork | + `⌥G` browser GitHub, `⇪⌘G` Fork in dotfiles, `⇪⌥G` Fork in workprojectDev |
+| `⇪G` (=F18) | Fork | + `⌥G` browser GitHub, `⇪⌘G` Fork in dotfiles, `⇪⌥G` Fork in the work repository |
 | `⇪H` (=F20) | Firefox | + `⇪⇧H` Safari; `⌃⌥⌘H` hides the current window |
 | `⇪I` | system health overlay | `fn system_health` |
 | `⇪M` | center window | |
@@ -324,7 +324,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 - **Translate (PopupTranslateSelection)**: `translate_to_russian` `translate_to_english` `translate_to_greek`
 - **Browser (BrowserTabOpener)**: `browser_git` `browser_git_dotfiles` `browser_youtube` `browser_youtube_playing` `browser_search_selected`
 - **System**: `hammerspoon_reload` `wallpaper_refresh` `system_health` `vpn.toggle_globalprotect` `info.show_shortcuts` `app_usage_stats`
-- **Apps (custom launchers)**: `vscode.dotfiles` `fork.dotfiles` `fork.workprojectdev` `forkgram.chat` `zap.launch_default`
+- **Apps (custom launchers)**: `vscode.dotfiles` `fork.dotfiles` `fork.work` `forkgram.chat` `zap.launch_default`
 - **Misc**: `paste_bypass` `musicapp.play_pause` `press_return` `android.show_all` `set_secondary_layout` `set_primary_layout` `clipboard_llm` `show_youtrack` `show_youtrack_tasks` `youtube_stream`
 
 A chord whose `fn` is not registered is reported by `start()` (red notification + console ERROR) and rejected by lint rule A1.

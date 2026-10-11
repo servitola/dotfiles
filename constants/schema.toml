@@ -35,6 +35,7 @@ DOCKER        = { type = "text", about = "yes or no: whether this Mac runs the d
 DIR_PROJECTS     = { type = "dir", about = "root of every repository" }
 DIR_DOTFILES     = { type = "dir", about = "this repository" }
 DIR_WORK         = { type = "dir", private = true, about = "employer repositories" }
+DIR_WORK_MAIN    = { type = "dir", private = true, about = "the employer repository worked in daily" }
 DIR_SERHO        = { type = "dir", unread = true, about = "the Telegram bot" }
 DIR_SERHO_TOPICS = { type = "dir", about = "per-topic folders of the bot" }
 DIR_SERHO_USERS  = { type = "dir", unread = true, about = "per-user folders of the bot" }
@@ -66,6 +67,10 @@ LITELLM_URL = { type = "url", about = "local LiteLLM proxy" }
 QDRANT_URL  = { type = "url", about = "local Qdrant" }
 WORK_YOUTRACK_URL     = { type = "url", private = true, about = "the employer's YouTrack" }
 WORK_YOUTRACK_PROJECT = { type = "text", private = true, about = "project new YouTrack tickets go to" }
+WORK_YOUTRACK_MCP_URL = { type = "url", private = true, about = "the YouTrack the MCP server talks to" }
+WORK_GITLAB_URL       = { type = "url", private = true, about = "the employer's GitLab" }
+WORK_DEEPLINK_URL     = { type = "url", private = true, about = "deep link that opens the work app on Android" }
+WORK_LINK_PATTERNS    = { type = "text", private = true, about = "comma-separated URL substrings (Lua patterns) routed to the work browser" }
 
 PROXY_WORK         = { type = "url", unread = true, private = true, about = "employer VPN, SOCKS" }
 PROXY_WORK_HTTP    = { type = "url", private = true, about = "employer VPN, HTTP" }

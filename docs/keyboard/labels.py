@@ -19,7 +19,7 @@ FN_LABELS = {  # fn_name → short display label
     "paste_bypass":"Paste Raw","press_return":"Enter","browser_search_selected":"Search Sel",
     "info.show_shortcuts":"Shortcuts","set_secondary_layout":"Layout 2",
     "set_primary_layout":"Layout 1","vscode.dotfiles":"VS Dotfiles",
-    "fork.dotfiles":"Fork Dots","fork.workprojectdev":"Fork workproject",
+    "fork.dotfiles":"Fork Dots","fork.work":"Fork Work",
     "app_usage_stats":"App Stats","interview.toggle":"Interview",
     "show_youtrack":"YouTrack","show_youtrack_tasks":"YT Tasks"}
 FN_APP = {  # fn → app name for icon (use _terminal/_browser for defaults)
@@ -31,7 +31,7 @@ FN_APP = {  # fn → app name for icon (use _terminal/_browser for defaults)
     "info.show_shortcuts": "Hammerspoon", "clipboard_llm": "Hammerspoon",
     "screenshot_ai": "Hammerspoon", "app_usage_stats": "Hammerspoon",
     "interview.toggle": "Hammerspoon", "vscode.dotfiles": "Visual Studio Code",
-    "fork.dotfiles":"Fork","fork.workprojectdev":"Fork",
+    "fork.dotfiles":"Fork","fork.work":"Fork",
 }
 COMMENT_OUTPUT_LABELS = {
     "prev_track": "\u23ee", "next_track": "\u23ed", "rewind": "\u23ea", "fast_forward": "\u23e9",

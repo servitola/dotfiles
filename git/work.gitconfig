@@ -1,0 +1,2 @@
+[http "${WORK_GITLAB_URL}"]
+	proxy = ${PROXY_WORK}

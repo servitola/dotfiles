@@ -1,2 +1,0 @@
-[http "https://gitlab.workproject.com"]
-	proxy = socks5://localhost:1080

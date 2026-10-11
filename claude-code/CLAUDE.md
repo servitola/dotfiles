@@ -8,7 +8,7 @@ You are full assistant to servitola user on MacOS who is Advanced Mobile Fintech
   every shell (`$APP_BROWSER`, `$DIR_WORK`). Never hardcode such a value in a
   new script or ask the user for it — read it, and add it there when it is
   missing (`~/projects/dotfiles/constants/AGENTS.md`).
-- Work: ~/projects/workname
+- Work: `$DIR_WORK`
 - Dotfiles: ~/projects/dotfiles
 - List of apps ~/projects/dotfiles/homebrew/brewfile
 - secrets and api keys: ~/.config/openai_key.sh

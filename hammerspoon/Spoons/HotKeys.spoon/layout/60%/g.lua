@@ -18,7 +18,7 @@ return {
 --         ⇪⇧g   │     ⇧F18     │              │   │
 --         ⇪⌃g   │     ⌃F18     │              │   │
 --         ⇪⌥g   │     ⌥F18     │              │   │               ↓
-{ chord= "⌥F18",                            fn = "fork.workprojectdev" },
+{ chord= "⌥F18",                            fn = "fork.work" },
 --         ⇪⌘g   │     ⌘F18     │              │   │               ↓
 { chord= "⌘F18",                            fn = "fork.dotfiles" },
 --         ⇧⌃g   │              │              │   │         Rider — current file git history

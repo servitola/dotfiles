@@ -73,7 +73,7 @@ rec() {
 }
 
 android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
-alias android_deep_link_to_Development='android_deep_link https://ct.workname.com'
+alias android_deep_link_to_Development='android_deep_link $WORK_DEEPLINK_URL'
 android_run_emulator() { emulator -avd "$(emulator -list-avds | head -1)" & }
 android_vpn() { android_run_emulator && sleep 10 && adb shell settings put global http_proxy 10.0.2.2:8118; }
 dotnet_vpn() { HTTP_PROXY=$PROXY_WORK_HTTP HTTPS_PROXY=$PROXY_WORK_HTTP dotnet "$@"; }

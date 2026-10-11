@@ -1,4 +1,5 @@
 local home = os.getenv("HOME")
+local constants = require "constants"
 local _launchTask = nil  -- prevent GC of hs.task used for app launching
 
 local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayName)
@@ -95,8 +96,9 @@ return function(register)
     register("fork.dotfiles", function()
         focusAppWindow("com.DanPristupov.Fork", "dotfiles", home .. "/projects/dotfiles", "Fork")
     end)
-    register("fork.workprojectdev", function()
-        focusAppWindow("com.DanPristupov.Fork", "workprojectDev", home .. "/projects/workname/workprojectDev", "Fork")
+    register("fork.work", function()
+        local repo = constants.DIR_WORK_MAIN
+        focusAppWindow("com.DanPristupov.Fork", repo:match("[^/]+$"), repo, "Fork")
     end)
     register("forkgram.chat", function()
         hs.urlevent.openURLWithBundle("tg://privatepost?channel=3172923198", "com.tdesktop.Telegram")

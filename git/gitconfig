@@ -3,7 +3,7 @@
 	path = "~/projects/dotfiles/git/aliases.gitconfig"
 	path = "~/projects/dotfiles/git/colors.gitconfig"
 	path = "~/projects/dotfiles/git/gitea.gitconfig"
-	path = "~/projects/dotfiles/git/workname.gitconfig"
+	path = "~/.local/state/dotfiles/generated/work.gitconfig"
 	path = "~/projects/dotfiles/git/github.gitconfig"
 
 [branch]

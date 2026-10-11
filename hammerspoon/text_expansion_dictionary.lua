@@ -1,6 +1,8 @@
 -- Abbreviations for the text_expansion.lua engine.
 -- Value is a string (literal) or a function (dynamic, called on each expansion).
 
+local work_repo = require("constants").DIR_WORK_MAIN
+
 return {
 
     -- Date / Time                                                        ;d*
@@ -28,15 +30,15 @@ return {
 
     -- Git                                                                ;g*
     [";branch"]   = function()
-        local out = hs.execute("cd ~/projects/workname/workprojectDev && git branch --show-current 2>/dev/null")
+        local out = hs.execute("cd " .. work_repo .. " && git branch --show-current 2>/dev/null")
         return out and out:gsub("%s+$", "") or "unknown"
     end,
     [";hash"]     = function()
-        local out = hs.execute("cd ~/projects/workname/workprojectDev && git rev-parse --short HEAD 2>/dev/null")
+        local out = hs.execute("cd " .. work_repo .. " && git rev-parse --short HEAD 2>/dev/null")
         return out and out:gsub("%s+$", "") or ""
     end,
     [";lastmsg"]  = function()
-        local out = hs.execute("cd ~/projects/workname/workprojectDev && git log -1 --format=%s 2>/dev/null")
+        local out = hs.execute("cd " .. work_repo .. " && git log -1 --format=%s 2>/dev/null")
         return out and out:gsub("%s+$", "") or ""
     end,
 

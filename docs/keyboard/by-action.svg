@@ -189,7 +189,7 @@
 <rect x="154" y="454.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">G</text>
 <text x="268" y="469.0" font-size="13px" fill="#86868b">→</text>
 <use href="#icon-fork" x="298" y="455.0" width="20" height="20"/>
-<text x="324" y="469.0" font-size="13px" font-weight="500" fill="#007aff">Fork workproject</text>
+<text x="324" y="469.0" font-size="13px" font-weight="500" fill="#007aff">Fork Work</text>
 <line x1="48" y1="479" x2="932" y2="479" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
 <rect x="78" y="484.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
 <text x="106" y="499.0" font-size="11px" fill="#86868b">+</text>

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# ytmcp — toggle the workname YouTrack MCP server on demand.
+# ytmcp — toggle the work YouTrack MCP server on demand.
 #
 # The YouTrack MCP (npm package: youtrack-mcp-server) is connected ONLY while
-# explicitly working on workname tasks, then removed when done — so it is not
+# explicitly working on work tasks, then removed when done — so it is not
 # always loaded into every Claude Code session.
 #
 # Security: the token is NOT written into Claude config. It is registered as the
@@ -10,10 +10,9 @@
 # launch from the shell env (set in ~/.config/openai_key.sh). Same for nothing
 # else sensitive — only the internal base URL is stored.
 #
-# Network: youtrack.workname.re is an internal host. It works without the AmneziaWG
+# Network: WORK_YOUTRACK_MCP_URL is an internal host. It works without the AmneziaWG
 # VPN. If the server fails to connect (timeouts), re-run `ytmcp on --proxy` to add
-# ALL_PROXY pointing at the GlobalProtect SOCKS proxy (~/projects/services/worknamevpn,
-# localhost:1080).
+# ALL_PROXY pointing at the GlobalProtect SOCKS proxy (PROXY_WORK).
 #
 # Usage:
 #   ytmcp on            register + (re)connect   [scope: user]
@@ -26,7 +25,7 @@
 set -euo pipefail
 
 NAME="youtrack-mcp-server"
-BASE_URL="https://youtrack.workname.re"
+BASE_URL="${WORK_YOUTRACK_MCP_URL:?}"
 ENTRY="$(npm root -g 2>/dev/null)/youtrack-mcp-server/index.js"
 
 cmd="${1:-status}"

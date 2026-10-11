@@ -5,7 +5,7 @@ commit_message=$(git show -s --format=%B "$sha")
 
 if [[ $commit_message =~ ([A-Z]+-[0-9]+) ]]; then
     ticket="${BASH_REMATCH[1]}"
-    open "https://yt.workproject.com/issue/$ticket"
+    open "$("$HOME/projects/dotfiles/zsh/bin/const" work.youtrack.url)/issue/$ticket"
 else
     echo "No ticket number found in commit message: $commit_message"
     exit 1
