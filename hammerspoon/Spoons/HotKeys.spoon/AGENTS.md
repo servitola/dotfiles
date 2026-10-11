@@ -37,7 +37,7 @@ Column geometry: `│` at positions [17, 32, 47, 51]. See `a.lua` for the refere
 - **Chord column**: pressed combination, right-aligned (last char at position 13)
 - **Karabiner column**: what Karabiner sends (mirrors `karabiner/rules/*.json`)
 - **Birman column**: layout characters in `en  ru  el` order (mirrors `docs/keyboard/parse_birman.py`: Apple's layouts + BirmanLayer.spoon, Apple's ⌥ for `excludedLayouts`; lint D2)
-- **G column**: `✓` if global macOS default, blank otherwise
+- **G column**: `✓` if global macOS default (hand-written), blank otherwise; `⚙` / `◆` mark lines that `docs/keyboard/tools/normalize.py --project` writes from `macos_shortcuts/shortcuts.toml` (system hotkey / app hotkey or menu item) — never edit those by hand, they are rewritten on every `up`; lint P1 fails when they drift
 - **Description**: `App — function` or `— function` for global; optional `B:`/`ⓘ:` tags
 
 Validate: `python3 docs/keyboard/tools/lint.py`

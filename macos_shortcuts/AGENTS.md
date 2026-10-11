@@ -16,6 +16,10 @@ the keyboard lint can see what macOS would swallow before Hammerspoon does.
 - **The Mac is the source, the file follows it.** Change a hotkey where it lives
   (System Settings, the app), and the next `up` captures it; commit the diff. Editing
   the TOML and running `apply` works too.
+- **The key tables follow the file.** `up` then runs `docs/keyboard/tools/normalize.py
+  --project`, which writes every row with a key into the HotKeys per-key tables as a `⚙`
+  (system) or `◆` (app / menu) line; lint `P1` fails when those lines and this file disagree,
+  `S4` when a Hammerspoon chord is also an app's hotkey here.
 - Because `up` captures, running it on a Mac whose hotkeys were never applied rewrites
   the file with that Mac's state. Run `apply` (install step 17) there first.
 - Row kinds, chord grammar, app storage formats and what cannot be written (sandboxed

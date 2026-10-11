@@ -98,7 +98,22 @@ Adding an app that uses a known format is one `Slot(...)` line in `REGISTRY` in 
 
 `shortcuts.py taps [--json]` lists every CoreGraphics event tap (`CGGetEventTapList`): owning process, tap point (`hid`, `session`, or a single target pid), `active` (can filter or swallow events) or `listen`, enabled, the event mask as names, and min/avg/max latency exactly as macOS reports it. It flags a process holding several active taps on one mask (a leaked re-registration; Boring Notch showed three on `systemDefined`) and an active tap that is disabled (macOS turns off a tap whose callback times out; its owner can too). It needs pyobjc, which it pulls with `uvx --with pyobjc-framework-Quartz`, so `shortcuts.py` itself imports on a bare python.
 
-Lint reads the file (not the machine), so it runs in pre-commit: `S1` fails when a layout chord is an enabled system shortcut, compared as macOS receives it (a bridge is its emitted F-key, `⇪` is `⇧⌃⌥⌘`); `S2` warns when an `[[app]]`/`[[menu]]` row sits on an enabled system chord; `S3` warns when two app/menu rows share a chord and can be live together (menu rows only within one app or `NSGlobalDomain`).
+Lint reads the file (not the machine), so it runs in pre-commit: `S1` fails when a layout chord is an enabled system shortcut, compared as macOS receives it (a bridge is its emitted F-key, `⇪` is `⇧⌃⌥⌘`); `S4` fails when a layout chord is also an app's global hotkey (two Carbon hotkeys on one chord: the later registration is dead) and warns when it is a menu shortcut of one app (Hammerspoon takes it there); `S2` warns when an `[[app]]`/`[[menu]]` row sits on an enabled system chord; `S3` warns when two app/menu rows share a chord and can be live together (menu rows only within one app or `NSGlobalDomain`).
+
+### Projection into the key tables
+
+The same rows are written into the per-key ASCII tables, so a key's file shows what the machine
+holds on it next to what Hammerspoon binds: `python3 docs/keyboard/tools/normalize.py --project`
+(`up` runs it right after `capture`). Each row becomes one description line under the chord it is
+pressed on, marked in the `G` column so the line is known to be machine-owned: `⚙` an enabled
+symbolic hotkey (`— system 60 input_source.previous`), `◆` an app's global hotkey or a menu item
+(`Shottr — area`, `Music — Repeat All`). A bridged chord lands on the pressed spelling (`⌥F16` →
+`⇪⌥v`), and four modifiers on `⇪x` when the Hyper layer passes that key through (Day One's
+`⇧⌃⌥⌘j` sits on `⇪j`). Hand-written lines carry no marker and are never touched; the projected
+ones are replaced on every run, so edit the source (the app, System Settings) and let `up` carry
+it over. Lint `P1` fails when the marked lines differ from `shortcuts.toml`. Not projected: `🌐`
+chords (no fn rows in the tables) and F1–F12 (placeholder files Hammerspoon never loads);
+`--project` lists them. The rules live in `docs/keyboard/projection.py`.
 
 ## Hammerspoon Configuration
 
@@ -282,7 +297,7 @@ Column geometry: `│` at positions 17, 32, 47, 51. See `a.lua` for the referenc
 | 1 | **chord** — pressed combination, right-aligned (last char at col 13) | the Lua entry's `chord` field |
 | 2 | **karabiner** — what Karabiner sends downstream (arrows, F-keys, modifier combos) | `karabiner/rules/*.json` |
 | 3 | **birman** — characters in `en  ru  el` layout order | `docs/keyboard/parse_birman.py` (Apple layouts + BirmanLayer.spoon, Apple's ⌥ in `excludedLayouts`) |
-| 4 | **G** — `✓` if this is a stock macOS global shortcut | macOS Keyboard prefs |
+| 4 | **G** — `✓` if this is a stock macOS global shortcut (hand-written); `⚙` / `◆` mark a line projected from `macos_shortcuts/shortcuts.toml` (see *Projection into the key tables*) | macOS Keyboard prefs; `shortcuts.toml` |
 | 5 | **description** — `App — function`, or `— function` for global. Optional tags: `B:` Birman-only, `ⓘ:` informational | the Lua entry |
 
 `parse_birman.py` builds that column as described under *Typographic layer*, "Keyboard pictures and lint".
