@@ -314,7 +314,7 @@ Each key file starts with a **canonical 5-column ASCII table** documenting every
 -- ⌘w    │           │              │ ✓ │ — close window
 ```
 
-Column geometry: `│` at positions 17, 32, 47, 51. See `a.lua` for the reference.
+Column geometry: `│` at positions 17, 32, 47, 51. See `a.lua` for the reference. `normalize.py` also right-aligns the app name of every `App — function` description to 13 characters (hand-written and projected alike), spells every Lua entry as `{ chord = "…",` with `fn`/`app` in column 45, and fills an empty row above a Lua entry with that entry's words (the launched app, or `Hammerspoon — label`), which a hand-written description overrides.
 
 | # | Column | Source of truth |
 |---|---|---|

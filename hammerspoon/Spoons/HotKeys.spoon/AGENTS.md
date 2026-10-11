@@ -34,7 +34,7 @@
 -- chord │ karabiner │ en | ru | el │ G │ app — function
 -- ⇪w    │     ↑     │              │   │         — up
 ```
-Column geometry: `│` at positions [17, 32, 47, 51]. See `a.lua` for the reference.
+Column geometry: `│` at positions [17, 32, 47, 51]. See `a.lua` for the reference. `normalize.py` keeps three more conventions on every run: a description `App — function` has the app right-aligned to 13 characters so the dashes line up down the file (projected lines too); a Lua entry is `{ chord = "…",` with `fn`/`app` starting in column 45; a chord row left empty whose Lua entry follows gets that entry's words (the app it launches, or `Hammerspoon — label` from `docs/keyboard/labels.py`) — write your own description to override it.
 - **Chord column**: pressed combination, right-aligned (last char at position 13)
 - **Karabiner column**: what Karabiner sends (mirrors `karabiner/rules/*.json`)
 - **Birman column**: layout characters in `en  ru  el` order (mirrors `docs/keyboard/parse_birman.py`: Apple's layouts + BirmanLayer.spoon, Apple's ⌥ for `excludedLayouts`; lint D2)
