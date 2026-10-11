@@ -15,7 +15,7 @@ return {
 --          ⌥g   │              │      ©       │   │ GitHub
 { chord =  "⌥g",                            fn = "browser_git" },
 --          ⌘g   │              │              │   │         Rider — git operations popup
---               │              │              │ ℝ │ Rider — VCS Operations Popup
+--               │              │              │ ℝ │ Rider — VCS Operations Popup…
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧g   │     ⇧F18     │              │   │
 --         ⇪⌃g   │     ⌃F18     │              │   │

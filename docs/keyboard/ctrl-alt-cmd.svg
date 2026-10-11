@@ -220,7 +220,7 @@
 <text x="543.5" y="186" font-size="8px" fill="#1d1d1f">Recent projects popup</text>
 <use href="#icon-rider" x="496.0" y="193" width="13" height="13"/>
 <text x="512.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="543.5" y="204" font-size="8px" fill="#1d1d1f">Manage Recent Solutions</text>
+<text x="543.5" y="204" font-size="8px" fill="#1d1d1f">Manage Recent Solutions…</text>
 </g>
 </g>
 <g class="key-group">
@@ -445,7 +445,7 @@
 <use href="#icon-rider" x="211" y="396" width="14" height="14"/>
 <text x="229" y="408" font-size="11px" fill="#48484a">Rider — Recent projects popup</text>
 <use href="#icon-rider" x="211" y="420" width="14" height="14"/>
-<text x="229" y="432" font-size="11px" fill="#48484a">Rider — Manage Recent Solutions</text>
+<text x="229" y="432" font-size="11px" fill="#48484a">Rider — Manage Recent Solutions…</text>
 <use href="#icon-rider" x="211" y="444" width="14" height="14"/>
 <text x="229" y="456" font-size="11px" fill="#48484a">Rider — Recent Projects</text>
 <line x1="20" y1="478" x2="906" y2="478" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>

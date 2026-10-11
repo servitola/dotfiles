@@ -13,7 +13,7 @@ return {
 --          ⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
 --          ⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
 --          ⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)
---               │              │              │ ℝ │ Rider — Rename (then ⌘⎋)
+--               │              │              │ ℝ │ Rider — Rename… (then ⌘⎋)
 --          ⇥~   │      ⌘~      │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧~   │              │ ~    Ё    ±  │   │

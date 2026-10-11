@@ -37,7 +37,7 @@ return {
 --               │              │              │   │          Mail — send emails
 --               │              │              │   │        Finder — go to Desktop
 --         ⌃⌥d   │              │              │   │        VSCode — focus Run and Debug panel
---               │              │              │ℝ! │ Rider — Debug
+--               │              │              │ℝ! │ Rider — Debug…
 { chord = "⌃⌥d",                            fn = "window.right", over = "Rider" },
 --        ⌃⌥ad   │     num8     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word

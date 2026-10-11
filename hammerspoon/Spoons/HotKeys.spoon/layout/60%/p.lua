@@ -32,7 +32,7 @@ return {
 --               │              │              │ ◆ │ Music — Previous
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
---               │              │              │ ℝ │ Rider — Pull Members Up
+--               │              │              │ ℝ │ Rider — Pull Members Up…
 --         ⌥⌘p   │              │              │   │       Vivaldi — print using system dialog
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃p   │              │              │   │

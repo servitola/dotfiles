@@ -10,7 +10,7 @@ return {
 --          ⇪c   │      ⌘→      │              │   │
 --          ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
---               │              │              │ ℝ │ Rider — Unit Testing Quick List
+--               │              │              │ ℝ │ Rider — Unit Testing Quick List…
 --          ⌥c   │              │      ©       │   │      Forkgram — open chat 3172923198
 --               │              │              │ℝ! │ Rider — Clone Caret Above
 { chord =  "⌥c",                            fn = "forkgram.chat", over = "Rider" },

@@ -36,7 +36,7 @@ return {
 --               │              │              │   │          Mail — reply all to email
 --               │              │              │   │       Vivaldi — clear cache and reload page
 --         ⌃⌥r   │              │              │   │ WebStorm
---               │              │              │ℝ! │ Rider — Run
+--               │              │              │ℝ! │ Rider — Run…
 { chord = "⌃⌥r",                           app = "WebStorm", over = "Rider" },
 --         ⌃⌘r   │              │              │   │         Rider — rerun tests
 --         ⌥⌘r   │              │              │   │         Rider — resume running (debugging)

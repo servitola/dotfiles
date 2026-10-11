@@ -30,7 +30,7 @@ return {
 --               │              │              │   │          Fork — quick Fetch
 --               │              │              │   │          Fork — toggle Force Push on Push dialog
 --         ⌃⌥f   │              │              │   │ → RU
---               │              │              │ℝ! │ Rider — Introduce Field
+--               │              │              │ℝ! │ Rider — Introduce Field…
 --               │              │              │ℝ! │ Rider — Move Caret to Next Word
 --               │              │              │ℝ! │ Rider — Show Filter Popup
 { chord = "⌃⌥f",                            fn = "translate_to_russian", over = "Rider" },

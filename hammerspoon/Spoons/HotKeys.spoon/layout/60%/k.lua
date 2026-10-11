@@ -20,7 +20,7 @@ return {
 --               │              │              │   │       YouTube — jump to chapter to the left
 --         ⇪⌘k   │      ⌘←      │              │ ✓ │              — home/jump to start of line
 --         ⇧⌃k   │              │              │   │
---               │              │              │ ℝ │ Rider — Analyze Stack Trace or Thread Dump
+--               │              │              │ ℝ │ Rider — Analyze Stack Trace or Thread Dump…
 --         ⇧⌥k   │              │ ‘    ‘    Ϗ  │   │
 --         ⇧⌘k   │              │              │   │        Finder — go to Network
 --         ⌃⌥k   │              │              │   │

@@ -41,7 +41,7 @@ return {
 --        ⇪⌃⌘h   │    ⌃⌘F20     │              │   │
 --        ⇪⌥⌘h   │    ⌥⌘F20     │              │   │
 --        ⇧⌃⌥h   │              │              │ ✓ │              — reload Hammerspoon config
---               │              │              │ℝ! │ Rider — Configure Current File Analysis
+--               │              │              │ℝ! │ Rider — Configure Current File Analysis…
 { chord= "⇧⌃⌥h",                            fn = "hammerspoon_reload", over = "Rider" },
 --        ⇧⌃⌘h   │              │              │   │
 --        ⇧⌥⌘h   │              │              │   │          Fork — quick Stash

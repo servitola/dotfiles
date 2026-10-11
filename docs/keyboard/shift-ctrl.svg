@@ -406,7 +406,7 @@
 <polygon points="558.5,218 566.5,218 562.5,214" fill="white"/>
 <use href="#icon-rider" x="452.5" y="227" width="13" height="13"/>
 <text x="468.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="500.0" y="238" font-size="8px" fill="#1d1d1f">Analyze Stack Trace or Thread Dump</text>
+<text x="500.0" y="238" font-size="8px" fill="#1d1d1f">Analyze Stack Trace or Thread Dump…</text>
 </g>
 </g>
 <g class="key-group">
@@ -677,7 +677,7 @@
 <line x1="20" y1="1090" x2="906" y2="1090" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1098" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
 <use href="#icon-rider" x="291" y="1086" width="14" height="14"/>
-<text x="309" y="1098" font-size="11px" fill="#48484a">Rider — Analyze Stack Trace or Thread Dump</text>
+<text x="309" y="1098" font-size="11px" fill="#48484a">Rider — Analyze Stack Trace or Thread Dump…</text>
 <use href="#icon-rider" x="291" y="1110" width="14" height="14"/>
 <text x="309" y="1122" font-size="11px" fill="#48484a">Rider — Unscramble</text>
 <line x1="20" y1="1144" x2="906" y2="1144" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>

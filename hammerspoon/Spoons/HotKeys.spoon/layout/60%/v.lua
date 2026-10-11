@@ -12,7 +12,7 @@ return {
 --          ⇧v   │              │ V    М    Ω  │   │
 --          ⌃v   │              │              │   │   Claude Code — paste
 --               │              │              │   │      Terminal — paste
---               │              │              │ ℝ │ Rider — VCS Operations Popup
+--               │              │              │ ℝ │ Rider — VCS Operations Popup…
 --          ⌥v   │              │      ↓       │   │
 --          ⌘v   │              │              │ ✓ │              — paste
 --               │              │              │   │         Music — paste song information or artwork
@@ -29,7 +29,7 @@ return {
 --         ⇧⌥v   │              │ ˇ    ˇ    Ά  │   │
 --         ⇧⌘v   │              │              │   │          Mail — paste text into email as quotation
 --         ⌃⌥v   │              │              │   │ YouTube
---               │              │              │ℝ! │ Rider — Introduce Variable
+--               │              │              │ℝ! │ Rider — Introduce Variable…
 { chord = "⌃⌥v",                            fn = "browser_youtube", over = "Rider" },
 --         ⌃⌘v   │              │              │ ✓ │              — paste bypass (type clipboard for restricted fields)
 { chord = "⌃⌘v",                            fn = "paste_bypass" },

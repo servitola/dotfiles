@@ -402,7 +402,7 @@
 <polygon points="486.0,166 494.0,166 490.0,162" fill="white"/>
 <use href="#icon-rider" x="380.0" y="175" width="13" height="13"/>
 <text x="396.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="427.5" y="186" font-size="8px" fill="#1d1d1f">Unit Testing Quick List</text>
+<text x="427.5" y="186" font-size="8px" fill="#1d1d1f">Unit Testing Quick List…</text>
 </g>
 </g>
 <g class="key-group">
@@ -695,7 +695,7 @@
 <text x="283.0" y="290" font-size="8px" fill="#1d1d1f">cancel</text>
 <use href="#icon-rider" x="191.5" y="297" width="13" height="13"/>
 <text x="207.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="239.0" y="308" font-size="8px" fill="#1d1d1f">Unit Testing Quick List</text>
+<text x="239.0" y="308" font-size="8px" fill="#1d1d1f">Unit Testing Quick List…</text>
 </g>
 </g>
 <g class="key-group">
@@ -716,7 +716,7 @@
 <text x="313.5" y="308" font-size="8px" fill="#1d1d1f">paste</text>
 <use href="#icon-rider" x="249.5" y="315" width="13" height="13"/>
 <text x="265.5" y="326" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="297.0" y="326" font-size="8px" fill="#1d1d1f">VCS Operations Popup</text>
+<text x="297.0" y="326" font-size="8px" fill="#1d1d1f">VCS Operations Popup…</text>
 </g>
 </g>
 <g class="key-group">
@@ -908,7 +908,7 @@
 <line x1="20" y1="1372" x2="906" y2="1372" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1380" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
 <use href="#icon-rider" x="211" y="1368" width="14" height="14"/>
-<text x="229" y="1380" font-size="11px" fill="#48484a">Rider — Unit Testing Quick List</text>
+<text x="229" y="1380" font-size="11px" fill="#48484a">Rider — Unit Testing Quick List…</text>
 <use href="#icon-rider" x="211" y="1392" width="14" height="14"/>
 <text x="229" y="1404" font-size="11px" fill="#48484a">Rider — Unit Test Menu</text>
 <line x1="20" y1="1426" x2="906" y2="1426" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
@@ -1023,7 +1023,7 @@
 <use href="#icon-zap" x="211" y="2466" width="14" height="14"/>
 <text x="229" y="2478" font-size="11px" fill="#48484a">Unix Terminal — cancel</text>
 <use href="#icon-rider" x="211" y="2490" width="14" height="14"/>
-<text x="229" y="2502" font-size="11px" fill="#48484a">Rider — Unit Testing Quick List</text>
+<text x="229" y="2502" font-size="11px" fill="#48484a">Rider — Unit Testing Quick List…</text>
 <use href="#icon-rider" x="211" y="2514" width="14" height="14"/>
 <text x="229" y="2526" font-size="11px" fill="#48484a">Rider — Unit Test Menu</text>
 <line x1="20" y1="2548" x2="906" y2="2548" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
@@ -1033,7 +1033,7 @@
 <use href="#icon-zap" x="211" y="2568" width="14" height="14"/>
 <text x="229" y="2580" font-size="11px" fill="#48484a">Terminal — paste</text>
 <use href="#icon-rider" x="211" y="2592" width="14" height="14"/>
-<text x="229" y="2604" font-size="11px" fill="#48484a">Rider — VCS Operations Popup</text>
+<text x="229" y="2604" font-size="11px" fill="#48484a">Rider — VCS Operations Popup…</text>
 <use href="#icon-rider" x="211" y="2616" width="14" height="14"/>
 <text x="229" y="2628" font-size="11px" fill="#48484a">Rider — Git Operations</text>
 <line x1="20" y1="2650" x2="906" y2="2650" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>

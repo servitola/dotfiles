@@ -30,7 +30,7 @@ return {
 --         ⇪⌘a   │      ⌘←      │              │ ✓ │              — home, jump to the left start of string
 --         ⇧⌃a   │              │              │ ✓ │              — select line to the left
 --         ⇧⌥a   │     ⇧⌥←      │              │ ✓ │              — select word to the left
---               │              │              │ ℝ │ Rider — Show History for Selection
+--               │              │              │ ℝ │ Rider — Show History for Selection…
 --         ⇧⌘a   │              │              │   │        VSCode — show actions palette
 --               │              │              │   │         Music — deselect all songs
 --               │              │              │   │          Mail — attach files

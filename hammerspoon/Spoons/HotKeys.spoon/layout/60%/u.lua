@@ -10,7 +10,7 @@ return {
 --          ⇪u   │              │              │   │
 --          ⇧u   │              │ U    Г    Θ  │   │
 --          ⌃u   │              │              │   │
---               │              │              │ ℝ │ Rider — Unit Testing Quick List
+--               │              │              │ ℝ │ Rider — Unit Testing Quick List…
 --          ⌥u   │              │      ѵ       │   │
 --          ⌘u   │              │              │   │         Music — open 'stream audio file at a specific URL' dialog
 --               │              │              │   │      Telegram — toggle underline for text
@@ -21,7 +21,7 @@ return {
 --         ⇪⌘u   │              │              │   │
 --         ⇧⌃u   │              │              │   │
 --         ⇧⌥u   │              │ Ѵ    Ѵ    Ξ  │   │         Rider — show unit testing quick panel
---               │              │              │ ℝ │ Rider — Unit Testing Quick List
+--               │              │              │ ℝ │ Rider — Unit Testing Quick List…
 --         ⇧⌘u   │              │              │   │         Rider — toggle case of text
 --               │              │              │   │          Mail — mark emails as read or unread
 --         ⌃⌥u   │              │              │   │

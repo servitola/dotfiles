@@ -257,7 +257,7 @@
 <polygon points="776.0,166 784.0,166 780.0,162" fill="white"/>
 <use href="#icon-rider" x="670.0" y="175" width="13" height="13"/>
 <text x="686.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="717.5" y="186" font-size="8px" fill="#1d1d1f">Restart IDE (then ⇧⌃⌥])</text>
+<text x="717.5" y="186" font-size="8px" fill="#1d1d1f">Restart IDE… (then ⇧⌃⌥])</text>
 </g>
 </g>
 <g class="key-group">
@@ -345,7 +345,7 @@
 <text x="373.5" y="238" font-size="8px" fill="#1d1d1f">hammerspoon reload</text>
 <use href="#icon-rider" x="336.5" y="245" width="13" height="13"/>
 <text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="384.0" y="256" font-size="8px" fill="#1d1d1f">Configure Current File Analysis</text>
+<text x="384.0" y="256" font-size="8px" fill="#1d1d1f">Configure Current File Analysis…</text>
 </g>
 </g>
 <g class="key-group">
@@ -608,7 +608,7 @@
 <line x1="20" y1="544" x2="906" y2="544" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="552" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
 <use href="#icon-rider" x="211" y="540" width="14" height="14"/>
-<text x="229" y="552" font-size="11px" fill="#48484a">Rider — Restart IDE (then ⇧⌃⌥])</text>
+<text x="229" y="552" font-size="11px" fill="#48484a">Rider — Restart IDE… (then ⇧⌃⌥])</text>
 <line x1="20" y1="574" x2="906" y2="574" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="582" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
 <text x="56" y="582" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
@@ -633,7 +633,7 @@
 <text x="76" y="702" font-size="12px" font-weight="500" fill="#ff453a">Reload</text>
 <text x="211" y="702" font-size="11px" fill="#48484a">reload Hammerspoon config</text>
 <use href="#icon-rider" x="211" y="714" width="14" height="14"/>
-<text x="229" y="726" font-size="11px" fill="#48484a">Rider — Configure Current File Analysis</text>
+<text x="229" y="726" font-size="11px" fill="#48484a">Rider — Configure Current File Analysis…</text>
 <line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
 <use href="#icon-services" x="211" y="744" width="14" height="14"/>
