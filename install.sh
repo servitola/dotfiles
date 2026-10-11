@@ -1,7 +1,10 @@
 #!/bin/zsh
 cd "$HOME/projects/dotfiles"
+# constants.env is this Mac's own and not in git; a new Mac starts from the example.
+[[ -e constants.env ]] || { cp constants.example.env constants.env; new_constants=1; }
 source install/lib.sh
 start_logging
+(( ${new_constants:-0} )) && warn "constants.env created from constants.example.env: put this Mac's values there"
 # check.sh judges the links of this run only: a list kept across runs still
 # expected configs of tools uninstalled since.
 : > "$STATE/links.tsv"

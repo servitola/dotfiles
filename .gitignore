@@ -29,3 +29,6 @@ karabiner/helper/keylog
 claude-code/settings.json.lock
 claude-code/skill-usage.jsonl
 docs/keyboard/icons_cache.json
+
+# This Mac's values; constants.example.env, generated from constants/schema.toml, is the template
+constants.env

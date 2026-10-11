@@ -5,7 +5,8 @@ proxies — so nothing hardcodes them again.
 
 | File | Role |
 |---|---|
-| `../constants.env` | The values. One file, in git. |
+| `../constants.env` | This Mac's values. Not in git: each Mac keeps its own. |
+| `../constants.example.env` | Generated from `schema.toml` (every key's `about` and `example`); `install.sh` copies it to `constants.env` on a new Mac. Never edit it by hand. |
 | `load.zsh` | Exports them, via `zsh/exports.sh` → every shell, service, cron job. |
 | `constants.py` | `from constants import K`, where there is no shell. |
 | `../hammerspoon/constants.lua` | `require("constants")` — in `hammerspoon/`, the only path its `require` sees. |
@@ -13,7 +14,7 @@ proxies — so nothing hardcodes them again.
 | `template.zsh` | `render <config>` → `~/.local/state/dotfiles/generated/<same name>`. |
 | `../<app>/render.zsh` | Two lines: source `template.zsh`, `render` that config. Today `git/`, `nuget/`. |
 | `../zsh/bin/const` | The CLI — how an AI agent reads a value. |
-| `schema.toml` | One line per key: `type`, `about`, and the flags below. |
+| `schema.toml` | One line per key: `type`, `about`, `example`, and the flags below. A private key's `example` is a placeholder, never the real value. |
 | `check.py` | Holds the file, the schema and the consumers to each other. Runs on every commit; `const check` adds the checks that need this machine. |
 
 `KEY=value`, no quotes, no `export`; the value is the rest of the line verbatim.
@@ -68,9 +69,11 @@ Tests: `python3 constants/test-check.py`.
 ## Rules
 
 - A value belongs here when a second consumer needs it — not every string.
-- Secrets are fine: the repo is private and self-hosted.
-- Adding a key is two lines — the value and its schema entry — and no installer
-  step, symlink or regeneration.
+- Secrets stay in `constants.env`, which is not committed.
+- Adding a key is two lines — its schema entry with an `example`, and its value in
+  your `constants.env`. The commit hook (`check.py`) rewrites `constants.example.env`
+  when the schema changed and asks you to stage it. Other Macs get the key from the
+  example only on a fresh install: add it to their `constants.env` by hand.
 - Consumers read the constant, never copy it. `hammerspoon/browsers.lua`:
   `APP_BROWSER` picks `M.main`, unknown name fails loudly.
 - `app = "@APP_BROWSER"` in a keyboard chord resolves in three places that must
