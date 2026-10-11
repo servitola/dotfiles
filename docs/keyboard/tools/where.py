@@ -77,7 +77,7 @@ def _conditions(m):
         if c.get("type", "").startswith("frontmost_application"):
             apps = [b for b in c.get("bundle_identifiers", [])]
             notes.append(("only in " if c["type"].endswith("_if") else "except in ") + ", ".join(apps))
-        elif c.get("type") == "variable_if":
+        elif c.get("type") == "variable_if" and c.get("name") != "tab_modifier":
             notes.append(f"while {c.get('name')} = {c.get('value')}")
     return notes
 
