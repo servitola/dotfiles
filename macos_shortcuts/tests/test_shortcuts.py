@@ -17,12 +17,13 @@ FIXTURE_NAME = {shortcuts.DAY_ONE: os.path.basename(shortcuts.DAY_ONE)}
 
 
 class FakeMachine:
-    def __init__(self, sandboxed=(), write_ok=True):
+    def __init__(self, sandboxed=(), write_ok=True, no_container=()):
         self.prefs = {}
         for name in os.listdir(FIXTURES):
             with open(os.path.join(FIXTURES, name), "rb") as fh:
                 self.prefs[name.removesuffix(".plist")] = plistlib.load(fh)
         self._sandboxed = set(sandboxed)
+        self._no_container = set(no_container)
         self.write_ok = write_ok
         self.writes, self.runs = [], []
 
@@ -34,6 +35,9 @@ class FakeMachine:
 
     def sandboxed(self, domain):
         return domain in self._sandboxed or "/Group Containers/" in domain
+
+    def container_exists(self, domain):
+        return domain not in self._no_container
 
     def write(self, args):
         self.writes.append(args)
@@ -87,6 +91,15 @@ def test_capture_refuses_when_a_sandboxed_domain_reads_empty(tmp_path, monkeypat
     assert shortcuts.main(["capture", "--write"], machine=m) == 1
     assert "cc.ffitch.shottr" in capsys.readouterr().err
     assert shortcuts.load(str(path)) == DECLARED
+
+
+def test_capture_writes_when_the_empty_sandboxed_app_never_ran_here(tmp_path, monkeypatch):
+    path = tmp_path / "shortcuts.toml"
+    path.write_text(shortcuts.render(DECLARED), encoding="utf-8")
+    monkeypatch.setattr(shortcuts, "TOML_PATH", str(path))
+    m = FakeMachine(no_container=(shortcuts.DAY_ONE,))
+    del m.prefs[FIXTURE_NAME[shortcuts.DAY_ONE]]
+    assert shortcuts.main(["capture", "--write"], machine=m) == 0
 
 
 def test_capture_writes_when_every_sandboxed_domain_is_read(tmp_path, monkeypatch):

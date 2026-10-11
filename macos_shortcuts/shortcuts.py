@@ -204,6 +204,12 @@ class Machine:
             return True
         return domain != GLOBAL and os.path.isdir(os.path.expanduser(f"~/Library/Containers/{domain}"))
 
+    def container_exists(self, domain):
+        """Whether the app ever ran here. Seeing the directory needs no Full Disk Access."""
+        if "/Group Containers/" in domain:
+            return os.path.isdir(os.path.expanduser(domain.split("/Library/Preferences/")[0]))
+        return os.path.isdir(os.path.expanduser(f"~/Library/Containers/{domain}"))
+
     def write(self, args):
         args = [os.path.expanduser(args[0]), *args[1:]]
         return subprocess.run(["defaults", "write", *args], capture_output=True).returncode == 0
@@ -395,10 +401,12 @@ def capture(machine):
 def unreadable(previous, fresh, machine):
     """Sandboxed domains the file declares that this capture saw nothing of. Without Full
     Disk Access `defaults find` omits container domains silently, so writing `fresh` would
-    drop their rows as if the apps were gone."""
+    drop their rows as if the apps were gone. An app that never ran on this Mac (a new
+    one without Day One) has no container, and nothing to lose."""
     seen = {r.domain for r in fresh["app"]}
     return sorted({r.domain for r in previous["app"]
-                   if machine.sandboxed(r.domain) and r.domain not in seen})
+                   if machine.sandboxed(r.domain) and r.domain not in seen
+                   and machine.container_exists(r.domain)})
 
 
 def _toml_value(v):
