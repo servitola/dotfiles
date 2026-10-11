@@ -16,6 +16,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 ENV = ROOT / "constants.env"
+EXAMPLE = ROOT / "constants.example.env"
 SCHEMA = ROOT / "constants" / "schema.toml"
 HOME = str(Path.home())
 
@@ -305,15 +306,45 @@ def check_loaders(values):
     return problems
 
 
+def render_example(schema_text):
+    """constants.example.env from the schema: its groups, each key's about and example."""
+    lines = ["# Generated from constants/schema.toml by constants/check.py — edit the schema, not this.",
+             "# Copy to constants.env (install.sh does it on a new Mac) and put this Mac's values there."]
+    keys = tomllib.loads(schema_text)["keys"]
+    body = schema_text.split("[keys]", 1)[1].split("\n[", 1)[0]
+    for line in body.splitlines():
+        key = line.split("=", 1)[0].strip()
+        if not line.strip():
+            lines.append("")
+        elif key in keys:
+            lines += [f"# {keys[key]['about']}", f"{key}={keys[key].get('example', '')}"]
+    return "\n".join(lines).rstrip("\n") + "\n"
+
+
+def check_example(schema_text, schema):
+    """The example follows the schema; a stale one is rewritten here, so the commit only needs it staged."""
+    missing = [f"{SCHEMA.name}: {key} has no example" for key, rule in schema.items() if "example" not in rule]
+    wanted = render_example(schema_text)
+    if EXAMPLE.exists() and EXAMPLE.read_text(encoding="utf-8") == wanted:
+        return missing
+    EXAMPLE.write_text(wanted, encoding="utf-8")
+    return missing + [f"{EXAMPLE.name} followed {SCHEMA.name} and was rewritten: stage it"]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--machine", action="store_true", help="also: paths exist, apps installed, CLIs on PATH")
     parser.add_argument("--literals", action="store_true", help="list every hardcoded private value in the tree, not only staged lines")
     args = parser.parse_args()
 
-    values, problems = read_env(ENV)
-    document = tomllib.loads(SCHEMA.read_text(encoding="utf-8"))
+    schema_text = SCHEMA.read_text(encoding="utf-8")
+    document = tomllib.loads(schema_text)
     schema, allow = document["keys"], document["literals"]["allow"]
+    problems = check_example(schema_text, schema)
+    problems += [f"{EXAMPLE.name}: {p}" for p in check_schema(read_env(EXAMPLE)[0], schema)]
+    # constants.env is this Mac's and not in git; where there is none (CI), the example stands in.
+    values, env_problems = read_env(ENV if ENV.exists() else EXAMPLE)
+    problems += env_problems
 
     if args.literals:
         problems = check_literals(values, schema, allow, whole_tree=True)
