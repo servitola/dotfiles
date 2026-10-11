@@ -4,10 +4,9 @@ setopt err_exit
 constants=~/projects/dotfiles/constants.env
 brewfile=~/projects/dotfiles/homebrew/brewfile
 
-sed -i '' -e 's/^DOCKER=.*/DOCKER=no/' \
-          -e 's/^APP_TELEGRAM=.*/APP_TELEGRAM=Telegram/' \
-          -e 's/^APP_TELEGRAM_BUNDLE=.*/APP_TELEGRAM_BUNDLE=ru.keepcoder.Telegram/' $constants
-grep -qx DOCKER=no $constants && grep -qx APP_TELEGRAM=Telegram $constants
+cp ~/projects/dotfiles/constants.example.env $constants
+sed -i '' 's/^DOCKER=.*/DOCKER=no/' $constants
+grep -qx DOCKER=no $constants
 
 skip=(
     'brew "facebook/fb/idb-companion"'   # needs a full Xcode, i.e. an Apple ID

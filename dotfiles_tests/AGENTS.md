@@ -31,7 +31,7 @@ A full run takes ~30 min (the whole brewfile installs). Logs, one per stage:
 
 1. On `$TART_HOST` (m1pro), clone `dotfiles-base` into `dotfiles-test-<time>`. The clone is an APFS copy and takes seconds.
 2. Copy in the committed HEAD of dotfiles, `$DIR_SKILLS` and `$DIR_CRON` as git bundles. Uncommitted edits are not tested; the VM cannot reach Gitea.
-3. `fresh_mac.sh`: `DOCKER=no`, the official Telegram, a short skip list for the brewfile, the image's own extras removed, Accessibility for Hammerspoon.
+3. `fresh_mac.sh`: `constants.env` from `constants.example.env` as on any new Mac (official Telegram included), `DOCKER=no`, a short skip list for the brewfile, the image's own extras removed, Accessibility for Hammerspoon.
 4. The stages, each with a time limit. A failed `make` stops the run.
 
 ## Changing it
@@ -46,7 +46,7 @@ A full run takes ~30 min (the whole brewfile installs). Logs, one per stage:
 - **`dotfiles-base`** is baked once from `IMAGE`: our ssh keys in (the image only knows admin/admin) and the disk grown to 100 GB (the image has ~7 GB free).
 - **Shared download cache.** Homebrew downloads (~11 GB) live on the host in `~/.cache/tart-homebrew` and reach the VM through `tart run --dir`, for `make` only: `up` begins by deleting its cache.
 - **`DOCKER=no`**: M1/M2 have no nested virtualization, so no Docker daemon runs in a VM. The stacks are checked by `install/check.sh` on the real Macs.
-- **Official Telegram**: the owner's Forkgram releases are private, so the run installs as anyone else would.
+- **Official Telegram**: the example's `APP_TELEGRAM`; the owner's Forkgram releases are private.
 - **App Store apps** are skipped: nobody can sign in to the App Store in the VM, and without a terminal `make` leaves them out.
 - **Time limits**: a dialog nobody sees blocks forever (Gatekeeper once held a run for 4.5 h).
 - **Hotkeys are tested after Karabiner.** Karabiner reads the real keyboard through its driver and never sees a key a program posts, and its driver needs a person's approval anyway. So `apps` posts what Karabiner would produce (`F17` for `⇪T`) and checks Hammerspoon's side; Karabiner itself is covered by `docs/keyboard/tools/lint.py`. Chords with `⇪` in the table are skipped: right-hand modifiers cannot be posted apart from left ones.
