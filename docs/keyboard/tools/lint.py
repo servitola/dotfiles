@@ -15,6 +15,8 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   A1  every `fn = "…"` is registered (hammerspoon/actions/**/*.lua or HotKeys.spoon/init.lua)
   B2  every F13–F20/num# chord is a slot variant ([slots] in karabiner/layers.toml) or num8/num9
   S1  an active chord is an enabled system shortcut in macos_shortcuts/shortcuts.toml (macOS swallows it)
+  S4  an active chord is an app's global hotkey ([[app]]) or a menu shortcut ([[menu]]) in shortcuts.toml
+  P1  the ⚙ / ◆ lines (machine shortcuts projected by normalize.py --project) differ from shortcuts.toml
 
 Once per run (also under --skip-drift):
   S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
@@ -43,6 +45,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "..", "..", "macos_shortcuts"))
 
 from parse_karabiner import parse_karabiner, _TO_PHYS, _to_display, _from_mods_to_layer
+import projection
 from parse_birman import parse_birman, LAYER_TO_STATE
 from config import FKEY_MAPPING, MOD_DISPLAY
 from app_constants import resolve
@@ -516,6 +519,51 @@ def check_system_shortcuts(state, findings, system):
                          "set that row to enabled = false and run shortcuts.py apply, or pick another chord")
 
 
+def check_app_shortcuts(state, findings, rows):
+    """S4: an active chord that an app's global hotkey or a menu shortcut also holds.
+
+    Two global hotkeys on one chord: whichever registered first wins, the other is dead,
+    and the order changes with every login — an error. A menu shortcut only fires inside
+    its app; a global Hammerspoon chord takes it there, so the menu item loses its key —
+    a warning, or an error when the menu row is NSGlobalDomain (every app).
+    """
+    held = {}
+    for r in rows["app"]:
+        if r.keys != shortcuts.NONE:
+            held.setdefault(r.keys, []).append(r)
+    for r in rows["menu"]:
+        held.setdefault(r.keys, []).append(r)
+    for a in state["actives"]:
+        try:
+            chord = keycodes.canonical(a["chord"])
+        except ValueError:
+            continue
+        for r in held.get(chord, []):
+            menu_local = isinstance(r, shortcuts.Menu) and r.domain != shortcuts.GLOBAL
+            findings.add(WARN if menu_local else ERROR, state["path"], a["line"], "S4",
+                         f"`{a['chord']}` → {a['target']} is also {shortcuts.ident(r)} "
+                         f"(macos_shortcuts/shortcuts.toml line {r.line})"
+                         + ("; Hammerspoon takes it inside that app" if menu_local
+                            else "; two global hotkeys on one chord, the later one is dead"),
+                         "pick another chord here, or move the app's shortcut and let `up` capture it")
+
+
+def check_projection(state, findings, expected):
+    """P1: the ⚙ / ◆ lines of this file are exactly what shortcuts.toml says."""
+    f = state["path"]
+    want = {(chord, g, d) for chord, descs in expected.items() for g, d in descs}
+    have = {(chord, g, d): line for line, chord, g, d in projection.marked_lines(state["lines"])}
+    for key in sorted(set(have) - want):
+        chord, g, d = key
+        findings.add(ERROR, f, have[key], "P1",
+                     f"projected line `{g} {d}` under `{chord}` is no longer in macos_shortcuts/shortcuts.toml",
+                     "run normalize.py --project")
+    for chord, g, d in sorted(want - set(have)):
+        findings.add(ERROR, f, state["header_idx"] + 1 if state["header_idx"] is not None else 1, "P1",
+                     f"macos_shortcuts/shortcuts.toml puts `{g} {d}` on `{chord}`, the table has no such line",
+                     "run normalize.py --project")
+
+
 def _live_together(a, b):
     """App hotkeys are global; menu shortcuts only fire in their app (or all apps for NSGlobalDomain)."""
     if isinstance(a, shortcuts.App) or isinstance(b, shortcuts.App):
@@ -624,6 +672,7 @@ def main():
         machine_rows = {"system": [], "app": [], "menu": []}
     check_machine_shortcuts(findings, machine_rows)
     system = enabled_system(machine_rows)
+    projected = projection.expected(machine_rows)
 
     for name in files:
         if not name.endswith(".lua"): name += ".lua"
@@ -638,6 +687,8 @@ def main():
         check_actions_registered(state, findings, registered)
         check_bridged_chords(state, findings, emitted)
         check_system_shortcuts(state, findings, system)
+        check_app_shortcuts(state, findings, machine_rows)
+        check_projection(state, findings, projected.get(name.removesuffix(".lua"), {}))
         if not args.skip_drift:
             check_karabiner_drift(state, findings, karabiner_strict)
             check_birman_drift(state, findings, birman_data)

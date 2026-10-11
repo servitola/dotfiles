@@ -4,6 +4,9 @@
 Modes:
   --fix-format       (default) only adjust column geometry to [17, 32, 47, 51]
   --insert-missing   additionally insert ASCII rows for active chords lacking docs
+  --project          additionally write the machine's shortcuts (macos_shortcuts/shortcuts.toml)
+                     into the tables as ⚙ / ◆ lines, replacing the ones written before
+                     (docs/keyboard/projection.py); hand-written lines are never touched
 
 Canonical row geometry:
     --          ⇪a   │      ←       │ A    Ф    Α  │ ✓ │       Rider — …
@@ -16,6 +19,7 @@ Idempotent: running twice produces no diff.
 Usage:
   python3 normalize.py                       # all files, fix format only
   python3 normalize.py --insert-missing      # also insert missing ASCII rows
+  python3 normalize.py --project             # also refresh the ⚙ / ◆ lines from shortcuts.toml
   python3 normalize.py --files a.lua b.lua   # specific files
   python3 normalize.py --check               # exit 1 if any file would change
 """
@@ -30,6 +34,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 from labels import get_label, FN_LABELS
 from config import FKEY_MAPPING, MOD_DISPLAY, KEY_DISPLAY
 from app_constants import resolve
+import projection
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
     HERE, "..", "..", "..", "hammerspoon", "Spoons", "HotKeys.spoon", "layout", "60%"))
@@ -125,6 +130,14 @@ def build_chord_row(chord, karabiner="", birman="", g="", desc=""):
     if desc_tail and not desc_tail.startswith(" "):
         desc_tail = " " + desc_tail
     return f"{chord_cell}│{kar_cell}│{bir_cell}│{g_cell}│{desc_tail}".rstrip() + "\n"
+
+
+def build_continuation_row(g="", desc=""):
+    chord_cell = "--" + " " * W_CHORD
+    desc_tail = desc.rstrip()
+    if desc_tail and not desc_tail.startswith(" "):
+        desc_tail = " " + desc_tail
+    return f"{chord_cell}│{_center('', W_KAR)}│{_center('', W_BIR)}│{_center(g, W_G)}│{desc_tail}".rstrip() + "\n"
 
 
 def build_sep_row():
@@ -255,9 +268,92 @@ def insert_missing_rows(lines, ascii_chords, ascii_f_keys, actives):
     return new_lines, len(inserts)
 
 
+# ─── projection of the machine's shortcuts ──────────────────────────────────
+_CHORD_TEXT_RE = re.compile(r"^--([^│]*)│([^│]*)│([^│]*)│([^│]*)│")
+
+
+def _chord_of(line):
+    """Chord text of a table row, "" for a continuation row, None for any other line."""
+    m = _CHORD_TEXT_RE.match(line.rstrip("\n"))
+    if not m:
+        return None
+    return re.sub(r"\s*→.*$", "", m.group(1)).strip()
+
+
+def _sort_key(chord):
+    m = re.match(r"^([⇪⇧⌃⌥⌘]*)", chord)
+    mods = m.group(1)
+    return (len(mods), [_MOD_ORDER[c] for c in mods])
+
+
+def _without_projected(lines):
+    """Drop every ⚙ / ◆ line; a hand-written continuation left under a dropped chord row
+    becomes that chord's row, so nothing hand-written is lost."""
+    out, orphan_chord = [], None
+    for line in lines:
+        chord = _chord_of(line)
+        if chord is None:
+            out.append(line)
+            orphan_chord = None
+            continue
+        m = _CHORD_TEXT_RE.match(line)
+        g = m.group(4).strip()
+        if g in projection.MARKER_CHARS:
+            if chord:
+                orphan_chord = chord
+            continue
+        if chord == "" and orphan_chord:
+            line = build_chord_row(orphan_chord, desc=line.split("│", 4)[4])
+        orphan_chord = None
+        out.append(line)
+    return out
+
+
+def _insert_at(lines, chord, rows):
+    """Place a new chord row (plus its continuation rows) in modifier order: before the
+    first row of the same group that sorts after it, else before the next group's
+    separator, else before the footer."""
+    key = _sort_key(chord)
+    for i, line in enumerate(lines):
+        c = _chord_of(line)
+        if not c:
+            continue
+        other = _sort_key(c)
+        if other <= key:
+            continue
+        if other[0] == key[0]:
+            return lines[:i] + rows + lines[i:]
+        j = i
+        while j > 0 and SEP_ROW_RE.match(lines[j - 1].rstrip("\n")):
+            j -= 1
+        return lines[:j] + rows + lines[j:]
+    for i, line in enumerate(lines):
+        if FOOTER_RE.match(line.rstrip("\n")):
+            return lines[:i] + rows + lines[i:]
+    return lines + rows
+
+
+def project_lines(lines, expected):
+    """Rewrite the ⚙ / ◆ lines of one file from `expected` ({chord: [(marker, desc)]})."""
+    lines = _without_projected(lines)
+    for chord, descs in sorted(expected.items(), key=lambda kv: _sort_key(kv[0])):
+        cont = [build_continuation_row(g, d) for g, d in descs]
+        idx = next((i for i, l in enumerate(lines) if _chord_of(l) == chord), None)
+        if idx is None:
+            g, d = descs[0]
+            lines = _insert_at(lines, chord, [build_chord_row(chord, g=g, desc=d), *cont[1:]])
+            continue
+        end = idx + 1
+        while end < len(lines) and _chord_of(lines[end]) == "":
+            end += 1
+        lines = lines[:end] + cont + lines[end:]
+    return lines
+
+
 # ─── per-file pipeline ──────────────────────────────────────────────────────
-def normalize_file(path, insert_missing=False):
-    """Return (new_content, changed, inserted_count)."""
+def normalize_file(path, insert_missing=False, project=None):
+    """Return (new_content, changed, inserted_count). `project` is the expected
+    projection for this file ({chord: [(marker, desc)]}, {} to clear it), or None."""
     with open(path, encoding="utf-8") as f:
         original = f.read()
     name = os.path.basename(path)
@@ -295,6 +391,8 @@ def normalize_file(path, insert_missing=False):
                                 "kind": m.group(3), "target": m.group(4)})
         new_lines, inserted = insert_missing_rows(
             new_lines, ascii_chords, ascii_f_keys, actives)
+    if project is not None:
+        new_lines = project_lines(new_lines, project)
 
     new_content = "".join(new_lines)
     return new_content, (new_content != original), inserted
@@ -307,9 +405,12 @@ def main():
     ap.add_argument("--files", nargs="*", help="specific *.lua basenames (default: all)")
     ap.add_argument("--insert-missing", action="store_true",
                     help="insert ASCII rows for active chords lacking docs")
+    ap.add_argument("--project", action="store_true",
+                    help="refresh the ⚙ / ◆ lines from macos_shortcuts/shortcuts.toml")
     ap.add_argument("--check", action="store_true",
                     help="don't write; exit 1 if any file would change (CI mode)")
     args = ap.parse_args()
+    expected = projection.expected() if args.project else None
 
     import glob
     files = args.files or sorted(
@@ -323,7 +424,8 @@ def main():
         if not os.path.exists(path):
             print(f"  skip (not found): {name}", file=sys.stderr)
             continue
-        new_content, changed, inserted = normalize_file(path, args.insert_missing)
+        project = None if expected is None else expected.get(name.removesuffix(".lua"), {})
+        new_content, changed, inserted = normalize_file(path, args.insert_missing, project)
         if changed:
             changed_files.append((name, inserted))
             if not args.check:
@@ -349,6 +451,9 @@ def main():
               + (f", inserted {total_inserted} ASCII rows" if total_inserted else ""))
     else:
         print("all files already canonical")
+    if args.project:
+        for row, why in projection.skipped():
+            print(f"  not projected: {row.keys} ({why})", file=sys.stderr)
 
 
 if __name__ == "__main__":

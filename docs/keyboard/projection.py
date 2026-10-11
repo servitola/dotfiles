@@ -1,0 +1,175 @@
+"""Shortcuts the machine holds, projected into the per-key ASCII tables.
+
+Source: `macos_shortcuts/shortcuts.toml` (what `up` captures from this Mac). Every row with a
+key becomes one description line in the table of the key it is pressed on, marked in the
+G column so the line is known to be machine-owned:
+
+    ⚙  an enabled macOS symbolic hotkey        `— system 52 dock.toggle_hiding`
+    ◆  an app's global hotkey or a menu item   `Shottr — area`, `Music — Repeat All`
+
+`normalize.py --project` writes these lines and replaces the ones it wrote before; lines
+without a marker are hand-written and never touched. Lint rule P1 fails when the lines on
+disk differ from `expected()`.
+
+Not projected (reported by `skipped()`): chords with 🌐 (no fn rows in the tables), F1–F12
+(their files are placeholders Hammerspoon never loads) and keys without a table file.
+"""
+import os
+import re
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+sys.path.insert(0, os.path.join(HERE, "..", "..", "macos_shortcuts"))
+
+import bridges
+import keycodes
+import parse_karabiner
+import shortcuts
+from classify import _KM
+from config import BUTTON_FILES
+
+MARKERS = {"system": "⚙", "app": "◆", "menu": "◆"}
+MARKER_CHARS = set(MARKERS.values())
+STUB_FILES = {"shift", "command", "control", "option", "capslock", "backslash", "backspace"}
+
+APP_NAMES = {
+    "cc.ffitch.shottr": "Shottr",
+    "org.p0deje.Maccy": "Maccy",
+    "com.mowglii.ItsycalApp": "Itsycal",
+    "com.openai.chat": "ChatGPT",
+    "com.prakashjoshipax.VoiceInk": "VoiceInk",
+    "theboringteam.boringnotch": "Boring Notch",
+    "com.jordanbaird.Ice": "Ice",
+    "com.apple.Music": "Music",
+    "com.apple.finder": "Finder",
+    "pbs": "Services",
+    "com.googlecode.iterm2": "iTerm2",
+    "com.apple.Terminal": "Terminal",
+    shortcuts.DAY_ONE: "Day One",
+}
+
+_MOD_GLYPH = {"shift": "⇧", "ctrl": "⌃", "alt": "⌥", "cmd": "⌘"}
+_MOD_ORDER = ("shift", "ctrl", "alt", "cmd")
+_HYPER = frozenset(_MOD_ORDER)
+_FILE_GLYPH = {"tilde": "~", "space": "␣", "left": "←", "right": "→", "up": "↑", "down": "↓",
+               "tab": "⇥", "return": "↩"}
+
+
+def app_name(domain):
+    if domain in APP_NAMES:
+        return APP_NAMES[domain]
+    if domain == shortcuts.GLOBAL:
+        return ""
+    return domain.rsplit(".", 1)[-1].replace("App", "") or domain
+
+
+def _service_label(name):
+    """pbs stores `<bundle> - <menu title> - <selector>`; Shortcuts.app services have no bundle."""
+    parts = [p.strip() for p in name.split(" - ")]
+    if len(parts) != 3:
+        return name
+    owner, title, _ = parts
+    if owner == "(null)":
+        return f"Shortcuts.app {title[:8]}"
+    return f"{title} ({app_name(owner)})"
+
+
+def describe(row):
+    if isinstance(row, shortcuts.System):
+        return f"— system {row.id} {row.name}"
+    if isinstance(row, shortcuts.App):
+        label = _service_label(row.name) if row.domain == "pbs" else row.name
+        return f"{app_name(row.domain)} — {label}"
+    app = app_name(row.domain)
+    return f"{app} — {row.item}" if app else f"— {row.item}"
+
+
+def _passthrough_hyper():
+    """Physical keys the Hyper layer leaves alone, so `⇪x` reaches macOS as `⇧⌃⌥⌘x`."""
+    mapped = {phys for (mods, phys) in parse_karabiner.parse_karabiner() if mods == frozenset({"hyper"})}
+    return {k for k in BUTTON_FILES if k not in mapped}
+
+
+def place(keys, variants=None, passthrough=None):
+    """(table file stem, chord text as the table spells it) for a canonical chord, or
+    (None, reason) when the chord has no row to live on."""
+    mods, key = keycodes.parse(keys)
+    if "fn" in mods:
+        return None, "🌐 chords have no table rows"
+    if re.fullmatch(r"F(1[3-9]|20)", key):
+        variants = variants if variants is not None else bridges.slot_variants()
+        pressed = variants.get(keys)
+        if pressed is None:
+            return None, f"nothing emits {keys}"
+        return pressed[-1], pressed
+    if re.fullmatch(r"F\d+|num\d", key):
+        return None, f"{key} has only a placeholder file"
+    stem = _KM.get(key, key)
+    if stem not in BUTTON_FILES or stem in STUB_FILES:
+        return None, f"no table for key {key}"
+    glyph = _FILE_GLYPH.get(stem, key)
+    if mods == _HYPER:
+        passthrough = passthrough if passthrough is not None else _passthrough_hyper()
+        if stem in passthrough:
+            return stem, "⇪" + glyph
+    return stem, "".join(_MOD_GLYPH[m] for m in _MOD_ORDER if m in mods) + glyph
+
+
+def rows_with_keys(machine_rows=None):
+    rows = machine_rows or shortcuts.load()
+    out = [r for r in rows["system"] if r.enabled and r.keys]
+    out += [r for r in rows["app"] if r.keys != shortcuts.NONE]
+    out += rows["menu"]
+    return out
+
+
+def expected(machine_rows=None):
+    """{file stem: {chord text: [(marker, description), …]}}, descriptions sorted."""
+    variants = bridges.slot_variants()
+    passthrough = _passthrough_hyper()
+    files = {}
+    for row in rows_with_keys(machine_rows):
+        stem, chord = place(row.keys, variants, passthrough)
+        if stem is None:
+            continue
+        kind = "system" if isinstance(row, shortcuts.System) else "app" if isinstance(row, shortcuts.App) else "menu"
+        files.setdefault(stem, {}).setdefault(chord, []).append((MARKERS[kind], describe(row)))
+    for chords in files.values():
+        for chord in chords:
+            chords[chord] = sorted(set(chords[chord]), key=lambda t: (t[0] != "⚙", t[1]))
+    return files
+
+
+def skipped(machine_rows=None):
+    """[(row, reason)] for the rows `expected()` leaves out."""
+    variants = bridges.slot_variants()
+    passthrough = _passthrough_hyper()
+    out = []
+    for row in rows_with_keys(machine_rows):
+        stem, reason = place(row.keys, variants, passthrough)
+        if stem is None:
+            out.append((row, reason))
+    return out
+
+
+_ROW = re.compile(r"^--(?P<chord>[^│]*)│[^│]*│[^│]*│(?P<g>[^│]*)│\s?(?P<desc>.*?)\s*$")
+
+
+def marked_lines(lines):
+    """[(line number, chord text, marker, description)] for every machine-owned line, a
+    continuation line taking the chord of the row above it."""
+    out, chord = [], None
+    for i, line in enumerate(lines):
+        m = _ROW.match(line.rstrip("\n"))
+        if not m:
+            if not line.lstrip().startswith("--"):
+                chord = None
+            continue
+        text = m.group("chord").strip()
+        if text:
+            chord = text
+        g = m.group("g").strip()
+        if g in MARKER_CHARS and chord:
+            out.append((i + 1, chord, g, m.group("desc")))
+    return out
