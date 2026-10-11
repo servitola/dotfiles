@@ -8,7 +8,7 @@ return {
 --           n   │              │ n    т    ν  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪n   │              │              │   │ Visual Studio Code
-{ chord =  "⇪n",                           app = "@APP_EDITOR" },
+{ chord = "⇪n",                             app = "@APP_EDITOR" },
 --          ⇧n   │              │ N    Т    Ν  │   │
 --          ⌃n   │              │              │   │
 --          ⌥n   │              │      ‘       │   │          Mail — open a new Mail viewer window
@@ -16,7 +16,7 @@ return {
 --               │              │              │   │        VSCode — new file
 --               │              │              │   │         Music — create a new playlist
 --               │              │              │   │          Mail — start a new email
---               │              │              │ ℝ │ Rider — New…
+--               │              │              │ ℝ │         Rider — New…
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧n   │              │              │   │
 --         ⇪⌃n   │              │              │   │
@@ -27,7 +27,7 @@ return {
 --         ⇧⌘n   │              │              │   │         Music — create a playlist from selection
 --               │              │              │   │       Browser — open new Private Window
 --               │              │              │   │          Mail — get new emails
---               │              │              │ ◆ │ Music — Next
+--               │              │              │ ◆ │         Music — Next
 --         ⌃⌥n   │              │              │   │
 --         ⌃⌘n   │              │              │   │
 --         ⌥⌘n   │              │              │   │         Rider — inline

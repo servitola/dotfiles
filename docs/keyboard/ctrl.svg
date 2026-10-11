@@ -466,7 +466,7 @@
 <polygon points="152.5,218 160.5,218 156.5,214" fill="white"/>
 <use href="#icon-visual-studio-code" x="46.5" y="227" width="13" height="13"/>
 <text x="62.5" y="238" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
-<text x="99.5" y="238" font-size="8px" fill="#1d1d1f">git annotate (blame) — CUSTOM</text>
+<text x="99.5" y="238" font-size="8px" fill="#1d1d1f">git annotate (blame)</text>
 <use href="#icon-rider" x="46.5" y="245" width="13" height="13"/>
 <text x="62.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="94.0" y="256" font-size="8px" fill="#1d1d1f">Annotate</text>
@@ -524,7 +524,7 @@
 <text x="273.5" y="238" font-size="8px" fill="#1d1d1f">move cursor right</text>
 <use href="#icon-forkgram" x="220.5" y="245" width="13" height="13"/>
 <text x="236.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Forkgram</text>
-<text x="284.5" y="256" font-size="8px" fill="#1d1d1f">global search (⌘K) HAMMERSPOON CUSTOM</text>
+<text x="284.5" y="256" font-size="8px" fill="#1d1d1f">global search (⌘K)</text>
 <use href="#icon-rider" x="220.5" y="263" width="13" height="13"/>
 <text x="236.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="268.0" y="274" font-size="8px" fill="#1d1d1f">Find</text>
@@ -926,7 +926,7 @@
 <use href="#icon-visual-studio-code" x="211" y="1776" width="14" height="14"/>
 <text x="229" y="1788" font-size="11px" fill="#48484a">VSCode — move cursor right</text>
 <use href="#icon-forkgram" x="211" y="1800" width="14" height="14"/>
-<text x="229" y="1812" font-size="11px" fill="#48484a">Forkgram — global search (⌘K) HAMMERSPOON CUSTOM</text>
+<text x="229" y="1812" font-size="11px" fill="#48484a">Forkgram — global search (⌘K)</text>
 <use href="#icon-rider" x="211" y="1824" width="14" height="14"/>
 <text x="229" y="1836" font-size="11px" fill="#48484a">Rider — Find</text>
 <use href="#icon-rider" x="211" y="1848" width="14" height="14"/>

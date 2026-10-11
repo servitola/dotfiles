@@ -10,10 +10,10 @@ return {
 --          ⇪w   │      ↑       │              │ ✓ │              — up
 --          ⇧w   │              │ W    Ц    ΅  │   │
 --          ⌃w   │              │              │   │        VSCode — select window to switch
---               │              │              │ ℝ │ Rider — Close All
+--               │              │              │ ℝ │         Rider — Close All
 --          ⌥w   │      ⌥↑      │              │ ✓ │              — move line up
 --               │              │              │   │         Rider — tool windows group
---               │              │              │ ℝ │ Rider — Tool Windows Group
+--               │              │              │ ℝ │         Rider — Tool Windows Group
 --          ⌘w   │              │              │ ✓ │              — close current tab
 --          ⇥w   │      ⌘[      │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
@@ -29,13 +29,13 @@ return {
 --         ⇧⌃w   │      ⌘m      │              │ ✓ │              — minimize window
 --         ⇧⌥w   │     ⇧⌥↑      │              │   │        VSCode — move line up
 --         ⇧⌘w   │              │              │ ✓ │              — close window
---               │              │              │ ℝ │ Rider — Close Other Tabs
+--               │              │              │ ℝ │         Rider — Close Other Tabs
 --         ⌃⌥w   │              │              │   │ Fullscr
 { chord = "⌃⌥w",                            fn = "window.fullscreen" },
 --         ⌃⌘w   │              │              │   │
 --         ⌥⌘w   │              │              │   │        VSCode — toggle search whole word
 --               │              │              │   │          Mail — close all Mail windows
---               │              │              │ ℝ │ Rider — Previous Occurrence
+--               │              │              │ ℝ │         Rider — Previous Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃w   │     Vol↑     │              │ ✓ │              — volume_increment
 --        ⇪⇧⌥w   │     ⇧⌥↑      │              │   │
@@ -45,7 +45,7 @@ return {
 --        ⇪⌥⌘w   │     ⌥⌘↑      │              │   │        VSCode — clone caret up;
 --               │              │              │   │         iTerm — focus pane above
 --        ⇧⌃⌥w   │              │              │   │ Top 60%
-{ chord= "⇧⌃⌥w",                            fn = "window.top_60" },
+{ chord = "⇧⌃⌥w",                           fn = "window.top_60" },
 --        ⇧⌃⌘w   │              │              │   │
 --        ⇧⌥⌘w   │              │              │   │
 --        ⌃⌥⌘w   │              │              │   │

@@ -5,39 +5,39 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           1   │              │      1       │   │          YouTube — Navigate to 10% of video
+--           1   │              │      1       │   │       YouTube — Navigate to 10% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪1   │      F1      │              │   │            Rider — quick documentation
+--          ⇪1   │      F1      │              │   │         Rider — quick documentation
 --          ⇧1   │              │      !       │   │
---          ⌃1   │              │              │   │           VSCode — go to tab 1
---               │              │              │ ℝ │ Rider — Select File in Project View
---          ⌥1   │              │      ¹       │   │
-{ chord =  "⌥1",                           app = "@APP_EDITOR" },
---          ⌘1   │              │              │   │            Rider — focus solution explorer
---               │              │              │   │           VSCode — focus solution explorer
---               │              │              │   │          Browser — Open 1st tab
---               │              │              │   │         Telegram — focus 1st folder or chat
---               │              │              │   │             IINA — set window-scale 1
---               │              │              │   │             Fork — Focus changes window
---               │              │              │   │           Finder — View as icons
+--          ⌃1   │              │              │   │        VSCode — go to tab 1
+--               │              │              │ ℝ │         Rider — Select File in Project View
+--          ⌥1   │              │      ¹       │   │ Visual Studio Code
+{ chord = "⌥1",                             app = "@APP_EDITOR" },
+--          ⌘1   │              │              │   │         Rider — focus solution explorer
+--               │              │              │   │        VSCode — focus solution explorer
+--               │              │              │   │       Browser — Open 1st tab
+--               │              │              │   │      Telegram — focus 1st folder or chat
+--               │              │              │   │          IINA — set window-scale 1
+--               │              │              │   │          Fork — Focus changes window
+--               │              │              │   │        Finder — View as icons
 --               │              │              │   │ Activity Monitor — Focus main window
---          ⇥1   │      ⌘9      │              │   │          Browser — open last tab
---               │              │              │   │         Telegram — focus 9th folder or chat
+--          ⇥1   │      ⌘9      │              │   │       Browser — open last tab
+--               │              │              │   │      Telegram — focus 9th folder or chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧1   │     ⇧F1      │              │   │            Rider — external documentation
+--         ⇪⇧1   │     ⇧F1      │              │   │         Rider — external documentation
 --         ⇪⌃1   │     ⌃F1      │              │   │
---         ⇪⌥1   │     ⌥F1      │              │   │            Rider — show 'Select in' dialog
---         ⇪⌘1   │     ⌘F1      │              │   │           VSCode — show errors/warnings
---         ⇧⌃1   │              │              │   │            Rider — toggle bookmark 1
+--         ⇪⌥1   │     ⌥F1      │              │   │         Rider — show 'Select in' dialog
+--         ⇪⌘1   │     ⌘F1      │              │   │        VSCode — show errors/warnings
+--         ⇧⌃1   │              │              │   │         Rider — toggle bookmark 1
 --         ⇧⌥1   │              │ ¡    ¡    έ  │   │
---               │              │              │ ◆ │ ChatGPT — toggleAttachedLauncher
+--               │              │              │ ◆ │       ChatGPT — toggleAttachedLauncher
 --         ⇧⌘1   │              │              │   │ VS Dotfiles
 { chord = "⇧⌘1",                            fn = "vscode.dotfiles" },
 --         ⌃⌥1   │              │              │   │ Audio Int
 { chord = "⌃⌥1",                            fn = "audio.internal" },
 --         ⌃⌘1   │              │              │   │
---         ⌥⌘1   │              │              │   │         Telegram — focus 1st chat
---               │              │              │   │             Fork — show commit details
+--         ⌥⌘1   │              │              │   │      Telegram — focus 1st chat
+--               │              │              │   │          Fork — show commit details
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃1   │     ⇧⌃F1     │              │   │
 --        ⇪⇧⌥1   │     ⇧⌥F1     │              │   │

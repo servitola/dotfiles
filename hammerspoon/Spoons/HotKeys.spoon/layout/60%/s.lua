@@ -10,7 +10,7 @@ return {
 --          ⇪s   │      ↓       │              │ ✓ │              — down
 --          ⇧s   │              │ S    Ы    Σ  │   │   Browser Vim — duplicate tab
 --          ⌃s   │              │              │   │   Claude Code — stash prompt
---               │              │              │ ℝ │ Rider — Silent Reformat and Cleanup
+--               │              │              │ ℝ │         Rider — Silent Reformat and Cleanup
 --          ⌥s   │      ⌥↓      │              │ ✓ │              — move line down
 --               │              │              │   │       YouTube — previous chapter in current video
 --          ⌘s   │              │              │ ✓ │              — save
@@ -24,7 +24,7 @@ return {
 --               │              │              │   │       YouTube — previous chapter in current video
 --         ⇪⌘s   │      ⌘↓      │              │   │         Rider — edit source
 --         ⇧⌃s   │              │              │   │
---               │              │              │ ℝ │ Rider — Save Macros
+--               │              │              │ ℝ │         Rider — Save Macros
 --         ⇧⌥s   │     ⇧⌥↓      │              │   │        VSCode — move line down
 --         ⇧⌘s   │              │              │ ✓ │              — save as
 --               │              │              │   │        Finder — go to Shared
@@ -33,8 +33,8 @@ return {
 --         ⌃⌘s   │              │              │   │          Mail — hide/show sidebar
 --               │              │              │   │        Finder — toggle SideBar
 --         ⌥⌘s   │              │              │   │
---               │              │              │ ◆ │ Music — Shuffle
---               │              │              │ ℝ │ Rider — Next Occurrence
+--               │              │              │ ◆ │         Music — Shuffle
+--               │              │              │ ℝ │         Rider — Next Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃s   │     Vol↓     │              │ ✓ │              — volume down
 --        ⇪⇧⌥s   │     ⇧⌥↓      │              │   │
@@ -45,7 +45,7 @@ return {
 --               │              │              │   │        VSCode — clone caret down
 --               │              │              │   │         iTerm — focus pane below
 --        ⇧⌃⌥s   │              │              │   │ Bot 40%
-{ chord= "⇧⌃⌥s",                            fn = "window.bottom_40" },
+{ chord = "⇧⌃⌥s",                           fn = "window.bottom_40" },
 --        ⇧⌃⌘s   │              │              │   │
 --        ⇧⌥⌘s   │              │              │   │          Fork — send all files to staged/unstaged
 --        ⌃⌥⌘s   │              │              │   │

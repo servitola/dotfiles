@@ -26,9 +26,9 @@ return {
 --         ⌃⌥↑   │              │              │   │ Fullscr, 2nd press native fullscreen
 { chord = "⌃⌥↑",                            fn = "window.fullscreen" },
 --         ⌃⌘↑   │              │              │   │
---               │              │              │ ℝ │ Rider — Previous Method
+--               │              │              │ ℝ │         Rider — Previous Method
 --         ⌥⌘↑   │              │              │   │        VSCode — create cursor up
---               │              │              │ ℝ │ Rider — Previous Occurrence
+--               │              │              │ ℝ │         Rider — Previous Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃↑   │              │              │   │
 --        ⇪⇧⌥↑   │              │              │   │
@@ -37,13 +37,13 @@ return {
 --        ⇪⌃⌘↑   │              │              │   │
 --        ⇪⌥⌘↑   │              │              │   │
 --        ⇧⌃⌥↑   │              │              │   │ Top 60%
-{ chord= "⇧⌃⌥↑",                            fn = "window.top_60" },
+{ chord = "⇧⌃⌥↑",                           fn = "window.top_60" },
 --        ⇧⌃⌘↑   │              │              │   │
---               │              │              │ ℝ │ Rider — Stretch to Top
+--               │              │              │ ℝ │         Rider — Stretch to Top
 --        ⇧⌥⌘↑   │              │              │   │
 --        ⌃⌥⌘↑   │              │              │   │
---               │              │              │ ℝ │ Rider — Previous Change
---       ⇧⌃⌥⌘↑   │              │              │ ✓ │              — focus work apps (hide non-work)
-{ chord= "⇧⌃⌥⌘↑",                           fn = "window.focus_work" },
+--               │              │              │ ℝ │         Rider — Previous Change
+--       ⇧⌃⌥⌘↑   │              │              │ ✓ │               — focus work apps (hide non-work)
+{ chord = "⇧⌃⌥⌘↑",                          fn = "window.focus_work" },
 --               ┴              ┴              ┴   ┴
 }

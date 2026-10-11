@@ -23,12 +23,12 @@ return {
 --         ⇪⌃l   │      ⌃↓      │              │ ✓ │              — show all windows of current app
 --         ⇪⌥l   │      ⌥↓      │              │   │
 --         ⇪⌘l   │      ⌘↓      │              │   │
---         ⇧⌃l   │              │              │ ℝ │ Rider — Select File in Project View
+--         ⇧⌃l   │              │              │ ℝ │         Rider — Select File in Project View
 --         ⇧⌥l   │              │ ’    ’    ·  │   │
 --         ⇧⌘l   │              │              │   │          Fork — open Pull dialog
 --         ⌃⌥l   │              │              │   │
 --         ⌃⌘l   │              │              │   │          Mail — apply active Mail rules
---               │              │              │ ℝ │ Rider — Show List of Tabs
+--               │              │              │ ℝ │         Rider — Show List of Tabs
 --         ⌥⌘l   │              │              │   │        Finder — downloads
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃l   │     Vol↓     │              │ ✓ │              — volume_decrement

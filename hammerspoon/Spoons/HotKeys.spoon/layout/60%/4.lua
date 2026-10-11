@@ -5,20 +5,20 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           4   │              │      4       │   │          YouTube — navigate to 40% of video
+--           4   │              │      4       │   │       YouTube — navigate to 40% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪4   │      F4      │              │ ✓ │                 — open to edit
---               │              │              │   │           VSCode — go to next found occurrence
+--          ⇪4   │      F4      │              │ ✓ │              — open to edit
+--               │              │              │   │        VSCode — go to next found occurrence
 --          ⇧4   │              │ $    ;    $  │   │
---          ⌃4   │              │              │   │           VSCode — go to tab 4
---          ⌥4   │      ⌘h      │              │ ✓ │                 — minimize window, focus next (Hammerspoon)
---          ⌘4   │              │              │   │          Browser — Open 4th tab
---               │              │              │   │         Telegram — focus 4th folder or chat
---               │              │              │   │           Finder — View in gallery
+--          ⌃4   │              │              │   │        VSCode — go to tab 4
+--          ⌥4   │      ⌘h      │              │ ✓ │              — minimize window, focus next (Hammerspoon)
+--          ⌘4   │              │              │   │       Browser — Open 4th tab
+--               │              │              │   │      Telegram — focus 4th folder or chat
+--               │              │              │   │        Finder — View in gallery
 --               │              │              │   │ Activity Monitor — Open/focus GPU history window
---               │              │              │ ℝ │ Rider — Activate Build Tool Window
---          ⇥4   │      ⌘=      │              │   │            Rider — expand code block
---               │              │              │   │          Browser — Zoom in
+--               │              │              │ ℝ │         Rider — Activate Build Tool Window
+--          ⇥4   │      ⌘=      │              │   │         Rider — expand code block
+--               │              │              │   │       Browser — Zoom in
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧4   │     ⇧F4      │              │   │
 --         ⇪⌃4   │     ⌃F4      │              │   │
@@ -27,11 +27,11 @@ return {
 --         ⇧⌃4   │              │              │   │
 --         ⇧⌥4   │              │ ¹⁄₄  ¹⁄₄  ό  │   │
 --         ⇧⌘4   │              │              │   │
---               │              │              │ ◆ │ Shottr — area
+--               │              │              │ ◆ │        Shottr — area
 --         ⌃⌥4   │              │              │   │ Audio Ext
 { chord = "⌃⌥4",                            fn = "audio.external" },
 --         ⌃⌘4   │              │              │   │
---         ⌥⌘4   │              │              │   │         Telegram — focus 4th chat
+--         ⌥⌘4   │              │              │   │      Telegram — focus 4th chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃4   │     ⇧⌃F4     │              │   │
 --        ⇪⇧⌥4   │     ⇧⌥F4     │              │   │
@@ -41,7 +41,7 @@ return {
 --        ⇪⌥⌘4   │     ⌥⌘F4     │              │   │
 --        ⇧⌃⌥4   │              │              │   │
 --        ⇧⌃⌘4   │              │              │   │
---               │              │              │ ◆ │ Shottr — scrolling
+--               │              │              │ ◆ │        Shottr — scrolling
 --        ⇧⌥⌘4   │              │              │   │
 --        ⌃⌥⌘4   │              │              │   │
 --               ┴              ┴              ┴   ┴

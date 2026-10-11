@@ -10,12 +10,12 @@ return {
 --          ⇪'   │     Vol↑     │              │   │
 --          ⇧'   │              │ "    Э    "  │   │
 --          ⌃'   │              │              │   │
---               │              │              │ ℝ │ Rider — Next Highlighted Usage (then ↓)
---               │              │              │ ℝ │ Rider — Previous Highlighted Usage (then ↑)
---               │              │              │ ℝ │ Rider — Scroll Page Down (then l)
---               │              │              │ ℝ │ Rider — Scroll Page Left (then k)
---               │              │              │ ℝ │ Rider — Scroll Page Right (then ;)
---               │              │              │ ℝ │ Rider — Scroll Page Up (then o)
+--               │              │              │ ℝ │         Rider — Next Highlighted Usage (then ↓)
+--               │              │              │ ℝ │         Rider — Previous Highlighted Usage (then ↑)
+--               │              │              │ ℝ │         Rider — Scroll Page Down (then l)
+--               │              │              │ ℝ │         Rider — Scroll Page Left (then k)
+--               │              │              │ ℝ │         Rider — Scroll Page Right (then ;)
+--               │              │              │ ℝ │         Rider — Scroll Page Up (then o)
 --          ⌥'   │              │ ’    ’    '  │   │
 --          ⌘'   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -27,10 +27,10 @@ return {
 --         ⇧⌥'   │              │      "       │   │
 --         ⇧⌘'   │              │              │   │
 --         ⌃⌥'   │              │              │   │
---               │              │              │ ℝ │ Rider — Editor Forward Paragraph
+--               │              │              │ ℝ │         Rider — Editor Forward Paragraph
 --         ⌃⌘'   │              │              │   │
 --         ⌥⌘'   │              │              │   │
---               │              │              │ ℝ │ Rider — Show Diff Preview
+--               │              │              │ ℝ │         Rider — Show Diff Preview
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃'   │              │              │   │
 --        ⇪⇧⌥'   │              │              │   │
@@ -39,7 +39,7 @@ return {
 --        ⇪⌃⌘'   │              │              │   │
 --        ⇪⌥⌘'   │              │              │   │
 --        ⇧⌃⌥'   │              │              │   │
---               │              │              │ ℝ │ Rider — Editor Forward Paragraph With Selection
+--               │              │              │ ℝ │         Rider — Editor Forward Paragraph With Selection
 --        ⇧⌃⌘'   │              │              │   │
 --        ⇧⌥⌘'   │              │              │   │
 --        ⌃⌥⌘'   │              │              │   │

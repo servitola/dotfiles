@@ -11,7 +11,7 @@ return {
 --          ⇧[   │              │ {    Х    {  │   │
 --          ⌃[   │              │              │   │
 --          ⌥[   │              │ [    [    «  │   │ zoom.us
-{ chord =  "⌥[",                           app = "zoom.us" },
+{ chord = "⌥[",                             app = "zoom.us" },
 --          ⌘[   │              │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
 --               │              │              │   │       Browser — navigate back

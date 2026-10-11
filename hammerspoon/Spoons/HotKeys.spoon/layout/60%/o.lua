@@ -26,8 +26,8 @@ return {
 --         ⌃⌥o   │              │              │   │
 --         ⌃⌘o   │              │              │   │
 --         ⌥⌘o   │              │              │   │
---               │              │              │ ◆ │ Music — One
---               │              │              │ ◆ │ Music — Repeat One
+--               │              │              │ ◆ │         Music — One
+--               │              │              │ ◆ │         Music — Repeat One
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃o   │     Vol↑     │              │ ✓ │              — volume_increment
 --        ⇪⇧⌥o   │     ⇧⌥↑      │              │   │
@@ -39,6 +39,6 @@ return {
 --        ⇧⌃⌥o   │              │              │   │
 --        ⇧⌃⌘o   │              │              │   │
 --        ⇧⌥⌘o   │              │              │   │          Fork — open file
---        ⌃⌥⌘o   │              │              │ ℝ │ Rider — Manage Recent Solutions…
+--        ⌃⌥⌘o   │              │              │ ℝ │         Rider — Manage Recent Solutions…
 --               ┴              ┴              ┴   ┴
 }

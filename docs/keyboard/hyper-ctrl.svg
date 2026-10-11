@@ -252,11 +252,14 @@
 <text x="338.0" y="157" text-anchor="end" class="key-label">R</text>
 <title>R: Clip LLM — Clipboard Llm</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="196.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="196.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="311.0,166 321.0,166 316.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="312.0,166 320.0,166 316.0,162" fill="white"/>
 <text x="206.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Clip LLM</text>
 <text x="254.0" y="186" font-size="8px" fill="#1d1d1f">clipboard llm</text>
+<use href="#icon-hammerspoon" x="206.0" y="193" width="13" height="13"/>
+<text x="222.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="286.5" y="204" font-size="8px" fill="#1d1d1f">Clip LLM</text>
 </g>
 </g>
 <g class="key-group">
@@ -425,11 +428,14 @@
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: VPN — Vpn: Toggle Globalprotect</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="239.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
 <text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">VPN</text>
 <text x="270.0" y="290" font-size="8px" fill="#1d1d1f">vpn: toggle globalprotect</text>
+<use href="#icon-hammerspoon" x="249.5" y="297" width="13" height="13"/>
+<text x="265.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="330.0" y="308" font-size="8px" fill="#1d1d1f">VPN</text>
 </g>
 </g>
 <g class="key-group">
@@ -586,6 +592,8 @@
 <text x="56" y="972" font-size="12px" fill="#a2845e">⌃F14</text>
 <use href="#icon-hammerspoon" x="136" y="959" width="16" height="16"/>
 <text x="156" y="972" font-size="12px" font-weight="500" fill="#007aff">Clip LLM</text>
+<use href="#icon-hammerspoon" x="291" y="960" width="14" height="14"/>
+<text x="309" y="972" font-size="11px" fill="#48484a">Hammerspoon — Clip LLM</text>
 <line x1="20" y1="994" x2="906" y2="994" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1002" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
 <text x="56" y="1002" font-size="12px" fill="#a2845e">⌃F17</text>
@@ -638,6 +646,8 @@
 <text x="20" y="1392" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
 <text x="56" y="1392" font-size="12px" fill="#a2845e">⌃F16</text>
 <text x="136" y="1392" font-size="12px" font-weight="500" fill="#ff453a">VPN</text>
+<use href="#icon-hammerspoon" x="291" y="1380" width="14" height="14"/>
+<text x="309" y="1392" font-size="11px" fill="#48484a">Hammerspoon — VPN</text>
 <line x1="20" y1="1414" x2="906" y2="1414" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1422" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
 <text x="56" y="1422" font-size="12px" fill="#a2845e">⌃F19</text>

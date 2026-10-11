@@ -7,27 +7,27 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           b   │              │ b    и    β  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪b   │     F19      │              │   │               ↓
-{ chord = "F19",                           app = "@APP_TERMINAL" },
+--          ⇪b   │     F19      │              │   │ Zap
+{ chord = "F19",                            app = "@APP_TERMINAL" },
 --          ⇧b   │              │ B    И    Β  │   │
 --          ⌃b   │              │              │   │ Unix Terminal — forward one letter
---               │              │              │ ℝ │ Rider — Implementation(s)
+--               │              │              │ ℝ │         Rider — Implementation(s)
 --          ⌥b   │              │      ß       │   │
---               │              │              │ ℝ │ Rider — Build Startup Project
+--               │              │              │ ℝ │         Rider — Build Startup Project
 --          ⌘b   │              │              │   │         Rider — go to declaration
 --               │              │              │   │         Music — show or hide column browser
 --               │              │              │   │           Zap — show/hide tabs bar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧b   │     ⇧F19     │              │   │               ↓
-{ chord= "⇧F19",                           app = "@APP_TERMINAL_ALT" },
+--         ⇪⇧b   │     ⇧F19     │              │   │ iTerm
+{ chord = "⇧F19",                           app = "@APP_TERMINAL_ALT" },
 --         ⇪⌃b   │     ⌃F19     │              │   │
 --         ⇪⌥b   │     ⌥F19     │              │   │
 --         ⇪⌘b   │     ⌘F19     │              │   │
 --         ⇧⌃b   │              │              │   │ Unix Terminal — backward one letter
---               │              │              │ ◆ │ Services — New Terminal Tab at Folder (Terminal)
---               │              │              │ ◆ │ Services — New iTerm2 Tab Here (iTerm2)
+--               │              │              │ ◆ │      Services — New Terminal Tab at Folder (Terminal)
+--               │              │              │ ◆ │      Services — New iTerm2 Tab Here (iTerm2)
 --         ⇧⌥b   │              │    ẞ    ẞ    │   │
---               │              │              │ ℝ │ Rider — Rebuild Solution Action
+--               │              │              │ ℝ │         Rider — Rebuild Solution Action
 --         ⇧⌘b   │              │              │   │         Rider — go to definition
 --               │              │              │   │        VSCode — select build task to run
 --               │              │              │   │          Fork — open Create Branch dialog

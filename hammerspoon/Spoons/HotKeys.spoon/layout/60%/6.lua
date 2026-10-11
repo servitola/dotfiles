@@ -13,7 +13,7 @@ return {
 --          ⌥6   │              │      ↑       │   │
 --          ⌘6   │              │              │   │       Browser — Open 6th tab
 --               │              │              │   │      Telegram — focus 6th folder or chat
---               │              │              │ ℝ │ Rider — Activate Bookmarks Tool Window
+--               │              │              │ ℝ │         Rider — Activate Bookmarks Tool Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧6   │     ⇧F6      │              │   │
 --         ⇪⌃6   │     ⌃F6      │              │   │

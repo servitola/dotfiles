@@ -601,6 +601,7 @@
 <text x="56" y="978" font-size="12px" fill="#a2845e">⇧F17</text>
 <use href="#icon-zoom-us" x="136" y="965" width="16" height="16"/>
 <text x="156" y="978" font-size="12px" font-weight="500" fill="#007aff">zoom.us — show/hide</text>
+<text x="291" y="978" font-size="11px" fill="#48484a">zoom.us</text>
 <line x1="20" y1="1000" x2="906" y2="1000" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1008" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
 <text x="56" y="1008" font-size="12px" fill="#a2845e">⇧↑</text>
@@ -622,6 +623,7 @@
 <text x="56" y="1128" font-size="12px" fill="#a2845e">⇧F15</text>
 <use href="#icon-marta" x="136" y="1115" width="16" height="16"/>
 <text x="156" y="1128" font-size="12px" font-weight="500" fill="#007aff">Marta — show/hide</text>
+<text x="291" y="1128" font-size="11px" fill="#48484a">Marta</text>
 <line x1="20" y1="1150" x2="906" y2="1150" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1158" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
 <text x="56" y="1158" font-size="12px" fill="#a2845e">⇧F18</text>
@@ -630,6 +632,7 @@
 <text x="56" y="1188" font-size="12px" fill="#a2845e">⇧F20</text>
 <use href="#icon-safari" x="136" y="1175" width="16" height="16"/>
 <text x="156" y="1188" font-size="12px" font-weight="500" fill="#007aff">Safari — show/hide</text>
+<text x="291" y="1188" font-size="11px" fill="#48484a">Safari</text>
 <line x1="20" y1="1210" x2="906" y2="1210" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1218" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
 <text x="56" y="1218" font-size="12px" fill="#a2845e">⇧←</text>
@@ -657,11 +660,13 @@
 <text x="56" y="1398" font-size="12px" fill="#a2845e">⇧F16</text>
 <use href="#icon-google-chrome" x="136" y="1385" width="16" height="16"/>
 <text x="156" y="1398" font-size="12px" font-weight="500" fill="#007aff">Google Chrome — show/hide</text>
+<text x="291" y="1398" font-size="11px" fill="#48484a">Google Chrome</text>
 <line x1="20" y1="1420" x2="906" y2="1420" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1428" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
 <text x="56" y="1428" font-size="12px" fill="#a2845e">⇧F19</text>
 <use href="#icon-iterm" x="136" y="1415" width="16" height="16"/>
 <text x="156" y="1428" font-size="12px" font-weight="500" fill="#007aff">iTerm — show/hide</text>
+<text x="291" y="1428" font-size="11px" fill="#48484a">iTerm</text>
 <line x1="20" y1="1450" x2="906" y2="1450" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1458" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
 <text x="56" y="1458" font-size="12px" fill="#a2845e">⌘⇧→</text>

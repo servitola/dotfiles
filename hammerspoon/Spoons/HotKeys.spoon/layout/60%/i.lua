@@ -5,10 +5,10 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           i   │              │ i    ш    ι  │   │          YouTube — Minimize video
+--           i   │              │ i    ш    ι  │   │       YouTube — Minimize video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪i   │              │              │ ✓ │                 — system health dashboard
-{ chord =  "⇪i",                            fn = "system_health" },
+--          ⇪i   │              │              │ ✓ │               — system health dashboard
+{ chord = "⇪i",                             fn = "system_health" },
 --          ⇧i   │              │ I    Ш    Ι  │   │
 --          ⌃i   │              │              │   │
 --          ⌥i   │              │      і       │   │
@@ -19,15 +19,15 @@ return {
 --         ⇪⌥i   │              │              │   │
 --         ⇪⌘i   │              │              │   │
 --         ⇧⌃i   │              │              │   │
---               │              │              │ ℝ │ Rider — Show Context Menu
+--               │              │              │ ℝ │         Rider — Show Context Menu
 --         ⇧⌥i   │              │ І    І    Ν  │   │
---         ⇧⌘i   │              │              │   │           VSCode — open agent chat
---               │              │              │ ◆ │ Boring Notch — toggleNotchOpen
+--         ⇧⌘i   │              │              │   │        VSCode — open agent chat
+--               │              │              │ ◆ │  Boring Notch — toggleNotchOpen
 --         ⌃⌥i   │              │              │   │ Shortcuts
 { chord = "⌃⌥i",                            fn = "info.show_shortcuts" },
---         ⌃⌘i   │              │              │   │           VSCode — open chat
---         ⌥⌘i   │              │              │   │          Browser — open Developer Tools
---               │              │              │   │             Mail — append selected emails to email
+--         ⌃⌘i   │              │              │   │        VSCode — open chat
+--         ⌥⌘i   │              │              │   │       Browser — open Developer Tools
+--               │              │              │   │          Mail — append selected emails to email
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃i   │              │              │   │
 --        ⇪⇧⌥i   │              │              │   │
@@ -37,7 +37,7 @@ return {
 --        ⇪⌥⌘i   │              │              │   │
 --        ⇧⌃⌥i   │              │              │   │
 --        ⇧⌃⌘i   │              │              │   │
---               │              │              │ ℝ │ Rider — Auto-Indent Lines
+--               │              │              │ ℝ │         Rider — Auto-Indent Lines
 --        ⇧⌥⌘i   │              │              │   │
 --        ⌃⌥⌘i   │              │              │   │
 --               ┴              ┴              ┴   ┴

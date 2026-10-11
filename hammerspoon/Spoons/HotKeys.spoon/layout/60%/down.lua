@@ -26,9 +26,9 @@ return {
 --         ⌃⌥↓   │              │              │   │ Win Reset, or exit native fullscreen
 { chord = "⌃⌥↓",                            fn = "window.set_all_to_default" },
 --         ⌃⌘↓   │              │              │   │
---               │              │              │ ℝ │ Rider — Next Method
+--               │              │              │ ℝ │         Rider — Next Method
 --         ⌥⌘↓   │              │              │   │        VSCode — create cursor down
---               │              │              │ ℝ │ Rider — Next Occurrence
+--               │              │              │ ℝ │         Rider — Next Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃↓   │              │              │   │
 --        ⇪⇧⌥↓   │              │              │   │
@@ -37,13 +37,13 @@ return {
 --        ⇪⌃⌘↓   │              │              │   │
 --        ⇪⌥⌘↓   │              │              │   │
 --        ⇧⌃⌥↓   │              │              │   │ Bot 40%
-{ chord= "⇧⌃⌥↓",                            fn = "window.bottom_40" },
+{ chord = "⇧⌃⌥↓",                           fn = "window.bottom_40" },
 --        ⇧⌃⌘↓   │              │              │   │
---               │              │              │ ℝ │ Rider — Stretch to Bottom
+--               │              │              │ ℝ │         Rider — Stretch to Bottom
 --        ⇧⌥⌘↓   │              │              │   │
 --        ⌃⌥⌘↓   │              │              │   │
---               │              │              │ ℝ │ Rider — Next Change
---       ⇧⌃⌥⌘↓   │              │              │ ✓ │              — hide all except Zap & Telegram
-{ chord= "⇧⌃⌥⌘↓",                           fn = "window.hide_all_except_work" },
+--               │              │              │ ℝ │         Rider — Next Change
+--       ⇧⌃⌥⌘↓   │              │              │ ✓ │               — hide all except Zap & Telegram
+{ chord = "⇧⌃⌥⌘↓",                          fn = "window.hide_all_except_work" },
 --               ┴              ┴              ┴   ┴
 }

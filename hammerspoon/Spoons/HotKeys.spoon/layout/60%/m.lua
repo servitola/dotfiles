@@ -8,19 +8,19 @@ return {
 --           m   │              │ m    ь    μ  │   │          IINA — cycle mute
 --               │              │              │   │   Browser Vim — Mute Tab
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪m   │              │              │ ✓ │              — center window on screen
-{ chord =  "⇪m",                            fn = "window.center" },
+--          ⇪m   │              │              │ ✓ │               — center window on screen
+{ chord = "⇪m",                             fn = "window.center" },
 --          ⇧m   │              │ M    Ь    Μ  │   │
 --          ⌃m   │              │              │   │
 --          ⌥m   │              │      −       │   │
---          ⌘m   │              │              │ ⚙ │ — system 233 unknown
+--          ⌘m   │              │              │ ⚙ │               — system 233 unknown
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧m   │              │              │   │
 --         ⇪⌃m   │              │              │   │
 --         ⇪⌥m   │              │              │   │
 --         ⇪⌘m   │              │              │   │
 --         ⇧⌃m   │              │              │   │
---               │              │              │ ℝ │ Rider — Merge All Solution Windows
+--               │              │              │ ℝ │         Rider — Merge All Solution Windows
 --         ⇧⌥m   │              │ •    •    Ύ  │   │
 --         ⇧⌘m   │              │              │   │         Rider — move to another changelist
 --         ⌃⌥m   │              │              │   │
@@ -37,7 +37,7 @@ return {
 --        ⇪⌥⌘m   │              │              │   │
 --        ⇧⌃⌥m   │              │              │   │
 --        ⇧⌃⌘m   │              │              │   │
---               │              │              │ ℝ │ Rider — Next Solution Window
+--               │              │              │ ℝ │         Rider — Next Solution Window
 --        ⇧⌥⌘m   │              │              │   │
 --        ⌃⌥⌘m   │              │              │   │
 --               ┴              ┴              ┴   ┴

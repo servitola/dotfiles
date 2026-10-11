@@ -8,7 +8,7 @@ return {
 --           j   │              │ j    о    ξ  │   │       YouTube — 10sec back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪j   │              │              │   │
---               │              │              │ ◆ │ Day One — DOMenuEntryGlobalShortcut
+--               │              │              │ ◆ │       Day One — DOMenuEntryGlobalShortcut
 --          ⇧j   │              │ J    О    Ξ  │   │
 --          ⌃j   │              │              │   │
 --          ⌥j   │              │      „       │   │
@@ -33,7 +33,7 @@ return {
 --        ⇪⌃⌘j   │              │              │   │
 --        ⇪⌥⌘j   │              │              │   │
 --        ⇧⌃⌥j   │              │              │   │
---               │              │              │ ◆ │ Services — Shortcuts.app 98E57310
+--               │              │              │ ◆ │      Services — Shortcuts.app 98E57310
 --        ⇧⌃⌘j   │              │              │   │
 --        ⇧⌥⌘j   │              │              │   │
 --        ⌃⌥⌘j   │              │              │   │

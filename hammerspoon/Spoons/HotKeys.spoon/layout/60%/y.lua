@@ -8,12 +8,12 @@ return {
 --           y   │              │ y    н    υ  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪y   │              │              │   │ IINA
-{ chord =  "⇪y",                           app = "@APP_VIDEO", window_default_position = "bottom" },
+{ chord = "⇪y",                             app = "@APP_VIDEO", window_default_position = "bottom" },
 --          ⇧y   │              │ Y    Н    Υ  │   │
 --          ⌃y   │              │              │   │ Unix Terminal — paste what was cut in terminal
---               │              │              │ ℝ │ Rider — Active Configuration
+--               │              │              │ ℝ │         Rider — Active Configuration
 --          ⌥y   │              │      ѣ       │   │
---               │              │              │ ℝ │ Rider — Device And Snapshot Combo Box
+--               │              │              │ ℝ │         Rider — Device And Snapshot Combo Box
 --          ⌘y   │              │              │   │       Browser — show all history
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧y   │              │              │   │
@@ -21,7 +21,7 @@ return {
 --         ⇪⌥y   │              │              │   │
 --         ⇪⌘y   │              │              │   │
 --         ⇧⌃y   │              │              │   │
---               │              │              │ ℝ │ Rider — Select Run/Debug Configuration
+--               │              │              │ ℝ │         Rider — Select Run/Debug Configuration
 --         ⇧⌥y   │              │    Ѣ    Ѣ    │   │
 --         ⇧⌘y   │              │              │   │
 --         ⌃⌥y   │              │              │   │ YT Stream

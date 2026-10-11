@@ -8,11 +8,11 @@ return {
 --           q   │              │ q    й    ;  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪q   │     PgUp     │              │   │
---          ⇧q   │              │ Q    Й    :  │   │  Browser Vim — go to root domain
+--          ⇧q   │              │ Q    Й    :  │   │   Browser Vim — go to root domain
 --          ⌃q   │              │              │   │        VSCode — quick view popup
---               │              │              │ ℝ │ Rider — Cancel
---               │              │              │ ℝ │ Rider — Stop
---               │              │              │ ℝ │ Rider — Stop Execution
+--               │              │              │ ℝ │         Rider — Cancel
+--               │              │              │ ℝ │         Rider — Stop
+--               │              │              │ ℝ │         Rider — Stop Execution
 --          ⌥q   │      ⌫       │              │ ✓ │              — delete letter to the left
 --          ⌘q   │              │              │ ✓ │              — close app
 --          ⇥q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
@@ -32,7 +32,7 @@ return {
 --         ⇧⌥q   │      ⇧⌦      │              │   │
 --         ⇧⌘q   │              │              │ ✓ │              — log out from account with closing of all apps
 --         ⌃⌥q   │              │              │   │ Music
-{ chord = "⌃⌥q",                           app = "@APP_MUSIC" },
+{ chord = "⌃⌥q",                            app = "@APP_MUSIC" },
 --         ⌃⌘q   │              │              │ ✓ │              — lock screen
 --         ⌥⌘q   │      ⌘⌫      │              │ ✓ │              — delete
 --               │              │              │   │        VSCode — delete line

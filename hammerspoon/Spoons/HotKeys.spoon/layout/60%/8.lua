@@ -13,7 +13,7 @@ return {
 --          ⌥8   │              │      ∞       │   │
 --          ⌘8   │              │              │   │       Browser — Open 8th tab
 --               │              │              │   │      Telegram — focus 8th folder or chat
---               │              │              │ ℝ │ Rider — Activate Logcat Tool Window
+--               │              │              │ ℝ │         Rider — Activate Logcat Tool Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧8   │     ⇧F8      │              │   │
 --         ⇪⌃8   │     ⌃F8      │              │ ✓ │              — focus macos status menu

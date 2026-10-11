@@ -503,11 +503,14 @@
 <text x="207.5" y="261" text-anchor="end" class="key-label">Z</text>
 <title>Z: Android — Android: Show All</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="65.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="65.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="180.5,270 190.5,270 185.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="181.5,270 189.5,270 185.5,266" fill="white"/>
 <text x="75.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Android</text>
 <text x="118.0" y="290" font-size="8px" fill="#1d1d1f">android: show all</text>
+<use href="#icon-hammerspoon" x="75.5" y="297" width="13" height="13"/>
+<text x="91.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="156.0" y="308" font-size="8px" fill="#1d1d1f">Android</text>
 </g>
 </g>
 <g class="key-group">
@@ -751,11 +754,13 @@
 <text x="56" y="972" font-size="12px" fill="#a2845e">F14</text>
 <use href="#icon-rider" x="136" y="959" width="16" height="16"/>
 <text x="156" y="972" font-size="12px" font-weight="500" fill="#007aff">Rider — show/hide</text>
+<text x="291" y="972" font-size="11px" fill="#48484a">Rider</text>
 <line x1="20" y1="994" x2="906" y2="994" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1002" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
 <text x="56" y="1002" font-size="12px" fill="#a2845e">F17</text>
 <use href="#icon-forkgram" x="136" y="989" width="16" height="16"/>
 <text x="156" y="1002" font-size="12px" font-weight="500" fill="#007aff">Forkgram — show/hide</text>
+<text x="291" y="1002" font-size="11px" fill="#48484a">Forkgram</text>
 <line x1="20" y1="1024" x2="906" y2="1024" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1032" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
 <use href="#icon-iina" x="136" y="1019" width="16" height="16"/>
@@ -796,16 +801,19 @@
 <text x="56" y="1302" font-size="12px" fill="#a2845e">F15</text>
 <use href="#icon-finder" x="136" y="1289" width="16" height="16"/>
 <text x="156" y="1302" font-size="12px" font-weight="500" fill="#007aff">Finder — show/hide</text>
+<text x="291" y="1302" font-size="11px" fill="#48484a">Finder</text>
 <line x1="20" y1="1324" x2="906" y2="1324" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1332" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
 <text x="56" y="1332" font-size="12px" fill="#a2845e">F18</text>
 <use href="#icon-fork" x="136" y="1319" width="16" height="16"/>
 <text x="156" y="1332" font-size="12px" font-weight="500" fill="#007aff">Fork — show/hide</text>
+<text x="291" y="1332" font-size="11px" fill="#48484a">Fork</text>
 <line x1="20" y1="1354" x2="906" y2="1354" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1362" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <text x="56" y="1362" font-size="12px" fill="#a2845e">F20</text>
 <use href="#icon-firefox" x="136" y="1349" width="16" height="16"/>
 <text x="156" y="1362" font-size="12px" font-weight="500" fill="#007aff">Firefox — show/hide</text>
+<text x="291" y="1362" font-size="11px" fill="#48484a">Firefox</text>
 <line x1="20" y1="1384" x2="906" y2="1384" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1392" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
 <use href="#icon-day-one" x="291" y="1380" width="14" height="14"/>
@@ -827,6 +835,8 @@
 <text x="20" y="1542" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
 <text x="56" y="1542" font-size="12px" fill="#a2845e">F13</text>
 <text x="136" y="1542" font-size="12px" font-weight="500" fill="#007aff">Android</text>
+<use href="#icon-hammerspoon" x="291" y="1530" width="14" height="14"/>
+<text x="309" y="1542" font-size="11px" fill="#48484a">Hammerspoon — Android</text>
 <line x1="20" y1="1564" x2="906" y2="1564" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1572" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
 <text x="56" y="1572" font-size="12px" fill="#a2845e">⌘←</text>
@@ -839,11 +849,13 @@
 <text x="56" y="1632" font-size="12px" fill="#a2845e">F16</text>
 <use href="#icon-vivaldi" x="136" y="1619" width="16" height="16"/>
 <text x="156" y="1632" font-size="12px" font-weight="500" fill="#007aff">Vivaldi — show/hide</text>
+<text x="291" y="1632" font-size="11px" fill="#48484a">Vivaldi</text>
 <line x1="20" y1="1654" x2="906" y2="1654" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1662" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
 <text x="56" y="1662" font-size="12px" fill="#a2845e">F19</text>
 <use href="#icon-zap" x="136" y="1649" width="16" height="16"/>
 <text x="156" y="1662" font-size="12px" font-weight="500" fill="#007aff">Zap — show/hide</text>
+<text x="291" y="1662" font-size="11px" fill="#48484a">Zap</text>
 <line x1="20" y1="1684" x2="906" y2="1684" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1692" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
 <use href="#icon-visual-studio-code" x="136" y="1679" width="16" height="16"/>

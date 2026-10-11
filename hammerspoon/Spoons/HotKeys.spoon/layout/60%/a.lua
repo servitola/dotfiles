@@ -6,12 +6,12 @@ return {
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           a   │              │ a    ф    α  │   │
---          aa   │              │              │   │    Browser Vim — go back — CUSTOM
+--          aa   │              │              │   │   Browser Vim — go back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪a   │      ←       │              │   │
 --          ⇧a   │              │ A    Ф    Α  │   │
---          ⌃a   │              │              │   │        VSCode — git annotate (blame) — CUSTOM
---               │              │              │ ℝ │ Rider — Annotate
+--          ⌃a   │              │              │   │        VSCode — git annotate (blame)
+--               │              │              │ ℝ │         Rider — Annotate
 --          ⌥a   │      ⌥←      │              │ ✓ │              — jump a word to the left
 --               │              │              │   │       YouTube — jump to chapter to the left
 --          ⌘a   │              │              │ ✓ │              — select all
@@ -29,7 +29,7 @@ return {
 --         ⇪⌘a   │      ⌘←      │              │ ✓ │              — home, jump to the left start of string
 --         ⇧⌃a   │              │              │ ✓ │              — select line to the left
 --         ⇧⌥a   │     ⇧⌥←      │              │ ✓ │              — select word to the left
---               │              │              │ ℝ │ Rider — Show History for Selection…
+--               │              │              │ ℝ │         Rider — Show History for Selection…
 --         ⇧⌘a   │              │              │   │        VSCode — show actions palette
 --               │              │              │   │         Music — deselect all songs
 --               │              │              │   │          Mail — attach files
@@ -40,8 +40,8 @@ return {
 --         ⌃⌘a   │              │              │   │         Rider — show all affected files in source control
 --               │              │              │   │          Mail — archive message
 --         ⌥⌘a   │              │              │   │
---               │              │              │ ◆ │ Music — All
---               │              │              │ ◆ │ Music — Repeat All
+--               │              │              │ ◆ │         Music — All
+--               │              │              │ ◆ │         Music — Repeat All
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃a   │      ⏮       │              │ ✓ │              — previous track
 --        ⇪⇧⌥a   │     ⇧⌥←      │              │ ✓ │              — select word to the left
@@ -52,7 +52,7 @@ return {
 --               │              │              │   │         Music — seek backward
 --               │              │              │   │         iTerm — focus pane to the left
 --        ⇧⌃⌥a   │              │              │   │ ½ Left
-{ chord= "⇧⌃⌥a",                            fn = "window.half_left" },
+{ chord = "⇧⌃⌥a",                           fn = "window.half_left" },
 --        ⇧⌃⌘a   │              │              │   │
 --        ⇧⌥⌘a   │              │              │   │        VSCode — go to last edit place
 --        ⌃⌥⌘a   │              │              │   │

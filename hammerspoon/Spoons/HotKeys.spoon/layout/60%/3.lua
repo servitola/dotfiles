@@ -5,38 +5,38 @@ return {
 --
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
---           3   │              │      3       │   │          YouTube — navigate to 30% of video
+--           3   │              │      3       │   │       YouTube — navigate to 30% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪3   │      F3      │              │ ✓ │                 — find next (in file)
+--          ⇪3   │      F3      │              │ ✓ │              — find next (in file)
 --          ⇧3   │              │ #    №    #  │   │
---          ⌃3   │              │              │   │           VSCode — go to tab 3
---          ⌥3   │      ⌘n      │              │ ✓ │                 — new window
---               │              │              │   │           VSCode — new file
---               │              │              │   │            Music — create a new playlist
---               │              │              │   │             Mail — start a new email
---               │              │              │ ℝ │ Rider — Next Line Bookmark in Editor
---          ⌘3   │              │              │   │          Browser — open 3rd tab
---               │              │              │   │         Telegram — focus 3rd folder or chat
---               │              │              │   │           Finder — view in columns
+--          ⌃3   │              │              │   │        VSCode — go to tab 3
+--          ⌥3   │      ⌘n      │              │ ✓ │              — new window
+--               │              │              │   │        VSCode — new file
+--               │              │              │   │         Music — create a new playlist
+--               │              │              │   │          Mail — start a new email
+--               │              │              │ ℝ │         Rider — Next Line Bookmark in Editor
+--          ⌘3   │              │              │   │       Browser — open 3rd tab
+--               │              │              │   │      Telegram — focus 3rd folder or chat
+--               │              │              │   │        Finder — view in columns
 --               │              │              │   │ Activity Monitor — open/focus CPU history window
---               │              │              │ ℝ │ Rider — Activate Tests Tool Window
---               │              │              │ ℝ │ Rider — Activate Unit Tests Tool Window
---          ⇥3   │      ⌘-      │              │   │            Rider — collapse code block
---               │              │              │   │          Browser — zoom out
+--               │              │              │ ℝ │         Rider — Activate Tests Tool Window
+--               │              │              │ ℝ │         Rider — Activate Unit Tests Tool Window
+--          ⇥3   │      ⌘-      │              │   │         Rider — collapse code block
+--               │              │              │   │       Browser — zoom out
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧3   │     ⇧F3      │              │   │
---         ⇪⌃3   │     ⌃F3      │              │ ✓ │                 — move focus to Dock
---         ⇪⌥3   │     ⌥F3      │              │   │           VSCode — show next change file changes
+--         ⇪⌃3   │     ⌃F3      │              │ ✓ │              — move focus to Dock
+--         ⇪⌥3   │     ⌥F3      │              │   │        VSCode — show next change file changes
 --         ⇪⌘3   │     ⌘F3      │              │   │
---         ⇧⌃3   │              │              │   │            Rider — toggle bookmark 3
+--         ⇧⌃3   │              │              │   │         Rider — toggle bookmark 3
 --         ⇧⌥3   │              │ ¹⁄₃  ¹⁄₃  ή  │   │
 --         ⇧⌘3   │              │              │   │
---               │              │              │ ◆ │ Shottr — window
+--               │              │              │ ◆ │        Shottr — window
 --         ⌃⌥3   │              │              │   │ Marshall
 { chord = "⌃⌥3",                            fn = "audio.connect_marshall" },
 --         ⌃⌘3   │              │              │   │
---         ⌥⌘3   │              │              │   │         Telegram — focus 3rd chat
---               │              │              │   │             Fork — show commit filetree
+--         ⌥⌘3   │              │              │   │      Telegram — focus 3rd chat
+--               │              │              │   │          Fork — show commit filetree
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃3   │     ⇧⌃F3     │              │   │
 --        ⇪⇧⌥3   │     ⇧⌥F3     │              │   │

@@ -6,7 +6,7 @@ return {
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           d   │              │ d    в    δ  │ ✓ │              — letter 'd'
---          dd   │              │              │   │    Browser Vim — go forward
+--          dd   │              │              │   │   Browser Vim — go forward
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪d   │      →       │              │ ✓ │              — go right
 --          ⇧d   │              │ D    В    Δ  │   │
@@ -32,7 +32,7 @@ return {
 --               │              │              │   │       YouTube — jump to chapter to the right
 --         ⇪⌘d   │      ⌘→      │              │ ✓ │              — end/jump to end of line
 --         ⇧⌃d   │              │              │   │
---         ⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right
+--         ⇧⌥d   │     ⇧⌥→      │              │ ✓ │               — select word to the right
 --         ⇧⌘d   │              │              │   │        VSCode — focus Run and Debug panel
 --               │              │              │   │          Mail — send emails
 --               │              │              │   │        Finder — go to Desktop
@@ -40,7 +40,7 @@ return {
 { chord = "⌃⌥d",                            fn = "window.right" },
 --        ⌃⌥ad   │     num8     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
---         ⌥⌘d   │              │              │ ⚙ │ — system 52 dock.toggle_hiding
+--         ⌥⌘d   │              │              │ ⚙ │               — system 52 dock.toggle_hiding
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃d   │      ⏭       │              │ ✓ │              — go to next track
 --        ⇪⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right
@@ -51,9 +51,9 @@ return {
 --               │              │              │   │         Music — seek forward;
 --               │              │              │   │         iTerm — focus pane to the right
 --        ⇧⌃⌥d   │              │              │   │ ½ Right
-{ chord= "⇧⌃⌥d",                            fn = "window.half_right" },
+{ chord = "⇧⌃⌥d",                           fn = "window.half_right" },
 --        ⇧⌃⌘d   │              │              │   │
---               │              │              │ ℝ │ Rider — Debug…
+--               │              │              │ ℝ │         Rider — Debug…
 --        ⇧⌥⌘d   │              │              │   │
 --        ⌃⌥⌘d   │              │              │   │
 --       ⇧⌃⌥⌘d   │    ⇧⌃⌥⌘→     │              │   │

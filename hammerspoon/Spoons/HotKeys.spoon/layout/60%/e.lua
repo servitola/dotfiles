@@ -9,14 +9,14 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪e   │     PgDn     │              │ ✓ │              — page down
 --          ⇧e   │              │ E    У    Ε  │   │
---          ⌃e   │              │              │ ℝ │ Rider — Find Usages
+--          ⌃e   │              │              │ ℝ │         Rider — Find Usages
 --          ⌥e   │      ⌦       │              │ ✓ │              — delete letter to the right
---               │              │              │ ℝ │ Rider — Basic
+--               │              │              │ ℝ │         Rider — Basic
 --          ⌘e   │              │              │   │         Rider — recent files dialog
 --               │              │              │   │        VSCode — find with selection
 --               │              │              │   │      Telegram — toggle camera
---               │              │              │   │  Google Meet — toggle video
---               │              │              │ ◆ │ VoiceInk — toggleEnhancement
+--               │              │              │   │   Google Meet — toggle video
+--               │              │              │ ◆ │      VoiceInk — toggleEnhancement
 --          ⇥e   │      ⌘]      │              │   │         Rider — navigate forward
 --               │              │              │   │         Music — navigate forward
 --               │              │              │   │       Browser — navigate forward
@@ -28,16 +28,16 @@ return {
 --         ⇪⌥e   │      ⌥⌦      │              │ ✓ │              — delete word to the right
 --         ⇪⌘e   │      ⌘⌦      │              │ ✓ │              — delete
 --         ⇧⌃e   │      ⌘⌫      │              │ ✓ │              — delete
---               │              │              │ ℝ │ Rider — Find Usages in File
+--               │              │              │ ℝ │         Rider — Find Usages in File
 --         ⇧⌥e   │      ⇧⌦      │              │ ✓ │              — delete letter to the right
 --         ⇧⌘e   │              │              │   │         Rider — recent locations popup
 --               │              │              │   │       Browser — opened tabs dialog
 --               │              │              │   │          Mail — redirect email
 --               │              │              │   │           Zap — command palette
 --         ⌃⌥e   │      ⌘l      │              │ ✓ │              — delete letter to the right
---         ⌃⌘e   │              │              │ ℝ │ Rider — Show List of Tabs
+--         ⌃⌘e   │              │              │ ℝ │         Rider — Show List of Tabs
 --         ⌥⌘e   │              │              │   │         Music — show equalizer
---               │              │              │ ◆ │ Finder — Enclosing Folder in New Window
+--               │              │              │ ◆ │        Finder — Enclosing Folder in New Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃e   │     ▶/⏸      │              │ ✓ │              — play/pause current music/video
 --        ⇪⇧⌥e   │    ⇧⌥PgDn    │              │   │

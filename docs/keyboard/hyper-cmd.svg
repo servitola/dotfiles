@@ -369,11 +369,14 @@
 <text x="410.5" y="209" text-anchor="end" class="key-label">G</text>
 <title>G: Fork Dots — Fork: Dotfiles</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="268.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="268.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="383.5,218 393.5,218 388.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="384.5,218 392.5,218 388.5,214" fill="white"/>
 <text x="278.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Fork Dots</text>
 <text x="332.0" y="238" font-size="8px" fill="#1d1d1f">fork: dotfiles</text>
+<use href="#icon-hammerspoon" x="278.5" y="245" width="13" height="13"/>
+<text x="294.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="359.0" y="256" font-size="8px" fill="#1d1d1f">Fork Dots</text>
 </g>
 </g>
 <g class="key-group">
@@ -484,11 +487,14 @@
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: Search Sel — Browser Search Selected</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="239.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
 <text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Search Sel</text>
 <text x="308.5" y="290" font-size="8px" fill="#1d1d1f">browser search selected</text>
+<use href="#icon-hammerspoon" x="249.5" y="297" width="13" height="13"/>
+<text x="265.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="330.0" y="308" font-size="8px" fill="#1d1d1f">Search Sel</text>
 </g>
 </g>
 <g class="key-group">
@@ -646,6 +652,7 @@
 <text x="56" y="972" font-size="12px" fill="#a2845e">⌘F14</text>
 <use href="#icon-orbstack" x="136" y="959" width="16" height="16"/>
 <text x="156" y="972" font-size="12px" font-weight="500" fill="#007aff">OrbStack — show/hide</text>
+<text x="291" y="972" font-size="11px" fill="#48484a">OrbStack</text>
 <line x1="20" y1="994" x2="906" y2="994" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1002" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
 <text x="56" y="1002" font-size="12px" fill="#a2845e">⌘F17</text>
@@ -676,6 +683,8 @@
 <text x="56" y="1182" font-size="12px" fill="#a2845e">⌘F18</text>
 <use href="#icon-fork" x="136" y="1169" width="16" height="16"/>
 <text x="156" y="1182" font-size="12px" font-weight="500" fill="#007aff">Fork Dots</text>
+<use href="#icon-hammerspoon" x="291" y="1170" width="14" height="14"/>
+<text x="309" y="1182" font-size="11px" fill="#48484a">Hammerspoon — Fork Dots</text>
 <line x1="20" y1="1204" x2="906" y2="1204" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1212" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <text x="56" y="1212" font-size="12px" fill="#a2845e">⌘F20</text>
@@ -726,6 +735,8 @@
 <text x="56" y="1614" font-size="12px" fill="#a2845e">⌘F16</text>
 <use href="#icon-vivaldi" x="136" y="1601" width="16" height="16"/>
 <text x="156" y="1614" font-size="12px" font-weight="500" fill="#af52de">Search Sel</text>
+<use href="#icon-hammerspoon" x="291" y="1602" width="14" height="14"/>
+<text x="309" y="1614" font-size="11px" fill="#48484a">Hammerspoon — Search Sel</text>
 <line x1="20" y1="1636" x2="906" y2="1636" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1644" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
 <text x="56" y="1644" font-size="12px" fill="#a2845e">⌘F19</text>

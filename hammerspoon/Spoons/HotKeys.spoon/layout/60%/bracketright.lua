@@ -10,7 +10,7 @@ return {
 --          ⇪]   │      ⏭       │              │   │
 --          ⇧]   │              │ }    Ъ    }  │   │
 --          ⌃]   │              │              │   │
---               │              │              │ ℝ │ Rider — Show Or Focus
+--               │              │              │ ℝ │         Rider — Show Or Focus
 --          ⌥]   │              │ ]    ]    »  │   │
 --          ⌘]   │              │              │   │         Rider — navigate forward
 --               │              │              │   │         Music — navigate forward
@@ -27,7 +27,7 @@ return {
 --         ⇧⌘]   │              │              │   │
 --         ⌃⌥]   │              │              │   │
 --         ⌃⌘]   │              │              │   │
---               │              │              │ ℝ │ Rider — Close Project
+--               │              │              │ ℝ │         Rider — Close Project
 --         ⌥⌘]   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃]   │              │              │   │
@@ -37,7 +37,7 @@ return {
 --        ⇪⌃⌘]   │              │              │   │
 --        ⇪⌥⌘]   │              │              │   │
 --        ⇧⌃⌥]   │              │              │   │
---               │              │              │ ℝ │ Rider — Restart IDE… (then ⇧⌃⌥])
+--               │              │              │ ℝ │         Rider — Restart IDE… (then ⇧⌃⌥])
 --        ⇧⌃⌘]   │              │              │   │
 --        ⇧⌥⌘]   │              │              │   │
 --        ⌃⌥⌘]   │              │              │   │

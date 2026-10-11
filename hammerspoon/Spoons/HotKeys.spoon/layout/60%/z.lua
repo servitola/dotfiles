@@ -7,15 +7,15 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           z   │              │ z    я    ζ  │   │   Browser Vim — Mark Links
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪z   │     F13      │              │   │               ↓
+--          ⇪z   │     F13      │              │   │   Hammerspoon — Android
 { chord = "F13",                            fn = "android.show_all" },
 --          ⇧z   │              │ Z    Я    Ζ  │   │          IINA — add sub-delay -0.5s
 --          ⌃z   │              │              │   │ Unix Terminal — suspend (background)
---               │              │              │ ℝ │ Rider — 3
+--               │              │              │ ℝ │         Rider — 3
 --          ⌥z   │              │      §       │   │        VSCode — toggle wordwrap
---               │              │              │   │         Music — go to current song (⌘L) HAMMERSPOON CUSTOM
---               │              │              │   │        Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM
---               │              │              │   │           Zap — type "/new" (Claude Code shortcut) HAMMERSPOON CUSTOM
+--               │              │              │   │         Music — go to current song (⌘L)
+--               │              │              │   │        Finder — go to Downloads (⇧⌘L)
+--               │              │              │   │           Zap — type "/new" (Claude Code shortcut)
 --          ⌘z   │              │              │ ✓ │              — undo
 --          ⇥z   │      ⌘/      │              │   │         Rider — comment line
 --               │              │              │   │        VSCode — toggle comment line
@@ -23,17 +23,17 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧z   │     ⇧F13     │              │   │
 --         ⇪⌃z   │     ⌃F13     │              │   │
---         ⇪⌥z   │      ⇧/      │              │ ✓ │              — question mark (Karabiner direct)
---         ⇪⌘z   │      /       │              │ ✓ │              — slash (Karabiner direct)
+--         ⇪⌥z   │      ⇧/      │              │ ✓ │               — question mark (Karabiner direct)
+--         ⇪⌘z   │      /       │              │ ✓ │               — slash (Karabiner direct)
 --         ⇧⌃z   │              │              │   │      VoiceInk — start/stop recoding
 --         ⇧⌥z   │              │    ¸    ¸    │   │ Simulator
-{ chord = "⇧⌥z",                           app = "Simulator" },
+{ chord = "⇧⌥z",                            app = "Simulator" },
 --         ⇧⌘z   │              │              │ ✓ │              — redo
 --               │              │              │   │          Mail — unsend email
---               │              │              │ ℝ │ Rider — Redo
+--               │              │              │ ℝ │         Rider — Redo
 --         ⌃⌥z   │              │              │   │
 --         ⌃⌘z   │              │              │   │ Simulator
-{ chord = "⌃⌘z",                           app = "Simulator" },
+{ chord = "⌃⌘z",                            app = "Simulator" },
 --         ⌥⌘z   │              │              │   │         Rider — show 'revert selected in git' popup
 --               │              │              │   │        VSCode — revert selected in git
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

@@ -26,7 +26,7 @@ return {
 --         ⇧⌃0   │              │              │   │
 --         ⇧⌥0   │              │ ›    ›    ύ  │   │
 --         ⇧⌘0   │              │              │   │
---               │              │              │ ℝ │ Rider — Activate Event Log Tool Window
+--               │              │              │ ℝ │         Rider — Activate Event Log Tool Window
 --         ⌃⌥0   │              │              │   │
 --         ⌃⌘0   │              │              │   │          Mail — show the Mail Activity window
 --         ⌥⌘0   │              │              │   │      Telegram — focus Saved Messages

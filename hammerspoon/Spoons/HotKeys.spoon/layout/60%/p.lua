@@ -8,17 +8,17 @@ return {
 --           p   │              │ p    з    π  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪p   │              │              │   │ Music
-{ chord =  "⇪p",                           app = "@APP_MUSIC" },
+{ chord = "⇪p",                             app = "@APP_MUSIC" },
 --          ⇧p   │              │ P    З    Π  │   │
 --          ⌃p   │              │              │   │        VSCode — cursor up
 --               │              │              │   │ Unix Terminal — cycle through last commands forward
 --               │              │              │   │   Claude Code — cycle through last commands forward
 --          ⌥p   │              │      ′       │   │
---               │              │              │ ℝ │ Rider — Show/Hide NuGet Tool Window
+--               │              │              │ ℝ │         Rider — Show/Hide NuGet Tool Window
 --          ⌘p   │              │              │ ✓ │              — print
 --               │              │              │   │         Music — play
 --               │              │              │   │          Fork — Show Command Palette
---               │              │              │ ◆ │ Music — Play
+--               │              │              │ ◆ │         Music — Play
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧p   │              │              │   │
 --         ⇪⌃p   │              │              │   │
@@ -29,10 +29,10 @@ return {
 --         ⇧⌥p   │              │    ″    ″    │   │
 --         ⇧⌘p   │              │              │   │        VSCode — open command palette
 --               │              │              │   │          Fork — open Push dialog
---               │              │              │ ◆ │ Music — Previous
+--               │              │              │ ◆ │         Music — Previous
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
---               │              │              │ ℝ │ Rider — Pull Members Up…
+--               │              │              │ ℝ │         Rider — Pull Members Up…
 --         ⌥⌘p   │              │              │   │       Vivaldi — print using system dialog
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃p   │              │              │   │

@@ -10,9 +10,9 @@ return {
 --          ⇪c   │      ⌘→      │              │   │
 --          ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
---               │              │              │ ℝ │ Rider — Unit Testing Quick List…
+--               │              │              │ ℝ │         Rider — Unit Testing Quick List…
 --          ⌥c   │              │      ©       │   │      Forkgram — open chat 3172923198
-{ chord =  "⌥c",                            fn = "forkgram.chat" },
+{ chord = "⌥c",                             fn = "forkgram.chat" },
 --          ⌘c   │              │              │ ✓ │              — copy
 --          ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
 --               │              │              │   │        VSCode — toggle comment line
@@ -27,12 +27,12 @@ return {
 --               │              │              │   │       Browser — navigate forward
 --               │              │              │   │          IINA — multiply speed 2.0
 --               │              │              │   │        Finder — navigate forwardq
---         ⇧⌃c   │              │              │   │ Unix Terminal — used sometimes
+--         ⇧⌃c   │              │              │   │
 --         ⇧⌥c   │     ⇧⌘→      │              │ ✓ │              — select line till the end
 --         ⇧⌘c   │              │              │   │        Finder — go to Computer
 --         ⌃⌥c   │              │              │   │
---               │              │              │ ◆ │ Itsycal — GlobalShortcut
---         ⌃⌘c   │              │              │ ℝ │ Rider — Scroll to Bottom
+--               │              │              │ ◆ │       Itsycal — GlobalShortcut
+--         ⌃⌘c   │              │              │ ℝ │         Rider — Scroll to Bottom
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
 --               │              │              │   │        VSCode — introduce constant
 --               │              │              │   │        Finder — copy the path of the file

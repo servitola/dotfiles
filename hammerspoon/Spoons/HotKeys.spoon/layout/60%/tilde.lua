@@ -12,23 +12,23 @@ return {
 --          ⇧~   │      ⇧⎋      │              │   │
 --          ⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
 --          ⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
---          ⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)
---               │              │              │ ℝ │ Rider — Rename… (then ⌘⎋)
+--          ⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game
+--               │              │              │ ℝ │         Rider — Rename… (then ⌘⎋)
 --          ⇥~   │      ⌘~      │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧~   │              │ ~    Ё    ±  │   │
 --         ⇪⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
 --         ⇪⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
---         ⇪⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)
+--         ⇪⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game
 --         ⇧⌃~   │     ⇧⌃⎋      │              │   │
 --         ⇧⌃⎋   │              │              │   │ Activity Monitor
-{ chord = "⇧⌃⎋",                           app = "Activity Monitor" },
+{ chord = "⇧⌃⎋",                            app = "Activity Monitor" },
 --         ⇧⌥~   │     ⇧⌥⎋      │              │   │
 --         ⇧⌘~   │     ⇧⌘⎋      │              │ ✓ │              — switch between windows of the current app (backward)
 --         ⌃⌥~   │              │              │   │
 --         ⌃⌘~   │              │              │   │
 --         ⌥⌘~   │     ⌥⌘⎋      │              │ ✓ │              — force quit current app
---               │              │              │ ℝ │ Rider — Next Solution Window
+--               │              │              │ ℝ │         Rider — Next Solution Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃~   │     ⇧⌃⎋      │              │   │
 --        ⇪⇧⌥~   │     ⇧⌥⎋      │              │   │

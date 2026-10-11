@@ -7,19 +7,19 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           f   │              │ f    а    φ  │   │       Browser — Go Full Screen Video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪f   │     F15      │              │   │               ↓
-{ chord = "F15",                           app = "Finder" },
+--          ⇪f   │     F15      │              │   │ Finder
+{ chord = "F15",                            app = "Finder" },
 --          ⇧f   │              │ F    А    Φ  │   │
 --          ⌃f   │              │              │   │        VSCode — move cursor right
---               │              │              │   │      Forkgram — global search (⌘K) HAMMERSPOON CUSTOM
---               │              │              │ ℝ │ Rider — Find
+--               │              │              │   │      Forkgram — global search (⌘K)
+--               │              │              │ ℝ │         Rider — Find
 --          ⌥f   │              │      £       │   │          Fork — toggle Force Push on Push dialog
 --          ⌘f   │              │              │ ✓ │              — find
 --          ⇥f   │     num2     │              │   │ → RU
-{ chord = "num2",                            fn = "translate_to_russian" },
+{ chord = "num2",                           fn = "translate_to_russian" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧f   │     ⇧F15     │              │   │               ↓
-{ chord= "⇧F15",                           app = "@APP_FILES" },
+--         ⇪⇧f   │     ⇧F15     │              │   │ Marta
+{ chord = "⇧F15",                           app = "@APP_FILES" },
 --         ⇪⌃f   │     ⌃F15     │              │   │
 --         ⇪⌥f   │     ⌥F15     │              │   │
 --         ⇪⌘f   │      ⌘o      │              │ ✓ │              — open file
@@ -43,7 +43,7 @@ return {
 --        ⇪⌥⌘f   │    ⌥⌘F15     │              │   │
 --        ⇧⌃⌥f   │              │              │   │
 --        ⇧⌃⌘f   │              │              │   │
---               │              │              │ ℝ │ Rider — Show Filter Popup
+--               │              │              │ ℝ │         Rider — Show Filter Popup
 --        ⇧⌥⌘f   │              │              │   │
 --        ⌃⌥⌘f   │              │              │   │
 --               ┴              ┴              ┴   ┴

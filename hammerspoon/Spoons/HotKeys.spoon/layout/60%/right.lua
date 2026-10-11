@@ -7,15 +7,15 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           →   │              │              │   │          IINA — seek forward 5sec
 --               │              │              │   │       YouTube — seek forward 5sec
---           →   │              │              │ ℝ │ Rider — Right
+--           →   │              │              │ ℝ │         Rider — Right
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪→   │              │              │   │
 --          ⇧→   │              │              │ ✓ │              — select one letter right
 --          ⌃→   │              │              │ ✓ │              — jump to workspace to the right
 --          ⌥→   │              │              │ ✓ │              — jump to next word
---          ⌥→   │              │              │ ℝ │ Rider — Move Caret to Next Word
+--          ⌥→   │              │              │ ℝ │         Rider — Move Caret to Next Word
 --          ⌘→   │              │              │   │
---          ⌘→   │              │              │ ℝ │ Rider — Move Caret to Line End
+--          ⌘→   │              │              │ ℝ │         Rider — Move Caret to Line End
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧→   │              │              │   │
 --         ⇪⌃→   │              │              │   │
@@ -38,13 +38,13 @@ return {
 --        ⇪⌃⌘→   │              │              │   │
 --        ⇪⌥⌘→   │              │              │   │
 --        ⇧⌃⌥→   │              │              │   │ ½ Right
-{ chord= "⇧⌃⌥→",                            fn = "window.half_right" },
+{ chord = "⇧⌃⌥→",                           fn = "window.half_right" },
 --        ⇧⌃⌘→   │              │              │   │
---        ⇧⌃⌘→   │              │              │ ℝ │ Rider — Stretch to Right
+--        ⇧⌃⌘→   │              │              │ ℝ │         Rider — Stretch to Right
 --        ⇧⌥⌘→   │              │              │   │
 --        ⌃⌥⌘→   │              │              │   │ Window to next screen
-{ chord= "⌃⌥⌘→",                            fn = "window.screen_next" },
---       ⇧⌃⌥⌘→   │              │              │ ✓ │              — focus comms apps (hide non-comms)
-{ chord= "⇧⌃⌥⌘→",                           fn = "window.focus_comms" },
+{ chord = "⌃⌥⌘→",                           fn = "window.screen_next" },
+--       ⇧⌃⌥⌘→   │              │              │ ✓ │               — focus comms apps (hide non-comms)
+{ chord = "⇧⌃⌥⌘→",                          fn = "window.focus_comms" },
 --               ┴              ┴              ┴   ┴
 }
