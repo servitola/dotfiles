@@ -42,7 +42,6 @@ return {
 --        ⇧⌃⌘→   │              │              │   │
 --        ⇧⌃⌘→   │              │              │ ℝ │ Rider — Stretch to Right
 --        ⇧⌥⌘→   │              │              │   │
---        ⇧⌥⌘→   │              │              │ ℝ │ Rider — Move Element Right
 --        ⌃⌥⌘→   │              │              │   │ Window to next screen
 { chord= "⌃⌥⌘→",                            fn = "window.screen_next" },
 --       ⇧⌃⌥⌘→   │              │              │ ✓ │              — focus comms apps (hide non-comms)

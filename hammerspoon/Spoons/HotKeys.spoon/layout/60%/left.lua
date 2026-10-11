@@ -46,7 +46,6 @@ return {
 --        ⇧⌃⌘←   │              │              │   │
 --               │              │              │ ℝ │ Rider — Stretch to Left
 --        ⇧⌥⌘←   │              │              │   │
---               │              │              │ ℝ │ Rider — Move Element Left
 --        ⌃⌥⌘←   │              │              │   │ Window to previous screen
 { chord= "⌃⌥⌘←",                            fn = "window.screen_prev" },
 --       ⇧⌃⌥⌘←   │              │              │ ✓ │              — focus personal apps (hide non-personal)

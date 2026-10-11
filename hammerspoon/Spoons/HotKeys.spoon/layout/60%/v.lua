@@ -31,6 +31,7 @@ return {
 --         ⇧⌥v   │              │ ˇ    ˇ    Ά  │   │
 --         ⇧⌘v   │              │              │   │          Mail — paste text into email as quotation
 --         ⌃⌥v   │              │              │   │
+--               │              │              │ ℝ │ Rider — Introduce Variable…
 --         ⌃⌘v   │              │              │ ✓ │              — paste bypass (type clipboard for restricted fields)
 { chord = "⌃⌘v",                            fn = "paste_bypass" },
 --         ⌥⌘v   │              │              │   │         Rider — extract variable
@@ -45,7 +46,6 @@ return {
 { chord= "⇧⌃⌥v",                            fn = "browser_youtube_playing" },
 --        ⇧⌃⌘v   │              │              │   │
 --        ⇧⌥⌘v   │              │              │   │
---               │              │              │ ℝ │ Rider — Paste as Plain Text
 --        ⌃⌥⌘v   │              │              │   │
 --               ┴              ┴              ┴   ┴
 }

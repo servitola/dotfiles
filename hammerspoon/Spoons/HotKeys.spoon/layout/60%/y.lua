@@ -37,7 +37,6 @@ return {
 --        ⇪⌥⌘y   │              │              │   │
 --        ⇧⌃⌥y   │              │              │   │
 --        ⇧⌃⌘y   │              │              │   │
---               │              │              │ ℝ │ Rider — Reload All from Disk
 --        ⇧⌥⌘y   │              │              │   │
 --        ⌃⌥⌘y   │              │              │   │
 --               ┴              ┴              ┴   ┴

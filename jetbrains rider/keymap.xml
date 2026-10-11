@@ -330,12 +330,6 @@
   <action id="ShowFilterPopup">
     <keyboard-shortcut first-keystroke="shift ctrl meta f" />
   </action>
-  <action id="Synchronize">
-    <keyboard-shortcut first-keystroke="shift ctrl meta y" />
-  </action>
-  <action id="EditorPasteSimple">
-    <keyboard-shortcut first-keystroke="shift alt meta v" />
-  </action>
   <action id="ResizeToolWindowLeft">
     <keyboard-shortcut first-keystroke="shift ctrl meta LEFT" />
   </action>
@@ -348,12 +342,6 @@
   <action id="ResizeToolWindowDown">
     <keyboard-shortcut first-keystroke="shift ctrl meta DOWN" />
   </action>
-  <action id="MoveElementLeft">
-    <keyboard-shortcut first-keystroke="shift alt meta LEFT" />
-  </action>
-  <action id="MoveElementRight">
-    <keyboard-shortcut first-keystroke="shift alt meta RIGHT" />
-  </action>
   <action id="VcsShowPrevChangeMarker">
     <keyboard-shortcut first-keystroke="ctrl alt meta UP" />
   </action>
@@ -364,6 +352,7 @@
     <keyboard-shortcut first-keystroke="alt RIGHT" />
   </action>
   <action id="ToggleRenderedDocPresentation" />
-  <action id="PopupHector" />
-  <action id="DumpLookupElementWeights" />
+  <action id="IntroduceVariable">
+    <keyboard-shortcut first-keystroke="ctrl alt v" />
+  </action>
 </keymap>
