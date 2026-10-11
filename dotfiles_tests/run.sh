@@ -6,16 +6,20 @@ source "$HOME/projects/dotfiles/constants/load.zsh"
 here=${0:a:h}
 source "$here/vm.sh"
 
-all_stages=(make check doctor hotkeys apps up)
+all_stages=(make remake check doctor links shell hotkeys apps up up2)
 typeset -A command=(
     make    "cd ~/projects/dotfiles && HOMEBREW_CACHE='$CACHE_GUEST' make"
+    remake  'zsh ~/projects/dotfiles/dotfiles_tests/checks.sh remake'
     check   'zsh ~/projects/dotfiles/install/check.sh'
     doctor  'zsh -lc "brew doctor"'
+    links   'zsh ~/projects/dotfiles/dotfiles_tests/checks.sh links'
+    shell   'zsh ~/projects/dotfiles/dotfiles_tests/checks.sh shell'
     hotkeys 'zsh ~/projects/dotfiles/dotfiles_tests/hotkeys.sh live'
     apps    'zsh ~/projects/dotfiles/dotfiles_tests/hotkeys.sh apps'
     up      'zsh -ic up'
+    up2     'zsh -ic up'
 )
-typeset -A minutes=(make 240 check 5 doctor 5 hotkeys 2 apps 20 up 60)
+typeset -A minutes=(make 240 remake 30 check 5 doctor 5 links 5 shell 2 hotkeys 2 apps 20 up 60 up2 60)
 
 keep=0 stages=()
 for arg; do
