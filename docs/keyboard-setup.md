@@ -102,18 +102,29 @@ Lint reads the file (not the machine), so it runs in pre-commit: `S1` fails when
 
 ### Projection into the key tables
 
-The same rows are written into the per-key ASCII tables, so a key's file shows what the machine
-holds on it next to what Hammerspoon binds: `python3 docs/keyboard/tools/normalize.py --project`
-(`up` runs it right after `capture`). Each row becomes one description line under the chord it is
-pressed on, marked in the `G` column so the line is known to be machine-owned: `⚙` an enabled
-symbolic hotkey (`— system 60 input_source.previous`), `◆` an app's global hotkey or a menu item
-(`Shottr — area`, `Music — Repeat All`). A bridged chord lands on the pressed spelling (`⌥F16` →
-`⇪⌥v`), and four modifiers on `⇪x` when the Hyper layer passes that key through (Day One's
-`⇧⌃⌥⌘j` sits on `⇪j`). Hand-written lines carry no marker and are never touched; the projected
-ones are replaced on every run, so edit the source (the app, System Settings) and let `up` carry
-it over. Lint `P1` fails when the marked lines differ from `shortcuts.toml`. Not projected: `🌐`
-chords (no fn rows in the tables) and F1–F12 (placeholder files Hammerspoon never loads);
-`--project` lists them. The rules live in `docs/keyboard/projection.py`.
+The same rows, plus Rider's keymap, are written into the per-key ASCII tables, so a key's file
+shows what the machine holds on it next to what Hammerspoon binds:
+`python3 docs/keyboard/tools/normalize.py --project` (`up` runs it right after the captures). Each
+shortcut becomes one description line under the chord it is pressed on, marked in the `G` column so
+the line is known to be machine-owned: `⚙` an enabled symbolic hotkey (`— system 60
+input_source.previous`), `◆` an app's global hotkey or a menu item (`Shottr — area`, `Music — Repeat
+All`), `ℝ` a Rider keymap customization (`Rider — Find Usages`, `(then l)` for a two-stroke chord).
+A bridged chord lands on the pressed spelling (`⌥F16` → `⇪⌥v`), and four modifiers on `⇪x` when the
+Hyper layer passes that key through (Day One's `⇧⌃⌥⌘j` sits on `⇪j`). Hand-written lines carry no
+marker and are never touched; the projected ones are replaced on every run, so edit the source (the
+app, System Settings, Rider's Settings ▸ Keymap) and let `up` carry it over. Lint `P1` fails when the
+marked lines differ from their sources. Not projected: `🌐` chords (no fn rows in the tables), F1–F12
+(placeholder files Hammerspoon never loads) and Rider keys the chord grammar has no glyph for (numpad
+operators); `--project` lists them. The rules live in `docs/keyboard/projection.py`.
+
+**Rider.** `python3 docs/keyboard/rider.py capture` copies the active keymap from
+`~/Library/Application Support/JetBrains/Rider*/keymaps/` into `jetbrains rider/keymap.xml`
+(`up` does it). JetBrains stores a keymap as its differences from the parent, so that file *is*
+the list of customizations, and only those are projected; the parent chain (`Mac OS X 10.5+` →
+`$default`) is read from `Rider.app` for lint `S5`, which warns when a Hammerspoon chord without `⇪`
+is also a Rider shortcut (Hammerspoon takes it inside Rider: today every `⌃⌥` window chord hides a
+Rider default such as `⌃⌥d` Debug and `⌃⌥r` Run). Action names come from Rider's resource bundles,
+ReSharper ids are humanized. Without `Rider.app` the capture keeps the repo copy and `S5` is skipped.
 
 ## Hammerspoon Configuration
 
@@ -312,6 +323,8 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 | `python3 docs/keyboard/tools/normalize.py --insert-missing` | Auto-fix column geometry and insert missing chord rows into the ASCII comment based on the actual Lua entries. |
 | `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view). |
 | `python3 docs/keyboard/tools/gen_layers.py` | Write `karabiner/rules/07`–`17` from `karabiner/layers.toml` (tables + `[slots]`) + `layers.raw/` (`karabiner/build.sh` runs it). `--check` exits 1 with a diff on drift (lint `G1`, pre-commit). |
+| `python3 docs/keyboard/tools/normalize.py --project` | Rewrite the `⚙` / `◆` / `ℝ` lines of every table from `macos_shortcuts/shortcuts.toml` and `jetbrains rider/keymap.xml` (`up` runs it). `--check` exits 1 when a table would change. |
+| `python3 docs/keyboard/rider.py [capture]` | `capture` copies Rider's active keymap into `jetbrains rider/keymap.xml`; bare, prints the `ℝ` lines it yields and the keystrokes it cannot spell. |
 | `python3 docs/keyboard/tools/where.py <chord> [--json]` | One chord across every source: the Karabiner manipulators on the press (rule file, sidedness, conditions), the layout entry that binds it (file:line, resolved role), the `shortcuts.toml` rows on the same chord as macOS receives it, and the key's en / ru / el characters per layer. Accepts the pressed spelling (`⇪g`) or the emitted one (`F18`, `⌘F16`, `num8`). |
 | `python3 docs/keyboard/tools/gen_bundle_ids.py` | Regenerate `HotKeys.spoon/app_bundle_ids.lua` — the app-name → bundle-ID map used for fast exact `hs.application.get()` lookups (names in layout files stay the source of truth; unresolved names fall back to fuzzy `find`). Re-run after adding a new `app = "..."` chord. |
 | `python3 docs/keyboard/tools/dump_apple_layouts.py` | Dump Apple's ABC / Russian / Russian – PC / Greek base and Shift layers (`UCKeyTranslate`) into `docs/keyboard/apple-layouts/`, the plain and Shift characters `parse_birman.py` labels keys with. |
