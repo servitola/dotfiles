@@ -1,11 +1,12 @@
 # dotfiles_tests — a new user's Mac, from scratch, in a VM
 
 `run.sh` takes a clean macOS VM, puts these dotfiles on it and runs what a new
-user would: `make`, then `install/check.sh`, `brew doctor` and `up`. Green means
-the repository installs on an empty Mac and keeps it updated.
+user would: `make`, then `install/check.sh`, `brew doctor`, the hotkeys, and
+`up`. Green means the repository installs on an empty Mac, its hotkeys work, and
+`up` keeps it updated.
 
 ```
-dotfiles_tests/run.sh                 # all four stages, then the VM is deleted
+dotfiles_tests/run.sh                 # every stage, then the VM is deleted
 dotfiles_tests/run.sh --keep          # leave the VM up and print its ssh line
 dotfiles_tests/run.sh make check      # only some stages
 ```
@@ -20,12 +21,15 @@ A full run takes ~30 min (the whole brewfile installs). Logs, one per stage:
 | `run.sh` | The test: stages, their commands and time limits, the order of a run |
 | `vm.sh` | Tart plumbing: base image, throwaway clone, ssh, copying repositories in |
 | `fresh_mac.sh` | Runs inside the VM before `make`: makes the CI image look like a new user's Mac |
+| `hotkeys.sh` | Runs inside the VM: the `hotkeys` and `apps` stages, through `hs -c` |
+| `hotkeys_live.lua` | `hotkeys`: every chord of the HotKeys layout tables is a bound hotkey |
+| `hotkeys_apps.lua` | `apps`: every app chord, pressed, brings its app to the front |
 
 ## How a run goes
 
 1. On `$TART_HOST` (m1pro), clone `dotfiles-base` into `dotfiles-test-<time>`. The clone is an APFS copy and takes seconds.
 2. Copy in the committed HEAD of dotfiles, `$DIR_SKILLS` and `$DIR_CRON` as git bundles. Uncommitted edits are not tested; the VM cannot reach Gitea.
-3. `fresh_mac.sh`: `DOCKER=no`, the official Telegram, a short skip list for the brewfile, the image's own extras removed.
+3. `fresh_mac.sh`: `DOCKER=no`, the official Telegram, a short skip list for the brewfile, the image's own extras removed, Accessibility for Hammerspoon.
 4. The stages, each with a time limit. A failed `make` stops the run.
 
 ## Changing it
@@ -43,4 +47,7 @@ A full run takes ~30 min (the whole brewfile installs). Logs, one per stage:
 - **Official Telegram**: the owner's Forkgram releases are private, so the run installs as anyone else would.
 - **App Store apps** are skipped: nobody can sign in to the App Store in the VM, and without a terminal `make` leaves them out.
 - **Time limits**: a dialog nobody sees blocks forever (Gatekeeper once held a run for 4.5 h).
+- **Hotkeys are tested after Karabiner.** Karabiner reads the real keyboard through its driver and never sees a key a program posts, and its driver needs a person's approval anyway. So `apps` posts what Karabiner would produce (`F17` for `⇪T`) and checks Hammerspoon's side; Karabiner itself is covered by `docs/keyboard/tools/lint.py`. Chords with `⇪` in the table are skipped: right-hand modifiers cannot be posted apart from left ones.
+- **Accessibility through TCC.db**: SIP is off in the cirruslabs image, so `fresh_mac.sh` writes the grant a person would click; Hammerspoon cannot press keys without it.
+- **F-keys and fn**: a real F13–F19 press carries the fn flag and the hotkey matches only with it; F20 matches only without it. Measured in the VM.
 - **Two VMs at most**: Apple's license lets a host run two macOS VMs at once; a third does not boot.

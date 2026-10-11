@@ -19,3 +19,11 @@ done
 
 sudo rm /usr/local/lib/TartMetalCapabilities.dylib
 PATH=/opt/homebrew/bin:$PATH npm rm -g --silent yarn pnpm
+
+# SIP is off in this image, so Hammerspoon gets the Accessibility a person would
+# click in System Settings; the apps stage needs it to press keys.
+for service in kTCCServiceAccessibility kTCCServicePostEvent; do
+    sudo sqlite3 "/Library/Application Support/com.apple.TCC/TCC.db" \
+        "insert or replace into access (service, client, client_type, auth_value, auth_reason, auth_version, indirect_object_identifier, boot_uuid)
+         values ('$service', 'org.hammerspoon.Hammerspoon', 0, 2, 0, 1, 'UNUSED', 'UNUSED')"
+done

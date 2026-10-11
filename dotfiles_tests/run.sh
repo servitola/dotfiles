@@ -1,19 +1,21 @@
 #!/bin/zsh
-# A new user's Mac, from scratch, in a throwaway tart VM: make, check, doctor, up.
+# A new user's Mac, from scratch, in a throwaway tart VM: make, then checks, hotkeys and up.
 #   dotfiles_tests/run.sh [--keep] [stage ...]
 setopt err_exit no_unset pipe_fail
 source "$HOME/projects/dotfiles/constants/load.zsh"
 here=${0:a:h}
 source "$here/vm.sh"
 
-all_stages=(make check doctor up)
+all_stages=(make check doctor hotkeys apps up)
 typeset -A command=(
-    make   "cd ~/projects/dotfiles && HOMEBREW_CACHE='$CACHE_GUEST' make"
-    check  'zsh ~/projects/dotfiles/install/check.sh'
-    doctor 'zsh -lc "brew doctor"'
-    up     'zsh -ic up'
+    make    "cd ~/projects/dotfiles && HOMEBREW_CACHE='$CACHE_GUEST' make"
+    check   'zsh ~/projects/dotfiles/install/check.sh'
+    doctor  'zsh -lc "brew doctor"'
+    hotkeys 'zsh ~/projects/dotfiles/dotfiles_tests/hotkeys.sh live'
+    apps    'zsh ~/projects/dotfiles/dotfiles_tests/hotkeys.sh apps'
+    up      'zsh -ic up'
 )
-typeset -A minutes=(make 240 check 5 doctor 5 up 60)
+typeset -A minutes=(make 240 check 5 doctor 5 hotkeys 2 apps 20 up 60)
 
 keep=0 stages=()
 for arg; do
