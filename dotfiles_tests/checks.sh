@@ -22,10 +22,18 @@ case $1 in
         [[ -z $broken ]] || { print "symlinks to nothing:\n$broken"; exit 1 }
         print "no broken symlinks" ;;
     shell)
+        # On a terminal, as a person opens it: without one zsh complains about job
+        # control and gitstatus, which no real start does.
+        start_shell() {
+            TERM=xterm-256color script -q /dev/null zsh -ic exit </dev/null |
+                sed -E 's/\x1b\[[0-9;?]*[a-zA-Z]//g; s/\x1b\][^\x07]*\x07//g; s/\^D//g' | tr -d '\r\004\010' |
+                grep -v '^[[:space:]]*$' || true
+        }
+        start_shell >/dev/null   # the first start after up rebuilds the caches up deleted
         started=$SECONDS
-        errors=$(TERM=xterm-256color zsh -ic exit 2>&1 >/dev/null)
+        output=$(start_shell)
         took=$(( SECONDS - started ))
         printf 'interactive zsh in %.2fs\n' $took
-        [[ -z $errors ]] || { print -r -- "it printed:\n$errors"; exit 1 }
+        [[ -z $output ]] || { print -r -- "it printed:"; print -r -- $output; exit 1 }
         (( took < 1 )) ;;
 esac

@@ -36,12 +36,26 @@ end
 
 -- The chord toggles: pressed with its app already in front, it hides it.
 local neutral = "com.apple.TextEdit"
+local keep = {}
+for _, bundle in ipairs({ neutral, "org.hammerspoon.Hammerspoon", "com.apple.finder", "com.apple.dock",
+                          "com.apple.loginwindow", "com.apple.systemuiserver", "com.apple.controlcenter" }) do
+    keep[bundle] = true
+end
 local index = 0
+
+-- A fresh Mac's apps grab the front on their own (Tailscale at login, Telegram's
+-- window a few seconds after launch), so none stays running between cases.
+local function quitOthers()
+    for _, app in ipairs(hs.application.runningApplications()) do
+        if app:kind() == 1 and not keep[app:bundleID()] then app:kill9() end
+    end
+end
 
 local function nextCase()
     index = index + 1
     local case = cases[index]
     if not case then report("done"); out:close(); return end
+    quitOthers()
     hs.application.launchOrFocusByBundleID(neutral)
     hs.timer.doAfter(1, function()
         local mods, key = hotkeys.parseChord(case.chord)
