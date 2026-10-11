@@ -167,6 +167,9 @@ for _, filename in ipairs(buttonFiles) do
             if key then
                 chord_entry.app = assert(constants[key],
                     "unknown constant @" .. key .. " in " .. filePath)
+                -- app_bundle_ids.lua knows the owner's apps only; the role's
+                -- _BUNDLE companion holds the bundle of whichever app is chosen.
+                chord_entry.bundle = constants[key .. "_BUNDLE"]
             end
             table.insert(allChords, chord_entry)
         end
@@ -307,7 +310,7 @@ function obj.bindChords(chords, bind)
             end
             if entry.window_default_position and entry.app then
                 local slot = ({ right = "side", bottom = "corner" })[entry.window_default_position]
-                local bundle = assert(bundleIds[entry.app],
+                local bundle = assert(entry.bundle or bundleIds[entry.app],
                     "window_default_position: no bundle ID for " .. entry.app .. " (run gen_bundle_ids.py)")
                 spoon.PowerWindows:setOverride(bundle, assert(slot, entry.window_default_position))
             end
