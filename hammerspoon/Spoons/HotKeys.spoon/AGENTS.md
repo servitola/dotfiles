@@ -21,6 +21,7 @@
 - `fn` - Action name. Must be registered: generic ones in `init.lua` (`registerBuiltins`), personal ones in `hammerspoon/actions/*.lua`. Lint rule A1 fails on an unregistered name; at runtime `start()` shows a red notification listing them.
 - `window_default_position` - Optional: `"right"` (PowerWindows side slot) or `"bottom"` (corner); anything else fails the assert in `bindChords`
 - `sendKey` - Type text string when pressed
+- `over` - Optional: `"Rider"`, `"Music"`, … (comma-separated) — this chord knowingly shadows that app's own shortcut (a Rider keymap action, a menu item). Lint S5 / S4 fail on a shadow that is not named here; S6 warns when the name no longer matches anything. Hammerspoon ignores the field.
 
 ## Modifier Symbols
 - `⇪` = Hyper (Caps Lock remapped in Karabiner)

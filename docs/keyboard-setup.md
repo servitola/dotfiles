@@ -126,6 +126,18 @@ is also a Rider shortcut (Hammerspoon takes it inside Rider: today every `⌃⌥
 Rider default such as `⌃⌥d` Debug and `⌃⌥r` Run). Action names come from Rider's resource bundles,
 ReSharper ids are humanized. Without `Rider.app` the capture keeps the repo copy and `S5` is skipped.
 
+**Conflicts.** A projected line whose chord Hammerspoon binds in the same file gets `!` on its
+marker (`◆!`, `ℝ!`), and a Rider *default* that a Hammerspoon chord shadows is projected as an
+`ℝ!` line too (defaults are otherwise left out), so the table shows the collision where the
+binding is. Lint turns the same facts into errors, and the pre-commit hook runs lint, so a new
+collision cannot be committed: `S1` system shortcut enabled on the chord, `S4` an app's global
+hotkey (never acceptable: two Carbon hotkeys on one chord, the later registration is dead) or a
+menu item, `S5` a Rider shortcut. A menu item or a Rider shortcut you shadow on purpose is accepted
+by naming the app on the Lua entry — `{ chord = "⌃⌥d", fn = "window.right", over = "Rider" }` —
+and `S6` warns when such a name no longer matches anything. To see every collision at once:
+`python3 docs/keyboard/tools/lint.py` (without `--strict`, warnings included), or grep the tables
+for `! │`; `where.py <chord>` shows one chord's holders.
+
 ## Hammerspoon Configuration
 
 The full set of bindings is the **per-key Lua files** in `hammerspoon/Spoons/HotKeys.spoon/layout/60%/`. Trying to maintain an ASCII keyboard picture in this doc has rotted twice — instead use:
@@ -289,6 +301,7 @@ return {
 - **`fn`**: name of a custom function. Must be registered via the action registry (`HotKeys.spoon/actions.lua`). See [Custom functions](#custom-functions) below.
 - **`sendKey`**: literal string typed via `hs.eventtap.keyStrokes` (used to inject text).
 - **`window_default_position`**: optional, registers the app with `spoon.PowerWindows` via `setOverride`: `"right"` → side, `"bottom"` → corner (anything else fails loudly); the app must be in `app_bundle_ids.lua`.
+- **`over`**: optional, `"Rider"` / `"Music"` / … — the chord knowingly takes a shortcut away from that app inside it (see *Conflicts* under *Projection into the key tables*). Ignored by Hammerspoon; read by lint.
 
 ### Key file documentation comment
 
