@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2496" viewBox="0 0 922 2496">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2502" viewBox="0 0 922 2502">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="2496" fill="none"/>
+<rect width="922" height="2502" fill="none"/>
 <text x="28" y="30" class="title">Alt — Special Chars + Apps</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -306,14 +306,11 @@
 <text x="338.0" y="157" text-anchor="end" class="key-label">R</text>
 <title>R: WebStorm</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="196.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="196.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="311.0,166 321.0,166 316.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="312.0,166 320.0,166 316.0,162" fill="white"/>
 <use href="#icon-webstorm" x="206.0" y="175" width="13" height="13"/>
 <text x="222.0" y="186" font-size="9px" font-weight="600" fill="#007aff">WebStorm</text>
-<use href="#icon-rider" x="206.0" y="193" width="13" height="13"/>
-<text x="222.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="253.5" y="204" font-size="8px" fill="#1d1d1f">Build</text>
 </g>
 </g>
 <g class="key-group">
@@ -744,8 +741,16 @@
 <rect x="840.0" y="270" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
 <text x="867.0" y="297.0" text-anchor="middle" class="key-label">→</text>
 <title>→</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="747.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
+<use href="#icon-rider" x="757.0" y="331" width="13" height="13"/>
+<text x="773.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="804.5" y="342" font-size="8px" fill="#1d1d1f">Move Caret to Next Word</text>
 </g>
-<rect x="4" y="340" width="914" height="2132" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+</g>
+<rect x="4" y="340" width="914" height="2138" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <circle cx="85.8" cy="354" r="4" fill="#5ac8fa"/>
@@ -860,168 +865,170 @@
 <text x="266" y="1158" font-size="12px" font-weight="500" fill="#007aff">WebStorm — show/hide</text>
 <text x="401" y="1158" font-size="11px" fill="#48484a">WebStorm</text>
 <use href="#icon-rider" x="401" y="1170" width="14" height="14"/>
-<text x="419" y="1182" font-size="11px" fill="#48484a">Rider — Build</text>
-<use href="#icon-rider" x="401" y="1194" width="14" height="14"/>
-<text x="419" y="1206" font-size="11px" fill="#48484a">Rider — Build Solution</text>
-<line x1="20" y1="1228" x2="906" y2="1228" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1236" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="136" y="1236" font-size="12px" fill="#8e8e93">™  ™  ™</text>
-<line x1="20" y1="1258" x2="906" y2="1258" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1266" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
-<text x="136" y="1266" font-size="12px" fill="#8e8e93">ѣ  ѣ  ¥</text>
+<text x="419" y="1182" font-size="11px" fill="#48484a">Rider — Build Solution</text>
+<line x1="20" y1="1204" x2="906" y2="1204" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1212" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
+<text x="136" y="1212" font-size="12px" fill="#8e8e93">™  ™  ™</text>
+<line x1="20" y1="1234" x2="906" y2="1234" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1242" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
+<text x="136" y="1242" font-size="12px" fill="#8e8e93">ѣ  ѣ  ¥</text>
+<use href="#icon-rider" x="401" y="1230" width="14" height="14"/>
+<text x="419" y="1242" font-size="11px" fill="#48484a">Rider — Device And Snapshot Combo Box</text>
 <use href="#icon-rider" x="401" y="1254" width="14" height="14"/>
-<text x="419" y="1266" font-size="11px" fill="#48484a">Rider — Device And Snapshot Combo Box</text>
-<use href="#icon-rider" x="401" y="1278" width="14" height="14"/>
-<text x="419" y="1290" font-size="11px" fill="#48484a">Rider — Device Selector</text>
-<line x1="20" y1="1312" x2="906" y2="1312" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1320" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
-<text x="136" y="1320" font-size="12px" fill="#8e8e93">ѵ  ѵ  ­</text>
-<line x1="20" y1="1342" x2="906" y2="1342" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1350" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
-<text x="136" y="1350" font-size="12px" fill="#8e8e93">і  і  †</text>
-<line x1="20" y1="1372" x2="906" y2="1372" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1380" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
-<text x="136" y="1380" font-size="12px" fill="#8e8e93">ѳ  ѳ  œ</text>
-<line x1="20" y1="1402" x2="906" y2="1402" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1410" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
-<text x="136" y="1410" font-size="12px" fill="#8e8e93">′  ′  ≈</text>
+<text x="419" y="1266" font-size="11px" fill="#48484a">Rider — Device Selector</text>
+<line x1="20" y1="1288" x2="906" y2="1288" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1296" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
+<text x="136" y="1296" font-size="12px" fill="#8e8e93">ѵ  ѵ  ­</text>
+<line x1="20" y1="1318" x2="906" y2="1318" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1326" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<text x="136" y="1326" font-size="12px" fill="#8e8e93">і  і  †</text>
+<line x1="20" y1="1348" x2="906" y2="1348" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1356" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
+<text x="136" y="1356" font-size="12px" fill="#8e8e93">ѳ  ѳ  œ</text>
+<line x1="20" y1="1378" x2="906" y2="1378" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1386" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
+<text x="136" y="1386" font-size="12px" fill="#8e8e93">′  ′  ≈</text>
+<use href="#icon-rider" x="401" y="1374" width="14" height="14"/>
+<text x="419" y="1386" font-size="11px" fill="#48484a">Rider — Show</text>
 <use href="#icon-rider" x="401" y="1398" width="14" height="14"/>
-<text x="419" y="1410" font-size="11px" fill="#48484a">Rider — Show</text>
-<use href="#icon-rider" x="401" y="1422" width="14" height="14"/>
-<text x="419" y="1434" font-size="11px" fill="#48484a">Rider — NuGet</text>
-<line x1="20" y1="1456" x2="906" y2="1456" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1464" font-size="13px" font-weight="700" fill="#1d1d1f">[</text>
-<text x="136" y="1464" font-size="12px" fill="#8e8e93">[  [  «</text>
-<use href="#icon-zoom-us" x="246" y="1451" width="16" height="16"/>
-<text x="266" y="1464" font-size="12px" font-weight="500" fill="#007aff">zoom.us — show/hide</text>
-<text x="401" y="1464" font-size="11px" fill="#48484a">zoom.us</text>
-<line x1="20" y1="1486" x2="906" y2="1486" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1494" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
-<text x="136" y="1494" font-size="12px" fill="#8e8e93">]  ]  »</text>
-<line x1="20" y1="1516" x2="906" y2="1516" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1524" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="1524" font-size="12px" fill="#a2845e">⌘⌃⌥⇧left_option</text>
-<line x1="20" y1="1546" x2="906" y2="1546" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1554" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="56" y="1554" font-size="12px" fill="#a2845e">⌥←</text>
-<text x="246" y="1554" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-vivaldi" x="401" y="1542" width="14" height="14"/>
-<text x="419" y="1554" font-size="11px" fill="#48484a">YouTube — jump to chapter to the left</text>
-<line x1="20" y1="1576" x2="906" y2="1576" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1584" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="56" y="1584" font-size="12px" fill="#a2845e">⌥↓</text>
-<text x="246" y="1584" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-vivaldi" x="401" y="1572" width="14" height="14"/>
-<text x="419" y="1584" font-size="11px" fill="#48484a">YouTube — previous chapter in current video</text>
-<line x1="20" y1="1606" x2="906" y2="1606" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1614" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="56" y="1614" font-size="12px" fill="#a2845e">⌥→</text>
-<text x="246" y="1614" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-vivaldi" x="401" y="1602" width="14" height="14"/>
-<text x="419" y="1614" font-size="11px" fill="#48484a">YouTube — jump to chapter to the right</text>
-<line x1="20" y1="1636" x2="906" y2="1636" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1644" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<text x="136" y="1644" font-size="12px" fill="#8e8e93">£  £  ≠</text>
-<use href="#icon-fork" x="401" y="1632" width="14" height="14"/>
-<text x="419" y="1644" font-size="11px" fill="#48484a">Fork — toggle Force Push on Push dialog</text>
-<line x1="20" y1="1666" x2="906" y2="1666" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1674" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<text x="136" y="1674" font-size="12px" fill="#8e8e93">©</text>
-<use href="#icon-vivaldi" x="246" y="1661" width="16" height="16"/>
-<text x="266" y="1674" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
-<text x="401" y="1674" font-size="11px" fill="#48484a">GitHub</text>
-<line x1="20" y1="1696" x2="906" y2="1696" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1704" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<text x="136" y="1704" font-size="12px" fill="#8e8e93">₽  ₽  ½</text>
-<line x1="20" y1="1726" x2="906" y2="1726" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1734" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
-<text x="136" y="1734" font-size="12px" fill="#8e8e93">„  „  ≤</text>
-<line x1="20" y1="1756" x2="906" y2="1756" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1764" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
-<text x="136" y="1764" font-size="12px" fill="#8e8e93">“  “  ϗ</text>
-<line x1="20" y1="1786" x2="906" y2="1786" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1794" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<text x="136" y="1794" font-size="12px" fill="#8e8e93">”  ”  ¬</text>
-<line x1="20" y1="1816" x2="906" y2="1816" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1824" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
-<text x="136" y="1824" font-size="12px" fill="#8e8e93">‘  ‘  ΅</text>
-<line x1="20" y1="1846" x2="906" y2="1846" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1854" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
-<text x="136" y="1854" font-size="12px" fill="#8e8e93">’  ’  '</text>
-<line x1="20" y1="1876" x2="906" y2="1876" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1884" font-size="13px" font-weight="700" fill="#1d1d1f">\</text>
-<text x="136" y="1884" font-size="12px" fill="#8e8e93">¦</text>
-<use href="#icon-visual-studio-code" x="401" y="1872" width="14" height="14"/>
-<text x="419" y="1884" font-size="11px" fill="#48484a">VSCode — Copilot Suggestion</text>
-<use href="#icon-rider" x="401" y="1896" width="14" height="14"/>
-<text x="419" y="1908" font-size="11px" fill="#48484a">Rider — AI Intention</text>
-<line x1="20" y1="1930" x2="906" y2="1930" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1938" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<text x="136" y="1938" font-size="12px" fill="#8e8e93">§</text>
-<use href="#icon-visual-studio-code" x="401" y="1926" width="14" height="14"/>
-<text x="419" y="1938" font-size="11px" fill="#48484a">VSCode — toggle wordwrap</text>
-<use href="#icon-music" x="401" y="1950" width="14" height="14"/>
-<text x="419" y="1962" font-size="11px" fill="#48484a">Music — go to current song (⌘L) HAMMERSPOON CUSTOM</text>
-<use href="#icon-finder" x="401" y="1974" width="14" height="14"/>
-<text x="419" y="1986" font-size="11px" fill="#48484a">Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM</text>
-<use href="#icon-zap" x="401" y="1998" width="14" height="14"/>
-<text x="419" y="2010" font-size="11px" fill="#48484a">Zap — type "</text>
-<line x1="20" y1="2032" x2="906" y2="2032" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2040" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<text x="136" y="2040" font-size="12px" fill="#8e8e93">×  ×</text>
-<use href="#icon-xcode" x="246" y="2027" width="16" height="16"/>
-<text x="266" y="2040" font-size="12px" font-weight="500" fill="#007aff">XCode — show/hide</text>
-<text x="401" y="2040" font-size="11px" fill="#48484a">XCode</text>
-<line x1="20" y1="2062" x2="906" y2="2062" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2070" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<text x="136" y="2070" font-size="12px" fill="#8e8e93">©  ©  ç</text>
-<text x="246" y="2070" font-size="12px" font-weight="500" fill="#007aff">forkgram.chat</text>
-<use href="#icon-forkgram" x="401" y="2058" width="14" height="14"/>
-<text x="419" y="2070" font-size="11px" fill="#48484a">Forkgram — open chat 3172923198</text>
-<use href="#icon-rider" x="401" y="2082" width="14" height="14"/>
-<text x="419" y="2094" font-size="11px" fill="#48484a">Rider — Clone Caret Above</text>
-<line x1="20" y1="2116" x2="906" y2="2116" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2124" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<text x="136" y="2124" font-size="12px" fill="#8e8e93">↓  ↓  ±</text>
-<line x1="20" y1="2146" x2="906" y2="2146" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2154" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<text x="136" y="2154" font-size="12px" fill="#8e8e93">ß  ß</text>
+<text x="419" y="1410" font-size="11px" fill="#48484a">Rider — NuGet</text>
+<line x1="20" y1="1432" x2="906" y2="1432" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1440" font-size="13px" font-weight="700" fill="#1d1d1f">[</text>
+<text x="136" y="1440" font-size="12px" fill="#8e8e93">[  [  «</text>
+<use href="#icon-zoom-us" x="246" y="1427" width="16" height="16"/>
+<text x="266" y="1440" font-size="12px" font-weight="500" fill="#007aff">zoom.us — show/hide</text>
+<text x="401" y="1440" font-size="11px" fill="#48484a">zoom.us</text>
+<line x1="20" y1="1462" x2="906" y2="1462" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1470" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
+<text x="136" y="1470" font-size="12px" fill="#8e8e93">]  ]  »</text>
+<line x1="20" y1="1492" x2="906" y2="1492" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1500" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<text x="56" y="1500" font-size="12px" fill="#a2845e">⌘⌃⌥⇧left_option</text>
+<line x1="20" y1="1522" x2="906" y2="1522" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1530" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
+<text x="56" y="1530" font-size="12px" fill="#a2845e">⌥←</text>
+<text x="246" y="1530" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-vivaldi" x="401" y="1518" width="14" height="14"/>
+<text x="419" y="1530" font-size="11px" fill="#48484a">YouTube — jump to chapter to the left</text>
+<line x1="20" y1="1552" x2="906" y2="1552" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1560" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<text x="56" y="1560" font-size="12px" fill="#a2845e">⌥↓</text>
+<text x="246" y="1560" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-vivaldi" x="401" y="1548" width="14" height="14"/>
+<text x="419" y="1560" font-size="11px" fill="#48484a">YouTube — previous chapter in current video</text>
+<line x1="20" y1="1582" x2="906" y2="1582" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1590" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="56" y="1590" font-size="12px" fill="#a2845e">⌥→</text>
+<text x="246" y="1590" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-vivaldi" x="401" y="1578" width="14" height="14"/>
+<text x="419" y="1590" font-size="11px" fill="#48484a">YouTube — jump to chapter to the right</text>
+<line x1="20" y1="1612" x2="906" y2="1612" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1620" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
+<text x="136" y="1620" font-size="12px" fill="#8e8e93">£  £  ≠</text>
+<use href="#icon-fork" x="401" y="1608" width="14" height="14"/>
+<text x="419" y="1620" font-size="11px" fill="#48484a">Fork — toggle Force Push on Push dialog</text>
+<line x1="20" y1="1642" x2="906" y2="1642" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1650" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<text x="136" y="1650" font-size="12px" fill="#8e8e93">©</text>
+<use href="#icon-vivaldi" x="246" y="1637" width="16" height="16"/>
+<text x="266" y="1650" font-size="12px" font-weight="500" fill="#af52de">GitHub</text>
+<text x="401" y="1650" font-size="11px" fill="#48484a">GitHub</text>
+<line x1="20" y1="1672" x2="906" y2="1672" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1680" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<text x="136" y="1680" font-size="12px" fill="#8e8e93">₽  ₽  ½</text>
+<line x1="20" y1="1702" x2="906" y2="1702" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1710" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
+<text x="136" y="1710" font-size="12px" fill="#8e8e93">„  „  ≤</text>
+<line x1="20" y1="1732" x2="906" y2="1732" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1740" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
+<text x="136" y="1740" font-size="12px" fill="#8e8e93">“  “  ϗ</text>
+<line x1="20" y1="1762" x2="906" y2="1762" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1770" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
+<text x="136" y="1770" font-size="12px" fill="#8e8e93">”  ”  ¬</text>
+<line x1="20" y1="1792" x2="906" y2="1792" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1800" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<text x="136" y="1800" font-size="12px" fill="#8e8e93">‘  ‘  ΅</text>
+<line x1="20" y1="1822" x2="906" y2="1822" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1830" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
+<text x="136" y="1830" font-size="12px" fill="#8e8e93">’  ’  '</text>
+<line x1="20" y1="1852" x2="906" y2="1852" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1860" font-size="13px" font-weight="700" fill="#1d1d1f">\</text>
+<text x="136" y="1860" font-size="12px" fill="#8e8e93">¦</text>
+<use href="#icon-visual-studio-code" x="401" y="1848" width="14" height="14"/>
+<text x="419" y="1860" font-size="11px" fill="#48484a">VSCode — Copilot Suggestion</text>
+<use href="#icon-rider" x="401" y="1872" width="14" height="14"/>
+<text x="419" y="1884" font-size="11px" fill="#48484a">Rider — AI Intention</text>
+<line x1="20" y1="1906" x2="906" y2="1906" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1914" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
+<text x="136" y="1914" font-size="12px" fill="#8e8e93">§</text>
+<use href="#icon-visual-studio-code" x="401" y="1902" width="14" height="14"/>
+<text x="419" y="1914" font-size="11px" fill="#48484a">VSCode — toggle wordwrap</text>
+<use href="#icon-music" x="401" y="1926" width="14" height="14"/>
+<text x="419" y="1938" font-size="11px" fill="#48484a">Music — go to current song (⌘L) HAMMERSPOON CUSTOM</text>
+<use href="#icon-finder" x="401" y="1950" width="14" height="14"/>
+<text x="419" y="1962" font-size="11px" fill="#48484a">Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM</text>
+<use href="#icon-zap" x="401" y="1974" width="14" height="14"/>
+<text x="419" y="1986" font-size="11px" fill="#48484a">Zap — type "</text>
+<line x1="20" y1="2008" x2="906" y2="2008" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2016" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
+<text x="136" y="2016" font-size="12px" fill="#8e8e93">×  ×</text>
+<use href="#icon-xcode" x="246" y="2003" width="16" height="16"/>
+<text x="266" y="2016" font-size="12px" font-weight="500" fill="#007aff">XCode — show/hide</text>
+<text x="401" y="2016" font-size="11px" fill="#48484a">XCode</text>
+<line x1="20" y1="2038" x2="906" y2="2038" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2046" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<text x="136" y="2046" font-size="12px" fill="#8e8e93">©  ©  ç</text>
+<text x="246" y="2046" font-size="12px" font-weight="500" fill="#007aff">forkgram.chat</text>
+<use href="#icon-forkgram" x="401" y="2034" width="14" height="14"/>
+<text x="419" y="2046" font-size="11px" fill="#48484a">Forkgram — open chat 3172923198</text>
+<use href="#icon-rider" x="401" y="2058" width="14" height="14"/>
+<text x="419" y="2070" font-size="11px" fill="#48484a">Rider — Clone Caret Above</text>
+<line x1="20" y1="2092" x2="906" y2="2092" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2100" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<text x="136" y="2100" font-size="12px" fill="#8e8e93">↓  ↓  ±</text>
+<line x1="20" y1="2122" x2="906" y2="2122" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2130" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
+<text x="136" y="2130" font-size="12px" fill="#8e8e93">ß  ß</text>
+<use href="#icon-rider" x="401" y="2118" width="14" height="14"/>
+<text x="419" y="2130" font-size="11px" fill="#48484a">Rider — Build Startup Project</text>
 <use href="#icon-rider" x="401" y="2142" width="14" height="14"/>
-<text x="419" y="2154" font-size="11px" fill="#48484a">Rider — Build Startup Project</text>
-<use href="#icon-rider" x="401" y="2166" width="14" height="14"/>
-<text x="419" y="2178" font-size="11px" fill="#48484a">Rider — Build Project</text>
-<line x1="20" y1="2200" x2="906" y2="2200" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2208" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
-<text x="136" y="2208" font-size="12px" fill="#8e8e93">‘</text>
-<use href="#icon-mail" x="401" y="2196" width="14" height="14"/>
-<text x="419" y="2208" font-size="11px" fill="#48484a">Mail — open a new Mail viewer window</text>
-<line x1="20" y1="2230" x2="906" y2="2230" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2238" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
-<text x="136" y="2238" font-size="12px" fill="#8e8e93">−  −  ’</text>
-<line x1="20" y1="2260" x2="906" y2="2260" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2268" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
-<text x="136" y="2268" font-size="12px" fill="#8e8e93">»  »  »</text>
-<line x1="20" y1="2290" x2="906" y2="2290" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2298" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
-<text x="136" y="2298" font-size="12px" fill="#8e8e93">«  «  «</text>
-<line x1="20" y1="2320" x2="906" y2="2320" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2328" font-size="13px" font-weight="700" fill="#1d1d1f">/</text>
-<text x="136" y="2328" font-size="12px" fill="#8e8e93">…  …  /</text>
-<line x1="20" y1="2350" x2="906" y2="2350" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2358" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
-<text x="56" y="2358" font-size="12px" fill="#a2845e">vk_none</text>
-<use href="#icon-music" x="401" y="2346" width="14" height="14"/>
-<text x="419" y="2358" font-size="11px" fill="#48484a">Music — Start Genius Shuffle</text>
-<line x1="20" y1="2380" x2="906" y2="2380" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2388" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="246" y="2388" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-rider" x="401" y="2376" width="14" height="14"/>
-<text x="419" y="2388" font-size="11px" fill="#48484a">Rider — extend selection</text>
-<line x1="20" y1="2410" x2="906" y2="2410" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2418" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="246" y="2418" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-rider" x="401" y="2406" width="14" height="14"/>
-<text x="419" y="2418" font-size="11px" fill="#48484a">Rider — shrink selection</text>
-<use href="#icon-vivaldi" x="401" y="2430" width="14" height="14"/>
-<text x="419" y="2442" font-size="11px" fill="#48484a">YouTube — previous chapter in current video</text>
+<text x="419" y="2154" font-size="11px" fill="#48484a">Rider — Build Project</text>
+<line x1="20" y1="2176" x2="906" y2="2176" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2184" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
+<text x="136" y="2184" font-size="12px" fill="#8e8e93">‘</text>
+<use href="#icon-mail" x="401" y="2172" width="14" height="14"/>
+<text x="419" y="2184" font-size="11px" fill="#48484a">Mail — open a new Mail viewer window</text>
+<line x1="20" y1="2206" x2="906" y2="2206" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2214" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
+<text x="136" y="2214" font-size="12px" fill="#8e8e93">−  −  ’</text>
+<line x1="20" y1="2236" x2="906" y2="2236" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2244" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
+<text x="136" y="2244" font-size="12px" fill="#8e8e93">»  »  »</text>
+<line x1="20" y1="2266" x2="906" y2="2266" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2274" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
+<text x="136" y="2274" font-size="12px" fill="#8e8e93">«  «  «</text>
+<line x1="20" y1="2296" x2="906" y2="2296" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2304" font-size="13px" font-weight="700" fill="#1d1d1f">/</text>
+<text x="136" y="2304" font-size="12px" fill="#8e8e93">…  …  /</text>
+<line x1="20" y1="2326" x2="906" y2="2326" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2334" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
+<text x="56" y="2334" font-size="12px" fill="#a2845e">vk_none</text>
+<use href="#icon-music" x="401" y="2322" width="14" height="14"/>
+<text x="419" y="2334" font-size="11px" fill="#48484a">Music — Start Genius Shuffle</text>
+<line x1="20" y1="2356" x2="906" y2="2356" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2364" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="246" y="2364" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="401" y="2352" width="14" height="14"/>
+<text x="419" y="2364" font-size="11px" fill="#48484a">Rider — extend selection</text>
+<line x1="20" y1="2386" x2="906" y2="2386" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2394" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="246" y="2394" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="401" y="2382" width="14" height="14"/>
+<text x="419" y="2394" font-size="11px" fill="#48484a">Rider — shrink selection</text>
+<use href="#icon-vivaldi" x="401" y="2406" width="14" height="14"/>
+<text x="419" y="2418" font-size="11px" fill="#48484a">YouTube — previous chapter in current video</text>
+<line x1="20" y1="2440" x2="906" y2="2440" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2448" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<use href="#icon-rider" x="401" y="2436" width="14" height="14"/>
+<text x="419" y="2448" font-size="11px" fill="#48484a">Rider — Move Caret to Next Word</text>
 </svg>

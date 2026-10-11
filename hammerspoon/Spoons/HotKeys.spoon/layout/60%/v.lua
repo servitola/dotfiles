@@ -42,10 +42,10 @@ return {
 --        ⇪⌃⌘v   │    ⌃⌘F16     │              │   │
 --        ⇪⌥⌘v   │    ⌥⌘F16     │              │   │
 --        ⇧⌃⌥v   │              │              │   │     🌐 Vivaldi — focus playing YouTube tab
---               │              │              │ℝ! │ Rider — Paste as Plain Text
-{ chord= "⇧⌃⌥v",                            fn = "browser_youtube_playing", over = "Rider" },
+{ chord= "⇧⌃⌥v",                            fn = "browser_youtube_playing" },
 --        ⇧⌃⌘v   │              │              │   │
 --        ⇧⌥⌘v   │              │              │   │
+--               │              │              │ ℝ │ Rider — Paste as Plain Text
 --        ⌃⌥⌘v   │              │              │   │
 --               ┴              ┴              ┴   ┴
 }

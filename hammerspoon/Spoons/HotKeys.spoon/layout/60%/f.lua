@@ -31,8 +31,6 @@ return {
 --               │              │              │   │          Fork — toggle Force Push on Push dialog
 --         ⌃⌥f   │              │              │   │ → RU
 --               │              │              │ℝ! │ Rider — Introduce Field…
---               │              │              │ℝ! │ Rider — Move Caret to Next Word
---               │              │              │ℝ! │ Rider — Show Filter Popup
 { chord = "⌃⌥f",                            fn = "translate_to_russian", over = "Rider" },
 --         ⌃⌘f   │              │              │ ✓ │              — toggle fullscreen of current app
 --         ⌥⌘f   │              │              │   │         Rider — extract field
@@ -46,6 +44,7 @@ return {
 --        ⇪⌥⌘f   │    ⌥⌘F15     │              │   │
 --        ⇧⌃⌥f   │              │              │   │
 --        ⇧⌃⌘f   │              │              │   │
+--               │              │              │ ℝ │ Rider — Show Filter Popup
 --        ⇧⌥⌘f   │              │              │   │
 --        ⌃⌥⌘f   │              │              │   │
 --               ┴              ┴              ┴   ┴

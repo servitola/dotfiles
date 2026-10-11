@@ -327,4 +327,55 @@
     <keyboard-shortcut first-keystroke="shift ctrl g" />
   </action>
   <action id="Vcs.UpdateProject" />
+  <action id="ChooseDebugConfiguration">
+    <keyboard-shortcut first-keystroke="shift ctrl meta d" />
+  </action>
+  <action id="ChooseRunConfiguration">
+    <keyboard-shortcut first-keystroke="shift ctrl meta r" />
+  </action>
+  <action id="CallHierarchy">
+    <keyboard-shortcut first-keystroke="shift ctrl meta h" />
+  </action>
+  <action id="AutoIndentLines">
+    <keyboard-shortcut first-keystroke="shift ctrl meta i" />
+  </action>
+  <action id="ShowFilterPopup">
+    <keyboard-shortcut first-keystroke="shift ctrl meta f" />
+  </action>
+  <action id="Synchronize">
+    <keyboard-shortcut first-keystroke="shift ctrl meta y" />
+  </action>
+  <action id="EditorPasteSimple">
+    <keyboard-shortcut first-keystroke="shift alt meta v" />
+  </action>
+  <action id="ResizeToolWindowLeft">
+    <keyboard-shortcut first-keystroke="shift ctrl meta LEFT" />
+  </action>
+  <action id="ResizeToolWindowRight">
+    <keyboard-shortcut first-keystroke="shift ctrl meta RIGHT" />
+  </action>
+  <action id="ResizeToolWindowUp">
+    <keyboard-shortcut first-keystroke="shift ctrl meta UP" />
+  </action>
+  <action id="ResizeToolWindowDown">
+    <keyboard-shortcut first-keystroke="shift ctrl meta DOWN" />
+  </action>
+  <action id="MoveElementLeft">
+    <keyboard-shortcut first-keystroke="shift alt meta LEFT" />
+  </action>
+  <action id="MoveElementRight">
+    <keyboard-shortcut first-keystroke="shift alt meta RIGHT" />
+  </action>
+  <action id="VcsShowPrevChangeMarker">
+    <keyboard-shortcut first-keystroke="ctrl alt meta UP" />
+  </action>
+  <action id="VcsShowNextChangeMarker">
+    <keyboard-shortcut first-keystroke="ctrl alt meta DOWN" />
+  </action>
+  <action id="EditorNextWord">
+    <keyboard-shortcut first-keystroke="alt RIGHT" />
+  </action>
+  <action id="ToggleRenderedDocPresentation" />
+  <action id="PopupHector" />
+  <action id="DumpLookupElementWeights" />
 </keymap>

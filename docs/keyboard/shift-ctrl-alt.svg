@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1314" viewBox="0 0 922 1314">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1146" viewBox="0 0 922 1146">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1314" fill="none"/>
+<rect width="922" height="1146" fill="none"/>
 <text x="28" y="30" class="title">Shift + Ctrl + Alt — Shift of Ctrl + Alt layer</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -182,14 +182,11 @@
 <text x="222.0" y="157" text-anchor="end" class="key-label">W</text>
 <title>W: Top 60% — Window: Top 60</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="80.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="80.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="195.0,166 205.0,166 200.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="196.0,166 204.0,166 200.0,162" fill="white"/>
 <text x="90.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Top 60%</text>
 <text x="132.5" y="186" font-size="8px" fill="#1d1d1f">window: top 60</text>
-<use href="#icon-rider" x="90.0" y="193" width="13" height="13"/>
-<text x="106.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="137.5" y="204" font-size="8px" fill="#1d1d1f">Dump Lookup Element Weights to Log</text>
 </g>
 </g>
 <g class="key-group">
@@ -338,14 +335,11 @@
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Reload — Hammerspoon Reload</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="326.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="326.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
 <text x="336.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Reload</text>
 <text x="373.5" y="238" font-size="8px" fill="#1d1d1f">hammerspoon reload</text>
-<use href="#icon-rider" x="336.5" y="245" width="13" height="13"/>
-<text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="384.0" y="256" font-size="8px" fill="#1d1d1f">Configure Current File Analysis…</text>
 </g>
 </g>
 <g class="key-group">
@@ -442,14 +436,11 @@
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: YT Playing — Browser Youtube Playing</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="239.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
 <text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">YT Playing</text>
 <text x="308.5" y="290" font-size="8px" fill="#1d1d1f">browser youtube playing</text>
-<use href="#icon-rider" x="249.5" y="297" width="13" height="13"/>
-<text x="265.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="297.0" y="308" font-size="8px" fill="#1d1d1f">Paste as Plain Text</text>
 </g>
 </g>
 <g class="key-group">
@@ -510,7 +501,7 @@
 <text x="773.0" y="313" text-anchor="end" class="key-label">←</text>
 <title>←: ½ Left — Window: Half Left</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="631.0" y="322" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="631.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="746.0,322 756.0,322 751.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="747.0,322 755.0,322 751.0,318" fill="white"/>
 <text x="641.0" y="342" font-size="9px" font-weight="600" fill="#007aff">½ Left</text>
@@ -518,9 +509,6 @@
 <use href="#icon-rider" x="641.0" y="349" width="13" height="13"/>
 <text x="657.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="688.5" y="360" font-size="8px" fill="#1d1d1f">Move Caret to Previous Word with Selection in Different "CamelHumps" Mode</text>
-<use href="#icon-rider" x="641.0" y="367" width="13" height="13"/>
-<text x="657.0" y="378" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="688.5" y="378" font-size="8px" fill="#1d1d1f">Move Element Left</text>
 </g>
 </g>
 <g class="key-group">
@@ -530,14 +518,11 @@
 <text x="809.0" y="303" text-anchor="middle" class="bind-label" fill="#34c759" font-size="12px">Top 60%</text>
 <title>↑: Top 60% — Window: Top 60</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="296" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="296" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,296 814.0,296 809.0,291" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,296 813.0,296 809.0,292" fill="white"/>
 <text x="699.0" y="316" font-size="9px" font-weight="600" fill="#007aff">Top 60%</text>
 <text x="741.5" y="316" font-size="8px" fill="#1d1d1f">window: top 60</text>
-<use href="#icon-rider" x="699.0" y="323" width="13" height="13"/>
-<text x="715.0" y="334" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="746.5" y="334" font-size="8px" fill="#1d1d1f">Previous Change</text>
 </g>
 </g>
 <g class="key-group">
@@ -547,14 +532,11 @@
 <text x="809.0" y="329" text-anchor="middle" class="bind-label" fill="#34c759" font-size="12px">Bot 40%</text>
 <title>↓: Bot 40% — Window: Bottom 40</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,322 814.0,322 809.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,322 813.0,322 809.0,318" fill="white"/>
 <text x="699.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Bot 40%</text>
 <text x="741.5" y="342" font-size="8px" fill="#1d1d1f">window: bottom 40</text>
-<use href="#icon-rider" x="699.0" y="349" width="13" height="13"/>
-<text x="715.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="746.5" y="360" font-size="8px" fill="#1d1d1f">Next Change</text>
 </g>
 </g>
 <g class="key-group">
@@ -565,7 +547,7 @@
 <text x="889.0" y="313" text-anchor="end" class="key-label">→</text>
 <title>→: ½ Right — Window: Half Right</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="747.0" y="322" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="747.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
 <text x="757.0" y="342" font-size="9px" font-weight="600" fill="#007aff">½ Right</text>
@@ -573,12 +555,9 @@
 <use href="#icon-rider" x="757.0" y="349" width="13" height="13"/>
 <text x="773.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="804.5" y="360" font-size="8px" fill="#1d1d1f">Move Caret to Next Word with Selection in Different "CamelHumps" Mode</text>
-<use href="#icon-rider" x="757.0" y="367" width="13" height="13"/>
-<text x="773.0" y="378" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="804.5" y="378" font-size="8px" fill="#1d1d1f">Move Element Right</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="950" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="782" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#34c759"/>
 <text x="38" y="358" class="legend-text">Window Mgmt</text>
 <circle cx="129.2" cy="354" r="4" fill="#ff9500"/>
@@ -599,99 +578,85 @@
 <text x="20" y="468" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
 <text x="56" y="468" font-size="12px" font-weight="500" fill="#34c759">Top 60%</text>
 <text x="211" y="468" font-size="11px" fill="#48484a">Top 60%</text>
-<use href="#icon-rider" x="211" y="480" width="14" height="14"/>
-<text x="229" y="492" font-size="11px" fill="#48484a">Rider — Dump Lookup Element Weights to Log</text>
-<line x1="20" y1="514" x2="906" y2="514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="522" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="56" y="522" font-size="12px" font-weight="500" fill="#ff9500">display.toggle_mirror</text>
-<text x="211" y="522" font-size="11px" fill="#48484a">display mode: mirror</text>
-<line x1="20" y1="544" x2="906" y2="544" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="552" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
-<use href="#icon-rider" x="211" y="540" width="14" height="14"/>
-<text x="229" y="552" font-size="11px" fill="#48484a">Rider — Restart IDE… (then ⇧⌃⌥])</text>
-<line x1="20" y1="574" x2="906" y2="574" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="582" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="56" y="582" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
-<text x="211" y="582" font-size="11px" fill="#48484a">½ Left</text>
-<line x1="20" y1="604" x2="906" y2="604" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="612" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="56" y="612" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
-<text x="211" y="612" font-size="11px" fill="#48484a">Bot 40%</text>
-<line x1="20" y1="634" x2="906" y2="634" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="642" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="56" y="642" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
-<text x="211" y="642" font-size="11px" fill="#48484a">½ Right</text>
-<line x1="20" y1="664" x2="906" y2="664" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="672" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-vivaldi" x="56" y="659" width="16" height="16"/>
-<text x="76" y="672" font-size="12px" font-weight="500" fill="#af52de">GH Dotfiles</text>
-<use href="#icon-vivaldi" x="211" y="660" width="14" height="14"/>
-<text x="229" y="672" font-size="11px" fill="#48484a">Vivaldi — focus dotfiles GitHub tab</text>
-<line x1="20" y1="694" x2="906" y2="694" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="702" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<use href="#icon-hammerspoon" x="56" y="689" width="16" height="16"/>
-<text x="76" y="702" font-size="12px" font-weight="500" fill="#ff453a">Reload</text>
-<text x="211" y="702" font-size="11px" fill="#48484a">reload Hammerspoon config</text>
-<use href="#icon-rider" x="211" y="714" width="14" height="14"/>
-<text x="229" y="726" font-size="11px" fill="#48484a">Rider — Configure Current File Analysis…</text>
-<line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
-<use href="#icon-services" x="211" y="744" width="14" height="14"/>
-<text x="229" y="756" font-size="11px" fill="#48484a">Services — Shortcuts.app 98E57310</text>
-<line x1="20" y1="778" x2="906" y2="778" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="786" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
-<use href="#icon-services" x="211" y="774" width="14" height="14"/>
-<text x="229" y="786" font-size="11px" fill="#48484a">Services — Shortcuts.app E0609E39</text>
-<line x1="20" y1="808" x2="906" y2="808" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="816" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
-<use href="#icon-rider" x="211" y="804" width="14" height="14"/>
-<text x="229" y="816" font-size="11px" fill="#48484a">Rider — Editor Backward Paragraph With Selection</text>
-<use href="#icon-rider" x="211" y="828" width="14" height="14"/>
-<text x="229" y="840" font-size="11px" fill="#48484a">Rider — Select Backward Paragraph</text>
-<line x1="20" y1="862" x2="906" y2="862" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="870" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
-<use href="#icon-rider" x="211" y="858" width="14" height="14"/>
-<text x="229" y="870" font-size="11px" fill="#48484a">Rider — Editor Forward Paragraph With Selection</text>
-<use href="#icon-rider" x="211" y="882" width="14" height="14"/>
-<text x="229" y="894" font-size="11px" fill="#48484a">Rider — Select Forward Paragraph</text>
-<line x1="20" y1="916" x2="906" y2="916" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="924" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<use href="#icon-vivaldi" x="56" y="911" width="16" height="16"/>
-<text x="76" y="924" font-size="12px" font-weight="500" fill="#af52de">YT Playing</text>
-<use href="#icon-vivaldi" x="211" y="912" width="14" height="14"/>
-<text x="229" y="924" font-size="11px" fill="#48484a">Vivaldi — focus playing YouTube tab</text>
-<use href="#icon-rider" x="211" y="936" width="14" height="14"/>
-<text x="229" y="948" font-size="11px" fill="#48484a">Rider — Paste as Plain Text</text>
-<line x1="20" y1="970" x2="906" y2="970" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="978" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="56" y="978" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
-<text x="211" y="978" font-size="11px" fill="#48484a">½ Left</text>
-<use href="#icon-rider" x="211" y="990" width="14" height="14"/>
-<text x="229" y="1002" font-size="11px" fill="#48484a">Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode</text>
-<use href="#icon-rider" x="211" y="1014" width="14" height="14"/>
-<text x="229" y="1026" font-size="11px" fill="#48484a">Rider — Move Element Left</text>
-<use href="#icon-rider" x="211" y="1038" width="14" height="14"/>
-<text x="229" y="1050" font-size="11px" fill="#48484a">Rider — Editor Previous Word In Different Humps Mode With Selection</text>
-<line x1="20" y1="1072" x2="906" y2="1072" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1080" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="56" y="1080" font-size="12px" font-weight="500" fill="#34c759">Top 60%</text>
-<text x="211" y="1080" font-size="11px" fill="#48484a">Top 60%</text>
-<use href="#icon-rider" x="211" y="1092" width="14" height="14"/>
-<text x="229" y="1104" font-size="11px" fill="#48484a">Rider — Previous Change</text>
-<line x1="20" y1="1126" x2="906" y2="1126" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1134" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="56" y="1134" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
-<text x="211" y="1134" font-size="11px" fill="#48484a">Bot 40%</text>
-<use href="#icon-rider" x="211" y="1146" width="14" height="14"/>
-<text x="229" y="1158" font-size="11px" fill="#48484a">Rider — Next Change</text>
-<line x1="20" y1="1180" x2="906" y2="1180" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1188" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="56" y="1188" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
-<text x="211" y="1188" font-size="11px" fill="#48484a">½ Right</text>
-<use href="#icon-rider" x="211" y="1200" width="14" height="14"/>
-<text x="229" y="1212" font-size="11px" fill="#48484a">Rider — Editor Next Word In Different Humps Mode With Selection</text>
-<use href="#icon-rider" x="211" y="1224" width="14" height="14"/>
-<text x="229" y="1236" font-size="11px" fill="#48484a">Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode</text>
-<use href="#icon-rider" x="211" y="1248" width="14" height="14"/>
-<text x="229" y="1260" font-size="11px" fill="#48484a">Rider — Move Element Right</text>
+<line x1="20" y1="490" x2="906" y2="490" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="498" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
+<text x="56" y="498" font-size="12px" font-weight="500" fill="#ff9500">display.toggle_mirror</text>
+<text x="211" y="498" font-size="11px" fill="#48484a">display mode: mirror</text>
+<line x1="20" y1="520" x2="906" y2="520" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="528" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
+<use href="#icon-rider" x="211" y="516" width="14" height="14"/>
+<text x="229" y="528" font-size="11px" fill="#48484a">Rider — Restart IDE… (then ⇧⌃⌥])</text>
+<line x1="20" y1="550" x2="906" y2="550" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="558" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
+<text x="56" y="558" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
+<text x="211" y="558" font-size="11px" fill="#48484a">½ Left</text>
+<line x1="20" y1="580" x2="906" y2="580" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="588" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<text x="56" y="588" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
+<text x="211" y="588" font-size="11px" fill="#48484a">Bot 40%</text>
+<line x1="20" y1="610" x2="906" y2="610" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="618" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="56" y="618" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
+<text x="211" y="618" font-size="11px" fill="#48484a">½ Right</text>
+<line x1="20" y1="640" x2="906" y2="640" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="648" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<use href="#icon-vivaldi" x="56" y="635" width="16" height="16"/>
+<text x="76" y="648" font-size="12px" font-weight="500" fill="#af52de">GH Dotfiles</text>
+<use href="#icon-vivaldi" x="211" y="636" width="14" height="14"/>
+<text x="229" y="648" font-size="11px" fill="#48484a">Vivaldi — focus dotfiles GitHub tab</text>
+<line x1="20" y1="670" x2="906" y2="670" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="678" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<use href="#icon-hammerspoon" x="56" y="665" width="16" height="16"/>
+<text x="76" y="678" font-size="12px" font-weight="500" fill="#ff453a">Reload</text>
+<text x="211" y="678" font-size="11px" fill="#48484a">reload Hammerspoon config</text>
+<line x1="20" y1="700" x2="906" y2="700" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="708" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
+<use href="#icon-services" x="211" y="696" width="14" height="14"/>
+<text x="229" y="708" font-size="11px" fill="#48484a">Services — Shortcuts.app 98E57310</text>
+<line x1="20" y1="730" x2="906" y2="730" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="738" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
+<use href="#icon-services" x="211" y="726" width="14" height="14"/>
+<text x="229" y="738" font-size="11px" fill="#48484a">Services — Shortcuts.app E0609E39</text>
+<line x1="20" y1="760" x2="906" y2="760" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="768" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<use href="#icon-rider" x="211" y="756" width="14" height="14"/>
+<text x="229" y="768" font-size="11px" fill="#48484a">Rider — Editor Backward Paragraph With Selection</text>
+<use href="#icon-rider" x="211" y="780" width="14" height="14"/>
+<text x="229" y="792" font-size="11px" fill="#48484a">Rider — Select Backward Paragraph</text>
+<line x1="20" y1="814" x2="906" y2="814" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="822" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
+<use href="#icon-rider" x="211" y="810" width="14" height="14"/>
+<text x="229" y="822" font-size="11px" fill="#48484a">Rider — Editor Forward Paragraph With Selection</text>
+<use href="#icon-rider" x="211" y="834" width="14" height="14"/>
+<text x="229" y="846" font-size="11px" fill="#48484a">Rider — Select Forward Paragraph</text>
+<line x1="20" y1="868" x2="906" y2="868" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="876" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<use href="#icon-vivaldi" x="56" y="863" width="16" height="16"/>
+<text x="76" y="876" font-size="12px" font-weight="500" fill="#af52de">YT Playing</text>
+<use href="#icon-vivaldi" x="211" y="864" width="14" height="14"/>
+<text x="229" y="876" font-size="11px" fill="#48484a">Vivaldi — focus playing YouTube tab</text>
+<line x1="20" y1="898" x2="906" y2="898" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="906" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="56" y="906" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
+<text x="211" y="906" font-size="11px" fill="#48484a">½ Left</text>
+<use href="#icon-rider" x="211" y="918" width="14" height="14"/>
+<text x="229" y="930" font-size="11px" fill="#48484a">Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode</text>
+<use href="#icon-rider" x="211" y="942" width="14" height="14"/>
+<text x="229" y="954" font-size="11px" fill="#48484a">Rider — Editor Previous Word In Different Humps Mode With Selection</text>
+<line x1="20" y1="976" x2="906" y2="976" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="984" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="56" y="984" font-size="12px" font-weight="500" fill="#34c759">Top 60%</text>
+<text x="211" y="984" font-size="11px" fill="#48484a">Top 60%</text>
+<line x1="20" y1="1006" x2="906" y2="1006" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1014" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="56" y="1014" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
+<text x="211" y="1014" font-size="11px" fill="#48484a">Bot 40%</text>
+<line x1="20" y1="1036" x2="906" y2="1036" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1044" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="56" y="1044" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
+<text x="211" y="1044" font-size="11px" fill="#48484a">½ Right</text>
+<use href="#icon-rider" x="211" y="1056" width="14" height="14"/>
+<text x="229" y="1068" font-size="11px" fill="#48484a">Rider — Editor Next Word In Different Humps Mode With Selection</text>
+<use href="#icon-rider" x="211" y="1080" width="14" height="14"/>
+<text x="229" y="1092" font-size="11px" fill="#48484a">Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode</text>
 </svg>

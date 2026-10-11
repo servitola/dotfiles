@@ -27,8 +27,7 @@ return {
 --         ⇧⌘h   │              │              │   │        Finder — go to $HOME
 --               │              │              │ ◆ │ Boring Notch — toggleSneakPeek
 --         ⌃⌥h   │              │              │   │ Hammerspoon
---               │              │              │ℝ! │ Rider — Call Hierarchy
-{ chord = "⌃⌥h",                           app = "Hammerspoon", window_default_position = "right", over = "Rider" },
+{ chord = "⌃⌥h",                           app = "Hammerspoon", window_default_position = "right" },
 --         ⌃⌘h   │              │              │   │ Heroes of the Storm
 { chord = "⌃⌘h",                           app = "Heroes of the Storm" },
 --         ⌥⌘h   │              │              │ ✓ │              — hide all other windows
@@ -41,9 +40,9 @@ return {
 --        ⇪⌃⌘h   │    ⌃⌘F20     │              │   │
 --        ⇪⌥⌘h   │    ⌥⌘F20     │              │   │
 --        ⇧⌃⌥h   │              │              │ ✓ │              — reload Hammerspoon config
---               │              │              │ℝ! │ Rider — Configure Current File Analysis…
-{ chord= "⇧⌃⌥h",                            fn = "hammerspoon_reload", over = "Rider" },
+{ chord= "⇧⌃⌥h",                            fn = "hammerspoon_reload" },
 --        ⇧⌃⌘h   │              │              │   │
+--               │              │              │ ℝ │ Rider — Call Hierarchy
 --        ⇧⌥⌘h   │              │              │   │          Fork — quick Stash
 --        ⌃⌥⌘h   │              │              │ ✓ │              — hide current window only
 { chord= "⌃⌥⌘h",                            fn = "window.hide_current" },

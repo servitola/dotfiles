@@ -25,7 +25,6 @@ return {
 --         ⇧⌘↓   │      🔅       │              │   │
 --         ⌃⌥↓   │              │              │   │ Win Reset, or exit native fullscreen
 --               │              │              │ℝ! │ Rider — Next Highlighted Usage
---               │              │              │ℝ! │ Rider — Stretch to Bottom
 { chord = "⌃⌥↓",                            fn = "window.set_all_to_default", over = "Rider" },
 --         ⌃⌘↓   │              │              │   │
 --               │              │              │ ℝ │ Rider — Next Method
@@ -39,11 +38,12 @@ return {
 --        ⇪⌃⌘↓   │              │              │   │
 --        ⇪⌥⌘↓   │              │              │   │
 --        ⇧⌃⌥↓   │              │              │   │ Bot 40%
---               │              │              │ℝ! │ Rider — Next Change
-{ chord= "⇧⌃⌥↓",                            fn = "window.bottom_40", over = "Rider" },
+{ chord= "⇧⌃⌥↓",                            fn = "window.bottom_40" },
 --        ⇧⌃⌘↓   │              │              │   │
+--               │              │              │ ℝ │ Rider — Stretch to Bottom
 --        ⇧⌥⌘↓   │              │              │   │
 --        ⌃⌥⌘↓   │              │              │   │
+--               │              │              │ ℝ │ Rider — Next Change
 --       ⇧⌃⌥⌘↓   │              │              │ ✓ │              — hide all except Zap & Telegram
 { chord= "⇧⌃⌥⌘↓",                           fn = "window.hide_all_except_work" },
 --               ┴              ┴              ┴   ┴

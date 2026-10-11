@@ -33,8 +33,7 @@ return {
 --         ⇧⌥q   │      ⇧⌦      │              │   │         Rider — delete line
 --         ⇧⌘q   │              │              │ ✓ │              — log out from account with closing of all apps
 --         ⌃⌥q   │              │              │   │ Music
---               │              │              │ℝ! │ Rider — Toggle Rendered View
-{ chord = "⌃⌥q",                           app = "@APP_MUSIC", over = "Rider" },
+{ chord = "⌃⌥q",                           app = "@APP_MUSIC" },
 --         ⌃⌘q   │              │              │ ✓ │              — lock screen
 --         ⌥⌘q   │      ⌘⌫      │              │ ✓ │              — delete
 --               │              │              │   │         Rider — delete line

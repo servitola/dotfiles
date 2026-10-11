@@ -25,7 +25,6 @@ return {
 --         ⇧⌘↑   │      🔆       │              │ ✓ │              — increase keyboard light (illumination_increment)
 --         ⌃⌥↑   │              │              │   │ Fullscr, 2nd press native fullscreen
 --               │              │              │ℝ! │ Rider — Previous Highlighted Usage
---               │              │              │ℝ! │ Rider — Stretch to Top
 { chord = "⌃⌥↑",                            fn = "window.fullscreen", over = "Rider" },
 --         ⌃⌘↑   │              │              │   │
 --               │              │              │ ℝ │ Rider — Previous Method
@@ -39,11 +38,12 @@ return {
 --        ⇪⌃⌘↑   │              │              │   │
 --        ⇪⌥⌘↑   │              │              │   │
 --        ⇧⌃⌥↑   │              │              │   │ Top 60%
---               │              │              │ℝ! │ Rider — Previous Change
-{ chord= "⇧⌃⌥↑",                            fn = "window.top_60", over = "Rider" },
+{ chord= "⇧⌃⌥↑",                            fn = "window.top_60" },
 --        ⇧⌃⌘↑   │              │              │   │
+--               │              │              │ ℝ │ Rider — Stretch to Top
 --        ⇧⌥⌘↑   │              │              │   │
 --        ⌃⌥⌘↑   │              │              │   │
+--               │              │              │ ℝ │ Rider — Previous Change
 --       ⇧⌃⌥⌘↑   │              │              │ ✓ │              — focus work apps (hide non-work)
 { chord= "⇧⌃⌥⌘↑",                           fn = "window.focus_work" },
 --               ┴              ┴              ┴   ┴
