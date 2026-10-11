@@ -22,6 +22,8 @@ return {
 --         ⇪⌥b   │     ⌥F19     │              │   │
 --         ⇪⌘b   │     ⌘F19     │              │   │
 --         ⇧⌃b   │              │              │   │ Unix Terminal — backward one letter
+--               │              │              │ ◆ │ Services — New Terminal Tab at Folder (Terminal)
+--               │              │              │ ◆ │ Services — New iTerm2 Tab Here (iTerm2)
 --         ⇧⌥b   │              │    ẞ    ẞ    │   │
 --         ⇧⌘b   │              │              │   │         Rider — go to definition
 --               │              │              │   │        VSCode — select build task to run

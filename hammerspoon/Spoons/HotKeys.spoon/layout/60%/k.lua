@@ -35,6 +35,7 @@ return {
 --               │              │              │   │         Music — seek backward;
 --               │              │              │   │         iTerm — focus pane to the left
 --        ⇧⌃⌥k   │              │              │   │
+--               │              │              │ ◆ │ Services — Shortcuts.app E0609E39
 --        ⇧⌃⌘k   │              │              │   │
 --        ⇧⌥⌘k   │              │              │   │
 --        ⌃⌥⌘k   │              │              │   │

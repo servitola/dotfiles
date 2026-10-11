@@ -21,8 +21,10 @@ return {
 --         ⇪⌥h   │     ⌥F20     │              │   │
 --         ⇪⌘h   │     ⌘F20     │              │   │
 --         ⇧⌃h   │              │              │   │         Rider — hierarchy
+--               │              │              │ ◆ │ Services — Finder/Reveal (Finder)
 --         ⇧⌥h   │              │ ˝    ˝    ≠  │   │ Birman Layout — press double to adjust previous symbol
 --         ⇧⌘h   │              │              │   │        Finder — go to $HOME
+--               │              │              │ ◆ │ Boring Notch — toggleSneakPeek
 --         ⌃⌥h   │              │              │   │ Hammerspoon
 { chord = "⌃⌥h",                           app = "Hammerspoon", window_default_position = "right" },
 --         ⌃⌘h   │              │              │   │ Heroes of the Storm

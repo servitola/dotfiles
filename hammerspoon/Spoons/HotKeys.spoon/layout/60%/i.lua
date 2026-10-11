@@ -21,6 +21,7 @@ return {
 --         ⇧⌃i   │              │              │   │
 --         ⇧⌥i   │              │ І    І    Ν  │   │
 --         ⇧⌘i   │              │              │   │           VSCode — open agent chat
+--               │              │              │ ◆ │ Boring Notch — toggleNotchOpen
 --         ⌃⌥i   │              │              │   │ Shortcuts
 { chord = "⌃⌥i",                            fn = "info.show_shortcuts" },
 --         ⌃⌘i   │              │              │   │           VSCode — open chat

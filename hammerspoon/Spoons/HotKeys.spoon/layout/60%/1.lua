@@ -4,7 +4,7 @@ return {
 --    ╰—————╯
 --
 --
---———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬————————————— app — function ————————————————————————————————————
+--———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           1   │              │      1       │   │          YouTube — Navigate to 10% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪1   │      F1      │              │   │            Rider — quick documentation
@@ -30,6 +30,7 @@ return {
 --         ⇪⌘1   │     ⌘F1      │              │   │           VSCode — show errors/warnings
 --         ⇧⌃1   │              │              │   │            Rider — toggle bookmark 1
 --         ⇧⌥1   │              │ ¡    ¡    έ  │   │
+--               │              │              │ ◆ │ ChatGPT — toggleAttachedLauncher
 --         ⇧⌘1   │              │              │   │ VS Dotfiles
 { chord = "⇧⌘1",                            fn = "vscode.dotfiles" },
 --         ⌃⌥1   │              │              │   │ Audio Int

@@ -17,6 +17,7 @@ return {
 --          ⌘p   │              │              │ ✓ │              — print
 --               │              │              │   │         Music — play
 --               │              │              │   │          Fork — Show Command Palette
+--               │              │              │ ◆ │ Music — Play
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧p   │              │              │   │
 --         ⇪⌃p   │              │              │   │
@@ -27,6 +28,7 @@ return {
 --         ⇧⌥p   │              │    ″    ″    │   │
 --         ⇧⌘p   │              │              │   │        VSCode — open command palette
 --               │              │              │   │          Fork — open Push dialog
+--               │              │              │ ◆ │ Music — Previous
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
 --         ⌥⌘p   │              │              │   │       Vivaldi — print using system dialog

@@ -15,6 +15,7 @@ return {
 --               │              │              │   │        VSCode — find with selection
 --               │              │              │   │      Telegram — toggle camera
 --               │              │              │   │  Google Meets — toggle video
+--               │              │              │ ◆ │ VoiceInk — toggleEnhancement
 --          ⇥e   │      ⌘]      │              │   │         Rider — navigate forward
 --               │              │              │   │         Music — navigate forward
 --               │              │              │   │       Browser — navigate forward
@@ -34,6 +35,7 @@ return {
 --         ⌃⌥e   │      ⌘l      │              │ ✓ │              — delete letter to the right
 --         ⌃⌘e   │              │              │   │         Rider — show list of tabs of current panel
 --         ⌥⌘e   │              │              │   │         Music — show equalizer
+--               │              │              │ ◆ │ Finder — Enclosing Folder in New Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃e   │     ▶/⏸      │              │ ✓ │              — play/pause current music/video
 --        ⇪⇧⌥e   │    ⇧⌥PgDn    │              │   │

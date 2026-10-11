@@ -41,6 +41,7 @@ return {
 --        ⌃⌥ad   │     num8     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
 --         ⌥⌘d   │              │              │ ✓ │              — show/hide Dock
+--               │              │              │ ⚙ │ — system 52 dock.toggle_hiding
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃d   │      ⏭       │              │ ✓ │              — go to next track
 --        ⇪⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right

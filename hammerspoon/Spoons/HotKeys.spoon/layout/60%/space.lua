@@ -12,6 +12,7 @@ return {
 --          ⇪␣   │     ▶/⏸      │              │   │
 --          ⇧␣   │              │              │   │
 --          ⌃␣   │              │              │ ✓ │              — change language layout
+--               │              │              │ ⚙ │ — system 60 input_source.previous
 --          ⌥␣   │              │              │   │         Music — Start Genius Shuffle
 --          ⌘␣   │              │              │   │       Raycast — open Raycast
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
@@ -24,6 +25,7 @@ return {
 --         ⇧⌥␣   │              │              │   │
 --         ⇧⌘␣   │              │              │   │
 --         ⌃⌥␣   │              │              │ ✓ │
+--               │              │              │ ⚙ │ — system 61 input_source.next
 --         ⌃⌘␣   │              │              │ ✓ │              — emojis
 --         ⌥⌘␣   │              │              │ ✓ │              — open Finder and focus Search this Mac
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

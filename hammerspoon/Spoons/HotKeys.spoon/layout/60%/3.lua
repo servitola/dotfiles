@@ -28,7 +28,8 @@ return {
 --         ⇪⌘3   │     ⌘F3      │              │   │
 --         ⇧⌃3   │              │              │   │            Rider — toggle bookmark 3
 --         ⇧⌥3   │              │ ¹⁄₃  ¹⁄₃  ή  │   │
---         ⇧⌘3   │              │              │   │            Shotr — save screenshot of window
+--         ⇧⌘3   │              │              │   │
+--               │              │              │ ◆ │ Shottr — window
 --         ⌃⌥3   │              │              │   │ Marshall
 { chord = "⌃⌥3",                            fn = "audio.connect_marshall" },
 --         ⌃⌘3   │              │              │   │

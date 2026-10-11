@@ -7,7 +7,8 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           j   │              │ j    о    ξ  │   │       YouTube — 10sec back
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪j   │              │              │   │       Day One — open journal entry
+--          ⇪j   │              │              │   │
+--               │              │              │ ◆ │ Day One — DOMenuEntryGlobalShortcut
 --          ⇧j   │              │ J    О    Ξ  │   │
 --          ⌃j   │              │              │   │
 --          ⌥j   │              │      „       │   │
@@ -32,6 +33,7 @@ return {
 --        ⇪⌃⌘j   │              │              │   │
 --        ⇪⌥⌘j   │              │              │   │
 --        ⇧⌃⌥j   │              │              │   │
+--               │              │              │ ◆ │ Services — Shortcuts.app 98E57310
 --        ⇧⌃⌘j   │              │              │   │
 --        ⇧⌥⌘j   │              │              │   │
 --        ⌃⌥⌘j   │              │              │   │

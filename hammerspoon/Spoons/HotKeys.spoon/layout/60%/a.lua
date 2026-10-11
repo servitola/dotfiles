@@ -39,6 +39,8 @@ return {
 --         ⌃⌘a   │              │              │   │         Rider — show all affected files in source control
 --               │              │              │   │          Mail — archive message
 --         ⌥⌘a   │              │              │   │
+--               │              │              │ ◆ │ Music — All
+--               │              │              │ ◆ │ Music — Repeat All
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃a   │      ⏮       │              │ ✓ │              — previous track
 --        ⇪⇧⌥a   │     ⇧⌥←      │              │ ✓ │              — select word to the left

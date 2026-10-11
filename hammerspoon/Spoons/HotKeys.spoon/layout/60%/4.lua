@@ -26,7 +26,8 @@ return {
 --         ⇪⌘4   │     ⌘F4      │              │   │
 --         ⇧⌃4   │              │              │   │
 --         ⇧⌥4   │              │ ¹⁄₄  ¹⁄₄  ό  │   │
---         ⇧⌘4   │              │              │   │            Shotr — start getting screenshot
+--         ⇧⌘4   │              │              │   │
+--               │              │              │ ◆ │ Shottr — area
 --         ⌃⌥4   │              │              │   │ Audio Ext
 { chord = "⌃⌥4",                            fn = "audio.external" },
 --         ⌃⌘4   │              │              │   │
@@ -40,6 +41,7 @@ return {
 --        ⇪⌥⌘4   │     ⌥⌘F4     │              │   │
 --        ⇧⌃⌥4   │              │              │   │
 --        ⇧⌃⌘4   │              │              │   │
+--               │              │              │ ◆ │ Shottr — scrolling
 --        ⇧⌥⌘4   │              │              │   │
 --        ⌃⌥⌘4   │              │              │   │
 --               ┴              ┴              ┴   ┴

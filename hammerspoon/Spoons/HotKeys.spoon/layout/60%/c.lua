@@ -29,7 +29,8 @@ return {
 --         ⇧⌃c   │              │              │   │ Unix Terminal — used sometimes
 --         ⇧⌥c   │     ⇧⌘→      │              │ ✓ │              — select line till the end
 --         ⇧⌘c   │              │              │   │        Finder — go to Computer
---         ⌃⌥c   │              │              │   │       Itsycal — Calendar (custom in app)
+--         ⌃⌥c   │              │              │   │
+--               │              │              │ ◆ │ Itsycal — GlobalShortcut
 --         ⌃⌘c   │              │              │   │         Rider — scroll to Bottom
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
 --               │              │              │   │        VSCode — introduce constant

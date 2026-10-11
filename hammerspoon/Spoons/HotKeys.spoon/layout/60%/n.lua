@@ -26,6 +26,7 @@ return {
 --         ⇧⌘n   │              │              │   │         Music — create a playlist from selection
 --               │              │              │   │       Browser — open new Private Window
 --               │              │              │   │          Mail — get new emails
+--               │              │              │ ◆ │ Music — Next
 --         ⌃⌥n   │              │              │   │
 --         ⌃⌘n   │              │              │   │
 --         ⌥⌘n   │              │              │   │         Rider — inline

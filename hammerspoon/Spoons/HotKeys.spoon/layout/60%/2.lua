@@ -33,7 +33,8 @@ return {
 --         ⇧⌃2   │              │              │   │            Rider — toggle bookmark 2
 --         ⇧⌥2   │              │ ¹⁄₂  ¹⁄₂  ί  │   │ VoiceInk
 { chord = "⇧⌥2",                           app = "VoiceInk" },
---         ⇧⌘2   │              │              │   │            Shotr — OCR from screen
+--         ⇧⌘2   │              │              │   │
+--               │              │              │ ◆ │ Shottr — ocr
 --         ⌃⌥2   │              │              │   │ Audio BT
 { chord = "⌃⌥2",                            fn = "audio.bt" },
 --         ⌃⌘2   │              │              │   │
