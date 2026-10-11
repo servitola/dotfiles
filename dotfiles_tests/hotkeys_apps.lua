@@ -62,7 +62,7 @@ local function nextCase()
         -- F13–F19 match only with the fn flag a real keyboard sets, F20 only without it (measured).
         if key:match("^F1%d$") then table.insert(mods, "fn") end
         hs.eventtap.keyStroke(mods, key, 0)
-        local waited, poll = 0, nil
+        local waited, pressedAgain, poll = 0, false, nil
         poll = hs.timer.doEvery(0.5, function()
             local front = hs.application.frontmostApplication()
             -- System alerts (a new login item, an app's first-launch request) take the
@@ -76,6 +76,12 @@ local function nextCase()
             -- a menu-bar app (VoiceInk) runs without ever coming to the front
             if (front and front:bundleID() == case.bundle) or (app and app:kind() ~= 1) then
                 report("ok   " .. case.chord .. " " .. case.app)
+            elseif waited >= 10 and not pressedAgain and not app then
+                -- the first press can land while another window takes the front
+                pressedAgain = true
+                hs.application.launchOrFocusByBundleID(neutral)
+                hs.timer.doAfter(1, function() hs.eventtap.keyStroke(mods, key, 0) end)
+                return
             elseif waited < 20 then
                 return
             else
