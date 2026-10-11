@@ -36,6 +36,7 @@ DIR_PROJECTS     = { type = "dir", about = "root of every repository" }
 DIR_DOTFILES     = { type = "dir", about = "this repository" }
 DIR_WORK         = { type = "dir", private = true, about = "employer repositories" }
 DIR_WORK_MAIN    = { type = "dir", private = true, about = "the employer repository worked in daily" }
+DIR_WORK_VPN     = { type = "dir", private = true, about = "the employer VPN container and the scripts that go through it" }
 DIR_SERHO        = { type = "dir", unread = true, about = "the Telegram bot" }
 DIR_SERHO_TOPICS = { type = "dir", about = "per-topic folders of the bot" }
 DIR_SERHO_USERS  = { type = "dir", unread = true, about = "per-user folders of the bot" }

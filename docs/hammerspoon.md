@@ -127,7 +127,7 @@ router.browsers = { main = browsers.main.bundle, dev = Chrome, work = Firefox }
 router.default = "main"
 router.rules = {
     { router.localNetwork,                       "dev" },   -- localhost and private ranges
-    { { "workname", "workproject", "xd%.adobe%.com" }, "work" },
+    { work_patterns,                             "work" },  -- WORK_LINK_PATTERNS plus xd.adobe.com
 }
 ```
 

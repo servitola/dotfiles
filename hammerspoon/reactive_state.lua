@@ -5,7 +5,7 @@
 local log = hs.logger.new('ReactiveState', 'info')
 
 -- Create the observable state object
--- Any module can read/write: state.currentProject = "workname"
+-- Any module can read/write: state.currentProject = "dotfiles"
 -- Any module can watch: hs.watchable.watch("hammerspoon", "currentProject", callback)
 state = hs.watchable.new("hammerspoon", true)
 

@@ -21,7 +21,7 @@ HotKeys is two-phase: `hs.loadSpoon("HotKeys")` only loads chords; `spoon.HotKey
 ## Auto-Switching Features
 - **Layout per app** (AutoKeyboardLayout.spoon, configured in `init.lua`): every app → `LAYOUT_PRIMARY`; Telegram clients (the Spoon's built-in `secondaryApps` list) → `LAYOUT_SECONDARY`
 - **Karabiner profiles** (`game_mode.lua`): games use the "Empty" profile (disables shortcuts), others "Default"; its `bundles` list is also what BirmanLayer is told to stay out of
-- **URL routing**: work domains (workname/workproject/xd.adobe) → Firefox, localhost and
+- **URL routing**: work domains (`WORK_LINK_PATTERNS` in `constants.env`, plus xd.adobe.com) → Firefox, localhost and
   private ranges → Chrome, everything else → the browser named by `APP_BROWSER`
 
 ## Application Watcher Pattern
