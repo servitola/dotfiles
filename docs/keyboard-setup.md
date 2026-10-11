@@ -18,6 +18,11 @@ must become another key is Karabiner's; a result that needs state or knowledge
 | a macOS / Shottr / Maccy / menu shortcut | `macos_shortcuts/shortcuts.toml` | `python3 macos_shortcuts/shortcuts.py apply` |
 | a character on the right Option layer | `layer.overrides` in `hammerspoon/init.lua` (shape: `hammerspoon/Spoons/BirmanLayer.spoon/docs/configuration.md`) | `hs.reload()`; `python3 docs/keyboard/generate.py` |
 
+One chord, all four sources at once: `python3 docs/keyboard/tools/where.py ⇪g` (or `⌘F16`,
+`⇧⌘4`, `num8`; `--json`) prints what Karabiner does with the press and which rule, what
+Hammerspoon binds and where, which system / app / menu shortcut sits on the same chord, and
+what the key types in en / ru / el.
+
 The rule to remember: eight Hyper launcher letters are renamed to F-keys by
 keyboard column — `z=F13 · r f v = F14 F15 F16 · t g b = F17 F18 F19 · h=F20`,
 left modifiers ride along (`⇪⌘v` = `⌘F16`). `python3 docs/keyboard/tools/bridge.py`
@@ -292,6 +297,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 | `python3 docs/keyboard/tools/normalize.py --insert-missing` | Auto-fix column geometry and insert missing chord rows into the ASCII comment based on the actual Lua entries. |
 | `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view). |
 | `python3 docs/keyboard/tools/gen_layers.py` | Write `karabiner/rules/07`–`17` from `karabiner/layers.toml` (tables + `[slots]`) + `layers.raw/` (`karabiner/build.sh` runs it). `--check` exits 1 with a diff on drift (lint `G1`, pre-commit). |
+| `python3 docs/keyboard/tools/where.py <chord> [--json]` | One chord across every source: the Karabiner manipulators on the press (rule file, sidedness, conditions), the layout entry that binds it (file:line, resolved role), the `shortcuts.toml` rows on the same chord as macOS receives it, and the key's en / ru / el characters per layer. Accepts the pressed spelling (`⇪g`) or the emitted one (`F18`, `⌘F16`, `num8`). |
 | `python3 docs/keyboard/tools/gen_bundle_ids.py` | Regenerate `HotKeys.spoon/app_bundle_ids.lua` — the app-name → bundle-ID map used for fast exact `hs.application.get()` lookups (names in layout files stay the source of truth; unresolved names fall back to fuzzy `find`). Re-run after adding a new `app = "..."` chord. |
 | `python3 docs/keyboard/tools/dump_apple_layouts.py` | Dump Apple's ABC / Russian / Russian – PC / Greek base and Shift layers (`UCKeyTranslate`) into `docs/keyboard/apple-layouts/`, the plain and Shift characters `parse_birman.py` labels keys with. |
 | `python3 macos_shortcuts/shortcuts.py` | `capture` / `check` / `apply` for `macos_shortcuts/shortcuts.toml`, `taps` for event taps — see *Machine shortcuts* above. |
