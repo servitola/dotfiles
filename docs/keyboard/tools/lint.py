@@ -578,7 +578,7 @@ def check_rider_shortcuts(state, findings, effective, names):
         if rider.APP_LABEL in a["over"]:
             a["over_used"].add(rider.APP_LABEL)
             continue
-        labels = ", ".join(rider.label(x, names) for x in actions)
+        labels = ", ".join(f"{rider.label(x, names)} [{x}]" for x in actions)
         findings.add(ERROR, state["path"], a["line"], "S5",
                      f"`{a['chord']}` → {a['target']} is also Rider's {labels}; Hammerspoon takes it inside Rider",
                      f'add `over = "{rider.APP_LABEL}"` to the entry if that is intended, '

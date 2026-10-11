@@ -102,7 +102,8 @@ def action_names():
             text = z.read(member).decode("latin-1")
         for m in re.finditer(r"^action\.(.+?)\.text=(.*)$", text, re.M):
             value = codecs.decode(m.group(2).strip(), "unicode_escape")
-            names[m.group(1)] = re.sub(r"_(?=\w)", "", value).replace("...", "…").rstrip("…").strip()
+            # The ellipsis stays: it is what tells `Debug…` (choose a configuration) from `Debug`.
+            names[m.group(1)] = re.sub(r"_(?=\w)", "", value).replace("...", "…").strip()
     return names
 
 
