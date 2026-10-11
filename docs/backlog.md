@@ -48,7 +48,7 @@ Deferred from the step-1 final review (none blocking):
 - `test_bind.lua` has no fixture for the `app` branch.
 - Lint A1 regexes: double quotes only, `list_re` hardcodes `register(name`. Both fail
   loud, never silently pass.
-- Nine registered actions have no chord (`press_return`, `zap.launch_default`,
+- Eight registered actions have no chord (`press_return`,
   `set_secondary_layout`, `set_primary_layout`, `show_youtrack`,
   `show_youtrack_tasks`, `translate_to_greek`, `audio.marshall`, `app_usage_stats`).
   An INFO rule A2 would surface them.

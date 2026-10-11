@@ -30,47 +30,6 @@ local function focusAppWindow(appNameOrId, titlePattern, launchPath, appDisplayN
     _launchTask:start()
 end
 
-local zapLaunchWatcher, zapTimer1, zapTimer2  -- kept alive against GC
-
-local function zapLaunchDefault()
-    local zap = hs.application.get("dev.zap.Zap")
-    if zap then
-        if hs.application.frontmostApplication() == zap then
-            zap:hide()
-        else
-            spoon.HotKeys.unminimizeIfNeeded(zap)
-            zap:activate()
-        end
-        return
-    end
-    if zapLaunchWatcher then zapLaunchWatcher:stop() end
-    zapLaunchWatcher = hs.application.watcher.new(function(name, event)
-        if name ~= "Zap" or event ~= hs.application.watcher.launched then return end
-        zapLaunchWatcher:stop()
-        zapLaunchWatcher = nil
-        zapTimer1 = hs.timer.doAfter(0.3, function()
-            zapTimer1 = nil
-            local w = hs.application.get("dev.zap.Zap")
-            if not w then return end
-            local windows = w:allWindows()
-            local savedFrame = windows[1] and windows[1]:frame()
-            for _, win in ipairs(windows) do win:close() end
-            w:hide()
-            hs.urlevent.openURL("zap://launch/Default")
-            zapTimer2 = hs.timer.doAfter(0.3, function()
-                zapTimer2 = nil
-                local w2 = hs.application.get("dev.zap.Zap")
-                if not w2 then return end
-                local win = w2:mainWindow()
-                if win and savedFrame then win:setFrame(savedFrame) end
-                w2:activate()
-            end)
-        end)
-    end)
-    zapLaunchWatcher:start()
-    hs.application.open("dev.zap.Zap")
-end
-
 local function androidShowAll()
     local matching = {}
     for _, window in ipairs(hs.window.allWindows()) do
@@ -103,6 +62,5 @@ return function(register)
     register("forkgram.chat", function()
         hs.urlevent.openURLWithBundle("tg://privatepost?channel=3172923198", "com.tdesktop.Telegram")
     end)
-    register("zap.launch_default", zapLaunchDefault)
     register("android.show_all", androidShowAll)
 end
