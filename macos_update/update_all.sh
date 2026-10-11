@@ -189,6 +189,9 @@ python3 ~/projects/dotfiles/docs/keyboard/generate.py 2>&1 | tail -3
 print_task "Capturing this Mac's shortcuts into macos_shortcuts/shortcuts.toml"
 python3 ~/projects/dotfiles/macos_shortcuts/shortcuts.py capture --write
 
+print_task "Projecting the captured shortcuts into the HotKeys key tables (⚙ / ◆ lines)"
+python3 ~/projects/dotfiles/docs/keyboard/tools/normalize.py --project
+
 print_task "Setting macOS appearance"
 m appearance --highlightcolor grape
 
