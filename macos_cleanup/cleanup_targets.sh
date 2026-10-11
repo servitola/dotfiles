@@ -67,7 +67,6 @@ try_clean ~/.npm/_logs "NPM Logs"
 try_clean_aged ~/.npm/_npx "NPX Cache"
 try_clean_aged ~/.cache/pre-commit "pre-commit Cache"
 try_clean ~/.cache/puppeteer "Puppeteer Cache"
-try_clean_aged ~/projects/workprojectDev/workproject/Mobile.Touch.workproject/bin "Work bins"
 try_clean_aged_files /private/var/folders/2t/mn_kwhnx7nz18bnw0mwh3qmm0000gn/T/xdb/logs "XDB Logs"
 
 # --- Applications ---
