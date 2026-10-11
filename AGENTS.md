@@ -22,9 +22,8 @@ matters and what's just an experiment. Each directory also has its own
 - **Reference**: See `README.md` for detailed setup
 
 ## AI Coding Tools — Shared Configuration
-Claude Code (`claude-code/`) is the single source of truth for `commands/`, `agents/`, `skills/`; Qwen Code, and Codex consume them via symlinks the installer creates (`install/08-ai-tools-links.sh`). Codex keeps its own global config in `codex/`.
-When adding new shared commands, agents, or skills — add them to `claude-code/` only.
-Detached (opt-in, per-folder) skills and MCP servers live in `claude-code/detached_skills/` and `claude-code/detached_mcp/` — attach with `skill-attach <name> [dir]` / `mcp-attach <name> [dir]`.
+Skills, detached skills, commands and agents live in `$DIR_SKILLS` (`~/projects/skills`); `install/08-ai-tools-links.sh` links them into `claude-code/`, and Codex and OpenCode reach them through the same links. Add or edit them there, not here. Codex keeps its own global config in `codex/`.
+Detached (opt-in, per-folder) skills are in `claude-code/detached_skills/` (a link too), detached MCP servers in `claude-code/detached_mcp/` (tracked here) — attach with `skill-attach <name> [dir]` / `mcp-attach <name> [dir]`.
 
 Repository is private and self-hosted on Gitea (`origin`; the server itself — i9, access, backups — is documented in `~/projects/services/gitea`); remote `github` is a fork marker, push disabled (`git remote set-url --push github no_push`) — do not publish this repository, it contains personal data
 

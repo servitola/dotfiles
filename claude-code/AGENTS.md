@@ -1,6 +1,6 @@
-# claude-code — the Claude Code harness (hooks, settings, agents, scripts); skills and commands live in $DIR_SKILLS
+# claude-code — the Claude Code harness (hooks, settings, scripts); skills, commands and agents live in $DIR_SKILLS
 
-`~/.claude` is a symlink to this directory. `skills/`, `detached_skills/` and `commands/` inside it are symlinks into `$DIR_SKILLS` (`~/projects/skills`, private; moved out on 2026-10-10), created by `install/08-ai-tools-links.sh` and git-ignored — so Claude Code, Codex (`~/.agents/skills`), OpenCode and the friends' bots keep their usual paths. To run this harness with your own skills: set `DIR_SKILLS` in `constants.env`, put `skills/`, `detached_skills/`, `commands/` there, run `zsh install/08-ai-tools-links.sh`. `agents/` stays here: it is harness, not content.
+`~/.claude` is a symlink to this directory. `skills/`, `detached_skills/`, `commands/` and `agents/` inside it are symlinks into `$DIR_SKILLS` (`~/projects/skills`, private; moved out on 2026-10-10, agents a day later), created by `install/08-ai-tools-links.sh` and git-ignored — so Claude Code, Codex (`~/.agents/skills`), OpenCode and the friends' bots keep their usual paths. To run this harness with your own skills: set `DIR_SKILLS` in `constants.env`, put `skills/`, `detached_skills/`, `commands/` there, run `zsh install/08-ai-tools-links.sh`. `agents/` stays here: it is harness, not content.
 
 ## Symlink targets (created by Makefile)
 - `~/.codex/AGENTS.md` → repo-root `AGENTS.md`

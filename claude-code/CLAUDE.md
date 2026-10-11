@@ -93,7 +93,7 @@ import and does not expand for you — you receive it as literal text. Read
 
 # Shared AI Coding Tools
 
-This `claude-code/` directory is the single source of truth for commands, agents, and skills.
-When adding or editing commands/agents/skills — do it here. All tools pick up changes automatically.
+Commands, agents and skills live in `$DIR_SKILLS` (`~/projects/skills`) and are linked into `~/.claude/`.
+When adding or editing them — do it there. All tools pick up changes automatically.
 
 @RTK.md

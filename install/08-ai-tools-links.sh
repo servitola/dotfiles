@@ -12,7 +12,8 @@ link_all \
 [[ ! -d $DIR_SKILLS ]] || link_all \
     "$DIR_SKILLS/skills"               "$CLAUDE_CODE/skills" \
     "$DIR_SKILLS/detached_skills"      "$CLAUDE_CODE/detached_skills" \
-    "$DIR_SKILLS/commands"             "$CLAUDE_CODE/commands"
+    "$DIR_SKILLS/commands"             "$CLAUDE_CODE/commands" \
+    "$DIR_SKILLS/agents"               "$CLAUDE_CODE/agents"
 
 section "Codex"
 link_all \

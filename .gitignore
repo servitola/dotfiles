@@ -19,6 +19,7 @@ cron/logs/
 claude-code/skills
 claude-code/detached_skills
 claude-code/commands
+claude-code/agents
 # written by the Finder action "New Zap Tab Here"
 zap/launch_configurations/
 # compiled keystroke marker — rebuilt by karabiner/build.sh
