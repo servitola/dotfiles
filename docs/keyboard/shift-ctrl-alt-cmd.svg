@@ -267,11 +267,14 @@
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Wallpaper — Wallpaper Refresh</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="326.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="326.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
 <text x="336.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Wallpaper</text>
 <text x="390.0" y="238" font-size="8px" fill="#1d1d1f">wallpaper refresh</text>
+<use href="#icon-hammerspoon" x="336.5" y="245" width="13" height="13"/>
+<text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="417.0" y="256" font-size="8px" fill="#1d1d1f">refresh wallpaper</text>
 </g>
 </g>
 <g class="key-group">
@@ -397,11 +400,14 @@
 <text x="773.0" y="313" text-anchor="end" class="key-label">←</text>
 <title>←: Focus Prsnl — Window: Focus Personal</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="631.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="631.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="746.0,322 756.0,322 751.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="747.0,322 755.0,322 751.0,318" fill="white"/>
 <text x="641.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Focus Prsnl</text>
 <text x="705.5" y="342" font-size="8px" fill="#1d1d1f">window: focus personal</text>
+<use href="#icon-hammerspoon" x="641.0" y="349" width="13" height="13"/>
+<text x="657.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="721.5" y="360" font-size="8px" fill="#1d1d1f">focus personal apps (hide non-personal)</text>
 </g>
 </g>
 <g class="key-group">
@@ -411,11 +417,14 @@
 <text x="809.0" y="303" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Focus Work</text>
 <title>↑: Focus Work — Window: Focus Work</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="296" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="296" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,296 814.0,296 809.0,291" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,296 813.0,296 809.0,292" fill="white"/>
 <text x="699.0" y="316" font-size="9px" font-weight="600" fill="#007aff">Focus Work</text>
 <text x="758.0" y="316" font-size="8px" fill="#1d1d1f">window: focus work</text>
+<use href="#icon-hammerspoon" x="699.0" y="323" width="13" height="13"/>
+<text x="715.0" y="334" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="779.5" y="334" font-size="8px" fill="#1d1d1f">focus work apps (hide non-work)</text>
 </g>
 </g>
 <g class="key-group">
@@ -425,11 +434,14 @@
 <text x="809.0" y="329" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">Focus Work</text>
 <title>↓: Focus Work — Window: Hide All Except Work</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,322 814.0,322 809.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,322 813.0,322 809.0,318" fill="white"/>
 <text x="699.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Focus Work</text>
 <text x="758.0" y="342" font-size="8px" fill="#1d1d1f">window: hide all except work</text>
+<use href="#icon-hammerspoon" x="699.0" y="349" width="13" height="13"/>
+<text x="715.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="779.5" y="360" font-size="8px" fill="#1d1d1f">hide all except Zap &amp; Telegram</text>
 </g>
 </g>
 <g class="key-group">
@@ -440,11 +452,14 @@
 <text x="889.0" y="313" text-anchor="end" class="key-label">→</text>
 <title>→: Focus Comms — Window: Focus Comms</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="747.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="747.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
 <text x="757.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Focus Comms</text>
 <text x="821.5" y="342" font-size="8px" fill="#1d1d1f">window: focus comms</text>
+<use href="#icon-hammerspoon" x="757.0" y="349" width="13" height="13"/>
+<text x="773.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="837.5" y="360" font-size="8px" fill="#1d1d1f">focus comms apps (hide non-comms)</text>
 </g>
 </g>
 <rect x="4" y="340" width="914" height="338" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
@@ -475,21 +490,26 @@
 <text x="20" y="528" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <use href="#icon-hammerspoon" x="136" y="515" width="16" height="16"/>
 <text x="156" y="528" font-size="12px" font-weight="500" fill="#ff453a">Wallpaper</text>
-<text x="291" y="528" font-size="11px" fill="#48484a">refresh wallpaper</text>
+<use href="#icon-hammerspoon" x="291" y="516" width="14" height="14"/>
+<text x="309" y="528" font-size="11px" fill="#48484a">Hammerspoon — refresh wallpaper</text>
 <line x1="20" y1="550" x2="906" y2="550" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="558" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
 <text x="136" y="558" font-size="12px" font-weight="500" fill="#34c759">Focus Prsnl</text>
-<text x="291" y="558" font-size="11px" fill="#48484a">focus personal apps (hide non-personal)</text>
+<use href="#icon-hammerspoon" x="291" y="546" width="14" height="14"/>
+<text x="309" y="558" font-size="11px" fill="#48484a">Hammerspoon — focus personal apps (hide non-personal)</text>
 <line x1="20" y1="580" x2="906" y2="580" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="588" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
 <text x="136" y="588" font-size="12px" font-weight="500" fill="#34c759">Focus Work</text>
-<text x="291" y="588" font-size="11px" fill="#48484a">focus work apps (hide non-work)</text>
+<use href="#icon-hammerspoon" x="291" y="576" width="14" height="14"/>
+<text x="309" y="588" font-size="11px" fill="#48484a">Hammerspoon — focus work apps (hide non-work)</text>
 <line x1="20" y1="610" x2="906" y2="610" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="618" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
 <text x="136" y="618" font-size="12px" font-weight="500" fill="#34c759">Focus Work</text>
-<text x="291" y="618" font-size="11px" fill="#48484a">hide all except Zap &amp; Telegram</text>
+<use href="#icon-hammerspoon" x="291" y="606" width="14" height="14"/>
+<text x="309" y="618" font-size="11px" fill="#48484a">Hammerspoon — hide all except Zap &amp; Telegram</text>
 <line x1="20" y1="640" x2="906" y2="640" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="648" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
 <text x="136" y="648" font-size="12px" font-weight="500" fill="#34c759">Focus Comms</text>
-<text x="291" y="648" font-size="11px" fill="#48484a">focus comms apps (hide non-comms)</text>
+<use href="#icon-hammerspoon" x="291" y="636" width="14" height="14"/>
+<text x="309" y="648" font-size="11px" fill="#48484a">Hammerspoon — focus comms apps (hide non-comms)</text>
 </svg>

@@ -48,7 +48,7 @@ return {
 --        ⇧⌥⌘←   │              │              │   │
 --        ⌃⌥⌘←   │              │              │   │ Window to previous screen
 { chord = "⌃⌥⌘←",                           fn = "window.screen_prev" },
---       ⇧⌃⌥⌘←   │              │              │ ✓ │               — focus personal apps (hide non-personal)
+--       ⇧⌃⌥⌘←   │              │              │   │   Hammerspoon — focus personal apps (hide non-personal)
 { chord = "⇧⌃⌥⌘←",                          fn = "window.focus_personal" },
 --               ┴              ┴              ┴   ┴
 }

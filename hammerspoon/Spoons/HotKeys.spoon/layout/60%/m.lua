@@ -8,7 +8,7 @@ return {
 --           m   │              │ m    ь    μ  │   │          IINA — cycle mute
 --               │              │              │   │   Browser Vim — Mute Tab
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪m   │              │              │ ✓ │               — center window on screen
+--          ⇪m   │              │              │   │   Hammerspoon — center window on screen
 { chord = "⇪m",                             fn = "window.center" },
 --          ⇧m   │              │ M    Ь    Μ  │   │
 --          ⌃m   │              │              │   │

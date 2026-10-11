@@ -43,7 +43,7 @@ return {
 --        ⇧⌥⌘↓   │              │              │   │
 --        ⌃⌥⌘↓   │              │              │   │
 --               │              │              │ ℝ │         Rider — Next Change
---       ⇧⌃⌥⌘↓   │              │              │ ✓ │               — hide all except Zap & Telegram
+--       ⇧⌃⌥⌘↓   │              │              │   │   Hammerspoon — hide all except Zap & Telegram
 { chord = "⇧⌃⌥⌘↓",                          fn = "window.hide_all_except_work" },
 --               ┴              ┴              ┴   ┴
 }

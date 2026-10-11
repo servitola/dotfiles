@@ -44,7 +44,7 @@ return {
 --        ⇧⌥⌘→   │              │              │   │
 --        ⌃⌥⌘→   │              │              │   │ Window to next screen
 { chord = "⌃⌥⌘→",                           fn = "window.screen_next" },
---       ⇧⌃⌥⌘→   │              │              │ ✓ │               — focus comms apps (hide non-comms)
+--       ⇧⌃⌥⌘→   │              │              │   │   Hammerspoon — focus comms apps (hide non-comms)
 { chord = "⇧⌃⌥⌘→",                          fn = "window.focus_comms" },
 --               ┴              ┴              ┴   ┴
 }

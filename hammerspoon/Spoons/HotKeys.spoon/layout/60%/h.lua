@@ -12,8 +12,7 @@ return {
 --          ⇧h   │              │ H    Р    Η  │   │
 --          ⌃h   │              │              │ ✓ │              — cut letter to the left
 --          ⌥h   │              │      ₽       │   │
---          ⌘h   │              │              │ ✓ │               — minimize window, focus next (ours, replaces Hide)
-{ chord = "⌘h",                             fn = "window.minimize_and_focus_next" },
+--          ⌘h   │              │              │ ✓ │               — hide app
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧h   │     ⇧F20     │              │   │ Safari
 { chord = "⇧F20",                           app = "Safari" },
@@ -38,14 +37,14 @@ return {
 --        ⇪⌃⌥h   │    ⌃⌥F20     │              │   │
 --        ⇪⌃⌘h   │    ⌃⌘F20     │              │   │
 --        ⇪⌥⌘h   │    ⌥⌘F20     │              │   │
---        ⇧⌃⌥h   │              │              │ ✓ │               — reload Hammerspoon config
+--        ⇧⌃⌥h   │              │              │   │   Hammerspoon — reload Hammerspoon config
 { chord = "⇧⌃⌥h",                           fn = "hammerspoon_reload" },
 --        ⇧⌃⌘h   │              │              │   │
 --               │              │              │ ℝ │         Rider — Call Hierarchy
 --        ⇧⌥⌘h   │              │              │   │          Fork — quick Stash
---        ⌃⌥⌘h   │              │              │ ✓ │               — hide current window only
+--        ⌃⌥⌘h   │              │              │   │   Hammerspoon — hide current window only
 { chord = "⌃⌥⌘h",                           fn = "window.hide_current" },
---       ⇧⌃⌥⌘h   │              │              │ ✓ │               — refresh wallpaper
+--       ⇧⌃⌥⌘h   │              │              │   │   Hammerspoon — refresh wallpaper
 { chord = "⇧⌃⌥⌘h",                          fn = "wallpaper_refresh" },
 --               ┴              ┴              ┴   ┴
 }

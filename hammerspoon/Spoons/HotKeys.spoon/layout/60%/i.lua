@@ -7,7 +7,7 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           i   │              │ i    ш    ι  │   │       YouTube — Minimize video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---          ⇪i   │              │              │ ✓ │               — system health dashboard
+--          ⇪i   │              │              │   │   Hammerspoon — system health dashboard
 { chord = "⇪i",                             fn = "system_health" },
 --          ⇧i   │              │ I    Ш    Ι  │   │
 --          ⌃i   │              │              │   │

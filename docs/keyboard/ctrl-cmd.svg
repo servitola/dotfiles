@@ -453,11 +453,14 @@
 <text x="381.5" y="261" text-anchor="end" class="key-label">V</text>
 <title>V: Paste Raw — Paste Bypass</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="239.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="239.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="354.5,270 364.5,270 359.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="355.5,270 363.5,270 359.5,266" fill="white"/>
 <text x="249.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Paste Raw</text>
 <text x="303.0" y="290" font-size="8px" fill="#1d1d1f">paste bypass</text>
+<use href="#icon-hammerspoon" x="249.5" y="297" width="13" height="13"/>
+<text x="265.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="330.0" y="308" font-size="8px" fill="#1d1d1f">paste bypass (type clipboard for restricted fields)</text>
 </g>
 </g>
 <g class="key-group">
@@ -642,7 +645,8 @@
 <line x1="20" y1="1024" x2="906" y2="1024" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1032" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
 <text x="56" y="1032" font-size="12px" font-weight="500" fill="#007aff">Paste Raw</text>
-<text x="211" y="1032" font-size="11px" fill="#48484a">paste bypass (type clipboard for restricted fields)</text>
+<use href="#icon-hammerspoon" x="211" y="1020" width="14" height="14"/>
+<text x="229" y="1032" font-size="11px" fill="#48484a">Hammerspoon — paste bypass (type clipboard for restricted fields)</text>
 <line x1="20" y1="1054" x2="906" y2="1054" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1062" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
 <text x="211" y="1062" font-size="11px" fill="#48484a">move editor to previous group</text>

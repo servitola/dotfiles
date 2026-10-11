@@ -43,7 +43,7 @@ return {
 --        ⇧⌥⌘↑   │              │              │   │
 --        ⌃⌥⌘↑   │              │              │   │
 --               │              │              │ ℝ │         Rider — Previous Change
---       ⇧⌃⌥⌘↑   │              │              │ ✓ │               — focus work apps (hide non-work)
+--       ⇧⌃⌥⌘↑   │              │              │   │   Hammerspoon — focus work apps (hide non-work)
 { chord = "⇧⌃⌥⌘↑",                          fn = "window.focus_work" },
 --               ┴              ┴              ┴   ┴
 }

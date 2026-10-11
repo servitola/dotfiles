@@ -32,7 +32,7 @@ return {
 --         ⇧⌘v   │              │              │   │          Mail — paste text into email as quotation
 --         ⌃⌥v   │              │              │   │
 --               │              │              │ ℝ │         Rider — Introduce Variable…
---         ⌃⌘v   │              │              │ ✓ │               — paste bypass (type clipboard for restricted fields)
+--         ⌃⌘v   │              │              │   │   Hammerspoon — paste bypass (type clipboard for restricted fields)
 { chord = "⌃⌘v",                            fn = "paste_bypass" },
 --         ⌥⌘v   │              │              │   │         Rider — extract variable
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

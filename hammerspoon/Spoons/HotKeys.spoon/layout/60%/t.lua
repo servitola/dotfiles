@@ -16,7 +16,7 @@ return {
 --          ⌘t   │              │              │ ✓ │              — new tab
 --               │              │              │   │         Music — turn visualizer on or off
 --               │              │              │ ℝ │         Rider — Go to Test
---          ⇥t   │     num3     │              │ ✓ │               — this window to TV / back
+--          ⇥t   │     num3     │              │   │   Hammerspoon — this window to TV / back
 { chord = "num3",                           fn = "display.toggle_window_to_tv" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧t   │     ⇧F17     │              │   │ zoom.us
@@ -39,7 +39,7 @@ return {
 --        ⇪⌃⌥t   │    ⌃⌥F17     │              │   │
 --        ⇪⌃⌘t   │    ⌃⌘F17     │              │   │
 --        ⇪⌥⌘t   │    ⌥⌘F17     │              │   │
---        ⇧⌃⌥t   │              │              │ ✓ │               — display mode: mirror / extend
+--        ⇧⌃⌥t   │              │              │   │   Hammerspoon — display mode: mirror / extend
 { chord = "⇧⌃⌥t",                           fn = "display.toggle_mirror" },
 --        ⇧⌃⌘t   │              │              │   │
 --        ⇧⌥⌘t   │              │              │   │

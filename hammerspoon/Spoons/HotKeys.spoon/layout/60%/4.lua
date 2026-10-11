@@ -11,7 +11,8 @@ return {
 --               │              │              │   │        VSCode — go to next found occurrence
 --          ⇧4   │              │ $    ;    $  │   │
 --          ⌃4   │              │              │   │        VSCode — go to tab 4
---          ⌥4   │      ⌘h      │              │ ✓ │              — minimize window, focus next (Hammerspoon)
+--          ⌥4   │     num4     │              │   │   Hammerspoon — minimize window, focus next
+{ chord = "num4",                           fn = "window.minimize_and_focus_next" },
 --          ⌘4   │              │              │   │       Browser — Open 4th tab
 --               │              │              │   │      Telegram — focus 4th folder or chat
 --               │              │              │   │        Finder — View in gallery

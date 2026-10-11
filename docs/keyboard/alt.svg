@@ -161,11 +161,21 @@
 </g>
 <g class="key-group">
 <rect x="260" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="260" y="64" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<text x="287.0" y="82" text-anchor="middle" font-size="15px" font-weight="600" fill="#1d1d1f">$</text>
-<text x="296" y="102" font-size="11px" fill="#af52de">£</text>
-<text x="309" y="72" text-anchor="end" class="key-label">4</text>
-<title>4: $ / $ / £</title>
+<rect x="260" y="64" width="3" height="44" rx="1.5" fill="#34c759"/>
+<use href="#win-icon" x="280.0" y="66" width="14" height="14" fill="#34c759" stroke="#34c759"/>
+<text x="287.0" y="95" text-anchor="middle" class="bind-label" fill="#34c759" font-size="9px">window.minimize_and_focus_next</text>
+<text x="309" y="105" text-anchor="end" class="key-label">4</text>
+<title>4: window.minimize_and_focus_next — Window: Minimize And Focus Next</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="167.0" y="114" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="282.0,114 292.0,114 287.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="283.0,114 291.0,114 287.0,110" fill="white"/>
+<text x="177.0" y="134" font-size="9px" font-weight="600" fill="#007aff">window.minimize_and_focus_next</text>
+<text x="346.0" y="134" font-size="8px" fill="#1d1d1f">window: minimize and focus next</text>
+<use href="#icon-hammerspoon" x="177.0" y="141" width="13" height="13"/>
+<text x="193.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="257.5" y="152" font-size="8px" fill="#1d1d1f">minimize window, focus next</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="318" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -743,12 +753,14 @@
 <rect x="4" y="340" width="914" height="2138" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
-<circle cx="85.8" cy="354" r="4" fill="#5ac8fa"/>
-<text x="94.8" y="358" class="legend-text">Navigation</text>
-<circle cx="179.8" cy="354" r="4" fill="#af52de"/>
-<text x="188.8" y="358" class="legend-text">Browser / Translate</text>
-<circle cx="329.6" cy="354" r="4" fill="#8e8e93"/>
-<text x="338.6" y="358" class="legend-text">Birman Layout</text>
+<circle cx="85.8" cy="354" r="4" fill="#34c759"/>
+<text x="94.8" y="358" class="legend-text">Window Mgmt</text>
+<circle cx="186.0" cy="354" r="4" fill="#5ac8fa"/>
+<text x="195.0" y="358" class="legend-text">Navigation</text>
+<circle cx="280.0" cy="354" r="4" fill="#af52de"/>
+<text x="289.0" y="358" class="legend-text">Browser / Translate</text>
+<circle cx="429.8" cy="354" r="4" fill="#8e8e93"/>
+<text x="438.8" y="358" class="legend-text">Birman Layout</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
 <text x="20" y="382" font-size="11px" font-weight="600" fill="#48484a">Key</text>
 <text x="56" y="382" font-size="11px" font-weight="600" fill="#a2845e">Karabiner</text>
@@ -793,8 +805,10 @@
 <text x="419" y="666" font-size="11px" fill="#48484a">Rider — Next Bookmark</text>
 <line x1="20" y1="688" x2="906" y2="688" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="696" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
-<text x="56" y="696" font-size="12px" fill="#a2845e">⌘h</text>
-<text x="246" y="696" font-size="11px" fill="#86868b">macOS</text>
+<text x="56" y="696" font-size="12px" fill="#a2845e">num4</text>
+<text x="246" y="696" font-size="12px" font-weight="500" fill="#34c759">window.minimize_and_focus_next</text>
+<use href="#icon-hammerspoon" x="401" y="684" width="14" height="14"/>
+<text x="419" y="696" font-size="11px" fill="#48484a">Hammerspoon — minimize window, focus next</text>
 <line x1="20" y1="718" x2="906" y2="718" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="726" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
 <text x="136" y="726" font-size="12px" fill="#8e8e93">‰  ‰  §</text>

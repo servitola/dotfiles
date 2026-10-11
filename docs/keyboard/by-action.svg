@@ -393,45 +393,46 @@
 <circle cx="54" cy="1341" r="6" fill="#34c759"/>
 <text x="68" y="1344" font-size="14px" font-weight="600" fill="#1d1d1f">Window Mgmt</text>
 <text x="932" y="1344" text-anchor="end" font-size="11px" fill="#86868b">26 bindings</text>
-<rect x="78" y="1364.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1379.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
+<rect x="78" y="1364.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1379.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
 <text x="106" y="1379.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="1364.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1379.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
-<text x="144" y="1379.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="1364.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="1379.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">A</text>
+<rect x="116" y="1364.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="127.0" y="1379.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">4</text>
 <text x="268" y="1379.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="1379.0" font-size="13px" font-weight="500" fill="#34c759">Window ←</text>
-<rect x="78" y="1394.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⇧</text>
+<text x="298" y="1379.0" font-size="13px" font-weight="500" fill="#34c759">window.minimize_and_focus_next</text>
+<line x1="48" y1="1389" x2="932" y2="1389" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
+<rect x="78" y="1394.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
 <text x="106" y="1409.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="1394.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
+<rect x="116" y="1394.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
 <text x="144" y="1409.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="1394.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="165.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
-<text x="182" y="1409.0" font-size="11px" fill="#86868b">+</text>
-<rect x="192" y="1394.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">A</text>
+<rect x="154" y="1394.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="1409.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">A</text>
 <text x="268" y="1409.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="1409.0" font-size="13px" font-weight="500" fill="#34c759">½ Left</text>
-<line x1="48" y1="1419" x2="932" y2="1419" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
-<rect x="78" y="1424.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
+<text x="298" y="1409.0" font-size="13px" font-weight="500" fill="#34c759">Window ←</text>
+<rect x="78" y="1424.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⇧</text>
 <text x="106" y="1439.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="1424.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
+<rect x="116" y="1424.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
 <text x="144" y="1439.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="1424.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">D</text>
+<rect x="154" y="1424.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="165.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
+<text x="182" y="1439.0" font-size="11px" fill="#86868b">+</text>
+<rect x="192" y="1424.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="1439.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">A</text>
 <text x="268" y="1439.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="1439.0" font-size="13px" font-weight="500" fill="#34c759">Window →</text>
-<rect x="78" y="1454.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⇧</text>
+<text x="298" y="1439.0" font-size="13px" font-weight="500" fill="#34c759">½ Left</text>
+<line x1="48" y1="1449" x2="932" y2="1449" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
+<rect x="78" y="1454.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
 <text x="106" y="1469.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="1454.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
+<rect x="116" y="1454.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
 <text x="144" y="1469.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="1454.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="165.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
-<text x="182" y="1469.0" font-size="11px" fill="#86868b">+</text>
-<rect x="192" y="1454.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">D</text>
+<rect x="154" y="1454.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="1469.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">D</text>
 <text x="268" y="1469.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="1469.0" font-size="13px" font-weight="500" fill="#34c759">½ Right</text>
-<line x1="48" y1="1479" x2="932" y2="1479" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
-<rect x="78" y="1484.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌘</text>
+<text x="298" y="1469.0" font-size="13px" font-weight="500" fill="#34c759">Window →</text>
+<rect x="78" y="1484.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⇧</text>
 <text x="106" y="1499.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="1484.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="127.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">H</text>
+<rect x="116" y="1484.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
+<text x="144" y="1499.0" font-size="11px" fill="#86868b">+</text>
+<rect x="154" y="1484.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="165.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>
+<text x="182" y="1499.0" font-size="11px" fill="#86868b">+</text>
+<rect x="192" y="1484.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="1499.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">D</text>
 <text x="268" y="1499.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="1499.0" font-size="13px" font-weight="500" fill="#34c759">window.minimize_and_focus_next</text>
+<text x="298" y="1499.0" font-size="13px" font-weight="500" fill="#34c759">½ Right</text>
+<line x1="48" y1="1509" x2="932" y2="1509" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
 <rect x="78" y="1514.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="89.0" y="1529.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌃</text>
 <text x="106" y="1529.0" font-size="11px" fill="#86868b">+</text>
 <rect x="116" y="1514.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#34c759" stroke-width="0.7"/><text x="127.0" y="1529.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#34c759">⌥</text>

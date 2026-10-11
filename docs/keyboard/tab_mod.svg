@@ -325,11 +325,14 @@
 <text x="396.0" y="157" text-anchor="end" class="key-label">T</text>
 <title>T: display.toggle_window_to_tv — Display: Toggle Window To Tv</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="254.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="254.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="369.0,166 379.0,166 374.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="370.0,166 378.0,166 374.0,162" fill="white"/>
 <text x="264.0" y="186" font-size="9px" font-weight="600" fill="#007aff">display.toggle_window_to_tv</text>
 <text x="416.5" y="186" font-size="8px" fill="#1d1d1f">display: toggle window to tv</text>
+<use href="#icon-hammerspoon" x="264.0" y="193" width="13" height="13"/>
+<text x="280.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="344.5" y="204" font-size="8px" fill="#1d1d1f">this window to TV</text>
 </g>
 </g>
 <g class="key-group">
@@ -721,7 +724,8 @@
 <text x="20" y="1188" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
 <text x="56" y="1188" font-size="12px" fill="#a2845e">num3</text>
 <text x="136" y="1188" font-size="12px" font-weight="500" fill="#ff9500">display.toggle_window_to_tv</text>
-<text x="291" y="1188" font-size="11px" fill="#48484a">this window to TV</text>
+<use href="#icon-hammerspoon" x="291" y="1176" width="14" height="14"/>
+<text x="309" y="1188" font-size="11px" fill="#48484a">Hammerspoon — this window to TV</text>
 <line x1="20" y1="1210" x2="906" y2="1210" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1218" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
 <text x="56" y="1218" font-size="12px" fill="#a2845e">↩</text>

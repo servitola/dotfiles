@@ -328,11 +328,14 @@
 <text x="570.0" y="157" text-anchor="end" class="key-label">I</text>
 <title>I: Sys Health — System Health</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="428.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="428.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="543.0,166 553.0,166 548.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="544.0,166 552.0,166 548.0,162" fill="white"/>
 <text x="438.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Sys Health</text>
 <text x="497.0" y="186" font-size="8px" fill="#1d1d1f">system health</text>
+<use href="#icon-hammerspoon" x="438.0" y="193" width="13" height="13"/>
+<text x="454.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="518.5" y="204" font-size="8px" fill="#1d1d1f">system health dashboard</text>
 </g>
 </g>
 <g class="key-group">
@@ -582,11 +585,14 @@
 <text x="555.5" y="261" text-anchor="end" class="key-label">M</text>
 <title>M: Center — Window: Center</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="413.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="413.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="528.5,270 538.5,270 533.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="529.5,270 537.5,270 533.5,266" fill="white"/>
 <text x="423.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Center</text>
 <text x="460.5" y="290" font-size="8px" fill="#1d1d1f">window: center</text>
+<use href="#icon-hammerspoon" x="423.5" y="297" width="13" height="13"/>
+<text x="439.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="504.0" y="308" font-size="8px" fill="#1d1d1f">center window on screen</text>
 </g>
 </g>
 <g class="key-group">
@@ -770,7 +776,8 @@
 <text x="20" y="1062" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
 <use href="#icon-hammerspoon" x="136" y="1049" width="16" height="16"/>
 <text x="156" y="1062" font-size="12px" font-weight="500" fill="#ff453a">Sys Health</text>
-<text x="291" y="1062" font-size="11px" fill="#48484a">system health dashboard</text>
+<use href="#icon-hammerspoon" x="291" y="1050" width="14" height="14"/>
+<text x="309" y="1062" font-size="11px" fill="#48484a">Hammerspoon — system health dashboard</text>
 <line x1="20" y1="1084" x2="906" y2="1084" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1092" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
 <text x="56" y="1092" font-size="12px" fill="#a2845e">↑</text>
@@ -864,7 +871,8 @@
 <line x1="20" y1="1714" x2="906" y2="1714" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1722" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
 <text x="136" y="1722" font-size="12px" font-weight="500" fill="#34c759">Center</text>
-<text x="291" y="1722" font-size="11px" fill="#48484a">center window on screen</text>
+<use href="#icon-hammerspoon" x="291" y="1710" width="14" height="14"/>
+<text x="309" y="1722" font-size="11px" fill="#48484a">Hammerspoon — center window on screen</text>
 <line x1="20" y1="1744" x2="906" y2="1744" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1752" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
 <text x="56" y="1752" font-size="12px" fill="#a2845e">⌘→</text>

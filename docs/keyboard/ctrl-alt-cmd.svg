@@ -269,11 +269,14 @@
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Hide Win — Window: Hide Current</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="326.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="326.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
 <text x="336.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Hide Win</text>
 <text x="384.5" y="238" font-size="8px" fill="#1d1d1f">window: hide current</text>
+<use href="#icon-hammerspoon" x="336.5" y="245" width="13" height="13"/>
+<text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="417.0" y="256" font-size="8px" fill="#1d1d1f">hide current window only</text>
 </g>
 </g>
 <g class="key-group">
@@ -458,7 +461,8 @@
 <line x1="20" y1="454" x2="906" y2="454" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="462" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <text x="56" y="462" font-size="12px" font-weight="500" fill="#34c759">Hide Win</text>
-<text x="211" y="462" font-size="11px" fill="#48484a">hide current window only</text>
+<use href="#icon-hammerspoon" x="211" y="450" width="14" height="14"/>
+<text x="229" y="462" font-size="11px" fill="#48484a">Hammerspoon — hide current window only</text>
 <line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
 <text x="56" y="492" font-size="12px" font-weight="500" fill="#34c759">window.screen_prev</text>
