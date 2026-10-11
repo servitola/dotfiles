@@ -9,14 +9,13 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪e   │     PgDn     │              │ ✓ │              — page down
 --          ⇧e   │              │ E    У    Ε  │   │
---          ⌃e   │              │              │   │         Rider — find usages
---               │              │              │ ℝ │ Rider — Find Usages
+--          ⌃e   │              │              │ ℝ │ Rider — Find Usages
 --          ⌥e   │      ⌦       │              │ ✓ │              — delete letter to the right
 --               │              │              │ ℝ │ Rider — Basic
 --          ⌘e   │              │              │   │         Rider — recent files dialog
 --               │              │              │   │        VSCode — find with selection
 --               │              │              │   │      Telegram — toggle camera
---               │              │              │   │  Google Meets — toggle video
+--               │              │              │   │  Google Meet — toggle video
 --               │              │              │ ◆ │ VoiceInk — toggleEnhancement
 --          ⇥e   │      ⌘]      │              │   │         Rider — navigate forward
 --               │              │              │   │         Music — navigate forward
@@ -36,8 +35,7 @@ return {
 --               │              │              │   │          Mail — redirect email
 --               │              │              │   │           Zap — command palette
 --         ⌃⌥e   │      ⌘l      │              │ ✓ │              — delete letter to the right
---         ⌃⌘e   │              │              │   │         Rider — show list of tabs of current panel
---               │              │              │ ℝ │ Rider — Show List of Tabs
+--         ⌃⌘e   │              │              │ ℝ │ Rider — Show List of Tabs
 --         ⌥⌘e   │              │              │   │         Music — show equalizer
 --               │              │              │ ◆ │ Finder — Enclosing Folder in New Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

@@ -6,12 +6,11 @@ return {
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           a   │              │ a    ф    α  │   │
---          aa   │              │              │   │    BrowserVim — go back — CUSTOM
+--          aa   │              │              │   │    Browser Vim — go back — CUSTOM
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪a   │      ←       │              │   │
 --          ⇧a   │              │ A    Ф    Α  │   │
---          ⌃a   │              │              │   │         Rider — git annotate (blame) — CUSTOM
---               │              │              │   │        VSCode — git annotate (blame) — CUSTOM
+--          ⌃a   │              │              │   │        VSCode — git annotate (blame) — CUSTOM
 --               │              │              │ ℝ │ Rider — Annotate
 --          ⌥a   │      ⌥←      │              │ ✓ │              — jump a word to the left
 --               │              │              │   │       YouTube — jump to chapter to the left
@@ -55,8 +54,7 @@ return {
 --        ⇧⌃⌥a   │              │              │   │ ½ Left
 { chord= "⇧⌃⌥a",                            fn = "window.half_left" },
 --        ⇧⌃⌘a   │              │              │   │
---        ⇧⌥⌘a   │              │              │   │         Rider — go to last edit place
---               │              │              │   │        VSCode — go to last edit place
+--        ⇧⌥⌘a   │              │              │   │        VSCode — go to last edit place
 --        ⌃⌥⌘a   │              │              │   │
 --       ⇧⌃⌥⌘a   │    ⇧⌃⌥⌘←     │              │   │
 --               ┴              ┴              ┴   ┴

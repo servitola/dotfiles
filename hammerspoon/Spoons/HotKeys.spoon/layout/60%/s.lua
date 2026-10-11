@@ -9,8 +9,7 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪s   │      ↓       │              │ ✓ │              — down
 --          ⇧s   │              │ S    Ы    Σ  │   │   Browser Vim — duplicate tab
---          ⌃s   │              │              │   │         Rider — save with format (idea + custom macros)
---               │              │              │   │   Claude Code — stash prompt
+--          ⌃s   │              │              │   │   Claude Code — stash prompt
 --               │              │              │ ℝ │ Rider — Silent Reformat and Cleanup
 --          ⌥s   │      ⌥↓      │              │ ✓ │              — move line down
 --               │              │              │   │       YouTube — previous chapter in current video
@@ -31,8 +30,7 @@ return {
 --               │              │              │   │        Finder — go to Shared
 --         ⌃⌥s   │              │              │   │ Win Reset
 { chord = "⌃⌥s",                            fn = "window.set_all_to_default" },
---         ⌃⌘s   │              │              │   │         Rider — toggle Sidebar
---               │              │              │   │          Mail — hide/show sidebar
+--         ⌃⌘s   │              │              │   │          Mail — hide/show sidebar
 --               │              │              │   │        Finder — toggle SideBar
 --         ⌥⌘s   │              │              │   │
 --               │              │              │ ◆ │ Music — Shuffle

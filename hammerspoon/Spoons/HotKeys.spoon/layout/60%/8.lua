@@ -11,8 +11,7 @@ return {
 --          ⇧8   │              │      *       │   │
 --          ⌃8   │              │              │   │         Rider — go to Bookmark 8
 --          ⌥8   │              │      ∞       │   │
---          ⌘8   │              │              │   │         Rider — focus logcat
---               │              │              │   │       Browser — Open 8th tab
+--          ⌘8   │              │              │   │       Browser — Open 8th tab
 --               │              │              │   │      Telegram — focus 8th folder or chat
 --               │              │              │ ℝ │ Rider — Activate Logcat Tool Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

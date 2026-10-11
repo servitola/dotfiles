@@ -10,8 +10,7 @@ return {
 --          ⇪f   │     F15      │              │   │               ↓
 { chord = "F15",                           app = "Finder" },
 --          ⇧f   │              │ F    А    Φ  │   │
---          ⌃f   │              │              │   │         Rider — focus Find panel
---               │              │              │   │        VSCode — move cursor right
+--          ⌃f   │              │              │   │        VSCode — move cursor right
 --               │              │              │   │      Forkgram — global search (⌘K) HAMMERSPOON CUSTOM
 --               │              │              │ ℝ │ Rider — Find
 --          ⌥f   │              │      £       │   │          Fork — toggle Force Push on Push dialog

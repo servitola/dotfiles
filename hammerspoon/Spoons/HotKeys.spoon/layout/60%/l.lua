@@ -23,8 +23,7 @@ return {
 --         ⇪⌃l   │      ⌃↓      │              │ ✓ │              — show all windows of current app
 --         ⇪⌥l   │      ⌥↓      │              │   │
 --         ⇪⌘l   │      ⌘↓      │              │   │
---         ⇧⌃l   │              │              │   │         Rider — focus in Solution explorer
---               │              │              │ ℝ │ Rider — Select File in Project View
+--         ⇧⌃l   │              │              │ ℝ │ Rider — Select File in Project View
 --         ⇧⌥l   │              │ ’    ’    ·  │   │
 --         ⇧⌘l   │              │              │   │          Fork — open Pull dialog
 --         ⌃⌥l   │              │              │   │

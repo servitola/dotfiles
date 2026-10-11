@@ -32,8 +32,7 @@ return {
 --               │              │              │ ℝ │ Rider — Activate Xcode Tool Window
 --         ⌃⌥x   │              │              │   │ Simulator
 { chord = "⌃⌥x",                           app = "Simulator" },
---         ⌃⌘x   │              │              │   │         Rider — scroll to Top
---               │              │              │ ℝ │ Rider — Scroll to Top
+--         ⌃⌘x   │              │              │ ℝ │ Rider — Scroll to Top
 --         ⌥⌘x   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃x   │              │              │ ✓ │              — fast_forward

@@ -20,8 +20,7 @@ return {
 --         ⇪⌥u   │              │              │   │
 --         ⇪⌘u   │              │              │   │
 --         ⇧⌃u   │              │              │   │
---         ⇧⌥u   │              │ Ѵ    Ѵ    Ξ  │   │         Rider — show unit testing quick panel
---               │              │              │ ℝ │ Rider — Unit Testing Quick List…
+--         ⇧⌥u   │              │              │ ℝ │ Rider — Unit Testing Quick List…
 --         ⇧⌘u   │              │              │   │         Rider — toggle case of text
 --               │              │              │   │          Mail — mark emails as read or unread
 --         ⌃⌥u   │              │              │   │

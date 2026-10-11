@@ -11,8 +11,7 @@ return {
 --          ⇧5   │              │      %       │   │
 --          ⌃5   │              │              │   │         Rider — go to Bookmark 5
 --          ⌥5   │              │      ‰       │   │
---          ⌘5   │              │              │   │         Rider — focus problems window
---               │              │              │   │       Browser — Open 5th tab
+--          ⌘5   │              │              │   │       Browser — Open 5th tab
 --               │              │              │   │      Telegram — focus 5th folder or chat
 --               │              │              │ ℝ │ Rider — Activate Problems View Tool Window
 --          ⇥5   │              │              │   │     karabiner — type '55555'

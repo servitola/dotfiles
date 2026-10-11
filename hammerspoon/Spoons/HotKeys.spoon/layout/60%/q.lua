@@ -8,9 +8,8 @@ return {
 --           q   │              │ q    й    ;  │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪q   │     PgUp     │              │   │
---          ⇧q   │              │ Q    Й    :  │   │  Browser Vimt — go to root domain
---          ⌃q   │              │              │   │         Rider — stop all/build
---               │              │              │   │        VSCode — quick view popup
+--          ⇧q   │              │ Q    Й    :  │   │  Browser Vim — go to root domain
+--          ⌃q   │              │              │   │        VSCode — quick view popup
 --               │              │              │ ℝ │ Rider — Cancel
 --               │              │              │ ℝ │ Rider — Stop
 --               │              │              │ ℝ │ Rider — Stop Execution
@@ -24,27 +23,25 @@ return {
 --         ⇪⌃q   │    ⌃PgUp     │              │   │        VSCode — scroll up (without moving caret)
 --               │              │              │   │       Browser — go to tab to the left
 --         ⇪⌥q   │      ⌥⌫      │              │ ✓ │              — delete word to the left
---               │              │              │   │         Rider — delete line
+--               │              │              │   │         Rider — delete to word start
 --               │              │              │   │        VSCode — delete line
 --         ⇪⌘q   │      ⌘⌫      │              │ ✓ │              — delete
 --               │              │              │   │         Rider — delete line
 --               │              │              │   │        VSCode — delete line
 --         ⇧⌃q   │      ⌫       │              │ ✓ │              — delete symbol to the left
---         ⇧⌥q   │      ⇧⌦      │              │   │         Rider — delete line
+--         ⇧⌥q   │      ⇧⌦      │              │   │
 --         ⇧⌘q   │              │              │ ✓ │              — log out from account with closing of all apps
 --         ⌃⌥q   │              │              │   │ Music
 { chord = "⌃⌥q",                           app = "@APP_MUSIC" },
 --         ⌃⌘q   │              │              │ ✓ │              — lock screen
 --         ⌥⌘q   │      ⌘⌫      │              │ ✓ │              — delete
---               │              │              │   │         Rider — delete line
 --               │              │              │   │        VSCode — delete line
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃q   │      ⇪p      │              │   │             H — open Music app
 --        ⇪⇧⌥q   │    ⇧⌥PgUp    │              │   │
 --        ⇪⇧⌘q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place
 --               │              │              │   │        VSCode — go to last edit place
---        ⇪⌃⌥q   │    ⌃⌥PgUp    │              │   │         Rider — go to last edit place
---               │              │              │   │        VSCode — go to last edit place
+--        ⇪⌃⌥q   │    ⌃⌥PgUp    │              │   │        VSCode — go to last edit place
 --        ⇪⌃⌘q   │              │              │   │
 --        ⇪⌥⌘q   │    ⌥⌘PgUp    │              │   │
 --        ⇧⌃⌥q   │      ⌘[      │              │   │

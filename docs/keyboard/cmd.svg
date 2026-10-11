@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="4272" viewBox="0 0 922 4272">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="4104" viewBox="0 0 922 4104">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -23,7 +23,6 @@
   <symbol id="arr-dn" viewBox="0 0 24 24"><path d="M12 20 L20 12 L15 12 L15 4 L9 4 L9 12 L4 12 Z"/></symbol>
   <symbol id="arr-l"  viewBox="0 0 24 24"><path d="M4 12 L12 4 L12 9 L20 9 L20 15 L12 15 L12 20 Z"/></symbol>
   <symbol id="arr-r"  viewBox="0 0 24 24"><path d="M20 12 L12 4 L12 9 L4 9 L4 15 L12 15 L12 20 Z"/></symbol>
-  <symbol id="icon-activity-manager" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(340, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">AM</text></symbol>
   <symbol id="icon-activity-monitor" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-alttab" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-atuin" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(303, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">A</text></symbol>
@@ -31,8 +30,6 @@
   <symbol id="icon-boring-notch" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-browser" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(336, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">B</text></symbol>
   <symbol id="icon-browser-vim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(2, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
-  <symbol id="icon-browser-vimt" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(82, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">BV</text></symbol>
-  <symbol id="icon-browservim" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(298, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">B</text></symbol>
   <symbol id="icon-chatgpt" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(155, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">C</text></symbol>
   <symbol id="icon-claude-code" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(103, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">CC</text></symbol>
   <symbol id="icon-day-one" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
@@ -41,8 +38,7 @@
   <symbol id="icon-fork" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-forkgram" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-google-chrome" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
-  <symbol id="icon-google-meets" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(197, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">GM</text></symbol>
-  <symbol id="icon-googlemeets" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(99, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">G</text></symbol>
+  <symbol id="icon-google-meet" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(286, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="11" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">GM</text></symbol>
   <symbol id="icon-h" viewBox="0 0 32 32"><circle cx="16" cy="16" r="15" fill="hsl(72, 60%, 50%)"/><text x="16" y="21" text-anchor="middle" font-size="14" font-weight="700" fill="white" font-family="-apple-system, system-ui, sans-serif">H</text></symbol>
   <symbol id="icon-hammerspoon" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
   <symbol id="icon-heroes-of-the-storm" viewBox="0 0 32 32"><image width="32" height="32" href="data:image/png;base64,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"/></symbol>
@@ -87,7 +83,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="4272" fill="none"/>
+<rect width="922" height="4104" fill="none"/>
 <text x="28" y="30" class="title">Cmd — macOS Standard</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -134,7 +130,7 @@
 <text x="19.0" y="248" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
 <text x="56.0" y="248" font-size="8px" fill="#1d1d1f">View as icons</text>
 <use href="#icon-activity-monitor" x="3.0" y="255" width="13" height="13"/>
-<text x="19.0" y="266" font-size="9px" font-weight="600" fill="#007aff">Activity Manager</text>
+<text x="19.0" y="266" font-size="9px" font-weight="600" fill="#007aff">Activity Monitor</text>
 <text x="111.0" y="266" font-size="8px" fill="#1d1d1f">Focus main window</text>
 </g>
 </g>
@@ -145,32 +141,29 @@
 <text x="193" y="105" text-anchor="end" class="key-label">2</text>
 <title>2: Debug Panel</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="51.0" y="114" width="240" height="166" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="51.0" y="114" width="240" height="148" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="166.0,114 176.0,114 171.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="167.0,114 175.0,114 171.0,110" fill="white"/>
-<use href="#icon-rider" x="61.0" y="123" width="13" height="13"/>
-<text x="77.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="108.5" y="134" font-size="8px" fill="#1d1d1f">focus debug window</text>
-<use href="#icon-telegram" x="61.0" y="141" width="13" height="13"/>
-<text x="77.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="125.0" y="152" font-size="8px" fill="#1d1d1f">focus 2nd folder or chat</text>
-<use href="#icon-iina" x="61.0" y="159" width="13" height="13"/>
-<text x="77.0" y="170" font-size="9px" font-weight="600" fill="#007aff">IINA</text>
-<text x="103.0" y="170" font-size="8px" fill="#1d1d1f">set window-scale 2</text>
-<text x="77.0" y="182" font-size="7px" fill="#86868b" font-style="italic">Free and open-source media player</text>
-<use href="#icon-fork" x="61.0" y="189" width="13" height="13"/>
-<text x="77.0" y="200" font-size="9px" font-weight="600" fill="#007aff">Fork</text>
-<text x="103.0" y="200" font-size="8px" fill="#1d1d1f">Focus All commits window</text>
-<text x="77.0" y="212" font-size="7px" fill="#86868b" font-style="italic">GIT client</text>
-<use href="#icon-finder" x="61.0" y="219" width="13" height="13"/>
-<text x="77.0" y="230" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
-<text x="114.0" y="230" font-size="8px" fill="#1d1d1f">View as list</text>
-<use href="#icon-activity-monitor" x="61.0" y="237" width="13" height="13"/>
-<text x="77.0" y="248" font-size="9px" font-weight="600" fill="#007aff">Activity Manager</text>
-<text x="169.0" y="248" font-size="8px" fill="#1d1d1f">Open</text>
-<use href="#icon-rider" x="61.0" y="255" width="13" height="13"/>
-<text x="77.0" y="266" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="108.5" y="266" font-size="8px" fill="#1d1d1f">Activate Debug Tool Window</text>
+<use href="#icon-telegram" x="61.0" y="123" width="13" height="13"/>
+<text x="77.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
+<text x="125.0" y="134" font-size="8px" fill="#1d1d1f">focus 2nd folder or chat</text>
+<use href="#icon-iina" x="61.0" y="141" width="13" height="13"/>
+<text x="77.0" y="152" font-size="9px" font-weight="600" fill="#007aff">IINA</text>
+<text x="103.0" y="152" font-size="8px" fill="#1d1d1f">set window-scale 2</text>
+<text x="77.0" y="164" font-size="7px" fill="#86868b" font-style="italic">Free and open-source media player</text>
+<use href="#icon-fork" x="61.0" y="171" width="13" height="13"/>
+<text x="77.0" y="182" font-size="9px" font-weight="600" fill="#007aff">Fork</text>
+<text x="103.0" y="182" font-size="8px" fill="#1d1d1f">Focus All commits window</text>
+<text x="77.0" y="194" font-size="7px" fill="#86868b" font-style="italic">GIT client</text>
+<use href="#icon-finder" x="61.0" y="201" width="13" height="13"/>
+<text x="77.0" y="212" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
+<text x="114.0" y="212" font-size="8px" fill="#1d1d1f">View as list</text>
+<use href="#icon-activity-monitor" x="61.0" y="219" width="13" height="13"/>
+<text x="77.0" y="230" font-size="9px" font-weight="600" fill="#007aff">Activity Monitor</text>
+<text x="169.0" y="230" font-size="8px" fill="#1d1d1f">Open</text>
+<use href="#icon-rider" x="61.0" y="237" width="13" height="13"/>
+<text x="77.0" y="248" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="108.5" y="248" font-size="8px" fill="#1d1d1f">Activate Debug Tool Window</text>
 </g>
 </g>
 <g class="key-group">
@@ -180,27 +173,24 @@
 <text x="251" y="105" text-anchor="end" class="key-label">3</text>
 <title>3: Tests Panel</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="109.0" y="114" width="240" height="124" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="109.0" y="114" width="240" height="106" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="224.0,114 234.0,114 229.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="225.0,114 233.0,114 229.0,110" fill="white"/>
-<use href="#icon-rider" x="119.0" y="123" width="13" height="13"/>
-<text x="135.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="166.5" y="134" font-size="8px" fill="#1d1d1f">focus unit tests explorer</text>
-<use href="#icon-telegram" x="119.0" y="141" width="13" height="13"/>
-<text x="135.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="183.0" y="152" font-size="8px" fill="#1d1d1f">focus 3rd folder or chat</text>
-<use href="#icon-finder" x="119.0" y="159" width="13" height="13"/>
-<text x="135.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
-<text x="172.0" y="170" font-size="8px" fill="#1d1d1f">view in columns</text>
-<use href="#icon-activity-monitor" x="119.0" y="177" width="13" height="13"/>
-<text x="135.0" y="188" font-size="9px" font-weight="600" fill="#007aff">Activity Manager</text>
-<text x="227.0" y="188" font-size="8px" fill="#1d1d1f">open</text>
+<use href="#icon-telegram" x="119.0" y="123" width="13" height="13"/>
+<text x="135.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
+<text x="183.0" y="134" font-size="8px" fill="#1d1d1f">focus 3rd folder or chat</text>
+<use href="#icon-finder" x="119.0" y="141" width="13" height="13"/>
+<text x="135.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
+<text x="172.0" y="152" font-size="8px" fill="#1d1d1f">view in columns</text>
+<use href="#icon-activity-monitor" x="119.0" y="159" width="13" height="13"/>
+<text x="135.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Activity Monitor</text>
+<text x="227.0" y="170" font-size="8px" fill="#1d1d1f">open</text>
+<use href="#icon-rider" x="119.0" y="177" width="13" height="13"/>
+<text x="135.0" y="188" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="166.5" y="188" font-size="8px" fill="#1d1d1f">Activate Tests Tool Window</text>
 <use href="#icon-rider" x="119.0" y="195" width="13" height="13"/>
 <text x="135.0" y="206" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="166.5" y="206" font-size="8px" fill="#1d1d1f">Activate Tests Tool Window</text>
-<use href="#icon-rider" x="119.0" y="213" width="13" height="13"/>
-<text x="135.0" y="224" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="166.5" y="224" font-size="8px" fill="#1d1d1f">Activate Unit Tests Tool Window</text>
+<text x="166.5" y="206" font-size="8px" fill="#1d1d1f">Activate Unit Tests Tool Window</text>
 </g>
 </g>
 <g class="key-group">
@@ -210,24 +200,21 @@
 <text x="309" y="105" text-anchor="end" class="key-label">4</text>
 <title>4: Build Panel</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="167.0" y="114" width="240" height="106" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="167.0" y="114" width="240" height="88" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="282.0,114 292.0,114 287.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="283.0,114 291.0,114 287.0,110" fill="white"/>
-<use href="#icon-rider" x="177.0" y="123" width="13" height="13"/>
-<text x="193.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="224.5" y="134" font-size="8px" fill="#1d1d1f">focus build window</text>
-<use href="#icon-telegram" x="177.0" y="141" width="13" height="13"/>
-<text x="193.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="241.0" y="152" font-size="8px" fill="#1d1d1f">focus 4th folder or chat</text>
-<use href="#icon-finder" x="177.0" y="159" width="13" height="13"/>
-<text x="193.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
-<text x="230.0" y="170" font-size="8px" fill="#1d1d1f">View in gallery</text>
-<use href="#icon-activity-monitor" x="177.0" y="177" width="13" height="13"/>
-<text x="193.0" y="188" font-size="9px" font-weight="600" fill="#007aff">Activity Manager</text>
-<text x="285.0" y="188" font-size="8px" fill="#1d1d1f">Open</text>
-<use href="#icon-rider" x="177.0" y="195" width="13" height="13"/>
-<text x="193.0" y="206" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="224.5" y="206" font-size="8px" fill="#1d1d1f">Activate Build Tool Window</text>
+<use href="#icon-telegram" x="177.0" y="123" width="13" height="13"/>
+<text x="193.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
+<text x="241.0" y="134" font-size="8px" fill="#1d1d1f">focus 4th folder or chat</text>
+<use href="#icon-finder" x="177.0" y="141" width="13" height="13"/>
+<text x="193.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Finder</text>
+<text x="230.0" y="152" font-size="8px" fill="#1d1d1f">View in gallery</text>
+<use href="#icon-activity-monitor" x="177.0" y="159" width="13" height="13"/>
+<text x="193.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Activity Monitor</text>
+<text x="285.0" y="170" font-size="8px" fill="#1d1d1f">Open</text>
+<use href="#icon-rider" x="177.0" y="177" width="13" height="13"/>
+<text x="193.0" y="188" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="224.5" y="188" font-size="8px" fill="#1d1d1f">Activate Build Tool Window</text>
 </g>
 </g>
 <g class="key-group">
@@ -237,18 +224,15 @@
 <text x="367" y="105" text-anchor="end" class="key-label">5</text>
 <title>5: Problems Panel</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="225.0" y="114" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="225.0" y="114" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="340.0,114 350.0,114 345.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="341.0,114 349.0,114 345.0,110" fill="white"/>
-<use href="#icon-rider" x="235.0" y="123" width="13" height="13"/>
-<text x="251.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="282.5" y="134" font-size="8px" fill="#1d1d1f">focus problems window</text>
-<use href="#icon-telegram" x="235.0" y="141" width="13" height="13"/>
-<text x="251.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="299.0" y="152" font-size="8px" fill="#1d1d1f">focus 5th folder or chat</text>
-<use href="#icon-rider" x="235.0" y="159" width="13" height="13"/>
-<text x="251.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="282.5" y="170" font-size="8px" fill="#1d1d1f">Activate Problems View Tool Window</text>
+<use href="#icon-telegram" x="235.0" y="123" width="13" height="13"/>
+<text x="251.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
+<text x="299.0" y="134" font-size="8px" fill="#1d1d1f">focus 5th folder or chat</text>
+<use href="#icon-rider" x="235.0" y="141" width="13" height="13"/>
+<text x="251.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="282.5" y="152" font-size="8px" fill="#1d1d1f">Activate Problems View Tool Window</text>
 </g>
 </g>
 <g class="key-group">
@@ -297,18 +281,15 @@
 <text x="541" y="105" text-anchor="end" class="key-label">8</text>
 <title>8: Logcat</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="399.0" y="114" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="399.0" y="114" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="514.0,114 524.0,114 519.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="515.0,114 523.0,114 519.0,110" fill="white"/>
-<use href="#icon-rider" x="409.0" y="123" width="13" height="13"/>
-<text x="425.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="456.5" y="134" font-size="8px" fill="#1d1d1f">focus logcat</text>
-<use href="#icon-telegram" x="409.0" y="141" width="13" height="13"/>
-<text x="425.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
-<text x="473.0" y="152" font-size="8px" fill="#1d1d1f">focus 8th folder or chat</text>
-<use href="#icon-rider" x="409.0" y="159" width="13" height="13"/>
-<text x="425.0" y="170" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="456.5" y="170" font-size="8px" fill="#1d1d1f">Activate Logcat Tool Window</text>
+<use href="#icon-telegram" x="409.0" y="123" width="13" height="13"/>
+<text x="425.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
+<text x="473.0" y="134" font-size="8px" fill="#1d1d1f">focus 8th folder or chat</text>
+<use href="#icon-rider" x="409.0" y="141" width="13" height="13"/>
+<text x="425.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="456.5" y="152" font-size="8px" fill="#1d1d1f">Activate Logcat Tool Window</text>
 </g>
 </g>
 <g class="key-group">
@@ -422,9 +403,9 @@
 <use href="#icon-telegram" x="148.0" y="211" width="13" height="13"/>
 <text x="164.0" y="222" font-size="9px" font-weight="600" fill="#007aff">Telegram</text>
 <text x="212.0" y="222" font-size="8px" fill="#1d1d1f">toggle camera</text>
-<use href="#icon-google-meets" x="148.0" y="229" width="13" height="13"/>
-<text x="164.0" y="240" font-size="9px" font-weight="600" fill="#007aff">Google Meets</text>
-<text x="234.0" y="240" font-size="8px" fill="#1d1d1f">toggle video</text>
+<use href="#icon-google-meet" x="148.0" y="229" width="13" height="13"/>
+<text x="164.0" y="240" font-size="9px" font-weight="600" fill="#007aff">Google Meet</text>
+<text x="228.5" y="240" font-size="8px" fill="#1d1d1f">toggle video</text>
 <use href="#icon-voiceink" x="148.0" y="247" width="13" height="13"/>
 <text x="164.0" y="258" font-size="9px" font-weight="600" fill="#007aff">VoiceInk</text>
 <text x="212.0" y="258" font-size="8px" fill="#1d1d1f">toggleEnhancement</text>
@@ -497,7 +478,7 @@
 <polygon points="543.0,166 553.0,166 548.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="544.0,166 552.0,166 548.0,162" fill="white"/>
 <use href="#icon-activity-monitor" x="438.0" y="175" width="13" height="13"/>
-<text x="454.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Activity Manager</text>
+<text x="454.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Activity Monitor</text>
 <text x="546.0" y="186" font-size="8px" fill="#1d1d1f">Inspect process</text>
 </g>
 </g>
@@ -581,16 +562,13 @@
 <text x="852.5" y="141.0" text-anchor="middle" class="key-label">\</text>
 <title>\</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="732.5" y="166" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="732.5" y="166" width="240" height="46" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="847.5,166 857.5,166 852.5,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="848.5,166 856.5,166 852.5,162" fill="white"/>
-<use href="#icon-rider" x="742.5" y="175" width="13" height="13"/>
-<text x="758.5" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="790.0" y="186" font-size="8px" fill="#1d1d1f">send to C# interactive</text>
-<use href="#icon-iina" x="742.5" y="193" width="13" height="13"/>
-<text x="758.5" y="204" font-size="9px" font-weight="600" fill="#007aff">IINA</text>
-<text x="784.5" y="204" font-size="8px" fill="#1d1d1f">set speed 1.0</text>
-<text x="758.5" y="216" font-size="7px" fill="#86868b" font-style="italic">Free and open-source media player</text>
+<use href="#icon-iina" x="742.5" y="175" width="13" height="13"/>
+<text x="758.5" y="186" font-size="9px" font-weight="600" fill="#007aff">IINA</text>
+<text x="784.5" y="186" font-size="8px" fill="#1d1d1f">set speed 1.0</text>
+<text x="758.5" y="198" font-size="7px" fill="#86868b" font-style="italic">Free and open-source media player</text>
 </g>
 </g>
 <g class="key-group">
@@ -626,8 +604,8 @@
 <use href="#icon-visual-studio-code" x="162.5" y="245" width="13" height="13"/>
 <text x="178.5" y="256" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="215.5" y="256" font-size="8px" fill="#1d1d1f">duplicate line</text>
-<use href="#icon-zoom-us" x="162.5" y="263" width="13" height="13"/>
-<text x="178.5" y="274" font-size="9px" font-weight="600" fill="#007aff">GoogleMeets</text>
+<use href="#icon-google-meet" x="162.5" y="263" width="13" height="13"/>
+<text x="178.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Google Meet</text>
 <text x="243.0" y="274" font-size="8px" fill="#1d1d1f">toggle microphone</text>
 </g>
 </g>
@@ -643,15 +621,12 @@
 <text x="410.5" y="209" text-anchor="end" class="key-label">G</text>
 <title>G: Git Operations</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="268.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="268.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="383.5,218 393.5,218 388.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="384.5,218 392.5,218 388.5,214" fill="white"/>
 <use href="#icon-rider" x="278.5" y="227" width="13" height="13"/>
 <text x="294.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="326.0" y="238" font-size="8px" fill="#1d1d1f">git operations popup</text>
-<use href="#icon-rider" x="278.5" y="245" width="13" height="13"/>
-<text x="294.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="326.0" y="256" font-size="8px" fill="#1d1d1f">VCS Operations Popup…</text>
+<text x="326.0" y="238" font-size="8px" fill="#1d1d1f">VCS Operations Popup…</text>
 </g>
 </g>
 <g class="key-group">
@@ -724,7 +699,7 @@
 <polygon points="674.5,218 682.5,218 678.5,214" fill="white"/>
 <use href="#icon-rider" x="568.5" y="227" width="13" height="13"/>
 <text x="584.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="616.0" y="238" font-size="8px" fill="#1d1d1f">run unit test</text>
+<text x="616.0" y="238" font-size="8px" fill="#1d1d1f">project structure</text>
 <use href="#icon-visual-studio-code" x="568.5" y="245" width="13" height="13"/>
 <text x="584.5" y="256" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="621.5" y="256" font-size="8px" fill="#1d1d1f">show 'select task to configure' dialog</text>
@@ -958,7 +933,7 @@
 <text x="804.5" y="342" font-size="8px" fill="#1d1d1f">Move Caret to Line End</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="3908" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="3740" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#ff9500"/>
 <text x="38" y="358" class="legend-text">Media / Audio</text>
 <circle cx="141.60000000000002" cy="354" r="4" fill="#5ac8fa"/>
@@ -991,377 +966,362 @@
 <use href="#icon-finder" x="291" y="570" width="14" height="14"/>
 <text x="309" y="582" font-size="11px" fill="#48484a">Finder — View as icons</text>
 <use href="#icon-activity-monitor" x="291" y="594" width="14" height="14"/>
-<text x="309" y="606" font-size="11px" fill="#48484a">Activity Manager — Focus main window</text>
+<text x="309" y="606" font-size="11px" fill="#48484a">Activity Monitor — Focus main window</text>
 <line x1="20" y1="628" x2="906" y2="628" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="636" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
-<use href="#icon-rider" x="291" y="624" width="14" height="14"/>
-<text x="309" y="636" font-size="11px" fill="#48484a">Rider — focus debug window</text>
-<use href="#icon-vivaldi" x="291" y="648" width="14" height="14"/>
-<text x="309" y="660" font-size="11px" fill="#48484a">Browser — Open 2nd tab</text>
-<use href="#icon-telegram" x="291" y="672" width="14" height="14"/>
-<text x="309" y="684" font-size="11px" fill="#48484a">Telegram — focus 2nd folder or chat</text>
-<use href="#icon-iina" x="291" y="696" width="14" height="14"/>
-<text x="309" y="708" font-size="11px" fill="#48484a">IINA — set window-scale 2</text>
-<use href="#icon-fork" x="291" y="720" width="14" height="14"/>
-<text x="309" y="732" font-size="11px" fill="#48484a">Fork — Focus All commits window</text>
-<use href="#icon-finder" x="291" y="744" width="14" height="14"/>
-<text x="309" y="756" font-size="11px" fill="#48484a">Finder — View as list</text>
-<use href="#icon-activity-monitor" x="291" y="768" width="14" height="14"/>
-<text x="309" y="780" font-size="11px" fill="#48484a">Activity Manager — Open</text>
+<use href="#icon-vivaldi" x="291" y="624" width="14" height="14"/>
+<text x="309" y="636" font-size="11px" fill="#48484a">Browser — Open 2nd tab</text>
+<use href="#icon-telegram" x="291" y="648" width="14" height="14"/>
+<text x="309" y="660" font-size="11px" fill="#48484a">Telegram — focus 2nd folder or chat</text>
+<use href="#icon-iina" x="291" y="672" width="14" height="14"/>
+<text x="309" y="684" font-size="11px" fill="#48484a">IINA — set window-scale 2</text>
+<use href="#icon-fork" x="291" y="696" width="14" height="14"/>
+<text x="309" y="708" font-size="11px" fill="#48484a">Fork — Focus All commits window</text>
+<use href="#icon-finder" x="291" y="720" width="14" height="14"/>
+<text x="309" y="732" font-size="11px" fill="#48484a">Finder — View as list</text>
+<use href="#icon-activity-monitor" x="291" y="744" width="14" height="14"/>
+<text x="309" y="756" font-size="11px" fill="#48484a">Activity Monitor — Open</text>
+<use href="#icon-rider" x="291" y="768" width="14" height="14"/>
+<text x="309" y="780" font-size="11px" fill="#48484a">Rider — Activate Debug Tool Window</text>
 <use href="#icon-rider" x="291" y="792" width="14" height="14"/>
-<text x="309" y="804" font-size="11px" fill="#48484a">Rider — Activate Debug Tool Window</text>
+<text x="309" y="804" font-size="11px" fill="#48484a">Rider — Debug Panel</text>
 <use href="#icon-rider" x="291" y="816" width="14" height="14"/>
-<text x="309" y="828" font-size="11px" fill="#48484a">Rider — Debug Panel</text>
-<use href="#icon-rider" x="291" y="840" width="14" height="14"/>
-<text x="309" y="852" font-size="11px" fill="#48484a">Rider — Stop</text>
-<line x1="20" y1="874" x2="906" y2="874" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="882" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
-<use href="#icon-rider" x="291" y="870" width="14" height="14"/>
-<text x="309" y="882" font-size="11px" fill="#48484a">Rider — focus unit tests explorer</text>
-<use href="#icon-vivaldi" x="291" y="894" width="14" height="14"/>
-<text x="309" y="906" font-size="11px" fill="#48484a">Browser — open 3rd tab</text>
-<use href="#icon-telegram" x="291" y="918" width="14" height="14"/>
-<text x="309" y="930" font-size="11px" fill="#48484a">Telegram — focus 3rd folder or chat</text>
-<use href="#icon-finder" x="291" y="942" width="14" height="14"/>
-<text x="309" y="954" font-size="11px" fill="#48484a">Finder — view in columns</text>
-<use href="#icon-activity-monitor" x="291" y="966" width="14" height="14"/>
-<text x="309" y="978" font-size="11px" fill="#48484a">Activity Manager — open</text>
+<text x="309" y="828" font-size="11px" fill="#48484a">Rider — Stop</text>
+<line x1="20" y1="850" x2="906" y2="850" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
+<use href="#icon-vivaldi" x="291" y="846" width="14" height="14"/>
+<text x="309" y="858" font-size="11px" fill="#48484a">Browser — open 3rd tab</text>
+<use href="#icon-telegram" x="291" y="870" width="14" height="14"/>
+<text x="309" y="882" font-size="11px" fill="#48484a">Telegram — focus 3rd folder or chat</text>
+<use href="#icon-finder" x="291" y="894" width="14" height="14"/>
+<text x="309" y="906" font-size="11px" fill="#48484a">Finder — view in columns</text>
+<use href="#icon-activity-monitor" x="291" y="918" width="14" height="14"/>
+<text x="309" y="930" font-size="11px" fill="#48484a">Activity Monitor — open</text>
+<use href="#icon-rider" x="291" y="942" width="14" height="14"/>
+<text x="309" y="954" font-size="11px" fill="#48484a">Rider — Activate Tests Tool Window</text>
+<use href="#icon-rider" x="291" y="966" width="14" height="14"/>
+<text x="309" y="978" font-size="11px" fill="#48484a">Rider — Activate Unit Tests Tool Window</text>
 <use href="#icon-rider" x="291" y="990" width="14" height="14"/>
-<text x="309" y="1002" font-size="11px" fill="#48484a">Rider — Activate Tests Tool Window</text>
+<text x="309" y="1002" font-size="11px" fill="#48484a">Rider — Tests Panel</text>
 <use href="#icon-rider" x="291" y="1014" width="14" height="14"/>
-<text x="309" y="1026" font-size="11px" fill="#48484a">Rider — Activate Unit Tests Tool Window</text>
-<use href="#icon-rider" x="291" y="1038" width="14" height="14"/>
-<text x="309" y="1050" font-size="11px" fill="#48484a">Rider — Tests Panel</text>
-<use href="#icon-rider" x="291" y="1062" width="14" height="14"/>
-<text x="309" y="1074" font-size="11px" fill="#48484a">Rider — Unit Tests Panel</text>
-<line x1="20" y1="1096" x2="906" y2="1096" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1104" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
-<use href="#icon-rider" x="291" y="1092" width="14" height="14"/>
-<text x="309" y="1104" font-size="11px" fill="#48484a">Rider — focus build window</text>
-<use href="#icon-vivaldi" x="291" y="1116" width="14" height="14"/>
-<text x="309" y="1128" font-size="11px" fill="#48484a">Browser — Open 4th tab</text>
-<use href="#icon-telegram" x="291" y="1140" width="14" height="14"/>
-<text x="309" y="1152" font-size="11px" fill="#48484a">Telegram — focus 4th folder or chat</text>
-<use href="#icon-finder" x="291" y="1164" width="14" height="14"/>
-<text x="309" y="1176" font-size="11px" fill="#48484a">Finder — View in gallery</text>
-<use href="#icon-activity-monitor" x="291" y="1188" width="14" height="14"/>
-<text x="309" y="1200" font-size="11px" fill="#48484a">Activity Manager — Open</text>
-<use href="#icon-rider" x="291" y="1212" width="14" height="14"/>
-<text x="309" y="1224" font-size="11px" fill="#48484a">Rider — Activate Build Tool Window</text>
-<use href="#icon-rider" x="291" y="1236" width="14" height="14"/>
-<text x="309" y="1248" font-size="11px" fill="#48484a">Rider — Build Panel</text>
-<line x1="20" y1="1270" x2="906" y2="1270" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1278" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
+<text x="309" y="1026" font-size="11px" fill="#48484a">Rider — Unit Tests Panel</text>
+<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
+<use href="#icon-vivaldi" x="291" y="1044" width="14" height="14"/>
+<text x="309" y="1056" font-size="11px" fill="#48484a">Browser — Open 4th tab</text>
+<use href="#icon-telegram" x="291" y="1068" width="14" height="14"/>
+<text x="309" y="1080" font-size="11px" fill="#48484a">Telegram — focus 4th folder or chat</text>
+<use href="#icon-finder" x="291" y="1092" width="14" height="14"/>
+<text x="309" y="1104" font-size="11px" fill="#48484a">Finder — View in gallery</text>
+<use href="#icon-activity-monitor" x="291" y="1116" width="14" height="14"/>
+<text x="309" y="1128" font-size="11px" fill="#48484a">Activity Monitor — Open</text>
+<use href="#icon-rider" x="291" y="1140" width="14" height="14"/>
+<text x="309" y="1152" font-size="11px" fill="#48484a">Rider — Activate Build Tool Window</text>
+<use href="#icon-rider" x="291" y="1164" width="14" height="14"/>
+<text x="309" y="1176" font-size="11px" fill="#48484a">Rider — Build Panel</text>
+<line x1="20" y1="1198" x2="906" y2="1198" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1206" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
+<use href="#icon-vivaldi" x="291" y="1194" width="14" height="14"/>
+<text x="309" y="1206" font-size="11px" fill="#48484a">Browser — Open 5th tab</text>
+<use href="#icon-telegram" x="291" y="1218" width="14" height="14"/>
+<text x="309" y="1230" font-size="11px" fill="#48484a">Telegram — focus 5th folder or chat</text>
+<use href="#icon-rider" x="291" y="1242" width="14" height="14"/>
+<text x="309" y="1254" font-size="11px" fill="#48484a">Rider — Activate Problems View Tool Window</text>
 <use href="#icon-rider" x="291" y="1266" width="14" height="14"/>
-<text x="309" y="1278" font-size="11px" fill="#48484a">Rider — focus problems window</text>
-<use href="#icon-vivaldi" x="291" y="1290" width="14" height="14"/>
-<text x="309" y="1302" font-size="11px" fill="#48484a">Browser — Open 5th tab</text>
-<use href="#icon-telegram" x="291" y="1314" width="14" height="14"/>
-<text x="309" y="1326" font-size="11px" fill="#48484a">Telegram — focus 5th folder or chat</text>
-<use href="#icon-rider" x="291" y="1338" width="14" height="14"/>
-<text x="309" y="1350" font-size="11px" fill="#48484a">Rider — Activate Problems View Tool Window</text>
-<use href="#icon-rider" x="291" y="1362" width="14" height="14"/>
-<text x="309" y="1374" font-size="11px" fill="#48484a">Rider — Problems Panel</text>
-<line x1="20" y1="1396" x2="906" y2="1396" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1404" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
-<use href="#icon-vivaldi" x="291" y="1392" width="14" height="14"/>
-<text x="309" y="1404" font-size="11px" fill="#48484a">Browser — Open 6th tab</text>
-<use href="#icon-telegram" x="291" y="1416" width="14" height="14"/>
-<text x="309" y="1428" font-size="11px" fill="#48484a">Telegram — focus 6th folder or chat</text>
-<use href="#icon-rider" x="291" y="1440" width="14" height="14"/>
-<text x="309" y="1452" font-size="11px" fill="#48484a">Rider — Activate Bookmarks Tool Window</text>
-<use href="#icon-rider" x="291" y="1464" width="14" height="14"/>
-<text x="309" y="1476" font-size="11px" fill="#48484a">Rider — Bookmarks</text>
-<line x1="20" y1="1498" x2="906" y2="1498" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1506" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
-<use href="#icon-vivaldi" x="291" y="1494" width="14" height="14"/>
-<text x="309" y="1506" font-size="11px" fill="#48484a">Browser — Open 7th tab</text>
-<use href="#icon-telegram" x="291" y="1518" width="14" height="14"/>
-<text x="309" y="1530" font-size="11px" fill="#48484a">Telegram — focus 7th folder or chat</text>
+<text x="309" y="1278" font-size="11px" fill="#48484a">Rider — Problems Panel</text>
+<line x1="20" y1="1300" x2="906" y2="1300" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1308" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
+<use href="#icon-vivaldi" x="291" y="1296" width="14" height="14"/>
+<text x="309" y="1308" font-size="11px" fill="#48484a">Browser — Open 6th tab</text>
+<use href="#icon-telegram" x="291" y="1320" width="14" height="14"/>
+<text x="309" y="1332" font-size="11px" fill="#48484a">Telegram — focus 6th folder or chat</text>
+<use href="#icon-rider" x="291" y="1344" width="14" height="14"/>
+<text x="309" y="1356" font-size="11px" fill="#48484a">Rider — Activate Bookmarks Tool Window</text>
+<use href="#icon-rider" x="291" y="1368" width="14" height="14"/>
+<text x="309" y="1380" font-size="11px" fill="#48484a">Rider — Bookmarks</text>
+<line x1="20" y1="1402" x2="906" y2="1402" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1410" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
+<use href="#icon-vivaldi" x="291" y="1398" width="14" height="14"/>
+<text x="309" y="1410" font-size="11px" fill="#48484a">Browser — Open 7th tab</text>
+<use href="#icon-telegram" x="291" y="1422" width="14" height="14"/>
+<text x="309" y="1434" font-size="11px" fill="#48484a">Telegram — focus 7th folder or chat</text>
+<use href="#icon-rider" x="291" y="1446" width="14" height="14"/>
+<text x="309" y="1458" font-size="11px" fill="#48484a">Rider — Activate Device Manager2 Tool Window</text>
+<use href="#icon-rider" x="291" y="1470" width="14" height="14"/>
+<text x="309" y="1482" font-size="11px" fill="#48484a">Rider — Activate Xcode Tool Window</text>
+<use href="#icon-rider" x="291" y="1494" width="14" height="14"/>
+<text x="309" y="1506" font-size="11px" fill="#48484a">Rider — Device Manager</text>
+<use href="#icon-rider" x="291" y="1518" width="14" height="14"/>
+<text x="309" y="1530" font-size="11px" fill="#48484a">Rider — Xcode Panel</text>
 <use href="#icon-rider" x="291" y="1542" width="14" height="14"/>
-<text x="309" y="1554" font-size="11px" fill="#48484a">Rider — Activate Device Manager2 Tool Window</text>
-<use href="#icon-rider" x="291" y="1566" width="14" height="14"/>
-<text x="309" y="1578" font-size="11px" fill="#48484a">Rider — Activate Xcode Tool Window</text>
-<use href="#icon-rider" x="291" y="1590" width="14" height="14"/>
-<text x="309" y="1602" font-size="11px" fill="#48484a">Rider — Device Manager</text>
-<use href="#icon-rider" x="291" y="1614" width="14" height="14"/>
-<text x="309" y="1626" font-size="11px" fill="#48484a">Rider — Xcode Panel</text>
-<use href="#icon-rider" x="291" y="1638" width="14" height="14"/>
-<text x="309" y="1650" font-size="11px" fill="#48484a">Rider — Find Usages in File</text>
-<line x1="20" y1="1672" x2="906" y2="1672" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1680" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
-<use href="#icon-rider" x="291" y="1668" width="14" height="14"/>
-<text x="309" y="1680" font-size="11px" fill="#48484a">Rider — focus logcat</text>
-<use href="#icon-vivaldi" x="291" y="1692" width="14" height="14"/>
-<text x="309" y="1704" font-size="11px" fill="#48484a">Browser — Open 8th tab</text>
-<use href="#icon-telegram" x="291" y="1716" width="14" height="14"/>
-<text x="309" y="1728" font-size="11px" fill="#48484a">Telegram — focus 8th folder or chat</text>
-<use href="#icon-rider" x="291" y="1740" width="14" height="14"/>
-<text x="309" y="1752" font-size="11px" fill="#48484a">Rider — Activate Logcat Tool Window</text>
-<use href="#icon-rider" x="291" y="1764" width="14" height="14"/>
-<text x="309" y="1776" font-size="11px" fill="#48484a">Rider — Logcat</text>
-<line x1="20" y1="1798" x2="906" y2="1798" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1806" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
-<use href="#icon-vivaldi" x="291" y="1794" width="14" height="14"/>
-<text x="309" y="1806" font-size="11px" fill="#48484a">Browser — open last tab</text>
-<use href="#icon-telegram" x="291" y="1818" width="14" height="14"/>
-<text x="309" y="1830" font-size="11px" fill="#48484a">Telegram — focus 9th folder or chat</text>
-<use href="#icon-rider" x="291" y="1842" width="14" height="14"/>
-<text x="309" y="1854" font-size="11px" fill="#48484a">Rider — Run</text>
-<use href="#icon-rider" x="291" y="1866" width="14" height="14"/>
-<text x="309" y="1878" font-size="11px" fill="#48484a">Rider — Run Panel</text>
-<use href="#icon-rider" x="291" y="1890" width="14" height="14"/>
-<text x="309" y="1902" font-size="11px" fill="#48484a">Rider — Cancel Build</text>
-<line x1="20" y1="1924" x2="906" y2="1924" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1932" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
-<use href="#icon-visual-studio-code" x="291" y="1920" width="14" height="14"/>
-<text x="309" y="1932" font-size="11px" fill="#48484a">VSCode — focus into primary sidebar</text>
-<use href="#icon-music" x="291" y="1944" width="14" height="14"/>
-<text x="309" y="1956" font-size="11px" fill="#48484a">Music — Show</text>
-<use href="#icon-vivaldi" x="291" y="1968" width="14" height="14"/>
-<text x="309" y="1980" font-size="11px" fill="#48484a">Browser — Reset zoom</text>
-<use href="#icon-telegram" x="291" y="1992" width="14" height="14"/>
-<text x="309" y="2004" font-size="11px" fill="#48484a">Telegram — focus Saved Messages</text>
-<use href="#icon-iina" x="291" y="2016" width="14" height="14"/>
-<text x="309" y="2028" font-size="11px" fill="#48484a">IINA — set window-scale 0.5</text>
-<use href="#icon-mail" x="291" y="2040" width="14" height="14"/>
-<text x="309" y="2052" font-size="11px" fill="#48484a">Mail — show the Mail viewer window</text>
-<use href="#icon-fork" x="291" y="2064" width="14" height="14"/>
-<text x="309" y="2076" font-size="11px" fill="#48484a">Fork — navigate to HEAD</text>
-<line x1="20" y1="2098" x2="906" y2="2098" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2106" font-size="13px" font-weight="700" fill="#1d1d1f">–</text>
-<use href="#icon-rider" x="291" y="2094" width="14" height="14"/>
-<text x="309" y="2106" font-size="11px" fill="#48484a">Rider — collapse code block</text>
-<use href="#icon-vivaldi" x="291" y="2118" width="14" height="14"/>
-<text x="309" y="2130" font-size="11px" fill="#48484a">Browser — zoom out</text>
-<line x1="20" y1="2152" x2="906" y2="2152" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2160" font-size="13px" font-weight="700" fill="#1d1d1f">=</text>
-<use href="#icon-rider" x="291" y="2148" width="14" height="14"/>
-<text x="309" y="2160" font-size="11px" fill="#48484a">Rider — expand code block</text>
-<use href="#icon-vivaldi" x="291" y="2172" width="14" height="14"/>
-<text x="309" y="2184" font-size="11px" fill="#48484a">Browser — Zoom in</text>
-<line x1="20" y1="2206" x2="906" y2="2206" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2214" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
-<use href="#icon-rider" x="291" y="2202" width="14" height="14"/>
-<text x="309" y="2214" font-size="11px" fill="#48484a">Rider — recent files dialog</text>
-<use href="#icon-visual-studio-code" x="291" y="2226" width="14" height="14"/>
-<text x="309" y="2238" font-size="11px" fill="#48484a">VSCode — find with selection</text>
-<use href="#icon-telegram" x="291" y="2250" width="14" height="14"/>
-<text x="309" y="2262" font-size="11px" fill="#48484a">Telegram — toggle camera</text>
-<use href="#icon-google-meets" x="291" y="2274" width="14" height="14"/>
-<text x="309" y="2286" font-size="11px" fill="#48484a">Google Meets — toggle video</text>
-<use href="#icon-voiceink" x="291" y="2298" width="14" height="14"/>
-<text x="309" y="2310" font-size="11px" fill="#48484a">VoiceInk — toggleEnhancement</text>
-<line x1="20" y1="2332" x2="906" y2="2332" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2340" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<use href="#icon-rider" x="291" y="2328" width="14" height="14"/>
-<text x="309" y="2340" font-size="11px" fill="#48484a">Rider — replace in current file</text>
-<use href="#icon-visual-studio-code" x="291" y="2352" width="14" height="14"/>
-<text x="309" y="2364" font-size="11px" fill="#48484a">VSCode — replace in current file</text>
-<use href="#icon-mail" x="291" y="2376" width="14" height="14"/>
-<text x="309" y="2388" font-size="11px" fill="#48484a">Mail — reply to email</text>
-<line x1="20" y1="2410" x2="906" y2="2410" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2418" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="136" y="2418" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-music" x="291" y="2406" width="14" height="14"/>
-<text x="309" y="2418" font-size="11px" fill="#48484a">Music — turn visualizer on or off</text>
-<use href="#icon-rider" x="291" y="2430" width="14" height="14"/>
-<text x="309" y="2442" font-size="11px" fill="#48484a">Rider — Go to Test</text>
-<line x1="20" y1="2464" x2="906" y2="2464" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2472" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
-<use href="#icon-vivaldi" x="291" y="2460" width="14" height="14"/>
-<text x="309" y="2472" font-size="11px" fill="#48484a">Browser — show all history</text>
-<line x1="20" y1="2494" x2="906" y2="2494" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2502" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
-<use href="#icon-music" x="291" y="2490" width="14" height="14"/>
-<text x="309" y="2502" font-size="11px" fill="#48484a">Music — open 'stream audio file at a specific URL' dialog</text>
-<use href="#icon-telegram" x="291" y="2514" width="14" height="14"/>
-<text x="309" y="2526" font-size="11px" fill="#48484a">Telegram — toggle underline for text</text>
-<line x1="20" y1="2548" x2="906" y2="2548" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2556" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
-<use href="#icon-activity-monitor" x="291" y="2544" width="14" height="14"/>
-<text x="309" y="2556" font-size="11px" fill="#48484a">Activity Manager — Inspect process</text>
-<line x1="20" y1="2578" x2="906" y2="2578" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2586" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
-<text x="136" y="2586" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-music" x="291" y="2574" width="14" height="14"/>
-<text x="309" y="2586" font-size="11px" fill="#48484a">Music — play</text>
-<use href="#icon-fork" x="291" y="2598" width="14" height="14"/>
-<text x="309" y="2610" font-size="11px" fill="#48484a">Fork — Show Command Palette</text>
-<use href="#icon-music" x="291" y="2622" width="14" height="14"/>
-<text x="309" y="2634" font-size="11px" fill="#48484a">Music — Play</text>
-<line x1="20" y1="2656" x2="906" y2="2656" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2664" font-size="13px" font-weight="700" fill="#1d1d1f">[</text>
-<text x="56" y="2664" font-size="12px" fill="#a2845e">⏮</text>
-<use href="#icon-rider" x="291" y="2652" width="14" height="14"/>
-<text x="309" y="2664" font-size="11px" fill="#48484a">Rider — navigate back</text>
-<use href="#icon-music" x="291" y="2676" width="14" height="14"/>
-<text x="309" y="2688" font-size="11px" fill="#48484a">Music — navigate back</text>
-<use href="#icon-vivaldi" x="291" y="2700" width="14" height="14"/>
-<text x="309" y="2712" font-size="11px" fill="#48484a">Browser — navigate back</text>
-<use href="#icon-iina" x="291" y="2724" width="14" height="14"/>
-<text x="309" y="2736" font-size="11px" fill="#48484a">IINA — multiply speed 0.5</text>
-<use href="#icon-finder" x="291" y="2748" width="14" height="14"/>
-<text x="309" y="2760" font-size="11px" fill="#48484a">Finder — navigate back</text>
-<line x1="20" y1="2782" x2="906" y2="2782" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2790" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
-<text x="56" y="2790" font-size="12px" fill="#a2845e">⏭</text>
-<use href="#icon-rider" x="291" y="2778" width="14" height="14"/>
-<text x="309" y="2790" font-size="11px" fill="#48484a">Rider — navigate forward</text>
-<use href="#icon-music" x="291" y="2802" width="14" height="14"/>
-<text x="309" y="2814" font-size="11px" fill="#48484a">Music — navigate forward</text>
-<use href="#icon-vivaldi" x="291" y="2826" width="14" height="14"/>
-<text x="309" y="2838" font-size="11px" fill="#48484a">Browser — navigate forward</text>
-<use href="#icon-iina" x="291" y="2850" width="14" height="14"/>
-<text x="309" y="2862" font-size="11px" fill="#48484a">IINA — multiply speed 2.0</text>
-<use href="#icon-finder" x="291" y="2874" width="14" height="14"/>
-<text x="309" y="2886" font-size="11px" fill="#48484a">Finder — navigate forwardq</text>
-<line x1="20" y1="2908" x2="906" y2="2908" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2916" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="2916" font-size="12px" fill="#a2845e">⌘⌃⌥⇧left_command</text>
-<line x1="20" y1="2938" x2="906" y2="2938" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2946" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="136" y="2946" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-iina" x="291" y="2934" width="14" height="14"/>
-<text x="309" y="2946" font-size="11px" fill="#48484a">IINA — screenshot</text>
-<line x1="20" y1="2968" x2="906" y2="2968" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2976" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="136" y="2976" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-rider" x="291" y="2964" width="14" height="14"/>
-<text x="309" y="2976" font-size="11px" fill="#48484a">Rider — duplicate line</text>
-<use href="#icon-visual-studio-code" x="291" y="2988" width="14" height="14"/>
-<text x="309" y="3000" font-size="11px" fill="#48484a">VSCode — duplicate line</text>
-<use href="#icon-zoom-us" x="291" y="3012" width="14" height="14"/>
-<text x="309" y="3024" font-size="11px" fill="#48484a">GoogleMeets — toggle microphone</text>
-<line x1="20" y1="3046" x2="906" y2="3046" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3054" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-rider" x="291" y="3042" width="14" height="14"/>
-<text x="309" y="3054" font-size="11px" fill="#48484a">Rider — git operations popup</text>
-<use href="#icon-rider" x="291" y="3066" width="14" height="14"/>
-<text x="309" y="3078" font-size="11px" fill="#48484a">Rider — VCS Operations Popup…</text>
+<text x="309" y="1554" font-size="11px" fill="#48484a">Rider — Find Usages in File</text>
+<line x1="20" y1="1576" x2="906" y2="1576" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1584" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
+<use href="#icon-vivaldi" x="291" y="1572" width="14" height="14"/>
+<text x="309" y="1584" font-size="11px" fill="#48484a">Browser — Open 8th tab</text>
+<use href="#icon-telegram" x="291" y="1596" width="14" height="14"/>
+<text x="309" y="1608" font-size="11px" fill="#48484a">Telegram — focus 8th folder or chat</text>
+<use href="#icon-rider" x="291" y="1620" width="14" height="14"/>
+<text x="309" y="1632" font-size="11px" fill="#48484a">Rider — Activate Logcat Tool Window</text>
+<use href="#icon-rider" x="291" y="1644" width="14" height="14"/>
+<text x="309" y="1656" font-size="11px" fill="#48484a">Rider — Logcat</text>
+<line x1="20" y1="1678" x2="906" y2="1678" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1686" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
+<use href="#icon-vivaldi" x="291" y="1674" width="14" height="14"/>
+<text x="309" y="1686" font-size="11px" fill="#48484a">Browser — open last tab</text>
+<use href="#icon-telegram" x="291" y="1698" width="14" height="14"/>
+<text x="309" y="1710" font-size="11px" fill="#48484a">Telegram — focus 9th folder or chat</text>
+<use href="#icon-rider" x="291" y="1722" width="14" height="14"/>
+<text x="309" y="1734" font-size="11px" fill="#48484a">Rider — Run</text>
+<use href="#icon-rider" x="291" y="1746" width="14" height="14"/>
+<text x="309" y="1758" font-size="11px" fill="#48484a">Rider — Run Panel</text>
+<use href="#icon-rider" x="291" y="1770" width="14" height="14"/>
+<text x="309" y="1782" font-size="11px" fill="#48484a">Rider — Cancel Build</text>
+<line x1="20" y1="1804" x2="906" y2="1804" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1812" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
+<use href="#icon-visual-studio-code" x="291" y="1800" width="14" height="14"/>
+<text x="309" y="1812" font-size="11px" fill="#48484a">VSCode — focus into primary sidebar</text>
+<use href="#icon-music" x="291" y="1824" width="14" height="14"/>
+<text x="309" y="1836" font-size="11px" fill="#48484a">Music — Show</text>
+<use href="#icon-vivaldi" x="291" y="1848" width="14" height="14"/>
+<text x="309" y="1860" font-size="11px" fill="#48484a">Browser — Reset zoom</text>
+<use href="#icon-telegram" x="291" y="1872" width="14" height="14"/>
+<text x="309" y="1884" font-size="11px" fill="#48484a">Telegram — focus Saved Messages</text>
+<use href="#icon-iina" x="291" y="1896" width="14" height="14"/>
+<text x="309" y="1908" font-size="11px" fill="#48484a">IINA — set window-scale 0.5</text>
+<use href="#icon-mail" x="291" y="1920" width="14" height="14"/>
+<text x="309" y="1932" font-size="11px" fill="#48484a">Mail — show the Mail viewer window</text>
+<use href="#icon-fork" x="291" y="1944" width="14" height="14"/>
+<text x="309" y="1956" font-size="11px" fill="#48484a">Fork — navigate to HEAD</text>
+<line x1="20" y1="1978" x2="906" y2="1978" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1986" font-size="13px" font-weight="700" fill="#1d1d1f">–</text>
+<use href="#icon-rider" x="291" y="1974" width="14" height="14"/>
+<text x="309" y="1986" font-size="11px" fill="#48484a">Rider — collapse code block</text>
+<use href="#icon-vivaldi" x="291" y="1998" width="14" height="14"/>
+<text x="309" y="2010" font-size="11px" fill="#48484a">Browser — zoom out</text>
+<line x1="20" y1="2032" x2="906" y2="2032" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2040" font-size="13px" font-weight="700" fill="#1d1d1f">=</text>
+<use href="#icon-rider" x="291" y="2028" width="14" height="14"/>
+<text x="309" y="2040" font-size="11px" fill="#48484a">Rider — expand code block</text>
+<use href="#icon-vivaldi" x="291" y="2052" width="14" height="14"/>
+<text x="309" y="2064" font-size="11px" fill="#48484a">Browser — Zoom in</text>
+<line x1="20" y1="2086" x2="906" y2="2086" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2094" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
+<use href="#icon-rider" x="291" y="2082" width="14" height="14"/>
+<text x="309" y="2094" font-size="11px" fill="#48484a">Rider — recent files dialog</text>
+<use href="#icon-visual-studio-code" x="291" y="2106" width="14" height="14"/>
+<text x="309" y="2118" font-size="11px" fill="#48484a">VSCode — find with selection</text>
+<use href="#icon-telegram" x="291" y="2130" width="14" height="14"/>
+<text x="309" y="2142" font-size="11px" fill="#48484a">Telegram — toggle camera</text>
+<use href="#icon-google-meet" x="291" y="2154" width="14" height="14"/>
+<text x="309" y="2166" font-size="11px" fill="#48484a">Google Meet — toggle video</text>
+<use href="#icon-voiceink" x="291" y="2178" width="14" height="14"/>
+<text x="309" y="2190" font-size="11px" fill="#48484a">VoiceInk — toggleEnhancement</text>
+<line x1="20" y1="2212" x2="906" y2="2212" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2220" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
+<use href="#icon-rider" x="291" y="2208" width="14" height="14"/>
+<text x="309" y="2220" font-size="11px" fill="#48484a">Rider — replace in current file</text>
+<use href="#icon-visual-studio-code" x="291" y="2232" width="14" height="14"/>
+<text x="309" y="2244" font-size="11px" fill="#48484a">VSCode — replace in current file</text>
+<use href="#icon-mail" x="291" y="2256" width="14" height="14"/>
+<text x="309" y="2268" font-size="11px" fill="#48484a">Mail — reply to email</text>
+<line x1="20" y1="2290" x2="906" y2="2290" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2298" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
+<text x="136" y="2298" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-music" x="291" y="2286" width="14" height="14"/>
+<text x="309" y="2298" font-size="11px" fill="#48484a">Music — turn visualizer on or off</text>
+<use href="#icon-rider" x="291" y="2310" width="14" height="14"/>
+<text x="309" y="2322" font-size="11px" fill="#48484a">Rider — Go to Test</text>
+<line x1="20" y1="2344" x2="906" y2="2344" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2352" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
+<use href="#icon-vivaldi" x="291" y="2340" width="14" height="14"/>
+<text x="309" y="2352" font-size="11px" fill="#48484a">Browser — show all history</text>
+<line x1="20" y1="2374" x2="906" y2="2374" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2382" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
+<use href="#icon-music" x="291" y="2370" width="14" height="14"/>
+<text x="309" y="2382" font-size="11px" fill="#48484a">Music — open 'stream audio file at a specific URL' dialog</text>
+<use href="#icon-telegram" x="291" y="2394" width="14" height="14"/>
+<text x="309" y="2406" font-size="11px" fill="#48484a">Telegram — toggle underline for text</text>
+<line x1="20" y1="2428" x2="906" y2="2428" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2436" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<use href="#icon-activity-monitor" x="291" y="2424" width="14" height="14"/>
+<text x="309" y="2436" font-size="11px" fill="#48484a">Activity Monitor — Inspect process</text>
+<line x1="20" y1="2458" x2="906" y2="2458" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2466" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
+<text x="136" y="2466" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-music" x="291" y="2454" width="14" height="14"/>
+<text x="309" y="2466" font-size="11px" fill="#48484a">Music — play</text>
+<use href="#icon-fork" x="291" y="2478" width="14" height="14"/>
+<text x="309" y="2490" font-size="11px" fill="#48484a">Fork — Show Command Palette</text>
+<use href="#icon-music" x="291" y="2502" width="14" height="14"/>
+<text x="309" y="2514" font-size="11px" fill="#48484a">Music — Play</text>
+<line x1="20" y1="2536" x2="906" y2="2536" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2544" font-size="13px" font-weight="700" fill="#1d1d1f">[</text>
+<text x="56" y="2544" font-size="12px" fill="#a2845e">⏮</text>
+<use href="#icon-rider" x="291" y="2532" width="14" height="14"/>
+<text x="309" y="2544" font-size="11px" fill="#48484a">Rider — navigate back</text>
+<use href="#icon-music" x="291" y="2556" width="14" height="14"/>
+<text x="309" y="2568" font-size="11px" fill="#48484a">Music — navigate back</text>
+<use href="#icon-vivaldi" x="291" y="2580" width="14" height="14"/>
+<text x="309" y="2592" font-size="11px" fill="#48484a">Browser — navigate back</text>
+<use href="#icon-iina" x="291" y="2604" width="14" height="14"/>
+<text x="309" y="2616" font-size="11px" fill="#48484a">IINA — multiply speed 0.5</text>
+<use href="#icon-finder" x="291" y="2628" width="14" height="14"/>
+<text x="309" y="2640" font-size="11px" fill="#48484a">Finder — navigate back</text>
+<line x1="20" y1="2662" x2="906" y2="2662" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2670" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
+<text x="56" y="2670" font-size="12px" fill="#a2845e">⏭</text>
+<use href="#icon-rider" x="291" y="2658" width="14" height="14"/>
+<text x="309" y="2670" font-size="11px" fill="#48484a">Rider — navigate forward</text>
+<use href="#icon-music" x="291" y="2682" width="14" height="14"/>
+<text x="309" y="2694" font-size="11px" fill="#48484a">Music — navigate forward</text>
+<use href="#icon-vivaldi" x="291" y="2706" width="14" height="14"/>
+<text x="309" y="2718" font-size="11px" fill="#48484a">Browser — navigate forward</text>
+<use href="#icon-iina" x="291" y="2730" width="14" height="14"/>
+<text x="309" y="2742" font-size="11px" fill="#48484a">IINA — multiply speed 2.0</text>
+<use href="#icon-finder" x="291" y="2754" width="14" height="14"/>
+<text x="309" y="2766" font-size="11px" fill="#48484a">Finder — navigate forwardq</text>
+<line x1="20" y1="2788" x2="906" y2="2788" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2796" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<text x="56" y="2796" font-size="12px" fill="#a2845e">⌘⌃⌥⇧left_command</text>
+<line x1="20" y1="2818" x2="906" y2="2818" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2826" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<text x="136" y="2826" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-iina" x="291" y="2814" width="14" height="14"/>
+<text x="309" y="2826" font-size="11px" fill="#48484a">IINA — screenshot</text>
+<line x1="20" y1="2848" x2="906" y2="2848" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2856" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="136" y="2856" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="291" y="2844" width="14" height="14"/>
+<text x="309" y="2856" font-size="11px" fill="#48484a">Rider — duplicate line</text>
+<use href="#icon-visual-studio-code" x="291" y="2868" width="14" height="14"/>
+<text x="309" y="2880" font-size="11px" fill="#48484a">VSCode — duplicate line</text>
+<use href="#icon-google-meet" x="291" y="2892" width="14" height="14"/>
+<text x="309" y="2904" font-size="11px" fill="#48484a">Google Meet — toggle microphone</text>
+<line x1="20" y1="2926" x2="906" y2="2926" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2934" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<use href="#icon-rider" x="291" y="2922" width="14" height="14"/>
+<text x="309" y="2934" font-size="11px" fill="#48484a">Rider — VCS Operations Popup…</text>
+<use href="#icon-rider" x="291" y="2946" width="14" height="14"/>
+<text x="309" y="2958" font-size="11px" fill="#48484a">Rider — Git Operations</text>
+<line x1="20" y1="2980" x2="906" y2="2980" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2988" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<text x="136" y="2988" font-size="11px" fill="#86868b">macOS</text>
+<text x="291" y="2988" font-size="11px" fill="#48484a">minimize window, focus next (ours, replaces Hide)</text>
+<line x1="20" y1="3010" x2="906" y2="3010" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3018" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
+<use href="#icon-music" x="291" y="3006" width="14" height="14"/>
+<text x="309" y="3018" font-size="11px" fill="#48484a">Music — open View Options window</text>
+<line x1="20" y1="3040" x2="906" y2="3040" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3048" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
+<use href="#icon-visual-studio-code" x="291" y="3036" width="14" height="14"/>
+<text x="309" y="3048" font-size="11px" fill="#48484a">VSCode — choose repository</text>
+<use href="#icon-telegram" x="291" y="3060" width="14" height="14"/>
+<text x="309" y="3072" font-size="11px" fill="#48484a">Telegram — Focus search</text>
+<line x1="20" y1="3094" x2="906" y2="3094" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3102" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
 <use href="#icon-rider" x="291" y="3090" width="14" height="14"/>
-<text x="309" y="3102" font-size="11px" fill="#48484a">Rider — Git Operations</text>
-<line x1="20" y1="3124" x2="906" y2="3124" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3132" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<text x="136" y="3132" font-size="11px" fill="#86868b">macOS</text>
-<text x="291" y="3132" font-size="11px" fill="#48484a">minimize window, focus next (ours, replaces Hide)</text>
-<line x1="20" y1="3154" x2="906" y2="3154" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3162" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
-<use href="#icon-music" x="291" y="3150" width="14" height="14"/>
-<text x="309" y="3162" font-size="11px" fill="#48484a">Music — open View Options window</text>
-<line x1="20" y1="3184" x2="906" y2="3184" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3192" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
-<use href="#icon-visual-studio-code" x="291" y="3180" width="14" height="14"/>
-<text x="309" y="3192" font-size="11px" fill="#48484a">VSCode — choose repository</text>
-<use href="#icon-telegram" x="291" y="3204" width="14" height="14"/>
-<text x="309" y="3216" font-size="11px" fill="#48484a">Telegram — Focus search</text>
-<line x1="20" y1="3238" x2="906" y2="3238" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3246" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<use href="#icon-rider" x="291" y="3234" width="14" height="14"/>
-<text x="309" y="3246" font-size="11px" fill="#48484a">Rider — goto line,</text>
-<use href="#icon-visual-studio-code" x="291" y="3258" width="14" height="14"/>
-<text x="309" y="3270" font-size="11px" fill="#48484a">VSCode — goto line</text>
-<use href="#icon-music" x="291" y="3282" width="14" height="14"/>
-<text x="309" y="3294" font-size="11px" fill="#48484a">Music — go to Current song,</text>
-<use href="#icon-vivaldi" x="291" y="3306" width="14" height="14"/>
-<text x="309" y="3318" font-size="11px" fill="#48484a">Browser — focus Url Line,</text>
-<use href="#icon-telegram" x="291" y="3330" width="14" height="14"/>
-<text x="309" y="3342" font-size="11px" fill="#48484a">Telegram — lock Telegram</text>
-<use href="#icon-iina" x="291" y="3354" width="14" height="14"/>
-<text x="309" y="3366" font-size="11px" fill="#48484a">IINA — ab-loop (A-B loop)</text>
-<line x1="20" y1="3388" x2="906" y2="3388" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3396" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
-<use href="#icon-rider" x="291" y="3384" width="14" height="14"/>
-<text x="309" y="3396" font-size="11px" fill="#48484a">Rider — run unit test</text>
-<use href="#icon-visual-studio-code" x="291" y="3408" width="14" height="14"/>
-<text x="309" y="3420" font-size="11px" fill="#48484a">VSCode — show 'select task to configure' dialog</text>
+<text x="309" y="3102" font-size="11px" fill="#48484a">Rider — goto line,</text>
+<use href="#icon-visual-studio-code" x="291" y="3114" width="14" height="14"/>
+<text x="309" y="3126" font-size="11px" fill="#48484a">VSCode — goto line</text>
+<use href="#icon-music" x="291" y="3138" width="14" height="14"/>
+<text x="309" y="3150" font-size="11px" fill="#48484a">Music — go to Current song,</text>
+<use href="#icon-vivaldi" x="291" y="3162" width="14" height="14"/>
+<text x="309" y="3174" font-size="11px" fill="#48484a">Browser — focus Url Line,</text>
+<use href="#icon-telegram" x="291" y="3186" width="14" height="14"/>
+<text x="309" y="3198" font-size="11px" fill="#48484a">Telegram — lock Telegram</text>
+<use href="#icon-iina" x="291" y="3210" width="14" height="14"/>
+<text x="309" y="3222" font-size="11px" fill="#48484a">IINA — ab-loop (A-B loop)</text>
+<line x1="20" y1="3244" x2="906" y2="3244" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3252" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<use href="#icon-rider" x="291" y="3240" width="14" height="14"/>
+<text x="309" y="3252" font-size="11px" fill="#48484a">Rider — project structure</text>
+<use href="#icon-visual-studio-code" x="291" y="3264" width="14" height="14"/>
+<text x="309" y="3276" font-size="11px" fill="#48484a">VSCode — show 'select task to configure' dialog</text>
+<use href="#icon-rider" x="291" y="3288" width="14" height="14"/>
+<text x="309" y="3300" font-size="11px" fill="#48484a">Rider — Stop Execution (then s)</text>
+<use href="#icon-rider" x="291" y="3312" width="14" height="14"/>
+<text x="309" y="3324" font-size="11px" fill="#48484a">Rider — Stop Execution (then ⌘s)</text>
+<line x1="20" y1="3346" x2="906" y2="3346" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3354" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
+<text x="56" y="3354" font-size="12px" fill="#a2845e">Vol ↑</text>
+<line x1="20" y1="3376" x2="906" y2="3376" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3384" font-size="13px" font-weight="700" fill="#1d1d1f">\</text>
+<use href="#icon-iina" x="291" y="3372" width="14" height="14"/>
+<text x="309" y="3384" font-size="11px" fill="#48484a">IINA — set speed 1.0</text>
+<line x1="20" y1="3406" x2="906" y2="3406" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3414" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<text x="136" y="3414" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-music" x="291" y="3402" width="14" height="14"/>
+<text x="309" y="3414" font-size="11px" fill="#48484a">Music — paste song information or artwork</text>
+<line x1="20" y1="3436" x2="906" y2="3436" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3444" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
 <use href="#icon-rider" x="291" y="3432" width="14" height="14"/>
-<text x="309" y="3444" font-size="11px" fill="#48484a">Rider — Stop Execution (then s)</text>
-<use href="#icon-rider" x="291" y="3456" width="14" height="14"/>
-<text x="309" y="3468" font-size="11px" fill="#48484a">Rider — Stop Execution (then ⌘s)</text>
-<line x1="20" y1="3490" x2="906" y2="3490" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3498" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
-<text x="56" y="3498" font-size="12px" fill="#a2845e">Vol ↑</text>
-<line x1="20" y1="3520" x2="906" y2="3520" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3528" font-size="13px" font-weight="700" fill="#1d1d1f">\</text>
-<use href="#icon-rider" x="291" y="3516" width="14" height="14"/>
-<text x="309" y="3528" font-size="11px" fill="#48484a">Rider — send to C# interactive</text>
-<use href="#icon-iina" x="291" y="3540" width="14" height="14"/>
-<text x="309" y="3552" font-size="11px" fill="#48484a">IINA — set speed 1.0</text>
-<line x1="20" y1="3574" x2="906" y2="3574" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3582" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<text x="136" y="3582" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-music" x="291" y="3570" width="14" height="14"/>
-<text x="309" y="3582" font-size="11px" fill="#48484a">Music — paste song information or artwork</text>
-<line x1="20" y1="3604" x2="906" y2="3604" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3612" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<use href="#icon-rider" x="291" y="3600" width="14" height="14"/>
-<text x="309" y="3612" font-size="11px" fill="#48484a">Rider — go to declaration</text>
-<use href="#icon-music" x="291" y="3624" width="14" height="14"/>
-<text x="309" y="3636" font-size="11px" fill="#48484a">Music — show or hide column browser</text>
-<use href="#icon-zap" x="291" y="3648" width="14" height="14"/>
-<text x="309" y="3660" font-size="11px" fill="#48484a">Zap — show</text>
-<line x1="20" y1="3682" x2="906" y2="3682" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3690" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
-<text x="136" y="3690" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-visual-studio-code" x="291" y="3678" width="14" height="14"/>
-<text x="309" y="3690" font-size="11px" fill="#48484a">VSCode — new file</text>
-<use href="#icon-music" x="291" y="3702" width="14" height="14"/>
-<text x="309" y="3714" font-size="11px" fill="#48484a">Music — create a new playlist</text>
-<use href="#icon-mail" x="291" y="3726" width="14" height="14"/>
-<text x="309" y="3738" font-size="11px" fill="#48484a">Mail — start a new email</text>
-<use href="#icon-rider" x="291" y="3750" width="14" height="14"/>
-<text x="309" y="3762" font-size="11px" fill="#48484a">Rider — New…</text>
-<line x1="20" y1="3784" x2="906" y2="3784" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3792" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
-<text x="136" y="3792" font-size="11px" fill="#86868b">macOS</text>
-<text x="291" y="3792" font-size="11px" fill="#48484a">system 233 unknown</text>
-<line x1="20" y1="3814" x2="906" y2="3814" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3822" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
-<use href="#icon-rider" x="291" y="3810" width="14" height="14"/>
-<text x="309" y="3822" font-size="11px" fill="#48484a">Rider — expand #region</text>
-<use href="#icon-music" x="291" y="3834" width="14" height="14"/>
-<text x="309" y="3846" font-size="11px" fill="#48484a">Music — stop playing</text>
-<use href="#icon-iina" x="291" y="3858" width="14" height="14"/>
-<text x="309" y="3870" font-size="11px" fill="#48484a">IINA — stop and close video</text>
-<line x1="20" y1="3892" x2="906" y2="3892" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3900" font-size="13px" font-weight="700" fill="#1d1d1f">/</text>
-<text x="56" y="3900" font-size="12px" fill="#a2845e">Vol ↓</text>
-<use href="#icon-rider" x="291" y="3888" width="14" height="14"/>
-<text x="309" y="3900" font-size="11px" fill="#48484a">Rider — toggle comment line</text>
-<use href="#icon-visual-studio-code" x="291" y="3912" width="14" height="14"/>
-<text x="309" y="3924" font-size="11px" fill="#48484a">VSCode — toggle comment line</text>
-<use href="#icon-music" x="291" y="3936" width="14" height="14"/>
-<text x="309" y="3948" font-size="11px" fill="#48484a">Music — show or hide the status bar</text>
-<line x1="20" y1="3970" x2="906" y2="3970" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="3978" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
-<use href="#icon-raycast" x="291" y="3966" width="14" height="14"/>
-<text x="309" y="3978" font-size="11px" fill="#48484a">Raycast — open Raycast</text>
-<line x1="20" y1="4000" x2="906" y2="4000" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="4008" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="136" y="4008" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-rider" x="291" y="3996" width="14" height="14"/>
-<text x="309" y="4008" font-size="11px" fill="#48484a">Rider — Move Caret to Line Start</text>
-<use href="#icon-rider" x="291" y="4020" width="14" height="14"/>
-<text x="309" y="4032" font-size="11px" fill="#48484a">Rider — Nav Bar-select Home</text>
-<use href="#icon-rider" x="291" y="4044" width="14" height="14"/>
-<text x="309" y="4056" font-size="11px" fill="#48484a">Rider — Editor Line Start</text>
-<line x1="20" y1="4078" x2="906" y2="4078" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="4086" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<use href="#icon-visual-studio-code" x="291" y="4074" width="14" height="14"/>
-<text x="309" y="4086" font-size="11px" fill="#48484a">VSCode — jump to breadcrumbs</text>
-<use href="#icon-music" x="291" y="4098" width="14" height="14"/>
-<text x="309" y="4110" font-size="11px" fill="#48484a">Music — increase volume</text>
-<line x1="20" y1="4132" x2="906" y2="4132" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="4140" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<use href="#icon-rider" x="291" y="4128" width="14" height="14"/>
-<text x="309" y="4140" font-size="11px" fill="#48484a">Rider — edit source</text>
-<use href="#icon-music" x="291" y="4152" width="14" height="14"/>
-<text x="309" y="4164" font-size="11px" fill="#48484a">Music — decrease volume</text>
-<line x1="20" y1="4186" x2="906" y2="4186" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="4194" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<use href="#icon-rider" x="291" y="4182" width="14" height="14"/>
-<text x="309" y="4194" font-size="11px" fill="#48484a">Rider — Move Caret to Line End</text>
-<use href="#icon-rider" x="291" y="4206" width="14" height="14"/>
-<text x="309" y="4218" font-size="11px" fill="#48484a">Rider — Editor Line End</text>
+<text x="309" y="3444" font-size="11px" fill="#48484a">Rider — go to declaration</text>
+<use href="#icon-music" x="291" y="3456" width="14" height="14"/>
+<text x="309" y="3468" font-size="11px" fill="#48484a">Music — show or hide column browser</text>
+<use href="#icon-zap" x="291" y="3480" width="14" height="14"/>
+<text x="309" y="3492" font-size="11px" fill="#48484a">Zap — show</text>
+<line x1="20" y1="3514" x2="906" y2="3514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3522" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
+<text x="136" y="3522" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-visual-studio-code" x="291" y="3510" width="14" height="14"/>
+<text x="309" y="3522" font-size="11px" fill="#48484a">VSCode — new file</text>
+<use href="#icon-music" x="291" y="3534" width="14" height="14"/>
+<text x="309" y="3546" font-size="11px" fill="#48484a">Music — create a new playlist</text>
+<use href="#icon-mail" x="291" y="3558" width="14" height="14"/>
+<text x="309" y="3570" font-size="11px" fill="#48484a">Mail — start a new email</text>
+<use href="#icon-rider" x="291" y="3582" width="14" height="14"/>
+<text x="309" y="3594" font-size="11px" fill="#48484a">Rider — New…</text>
+<line x1="20" y1="3616" x2="906" y2="3616" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3624" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
+<text x="291" y="3624" font-size="11px" fill="#48484a">system 233 unknown</text>
+<line x1="20" y1="3646" x2="906" y2="3646" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3654" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
+<use href="#icon-rider" x="291" y="3642" width="14" height="14"/>
+<text x="309" y="3654" font-size="11px" fill="#48484a">Rider — expand #region</text>
+<use href="#icon-music" x="291" y="3666" width="14" height="14"/>
+<text x="309" y="3678" font-size="11px" fill="#48484a">Music — stop playing</text>
+<use href="#icon-iina" x="291" y="3690" width="14" height="14"/>
+<text x="309" y="3702" font-size="11px" fill="#48484a">IINA — stop and close video</text>
+<line x1="20" y1="3724" x2="906" y2="3724" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3732" font-size="13px" font-weight="700" fill="#1d1d1f">/</text>
+<text x="56" y="3732" font-size="12px" fill="#a2845e">Vol ↓</text>
+<use href="#icon-rider" x="291" y="3720" width="14" height="14"/>
+<text x="309" y="3732" font-size="11px" fill="#48484a">Rider — toggle comment line</text>
+<use href="#icon-visual-studio-code" x="291" y="3744" width="14" height="14"/>
+<text x="309" y="3756" font-size="11px" fill="#48484a">VSCode — toggle comment line</text>
+<use href="#icon-music" x="291" y="3768" width="14" height="14"/>
+<text x="309" y="3780" font-size="11px" fill="#48484a">Music — show or hide the status bar</text>
+<line x1="20" y1="3802" x2="906" y2="3802" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3810" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>
+<use href="#icon-raycast" x="291" y="3798" width="14" height="14"/>
+<text x="309" y="3810" font-size="11px" fill="#48484a">Raycast — open Raycast</text>
+<line x1="20" y1="3832" x2="906" y2="3832" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3840" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="136" y="3840" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="291" y="3828" width="14" height="14"/>
+<text x="309" y="3840" font-size="11px" fill="#48484a">Rider — Move Caret to Line Start</text>
+<use href="#icon-rider" x="291" y="3852" width="14" height="14"/>
+<text x="309" y="3864" font-size="11px" fill="#48484a">Rider — Nav Bar-select Home</text>
+<use href="#icon-rider" x="291" y="3876" width="14" height="14"/>
+<text x="309" y="3888" font-size="11px" fill="#48484a">Rider — Editor Line Start</text>
+<line x1="20" y1="3910" x2="906" y2="3910" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3918" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<use href="#icon-visual-studio-code" x="291" y="3906" width="14" height="14"/>
+<text x="309" y="3918" font-size="11px" fill="#48484a">VSCode — jump to breadcrumbs</text>
+<use href="#icon-music" x="291" y="3930" width="14" height="14"/>
+<text x="309" y="3942" font-size="11px" fill="#48484a">Music — increase volume</text>
+<line x1="20" y1="3964" x2="906" y2="3964" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="3972" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<use href="#icon-rider" x="291" y="3960" width="14" height="14"/>
+<text x="309" y="3972" font-size="11px" fill="#48484a">Rider — edit source</text>
+<use href="#icon-music" x="291" y="3984" width="14" height="14"/>
+<text x="309" y="3996" font-size="11px" fill="#48484a">Music — decrease volume</text>
+<line x1="20" y1="4018" x2="906" y2="4018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="4026" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<use href="#icon-rider" x="291" y="4014" width="14" height="14"/>
+<text x="309" y="4026" font-size="11px" fill="#48484a">Rider — Move Caret to Line End</text>
+<use href="#icon-rider" x="291" y="4038" width="14" height="14"/>
+<text x="309" y="4050" font-size="11px" fill="#48484a">Rider — Editor Line End</text>
 </svg>

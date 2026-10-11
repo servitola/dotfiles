@@ -32,7 +32,7 @@ return {
 --               │              │              │   │        VSCode — select build task to run
 --               │              │              │   │          Fork — open Create Branch dialog
 --         ⌃⌥b   │              │              │   │
---         ⌃⌘b   │              │              │   │         Rider — go to implementation
+--         ⌃⌘b   │              │              │   │
 --         ⌥⌘b   │              │              │   │        VSCode — focus chat
 --               │              │              │   │          Mail — show Bcc field
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

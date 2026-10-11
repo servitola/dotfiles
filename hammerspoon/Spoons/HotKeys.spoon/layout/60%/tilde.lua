@@ -9,7 +9,7 @@ return {
 --          ~~   │              │              │   │   Claude Code — clear input
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪~   │              │ `    ё    §  │   │
---          ⇧~   │      ⇧⎋      │              │   │         Rider — hide current panel
+--          ⇧~   │      ⇧⎋      │              │   │
 --          ⌃~   │      ⌃⎋      │              │   │        VSCode — toggle terminal
 --          ⌥~   │      ⌥⎋      │              │   │        VSCode — suggest AI completions
 --          ⌘~   │      ⌘⎋      │              │ ✓ │              — switch to game (???)

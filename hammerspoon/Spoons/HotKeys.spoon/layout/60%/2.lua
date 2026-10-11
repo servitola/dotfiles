@@ -12,13 +12,12 @@ return {
 --          ⌃2   │              │              │   │           VSCode — go to tab 2
 --          ⌥2   │     ⇧⌃z      │              │   │         VoiceInk — start/stop recoding (CUSTOM)
 --               │              │              │ ℝ │ Rider — Previous Line Bookmark in Editor
---          ⌘2   │              │              │   │            Rider — focus debug window
---               │              │              │   │          Browser — Open 2nd tab
+--          ⌘2   │              │              │   │          Browser — Open 2nd tab
 --               │              │              │   │         Telegram — focus 2nd folder or chat
 --               │              │              │   │             IINA — set window-scale 2
 --               │              │              │   │             Fork — Focus All commits window
 --               │              │              │   │           Finder — View as list
---               │              │              │   │ Activity Manager — Open/focus CPU usage window
+--               │              │              │   │ Activity Monitor — Open/focus CPU usage window
 --               │              │              │ ℝ │ Rider — Activate Debug Tool Window
 --          ⇥2   │      ⌘0      │              │   │           VSCode — focus into primary sidebar
 --               │              │              │   │            Music — Show/Hide Music window

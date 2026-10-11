@@ -13,8 +13,7 @@ return {
 --          ⇧m   │              │ M    Ь    Μ  │   │
 --          ⌃m   │              │              │   │
 --          ⌥m   │              │      −       │   │
---          ⌘m   │              │              │ ✓ │              — minimize window
---               │              │              │ ⚙ │ — system 233 unknown
+--          ⌘m   │              │              │ ⚙ │ — system 233 unknown
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧m   │              │              │   │
 --         ⇪⌃m   │              │              │   │
@@ -23,7 +22,7 @@ return {
 --         ⇧⌃m   │              │              │   │
 --               │              │              │ ℝ │ Rider — Merge All Solution Windows
 --         ⇧⌥m   │              │ •    •    Ύ  │   │
---         ⇧⌘m   │              │              │   │         Rider — new project window
+--         ⇧⌘m   │              │              │   │         Rider — move to another changelist
 --         ⌃⌥m   │              │              │   │
 --         ⌃⌘m   │              │              │   │
 --         ⌥⌘m   │              │              │   │         Rider — extract method

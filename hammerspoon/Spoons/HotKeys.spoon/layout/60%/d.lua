@@ -6,7 +6,7 @@ return {
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           d   │              │ d    в    δ  │ ✓ │              — letter 'd'
---          dd   │              │              │   │    BrowserVim — go forward
+--          dd   │              │              │   │    Browser Vim — go forward
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪d   │      →       │              │ ✓ │              — go right
 --          ⇧d   │              │ D    В    Δ  │   │
@@ -18,7 +18,7 @@ return {
 --          ⌘d   │              │              │ ✓ │              — duplicate
 --               │              │              │   │         Rider — duplicate line
 --               │              │              │   │        VSCode — duplicate line
---               │              │              │   │   GoogleMeets — toggle microphone
+--               │              │              │   │   Google Meet — toggle microphone
 --          ⇥d   │      ⌘l      │              │   │         Rider — goto line,
 --               │              │              │   │        VSCode — goto line
 --               │              │              │   │         Music — go to Current song,
@@ -40,8 +40,7 @@ return {
 { chord = "⌃⌥d",                            fn = "window.right" },
 --        ⌃⌥ad   │     num8     │              │   │   Hammerspoon — swap two top windows (A and D at once, bound in left.lua)
 --         ⌃⌘d   │              │              │ ✓ │              — look up the selected word
---         ⌥⌘d   │              │              │ ✓ │              — show/hide Dock
---               │              │              │ ⚙ │ — system 52 dock.toggle_hiding
+--         ⌥⌘d   │              │              │ ⚙ │ — system 52 dock.toggle_hiding
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃d   │      ⏭       │              │ ✓ │              — go to next track
 --        ⇪⇧⌥d   │     ⇧⌥→      │              │ ✓ │              — select word to the right

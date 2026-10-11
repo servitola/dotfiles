@@ -12,7 +12,7 @@ return {
 --          ⌃;   │              │              │   │
 --               │              │              │ ℝ │ Rider — Goto Linked Types2
 --          ⌥;   │              │ ‘    ‘    ΅  │   │
---          ⌘;   │              │              │   │         Rider — run unit test
+--          ⌘;   │              │              │   │         Rider — project structure
 --               │              │              │   │        VSCode — show 'select task to configure' dialog
 --               │              │              │ ℝ │ Rider — Stop Execution (then s)
 --               │              │              │ ℝ │ Rider — Stop Execution (then ⌘s)

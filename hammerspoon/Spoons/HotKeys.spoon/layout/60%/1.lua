@@ -9,8 +9,7 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪1   │      F1      │              │   │            Rider — quick documentation
 --          ⇧1   │              │      !       │   │
---          ⌃1   │              │              │   │            Rider — focus file in solution explorer
---               │              │              │   │           VSCode — go to tab 1
+--          ⌃1   │              │              │   │           VSCode — go to tab 1
 --               │              │              │ ℝ │ Rider — Select File in Project View
 --          ⌥1   │              │      ¹       │   │
 { chord =  "⌥1",                           app = "@APP_EDITOR" },
@@ -21,7 +20,7 @@ return {
 --               │              │              │   │             IINA — set window-scale 1
 --               │              │              │   │             Fork — Focus changes window
 --               │              │              │   │           Finder — View as icons
---               │              │              │   │ Activity Manager — Focus main window
+--               │              │              │   │ Activity Monitor — Focus main window
 --          ⇥1   │      ⌘9      │              │   │          Browser — open last tab
 --               │              │              │   │         Telegram — focus 9th folder or chat
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

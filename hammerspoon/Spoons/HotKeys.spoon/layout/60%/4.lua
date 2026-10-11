@@ -12,11 +12,10 @@ return {
 --          ⇧4   │              │ $    ;    $  │   │
 --          ⌃4   │              │              │   │           VSCode — go to tab 4
 --          ⌥4   │      ⌘h      │              │ ✓ │                 — minimize window, focus next (Hammerspoon)
---          ⌘4   │              │              │   │            Rider — focus build window
---               │              │              │   │          Browser — Open 4th tab
+--          ⌘4   │              │              │   │          Browser — Open 4th tab
 --               │              │              │   │         Telegram — focus 4th folder or chat
 --               │              │              │   │           Finder — View in gallery
---               │              │              │   │ Activity Manager — Open/focus GPU history window
+--               │              │              │   │ Activity Monitor — Open/focus GPU history window
 --               │              │              │ ℝ │ Rider — Activate Build Tool Window
 --          ⇥4   │      ⌘=      │              │   │            Rider — expand code block
 --               │              │              │   │          Browser — Zoom in

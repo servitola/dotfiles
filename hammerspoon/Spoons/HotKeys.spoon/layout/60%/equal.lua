@@ -20,7 +20,7 @@ return {
 --         ⇪⌘=   │     ⌘F12     │              │   │        VSCode — go to definition
 --         ⇧⌃=   │              │              │   │
 --         ⇧⌥=   │              │ ±    ±    +  │   │
---         ⇧⌘=   │              │              │   │         Rider — hide all panels
+--         ⇧⌘=   │              │              │   │         Rider — expand all
 --         ⌃⌥=   │              │              │   │
 --         ⌃⌘=   │              │              │   │
 --         ⌥⌘=   │              │              │   │

@@ -20,8 +20,7 @@ return {
 --         ⇪⌃h   │     ⌃F20     │              │   │
 --         ⇪⌥h   │     ⌥F20     │              │   │
 --         ⇪⌘h   │     ⌘F20     │              │   │
---         ⇧⌃h   │              │              │   │         Rider — hierarchy
---               │              │              │ ◆ │ Services — Finder/Reveal (Finder)
+--         ⇧⌃h   │              │              │ ◆ │ Services — Finder/Reveal (Finder)
 --               │              │              │ ℝ │ Rider — Hierarchy
 --         ⇧⌥h   │              │ ˝    ˝    ≠  │   │ Birman Layout — press double to adjust previous symbol
 --         ⇧⌘h   │              │              │   │        Finder — go to $HOME

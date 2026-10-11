@@ -32,8 +32,7 @@ return {
 --         ⇧⌘c   │              │              │   │        Finder — go to Computer
 --         ⌃⌥c   │              │              │   │
 --               │              │              │ ◆ │ Itsycal — GlobalShortcut
---         ⌃⌘c   │              │              │   │         Rider — scroll to Bottom
---               │              │              │ ℝ │ Rider — Scroll to Bottom
+--         ⌃⌘c   │              │              │ ℝ │ Rider — Scroll to Bottom
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
 --               │              │              │   │        VSCode — introduce constant
 --               │              │              │   │        Finder — copy the path of the file
