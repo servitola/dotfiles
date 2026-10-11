@@ -97,7 +97,11 @@ fi
 print_section "LiteLLM Model Health"
 
 print_task "Checking model availability across providers"
-python3 "${DIR_LITELLM:?}/scripts/check-models.py" || echo "  * model-health check failed"
+if [[ -d $DIR_LITELLM ]]; then
+    python3 "$DIR_LITELLM/scripts/check-models.py" || echo "  * model-health check failed"
+else
+    echo "  * LiteLLM is not on this machine ($DIR_LITELLM missing) — skipped"
+fi
 
 print_section "RAG Index"
 
