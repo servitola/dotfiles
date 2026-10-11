@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2436" viewBox="0 0 922 2436">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2532" viewBox="0 0 922 2532">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="2436" fill="none"/>
+<rect width="922" height="2532" fill="none"/>
 <text x="28" y="30" class="title">Base</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -700,7 +700,7 @@
 <text x="773.0" y="313" text-anchor="end" class="key-label">←</text>
 <title>←: Editor Left</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="631.0" y="322" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="631.0" y="322" width="240" height="136" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="746.0,322 756.0,322 751.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="747.0,322 755.0,322 751.0,318" fill="white"/>
 <use href="#icon-iina" x="641.0" y="331" width="13" height="13"/>
@@ -710,6 +710,18 @@
 <use href="#icon-vivaldi" x="641.0" y="361" width="13" height="13"/>
 <text x="657.0" y="372" font-size="9px" font-weight="600" fill="#007aff">YouTube</text>
 <text x="699.5" y="372" font-size="8px" fill="#1d1d1f">seek backward 5sec</text>
+<use href="#icon-rider" x="641.0" y="379" width="13" height="13"/>
+<text x="657.0" y="390" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="688.5" y="390" font-size="8px" fill="#1d1d1f">Left</text>
+<use href="#icon-rider" x="641.0" y="397" width="13" height="13"/>
+<text x="657.0" y="408" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="688.5" y="408" font-size="8px" fill="#1d1d1f">Nav Bar-select Left</text>
+<use href="#icon-rider" x="641.0" y="415" width="13" height="13"/>
+<text x="657.0" y="426" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="688.5" y="426" font-size="8px" fill="#1d1d1f">Select Parent Node</text>
+<use href="#icon-rider" x="641.0" y="433" width="13" height="13"/>
+<text x="657.0" y="444" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="688.5" y="444" font-size="8px" fill="#1d1d1f">Select Previous Column</text>
 </g>
 </g>
 <g class="key-group">
@@ -750,7 +762,7 @@
 <text x="889.0" y="313" text-anchor="end" class="key-label">→</text>
 <title>→: Editor Right</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="747.0" y="322" width="240" height="64" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="747.0" y="322" width="240" height="82" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
 <use href="#icon-iina" x="757.0" y="331" width="13" height="13"/>
@@ -760,9 +772,12 @@
 <use href="#icon-vivaldi" x="757.0" y="361" width="13" height="13"/>
 <text x="773.0" y="372" font-size="9px" font-weight="600" fill="#007aff">YouTube</text>
 <text x="815.5" y="372" font-size="8px" fill="#1d1d1f">seek forward 5sec</text>
+<use href="#icon-rider" x="757.0" y="379" width="13" height="13"/>
+<text x="773.0" y="390" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="804.5" y="390" font-size="8px" fill="#1d1d1f">Right</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="2072" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="2168" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#8e8e93"/>
 <text x="38" y="358" class="legend-text">Birman Layout</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
@@ -1023,29 +1038,37 @@
 <use href="#icon-vivaldi" x="401" y="2112" width="14" height="14"/>
 <text x="419" y="2124" font-size="11px" fill="#48484a">YouTube — seek backward 5sec</text>
 <use href="#icon-rider" x="401" y="2136" width="14" height="14"/>
-<text x="419" y="2148" font-size="11px" fill="#48484a">Rider — Editor Left</text>
+<text x="419" y="2148" font-size="11px" fill="#48484a">Rider — Left</text>
 <use href="#icon-rider" x="401" y="2160" width="14" height="14"/>
-<text x="419" y="2172" font-size="11px" fill="#48484a">Rider — List-select Previous Column</text>
+<text x="419" y="2172" font-size="11px" fill="#48484a">Rider — Nav Bar-select Left</text>
 <use href="#icon-rider" x="401" y="2184" width="14" height="14"/>
-<text x="419" y="2196" font-size="11px" fill="#48484a">Rider — Nav Bar-select Left</text>
+<text x="419" y="2196" font-size="11px" fill="#48484a">Rider — Select Parent Node</text>
 <use href="#icon-rider" x="401" y="2208" width="14" height="14"/>
-<text x="419" y="2220" font-size="11px" fill="#48484a">Rider — Tree-select Parent</text>
-<line x1="20" y1="2242" x2="906" y2="2242" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2250" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<use href="#icon-telegram" x="401" y="2238" width="14" height="14"/>
-<text x="419" y="2250" font-size="11px" fill="#48484a">Telegram — edit last message</text>
-<use href="#icon-iina" x="401" y="2262" width="14" height="14"/>
-<text x="419" y="2274" font-size="11px" fill="#48484a">IINA — sound up 5%</text>
-<line x1="20" y1="2296" x2="906" y2="2296" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2304" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<use href="#icon-iina" x="401" y="2292" width="14" height="14"/>
-<text x="419" y="2304" font-size="11px" fill="#48484a">IINA — sound down 5%</text>
-<line x1="20" y1="2326" x2="906" y2="2326" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2334" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<use href="#icon-iina" x="401" y="2322" width="14" height="14"/>
-<text x="419" y="2334" font-size="11px" fill="#48484a">IINA — seek forward 5sec</text>
-<use href="#icon-vivaldi" x="401" y="2346" width="14" height="14"/>
-<text x="419" y="2358" font-size="11px" fill="#48484a">YouTube — seek forward 5sec</text>
-<use href="#icon-rider" x="401" y="2370" width="14" height="14"/>
-<text x="419" y="2382" font-size="11px" fill="#48484a">Rider — Editor Right</text>
+<text x="419" y="2220" font-size="11px" fill="#48484a">Rider — Select Previous Column</text>
+<use href="#icon-rider" x="401" y="2232" width="14" height="14"/>
+<text x="419" y="2244" font-size="11px" fill="#48484a">Rider — Editor Left</text>
+<use href="#icon-rider" x="401" y="2256" width="14" height="14"/>
+<text x="419" y="2268" font-size="11px" fill="#48484a">Rider — List-select Previous Column</text>
+<use href="#icon-rider" x="401" y="2280" width="14" height="14"/>
+<text x="419" y="2292" font-size="11px" fill="#48484a">Rider — Tree-select Parent</text>
+<line x1="20" y1="2314" x2="906" y2="2314" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2322" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<use href="#icon-telegram" x="401" y="2310" width="14" height="14"/>
+<text x="419" y="2322" font-size="11px" fill="#48484a">Telegram — edit last message</text>
+<use href="#icon-iina" x="401" y="2334" width="14" height="14"/>
+<text x="419" y="2346" font-size="11px" fill="#48484a">IINA — sound up 5%</text>
+<line x1="20" y1="2368" x2="906" y2="2368" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2376" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<use href="#icon-iina" x="401" y="2364" width="14" height="14"/>
+<text x="419" y="2376" font-size="11px" fill="#48484a">IINA — sound down 5%</text>
+<line x1="20" y1="2398" x2="906" y2="2398" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2406" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<use href="#icon-iina" x="401" y="2394" width="14" height="14"/>
+<text x="419" y="2406" font-size="11px" fill="#48484a">IINA — seek forward 5sec</text>
+<use href="#icon-vivaldi" x="401" y="2418" width="14" height="14"/>
+<text x="419" y="2430" font-size="11px" fill="#48484a">YouTube — seek forward 5sec</text>
+<use href="#icon-rider" x="401" y="2442" width="14" height="14"/>
+<text x="419" y="2454" font-size="11px" fill="#48484a">Rider — Editor Right</text>
+<use href="#icon-rider" x="401" y="2466" width="14" height="14"/>
+<text x="419" y="2478" font-size="11px" fill="#48484a">Rider — Right</text>
 </svg>

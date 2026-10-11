@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="576" viewBox="0 0 922 576">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="600" viewBox="0 0 922 600">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="576" fill="none"/>
+<rect width="922" height="600" fill="none"/>
 <text x="28" y="30" class="title">Ctrl + Alt + Cmd</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -212,12 +212,15 @@
 <text x="628.0" y="157" text-anchor="end" class="key-label">O</text>
 <title>O: Recent Projects</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="486.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="486.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="601.0,166 611.0,166 606.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="602.0,166 610.0,166 606.0,162" fill="white"/>
 <use href="#icon-rider" x="496.0" y="175" width="13" height="13"/>
 <text x="512.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="543.5" y="186" font-size="8px" fill="#1d1d1f">Recent projects popup</text>
+<use href="#icon-rider" x="496.0" y="193" width="13" height="13"/>
+<text x="512.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="543.5" y="204" font-size="8px" fill="#1d1d1f">Manage Recent Solutions</text>
 </g>
 </g>
 <g class="key-group">
@@ -430,7 +433,7 @@
 <text x="860.0" y="342" font-size="8px" fill="#1d1d1f">window: screen next</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="212" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="236" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#34c759"/>
 <text x="38" y="358" class="legend-text">Window Mgmt</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
@@ -442,17 +445,19 @@
 <use href="#icon-rider" x="211" y="396" width="14" height="14"/>
 <text x="229" y="408" font-size="11px" fill="#48484a">Rider — Recent projects popup</text>
 <use href="#icon-rider" x="211" y="420" width="14" height="14"/>
-<text x="229" y="432" font-size="11px" fill="#48484a">Rider — Recent Projects</text>
-<line x1="20" y1="454" x2="906" y2="454" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="462" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<text x="56" y="462" font-size="12px" font-weight="500" fill="#34c759">Hide Win</text>
-<text x="211" y="462" font-size="11px" fill="#48484a">hide current window only</text>
-<line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="56" y="492" font-size="12px" font-weight="500" fill="#34c759">window.screen_prev</text>
-<text x="211" y="492" font-size="11px" fill="#48484a">Window to previous screen</text>
-<line x1="20" y1="514" x2="906" y2="514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="522" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="56" y="522" font-size="12px" font-weight="500" fill="#34c759">window.screen_next</text>
-<text x="211" y="522" font-size="11px" fill="#48484a">Window to next screen</text>
+<text x="229" y="432" font-size="11px" fill="#48484a">Rider — Manage Recent Solutions</text>
+<use href="#icon-rider" x="211" y="444" width="14" height="14"/>
+<text x="229" y="456" font-size="11px" fill="#48484a">Rider — Recent Projects</text>
+<line x1="20" y1="478" x2="906" y2="478" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="486" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<text x="56" y="486" font-size="12px" font-weight="500" fill="#34c759">Hide Win</text>
+<text x="211" y="486" font-size="11px" fill="#48484a">hide current window only</text>
+<line x1="20" y1="508" x2="906" y2="508" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="516" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="56" y="516" font-size="12px" font-weight="500" fill="#34c759">window.screen_prev</text>
+<text x="211" y="516" font-size="11px" fill="#48484a">Window to previous screen</text>
+<line x1="20" y1="538" x2="906" y2="538" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="546" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="56" y="546" font-size="12px" font-weight="500" fill="#34c759">window.screen_next</text>
+<text x="211" y="546" font-size="11px" fill="#48484a">Window to next screen</text>
 </svg>

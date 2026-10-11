@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1140" viewBox="0 0 922 1140">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1332" viewBox="0 0 922 1332">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1140" fill="none"/>
+<rect width="922" height="1332" fill="none"/>
 <text x="28" y="30" class="title">Ctrl + Cmd</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -190,12 +190,15 @@
 <text x="280.0" y="157" text-anchor="end" class="key-label">E</text>
 <title>E: Show Content</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="138.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="138.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="253.0,166 263.0,166 258.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="254.0,166 262.0,166 258.0,162" fill="white"/>
 <use href="#icon-rider" x="148.0" y="175" width="13" height="13"/>
 <text x="164.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="195.5" y="186" font-size="8px" fill="#1d1d1f">show list of tabs of current panel</text>
+<use href="#icon-rider" x="148.0" y="193" width="13" height="13"/>
+<text x="164.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="195.5" y="204" font-size="8px" fill="#1d1d1f">Show List of Tabs</text>
 </g>
 </g>
 <g class="key-group">
@@ -258,6 +261,14 @@
 <text x="664.0" y="137.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Pull Members</text><text x="664.0" y="148.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Up</text>
 <text x="686.0" y="157" text-anchor="end" class="key-label">P</text>
 <title>P: Pull Members Up</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="544.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="659.0,166 669.0,166 664.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="660.0,166 668.0,166 664.0,162" fill="white"/>
+<use href="#icon-rider" x="554.0" y="175" width="13" height="13"/>
+<text x="570.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="601.5" y="186" font-size="8px" fill="#1d1d1f">Pull Members Up</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="695.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -270,6 +281,14 @@
 <text x="780.0" y="137.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Close</text><text x="780.0" y="148.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Project</text>
 <text x="802.0" y="157" text-anchor="end" class="key-label">]</text>
 <title>]: Close Project</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="660.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="775.0,166 785.0,166 780.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="776.0,166 784.0,166 780.0,162" fill="white"/>
+<use href="#icon-rider" x="670.0" y="175" width="13" height="13"/>
+<text x="686.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="717.5" y="186" font-size="8px" fill="#1d1d1f">Close Project</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="811.0" y="114" width="83.0" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -366,12 +385,15 @@
 <text x="642.5" y="209" text-anchor="end" class="key-label">L</text>
 <title>L: Show Content</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="500.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="500.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="615.5,218 625.5,218 620.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="616.5,218 624.5,218 620.5,214" fill="white"/>
 <use href="#icon-mail" x="510.5" y="227" width="13" height="13"/>
 <text x="526.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Mail</text>
 <text x="552.5" y="238" font-size="8px" fill="#1d1d1f">apply active Mail rules</text>
+<use href="#icon-rider" x="510.5" y="245" width="13" height="13"/>
+<text x="526.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="558.0" y="256" font-size="8px" fill="#1d1d1f">Show List of Tabs</text>
 </g>
 </g>
 <g class="key-group">
@@ -411,12 +433,15 @@
 <text x="265.5" y="261" text-anchor="end" class="key-label">X</text>
 <title>X: Scroll to Top</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="123.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="123.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="238.5,270 248.5,270 243.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="239.5,270 247.5,270 243.5,266" fill="white"/>
 <use href="#icon-rider" x="133.5" y="279" width="13" height="13"/>
 <text x="149.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="181.0" y="290" font-size="8px" fill="#1d1d1f">scroll to Top</text>
+<use href="#icon-rider" x="133.5" y="297" width="13" height="13"/>
+<text x="149.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="181.0" y="308" font-size="8px" fill="#1d1d1f">Scroll to Top</text>
 </g>
 </g>
 <g class="key-group">
@@ -426,12 +451,15 @@
 <text x="323.5" y="261" text-anchor="end" class="key-label">C</text>
 <title>C: Scroll to Bottom</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="181.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="181.5" y="270" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="296.5,270 306.5,270 301.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="297.5,270 305.5,270 301.5,266" fill="white"/>
 <use href="#icon-rider" x="191.5" y="279" width="13" height="13"/>
 <text x="207.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="239.0" y="290" font-size="8px" fill="#1d1d1f">scroll to Bottom</text>
+<use href="#icon-rider" x="191.5" y="297" width="13" height="13"/>
+<text x="207.5" y="308" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="239.0" y="308" font-size="8px" fill="#1d1d1f">Scroll to Bottom</text>
 </g>
 </g>
 <g class="key-group">
@@ -516,12 +544,28 @@
 <rect x="782.0" y="272" width="3" height="18" rx="1.5" fill="#a2845e"/>
 <text x="809.0" y="285.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Prev Method</text>
 <title>↑: Prev Method</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="689.0" y="296" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="804.0,296 814.0,296 809.0,291" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="805.0,296 813.0,296 809.0,292" fill="white"/>
+<use href="#icon-rider" x="699.0" y="305" width="13" height="13"/>
+<text x="715.0" y="316" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="316" font-size="8px" fill="#1d1d1f">Previous Method</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="782.0" y="296" width="54" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="782.0" y="298" width="3" height="18" rx="1.5" fill="#a2845e"/>
 <text x="809.0" y="311.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Next Method</text>
 <title>↓: Next Method</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="689.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="804.0,322 814.0,322 809.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="805.0,322 813.0,322 809.0,318" fill="white"/>
+<use href="#icon-rider" x="699.0" y="331" width="13" height="13"/>
+<text x="715.0" y="342" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="342" font-size="8px" fill="#1d1d1f">Next Method</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="840.0" y="270" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -536,7 +580,7 @@
 <text x="810.0" y="342" font-size="8px" fill="#1d1d1f">move editor to next group</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="776" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="968" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
@@ -552,80 +596,102 @@
 <use href="#icon-rider" x="211" y="426" width="14" height="14"/>
 <text x="229" y="438" font-size="11px" fill="#48484a">Rider — show list of tabs of current panel</text>
 <use href="#icon-rider" x="211" y="450" width="14" height="14"/>
-<text x="229" y="462" font-size="11px" fill="#48484a">Rider — Show Content</text>
-<line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<use href="#icon-rider" x="211" y="480" width="14" height="14"/>
-<text x="229" y="492" font-size="11px" fill="#48484a">Rider — rerun tests</text>
-<line x1="20" y1="514" x2="906" y2="514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="522" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
-<use href="#icon-music" x="211" y="510" width="14" height="14"/>
-<text x="229" y="522" font-size="11px" fill="#48484a">Music — show</text>
-<line x1="20" y1="544" x2="906" y2="544" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="552" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
-<use href="#icon-visual-studio-code" x="211" y="540" width="14" height="14"/>
-<text x="229" y="552" font-size="11px" fill="#48484a">VSCode — open chat</text>
-<line x1="20" y1="574" x2="906" y2="574" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="582" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<line x1="20" y1="604" x2="906" y2="604" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="612" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<use href="#icon-rider" x="211" y="600" width="14" height="14"/>
-<text x="229" y="612" font-size="11px" fill="#48484a">Rider — show all affected files in source control</text>
-<use href="#icon-mail" x="211" y="624" width="14" height="14"/>
-<text x="229" y="636" font-size="11px" fill="#48484a">Mail — archive message</text>
+<text x="229" y="462" font-size="11px" fill="#48484a">Rider — Show List of Tabs</text>
+<use href="#icon-rider" x="211" y="474" width="14" height="14"/>
+<text x="229" y="486" font-size="11px" fill="#48484a">Rider — Show Content</text>
+<line x1="20" y1="508" x2="906" y2="508" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="516" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
+<use href="#icon-rider" x="211" y="504" width="14" height="14"/>
+<text x="229" y="516" font-size="11px" fill="#48484a">Rider — rerun tests</text>
+<line x1="20" y1="538" x2="906" y2="538" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="546" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
+<use href="#icon-music" x="211" y="534" width="14" height="14"/>
+<text x="229" y="546" font-size="11px" fill="#48484a">Music — show</text>
+<line x1="20" y1="568" x2="906" y2="568" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="576" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<use href="#icon-visual-studio-code" x="211" y="564" width="14" height="14"/>
+<text x="229" y="576" font-size="11px" fill="#48484a">VSCode — open chat</text>
+<line x1="20" y1="598" x2="906" y2="598" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="606" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
+<use href="#icon-rider" x="211" y="594" width="14" height="14"/>
+<text x="229" y="606" font-size="11px" fill="#48484a">Rider — Pull Members Up</text>
+<line x1="20" y1="628" x2="906" y2="628" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="636" font-size="13px" font-weight="700" fill="#1d1d1f">]</text>
+<use href="#icon-rider" x="211" y="624" width="14" height="14"/>
+<text x="229" y="636" font-size="11px" fill="#48484a">Rider — Close Project</text>
 <line x1="20" y1="658" x2="906" y2="658" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="666" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<use href="#icon-rider" x="211" y="654" width="14" height="14"/>
-<text x="229" y="666" font-size="11px" fill="#48484a">Rider — toggle Sidebar</text>
-<use href="#icon-mail" x="211" y="678" width="14" height="14"/>
-<text x="229" y="690" font-size="11px" fill="#48484a">Mail — hide</text>
-<use href="#icon-finder" x="211" y="702" width="14" height="14"/>
-<text x="229" y="714" font-size="11px" fill="#48484a">Finder — toggle SideBar</text>
-<line x1="20" y1="736" x2="906" y2="736" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="744" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-rider" x="211" y="732" width="14" height="14"/>
-<text x="229" y="744" font-size="11px" fill="#48484a">Rider — select all occurances</text>
-<line x1="20" y1="766" x2="906" y2="766" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="774" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<use href="#icon-heroes-of-the-storm" x="56" y="761" width="16" height="16"/>
-<text x="76" y="774" font-size="12px" font-weight="500" fill="#007aff">Heroes of the Storm — show/hide</text>
-<text x="211" y="774" font-size="11px" fill="#48484a">Heroes of the Storm</text>
-<line x1="20" y1="796" x2="906" y2="796" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="804" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<use href="#icon-mail" x="211" y="792" width="14" height="14"/>
-<text x="229" y="804" font-size="11px" fill="#48484a">Mail — apply active Mail rules</text>
+<text x="20" y="666" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<line x1="20" y1="688" x2="906" y2="688" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="696" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
+<use href="#icon-rider" x="211" y="684" width="14" height="14"/>
+<text x="229" y="696" font-size="11px" fill="#48484a">Rider — show all affected files in source control</text>
+<use href="#icon-mail" x="211" y="708" width="14" height="14"/>
+<text x="229" y="720" font-size="11px" fill="#48484a">Mail — archive message</text>
+<line x1="20" y1="742" x2="906" y2="742" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="750" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<use href="#icon-rider" x="211" y="738" width="14" height="14"/>
+<text x="229" y="750" font-size="11px" fill="#48484a">Rider — toggle Sidebar</text>
+<use href="#icon-mail" x="211" y="762" width="14" height="14"/>
+<text x="229" y="774" font-size="11px" fill="#48484a">Mail — hide</text>
+<use href="#icon-finder" x="211" y="786" width="14" height="14"/>
+<text x="229" y="798" font-size="11px" fill="#48484a">Finder — toggle SideBar</text>
+<line x1="20" y1="820" x2="906" y2="820" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="828" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
 <use href="#icon-rider" x="211" y="816" width="14" height="14"/>
-<text x="229" y="828" font-size="11px" fill="#48484a">Rider — Show Content</text>
+<text x="229" y="828" font-size="11px" fill="#48484a">Rider — select all occurances</text>
 <line x1="20" y1="850" x2="906" y2="850" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<use href="#icon-simulator" x="56" y="845" width="16" height="16"/>
-<text x="76" y="858" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
-<text x="211" y="858" font-size="11px" fill="#48484a">Simulator</text>
+<text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<use href="#icon-heroes-of-the-storm" x="56" y="845" width="16" height="16"/>
+<text x="76" y="858" font-size="12px" font-weight="500" fill="#007aff">Heroes of the Storm — show/hide</text>
+<text x="211" y="858" font-size="11px" fill="#48484a">Heroes of the Storm</text>
 <line x1="20" y1="880" x2="906" y2="880" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="888" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<use href="#icon-rider" x="211" y="876" width="14" height="14"/>
-<text x="229" y="888" font-size="11px" fill="#48484a">Rider — scroll to Top</text>
+<text x="20" y="888" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
+<use href="#icon-mail" x="211" y="876" width="14" height="14"/>
+<text x="229" y="888" font-size="11px" fill="#48484a">Mail — apply active Mail rules</text>
 <use href="#icon-rider" x="211" y="900" width="14" height="14"/>
-<text x="229" y="912" font-size="11px" fill="#48484a">Rider — Scroll to Top</text>
-<line x1="20" y1="934" x2="906" y2="934" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="942" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<use href="#icon-rider" x="211" y="930" width="14" height="14"/>
-<text x="229" y="942" font-size="11px" fill="#48484a">Rider — scroll to Bottom</text>
-<use href="#icon-rider" x="211" y="954" width="14" height="14"/>
-<text x="229" y="966" font-size="11px" fill="#48484a">Rider — Scroll to Bottom</text>
+<text x="229" y="912" font-size="11px" fill="#48484a">Rider — Show List of Tabs</text>
+<use href="#icon-rider" x="211" y="924" width="14" height="14"/>
+<text x="229" y="936" font-size="11px" fill="#48484a">Rider — Show Content</text>
+<line x1="20" y1="958" x2="906" y2="958" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="966" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
+<use href="#icon-simulator" x="56" y="953" width="16" height="16"/>
+<text x="76" y="966" font-size="12px" font-weight="500" fill="#007aff">Simulator — show/hide</text>
+<text x="211" y="966" font-size="11px" fill="#48484a">Simulator</text>
 <line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<text x="56" y="996" font-size="12px" font-weight="500" fill="#007aff">Paste Raw</text>
-<text x="211" y="996" font-size="11px" fill="#48484a">paste bypass (type clipboard for restricted fields)</text>
-<line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<use href="#icon-rider" x="211" y="1014" width="14" height="14"/>
-<text x="229" y="1026" font-size="11px" fill="#48484a">Rider — go to implementation</text>
-<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="211" y="1056" font-size="11px" fill="#48484a">move editor to previous group</text>
-<line x1="20" y1="1078" x2="906" y2="1078" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1086" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<use href="#icon-visual-studio-code" x="211" y="1074" width="14" height="14"/>
-<text x="229" y="1086" font-size="11px" fill="#48484a">VSCode — move editor to next group</text>
+<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
+<use href="#icon-rider" x="211" y="984" width="14" height="14"/>
+<text x="229" y="996" font-size="11px" fill="#48484a">Rider — scroll to Top</text>
+<use href="#icon-rider" x="211" y="1008" width="14" height="14"/>
+<text x="229" y="1020" font-size="11px" fill="#48484a">Rider — Scroll to Top</text>
+<line x1="20" y1="1042" x2="906" y2="1042" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1050" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<use href="#icon-rider" x="211" y="1038" width="14" height="14"/>
+<text x="229" y="1050" font-size="11px" fill="#48484a">Rider — scroll to Bottom</text>
+<use href="#icon-rider" x="211" y="1062" width="14" height="14"/>
+<text x="229" y="1074" font-size="11px" fill="#48484a">Rider — Scroll to Bottom</text>
+<line x1="20" y1="1096" x2="906" y2="1096" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1104" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<text x="56" y="1104" font-size="12px" font-weight="500" fill="#007aff">Paste Raw</text>
+<text x="211" y="1104" font-size="11px" fill="#48484a">paste bypass (type clipboard for restricted fields)</text>
+<line x1="20" y1="1126" x2="906" y2="1126" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1134" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
+<use href="#icon-rider" x="211" y="1122" width="14" height="14"/>
+<text x="229" y="1134" font-size="11px" fill="#48484a">Rider — go to implementation</text>
+<line x1="20" y1="1156" x2="906" y2="1156" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1164" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="211" y="1164" font-size="11px" fill="#48484a">move editor to previous group</text>
+<line x1="20" y1="1186" x2="906" y2="1186" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1194" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<use href="#icon-rider" x="211" y="1182" width="14" height="14"/>
+<text x="229" y="1194" font-size="11px" fill="#48484a">Rider — Previous Method</text>
+<use href="#icon-rider" x="211" y="1206" width="14" height="14"/>
+<text x="229" y="1218" font-size="11px" fill="#48484a">Rider — Prev Method</text>
+<line x1="20" y1="1240" x2="906" y2="1240" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1248" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<use href="#icon-rider" x="211" y="1236" width="14" height="14"/>
+<text x="229" y="1248" font-size="11px" fill="#48484a">Rider — Next Method</text>
+<line x1="20" y1="1270" x2="906" y2="1270" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1278" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<use href="#icon-visual-studio-code" x="211" y="1266" width="14" height="14"/>
+<text x="229" y="1278" font-size="11px" fill="#48484a">VSCode — move editor to next group</text>
 </svg>

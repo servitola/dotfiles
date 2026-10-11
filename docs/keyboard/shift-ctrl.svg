@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1158" viewBox="0 0 922 1158">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1506" viewBox="0 0 922 1506">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1158" fill="none"/>
+<rect width="922" height="1506" fill="none"/>
 <text x="28" y="30" class="title">Shift + Ctrl</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -219,6 +219,14 @@
 <text x="258.0" y="144.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⌫</text>
 <text x="280.0" y="157" text-anchor="end" class="key-label">E</text>
 <title>E: ⌘⌫</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="138.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="253.0,166 263.0,166 258.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="254.0,166 262.0,166 258.0,162" fill="white"/>
+<use href="#icon-rider" x="148.0" y="175" width="13" height="13"/>
+<text x="164.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="195.5" y="186" font-size="8px" fill="#1d1d1f">Find Usages in File</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="289.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -244,6 +252,14 @@
 <text x="432.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Run Config</text>
 <text x="454.0" y="157" text-anchor="end" class="key-label">Y</text>
 <title>Y: Run Config</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="312.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="427.0,166 437.0,166 432.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="428.0,166 436.0,166 432.0,162" fill="white"/>
+<use href="#icon-rider" x="322.0" y="175" width="13" height="13"/>
+<text x="338.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="369.5" y="186" font-size="8px" fill="#1d1d1f">Select Run</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="463.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -256,6 +272,14 @@
 <text x="548.0" y="142.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Context Menu</text>
 <text x="570.0" y="157" text-anchor="end" class="key-label">I</text>
 <title>I: Context Menu</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="428.0" y="166" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="543.0,166 553.0,166 548.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="544.0,166 552.0,166 548.0,162" fill="white"/>
+<use href="#icon-rider" x="438.0" y="175" width="13" height="13"/>
+<text x="454.0" y="186" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="485.5" y="186" font-size="8px" fill="#1d1d1f">Show Context Menu</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="579.0" y="114" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -304,6 +328,14 @@
 <text x="214.5" y="194.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Save Macros</text>
 <text x="236.5" y="209" text-anchor="end" class="key-label">S</text>
 <title>S: Save Macros</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="94.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="209.5,218 219.5,218 214.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="210.5,218 218.5,218 214.5,214" fill="white"/>
+<use href="#icon-rider" x="104.5" y="227" width="13" height="13"/>
+<text x="120.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="152.0" y="238" font-size="8px" fill="#1d1d1f">Save Macros</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="245.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -322,12 +354,18 @@
 <text x="410.5" y="209" text-anchor="end" class="key-label">G</text>
 <title>G: Inline AI Chat</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="268.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="268.5" y="218" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="383.5,218 393.5,218 388.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="384.5,218 392.5,218 388.5,214" fill="white"/>
 <use href="#icon-rider" x="278.5" y="227" width="13" height="13"/>
 <text x="294.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="326.0" y="238" font-size="8px" fill="#1d1d1f">current file git history</text>
+<use href="#icon-rider" x="278.5" y="245" width="13" height="13"/>
+<text x="294.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="326.0" y="256" font-size="8px" fill="#1d1d1f">Open Inline Chat Action</text>
+<use href="#icon-rider" x="278.5" y="263" width="13" height="13"/>
+<text x="294.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="326.0" y="274" font-size="8px" fill="#1d1d1f">Show History</text>
 </g>
 </g>
 <g class="key-group">
@@ -337,7 +375,7 @@
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Hierarchy</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="326.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="326.5" y="218" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
 <use href="#icon-rider" x="336.5" y="227" width="13" height="13"/>
@@ -346,6 +384,9 @@
 <use href="#icon-services" x="336.5" y="245" width="13" height="13"/>
 <text x="352.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Services</text>
 <text x="400.5" y="256" font-size="8px" fill="#1d1d1f">Finder</text>
+<use href="#icon-rider" x="336.5" y="263" width="13" height="13"/>
+<text x="352.5" y="274" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="384.0" y="274" font-size="8px" fill="#1d1d1f">Hierarchy</text>
 </g>
 </g>
 <g class="key-group">
@@ -359,6 +400,14 @@
 <text x="562.5" y="194.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Unscramble</text>
 <text x="584.5" y="209" text-anchor="end" class="key-label">K</text>
 <title>K: Unscramble</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="442.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="557.5,218 567.5,218 562.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="558.5,218 566.5,218 562.5,214" fill="white"/>
+<use href="#icon-rider" x="452.5" y="227" width="13" height="13"/>
+<text x="468.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="500.0" y="238" font-size="8px" fill="#1d1d1f">Analyze Stack Trace or Thread Dump</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="593.5" y="166" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -367,12 +416,15 @@
 <text x="642.5" y="209" text-anchor="end" class="key-label">L</text>
 <title>L: Select in Project</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="500.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="500.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="615.5,218 625.5,218 620.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="616.5,218 624.5,218 620.5,214" fill="white"/>
 <use href="#icon-rider" x="510.5" y="227" width="13" height="13"/>
 <text x="526.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
 <text x="558.0" y="238" font-size="8px" fill="#1d1d1f">focus in Solution explorer</text>
+<use href="#icon-rider" x="510.5" y="245" width="13" height="13"/>
+<text x="526.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="558.0" y="256" font-size="8px" fill="#1d1d1f">Select File in Project View</text>
 </g>
 </g>
 <g class="key-group">
@@ -414,6 +466,14 @@
 <text x="243.5" y="241.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Open in</text><text x="243.5" y="252.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Xcode</text>
 <text x="265.5" y="261" text-anchor="end" class="key-label">X</text>
 <title>X: Open in Xcode</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="123.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="238.5,270 248.5,270 243.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="239.5,270 247.5,270 243.5,266" fill="white"/>
+<use href="#icon-rider" x="133.5" y="279" width="13" height="13"/>
+<text x="149.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="181.0" y="290" font-size="8px" fill="#1d1d1f">Open in Xcode</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="274.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -471,6 +531,14 @@
 <text x="533.5" y="241.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Merge</text><text x="533.5" y="252.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Windows</text>
 <text x="555.5" y="261" text-anchor="end" class="key-label">M</text>
 <title>M: Merge Windows</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="413.5" y="270" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="528.5,270 538.5,270 533.5,265" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="529.5,270 537.5,270 533.5,266" fill="white"/>
+<use href="#icon-rider" x="423.5" y="279" width="13" height="13"/>
+<text x="439.5" y="290" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="471.0" y="290" font-size="8px" fill="#1d1d1f">Merge All Solution Windows</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="564.5" y="218" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -517,7 +585,7 @@
 <text x="867.0" y="297.0" text-anchor="middle" class="key-label">→</text>
 <title>→</title>
 </g>
-<rect x="4" y="340" width="914" height="794" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="1142" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
@@ -562,54 +630,92 @@
 <use href="#icon-rider" x="291" y="630" width="14" height="14"/>
 <text x="309" y="642" font-size="11px" fill="#48484a">Rider — run Unit Tests</text>
 <line x1="20" y1="664" x2="906" y2="664" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="672" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
-<use href="#icon-zap" x="291" y="660" width="14" height="14"/>
-<text x="309" y="672" font-size="11px" fill="#48484a">Unix Terminal — cycle through last commands back</text>
-<use href="#icon-claude-code" x="291" y="684" width="14" height="14"/>
-<text x="309" y="696" font-size="11px" fill="#48484a">Claude Code — cycle through last commands back</text>
+<text x="20" y="672" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
+<use href="#icon-rider" x="291" y="660" width="14" height="14"/>
+<text x="309" y="672" font-size="11px" fill="#48484a">Rider — Select Run</text>
+<use href="#icon-rider" x="291" y="684" width="14" height="14"/>
+<text x="309" y="696" font-size="11px" fill="#48484a">Rider — Run Config</text>
 <line x1="20" y1="718" x2="906" y2="718" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="726" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="726" font-size="12px" fill="#a2845e">⇧⌘⌃⌥⇧left_control</text>
-<line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<use href="#icon-rider" x="291" y="744" width="14" height="14"/>
-<text x="309" y="756" font-size="11px" fill="#48484a">Rider — current file git history</text>
-<use href="#icon-rider" x="291" y="768" width="14" height="14"/>
-<text x="309" y="780" font-size="11px" fill="#48484a">Rider — Inline AI Chat</text>
-<use href="#icon-rider" x="291" y="792" width="14" height="14"/>
-<text x="309" y="804" font-size="11px" fill="#48484a">Rider — Git File History</text>
+<text x="20" y="726" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<use href="#icon-rider" x="291" y="714" width="14" height="14"/>
+<text x="309" y="726" font-size="11px" fill="#48484a">Rider — Show Context Menu</text>
+<use href="#icon-rider" x="291" y="738" width="14" height="14"/>
+<text x="309" y="750" font-size="11px" fill="#48484a">Rider — Context Menu</text>
+<line x1="20" y1="772" x2="906" y2="772" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="780" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
+<use href="#icon-zap" x="291" y="768" width="14" height="14"/>
+<text x="309" y="780" font-size="11px" fill="#48484a">Unix Terminal — cycle through last commands back</text>
+<use href="#icon-claude-code" x="291" y="792" width="14" height="14"/>
+<text x="309" y="804" font-size="11px" fill="#48484a">Claude Code — cycle through last commands back</text>
 <line x1="20" y1="826" x2="906" y2="826" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="834" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<use href="#icon-rider" x="291" y="822" width="14" height="14"/>
-<text x="309" y="834" font-size="11px" fill="#48484a">Rider — hierarchy</text>
-<use href="#icon-services" x="291" y="846" width="14" height="14"/>
-<text x="309" y="858" font-size="11px" fill="#48484a">Services — Finder</text>
-<use href="#icon-rider" x="291" y="870" width="14" height="14"/>
-<text x="309" y="882" font-size="11px" fill="#48484a">Rider — Hierarchy</text>
-<line x1="20" y1="904" x2="906" y2="904" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="912" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<use href="#icon-rider" x="291" y="900" width="14" height="14"/>
-<text x="309" y="912" font-size="11px" fill="#48484a">Rider — focus in Solution explorer</text>
-<use href="#icon-rider" x="291" y="924" width="14" height="14"/>
-<text x="309" y="936" font-size="11px" fill="#48484a">Rider — Select in Project</text>
-<line x1="20" y1="958" x2="906" y2="958" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="966" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<use href="#icon-voiceink" x="291" y="954" width="14" height="14"/>
-<text x="309" y="966" font-size="11px" fill="#48484a">VoiceInk — start</text>
-<line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<use href="#icon-zap" x="291" y="984" width="14" height="14"/>
-<text x="309" y="996" font-size="11px" fill="#48484a">Unix Terminal — used sometimes</text>
-<line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<use href="#icon-zap" x="291" y="1014" width="14" height="14"/>
-<text x="309" y="1026" font-size="11px" fill="#48484a">Terminal — used sometimes</text>
-<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<use href="#icon-zap" x="291" y="1044" width="14" height="14"/>
-<text x="309" y="1056" font-size="11px" fill="#48484a">Unix Terminal — backward one letter</text>
-<use href="#icon-services" x="291" y="1068" width="14" height="14"/>
-<text x="309" y="1080" font-size="11px" fill="#48484a">Services — New Terminal Tab at Folder (Terminal)</text>
-<use href="#icon-services" x="291" y="1092" width="14" height="14"/>
-<text x="309" y="1104" font-size="11px" fill="#48484a">Services — New iTerm2 Tab Here (iTerm2)</text>
+<text x="20" y="834" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<text x="56" y="834" font-size="12px" fill="#a2845e">⇧⌘⌃⌥⇧left_control</text>
+<line x1="20" y1="856" x2="906" y2="856" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="864" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<use href="#icon-rider" x="291" y="852" width="14" height="14"/>
+<text x="309" y="864" font-size="11px" fill="#48484a">Rider — Save Macros</text>
+<line x1="20" y1="886" x2="906" y2="886" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="894" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
+<use href="#icon-rider" x="291" y="882" width="14" height="14"/>
+<text x="309" y="894" font-size="11px" fill="#48484a">Rider — current file git history</text>
+<use href="#icon-rider" x="291" y="906" width="14" height="14"/>
+<text x="309" y="918" font-size="11px" fill="#48484a">Rider — Open Inline Chat Action</text>
+<use href="#icon-rider" x="291" y="930" width="14" height="14"/>
+<text x="309" y="942" font-size="11px" fill="#48484a">Rider — Show History</text>
+<use href="#icon-rider" x="291" y="954" width="14" height="14"/>
+<text x="309" y="966" font-size="11px" fill="#48484a">Rider — Inline AI Chat</text>
+<use href="#icon-rider" x="291" y="978" width="14" height="14"/>
+<text x="309" y="990" font-size="11px" fill="#48484a">Rider — Git File History</text>
+<line x1="20" y1="1012" x2="906" y2="1012" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1020" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<use href="#icon-rider" x="291" y="1008" width="14" height="14"/>
+<text x="309" y="1020" font-size="11px" fill="#48484a">Rider — hierarchy</text>
+<use href="#icon-services" x="291" y="1032" width="14" height="14"/>
+<text x="309" y="1044" font-size="11px" fill="#48484a">Services — Finder</text>
+<use href="#icon-rider" x="291" y="1056" width="14" height="14"/>
+<text x="309" y="1068" font-size="11px" fill="#48484a">Rider — Hierarchy</text>
+<line x1="20" y1="1090" x2="906" y2="1090" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1098" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
+<use href="#icon-rider" x="291" y="1086" width="14" height="14"/>
+<text x="309" y="1098" font-size="11px" fill="#48484a">Rider — Analyze Stack Trace or Thread Dump</text>
+<use href="#icon-rider" x="291" y="1110" width="14" height="14"/>
+<text x="309" y="1122" font-size="11px" fill="#48484a">Rider — Unscramble</text>
+<line x1="20" y1="1144" x2="906" y2="1144" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1152" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
+<use href="#icon-rider" x="291" y="1140" width="14" height="14"/>
+<text x="309" y="1152" font-size="11px" fill="#48484a">Rider — focus in Solution explorer</text>
+<use href="#icon-rider" x="291" y="1164" width="14" height="14"/>
+<text x="309" y="1176" font-size="11px" fill="#48484a">Rider — Select File in Project View</text>
+<use href="#icon-rider" x="291" y="1188" width="14" height="14"/>
+<text x="309" y="1200" font-size="11px" fill="#48484a">Rider — Select in Project</text>
+<line x1="20" y1="1222" x2="906" y2="1222" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1230" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
+<use href="#icon-voiceink" x="291" y="1218" width="14" height="14"/>
+<text x="309" y="1230" font-size="11px" fill="#48484a">VoiceInk — start</text>
+<line x1="20" y1="1252" x2="906" y2="1252" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1260" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
+<use href="#icon-rider" x="291" y="1248" width="14" height="14"/>
+<text x="309" y="1260" font-size="11px" fill="#48484a">Rider — Open in Xcode</text>
+<line x1="20" y1="1282" x2="906" y2="1282" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1290" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<use href="#icon-zap" x="291" y="1278" width="14" height="14"/>
+<text x="309" y="1290" font-size="11px" fill="#48484a">Unix Terminal — used sometimes</text>
+<line x1="20" y1="1312" x2="906" y2="1312" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1320" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<use href="#icon-zap" x="291" y="1308" width="14" height="14"/>
+<text x="309" y="1320" font-size="11px" fill="#48484a">Terminal — used sometimes</text>
+<line x1="20" y1="1342" x2="906" y2="1342" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1350" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
+<use href="#icon-zap" x="291" y="1338" width="14" height="14"/>
+<text x="309" y="1350" font-size="11px" fill="#48484a">Unix Terminal — backward one letter</text>
+<use href="#icon-services" x="291" y="1362" width="14" height="14"/>
+<text x="309" y="1374" font-size="11px" fill="#48484a">Services — New Terminal Tab at Folder (Terminal)</text>
+<use href="#icon-services" x="291" y="1386" width="14" height="14"/>
+<text x="309" y="1398" font-size="11px" fill="#48484a">Services — New iTerm2 Tab Here (iTerm2)</text>
+<line x1="20" y1="1420" x2="906" y2="1420" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1428" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
+<use href="#icon-rider" x="291" y="1416" width="14" height="14"/>
+<text x="309" y="1428" font-size="11px" fill="#48484a">Rider — Merge All Solution Windows</text>
+<use href="#icon-rider" x="291" y="1440" width="14" height="14"/>
+<text x="309" y="1452" font-size="11px" fill="#48484a">Rider — Merge Windows</text>
 </svg>

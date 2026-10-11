@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2232" viewBox="0 0 922 2232">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="2484" viewBox="0 0 922 2484">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="2232" fill="none"/>
+<rect width="922" height="2484" fill="none"/>
 <text x="28" y="30" class="title">Alt + Cmd</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -96,6 +96,14 @@
 <text x="55.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌥⌘⎋</text>
 <text x="77" y="105" text-anchor="end" class="key-label">~</text>
 <title>~: ⌥⌘⎋</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="-65.0" y="114" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="50.0,114 60.0,114 55.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="51.0,114 59.0,114 55.0,110" fill="white"/>
+<use href="#icon-rider" x="-55.0" y="123" width="13" height="13"/>
+<text x="-39.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="-7.5" y="134" font-size="8px" fill="#1d1d1f">Next Solution Window</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="86" y="62" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -278,7 +286,7 @@
 <text x="200.0" y="141.0" text-anchor="middle" class="key-label">W</text>
 <title>W</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="80.0" y="166" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="80.0" y="166" width="240" height="70" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="195.0,166 205.0,166 200.0,161" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="196.0,166 204.0,166 200.0,162" fill="white"/>
 <use href="#icon-visual-studio-code" x="90.0" y="175" width="13" height="13"/>
@@ -287,6 +295,9 @@
 <use href="#icon-mail" x="90.0" y="193" width="13" height="13"/>
 <text x="106.0" y="204" font-size="9px" font-weight="600" fill="#007aff">Mail</text>
 <text x="132.0" y="204" font-size="8px" fill="#1d1d1f">close all Mail windows</text>
+<use href="#icon-rider" x="90.0" y="211" width="13" height="13"/>
+<text x="106.0" y="222" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="137.5" y="222" font-size="8px" fill="#1d1d1f">Previous Occurrence</text>
 </g>
 </g>
 <g class="key-group">
@@ -439,12 +450,15 @@
 <text x="214.5" y="193.0" text-anchor="middle" class="key-label">S</text>
 <title>S</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="94.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="94.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="209.5,218 219.5,218 214.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="210.5,218 218.5,218 214.5,214" fill="white"/>
 <use href="#icon-music" x="104.5" y="227" width="13" height="13"/>
 <text x="120.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Music</text>
 <text x="152.0" y="238" font-size="8px" fill="#1d1d1f">Shuffle</text>
+<use href="#icon-rider" x="104.5" y="245" width="13" height="13"/>
+<text x="120.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="152.0" y="256" font-size="8px" fill="#1d1d1f">Next Occurrence</text>
 </g>
 </g>
 <g class="key-group">
@@ -479,6 +493,14 @@
 <text x="446.5" y="189.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Reveal in</text><text x="446.5" y="200.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Finder</text>
 <text x="468.5" y="209" text-anchor="end" class="key-label">H</text>
 <title>H: Reveal in Finder</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="326.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="441.5,218 451.5,218 446.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="442.5,218 450.5,218 446.5,214" fill="white"/>
+<use href="#icon-rider" x="336.5" y="227" width="13" height="13"/>
+<text x="352.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="384.0" y="238" font-size="8px" fill="#1d1d1f">Show in File Manager</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="477.5" y="166" width="54" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -530,12 +552,15 @@
 <text x="700.5" y="209" text-anchor="end" class="key-label">;</text>
 <title>;: Git Log</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="558.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="558.5" y="218" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="673.5,218 683.5,218 678.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="674.5,218 682.5,218 678.5,214" fill="white"/>
 <use href="#icon-music" x="568.5" y="227" width="13" height="13"/>
 <text x="584.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Music</text>
 <text x="616.0" y="238" font-size="8px" fill="#1d1d1f">seek forward</text>
+<use href="#icon-rider" x="568.5" y="245" width="13" height="13"/>
+<text x="584.5" y="256" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="616.0" y="256" font-size="8px" fill="#1d1d1f">Log</text>
 </g>
 </g>
 <g class="key-group">
@@ -544,6 +569,14 @@
 <text x="736.5" y="189.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Git Diff</text><text x="736.5" y="200.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="8px">Preview</text>
 <text x="758.5" y="209" text-anchor="end" class="key-label">'</text>
 <title>': Git Diff Preview</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="616.5" y="218" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="731.5,218 741.5,218 736.5,213" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="732.5,218 740.5,218 736.5,214" fill="white"/>
+<use href="#icon-rider" x="626.5" y="227" width="13" height="13"/>
+<text x="642.5" y="238" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="674.0" y="238" font-size="8px" fill="#1d1d1f">Show Diff Preview</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="767.5" y="166" width="126.5" height="48" rx="6" fill="#f5f5f7" stroke="#d5d5da" stroke-width="0.5" filter="url(#shadow)"/>
@@ -729,12 +762,15 @@
 <text x="809.0" y="284.0" text-anchor="middle" class="key-label">↑</text>
 <title>↑</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="296" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="296" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,296 814.0,296 809.0,291" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,296 813.0,296 809.0,292" fill="white"/>
 <use href="#icon-visual-studio-code" x="699.0" y="305" width="13" height="13"/>
 <text x="715.0" y="316" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="752.0" y="316" font-size="8px" fill="#1d1d1f">create cursor up</text>
+<use href="#icon-rider" x="699.0" y="323" width="13" height="13"/>
+<text x="715.0" y="334" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="334" font-size="8px" fill="#1d1d1f">Previous Occurrence</text>
 </g>
 </g>
 <g class="key-group">
@@ -742,12 +778,15 @@
 <text x="809.0" y="310.0" text-anchor="middle" class="key-label">↓</text>
 <title>↓</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="689.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="689.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="804.0,322 814.0,322 809.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="805.0,322 813.0,322 809.0,318" fill="white"/>
 <use href="#icon-visual-studio-code" x="699.0" y="331" width="13" height="13"/>
 <text x="715.0" y="342" font-size="9px" font-weight="600" fill="#007aff">VSCode</text>
 <text x="752.0" y="342" font-size="8px" fill="#1d1d1f">create cursor down</text>
+<use href="#icon-rider" x="699.0" y="349" width="13" height="13"/>
+<text x="715.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="746.5" y="360" font-size="8px" fill="#1d1d1f">Next Occurrence</text>
 </g>
 </g>
 <g class="key-group">
@@ -766,7 +805,7 @@
 <text x="804.5" y="360" font-size="8px" fill="#1d1d1f">seek forward</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="1868" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="2120" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#007aff"/>
 <text x="38" y="358" class="legend-text">Apps</text>
 <line x1="20" y1="368" x2="906" y2="368" stroke="#d1d1d6" stroke-width="0.5"/>
@@ -779,212 +818,237 @@
 <text x="56" y="408" font-size="12px" fill="#a2845e">⌘⌥⎋</text>
 <text x="136" y="408" font-size="11px" fill="#86868b">macOS</text>
 <use href="#icon-rider" x="291" y="396" width="14" height="14"/>
-<text x="309" y="408" font-size="11px" fill="#48484a">Rider — Next Project Window</text>
-<line x1="20" y1="430" x2="906" y2="430" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="438" font-size="13px" font-weight="700" fill="#1d1d1f">1</text>
-<use href="#icon-telegram" x="291" y="426" width="14" height="14"/>
-<text x="309" y="438" font-size="11px" fill="#48484a">Telegram — focus 1st chat</text>
-<use href="#icon-fork" x="291" y="450" width="14" height="14"/>
-<text x="309" y="462" font-size="11px" fill="#48484a">Fork — show commit details</text>
-<line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
-<use href="#icon-telegram" x="291" y="480" width="14" height="14"/>
-<text x="309" y="492" font-size="11px" fill="#48484a">Telegram — focus 2nd chat</text>
-<line x1="20" y1="514" x2="906" y2="514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="522" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
-<use href="#icon-telegram" x="291" y="510" width="14" height="14"/>
-<text x="309" y="522" font-size="11px" fill="#48484a">Telegram — focus 3rd chat</text>
-<use href="#icon-fork" x="291" y="534" width="14" height="14"/>
-<text x="309" y="546" font-size="11px" fill="#48484a">Fork — show commit filetree</text>
-<line x1="20" y1="568" x2="906" y2="568" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="576" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
-<use href="#icon-telegram" x="291" y="564" width="14" height="14"/>
-<text x="309" y="576" font-size="11px" fill="#48484a">Telegram — focus 4th chat</text>
-<line x1="20" y1="598" x2="906" y2="598" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="606" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
-<use href="#icon-telegram" x="291" y="594" width="14" height="14"/>
-<text x="309" y="606" font-size="11px" fill="#48484a">Telegram — focus 5th chat</text>
-<line x1="20" y1="628" x2="906" y2="628" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="636" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
-<use href="#icon-telegram" x="291" y="624" width="14" height="14"/>
-<text x="309" y="636" font-size="11px" fill="#48484a">Telegram — focus 6th chat</text>
-<line x1="20" y1="658" x2="906" y2="658" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="666" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
-<use href="#icon-telegram" x="291" y="654" width="14" height="14"/>
-<text x="309" y="666" font-size="11px" fill="#48484a">Telegram — focus 7th chat</text>
-<line x1="20" y1="688" x2="906" y2="688" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="696" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
-<use href="#icon-telegram" x="291" y="684" width="14" height="14"/>
-<text x="309" y="696" font-size="11px" fill="#48484a">Telegram — focus 8th chat</text>
-<line x1="20" y1="718" x2="906" y2="718" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="726" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
-<use href="#icon-telegram" x="291" y="714" width="14" height="14"/>
-<text x="309" y="726" font-size="11px" fill="#48484a">Telegram — focus 9th chat</text>
-<line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
-<use href="#icon-telegram" x="291" y="744" width="14" height="14"/>
-<text x="309" y="756" font-size="11px" fill="#48484a">Telegram — focus Saved Messages</text>
-<line x1="20" y1="778" x2="906" y2="778" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="786" font-size="13px" font-weight="700" fill="#1d1d1f">Q</text>
-<text x="56" y="786" font-size="12px" fill="#a2845e">⌘⌫</text>
-<text x="136" y="786" font-size="11px" fill="#86868b">macOS</text>
-<use href="#icon-rider" x="291" y="774" width="14" height="14"/>
-<text x="309" y="786" font-size="11px" fill="#48484a">Rider — delete line</text>
-<use href="#icon-visual-studio-code" x="291" y="798" width="14" height="14"/>
-<text x="309" y="810" font-size="11px" fill="#48484a">VSCode — delete line</text>
-<line x1="20" y1="832" x2="906" y2="832" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="840" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
-<use href="#icon-visual-studio-code" x="291" y="828" width="14" height="14"/>
-<text x="309" y="840" font-size="11px" fill="#48484a">VSCode — toggle search whole word</text>
-<use href="#icon-mail" x="291" y="852" width="14" height="14"/>
-<text x="309" y="864" font-size="11px" fill="#48484a">Mail — close all Mail windows</text>
-<line x1="20" y1="886" x2="906" y2="886" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="894" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
-<use href="#icon-music" x="291" y="882" width="14" height="14"/>
-<text x="309" y="894" font-size="11px" fill="#48484a">Music — show equalizer</text>
-<use href="#icon-finder" x="291" y="906" width="14" height="14"/>
-<text x="309" y="918" font-size="11px" fill="#48484a">Finder — Enclosing Folder in New Window</text>
-<line x1="20" y1="940" x2="906" y2="940" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="948" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<use href="#icon-rider" x="291" y="936" width="14" height="14"/>
-<text x="309" y="948" font-size="11px" fill="#48484a">Rider — resume running (debugging)</text>
-<use href="#icon-visual-studio-code" x="291" y="960" width="14" height="14"/>
-<text x="309" y="972" font-size="11px" fill="#48484a">VSCode — resume running (debugging)</text>
-<use href="#icon-mail" x="291" y="984" width="14" height="14"/>
-<text x="309" y="996" font-size="11px" fill="#48484a">Mail — show Reply-To field</text>
-<line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<use href="#icon-fork" x="291" y="1014" width="14" height="14"/>
-<text x="309" y="1026" font-size="11px" fill="#48484a">Fork — hide</text>
-<line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
-<use href="#icon-music" x="291" y="1044" width="14" height="14"/>
-<text x="309" y="1056" font-size="11px" fill="#48484a">Music — Show playing next queue</text>
-<use href="#icon-vivaldi" x="291" y="1068" width="14" height="14"/>
-<text x="309" y="1080" font-size="11px" fill="#48484a">Vivaldi — view source code</text>
-<line x1="20" y1="1102" x2="906" y2="1102" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1110" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
-<use href="#icon-vivaldi" x="291" y="1098" width="14" height="14"/>
-<text x="309" y="1110" font-size="11px" fill="#48484a">Browser — open Developer Tools</text>
-<use href="#icon-mail" x="291" y="1122" width="14" height="14"/>
-<text x="309" y="1134" font-size="11px" fill="#48484a">Mail — append selected emails to email</text>
-<line x1="20" y1="1156" x2="906" y2="1156" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1164" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
-<use href="#icon-music" x="291" y="1152" width="14" height="14"/>
-<text x="309" y="1164" font-size="11px" fill="#48484a">Music — One</text>
-<use href="#icon-music" x="291" y="1176" width="14" height="14"/>
-<text x="309" y="1188" font-size="11px" fill="#48484a">Music — Repeat One</text>
-<line x1="20" y1="1210" x2="906" y2="1210" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1218" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
-<use href="#icon-vivaldi" x="291" y="1206" width="14" height="14"/>
-<text x="309" y="1218" font-size="11px" fill="#48484a">Vivaldi — print using system dialog</text>
-<line x1="20" y1="1240" x2="906" y2="1240" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1248" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="1248" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_command</text>
-<line x1="20" y1="1270" x2="906" y2="1270" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1278" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<use href="#icon-music" x="291" y="1266" width="14" height="14"/>
-<text x="309" y="1278" font-size="11px" fill="#48484a">Music — All</text>
-<use href="#icon-music" x="291" y="1290" width="14" height="14"/>
-<text x="309" y="1302" font-size="11px" fill="#48484a">Music — Repeat All</text>
-<line x1="20" y1="1324" x2="906" y2="1324" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1332" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<use href="#icon-music" x="291" y="1320" width="14" height="14"/>
-<text x="309" y="1332" font-size="11px" fill="#48484a">Music — Shuffle</text>
-<line x1="20" y1="1354" x2="906" y2="1354" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1362" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="136" y="1362" font-size="11px" fill="#86868b">macOS</text>
-<text x="291" y="1362" font-size="11px" fill="#48484a">system 52 dock.toggle_hiding</text>
-<line x1="20" y1="1384" x2="906" y2="1384" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1392" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<use href="#icon-rider" x="291" y="1380" width="14" height="14"/>
-<text x="309" y="1392" font-size="11px" fill="#48484a">Rider — extract field</text>
-<use href="#icon-visual-studio-code" x="291" y="1404" width="14" height="14"/>
-<text x="309" y="1416" font-size="11px" fill="#48484a">VSCode — extract field</text>
-<line x1="20" y1="1438" x2="906" y2="1438" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1446" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
-<use href="#icon-mail" x="291" y="1434" width="14" height="14"/>
-<text x="309" y="1446" font-size="11px" fill="#48484a">Mail — erase junk mail</text>
-<use href="#icon-vivaldi" x="291" y="1458" width="14" height="14"/>
-<text x="309" y="1470" font-size="11px" fill="#48484a">Vivaldi — JavaScript console</text>
-<line x1="20" y1="1492" x2="906" y2="1492" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1500" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
-<use href="#icon-zen" x="291" y="1488" width="14" height="14"/>
-<text x="309" y="1500" font-size="11px" fill="#48484a">Zen — JavaScript console</text>
-<line x1="20" y1="1522" x2="906" y2="1522" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1530" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<use href="#icon-finder" x="291" y="1518" width="14" height="14"/>
-<text x="309" y="1530" font-size="11px" fill="#48484a">Finder — downloads</text>
-<line x1="20" y1="1552" x2="906" y2="1552" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1560" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
-<use href="#icon-music" x="291" y="1548" width="14" height="14"/>
-<text x="309" y="1560" font-size="11px" fill="#48484a">Music — seek forward</text>
-<use href="#icon-rider" x="291" y="1572" width="14" height="14"/>
-<text x="309" y="1584" font-size="11px" fill="#48484a">Rider — Git Log</text>
-<line x1="20" y1="1606" x2="906" y2="1606" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1614" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<use href="#icon-rider" x="291" y="1602" width="14" height="14"/>
-<text x="309" y="1614" font-size="11px" fill="#48484a">Rider — show 'revert selected in git' popup</text>
-<use href="#icon-visual-studio-code" x="291" y="1626" width="14" height="14"/>
-<text x="309" y="1638" font-size="11px" fill="#48484a">VSCode — revert selected in git</text>
-<line x1="20" y1="1660" x2="906" y2="1660" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1668" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<use href="#icon-rider" x="291" y="1656" width="14" height="14"/>
-<text x="309" y="1668" font-size="11px" fill="#48484a">Rider — introduce constant</text>
-<use href="#icon-visual-studio-code" x="291" y="1680" width="14" height="14"/>
-<text x="309" y="1692" font-size="11px" fill="#48484a">VSCode — introduce constant</text>
-<use href="#icon-finder" x="291" y="1704" width="14" height="14"/>
-<text x="309" y="1716" font-size="11px" fill="#48484a">Finder — copy the path of the file</text>
-<use href="#icon-vivaldi" x="291" y="1728" width="14" height="14"/>
-<text x="309" y="1740" font-size="11px" fill="#48484a">Vivaldi — inspect elements</text>
-<line x1="20" y1="1762" x2="906" y2="1762" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1770" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<use href="#icon-rider" x="291" y="1758" width="14" height="14"/>
-<text x="309" y="1770" font-size="11px" fill="#48484a">Rider — extract variable</text>
-<line x1="20" y1="1792" x2="906" y2="1792" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1800" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<use href="#icon-visual-studio-code" x="291" y="1788" width="14" height="14"/>
-<text x="309" y="1800" font-size="11px" fill="#48484a">VSCode — focus chat</text>
-<use href="#icon-mail" x="291" y="1812" width="14" height="14"/>
-<text x="309" y="1824" font-size="11px" fill="#48484a">Mail — show Bcc field</text>
-<line x1="20" y1="1846" x2="906" y2="1846" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1854" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
-<use href="#icon-rider" x="291" y="1842" width="14" height="14"/>
-<text x="309" y="1854" font-size="11px" fill="#48484a">Rider — inline</text>
-<use href="#icon-music" x="291" y="1866" width="14" height="14"/>
-<text x="309" y="1878" font-size="11px" fill="#48484a">Music — create a Smart Playlist</text>
-<use href="#icon-mail" x="291" y="1890" width="14" height="14"/>
-<text x="309" y="1902" font-size="11px" fill="#48484a">Mail — open a new tab in Mail viewer</text>
-<line x1="20" y1="1924" x2="906" y2="1924" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1932" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
-<use href="#icon-rider" x="291" y="1920" width="14" height="14"/>
-<text x="309" y="1932" font-size="11px" fill="#48484a">Rider — extract method</text>
-<use href="#icon-music" x="291" y="1944" width="14" height="14"/>
-<text x="309" y="1956" font-size="11px" fill="#48484a">Music — open</text>
-<use href="#icon-mail" x="291" y="1968" width="14" height="14"/>
-<text x="309" y="1980" font-size="11px" fill="#48484a">Mail — move to predicted mailbox</text>
-<line x1="20" y1="2002" x2="906" y2="2002" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2010" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
-<use href="#icon-system-settings" x="136" y="1997" width="16" height="16"/>
-<text x="156" y="2010" font-size="12px" font-weight="500" fill="#007aff">System Settings — show/hide</text>
-<text x="291" y="2010" font-size="11px" fill="#48484a">System Settings</text>
-<line x1="20" y1="2032" x2="906" y2="2032" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2040" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
-<text x="291" y="2040" font-size="11px" fill="#48484a">navigate to tab to the left</text>
-<use href="#icon-music" x="291" y="2052" width="14" height="14"/>
-<text x="309" y="2064" font-size="11px" fill="#48484a">Music — seek backward</text>
-<line x1="20" y1="2086" x2="906" y2="2086" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2094" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<use href="#icon-visual-studio-code" x="291" y="2082" width="14" height="14"/>
-<text x="309" y="2094" font-size="11px" fill="#48484a">VSCode — create cursor up</text>
-<line x1="20" y1="2116" x2="906" y2="2116" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2124" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<use href="#icon-visual-studio-code" x="291" y="2112" width="14" height="14"/>
-<text x="309" y="2124" font-size="11px" fill="#48484a">VSCode — create cursor down</text>
-<line x1="20" y1="2146" x2="906" y2="2146" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="2154" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<use href="#icon-visual-studio-code" x="291" y="2142" width="14" height="14"/>
-<text x="309" y="2154" font-size="11px" fill="#48484a">VSCode — navigate next tab</text>
-<use href="#icon-music" x="291" y="2166" width="14" height="14"/>
-<text x="309" y="2178" font-size="11px" fill="#48484a">Music — seek forward</text>
+<text x="309" y="408" font-size="11px" fill="#48484a">Rider — Next Solution Window</text>
+<use href="#icon-rider" x="291" y="420" width="14" height="14"/>
+<text x="309" y="432" font-size="11px" fill="#48484a">Rider — Next Project Window</text>
+<line x1="20" y1="454" x2="906" y2="454" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="462" font-size="13px" font-weight="700" fill="#1d1d1f">1</text>
+<use href="#icon-telegram" x="291" y="450" width="14" height="14"/>
+<text x="309" y="462" font-size="11px" fill="#48484a">Telegram — focus 1st chat</text>
+<use href="#icon-fork" x="291" y="474" width="14" height="14"/>
+<text x="309" y="486" font-size="11px" fill="#48484a">Fork — show commit details</text>
+<line x1="20" y1="508" x2="906" y2="508" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="516" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
+<use href="#icon-telegram" x="291" y="504" width="14" height="14"/>
+<text x="309" y="516" font-size="11px" fill="#48484a">Telegram — focus 2nd chat</text>
+<line x1="20" y1="538" x2="906" y2="538" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="546" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
+<use href="#icon-telegram" x="291" y="534" width="14" height="14"/>
+<text x="309" y="546" font-size="11px" fill="#48484a">Telegram — focus 3rd chat</text>
+<use href="#icon-fork" x="291" y="558" width="14" height="14"/>
+<text x="309" y="570" font-size="11px" fill="#48484a">Fork — show commit filetree</text>
+<line x1="20" y1="592" x2="906" y2="592" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="600" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
+<use href="#icon-telegram" x="291" y="588" width="14" height="14"/>
+<text x="309" y="600" font-size="11px" fill="#48484a">Telegram — focus 4th chat</text>
+<line x1="20" y1="622" x2="906" y2="622" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="630" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
+<use href="#icon-telegram" x="291" y="618" width="14" height="14"/>
+<text x="309" y="630" font-size="11px" fill="#48484a">Telegram — focus 5th chat</text>
+<line x1="20" y1="652" x2="906" y2="652" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="660" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
+<use href="#icon-telegram" x="291" y="648" width="14" height="14"/>
+<text x="309" y="660" font-size="11px" fill="#48484a">Telegram — focus 6th chat</text>
+<line x1="20" y1="682" x2="906" y2="682" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="690" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
+<use href="#icon-telegram" x="291" y="678" width="14" height="14"/>
+<text x="309" y="690" font-size="11px" fill="#48484a">Telegram — focus 7th chat</text>
+<line x1="20" y1="712" x2="906" y2="712" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="720" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
+<use href="#icon-telegram" x="291" y="708" width="14" height="14"/>
+<text x="309" y="720" font-size="11px" fill="#48484a">Telegram — focus 8th chat</text>
+<line x1="20" y1="742" x2="906" y2="742" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="750" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
+<use href="#icon-telegram" x="291" y="738" width="14" height="14"/>
+<text x="309" y="750" font-size="11px" fill="#48484a">Telegram — focus 9th chat</text>
+<line x1="20" y1="772" x2="906" y2="772" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="780" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
+<use href="#icon-telegram" x="291" y="768" width="14" height="14"/>
+<text x="309" y="780" font-size="11px" fill="#48484a">Telegram — focus Saved Messages</text>
+<line x1="20" y1="802" x2="906" y2="802" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="810" font-size="13px" font-weight="700" fill="#1d1d1f">Q</text>
+<text x="56" y="810" font-size="12px" fill="#a2845e">⌘⌫</text>
+<text x="136" y="810" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="291" y="798" width="14" height="14"/>
+<text x="309" y="810" font-size="11px" fill="#48484a">Rider — delete line</text>
+<use href="#icon-visual-studio-code" x="291" y="822" width="14" height="14"/>
+<text x="309" y="834" font-size="11px" fill="#48484a">VSCode — delete line</text>
+<line x1="20" y1="856" x2="906" y2="856" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="864" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
+<use href="#icon-visual-studio-code" x="291" y="852" width="14" height="14"/>
+<text x="309" y="864" font-size="11px" fill="#48484a">VSCode — toggle search whole word</text>
+<use href="#icon-mail" x="291" y="876" width="14" height="14"/>
+<text x="309" y="888" font-size="11px" fill="#48484a">Mail — close all Mail windows</text>
+<use href="#icon-rider" x="291" y="900" width="14" height="14"/>
+<text x="309" y="912" font-size="11px" fill="#48484a">Rider — Previous Occurrence</text>
+<line x1="20" y1="934" x2="906" y2="934" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="942" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
+<use href="#icon-music" x="291" y="930" width="14" height="14"/>
+<text x="309" y="942" font-size="11px" fill="#48484a">Music — show equalizer</text>
+<use href="#icon-finder" x="291" y="954" width="14" height="14"/>
+<text x="309" y="966" font-size="11px" fill="#48484a">Finder — Enclosing Folder in New Window</text>
+<line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
+<use href="#icon-rider" x="291" y="984" width="14" height="14"/>
+<text x="309" y="996" font-size="11px" fill="#48484a">Rider — resume running (debugging)</text>
+<use href="#icon-visual-studio-code" x="291" y="1008" width="14" height="14"/>
+<text x="309" y="1020" font-size="11px" fill="#48484a">VSCode — resume running (debugging)</text>
+<use href="#icon-mail" x="291" y="1032" width="14" height="14"/>
+<text x="309" y="1044" font-size="11px" fill="#48484a">Mail — show Reply-To field</text>
+<line x1="20" y1="1066" x2="906" y2="1066" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1074" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
+<use href="#icon-fork" x="291" y="1062" width="14" height="14"/>
+<text x="309" y="1074" font-size="11px" fill="#48484a">Fork — hide</text>
+<line x1="20" y1="1096" x2="906" y2="1096" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1104" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
+<use href="#icon-music" x="291" y="1092" width="14" height="14"/>
+<text x="309" y="1104" font-size="11px" fill="#48484a">Music — Show playing next queue</text>
+<use href="#icon-vivaldi" x="291" y="1116" width="14" height="14"/>
+<text x="309" y="1128" font-size="11px" fill="#48484a">Vivaldi — view source code</text>
+<line x1="20" y1="1150" x2="906" y2="1150" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1158" font-size="13px" font-weight="700" fill="#1d1d1f">I</text>
+<use href="#icon-vivaldi" x="291" y="1146" width="14" height="14"/>
+<text x="309" y="1158" font-size="11px" fill="#48484a">Browser — open Developer Tools</text>
+<use href="#icon-mail" x="291" y="1170" width="14" height="14"/>
+<text x="309" y="1182" font-size="11px" fill="#48484a">Mail — append selected emails to email</text>
+<line x1="20" y1="1204" x2="906" y2="1204" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1212" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
+<use href="#icon-music" x="291" y="1200" width="14" height="14"/>
+<text x="309" y="1212" font-size="11px" fill="#48484a">Music — One</text>
+<use href="#icon-music" x="291" y="1224" width="14" height="14"/>
+<text x="309" y="1236" font-size="11px" fill="#48484a">Music — Repeat One</text>
+<line x1="20" y1="1258" x2="906" y2="1258" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1266" font-size="13px" font-weight="700" fill="#1d1d1f">P</text>
+<use href="#icon-vivaldi" x="291" y="1254" width="14" height="14"/>
+<text x="309" y="1266" font-size="11px" fill="#48484a">Vivaldi — print using system dialog</text>
+<line x1="20" y1="1288" x2="906" y2="1288" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1296" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
+<text x="56" y="1296" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_command</text>
+<line x1="20" y1="1318" x2="906" y2="1318" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1326" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
+<use href="#icon-music" x="291" y="1314" width="14" height="14"/>
+<text x="309" y="1326" font-size="11px" fill="#48484a">Music — All</text>
+<use href="#icon-music" x="291" y="1338" width="14" height="14"/>
+<text x="309" y="1350" font-size="11px" fill="#48484a">Music — Repeat All</text>
+<line x1="20" y1="1372" x2="906" y2="1372" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1380" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
+<use href="#icon-music" x="291" y="1368" width="14" height="14"/>
+<text x="309" y="1380" font-size="11px" fill="#48484a">Music — Shuffle</text>
+<use href="#icon-rider" x="291" y="1392" width="14" height="14"/>
+<text x="309" y="1404" font-size="11px" fill="#48484a">Rider — Next Occurrence</text>
+<line x1="20" y1="1426" x2="906" y2="1426" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1434" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
+<text x="136" y="1434" font-size="11px" fill="#86868b">macOS</text>
+<text x="291" y="1434" font-size="11px" fill="#48484a">system 52 dock.toggle_hiding</text>
+<line x1="20" y1="1456" x2="906" y2="1456" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1464" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
+<use href="#icon-rider" x="291" y="1452" width="14" height="14"/>
+<text x="309" y="1464" font-size="11px" fill="#48484a">Rider — extract field</text>
+<use href="#icon-visual-studio-code" x="291" y="1476" width="14" height="14"/>
+<text x="309" y="1488" font-size="11px" fill="#48484a">VSCode — extract field</text>
+<line x1="20" y1="1510" x2="906" y2="1510" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1518" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
+<text x="136" y="1518" font-size="11px" fill="#86868b">macOS</text>
+<use href="#icon-rider" x="291" y="1506" width="14" height="14"/>
+<text x="309" y="1518" font-size="11px" fill="#48484a">Rider — Show in File Manager</text>
+<use href="#icon-rider" x="291" y="1530" width="14" height="14"/>
+<text x="309" y="1542" font-size="11px" fill="#48484a">Rider — Reveal in Finder</text>
+<line x1="20" y1="1564" x2="906" y2="1564" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1572" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
+<use href="#icon-mail" x="291" y="1560" width="14" height="14"/>
+<text x="309" y="1572" font-size="11px" fill="#48484a">Mail — erase junk mail</text>
+<use href="#icon-vivaldi" x="291" y="1584" width="14" height="14"/>
+<text x="309" y="1596" font-size="11px" fill="#48484a">Vivaldi — JavaScript console</text>
+<line x1="20" y1="1618" x2="906" y2="1618" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1626" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
+<use href="#icon-zen" x="291" y="1614" width="14" height="14"/>
+<text x="309" y="1626" font-size="11px" fill="#48484a">Zen — JavaScript console</text>
+<line x1="20" y1="1648" x2="906" y2="1648" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1656" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
+<use href="#icon-finder" x="291" y="1644" width="14" height="14"/>
+<text x="309" y="1656" font-size="11px" fill="#48484a">Finder — downloads</text>
+<line x1="20" y1="1678" x2="906" y2="1678" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1686" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
+<use href="#icon-music" x="291" y="1674" width="14" height="14"/>
+<text x="309" y="1686" font-size="11px" fill="#48484a">Music — seek forward</text>
+<use href="#icon-rider" x="291" y="1698" width="14" height="14"/>
+<text x="309" y="1710" font-size="11px" fill="#48484a">Rider — Log</text>
+<use href="#icon-rider" x="291" y="1722" width="14" height="14"/>
+<text x="309" y="1734" font-size="11px" fill="#48484a">Rider — Git Log</text>
+<line x1="20" y1="1756" x2="906" y2="1756" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1764" font-size="13px" font-weight="700" fill="#1d1d1f">'</text>
+<use href="#icon-rider" x="291" y="1752" width="14" height="14"/>
+<text x="309" y="1764" font-size="11px" fill="#48484a">Rider — Show Diff Preview</text>
+<use href="#icon-rider" x="291" y="1776" width="14" height="14"/>
+<text x="309" y="1788" font-size="11px" fill="#48484a">Rider — Git Diff Preview</text>
+<line x1="20" y1="1810" x2="906" y2="1810" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1818" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
+<use href="#icon-rider" x="291" y="1806" width="14" height="14"/>
+<text x="309" y="1818" font-size="11px" fill="#48484a">Rider — show 'revert selected in git' popup</text>
+<use href="#icon-visual-studio-code" x="291" y="1830" width="14" height="14"/>
+<text x="309" y="1842" font-size="11px" fill="#48484a">VSCode — revert selected in git</text>
+<line x1="20" y1="1864" x2="906" y2="1864" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1872" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
+<use href="#icon-rider" x="291" y="1860" width="14" height="14"/>
+<text x="309" y="1872" font-size="11px" fill="#48484a">Rider — introduce constant</text>
+<use href="#icon-visual-studio-code" x="291" y="1884" width="14" height="14"/>
+<text x="309" y="1896" font-size="11px" fill="#48484a">VSCode — introduce constant</text>
+<use href="#icon-finder" x="291" y="1908" width="14" height="14"/>
+<text x="309" y="1920" font-size="11px" fill="#48484a">Finder — copy the path of the file</text>
+<use href="#icon-vivaldi" x="291" y="1932" width="14" height="14"/>
+<text x="309" y="1944" font-size="11px" fill="#48484a">Vivaldi — inspect elements</text>
+<line x1="20" y1="1966" x2="906" y2="1966" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1974" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
+<use href="#icon-rider" x="291" y="1962" width="14" height="14"/>
+<text x="309" y="1974" font-size="11px" fill="#48484a">Rider — extract variable</text>
+<line x1="20" y1="1996" x2="906" y2="1996" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2004" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
+<use href="#icon-visual-studio-code" x="291" y="1992" width="14" height="14"/>
+<text x="309" y="2004" font-size="11px" fill="#48484a">VSCode — focus chat</text>
+<use href="#icon-mail" x="291" y="2016" width="14" height="14"/>
+<text x="309" y="2028" font-size="11px" fill="#48484a">Mail — show Bcc field</text>
+<line x1="20" y1="2050" x2="906" y2="2050" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2058" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
+<use href="#icon-rider" x="291" y="2046" width="14" height="14"/>
+<text x="309" y="2058" font-size="11px" fill="#48484a">Rider — inline</text>
+<use href="#icon-music" x="291" y="2070" width="14" height="14"/>
+<text x="309" y="2082" font-size="11px" fill="#48484a">Music — create a Smart Playlist</text>
+<use href="#icon-mail" x="291" y="2094" width="14" height="14"/>
+<text x="309" y="2106" font-size="11px" fill="#48484a">Mail — open a new tab in Mail viewer</text>
+<line x1="20" y1="2128" x2="906" y2="2128" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2136" font-size="13px" font-weight="700" fill="#1d1d1f">M</text>
+<use href="#icon-rider" x="291" y="2124" width="14" height="14"/>
+<text x="309" y="2136" font-size="11px" fill="#48484a">Rider — extract method</text>
+<use href="#icon-music" x="291" y="2148" width="14" height="14"/>
+<text x="309" y="2160" font-size="11px" fill="#48484a">Music — open</text>
+<use href="#icon-mail" x="291" y="2172" width="14" height="14"/>
+<text x="309" y="2184" font-size="11px" fill="#48484a">Mail — move to predicted mailbox</text>
+<line x1="20" y1="2206" x2="906" y2="2206" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2214" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
+<use href="#icon-system-settings" x="136" y="2201" width="16" height="16"/>
+<text x="156" y="2214" font-size="12px" font-weight="500" fill="#007aff">System Settings — show/hide</text>
+<text x="291" y="2214" font-size="11px" fill="#48484a">System Settings</text>
+<line x1="20" y1="2236" x2="906" y2="2236" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2244" font-size="13px" font-weight="700" fill="#1d1d1f">←</text>
+<text x="291" y="2244" font-size="11px" fill="#48484a">navigate to tab to the left</text>
+<use href="#icon-music" x="291" y="2256" width="14" height="14"/>
+<text x="309" y="2268" font-size="11px" fill="#48484a">Music — seek backward</text>
+<line x1="20" y1="2290" x2="906" y2="2290" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2298" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<use href="#icon-visual-studio-code" x="291" y="2286" width="14" height="14"/>
+<text x="309" y="2298" font-size="11px" fill="#48484a">VSCode — create cursor up</text>
+<use href="#icon-rider" x="291" y="2310" width="14" height="14"/>
+<text x="309" y="2322" font-size="11px" fill="#48484a">Rider — Previous Occurrence</text>
+<line x1="20" y1="2344" x2="906" y2="2344" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2352" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<use href="#icon-visual-studio-code" x="291" y="2340" width="14" height="14"/>
+<text x="309" y="2352" font-size="11px" fill="#48484a">VSCode — create cursor down</text>
+<use href="#icon-rider" x="291" y="2364" width="14" height="14"/>
+<text x="309" y="2376" font-size="11px" fill="#48484a">Rider — Next Occurrence</text>
+<line x1="20" y1="2398" x2="906" y2="2398" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="2406" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<use href="#icon-visual-studio-code" x="291" y="2394" width="14" height="14"/>
+<text x="309" y="2406" font-size="11px" fill="#48484a">VSCode — navigate next tab</text>
+<use href="#icon-music" x="291" y="2418" width="14" height="14"/>
+<text x="309" y="2430" font-size="11px" fill="#48484a">Music — seek forward</text>
 </svg>
