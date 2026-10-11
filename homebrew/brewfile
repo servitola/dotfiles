@@ -457,7 +457,6 @@ cask "jetbrains-toolbox"
 cask "karabiner-elements"
 # Password manager app
 cask "keepassxc"
-cask "kegworks"
 # Free cross-platform office suite, fresh version
 cask "libreoffice"
 # Open-source firewall to block unknown outgoing connections
