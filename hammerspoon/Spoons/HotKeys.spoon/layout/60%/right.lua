@@ -38,8 +38,7 @@ return {
 --        ⇪⌃⌘→   │              │              │   │
 --        ⇪⌥⌘→   │              │              │   │
 --        ⇧⌃⌥→   │              │              │   │ ½ Right
-{ chord= "⇧⌃⌥→",                            fn = "window.half_right", over = "Rider" },
---        ⇧⌃⌥→   │              │              │ℝ! │ Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode
+{ chord= "⇧⌃⌥→",                            fn = "window.half_right" },
 --        ⇧⌃⌘→   │              │              │   │
 --        ⇧⌃⌘→   │              │              │ ℝ │ Rider — Stretch to Right
 --        ⇧⌥⌘→   │              │              │   │

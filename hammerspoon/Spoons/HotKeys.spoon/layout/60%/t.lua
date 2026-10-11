@@ -27,16 +27,15 @@ return {
 --         ⇧⌘t   │              │              │ ✓ │              — reopen closed tab
 --               │              │              │   │          Mail — format as Plain Text or Rich Format
 --               │              │              │ ℝ │ Rider — Reopen Closed Tab
---         ⌃⌥t   │              │              │ ✓ │              — this window to TV / back
---               │              │              │ℝ! │ Rider — Surround With…
-{ chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv", over = "Rider" },
+--         ⌃⌥t   │              │              │ ✓ │
 --         ⌃⌘t   │              │              │   │
 --         ⌥⌘t   │              │              │   │          Fork — hide/search toolbar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃t   │    ⇧⌃F17     │              │   │
 --        ⇪⇧⌥t   │    ⇧⌥F17     │              │   │
 --        ⇪⇧⌘t   │    ⇧⌘F17     │              │   │
---        ⇪⌃⌥t   │    ⌃⌥F17     │              │   │
+--        ⇪⌃⌥t   │    ⌃⌥F17     │              │ ✓ │ — this window to TV / back
+{ chord = "⌃⌥F17",                            fn = "display.toggle_window_to_tv" },
 --        ⇪⌃⌘t   │    ⌃⌘F17     │              │   │
 --        ⇪⌥⌘t   │    ⌥⌘F17     │              │   │
 --        ⇧⌃⌥t   │              │              │ ✓ │              — display mode: mirror / extend

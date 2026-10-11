@@ -28,9 +28,7 @@ return {
 --         ⇧⌃v   │              │              │   │      Terminal — used sometimes
 --         ⇧⌥v   │              │ ˇ    ˇ    Ά  │   │
 --         ⇧⌘v   │              │              │   │          Mail — paste text into email as quotation
---         ⌃⌥v   │              │              │   │ YouTube
---               │              │              │ℝ! │ Rider — Introduce Variable…
-{ chord = "⌃⌥v",                            fn = "browser_youtube", over = "Rider" },
+--         ⌃⌥v   │              │              │   │
 --         ⌃⌘v   │              │              │ ✓ │              — paste bypass (type clipboard for restricted fields)
 { chord = "⌃⌘v",                            fn = "paste_bypass" },
 --         ⌥⌘v   │              │              │   │         Rider — extract variable
@@ -38,7 +36,8 @@ return {
 --        ⇪⇧⌃v   │    ⇧⌃F16     │              │   │
 --        ⇪⇧⌥v   │    ⇧⌥F16     │              │   │
 --        ⇪⇧⌘v   │    ⇧⌘F16     │              │   │
---        ⇪⌃⌥v   │    ⌃⌥F16     │              │   │
+--        ⇪⌃⌥v   │    ⌃⌥F16     │              │   │ 🌐 Vivaldi — YouTube
+{ chord = "⌃⌥F16",                            fn = "browser_youtube" },
 --        ⇪⌃⌘v   │    ⌃⌘F16     │              │   │
 --        ⇪⌥⌘v   │    ⌥⌘F16     │              │   │
 --        ⇧⌃⌥v   │              │              │   │     🌐 Vivaldi — focus playing YouTube tab

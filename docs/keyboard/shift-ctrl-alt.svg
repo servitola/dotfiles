@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1146" viewBox="0 0 922 1146">
+<svg xmlns="http://www.w3.org/2000/svg" width="922" height="1098" viewBox="0 0 922 1098">
 <defs>
   <filter id="shadow" x="-6%" y="-6%" width="112%" height="120%">
     <feDropShadow dx="0" dy="0.5" stdDeviation="1" flood-color="#000" flood-opacity="0.06"/></filter>
@@ -87,7 +87,7 @@
     .key-group:hover .key-tip { opacity: 1 !important; pointer-events: auto !important; }
   </style>
 </defs>
-<rect width="922" height="1146" fill="none"/>
+<rect width="922" height="1098" fill="none"/>
 <text x="28" y="30" class="title">Shift + Ctrl + Alt — Shift of Ctrl + Alt layer</text>
 <rect x="4" y="52" width="914" height="276" rx="14" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5"/>
 <g class="key-group">
@@ -501,14 +501,11 @@
 <text x="773.0" y="313" text-anchor="end" class="key-label">←</text>
 <title>←: ½ Left — Window: Half Left</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="631.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="631.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="746.0,322 756.0,322 751.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="747.0,322 755.0,322 751.0,318" fill="white"/>
 <text x="641.0" y="342" font-size="9px" font-weight="600" fill="#007aff">½ Left</text>
 <text x="678.0" y="342" font-size="8px" fill="#1d1d1f">window: half left</text>
-<use href="#icon-rider" x="641.0" y="349" width="13" height="13"/>
-<text x="657.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="688.5" y="360" font-size="8px" fill="#1d1d1f">Move Caret to Previous Word with Selection in Different "CamelHumps" Mode</text>
 </g>
 </g>
 <g class="key-group">
@@ -547,17 +544,14 @@
 <text x="889.0" y="313" text-anchor="end" class="key-label">→</text>
 <title>→: ½ Right — Window: Half Right</title>
 <g class="key-tip" opacity="0" pointer-events="none">
-<rect x="747.0" y="322" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="747.0" y="322" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
 <polygon points="862.0,322 872.0,322 867.0,317" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
 <polygon points="863.0,322 871.0,322 867.0,318" fill="white"/>
 <text x="757.0" y="342" font-size="9px" font-weight="600" fill="#007aff">½ Right</text>
 <text x="799.5" y="342" font-size="8px" fill="#1d1d1f">window: half right</text>
-<use href="#icon-rider" x="757.0" y="349" width="13" height="13"/>
-<text x="773.0" y="360" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
-<text x="804.5" y="360" font-size="8px" fill="#1d1d1f">Move Caret to Next Word with Selection in Different "CamelHumps" Mode</text>
 </g>
 </g>
-<rect x="4" y="340" width="914" height="782" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
+<rect x="4" y="340" width="914" height="734" rx="12" fill="#e8e8ed" stroke="#d1d1d6" stroke-width="0.5" filter="url(#shadow-card)"/>
 <circle cx="29" cy="354" r="4" fill="#34c759"/>
 <text x="38" y="358" class="legend-text">Window Mgmt</text>
 <circle cx="129.2" cy="354" r="4" fill="#ff9500"/>
@@ -640,23 +634,19 @@
 <text x="56" y="906" font-size="12px" font-weight="500" fill="#34c759">½ Left</text>
 <text x="211" y="906" font-size="11px" fill="#48484a">½ Left</text>
 <use href="#icon-rider" x="211" y="918" width="14" height="14"/>
-<text x="229" y="930" font-size="11px" fill="#48484a">Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode</text>
-<use href="#icon-rider" x="211" y="942" width="14" height="14"/>
-<text x="229" y="954" font-size="11px" fill="#48484a">Rider — Editor Previous Word In Different Humps Mode With Selection</text>
-<line x1="20" y1="976" x2="906" y2="976" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="984" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
-<text x="56" y="984" font-size="12px" font-weight="500" fill="#34c759">Top 60%</text>
-<text x="211" y="984" font-size="11px" fill="#48484a">Top 60%</text>
-<line x1="20" y1="1006" x2="906" y2="1006" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1014" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
-<text x="56" y="1014" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
-<text x="211" y="1014" font-size="11px" fill="#48484a">Bot 40%</text>
-<line x1="20" y1="1036" x2="906" y2="1036" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
-<text x="20" y="1044" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
-<text x="56" y="1044" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
-<text x="211" y="1044" font-size="11px" fill="#48484a">½ Right</text>
-<use href="#icon-rider" x="211" y="1056" width="14" height="14"/>
-<text x="229" y="1068" font-size="11px" fill="#48484a">Rider — Editor Next Word In Different Humps Mode With Selection</text>
-<use href="#icon-rider" x="211" y="1080" width="14" height="14"/>
-<text x="229" y="1092" font-size="11px" fill="#48484a">Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode</text>
+<text x="229" y="930" font-size="11px" fill="#48484a">Rider — Editor Previous Word In Different Humps Mode With Selection</text>
+<line x1="20" y1="952" x2="906" y2="952" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="960" font-size="13px" font-weight="700" fill="#1d1d1f">↑</text>
+<text x="56" y="960" font-size="12px" font-weight="500" fill="#34c759">Top 60%</text>
+<text x="211" y="960" font-size="11px" fill="#48484a">Top 60%</text>
+<line x1="20" y1="982" x2="906" y2="982" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="990" font-size="13px" font-weight="700" fill="#1d1d1f">↓</text>
+<text x="56" y="990" font-size="12px" font-weight="500" fill="#34c759">Bot 40%</text>
+<text x="211" y="990" font-size="11px" fill="#48484a">Bot 40%</text>
+<line x1="20" y1="1012" x2="906" y2="1012" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
+<text x="20" y="1020" font-size="13px" font-weight="700" fill="#1d1d1f">→</text>
+<text x="56" y="1020" font-size="12px" font-weight="500" fill="#34c759">½ Right</text>
+<text x="211" y="1020" font-size="11px" fill="#48484a">½ Right</text>
+<use href="#icon-rider" x="211" y="1032" width="14" height="14"/>
+<text x="229" y="1044" font-size="11px" fill="#48484a">Rider — Editor Next Word In Different Humps Mode With Selection</text>
 </svg>

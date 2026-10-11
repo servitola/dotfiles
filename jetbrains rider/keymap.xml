@@ -94,9 +94,6 @@
   <action id="EditorBackwardParagraphWithSelection">
     <keyboard-shortcut first-keystroke="shift ctrl alt semicolon" />
   </action>
-  <action id="EditorCloneCaretAbove">
-    <keyboard-shortcut first-keystroke="alt c" />
-  </action>
   <action id="EditorForwardParagraph">
     <keyboard-shortcut first-keystroke="ctrl alt quote" />
   </action>
@@ -114,12 +111,6 @@
   <action id="EditorLineStart">
     <keyboard-shortcut first-keystroke="home" />
     <keyboard-shortcut first-keystroke="meta left" />
-  </action>
-  <action id="EditorNextWordInDifferentHumpsModeWithSelection">
-    <keyboard-shortcut first-keystroke="shift ctrl alt right" />
-  </action>
-  <action id="EditorPreviousWordInDifferentHumpsModeWithSelection">
-    <keyboard-shortcut first-keystroke="shift ctrl alt left" />
   </action>
   <action id="EditorRight">
     <keyboard-shortcut first-keystroke="right" />
@@ -159,11 +150,9 @@
     <keyboard-shortcut first-keystroke="alt 3" />
   </action>
   <action id="GotoNextElementUnderCaretUsage">
-    <keyboard-shortcut first-keystroke="ctrl alt down" />
     <keyboard-shortcut first-keystroke="ctrl quote" second-keystroke="down" />
   </action>
   <action id="GotoPrevElementUnderCaretUsage">
-    <keyboard-shortcut first-keystroke="ctrl alt up" />
     <keyboard-shortcut first-keystroke="ctrl quote" second-keystroke="up" />
   </action>
   <action id="GotoPreviousBookmarkInEditor">
@@ -280,7 +269,6 @@
   </action>
   <action id="SelectInProjectView">
     <keyboard-shortcut first-keystroke="shift ctrl l" />
-    <keyboard-shortcut first-keystroke="alt 1" />
     <keyboard-shortcut first-keystroke="ctrl 1" />
   </action>
   <action id="SelectNextOccurrence" />

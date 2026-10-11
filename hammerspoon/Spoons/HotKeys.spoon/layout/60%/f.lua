@@ -29,9 +29,7 @@ return {
 --               │              │              │   │          Mail — forward email
 --               │              │              │   │          Fork — quick Fetch
 --               │              │              │   │          Fork — toggle Force Push on Push dialog
---         ⌃⌥f   │              │              │   │ → RU
---               │              │              │ℝ! │ Rider — Introduce Field…
-{ chord = "⌃⌥f",                            fn = "translate_to_russian", over = "Rider" },
+--         ⌃⌥f   │              │              │   │
 --         ⌃⌘f   │              │              │ ✓ │              — toggle fullscreen of current app
 --         ⌥⌘f   │              │              │   │         Rider — extract field
 --               │              │              │   │        VSCode — extract field
@@ -39,7 +37,8 @@ return {
 --        ⇪⇧⌃f   │    ⇧⌃F15     │              │   │
 --        ⇪⇧⌥f   │    ⇧⌥F15     │              │   │
 --        ⇪⇧⌘f   │    ⇧⌘F15     │              │   │
---        ⇪⌃⌥f   │    ⌃⌥F15     │              │   │
+--        ⇪⌃⌥f   │    ⌃⌥F15     │              │   │ → RU
+{ chord = "⌃⌥F15",                            fn = "translate_to_russian" },
 --        ⇪⌃⌘f   │    ⌃⌘F15     │              │   │
 --        ⇪⌥⌘f   │    ⌥⌘F15     │              │   │
 --        ⇧⌃⌥f   │              │              │   │

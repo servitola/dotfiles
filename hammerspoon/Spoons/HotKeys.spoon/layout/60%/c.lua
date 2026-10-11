@@ -12,8 +12,7 @@ return {
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
 --               │              │              │ ℝ │ Rider — Unit Testing Quick List…
 --          ⌥c   │              │      ©       │   │      Forkgram — open chat 3172923198
---               │              │              │ℝ! │ Rider — Clone Caret Above
-{ chord =  "⌥c",                            fn = "forkgram.chat", over = "Rider" },
+{ chord =  "⌥c",                            fn = "forkgram.chat" },
 --          ⌘c   │              │              │ ✓ │              — copy
 --          ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
 --               │              │              │   │        VSCode — toggle comment line
