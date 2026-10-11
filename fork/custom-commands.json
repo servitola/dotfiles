@@ -4,7 +4,7 @@
   },
   {
     "action": {
-      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-rider.sh\" \"${repo:path}\"",
       "showOutput": false,
       "type": "sh",
       "waitForExit": false
@@ -18,7 +18,7 @@
   },
   {
     "action": {
-      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-rider.sh\" \"${repo:path}\"",
       "showOutput": false,
       "type": "sh",
       "waitForExit": false
@@ -28,7 +28,7 @@
   },
   {
     "action": {
-      "script": "zsh -lc 'rider ${repo:path}\/xTrader.sln'",
+      "script": "\"$HOME\/projects\/dotfiles\/fork\/scripts\/open-in-rider.sh\" \"${repo:path}\"",
       "showOutput": false,
       "type": "sh",
       "waitForExit": false
