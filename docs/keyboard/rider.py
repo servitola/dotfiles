@@ -46,13 +46,19 @@ _KEYS = {
 }
 
 
-def keystroke_to_chord(text):
+# `$default` is written for Windows; on a Mac the IDE wraps it (MacOSDefaultKeymap) and swaps
+# Ctrl and Meta, so `control D` there is ⌘D. Child keymaps (Mac OS X 10.5+, the owner's) are literal.
+_MAC_DEFAULT_SWAP = {"ctrl": "cmd", "cmd": "ctrl"}
+
+
+def keystroke_to_chord(text, mac_default=False):
     """`shift ctrl s` → `⇧⌃s`; None for keys the chord grammar has no glyph for (numpad
-    operators, Insert, the context-menu key)."""
+    operators, Insert, the context-menu key). `mac_default` applies the `$default` swap."""
     mods, key = set(), None
     for tok in text.lower().split():
         if tok in _MODS:
-            mods.add(_MODS[tok])
+            m = _MODS[tok]
+            mods.add(_MAC_DEFAULT_SWAP.get(m, m) if mac_default else m)
         elif tok == "altgraph":
             mods.add("alt")
         else:
@@ -73,12 +79,13 @@ def keystroke_to_chord(text):
 def _actions(root):
     """{action id: [(first chord, second chord or None), …]}, an empty list for a removed action."""
     out = {}
+    swap = root.get("name") == "$default"
     for action in root.findall("action"):
         strokes = []
         for ks in action.findall("keyboard-shortcut"):
-            first = keystroke_to_chord(ks.get("first-keystroke", ""))
+            first = keystroke_to_chord(ks.get("first-keystroke", ""), swap)
             second = ks.get("second-keystroke")
-            strokes.append((first, keystroke_to_chord(second) if second else None))
+            strokes.append((first, keystroke_to_chord(second, swap) if second else None))
         out[action.get("id")] = strokes
     return out
 

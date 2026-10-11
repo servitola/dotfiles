@@ -29,7 +29,14 @@ import keycodes
 import parse_karabiner
 import rider
 import shortcuts
+import classify as _classify
 from classify import _KM
+import re as _re
+_MOD_RANK = {c: i for i, c in enumerate("⇪⇧⌃⌥⌘")}
+
+
+def _reorder(text):
+    return _re.sub(r"[⇪⇧⌃⌥⌘]+", lambda m: "".join(sorted(m.group(0), key=_MOD_RANK.get)), text)
 from config import BUTTON_FILES
 
 MARKERS = {"system": "⚙", "app": "◆", "menu": "◆", "rider": rider.MARKER}
@@ -169,10 +176,24 @@ def skipped(machine_rows=None):
 
 def received(chord_text):
     """The chord macOS gets when the table's chord is pressed: a slot letter becomes its
-    emitted F-key, `⇪` the four modifiers; None when the grammar does not know the chord."""
+    emitted F-key, a Hyper- or Tab-layer key its layer output (`⇪1` → `F1`, `⇥a` → `⌘l`), a plain
+    `⇪x` the four modifiers; None when the grammar does not know the chord."""
     emitted = {v: k for k, v in bridges.slot_variants().items()}
+    if chord_text in emitted:
+        return emitted[chord_text]
     try:
-        return emitted.get(chord_text) or keycodes.canonical(chord_text)
+        mods, phys = _classify._parse_modifiers(chord_text)
+    except Exception:
+        mods, phys = None, None
+    if mods and ("hyper" in mods or "tab_mod" in mods):
+        out = parse_karabiner.parse_karabiner().get((mods, phys))
+        if out and out != "passthrough":
+            try:
+                return keycodes.canonical(_reorder(out))
+            except ValueError:
+                return None
+    try:
+        return keycodes.canonical(chord_text)
     except ValueError:
         return None
 
