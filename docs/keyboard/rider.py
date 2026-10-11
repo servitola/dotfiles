@@ -2,6 +2,8 @@
 """Rider's keymap as a source for the key tables.
 
   python3 docs/keyboard/rider.py capture    copy Rider's active keymap into `jetbrains rider/keymap.xml`
+  python3 docs/keyboard/rider.py apply      copy the repo keymap back into Rider (Rider must be closed:
+                                            it reads keymaps at launch and rewrites the file on exit)
   python3 docs/keyboard/rider.py            print what the tables get from it (ℝ lines) and what is skipped
 
 The repo copy holds only what the owner changed against the parent keymap (that is how
@@ -193,10 +195,30 @@ def capture():
     return 0
 
 
+def apply():
+    import subprocess
+    if subprocess.run(["pgrep", "-f", "Rider.app/Contents/MacOS"], capture_output=True).returncode == 0:
+        sys.exit("rider: quit Rider first — it rewrites its keymap file on exit, which would undo this")
+    dst = active_keymap_path()
+    if dst is None:
+        sys.exit("rider: no Rider config directory with an active custom keymap here")
+    with open(KEYMAP, encoding="utf-8") as fh:
+        text = fh.read()
+    name = ET.fromstring(text).get("name")
+    if os.path.basename(dst) != f"{name}.xml":
+        sys.exit(f"rider: the repo keymap is named {name!r}, Rider's active one is {os.path.basename(dst)!r}")
+    with open(dst, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    print(f"wrote {dst}; start Rider to pick it up")
+    return 0
+
+
 def main(argv=None):
     argv = sys.argv[1:] if argv is None else argv
     if argv == ["capture"]:
         return capture()
+    if argv == ["apply"]:
+        return apply()
     for chord, texts in sorted(expected().items()):
         for t in texts:
             print(f"{chord:10} {t}")
