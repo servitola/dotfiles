@@ -16,6 +16,7 @@ return {
 --               │              │              │   │        VSCode — new file
 --               │              │              │   │         Music — create a new playlist
 --               │              │              │   │          Mail — start a new email
+--               │              │              │ ℝ │ Rider — New
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧n   │              │              │   │
 --         ⇪⌃n   │              │              │   │

@@ -14,6 +14,7 @@ return {
 --               │              │              │   │ Unix Terminal — cycle through last commands forward
 --               │              │              │   │   Claude Code — cycle through last commands forward
 --          ⌥p   │              │      ′       │   │
+--               │              │              │ ℝ │ Rider — Show/Hide NuGet Tool Window
 --          ⌘p   │              │              │ ✓ │              — print
 --               │              │              │   │         Music — play
 --               │              │              │   │          Fork — Show Command Palette
@@ -31,6 +32,7 @@ return {
 --               │              │              │ ◆ │ Music — Previous
 --         ⌃⌥p   │              │              │   │
 --         ⌃⌘p   │              │              │   │
+--               │              │              │ ℝ │ Rider — Pull Members Up
 --         ⌥⌘p   │              │              │   │       Vivaldi — print using system dialog
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃p   │              │              │   │

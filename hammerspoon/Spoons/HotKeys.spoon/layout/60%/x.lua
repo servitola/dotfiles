@@ -26,11 +26,14 @@ return {
 --               │              │              │   │          IINA — multiply speed 0.5
 --               │              │              │   │        Finder — navigate back
 --         ⇧⌃x   │              │              │   │
+--               │              │              │ ℝ │ Rider — Open in Xcode
 --         ⇧⌥x   │     ⇧⌘←      │              │ ✓ │              — select text to the left till the start of string
 --         ⇧⌘x   │              │              │   │        VSCode — open Extensions
+--               │              │              │ ℝ │ Rider — Activate Xcode Tool Window
 --         ⌃⌥x   │              │              │   │ Simulator
 { chord = "⌃⌥x",                           app = "Simulator" },
 --         ⌃⌘x   │              │              │   │         Rider — scroll to Top
+--               │              │              │ ℝ │ Rider — Scroll to Top
 --         ⌥⌘x   │              │              │   │
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃x   │              │              │ ✓ │              — fast_forward

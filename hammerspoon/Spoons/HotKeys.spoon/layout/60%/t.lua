@@ -15,6 +15,7 @@ return {
 --          ⌥t   │              │      ™       │   │
 --          ⌘t   │              │              │ ✓ │              — new tab
 --               │              │              │   │         Music — turn visualizer on or off
+--               │              │              │ ℝ │ Rider — Go to Test
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧t   │     ⇧F17     │              │   │               ↓
 { chord= "⇧F17",                           app = "zoom.us" },
@@ -25,6 +26,7 @@ return {
 --         ⇧⌥t   │              │    #    #    │   │
 --         ⇧⌘t   │              │              │ ✓ │              — reopen closed tab
 --               │              │              │   │          Mail — format as Plain Text or Rich Format
+--               │              │              │ ℝ │ Rider — Reopen Closed Tab
 --         ⌃⌥t   │              │              │ ✓ │              — this window to TV / back
 { chord = "⌃⌥t",                            fn = "display.toggle_window_to_tv" },
 --         ⌃⌘t   │              │              │   │

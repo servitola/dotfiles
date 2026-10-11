@@ -7,12 +7,14 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           →   │              │              │   │          IINA — seek forward 5sec
 --               │              │              │   │       YouTube — seek forward 5sec
+--           →   │              │              │ ℝ │ Rider — Right
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪→   │              │              │   │
 --          ⇧→   │              │              │ ✓ │              — select one letter right
 --          ⌃→   │              │              │ ✓ │              — jump to workspace to the right
 --          ⌥→   │              │              │ ✓ │              — jump to next word
 --          ⌘→   │              │              │   │
+--          ⌘→   │              │              │ ℝ │ Rider — Move Caret to Line End
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧→   │              │              │   │
 --         ⇪⌃→   │              │              │   │
@@ -36,6 +38,7 @@ return {
 --        ⇪⌥⌘→   │              │              │   │
 --        ⇧⌃⌥→   │              │              │   │ ½ Right
 { chord= "⇧⌃⌥→",                            fn = "window.half_right" },
+--        ⇧⌃⌥→   │              │              │ ℝ │ Rider — Move Caret to Next Word with Selection in Different "CamelHumps" Mode
 --        ⇧⌃⌘→   │              │              │   │
 --        ⇧⌥⌘→   │              │              │   │
 --        ⌃⌥⌘→   │              │              │   │ Window to next screen

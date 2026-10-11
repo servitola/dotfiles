@@ -12,6 +12,7 @@ return {
 --          ⇧a   │              │ A    Ф    Α  │   │
 --          ⌃a   │              │              │   │         Rider — git annotate (blame) — CUSTOM
 --               │              │              │   │        VSCode — git annotate (blame) — CUSTOM
+--               │              │              │ ℝ │ Rider — Annotate
 --          ⌥a   │      ⌥←      │              │ ✓ │              — jump a word to the left
 --               │              │              │   │       YouTube — jump to chapter to the left
 --          ⌘a   │              │              │ ✓ │              — select all
@@ -29,6 +30,7 @@ return {
 --         ⇪⌘a   │      ⌘←      │              │ ✓ │              — home, jump to the left start of string
 --         ⇧⌃a   │              │              │ ✓ │              — select line to the left
 --         ⇧⌥a   │     ⇧⌥←      │              │ ✓ │              — select word to the left
+--               │              │              │ ℝ │ Rider — Show History for Selection
 --         ⇧⌘a   │              │              │   │        VSCode — show actions palette
 --               │              │              │   │         Music — deselect all songs
 --               │              │              │   │          Mail — attach files

@@ -14,6 +14,7 @@ return {
 --          ⌘5   │              │              │   │         Rider — focus problems window
 --               │              │              │   │       Browser — Open 5th tab
 --               │              │              │   │      Telegram — focus 5th folder or chat
+--               │              │              │ ℝ │ Rider — Activate Problems View Tool Window
 --          ⇥5   │              │              │   │     karabiner — type '55555'
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧5   │     ⇧F5      │              │   │

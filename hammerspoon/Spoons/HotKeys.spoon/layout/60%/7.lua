@@ -14,6 +14,8 @@ return {
 --          ⌥7   │              │      ϗ       │   │
 --          ⌘7   │              │              │   │       Browser — Open 7th tab
 --               │              │              │   │      Telegram — focus 7th folder or chat
+--               │              │              │ ℝ │ Rider — Activate Device Manager2 Tool Window
+--               │              │              │ ℝ │ Rider — Activate Xcode Tool Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧7   │     ⇧F7      │              │   │
 --         ⇪⌃7   │     ⌃F7      │              │ ✓ │              — change the way Tab moves focus

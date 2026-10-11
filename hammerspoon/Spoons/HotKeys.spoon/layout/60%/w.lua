@@ -11,8 +11,10 @@ return {
 --          ⇧w   │              │ W    Ц    ΅  │   │
 --          ⌃w   │              │              │   │         Rider — close all notifications
 --               │              │              │   │        VSCode — select window to switch
+--               │              │              │ ℝ │ Rider — Close All
 --          ⌥w   │      ⌥↑      │              │ ✓ │              — move line up
 --               │              │              │   │         Rider — extend selection
+--               │              │              │ ℝ │ Rider — Tool Windows Group
 --          ⌘w   │              │              │ ✓ │              — close current tab
 --          ⇥w   │      ⌘[      │              │   │         Rider — navigate back
 --               │              │              │   │         Music — navigate back
@@ -29,11 +31,13 @@ return {
 --         ⇧⌥w   │     ⇧⌥↑      │              │   │        VSCode — move line up
 --         ⇧⌘w   │              │              │ ✓ │              — close window
 --               │              │              │   │         Rider — close other tabs
+--               │              │              │ ℝ │ Rider — Close Other Tabs
 --         ⌃⌥w   │              │              │   │ Fullscr
 { chord = "⌃⌥w",                            fn = "window.fullscreen" },
 --         ⌃⌘w   │              │              │   │
 --         ⌥⌘w   │              │              │   │        VSCode — toggle search whole word
 --               │              │              │   │          Mail — close all Mail windows
+--               │              │              │ ℝ │ Rider — Previous Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃w   │     Vol↑     │              │ ✓ │              — volume_increment
 --        ⇪⇧⌥w   │     ⇧⌥↑      │              │   │

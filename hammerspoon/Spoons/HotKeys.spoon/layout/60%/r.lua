@@ -14,6 +14,7 @@ return {
 --               │              │              │   │   Claude Code — reverse search history
 --               │              │              │   │         Atuin — reverse search history
 --          ⌥r   │              │      ®       │   │ WebStorm
+--               │              │              │ ℝ │ Rider — Build
 { chord =  "⌥r",                           app = "WebStorm" },
 --          ⌘r   │              │              │   │         Rider — replace in current file
 --               │              │              │   │        VSCode — replace in current file

@@ -12,6 +12,7 @@ return {
 --          ⇧v   │              │ V    М    Ω  │   │
 --          ⌃v   │              │              │   │   Claude Code — paste
 --               │              │              │   │      Terminal — paste
+--               │              │              │ ℝ │ Rider — VCS Operations Popup
 --          ⌥v   │              │      ↓       │   │
 --          ⌘v   │              │              │ ✓ │              — paste
 --               │              │              │   │         Music — paste song information or artwork

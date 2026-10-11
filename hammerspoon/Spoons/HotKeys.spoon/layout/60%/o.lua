@@ -40,5 +40,6 @@ return {
 --        ⇧⌃⌘o   │              │              │   │
 --        ⇧⌥⌘o   │              │              │   │          Fork — open file
 --        ⌃⌥⌘o   │              │              │   │         Rider — Recent projects popup
+--               │              │              │ ℝ │ Rider — Manage Recent Solutions
 --               ┴              ┴              ┴   ┴
 }

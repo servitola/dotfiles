@@ -19,6 +19,7 @@ return {
 --         ⇪⌥i   │              │              │   │
 --         ⇪⌘i   │              │              │   │
 --         ⇧⌃i   │              │              │   │
+--               │              │              │ ℝ │ Rider — Show Context Menu
 --         ⇧⌥i   │              │ І    І    Ν  │   │
 --         ⇧⌘i   │              │              │   │           VSCode — open agent chat
 --               │              │              │ ◆ │ Boring Notch — toggleNotchOpen

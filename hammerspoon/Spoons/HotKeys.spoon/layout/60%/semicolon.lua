@@ -10,9 +10,12 @@ return {
 --          ⇪;   │      →       │              │ ✓ │              — move right
 --          ⇧;   │              │ :    Ж    ¨  │   │
 --          ⌃;   │              │              │   │
+--               │              │              │ ℝ │ Rider — Goto Linked Types2
 --          ⌥;   │              │ ‘    ‘    ΅  │   │
 --          ⌘;   │              │              │   │         Rider — run unit test
 --               │              │              │   │        VSCode — show 'select task to configure' dialog
+--               │              │              │ ℝ │ Rider — Stop Execution (then s)
+--               │              │              │ ℝ │ Rider — Stop Execution (then ⌘s)
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧;   │      ⇧→      │              │ ✓ │              — select one letter right
 --         ⇪⌃;   │      ⌃→      │              │ ✓ │              — jump to workspace to the right
@@ -22,8 +25,10 @@ return {
 --         ⇧⌥;   │              │ ¨    ¨    :  │   │
 --         ⇧⌘;   │              │              │   │
 --         ⌃⌥;   │              │              │   │
+--               │              │              │ ℝ │ Rider — Editor Backward Paragraph
 --         ⌃⌘;   │              │              │   │
 --         ⌥⌘;   │              │              │   │         Music — seek forward
+--               │              │              │ ℝ │ Rider — Log
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃;   │      ⏭       │              │ ✓ │              — next track
 --        ⇪⇧⌥;   │     ⇧⌥→      │              │ ✓ │              — select word to the right
@@ -34,6 +39,7 @@ return {
 --               │              │              │   │         Music — seek forward
 --               │              │              │   │         iTerm — focus pane to the right
 --        ⇧⌃⌥;   │              │              │   │
+--               │              │              │ ℝ │ Rider — Editor Backward Paragraph With Selection
 --        ⇧⌃⌘;   │              │              │   │
 --        ⇧⌥⌘;   │              │              │   │
 --        ⌃⌥⌘;   │              │              │   │

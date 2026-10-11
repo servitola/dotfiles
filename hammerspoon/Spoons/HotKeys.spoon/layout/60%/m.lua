@@ -21,6 +21,7 @@ return {
 --         ⇪⌥m   │              │              │   │
 --         ⇪⌘m   │              │              │   │
 --         ⇧⌃m   │              │              │   │
+--               │              │              │ ℝ │ Rider — Merge All Solution Windows
 --         ⇧⌥m   │              │ •    •    Ύ  │   │
 --         ⇧⌘m   │              │              │   │         Rider — new project window
 --         ⌃⌥m   │              │              │   │
@@ -37,6 +38,7 @@ return {
 --        ⇪⌥⌘m   │              │              │   │
 --        ⇧⌃⌥m   │              │              │   │
 --        ⇧⌃⌘m   │              │              │   │
+--               │              │              │ ℝ │ Rider — Next Solution Window
 --        ⇧⌥⌘m   │              │              │   │
 --        ⌃⌥⌘m   │              │              │   │
 --               ┴              ┴              ┴   ┴

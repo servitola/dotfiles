@@ -7,12 +7,18 @@ return {
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           ←   │              │              │   │          IINA — seek backward 5sec
 --               │              │              │   │       YouTube — seek backward 5sec
+--               │              │              │ ℝ │ Rider — Left
+--               │              │              │ ℝ │ Rider — Nav Bar-select Left
+--               │              │              │ ℝ │ Rider — Select Parent Node
+--               │              │              │ ℝ │ Rider — Select Previous Column
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪←   │              │              │   │
 --          ⇧←   │              │              │ ✓ │              — select one letter left
 --          ⌃←   │              │              │ ✓ │              — jump to workspace to the left
 --          ⌥←   │              │              │ ✓ │              — jump to previous word
 --          ⌘←   │              │              │ ✓ │              — home
+--               │              │              │ ℝ │ Rider — Move Caret to Line Start
+--               │              │              │ ℝ │ Rider — Nav Bar-select Home
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧←   │              │              │   │
 --         ⇪⌃←   │              │              │   │
@@ -36,6 +42,7 @@ return {
 --        ⇪⌃⌘←   │              │              │   │
 --        ⇪⌥⌘←   │              │              │   │
 --        ⇧⌃⌥←   │              │              │   │ ½ Left
+--               │              │              │ ℝ │ Rider — Move Caret to Previous Word with Selection in Different "CamelHumps" Mode
 { chord= "⇧⌃⌥←",                            fn = "window.half_left" },
 --        ⇧⌃⌘←   │              │              │   │
 --        ⇧⌥⌘←   │              │              │   │

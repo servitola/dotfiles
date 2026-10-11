@@ -14,11 +14,14 @@ return {
 --               │              │              │   │           VSCode — new file
 --               │              │              │   │            Music — create a new playlist
 --               │              │              │   │             Mail — start a new email
+--               │              │              │ ℝ │ Rider — Next Line Bookmark in Editor
 --          ⌘3   │              │              │   │            Rider — focus unit tests explorer
 --               │              │              │   │          Browser — open 3rd tab
 --               │              │              │   │         Telegram — focus 3rd folder or chat
 --               │              │              │   │           Finder — view in columns
 --               │              │              │   │ Activity Manager — open/focus CPU history window
+--               │              │              │ ℝ │ Rider — Activate Tests Tool Window
+--               │              │              │ ℝ │ Rider — Activate Unit Tests Tool Window
 --          ⇥3   │      ⌘-      │              │   │            Rider — collapse code block
 --               │              │              │   │          Browser — zoom out
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

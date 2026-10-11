@@ -17,6 +17,7 @@ return {
 --               │              │              │   │         Telegram — focus 4th folder or chat
 --               │              │              │   │           Finder — View in gallery
 --               │              │              │   │ Activity Manager — Open/focus GPU history window
+--               │              │              │ ℝ │ Rider — Activate Build Tool Window
 --          ⇥4   │      ⌘=      │              │   │            Rider — expand code block
 --               │              │              │   │          Browser — Zoom in
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

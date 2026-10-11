@@ -10,7 +10,9 @@ return {
 --          ⇪c   │      ⌘→      │              │   │
 --          ⇧c   │              │ C    С    Ψ  │   │   Browser Vim — copy current URL
 --          ⌃c   │              │              │   │ Unix Terminal — cancel/interrupt
+--               │              │              │ ℝ │ Rider — Unit Testing Quick List
 --          ⌥c   │              │      ©       │   │      Forkgram — open chat 3172923198
+--               │              │              │ ℝ │ Rider — Clone Caret Above
 { chord =  "⌥c",                            fn = "forkgram.chat" },
 --          ⌘c   │              │              │ ✓ │              — copy
 --          ⇥c   │      ⌘/      │              │   │         Rider — toggle comment line
@@ -32,6 +34,7 @@ return {
 --         ⌃⌥c   │              │              │   │
 --               │              │              │ ◆ │ Itsycal — GlobalShortcut
 --         ⌃⌘c   │              │              │   │         Rider — scroll to Bottom
+--               │              │              │ ℝ │ Rider — Scroll to Bottom
 --         ⌥⌘c   │              │              │   │         Rider — introduce constant
 --               │              │              │   │        VSCode — introduce constant
 --               │              │              │   │        Finder — copy the path of the file

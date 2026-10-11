@@ -11,7 +11,9 @@ return {
 --          ⇧1   │              │      !       │   │
 --          ⌃1   │              │              │   │            Rider — focus file in solution explorer
 --               │              │              │   │           VSCode — go to tab 1
+--               │              │              │ ℝ │ Rider — Select File in Project View
 --          ⌥1   │              │      ¹       │   │
+--               │              │              │ ℝ │ Rider — Select File in Project View
 { chord =  "⌥1",                           app = "@APP_EDITOR" },
 --          ⌘1   │              │              │   │            Rider — focus solution explorer
 --               │              │              │   │           VSCode — focus solution explorer

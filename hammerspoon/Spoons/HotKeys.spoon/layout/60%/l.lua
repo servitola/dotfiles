@@ -24,10 +24,12 @@ return {
 --         ⇪⌥l   │      ⌥↓      │              │   │
 --         ⇪⌘l   │      ⌘↓      │              │   │
 --         ⇧⌃l   │              │              │   │         Rider — focus in Solution explorer
+--               │              │              │ ℝ │ Rider — Select File in Project View
 --         ⇧⌥l   │              │ ’    ’    ·  │   │
 --         ⇧⌘l   │              │              │   │          Fork — open Pull dialog
 --         ⌃⌥l   │              │              │   │
 --         ⌃⌘l   │              │              │   │          Mail — apply active Mail rules
+--               │              │              │ ℝ │ Rider — Show List of Tabs
 --         ⌥⌘l   │              │              │   │        Finder — downloads
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃l   │     Vol↓     │              │ ✓ │              — volume_decrement

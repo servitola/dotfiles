@@ -11,9 +11,11 @@ return {
 { chord = "F18",                           app = "@APP_GIT_GUI" },
 --          ⇧g   │              │ G    П    Γ  │   │
 --          ⌃g   │              │              │   │         Rider — focus Git panel
+--               │              │              │ ℝ │ Rider — Activate Version Control Tool Window
 --          ⌥g   │              │      ©       │   │ GitHub
 { chord =  "⌥g",                            fn = "browser_git" },
 --          ⌘g   │              │              │   │         Rider — git operations popup
+--               │              │              │ ℝ │ Rider — VCS Operations Popup
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧g   │     ⇧F18     │              │   │
 --         ⇪⌃g   │     ⌃F18     │              │   │
@@ -22,6 +24,8 @@ return {
 --         ⇪⌘g   │     ⌘F18     │              │   │               ↓
 { chord= "⌘F18",                            fn = "fork.dotfiles" },
 --         ⇧⌃g   │              │              │   │         Rider — current file git history
+--               │              │              │ ℝ │ Rider — Open Inline Chat Action
+--               │              │              │ ℝ │ Rider — Show History
 --         ⇧⌥g   │              │         Ϊ  │   │
 --         ⇧⌘g   │              │              │   │        Finder — go to GoTo dialog
 --         ⌃⌥g   │              │              │   │ GitHub

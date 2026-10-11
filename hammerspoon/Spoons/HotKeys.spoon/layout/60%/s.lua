@@ -11,6 +11,7 @@ return {
 --          ⇧s   │              │ S    Ы    Σ  │   │   Browser Vim — duplicate tab
 --          ⌃s   │              │              │   │         Rider — save with format (idea + custom macros)
 --               │              │              │   │   Claude Code — stash prompt
+--               │              │              │ ℝ │ Rider — Silent Reformat and Cleanup
 --          ⌥s   │      ⌥↓      │              │ ✓ │              — move line down
 --               │              │              │   │       YouTube — previous chapter in current video
 --          ⌘s   │              │              │ ✓ │              — save
@@ -24,6 +25,7 @@ return {
 --               │              │              │   │       YouTube — previous chapter in current video
 --         ⇪⌘s   │      ⌘↓      │              │   │         Rider — edit source
 --         ⇧⌃s   │              │              │   │
+--               │              │              │ ℝ │ Rider — Save Macros
 --         ⇧⌥s   │     ⇧⌥↓      │              │   │        VSCode — move line down
 --         ⇧⌘s   │              │              │ ✓ │              — save as
 --               │              │              │   │        Finder — go to Shared
@@ -34,6 +36,7 @@ return {
 --               │              │              │   │        Finder — toggle SideBar
 --         ⌥⌘s   │              │              │   │
 --               │              │              │ ◆ │ Music — Shuffle
+--               │              │              │ ℝ │ Rider — Next Occurrence
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃s   │     Vol↓     │              │ ✓ │              — volume down
 --        ⇪⇧⌥s   │     ⇧⌥↓      │              │   │

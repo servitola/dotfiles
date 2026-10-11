@@ -10,7 +10,9 @@ return {
 --          ⇪e   │     PgDn     │              │ ✓ │              — page down
 --          ⇧e   │              │ E    У    Ε  │   │
 --          ⌃e   │              │              │   │         Rider — find usages
+--               │              │              │ ℝ │ Rider — Find Usages
 --          ⌥e   │      ⌦       │              │ ✓ │              — delete letter to the right
+--               │              │              │ ℝ │ Rider — Basic
 --          ⌘e   │              │              │   │         Rider — recent files dialog
 --               │              │              │   │        VSCode — find with selection
 --               │              │              │   │      Telegram — toggle camera
@@ -27,6 +29,7 @@ return {
 --         ⇪⌥e   │      ⌥⌦      │              │ ✓ │              — delete word to the right
 --         ⇪⌘e   │      ⌘⌦      │              │ ✓ │              — delete
 --         ⇧⌃e   │      ⌘⌫      │              │ ✓ │              — delete
+--               │              │              │ ℝ │ Rider — Find Usages in File
 --         ⇧⌥e   │      ⇧⌦      │              │ ✓ │              — delete letter to the right
 --         ⇧⌘e   │              │              │   │         Rider — recent locations popup
 --               │              │              │   │       Browser — opened tabs dialog
@@ -34,6 +37,7 @@ return {
 --               │              │              │   │           Zap — command palette
 --         ⌃⌥e   │      ⌘l      │              │ ✓ │              — delete letter to the right
 --         ⌃⌘e   │              │              │   │         Rider — show list of tabs of current panel
+--               │              │              │ ℝ │ Rider — Show List of Tabs
 --         ⌥⌘e   │              │              │   │         Music — show equalizer
 --               │              │              │ ◆ │ Finder — Enclosing Folder in New Window
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————

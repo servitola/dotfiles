@@ -11,6 +11,7 @@ return {
 { chord = "F13",                            fn = "android.show_all" },
 --          ⇧z   │              │ Z    Я    Ζ  │   │          IINA — add sub-delay -0.5s
 --          ⌃z   │              │              │   │ Unix Terminal — suspend (background)
+--               │              │              │ ℝ │ Rider — 3
 --          ⌥z   │              │      §       │   │        VSCode — toggle wordwrap
 --               │              │              │   │         Music — go to current song (⌘L) HAMMERSPOON CUSTOM
 --               │              │              │   │        Finder — go to Downloads (⇧⌘L) HAMMERSPOON CUSTOM
@@ -29,6 +30,7 @@ return {
 { chord = "⇧⌥z",                           app = "Simulator" },
 --         ⇧⌘z   │              │              │ ✓ │              — redo
 --               │              │              │   │          Mail — unsend email
+--               │              │              │ ℝ │ Rider — Redo
 --         ⌃⌥z   │              │              │   │
 --         ⌃⌘z   │              │              │   │ Simulator
 { chord = "⌃⌘z",                           app = "Simulator" },

@@ -11,6 +11,9 @@ return {
 --          ⇧q   │              │ Q    Й    :  │   │  Browser Vimt — go to root domain
 --          ⌃q   │              │              │   │         Rider — stop all/build
 --               │              │              │   │        VSCode — quick view popup
+--               │              │              │ ℝ │ Rider — Cancel
+--               │              │              │ ℝ │ Rider — Stop
+--               │              │              │ ℝ │ Rider — Stop Execution
 --          ⌥q   │      ⌫       │              │ ✓ │              — delete letter to the left
 --          ⌘q   │              │              │ ✓ │              — close app
 --          ⇥q   │     ⇧⌘⌫      │              │   │         Rider — go to last edit place

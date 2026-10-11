@@ -22,6 +22,7 @@ return {
 --         ⇪⌘h   │     ⌘F20     │              │   │
 --         ⇧⌃h   │              │              │   │         Rider — hierarchy
 --               │              │              │ ◆ │ Services — Finder/Reveal (Finder)
+--               │              │              │ ℝ │ Rider — Hierarchy
 --         ⇧⌥h   │              │ ˝    ˝    ≠  │   │ Birman Layout — press double to adjust previous symbol
 --         ⇧⌘h   │              │              │   │        Finder — go to $HOME
 --               │              │              │ ◆ │ Boring Notch — toggleSneakPeek
@@ -30,6 +31,7 @@ return {
 --         ⌃⌘h   │              │              │   │ Heroes of the Storm
 { chord = "⌃⌘h",                           app = "Heroes of the Storm" },
 --         ⌥⌘h   │              │              │ ✓ │              — hide all other windows
+--               │              │              │ ℝ │ Rider — Show in File Manager
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --        ⇪⇧⌃h   │    ⇧⌃F20     │              │   │
 --        ⇪⇧⌥h   │    ⇧⌥F20     │              │   │
