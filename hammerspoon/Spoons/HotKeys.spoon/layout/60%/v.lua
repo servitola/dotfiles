@@ -16,6 +16,8 @@ return {
 --          ⌥v   │              │      ↓       │   │
 --          ⌘v   │              │              │ ✓ │              — paste
 --               │              │              │   │         Music — paste song information or artwork
+--          ⇥v   │     num1     │              │   │ 🌐 Vivaldi — YouTube
+{ chord = "num1",                            fn = "browser_youtube" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧v   │     ⇧F16     │              │   │               ↓
 { chord= "⇧F16",                           app = "@APP_BROWSER_ALT" },
@@ -36,8 +38,7 @@ return {
 --        ⇪⇧⌃v   │    ⇧⌃F16     │              │   │
 --        ⇪⇧⌥v   │    ⇧⌥F16     │              │   │
 --        ⇪⇧⌘v   │    ⇧⌘F16     │              │   │
---        ⇪⌃⌥v   │    ⌃⌥F16     │              │   │ 🌐 Vivaldi — YouTube
-{ chord = "⌃⌥F16",                            fn = "browser_youtube" },
+--        ⇪⌃⌥v   │    ⌃⌥F16     │              │   │
 --        ⇪⌃⌘v   │    ⌃⌘F16     │              │   │
 --        ⇪⌥⌘v   │    ⌥⌘F16     │              │   │
 --        ⇧⌃⌥v   │              │              │   │     🌐 Vivaldi — focus playing YouTube tab

@@ -284,30 +284,24 @@
 <use href="#icon-orbstack" x="298" y="815.0" width="20" height="20"/>
 <text x="324" y="829.0" font-size="13px" font-weight="500" fill="#007aff">OrbStack</text>
 <line x1="48" y1="839" x2="932" y2="839" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
-<rect x="78" y="844.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="859.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
-<text x="106" y="859.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="844.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="127.0" y="859.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
+<rect x="78" y="844.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="89.0" y="859.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
 <text x="268" y="859.0" font-size="13px" fill="#86868b">→</text>
-<use href="#icon-forkgram" x="298" y="845.0" width="20" height="20"/>
-<text x="324" y="859.0" font-size="13px" font-weight="500" fill="#007aff">Forkgram</text>
+<text x="298" y="859.0" font-size="13px" font-weight="500" fill="#007aff">display.toggle_window_to_tv</text>
 <rect x="78" y="874.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="889.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
 <text x="106" y="889.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="874.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="127.0" y="889.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇧</text>
-<text x="144" y="889.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="874.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="889.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
+<rect x="116" y="874.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="127.0" y="889.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
 <text x="268" y="889.0" font-size="13px" fill="#86868b">→</text>
-<use href="#icon-zoom-us" x="298" y="875.0" width="20" height="20"/>
-<text x="324" y="889.0" font-size="13px" font-weight="500" fill="#007aff">Zoom</text>
-<rect x="78" y="904.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇧</text>
+<use href="#icon-forkgram" x="298" y="875.0" width="20" height="20"/>
+<text x="324" y="889.0" font-size="13px" font-weight="500" fill="#007aff">Forkgram</text>
+<rect x="78" y="904.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
 <text x="106" y="919.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="904.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="127.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⌃</text>
+<rect x="116" y="904.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="127.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇧</text>
 <text x="144" y="919.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="904.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="165.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⌥</text>
-<text x="182" y="919.0" font-size="11px" fill="#86868b">+</text>
-<rect x="192" y="904.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
+<rect x="154" y="904.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="919.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
 <text x="268" y="919.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="919.0" font-size="13px" font-weight="500" fill="#007aff">display.toggle_mirror</text>
-<rect x="78" y="934.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="949.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
+<use href="#icon-zoom-us" x="298" y="905.0" width="20" height="20"/>
+<text x="324" y="919.0" font-size="13px" font-weight="500" fill="#007aff">Zoom</text>
+<rect x="78" y="934.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="949.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇧</text>
 <text x="106" y="949.0" font-size="11px" fill="#86868b">+</text>
 <rect x="116" y="934.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="127.0" y="949.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⌃</text>
 <text x="144" y="949.0" font-size="11px" fill="#86868b">+</text>
@@ -315,7 +309,7 @@
 <text x="182" y="949.0" font-size="11px" fill="#86868b">+</text>
 <rect x="192" y="934.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="949.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">T</text>
 <text x="268" y="949.0" font-size="13px" fill="#86868b">→</text>
-<text x="298" y="949.0" font-size="13px" font-weight="500" fill="#007aff">display.toggle_window_to_tv</text>
+<text x="298" y="949.0" font-size="13px" font-weight="500" fill="#007aff">display.toggle_mirror</text>
 <line x1="48" y1="959" x2="932" y2="959" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
 <rect x="78" y="964.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#007aff" stroke-width="0.7"/><text x="89.0" y="979.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#007aff">⇪</text>
 <text x="106" y="979.0" font-size="11px" fill="#86868b">+</text>
@@ -672,13 +666,7 @@
 <circle cx="54" cy="2411" r="6" fill="#af52de"/>
 <text x="68" y="2414" font-size="14px" font-weight="600" fill="#1d1d1f">Browser / Translate</text>
 <text x="932" y="2414" text-anchor="end" font-size="11px" fill="#86868b">8 bindings</text>
-<rect x="78" y="2434.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2449.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇪</text>
-<text x="106" y="2449.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="2434.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="127.0" y="2449.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌃</text>
-<text x="144" y="2449.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="2434.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="165.0" y="2449.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌥</text>
-<text x="182" y="2449.0" font-size="11px" fill="#86868b">+</text>
-<rect x="192" y="2434.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="2449.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">F</text>
+<rect x="78" y="2434.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="89.0" y="2449.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">F</text>
 <text x="268" y="2449.0" font-size="13px" fill="#86868b">→</text>
 <text x="298" y="2449.0" font-size="13px" font-weight="500" fill="#af52de">→ RU</text>
 <line x1="48" y1="2459" x2="932" y2="2459" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
@@ -707,25 +695,19 @@
 <use href="#icon-vivaldi" x="298" y="2525.0" width="20" height="20"/>
 <text x="324" y="2539.0" font-size="13px" font-weight="500" fill="#af52de">GH Dotfiles</text>
 <line x1="48" y1="2549" x2="932" y2="2549" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
-<rect x="78" y="2554.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2569.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇪</text>
-<text x="106" y="2569.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="2554.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="127.0" y="2569.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌘</text>
-<text x="144" y="2569.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="2554.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="2569.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">V</text>
+<rect x="78" y="2554.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="89.0" y="2569.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">V</text>
 <text x="268" y="2569.0" font-size="13px" fill="#86868b">→</text>
 <use href="#icon-vivaldi" x="298" y="2555.0" width="20" height="20"/>
-<text x="324" y="2569.0" font-size="13px" font-weight="500" fill="#af52de">Search Sel</text>
-<rect x="78" y="2584.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇧</text>
+<text x="324" y="2569.0" font-size="13px" font-weight="500" fill="#af52de">YouTube</text>
+<rect x="78" y="2584.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇪</text>
 <text x="106" y="2599.0" font-size="11px" fill="#86868b">+</text>
-<rect x="116" y="2584.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="127.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌃</text>
+<rect x="116" y="2584.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="127.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌘</text>
 <text x="144" y="2599.0" font-size="11px" fill="#86868b">+</text>
-<rect x="154" y="2584.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="165.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌥</text>
-<text x="182" y="2599.0" font-size="11px" fill="#86868b">+</text>
-<rect x="192" y="2584.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">V</text>
+<rect x="154" y="2584.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="165.0" y="2599.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">V</text>
 <text x="268" y="2599.0" font-size="13px" fill="#86868b">→</text>
 <use href="#icon-vivaldi" x="298" y="2585.0" width="20" height="20"/>
-<text x="324" y="2599.0" font-size="13px" font-weight="500" fill="#af52de">YT Playing</text>
-<rect x="78" y="2614.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2629.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇪</text>
+<text x="324" y="2599.0" font-size="13px" font-weight="500" fill="#af52de">Search Sel</text>
+<rect x="78" y="2614.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2629.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⇧</text>
 <text x="106" y="2629.0" font-size="11px" fill="#86868b">+</text>
 <rect x="116" y="2614.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="127.0" y="2629.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌃</text>
 <text x="144" y="2629.0" font-size="11px" fill="#86868b">+</text>
@@ -734,7 +716,7 @@
 <rect x="192" y="2614.0" width="22" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="203.0" y="2629.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#1d1d1f">V</text>
 <text x="268" y="2629.0" font-size="13px" fill="#86868b">→</text>
 <use href="#icon-vivaldi" x="298" y="2615.0" width="20" height="20"/>
-<text x="324" y="2629.0" font-size="13px" font-weight="500" fill="#af52de">YouTube</text>
+<text x="324" y="2629.0" font-size="13px" font-weight="500" fill="#af52de">YT Playing</text>
 <line x1="48" y1="2639" x2="932" y2="2639" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
 <rect x="78" y="2644.0" width="22" height="22" rx="6" fill="#d4e4f7" stroke="#af52de" stroke-width="0.7"/><text x="89.0" y="2659.0" text-anchor="middle" font-size="13px" font-weight="500" fill="#af52de">⌃</text>
 <text x="106" y="2659.0" font-size="11px" fill="#86868b">+</text>

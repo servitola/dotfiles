@@ -16,6 +16,8 @@ return {
 --               │              │              │ ℝ │ Rider — Find
 --          ⌥f   │              │      £       │   │          Fork — toggle Force Push on Push dialog
 --          ⌘f   │              │              │ ✓ │              — find
+--          ⇥f   │     num2     │              │   │ → RU
+{ chord = "num2",                            fn = "translate_to_russian" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧f   │     ⇧F15     │              │   │               ↓
 { chord= "⇧F15",                           app = "@APP_FILES" },
@@ -37,8 +39,7 @@ return {
 --        ⇪⇧⌃f   │    ⇧⌃F15     │              │   │
 --        ⇪⇧⌥f   │    ⇧⌥F15     │              │   │
 --        ⇪⇧⌘f   │    ⇧⌘F15     │              │   │
---        ⇪⌃⌥f   │    ⌃⌥F15     │              │   │ → RU
-{ chord = "⌃⌥F15",                            fn = "translate_to_russian" },
+--        ⇪⌃⌥f   │    ⌃⌥F15     │              │   │
 --        ⇪⌃⌘f   │    ⌃⌘F15     │              │   │
 --        ⇪⌥⌘f   │    ⌥⌘F15     │              │   │
 --        ⇧⌃⌥f   │              │              │   │

@@ -16,6 +16,8 @@ return {
 --          ⌘t   │              │              │ ✓ │              — new tab
 --               │              │              │   │         Music — turn visualizer on or off
 --               │              │              │ ℝ │ Rider — Go to Test
+--          ⇥t   │     num3     │              │ ✓ │ — this window to TV / back
+{ chord = "num3",                            fn = "display.toggle_window_to_tv" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧t   │     ⇧F17     │              │   │               ↓
 { chord= "⇧F17",                           app = "zoom.us" },
@@ -34,8 +36,7 @@ return {
 --        ⇪⇧⌃t   │    ⇧⌃F17     │              │   │
 --        ⇪⇧⌥t   │    ⇧⌥F17     │              │   │
 --        ⇪⇧⌘t   │    ⇧⌘F17     │              │   │
---        ⇪⌃⌥t   │    ⌃⌥F17     │              │ ✓ │ — this window to TV / back
-{ chord = "⌃⌥F17",                            fn = "display.toggle_window_to_tv" },
+--        ⇪⌃⌥t   │    ⌃⌥F17     │              │   │
 --        ⇪⌃⌘t   │    ⌃⌘F17     │              │   │
 --        ⇪⌥⌘t   │    ⌥⌘F17     │              │   │
 --        ⇧⌃⌥t   │              │              │ ✓ │              — display mode: mirror / extend
