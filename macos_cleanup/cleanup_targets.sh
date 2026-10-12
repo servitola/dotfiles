@@ -91,7 +91,7 @@ try_clean ~/Library/Application\ Support/Adobe/Common/Media\ Cache\ Files "Adobe
 
 try_clean ~/Library/Application\ Support/CrashReporter "Crash reports"
 try_clean ~/Library/Metadata/SpotlightKnowledgeEvents "Spotlight Knowledge Events"
-try_clean ~/Library/Logs "Library Logs" "serho"
+try_clean ~/Library/Logs "Library Logs" "${DIRS_LOGS_KEEP:?}"
 try_clean ~/Library/Messages/Attachments "Messages Attachments"
 try_clean /System/Volumes/Data/.PreviousSystemInformation "Previous System Information"
 try_clean /Library/Logs/DiagnosticReports "System Diagnostic Reports"

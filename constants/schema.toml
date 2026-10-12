@@ -51,6 +51,7 @@ DIR_SKILLS       = { type = "dir", about = "Claude skills, detached skills and c
 TART_HOST        = { type = "host", private = true, about = "ssh alias of the machine that runs tart VMs", example = "tart-host" }
 
 DIRS_ON_PATH      = { type = "text", about = "comma-separated folders of other repositories whose commands go on PATH", example = "NONE" }
+DIRS_LOGS_KEEP    = { type = "text", about = "name in ~/Library/Logs that the cleanup leaves alone: a service that keeps its log open", example = "NONE" }
 DIRS_LAUNCHAGENTS = { type = "text", about = "comma-separated folders of other repositories whose *.plist are linked into ~/Library/LaunchAgents", example = "NONE" }
 
 FILE_SECRETS    = { type = "file", about = "API keys, sourced by shells and jobs", example = "$HOME/.config/openai_key.sh" }
