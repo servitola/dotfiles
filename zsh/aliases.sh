@@ -122,13 +122,13 @@ function piper_say() {
 alias w='whisper_max'
 alias wv='whisper_voice'
 
+# The transcript is printed and saved as <file>.txt next to the recording.
 function whisper_max() {
-    whisper-mps --file-name "$1" --model-name large-v3 --language ru 2>/dev/null
+    mlx_whisper "$1" --model mlx-community/whisper-large-v3-mlx --language ru --output-format txt --output-dir "${1:a:h}"
 }
 
-# fast voice to text transcription
 function whisper_voice() {
-    whisper-mps --file-name "$1" --model-name medium --language ru 2>/dev/null
+    mlx_whisper "$1" --model mlx-community/whisper-large-v3-turbo --language ru --output-format txt --output-dir "${1:a:h}"
 }
 
 alias lg="lazygit"

@@ -67,7 +67,7 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
 
 * Q: I want to convert audio file to text
-* A: I use [whisper-x](https://github.com/m-bain/whisperX). I use CPU conversion. I use alias 'w' for 'whisperx' with biggest model
+* A: I use [mlx-whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper), Whisper on Apple Silicon. Alias `w` runs the biggest model, `wv` the fast one; the text is printed and saved next to the file
 
 Convert with best quality:
 ```

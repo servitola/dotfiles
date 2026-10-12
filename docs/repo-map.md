@@ -89,7 +89,7 @@ are launched from the Hyper layer (see `docs/keyboard-setup.md`).
 - **Browsers (split by purpose):** Vivaldi = main (Hyper+V); Chrome = technical / dev sites (Hyper+⇧+V); Firefox = work sites (Hyper+H). LinkRouter.spoon routes links by the rules in `hammerspoon/link_router.lua`; which browser is "main" is one line in `constants.env` (`APP_BROWSER`), and `hammerspoon/browsers.lua` keeps Zen, Yandex, Chrome, Firefox and Opera listed so a move is that one line. Vivaldi is Chromium, so tab cycling works over AppleScript — but only after Settings → Privacy → Apple Events allows JavaScript, otherwise `⇧⌃⌥V` falls back to the first matching tab.
 - **Messenger:** Telegram (Hyper+T) — also the keyboard-language exception (manual switching, type Russian).
 - **Music:** Apple Music — Music.app (Hyper+P). Never Spotify/web players.
-- **Voice → text:** VoiceInk (`voiceink/`), always running. `whisper-x` via `w` for batch files.
+- **Voice → text:** VoiceInk (`voiceink/`), always running. `mlx_whisper` via `w` (best) and `wv` (fast) for files.
 - **Torrents:** Transmission.
 - **Media player:** IINA (Hyper+Y).
 - **Mobile dev (primary work):** Xcode (iOS) + Android Studio + emulators (Hyper+Z toggles the Android emulator window).
@@ -124,5 +124,5 @@ Facts that span the whole repo and don't live in any single directory:
 - **Secrets:** all API keys live in `~/.config/openai_key.sh` (gitignored, sourced by zsh, litellm, contextMenu, cron). Never hardcode keys.
 - **AI model strategy:** **Claude (paid) is the primary AI** — used by Claude Code for real work. The **litellm free proxy** handles the cheap/bulk lane: CI, small tasks, image generation (some paid image models), and all `rag` knowledge work. Within litellm, the `coding` alias is the de-facto default; `fast` for quick, `reasoning` for planning. See `$DIR_LITELLM/AGENTS.md`.
 - **Keyboard layout per app:** AutoKeyboardLayout.spoon (config in `hammerspoon/init.lua`) sets `LAYOUT_PRIMARY` for every app as it comes to the front and `LAYOUT_SECONDARY` for the Telegram clients; inside an app switching is manual. Games additionally get the Karabiner `Empty` profile from `hammerspoon/game_mode.lua`.
-- **Audio → text:** VoiceInk (always on) for dictation; `whisper-x` via the `w` alias for files. Text → audio (TTS) is separate — litellm `tts*` aliases and language-specific TTS skills built on top.
+- **Audio → text:** VoiceInk (always on) for dictation; `mlx_whisper` via the `w` / `wv` aliases for files. Text → audio (TTS) is separate — litellm `tts*` aliases and language-specific TTS skills built on top.
 - **Per-directory docs:** every config/tool dir has an `AGENTS.md` (role-level summary) with a `CLAUDE.md` symlink; this file ranks them by importance.
