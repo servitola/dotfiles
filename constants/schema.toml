@@ -1,6 +1,7 @@
 [keys]
 ME_NAME     = { type = "text", about = "account name, git author, GitHub handle", example = "servitola" }
 ME_EMAIL    = { type = "email", private = true, about = "git author email", example = "you@example.com" }
+ME_SIGN_IDENTITY = { type = "text", private = true, about = "codesign identity that keeps re-signed tools trusted across upgrades: Developer ID Application: Name (TEAMID)", example = "NONE" }
 ME_TZ       = { type = "timezone", unread = true, private = true, about = "home timezone for schedules and digests", example = "Europe/London" }
 ME_CITY     = { type = "text", unread = true, private = true, about = "home city, local spelling", example = "London" }
 ME_CITY_ENG = { type = "text", unread = true, private = true, about = "home city, English spelling", example = "London" }
@@ -63,6 +64,9 @@ TG_CHAT_PHONE3 = { type = "chat_id", private = true, about = "supergroup of the 
 TG_STRICT_DIRS = { type = "text", private = true, about = "comma-separated cwd substrings where deny-telegram-send refuses every send", example = "private-chat" }
 TG_THREAD_CRON = { type = "text", about = "topic in TG_CHAT_NOTIFY for the weekly cron report", example = "1486" }
 TG_BOT_API     = { type = "url", about = "local Telegram Bot API server", example = "http://localhost:8081" }
+
+AUDIO_BT_MARSHALL = { type = "text", private = true, about = "Bluetooth address of the Marshall speaker, as blueutil prints it", example = "00-00-00-00-00-01" }
+AUDIO_BT_SPEAKERS = { type = "text", private = true, about = "Bluetooth address of the home speakers", example = "00-00-00-00-00-02" }
 
 LITELLM_URL = { type = "url", about = "local LiteLLM proxy", example = "http://localhost:4000" }
 QDRANT_URL  = { type = "url", about = "local Qdrant", example = "http://localhost:6333" }

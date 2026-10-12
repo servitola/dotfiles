@@ -4,6 +4,7 @@ obj._watcher = nil
 
 local log = hs.logger.new('AudioSwitcher', 'info')
 local notify = require("notify")
+local constants = require("constants")
 local spoonPath = debug.getinfo(1, "S").source:match("@(.*/)")
 
 dofile(spoonPath .. "find_audio_device.lua")
@@ -128,7 +129,7 @@ local function connectBluetoothAsync(mac)
 end
 
 function obj:connectAndSwitchToMarshall()
-    local mac = "24-c4-06-9a-c2-aa"
+    local mac = constants.AUDIO_BT_MARSHALL
 
     if isBluetoothConnected(mac) then
         log.i("Marshall already connected, switching immediately")
@@ -142,7 +143,7 @@ function obj:connectAndSwitchToMarshall()
 end
 
 function obj:connectAndSwitchToBT()
-    local mac = "eb-06-ef-24-61-cf"
+    local mac = constants.AUDIO_BT_SPEAKERS
 
     if isBluetoothConnected(mac) then
         log.i("BT already connected, switching immediately")

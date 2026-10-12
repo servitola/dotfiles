@@ -63,11 +63,12 @@ print_task "Keeping uv's code signature stable for TCC"
 # ~/Documents etc. Re-signing with our own Developer ID gives it a team-anchored
 # designated requirement, which TCC keeps matching across upgrades — same
 # trick as the Transmission.app re-sign in ~/projects/forks/jobs/transmission/sync.sh.
-UV_SIGN_ID="Developer ID Application: Developer Name (TEAMID1234)"
 UV_BIN=$(readlink -f "$(command -v uv)" 2>/dev/null || true)
-if [ -n "$UV_BIN" ] && [ -f "$UV_BIN" ]; then
-    if ! codesign -dv "$UV_BIN" 2>&1 | grep -q "TeamIdentifier=TEAMID1234"; then
-        codesign --force --sign "$UV_SIGN_ID" "$UV_BIN" 2>/dev/null \
+# The team id is the part of the identity in brackets.
+UV_SIGN_TEAM=${${ME_SIGN_IDENTITY:?}##*\(}
+if [ "$ME_SIGN_IDENTITY" != NONE ] && [ -n "$UV_BIN" ] && [ -f "$UV_BIN" ]; then
+    if ! codesign -dv "$UV_BIN" 2>&1 | grep -q "TeamIdentifier=${UV_SIGN_TEAM%\)}"; then
+        codesign --force --sign "$ME_SIGN_IDENTITY" "$UV_BIN" 2>/dev/null \
             && printf "  ${DIM}* uv re-signed with stable Developer ID (was ad-hoc after upgrade)${NC}\n" \
             || printf "  ${DIM}* uv re-sign failed — Full Disk Access may need re-granting${NC}\n"
     fi
