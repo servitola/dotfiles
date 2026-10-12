@@ -59,7 +59,7 @@ chmod -R go-w "$HOMEBREW_PREFIX/share" 2>/dev/null || true
 print_task "Keeping uv's code signature stable for TCC"
 # uv ships ad-hoc signed (no Team ID); TCC binds Full Disk Access to that
 # ad-hoc identity, so every `brew upgrade uv` silently revokes the FDA grant
-# the com.servitola.serho launchd chain depends on for /Volumes/* and
+# a launchd service started through uv depends on for /Volumes/* and
 # ~/Documents etc. Re-signing with our own Developer ID gives it a team-anchored
 # designated requirement, which TCC keeps matching across upgrades — same
 # trick as the Transmission.app re-sign in ~/projects/forks/jobs/transmission/sync.sh.
@@ -99,7 +99,7 @@ fi
 
 print_task "uv cache (dangling entries + unused environments)"
 # --force skips uv's in-use check. Without it the prune aborts whenever any uv
-# process holds the cache — and the launchd shims (voiceink, piper, serho bot)
+# process holds the cache — and the launchd shims (voiceink, piper, the Telegram bot)
 # hold it permanently here, so a guarded prune never ran once. It does remove
 # the script environments those services run from, hence the restart below.
 if command -v uv &>/dev/null; then

@@ -5,7 +5,7 @@ typeset -U PATH path
 
 # System /usr/local — in login shells these arrive via macOS `path_helper`
 # (/etc/zprofile), but non-login `zsh -c` invocations (launchd services like
-# the serho bot, cron jobs) skip /etc/zprofile, so path_helper never runs and
+# the Telegram bot, cron jobs) skip /etc/zprofile, so path_helper never runs and
 # /usr/local/{bin,sbin} silently drop out. Add them explicitly here — this
 # file is sourced from ~/.zshenv too — so tools installed to /usr/local/bin
 # (e.g. the voiceink CLI) stay visible to those processes. (2026-07-14)

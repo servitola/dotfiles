@@ -56,7 +56,7 @@ and Claude live in the `# Models` section of `claude-code/CLAUDE.md`.
   is written in English, whatever language the conversation that produced it was in. Enforced by
   the `no-russian-comments` pre-commit hook. This is about *prose*: Cyrillic that is **data** stays
   untouched — the `ru` column of the keyboard-layout tables in `HotKeys.spoon/layout/60%/*.lua`,
-  paths under `~/projects/serho_topics/`, Telegram message texts, dictation dictionaries, test
+  paths with Cyrillic folder names, Telegram message texts, dictation dictionaries, test
   fixtures. Translating those breaks the thing they describe.
 - **Docs are English-only too, on the same terms.** `AGENTS.md`, `CLAUDE.md`, `README.md` and
   anything else in `docs/` is written in English even when the session that produced it ran in

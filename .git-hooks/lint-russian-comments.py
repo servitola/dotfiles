@@ -2,7 +2,7 @@
 """Fail the commit when a comment is written in Russian.
 
 Prose only. Cyrillic that is data has to survive: the `ru` column of the keyboard
-layout tables, paths under ~/projects/serho_topics/, Telegram message texts,
+layout tables, paths with Cyrillic folder names, Telegram message texts,
 dictation dictionaries, test fixtures. So a line counts as a violation only when
 the Cyrillic sits inside something this script is confident is a comment.
 """
@@ -18,7 +18,7 @@ QUOTED = re.compile(r"«[^»]*»|\"[^\"]*\"|'[^']*'|`[^`]*`")
 # is data too, otherwise a wrapped list of Russian book titles reads as prose.
 DANGLING_QUOTE = re.compile(r"[«\"'`].*$")
 CLOSERS = {"«": "»", '"': '"', "'": "'", "`": "`"}
-# Paths are data wherever they appear: ~/projects/serho_topics/греческий-язык/
+# Paths are data wherever they appear: ~/notes/греческий-язык/
 PATH_TOKEN = re.compile(r"\S*/\S*")
 
 # Suffix -> comment markers. A file type absent here is never checked: no marker,

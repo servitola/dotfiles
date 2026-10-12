@@ -7,7 +7,7 @@
 # 0.45.0 doesn't write it (Claude Code works fine without it). Without the
 # field codex prints "hook: PreToolUse Failed" and silently runs the ORIGINAL
 # command — so a breakage in this shim costs the lost compaction, not
-# functionality. Measured on codex-cli 0.147.0 in the serho image, 2026-08-21.
+# functionality. Measured on codex-cli 0.147.0 in the bot's container image, 2026-08-21.
 #
 # Installed into $CODEX_HOME/hooks.json:
 #   {"hooks":{"PreToolUse":[{"hooks":[{"type":"command",

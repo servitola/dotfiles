@@ -53,6 +53,6 @@ Verified on codex-cli 0.149.0 (2026-08-24).
   with `--dangerously-bypass-hook-trust`: if the rewrite appears, only trust is missing.
 - Trust is written by the interactive TUI prompt alone (it is not a hash of `hooks.json` or
   of the script), so it takes one interactive `codex` run in a real terminal.
-- **That flag must not go into the serho bot's codex argv.** `~/.codex/` is writable by
+- **That flag must not go into the Telegram bot's codex argv.** `~/.codex/` is writable by
   every agent the bot spawns, so one topic could plant a `hooks.json` whose command then
   runs in every other topic's session.

@@ -16,7 +16,7 @@ guard = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(guard)
 
 DOTFILES = "/Users/servitola/projects/dotfiles"
-ELSEWHERE = "/Users/servitola/projects/serho"
+ELSEWHERE = str(pathlib.Path.home() / "projects" / "elsewhere")
 
 SHIPPED_IS_INERT = [
     ("cliclick c:400,300", DOTFILES),
