@@ -1,13 +1,12 @@
 #!/bin/zsh
-# What compress.sh keeps APFS-compressed. Add a path, nothing else.
-# Missing on another Mac is fine — targets that do not exist are skipped.
+# What compress.sh keeps APFS-compressed
+# targets that do not exist are skipped.
 
 COMPRESS_TARGETS=(
     "$HOME/Library/Android"
     "$HOME/.dotnet/packs"   # never $HOME/.dotnet — a compressed CoreCLR host tree SIGKILLs every dotnet run
     "$HOME/.rustup"
     "$HOME/.konan"
-    "$HOME/Library/Application Support/MstyStudio"
 )
 
 # Compress All Apps in Application folder
