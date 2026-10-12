@@ -59,4 +59,4 @@ path+=( "$NPM_GLOBAL/bin" )
 path+=( "$HOME/.cargo/bin" )
 
 # Dotfiles-shipped tools (rag wrapper, etc.)
-path+=( "$HOME/projects/dotfiles/zsh/bin" )
+path+=( "$HOME/projects/dotfiles/zsh/bin" "$DIR_SKILLS/bin" ${${(s:,:)DIRS_ON_PATH}:#NONE} )

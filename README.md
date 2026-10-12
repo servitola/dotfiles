@@ -127,7 +127,7 @@ cp constants.example.env constants.env
 * A: Run ```cd ~/projects/dotfiles && make``` in Terminal. It asks for your password once and runs the numbered steps from [install/](https://github.com/servitola/dotfiles/tree/master/install).
 
 * Q: I changed <ins>constants.env</ins> later. What now?
-* A: A new shell already sees the change. The configs generated from it (git, NuGet) are refreshed by `const sync`, and `const check` tells you if a value does not fit.
+* A: A new terminal window already sees the change (a shell started from an old one keeps the old values). The configs generated from it (git, NuGet) are refreshed by `const sync`, and `const check` tells you if a value does not fit.
 
 * Q: What is the best way to <ins>maintain this project</ins>?
 * A: I use [VSCode](https://code.visualstudio.com/). When you open the project's folder, you will be suggested all the necessary plugins to install. For git, I use [PreCommit](https://pre-commit.com/) to check that my commits don't have extra spaces and secrets.

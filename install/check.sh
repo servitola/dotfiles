@@ -43,7 +43,6 @@ grep -oE 'install_spoon [A-Za-z0-9]+ [^ ]+ "\$[A-Z0-9_]+"' install/18-spoons.sh 
 done
 
 section "services"
-[[ ! -f serho/com.servitola.serho.plist ]] || expect "serho agent loaded" launchctl print "gui/$UID/com.servitola.serho"
 machine=$(scutil --get LocalHostName)
 [[ $DOCKER == no ]] || grep -hsv '^#' docker/compose-projects.txt docker/compose-projects.private.txt | while read -r stack machines; do
     [[ -n $stack && " $machines " == *" $machine "* ]] || continue

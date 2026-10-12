@@ -26,7 +26,7 @@ writes it as empty, which git and NuGet read as "off".
 ```zsh
 $APP_BROWSER       # already exported in any shell
 const app.browser  # dots and case normalise to APP_BROWSER
-const list DIR_    # namespaces: ME_ APP_ DIR_ FILE_ TG_ PROXY_ HOST_ MODEL_
+const list DIR_    # namespaces: ME_ APP_ DIR_ DIRS_ FILE_ TG_ PROXY_ HOST_ MODEL_
 ```
 
 ## Generated consumers

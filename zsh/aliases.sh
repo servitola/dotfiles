@@ -138,9 +138,5 @@ alias ld="lazydocker"
 
 alias ff="open -a 'Marta' ."
 
-# Live log viewer for serho (Telegram AI agent) — q quit, / search, ? help
-alias serho-logs="lnav $HOME/Library/Logs/serho/stdout.log $HOME/Library/Logs/serho/stderr.log"
-
 ppp() { readlink -f "${1:-.}" | tr -d '\n' | pbcopy && echo "Copied: $(pbpaste)"; }
 
-alias recomp='~/projects/serho_topics/видео-пережать/recompress_one.sh REPLACE'
