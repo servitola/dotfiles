@@ -100,29 +100,40 @@ ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
 * Q: I want to find out what is taking up space on my hard drive
 * A: I use [GrandPerspective](https://grandperspectiv.sourceforge.net/)
 
-* Q: How to <ins>install</ins> this repository?
-* A: With regular Makefile. Run ```cd ~/projects/dotfiles && make``` in Terminal.
-
-* Q: But <ins>where to download</ins> in the first place?
-* A: You must clone or download the zip file of this repo to `~/projects/dotfiles`. Rename the paths across the code if you want to use a different path.
+* Q: <ins>Where to download</ins> it?
+* A: Clone it to `~/projects/dotfiles` — the scripts expect that path.
 ```bash
 mkdir ~/projects
 cd ~/projects
 git clone https://github.com/servitola/dotfiles.git
 ```
-You will be asked to install command tools - agree.
+You will be asked to install command line tools - agree.
+
+* Q: What is the <ins>first thing</ins> to do, <ins>before installing</ins>?
+* A: Tell it about your Mac. Everything that is mine and not yours — name, git email, browser, terminal, keyboard layouts, folders, proxies — lives in one file, `constants.env`. It is not in git: every Mac keeps its own.
+```bash
+cd ~/projects/dotfiles
+cp constants.example.env constants.env
+```
+  Now read `constants.env` from top to bottom and put your values there. Every key has a comment above it.
+  * `ME_NAME` and `ME_EMAIL` become your git author — set these two at least.
+  * `APP_*` are the apps the shortcuts open, `LAYOUT_*` your input sources, as macOS names them.
+  * You have no such thing (no work proxy, no home server)? Write `NONE` as the value.
+  * `DOCKER=no` if this Mac should not run my docker stacks.
+
+  If you skip this step, the installer copies the example for you and warns — and you get a git config signed by `you@example.com`.
+
+* Q: How to <ins>install</ins> this repository?
+* A: Run ```cd ~/projects/dotfiles && make``` in Terminal. It asks for your password once and runs the numbered steps from [install/](https://github.com/servitola/dotfiles/tree/master/install).
+
+* Q: I changed <ins>constants.env</ins> later. What now?
+* A: A new shell already sees the change. The configs generated from it (git, NuGet) are refreshed by `const sync`, and `const check` tells you if a value does not fit.
 
 * Q: What is the best way to <ins>maintain this project</ins>?
 * A: I use [VSCode](https://code.visualstudio.com/). When you open the project's folder, you will be suggested all the necessary plugins to install. For git, I use [PreCommit](https://pre-commit.com/) to check that my commits don't have extra spaces and secrets.
 
-* Q: What is <ins>important</ins> to do next?
-* A: Next, do the following:
-  * Replace my name and email in [GitConfig](https://github.com/servitola/dotfiles/blob/master/git/gitconfig) with yours. Also remove all 'proxy' lines from there since they are specific for my work.
-  * Remove proxy from [ClaudeConfig](https://github.com/servitola/dotfiles/blob/master/claude-code/settings.json). They are specific for my work
-  * Set screenshot shortcuts to other shortcuts (even if they are turned off) so that [Shottr](https://shottr.cc/) can take them.
-
 * Q: I want to understand what this repository installs exactly
-* A: Check the [Makefile](https://github.com/servitola/dotfiles/blob/master/Makefile) script. It installs all the programs (mostly with homebrew), deletes configs at default places, creates symlinks, and completes the setup.
+* A: Check [install.sh](https://github.com/servitola/dotfiles/blob/master/install.sh) and the steps in [install/](https://github.com/servitola/dotfiles/tree/master/install), they run in order. They install the programs (mostly with homebrew, the list is the [brewfile](https://github.com/servitola/dotfiles/blob/master/homebrew/brewfile)), replace the default configs with symlinks into this repository, and set the macOS preferences and shortcuts.
 
 #
 ## Extra:
