@@ -1,3 +1,4 @@
+import json
 import os
 import subprocess
 import sys
@@ -6,18 +7,12 @@ import pytest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
-sys.path.insert(0, os.path.join(os.path.dirname(HERE), "tools"))
 
-import bridges
-import gen_layers
+import gen_rules
+import grammar
 import layers
 
-GEN = os.path.join(os.path.dirname(HERE), "tools", "gen_layers.py")
-STEMS = [stem for stem, _ in layers.LAYERS.values()]
-
-
-def test_generated_equals_tracked_rules():
-    assert gen_layers.drift() == []
+GEN = os.path.join(os.path.dirname(HERE), "gen_rules.py")
 
 
 @pytest.mark.parametrize("name", list(layers.LAYERS))
@@ -26,7 +21,7 @@ def test_generated_is_table_then_formula_then_raw(name):
     rows = layers.load()
     slots = layers.load_slots()
     own = [r for r in rows if r.layer == name]
-    left = bridges._mods_text(layers.layer_mods(name) - {"hyper"})
+    left = grammar._mods_text(layers.layer_mods(name) - {"hyper"})
     expected = [layers.manipulator(name, r.key, r.to) for r in own]
     raw = layers.load_raw(stem)
     taken = {r.key for r in own} | {m["from"]["key_code"] for m in raw}
@@ -135,26 +130,16 @@ def test_tables_sharing_a_rule_keep_their_order_and_conditions():
     manips = layers.build()["18-hyper-misc"]["manipulators"]
     first_f = next(i for i, m in enumerate(manips) if m["from"]["key_code"] == "f1")
     assert all("conditions" not in m for m in manips[:first_f])
-    assert all(m["conditions"] == list(layers._KEYBOARD_ON) for m in manips[first_f:])
+    off = [{"name": "keyboard_disabled", "type": "variable_unless", "value": 1}]
+    assert all(m["conditions"] == off for m in manips[first_f:])
     assert manips[first_f]["to"] == [{"shell_command": "$HOME/.local/bin/lunar displays 'Built-In' brightness 0"}]
 
 
 def test_table_with_fixed_modifiers_refuses_a_chord_key(tmp_path):
     path = tmp_path / "layers.toml"
-    path.write_text('[layer.fn]\n"⌥q" = "u"\n', encoding="utf-8")
-    with pytest.raises(ValueError, match="layers.toml:2 layer fn, key ⌥q"):
-        layers.load(str(path), tables=layers.PLAIN)
-
-
-def test_rule_file_nothing_accounts_for_stops_the_build(tmp_path):
-    rules = tmp_path / "rules"
-    rules.mkdir()
-    (rules / "20-alt-shortcuts-2.json").write_text("{}", encoding="utf-8")
-    (rules / "04-caps-lock-hyper.json").write_text("{}", encoding="utf-8")
-    assert gen_layers.orphans(str(rules)) == ["20-alt-shortcuts-2"]
-    proc = subprocess.run([sys.executable, GEN, "--check", "--rules-dir", str(rules)], capture_output=True, text=True)
-    assert proc.returncode != 0 and "20-alt-shortcuts-2.json" in proc.stderr
-    assert gen_layers.orphans() == []
+    path.write_text('[layer.fn]\nrule = "30-fn"\ntitle = "fn"\nmandatory = ["fn"]\n"⌥q" = "u"\n', encoding="utf-8")
+    with pytest.raises(ValueError, match="layers.toml:5 layer fn, key ⌥q"):
+        layers.load(str(path), hyper=False)
 
 
 def test_raw_stays_last():
@@ -165,15 +150,26 @@ def test_raw_stays_last():
 
 def test_bad_value_names_layer_and_key(tmp_path):
     path = tmp_path / "layers.toml"
-    path.write_text('[layer.hyper]\nw = "↑"\nq = "⌘⇧x"\n', encoding="utf-8")
-    with pytest.raises(ValueError, match=r"layers.toml:3 layer hyper, key q"):
+    path.write_text(HYPER + 'w = "↑"\nq = "⌘⇧x"\n', encoding="utf-8")
+    with pytest.raises(ValueError, match=r"layers.toml:5 layer hyper, key q"):
         layers.load(str(path))
 
 
+HYPER = '[layer.hyper]\nrule = "07-hyper-only"\ntitle = "Hyper"\n'
+
+
 @pytest.mark.parametrize("body, needle", [
-    ('[layer.hyper_meta]\nw = "↑"\n', "hyper_meta"),
-    ('[layer.hyper]\nwasd = "↑"\n', "wasd"),
+    ('[layer.hyper_meta]\nrule = "07-x"\ntitle = "x"\nw = "↑"\n', "hyper_meta"),
+    (HYPER + 'wasd = "↑"\n', "wasd"),
     ('[slot]\nv = "F16"\n', "slot"),
+    ('[layer.hyper]\nw = "↑"\n', r"\[layer.hyper\]: needs rule"),
+    ('[layer.hyper]\nrule = "hyper"\ntitle = "x"\n', r"needs rule"),
+    ('[layer.hyper]\nrule = "07-hyper-only"\nw = "↑"\n', "07-hyper-only has no title"),
+    (HYPER + 'mandatory = ["fn"]\n', "drop"),
+    (HYPER + '[layer.misc]\nrule = "07-hyper-only"\n', "cannot share rule"),
+    ('[layer.a]\nrule = "18-misc"\ntitle = "one"\n[layer.b]\nrule = "18-misc"\ntitle = "two"\n', "another title"),
+    ('[layer.a]\nrule = "18-misc"\ntitle = "x"\nmandatory = ["left_alt"]\n', "left_alt"),
+    ('[layer.a]\nrule = "18-misc"\ntitle = "x"\nwhen = 1\n', "name of a Karabiner variable"),
 ])
 def test_unknown_layer_or_key(tmp_path, body, needle):
     path = tmp_path / "layers.toml"
@@ -196,25 +192,58 @@ def test_bad_slots(tmp_path, body, needle):
         layers.load_slots(str(path))
 
 
-def test_check_detects_hand_edit(tmp_path):
-    rules = tmp_path / "rules"
-    rules.mkdir()
-    for stem, text in gen_layers.render().items():
-        (rules / f"{stem}.json").write_text(text, encoding="utf-8")
-    assert gen_layers.drift(str(rules)) == []
-    path = rules / "07-hyper-only.json"
-    path.write_text(path.read_text(encoding="utf-8").replace('"up_arrow"', '"down_arrow"', 1), encoding="utf-8")
-    assert gen_layers.drift(str(rules)) == ["07-hyper-only"]
-    proc = subprocess.run([sys.executable, GEN, "--check", "--rules-dir", str(rules)],
-                          capture_output=True, text=True)
-    assert proc.returncode == 1
-    assert "07-hyper-only" in proc.stdout
+def test_all_rules_are_generated_and_hand_written_in_stem_order():
+    rules = layers.all_rules()
+    stems = [stem for stem, _ in rules]
+    assert stems == sorted(stems)
+    assert set(layers.hand_rules()) < set(stems) and set(layers.build()) < set(stems)
+    assert all(set(rule) == {"description", "manipulators"} for _, rule in rules)
 
 
-def test_write_then_check_is_clean(tmp_path):
-    rules = tmp_path / "rules"
-    rules.mkdir()
-    subprocess.run([sys.executable, GEN, "--rules-dir", str(rules), "--no-karabiner-lint"], check=True,
-                   capture_output=True)
-    proc = subprocess.run([sys.executable, GEN, "--check", "--rules-dir", str(rules)], capture_output=True, text=True)
-    assert proc.returncode == 0, proc.stdout
+def test_a_rule_both_generated_and_hand_written_is_refused(monkeypatch):
+    monkeypatch.setattr(layers, "hand_rules", lambda: {"07-hyper-only": {"description": "", "manipulators": []}})
+    with pytest.raises(ValueError, match="07-hyper-only"):
+        layers.all_rules()
+
+
+def test_config_is_the_template_with_the_rules_in_place():
+    doc = layers.config()
+    with open(layers.TEMPLATE_PATH, encoding="utf-8") as fh:
+        template = json.load(fh)
+    assert doc["profiles"][0]["complex_modifications"]["rules"] == [rule for _, rule in layers.all_rules()]
+    doc["profiles"][0]["complex_modifications"]["rules"] = template["profiles"][0]["complex_modifications"]["rules"]
+    assert doc == template
+
+
+def test_check_writes_nothing_and_build_writes_only_the_output(tmp_path):
+    out = tmp_path / "karabiner.json"
+    proc = subprocess.run([sys.executable, GEN, "--check", "--output", str(out)], capture_output=True, text=True)
+    assert proc.returncode == 0, proc.stderr
+    assert list(tmp_path.iterdir()) == []
+    subprocess.run([sys.executable, GEN, "--output", str(out)], check=True, capture_output=True)
+    assert [p.name for p in tmp_path.iterdir()] == ["karabiner.json"]
+    assert json.loads(out.read_text(encoding="utf-8")) == layers.config()
+
+
+def test_dump_writes_one_file_per_rule(tmp_path):
+    paths = gen_rules.dump(layers.all_rules(), str(tmp_path))
+    assert [os.path.basename(p) for p in paths] == [f"{stem}.json" for stem, _ in layers.all_rules()]
+
+
+def test_rule_order_comes_from_the_rule_names_in_the_tables(tmp_path, monkeypatch):
+    path = tmp_path / "layers.toml"
+    path.write_text('[layer.late]\nrule = "40-late"\ntitle = "late"\nq = "a"\n'
+                    '[layer.early]\nrule = "03-early"\ntitle = "early"\nq = "b"\n'
+                    '[layer.more]\nrule = "40-late"\nunless = "off"\nw = "c"\n', encoding="utf-8")
+    monkeypatch.setattr(layers, "LAYERS_PATH", str(path))
+    monkeypatch.setattr(layers.tables, "__defaults__", (str(path),))
+    monkeypatch.setattr(layers.load, "__defaults__", (str(path), True))
+    monkeypatch.setattr(layers.load_slots, "__defaults__", (str(path),))
+    monkeypatch.setattr(layers, "raw_stems", lambda: [])
+    monkeypatch.setattr(layers, "load_raw", lambda stem: [])
+    stems = [stem for stem, _ in layers.all_rules()]
+    assert stems.index("03-early") < stems.index("04-caps-lock-hyper") < stems.index("40-late")
+    late = dict(layers.all_rules())["40-late"]
+    assert late["description"] == "late"
+    assert [m["from"]["key_code"] for m in late["manipulators"]] == ["q", "w"]
+    assert "conditions" not in late["manipulators"][0] and late["manipulators"][1]["conditions"][0]["name"] == "off"

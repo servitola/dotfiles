@@ -14,7 +14,7 @@ must become another key is Karabiner's; a result that needs state or knowledge
 | add a new function for a chord | `hammerspoon/actions/<group>.lua` → `register("name", function() … end)` | same |
 | change which app plays a role everywhere | `constants.env` → `APP_BROWSER=…`, `APP_IDE=…`, … | `hs -c 'hs.reload()' </dev/null` |
 | make a key or chord send another key, a sequence or a shell command | `karabiner/layers.toml`, one line in the matching table (grammar: `karabiner/AGENTS.md`) | `zsh karabiner/build.sh` |
-| a Karabiner rule the table cannot say (mouse, simultaneous keys, `to_if_alone`) | `karabiner/rules/NN-*.json` by hand, or `karabiner/layers.raw/` | same |
+| a Karabiner rule the table cannot say (mouse, simultaneous keys, `to_if_alone`) | `karabiner/hand/NN-*.json` by hand, or `karabiner/hand/raw/` | same |
 | a macOS / Shottr / Maccy / menu shortcut | `macos_shortcuts/shortcuts.toml` | `python3 macos_shortcuts/shortcuts.py apply` |
 | a character on the right Option layer | `layer.overrides` in `hammerspoon/init.lua` (shape: `hammerspoon/Spoons/BirmanLayer.spoon/docs/configuration.md`) | `hs.reload()`; `python3 docs/keyboard/generate.py` |
 
@@ -27,7 +27,7 @@ The rule to remember: eight Hyper launcher letters are renamed to F-keys by
 keyboard column — `z=F13 · r f v = F14 F15 F16 · t g b = F17 F18 F19 · h=F20`,
 left modifiers ride along (`⇪⌘v` = `⌘F16`). `python3 docs/keyboard/tools/bridge.py`
 prints it. Check everything with `python3 docs/keyboard/tools/lint.py --strict`
-(pre-commit runs it). Never open: `karabiner/rules/*.json` other than `00`, `04`, `26`, `29`, `32`; `karabiner.json`,
+(pre-commit runs it). Never open: `karabiner/karabiner.json`,
 `app_bundle_ids.lua`, `typography_table.lua` — all generated.
 
 ## Overview
@@ -48,20 +48,20 @@ The keyboard setup consists of three main components:
 
 ## Karabiner-Elements Configuration
 
-Source of truth: `karabiner/layers.toml` — one table per rule file in `karabiner/rules/`, which `gen_layers.py` writes. Five rules have no table and are JSON by hand: `00` keyboard lock, `04` Caps Lock → Hyper, `26` Punto, `29` mouse, `32` swap sides. The combined `karabiner.json` consumed by Karabiner-Elements is **generated** — run `karabiner/build.sh` after editing rules.
+Source of truth: `karabiner/layers.toml` — one table per rule. Five rules have no table and are JSON by hand in `karabiner/hand/`: `00` keyboard lock, `04` Caps Lock → Hyper, `26` Punto, `29` mouse, `32` swap sides. `karabiner/generator/` builds `karabiner.json`, the one file Karabiner-Elements reads, from the two; it is git-ignored and there are no intermediate rule files. Run `karabiner/build.sh` after an edit.
 
-The Hyper layers (`07`–`17`) are themselves generated: edit `karabiner/layers.toml` (one `key_code = "output"` table per layer) and run `karabiner/build.sh`, which calls `docs/keyboard/tools/gen_layers.py`; bridge slots come from its `[slots]` table, and what the table cannot express goes to `karabiner/layers.raw/<rule>.json` (see `karabiner/AGENTS.md`).
+Bridge slots come from the `[slots]` table of `layers.toml`, and manipulators a table cannot express go to `karabiner/hand/raw/<rule>.json` (see `karabiner/AGENTS.md`).
 
 ### Caps Lock → Hyper
 Caps Lock sends Right Shift + Right Command + Right Control + Right Option simultaneously. Hammerspoon binds chords against this 4-mod set, so it never collides with real left-modifier shortcuts.
 
 ### F-key remaps
-`hs.hotkey` cannot tell `⇪v` from `⇪⌘v` (both carry ⌘), so the eight Hyper letters Hammerspoon launches from and that have left-modifier variants — `z r f v t g b h` — are renamed by Karabiner to an F-key, the letter's **slot**. Slots follow the left-hand keyboard columns, left to right, top to bottom: `q a z` → `z = F13`; `r f v` → `F14 F15 F16`; `t g b` → `F17 F18 F19`; `y h n` → `h = F20`. Every Hyper layer sends `⇪ [+left modifiers] X` as `[same modifiers] slot(X)` — `⇪v` → `F16`, `⇪⌘v` → `⌘F16`, `⇪⇧t` → `⇧F17` — unless `layers.toml` (or `layers.raw/`) maps that letter in that layer itself (`⇪⌘f` → `⌘o`). A new variant therefore needs only the Lua binding. Chords without Hyper (`⌃⌥⌘h`, `⇧⌃⌥⌘←`) and `⇪⇧␣` are bound directly.
+`hs.hotkey` cannot tell `⇪v` from `⇪⌘v` (both carry ⌘), so the eight Hyper letters Hammerspoon launches from and that have left-modifier variants — `z r f v t g b h` — are renamed by Karabiner to an F-key, the letter's **slot**. Slots follow the left-hand keyboard columns, left to right, top to bottom: `q a z` → `z = F13`; `r f v` → `F14 F15 F16`; `t g b` → `F17 F18 F19`; `y h n` → `h = F20`. Every Hyper layer sends `⇪ [+left modifiers] X` as `[same modifiers] slot(X)` — `⇪v` → `F16`, `⇪⌘v` → `⌘F16`, `⇪⇧t` → `⇧F17` — unless `layers.toml` (or `hand/raw/`) maps that letter in that layer itself (`⇪⌘f` → `⌘o`). A new variant therefore needs only the Lua binding. Chords without Hyper (`⌃⌥⌘h`, `⇧⌃⌥⌘←`) and `⇪⇧␣` are bound directly.
 
 Presses `hs.hotkey` cannot see keep a keypad code: `⌃⌥a+d` / `⌃⌥←+→` (swap windows) → `num8`, right `⌥␣` (Punto) → `num9`, the Tab layer's `⇥v` / `⇥f` / `⇥t` (YouTube, translate to Russian, window to TV) → `num1` / `num2` / `num3`, and left `⌥4` (minimize window, focus next) → `num4`; `num0` and `num5`–`num7` stay free. The UGREEN mouse's held button 5 sends `F16`, the same as `⇪v`.
 
 - `python3 docs/keyboard/tools/bridge.py` prints every slot with the chord and the layout binding on each code, the two exceptions, and the free codes.
-- Lint: `B2` fails when a layout binds an F13–F20/keypad code that is neither a slot variant nor `num8`/`num9`; `B4` warns when a `layers.raw/` manipulator would fit the table; `G1` fails when rules `07`–`17` differ from what `gen_layers.py` generates.
+- Lint: `B2` fails when a layout binds an F13–F20/keypad code that is neither a slot variant nor `num8`/`num9`; `B4` warns when a `hand/raw/` manipulator would fit the table; `G1` fails when the generator rejects `layers.toml`, `G2` on a manipulator that can never fire.
 - An app's own global hotkey on an F13–F20 chord (Maccy's popup, see `macos_shortcuts/shortcuts.toml`) fires from whichever slot variant sends that chord, so re-slotting a letter moves the app's trigger with it.
 
 ## Machine shortcuts (system + apps)
@@ -187,7 +187,7 @@ Anything with `(=F##)` goes through its bridge slot (see *F-key remaps*).
 - **`⇧F##` / `⌘F##` / `⌃F##` / `⌥F##`** — the same slot letter under `⇪⇧` / `⇪⌘` / `⇪⌃` / `⇪⌥`.
 - **`⇧⌃⌥⌘` + arrow** — desktop focus sets, one chord each: `↑` work, `↓` only-work,
   `←` personal, `→` comms. The layout files bind the arrow chords directly; Karabiner
-  (`rules/27-left-all-hide.json`) turns `⇧⌃⌥⌘` + `w a s d` into the same arrows. Membership lives in
+  (`[layer.left_all]` in `karabiner/layers.toml`) turns `⇧⌃⌥⌘` + `w a s d` into the same arrows. Membership lives in
   `hammerspoon/window_focus_sets.lua`; which browser and which Telegram client
   count come from `constants.env`. The same four sets answer to the voice verb
   `win` (VoiceCtl).
@@ -319,7 +319,7 @@ Column geometry: `│` at positions 17, 32, 47, 51. See `a.lua` for the referenc
 | # | Column | Source of truth |
 |---|---|---|
 | 1 | **chord** — pressed combination, right-aligned (last char at col 13) | the Lua entry's `chord` field |
-| 2 | **karabiner** — what Karabiner sends downstream (arrows, F-keys, modifier combos) | `karabiner/rules/*.json` |
+| 2 | **karabiner** — what Karabiner sends downstream (arrows, F-keys, modifier combos) | `karabiner/layers.toml`, `karabiner/hand/` |
 | 3 | **birman** — characters in `en  ru  el` layout order | `docs/keyboard/parse_birman.py` (Apple layouts + BirmanLayer.spoon, Apple's ⌥ in `excludedLayouts`) |
 | 4 | **G** — `✓` if this is a stock macOS global shortcut (hand-written); `⚙` / `◆` mark a line projected from `macos_shortcuts/shortcuts.toml` (see *Projection into the key tables*) | macOS Keyboard prefs; `shortcuts.toml` |
 | 5 | **description** — `App — function`, or `— function` for global. Optional tags: `B:` Birman-only, `ⓘ:` informational | the Lua entry |
@@ -335,10 +335,10 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 | `python3 docs/keyboard/tools/lint.py` | Validate format, column geometry, and chord/comment coverage. `--strict` fails on errors (used by pre-commit), `--skip-drift` skips the Karabiner/Birman cross-check for speed. |
 | `python3 docs/keyboard/tools/normalize.py --insert-missing` | Auto-fix column geometry and insert missing chord rows into the ASCII comment based on the actual Lua entries. |
 | `python3 docs/keyboard/generate.py` | Regenerate all SVG layer diagrams in `docs/keyboard/`. Also produces `by-action.svg` (category-grouped view). |
-| `python3 docs/keyboard/tools/gen_layers.py` | Write `karabiner/rules/07`–`17` from `karabiner/layers.toml` (tables + `[slots]`) + `layers.raw/` (`karabiner/build.sh` runs it). `--check` exits 1 with a diff on drift (lint `G1`, pre-commit). |
+| `python3 karabiner/generator/gen_rules.py` | Build `karabiner/karabiner.json` from `karabiner/layers.toml` + `karabiner/hand/` (`karabiner/build.sh` runs it). `--check` writes nothing and exits 1 on a row the grammar rejects or a manipulator that can never fire (pre-commit); `--dump DIR` writes each rule to `DIR` to read. |
 | `python3 docs/keyboard/tools/normalize.py --project` | Rewrite the `⚙` / `◆` / `ℝ` lines of every table from `macos_shortcuts/shortcuts.toml` and `jetbrains rider/keymap.xml` (`up` runs it). `--check` exits 1 when a table would change. |
 | `python3 docs/keyboard/rider.py [capture]` | `capture` copies Rider's active keymap into `jetbrains rider/keymap.xml`; bare, prints the `ℝ` lines it yields and the keystrokes it cannot spell. |
-| `python3 docs/keyboard/tools/where.py <chord> [--json]` | One chord across every source: the Karabiner manipulators on the press (rule file, sidedness, conditions), the layout entry that binds it (file:line, resolved role), the `shortcuts.toml` rows on the same chord as macOS receives it, and the key's en / ru / el characters per layer. Accepts the pressed spelling (`⇪g`) or the emitted one (`F18`, `⌘F16`, `num8`). |
+| `python3 docs/keyboard/tools/where.py <chord> [--json]` | One chord across every source: the Karabiner manipulators on the press (rule, sidedness, conditions), the layout entry that binds it (file:line, resolved role), the `shortcuts.toml` rows on the same chord as macOS receives it, and the key's en / ru / el characters per layer. Accepts the pressed spelling (`⇪g`) or the emitted one (`F18`, `⌘F16`, `num8`). |
 | `python3 docs/keyboard/tools/gen_bundle_ids.py` | Regenerate `HotKeys.spoon/app_bundle_ids.lua` — the app-name → bundle-ID map used for fast exact `hs.application.get()` lookups (names in layout files stay the source of truth; unresolved names fall back to fuzzy `find`). Re-run after adding a new `app = "..."` chord. |
 | `python3 docs/keyboard/tools/dump_apple_layouts.py` | Dump Apple's ABC / Russian / Russian – PC / Greek base and Shift layers (`UCKeyTranslate`) into `docs/keyboard/apple-layouts/`, the plain and Shift characters `parse_birman.py` labels keys with. |
 | `python3 macos_shortcuts/shortcuts.py` | `capture` / `check` / `apply` for `macos_shortcuts/shortcuts.toml`, `taps` for event taps — see *Machine shortcuts* above. |
@@ -357,7 +357,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
   - `window.swap_sides` swaps the two topmost windows left↔right. Pressed as `⌃⌥` + **both**
     arrows at once, or `⌃⌥` + **A and D** at once (the same pair that moves a window left/right
     on the letter keys) — `hs.hotkey` fires on the first key and cannot read a two-key gesture, so
-    Karabiner (`rules/32-swap-sides.json`, `simultaneous`, 50 ms window) catches it and sends
+    Karabiner (`hand/32-swap-sides.json`, `simultaneous`, 50 ms window) catches it and sends
     `num8` (keypad 8), which is what the layout binds. Cost: a single `⌃⌥←`/`⌃⌥→`/`⌃⌥A`/`⌃⌥D` is buffered
     for up to 50 ms while Karabiner waits for the partner key.
 - **Displays (external screen)**: `display.toggle_window_to_tv` (`⌃⌥t` — текущее окно на телевизор и обратно) `display.toggle_mirror` (`⇧⌃⌥t` — зеркало ↔ extend)
@@ -415,7 +415,7 @@ Regenerate everything: `python3 docs/keyboard/generate.py`
 
 ## Files reference
 
-- `karabiner/rules/` — Karabiner rule files (source of truth; `karabiner.json` is generated via `karabiner/build.sh`)
+- `karabiner/layers.toml`, `karabiner/hand/` — the Karabiner rules (source of truth); `karabiner/generator/` builds the git-ignored `karabiner.json` from them via `karabiner/build.sh`
 - `hammerspoon/init.lua` — main Hammerspoon entry point
 - `hammerspoon/Spoons/HotKeys.spoon/` — shortcut Spoon (capital K)
 - `hammerspoon/Spoons/HotKeys.spoon/init.lua` — chord parser, built-in actions, binder

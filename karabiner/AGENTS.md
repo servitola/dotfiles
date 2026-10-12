@@ -1,86 +1,110 @@
 # Karabiner Configuration Rules
 
-## Build System
-`karabiner.json` is **generated** — do NOT edit it directly!
-
-- **Edit**: `layers.toml` for every rule that has a table there; `rules/*.json` by hand only for
-  the five that have none — `00`, `04`, `26`, `29`, `32`
-- **Build**: Run `./build.sh` to regenerate `karabiner.json`
-- **Template**: `karabiner-template.json` has global settings, profiles, and empty rules array
-- **Bridge slots**: `[slots]` in `layers.toml` gives eight Hyper letters an F-key each; the
-  generator sends every modifier variant of the letter as the same variant of its F-key. The only
-  other keys emitted for Hammerspoon are `keypad_8` (rule `32`) and `keypad_9` (rule `26`), plus
-  the UGREEN mouse on `f16` (rule `29`). See *Bridge Slots* below
-
-The build script first runs `docs/keyboard/tools/gen_layers.py`, then uses `jq` to merge the
-template with all rule files in sorted order.
-
-## Generated Rules
-Every rule but `00`, `04`, `26`, `29`, `32` is written by `gen_layers.py` from two inputs; never
-edit a generated file by hand (lint `G1` and the
-`hyper-layers-generated` pre-commit hook fail on drift):
-
-- `layers.toml` — one `[layer.<name>]` table per file, `key_code = "output"`. Output grammar:
-  `⇪⇧⌃⌥⌘` prefix + a key glyph (`↑`, `⌦`, `PgUp`, `F1`, `a`, `/`, …), a media symbol
-  (`⏮ ⏭ ▶/⏸ Vol↑ Vol↓ 🔆 🔅`), or `passthrough` (resend the pressed key, e.g. `⇧passthrough`).
-  `⇪` in an output is the four right modifiers, every other glyph a left one. The grammar
-  lives in `bridges.parse_to` / `output_entry`; a value it cannot parse stops the build and
-  names the layer and key.
-  `[slots]` (see below) adds a manipulator for every slot letter the table does not map in that
-  layer, after the table rows.
-- `layers.raw/<rule>.json` — escape hatch: a JSON list of manipulators appended verbatim, for
-  what the table cannot express. Today `01` (the Tab key) and `14`: the two `nowplayingseek` chords
-  (`shell_command` + `to_after_key_up`). Lint `B4` warns when a raw one would fit the table.
-
-- **Layers not on Hyper** are written the same way, without `[slots]`: `[layer.tab]` → `01`
-  (condition `tab_modifier`; the Tab key itself is `layers.raw/01-tab-modifier.json`),
-  `[layer.right_cmd]` → `22` (right `⌘`), `[layer.left_all]` → `27` (left `⇧⌃⌥⌘`), `[layer.fn]` → `30`
-  (`fn` mandatory, every other modifier optional).
-- **Chord tables** hold rules whose rows do not share modifiers; the key carries them:
-  `"⌥⇧q" = "⇧⌦"`. Key grammar: `[⇪⇧⌃⌥⌘][(optional ⇧⌃⌥⌘)]key_code` — left modifiers, `⇪` the four
-  right ones, bracketed ones optional (`"⌥(⇧)a"`), no prefix = pressed bare. Tables: `grave` → `05`,
-  `misc` then `f_row` → `18` (`f_row` carries the `keyboard_disabled` condition).
-- Which rule file, description, modifiers and condition a table has is its row of `PLAIN` in
-  `docs/keyboard/layers.py`. A new rule = a row there plus a table.
-- Extra output forms: a value with spaces is several outputs sent in order
-  (`s = "s e r v i t o l a"`); `sh: command` runs a shell command; `☀↑ ☀↓ ⏪ ⏩ Mute` are the
-  F-row media keys; `non_us_backslash` names that key when it is not the pressed one.
-- **Order is behaviour.** Karabiner runs the first manipulator that matches, across all rules in
-  file-name order, so moving a row to another table can change which one wins. `gen_layers.py`
-  (and lint `G2`) simulates every key × modifiers × conditions (`docs/keyboard/shadow.py`) and
-  fails on a manipulator that can never fire. It caught the old keyboard lock (left `⌃` + right `⌥`
-  + `⌫` with `optional: any`) eating `⇪⌃⌫`, because Hyper holds the right `⌥`.
-- A rule file that is neither generated nor in `layers.HAND_WRITTEN` stops the build: Karabiner
-  would keep loading it after its table is gone.
-
-`gen_layers.py --check` exits 1 with a diff on drift. After writing, the generator runs
-`karabiner_cli --lint-complex-modifications` on the generated files.
-
-## Rule Files (rules/)
-Hand-written: `00`, `04`, `26`, `29`, `32`. The rest are generated.
+## What Is What
 ```
-00-keyboard-lock.json        — the four corners → `hs -c 'toggleKeyboardLock()'` (hammerspoon/keyboard_lock.lua), see *Keyboard Lock*
-01-tab-modifier.json         — Tab as modifier layer (hold Tab + key)
-04-caps-lock-hyper.json      — Caps Lock → all 4 right modifiers (Hyper)
-05-grave-to-escape.json      — Grave/Tilde → Escape (pass-through with Hyper)
-07-hyper-only.json           — Hyper + key (no additional modifiers)
-08-hyper-shift.json          — Hyper + Shift + key
-09-hyper-command.json        — Hyper + Command + key
-10-hyper-option.json         — Hyper + Option + key
-11-hyper-control.json        — Hyper + Control + key
-12-hyper-shift-command.json  — Hyper + Shift + Command + key
-13-hyper-shift-option.json   — Hyper + Shift + Option + key
-14-hyper-shift-control.json  — Hyper + Shift + Control + key
-15-hyper-command-option.json — Hyper + Command + Option + key
-16-hyper-command-control.json— Hyper + Command + Control + key
-17-hyper-option-control.json — Hyper + Option + Control + key
-18-hyper-misc.json           — Left-modifier chords (delete, arrows, brightness, ⌥2 ⌥3 ⌥4) and the F-row; nothing Hyper despite the name
-22-custom-right-cmd.json     — Right Command remappings
-26-right-option-space-punto.json — Right Option + Space → Keypad 9 (Punto reconversion)
-27-left-all-hide.json        — All left modifiers + W A S D → the same modifiers + arrows (focus sets)
-29-mouse-ugreen-hold-to-browser.json — UGREEN mouse forward button held → browser
-30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
-32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Keypad 8 (swap two top windows)
+layers.toml              ← the layout. Edit this.
+hand/NN-name.json        ← six whole rules no table can say. Edit by hand.
+hand/raw/NN-name.json    ← manipulators appended to a generated rule (same NN-name).
+karabiner-template.json  ← everything in karabiner.json that is not a rule: profile, devices, parameters.
+generator/               ← layers.toml + hand/ + template → karabiner.json. Code, not config.
+build.sh                 ← run after any edit: generator, then instrument.py (keylog markers).
+karabiner.json           ← the output Karabiner loads. Git-ignored. Never edit, never read.
+```
+
+There are no intermediate files: the generator builds every rule in memory and writes only
+`karabiner.json`. To look at the rules it produces, `python3 generator/gen_rules.py --check --dump
+/tmp/rules` writes one `<stem>.json` per rule there.
+
+- **Edit** `layers.toml` (or `hand/`), then **run** `./build.sh`. Karabiner reloads the file itself.
+- `python3 generator/gen_rules.py --check` generates without writing; pre-commit and
+  `install/check.sh` run it. It fails on a row the grammar rejects and on a manipulator that can
+  never fire.
+- The generator needs `python3` ≥ 3.11 (`tomllib`); the Apple `/usr/bin/python3` 3.9 is not enough
+  — Homebrew's is on PATH first.
+- **Bridge slots**: `[slots]` in `layers.toml` gives eight Hyper letters an F-key each; the
+  generator sends every modifier variant of the letter as the same variant of its F-key. See
+  *Bridge Slots* below.
+
+### generator/
+| file | what it holds |
+|---|---|
+| `gen_rules.py` | the command: `--check`, `--dump DIR`, or write `karabiner.json` |
+| `layers.py` | reads `layers.toml` and `hand/`, builds the rules |
+| `grammar.py` | the glyph grammar of values: `⇧⌃F13`, `↑`, `Vol↑`, `passthrough` ↔ Karabiner `to` |
+| `keys.py` | key codes, the physical keys they sit on, glyphs |
+| `shadow.py` | simulates Karabiner's first-match rule to find manipulators that can never fire |
+| `tests/` | `pytest karabiner/generator/tests` |
+
+The keyboard pictures, `lint.py`, `where.py` and `bridge.py` in `docs/keyboard/` import these
+modules (`docs/keyboard/generator_path.py` puts them on the path) and ask `layers.all_rules()` for
+the rules; nothing there reads `karabiner.json`.
+
+## layers.toml
+`[layer.<name>]` tables of `key = "output"` rows. A table opens with what it is, then a blank line,
+then the rows:
+
+| key | meaning |
+|---|---|
+| `rule = "NN-name"` | the rule the table goes to. Karabiner tries rules in name order, `hand/NN-name.json` sorted in with them, so `NN` is behaviour. Tables sharing a rule go into it in file order |
+| `title = "…"` | the rule's name in Karabiner's UI; once per rule |
+| `mandatory`, `optional` | Karabiner modifier names every row is pressed with (`["fn"]`, `["any"]`) |
+| `when`, `unless` | a Karabiner variable that must be 1 / must not be 1 |
+
+Nothing about a table lives in Python: a new rule is a new table.
+
+- **Output grammar**: `⇪⇧⌃⌥⌘` prefix + a key glyph (`↑`, `⌦`, `PgUp`, `F1`, `a`, `/`, …), a media
+  symbol (`⏮ ⏭ ▶/⏸ Vol↑ Vol↓ 🔆 🔅 ☀↑ ☀↓ ⏪ ⏩ Mute`), or `passthrough` (resend the pressed key,
+  e.g. `⇧passthrough`). `⇪` in an output is the four right modifiers, every other glyph a left one.
+  A value with spaces is several outputs sent in order (`s = "s e r v i t o l a"`); `sh: command`
+  runs a shell command; `non_us_backslash` names that key when it is not the pressed one. A value
+  the grammar cannot parse stops the build and names the layer and key.
+- **Hyper layers** are the tables named `hyper` or `hyper_<shift|command|option|control>…` (rules
+  `07`–`17`): held with Caps Lock plus those left modifiers, so they take no `mandatory`. The key
+  is a Karabiner `key_code`. `[slots]` adds a manipulator for every slot letter the table does not
+  map in that layer, after the table rows.
+- **Tables with `mandatory`** are layers on other modifiers, without `[slots]`: `right_cmd` (right
+  `⌘`), `left_all` (left `⇧⌃⌥⌘`), `fn` (`fn` mandatory, every other modifier optional).
+- **Tables without `mandatory`** are chord tables: a row's key may carry its own modifiers,
+  `"⌥⇧q" = "⇧⌦"`. Key grammar: `[⇪⇧⌃⌥⌘][(optional ⇧⌃⌥⌘)]key_code` — left modifiers, `⇪` the four
+  right ones, bracketed ones optional (`"⌥(⇧)a"`), no prefix = pressed bare. Today `grave`, `misc`,
+  `f_row` (`unless = "keyboard_disabled"`, same rule as `misc`) and `tab` (`when = "tab_modifier"`;
+  the Tab key itself is `hand/raw/01-tab-modifier.json`).
+- **`hand/raw/<rule>.json`** — escape hatch: a JSON list of manipulators appended verbatim to the
+  generated rule of that name. Today `01` (the Tab key: `to_if_alone` + a variable) and `14` (the
+  two `nowplayingseek` chords: `shell_command` + `to_after_key_up`). Lint `B4` warns when a raw one
+  would fit the table.
+- **Order is behaviour.** Karabiner runs the first manipulator that matches, across all rules in
+  rule-name order (`00-…` first, generated and hand-written together), so moving a row to another
+  table can change which one wins. A second mapping of the same chord in one rule is refused;
+  across rules `shadow.py` simulates every key × modifiers × conditions and the build (and lint
+  `G2`) fails on a manipulator that can never fire. It caught the old keyboard lock (left `⌃` +
+  right `⌥` + `⌫` with `optional: any`) eating `⇪⌃⌫`, because Hyper holds the right `⌥`.
+
+## Rules
+`hand/` marks the five written by hand; the rest come from `layers.toml`.
+```
+00-keyboard-lock              hand/  the four corners → `hs -c 'toggleKeyboardLock()'` (hammerspoon/keyboard_lock.lua), see *Keyboard Lock*
+01-tab-modifier                      Tab as modifier layer (hold Tab + key)
+04-caps-lock-hyper            hand/  Caps Lock → all 4 right modifiers (Hyper)
+05-grave-to-escape                   Grave/Tilde → Escape
+07-hyper-only                        Hyper + key (no additional modifiers)
+08-hyper-shift                       Hyper + Shift + key
+09-hyper-command                     Hyper + Command + key
+10-hyper-option                      Hyper + Option + key
+11-hyper-control                     Hyper + Control + key
+12-hyper-shift-command               Hyper + Shift + Command + key
+13-hyper-shift-option                Hyper + Shift + Option + key
+14-hyper-shift-control               Hyper + Shift + Control + key
+15-hyper-command-option              Hyper + Command + Option + key
+16-hyper-command-control             Hyper + Command + Control + key
+17-hyper-option-control              Hyper + Option + Control + key
+18-hyper-misc                        Left-modifier chords (delete, arrows, brightness, ⌥2 ⌥3 ⌥4) and the F-row; nothing Hyper despite the name
+22-custom-right-cmd                  Right Command remappings
+26-right-option-space-punto   hand/  Right Option + Space → Keypad 9 (Punto reconversion)
+27-left-all-hide                     All left modifiers + W A S D → the same modifiers + arrows (focus sets)
+29-mouse-ugreen-hold-to-browser hand/ UGREEN mouse forward button held → browser
+30-fn-layer-mirror                   fn + left half of a row → right half of that row
+32-swap-sides                 hand/  Ctrl+Alt + both arrows, or A and D, at once → Keypad 8 (swap two top windows)
 ```
 
 ## Keyboard Lock (the Four Corners)
@@ -105,10 +129,10 @@ and `→`. Same chord unlocks. It is a `simultaneous` manipulator with a 200 ms 
   keyboard `⌃` sits one key further right than on the 60% board.
 - **Grave/Tilde → Escape**: Except when Hyper is held
 - **Hyper layers are generated**: edit `layers.toml`, run `./build.sh`. A second mapping of the
-  same key in one layer file is refused, because Karabiner only ever runs the first
+  same key in one rule is refused, because Karabiner only ever runs the first
 
 ## fn Layer (Mirror the Left Half onto the Right)
-`30-fn-layer-mirror.json`, generated from `[layer.fn]` in `layers.toml`: holding `fn`, the i-th key of a row's left half sends the i-th key
+Rule `30-fn-layer-mirror`, from `[layer.fn]` in `layers.toml`: holding `fn`, the i-th key of a row's left half sends the i-th key
 of that row's right half, so the right hand's territory is typeable from the home position.
 
 ```json
@@ -153,7 +177,7 @@ left-hand keyboard columns, left to right, top to bottom, skipping letters that 
 | y h n | `h = F20` |
 
 `⇪ [+left modifiers] X → [same modifiers] slot(X)` in every Hyper layer: `⇪v` → `F16`,
-`⇪⌘v` → `⌘F16`, `⇪⇧⌥z` → `⇧⌥F13`. A table row or a `layers.raw/` manipulator for the letter in
+`⇪⌘v` → `⌘F16`, `⇪⇧⌥z` → `⇧⌥F13`. A table row or a `hand/raw/` manipulator for the letter in
 that layer wins (`⇪⌘f` → `⌘o`, `⇪⌘z` → `/`, `⇪⌥z` → `⇧/`, `⇪⇧⌃z` → seek). So a new variant such
 as `⇪⌥v` needs no Karabiner edit, only the Lua binding on `⌥F16`.
 

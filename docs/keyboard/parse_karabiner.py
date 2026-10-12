@@ -1,49 +1,8 @@
 """Parse Karabiner rule JSON files to build complete remapping table."""
-import json, os, glob
+import generator_path  # noqa: F401
+import layers
+from keys import CONSUMER_SYM as _CONSUMER_SYM, HYPER as _HYPER, KEY_SYM as _KEY_SYM, TO_PHYS as _TO_PHYS
 
-_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "karabiner", "rules")
-_HYPER = {"right_command", "right_control", "right_option", "right_shift"}
-
-# Karabiner key_code → physical key name (matching config.BUTTON_FILES)
-_TO_PHYS = {
-    "a":"a","b":"b","c":"c","d":"d","e":"e","f":"f","g":"g","h":"h","i":"i",
-    "j":"j","k":"k","l":"l","m":"m","n":"n","o":"o","p":"p","q":"q","r":"r",
-    "s":"s","t":"t","u":"u","v":"v","w":"w","x":"x","y":"y","z":"z",
-    "1":"1","2":"2","3":"3","4":"4","5":"5","6":"6","7":"7","8":"8","9":"9","0":"0",
-    "grave_accent_and_tilde":"tilde", "non_us_backslash":"tilde",
-    "hyphen":"minus", "equal_sign":"equal",
-    "open_bracket":"bracketleft", "close_bracket":"bracketright",
-    "backslash":"backslash", "semicolon":"semicolon", "quote":"apostrophe",
-    "comma":"comma", "period":"period", "slash":"slash",
-    "spacebar":"space", "tab":"tab", "return_or_enter":"return",
-    "delete_or_backspace":"backspace", "caps_lock":"capslock",
-    "left_shift":"shift", "left_arrow":"left", "right_arrow":"right",
-    "up_arrow":"up", "down_arrow":"down",
-}
-
-# Output key_code → display symbol
-_KEY_SYM = {
-    **{f"keypad_{n}": f"num{n}" for n in range(10)},
-    "hyphen":"-", "equal_sign":"=", "slash":"/", "comma":",", "period":".", "semicolon":";",
-    "quote":"'", "open_bracket":"[", "close_bracket":"]", "backslash":"\\", "spacebar":"␣",
-    "up_arrow":"↑", "down_arrow":"↓", "left_arrow":"←", "right_arrow":"→",
-    "page_up":"PgUp", "page_down":"PgDn",
-    "return_or_enter":"↩", "escape":"⎋",
-    "delete_or_backspace":"⌫", "delete_forward":"⌦",
-    "tab":"⇥", "spacebar":"␣",
-    "grave_accent_and_tilde":"`", "non_us_backslash":"`",
-    "open_bracket":"[", "close_bracket":"]",
-}
-_CONSUMER_SYM = {
-    "volume_increment":"Vol ↑", "volume_decrement":"Vol ↓", "mute":"Mute",
-    "play_or_pause":"▶/⏸", "rewind":"⏪", "fastforward":"⏩",
-    "fast_forward":"⏩",
-    "al_previous_track":"⏮", "al_next_track":"⏭",
-    "display_brightness_increment":"☀↑", "display_brightness_decrement":"☀↓",
-    "illumination_increment":"🔆", "illumination_decrement":"🔅",
-    "vk_consumer_previous":"⏮", "vk_consumer_next":"⏭",
-    "vk_consumer_play":"▶/⏸",
-}
 _MOD_SYM = {"shift":"⇧", "left_shift":"⇧", "right_shift":"⇧",
     "control":"⌃", "left_control":"⌃", "right_control":"⌃",
     "option":"⌥", "left_option":"⌥", "right_option":"⌥",
@@ -111,20 +70,11 @@ def _get_layer_from_conditions(conditions, base_layer):
 
 
 def parse_karabiner():
-    """Return {(frozenset_layer_mods, physical_key): display_string} from all rule files."""
+    """Return {(frozenset_layer_mods, physical_key): display_string} from all rules."""
     conditional = {}   # rules with conditions (lower priority)
     unconditional = {} # rules without conditions
-    for path in sorted(glob.glob(os.path.join(_DIR, "*.json"))):
-        try:
-            with open(path, encoding="utf-8") as f:
-                data = json.load(f)
-        except (json.JSONDecodeError, OSError):
-            continue
-        manips = data.get("manipulators", [])
-        if not manips:
-            for rule in data.get("rules", []):
-                manips.extend(rule.get("manipulators", []))
-        for m in manips:
+    for _, rule in layers.all_rules():
+        for m in rule["manipulators"]:
             if m.get("type") != "basic": continue
             fr = m.get("from", {})
             fk = fr.get("key_code", "")

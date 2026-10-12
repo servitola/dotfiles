@@ -1,0 +1,59 @@
+{
+    "description": "Keychron V6 Max knob winds what plays (nowplayingseek)",
+    "manipulators": [
+        {
+            "type": "basic",
+            "from": {
+                "consumer_key_code": "volume_increment",
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/nowplayingseek forward --knob >/dev/null 2>&1 &"
+                }
+            ],
+            "conditions": [
+                {
+                    "type": "device_if",
+                    "identifiers": [
+                        {
+                            "vendor_id": 13364,
+                            "product_id": 2400
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basic",
+            "from": {
+                "consumer_key_code": "volume_decrement",
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/nowplayingseek backward --knob >/dev/null 2>&1 &"
+                }
+            ],
+            "conditions": [
+                {
+                    "type": "device_if",
+                    "identifiers": [
+                        {
+                            "vendor_id": 13364,
+                            "product_id": 2400
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

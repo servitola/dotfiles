@@ -1,9 +1,21 @@
-# Every table here → one file in karabiner/rules/ (named in the table's comment). Regenerate with gen_layers.py (build.sh does).
-# Key = Karabiner key_code. Value = what the chord sends: [⇪⇧⌃⌥⌘]key-glyph,
-# `F1`…`F20`, `PgUp`/`PgDn`, consumer symbols (⏮ ⏭ ▶/⏸ Vol↑ Vol↓ 🔆 🔅),
-# or [⇧⌃⌥⌘]passthrough (send the pressed key again, without the layer modifiers).
+# The keyboard layout Karabiner runs; run ./build.sh after an edit. Grammar in full: AGENTS.md beside this file.
+#
+# Every [layer.<name>] table is part of one rule of karabiner.json:
+#   rule  = "NN-name"   which rule. Karabiner tries rules in this order (hand/NN-name.json rules sort in with
+#                       them) and runs the first row that matches, so NN is behaviour. Tables that share a
+#                       rule go into it in the order they stand in this file.
+#   title = "…"         the rule's name in Karabiner's own UI; once per rule.
+#   mandatory, optional Karabiner modifier names every row of the table is pressed with.
+#   when, unless        a Karabiner variable that must be 1 / must not be 1.
+# A table named hyper or hyper_<mods> is held with Caps Lock (+ those left modifiers) and gets [slots].
+# A table with no `mandatory` is a chord table: a row's key may carry its own modifiers,
+# "[⇪⇧⌃⌥⌘][(optional ⇧⌃⌥⌘)]key_code" — left ones, ⇪ = the four right ones.
+#
+# Row: key = Karabiner key_code. Value = what it sends: [⇪⇧⌃⌥⌘]key-glyph, `F1`…`F20`, `PgUp`/`PgDn`,
+# media symbols (⏮ ⏭ ▶/⏸ Vol↑ Vol↓ 🔆 🔅 ☀↑ ☀↓ ⏪ ⏩ Mute), [⇧⌃⌥⌘]passthrough (the pressed key again,
+# without the layer modifiers), several of these separated by spaces (sent in order), or `sh: command`.
 # ⇪ in a value is the four right modifiers, other glyphs are left ones.
-# Manipulators the table cannot express live in layers.raw/<rule>.json.
+# Manipulators a row cannot express live in hand/raw/<rule>.json, whole rules in hand/.
 
 # Slots: a Hyper letter Hammerspoon launches from, renamed to an F-key so its
 # left-modifier variants stay apart (hs.hotkey sees ⇪v and ⇪⌘v as the same ⌘).
@@ -20,7 +32,10 @@ g = "F18"
 b = "F19"
 h = "F20"
 
-[layer.hyper]  # ⇪ → 07-hyper-only
+[layer.hyper]
+rule = "07-hyper-only"
+title = "Hyper Layer (only)"
+
 non_us_backslash = "passthrough"
 grave_accent_and_tilde = "passthrough"
 "1" = "F1"
@@ -57,7 +72,10 @@ period = "⌘→"
 slash = "Vol↓"
 spacebar = "▶/⏸"
 
-[layer.hyper_shift]  # ⇪⇧ → 08-hyper-shift
+[layer.hyper_shift]
+rule = "08-hyper-shift"
+title = "Hyper Layer (shift)"
+
 non_us_backslash = "⇧passthrough"
 grave_accent_and_tilde = "⇧non_us_backslash"
 "1" = "⇧F1"
@@ -89,7 +107,10 @@ c = "⇧⌘→"
 comma = "⇧⌘←"
 period = "⇧⌘→"
 
-[layer.hyper_command]  # ⇪⌘ → 09-hyper-command
+[layer.hyper_command]
+rule = "09-hyper-command"
+title = "Hyper Layer (command)"
+
 f = "⌘o"
 z = "/"
 "1" = "⌘F1"
@@ -122,7 +143,10 @@ c = "⌘]"
 comma = "⌘←"
 period = "⌘→"
 
-[layer.hyper_option]  # ⇪⌥ → 10-hyper-option
+[layer.hyper_option]
+rule = "10-hyper-option"
+title = "Hyper Layer (option)"
+
 z = "⇧/"
 "1" = "⌥F1"
 "2" = "⌥F2"
@@ -154,7 +178,10 @@ c = "⌥⌘→"
 comma = "⌥⌘←"
 period = "⌥⌘→"
 
-[layer.hyper_control]  # ⇪⌃ → 11-hyper-control
+[layer.hyper_control]
+rule = "11-hyper-control"
+title = "Hyper Layer (control)"
+
 "1" = "⌃F1"
 "2" = "⌃F2"
 "3" = "⌃F3"
@@ -184,7 +211,10 @@ c = "⌃⌘→"
 comma = "⌃⌘←"
 period = "⌃⌘→"
 
-[layer.hyper_shift_command]  # ⇪⇧⌘ → 12-hyper-shift-command
+[layer.hyper_shift_command]
+rule = "12-hyper-shift-command"
+title = "Hyper Layer (shift-command)"
+
 "0" = "⇧⌘F10"
 "1" = "⇧⌘F1"
 "2" = "⇧⌘F2"
@@ -211,7 +241,10 @@ semicolon = "⇧⌘→"
 tab = "⇧⌘↩"
 w = "🔆"
 
-[layer.hyper_shift_option]  # ⇪⇧⌥ → 13-hyper-shift-option
+[layer.hyper_shift_option]
+rule = "13-hyper-shift-option"
+title = "Hyper Layer (shift-option)"
+
 "0" = "⇧⌥F10"
 "1" = "⇧⌥F1"
 "2" = "⇧⌥F2"
@@ -238,7 +271,10 @@ semicolon = "⇧⌥→"
 tab = "⇧⌥↩"
 w = "⇧⌥↑"
 
-[layer.hyper_shift_control]  # ⇪⇧⌃ → 14-hyper-shift-control
+[layer.hyper_shift_control]
+rule = "14-hyper-shift-control"
+title = "Hyper Layer (shift-control)"
+
 "0" = "⇧⌃F10"
 "1" = "⇧⌃F1"
 "2" = "⇧⌃F2"
@@ -266,7 +302,10 @@ spacebar = "▶/⏸"
 tab = "⇧⌃↩"
 w = "Vol↑"
 
-[layer.hyper_command_option]  # ⇪⌥⌘ → 15-hyper-command-option
+[layer.hyper_command_option]
+rule = "15-hyper-command-option"
+title = "Hyper Layer (command-option)"
+
 "0" = "⌥⌘F10"
 "1" = "⌥⌘F1"
 "2" = "⌥⌘F2"
@@ -293,7 +332,10 @@ semicolon = "⌥⌘→"
 tab = "⌥⌘↩"
 w = "⌥⌘↑"
 
-[layer.hyper_command_control]  # ⇪⌃⌘ → 16-hyper-command-control
+[layer.hyper_command_control]
+rule = "16-hyper-command-control"
+title = "Hyper Layer (command-control)"
+
 "0" = "⌃⌘F10"
 "1" = "⌃⌘F1"
 "2" = "⌃⌘F2"
@@ -319,7 +361,10 @@ semicolon = "⌃⌘→"
 tab = "⌃⌘↩"
 w = "⌃⌘↑"
 
-[layer.hyper_option_control]  # ⇪⌃⌥ → 17-hyper-option-control
+[layer.hyper_option_control]
+rule = "17-hyper-option-control"
+title = "Hyper Layer (option-control)"
+
 "0" = "⌃⌥F10"
 "1" = "⌃⌥F1"
 "2" = "⌃⌥F2"
@@ -346,7 +391,11 @@ semicolon = "⌃⌥→"
 tab = "⌃⌥↩"
 w = "⌃⌥↑"
 
-[layer.tab]  # held Tab → 01-tab-modifier; the Tab key itself is layers.raw/01-tab-modifier.json. Several outputs = typed in order
+[layer.tab]  # the Tab key itself is hand/raw/01-tab-modifier.json
+rule = "01-tab-modifier"
+title = "TAB as a POWERFUL MODIFIER LAYER"
+when = "tab_modifier"
+
 c = "⌘/"
 s = "s e r v i t o l a"
 caps_lock = "↩"
@@ -368,13 +417,22 @@ v = "num1"
 f = "num2"
 t = "num3"
 
-[layer.left_all]  # left ⇧⌃⌥⌘ → 27-left-all-hide
+[layer.left_all]
+rule = "27-left-all-hide"
+title = "Focus Modes: All Left Modifiers + W A S D → the same modifiers + arrows (Hammerspoon binds the arrows)"
+mandatory = ["left_command", "left_control", "left_option", "left_shift"]
+
 w = "⇧⌃⌥⌘↑"
 a = "⇧⌃⌥⌘←"
 s = "⇧⌃⌥⌘↓"
 d = "⇧⌃⌥⌘→"
 
-[layer.fn]  # fn → 30-fn-layer-mirror; fn + any other modifiers ride along
+[layer.fn]
+rule = "30-fn-layer-mirror"
+title = "fn layer: left half of each row reaches the right half (1-6 -> 7 8 9 0 - = / qwerty -> uiop [ ] / asdfg -> jkl ; ' / zxcvb -> nm , . / / h -> backslash, the one key the rows leave over)"
+mandatory = ["fn"]
+optional = ["any"]
+
 "1" = "7"
 "2" = "8"
 "3" = "9"
@@ -399,10 +457,10 @@ c = ","
 v = "."
 b = "/"
 
-# Chord tables: the key is [⇪⇧⌃⌥⌘][(optional ⇧⌃⌥⌘)]key_code — left modifiers, ⇪ = the four right ones.
-# `sh: command` runs a shell command.
+[layer.grave]  # ⇪ + these keys is in the Hyper tables
+rule = "05-grave-to-escape"
+title = "Grave Accent to Escape"
 
-[layer.grave]  # → 05-grave-to-escape; ⇪ + these keys is in the Hyper tables
 "⇧(⌃⌥⌘)non_us_backslash" = "⇧⎋"  # Left Shift + Tilde (no Hyper) -> Shift + Escape
 non_us_backslash = "⎋"
 grave_accent_and_tilde = "⎋"
@@ -416,7 +474,10 @@ grave_accent_and_tilde = "⎋"
 "⌥⌘grave_accent_and_tilde" = "⌥⌘⎋"
 "⇧grave_accent_and_tilde" = "⇧⎋"
 
-[layer.misc]  # → 18-hyper-misc
+[layer.misc]
+rule = "18-hyper-misc"
+title = "Left-modifier chords and the F-row"
+
 "⇧⌃⌥q" = "⌘["
 "⌥w" = "⌥↑"
 "⇧⌃e" = "⌘⌫"
@@ -441,7 +502,10 @@ grave_accent_and_tilde = "⎋"
 "⇧⌥w" = "⇧⌥↑"
 "⇧⌃w" = "⌘m"
 
-[layer.f_row]  # → 18-hyper-misc, after [layer.misc]; off while the keyboard lock (rule 00) is on
+[layer.f_row]  # off while the keyboard lock (rule 00) is on
+rule = "18-hyper-misc"
+unless = "keyboard_disabled"
+
 "⇧f1" = "sh: $HOME/.local/bin/lunar displays 'Built-In' brightness 0"
 f1 = "☀↓"
 "⇧f2" = "sh: $HOME/.local/bin/lunar displays 'Built-In' brightness 100"
@@ -457,7 +521,11 @@ f10 = "Mute"
 f11 = "Vol↓"
 f12 = "Vol↑"
 
-[layer.right_cmd]  # right ⌘ → 22-custom-right-cmd
+[layer.right_cmd]
+rule = "22-custom-right-cmd"
+title = "Custom Right Command"
+mandatory = ["right_command"]
+
 quote = "Vol↑"
 slash = "Vol↓"
 open_bracket = "⏮"

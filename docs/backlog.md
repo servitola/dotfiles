@@ -7,7 +7,7 @@
 ### Единое сгенерированное keyboard-приложение (вместо Karabiner + Hammerspoon + системных раскладок)
 
 Один компилированный Swift-бинарник, сгенерированный из существующих конфигов
-(`karabiner/rules/*.json`, `karabiner/layers.toml`, `HotKeys.spoon/layout/60%/*.lua`, BirmanLayer.spoon's
+(`karabiner/hand/*.json`, `karabiner/layers.toml`, `HotKeys.spoon/layout/60%/*.lua`, BirmanLayer.spoon's
 `typography_table.lua`, `docs/keyboard-setup.md`), который закрывает всё: Hyper, слои, лаунчеры, окна,
 per-app логику и — главное — **фиктивные раскладки**: системная раскладка навсегда U.S.,
 а ru/el/типографский слой Бирмана печатаются напрямую через
@@ -40,7 +40,7 @@ Shipped: step 1 HotKeys action registry (2026-09-25); step 2 roles in `constants
 `bridge.lock` file: the slots live in the same TOML); step 5a machine shortcuts (`macos_shortcuts/`).
 Rolled back the same day they shipped (2026-09-26): 5b app-shortcut catalog and 6 `chords.toml` — see the
 note at the end of this section. What a next consolidation step would add is one read-only resolver across
-the four sources (`layers.toml`, layout `.lua`, `rules/*.json`, `shortcuts.toml`): "what is on chord X".
+the four sources (`layers.toml`, layout `.lua`, `hand/*.json`, `shortcuts.toml`): "what is on chord X".
 
 Deferred from the step-1 final review (none blocking):
 - `focusAppWindow` in `actions/apps.lua`: both callers pass bundle ids now; drop the
@@ -62,7 +62,7 @@ Deferred from the step-3 (slots) review, none blocking:
 - `tools/bridge.py --json` drops `side` and `rule`.
 
 Deferred from the step-4 (Hyper-layer generation) review, none blocking:
-- `lint.py` `check_layer_raw` crashes on a malformed `layers.raw/*.json` instead of a finding.
+- `lint.py` `check_layer_raw` crashes on a malformed `hand/raw/*.json` instead of a finding.
 - `lint.py` `check_layer_table` calls `key_code_of` without the guards `bridge_rows` has
   (two-key lock row or the `~` key would crash lint).
 - `bridges.render_output` rebuilds its reverse dict per call; `_output_tokens.cache` is a

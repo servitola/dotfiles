@@ -5,7 +5,7 @@
   python3 docs/keyboard/tools/where.py ⌘F16      what Karabiner emits (traced back to ⇪⌘v)
   python3 docs/keyboard/tools/where.py ⇧⌘4 --json
 
-Sections: what Karabiner does with the press (karabiner/rules/*.json, generated 07–17
+Sections: what Karabiner does with the press (the rules karabiner/generator builds, 07–17
 included), what Hammerspoon binds (HotKeys layout files, Punto), what macOS and the apps
 hold on the same chord (macos_shortcuts/shortcuts.toml), and what the key types in
 en / ru / el (Apple's layouts, BirmanLayer on right ⌥).
@@ -33,7 +33,6 @@ import parse_karabiner
 import shortcuts
 import app_constants
 
-RULES_DIR = bridges.RULES_DIR
 HYPER_SET = {"right_command", "right_control", "right_option", "right_shift"}
 PUNTO = os.path.join(lint.HAMMERSPOON_DIR, "punto_switcher.lua")
 
@@ -91,10 +90,8 @@ def karabiner(mods, phys):
     want = frozenset(mods) - {"tab_mod"}
     tab = "tab_mod" in mods
     hits = []
-    for path in sorted(glob.glob(os.path.join(RULES_DIR, "*.json"))):
-        with open(path, encoding="utf-8") as fh:
-            rule = json.load(fh)
-        for m in rule.get("manipulators", []):
+    for stem, rule in layers.all_rules():
+        for m in rule["manipulators"]:
             fr = m.get("from", {})
             keys = [fr["key_code"]] if "key_code" in fr else [s.get("key_code") for s in fr.get("simultaneous", [])]
             if code not in keys:
@@ -105,7 +102,7 @@ def karabiner(mods, phys):
                 continue
             to = m.get("to") or m.get("to_if_held_down") or []
             hits.append({
-                "rule": os.path.basename(path).removesuffix(".json"),
+                "rule": stem,
                 "with": [k for k in keys if k != code],
                 "to": _to_text(to),
                 "held": "to_if_held_down" in m and "to" not in m,

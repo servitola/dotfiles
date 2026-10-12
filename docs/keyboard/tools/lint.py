@@ -9,7 +9,7 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
   F3  modifier-rows are present in canonical order (base, single, double, …)
   C1  every active {chord=…, app|fn=…} has a matching ASCII row
   C2  `app = "@KEY"` resolves against constants, and its ASCII row agrees
-  D1  ASCII karabiner column matches karabiner/rules/*.json
+  D1  ASCII karabiner column matches the rules karabiner/generator builds
   D2  ASCII birman column matches parse_birman.py (Apple layouts + BirmanLayer.spoon + overrides)
   K1  Hammerspoon binding is not dead (Karabiner does not intercept same chord)
   A1  every `fn = "…"` is registered (hammerspoon/actions/**/*.lua or HotKeys.spoon/init.lua)
@@ -24,8 +24,8 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
 
 Once per run (also under --skip-drift):
   S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
-  B4  a karabiner/layers.raw/ manipulator that one layers.toml row could express
-  G1  a generated karabiner/rules file differs from what gen_layers.py generates (hand edit, or not regenerated)
+  B4  a karabiner/hand/raw/ manipulator that one layers.toml row could express
+  G1  karabiner/layers.toml or karabiner/hand/ has something the generator rejects
   G2  a Karabiner manipulator that can never fire: an earlier one takes every press of its chord
   S2  a macos_shortcuts/shortcuts.toml [[app]] or [[menu]] chord is also an enabled [[system]] one
   S3  two [[app]]/[[menu]] rows on one chord that can be live at the same time
@@ -56,7 +56,6 @@ from parse_birman import parse_birman, LAYER_TO_STATE
 from config import FKEY_MAPPING, MOD_DISPLAY
 from app_constants import resolve
 import bridges
-import gen_layers
 import keycodes
 import layers
 import shadow
@@ -308,19 +307,11 @@ def _parse_karabiner_strict():
     For Hammerspoon dead-binding check: if all matching rules are `sided`,
     the other side of the modifier remains alive — binding is NOT dead.
     """
-    import glob, json
-    _DIR = os.path.normpath(os.path.join(HERE, "..", "..", "..", "karabiner", "rules"))
     _HYPER_SET = {"right_command", "right_control", "right_option", "right_shift"}
     _SIDED_PREFIX = ("left_", "right_")
     out = {}
-    for path in sorted(glob.glob(os.path.join(_DIR, "*.json"))):
-        try:
-            with open(path, encoding="utf-8") as f: data = json.load(f)
-        except (json.JSONDecodeError, OSError): continue
-        manips = data.get("manipulators", [])
-        if not manips:
-            for rule in data.get("rules", []): manips.extend(rule.get("manipulators", []))
-        for m in manips:
+    for _, rule in layers.all_rules():
+        for m in rule["manipulators"]:
             if m.get("type") != "basic": continue
             fr = m.get("from", {})
             fk = fr.get("key_code", "")
@@ -374,7 +365,7 @@ def check_karabiner_drift(state, findings, karabiner_strict):
         if _normalize_karabiner_value(r["karabiner"]) != _normalize_karabiner_value(real):
             findings.add(WARN, f, r["line"], "D1",
                          f"ASCII karabiner `{r['karabiner']}` ≠ karabiner.json `{real}` for {r['chord']}",
-                         "update ASCII karabiner column to match karabiner/rules/")
+                         "update ASCII karabiner column to match karabiner/layers.toml")
 
 
 _GREEK_LOOKALIKES = {"Α": "A", "Β": "B", "Ε": "E", "Ζ": "Z", "Η": "H", "Ι": "I",
@@ -492,19 +483,15 @@ def check_layer_raw(findings):
                              f"move it to [layer.{name}] in karabiner/layers.toml")
 
 
-def check_generated(findings, rules_dir=bridges.RULES_DIR):
-    """G1: the Hyper-layer rule files are exactly what the generator produces."""
+def check_generated(findings):
+    """G1, G2: the rules generate, and none of them is dead."""
     try:
-        texts = gen_layers.render()
+        rules = layers.all_rules()
     except ValueError as e:
-        findings.add(ERROR, layers.LAYERS_PATH, 1, "G1", f"gen_layers.py cannot generate: {e}")
+        findings.add(ERROR, layers.LAYERS_PATH, 1, "G1", f"the generator rejects it: {e}")
         return
-    for stem in gen_layers.drift(rules_dir, texts):
-        findings.add(ERROR, os.path.join(rules_dir, f"{stem}.json"), 1, "G1",
-                     "differs from layers.toml + layers.raw",
-                     "edit karabiner/layers.toml, then run karabiner/build.sh")
-    for name, i, m, by in shadow.dead(rules_dir):
-        findings.add(ERROR, os.path.join(rules_dir, name), 1, "G2", shadow.describe(name, i, m, by),
+    for name, i, m, by in shadow.dead(rules):
+        findings.add(ERROR, layers.LAYERS_PATH, 1, "G2", shadow.describe(name, i, m, by),
                      "delete the row, or narrow the earlier rule's modifiers")
 
 

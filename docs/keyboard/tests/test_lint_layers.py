@@ -9,7 +9,6 @@ sys.path.insert(0, os.path.dirname(HERE))
 sys.path.insert(0, os.path.join(os.path.dirname(HERE), "tools"))
 
 import bridges
-import gen_layers
 import layers
 import lint
 import shortcuts
@@ -64,27 +63,23 @@ def test_b4_clean_on_the_real_files():
     assert not f
 
 
-def test_g1_hand_edited_rule_file(tmp_path):
-    for stem, text in gen_layers.render().items():
-        (tmp_path / f"{stem}.json").write_text(text, encoding="utf-8")
-    f = lint.Findings()
-    lint.check_generated(f, str(tmp_path))
-    assert not f
-    path = tmp_path / "12-hyper-shift-command.json"
-    path.write_text(path.read_text(encoding="utf-8") + " ", encoding="utf-8")
-    lint.check_generated(f, str(tmp_path))
-    assert _codes(f) == [(lint.ERROR, "G1")]
-    assert f.items[0][1].endswith("12-hyper-shift-command.json")
-
-
 def test_g1_reports_an_input_the_generator_rejects(monkeypatch):
     def broken():
         raise ValueError("layers.toml:3 layer hyper, key q: nope")
-    monkeypatch.setattr(gen_layers, "render", broken)
+    monkeypatch.setattr(layers, "all_rules", broken)
     f = lint.Findings()
     lint.check_generated(f)
     assert _codes(f) == [(lint.ERROR, "G1")]
     assert "key q" in f.items[0][4]
+
+
+def test_g2_reports_a_manipulator_that_never_fires(monkeypatch):
+    q = {"from": {"key_code": "q"}, "to": [{"key_code": "a"}], "type": "basic"}
+    monkeypatch.setattr(layers, "all_rules", lambda: [("01-a", {"manipulators": [q]}), ("02-b", {"manipulators": [q]})])
+    f = lint.Findings()
+    lint.check_generated(f)
+    assert _codes(f) == [(lint.ERROR, "G2")]
+    assert "02-b#1" in f.items[0][4]
 
 
 MACHINE = {

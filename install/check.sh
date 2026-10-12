@@ -26,7 +26,7 @@ section "apps and tools"
 expect "brewfile satisfied, mas apps aside (brew bundle check)" brew bundle check --no-upgrade --file =(grep -v '^mas ' "$STATE/brewfile")
 expect "login shell is zsh" test "${SHELL:t}" = zsh
 expect "Hammerspoon running" pgrep -x Hammerspoon
-expect "Karabiner rules match layers.toml" python3 docs/keyboard/tools/gen_layers.py --check
+expect "Karabiner rules generate from layers.toml" python3 karabiner/generator/gen_rules.py --check
 expect "~/.codex/config.toml is a file" test -f "$HOME/.codex/config.toml"
 expect "shortcuts match macos_shortcuts/shortcuts.toml" python3 macos_shortcuts/shortcuts.py check
 setopt null_glob

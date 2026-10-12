@@ -5,10 +5,8 @@ and conditions all match. For every `from` key this tries every combination of t
 modifiers and of the conditions the rules read; a manipulator that wins none of them is
 dead — an earlier one always takes its chord.
 """
-import glob
 import itertools
 import json
-import os
 
 MODIFIERS = ("left_shift", "left_control", "left_option", "left_command",
              "right_shift", "right_control", "right_option", "right_command", "fn")
@@ -16,14 +14,9 @@ _STATES = [frozenset(m for m, on in zip(MODIFIERS, bits) if on)
            for bits in itertools.product((False, True), repeat=len(MODIFIERS))]
 
 
-def load(rules_dir):
-    """(file name, index in the file, manipulator) in the order Karabiner tries them."""
-    out = []
-    for path in sorted(glob.glob(os.path.join(rules_dir, "*.json"))):
-        with open(path, encoding="utf-8") as fh:
-            manips = json.load(fh)["manipulators"]
-        out += [(os.path.basename(path), i, m) for i, m in enumerate(manips)]
-    return out
+def _flat(rules):
+    """[(rule name, index in the rule, manipulator)] from [(name, rule document)], in order."""
+    return [(name, i, m) for name, rule in rules for i, m in enumerate(rule["manipulators"])]
 
 
 def _key(m):
@@ -65,9 +58,9 @@ def winners(manips):
     return out
 
 
-def dead(rules_dir):
-    """[(file, index, manipulator, "file#index" of the one that takes its exact chord)]."""
-    manips = load(rules_dir)
+def dead(rules):
+    """[(rule, index, manipulator, "rule#index" of the one that takes its exact chord)] for [(name, rule document)]."""
+    manips = _flat(rules)
     won = winners(manips)
     alive = set(won.values())
     out = []

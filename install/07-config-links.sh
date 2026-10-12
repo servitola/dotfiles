@@ -43,7 +43,7 @@ link_all \
     "$DOTFILES/heroic/config.json"     "$APP_SUPPORT/heroic/config.json" \
     "$DOTFILES/agent-of-empires"       "$APP_SUPPORT/agent-of-empires"
 
-section "karabiner (link, then build karabiner.json from rules)"
+section "karabiner (link, then build karabiner.json from layers.toml)"
 link "$DOTFILES/karabiner" "$CONFIG/karabiner"
 "$DOTFILES/karabiner/build.sh"
 

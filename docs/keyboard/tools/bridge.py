@@ -19,6 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 
 import bridges
+import grammar
 import layers
 from config import LAYOUT_DIR
 
@@ -48,13 +49,13 @@ def table():
 
     out = {"slots": [], "exceptions": [], "free": []}
     for key, base in slots.items():
-        rows = [row(to, [chord]) for to, chord in variants.items() if bridges.parse_to(to)[1] == base]
-        rows += [row(b.to, [b.from_chord]) for b in extra if bridges.parse_to(b.to)[1] == base]
+        rows = [row(to, [chord]) for to, chord in variants.items() if grammar.parse_to(to)[1] == base]
+        rows += [row(b.to, [b.from_chord]) for b in extra if grammar.parse_to(b.to)[1] == base]
         out["slots"].append({"letter": key, "slot": base, "variants": rows})
     for to, (chords, rule) in bridges.EXCEPTIONS.items():
         out["exceptions"].append({**row(to, list(chords)), "rule": rule})
     used = set(slots.values()) | set(bridges.EXCEPTIONS)
-    out["free"] = [c for c in bridges.SLOT_BASES + bridges.KEYPAD_BASES if c not in used]
+    out["free"] = [c for c in grammar.SLOT_BASES + bridges.KEYPAD_BASES if c not in used]
     return out
 
 

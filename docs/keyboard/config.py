@@ -27,18 +27,8 @@ MOD_TO_KEYS = {
 }
 
 MOD_ORDER = ["hyper", "shift", "ctrl", "alt", "cmd", "tab_mod", "fn"]
-MOD_DISPLAY = {"hyper": "\u21ea", "shift": "\u21e7", "ctrl": "\u2303",
-               "alt": "\u2325", "cmd": "\u2318", "tab_mod": "\u21e5", "fn": "fn "}
-
-# Physical key id \u2192 display glyph (used when rendering source chords like
-# `\u21e7\u2303\u2325\u2318\u2193` from a karabiner-output active chord like `\u21e7F13`).
-KEY_DISPLAY = {
-    "down": "\u2193", "up": "\u2191", "left": "\u2190", "right": "\u2192",
-    "tab": "\u21e5", "tilde": "~", "space": "\u2423", "return": "\u21a9",
-    "backspace": "\u232b", "comma": ",", "period": ".", "semicolon": ";",
-    "apostrophe": "'", "slash": "/", "bracketleft": "[",
-    "bracketright": "]", "backslash": "\\", "minus": "-", "equal": "=",
-}
+import generator_path  # noqa: F401
+from keys import KEY_DISPLAY, MOD_DISPLAY
 
 # Active chord (`F16`, `num9`) → (source physical key, modifier set), from `[slots]` in
 # karabiner/layers.toml. Assigned after KEY_DISPLAY/MOD_DISPLAY: bridges reads them.
