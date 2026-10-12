@@ -24,6 +24,7 @@ KEY = re.compile(r"[A-Z][A-Z0-9_]*")
 APP_DIRS = ["/Applications", "/Applications/Utilities", "/System/Applications", f"{HOME}/Applications"]
 # A shorter private value (an ssh alias like "i9") matches ordinary words.
 MIN_LITERAL = 6
+ABSENT = "NONE"
 NOT_SHELL = ("*.js", "*.mjs", "*.ts", "*.tsx", "*.astro", "*.cs", "*.md", "*.svg", "*.json")
 
 
@@ -109,6 +110,8 @@ def check_schema(values, schema, machine=False):
             continue
         if not entry.get("about"):
             problems.append(f"{key}: no `about`")
+        if values[key] == ABSENT:
+            continue
         if not FORMAT[kind](values[key]):
             problems.append(f"{key}: {values[key]!r} is not a valid {kind}")
         elif machine and kind in MACHINE and not entry.get("removable") and not MACHINE[kind](values[key]):

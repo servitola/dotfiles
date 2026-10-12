@@ -9,7 +9,12 @@ GENERATED=${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/generated
 mkdir -p $GENERATED
 
 render() {
-    local template=$(<$1)
+    local template=$(<$1) line
+    # NONE: this Mac has no such thing. The configs read an empty value as "off"
+    # (git's `proxy =` is no proxy, NuGet skips an empty http_proxy).
+    for line in ${(M)${(f)"$(<~/projects/dotfiles/constants.env)"}:#[A-Z]*=NONE}; do
+        local ${line%%=*}=
+    done
     print -r -- "${(e)template}" > $GENERATED/${1:t}
     print "  $GENERATED/${1:t}"
 }

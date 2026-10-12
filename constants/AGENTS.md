@@ -19,7 +19,9 @@ proxies — so nothing hardcodes them again.
 
 `KEY=value`, no quotes, no `export`; the value is the rest of the line verbatim.
 `#` only at line start — inline it lands inside the value. `$HOME` is the one
-expansion every reader does; `${HOME}` is not.
+expansion every reader does; `${HOME}` is not. `NONE` means this Mac has no
+such thing (no work proxy on m1pro): `check.py` skips its type, and `render`
+writes it as empty, which git and NuGet read as "off".
 
 ```zsh
 $APP_BROWSER       # already exported in any shell
