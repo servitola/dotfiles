@@ -5,7 +5,7 @@ Inputs: karabiner/layers.toml (layer tables + [slots]), karabiner/layers.raw/*.j
 
 Usage:
   python3 gen_layers.py            # write the rule files, print which changed
-  python3 gen_layers.py --check    # exit 1 with a diff when a file on disk differs
+  python3 gen_layers.py --check    # exit 1 with a diff when a file on disk differs, or a manipulator can never fire
 """
 import argparse
 import difflib
@@ -19,6 +19,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 
 import bridges
 import layers
+import shadow
 
 DIFF_LINES = 20
 
@@ -82,12 +83,18 @@ def main():
                                              f"{stem}.json (generated)", lineterm="", n=1))
             print(f"{stem}.json differs from layers.toml + layers.raw")
             print("\n".join(diff[:DIFF_LINES]) + ("\n…" if len(diff) > DIFF_LINES else ""))
-        sys.exit(1 if stale else 0)
+        shadowed = [] if stale else shadow.dead(args.rules_dir)
+        for row in shadowed:
+            print(shadow.describe(*row))
+        sys.exit(1 if stale or shadowed else 0)
 
     for stem in stale:
         with open(os.path.join(args.rules_dir, f"{stem}.json"), "w", encoding="utf-8") as fh:
             fh.write(texts[stem])
         print(f"gen_layers: wrote {stem}.json")
+    shadowed = shadow.dead(args.rules_dir)
+    if shadowed:
+        sys.exit("gen_layers: " + "\n".join(shadow.describe(*row) for row in shadowed))
     if not args.no_karabiner_lint:
         _karabiner_lint([os.path.join(args.rules_dir, f"{stem}.json") for stem in texts])
 

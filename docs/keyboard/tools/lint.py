@@ -26,6 +26,7 @@ Once per run (also under --skip-drift):
   S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
   B4  a karabiner/layers.raw/ manipulator that one layers.toml row could express
   G1  a generated karabiner/rules file differs from what gen_layers.py generates (hand edit, or not regenerated)
+  G2  a Karabiner manipulator that can never fire: an earlier one takes every press of its chord
   S2  a macos_shortcuts/shortcuts.toml [[app]] or [[menu]] chord is also an enabled [[system]] one
   S3  two [[app]]/[[menu]] rows on one chord that can be live at the same time
 
@@ -58,6 +59,7 @@ import bridges
 import gen_layers
 import keycodes
 import layers
+import shadow
 import shortcuts
 
 LAYOUT_DIR = os.path.normpath(os.path.join(
@@ -501,6 +503,9 @@ def check_generated(findings, rules_dir=bridges.RULES_DIR):
         findings.add(ERROR, os.path.join(rules_dir, f"{stem}.json"), 1, "G1",
                      "differs from layers.toml + layers.raw",
                      "edit karabiner/layers.toml, then run karabiner/build.sh")
+    for name, i, m, by in shadow.dead(rules_dir):
+        findings.add(ERROR, os.path.join(rules_dir, name), 1, "G2", shadow.describe(name, i, m, by),
+                     "delete the row, or narrow the earlier rule's modifiers")
 
 
 def enabled_system(rows):

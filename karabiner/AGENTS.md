@@ -46,9 +46,10 @@ edit a generated file by hand (lint `G1` and the
   (`s = "s e r v i t o l a"`); `sh: command` runs a shell command; `☀↑ ☀↓ ⏪ ⏩ Mute` are the
   F-row media keys; `non_us_backslash` names that key when it is not the pressed one.
 - **Order is behaviour.** Karabiner runs the first manipulator that matches, across all rules in
-  file-name order, so moving a row to another table can change which one wins. Known case: rule
-  `00` (left `⌃` + right `⌥` + `⌫`, any other modifier) also takes `⇪⌃⌫`, because Hyper holds the
-  right `⌥`; the `⌫` rows of the four Hyper layers with `⌃` never fire.
+  file-name order, so moving a row to another table can change which one wins. `gen_layers.py`
+  (and lint `G2`) simulates every key × modifiers × conditions (`docs/keyboard/shadow.py`) and
+  fails on a manipulator that can never fire. It caught the old keyboard lock (left `⌃` + right `⌥`
+  + `⌫` with `optional: any`) eating `⇪⌃⌫`, because Hyper holds the right `⌥`.
 - A rule file that is neither generated nor in `layers.HAND_WRITTEN` stops the build: Karabiner
   would keep loading it after its table is gone.
 
@@ -58,7 +59,7 @@ edit a generated file by hand (lint `G1` and the
 ## Rule Files (rules/)
 Hand-written: `00`, `04`, `26`, `29`, `32`. The rest are generated.
 ```
-00-keyboard-lock.json        — Left Ctrl + Right Alt + ⌫ → `hs -c 'toggleKeyboardLock()'` (hammerspoon/keyboard_lock.lua)
+00-keyboard-lock.json        — the four corners → `hs -c 'toggleKeyboardLock()'` (hammerspoon/keyboard_lock.lua), see *Keyboard Lock*
 01-tab-modifier.json         — Tab as modifier layer (hold Tab + key)
 04-caps-lock-hyper.json      — Caps Lock → all 4 right modifiers (Hyper)
 05-grave-to-escape.json      — Grave/Tilde → Escape (pass-through with Hyper)
@@ -81,6 +82,19 @@ Hand-written: `00`, `04`, `26`, `29`, `32`. The rest are generated.
 30-fn-layer-mirror.json      — fn + left half of a row → right half of that row
 32-swap-sides.json           — Ctrl+Alt + both arrows, or A and D, at once → Keypad 8 (swap two top windows)
 ```
+
+## Keyboard Lock (the Four Corners)
+Hold the bottom-left corner (`⌃` on the 60% board, `fn` on the built-in one), then press the other
+three corners together: top-left (`` ` `` / `§` / `Esc`, whichever the keyboard has there), `⌫`
+and `→`. Same chord unlocks. It is a `simultaneous` manipulator with a 200 ms window, six variants
+(2 corner modifiers × 3 top-left key codes).
+
+- The modifier is mandatory with nothing optional, so no Hyper chord can match it.
+- Cost: with `⌃` or `fn` held alone, `⌫`, `→` and the top-left key wait up to 200 ms (or until
+  key-up) for the rest of the chord.
+- Karabiner sits below Hammerspoon's event tap, so the chord still arrives while the lock swallows
+  everything else. If it ever does not: sleep and wake unlocks, and so does reloading Hammerspoon
+  from its menu-bar icon.
 
 ## Core Remappings (Don't Break These)
 - **Caps Lock → Hyper**: Maps to all 4 right modifiers (right_command, right_control, right_option, right_shift)

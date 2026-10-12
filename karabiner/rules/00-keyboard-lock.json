@@ -1,55 +1,264 @@
 {
-    "description": "Keyboard Lock Toggle (LCtrl + RAlt + Backspace)",
+    "description": "Keyboard Lock Toggle (the four corners: bottom-left ⌃ or fn held, then top-left + ⌫ + → together)",
     "manipulators": [
         {
             "from": {
-                "key_code": "delete_or_backspace",
                 "modifiers": {
-                    "mandatory": ["left_control", "right_option"],
-                    "optional": ["any"]
+                    "mandatory": [
+                        "left_control"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "grave_accent_and_tilde"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
                 }
             },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
             "to": [
-                { "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'" }
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "left_control"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "non_us_backslash"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
+                }
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "left_control"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "escape"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
+                }
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "fn"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "grave_accent_and_tilde"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
+                }
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "fn"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "non_us_backslash"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
+                }
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
+            ],
+            "type": "basic"
+        },
+        {
+            "from": {
+                "modifiers": {
+                    "mandatory": [
+                        "fn"
+                    ]
+                },
+                "simultaneous": [
+                    {
+                        "key_code": "escape"
+                    },
+                    {
+                        "key_code": "delete_or_backspace"
+                    },
+                    {
+                        "key_code": "right_arrow"
+                    }
+                ],
+                "simultaneous_options": {
+                    "key_down_order": "insensitive"
+                }
+            },
+            "parameters": {
+                "basic.simultaneous_threshold_milliseconds": 200
+            },
+            "to": [
+                {
+                    "shell_command": "/opt/homebrew/bin/hs -c 'toggleKeyboardLock()'"
+                }
             ],
             "type": "basic"
         },
         {
             "conditions": [
-                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+                {
+                    "name": "keyboard_disabled",
+                    "type": "variable_if",
+                    "value": 1
+                }
             ],
             "from": {
                 "any": "consumer_key_code",
-                "modifiers": { "optional": ["any"] }
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
             },
             "to": [
-                { "key_code": "vk_none" }
+                {
+                    "key_code": "vk_none"
+                }
             ],
             "type": "basic"
         },
         {
             "conditions": [
-                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+                {
+                    "name": "keyboard_disabled",
+                    "type": "variable_if",
+                    "value": 1
+                }
             ],
             "from": {
                 "any": "apple_vendor_keyboard_key_code",
-                "modifiers": { "optional": ["any"] }
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
             },
             "to": [
-                { "key_code": "vk_none" }
+                {
+                    "key_code": "vk_none"
+                }
             ],
             "type": "basic"
         },
         {
             "conditions": [
-                { "name": "keyboard_disabled", "type": "variable_if", "value": 1 }
+                {
+                    "name": "keyboard_disabled",
+                    "type": "variable_if",
+                    "value": 1
+                }
             ],
             "from": {
                 "any": "apple_vendor_top_case_key_code",
-                "modifiers": { "optional": ["any"] }
+                "modifiers": {
+                    "optional": [
+                        "any"
+                    ]
+                }
             },
             "to": [
-                { "key_code": "vk_none" }
+                {
+                    "key_code": "vk_none"
+                }
             ],
             "type": "basic"
         }
