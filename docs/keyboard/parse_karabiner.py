@@ -55,6 +55,7 @@ _TO_LAYER_MOD = {
     "left_control":"ctrl", "right_control":"ctrl", "control":"ctrl",
     "left_option":"alt", "right_option":"alt", "option":"alt",
     "left_command":"cmd", "right_command":"cmd", "command":"cmd",
+    "fn":"fn",
 }
 
 
@@ -88,7 +89,8 @@ def _to_display(to_entry):
     # Add modifier symbols
     tm = to_entry.get("modifiers", [])
     if isinstance(tm, dict): tm = tm.get("mandatory", [])
-    prefix = "".join(_MOD_SYM.get(m, "") for m in tm)
+    glyphs = {_MOD_SYM.get(m, "") for m in tm}
+    prefix = "".join(g for g in "⇧⌃⌥⌘" if g in glyphs)
     return prefix + sym if prefix else sym
 
 

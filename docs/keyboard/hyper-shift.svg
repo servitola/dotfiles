@@ -650,10 +650,10 @@
 <text x="56" y="1308" font-size="12px" fill="#a2845e">⇧F13</text>
 <line x1="20" y1="1330" x2="906" y2="1330" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1338" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<text x="56" y="1338" font-size="12px" fill="#a2845e">⌘⇧←</text>
+<text x="56" y="1338" font-size="12px" fill="#a2845e">⇧⌘←</text>
 <line x1="20" y1="1360" x2="906" y2="1360" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1368" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<text x="56" y="1368" font-size="12px" fill="#a2845e">⌘⇧→</text>
+<text x="56" y="1368" font-size="12px" fill="#a2845e">⇧⌘→</text>
 <text x="136" y="1368" font-size="11px" fill="#86868b">macOS</text>
 <line x1="20" y1="1390" x2="906" y2="1390" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1398" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
@@ -669,10 +669,10 @@
 <text x="291" y="1428" font-size="11px" fill="#48484a">iTerm</text>
 <line x1="20" y1="1450" x2="906" y2="1450" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1458" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
-<text x="56" y="1458" font-size="12px" fill="#a2845e">⌘⇧→</text>
+<text x="56" y="1458" font-size="12px" fill="#a2845e">⇧⌘→</text>
 <line x1="20" y1="1480" x2="906" y2="1480" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1488" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
-<text x="56" y="1488" font-size="12px" fill="#a2845e">⌘⇧←</text>
+<text x="56" y="1488" font-size="12px" fill="#a2845e">⇧⌘←</text>
 <text x="136" y="1488" font-size="11px" fill="#86868b">macOS</text>
 <line x1="20" y1="1510" x2="906" y2="1510" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1518" font-size="13px" font-weight="700" fill="#1d1d1f">Space</text>

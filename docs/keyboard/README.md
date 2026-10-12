@@ -39,6 +39,11 @@ Tab held as modifier (Karabiner variable-based layer). Browser zoom, navigation,
 
 ![Tab](tab_mod.svg)
 
+### Fn — Right Half Under the Left Hand
+`fn` held: the left half of every row sends the right half (Karabiner, `[layer.fn]` in `karabiner/layers.toml`).
+
+![Fn](fn.svg)
+
 ---
 
 ## Hyper Combo Layers

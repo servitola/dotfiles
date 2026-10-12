@@ -180,9 +180,9 @@
 <g class="key-group">
 <rect x="782" y="62" width="112" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
 <rect x="782" y="64" width="3" height="44" rx="1.5" fill="#a2845e"/>
-<text x="838.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘⌃⌦</text>
+<text x="838.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌃⌘⌦</text>
 <text x="889" y="105" text-anchor="end" class="key-label">⌫</text>
-<title>⌫: ⌘⌃⌦</title>
+<title>⌫: ⌃⌘⌦</title>
 </g>
 <g class="key-group">
 <rect x="28" y="114" width="83.0" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -519,114 +519,114 @@
 <text x="291" y="382" font-size="11px" font-weight="600" fill="#48484a">App Shortcuts</text>
 <line x1="20" y1="390" x2="906" y2="390" stroke="#d1d1d6" stroke-width="0.3"/>
 <text x="20" y="408" font-size="13px" font-weight="700" fill="#1d1d1f">~</text>
-<text x="56" y="408" font-size="12px" fill="#a2845e">⌘⌃⎋</text>
+<text x="56" y="408" font-size="12px" fill="#a2845e">⌃⌘⎋</text>
 <line x1="20" y1="430" x2="906" y2="430" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="438" font-size="13px" font-weight="700" fill="#1d1d1f">1</text>
-<text x="56" y="438" font-size="12px" fill="#a2845e">⌘⌃F1</text>
+<text x="56" y="438" font-size="12px" fill="#a2845e">⌃⌘F1</text>
 <line x1="20" y1="460" x2="906" y2="460" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="468" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
-<text x="56" y="468" font-size="12px" fill="#a2845e">⌘⌃F2</text>
+<text x="56" y="468" font-size="12px" fill="#a2845e">⌃⌘F2</text>
 <line x1="20" y1="490" x2="906" y2="490" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="498" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
-<text x="56" y="498" font-size="12px" fill="#a2845e">⌘⌃F3</text>
+<text x="56" y="498" font-size="12px" fill="#a2845e">⌃⌘F3</text>
 <line x1="20" y1="520" x2="906" y2="520" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="528" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
-<text x="56" y="528" font-size="12px" fill="#a2845e">⌘⌃F4</text>
+<text x="56" y="528" font-size="12px" fill="#a2845e">⌃⌘F4</text>
 <line x1="20" y1="550" x2="906" y2="550" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="558" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
-<text x="56" y="558" font-size="12px" fill="#a2845e">⌘⌃F5</text>
+<text x="56" y="558" font-size="12px" fill="#a2845e">⌃⌘F5</text>
 <line x1="20" y1="580" x2="906" y2="580" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="588" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
-<text x="56" y="588" font-size="12px" fill="#a2845e">⌘⌃F6</text>
+<text x="56" y="588" font-size="12px" fill="#a2845e">⌃⌘F6</text>
 <line x1="20" y1="610" x2="906" y2="610" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="618" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
-<text x="56" y="618" font-size="12px" fill="#a2845e">⌘⌃F7</text>
+<text x="56" y="618" font-size="12px" fill="#a2845e">⌃⌘F7</text>
 <line x1="20" y1="640" x2="906" y2="640" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="648" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
-<text x="56" y="648" font-size="12px" fill="#a2845e">⌘⌃F8</text>
+<text x="56" y="648" font-size="12px" fill="#a2845e">⌃⌘F8</text>
 <line x1="20" y1="670" x2="906" y2="670" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="678" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
-<text x="56" y="678" font-size="12px" fill="#a2845e">⌘⌃F9</text>
+<text x="56" y="678" font-size="12px" fill="#a2845e">⌃⌘F9</text>
 <line x1="20" y1="700" x2="906" y2="700" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="708" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
-<text x="56" y="708" font-size="12px" fill="#a2845e">⌘⌃F10</text>
+<text x="56" y="708" font-size="12px" fill="#a2845e">⌃⌘F10</text>
 <line x1="20" y1="730" x2="906" y2="730" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="738" font-size="13px" font-weight="700" fill="#1d1d1f">–</text>
-<text x="56" y="738" font-size="12px" fill="#a2845e">⌘⌃F11</text>
+<text x="56" y="738" font-size="12px" fill="#a2845e">⌃⌘F11</text>
 <line x1="20" y1="760" x2="906" y2="760" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="768" font-size="13px" font-weight="700" fill="#1d1d1f">=</text>
-<text x="56" y="768" font-size="12px" fill="#a2845e">⌘⌃F12</text>
+<text x="56" y="768" font-size="12px" fill="#a2845e">⌃⌘F12</text>
 <line x1="20" y1="790" x2="906" y2="790" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="798" font-size="13px" font-weight="700" fill="#1d1d1f">⌫</text>
-<text x="56" y="798" font-size="12px" fill="#a2845e">⌘⌃⌦</text>
+<text x="56" y="798" font-size="12px" fill="#a2845e">⌃⌘⌦</text>
 <line x1="20" y1="820" x2="906" y2="820" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="828" font-size="13px" font-weight="700" fill="#1d1d1f">Tab</text>
-<text x="56" y="828" font-size="12px" fill="#a2845e">⌘⌃↩</text>
+<text x="56" y="828" font-size="12px" fill="#a2845e">⌃⌘↩</text>
 <line x1="20" y1="850" x2="906" y2="850" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="858" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
-<text x="56" y="858" font-size="12px" fill="#a2845e">⌘⌃↑</text>
+<text x="56" y="858" font-size="12px" fill="#a2845e">⌃⌘↑</text>
 <use href="#icon-rider" x="291" y="846" width="14" height="14"/>
 <text x="309" y="858" font-size="11px" fill="#48484a">Rider — navigate to up method</text>
 <line x1="20" y1="880" x2="906" y2="880" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="888" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
-<text x="56" y="888" font-size="12px" fill="#a2845e">⌘⌃PgDn</text>
+<text x="56" y="888" font-size="12px" fill="#a2845e">⌃⌘PgDn</text>
 <line x1="20" y1="910" x2="906" y2="910" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="918" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<text x="56" y="918" font-size="12px" fill="#a2845e">⌘⌃F14</text>
+<text x="56" y="918" font-size="12px" fill="#a2845e">⌃⌘F14</text>
 <line x1="20" y1="940" x2="906" y2="940" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="948" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="56" y="948" font-size="12px" fill="#a2845e">⌘⌃F17</text>
+<text x="56" y="948" font-size="12px" fill="#a2845e">⌃⌘F17</text>
 <line x1="20" y1="970" x2="906" y2="970" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="978" font-size="13px" font-weight="700" fill="#1d1d1f">O</text>
-<text x="56" y="978" font-size="12px" fill="#a2845e">⌘⌃↑</text>
+<text x="56" y="978" font-size="12px" fill="#a2845e">⌃⌘↑</text>
 <use href="#icon-rider" x="291" y="966" width="14" height="14"/>
 <text x="309" y="978" font-size="11px" fill="#48484a">Rider — navigate to up method</text>
 <line x1="20" y1="1000" x2="906" y2="1000" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1008" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="56" y="1008" font-size="12px" fill="#a2845e">⌘⌃←</text>
+<text x="56" y="1008" font-size="12px" fill="#a2845e">⌃⌘←</text>
 <use href="#icon-visual-studio-code" x="291" y="996" width="14" height="14"/>
 <text x="309" y="1008" font-size="11px" fill="#48484a">VSCode — move editor to previous group</text>
 <line x1="20" y1="1030" x2="906" y2="1030" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1038" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="56" y="1038" font-size="12px" fill="#a2845e">⌘⌃↓</text>
+<text x="56" y="1038" font-size="12px" fill="#a2845e">⌃⌘↓</text>
 <use href="#icon-rider" x="291" y="1026" width="14" height="14"/>
 <text x="309" y="1038" font-size="11px" fill="#48484a">Rider — navigate to down method</text>
 <line x1="20" y1="1060" x2="906" y2="1060" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1068" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="56" y="1068" font-size="12px" fill="#a2845e">⌘⌃→</text>
+<text x="56" y="1068" font-size="12px" fill="#a2845e">⌃⌘→</text>
 <use href="#icon-visual-studio-code" x="291" y="1056" width="14" height="14"/>
 <text x="309" y="1068" font-size="11px" fill="#48484a">VSCode — move editor to next group</text>
 <line x1="20" y1="1090" x2="906" y2="1090" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1098" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<text x="56" y="1098" font-size="12px" fill="#a2845e">⌘⌃F15</text>
+<text x="56" y="1098" font-size="12px" fill="#a2845e">⌃⌘F15</text>
 <line x1="20" y1="1120" x2="906" y2="1120" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1128" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<text x="56" y="1128" font-size="12px" fill="#a2845e">⌘⌃F18</text>
+<text x="56" y="1128" font-size="12px" fill="#a2845e">⌃⌘F18</text>
 <line x1="20" y1="1150" x2="906" y2="1150" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1158" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<text x="56" y="1158" font-size="12px" fill="#a2845e">⌘⌃F20</text>
+<text x="56" y="1158" font-size="12px" fill="#a2845e">⌃⌘F20</text>
 <line x1="20" y1="1180" x2="906" y2="1180" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1188" font-size="13px" font-weight="700" fill="#1d1d1f">K</text>
-<text x="56" y="1188" font-size="12px" fill="#a2845e">⌘⌃←</text>
+<text x="56" y="1188" font-size="12px" fill="#a2845e">⌃⌘←</text>
 <use href="#icon-visual-studio-code" x="291" y="1176" width="14" height="14"/>
 <text x="309" y="1188" font-size="11px" fill="#48484a">VSCode — move editor to previous group</text>
 <line x1="20" y1="1210" x2="906" y2="1210" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1218" font-size="13px" font-weight="700" fill="#1d1d1f">L</text>
-<text x="56" y="1218" font-size="12px" fill="#a2845e">⌘⌃↓</text>
+<text x="56" y="1218" font-size="12px" fill="#a2845e">⌃⌘↓</text>
 <use href="#icon-rider" x="291" y="1206" width="14" height="14"/>
 <text x="309" y="1218" font-size="11px" fill="#48484a">Rider — navigate to down method</text>
 <line x1="20" y1="1240" x2="906" y2="1240" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1248" font-size="13px" font-weight="700" fill="#1d1d1f">;</text>
-<text x="56" y="1248" font-size="12px" fill="#a2845e">⌘⌃→</text>
+<text x="56" y="1248" font-size="12px" fill="#a2845e">⌃⌘→</text>
 <use href="#icon-visual-studio-code" x="291" y="1236" width="14" height="14"/>
 <text x="309" y="1248" font-size="11px" fill="#48484a">VSCode — move editor to next group</text>
 <line x1="20" y1="1270" x2="906" y2="1270" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1278" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<text x="56" y="1278" font-size="12px" fill="#a2845e">⌘⌃F13</text>
+<text x="56" y="1278" font-size="12px" fill="#a2845e">⌃⌘F13</text>
 <line x1="20" y1="1300" x2="906" y2="1300" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1308" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<text x="56" y="1308" font-size="12px" fill="#a2845e">⌘⌃F16</text>
+<text x="56" y="1308" font-size="12px" fill="#a2845e">⌃⌘F16</text>
 <line x1="20" y1="1330" x2="906" y2="1330" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1338" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<text x="56" y="1338" font-size="12px" fill="#a2845e">⌘⌃F19</text>
+<text x="56" y="1338" font-size="12px" fill="#a2845e">⌃⌘F19</text>
 </svg>

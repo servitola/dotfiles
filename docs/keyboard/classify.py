@@ -15,7 +15,8 @@ _T = {_f(): "Base", _f({"hyper"}): "Hyper — Apps + Navigation",
     _f({"hyper","alt"}): "Hyper + Alt — Word Operations",
     _f({"hyper","cmd"}): "Hyper + Cmd — Line Operations",
     _f({"cmd"}): "Cmd — macOS Standard", _f({"alt"}): "Alt — Special Chars + Apps",
-    _f({"tab_mod"}): "Tab — Quick Actions"}
+    _f({"tab_mod"}): "Tab — Quick Actions",
+    _f({"fn"}): "Fn — Right Half Under the Left Hand"}
 
 def _parse_modifiers(cs):
     # Whole-string lookup first \u2014 different modifier prefixes can route to
@@ -36,7 +37,7 @@ def _parse_modifiers(cs):
 
 def layer_name(mods):
     if mods in _T: return _T[mods]
-    n = {"hyper":"Hyper","shift":"Shift","ctrl":"Ctrl","alt":"Alt","cmd":"Cmd","tab_mod":"Tab"}
+    n = {"hyper":"Hyper","shift":"Shift","ctrl":"Ctrl","alt":"Alt","cmd":"Cmd","tab_mod":"Tab","fn":"Fn"}
     return " + ".join(n[m] for m in MOD_ORDER if m in mods) or "Base"
 
 def layer_filename(mods):

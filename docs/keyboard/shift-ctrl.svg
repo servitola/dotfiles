@@ -620,7 +620,7 @@
 <text x="309" y="804" font-size="11px" fill="#48484a">Claude Code — cycle through last commands back</text>
 <line x1="20" y1="826" x2="906" y2="826" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="834" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="834" font-size="12px" fill="#a2845e">⇧⌘⌃⌥⇧left_control</text>
+<text x="56" y="834" font-size="12px" fill="#a2845e">⇧⌃⌥⌘left_control</text>
 <line x1="20" y1="856" x2="906" y2="856" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="864" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
 <use href="#icon-rider" x="291" y="852" width="14" height="14"/>

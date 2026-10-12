@@ -808,7 +808,7 @@
 <text x="291" y="382" font-size="11px" font-weight="600" fill="#48484a">App Shortcuts</text>
 <line x1="20" y1="390" x2="906" y2="390" stroke="#d1d1d6" stroke-width="0.3"/>
 <text x="20" y="408" font-size="13px" font-weight="700" fill="#1d1d1f">~</text>
-<text x="56" y="408" font-size="12px" fill="#a2845e">⌘⌥⎋</text>
+<text x="56" y="408" font-size="12px" fill="#a2845e">⌥⌘⎋</text>
 <text x="136" y="408" font-size="11px" fill="#86868b">macOS</text>
 <use href="#icon-rider" x="291" y="396" width="14" height="14"/>
 <text x="309" y="408" font-size="11px" fill="#48484a">Rider — Next Solution Window</text>
@@ -914,7 +914,7 @@
 <text x="309" y="1242" font-size="11px" fill="#48484a">Vivaldi — print using system dialog</text>
 <line x1="20" y1="1264" x2="906" y2="1264" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1272" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="1272" font-size="12px" fill="#a2845e">⌥⌘⌃⌥⇧left_command</text>
+<text x="56" y="1272" font-size="12px" fill="#a2845e">⇧⌃⌥⌘left_command</text>
 <line x1="20" y1="1294" x2="906" y2="1294" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1302" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
 <use href="#icon-music" x="291" y="1290" width="14" height="14"/>

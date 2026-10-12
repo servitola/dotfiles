@@ -782,7 +782,7 @@
 <text x="419" y="462" font-size="11px" fill="#48484a">Rider — Select in Project</text>
 <line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
-<text x="56" y="492" font-size="12px" fill="#a2845e">⌃⇧z</text>
+<text x="56" y="492" font-size="12px" fill="#a2845e">⇧⌃z</text>
 <use href="#icon-voiceink" x="401" y="480" width="14" height="14"/>
 <text x="419" y="492" font-size="11px" fill="#48484a">VoiceInk — start</text>
 <use href="#icon-rider" x="401" y="504" width="14" height="14"/>
@@ -906,7 +906,7 @@
 <text x="136" y="1470" font-size="12px" fill="#8e8e93">]  ]  »</text>
 <line x1="20" y1="1492" x2="906" y2="1492" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1500" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="1500" font-size="12px" fill="#a2845e">⌘⌃⌥⇧left_option</text>
+<text x="56" y="1500" font-size="12px" fill="#a2845e">⇧⌃⌥⌘left_option</text>
 <line x1="20" y1="1522" x2="906" y2="1522" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1530" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
 <text x="56" y="1530" font-size="12px" fill="#a2845e">⌥←</text>

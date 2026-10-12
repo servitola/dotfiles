@@ -742,14 +742,14 @@
 <text x="291" y="1356" font-size="11px" fill="#48484a">question mark (Karabiner direct)</text>
 <line x1="20" y1="1378" x2="906" y2="1378" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1386" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<text x="56" y="1386" font-size="12px" fill="#a2845e">⌘⌥←</text>
+<text x="56" y="1386" font-size="12px" fill="#a2845e">⌥⌘←</text>
 <use href="#icon-visual-studio-code" x="291" y="1374" width="14" height="14"/>
 <text x="309" y="1386" font-size="11px" fill="#48484a">VSCode — navigate to tab to the left</text>
 <use href="#icon-music" x="291" y="1398" width="14" height="14"/>
 <text x="309" y="1410" font-size="11px" fill="#48484a">Music — seek backward</text>
 <line x1="20" y1="1432" x2="906" y2="1432" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1440" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<text x="56" y="1440" font-size="12px" fill="#a2845e">⌘⌥→</text>
+<text x="56" y="1440" font-size="12px" fill="#a2845e">⌥⌘→</text>
 <use href="#icon-visual-studio-code" x="291" y="1428" width="14" height="14"/>
 <text x="309" y="1440" font-size="11px" fill="#48484a">VSCode — navigate to tab to the right</text>
 <use href="#icon-music" x="291" y="1452" width="14" height="14"/>
@@ -764,8 +764,8 @@
 <text x="56" y="1524" font-size="12px" fill="#a2845e">⌥F19</text>
 <line x1="20" y1="1546" x2="906" y2="1546" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1554" font-size="13px" font-weight="700" fill="#1d1d1f">.</text>
-<text x="56" y="1554" font-size="12px" fill="#a2845e">⌘⌥→</text>
+<text x="56" y="1554" font-size="12px" fill="#a2845e">⌥⌘→</text>
 <line x1="20" y1="1576" x2="906" y2="1576" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1584" font-size="13px" font-weight="700" fill="#1d1d1f">,</text>
-<text x="56" y="1584" font-size="12px" fill="#a2845e">⌘⌥←</text>
+<text x="56" y="1584" font-size="12px" fill="#a2845e">⌥⌘←</text>
 </svg>

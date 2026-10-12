@@ -409,7 +409,7 @@ Use `from`+`to`+`target_key` for chord remaps, or `from`+`sendText` to type a st
 
 ## Visual reference
 
-See **`docs/keyboard/`** for auto-generated SVG diagrams of every shortcut layer (27 today) plus the action-grouped `by-action.svg`. Index with category legend lives at `docs/keyboard/README.md.`
+See **`docs/keyboard/`** for auto-generated SVG diagrams of every shortcut layer (28 today) plus the action-grouped `by-action.svg`. Index with category legend lives at `docs/keyboard/README.md.`
 
 Regenerate everything: `python3 docs/keyboard/generate.py`
 

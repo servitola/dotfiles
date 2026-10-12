@@ -790,40 +790,34 @@
 <text x="419" y="432" font-size="11px" fill="#48484a">Claude Code — clear input</text>
 <line x1="20" y1="454" x2="906" y2="454" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="462" font-size="13px" font-weight="700" fill="#1d1d1f">1</text>
-<text x="56" y="462" font-size="12px" fill="#a2845e">7</text>
-<text x="136" y="462" font-size="12px" fill="#8e8e93">1</text>
+<text x="136" y="462" font-size="12px" fill="#8e8e93">1  1  1</text>
 <use href="#icon-vivaldi" x="401" y="450" width="14" height="14"/>
 <text x="419" y="462" font-size="11px" fill="#48484a">YouTube — Navigate to 10% of video</text>
 <line x1="20" y1="484" x2="906" y2="484" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="492" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
-<text x="56" y="492" font-size="12px" fill="#a2845e">8</text>
-<text x="136" y="492" font-size="12px" fill="#8e8e93">2</text>
+<text x="136" y="492" font-size="12px" fill="#8e8e93">2  2  2</text>
 <use href="#icon-vivaldi" x="401" y="480" width="14" height="14"/>
 <text x="419" y="492" font-size="11px" fill="#48484a">YouTube — Navigate to 20% of video</text>
 <line x1="20" y1="514" x2="906" y2="514" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="522" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
-<text x="56" y="522" font-size="12px" fill="#a2845e">9</text>
-<text x="136" y="522" font-size="12px" fill="#8e8e93">3</text>
+<text x="136" y="522" font-size="12px" fill="#8e8e93">3  3  3</text>
 <use href="#icon-vivaldi" x="401" y="510" width="14" height="14"/>
 <text x="419" y="522" font-size="11px" fill="#48484a">YouTube — navigate to 30% of video</text>
 <use href="#icon-rider" x="401" y="534" width="14" height="14"/>
 <text x="419" y="546" font-size="11px" fill="#48484a">Rider — Find Next</text>
 <line x1="20" y1="568" x2="906" y2="568" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="576" font-size="13px" font-weight="700" fill="#1d1d1f">4</text>
-<text x="56" y="576" font-size="12px" fill="#a2845e">0</text>
-<text x="136" y="576" font-size="12px" fill="#8e8e93">4</text>
+<text x="136" y="576" font-size="12px" fill="#8e8e93">4  4  4</text>
 <use href="#icon-vivaldi" x="401" y="564" width="14" height="14"/>
 <text x="419" y="576" font-size="11px" fill="#48484a">YouTube — navigate to 40% of video</text>
 <line x1="20" y1="598" x2="906" y2="598" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="606" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
-<text x="56" y="606" font-size="12px" fill="#a2845e">-</text>
-<text x="136" y="606" font-size="12px" fill="#8e8e93">5</text>
+<text x="136" y="606" font-size="12px" fill="#8e8e93">5  5  5</text>
 <use href="#icon-vivaldi" x="401" y="594" width="14" height="14"/>
 <text x="419" y="606" font-size="11px" fill="#48484a">YouTube — navigate to 50% of video</text>
 <line x1="20" y1="628" x2="906" y2="628" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="636" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
-<text x="56" y="636" font-size="12px" fill="#a2845e">=</text>
-<text x="136" y="636" font-size="12px" fill="#8e8e93">6</text>
+<text x="136" y="636" font-size="12px" fill="#8e8e93">6  6  6</text>
 <use href="#icon-vivaldi" x="401" y="624" width="14" height="14"/>
 <text x="419" y="636" font-size="11px" fill="#48484a">YouTube — navigate to 60% of video</text>
 <line x1="20" y1="658" x2="906" y2="658" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
@@ -858,34 +852,28 @@
 <text x="419" y="846" font-size="11px" fill="#48484a">Unix Terminal — complete</text>
 <line x1="20" y1="868" x2="906" y2="868" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="876" font-size="13px" font-weight="700" fill="#1d1d1f">Q</text>
-<text x="56" y="876" font-size="12px" fill="#a2845e">u</text>
-<text x="136" y="876" font-size="12px" fill="#8e8e93">q    й    ;</text>
+<text x="136" y="876" font-size="12px" fill="#8e8e93">q  й  ;</text>
 <line x1="20" y1="898" x2="906" y2="898" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="906" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
-<text x="56" y="906" font-size="12px" fill="#a2845e">i</text>
-<text x="136" y="906" font-size="12px" fill="#8e8e93">w    ц    ς</text>
+<text x="136" y="906" font-size="12px" fill="#8e8e93">w  ц  ς</text>
 <use href="#icon-vivaldi" x="401" y="894" width="14" height="14"/>
 <text x="419" y="906" font-size="11px" fill="#48484a">Browser Vim — toggle pin tab</text>
 <line x1="20" y1="928" x2="906" y2="928" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="936" font-size="13px" font-weight="700" fill="#1d1d1f">E</text>
-<text x="56" y="936" font-size="12px" fill="#a2845e">o</text>
-<text x="136" y="936" font-size="12px" fill="#8e8e93">e    у    ε</text>
+<text x="136" y="936" font-size="12px" fill="#8e8e93">e  у  ε</text>
 <use href="#icon-vivaldi" x="401" y="924" width="14" height="14"/>
 <text x="419" y="936" font-size="11px" fill="#48484a">Browser Vim — scroll to bottom</text>
 <line x1="20" y1="958" x2="906" y2="958" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="966" font-size="13px" font-weight="700" fill="#1d1d1f">R</text>
-<text x="56" y="966" font-size="12px" fill="#a2845e">p</text>
-<text x="136" y="966" font-size="12px" fill="#8e8e93">r    к    ρ</text>
+<text x="136" y="966" font-size="12px" fill="#8e8e93">r  к  ρ</text>
 <line x1="20" y1="988" x2="906" y2="988" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="996" font-size="13px" font-weight="700" fill="#1d1d1f">T</text>
-<text x="56" y="996" font-size="12px" fill="#a2845e">[</text>
-<text x="136" y="996" font-size="12px" fill="#8e8e93">t    е    τ</text>
+<text x="136" y="996" font-size="12px" fill="#8e8e93">t  е  τ</text>
 <use href="#icon-vivaldi" x="401" y="984" width="14" height="14"/>
 <text x="419" y="996" font-size="11px" fill="#48484a">YouTube — Theatre mode</text>
 <line x1="20" y1="1018" x2="906" y2="1018" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1026" font-size="13px" font-weight="700" fill="#1d1d1f">Y</text>
-<text x="56" y="1026" font-size="12px" fill="#a2845e">]</text>
-<text x="136" y="1026" font-size="12px" fill="#8e8e93">y    н    υ</text>
+<text x="136" y="1026" font-size="12px" fill="#8e8e93">y  н  υ</text>
 <line x1="20" y1="1048" x2="906" y2="1048" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1056" font-size="13px" font-weight="700" fill="#1d1d1f">U</text>
 <text x="136" y="1056" font-size="12px" fill="#8e8e93">u  г  θ</text>
@@ -908,40 +896,34 @@
 <text x="136" y="1206" font-size="12px" fill="#8e8e93">]  ъ  ]</text>
 <line x1="20" y1="1228" x2="906" y2="1228" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1236" font-size="13px" font-weight="700" fill="#1d1d1f">⇪</text>
-<text x="56" y="1236" font-size="12px" fill="#a2845e">⌘⌃⌥right_shift</text>
+<text x="56" y="1236" font-size="12px" fill="#a2845e">⌃⌥⌘right_shift</text>
 <line x1="20" y1="1258" x2="906" y2="1258" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1266" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="56" y="1266" font-size="12px" fill="#a2845e">j</text>
-<text x="136" y="1266" font-size="12px" fill="#8e8e93">a    ф    α</text>
-<text x="56" y="1290" font-size="12px" fill="#a2845e">j</text>
+<text x="136" y="1266" font-size="12px" fill="#8e8e93">a  ф  α</text>
+<text x="136" y="1290" font-size="12px" fill="#8e8e93">a  ф  α</text>
 <use href="#icon-vivaldi" x="401" y="1278" width="14" height="14"/>
 <text x="419" y="1290" font-size="11px" fill="#48484a">Browser Vim — go back</text>
 <line x1="20" y1="1312" x2="906" y2="1312" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1320" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="56" y="1320" font-size="12px" fill="#a2845e">k</text>
-<text x="136" y="1320" font-size="12px" fill="#8e8e93">s    ы    σ</text>
+<text x="136" y="1320" font-size="12px" fill="#8e8e93">s  ы  σ</text>
 <line x1="20" y1="1342" x2="906" y2="1342" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1350" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="56" y="1350" font-size="12px" fill="#a2845e">l</text>
-<text x="136" y="1350" font-size="12px" fill="#8e8e93">d    в    δ</text>
+<text x="136" y="1350" font-size="12px" fill="#8e8e93">d  в  δ</text>
 <text x="246" y="1350" font-size="11px" fill="#86868b">macOS</text>
-<text x="56" y="1374" font-size="12px" fill="#a2845e">l</text>
+<text x="136" y="1374" font-size="12px" fill="#8e8e93">d  в  δ</text>
 <use href="#icon-vivaldi" x="401" y="1362" width="14" height="14"/>
 <text x="419" y="1374" font-size="11px" fill="#48484a">Browser Vim — go forward</text>
 <line x1="20" y1="1396" x2="906" y2="1396" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1404" font-size="13px" font-weight="700" fill="#1d1d1f">F</text>
-<text x="56" y="1404" font-size="12px" fill="#a2845e">;</text>
-<text x="136" y="1404" font-size="12px" fill="#8e8e93">f    а    φ</text>
+<text x="136" y="1404" font-size="12px" fill="#8e8e93">f  а  φ</text>
 <use href="#icon-vivaldi" x="401" y="1392" width="14" height="14"/>
 <text x="419" y="1404" font-size="11px" fill="#48484a">Browser — Go Full Screen Video</text>
 <line x1="20" y1="1426" x2="906" y2="1426" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1434" font-size="13px" font-weight="700" fill="#1d1d1f">G</text>
-<text x="56" y="1434" font-size="12px" fill="#a2845e">'</text>
-<text x="136" y="1434" font-size="12px" fill="#8e8e93">g    п    γ</text>
+<text x="136" y="1434" font-size="12px" fill="#8e8e93">g  п  γ</text>
 <line x1="20" y1="1456" x2="906" y2="1456" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1464" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
-<text x="56" y="1464" font-size="12px" fill="#a2845e">\</text>
-<text x="136" y="1464" font-size="12px" fill="#8e8e93">h    р    η</text>
+<text x="136" y="1464" font-size="12px" fill="#8e8e93">h  р  η</text>
 <line x1="20" y1="1486" x2="906" y2="1486" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1494" font-size="13px" font-weight="700" fill="#1d1d1f">J</text>
 <text x="136" y="1494" font-size="12px" fill="#8e8e93">j  о  ξ</text>
@@ -972,30 +954,25 @@
 <text x="419" y="1668" font-size="11px" fill="#48484a">Claude Code — backslash + return for image newline</text>
 <line x1="20" y1="1690" x2="906" y2="1690" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1698" font-size="13px" font-weight="700" fill="#1d1d1f">Z</text>
-<text x="56" y="1698" font-size="12px" fill="#a2845e">n</text>
-<text x="136" y="1698" font-size="12px" fill="#8e8e93">z    я    ζ</text>
+<text x="136" y="1698" font-size="12px" fill="#8e8e93">z  я  ζ</text>
 <use href="#icon-vivaldi" x="401" y="1686" width="14" height="14"/>
 <text x="419" y="1698" font-size="11px" fill="#48484a">Browser Vim — Mark Links</text>
 <line x1="20" y1="1720" x2="906" y2="1720" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1728" font-size="13px" font-weight="700" fill="#1d1d1f">X</text>
-<text x="56" y="1728" font-size="12px" fill="#a2845e">m</text>
-<text x="136" y="1728" font-size="12px" fill="#8e8e93">x    ч    χ</text>
+<text x="136" y="1728" font-size="12px" fill="#8e8e93">x  ч  χ</text>
 <use href="#icon-vivaldi" x="401" y="1716" width="14" height="14"/>
 <text x="419" y="1728" font-size="11px" fill="#48484a">Browser Vim — Focus text input</text>
 <line x1="20" y1="1750" x2="906" y2="1750" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1758" font-size="13px" font-weight="700" fill="#1d1d1f">C</text>
-<text x="56" y="1758" font-size="12px" fill="#a2845e">,</text>
-<text x="136" y="1758" font-size="12px" fill="#8e8e93">c    с    ψ</text>
+<text x="136" y="1758" font-size="12px" fill="#8e8e93">c  с  ψ</text>
 <use href="#icon-vivaldi" x="401" y="1746" width="14" height="14"/>
 <text x="419" y="1758" font-size="11px" fill="#48484a">YouTube — subtitles</text>
 <line x1="20" y1="1780" x2="906" y2="1780" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1788" font-size="13px" font-weight="700" fill="#1d1d1f">V</text>
-<text x="56" y="1788" font-size="12px" fill="#a2845e">.</text>
-<text x="136" y="1788" font-size="12px" fill="#8e8e93">v    м    ω</text>
+<text x="136" y="1788" font-size="12px" fill="#8e8e93">v  м  ω</text>
 <line x1="20" y1="1810" x2="906" y2="1810" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1818" font-size="13px" font-weight="700" fill="#1d1d1f">B</text>
-<text x="56" y="1818" font-size="12px" fill="#a2845e">/</text>
-<text x="136" y="1818" font-size="12px" fill="#8e8e93">b    и    β</text>
+<text x="136" y="1818" font-size="12px" fill="#8e8e93">b  и  β</text>
 <line x1="20" y1="1840" x2="906" y2="1840" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="1848" font-size="13px" font-weight="700" fill="#1d1d1f">N</text>
 <text x="136" y="1848" font-size="12px" fill="#8e8e93">n  т  ν</text>

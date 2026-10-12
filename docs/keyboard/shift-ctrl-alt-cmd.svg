@@ -476,16 +476,16 @@
 <text x="291" y="382" font-size="11px" font-weight="600" fill="#48484a">App Shortcuts</text>
 <line x1="20" y1="390" x2="906" y2="390" stroke="#d1d1d6" stroke-width="0.3"/>
 <text x="20" y="408" font-size="13px" font-weight="700" fill="#1d1d1f">W</text>
-<text x="56" y="408" font-size="12px" fill="#a2845e">⌘⌃⌥⇧↑</text>
+<text x="56" y="408" font-size="12px" fill="#a2845e">⇧⌃⌥⌘↑</text>
 <line x1="20" y1="430" x2="906" y2="430" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="438" font-size="13px" font-weight="700" fill="#1d1d1f">A</text>
-<text x="56" y="438" font-size="12px" fill="#a2845e">⌘⌃⌥⇧←</text>
+<text x="56" y="438" font-size="12px" fill="#a2845e">⇧⌃⌥⌘←</text>
 <line x1="20" y1="460" x2="906" y2="460" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="468" font-size="13px" font-weight="700" fill="#1d1d1f">S</text>
-<text x="56" y="468" font-size="12px" fill="#a2845e">⌘⌃⌥⇧↓</text>
+<text x="56" y="468" font-size="12px" fill="#a2845e">⇧⌃⌥⌘↓</text>
 <line x1="20" y1="490" x2="906" y2="490" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="498" font-size="13px" font-weight="700" fill="#1d1d1f">D</text>
-<text x="56" y="498" font-size="12px" fill="#a2845e">⌘⌃⌥⇧→</text>
+<text x="56" y="498" font-size="12px" fill="#a2845e">⇧⌃⌥⌘→</text>
 <line x1="20" y1="520" x2="906" y2="520" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="528" font-size="13px" font-weight="700" fill="#1d1d1f">H</text>
 <use href="#icon-hammerspoon" x="136" y="515" width="16" height="16"/>

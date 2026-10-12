@@ -679,7 +679,7 @@
 <text x="309" y="774" font-size="11px" fill="#48484a">karabiner — type '55555'</text>
 <line x1="20" y1="796" x2="906" y2="796" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="804" font-size="13px" font-weight="700" fill="#1d1d1f">Q</text>
-<text x="56" y="804" font-size="12px" fill="#a2845e">⌘⇧⌫</text>
+<text x="56" y="804" font-size="12px" fill="#a2845e">⇧⌘⌫</text>
 <use href="#icon-rider" x="291" y="792" width="14" height="14"/>
 <text x="309" y="804" font-size="11px" fill="#48484a">Rider — go to last edit place</text>
 <use href="#icon-visual-studio-code" x="291" y="816" width="14" height="14"/>

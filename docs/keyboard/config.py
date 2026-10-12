@@ -23,11 +23,12 @@ MOD_TO_KEYS = {
     "hyper": {"capslock"}, "shift": {"shift", "shift_r"},
     "ctrl": {"ctrl"}, "alt": {"opt", "opt_r"}, "cmd": {"cmd", "cmd_r"},
     "tab_mod": {"tab"},
+    "fn": set(),  # the 60% board drawn here has no fn key
 }
 
-MOD_ORDER = ["hyper", "shift", "ctrl", "alt", "cmd", "tab_mod"]
+MOD_ORDER = ["hyper", "shift", "ctrl", "alt", "cmd", "tab_mod", "fn"]
 MOD_DISPLAY = {"hyper": "\u21ea", "shift": "\u21e7", "ctrl": "\u2303",
-               "alt": "\u2325", "cmd": "\u2318", "tab_mod": "\u21e5"}
+               "alt": "\u2325", "cmd": "\u2318", "tab_mod": "\u21e5", "fn": "fn "}
 
 # Physical key id \u2192 display glyph (used when rendering source chords like
 # `\u21e7\u2303\u2325\u2318\u2193` from a karabiner-output active chord like `\u21e7F13`).

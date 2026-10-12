@@ -175,7 +175,8 @@ def typing(mods, phys, karab):
 
 
 def resolve(chord):
-    chord = normalize.reorder_chord_mods(chord.strip())
+    fn = re.fullmatch(r"fn\s*(\S.*)", chord.strip())
+    chord = normalize.reorder_chord_mods((fn.group(1) if fn else chord).strip())
     variants = bridges.slot_variants()
     pressed, emitted = chord, chord
     if lint.BRIDGE_CHORD.match(chord):
@@ -184,6 +185,8 @@ def resolve(chord):
         elif chord in bridges.EXCEPTIONS:
             pressed = " / ".join(bridges.EXCEPTIONS[chord][0])
     mods, phys = classify._parse_modifiers(pressed if " / " not in pressed else chord)
+    if fn:
+        mods |= {"fn"}
     karab = karabiner(mods, phys) if " / " not in pressed else [
         {"rule": bridges.EXCEPTIONS[chord][1], "with": [], "to": chord, "held": False, "notes": []}]
     taken = [h for h in karab if _rewrites(h)]
@@ -192,7 +195,7 @@ def resolve(chord):
     chords = {emitted, pressed, chord}
     keys, rows = machine(chords)
     return {
-        "chord": chord, "pressed": pressed, "emitted": emitted, "phys": phys,
+        "chord": ("fn " if fn else "") + chord, "pressed": ("fn " if fn else "") + pressed, "emitted": emitted, "phys": phys,
         "mods": sorted(mods),
         "karabiner": karab,
         "hammerspoon": hammerspoon(chords),
