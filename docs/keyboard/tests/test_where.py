@@ -43,6 +43,7 @@ def test_keypad_exception_names_its_gesture():
     info = where.resolve("num8")
     assert "⌃⌥ad" in info["pressed"]
     assert any(h["target"] == "window.swap_sides" for h in info["hammerspoon"])
+    assert "32-swap-sides" in where.render(info)
 
 
 def test_right_option_shows_the_birman_character():

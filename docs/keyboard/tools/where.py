@@ -188,7 +188,7 @@ def resolve(chord):
     if fn:
         mods |= {"fn"}
     karab = karabiner(mods, phys) if " / " not in pressed else [
-        {"rule": bridges.EXCEPTIONS[chord][1], "with": [], "to": chord, "held": False, "notes": []}]
+        {"rule": bridges.EXCEPTIONS[chord][1], "with": [], "to": chord, "held": False, "side": None, "notes": []}]
     taken = [h for h in karab if _rewrites(h)]
     if emitted == pressed and taken:
         emitted = taken[0]["to"] or pressed
