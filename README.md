@@ -92,7 +92,7 @@ Video as .mp4 and save to Desktop:
 ytv https://www.youtube.com/watch?v=8ApNlMcNEY0
 ```
 * Q: I want to <ins>hide comments</ins> and <ins>speed up videos</ins> on <ins>YouTube</ins>. And also 1000 of options. You're surely find yours:
-* A: I use [Improve YouTube](https://chromewebstore.google.com/detail/improve-youtube-%F0%9F%8E%A7-for-yo/bnomihfieiccainjcjblhegjgglakjdd). Install it and import my settings from [here](https://github.com/servitola/dotfiles/tree/master/chromium-ImprovedTube-extension)
+* A: I use [Improve YouTube](https://chromewebstore.google.com/detail/improve-youtube-%F0%9F%8E%A7-for-yo/bnomihfieiccainjcjblhegjgglakjdd).
 
 * Q: I want to have multiple buffers and not switch between windows multiple times. I want to <ins>copy</ins> and <ins>paste</ins> <ins>multiple</ins> things at once.
 * A: I use [maccy](https://maccy.app/). It is installed with all programs using homebrew here.
