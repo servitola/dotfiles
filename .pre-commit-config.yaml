@@ -29,11 +29,11 @@ repos:
         files: ^(hammerspoon/.*\.lua|install/18-spoons\.sh)$
         stages: [pre-commit]
       - id: hyper-layers-generated
-        name: Karabiner rules 07-17 match layers.toml (gen_layers.py --check)
+        name: Generated Karabiner rules match layers.toml (gen_layers.py --check)
         entry: .git-hooks/with-brew python3 docs/keyboard/tools/gen_layers.py --check
         language: system
         pass_filenames: false
-        files: ^(karabiner/(layers\.toml|layers\.raw/.*|rules/(0[7-9]|1[0-7])-.*\.json)|docs/keyboard/(bridges|layers|parse_karabiner|config)\.py|docs/keyboard/tools/gen_layers\.py)$
+        files: ^(karabiner/(layers\.toml|layers\.raw/.*|rules/.*\.json)|docs/keyboard/(bridges|layers|parse_karabiner|config)\.py|docs/keyboard/tools/gen_layers\.py)$
         stages: [pre-commit]
       - id: constants
         name: constants.env fits its schema, loaders agree, no unread or unknown keys, no new hardcoded private values

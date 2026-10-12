@@ -1,0 +1,32 @@
+[
+    {
+        "from": {
+            "key_code": "tab"
+        },
+        "parameters": {
+            "basic.to_if_alone_timeout_milliseconds": 150
+        },
+        "to": [
+            {
+                "set_variable": {
+                    "name": "tab_modifier",
+                    "value": 1
+                }
+            }
+        ],
+        "to_after_key_up": [
+            {
+                "set_variable": {
+                    "name": "tab_modifier",
+                    "value": 0
+                }
+            }
+        ],
+        "to_if_alone": [
+            {
+                "key_code": "tab"
+            }
+        ],
+        "type": "basic"
+    }
+]

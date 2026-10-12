@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate karabiner/rules/07…17 (the Hyper layers).
+"""Generate every karabiner/rules file that has a table in layers.toml (all but 00, 04, 26, 29, 32).
 
 Inputs: karabiner/layers.toml (layer tables + [slots]), karabiner/layers.raw/*.json.
 
@@ -41,6 +41,14 @@ def drift(rules_dir=bridges.RULES_DIR, texts=None):
     return [stem for stem, text in texts.items() if _on_disk(rules_dir, stem) != text]
 
 
+def orphans(rules_dir=bridges.RULES_DIR, texts=None):
+    """Rule files nothing accounts for. Karabiner would still load them, so a table deleted
+    from layers.toml has to take its file with it."""
+    texts = render() if texts is None else texts
+    on_disk = {os.path.splitext(name)[0] for name in os.listdir(rules_dir) if name.endswith(".json")}
+    return sorted(on_disk - set(texts) - set(layers.HAND_WRITTEN))
+
+
 def _karabiner_lint(paths):
     cli = shutil.which("karabiner_cli")
     if not cli:
@@ -62,6 +70,10 @@ def main():
     except ValueError as e:
         sys.exit(f"gen_layers: {e}")
     stale = drift(args.rules_dir, texts)
+    stray = orphans(args.rules_dir, texts)
+    if stray:
+        sys.exit("gen_layers: neither generated nor hand-written, delete or add to layers.HAND_WRITTEN: "
+                 + ", ".join(f"{stem}.json" for stem in stray))
 
     if args.check:
         for stem in stale:

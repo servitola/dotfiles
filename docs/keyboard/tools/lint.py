@@ -25,7 +25,7 @@ Checks per file in hammerspoon/Spoons/HotKeys.spoon/layout/60%/*.lua:
 Once per run (also under --skip-drift):
   S0  macos_shortcuts/shortcuts.toml loads (TOML syntax, row fields, canonical chords)
   B4  a karabiner/layers.raw/ manipulator that one layers.toml row could express
-  G1  karabiner/rules/07…17 differ from what gen_layers.py generates (hand edit, or not regenerated)
+  G1  a generated karabiner/rules file differs from what gen_layers.py generates (hand edit, or not regenerated)
   S2  a macos_shortcuts/shortcuts.toml [[app]] or [[menu]] chord is also an enabled [[system]] one
   S3  two [[app]]/[[menu]] rows on one chord that can be live at the same time
 

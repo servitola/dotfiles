@@ -27,7 +27,7 @@ EXCEPTIONS = {
     "num1": (("⇥v",), "01-tab-modifier"),
     "num2": (("⇥f",), "01-tab-modifier"),
     "num3": (("⇥t",), "01-tab-modifier"),
-    "num4": (("⌥4",), "31-alt-shortcuts-4"),
+    "num4": (("⌥4",), "18-hyper-misc"),
     "num8": (("⌃⌥ad", "⌃⌥←→"), "32-swap-sides"),
     "num9": (("⌥␣",), "26-right-option-space-punto"),
 }
@@ -95,6 +95,8 @@ _MEDIA_OUT = {
     "illumination_increment": "key_code", "illumination_decrement": "key_code",
     "play_or_pause": "consumer_key_code",
     "volume_increment": "consumer_key_code", "volume_decrement": "consumer_key_code",
+    "display_brightness_increment": "consumer_key_code", "display_brightness_decrement": "consumer_key_code",
+    "rewind": "consumer_key_code", "fast_forward": "consumer_key_code", "mute": "consumer_key_code",
 }
 _LEFT = {"shift": "left_shift", "ctrl": "left_control", "alt": "left_option", "cmd": "left_command"}
 _UNSIDED = {"shift": "shift", "control": "ctrl", "option": "alt", "command": "cmd"}
@@ -127,6 +129,8 @@ def _output_tokens():
             put(glyph, ("key_code", code))
     for name, field in _MEDIA_OUT.items():
         put(_CONSUMER_SYM[name].replace(" ", ""), (field, name))
+    # The one key with no glyph of its own: it shares `~` with grave_accent_and_tilde.
+    put("non_us_backslash", ("key_code", "non_us_backslash"))
     _output_tokens.cache = table
     return table
 

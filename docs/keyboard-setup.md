@@ -13,8 +13,8 @@ must become another key is Karabiner's; a result that needs state or knowledge
 | bind a chord to an app / window action / function | `hammerspoon/Spoons/HotKeys.spoon/layout/60%/<key>.lua` — a `{ chord = …, app\|fn = … }` line plus a row in the ASCII table | save; Hammerspoon reloads itself |
 | add a new function for a chord | `hammerspoon/actions/<group>.lua` → `register("name", function() … end)` | same |
 | change which app plays a role everywhere | `constants.env` → `APP_BROWSER=…`, `APP_IDE=…`, … | `hs -c 'hs.reload()' </dev/null` |
-| make Hyper + key send a key (arrow, PgUp, media) | `karabiner/layers.toml`, the layer's table, one line | `zsh karabiner/build.sh` |
-| a special Karabiner rule (gesture, mouse, shell) | `karabiner/rules/NN-*.json` by hand | same |
+| make a key or chord send another key, a sequence or a shell command | `karabiner/layers.toml`, one line in the matching table (grammar: `karabiner/AGENTS.md`) | `zsh karabiner/build.sh` |
+| a Karabiner rule the table cannot say (mouse, simultaneous keys, `to_if_alone`) | `karabiner/rules/NN-*.json` by hand, or `karabiner/layers.raw/` | same |
 | a macOS / Shottr / Maccy / menu shortcut | `macos_shortcuts/shortcuts.toml` | `python3 macos_shortcuts/shortcuts.py apply` |
 | a character on the right Option layer | `layer.overrides` in `hammerspoon/init.lua` (shape: `hammerspoon/Spoons/BirmanLayer.spoon/docs/configuration.md`) | `hs.reload()`; `python3 docs/keyboard/generate.py` |
 
@@ -27,7 +27,7 @@ The rule to remember: eight Hyper launcher letters are renamed to F-keys by
 keyboard column — `z=F13 · r f v = F14 F15 F16 · t g b = F17 F18 F19 · h=F20`,
 left modifiers ride along (`⇪⌘v` = `⌘F16`). `python3 docs/keyboard/tools/bridge.py`
 prints it. Check everything with `python3 docs/keyboard/tools/lint.py --strict`
-(pre-commit runs it). Never open: `karabiner/rules/07…17.json`, `karabiner.json`,
+(pre-commit runs it). Never open: `karabiner/rules/*.json` other than `00`, `04`, `26`, `29`, `32`; `karabiner.json`,
 `app_bundle_ids.lua`, `typography_table.lua` — all generated.
 
 ## Overview
@@ -48,7 +48,7 @@ The keyboard setup consists of three main components:
 
 ## Karabiner-Elements Configuration
 
-Source of truth: per-rule JSON files in `karabiner/rules/`. Each file is one logical concern (e.g. `05-grave-to-escape.json`, `30-fn-layer-mirror.json`); the Hyper layers `07`–`17` are generated from `karabiner/layers.toml` (see below). The combined `karabiner.json` consumed by Karabiner-Elements is **generated** — run `karabiner/build.sh` after editing rules.
+Source of truth: `karabiner/layers.toml` — one table per rule file in `karabiner/rules/`, which `gen_layers.py` writes. Five rules have no table and are JSON by hand: `00` keyboard lock, `04` Caps Lock → Hyper, `26` Punto, `29` mouse, `32` swap sides. The combined `karabiner.json` consumed by Karabiner-Elements is **generated** — run `karabiner/build.sh` after editing rules.
 
 The Hyper layers (`07`–`17`) are themselves generated: edit `karabiner/layers.toml` (one `key_code = "output"` table per layer) and run `karabiner/build.sh`, which calls `docs/keyboard/tools/gen_layers.py`; bridge slots come from its `[slots]` table, and what the table cannot express goes to `karabiner/layers.raw/<rule>.json` (see `karabiner/AGENTS.md`).
 
@@ -182,7 +182,7 @@ Anything with `(=F##)` goes through its bridge slot (see *F-key remaps*).
   source more than targets, so the spare covers the orphan and the right-hand block is fully
   typeable from the left. The layer takes over the macOS 🌐-shortcuts on those letters
   (🌐+E, +F, +C, +Q, +A, +D, +H) on purpose.
-  Rule: `karabiner/rules/30-fn-layer-mirror.json`.
+  Source: `[layer.fn]` in `karabiner/layers.toml`.
 - **`F13–F20` (Hyper slot letters)** — primary app launchers (see Hyper cheatsheet above).
 - **`⇧F##` / `⌘F##` / `⌃F##` / `⌥F##`** — the same slot letter under `⇪⇧` / `⇪⌘` / `⇪⌃` / `⇪⌥`.
 - **`⇧⌃⌥⌘` + arrow** — desktop focus sets, one chord each: `↑` work, `↓` only-work,
@@ -349,7 +349,7 @@ All under `docs/keyboard/tools/`. Run from the repo root.
 `fn` entries resolve through the action registry (`HotKeys.spoon/actions.lua`). Generic actions are registered by the Spoon itself; everything personal lives in `hammerspoon/actions/` and registers with `spoon.HotKeys:register(name, fn)`. Grouped by category:
 
 - **Window**: `window.left` `window.right` `window.fullscreen` `window.set_all_to_default` `window.half_left` `window.half_right` `window.top_60` `window.bottom_40` `window.center` `window.hide_current` `window.minimize_and_focus_next` `window.swap_sides` `window.screen_prev` `window.screen_next` `window.hide_all_except_work` `window.focus_work` `window.focus_personal` `window.focus_comms`
-  - `window.minimize_and_focus_next` is on `⌥4` (left ⌥; `karabiner/rules/31-alt-shortcuts-4.json`
+  - `window.minimize_and_focus_next` is on `⌥4` (left ⌥; `[layer.misc]` in `karabiner/layers.toml`
     sends `num4`, which the layout binds). It minimizes the focused window and moves focus on: to
     the app's next window if it has one, otherwise to the topmost window of another app. A
     fullscreen window leaves fullscreen first. `⌘H` is macOS's own Hide again (until 2026-10-11 the
