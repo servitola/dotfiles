@@ -166,7 +166,7 @@ CATEGORY_RULES = [
     ("📰 Фиды/дайджесты", ("feed", "youtrack", "digest")),
     ("🧠 RAG", ("rag",)),
     ("🔎 Insights", ("insight",)),
-    ("💼 Работа", ("work-snapshot", "serho-dep")),
+    ("💼 Работа", ("work-snapshot",)),
     ("🔧 Обслуживание", ("tmux", "reaper", "dep-bump", "prune")),
 ]
 
