@@ -518,8 +518,6 @@ cask "workflowy"
 cask "xcodes-app"
 # Web browser
 cask "yandex"
-# Yandex video calls and meetings platform
-cask "yandextelemost"
 # Terminal with AI and agent support, open-source Warp fork, nightly build
 cask "servitola/tap/zap-terminal", trusted: true
 # Web browser built weekly from source with auto-update disabled
