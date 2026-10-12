@@ -42,7 +42,6 @@ use — safe to ignore or delete).
 - **eza** — modern `ls` (Gruvbox colours), used by zsh aliases.
 - **btop** — resource-monitor TUI (occasional).
 - **eqmac** — system-audio equalizer; always running as a service.
-- **adguard** — system-wide ad blocker; always running (config excluded from the RAG index).
 - **noti** — desktop notification when a long command finishes.
 - **iina** — media player (Hyper+Y).
 - **docs** — human/agent reference docs (keyboard-setup, this map).
