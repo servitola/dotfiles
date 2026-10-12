@@ -115,7 +115,7 @@ else
 fi
 
 # ─────────────────────────────────────────────────────────────────────────────
-section "Claude sessions  (serho bot warm tmux — reaper health)"
+section "Claude sessions"
 CC_N=$(ps -axo comm 2>/dev/null | grep -c '^claude$')
 CC_GB=$(ps -axo rss,comm 2>/dev/null | awk '$2=="claude"{s+=$1} END{printf "%.2f",s/1024/1024}')
 if (( CC_N > 12 )); then
