@@ -26,6 +26,7 @@ return {
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --         ⇪⇧1   │     ⇧F1      │              │   │         Rider — external documentation
 --         ⇪⌃1   │     ⌃F1      │              │   │
+--               │              │              │ ⚙ │               — system 12 keyboard_access.toggle
 --         ⇪⌥1   │     ⌥F1      │              │   │         Rider — show 'Select in' dialog
 --         ⇪⌘1   │     ⌘F1      │              │   │        VSCode — show errors/warnings
 --         ⇧⌃1   │              │              │   │         Rider — toggle bookmark 1

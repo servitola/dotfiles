@@ -114,6 +114,14 @@
 <text x="171.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F2</text>
 <text x="193" y="105" text-anchor="end" class="key-label">2</text>
 <title>2: ⌘F2</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="51.0" y="114" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="166.0,114 176.0,114 171.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="167.0,114 175.0,114 171.0,110" fill="white"/>
+<use href="#icon-rider" x="61.0" y="123" width="13" height="13"/>
+<text x="77.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="108.5" y="134" font-size="8px" fill="#1d1d1f">Stop</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="202" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -149,6 +157,14 @@
 <text x="461.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F7</text>
 <text x="483" y="105" text-anchor="end" class="key-label">7</text>
 <title>7: ⌘F7</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="341.0" y="114" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="456.0,114 466.0,114 461.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="457.0,114 465.0,114 461.0,110" fill="white"/>
+<use href="#icon-rider" x="351.0" y="123" width="13" height="13"/>
+<text x="367.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="398.5" y="134" font-size="8px" fill="#1d1d1f">Find Usages in File</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="492" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -163,6 +179,14 @@
 <text x="577.0" y="92.0" text-anchor="middle" class="bind-label" fill="#a2845e" font-size="14px">⌘F9</text>
 <text x="599" y="105" text-anchor="end" class="key-label">9</text>
 <title>9: ⌘F9</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="457.0" y="114" width="240" height="34" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="572.0,114 582.0,114 577.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="573.0,114 581.0,114 577.0,110" fill="white"/>
+<use href="#icon-rider" x="467.0" y="123" width="13" height="13"/>
+<text x="483.0" y="134" font-size="9px" font-weight="600" fill="#007aff">Rider</text>
+<text x="514.5" y="134" font-size="8px" fill="#1d1d1f">Cancel</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="608" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -592,6 +616,8 @@
 <line x1="20" y1="460" x2="906" y2="460" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="468" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
 <text x="56" y="468" font-size="12px" fill="#a2845e">⌘F2</text>
+<use href="#icon-rider" x="291" y="456" width="14" height="14"/>
+<text x="309" y="468" font-size="11px" fill="#48484a">Rider — Stop</text>
 <line x1="20" y1="490" x2="906" y2="490" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="498" font-size="13px" font-weight="700" fill="#1d1d1f">3</text>
 <text x="56" y="498" font-size="12px" fill="#a2845e">⌘F3</text>
@@ -607,12 +633,16 @@
 <line x1="20" y1="610" x2="906" y2="610" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="618" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
 <text x="56" y="618" font-size="12px" fill="#a2845e">⌘F7</text>
+<use href="#icon-rider" x="291" y="606" width="14" height="14"/>
+<text x="309" y="618" font-size="11px" fill="#48484a">Rider — Find Usages in File</text>
 <line x1="20" y1="640" x2="906" y2="640" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="648" font-size="13px" font-weight="700" fill="#1d1d1f">8</text>
 <text x="56" y="648" font-size="12px" fill="#a2845e">⌘F8</text>
 <line x1="20" y1="670" x2="906" y2="670" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="678" font-size="13px" font-weight="700" fill="#1d1d1f">9</text>
 <text x="56" y="678" font-size="12px" fill="#a2845e">⌘F9</text>
+<use href="#icon-rider" x="291" y="666" width="14" height="14"/>
+<text x="309" y="678" font-size="11px" fill="#48484a">Rider — Cancel</text>
 <line x1="20" y1="700" x2="906" y2="700" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="708" font-size="13px" font-weight="700" fill="#1d1d1f">0</text>
 <text x="56" y="708" font-size="12px" fill="#a2845e">⌘F10</text>

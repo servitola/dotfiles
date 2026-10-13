@@ -101,7 +101,27 @@ def _passthrough_hyper():
     return {k for k in BUTTON_FILES if k not in mapped}
 
 
-def place(keys, variants=None, passthrough=None):
+_HYPER_GLYPH = {"hyper": "⇪", "shift": "⇧", "ctrl": "⌃", "alt": "⌥", "cmd": "⌘"}
+
+
+def _hyper_outputs():
+    """{canonical chord a Hyper-layer row emits: the row's chord text}: `F6` → `⇪6`, `⇧F6` →
+    `⇪⇧6`. The F-row keys themselves are media keys here, so an F-key shortcut is reached
+    through these rows and lives on them."""
+    out = {}
+    for (mods, phys), text in parse_karabiner.parse_karabiner().items():
+        if "hyper" not in mods or text == "passthrough" or phys not in BUTTON_FILES:
+            continue
+        try:
+            canonical = keycodes.canonical(_reorder(text))
+        except ValueError:
+            continue
+        chord = "".join(_HYPER_GLYPH[m] for m in ("hyper", "shift", "ctrl", "alt", "cmd") if m in mods)
+        out.setdefault(canonical, (phys, chord + _FILE_GLYPH.get(phys, phys)))
+    return out
+
+
+def place(keys, variants=None, passthrough=None, hyper_outputs=None):
     """(table file stem, chord text as the table spells it) for a canonical chord, or
     (None, reason) when the chord has no row to live on."""
     mods, key = keycodes.parse(keys)
@@ -114,7 +134,10 @@ def place(keys, variants=None, passthrough=None):
             return None, f"nothing emits {keys}"
         return pressed[-1], pressed
     if re.fullmatch(r"F\d+|num\d", key):
-        return None, f"{key} has only a placeholder file"
+        hyper_outputs = hyper_outputs if hyper_outputs is not None else _hyper_outputs()
+        if keys in hyper_outputs:
+            return hyper_outputs[keys]
+        return None, f"{key} is a media key here and no Hyper row sends {keys}"
     stem = _KM.get(key, key)
     if stem not in BUTTON_FILES or stem in STUB_FILES:
         return None, f"no table for key {key}"
@@ -138,15 +161,16 @@ def expected(machine_rows=None):
     """{file stem: {chord text: [(marker, description), …]}}, descriptions sorted."""
     variants = bridges.slot_variants()
     passthrough = _passthrough_hyper()
+    hyper_outputs = _hyper_outputs()
     files = {}
     for row in rows_with_keys(machine_rows):
-        stem, chord = place(row.keys, variants, passthrough)
+        stem, chord = place(row.keys, variants, passthrough, hyper_outputs)
         if stem is None:
             continue
         kind = "system" if isinstance(row, shortcuts.System) else "app" if isinstance(row, shortcuts.App) else "menu"
         files.setdefault(stem, {}).setdefault(chord, []).append((MARKERS[kind], describe(row)))
     for keys, texts in rider.expected().items():
-        stem, chord = place(keys, variants, passthrough)
+        stem, chord = place(keys, variants, passthrough, hyper_outputs)
         if stem is None:
             continue
         files.setdefault(stem, {}).setdefault(chord, []).extend((MARKERS["rider"], t) for t in texts)
@@ -160,13 +184,14 @@ def skipped(machine_rows=None):
     """[(keys, reason)] for the shortcuts `expected()` leaves out."""
     variants = bridges.slot_variants()
     passthrough = _passthrough_hyper()
+    hyper_outputs = _hyper_outputs()
     out = []
     for row in rows_with_keys(machine_rows):
-        stem, reason = place(row.keys, variants, passthrough)
+        stem, reason = place(row.keys, variants, passthrough, hyper_outputs)
         if stem is None:
             out.append((row.keys, f"{shortcuts.ident(row)}: {reason}"))
     for keys, texts in rider.expected().items():
-        stem, reason = place(keys, variants, passthrough)
+        stem, reason = place(keys, variants, passthrough, hyper_outputs)
         if stem is None:
             out.append((keys, f"{', '.join(texts)}: {reason}"))
     for action_id, ks in sorted(set(rider.skipped())):

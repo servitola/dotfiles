@@ -31,6 +31,7 @@ return {
 --         ⇪⌃2   │     ⌃F2      │              │ ✓ │              — move focus to the menu bar
 --         ⇪⌥2   │     ⌥F2      │              │   │          Fork — show commit changes
 --         ⇪⌘2   │     ⌘F2      │              │   │
+--               │              │              │ ℝ │         Rider — Stop
 --         ⇧⌃2   │              │              │   │         Rider — toggle bookmark 2
 --         ⇧⌥2   │              │ ¹⁄₂  ¹⁄₂  ί  │   │ VoiceInk
 { chord = "⇧⌥2",                            app = "VoiceInk" },

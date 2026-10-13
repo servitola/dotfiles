@@ -512,8 +512,8 @@ def main():
     if args.project:
         skipped = projection.skipped()
         if skipped:
-            print(f"  {len(skipped)} shortcuts have no table row to live on, as expected: F1–F12 (placeholder "
-                  f"files), 🌐 chords, keys without a file (↖ ↘ \\), numpad operators — "
+            print(f"  {len(skipped)} shortcuts have no table row to live on, as expected: 🌐 chords, "
+                  f"keys without a file (↖ ↘ \\), numpad operators — "
                   "`normalize.py --project --skipped` lists them", file=sys.stderr)
         if args.skipped:
             for keys, why in skipped:

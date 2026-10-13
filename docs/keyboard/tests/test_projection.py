@@ -27,7 +27,12 @@ def test_place_spells_four_modifiers_as_hyper_when_the_layer_passes_the_key():
 
 def test_place_skips_what_the_tables_cannot_hold():
     assert projection.place("🌐⌃f")[0] is None
-    assert projection.place("⌃F1")[0] is None
+    assert projection.place("num0")[0] is None
+
+
+def test_place_puts_an_f_key_shortcut_on_the_hyper_row_that_sends_it():
+    assert projection.place("⇧F6") == ("6", "⇪⇧6")
+    assert projection.place("⌥F7") == ("7", "⇪⌥7")
 
 
 def test_describe_each_row_kind():

@@ -524,6 +524,7 @@
 <line x1="20" y1="430" x2="906" y2="430" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="438" font-size="13px" font-weight="700" fill="#1d1d1f">1</text>
 <text x="56" y="438" font-size="12px" fill="#a2845e">⌃F1</text>
+<text x="291" y="438" font-size="11px" fill="#48484a">system 12 keyboard_access.toggle</text>
 <line x1="20" y1="460" x2="906" y2="460" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="468" font-size="13px" font-weight="700" fill="#1d1d1f">2</text>
 <text x="56" y="468" font-size="12px" fill="#a2845e">⌃F2</text>

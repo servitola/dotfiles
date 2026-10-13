@@ -8,6 +8,7 @@ return {
 --           3   │              │      3       │   │       YouTube — navigate to 30% of video
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪3   │      F3      │              │ ✓ │              — find next (in file)
+--               │              │              │ ℝ │         Rider — Find Next / Move to Next Occurrence
 --          ⇧3   │              │ #    №    #  │   │
 --          ⌃3   │              │              │   │        VSCode — go to tab 3
 --          ⌥3   │      ⌘n      │              │ ✓ │              — new window

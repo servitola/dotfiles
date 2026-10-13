@@ -113,9 +113,10 @@ A bridged chord lands on the pressed spelling (`⌥F16` → `⇪⌥v`), and four
 Hyper layer passes that key through (Day One's `⇧⌃⌥⌘j` sits on `⇪j`). Hand-written lines carry no
 marker and are never touched; the projected ones are replaced on every run, so edit the source (the
 app, System Settings, Rider's Settings ▸ Keymap) and let `up` carry it over. Lint `P1` fails when the
-marked lines differ from their sources. Not projected: `🌐` chords (no fn rows in the tables), F1–F12
-(placeholder files Hammerspoon never loads) and Rider keys the chord grammar has no glyph for (numpad
-operators); `--project` lists them. The rules live in `docs/keyboard/projection.py`.
+marked lines differ from their sources. An F-key shortcut lands on the Hyper row that sends that key
+(`⇧F6` on `⇪⇧6`): the F-row itself is media keys here. Not projected: `🌐` chords (no fn rows in the
+tables), keys without a file (Home, End, `\`) and Rider keys the chord grammar has no glyph for (numpad
+operators); `--project` counts them, `--project --skipped` lists them. The rules live in `docs/keyboard/projection.py`.
 
 **Rider.** `python3 docs/keyboard/rider.py capture` copies the active keymap from
 `~/Library/Application Support/JetBrains/Rider*/keymaps/` into `jetbrains rider/keymap.xml`
