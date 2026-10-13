@@ -459,6 +459,8 @@ def main():
                     help="insert ASCII rows for active chords lacking docs")
     ap.add_argument("--project", action="store_true",
                     help="refresh the ⚙ / ◆ lines from macos_shortcuts/shortcuts.toml")
+    ap.add_argument("--skipped", action="store_true",
+                    help="with --project: list every shortcut that has no table row")
     ap.add_argument("--check", action="store_true",
                     help="don't write; exit 1 if any file would change (CI mode)")
     args = ap.parse_args()
@@ -508,8 +510,14 @@ def main():
     else:
         print("all files already canonical")
     if args.project:
-        for keys, why in projection.skipped():
-            print(f"  not projected: {keys} ({why})", file=sys.stderr)
+        skipped = projection.skipped()
+        if skipped:
+            print(f"  {len(skipped)} shortcuts have no table row to live on, as expected: F1–F12 (placeholder "
+                  f"files), 🌐 chords, keys without a file (↖ ↘ \\), numpad operators — "
+                  "`normalize.py --project --skipped` lists them", file=sys.stderr)
+        if args.skipped:
+            for keys, why in skipped:
+                print(f"  not projected: {keys} ({why})", file=sys.stderr)
 
 
 if __name__ == "__main__":
