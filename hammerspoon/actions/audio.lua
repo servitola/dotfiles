@@ -1,6 +1,6 @@
 local notify = require("notify")
 
--- The F5 key (the F-row is Karabiner's; it passes f5 through) mutes the default microphone.
+-- The F5 key itself (the F-row is Karabiner's; it sends num5 for it, ⇪5 stays F5) mutes the default microphone.
 -- The state is read from the device every time, so a new default device (AirPods) is never
 -- reported wrong. While muted a banner stays on screen (glasswings `persistent`, same id so
 -- the unmute rewrites it in place) and a 🎤✕ menu-bar item unmutes on click.

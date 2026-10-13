@@ -20,6 +20,7 @@ EXCEPTIONS = {
     "num2": (("⇥f",), "01-tab-modifier"),
     "num3": (("⇥t",), "01-tab-modifier"),
     "num4": (("⌥4",), "18-hyper-misc"),
+    "num5": (("F5",), "18-hyper-misc"),  # the F-row key itself (the mic key); ⇪5 still sends F5
     "num8": (("⌃⌥ad", "⌃⌥←→"), "32-swap-sides"),
     "num9": (("⌥␣",), "26-right-option-space-punto"),
 }
@@ -56,6 +57,8 @@ def parse_from(chord):
     mods, rest = _split_mods(chord, FROM_MODS)
     if mods is None:
         raise ValueError(f"modifiers of `{chord}` are not in ⇪⇧⌃⌥⌘ order")
+    if re.fullmatch(r"F\d+", rest):  # an F-row key pressed as itself
+        return mods, (rest.lower(),)
     if not 1 <= len(rest) <= 2 or any(c not in keys_by_glyph for c in rest):
         raise ValueError(f"`{chord}` is not a modifier prefix plus one or two key glyphs")
     return mods, tuple(keys_by_glyph[c] for c in rest)
@@ -111,10 +114,10 @@ def _render_from(fr, via, rule, conditions=()):
     plain = mandatory - _HYPER if _HYPER <= mandatory else mandatory
     side = "right" if any(m.startswith("right_") for m in plain) else None
     codes = [s["key_code"] for s in fr["simultaneous"]] if "simultaneous" in fr else [fr["key_code"]]
-    unknown = [c for c in codes if c not in _TO_PHYS]
+    unknown = [c for c in codes if c not in _TO_PHYS and not re.fullmatch(r"f\d+", c)]
     if unknown:
         raise ValueError(f"{rule}: no physical key for {unknown}")
-    keys = "".join(key_display.get(_TO_PHYS[c], _TO_PHYS[c]) for c in codes)
+    keys = "".join(c.upper() if re.fullmatch(r"f\d+", c) else key_display.get(_TO_PHYS[c], _TO_PHYS[c]) for c in codes)
     return _mods_text(_from_mods_to_layer(mandatory) | tab) + keys, side
 
 

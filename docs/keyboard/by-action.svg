@@ -652,7 +652,7 @@
 <text x="268" y="2319.0" font-size="13px" fill="#86868b">→</text>
 <text x="298" y="2319.0" font-size="13px" font-weight="500" fill="#ff9500">Audio Ext</text>
 <line x1="48" y1="2329" x2="932" y2="2329" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>
-<rect x="78" y="2334.0" width="28" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="92.0" y="2349.0" text-anchor="middle" font-size="11px" font-weight="500" fill="#1d1d1f">F5</text>
+<rect x="78" y="2334.0" width="28" height="22" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.7"/><text x="92.0" y="2349.0" text-anchor="middle" font-size="11px" font-weight="500" fill="#1d1d1f">f5</text>
 <text x="268" y="2349.0" font-size="13px" fill="#86868b">→</text>
 <text x="298" y="2349.0" font-size="13px" font-weight="500" fill="#ff9500">Mic mute</text>
 <line x1="48" y1="2359" x2="932" y2="2359" stroke="#d1d1d6" stroke-width="0.4" stroke-dasharray="2,3"/>

@@ -58,7 +58,7 @@ Caps Lock sends Right Shift + Right Command + Right Control + Right Option simul
 ### F-key remaps
 `hs.hotkey` cannot tell `⇪v` from `⇪⌘v` (both carry ⌘), so the eight Hyper letters Hammerspoon launches from and that have left-modifier variants — `z r f v t g b h` — are renamed by Karabiner to an F-key, the letter's **slot**. Slots follow the left-hand keyboard columns, left to right, top to bottom: `q a z` → `z = F13`; `r f v` → `F14 F15 F16`; `t g b` → `F17 F18 F19`; `y h n` → `h = F20`. Every Hyper layer sends `⇪ [+left modifiers] X` as `[same modifiers] slot(X)` — `⇪v` → `F16`, `⇪⌘v` → `⌘F16`, `⇪⇧t` → `⇧F17` — unless `layers.toml` (or `hand/raw/`) maps that letter in that layer itself (`⇪⌘f` → `⌘o`). A new variant therefore needs only the Lua binding. Chords without Hyper (`⌃⌥⌘h`, `⇧⌃⌥⌘←`) and `⇪⇧␣` are bound directly.
 
-Presses `hs.hotkey` cannot see keep a keypad code: `⌃⌥a+d` / `⌃⌥←+→` (swap windows) → `num8`, right `⌥␣` (Punto) → `num9`, the Tab layer's `⇥v` / `⇥f` / `⇥t` (YouTube, translate to Russian, window to TV) → `num1` / `num2` / `num3`, and left `⌥4` (minimize window, focus next) → `num4`; `num0` and `num5`–`num7` stay free. The UGREEN mouse's held button 5 sends `F16`, the same as `⇪v`.
+Presses `hs.hotkey` cannot see keep a keypad code: `⌃⌥a+d` / `⌃⌥←+→` (swap windows) → `num8`, right `⌥␣` (Punto) → `num9`, the Tab layer's `⇥v` / `⇥f` / `⇥t` (YouTube, translate to Russian, window to TV) → `num1` / `num2` / `num3`, left `⌥4` (minimize window, focus next) → `num4`, and the F5 key (microphone mute) → `num5`; `num0`, `num6` and `num7` stay free. The UGREEN mouse's held button 5 sends `F16`, the same as `⇪v`.
 
 - `python3 docs/keyboard/tools/bridge.py` prints every slot with the chord and the layout binding on each code, the two exceptions, and the free codes.
 - Lint: `B2` fails when a layout binds an F13–F20/keypad code that is neither a slot variant nor `num8`/`num9`; `B4` warns when a `hand/raw/` manipulator would fit the table; `G1` fails when the generator rejects `layers.toml`, `G2` on a manipulator that can never fire.
@@ -185,9 +185,10 @@ Anything with `(=F##)` goes through its bridge slot (see *F-key remaps*).
   (🌐+E, +F, +C, +Q, +A, +D, +H) on purpose.
   Source: `[layer.fn]` in `karabiner/layers.toml`.
 - **The F-row** is Karabiner's (`[layer.f_row]` in `layers.toml`): brightness, Mission Control, Spotlight,
-  sleep, media. `F5`, the microphone key, passes through to Hammerspoon, which mutes / unmutes the
-  default input device with a banner and keeps a `🎤✕` item in the menu bar while muted (click it
-  or press `F5` again). The state is read from the device, so a new default microphone shows right.
+  sleep, media. `F5`, the microphone key, is sent as `num5`, which Hammerspoon binds to mute / unmute the
+  default input device: a banner stays up while muted, a `🎤✕` item sits in the menu bar (click it
+  or press `F5` again). Only the physical key: `⇪5` still sends `F5` to the app. The state is read
+  from the device, so a new default microphone shows right.
 - **`F13–F20` (Hyper slot letters)** — primary app launchers (see Hyper cheatsheet above).
 - **`⇧F##` / `⌘F##` / `⌃F##` / `⌥F##`** — the same slot letter under `⇪⇧` / `⇪⌘` / `⇪⌃` / `⇪⌥`.
 - **`⇧⌃⌥⌘` + arrow** — desktop focus sets, one chord each: `↑` work, `↓` only-work,

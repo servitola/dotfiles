@@ -6,9 +6,8 @@ return {
 --
 --———————— chord ┬  karabiner   ┬ en | ru | el ┬ G ┬——————————— app — function ————————————————————————————————————
 --           5   │              │      5       │   │       YouTube — navigate to 50% of video
---          F5   │      F5      │              │   │   Hammerspoon — mic: mute / unmute (the F-row key itself)
---               │              │              │ℝ! │         Rider — Copy…
-{ chord = "F5",                             fn = "audio.mic_toggle", over = "Rider" },
+--          F5   │     num5     │              │   │   Hammerspoon — mic: mute / unmute (the F-row key itself; ⇪5 is still F5)
+{ chord = "num5",                           fn = "audio.mic_toggle" },
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
 --          ⇪5   │      F5      │              │   │
 --          ⇧5   │              │      %       │   │
