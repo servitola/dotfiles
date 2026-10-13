@@ -2,9 +2,9 @@
 -- (writes JSON to ~/.glasswings.sock) which renders a Tahoe Liquid Glass
 -- banner via the resident Swift daemon.
 --
--- The daemon lives in its own project — https://github.com/servitola/glasswings.
--- Install it once via `~/projects/glasswings/install.sh`; that drops the
--- CLI at ~/.local/bin/glasswings-send and registers a LaunchAgent.
+-- The daemon lives in its own project — https://github.com/servitola/glasswings —
+-- and is installed by the `servitola/tap/glasswings` cask (homebrew/brewfile): the app,
+-- its LaunchAgent, and the CLI as a Homebrew binary artifact in /opt/homebrew/bin.
 --
 -- Usage:
 --   local notify = require("notify")
@@ -21,7 +21,7 @@
 
 local M = {}
 
-local GLASSWINGS_SEND = os.getenv("HOME") .. "/.local/bin/glasswings-send"
+local GLASSWINGS_SEND = "/opt/homebrew/bin/glasswings-send"
 
 function M.show(opts)
     opts = opts or {}
