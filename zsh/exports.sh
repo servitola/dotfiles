@@ -4,12 +4,12 @@
 # PATH is set in zprofile.sh (after macOS path_helper reorders it)
 # =============================================================================
 
-# Guard: skip if already loaded
+# Before the guard: a shell born from an older one inherits the guard and would
+# never see a constant added since — `up` in a long-lived terminal or tmux died on one.
+source ~/projects/dotfiles/constants/load.zsh
+
 [[ -n "$_EXPORTS_LOADED" ]] && return 0
 export _EXPORTS_LOADED=1
-
-# Constants of this machine (paths, chat ids, chosen apps) — see constants/AGENTS.md
-source ~/projects/dotfiles/constants/load.zsh
 
 export EDITOR='code'
 export ZSH=~/.oh-my-zsh
