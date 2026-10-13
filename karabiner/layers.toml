@@ -472,7 +472,7 @@ grave_accent_and_tilde = "⎋"
 "⌃grave_accent_and_tilde" = "⌃⎋"
 "⌥⌘non_us_backslash" = "⌥⌘⎋"
 "⌥⌘grave_accent_and_tilde" = "⌥⌘⎋"
-"⇧grave_accent_and_tilde" = "⇧⎋"
+"⇧(⌃⌥⌘)grave_accent_and_tilde" = "⇧⎋"  # ANSI boards: ⌃⇧` must reach ⇧⌃⎋ (Activity Monitor) like the ISO key above
 
 [layer.misc]
 rule = "18-hyper-misc"
