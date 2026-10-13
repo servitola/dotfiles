@@ -184,6 +184,10 @@ Anything with `(=F##)` goes through its bridge slot (see *F-key remaps*).
   typeable from the left. The layer takes over the macOS 🌐-shortcuts on those letters
   (🌐+E, +F, +C, +Q, +A, +D, +H) on purpose.
   Source: `[layer.fn]` in `karabiner/layers.toml`.
+- **The F-row** is Karabiner's (`[layer.f_row]` in `layers.toml`): brightness, Mission Control, Spotlight,
+  sleep, media. `F5`, the microphone key, passes through to Hammerspoon, which mutes / unmutes the
+  default input device with a banner and keeps a `🎤✕` item in the menu bar while muted (click it
+  or press `F5` again). The state is read from the device, so a new default microphone shows right.
 - **`F13–F20` (Hyper slot letters)** — primary app launchers (see Hyper cheatsheet above).
 - **`⇧F##` / `⌘F##` / `⌃F##` / `⌥F##`** — the same slot letter under `⇪⇧` / `⇪⌘` / `⇪⌃` / `⇪⌥`.
 - **`⇧⌃⌥⌘` + arrow** — desktop focus sets, one chord each: `↑` work, `↓` only-work,

@@ -16,7 +16,7 @@ FN_LABELS = {  # fn_name → short display label
     "audio.marshall":"Marshall","audio.connect_marshall":"Marshall",
     "system_health":"Sys Health","clipboard_llm":"Clip LLM","screenshot_ai":"AI Screen",
     "hammerspoon_reload":"Reload","wallpaper_refresh":"Wallpaper",
-    "paste_bypass":"Paste Raw","press_return":"Enter","browser_search_selected":"Search Sel",
+    "audio.mic_toggle":"Mic mute","paste_bypass":"Paste Raw","press_return":"Enter","browser_search_selected":"Search Sel",
     "info.show_shortcuts":"Shortcuts","set_secondary_layout":"Layout 2",
     "set_primary_layout":"Layout 1","vscode.dotfiles":"VS Dotfiles",
     "fork.dotfiles":"Fork Dots","fork.work":"Fork Work",
