@@ -57,17 +57,29 @@
   <action id="Annotate">
     <keyboard-shortcut first-keystroke="ctrl a" />
   </action>
+  <action id="AutoIndentLines">
+    <keyboard-shortcut first-keystroke="shift ctrl meta i" />
+  </action>
   <action id="BuildSolutionAction">
-    <keyboard-shortcut first-keystroke="shift meta F9" />
+    <keyboard-shortcut first-keystroke="shift meta f9" />
   </action>
   <action id="BuildStartupProject">
     <keyboard-shortcut first-keystroke="alt b" />
+  </action>
+  <action id="CallHierarchy">
+    <keyboard-shortcut first-keystroke="shift ctrl meta h" />
   </action>
   <action id="CancelBuildAction">
     <keyboard-shortcut first-keystroke="meta f9" />
     <keyboard-shortcut first-keystroke="ctrl q" />
   </action>
   <action id="ChangesView.SetDefault" />
+  <action id="ChooseDebugConfiguration">
+    <keyboard-shortcut first-keystroke="shift ctrl meta d" />
+  </action>
+  <action id="ChooseRunConfiguration">
+    <keyboard-shortcut first-keystroke="shift ctrl meta r" />
+  </action>
   <action id="CloseAllEditorsButActive">
     <keyboard-shortcut first-keystroke="shift meta w" />
   </action>
@@ -111,6 +123,9 @@
   <action id="EditorLineStart">
     <keyboard-shortcut first-keystroke="home" />
     <keyboard-shortcut first-keystroke="meta left" />
+  </action>
+  <action id="EditorNextWord">
+    <keyboard-shortcut first-keystroke="alt right" />
   </action>
   <action id="EditorRight">
     <keyboard-shortcut first-keystroke="right" />
@@ -164,6 +179,9 @@
   </action>
   <action id="IntentionActionAsAction_com.intellij.ml.llm.intentions.chat.AIAssistantIntention">
     <keyboard-shortcut first-keystroke="alt back_slash" />
+  </action>
+  <action id="IntroduceVariable">
+    <keyboard-shortcut first-keystroke="ctrl alt v" />
   </action>
   <action id="List-selectPreviousColumn">
     <keyboard-shortcut first-keystroke="left" />
@@ -229,6 +247,18 @@
     <keyboard-shortcut first-keystroke="shift meta t" />
   </action>
   <action id="Rerun" />
+  <action id="ResizeToolWindowDown">
+    <keyboard-shortcut first-keystroke="shift ctrl meta down" />
+  </action>
+  <action id="ResizeToolWindowLeft">
+    <keyboard-shortcut first-keystroke="shift ctrl meta left" />
+  </action>
+  <action id="ResizeToolWindowRight">
+    <keyboard-shortcut first-keystroke="shift ctrl meta right" />
+  </action>
+  <action id="ResizeToolWindowUp">
+    <keyboard-shortcut first-keystroke="shift ctrl meta up" />
+  </action>
   <action id="ResourceExplorer.show" />
   <action id="RestartIde">
     <keyboard-shortcut first-keystroke="shift ctrl alt close_bracket" second-keystroke="shift ctrl alt close_bracket" />
@@ -277,6 +307,9 @@
     <keyboard-shortcut first-keystroke="ctrl meta e" />
     <keyboard-shortcut first-keystroke="ctrl meta l" />
   </action>
+  <action id="ShowFilterPopup">
+    <keyboard-shortcut first-keystroke="shift ctrl meta f" />
+  </action>
   <action id="ShowPopupMenu">
     <keyboard-shortcut first-keystroke="shift ctrl i" />
   </action>
@@ -289,6 +322,7 @@
   </action>
   <action id="TodoViewGroupByFlattenPackage" />
   <action id="ToggleBookmark" />
+  <action id="ToggleRenderedDocPresentation" />
   <action id="ToolWindowsGroup">
     <keyboard-shortcut first-keystroke="alt w" />
   </action>
@@ -315,44 +349,10 @@
     <keyboard-shortcut first-keystroke="shift ctrl g" />
   </action>
   <action id="Vcs.UpdateProject" />
-  <action id="ChooseDebugConfiguration">
-    <keyboard-shortcut first-keystroke="shift ctrl meta d" />
-  </action>
-  <action id="ChooseRunConfiguration">
-    <keyboard-shortcut first-keystroke="shift ctrl meta r" />
-  </action>
-  <action id="CallHierarchy">
-    <keyboard-shortcut first-keystroke="shift ctrl meta h" />
-  </action>
-  <action id="AutoIndentLines">
-    <keyboard-shortcut first-keystroke="shift ctrl meta i" />
-  </action>
-  <action id="ShowFilterPopup">
-    <keyboard-shortcut first-keystroke="shift ctrl meta f" />
-  </action>
-  <action id="ResizeToolWindowLeft">
-    <keyboard-shortcut first-keystroke="shift ctrl meta LEFT" />
-  </action>
-  <action id="ResizeToolWindowRight">
-    <keyboard-shortcut first-keystroke="shift ctrl meta RIGHT" />
-  </action>
-  <action id="ResizeToolWindowUp">
-    <keyboard-shortcut first-keystroke="shift ctrl meta UP" />
-  </action>
-  <action id="ResizeToolWindowDown">
-    <keyboard-shortcut first-keystroke="shift ctrl meta DOWN" />
+  <action id="VcsShowNextChangeMarker">
+    <keyboard-shortcut first-keystroke="ctrl meta alt down" />
   </action>
   <action id="VcsShowPrevChangeMarker">
-    <keyboard-shortcut first-keystroke="ctrl alt meta UP" />
-  </action>
-  <action id="VcsShowNextChangeMarker">
-    <keyboard-shortcut first-keystroke="ctrl alt meta DOWN" />
-  </action>
-  <action id="EditorNextWord">
-    <keyboard-shortcut first-keystroke="alt RIGHT" />
-  </action>
-  <action id="ToggleRenderedDocPresentation" />
-  <action id="IntroduceVariable">
-    <keyboard-shortcut first-keystroke="ctrl alt v" />
+    <keyboard-shortcut first-keystroke="ctrl meta alt up" />
   </action>
 </keymap>
