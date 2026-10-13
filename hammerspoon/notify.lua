@@ -36,6 +36,7 @@ function M.show(opts)
     if opts.symbolColor then payload.symbolColor = opts.symbolColor end
     if opts.animate ~= nil then payload.animate  = opts.animate end
     if opts.id          then payload.id          = opts.id end
+    if opts.persistent ~= nil then payload.persistent = opts.persistent end  -- no auto-dismiss; the same id with persistent=false ends it
     if opts.symbolBefore      then payload.symbolBefore      = opts.symbolBefore end
     if opts.symbolBeforeColor then payload.symbolBeforeColor = opts.symbolBeforeColor end
     if opts.shape             then payload.shape             = opts.shape end

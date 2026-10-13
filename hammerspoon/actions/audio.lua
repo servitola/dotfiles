@@ -2,7 +2,8 @@ local notify = require("notify")
 
 -- The F5 key (the F-row is Karabiner's; it passes f5 through) mutes the default microphone.
 -- The state is read from the device every time, so a new default device (AirPods) is never
--- reported wrong; a 🎤✕ menu-bar item stays up while muted and unmutes on click.
+-- reported wrong. While muted a banner stays on screen (glasswings `persistent`, same id so
+-- the unmute rewrites it in place) and a 🎤✕ menu-bar item unmutes on click.
 local micBar
 local function showMic(device)
     local muted = device:inputMuted()
@@ -14,6 +15,15 @@ local function showMic(device)
     elseif micBar then
         micBar:removeFromMenuBar()
     end
+    notify.show({
+        id = "mic",
+        title = muted and "Mic muted" or "Mic live",
+        message = device:name() .. (muted and " — F5 to unmute" or ""),
+        symbol = muted and "mic.slash.fill" or "mic.fill",
+        tint = muted and "red" or "green",
+        persistent = muted,
+        duration = muted and nil or 1.5,
+    })
     return muted
 end
 
@@ -29,13 +39,6 @@ local function toggleMic()
         return
     end
     showMic(device)
-    notify.show({
-        title = muted and "Mic muted" or "Mic live",
-        message = device:name(),
-        symbol = muted and "mic.slash.fill" or "mic.fill",
-        tint = muted and "red" or "green",
-        duration = 1.5,
-    })
 end
 
 local micWatcher = hs.audiodevice.watcher
