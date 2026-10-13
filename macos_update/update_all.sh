@@ -66,8 +66,9 @@ source ~/projects/dotfiles/python/install-uv-tools.sh
 source ~/projects/dotfiles/python/install-tts.sh
 setopt err_exit pipe_fail
 
-print_task "Update Appium Plugins"
+print_task "Update Appium plugins and drivers"
 appium plugin update installed
+appium driver update installed
 
 print_task "Updating .NET tools"
 if command -v dotnet >/dev/null; then   # installed by hand, only where .NET work happens
