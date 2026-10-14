@@ -56,24 +56,6 @@ rm -f ~/.zcompdump* 2>/dev/null
 unsetopt nonomatch
 chmod -R go-w "$HOMEBREW_PREFIX/share" 2>/dev/null || true
 
-print_task "Keeping uv's code signature stable for TCC"
-# uv ships ad-hoc signed (no Team ID); TCC binds Full Disk Access to that
-# ad-hoc identity, so every `brew upgrade uv` silently revokes the FDA grant
-# a launchd service started through uv depends on for /Volumes/* and
-# ~/Documents etc. Re-signing with our own Developer ID gives it a team-anchored
-# designated requirement, which TCC keeps matching across upgrades — same
-# trick as the Transmission.app re-sign in ~/projects/forks/jobs/transmission/sync.sh.
-UV_BIN=$(readlink -f "$(command -v uv)" 2>/dev/null || true)
-# The team id is the part of the identity in brackets.
-UV_SIGN_TEAM=${${ME_SIGN_IDENTITY:?}##*\(}
-if [ "$ME_SIGN_IDENTITY" != NONE ] && [ -n "$UV_BIN" ] && [ -f "$UV_BIN" ]; then
-    if ! codesign -dv "$UV_BIN" 2>&1 | grep -q "TeamIdentifier=${UV_SIGN_TEAM%\)}"; then
-        codesign --force --sign "$ME_SIGN_IDENTITY" "$UV_BIN" 2>/dev/null \
-            && printf "  ${DIM}* uv re-signed with stable Developer ID (was ad-hoc after upgrade)${NC}\n" \
-            || printf "  ${DIM}* uv re-sign failed — Full Disk Access may need re-granting${NC}\n"
-    fi
-fi
-
 print_task "Flushing DNS cache"
 dscacheutil -flushcache
 sudo killall -HUP mDNSResponder 2>/dev/null </dev/null || true

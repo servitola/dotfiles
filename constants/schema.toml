@@ -1,7 +1,6 @@
 [keys]
 ME_NAME     = { type = "text", about = "account name, git author, GitHub handle", example = "servitola" }
 ME_EMAIL    = { type = "email", private = true, about = "git author email", example = "you@example.com" }
-ME_SIGN_IDENTITY = { type = "text", private = true, about = "codesign identity that keeps re-signed tools trusted across upgrades: Developer ID Application: Name (TEAMID)", example = "NONE" }
 ME_TZ       = { type = "timezone", unread = true, private = true, about = "home timezone for schedules and digests", example = "Europe/London" }
 ME_CITY     = { type = "text", unread = true, private = true, about = "home city, local spelling", example = "London" }
 ME_CITY_ENG = { type = "text", unread = true, private = true, about = "home city, English spelling", example = "London" }
