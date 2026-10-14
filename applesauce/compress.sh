@@ -5,18 +5,21 @@ source "${0:a:h}/targets.sh"
 
 COMPRESS_MIN_RATIO=0.9   # at applesauce's 0.95 the xattr overhead makes marginal files net larger
 
-GREEN=$'\e[0;92m' YELLOW=$'\e[0;33m' BLUE=$'\e[0;94m' BOLD=$'\e[1m' NC=$'\e[0m'
+GREEN=$'\e[0;92m' YELLOW=$'\e[0;33m' BLUE=$'\e[0;94m' DIM=$'\e[2m' BOLD=$'\e[1m' NC=$'\e[0m'
 
 _reclaimed=0 _touched=0 _blocked=0 _shown=0
 
 # Silent when nothing changed: the heading appears with the first line worth printing.
 _header() { (( _shown++ )) || printf "\n${BLUE}${BOLD}━━━ Static Data Compression (APFS/LZFSE) ━━━${NC}\n" }
-_row()  { _header; printf "  %-36s %7.2f GB  %b\n" "$1" "$(( $2 / 1e9 ))" "$3" }
-_warn() { _header; printf "  ${YELLOW}⚠ %-34s %s${NC}\n" "$1" "$2"; attention "compression of $1: $2" }
+# A live line on a terminal, erased afterwards: the run takes ~35 s and would look hung.
+_progress() { [[ -t 1 ]] && printf "\r\e[K  ${DIM}%s${NC}" "$1" }
+_row()  { _progress ""; _header; printf "  %-36s %7.2f GB  %b\n" "$1" "$(( $2 / 1e9 ))" "$3" }
+_warn() { _progress ""; _header; printf "  ${YELLOW}⚠ %-34s %s${NC}\n" "$1" "$2"; attention "compression of $1: $2" }
 attention() { print -r -- "$*" >> "${UP_ATTENTION:-/dev/null}" }
 
 _compress() {
     local target=$1 label=$2 out lg before after new
+    _progress "compressing $label…"
     out=$(applesauce compress -c lzfse -r "$COMPRESS_MIN_RATIO" "$target" 2>&1) \
         || { _warn "$label" "applesauce failed"; print -r -- "$out"; return }
     read -r lg before after new <<<"$(print -r -- "$out" | awk -F'[()]' '
@@ -55,6 +58,10 @@ done
 
 (( _blocked )) && _warn "$_blocked apps" "no write access: System Settings → Privacy & Security → App Management → this terminal"
 
+_progress ""
 if (( _touched )); then
     printf "  ${GREEN}${BOLD}✓ reclaimed %.2f GB${NC} in %d apps and folders\n" "$(( _reclaimed / 1e9 ))" "$_touched"
+elif [[ -z ${UP_ATTENTION:-} ]]; then
+    # inside `up` an unchanged run stays silent; run by hand it says it is done
+    printf "  ${GREEN}✓ nothing new to compress${NC}\n"
 fi
