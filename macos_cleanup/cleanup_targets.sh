@@ -139,6 +139,7 @@ if [ "$_DS_COUNT" -eq 0 ]; then
 elif [ "$_DS_EXIT" -eq 124 ]; then
     xargs -0 rm -f < "$_DS_TMPFILE" 2>/dev/null
     _DS_SIZE_KB=$(( _DS_COUNT * 4 ))
+    attention ".DS_Store sweep timed out, cleaned only part"
     spinner_stop "$_DS_LABEL: cleaned ($_DS_COUNT items, $(format_size $_DS_SIZE_KB)) (timed out, partial)"
 else
     xargs -0 rm -f < "$_DS_TMPFILE" 2>/dev/null

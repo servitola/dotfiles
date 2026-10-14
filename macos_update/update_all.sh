@@ -182,6 +182,7 @@ elif [[ -t 0 ]]; then
     zsh ~/projects/dotfiles/atuin/login.sh
 else
     printf "  ✗ atuin is not logged in: run zsh ~/projects/dotfiles/atuin/login.sh\n"
+    attention "atuin is not logged in: zsh ~/projects/dotfiles/atuin/login.sh"
 fi
 
 
@@ -203,7 +204,6 @@ python3 ~/projects/dotfiles/docs/keyboard/tools/normalize.py --project
 print_task "Setting macOS appearance"
 m appearance --highlightcolor grape
 
-print_section "Static Data Compression (APFS/LZFSE)"
 ~/projects/dotfiles/applesauce/compress.sh
 
 print_section "Security Guards"
@@ -217,6 +217,7 @@ if [[ "$screen_lock" == *"delay is immediate"* ]]; then
     echo "  ✓ immediate"
 else
     printf "  ⚠ %s — resetting to immediate\n" "${screen_lock##*] }"
+    attention "screen lock was not immediate (${screen_lock##*] }), reset"
     sysadminctl -screenLock immediate -password -
 fi
 
@@ -232,12 +233,14 @@ for key in ConfigDataInstall CriticalUpdateInstall; do
     setting=$(defaults read /Library/Preferences/com.apple.SoftwareUpdate "$key" 2>/dev/null) || continue
     if [[ "$setting" == 0 ]]; then
         printf "  ⚠ %s is 0 — security data will not install\n" "$key"
+        attention "XProtect: $key is 0, security data will not install"
     fi
 done
 xprotect_pending=$(softwareupdate -l --include-config-data 2>&1 | grep XProtect || true)
 if [[ -n "$xprotect_pending" ]]; then
     printf "  ⚠ installed %s, but pending:\n%s\n" "$(xprotect version 2>&1)" "$xprotect_pending"
     echo "    fix: sudo defaults write /Library/Preferences/com.apple.SoftwareUpdate ConfigDataInstall -bool true && sudo xprotect update"
+    attention "XProtect signatures are behind: an update is pending"
 else
     printf "  ✓ %s\n" "$(xprotect version 2>&1)"
 fi

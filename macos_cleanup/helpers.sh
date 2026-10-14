@@ -56,9 +56,13 @@ spinner_stop_error() {
     wait $_SPINNER_PID 2>/dev/null
     printf "\r${_S_CLR}  ${_S_YELLOW}* $1${_S_NC}\n"
     _SPINNER_PID=""
+    attention "$1"
 }
 
 # --- Utilities ---
+
+# One line for the «Требует внимания» summary that `up` prints at the end.
+attention() { print -r -- "$*" >> "${UP_ATTENTION:-/dev/null}" }
 
 format_size() {
     local kb=$1

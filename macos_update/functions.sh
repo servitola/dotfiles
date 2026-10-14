@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# One line for the «Требует внимания» summary that `up` prints at the end.
+attention() { print -r -- "$*" >> "${UP_ATTENTION:-/dev/null}" }
+
 # Remove macOS quarantine flags from applications and CLI cask binaries
 # Useful after `brew upgrade` to avoid repeated "App downloaded from internet" prompts.
 # CLI casks (codex, ngrok, ...) never land in /Applications — their binaries live in
