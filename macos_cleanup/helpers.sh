@@ -61,7 +61,7 @@ spinner_stop_error() {
 
 # --- Utilities ---
 
-# One line for the «Требует внимания» summary that `up` prints at the end.
+# One line for the «Needs attention» summary that `up` prints at the end.
 attention() { print -r -- "$*" >> "${UP_ATTENTION:-/dev/null}" }
 
 format_size() {
