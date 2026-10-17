@@ -20,7 +20,7 @@ export UP_ATTENTION=$(mktemp -t up-attention)
 _up_finish() {
     kill $_up_sudo_keeper 2>/dev/null
     if [[ -s $UP_ATTENTION ]]; then
-        echo "\n${YELLOW}${BOLD}━━━ Требует внимания ━━━${NC}"
+        echo "\n${YELLOW}${BOLD}━━━ Needs attention ━━━${NC}"
         sed 's/^/  • /' "$UP_ATTENTION"
     fi
     rm -f "$UP_ATTENTION"
