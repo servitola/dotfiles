@@ -4,7 +4,7 @@
 local powerWindows = {}
 
 powerWindows.name = "PowerWindows"
-powerWindows.version = "0.3.0"
+powerWindows.version = "0.4.0"
 powerWindows.author = "servitola"
 powerWindows.homepage = "https://github.com/servitola/PowerWindows.spoon"
 powerWindows.license = "MIT - https://opensource.org/licenses/MIT"
@@ -58,8 +58,8 @@ end
 
 --- PowerWindows:resolve([window]) -> table or false
 --- Method
---- `{ slot, source, keepAspect, device, popup }` for `window` (default:
---- focused), or false.
+--- `{ slot, source, keepAspect, device, popup, toolbar }` for `window`
+--- (default: focused), or false.
 function powerWindows:resolve(window)
     window = window or domain.query.focused()
     if not window or not window:application() then return false end

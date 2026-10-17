@@ -47,7 +47,8 @@ function rules.lookup(entries, info)
             if entry[2] == false then return false end
             return {
                 slot = entry[2], keepAspect = entry.keepAspect,
-                device = entry.device, popup = entry.popup, source = "catalog",
+                device = entry.device, popup = entry.popup,
+                toolbar = entry.toolbar, source = "catalog",
             }
         end
     end

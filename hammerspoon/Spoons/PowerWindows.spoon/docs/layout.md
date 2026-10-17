@@ -23,7 +23,7 @@ gap                    gap split
 | `main` | left edge to `split`, full height |
 | `side` | `split` to right edge, top to `sideHeight` |
 | `corner` | under `side`, to the bottom edge |
-| `stack` | one window: `side`; two or more: split to right edge, full height, one cell each |
+| `stack` | the right column, in rows from the top right; one height for all, the largest that fits: one phone up to `device.maxHeight`, more phones smaller |
 | `top60` / `bottom40` | full width, divided at `topShare` |
 
 ## Settings
@@ -59,12 +59,16 @@ spoon.PowerWindows:configure{ gap = 8 }:start()
 
 ## Simulators: `device`
 
-iOS Simulator is sized off the screen, not the column, and overlaps `main`.
+In the right column simulators and emulators are `stack`: shapes kept, in rows from the top right, taller ones (Android Emulator with its toolbar) in the top row. A window that will not shrink so far takes more room to the left, over `main`, rather than covering another; the others then grow into the room left free, never further over `main`.
+
+iOS Simulator resizes only with **Window → Show Device Bezels** off; with bezels it keeps its size and is only moved. Android Emulator keeps room for its toolbar on the right.
+
+Moved to `main` or the whole screen, iOS Simulator is sized off the screen, not the column:
 
 | Setting | Default | Meaning |
 |---|---|---|
 | `device.width` | `0.4` | share of screen width |
-| `device.maxHeight` | `0.7` | cap, share of screen height; proportions kept |
+| `device.maxHeight` | `0.7` | cap, share of screen height; proportions kept; caps `stack` windows too |
 | `device.raise` | `0.1` | in `main` or whole screen: above center, share of height |
 
 ## Dialogs: `dialog`

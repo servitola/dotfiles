@@ -42,7 +42,7 @@ A background window stretched to the whole screen stays stretched. Minimized win
 - `main`: every app, unless told otherwise.
 - `side`: messengers.
 - `corner`: players and picture-in-picture.
-- `stack`: simulators. Two or more share the right column evenly.
+- `stack`: simulators. They share the right column in rows; the more there are, the smaller.
 
 Which app goes where: [apps.md](apps.md). Proportions: [layout.md](layout.md).
 

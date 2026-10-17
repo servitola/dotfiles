@@ -114,17 +114,196 @@ function geometry.devicePlace(config, screenFrame, aspect, slot)
     return { x = left, y = top, w = width, h = height }
 end
 
-function geometry.stackCells(config, screenFrame, count)
-    local column = geometry.rect(config, "column", screenFrame)
-    local _, gapY = geometry.gaps(config, screenFrame)
-    local between = screenFrame.h * gapY * 2
-    local height = (column.h - between * (count - 1)) / count
+-- A toolbar docked to the right of a window takes { width, height from the
+-- window's top } beside it. sizes: { w, h, toolbar }.
+local function cellsOf(sizes)
     local cells = {}
-    for index = 1, count do
-        local top = column.y + (index - 1) * (height + between)
-        cells[index] = { x = column.x, y = top, w = column.w, h = height }
+    for index, size in ipairs(sizes) do
+        local toolbar = size.toolbar or { 0, 0 }
+        cells[index] = {
+            w = size.w + toolbar[1], h = math.max(size.h, toolbar[2]),
+        }
     end
     return cells
+end
+
+
+-- Rows from the top, each filled from the right edge leftwards. Windows with
+-- a toolbar first, so they share rows, the rest in the given order. Not by
+-- current height: a window that grows would change rows on the next pass.
+-- Returns the windows' frames (the toolbar stays free beside each), the rows
+-- ({ top, height, members }) and whether everything fits the area, give or
+-- take `slack` points.
+local function shelves(area, sizes, betweenX, betweenY, slack)
+    slack = slack or 0
+    local cells = cellsOf(sizes)
+    local order = {}
+    for index in ipairs(sizes) do order[index] = index end
+    local function toolbarHeight(index)
+        return sizes[index].toolbar and sizes[index].toolbar[2] or 0
+    end
+    table.sort(order, function(first, second)
+        if toolbarHeight(first) ~= toolbarHeight(second) then
+            return toolbarHeight(first) > toolbarHeight(second)
+        end
+        return first < second
+    end)
+    local frames, rows, right = {}, {}, area.x + area.w
+    local x, row, fits = right, nil, true
+    for _, index in ipairs(order) do
+        local cell = cells[index]
+        if not row or (x < right and x - cell.w < area.x - slack) then
+            local top = row and row.top + row.height + betweenY or area.y
+            row = { top = top, height = 0, members = {} }
+            rows[#rows + 1], x = row, right
+        end
+        frames[index] = {
+            x = x - cell.w, y = row.top, w = sizes[index].w, h = sizes[index].h,
+        }
+        fits = fits and x - cell.w >= area.x - slack
+        x = x - cell.w - betweenX
+        row.height = math.max(row.height, cell.h)
+        row.members[#row.members + 1] = index
+    end
+    fits = fits
+        and (not row or row.top + row.height <= area.y + area.h + slack)
+    return frames, rows, fits
+end
+
+local function stackSpacing(config, screenFrame)
+    local gapX, gapY = geometry.gaps(config, screenFrame)
+    return screenFrame.w * gapX * 2, screenFrame.h * gapY * 2
+end
+
+-- Enough halvings to land within a fraction of a point on any screen.
+local SEARCH_STEPS = 40
+
+-- The largest value in [low, high] that `fits` accepts, for a monotonic test.
+local function largest(low, high, fits)
+    if fits(high) then return high end
+    for _ = 1, SEARCH_STEPS do
+        local middle = (low + high) / 2
+        if fits(middle) then low = middle else high = middle end
+    end
+    return low
+end
+
+-- One height for every window, the largest at which all of them fit the
+-- column: few windows stay large (up to device.maxHeight), many shrink.
+-- items: { aspect = height / width, toolbar }; returns their frames, or nil
+-- when nothing fits at any height (a toolbar taller than the column).
+function geometry.stackPlan(config, screenFrame, items)
+    local column = geometry.rect(config, "column", screenFrame)
+    local betweenX, betweenY = stackSpacing(config, screenFrame)
+    local function at(height)
+        local sizes = {}
+        for index, item in ipairs(items) do
+            sizes[index] = {
+                w = height / item.aspect, h = height, toolbar = item.toolbar,
+            }
+        end
+        return shelves(column, sizes, betweenX, betweenY)
+    end
+    local high = math.min(column.h, screenFrame.h * config.device.maxHeight)
+    local height = largest(0, high, function(candidate)
+        return select(3, at(candidate))
+    end)
+    if height > 0 then return (at(height)) end
+end
+
+-- share of the screen width the area grows by per try
+local WIDEN_STEP = 0.01
+-- points; an app rounding a planned size up must not cost a wider area
+local FIT_SLACK = 1
+
+-- The column, grown left over main only as far as the sizes need; past the
+-- left edge the rows that do not fit are pulled up and overlap.
+local function packed(config, screenFrame, sizes)
+    local column = geometry.rect(config, "column", screenFrame)
+    local betweenX, betweenY = stackSpacing(config, screenFrame)
+    local right = column.x + column.w
+    local leftmost =
+        screenFrame.x + screenFrame.w * edgesFor(config, screenFrame).left
+    local x = column.x
+    while true do
+        local area = { x = x, y = column.y, w = right - x, h = column.h }
+        local frames, rows, fits =
+            shelves(area, sizes, betweenX, betweenY, FIT_SLACK)
+        if fits then return frames, rows, area end
+        if x <= leftmost then
+            -- Below the screen a window would land on a display under it.
+            for _, frame in ipairs(frames) do
+                frame.y = math.max(
+                    area.y, math.min(frame.y, area.y + area.h - frame.h)
+                )
+            end
+            return frames, rows, area
+        end
+        x = math.max(leftmost, x - screenFrame.w * WIDEN_STEP)
+    end
+end
+
+-- Frames for the sizes the windows really took (an app has a minimum, some
+-- refuse any size). sizes: { w, h, toolbar }.
+function geometry.stackCells(config, screenFrame, sizes)
+    return (packed(config, screenFrame, sizes))
+end
+
+-- How much each resizable window of a row may grow: up to the row's height,
+-- the last row down to the bottom, and no wider than the area.
+local function rowFactors(rows, sizes, area, betweenX, cap)
+    local cells, factors = cellsOf(sizes), {}
+    for position, row in ipairs(rows) do
+        local limit = position == #rows
+            and area.y + area.h - row.top or row.height
+        local free = area.w - betweenX * (#row.members - 1)
+        local growable, factor = 0, math.huge
+        for _, index in ipairs(row.members) do
+            local size = sizes[index]
+            if size.fixed or size.h <= 0 then
+                free = free - cells[index].w
+            else
+                free = free - (cells[index].w - size.w)
+                growable = growable + size.w
+                factor = math.min(factor, limit / size.h, cap / size.h)
+            end
+        end
+        if growable > 0 then
+            factor = math.max(1, math.min(factor, free / growable))
+            for _, index in ipairs(row.members) do
+                if not sizes[index].fixed then factors[index] = factor end
+            end
+        end
+    end
+    return factors
+end
+
+-- Resizable windows grow into the holes the packing leaves, within the area
+-- the sizes already need: growing never takes more of main.
+-- sizes: { w, h, toolbar, fixed }; returns the new sizes.
+function geometry.stackGrow(config, screenFrame, sizes)
+    local _, rows, area = packed(config, screenFrame, sizes)
+    local betweenX, betweenY = stackSpacing(config, screenFrame)
+    local factors = rowFactors(
+        rows, sizes, area, betweenX, screenFrame.h * config.device.maxHeight
+    )
+    local function at(share)
+        local grown = {}
+        for index, size in ipairs(sizes) do
+            local scale = 1 + ((factors[index] or 1) - 1) * share
+            grown[index] = {
+                w = size.w * scale, h = size.h * scale, toolbar = size.toolbar,
+                fixed = size.fixed,
+            }
+        end
+        return grown
+    end
+    -- A grown window can sort into another row; then all grow less.
+    return at(largest(0, 1, function(share)
+        return select(
+            3, shelves(area, at(share), betweenX, betweenY, FIT_SLACK)
+        )
+    end))
 end
 
 function geometry.smallDialog(config, screenFrame, current)

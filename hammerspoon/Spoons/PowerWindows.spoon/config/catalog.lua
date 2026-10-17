@@ -14,6 +14,7 @@ return {
         "com.microsoft.teams2",
         "im.riot.app",
         "com.viber.osx",
+        "com.apple.Notes",
     },
 
     -- Corner of the right column, under `side`; proportions kept.
@@ -28,6 +29,7 @@ return {
         "com.runningwithcrayons.Alfred",
         "theboringteam.boringnotch",
         "com.servitola.polaska",
+        "app.glasswings",
     },
 
     -- The picture-in-picture window goes to the corner; the browser itself
@@ -59,7 +61,7 @@ return {
             keepAspect = true, device = true },
         { "*",                         "stack",
             title = "^Android Emulator",
-            sample = "Android Emulator - Pixel_8:5554" },
+            sample = "Android Emulator - Pixel_8:5554", toolbar = { 54, 534 } },
         { "com.apple.ActivityMonitor", "corner",
             title = "^CPU History$", sample = "CPU History" },
         { "com.apple.ActivityMonitor", "corner",

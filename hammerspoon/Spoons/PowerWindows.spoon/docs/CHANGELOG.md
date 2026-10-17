@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 — 2026-10-18
+
+- Simulators and emulators (`stack`) stand in rows from the top right of the right column; the more there are, the smaller. Shapes are kept. See [layout.md](layout.md).
+- A simulator that will not shrink so far takes room to the left, over `main`, instead of covering another; the others grow into the room left free.
+- iOS Simulator resizes only with Window → Show Device Bezels off; with bezels it is only moved.
+- Android Emulator keeps room for its toolbar. Catalog field `toolbar` for any app with a tool window docked to the right.
+- `device.maxHeight` caps `stack` windows too.
+- Catalog: Notes to the right column; Glasswings left alone.
+
 ## 0.3.0 — 2026-10-03
 
 - A chord pressed again does nothing. `cycle = true` restores the second option: left half, right half, native fullscreen. See [keys.md](keys.md).

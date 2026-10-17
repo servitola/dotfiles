@@ -180,6 +180,7 @@ return function(powerWindows, geometry, query)
     end
 
     function powerWindows:_place(window, resolved, slot, screen)
+        if resolved.slot == "stack" then self:_cancelStackTimers() end
         local config, screenFrame = self:_screenLayoutOf(window, screen)
         if not screenFrame then return end
         slot = slot or resolved.slot
@@ -189,12 +190,6 @@ return function(powerWindows, geometry, query)
             ))
         elseif resolved.device then
             self:_placeDevice(window, config, screenFrame, slot)
-        elseif slot == "stack" and resolved.keepAspect then
-            self:_fit(
-                window, geometry.rect(config, "side", screenFrame), "topLeft"
-            )
-        elseif slot == "stack" then
-            self:_set(window, geometry.rect(config, "side", screenFrame))
         elseif resolved.keepAspect then
             self:_fit(
                 window, geometry.rect(config, ASPECT_AREA[slot], screenFrame),

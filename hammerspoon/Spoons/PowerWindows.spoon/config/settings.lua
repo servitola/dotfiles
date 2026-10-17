@@ -55,9 +55,9 @@ return {
         "youtube", "youtu.be", "twitch", "vimeo", "rutube", "netflix",
     },
 
-    device = {            -- windows with device = true (iOS Simulator)
+    device = {            -- device = true (iOS Simulator) and stack windows
         width = 0.4,      -- share of screen; wider than the column on purpose
-        maxHeight = 0.7,  -- share of screen height, aspect kept
+        maxHeight = 0.7,  -- share of screen height, aspect kept; stack too
         raise = 0.1,      -- above center in main or full, share of height
     },
 

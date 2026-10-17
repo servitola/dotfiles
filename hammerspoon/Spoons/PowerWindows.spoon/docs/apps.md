@@ -9,7 +9,7 @@ Which window goes where, and how to change it.
 | `main` | big left area; default for every app |
 | `side` | right column, upper part |
 | `corner` | right column, under `side` |
-| `stack` | one window: like `side`; two or more: whole right column, split evenly |
+| `stack` | simulators: the right column in rows, shapes kept, smaller the more there are ([layout.md](layout.md#simulators-device)) |
 | `dialog` | top right corner, size kept when it fits |
 
 Proportions: [layout.md](layout.md). Bundle ID of an app:
@@ -54,6 +54,7 @@ A `special` entry; they are checked before the lists, first match wins:
 | `keepAspect` | resize without changing proportions |
 | `device` | phone-sized: `device` in [layout.md](layout.md) |
 | `popup` | floating player: focus sets keep it and minimize the app's other windows |
+| `toolbar` | `{ w, h }`: a tool window docked right of a `stack` window, `h` down from its top, kept free |
 
 Missing or wrong? One line, pull request: <https://github.com/servitola/PowerWindows.spoon>. Off: `catalog = false`.
 
@@ -121,7 +122,7 @@ First answer wins:
 6. catalog: slot
 7. `main`
 
-An override naming the catalog's slot keeps its `keepAspect`, `device`, `popup`. Check a window; `source` says who decided (`rule`, `override`, `catalog`, `dialog`, `default`):
+An override naming the catalog's slot keeps its `keepAspect`, `device`, `popup`, `toolbar`. Check a window; `source` says who decided (`rule`, `override`, `catalog`, `dialog`, `default`):
 
 ```lua
 hs.timer.doAfter(3, function() print(hs.inspect(spoon.PowerWindows:resolve())) end) -- switch to the window within 3 s
