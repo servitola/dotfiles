@@ -12,7 +12,8 @@ return {
 --          ⇪5   │      F5      │              │   │
 --          ⇧5   │              │      %       │   │
 --          ⌃5   │              │              │   │         Rider — go to Bookmark 5
---          ⌥5   │              │      ‰       │   │
+--          ⌥5   │              │      ‰       │   │   Hammerspoon — rec: call audio (mic + system + mix), again to stop
+{ chord = "⌥5",                             fn = "rec.audio" },
 --          ⌘5   │              │              │   │       Browser — Open 5th tab
 --               │              │              │   │      Telegram — focus 5th folder or chat
 --               │              │              │ ℝ │         Rider — Activate Problems View Tool Window

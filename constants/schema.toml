@@ -44,6 +44,7 @@ DIR_EXTERNAL     = { type = "dir", removable = true, about = "external drive", e
 DIR_CRON         = { type = "dir", about = "cron jobs repository (~/projects/cron)", example = "$HOME/projects/cron" }
 DIR_CRON_JOBS    = { type = "dir", about = "cron fragments", example = "$HOME/projects/cron/cron_jobs" }
 DIR_CRON_SCRIPTS = { type = "dir", about = "scripts the cron fragments run", example = "$HOME/projects/cron/scripts" }
+DIR_REC          = { type = "dir", about = "where rec saves call and screen recordings", example = "$HOME/Movies/rec" }
 DIR_RAG          = { type = "dir", about = "rag toolkit repository (~/projects/rag)", example = "$HOME/projects/rag" }
 DIR_LITELLM      = { type = "dir", about = "LiteLLM proxy and the TTS/STT shims (~/projects/services/litellm)", example = "$HOME/projects/services/litellm" }
 DIR_CLAUDE       = { type = "dir", unread = true, about = "Claude Code configuration", example = "$HOME/projects/dotfiles/claude-code" }

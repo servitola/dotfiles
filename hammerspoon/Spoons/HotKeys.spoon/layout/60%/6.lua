@@ -10,7 +10,8 @@ return {
 --          ⇪6   │      F6      │              │   │         Rider — move
 --          ⇧6   │              │ ^    :    ^  │   │
 --          ⌃6   │              │              │   │         Rider — go to Bookmark 6
---          ⌥6   │              │      ↑       │   │
+--          ⌥6   │              │      ↑       │   │   Hammerspoon — rec: screen + system audio, again to stop
+{ chord = "⌥6",                             fn = "rec.video" },
 --          ⌘6   │              │              │   │       Browser — Open 6th tab
 --               │              │              │   │      Telegram — focus 6th folder or chat
 --               │              │              │ ℝ │         Rider — Activate Bookmarks Tool Window
@@ -21,7 +22,10 @@ return {
 --         ⇪⌥6   │     ⌥F6      │              │   │
 --         ⇪⌘6   │     ⌘F6      │              │   │
 --         ⇧⌃6   │              │              │   │
---         ⇧⌥6   │              │ ˆ    ˆ    ^  │   │
+--         ⇧⌥6   │              │ ˆ    ˆ    ^  │   │   Hammerspoon — rec: screen + mic + system + mix, again to stop
+--               │              │              │ℝ! │         Rider — Focus Gutter (Accessibility)
+--               │              │              │ℝ! │         Rider — Show Gutter Icon Tooltip (Accessibility)
+{ chord = "⇧⌥6",                            fn = "rec.video_mic", over = "Rider" },
 --         ⇧⌘6   │              │              │   │
 --         ⌃⌥6   │              │              │   │
 --         ⌃⌘6   │              │              │   │
