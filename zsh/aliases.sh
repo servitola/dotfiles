@@ -68,10 +68,6 @@ alias e=eza
 # get garbage. Agents get plain ping.
 [[ -z "$CLAUDECODE" ]] && alias ping="prettyping -c 10 --nolegend"
 
-rec() {
-    ffmpeg -f avfoundation -framerate 30 -video_size 1920x1080 -pixel_format uyvy422 -f avfoundation -i "2" -preset ultrafast -c:a pcm_s16le -probesize 100M "output_$(date +%Y%m%d_%H%M%S).mp4"
-}
-
 android_deep_link() { adb shell am start -a android.intent.action.VIEW -d "$1"; }
 alias android_deep_link_to_Development='android_deep_link $WORK_DEEPLINK_URL'
 android_run_emulator() { emulator -avd "$(emulator -list-avds | head -1)" & }
