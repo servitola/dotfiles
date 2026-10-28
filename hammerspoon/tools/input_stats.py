@@ -35,6 +35,7 @@ VK = {0: "a", 1: "s", 2: "d", 3: "f", 4: "h", 5: "g", 6: "z", 7: "x", 8: "c", 9:
 
 PRETTY_MOD = {"hyper": "⇪", "lshift": "⇧", "shift": "⇧", "lctrl": "⌃",
               "lopt": "⌥", "lcmd": "⌘", "fn": "fn"}
+MOD_ORDER = "⇪⇧⌃⌥⌘"
 PRETTY_KEY = {"spacebar": "␣", "delete_or_backspace": "⌫", "return_or_enter": "↩",
               "tab": "⇥", "escape": "⎋", "slash": "/", "quote": "'", "comma": ",",
               "period": ".", "semicolon": ";", "hyphen": "-", "equal_sign": "=",
@@ -54,8 +55,12 @@ MEANING = {"←": "курсор влево", "→": "вправо", "↑": "вв
 def pretty(token):
     parts = token.split("+")
     key = parts[-1]
+    key = re.sub(r"^keypad_(\d)$", r"num\1", key)
     key = PRETTY_KEY.get(key, key.upper() if re.fullmatch(r"f\d+", key) else key)
-    return "".join(PRETTY_MOD.get(m, m) for m in parts[:-1]) + key
+    # markers list modifiers in press order, layout files always write ⇪⇧⌃⌥⌘
+    mods = sorted((PRETTY_MOD.get(m, m) for m in parts[:-1]),
+                  key=lambda g: MOD_ORDER.find(g) if g in MOD_ORDER else len(MOD_ORDER))
+    return "".join(mods) + key
 
 
 def load(pattern, days, anchor=None):
@@ -99,13 +104,11 @@ def bound_chords():
     return out
 
 
+# Never folds the four modifiers into ⇪: layout files bind ⇧⌃⌥⌘X literally,
+# and the ⇪X reading of the same event is already counted as passthrough.
 def hs_chord(key, flags):
-    out, rest = "", set(flags)
-    if {"cmd", "alt", "ctrl", "shift"} <= rest:
-        out, rest = "⇪", rest - {"cmd", "alt", "ctrl", "shift"}
-    for f, s in (("shift", "⇧"), ("ctrl", "⌃"), ("alt", "⌥"), ("cmd", "⌘")):
-        if f in rest:
-            out += s
+    out = "".join(s for f, s in (("shift", "⇧"), ("ctrl", "⌃"), ("alt", "⌥"), ("cmd", "⌘"))
+                  if f in flags)
     return out + {"tab": "⇥", "esc": "⎋", "space": "␣"}.get(key, key)
 
 
