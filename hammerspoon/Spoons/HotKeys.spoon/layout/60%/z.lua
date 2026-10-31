@@ -21,7 +21,8 @@ return {
 --               │              │              │   │        VSCode — toggle comment line
 --               │              │              │   │         Music — show or hide the status bar
 --———————————————┼——————————————┼——————————————┼———┼——————————————————————————————————————————————
---         ⇪⇧z   │     ⇧F13     │              │   │
+--         ⇪⇧z   │     ⇧F13     │              │   │   Hammerspoon — Jelly Max screen (scrcpy)
+{ chord = "⇧F13",                           fn = "jelly.screen_toggle" },
 --         ⇪⌃z   │     ⌃F13     │              │   │
 --         ⇪⌥z   │      ⇧/      │              │ ✓ │               — question mark (Karabiner direct)
 --         ⇪⌘z   │      /       │              │ ✓ │               — slash (Karabiner direct)
