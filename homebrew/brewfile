@@ -548,7 +548,6 @@ cargo "cargo-bundle", source: "https://github.com/burtonageo/cargo-bundle?rev=ae
 uv "ableton-mcp-extended"
 uv "ezdxf[draw]"
 uv "fb-idb"
-uv "mlx-whisper"
 uv "py-spy"
 npm "@cocal/google-calendar-mcp"
 npm "@colbymchenry/codegraph"
