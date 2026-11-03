@@ -179,19 +179,37 @@
 </g>
 <g class="key-group">
 <rect x="318" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="318" y="64" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<text x="345.0" y="82" text-anchor="middle" font-size="15px" font-weight="600" fill="#1d1d1f">‰</text>
-<text x="354" y="102" font-size="11px" fill="#af52de">§</text>
-<text x="367" y="72" text-anchor="end" class="key-label">5</text>
-<title>5: ‰ / ‰ / §</title>
+<rect x="318" y="64" width="3" height="44" rx="1.5" fill="#007aff"/>
+<text x="345.0" y="90.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="12px">rec.audio</text>
+<text x="367" y="105" text-anchor="end" class="key-label">5</text>
+<title>5: rec.audio — Rec: Audio</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="225.0" y="114" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="340.0,114 350.0,114 345.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="341.0,114 349.0,114 345.0,110" fill="white"/>
+<text x="235.0" y="134" font-size="9px" font-weight="600" fill="#007aff">rec.audio</text>
+<text x="288.5" y="134" font-size="8px" fill="#1d1d1f">rec: audio</text>
+<use href="#icon-hammerspoon" x="235.0" y="141" width="13" height="13"/>
+<text x="251.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="315.5" y="152" font-size="8px" fill="#1d1d1f">rec: call audio (mic + system + mix), again to stop</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="376" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
-<rect x="376" y="64" width="3" height="44" rx="1.5" fill="#8e8e93"/>
-<text x="403.0" y="82" text-anchor="middle" font-size="15px" font-weight="600" fill="#1d1d1f">↑</text>
-<text x="412" y="102" font-size="11px" fill="#af52de">¶</text>
-<text x="425" y="72" text-anchor="end" class="key-label">6</text>
-<title>6: ↑ / ↑ / ¶</title>
+<rect x="376" y="64" width="3" height="44" rx="1.5" fill="#007aff"/>
+<text x="403.0" y="90.0" text-anchor="middle" class="bind-label" fill="#007aff" font-size="12px">rec.video</text>
+<text x="425" y="105" text-anchor="end" class="key-label">6</text>
+<title>6: rec.video — Rec: Video</title>
+<g class="key-tip" opacity="0" pointer-events="none">
+<rect x="283.0" y="114" width="240" height="52" rx="10" fill="white" stroke="#e5e5ea" stroke-width="0.5" filter="url(#shadow-card)"/>
+<polygon points="398.0,114 408.0,114 403.0,109" fill="white" stroke="#e5e5ea" stroke-width="0.5"/>
+<polygon points="399.0,114 407.0,114 403.0,110" fill="white"/>
+<text x="293.0" y="134" font-size="9px" font-weight="600" fill="#007aff">rec.video</text>
+<text x="346.5" y="134" font-size="8px" fill="#1d1d1f">rec: video</text>
+<use href="#icon-hammerspoon" x="293.0" y="141" width="13" height="13"/>
+<text x="309.0" y="152" font-size="9px" font-weight="600" fill="#007aff">Hammerspoon</text>
+<text x="373.5" y="152" font-size="8px" fill="#1d1d1f">rec: screen + system audio, again to stop</text>
+</g>
 </g>
 <g class="key-group">
 <rect x="434" y="62" width="54" height="48" rx="6" fill="#ffffff" stroke="#c7c7cc" stroke-width="0.5" filter="url(#shadow-bound)"/>
@@ -812,9 +830,15 @@
 <line x1="20" y1="718" x2="906" y2="718" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="726" font-size="13px" font-weight="700" fill="#1d1d1f">5</text>
 <text x="136" y="726" font-size="12px" fill="#8e8e93">‰  ‰  §</text>
+<text x="246" y="726" font-size="12px" font-weight="500" fill="#007aff">rec.audio</text>
+<use href="#icon-hammerspoon" x="401" y="714" width="14" height="14"/>
+<text x="419" y="726" font-size="11px" fill="#48484a">Hammerspoon — rec: call audio (mic + system + mix), again to stop</text>
 <line x1="20" y1="748" x2="906" y2="748" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="756" font-size="13px" font-weight="700" fill="#1d1d1f">6</text>
 <text x="136" y="756" font-size="12px" fill="#8e8e93">↑  ↑  ¶</text>
+<text x="246" y="756" font-size="12px" font-weight="500" fill="#007aff">rec.video</text>
+<use href="#icon-hammerspoon" x="401" y="744" width="14" height="14"/>
+<text x="419" y="756" font-size="11px" fill="#48484a">Hammerspoon — rec: screen + system audio, again to stop</text>
 <line x1="20" y1="778" x2="906" y2="778" stroke="#d1d1d6" stroke-width="0.3" stroke-dasharray="2,2"/>
 <text x="20" y="786" font-size="13px" font-weight="700" fill="#1d1d1f">7</text>
 <text x="136" y="786" font-size="12px" fill="#8e8e93">ϗ</text>
