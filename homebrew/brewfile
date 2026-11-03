@@ -451,6 +451,8 @@ cask "iina"
 cask "iterm2"
 # Menu bar calendar
 cask "itsycal"
+# Media system
+cask "jellyfin"
 # JetBrains tools manager
 cask "jetbrains-toolbox"
 # Keyboard customiser
