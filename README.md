@@ -67,9 +67,9 @@ I use this configuration and adjust it on 3 of my Macs: Mac Studio M1Pro, MacBoo
 * A: Check the [pythong-list](https://github.com/servitola/dotfiles/blob/master/python/global-packages.txt) list of global packages I install with [script](https://github.com/servitola/dotfiles/blob/master/python/install-globals.sh)
 
 * Q: I want to convert audio file to text
-* A: I use [mlx-whisper](https://github.com/ml-explore/mlx-examples/tree/main/whisper), Whisper on Apple Silicon. Alias `w` runs the biggest model, `wv` the fast one; the text is printed and saved next to the file
+* A: I use the VoiceInk CLI (`voiceink transcribe <file>`, needs VoiceInk.app running), wrapped as the `w` function; the text is printed and saved next to the file
 
-Convert with best quality:
+Convert:
 ```
 w ~/test.mp3
 ```
