@@ -115,16 +115,9 @@ function piper_say() {
     && afplay /tmp/piper_out.wav
 }
 
-alias w='whisper_max'
-alias wv='whisper_voice'
-
-# The transcript is printed and saved as <file>.txt next to the recording.
-function whisper_max() {
-    mlx_whisper "$1" --model mlx-community/whisper-large-v3-mlx --language ru --output-format txt --output-dir "${1:a:h}"
-}
-
-function whisper_voice() {
-    mlx_whisper "$1" --model mlx-community/whisper-large-v3-turbo --language ru --output-format txt --output-dir "${1:a:h}"
+# Needs VoiceInk.app running; the transcript is printed and saved as <file>.txt next to the recording.
+function w() {
+    voiceink transcribe "$1" | tee "${1:r}.txt"
 }
 
 alias lg="lazygit"
