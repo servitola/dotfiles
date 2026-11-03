@@ -2,7 +2,7 @@ tap "buo/cask-upgrade", trusted: true
 tap "cameroncooke/axe"
 tap "candid82/brew", trusted: true
 tap "domt4/autoupdate", trusted: true
-tap "facebook/fb", trusted: true
+tap "meta/fb", "https://github.com/meta/homebrew-fb.git"
 tap "openai/tools", trusted: { formulae: ["softnet"] }
 tap "osx-cross/arm", trusted: true
 tap "osx-cross/avr", trusted: true
