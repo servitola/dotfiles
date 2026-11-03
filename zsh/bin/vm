@@ -40,7 +40,7 @@ remote() {
     done
     # Without a pty the far side never hears that the connection died, and the clone ran on
     # for as long as the command did (2026-10-02). A forced one would add \r to every line.
-    local there="PATH=/opt/homebrew/bin:\$PATH TART_HOST= $env $dir/vm ${(j: :)${(@q)args}}"
+    local there="PATH=/opt/homebrew/bin:\$PATH VM_ON_HOST=1 $env $dir/vm ${(j: :)${(@q)args}}"
     setopt local_options no_err_exit
     if [[ -t 0 && -t 1 ]]; then
         ssh -o LogLevel=error -t "$TART_HOST" "$there"
@@ -62,7 +62,9 @@ remote() {
     exit $code
 }
 # A shell started before the constant existed has no TART_HOST at all, and would quietly run here.
-[[ -z ${TART_HOST=$("${0:A:h}/const" TART_HOST)} ]] || remote "$@"
+# On the tart host itself zsh reloads constants.env, which names that host again; an
+# empty TART_HOST passed over ssh did not survive it (2026-10-14), so the caller marks it.
+[[ -n ${VM_ON_HOST:-} || -z ${TART_HOST=$("${0:A:h}/const" TART_HOST)} ]] || remote "$@"
 
 # tart's own default, spelled out: shells from before 2026-10-02 still export the old
 # home on the external drive.
