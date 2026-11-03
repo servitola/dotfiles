@@ -1,6 +1,4 @@
 gui:
-  authorColors:
-    "servitola": "magenta"
   nerdFontsVersion: "3"
   showCommandLog: false
   showDivergenceFromBaseBranch: "arrowAndNumber"
@@ -32,6 +30,8 @@ gui:
       - "#d79921"
     markedBaseCommitBgColor:
       - "#504945"
+    authorColors:
+      "servitola": "magenta"
 git:
   parseEmoji: true
   diffRenderers:
